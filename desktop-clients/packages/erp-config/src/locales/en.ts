@@ -6822,5 +6822,6 @@ export default {
   "designer.minItems": "Minimum rows",
   "designer.maxItems": "Maximum rows",
   "designer.rowLimit": "Add or remove rows to meet this section’s limits.",
-  "designer.guide.contract.repeating": "Select a section and enable Repeat this section to add a bounded group of rows. Set minimum and maximum rows. Each row retains its own identity, values and validation messages. Calculations run per row; changing a shared parent clears dependent selections in every row. Copying a sample remaps its internal field references. Designer repetition currently supports one row level; nested collections are available in the separate v1 runtime."
+  "designer.guide.contract.repeating": "Select a section and enable Repeat this section to add a bounded group of rows. Set minimum and maximum rows. Each row retains its own identity, values and validation messages. Calculations run per row; changing a shared parent clears dependent selections in every row. Copying a sample remaps its internal field references. Designer repetition currently supports one row level; nested collections are available in the separate v1 runtime.",
+  "template.clinical.pageResults": "Patients on this page: {count}"
 };

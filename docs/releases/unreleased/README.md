@@ -86,3 +86,10 @@ The [DCP frontend contract and recovery increment](dcp-frontend-contract-2026-09
 Latest activation: [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`, verified on both public sites on 12 September 2026. This supersedes earlier latest-activation statements above.
 
 - [17 September main integration verification](MAIN-INTEGRATION-2026-09-17.md): full local gates, hosted composition and mobile font-token correction; publication/deployment remain separate.
+
+- [Reusable record presentation — 17 September 2026](record-components-2026-09-17.md): healthcare component extraction, typed exports and packaged consumer checks; not deployed.
+
+- [Record rail gap reduction](record-rail-gap-2026-09-17.md): 18px desktop spacing; local package handoff only.
+
+[Patient Query production-host adapter — 17 September 2026](patient-query-host-2026-09-17.md)
+adds an optional production capability contract and cursor pagination to the existing reference renderer.

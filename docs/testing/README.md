@@ -23,3 +23,11 @@ The [healthcare page delivery](../releases/unreleased/care-page-templates-2026-0
 ## Latest DCP verification and hosted follow-up
 
 The [12 September style deployment](../releases/unreleased/dcp-style-deployment-2026-09-12.md) records 1,570 frontend tests, 137 API tests, both builds and repository gates, plus focused local/public browser checks. Its 13 September follow-up records a failed hosted feature-browser job despite the other five jobs passing. These results belong to the identified source. The [documentation audit](../releases/unreleased/documentation-audit-2026-09-13.md) reruns documentation checks only and does not fix or relabel those application failures.
+
+## Shared record component acceptance
+
+The [record component delivery](../releases/unreleased/record-components-2026-09-17.md) covers an independent customer adapter, retained section drafts, disabled/hidden actions, and DCP projection without row-permission fallback. Healthcare verifies the packed consumer with synthetic browser fixtures.
+
+Patient Query host capability/cursor tests are in `desktop-clients/packages/erp-screens/src/clinical-templates/query.test.tsx`.
+See [the local host increment](../releases/unreleased/patient-query-host-2026-09-17.md); healthcare integration
+checks live in the independent consumer repository and use synthetic data.

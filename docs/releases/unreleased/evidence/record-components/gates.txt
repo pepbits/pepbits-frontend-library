@@ -1,0 +1,45 @@
+
+> nexora-monorepo@1.0.0 verify:shared-components
+> node scripts/verify-shared-components.mjs
+
+PASS shared component adoption: 135 page/AI source files checked, 421 shared component uses. Alerts, charts, editor layouts and interactive choice controls retain specialized markup.
+
+> nexora-monorepo@1.0.0 verify:form-controls
+> node scripts/verify-form-controls.mjs
+
+
+  every form control comes from ops-ui
+
+    ok    there are files to check                                176 components
+    ok    no <table> outside ops-ui                               
+    ok    no <input type="checkbox"> outside ops-ui               
+    ok    no <input type="radio"> outside ops-ui                  
+    ok    no <input type="file"> outside ops-ui                   
+    ok    no <select> outside ops-ui                              
+    ok    no <textarea> outside ops-ui                            
+    ok    no a copy of the field styling outside ops-ui           
+    ok    ops-ui exports its form controls                        
+    ok    Checkbox exists to be used instead                      
+    ok    Radio exists to be used instead                         
+    ok    FilePicker exists to be used instead                    
+    ok    Select exists to be used instead                        
+    ok    Textarea exists to be used instead                      
+    ok    Input exists to be used instead                         
+    ok    SearchInput exists to be used instead                   
+
+  Every form control on every screen comes from the one library.
+
+
+> nexora-monorepo@1.0.0 verify:library
+> node scripts/library/generate-examples.mjs --check
+
+PASS 26 examples match their compiled demo functions
+
+> nexora-monorepo@1.0.0 verify:templates
+> node scripts/templates/generate-example.ts --check
+
+(node:403573) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/pepadmin/pb/pepbits-frontend-library/desktop-clients/scripts/templates/generate-example.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/pepadmin/pb/pepbits-frontend-library/desktop-clients/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS TypeScript template example matches the rendered demo adapter

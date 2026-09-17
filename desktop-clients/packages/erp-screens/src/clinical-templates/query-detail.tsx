@@ -74,6 +74,7 @@ export function PatientQueryDetail({
   const p = load.value,
     age = ageParts(String(p.values.birthDate)),
     fields = props.metadata.sections.flatMap((s) => s.fields);
+  const enumLabel=(value:unknown)=>{if(!value)return "—";const key=`template.clinical.${value}`;return t(key)===key?String(value):t(key);};
   const display = (key: string) => {
     if (key === "registeredAt")
       return patient.registeredAt
@@ -82,7 +83,7 @@ export function PatientQueryDetail({
     const value = p.values[key];
     if (!value) return "—";
     const f = fields.find((f) => f.id === key);
-    return f?.type === "date"
+    return key === "birthDate" || f?.type === "date"
       ? props.format.date(String(value))
       : t(f?.options?.find((o) => o.value === value)?.label ?? String(value));
   };
@@ -99,7 +100,7 @@ export function PatientQueryDetail({
         ...["birthDate", "nationality", "birthPlace"].map(item),
         ...p.collections.identifiers.map((r) => ({
           id: r.id,
-          label: `template.clinical.${r.identityType}`,
+          label: enumLabel(r.identityType),
           value: r.value,
         })),
       ],
@@ -109,7 +110,7 @@ export function PatientQueryDetail({
       items: [
         ...p.collections.contacts.map((r) => ({
           id: r.id,
-          label: `template.clinical.${r.contactType}`,
+          label: enumLabel(r.contactType),
           value: [r.countryCode, r.value].filter(Boolean).join(" "),
         })),
         ...p.collections.addresses.map((r) => ({
@@ -156,7 +157,7 @@ export function PatientQueryDetail({
         <div className={styles.tools}>
           <Badge>{p.mrn}</Badge>
           <Badge tone={p.values.status === "active" ? "success" : "neutral"}>
-            {t(`template.clinical.${p.values.status}`)}
+            {enumLabel(p.values.status)}
           </Badge>
         </div>
         <div className="mt-4">
@@ -242,6 +243,7 @@ export function PatientQueryDetail({
           <PatientQueryActions
             patient={patient}
             canWrite={props.metadata.canWrite}
+            capabilities={props.metadata.queryCapabilities}
             onOpen={props.onOpen}
             onCare={onCare}
           />

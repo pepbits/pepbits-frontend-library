@@ -8,6 +8,7 @@ The documentation layout follows the [Pepbits framework documentation](https://g
 | --- | --- |
 | Understand the product and implemented feature families | [Feature catalog](features/README.md) |
 | Use the Library and understand what changed | [Library user and integration guide](features/library-preferences.md) |
+| Reuse the healthcare record presentation in other SaaS apps | [Record page components](architecture/record-page-components.md) |
 | Follow settings from the API to a component | [Architecture and flows](architecture/library-preferences.md) |
 | Know the mandatory component, preference and documentation rules | [Development rules](development/RULES.md) |
 | Add or modify a feature | [Change workflow](development/README.md) |

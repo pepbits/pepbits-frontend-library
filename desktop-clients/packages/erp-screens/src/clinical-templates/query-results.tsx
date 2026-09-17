@@ -69,8 +69,10 @@ export function PatientQueryActions({
   canWrite,
   onOpen,
   onCare,
+  capabilities,
 }: {
-  patient: Pick<PatientSummary, "id">;
+  patient: Pick<PatientSummary, "id" | "editable">;
+  capabilities?: {care?:boolean;overview?:boolean};
   canWrite: boolean;
   onOpen: ClinicalPageProps["onOpen"];
   onCare: (kind: "appointment" | "encounter", id: string) => void;
@@ -83,7 +85,7 @@ export function PatientQueryActions({
           key={mode}
           size="xs"
           variant="ghost"
-          disabled={mode === "edit" && !canWrite}
+          disabled={mode === "edit" && (!canWrite || patient.editable===false)}
           onClick={() =>
             onOpen({ view: "record", patientId: patient.id, mode })
           }
@@ -95,7 +97,7 @@ export function PatientQueryActions({
       <Button
         size="xs"
         variant="ghost"
-        disabled={!canWrite}
+        disabled={!canWrite || capabilities?.care===false}
         onClick={() => onCare("encounter", patient.id)}
       >
         <Stethoscope size={13} />
@@ -104,7 +106,7 @@ export function PatientQueryActions({
       <Button
         size="xs"
         variant="ghost"
-        disabled={!canWrite}
+        disabled={!canWrite || capabilities?.care===false}
         onClick={() => onCare("appointment", patient.id)}
       >
         <Calendar size={13} />
@@ -113,6 +115,7 @@ export function PatientQueryActions({
       <Button
         size="xs"
         variant="ghost"
+        disabled={capabilities?.overview===false}
         aria-label="template.clinical.overview"
         onClick={() => onOpen({ view: "overview", patientId: patient.id })}
       >
@@ -144,7 +147,7 @@ export function PatientQueryResults({
   actions: (p: PatientSummary) => ReactNode;
   format: ClinicalPageProps["format"];
   preferences: ClinicalPageProps["preferences"];
-  onSort: (key: string) => void;
+  onSort?: (key: string) => void;
 }) {
   const { t } = useLocalization();
   const value = (
@@ -202,7 +205,7 @@ export function PatientQueryResults({
             key === "status" && p.status === "active" ? "success" : "neutral"
           }
         >
-          {p[key] ? t(`template.clinical.${p[key]}`) : "—"}
+          {p[key] ? (t(`template.clinical.${p[key]}`) === `template.clinical.${p[key]}` ? p[key] : t(`template.clinical.${p[key]}`)) : "—"}
         </Badge>
       );
     if (key === "country" || key === "nationality")
@@ -291,7 +294,7 @@ export function PatientQueryResults({
                       <Button
                         size="xs"
                         variant="ghost"
-                        onClick={() => onSort(k)}
+                        disabled={!onSort} onClick={() => onSort?.(k)}
                       >
                         {t(columnLabel(k))}
                         {filters.sort === k

@@ -87,6 +87,7 @@ export function PatientQueryFilters({
   const select = (key: QueryField | "mobileCode") => (
     <Select
       label={queryLabel(key)}
+      aria-label={queryLabel(key)}
       value={String(filters[key] ?? "")}
       options={[
         { value: "", label: "template.all" },
@@ -98,6 +99,7 @@ export function PatientQueryFilters({
   const text = (key: QueryField) => (
     <Input
       label={queryLabel(key)}
+      aria-label={queryLabel(key)}
       value={String(filters[key] ?? "")}
       onChange={(e) => onChange(key, e.target.value)}
     />
@@ -146,7 +148,7 @@ export function PatientQueryFilters({
           <Button
             variant="ghost"
             size="sm"
-            disabled={!count || presetBusy}
+            disabled={metadata.queryCapabilities?.presets===false || !count || presetBusy}
             onClick={() => setSaving(true)}
           >
             <Bookmark size={14} />
@@ -197,7 +199,7 @@ export function PatientQueryFilters({
             aria-describedby={`${id}-hint`}
           />
           <p id={`${id}-hint`} className={styles.hint}>
-            {t("template.clinical.wholeWordHint")}
+            {t(metadata.searchHint ?? "template.clinical.wholeWordHint")}
           </p>
         </div>
         <div className={styles.fields}>

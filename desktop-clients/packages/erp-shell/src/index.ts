@@ -16,3 +16,5 @@ export * from "./error-monitor";
 export * from "./sentinel";
 
 export * from "./shell-host";
+
+export * from "./workspace-page";

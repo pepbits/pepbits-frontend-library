@@ -2,7 +2,7 @@ import React from 'react';
 import {test,expect,vi} from 'vitest';
 import {render,screen,fireEvent} from '@testing-library/react';
 import type {DcpRuntimeField,DcpRuntimeView} from '@pepbits/erp-config';
-import {DcpRuntimeFields} from './runtime-fields';
+import {DcpRuntimeFields,DcpSectionFields} from './runtime-fields';
 const field=(code:string,extra:Partial<DcpRuntimeField>={}):DcpRuntimeField=>({code,label:code,type:'TEXT',required:false,writable:true,masked:false,maxLength:100,minimum:null,maximum:null,options:[],children:[],maxItems:2,...extra});
 const view:DcpRuntimeView={contractVersion:1,label:'Synthetic',definitionVersion:1,checksum:'synthetic',sections:[],values:{},violations:[],rowFields:{}};
 test('host renderer receives only writable unmasked fields and cannot mutate a disabled control',()=>{
@@ -19,4 +19,19 @@ test('nested host reference control preserves row identity and required collecti
 test('missing per-row authorization metadata never invokes a custom renderer',()=>{
  const renderer=vi.fn();render(<DcpRuntimeFields fields={[field('rows',{type:'COLLECTION',children:[field('reference')]})]} values={{rows:[{_id:'unknown',reference:1}]}} view={view} change={vi.fn()} renderField={renderer}/>);
  expect(renderer).not.toHaveBeenCalled();expect(screen.getByRole('button',{name:'Remove row'})).toBeDisabled();
+});
+
+test('section projection requires row authorization and never leaks a masked parent',()=>{
+ const change=vi.fn(),renderer=vi.fn(),parent=field('customer',{type:'COLLECTION',children:[field('name')]});
+ const props={primaryCollection:'customer',fieldCodes:['name'],collectionCodes:[],values:{customer:[{_id:'one',name:'Hidden customer'}]},change,renderField:renderer};
+ const {rerender}=render(<DcpSectionFields {...props} view={{...view,sections:[{code:'details',label:'Details',fields:[parent]}]}}/>);
+ expect(screen.queryByDisplayValue('Hidden customer')).toBeNull();expect(renderer).not.toHaveBeenCalled();
+ rerender(<DcpSectionFields {...props} view={{...view,sections:[{code:'details',label:'Details',fields:[{...parent,masked:true}]}],rowFields:{'customer[one]':[field('name')]}}}/>);
+ expect(screen.queryByDisplayValue('Hidden customer')).toBeNull();expect(renderer).not.toHaveBeenCalled();
+});
+test('section projection edits only its selected active row and excludes other fields',()=>{
+ const change=vi.fn(),name=field('name'),parent=field('customer',{type:'COLLECTION',children:[name,field('secret')]});
+ const rows=[{_id:'deleted',_delete:true,name:'Removed'},{_id:'one',name:'Synthetic',secret:'Do not project'},{_id:'two',name:'Other'}];
+ render(<DcpSectionFields primaryCollection="customer" fieldCodes={['name']} collectionCodes={[]} values={{customer:rows}} view={{...view,sections:[{code:'details',label:'Details',fields:[parent]}],rowFields:{'customer[one]':[name,field('secret')]}}} change={change}/>);
+ expect(screen.queryByDisplayValue('Do not project')).toBeNull();fireEvent.change(screen.getByRole('textbox',{name:'name'}),{target:{value:'Updated'}});expect(change).toHaveBeenCalledWith('customer',[rows[0],{...rows[1],name:'Updated'},rows[2]]);
 });

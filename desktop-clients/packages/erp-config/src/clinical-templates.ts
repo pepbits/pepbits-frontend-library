@@ -62,6 +62,7 @@ export interface PatientRecord {
   activity: PatientActivity[];
 }
 export interface PatientSummary {
+  editable?: boolean;
   country?: string;
   identifier?: string;
   matchedIn?: string[];
@@ -99,6 +100,8 @@ export interface PatientFilters {
   direction?: "asc" | "desc";
 }
 export interface PatientSearchResult {
+  /** Present for bounded cursor results without a global count. */
+  hasMore?: boolean;
   rows: PatientSummary[];
   total: number;
   page: number;
@@ -129,6 +132,8 @@ export interface PatientOverview {
   loadedAt: string;
 }
 export interface PatientMetadata {
+  queryCapabilities?: {presets?: boolean; export?: boolean; care?: boolean; overview?: boolean; sort?: boolean};
+  searchHint?: string;
   searchOptions?: Record<string, Array<{ value: string; label: string }>>;
   sections: PatientSection[];
   collections: PatientCollection[];

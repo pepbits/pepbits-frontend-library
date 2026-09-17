@@ -80,6 +80,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
     operation = useRef(false);
   useEffect(() => {
     active.current = true;
+    if(metadata.queryCapabilities?.presets===false)return ()=>{active.current=false;};
     void adapter
       .savedSearches()
       .then((v) => {
@@ -142,7 +143,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
     setCare({ kind, id });
   };
   const savePreset = async (name: string) => {
-    if (operation.current) return false;
+    if (metadata.queryCapabilities?.presets===false || operation.current) return false;
     operation.current = true;
     setPresetBusy(true);
     setError(null);
@@ -173,7 +174,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
     }
   };
   const download = async () => {
-    if (exportBusy || !applied) return;
+    if (metadata.queryCapabilities?.export===false || exportBusy || !applied) return;
     setExportBusy(true);
     setError(null);
     try {
@@ -216,6 +217,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
     <PatientQueryActions
       patient={p}
       canWrite={metadata.canWrite}
+      capabilities={metadata.queryCapabilities}
       onOpen={navigate}
       onCare={onCare}
     />
@@ -283,11 +285,11 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
             <p role="status">
               {search.value
                 ? t(
-                    search.value.total === 1
+                    search.value.hasMore !== undefined ? "template.clinical.pageResults" : search.value.total === 1
                       ? "template.clinical.onePatientFound"
                       : "template.clinical.resultCount",
                     {
-                      count: search.value.total,
+                      count: search.value.hasMore !== undefined ? search.value.rows.length : search.value.total,
                     },
                   )
                 : t("template.clinical.searching")}
@@ -306,7 +308,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
               <Button
                 variant="ghost"
                 size="sm"
-                disabled={!search.value?.total || exportBusy}
+                disabled={metadata.queryCapabilities?.export===false || !search.value?.total || exportBusy}
                 onClick={() => setExportOpen(true)}
               >
                 <Download size={14} />
@@ -323,7 +325,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
               <h2>{t("template.clinical.noPatients")}</h2>
               <p>
                 {t(
-                  applied.q
+                  applied.q && !metadata.searchHint
                     ? "template.clinical.noWholeWords"
                     : "template.clinical.relaxFilters",
                 )}
@@ -341,7 +343,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
                 onSelect={setSelected}
                 actions={actions}
                 format={format}
-                onSort={(key) => {
+                onSort={metadata.queryCapabilities?.sort===false ? undefined : (key) => {
                   setSelected(null);
                   setApplied((a) => ({
                     ...a,
@@ -360,6 +362,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
                 page={search.value.page}
                 pageSize={search.value.pageSize}
                 total={search.value.total}
+                hasMore={search.value.hasMore}
                 onPageChange={(page) => {
                   setSelected(null);
                   setApplied((a) => ({ ...a, page }));

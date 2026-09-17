@@ -1,0 +1,11 @@
+.page {display:flex;flex-direction:column;flex:1;min-height:0;min-width:0;}
+.page fieldset {min-width:0;}
+.page > :not([data-layout]) {flex-shrink:0;margin-block-end:8px;}
+.actions {display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;}
+.identityLabel {font-size:calc(10px * var(--fs-scale, 1));text-transform:uppercase;letter-spacing:.1em;opacity:.7;}
+.identityName {margin-block-start:4px;font-size:calc(20px * var(--fs-scale, 1));font-weight:600;}
+.identityReference {margin-block-start:4px;font-size:calc(12px * var(--fs-scale, 1));opacity:.7;}
+.notice {padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);background:var(--primary-soft);font-size:calc(13px * var(--fs-scale, 1));line-height:1.6;}
+.notice[data-variant="message"] {padding:12px;background:var(--surface);}
+.notice[data-variant="muted"] {padding:0;border:0;background:transparent;color:var(--text-muted);font-size:calc(14px * var(--fs-scale, 1));}
+@media(max-width:640px){.actions {gap:6px;}}

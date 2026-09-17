@@ -31,3 +31,25 @@ export function DcpRuntimeFields({fields,values,view,change,disabled=false,prefi
   return <Input key={f.code} {...common} maxLength={f.maxLength} value={String(value??'')} onChange={e=>change(f.code,e.target.value)}/>;
  })}</CardGrid>;
 }
+
+/** Project a server-authorized row into a section without introducing a second field renderer.
+ * Existing rows require rowFields; create fields never grant access to an existing row.
+ * Hosts choose section membership; this component enforces the supplied DCP visibility.
+ */
+export function DcpSectionFields({primaryCollection,fieldCodes,collectionCodes,view,values,disabled=false,change,renderField,empty}: {
+ primaryCollection:string;fieldCodes:string[];collectionCodes:string[];view:DcpRuntimeView;
+ values:Record<string,DcpValue>;disabled?:boolean;change:(code:string,value:DcpValue)=>void;
+ renderField?:DcpFieldRenderer;empty?:React.ReactNode;
+}){
+ const all=view.sections.flatMap(s=>s.fields),parent=all.find(f=>f.code===primaryCollection);
+ const rows=Array.isArray(values[primaryCollection])?values[primaryCollection]:[];
+ const row=rows.find(r=>!r._delete),path=primaryCollection+'['+(row?._id??row?._localKey??0)+']';
+ const allowed=!parent||parent.masked?[]:row?._id?view.rowFields[path]??[]:parent.children;
+ const fields=allowed.filter(f=>fieldCodes.includes(f.code));
+ const collections=all.filter(f=>f.code!==primaryCollection&&collectionCodes.includes(f.code));
+ return <>
+  {row&&fields.length>0&&<DcpRuntimeFields columns="auto" fields={fields} values={row} view={view} prefix={path+'.'} disabled={disabled||!parent?.writable||!!parent?.masked} renderField={renderField} change={(code,value)=>{if(!disabled&&parent?.writable&&!parent.masked)change(primaryCollection,rows.map(r=>r===row?{...r,[code]:value}:r));}}/>}
+  {collections.length>0&&<DcpRuntimeFields columns="auto" fields={collections} values={values} view={view} disabled={disabled} change={change} renderField={renderField}/>}
+  {fields.length===0&&collections.length===0&&empty}
+ </>;
+}

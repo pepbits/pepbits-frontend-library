@@ -9,6 +9,7 @@ import { PageDocumentationNotice } from "./documentation";
 import {SentinelBoundary,SentinelBridge} from "./sentinel";
 import {useNavigation} from "@pepbits/platform-ports";
 import { Footer } from "./footer";
+import styles from "./enterprise-shell.module.css";
 
 /* Structurally identical to the original shell, with one substitution: the workspace
    tab strip was mounted here directly and is now the `tabs` prop, because it exists
@@ -28,7 +29,7 @@ export function EnterpriseShell({ tabs, children, header, footer }: { tabs?: Rea
         {header ?? <Header />}
         {preferencesAvailable === false ? <div role="status" className="border-b border-[var(--border)] bg-[var(--surface-2)] px-4 py-2 text-sm text-[var(--text-muted)]"><LocalizedText message="ui.settings.could.not.be.loaded.preference.changes.apply.to.9cc9f6fa" /></div> : null}
         {tabs}
-        <main className="nex-scrollbar relative min-h-0 flex-1 overflow-auto bg-[var(--bg)] p-3 md:p-4"><PageDocumentationNotice />{children}</main>
+        <main className={`${styles.content} nex-scrollbar relative min-h-0 flex-1 overflow-auto bg-[var(--bg)] p-3 md:p-4`}><PageDocumentationNotice />{children}</main>
         {footer ?? <Footer />}
       </div>
       </SentinelBoundary>

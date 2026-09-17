@@ -169,3 +169,19 @@ test("query export uses the selected file format", async () => {
   fireEvent.click(within(screen.getByRole('dialog')).getByRole('button',{name:'Export'}));
   await waitFor(()=>expect(exportRows).toHaveBeenCalledWith(expect.any(Array),expect.any(Array),expect.any(Object),'xlsx','clinical-demo-patients'));
 });
+
+test("production capability limits preserve layout without invoking unavailable workflows",async()=>{
+ const {adapter}=setup({metadata:{...metadataFixture,canWrite:true,queryCapabilities:{presets:false,export:false,care:false,overview:false,sort:false}} as PatientMetadata});
+ vi.mocked(adapter.search).mockResolvedValue({rows:[{...row,editable:false}],total:1,page:1,pageSize:20,hasMore:true});
+ expect(adapter.savedSearches).not.toHaveBeenCalled();
+ fireEvent.change(screen.getByLabelText("First name",{exact:true}),{target:{value:"Alex"}});
+ fireEvent.click(screen.getByRole("button",{name:"Search"}));await screen.findByRole("button",{name:"Alex Morgan"});
+ expect(screen.getByText("Patients on this page: 1")).toBeInTheDocument();
+ expect(screen.getByRole("button",{name:"Next page"})).toBeEnabled();
+ expect(screen.getByRole("button",{name:"Previous page"})).toBeDisabled();
+ expect(screen.getByRole("button",{name:"Export"})).toBeDisabled();
+ expect(screen.getByRole("button",{name:"Edit"})).toBeDisabled();
+ expect(adapter.load).not.toHaveBeenCalled();
+ fireEvent.click(screen.getByRole("button",{name:"Next page"}));
+ await waitFor(()=>expect(adapter.search).toHaveBeenLastCalledWith(expect.objectContaining({page:2})));
+});

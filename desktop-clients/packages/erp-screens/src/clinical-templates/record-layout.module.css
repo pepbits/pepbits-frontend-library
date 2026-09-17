@@ -51,8 +51,8 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 2px;
+  justify-content: flex-start;
+  gap: 18px;
 }
 .step {
   display: flex !important;
@@ -319,7 +319,7 @@
   .rail, .surface[data-rail-alignment="start"] .rail { width: 100%; padding: 8px 0; }
   .railHead { padding: 0 12px 6px; }
   .railHead p { display: inline; margin-inline-end: 8px; font-size: calc(12px * var(--fs-scale, 1)); }
-  .steps, .surface[data-rail-alignment="start"] .steps { flex-direction: row; justify-content: flex-start; }
+  .steps, .surface[data-rail-alignment="start"] .steps { flex-direction: row; justify-content: flex-start; gap: 2px; }
   .rail .step { flex-shrink: 0; margin: 0 3px; }
   .meter { display: none; }
   .content { padding: 12px; }
@@ -327,3 +327,8 @@
   .cardHead { flex-wrap: wrap; gap: 8px; }
   .footer { padding: 8px; gap: 8px; }
 }
+
+/* Hosted record pages opt in; existing templates retain their viewport layout. */
+.surface[data-sizing="container"] {height:auto;min-height:0;flex:1;}
+.surface[data-sizing="container"] .content {padding-block:6px;padding-inline-end:6px;}
+.surface[data-sizing="container"] .footer {min-height:0;padding:8px 12px;gap:8px;justify-content:flex-end;}

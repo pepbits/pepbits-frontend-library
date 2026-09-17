@@ -28,6 +28,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
   keepMounted = false,
   showCompletion = true,
   railAlignment = "spread",
+  sizing = "viewport",
   active,
   onActive,
   preferences,
@@ -46,6 +47,8 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
   showCompletion?: boolean;
   /** Compact top-aligned navigation for operational workspaces. */
   railAlignment?: "spread" | "start";
+  /** Container mode is used by hosted full-height record pages; legacy consumers retain viewport sizing. */
+  sizing?: "viewport" | "container";
   active: string;
   onActive: (id: string) => void;
   preferences: UserPreferences;
@@ -85,6 +88,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
   useEffect(() => {
     const element = surface.current;
     if (!element) return;
+    if (sizing === "container") {element.style.removeProperty("height");return;}
     let frame = 0;
     const measure = () => {
       cancelAnimationFrame(frame);
@@ -117,7 +121,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
       observer?.disconnect();
       window.removeEventListener("resize", measure);
     };
-  }, []);
+  }, [sizing]);
   const step = (s: T, i: number) => (
     <Button
       key={s.id}
@@ -174,6 +178,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
       ref={surface}
       className={styles.surface}
       data-layout={layout}
+      data-sizing={sizing}
       data-rail-alignment={railAlignment}
       data-density={preferences.density}
       data-motion={preferences.reducedMotion ? "reduced" : "full"}
