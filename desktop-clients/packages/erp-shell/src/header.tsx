@@ -1,4 +1,5 @@
 "use client";
+import {useShellHost} from "./shell-host";
 import {DocumentationLauncher} from "./documentation";
 import { useLocalization } from "@pepbits/ops-ui";
 
@@ -63,7 +64,8 @@ function InboxTrigger({ label, count, tone, children }: { label: string; count: 
   );
 }
 
-export function Header() {
+export function Header(props: {branches?: Array<{value:string;label:string}>; showInbox?:boolean} = {}) {
+  const host=useShellHost();const branches=props.branches??host?.branches??BRANCHES;const showInbox=props.showInbox??host?.showInbox??!host;
   const {t: translateCopy} = useLocalization();
   const product = useProduct();
   const { currentModule, branch, setBranch, setCommandOpen, setHelpOpen, setDocumentationOpen, preferences, toast, t } = useERP();
@@ -105,7 +107,7 @@ export function Header() {
   }));
 
   return (
-    <header data-theme={preferences.headerTheme === "match" ? undefined : preferences.headerTheme} style={headerPalette} className="no-print relative z-40 flex h-[var(--header-height)] shrink-0 items-center gap-1.5 border-b border-[var(--border)] bg-[var(--surface-translucent)] px-3 backdrop-blur-xl">
+    <header data-theme={preferences.headerTheme === "match" ? undefined : preferences.headerTheme} style={headerPalette} className={"no-print relative z-40 flex min-h-[var(--header-height)] shrink-0 items-center gap-1.5 border-b border-[var(--border)] bg-[var(--surface-translucent)] px-3 backdrop-blur-xl "+(host?"flex-wrap py-1 sm:h-[var(--header-height)] sm:flex-nowrap sm:py-0":"h-[var(--header-height)]")}>
       <div data-tour="module" className="shrink-0">
       <DropdownSelect
         value={currentModule}
@@ -113,13 +115,15 @@ export function Header() {
         onChange={(value) => setModule(value as ModuleKey)}
         menuClassName="w-64"
         className="shrink-0"
+        compact={!!host}
+        triggerClassName={host?"max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0":""}
       />
       </div>
 
       <div className="mx-1 h-7 w-px shrink-0 bg-[var(--border)]" />
 
       {/* Preserve the page title; secondary text gives up space first. */}
-      <div className="flex min-w-0 flex-1 items-baseline gap-2 overflow-hidden px-1.5">
+      <div className={"flex min-w-0 flex-1 items-baseline gap-2 overflow-hidden px-1.5 "+(host?"max-sm:order-last max-sm:w-full max-sm:flex-none":"")}>
         <h1 className="min-w-0 shrink-0 max-w-full truncate text-[length:calc(15px*var(--fs-scale))] font-black tracking-[-.025em] text-[var(--text)]">{t(page?.titleKey ?? page?.title ?? "Workspace")}</h1>
         {page?.subtitle ? <span className="hidden min-w-0 truncate text-[length:calc(11px*var(--fs-scale))] text-[var(--text-muted)] lg:inline">{t(page.subtitleKey ?? page.subtitle)}</span> : null}
         {page?.kind ? <Badge tone="neutral" className="hidden shrink-0 self-center xl:inline-flex">{t(page.kind)}</Badge> : null}
@@ -131,8 +135,9 @@ export function Header() {
           with a "Mark all read" action, then rows of coloured dot + title +
           body + age. The dot is a semantic token, so a notification is coloured
           by what it MEANS rather than by a hex picked at the call site. */}
-      <DocumentationLauncher />
-      {preferences.helperEnabled ? <button type="button" aria-label={translateCopy("ui.open.page.helper.b4639461")} title={translateCopy("ui.help.b22e5e67")} onClick={() => setHelpOpen(true)} className="focus-ring grid size-[30px] shrink-0 place-items-center rounded-lg text-[var(--text-muted)] hover:bg-[var(--surface-2)]"><CircleHelp className="size-4" /></button> : null}
+      <span className={host?"hidden sm:contents":"contents"}>{host?(preferences.documentationEnabled?<button type="button" aria-label={translateCopy("Documentation Center")} onClick={()=>setDocumentationOpen(true)} className="focus-ring grid size-[30px] place-items-center rounded-lg text-[var(--text-muted)] hover:bg-[var(--surface-2)]"><BookOpen className="size-4"/></button>:null):<DocumentationLauncher />}</span>
+      {preferences.helperEnabled ? <button type="button" aria-label={translateCopy("ui.open.page.helper.b4639461")} title={translateCopy("ui.help.b22e5e67")} onClick={() => setHelpOpen(true)} className={"focus-ring size-[30px] shrink-0 place-items-center rounded-lg text-[var(--text-muted)] hover:bg-[var(--surface-2)] "+(host?"hidden sm:grid":"grid")}><CircleHelp className="size-4" /></button> : null}
+      {showInbox ? <>
       <ActionMenu trigger={<InboxTrigger label={t("notifications")} count={unreadNotifications} tone="danger"><Bell className="size-3.5" /></InboxTrigger>}>
         {(close) => (
           <div className="-m-1.5 w-[340px] overflow-hidden rounded-xl">
@@ -191,6 +196,8 @@ export function Header() {
           </div>
         )}
       </ActionMenu>
+      </> : null}
+
 
       {/* The width goes on triggerClassName, not className: className lands on
           the positioning wrapper, while the BUTTON carries compact's
@@ -200,7 +207,7 @@ export function Header() {
           Definite rather than content width, because content-sized it changed
           with the selected branch -- "Sharjah • Operations Hub" is wider than
           "Kochi • Delivery Center" -- so the header shifted on every switch. */}
-      <DropdownSelect value={branch} options={BRANCHES} onChange={setBranch} label="Branch" hideLabel compact className="hidden lg:block" triggerClassName="lg:w-[296px] lg:max-w-none" leading={<Building2 className="size-3.5 shrink-0 text-[var(--text-muted)]" />} menuClassName="w-64" />
+      <DropdownSelect value={branch} options={host&&!branch?[{value:"",label:"—",disabled:true},...branches]:branches} onChange={setBranch} label="Branch" hideLabel compact align={host?"right":"left"} className={host?"min-w-0 max-sm:flex-1 sm:max-w-[220px] lg:max-w-none":"hidden lg:block"} triggerClassName="w-full lg:w-[296px] lg:max-w-none" leading={<Building2 className="size-3.5 shrink-0 text-[var(--text-muted)]" />} menuClassName="w-64" />
 
       {/* Vantage's identity block: 13px semibold name over a 10.5px muted
           designation in uppercase with .6px of tracking. The tracking is what
@@ -216,14 +223,14 @@ export function Header() {
 
       <ActionMenu trigger={<button type="button" data-tour="profile" aria-label={translateCopy("ui.open.profile.menu.4a239d3d")} className="focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]"><span className="relative flex size-7 items-center justify-center rounded-[9px] bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-[length:calc(9.5px*var(--fs-scale))] font-black text-white shadow-sm">{user?.initials ?? "--"}<span className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full border-2 border-[var(--surface)] bg-[var(--success)]" /></span><ChevronDown className="size-3 text-[var(--text-subtle)]" /></button>}>
         {(close) => <div className="w-64"><div className="flex items-center gap-3 rounded-lg bg-[var(--surface-2)] p-3"><span className="flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-[length:calc(12px*var(--fs-scale))] font-black text-white">{user?.initials ?? "--"}</span><span className="min-w-0"><span className="block truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold">{user?.name ?? "Signed out"}</span><span className="block truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]">{user?.email ?? ""}</span></span></div><div className="my-1.5 h-px bg-[var(--border)]" />
-          <MenuButton icon={<Settings className="size-3.5" />} label="Settings" hint="Workspace and organization" onClick={() => { openPage("theme-studio"); close(); }} />
-          <MenuButton icon={<UserRound className="size-3.5" />} label="My Profile" hint="Identity and contact details" onClick={() => { openPage("user-master", { mode: "view", recordId: user?.id ?? "USR-00301", title: "My Profile" }); close(); }} />
-          <MenuButton icon={<SlidersHorizontal className="size-3.5" />} label="My Preferences" hint="Layout, theme and behavior" onClick={() => { openPage("preferences"); close(); }} />
+          {product.pages["theme-studio"] ? <MenuButton icon={<Settings className="size-3.5" />} label="Settings" hint="Workspace and organization" onClick={() => { openPage("theme-studio"); close(); }} /> : null}
+          {product.pages["user-master"] ? <MenuButton icon={<UserRound className="size-3.5" />} label="My Profile" hint="Identity and contact details" onClick={() => { openPage("user-master", { mode: "view", recordId: user?.id ?? "USR-00301", title: "My Profile" }); close(); }} /> : null}
+          {product.pages["preferences"] ? <MenuButton icon={<SlidersHorizontal className="size-3.5" />} label="My Preferences" hint="Layout, theme and behavior" onClick={() => { openPage("preferences"); close(); }} /> : null}
           <div className="my-1.5 h-px bg-[var(--border)]" />
           <MenuButton icon={<LogOut className="size-3.5" />} label="Sign out" hint="End this secure session" tone="danger" onClick={() => { close(); void logout(); }} />
           <div className="my-1.5 h-px bg-[var(--border)]" />
           <button type="button" onClick={() => { setDocumentationOpen(true); close(); }} className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-[length:calc(10px*var(--fs-scale))] font-bold text-[var(--text-muted)] hover:bg-[var(--surface-2)]"><BookOpen className="size-3.5" /><LocalizedText message="ui.product.documentation.2e646170" /></button>
-          <button type="button" onClick={close} className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-[length:calc(10px*var(--fs-scale))] font-bold text-[var(--text-muted)] hover:bg-[var(--surface-2)]"><Mail className="size-3.5" /><LocalizedText message="ui.contact.support.814f4ed2" /></button>
+          {!host ? <button type="button" onClick={close} className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-[length:calc(10px*var(--fs-scale))] font-bold text-[var(--text-muted)] hover:bg-[var(--surface-2)]"><Mail className="size-3.5" /><LocalizedText message="ui.contact.support.814f4ed2" /></button> : null}
         </div>}
       </ActionMenu>
     </header>

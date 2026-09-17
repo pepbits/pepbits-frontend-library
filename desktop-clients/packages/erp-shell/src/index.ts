@@ -14,3 +14,5 @@ export * from "./documentation";
 
 export * from "./error-monitor";
 export * from "./sentinel";
+
+export * from "./shell-host";

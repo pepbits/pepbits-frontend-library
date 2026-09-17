@@ -1,13 +1,32 @@
 "use client";
 import React, { useEffect, useRef, useId, type ReactNode } from "react";
-import { Button, useLocalization } from "@pepbits/ops-ui";
+import { Button, Card, useLocalization } from "@pepbits/ops-ui";
 import type { UserPreferences } from "@pepbits/erp-config";
 import styles from "./record-layout.module.css";
+
+/** The same numbered card used by the patient reference, with host-owned fields. */
+export function RecordSectionCard({id, title, subtitle, index, icon, reading, onRead, children}: {
+  id: string; title: string; subtitle: string; index: number; icon: ReactNode;
+  reading?: boolean; onRead?: () => void; children: ReactNode;
+}) {
+  const {t} = useLocalization();
+  return <Card className={styles.card} data-clinical-section={id}>
+    <div className={styles.cardHead}>
+      <span className={styles.cardIcon}>{icon}</span>
+      <div className="min-w-0 flex-1"><h3>{t(title)}</h3><p>{t(subtitle)}</p></div>
+      <span className="text-xs font-mono text-[var(--text-muted)]">{t('template.clinical.sectionNumber', {number: String(index + 1).padStart(2, '0')})}</span>
+      {onRead && <Button size="sm" variant="ghost" onClick={onRead}>{t(reading ? 'template.clinical.reading' : 'template.clinical.read')}</Button>}
+    </div>
+    <div className={styles.cardBody}>{children}</div>
+  </Card>;
+}
 
 /** Presentation slots keep this long-record layout reusable outside patient registration. */
 export function RecordSectionLayout<T extends { id: string; title: string }>({
   sections,
   activeOnly = false,
+  keepMounted = false,
+  showCompletion = true,
   railAlignment = "spread",
   active,
   onActive,
@@ -21,6 +40,10 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
   sections: T[];
   /** Reuse the record rail with a focused pane instead of stacked sections. */
   activeOnly?: boolean;
+  /** Keep host-owned section drafts mounted when switching tabs/wizard steps. */
+  keepMounted?: boolean;
+  /** Hide completion when the host has no authoritative completion calculation. */
+  showCompletion?: boolean;
   /** Compact top-aligned navigation for operational workspaces. */
   railAlignment?: "spread" | "start";
   active: string;
@@ -42,13 +65,15 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
   const go = (id: string) => {
     observed.current = id;
     onActive(id);
-    if (layout === "rail" && !activeOnly)
-      content.current
-        ?.querySelector<HTMLElement>(`[data-record-section="${id}"]`)
-        ?.scrollIntoView?.({
-          block: "start",
-          behavior: preferences.reducedMotion ? "instant" : "smooth",
-        });
+    if (layout === "rail" && !activeOnly) {
+      const scroller = content.current;
+      const target = scroller?.querySelector<HTMLElement>(`[data-record-section="${id}"]`);
+      // Scroll only this form; scrollIntoView also moves the application shell on small screens.
+      if (scroller && target) scroller.scrollTo?.({
+        top: target.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - 10,
+        behavior: preferences.reducedMotion ? "instant" : "smooth",
+      });
+    }
   };
   useEffect(() => {
     if (activeOnly && content.current) content.current.scrollTop = 0;
@@ -168,7 +193,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
             >
               {sections.map(step)}
             </div>
-            <div className={styles.meter}>
+            {showCompletion ? <div className={styles.meter}>
               <div>
                 {t("template.clinical.completion")}{" "}
                 <b>{Math.round((count / sections.length) * 100)}%</b>
@@ -184,7 +209,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
                   total: sections.length,
                 })}
               </small>
-            </div>
+            </div> : null}
           </nav>
         ) : null}
         <div className={styles.main}>
@@ -220,11 +245,12 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
           >
             {sections
               .filter(
-                (s) => (layout === "rail" && !activeOnly) || s.id === active,
+                (s) => keepMounted || (layout === "rail" && !activeOnly) || s.id === active,
               )
               .map((s) => (
                 <section
                   key={s.id}
+                  hidden={((layout !== "rail" || activeOnly) && s.id !== active)}
                   id={`${instance}-section-${s.id}`}
                   aria-labelledby={`${instance}-tab-${s.id}`}
                   data-record-section={s.id}

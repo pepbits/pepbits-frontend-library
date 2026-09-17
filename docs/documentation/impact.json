@@ -841,7 +841,7 @@
       "reason": "Authored OP Registration, catalog and print instructions accompany the new template and shared print surface; unrelated guide content is unchanged."
     },
     "desktop-clients/packages/erp-screens/src/clinical-templates/record-layout.module.css": {
-      "sha256": "ee64cd00c44ed0b0f7447f8012627d77fdd49be09961da719abbac1ccb7480b7",
+      "sha256": "5018dc82204c38c5e85515a0fcfb4419c46e9ba6380e8cb1aae263c8577a7897",
       "pages": [
         "allyvora-patient-query",
         "allyvora-patient-record",
@@ -854,7 +854,7 @@
         "op-registration"
       ],
       "disposition": "no-content-impact",
-      "reason": "Authored OP Registration, catalog and print instructions accompany the new template and shared print surface; unrelated guide content is unchanged."
+      "reason": "Optional hosted record rail and narrow-screen layout; retain the form font-scale token at every breakpoint. Existing demo workflows remain unchanged. See docs/releases/unreleased/patient-registration-host-2026-09-17.md."
     },
     "desktop-clients/packages/erp-screens/src/clinical-templates/record-layout.module.css.d.ts": {
       "sha256": "da25fc232061c1341a9e26c5fd0b07ac974152f46b746a88519c0a945d0c43e6",
@@ -873,7 +873,7 @@
       "reason": "Authored OP Registration, catalog and print instructions accompany the new template and shared print surface; unrelated guide content is unchanged."
     },
     "desktop-clients/packages/erp-screens/src/clinical-templates/record-layout.tsx": {
-      "sha256": "ce94fc86455d85705bbb29093bdd43f0558c8d174bd18a4a09578b8077633cb5",
+      "sha256": "534ffb28b21f5fa2b73246263fafe32c6fbe20aeebf30e1a1d377342fe66a6c9",
       "pages": [
         "allyvora-patient-query",
         "allyvora-patient-record",
@@ -886,7 +886,7 @@
         "op-registration"
       ],
       "disposition": "no-content-impact",
-      "reason": "Authored OP Registration, catalog and print instructions accompany the new template and shared print surface; unrelated guide content is unchanged."
+      "reason": "Add optional record section/layout exports for real host composition; existing demo clinical pages retain their sections and workflows. Host API and integration guidance are recorded in docs/releases/unreleased/patient-registration-host-2026-09-17.md."
     },
     "desktop-clients/packages/erp-screens/src/clinical-templates/record-phone.tsx": {
       "sha256": "a32e928e19f91c9d9a1237b9c8657e8e31d267960c864f958719936f333849ae",
@@ -905,7 +905,7 @@
       "reason": "Authored OP Registration, catalog and print instructions accompany the new template and shared print surface; unrelated guide content is unchanged."
     },
     "desktop-clients/packages/erp-screens/src/clinical-templates/record-sections.tsx": {
-      "sha256": "7da2d1d001142b01fee7c9afb9b96c374136528ea701a608bc22cefb5872a76a",
+      "sha256": "2bc082c9fae1d02839e680422233d9f3452670ef63de30a3b2e794d5de2c85ee",
       "pages": [
         "allyvora-patient-query",
         "allyvora-patient-record",
@@ -918,7 +918,7 @@
         "op-registration"
       ],
       "disposition": "no-content-impact",
-      "reason": "Authored OP Registration, catalog and print instructions accompany the new template and shared print surface; unrelated guide content is unchanged."
+      "reason": "Add optional record section/layout exports for real host composition; existing demo clinical pages retain their sections and workflows. Host API and integration guidance are recorded in docs/releases/unreleased/patient-registration-host-2026-09-17.md."
     },
     "desktop-clients/packages/erp-screens/src/clinical-templates/shared.tsx": {
       "sha256": "cd2faaddd20966f1c3f0f906f2f737e5c00beee4e7acaea9b594d552dd575282",
@@ -2580,12 +2580,12 @@
       "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
     },
     "desktop-clients/packages/erp-screens/src/preferences/index.tsx": {
-      "sha256": "78fed725b75587230743fea60d3f62e8337d6a2b1d0a4f5ef6d522039a2a6efb",
+      "sha256": "6d3c8d3bb28d8dff139b54dc574fc0142e5346d9eaf5e5bd1f83c9d0c02f0d33",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Support optional host-supplied allowedValues and responsive preference presentation. The demo supplies no allowedValues policy, so existing registered demo workflows remain unchanged. The new host contract and restrictions are documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md."
     },
     "desktop-clients/packages/erp-screens/src/preferences/policy-admin.tsx": {
       "sha256": "51257e940f63ca8401b91677d36c51dec0ad1ae9e702cbee9c882e893cbcaf6a",
@@ -2596,12 +2596,12 @@
       "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
     },
     "desktop-clients/packages/erp-screens/src/preferences/policy-controls.tsx": {
-      "sha256": "24976b173a494ac2c1c0dc6c9c942e7ccd6d94e0580051ab9ecc48b882ea1c6f",
+      "sha256": "eec2066b97dad34dc8b93a8e7259ae29c2f4d215962925348770a23874570ac9",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Support optional host-supplied allowedValues and responsive preference presentation. The demo supplies no allowedValues policy, so existing registered demo workflows remain unchanged. The new host contract and restrictions are documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md."
     },
     "desktop-clients/packages/erp-screens/src/product-services.tsx": {
       "sha256": "115b560121b6506aacc305fd116e4630b36790cbe880f321860b194af337c28d",
@@ -3178,20 +3178,20 @@
       "reason": "Shared article respects effective documentationEnabled preference without fetching hidden content; guide instructions unchanged."
     },
     "desktop-clients/packages/erp-shell/src/enterprise-shell.tsx": {
-      "sha256": "10a01f9f56cdc43d42a5bf2f222ce6970c6ed0b9fe0175a9dd4abfddf2b15f37",
+      "sha256": "2efd8d343511a90d8159256c48ff766e2c8b6d6b86effe12f7fd68b9a60f9f88",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Optional external host session/shell/DCP hooks; existing registered pages retain their existing flows. Required-row removal now reflects existing validation. Feature contract documents host-owned integration; no historical guide content or translations changed."
     },
     "desktop-clients/packages/erp-shell/src/erp-context.tsx": {
-      "sha256": "e206d5b7cfaa3aeaf0e4628b6c17e8548ee5b8bf92c78803e57acecaee22be89",
+      "sha256": "bb2d67e6ecf9c0e411a2e1cc5b62145b5f7c40376ba12e038fbfc8d95c8f9d7d",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Add optional verified host branch, label and preference context while retaining standalone demo defaults. Host composition is documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md; no registered demo page workflow or historical guide is replaced."
     },
     "desktop-clients/packages/erp-shell/src/error-monitor.tsx": {
       "sha256": "28281a9c0d00ba6ed46b1579a5cd9b8e3148645c97f86f508e9eb9665a1bff9f",
@@ -3202,36 +3202,36 @@
       "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
     },
     "desktop-clients/packages/erp-shell/src/footer.tsx": {
-      "sha256": "040d596693f8600aff570be353c253fa762e583a1562e4e399c02d0f14588169",
+      "sha256": "d58f5f93123055894884c93d1bee1263e968608dd7c341dd4222444043e13355",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Add optional verified host branch, label and preference context while retaining standalone demo defaults. Host composition is documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md; no registered demo page workflow or historical guide is replaced."
     },
     "desktop-clients/packages/erp-shell/src/header-clock.tsx": {
-      "sha256": "e60c582b7aa9d04da4fd0557cdbf54e7c8c59ed9ea27d38f32bb22982612a5ce",
+      "sha256": "42767341b9ec6c6edaa9404a1c3e8a0b0b8bd001461b485fb1eadf7d8ebf4d8f",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Add optional verified host branch, label and preference context while retaining standalone demo defaults. Host composition is documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md; no registered demo page workflow or historical guide is replaced."
     },
     "desktop-clients/packages/erp-shell/src/header.tsx": {
-      "sha256": "3b42f9b7404c2220f55459ecc33c069037efbeb14bf478080256533502011778",
+      "sha256": "402843ed316d5223733ab409ff74e548fe968aaf83fff5ecbc23055e763cf766",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Add optional verified host branch, label and preference context while retaining standalone demo defaults. Host composition is documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md; no registered demo page workflow or historical guide is replaced."
     },
     "desktop-clients/packages/erp-shell/src/index.ts": {
-      "sha256": "25bf37b3bb6c9d3df9f3d1513de16779e909254ad44a6c09a9c7ea5b061cbe6f",
+      "sha256": "3228ea2bc54c894c138bc2aaa393572b1609e2429e0be2d2fbc0c2111ef3b283",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Add optional verified host branch, label and preference context while retaining standalone demo defaults. Host composition is documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md; no registered demo page workflow or historical guide is replaced."
     },
     "desktop-clients/packages/erp-shell/src/layers/command-palette.tsx": {
       "sha256": "450d1b7819316be27e91d5e6db6b05017ad2b60dcdbb99dc16078edada931b89",
@@ -3298,12 +3298,12 @@
       "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
     },
     "desktop-clients/packages/erp-shell/src/sidebar.tsx": {
-      "sha256": "a2b84072e36f307286478bc479881731c1f6430dc699153015e9997ae1c10c0b",
+      "sha256": "1749f2570cb2060a035400b7283256a47e1f5eb9183e86bc2aaea8381cca84d8",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Optional external host session/shell/DCP hooks; existing registered pages retain their existing flows. Required-row removal now reflects existing validation. Feature contract documents host-owned integration; no historical guide content or translations changed."
     },
     "desktop-clients/packages/erp-shell/src/use-clock.ts": {
       "sha256": "fc6f5121dbbab7260dbf51244c3851c1ad0901e3fd683d06771449e820320ffd",
@@ -4238,12 +4238,12 @@
       "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
     },
     "desktop-clients/packages/erp-config/src/preference-policy.ts": {
-      "sha256": "c546216f5c0a32e59ecb5b421d478e6af76ca621f55844a37c7b5eb15ba2c22b",
+      "sha256": "04665c4b89a1f33f4f93eecae6a503c805fc1ed77dcf8e9f200a162ba9ef9b74",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Support optional host-supplied allowedValues and responsive preference presentation. The demo supplies no allowedValues policy, so existing registered demo workflows remain unchanged. The new host contract and restrictions are documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md."
     },
     "desktop-clients/packages/erp-config/src/product.ts": {
       "sha256": "0c6bccc2847f7f746658a3ce1b9474890505873a10ba29c4ddfecbb7b2e31439",
@@ -5098,12 +5098,12 @@
       "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
     },
     "desktop-clients/packages/ops-ui/src/dropdown.tsx": {
-      "sha256": "b5d69c7238a0d703cd8576a73f603a87312970b07427f9e528d7e453742ae396",
+      "sha256": "07e4798bc2b833f00aa9ae0a72bb5177917c0077b8c71f797a2f4e2fe17c02c0",
       "pages": [
         "*"
       ],
       "disposition": "no-content-impact",
-      "reason": "Initial impact baseline: existing domain workflows preserved. This delivery unifies API guide rendering and adds documentation governance; billing rail behavior is documented separately."
+      "reason": "Render an empty placeholder safely when an asynchronous host supplies no dropdown options; no new page action or demo workflow. Host integration is documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md."
     },
     "desktop-clients/packages/ops-ui/src/empty-state.tsx": {
       "sha256": "558b655c55b81350fba38ea25df60ec88ea54da50a46a7000ca630eb6d4870b0",
@@ -9533,15 +9533,12 @@
       }
     },
     "desktop-clients/packages/erp-screens/src/dcp-designer/runtime-fields.tsx": {
-      "sha256": "5831417d42b7b669c5876b002c69192e476bb5655b75fbae9791c95e0c3b5cbc",
+      "sha256": "d4a82254852a65129c4641f9256085c28c14300b6936b5c34e285ca36e78dfdb",
       "pages": [
         "dcp-designer"
       ],
-      "disposition": "updated",
-      "reason": "Reviewed against the current DCP designer, Draft Recovery and Form Controls guides. Those guides describe v1 preview/save, row identities, repeatable authoring, safe recovery, presentation and API boundaries. Shared additive exports do not change unrelated page workflows; wildcard pages remain conservatively covered, not claimed rewritten.",
-      "guideHashes": {
-        "dcp-designer": "2b3790b1e489256fb9e5239c2188c7e77f3f69e19b7bf73a45e374d221922d2e"
-      }
+      "disposition": "no-content-impact",
+      "reason": "Add optional host disabled state and lookup provider support; the standalone DCP designer remains on its existing adapter. Host responsibilities are documented in docs/features/hosted-healthcare-composition.md."
     },
     "desktop-clients/packages/erp-config/src/dcp-runtime.ts": {
       "sha256": "943a5528be24ee0f926406c9a513e7b90d097910113a1c4ceda1b12f51275b91",
@@ -10227,6 +10224,14 @@
       "guideHashes": {
         "dcp-designer": "2b3790b1e489256fb9e5239c2188c7e77f3f69e19b7bf73a45e374d221922d2e"
       }
+    },
+    "desktop-clients/packages/erp-shell/src/shell-host.tsx": {
+      "sha256": "c56b3b1eee98fc43e237fce42c84c75a34cccf51e2d122368b5c05944595887e",
+      "pages": [
+        "*"
+      ],
+      "disposition": "no-content-impact",
+      "reason": "Add optional verified host branch, label and preference context while retaining standalone demo defaults. Host composition is documented in docs/releases/unreleased/healthcare-shell-host-2026-09-17.md; no registered demo page workflow or historical guide is replaced."
     }
   }
 }

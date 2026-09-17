@@ -410,3 +410,21 @@ test("preference saves serialize later edits against the latest server revision"
  const writes=authedFetch.mock.calls.filter(([,init])=>init?.method==='PUT');expect(writes).toHaveLength(2);
  expect(JSON.parse(writes[1][1].body)).toMatchObject({userRevision:1,preferences:{fontSizeBase:15}});
 });
+
+test('bulk preference updates cannot apply values excluded by tenant policy',async()=>{
+ authedFetch.mockImplementation(()=>Promise.resolve(new Response(JSON.stringify({preferences:{},policy:{revision:1,rules:{theme:{value:'sand',locked:false,allowedValues:['sand','nord']}}},userRevision:0}))));
+ function Choices(){const erp=useERP();return <><output data-testid="choice">{erp.preferences.theme}</output><button onClick={()=>erp.updatePreferences({theme:'midnight'})}>excluded</button><button onClick={()=>erp.updatePreferences({theme:'nord'})}>allowed</button></>;}
+ render(<NavigationProvider value={navigation()}><ERPProvider><Choices/></ERPProvider></NavigationProvider>);
+ await waitFor(()=>expect(screen.getByTestId('choice')).toHaveTextContent('sand'));
+ await act(async()=>screen.getByText('excluded').click());expect(screen.getByTestId('choice')).toHaveTextContent('sand');
+ await act(async()=>screen.getByText('allowed').click());expect(screen.getByTestId('choice')).toHaveTextContent('nord');
+});
+
+test('host branch changes use the latest authorized options after asynchronous loading',async()=>{
+ const {ShellHostProvider}=await import('./shell-host');const changed=vi.fn();
+ authedFetch.mockImplementation(()=>Promise.resolve(settled({})));
+ function Branch(){const erp=useERP();return <button onClick={()=>erp.setBranch('2')}>select host branch</button>;}
+ const tree=(branches:Array<{value:string;label:string}>)=><NavigationProvider value={navigation()}><ShellHostProvider value={{branch:'',branches,onBranchChange:changed,tenantLabel:'Synthetic',statusLabel:'Signed in',versionLabel:'Test'}}><ERPProvider><Branch/></ERPProvider></ShellHostProvider></NavigationProvider>;
+ const view=render(tree([]));await waitFor(()=>expect(screen.getByText('select host branch')).toBeVisible());await act(async()=>screen.getByText('select host branch').click());expect(changed).not.toHaveBeenCalled();
+ view.rerender(tree([{value:'2',label:'Verified branch'}]));await act(async()=>screen.getByText('select host branch').click());expect(changed).toHaveBeenCalledWith('2');
+});

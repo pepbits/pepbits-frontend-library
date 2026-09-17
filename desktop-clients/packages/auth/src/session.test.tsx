@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { act } from "react";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import { API_BASE, DEMO_ACCOUNTS, SessionProvider, authedFetch, readToken, useSession } from "./session.tsx";
+import { API_BASE, DEMO_ACCOUNTS, HostSessionProvider, SessionProvider, authedFetch, readToken, useSession } from "./session.tsx";
 
 /**
  * The session.
@@ -374,4 +374,15 @@ test('a late cross-window identity body cannot reopen the session after logout',
  await act(async()=>window.dispatchEvent(new StorageEvent('storage',{key:STORAGE_KEY,newValue:'two'})));expect(screen.getByTestId('expired')).toHaveTextContent('true');
  localStorage.removeItem(STORAGE_KEY);await act(async()=>window.dispatchEvent(new StorageEvent('storage',{key:STORAGE_KEY,newValue:null})));expect(status()).toBe('anonymous');
  await act(async()=>{finish({user});await body;});expect(status()).toBe('anonymous');expect(screen.getByTestId('user')).toHaveTextContent('-');expect(readToken()).toBeNull();
+});
+
+
+test("host-owned sessions use the verified host value without demo fetches or token persistence", async () => {
+ const logout=vi.fn(async()=>{}),login=vi.fn(async()=>null);
+ const {rerender}=render(<HostSessionProvider value={{status:'authenticated',user,login,logout}}><Probe/></HostSessionProvider>);
+ expect(screen.getByTestId('user')).toHaveTextContent(user.name);
+ expect(fetchMock).not.toHaveBeenCalled();expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
+ fireEvent.click(screen.getByRole('button',{name:'sign out'}));expect(logout).toHaveBeenCalledOnce();
+ rerender(<HostSessionProvider value={{status:'anonymous',user:null,login,logout}}><Probe/></HostSessionProvider>);
+ expect(screen.getByTestId('user')).toHaveTextContent('-');expect(fetchMock).not.toHaveBeenCalled();
 });

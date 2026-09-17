@@ -1,4 +1,5 @@
 "use client";
+import {useShellHost} from "./shell-host";
 
 import {SessionLock} from "./session-lock";
 import { LocalizationProvider } from "@pepbits/ops-ui";
@@ -6,7 +7,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 import {
   DEFAULT_PREFERENCES, LANGUAGE_OPTIONS, LANGUAGE_LOCALES, MODULES, PAGE_REGISTRY,
   createFormatters, preferenceOverrides, sanitizePreferences, translate, loadFallbackLanguage,
-  EMPTY_PREFERENCE_POLICY, parsePreferencePolicy, policyDefaults, editablePreferenceOverrides, effectivePreferences,
+  EMPTY_PREFERENCE_POLICY, validPreference, parsePreferencePolicy, policyDefaults, editablePreferenceOverrides, effectivePreferences,
   type PreferencePolicy,
   SHORTCUTS,
   SIDEBAR_SEARCH_EVENT,
@@ -109,7 +110,10 @@ export function ERPProvider({ children, fallback = null }: { children: React.Rea
   const [preferences, setPreferences] = useState<UserPreferences>(DEFAULT_PREFERENCES);
   /* Seeded from the signed-in account rather than hardcoded, but still user-changeable:
      the header selectors are a "view as" control in this prototype, not authorization. */
-  const [branch, setBranch] = useState(user?.branch ?? "hq");
+  const host=useShellHost();
+  const [localBranch, setLocalBranch] = useState(user?.branch ?? "hq");
+  const branch=host?.branch??localBranch;
+  const setBranch=useCallback((value:string)=>{if(host){if(host.branches.some(b=>b.value===value))host.onBranchChange(value);}else setLocalBranch(value);},[host]);
   const [role] = useState(user?.role ?? "enterprise-admin");
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const [commandOpen, setCommandOpen] = useState(false);
@@ -267,7 +271,7 @@ export function ERPProvider({ children, fallback = null }: { children: React.Rea
     if(!preferencesAvailable)return;
     const blocked=Object.entries(next).filter(([key,value])=>policyRef.current.rules[key as keyof UserPreferences]?.locked && preferences[key as keyof UserPreferences]!==value);
     if(blocked.length)setToasts(previous=>[...previous,{id:`policy-${Date.now()}`,title:"Managed by your administrator",message:"Locked preferences were not changed.",type:"info" as const}].slice(-preferences.maxVisibleToasts));
-    const allowed=Object.fromEntries(Object.entries(next).filter(([key])=>!policyRef.current.rules[key as keyof UserPreferences]?.locked));
+    const allowed=Object.fromEntries(Object.entries(next).filter(([key,value])=>validPreference(key,value)&&!policyRef.current.rules[key as keyof UserPreferences]?.locked&&(!policyRef.current.rules[key as keyof UserPreferences]?.allowedValues||policyRef.current.rules[key as keyof UserPreferences]!.allowedValues!.includes(value))));
     if(!Object.keys(allowed).length)return;
     generation.current++;
     const {language, ...otherPreferences} = allowed as Partial<UserPreferences>;
@@ -393,7 +397,7 @@ export function ERPProvider({ children, fallback = null }: { children: React.Rea
     documentationOpen,
     setDocumentationOpen,
     t,
-  }), [preferencePolicy,canManagePreferencePolicy,refreshPreferences,preferenceSaveError,product, branch, commandOpen, currentModule, dismissToast, documentationOpen, format, helpOpen, preferences, preferencesAvailable, resetPreferences, role, t, toast, toasts, updatePreference, updatePreferences]);
+  }), [preferencePolicy,canManagePreferencePolicy,refreshPreferences,preferenceSaveError,product, branch, setBranch, commandOpen, currentModule, dismissToast, documentationOpen, format, helpOpen, preferences, preferencesAvailable, resetPreferences, role, t, toast, toasts, updatePreference, updatePreferences]);
 
   if (!loaded) return <>{fallback}</>;
 

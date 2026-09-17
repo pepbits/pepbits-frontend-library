@@ -20,7 +20,7 @@ import type {
   PreviewMode, ResultView, SearchMode, SidebarExpandOn, SidebarPlacement, SidebarTheme, SidebarTone, TimeFormat, ToastPosition,
   ToastStyle, UserPreferences,
 } from "@pepbits/erp-config";
-import { TOUR_REVEAL_EVENT, useERP, useProduct } from "@pepbits/erp-shell";
+import { TOUR_REVEAL_EVENT, useERP, useProduct, useShellHost } from "@pepbits/erp-shell";
 
 /* Currency is fixed at the tenant's AED for now, so the picker is hidden rather
    than deleted: the preference, its default and the formatter path all stay, so
@@ -116,7 +116,7 @@ function Segmented<T extends string>({ value, options, onChange, label }: { valu
    rather than three hand-picked swatches that could drift from them. */
 function ThemeCard({ id, name, description, active, onSelect }: { id: string; name: string; description: string; active: boolean; onSelect: () => void }) {
   return (
-    <button type="button" onClick={onSelect} className={cn("focus-ring group overflow-hidden rounded-xl border text-left transition", active ? "border-[var(--primary)] ring-2 ring-[var(--primary-soft)]" : "border-[var(--border)] hover:border-[var(--border-strong)]")}>
+    <button type="button" onClick={onSelect} className={cn("focus-ring group w-full overflow-hidden rounded-xl border text-left transition", active ? "border-[var(--primary)] ring-2 ring-[var(--primary-soft)]" : "border-[var(--border)] hover:border-[var(--border-strong)]")}>
       <div data-theme={id} className="flex h-20 gap-1.5 p-2" style={{ background: "var(--bg)" }}>
         <div className="w-4 rounded-md" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
           <div className="mx-auto mt-1.5 size-2 rounded-sm" style={{ background: "var(--primary)" }} />
@@ -175,7 +175,7 @@ function PreferenceSection({ title, subtitle, icon, tab, keys, keywords, activeT
     updatePreferences(patch);
   };
   return (
-    <Card hidden={!visible} data-tour={tour}>
+    <Card className="min-w-0" hidden={!visible} data-tour={tour}>
       <CardHeader>
         <CardTitle title={title} subtitle={subtitle} action={
           <span className="flex items-center gap-2">
@@ -196,9 +196,11 @@ function PreferenceSection({ title, subtitle, icon, tab, keys, keywords, activeT
 
 export function PreferencesPage({ showTabPreferences = true }: { showTabPreferences?: boolean }) {
   const product=useProduct();
+  const host=useShellHost();
   const { preferences, updatePreference, updatePreferences, resetPreferences, toast, branch, t, preferencePolicy, preferencesAvailable, canManagePreferencePolicy, preferenceSaveError, refreshPreferences } = useERP();
   const set = <K extends keyof UserPreferences>(key: K, value: UserPreferences[K]) => {
     if (!preferencesAvailable || preferencePolicy.rules[key]?.locked) return;
+    const allowed=preferencePolicy.rules[key]?.allowedValues;if(allowed&&!allowed.includes(value))return;
     updatePreference(key, value);
   };
   /* Navigation state, not a setting: which tab you last had open should not
@@ -247,7 +249,7 @@ export function PreferencesPage({ showTabPreferences = true }: { showTabPreferen
   };
 
   const common = { activeTab, query };
-  const branchLabel = branch === "india" ? "Kochi" : branch === "hq" ? "Abu Dhabi" : branch.charAt(0).toUpperCase() + branch.slice(1);
+  const branchLabel = host?.branches.find(item=>item.value===branch)?.label ?? (branch === "india" ? "Kochi" : branch === "hq" ? "Abu Dhabi" : branch.charAt(0).toUpperCase() + branch.slice(1));
 
   return (
     <div className="flex h-full w-full flex-col gap-3">
@@ -272,7 +274,7 @@ export function PreferencesPage({ showTabPreferences = true }: { showTabPreferen
       </Card>
 
       {preferenceSaveError?<div role="alert"><LocalizedText message={preferenceSaveError} /><Button onClick={()=>void refreshPreferences()}><LocalizedText message="Reload preferences" /></Button></div>:null}
-      <CardGrid className="min-h-0 flex-1 gap-3 lg:grid-cols-[210px_minmax(0,1fr)]">
+      <CardGrid className="min-h-0 min-w-0 grid-cols-1 flex-1 gap-3 lg:grid-cols-[210px_minmax(0,1fr)]">
         {/* ---- rail ------------------------------------------------------ */}
         <Card className="nex-scrollbar p-1.5 lg:h-full lg:overflow-y-auto">
           <Tabs orientation="vertical" variant="pills" items={canManagePreferencePolicy?[...PREF_TABS,{id:"policy",label:"Preference policies",icon:<Settings2 className="size-3.5" />}]:PREF_TABS} value={activeTab} onChange={(value) => { setActiveTab(value as PrefTab); setQuery(""); }} />
@@ -280,7 +282,7 @@ export function PreferencesPage({ showTabPreferences = true }: { showTabPreferen
         </Card>
 
         {/* ---- sections -------------------------------------------------- */}
-        <CardGrid className="nex-scrollbar min-w-0 content-start gap-3 lg:h-full lg:overflow-y-auto lg:pe-1">
+        <CardGrid className="nex-scrollbar min-w-0 grid-cols-1 content-start gap-3 lg:h-full lg:overflow-y-auto lg:pe-1">
 
           {activeTab==="policy"&&canManagePreferencePolicy?<PreferencePolicyAdmin />:null}
           {/* ================= BEHAVIOUR ================= */}
@@ -290,7 +292,7 @@ export function PreferencesPage({ showTabPreferences = true }: { showTabPreferen
           </PreferenceSection>
           <PreferenceSection {...common} tab="behaviour" tour="prefs-layout" title="Layout" subtitle="Honoured by every module and page." icon={<PanelLeft className="size-4" />}
             keys={["formNavigation", "resultView", "previewMode", "pageSize"]} keywords="layout record form style rail tabs wizard worklist result view table cards quick view preview inline card modal panel rows per page size">
-            <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))" }}>
+            <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 230px), 1fr))" }}>
               <PreferenceControl preferenceKey="formNavigation"><Select label="Record form style" hint="preferences.recordLayout.help" value={preferences.formNavigation} onChange={(event) => set("formNavigation", event.target.value as FormNavigation)} options={[{ value: "rail", label: "Rail" }, { value: "tabs", label: "Tabs" }, { value: "wizard", label: "Wizard" }]} /></PreferenceControl>
               <PreferenceControl preferenceKey="resultView"><Row label="Worklist result view">
                 <Segmented<ResultView> label="Worklist result view" value={preferences.resultView} onChange={(value) => set("resultView", value)} options={[{ value: "table", label: "Table" }, { value: "cards", label: "Card grid" }]} />
@@ -309,7 +311,7 @@ export function PreferencesPage({ showTabPreferences = true }: { showTabPreferen
               behaves meant two sections on one tab. */}
           <PreferenceSection {...common} tab="sidebar" tour="prefs-sidebar" title="Sidebar" subtitle="Placement, how it opens, and the palette the rail uses." icon={<PanelLeft className="size-4" />}
             keys={["sidebarPlacement", "sidebarExpandOn", "sidebarPinned", "sidebarTone", "sidebarTheme", "sidebarFocusExpand"]} keywords="sidebar rail navigation position left right rtl pinned fixed hover click expand tone light dark deep contrast theme palette solarized colour color">
-            <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))" }}>
+            <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 230px), 1fr))" }}>
               <PreferenceControl preferenceKey="sidebarPlacement"><Row label="Position" hint="Right also suits right-to-left languages">
                 <Segmented<SidebarPlacement> label="Sidebar position" value={preferences.sidebarPlacement} onChange={(value) => set("sidebarPlacement", value)} options={[{ value: "left", label: "Left" }, { value: "right", label: "Right" }]} />
               </Row></PreferenceControl>
@@ -345,7 +347,7 @@ export function PreferencesPage({ showTabPreferences = true }: { showTabPreferen
               without either being told about the other. */}
           <PreferenceSection {...common} tab="sidebar" title="Header" subtitle="The top bar takes the same palette choices as the rail." icon={<PanelTop className="size-4" />}
             keys={["headerTone", "headerTheme"]} keywords="header top bar tone light dark deep contrast theme palette colour color chrome">
-            <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))" }}>
+            <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 230px), 1fr))" }}>
               <PreferenceControl preferenceKey="headerTone"><Row label="Bar tone" hint="Light and Deep hold whatever the page theme is">
                 <Segmented<HeaderTone> label="Header tone" value={preferences.headerTone} onChange={(value) => set("headerTone", value)} options={[{ value: "surface", label: "Match" }, { value: "light", label: "Light" }, { value: "contrast", label: "Deep" }]} />
               </Row></PreferenceControl>
@@ -488,7 +490,7 @@ export function PreferencesPage({ showTabPreferences = true }: { showTabPreferen
               rather than Vantage's top/bottom because ours is a side drawer. */}
           <PreferenceSection {...common} tab="language" tour="prefs-lang" title="Language & help" subtitle="Applies to menus, actions and messages." icon={<Languages className="size-4" />}
             keys={["language", "helperEnabled", "documentationEnabled", "docsPosition", "reducedMotion", "showKeyboardHints"]} keywords="language arabic hindi malayalam english rtl help assistant tours documentation docs panel position left right animations motion keyboard shortcuts hints">
-            <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))" }}>
+            <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 230px), 1fr))" }}>
               <PreferenceControl preferenceKey="language"><Row label="Language" hint="Arabic switches the whole layout to right-to-left">
                 <Select aria-label="ui.language.a4fe6526" value={preferences.language} onChange={(event) => set("language", event.target.value as LanguageKey)} options={LANGUAGE_OPTIONS.map((item) => ({ label: `${item.native} — ${item.label}`, value: item.value }))} />
               </Row></PreferenceControl>

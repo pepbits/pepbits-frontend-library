@@ -239,3 +239,8 @@ export const DEMO_ACCOUNTS: Array<{ username: string; label: string; role: strin
   { username: "user2", label: "Omar Khan", role: "Operations Analyst" },
   { username: "admin", label: "Prakash Mathew", role: "Enterprise Administrator" },
 ];
+
+/** Host-owned cookie/BFF sessions can reuse consumers without the demo token store. */
+export function HostSessionProvider({value,children}:{value:SessionValue;children:React.ReactNode}) {
+  return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
+}

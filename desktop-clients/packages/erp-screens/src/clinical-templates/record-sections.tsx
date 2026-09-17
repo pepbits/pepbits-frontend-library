@@ -25,6 +25,7 @@ import type {
 } from "@pepbits/erp-config";
 import { PatientFieldControl, PatientCollectionEditor } from "./shared";
 import { PatientAge } from "./record-age";
+import { RecordSectionCard } from "./record-layout";
 import styles from "./record-layout.module.css";
 const icons = [
   IdCard,
@@ -110,29 +111,9 @@ export function PatientRecordSection({
             patient.values[f.visibleWhen.field] === f.visibleWhen.value),
       );
   return (
-    <Card className={styles.card} data-clinical-section={s.id}>
-      <div className={styles.cardHead}>
-        <span className={styles.cardIcon}>
-          <Icon size={18} />
-        </span>
-        <div className="min-w-0 flex-1">
-          <h3>{t(s.cardTitle ?? s.title)}</h3>
-          <p>{t(s.subtitle)}</p>
-        </div>
-        <span className="text-xs font-mono text-[var(--text-muted)]">
-          {t("template.clinical.sectionNumber", {
-            number: String(index + 1).padStart(2, "0"),
-          })}
-        </span>
-        {canToggleRead ? (
-          <Button size="sm" variant="ghost" onClick={onRead}>
-            {t(
-              reading ? "template.clinical.reading" : "template.clinical.read",
-            )}
-          </Button>
-        ) : null}
-      </div>
-      <div className={styles.cardBody}>
+    <RecordSectionCard id={s.id} title={s.cardTitle ?? s.title} subtitle={s.subtitle}
+      index={index} icon={<Icon size={18} />} reading={reading}
+      onRead={canToggleRead ? onRead : undefined}>
         {s.id === "mrn" ? (
           patient.id === "new" ? (
             <div className={styles.banner}>
@@ -293,7 +274,6 @@ export function PatientRecordSection({
             ),
           )}
         {children}
-      </div>
-    </Card>
+    </RecordSectionCard>
   );
 }

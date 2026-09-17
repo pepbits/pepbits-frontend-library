@@ -312,3 +312,18 @@
 .surface[data-rail-alignment="start"] .section { margin-bottom: 0; }
 .surface[data-rail-alignment="start"] .footer { padding: 0; }
 .surface[data-rail-alignment="start"] .footer > * { width: 100%; min-width: 0; }
+
+/* Preserve the reference's desktop rail; use horizontal steps on narrow screens. */
+@media (max-width: 640px) {
+  .body { flex-direction: column; gap: 0; }
+  .rail, .surface[data-rail-alignment="start"] .rail { width: 100%; padding: 8px 0; }
+  .railHead { padding: 0 12px 6px; }
+  .railHead p { display: inline; margin-inline-end: 8px; font-size: calc(12px * var(--fs-scale, 1)); }
+  .steps, .surface[data-rail-alignment="start"] .steps { flex-direction: row; justify-content: flex-start; }
+  .rail .step { flex-shrink: 0; margin: 0 3px; }
+  .meter { display: none; }
+  .content { padding: 12px; }
+  .field { grid-column: span 12; }
+  .cardHead { flex-wrap: wrap; gap: 8px; }
+  .footer { padding: 8px; gap: 8px; }
+}

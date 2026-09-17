@@ -19,7 +19,7 @@ export function DropdownSelect({ value, options, onChange, label, hideLabel, com
   const triggerRef = useRef<HTMLButtonElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
-  const selected = options.find((option) => option.value === value) ?? options[0];
+  const selected = options.find((option) => option.value === value) ?? options[0] ?? {value:"",label:"—"};
 
   const base = useId();
   const listId = `${base}-list`;

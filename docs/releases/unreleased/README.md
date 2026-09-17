@@ -4,6 +4,11 @@ Status reviewed **13 September 2026**. Latest recorded activation: [DCP designer
 
 Latest documentation review: [repository audit — 13 September 2026](documentation-audit-2026-09-13.md). This review does not redeploy the application or resolve hosted feature-browser failures.
 
+## Local host integration — 17 September 2026
+
+[External healthcare host composition](host-composition-2026-09-17.md) adds reusable host integration
+contracts and a private package handoff. It does not supersede the recorded demo deployment.
+
 ## Current state
 
 | Area | Current record |
@@ -79,3 +84,5 @@ The [DCP frontend contract and recovery increment](dcp-frontend-contract-2026-09
 - [DCP designer style deployment — 12 September 2026](dcp-style-deployment-2026-09-12.md): release checks and activation follow-up.
 
 Latest activation: [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`, verified on both public sites on 12 September 2026. This supersedes earlier latest-activation statements above.
+
+- [17 September main integration verification](MAIN-INTEGRATION-2026-09-17.md): full local gates, hosted composition and mobile font-token correction; publication/deployment remain separate.

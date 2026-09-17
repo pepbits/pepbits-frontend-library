@@ -1,5 +1,6 @@
 "use client";
 
+import {useShellHost} from "./shell-host";
 import React, { useMemo } from "react";
 import { timezoneForBranch } from "@pepbits/erp-config";
 import { useERP } from "./erp-context";
@@ -55,7 +56,8 @@ export function HeaderClock() {
   const now = useClock(preferences.clockSeconds ? 1000 : 15_000);
   const language = preferences.language;
   /* undefined means "the browser's own zone", which is what Intl does with it. */
-  const timeZone = preferences.clockZone === "branch" ? timezoneForBranch(branch) : undefined;
+  const host=useShellHost();
+  const timeZone = preferences.clockZone === "branch" ? (host ? host.branches.find(b=>b.value===branch)?.timezone : timezoneForBranch(branch)) : undefined;
   const zone = useZoneLabel(language, now, timeZone);
 
   const weekday = useMemo(() => {

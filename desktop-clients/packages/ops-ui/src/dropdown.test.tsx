@@ -105,3 +105,8 @@ describe("ActionMenu", () => {
     expect(screen.queryByText("Export")).toBeNull();
   });
 });
+
+test('empty authorized options render safely while the host loads access',()=>{
+ render(<DropdownSelect label="Branch" value="" options={[]} onChange={()=>undefined}/>);
+ expect(screen.getByRole('button',{name:'Branch'})).toHaveTextContent('—');
+});

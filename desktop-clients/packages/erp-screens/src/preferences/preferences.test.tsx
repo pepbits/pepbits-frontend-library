@@ -5,7 +5,7 @@ import {beforeEach, expect, test, vi} from 'vitest';
 import {DEFAULT_PREFERENCES, UI_MESSAGES, type PreferencePolicy} from '@pepbits/erp-config';
 import {PreferencesPage} from './index';
 const state=vi.hoisted(()=>({policy:{revision:0,rules:{}} as PreferencePolicy,available:true,update:vi.fn()}));
-vi.mock('@pepbits/erp-shell',()=>({TOUR_REVEAL_EVENT:'tour-reveal',useProduct:()=>({modules:{finance:{id:'finance',label:'Finance'},library:{id:'library',label:'Library'}}}),useERP:()=>({preferences:DEFAULT_PREFERENCES,preferencePolicy:state.policy,preferencesAvailable:state.available,updatePreference:state.update,branch:'hq',t:(key:string)=>key,canManagePreferencePolicy:false})}));
+vi.mock('@pepbits/erp-shell',()=>({TOUR_REVEAL_EVENT:'tour-reveal',useShellHost:()=>undefined,useProduct:()=>({modules:{finance:{id:'finance',label:'Finance'},library:{id:'library',label:'Library'}}}),useERP:()=>({preferences:DEFAULT_PREFERENCES,preferencePolicy:state.policy,preferencesAvailable:state.available,updatePreference:state.update,branch:'hq',t:(key:string)=>key,canManagePreferencePolicy:false})}));
 beforeEach(()=>{state.policy={revision:0,rules:{}};state.available=true;state.update.mockClear();});
 test('record layout and all three density options use the central preference update',()=>{
  render(<PreferencesPage/>);
@@ -43,4 +43,12 @@ test('Own Settings uses accessible module options and honors locks',()=>{
  fireEvent.change(select,{target:{value:'library'}});expect(state.update).toHaveBeenCalledWith('defaultModule','library');
  state.update.mockClear();state.policy={revision:1,rules:{defaultModule:{value:'finance',locked:true}}};view.rerender(own());
  expect(select).toBeDisabled();fireEvent.change(select,{target:{value:'library'}});expect(state.update).not.toHaveBeenCalled();
+});
+
+test('tenant allowed options constrain the choices and reject programmatic changes',()=>{
+ state.policy={revision:1,rules:{formNavigation:{value:'rail',locked:false,allowedValues:['rail','tabs']}}};
+ render(<PreferencesPage/>);const layout=screen.getByRole('combobox',{name:'Record form style'});
+ expect(Array.from((layout as HTMLSelectElement).options).map(o=>o.value)).not.toContain('wizard');
+ fireEvent.change(layout,{target:{value:'wizard'}});expect(state.update).not.toHaveBeenCalled();
+ fireEvent.change(layout,{target:{value:'tabs'}});expect(state.update).toHaveBeenCalledWith('formNavigation','tabs');
 });
