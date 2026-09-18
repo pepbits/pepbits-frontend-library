@@ -31,3 +31,10 @@ The [record component delivery](../releases/unreleased/record-components-2026-09
 Patient Query host capability/cursor tests are in `desktop-clients/packages/erp-screens/src/clinical-templates/query.test.tsx`.
 See [the local host increment](../releases/unreleased/patient-query-host-2026-09-17.md); healthcare integration
 checks live in the independent consumer repository and use synthetic data.
+
+## Shared lifecycle configuration
+
+Lifecycle contract, adapter and model tests are in `desktop-clients/packages/erp-config/src/lifecycle/lifecycle.test.ts`.
+Page tests are in `desktop-clients/packages/erp-screens/src/lifecycle/lifecycle.test.tsx`. Both use in-memory ports and
+fictional fixtures. See [the lifecycle increment](../releases/unreleased/lifecycle-configuration-2026-09-18.md);
+host API and browser acceptance belong to the consuming application.

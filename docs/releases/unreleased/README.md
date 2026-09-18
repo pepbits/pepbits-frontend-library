@@ -9,6 +9,11 @@ Latest documentation review: [repository audit — 13 September 2026](documentat
 [External healthcare host composition](host-composition-2026-09-17.md) adds reusable host integration
 contracts and a private package handoff. It does not supersede the recorded demo deployment.
 
+## Shared lifecycle configuration — 18 September 2026
+
+[Shared lifecycle configuration](lifecycle-configuration-2026-09-18.md) adds the neutral lifecycle contract, HTTP adapter
+and administration page for host applications. It was validated locally only and does not supersede the recorded demo deployment.
+
 ## Current state
 
 | Area | Current record |

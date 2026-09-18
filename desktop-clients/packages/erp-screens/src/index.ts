@@ -56,3 +56,5 @@ export {DcpDesignerWorkspace,type DcpDesignerProps} from './dcp-designer/workspa
 export {DesignerSections} from './dcp-designer/sections';
 
 export {DcpHostRuntime} from './dcp-designer/host-runtime';
+
+export {LifecycleConfigurationPage,type LifecycleConfigurationPageProps,type LifecycleNotification} from './lifecycle';
