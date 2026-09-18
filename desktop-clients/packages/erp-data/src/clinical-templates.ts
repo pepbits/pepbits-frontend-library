@@ -15,7 +15,7 @@ export interface ClinicalTemplateAdapter {
     insuranceId: string,
   ): Promise<PatientEligibility>;
   metadata(): Promise<PatientMetadata>;
-  search(filters: PatientFilters): Promise<PatientSearchResult>;
+  search(filters: PatientFilters, options?: {signal?: AbortSignal}): Promise<PatientSearchResult>;
   load(id: string): Promise<PatientRecord>;
   newRecord(): Promise<PatientRecord>;
   save(input: PatientSave): Promise<PatientRecord>;

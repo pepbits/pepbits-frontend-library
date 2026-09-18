@@ -81,6 +81,25 @@ export interface PatientSummary {
   version: number;
 }
 export interface PatientFilters {
+  email?: string;
+  preferredName?: string;
+  middleName?: string;
+  localName?: string;
+  address?: string;
+  city?: string;
+  region?: string;
+  postalCode?: string;
+  bloodGroup?: string;
+  language?: string;
+  maritalStatus?: string;
+  occupation?: string;
+  birthDateFrom?: string;
+  birthDateTo?: string;
+  registrationState?: string;
+  verificationStatus?: string;
+  insuranceMember?: string;
+  insurancePolicy?: string;
+
   identityType?: string;
   country?: string;
   mobileCode?: string;
@@ -132,7 +151,9 @@ export interface PatientOverview {
   loadedAt: string;
 }
 export interface PatientMetadata {
-  queryCapabilities?: {presets?: boolean; export?: boolean; care?: boolean; overview?: boolean; sort?: boolean};
+  /** Server-authorized searchable fields; absent keeps the legacy search controls. */
+  searchFields?: string[];
+  queryCapabilities?: {presets?: boolean; export?: boolean; care?: boolean; overview?: boolean; sort?: boolean; infiniteScroll?: boolean};
   searchHint?: string;
   searchOptions?: Record<string, Array<{ value: string; label: string }>>;
   sections: PatientSection[];

@@ -25,7 +25,6 @@ import type {
 import { exportRows } from "../worklist/export-rows";
 import {
   ClinicalLoading,
-  useClinicalLoad,
   type ClinicalPageProps,
 } from "./shared";
 import { PatientCareAction } from "./care-action";
@@ -43,6 +42,7 @@ import {
   queryFields,
   type QueryField,
 } from "./query-model";
+import {usePatientSearch} from "./query-search";
 import {usePreferenceChoice} from "../preference-choice";
 import styles from "./query-layout.module.css";
 export function PatientQueryTemplate(props: ClinicalPageProps) {
@@ -69,11 +69,20 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
   const [view] = usePreferenceChoice(props, "resultView");
   const [detail] = usePreferenceChoice(props, "previewMode");
   const [pageSize, setPageSize, pageSizeLocked] = usePreferenceChoice(props, "pageSize");
-  useEffect(() => { setApplied(a => a && a.pageSize !== pageSize ? {...a, pageSize, page: 1} : a); }, [pageSize]);
-  const search = useClinicalLoad(
-    () => (applied ? adapter.search(applied) : Promise.resolve(null)),
-    [adapter, applied],
-  );
+  const infinite = metadata.queryCapabilities?.infiniteScroll === true;
+  const requestSize = infinite ? 20 : pageSize;
+  useEffect(() => { setApplied(a => a && a.pageSize !== requestSize ? {...a, pageSize: requestSize, page: 1} : a); }, [requestSize]);
+  const search = usePatientSearch(adapter, applied, infinite);
+  const moreRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const target = moreRef.current;
+    if (!infinite || !target || !search.value?.hasMore || search.busy || search.error || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) search.more();
+    }, {rootMargin: "200px"});
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [infinite, search.value, search.busy, search.error, search.more]);
   const root = useRef<HTMLDivElement>(null),
     nameRef = useRef<HTMLDivElement>(null),
     active = useRef(true),
@@ -123,10 +132,10 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
     return () => window.removeEventListener("keydown", key);
   }, [preferences.keyboardShortcuts]);
   const apply = (value = filters) => {
-    const normalized = normalizeQuery(value);
+    const normalized = normalizeQuery(metadata.searchFields ? Object.fromEntries(Object.entries(value).filter(([key]) => metadata.searchFields!.includes(key))) : value);
     if (!queryFields.some((k) => normalized[k])) return;
     setFilters(normalized);
-    setApplied({ ...normalized, page: 1, pageSize });
+    setApplied({ ...normalized, page: 1, pageSize: requestSize });
     setSelected(null);
     setError(null);
     setRecents((previous) =>
@@ -285,7 +294,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
             <p role="status">
               {search.value
                 ? t(
-                    search.value.hasMore !== undefined ? "template.clinical.pageResults" : search.value.total === 1
+                    infinite ? "template.clinical.loadedResults" : search.value.hasMore !== undefined ? "template.clinical.pageResults" : search.value.total === 1
                       ? "template.clinical.onePatientFound"
                       : "template.clinical.resultCount",
                     {
@@ -357,7 +366,12 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
                 }}
                 preferences={preferences}
               />
-              <Pagination
+              {infinite ? <div ref={moreRef} aria-busy={search.busy}>
+                {search.error ? <RecoveryNotice failure={failureFromError(search.error)} onRetry={search.retry} /> : null}
+                {search.value.hasMore && !search.error ? <Button variant="ghost" disabled={search.busy} onClick={search.more}>
+                  {t(search.busy ? "template.clinical.searching" : "template.clinical.loadMore")}
+                </Button> : null}
+              </div> : <Pagination
                 pageSizeDisabled={pageSizeLocked}
                 page={search.value.page}
                 pageSize={search.value.pageSize}
@@ -371,7 +385,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
                   setSelected(null);
                   setPageSize(pageSize);
                 }}
-              />
+              />}
             </>
           )}
         </>
@@ -457,7 +471,7 @@ export function PatientQueryTemplate(props: ClinicalPageProps) {
           onClose={() => setCare(null)}
           onDone={() => {
             setCare(null);
-            search.retry();
+            search.refresh();
           }}
         />
       ) : null}

@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  act,
   render,
   screen,
   fireEvent,
@@ -183,5 +184,48 @@ test("production capability limits preserve layout without invoking unavailable 
  expect(screen.getByRole("button",{name:"Edit"})).toBeDisabled();
  expect(adapter.load).not.toHaveBeenCalled();
  fireEvent.click(screen.getByRole("button",{name:"Next page"}));
- await waitFor(()=>expect(adapter.search).toHaveBeenLastCalledWith(expect.objectContaining({page:2})));
+ await waitFor(()=>expect(adapter.search).toHaveBeenLastCalledWith(expect.objectContaining({page:2}),expect.any(Object)));
+});
+
+test("infinite results use twenty-record requests, preserve loaded rows and retain a keyboard load action",async()=>{
+ const {adapter}=setup({metadata:{...metadataFixture,canWrite:true,queryCapabilities:{infiniteScroll:true}} as PatientMetadata,preferences:{...DEFAULT_PREFERENCES,pageSize:50}});
+ vi.mocked(adapter.search).mockResolvedValueOnce({rows:[row],total:1,page:1,pageSize:20,hasMore:true}).mockResolvedValueOnce({rows:[{...row,id:'another',name:'Another Patient'}],total:2,page:2,pageSize:20,hasMore:false});
+ fireEvent.change(screen.getByLabelText("First name",{exact:true}),{target:{value:"Alex"}});
+ fireEvent.click(screen.getByRole("button",{name:"Search"}));await screen.findByRole("button",{name:"Alex Morgan"});
+ expect(vi.mocked(adapter.search).mock.calls[0][0].pageSize).toBe(20);
+ expect(screen.queryByRole("button",{name:"Next page"})).not.toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Load more patients"}));
+ await screen.findByRole("button",{name:"Another Patient"});
+ expect(screen.getByRole("button",{name:"Alex Morgan"})).toBeInTheDocument();
+ expect(screen.getByText("Patients loaded: 2")).toBeInTheDocument();
+ expect(screen.queryByRole("button",{name:"Load more patients"})).not.toBeInTheDocument();
+});
+test("additional criteria are supplied by metadata and unadvertised fields are hidden",async()=>{
+ const {adapter}=setup({metadata:{...metadataFixture,canWrite:true,searchFields:['q','email','bloodGroup','birthDateFrom'],searchOptions:{bloodGroup:[{value:'9',label:'Synthetic blood group'}]}} as PatientMetadata});
+ expect(screen.queryByLabelText("First name",{exact:true})).not.toBeInTheDocument();
+ fireEvent.click(screen.getByRole('button',{name:'More filters'}));
+ fireEvent.change(screen.getByLabelText('Email',{exact:true}),{target:{value:'synthetic@example.invalid'}});
+ fireEvent.change(screen.getByLabelText('Blood group',{exact:true}),{target:{value:'9'}});
+ fireEvent.click(screen.getByRole('button',{name:'Search'}));
+ await waitFor(()=>expect(adapter.search).toHaveBeenCalledWith(expect.objectContaining({email:'synthetic@example.invalid',bloodGroup:'9'}),expect.any(Object)));
+ expect(screen.queryByLabelText('Insurance member number')).not.toBeInTheDocument();
+});
+test("reaching the result sentinel requests the next cursor page",async()=>{
+ let callback!: IntersectionObserverCallback;
+ const disconnect=vi.fn();
+ vi.stubGlobal('IntersectionObserver',class {
+   constructor(next:IntersectionObserverCallback){callback=next;}
+   observe(){} disconnect(){disconnect();}
+ });
+ try {
+   const {adapter}=setup({metadata:{...metadataFixture,canWrite:true,queryCapabilities:{infiniteScroll:true}} as PatientMetadata});
+   vi.mocked(adapter.search).mockResolvedValueOnce({rows:[row],total:1,page:1,pageSize:20,hasMore:true}).mockResolvedValueOnce({rows:[{...row,id:'scroll',name:'Scrolled Patient'}],total:2,page:2,pageSize:20,hasMore:false});
+   fireEvent.change(screen.getByLabelText('First name',{exact:true}),{target:{value:'Alex'}});
+   fireEvent.click(screen.getByRole('button',{name:'Search'}));
+   await screen.findByRole('button',{name:'Load more patients'});
+   act(() => callback([{isIntersecting:true}] as IntersectionObserverEntry[],{} as IntersectionObserver));
+   await screen.findByRole('button',{name:'Scrolled Patient'});
+   expect(vi.mocked(adapter.search).mock.calls[1][0]).toMatchObject({page:2,pageSize:20});
+   expect(disconnect).toHaveBeenCalled();
+ } finally {vi.unstubAllGlobals();}
 });

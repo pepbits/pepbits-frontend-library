@@ -1,5 +1,7 @@
 import type { PatientFilters, PatientMetadata } from "@pepbits/erp-config";
+export const extraQueryFields = ["email", "preferredName", "middleName", "localName", "address", "city", "region", "postalCode", "bloodGroup", "language", "maritalStatus", "occupation", "birthDateFrom", "birthDateTo", "registrationState", "verificationStatus", "insuranceMember", "insurancePolicy"] as const;
 export const queryFields = [
+  ...extraQueryFields,
   "q",
   "mrn",
   "firstName",

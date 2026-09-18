@@ -6823,5 +6823,15 @@ export default {
   "designer.maxItems": "अधिकतम पंक्तियाँ",
   "designer.rowLimit": "अनुभाग की सीमा के अनुसार पंक्तियाँ जोड़ें या हटाएँ।",
   "designer.guide.contract.repeating": "अनुभाग चुनें और सीमित पंक्तियाँ जोड़ने के लिए इस अनुभाग को दोहराएँ सक्षम करें। न्यूनतम और अधिकतम पंक्तियाँ तय करें। हर पंक्ति की पहचान, मान और त्रुटियाँ अलग रहती हैं। गणना हर पंक्ति में होती है; साझा मूल बदलने पर सभी पंक्तियों के आश्रित चयन साफ़ होते हैं। नमूना कॉपी करने पर आंतरिक फ़ील्ड संदर्भ बदलते हैं। डिज़ाइनर में अभी एक पंक्ति स्तर है; अलग v1 रनटाइम में नेस्टेड संग्रह उपलब्ध हैं।",
+  "template.clinical.loadMore": "और मरीज़ लोड करें",
+  "template.clinical.loadedResults": "लोड किए गए मरीज़: {count}",
+  "template.clinical.localName": "स्थानीय नाम",
+  "template.clinical.region": "क्षेत्र",
+  "template.clinical.birthDateFrom": "जन्म तिथि से",
+  "template.clinical.birthDateTo": "जन्म तिथि तक",
+  "template.clinical.registrationState": "पंजीकरण स्थिति",
+  "template.clinical.verificationStatus": "सत्यापन स्थिति",
+  "template.clinical.insuranceMember": "बीमा सदस्य संख्या",
+  "template.clinical.insurancePolicy": "बीमा पॉलिसी संख्या",
   "template.clinical.pageResults": "इस पृष्ठ पर रोगी: {count}"
 };

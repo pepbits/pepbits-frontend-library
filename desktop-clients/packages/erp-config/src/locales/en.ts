@@ -6823,5 +6823,15 @@ export default {
   "designer.maxItems": "Maximum rows",
   "designer.rowLimit": "Add or remove rows to meet this section’s limits.",
   "designer.guide.contract.repeating": "Select a section and enable Repeat this section to add a bounded group of rows. Set minimum and maximum rows. Each row retains its own identity, values and validation messages. Calculations run per row; changing a shared parent clears dependent selections in every row. Copying a sample remaps its internal field references. Designer repetition currently supports one row level; nested collections are available in the separate v1 runtime.",
+  "template.clinical.loadMore": "Load more patients",
+  "template.clinical.loadedResults": "Patients loaded: {count}",
+  "template.clinical.localName": "Local name",
+  "template.clinical.region": "Region",
+  "template.clinical.birthDateFrom": "Birth date from",
+  "template.clinical.birthDateTo": "Birth date to",
+  "template.clinical.registrationState": "Registration state",
+  "template.clinical.verificationStatus": "Verification status",
+  "template.clinical.insuranceMember": "Insurance member number",
+  "template.clinical.insurancePolicy": "Insurance policy number",
   "template.clinical.pageResults": "Patients on this page: {count}"
 };

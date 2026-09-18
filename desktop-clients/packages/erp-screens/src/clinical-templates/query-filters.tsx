@@ -27,6 +27,7 @@ import type {
 } from "@pepbits/erp-config";
 import {
   queryFields,
+  extraQueryFields,
   queryLabel,
   queryOptions,
   type QueryField,
@@ -73,10 +74,12 @@ export function PatientQueryFilters({
     [saving, setSaving] = useState(false),
     [name, setName] = useState(""),
     [preset, setPreset] = useState("");
-  const count = queryFields.filter((k) =>
+  const enabled = (key: string) => !metadata.searchFields || metadata.searchFields.includes(key);
+  const count = queryFields.filter((k) => enabled(k) &&
     String(filters[k] ?? "").trim(),
   ).length;
   const advancedCount = [
+    ...extraQueryFields,
     "identityType",
     "country",
     "nationality",
@@ -84,7 +87,7 @@ export function PatientQueryFilters({
     "birthDate",
     "status",
   ].filter((k) => filters[k as QueryField]).length;
-  const select = (key: QueryField | "mobileCode") => (
+  const select = (key: QueryField | "mobileCode") => enabled(key) ? (
     <Select
       label={queryLabel(key)}
       aria-label={queryLabel(key)}
@@ -95,15 +98,15 @@ export function PatientQueryFilters({
       ]}
       onChange={(e) => onChange(key, e.target.value)}
     />
-  );
-  const text = (key: QueryField) => (
+  ) : null;
+  const text = (key: QueryField) => enabled(key) ? (
     <Input
       label={queryLabel(key)}
       aria-label={queryLabel(key)}
       value={String(filters[key] ?? "")}
       onChange={(e) => onChange(key, e.target.value)}
     />
-  );
+  ) : null;
   return (
     <Card className={styles.panel}>
       <div className={styles.head}>
@@ -191,7 +194,7 @@ export function PatientQueryFilters({
           if (count && !busy) onSearch();
         }}
       >
-        <div className={styles.free} ref={inputRef}>
+        <div className={styles.free} ref={inputRef} hidden={!enabled("q")}>
           <Input
             label="template.clinical.searchAnywhere"
             value={filters.q ?? ""}
@@ -237,12 +240,16 @@ export function PatientQueryFilters({
             {select("nationality")}
             {select("country")}
             {select("gender")}
-            <DateInput
+            {enabled("birthDate") ? <DateInput
               label="template.clinical.birthDate"
               value={filters.birthDate ?? ""}
               onChange={(e) => onChange("birthDate", e.target.value)}
-            />
+            /> : null}
             {select("status")}
+            {extraQueryFields.filter(key => metadata.searchFields?.includes(key)).map(key => <React.Fragment key={key}>
+              {key === "birthDateFrom" || key === "birthDateTo" ? <DateInput label={queryLabel(key)} value={filters[key] ?? ""} onChange={e => onChange(key, e.target.value)} />
+                : metadata.searchOptions?.[key] ? select(key) : text(key)}
+            </React.Fragment>)}
           </div>
         </div>
       </form>
