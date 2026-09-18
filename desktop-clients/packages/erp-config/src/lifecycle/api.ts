@@ -7,7 +7,8 @@ import type {
   LifecycleActivateRequest, LifecycleActivation, LifecycleCreateDraftRequest, LifecycleEventResolveRequest,
   LifecycleIssue, LifecycleListQuery, LifecycleMetadata, LifecycleReleaseDefinition, LifecycleResolveRequest,
   LifecycleResolveResult, LifecycleResolveResults, LifecycleSaveDraftRequest, LifecycleTransitionRequest,
-  LifecycleValidationReport, LifecycleVersionDetail, LifecycleVersionPage,
+  LifecycleValidationReport, LifecycleVersionDetail, LifecycleVersionPage, LifecycleSource, LifecycleSourceCapabilities,
+  LifecycleSourceListQuery, LifecycleSourcePage,
 } from './contract.ts';
 import { parseLifecycleIssues } from './guards.ts';
 
@@ -46,6 +47,19 @@ export interface LifecycleApi {
   resolve(request: LifecycleResolveRequest): Promise<LifecycleResolveResult>;
   /** Optional: hosts that expose event-type resolution. The UI hides the option otherwise. */
   resolveEvent?(request: LifecycleEventResolveRequest): Promise<LifecycleResolveResults>;
+}
+
+export type LifecycleSourceCapabilitiesResult = (LifecycleSourceCapabilities & { available: true }) | LifecycleUnavailable;
+/**
+ * Optional host port for the application source registry (source contract v1 §6). Read-only: every
+ * source, field and capture fact comes from the host's pinned source metadata; the browser never names a
+ * table, column or SQL. Mapping edits are saved through the normal `LifecycleApi` draft commands.
+ */
+export interface LifecycleSourceApi {
+  capabilities(): Promise<LifecycleSourceCapabilitiesResult>;
+  /** Bounded, cursor-paged summaries of the active pinned release (limit 1..100; 0 = server default). */
+  list(query: LifecycleSourceListQuery): Promise<LifecycleSourcePage>;
+  source(code: string): Promise<LifecycleSource>;
 }
 
 /**

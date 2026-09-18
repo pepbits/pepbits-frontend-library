@@ -14,6 +14,9 @@ contracts and a private package handoff. It does not supersede the recorded demo
 [Shared lifecycle configuration](lifecycle-configuration-2026-09-18.md) adds the neutral lifecycle contract, HTTP adapter
 and administration page for host applications. It was validated locally only and does not supersede the recorded demo deployment.
 
+[Lifecycle source registry and source mappings](lifecycle-source-mapping-2026-09-18.md) adds optional registry browsing and
+governed source-to-lifecycle-event payload mappings inside the lifecycle draft. Local validation only.
+
 ## Current state
 
 | Area | Current record |

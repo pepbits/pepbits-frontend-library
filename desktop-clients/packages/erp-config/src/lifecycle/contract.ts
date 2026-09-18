@@ -10,6 +10,10 @@ export const LIFECYCLE_OPERATORS = ['IN', 'WITHIN', 'RANGE'] as const;
 export const LIFECYCLE_STATUSES = ['DRAFT', 'APPROVED', 'PUBLISHED'] as const;
 export const LIFECYCLE_OUTCOMES = ['MATCH', 'NO_MATCH', 'UNKNOWN'] as const;
 export const LIFECYCLE_SEVERITIES = ['ERROR', 'WARNING'] as const;
+/** Source capture (source contract v1, backend `Lifecycle.CaptureMode`/`SourceOperation`/`Transform`). */
+export const LIFECYCLE_CAPTURE_MODES = ['SERVICE', 'TABLE'] as const;
+export const LIFECYCLE_SOURCE_OPERATIONS = ['CREATED', 'UPDATED', 'RETIRED', 'DELETED'] as const;
+export const LIFECYCLE_TRANSFORMS = ['COPY', 'TRIM', 'LOWERCASE', 'UPPERCASE', 'PRESENT', 'DATE', 'MAP'] as const;
 /** Reserved dimension codes evaluated from host-verified context, not definition dimensions. */
 export const LIFECYCLE_RESERVED_DIMENSIONS = ['organisation', 'subject-type'] as const;
 
@@ -19,6 +23,9 @@ export type LifecycleOperator = (typeof LIFECYCLE_OPERATORS)[number];
 export type LifecycleStatus = (typeof LIFECYCLE_STATUSES)[number];
 export type LifecycleOutcome = (typeof LIFECYCLE_OUTCOMES)[number];
 export type LifecycleSeverity = (typeof LIFECYCLE_SEVERITIES)[number];
+export type LifecycleCaptureMode = (typeof LIFECYCLE_CAPTURE_MODES)[number];
+export type LifecycleSourceOperation = (typeof LIFECYCLE_SOURCE_OPERATIONS)[number];
+export type LifecycleTransform = (typeof LIFECYCLE_TRANSFORMS)[number];
 
 export interface LifecycleDimension { code: string; label: string; type: LifecycleDimensionType }
 export interface LifecycleStage { key: string; label: string; description: string | null }
@@ -61,6 +68,27 @@ export interface LifecycleBinding {
   target: LifecycleTarget;
   applicability: LifecycleApplicability;
 }
+/**
+ * Exact pinned source provenance: application-owned source (source metadata table code), imported source
+ * release, the tenant's pin revision and the release fingerprint. Built only from a registry `LifecycleSource`.
+ */
+export interface LifecycleSourceRef { application: string; source: string; release: string; revision: number; fingerprint: string }
+/** `target` is an EventPulse catalogue field name; `source` a physical column name. `values` is used by MAP only. */
+export interface LifecycleFieldMapping { target: string; source: string; transform: LifecycleTransform; values: Record<string, string> }
+/** One source operation mapped to one declared stage/event pair of a lifecycle. */
+export interface LifecycleSourceMapping {
+  key: string;
+  source: LifecycleSourceRef;
+  capture: LifecycleCaptureMode;
+  operation: LifecycleSourceOperation;
+  lifecycle: string;
+  stage: string;
+  event: string;
+  /** UPDATED only: capture when one of these source fields changed; empty = every update. */
+  watch: string[];
+  fields: LifecycleFieldMapping[];
+  applicability: LifecycleApplicability;
+}
 export interface LifecycleReleaseDefinition {
   schemaVersion: number;
   application: string;
@@ -73,6 +101,11 @@ export interface LifecycleReleaseDefinition {
   events: LifecycleEvent[];
   lifecycles: LifecycleGraph[];
   bindings: LifecycleBinding[];
+  /**
+   * Source mappings (source contract v1). Optional: hosts without source support omit it and the UI never adds
+   * the property unless a mapping is authored, so mapping-free definitions keep their original wire shape.
+   */
+  sourceMappings?: LifecycleSourceMapping[];
 }
 
 export interface LifecycleReleaseVersion {
@@ -234,3 +267,67 @@ export const LIFECYCLE_ERROR_CODES = [
   'STORAGE_FAILURE', 'INTEGRITY_FAILURE',
 ] as const;
 export type LifecycleErrorCode = (typeof LIFECYCLE_ERROR_CODES)[number];
+
+/* Source registry (backend `LifecycleSources`): schema metadata only, never row values. */
+export interface LifecycleSourceProvenance { release: string; revision: number; fingerprint: string }
+export interface LifecycleSourceField {
+  code: string;
+  /** Physical column name; mappings, watch lists and runtime values use this name. */
+  name: string;
+  type: string;
+  nullable: boolean;
+  sensitivity: string;
+  /** Event-selectable and not denied (tenant_id, SECRET, json/object). */
+  selectable: boolean;
+  sensitive: boolean;
+  /** Value may be copied; otherwise only PRESENT is permitted. */
+  disclosable: boolean;
+  /** Allowed by the registered table-capture target. */
+  tableCapturable: boolean;
+  required: boolean;
+  description: string;
+}
+export interface LifecycleTableCapture {
+  operation: LifecycleSourceOperation;
+  eventType: string;
+  schemaVersion: number;
+  configurationId: number;
+  revision: number;
+  payloadFields: string[];
+}
+export interface LifecycleSource {
+  application: string;
+  code: string;
+  name: string;
+  description: string;
+  provenance: LifecycleSourceProvenance;
+  captureModes: LifecycleCaptureMode[];
+  /** Operations whose business code the host declares calls SERVICE capture. */
+  serviceOperations: LifecycleSourceOperation[];
+  tableEventPrefix: string | null;
+  /** Active governed trigger captures only. */
+  tableCaptures: LifecycleTableCapture[];
+  fields: LifecycleSourceField[];
+}
+export interface LifecycleSourceSummary {
+  application: string;
+  code: string;
+  name: string;
+  description: string;
+  provenance: LifecycleSourceProvenance;
+  captureModes: LifecycleCaptureMode[];
+  fieldCount: number;
+}
+export interface LifecycleSourcePage { items: LifecycleSourceSummary[]; nextCursor: string | null }
+export interface LifecycleSourceCapabilities {
+  captureModes: LifecycleCaptureMode[];
+  operations: LifecycleSourceOperation[];
+  transforms: LifecycleTransform[];
+  sensitiveClasses: string[];
+  /** Columns never mapped by users (v1.2, e.g. `tenant_id`); absent from older hosts. */
+  deniedFields?: string[];
+  mappingLimit: number;
+  fieldLimit: number;
+  mapValueLimit: number;
+}
+export interface LifecycleSourceListQuery { cursor: string | null; limit: number }

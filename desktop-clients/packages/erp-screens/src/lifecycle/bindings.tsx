@@ -3,7 +3,7 @@ import React from 'react';
 import { Badge, Button, DateInput, Input, Select, useLocalization } from '@pepbits/ops-ui';
 import {
   LIFECYCLE_RESERVED_DIMENSIONS, emptyLifecycleConstraint, lifecycleKeyValid, lifecycleMappedEvents, lifecycleOperatorsFor,
-  type LifecycleBinding, type LifecycleConstraint, type LifecycleMetadata, type LifecycleOperator,
+  type LifecycleApplicability, type LifecycleBinding, type LifecycleConstraint, type LifecycleMetadata, type LifecycleOperator,
   type LifecycleReleaseDefinition, type LifecycleTargetKind,
 } from '@pepbits/erp-config/lifecycle';
 import { LifecycleKeyField, LifecycleListField } from './fields';
@@ -44,15 +44,15 @@ function ConstraintEditor({ constraint, definition, disabled, taken, limits, onC
   </div>;
 }
 
-function ConstraintList({ kind, binding, definition, disabled, limits, onChange }: {
+function ConstraintList({ kind, applicability, definition, disabled, limits, onChange }: {
   kind: 'include' | 'exclude';
-  binding: LifecycleBinding;
+  applicability: LifecycleApplicability;
   definition: LifecycleReleaseDefinition;
   disabled: boolean;
   limits: LifecycleMetadata['limits'];
   onChange: (next: LifecycleConstraint[]) => void;
 }) {
-  const { t } = useLocalization(), list = binding.applicability[kind], taken = list.map(c => c.dimension);
+  const { t } = useLocalization(), list = applicability[kind], taken = list.map(c => c.dimension);
   const free = [...LIFECYCLE_RESERVED_DIMENSIONS, ...definition.dimensions.map(d => d.code)].find(code => !taken.includes(code));
   return <fieldset className={styles.matrix}>
     <legend>{t(`lifecycle.applicability.${kind}`)}</legend>
@@ -121,9 +121,23 @@ export function LifecycleBindingEditor({ binding, definition, metadata, disabled
         hint={t('lifecycle.field.statesHint')} onChange={states => setTarget({ states })} /> : null}
     </fieldset>
     {!supported ? <p role="note" className={styles.status}><Badge tone="warning">{t('lifecycle.capability.unsupported')}</Badge> {t('lifecycle.capability.unsupportedHelp')}</p> : null}
-    <ConstraintList kind="include" binding={binding} definition={definition} disabled={disabled} limits={metadata.limits}
-      onChange={include => set({ applicability: { ...binding.applicability, include } })} />
-    <ConstraintList kind="exclude" binding={binding} definition={definition} disabled={disabled} limits={metadata.limits}
-      onChange={exclude => set({ applicability: { ...binding.applicability, exclude } })} />
+    <LifecycleApplicabilityEditor applicability={binding.applicability} definition={definition} disabled={disabled} limits={metadata.limits}
+      onChange={applicability => set({ applicability })} />
   </div>;
+}
+
+/** Typed include/exclude conditions shared by bindings and source mappings (same contract rules). */
+export function LifecycleApplicabilityEditor({ applicability, definition, disabled, limits, onChange }: {
+  applicability: LifecycleApplicability;
+  definition: LifecycleReleaseDefinition;
+  disabled: boolean;
+  limits: LifecycleMetadata['limits'];
+  onChange: (next: LifecycleApplicability) => void;
+}) {
+  return <>
+    <ConstraintList kind="include" applicability={applicability} definition={definition} disabled={disabled} limits={limits}
+      onChange={include => onChange({ ...applicability, include })} />
+    <ConstraintList kind="exclude" applicability={applicability} definition={definition} disabled={disabled} limits={limits}
+      onChange={exclude => onChange({ ...applicability, exclude })} />
+  </>;
 }

@@ -11,6 +11,7 @@ import {
   type LifecycleApi, type LifecycleCatalogueGroup, type LifecycleCatalogueNode, type LifecycleClassification, type LifecycleMetadata,
   type LifecycleMetadataResult, type LifecyclePermissions, type LifecycleReleaseDefinition, type LifecycleResolveResult,
   type LifecycleUnavailable, type LifecycleValidationReport, type LifecycleVersionDetail, type LifecycleVersionSummary,
+  type LifecycleSourceApi,
 } from '@pepbits/erp-config/lifecycle';
 import type { PreferenceHost } from '../preference-choice';
 import { LifecycleCatalogueTree, LifecycleStatusBadge, LifecycleWorklist, type LifecycleWorklistFilters } from './catalogue';
@@ -19,6 +20,7 @@ import { LifecycleGovernancePanel } from './governance';
 import { LifecycleHostPanel } from './host';
 import { LifecycleResolvePreview, LifecycleValidationPanel, type LifecyclePreviewPolicy } from './preview';
 import { LifecycleVersionsPanel } from './versions';
+import { LifecycleSourceRegistryPanel, useLifecycleSourceCatalog } from './sources';
 import styles from './lifecycle.module.css';
 
 export interface LifecycleNotification {
@@ -61,6 +63,14 @@ export interface LifecycleConfigurationPageProps extends Partial<PreferenceHost>
   /** Host limits on preview context, e.g. a single verified organisation selector and no subject id. */
   previewPolicy?: LifecyclePreviewPolicy;
   preferences?: UserPreferences;
+  /**
+   * Optional source registry port (source contract v1), e.g. `createLifecycleSourceHttpApi`. When supplied, the
+   * page shows the host's registered sources and a Source mappings editor section; mappings are saved in the
+   * draft definition and follow its approval, publication and activation. Omit it to keep the page unchanged.
+   */
+  sources?: LifecycleSourceApi;
+  /** Source registry page size (1..100, default 25). */
+  sourcePageSize?: number;
 }
 
 /** Shared lifecycle administration: catalogue, worklist, editor, validation, preview, governance and versions. */
@@ -80,7 +90,7 @@ interface OpenState {
 interface Failure { error: unknown; operation: string; retry?: () => void }
 
 function Controller({ api, application, permissions, actorId = null, classify, notify, onDirtyChange, pageSize = 25, advancedJson = true,
-  changeReason: changeReasonMode = 'required', previewPolicy, preferences = DEFAULT_PREFERENCES }: LifecycleConfigurationPageProps) {
+  changeReason: changeReasonMode = 'required', previewPolicy, preferences = DEFAULT_PREFERENCES, sources, sourcePageSize }: LifecycleConfigurationPageProps) {
   const { t } = useLocalization();
   const keys = useRef(createLifecycleOperationKeys()).current, locked = useRef(false), mounted = useRef(true);
   const sequence = useRef(new Map<string, number>()), [inFlight, setInFlight] = useState(0), [mutating, setMutating] = useState(false);
@@ -97,9 +107,10 @@ function Controller({ api, application, permissions, actorId = null, classify, n
   const [failure, setFailure] = useState<Failure | null>(null), [message, setMessage] = useState('');
   const [pending, setPending] = useState<(() => void) | null>(null), [creating, setCreating] = useState<{ code: string; label: string } | null>(null);
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
-  const [changeReason, setChangeReason] = useState(''), [showHost, setShowHost] = useState(false);
+  const [changeReason, setChangeReason] = useState(''), [showHost, setShowHost] = useState(false), [showSources, setShowSources] = useState(false);
 
   const busy = inFlight > 0;
+  const sourceCatalog = useLifecycleSourceCatalog(sources, { enabled: permissions.read && (permissions.sources ?? true) && metadata?.available === true, pageSize: sourcePageSize });
   const meta: LifecycleMetadata | null = metadata?.available ? metadata : null;
   const limit = Math.max(1, Math.min(pageSize, meta?.limits.pageSize ?? 100));
   const dirty = !!open && (open.baseline === null || !sameLifecycleDefinition(open.definition, open.baseline));
@@ -282,9 +293,15 @@ function Controller({ api, application, permissions, actorId = null, classify, n
       {host?.execution && (host.execution.triggerExecution === false || host.execution.eventWorkersEnabled === false)
         ? <p className={styles.status} role="note" data-lifecycle-execution="off">{t('lifecycle.host.executionOff')}</p> : null}
     </div>
-    {host?.capabilities.length ? <Button size="sm" aria-expanded={showHost} onClick={() => setShowHost(v => !v)}>{t(showHost ? 'lifecycle.host.hide' : 'lifecycle.host.show')}</Button> : null}
+    <div className={styles.actions}>
+      {sourceCatalog ? <Button size="sm" aria-expanded={showSources} onClick={() => setShowSources(v => !v)}>{t(showSources ? 'lifecycle.source.hideRegistry' : 'lifecycle.source.showRegistry')}</Button> : null}
+      {host?.capabilities.length ? <Button size="sm" aria-expanded={showHost} onClick={() => setShowHost(v => !v)}>{t(showHost ? 'lifecycle.host.hide' : 'lifecycle.host.show')}</Button> : null}
+    </div>
   </header>;
-  const hostPanel = showHost && host ? <LifecycleHostPanel host={host} /> : null;
+  const hostPanel = <>
+    {showHost && host ? <LifecycleHostPanel host={host} /> : null}
+    {showSources && sourceCatalog ? <LifecycleSourceRegistryPanel catalog={sourceCatalog} application={application} /> : null}
+  </>;
 
   if (unavailable) return <div className={styles.page} data-lifecycle-page data-density={preferences.density}>{header}
     <Card className={styles.section} role="status" data-lifecycle-unavailable={unavailable.code}>
@@ -348,7 +365,7 @@ function Controller({ api, application, permissions, actorId = null, classify, n
           <Tabs value={tab} onChange={v => setTab(v as DetailTab)} items={(['definition', 'validation', 'preview', 'governance', 'versions'] as DetailTab[])
             .map(id => ({ id, label: t(`lifecycle.tab.${id}`), disabled: !version && (id === 'governance' || id === 'versions') }))} />
           {tab === 'definition' ? <LifecycleDefinitionEditor definition={open.definition} metadata={meta} readOnly={readOnly} focus={focus} onFocus={setFocus}
-            advancedJson={advancedJson} onChange={definition => setOpen(o => (o ? { ...o, definition } : o))} /> : null}
+            advancedJson={advancedJson} sources={sourceCatalog} onChange={definition => setOpen(o => (o ? { ...o, definition } : o))} /> : null}
           {tab === 'validation' ? <LifecycleValidationPanel report={report?.value ?? null} source={report?.source ?? null} definition={open.definition} busy={busy}
             canValidateStored={!!version && !dirty} onValidate={() => validate(false)} onValidateStored={() => validate(true)}
             onFocus={f => { setFocus(f); setTab('definition'); }} /> : null}

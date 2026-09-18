@@ -5,10 +5,12 @@
  * passes the contract guards before the UI sees it.
  */
 import {
-  parseLifecycleActivation, parseLifecycleHostMetadata, parseLifecycleResolveResult, parseLifecycleResolveResults,
+  parseLifecycleSource, parseLifecycleSourceCapabilities, parseLifecycleSourcePage, parseLifecycleActivation, parseLifecycleHostMetadata, parseLifecycleResolveResult, parseLifecycleResolveResults,
   parseLifecycleValidationReport, parseLifecycleVersionDetail, parseLifecycleVersionPage,
 } from './guards.ts';
-import { LifecycleRequestError, lifecycleErrorFrom, lifecycleFailure, type LifecycleApi, type LifecycleMutation } from './api.ts';
+import {
+  LifecycleRequestError, lifecycleErrorFrom, lifecycleFailure, type LifecycleApi, type LifecycleMutation, type LifecycleSourceApi,
+} from './api.ts';
 
 export interface LifecycleHttpResponse {
   ok: boolean;
@@ -84,11 +86,11 @@ async function failure(response: LifecycleHttpResponse): Promise<LifecycleReques
   return lifecycleFailure(response.status, typeof body.code === 'string' && body.code ? body.code : `HTTP_${response.status}`, body, header);
 }
 
-export function createLifecycleHttpApi(options: LifecycleHttpOptions): LifecycleApi {
+type LifecycleCall = (method: string, path: string, body?: unknown, mutation?: LifecycleMutation, revision?: number) => Promise<unknown>;
+/** Shared request pipeline: headers, idempotency, reason header, transport and failure mapping. */
+function lifecycleTransport(options: LifecycleHttpOptions): LifecycleCall {
   const base = (options.basePath ?? '/lifecycle').replace(/\/+$/, '');
-  const seg = encodeURIComponent;
-  const version = (code: string, v: number) => `/releases/${seg(code)}/versions/${v}`;
-  async function call(method: string, path: string, body?: unknown, mutation?: LifecycleMutation, revision?: number): Promise<unknown> {
+  return async function call(method: string, path: string, body?: unknown, mutation?: LifecycleMutation, revision?: number): Promise<unknown> {
     const headers: Record<string, string> = { Accept: 'application/json' };
     if (body !== undefined) headers['Content-Type'] = 'application/json';
     if (mutation) {
@@ -111,7 +113,12 @@ export function createLifecycleHttpApi(options: LifecycleHttpOptions): Lifecycle
     const response = await options.request(base + path, init);
     if (!response.ok) throw await failure(response);
     return response.json();
-  }
+  };
+}
+
+export function createLifecycleHttpApi(options: LifecycleHttpOptions): LifecycleApi {
+  const call = lifecycleTransport(options), seg = encodeURIComponent;
+  const version = (code: string, v: number) => `/releases/${seg(code)}/versions/${v}`;
   const api: LifecycleApi = {
     async metadata() { return parseLifecycleHostMetadata(await call('GET', '/metadata')); },
     async list(query) {
@@ -154,4 +161,31 @@ export function createLifecycleHttpApi(options: LifecycleHttpOptions): Lifecycle
     api.resolveEvent = async request => parseLifecycleResolveResults(await call('POST', path, request));
   }
   return api;
+}
+
+/**
+ * Reference adapter for the source registry routes of source contract v1 §6, using the same transport options
+ * (and `basePath`) as `createLifecycleHttpApi`: `GET /source-capabilities`, `GET /sources?cursor&limit` and
+ * `GET /sources/{source}`. A host answering `{available:false, code}` on capabilities reports the registry as not enabled.
+ */
+export function createLifecycleSourceHttpApi(options: LifecycleHttpOptions): LifecycleSourceApi {
+  const call = lifecycleTransport(options);
+  return {
+    async capabilities() {
+      const body = await call('GET', '/source-capabilities');
+      if (body && typeof body === 'object' && (body as { available?: unknown }).available === false) {
+        const b = body as { code?: unknown; message?: unknown };
+        return { available: false, code: typeof b.code === 'string' && b.code ? b.code : 'LIFECYCLE_SOURCES_UNAVAILABLE', message: typeof b.message === 'string' ? b.message : null };
+      }
+      return { ...parseLifecycleSourceCapabilities(body), available: true };
+    },
+    async list(query) {
+      const params = new URLSearchParams();
+      if (query.cursor) params.set('cursor', query.cursor);
+      if (query.limit) params.set('limit', String(query.limit));
+      const qs = params.toString();
+      return parseLifecycleSourcePage(await call('GET', `/sources${qs ? `?${qs}` : ''}`));
+    },
+    async source(code) { return parseLifecycleSource(await call('GET', `/sources/${encodeURIComponent(code)}`)); },
+  };
 }

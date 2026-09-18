@@ -7,7 +7,7 @@ import {
   LIFECYCLE_SCHEMA_VERSION,
   type LifecycleActivation, type LifecycleBinding, type LifecycleConstraint, type LifecycleDimensionType,
   type LifecycleOperator, type LifecycleReleaseDefinition, type LifecycleReleaseVersion, type LifecycleStatus,
-  type LifecycleVersionSummary,
+  type LifecycleVersionSummary, type LifecycleSourceMapping,
 } from './contract.ts';
 
 export const LIFECYCLE_KEY_PATTERNS = {
@@ -44,8 +44,14 @@ export function canonicalLifecycleJson(value: unknown): string {
       : v;
   return JSON.stringify(sort(value));
 }
+/** An absent `sourceMappings` and an empty list are the same content (the server omits both from the checksum). */
+const withoutEmptyMappings = (d: LifecycleReleaseDefinition | null) => {
+  if (!d || d.sourceMappings?.length) return d;
+  const { sourceMappings: _omit, ...rest } = d;
+  return rest;
+};
 export const sameLifecycleDefinition = (a: LifecycleReleaseDefinition | null, b: LifecycleReleaseDefinition | null) =>
-  canonicalLifecycleJson(a) === canonicalLifecycleJson(b);
+  canonicalLifecycleJson(withoutEmptyMappings(a)) === canonicalLifecycleJson(withoutEmptyMappings(b));
 
 /**
  * Stable operation keys: retrying the same operation with the same payload reuses
@@ -77,6 +83,8 @@ export interface LifecyclePermissions {
   publish: boolean;
   activate: boolean;
   resolve: boolean;
+  /** Source registry reads (source contract v1). Defaults to `read` when a source port is supplied. */
+  sources?: boolean;
 }
 export type LifecycleAction = 'save' | 'approve' | 'publish' | 'activate' | 'createNext';
 export interface LifecycleActionState { allowed: boolean; reason: string | null }
@@ -137,22 +145,28 @@ type Keyed = 'stages' | 'events' | 'lifecycles' | 'dimensions';
 /** Rename a key and every reference to it so an edit never leaves dangling references behind. */
 export function renameLifecycleKey(definition: LifecycleReleaseDefinition, kind: Keyed, from: string, to: string): LifecycleReleaseDefinition {
   const d = structuredClone(definition), swap = (v: string) => (v === from ? to : v);
-  const constraints = (b: LifecycleBinding, fn: (c: LifecycleConstraint) => LifecycleConstraint) =>
+  const constraints = <T extends { applicability: LifecycleBinding['applicability'] }>(b: T, fn: (c: LifecycleConstraint) => LifecycleConstraint): T =>
     ({ ...b, applicability: { include: b.applicability.include.map(fn), exclude: b.applicability.exclude.map(fn) } });
+  /** Source mappings follow the same references; the property is only touched when present. */
+  const mappings = (fn: (m: LifecycleSourceMapping) => LifecycleSourceMapping) => { if (d.sourceMappings) d.sourceMappings = d.sourceMappings.map(fn); };
   if (kind === 'stages') {
     d.stages = d.stages.map(s => (s.key === from ? { ...s, key: to } : s));
     d.lifecycles = d.lifecycles.map(l => ({ ...l, stages: l.stages.map(swap), stageEvents: l.stageEvents.map(m => ({ ...m, stage: swap(m.stage) })) }));
     d.bindings = d.bindings.map(b => ({ ...b, stage: swap(b.stage) }));
+    mappings(m => ({ ...m, stage: swap(m.stage) }));
   } else if (kind === 'events') {
     d.events = d.events.map(e => (e.key === from ? { ...e, key: to } : e));
     d.lifecycles = d.lifecycles.map(l => ({ ...l, stageEvents: l.stageEvents.map(m => ({ ...m, event: swap(m.event) })) }));
     d.bindings = d.bindings.map(b => ({ ...b, event: b.event === null ? null : swap(b.event) }));
+    mappings(m => ({ ...m, event: swap(m.event) }));
   } else if (kind === 'lifecycles') {
     d.lifecycles = d.lifecycles.map(l => (l.key === from ? { ...l, key: to } : l));
     d.bindings = d.bindings.map(b => ({ ...b, lifecycle: swap(b.lifecycle) }));
+    mappings(m => ({ ...m, lifecycle: swap(m.lifecycle) }));
   } else {
     d.dimensions = d.dimensions.map(x => (x.code === from ? { ...x, code: to } : x));
     d.bindings = d.bindings.map(b => constraints(b, c => ({ ...c, dimension: swap(c.dimension) })));
+    mappings(m => constraints(m, c => ({ ...c, dimension: swap(c.dimension) })));
   }
   return d;
 }
@@ -164,6 +178,11 @@ export function lifecycleReferences(definition: LifecycleReleaseDefinition, kind
       : [...b.applicability.include, ...b.applicability.exclude].some(c => c.dimension === key);
     if (uses) refs.push(`bindings:${b.key}`);
   });
+  (definition.sourceMappings ?? []).forEach(m => {
+    const uses = kind === 'stages' ? m.stage === key : kind === 'events' ? m.event === key : kind === 'lifecycles' ? m.lifecycle === key
+      : [...m.applicability.include, ...m.applicability.exclude].some(c => c.dimension === key);
+    if (uses) refs.push(`sourceMappings:${m.key}`);
+  });
   if (kind === 'stages' || kind === 'events') definition.lifecycles.forEach(l => {
     if (kind === 'stages' ? l.stages.includes(key) : l.stageEvents.some(m => m.event === key)) refs.push(`lifecycles:${l.key}`);
   });
@@ -174,7 +193,7 @@ export const lifecycleMappedEvents = (definition: LifecycleReleaseDefinition, li
   definition.lifecycles.find(l => l.key === lifecycle)?.stageEvents.filter(m => m.stage === stage).map(m => m.event) ?? [];
 
 export interface LifecycleDifference {
-  section: 'definition' | Keyed | 'bindings';
+  section: 'definition' | Keyed | 'bindings' | 'sourceMappings';
   key: string;
   kind: 'added' | 'removed' | 'changed';
   fields: string[];
@@ -199,10 +218,11 @@ export function diffLifecycleDefinitions(before: LifecycleReleaseDefinition, aft
   const sections: [Exclude<LifecycleDifference['section'], 'definition'>, (item: never) => string][] = [
     ['dimensions', (d: { code: string }) => d.code], ['stages', (s: { key: string }) => s.key], ['events', (e: { key: string }) => e.key],
     ['lifecycles', (l: { key: string }) => l.key], ['bindings', (b: { key: string }) => b.key],
+    ['sourceMappings', (m: { key: string }) => m.key],
   ];
   for (const [section, id] of sections) {
     const index = (items: unknown[]) => new Map(items.map((item, order) => [id(item as never), { ...(item as object), order }]));
-    const a = index(before[section]), b = index(after[section]);
+    const a = index(before[section] ?? []), b = index(after[section] ?? []);
     for (const key of new Set([...a.keys(), ...b.keys()])) compare(section, key, a.get(key), b.get(key));
   }
   return out;
@@ -210,9 +230,9 @@ export function diffLifecycleDefinitions(before: LifecycleReleaseDefinition, aft
 
 /** Map a server issue path such as `bindings[2].target.code` to the editor item it concerns. */
 export function lifecycleIssueTarget(definition: LifecycleReleaseDefinition, path: string): { section: string; key: string | null } {
-  const match = /^(?:\$\.|definition\.)?(dimensions|stages|events|lifecycles|bindings)\[(\d+)\]/.exec(path);
+  const match = /^(?:\$\.|definition\.)?(dimensions|stages|events|lifecycles|bindings|sourceMappings)\[(\d+)\]/.exec(path);
   if (!match) return { section: 'overview', key: null };
-  const section = match[1] as Keyed | 'bindings', item = definition[section][Number(match[2])] as { key?: string; code?: string } | undefined;
+  const section = match[1] as Keyed | 'bindings' | 'sourceMappings', item = (definition[section] ?? [])[Number(match[2])] as { key?: string; code?: string } | undefined;
   return { section, key: item ? item.key ?? item.code ?? null : null };
 }
 

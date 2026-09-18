@@ -8,9 +8,10 @@ import {
 } from '@pepbits/erp-config/lifecycle';
 import { LifecycleBindingEditor } from './bindings';
 import { LifecycleItemSection, LifecycleKeyField, LifecycleListField, LifecycleOptionalCodeField, LifecycleRemove } from './fields';
+import { LifecycleSourceMappingsSection, type LifecycleSourceCatalog } from './sources';
 import styles from './lifecycle.module.css';
 
-export type LifecycleEditorSection = 'overview' | 'dimensions' | 'stages' | 'events' | 'lifecycles' | 'bindings' | 'json';
+export type LifecycleEditorSection = 'overview' | 'dimensions' | 'stages' | 'events' | 'lifecycles' | 'bindings' | 'sourceMappings' | 'json';
 export interface LifecycleEditorFocus { section: LifecycleEditorSection; key: string | null }
 
 const unique = (prefix: string, taken: string[], upper = false) => {
@@ -22,7 +23,7 @@ const unique = (prefix: string, taken: string[], upper = false) => {
  * the owner decides dirty state and persistence. `readOnly` covers published versions and
  * missing edit permission; controls stay visible but disabled.
  */
-export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focus, onFocus, onChange, advancedJson = true }: {
+export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focus, onFocus, onChange, advancedJson = true, sources }: {
   definition: LifecycleReleaseDefinition;
   metadata: LifecycleMetadata;
   readOnly: boolean;
@@ -30,11 +31,18 @@ export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focu
   onFocus: (focus: LifecycleEditorFocus) => void;
   onChange: (next: LifecycleReleaseDefinition) => void;
   advancedJson?: boolean;
+  /**
+   * Source registry state. `undefined`/`null` when the host supplied no source port: the Source mappings
+   * section then appears only for a definition that already has mappings, read-only.
+   */
+  sources?: LifecycleSourceCatalog | null;
 }) {
   const { t } = useLocalization(), limits = metadata.limits, d = definition;
-  const sections: LifecycleEditorSection[] = ['overview', 'dimensions', 'stages', 'events', 'lifecycles', 'bindings', ...(advancedJson ? ['json' as const] : [])];
+  const withSources = !!sources || !!d.sourceMappings?.length;
+  const sections: LifecycleEditorSection[] = ['overview', 'dimensions', 'stages', 'events', 'lifecycles', 'bindings',
+    ...(withSources ? ['sourceMappings' as const] : []), ...(advancedJson ? ['json' as const] : [])];
   const select = (key: string | null) => onFocus({ section: focus.section, key });
-  const counts: Partial<Record<LifecycleEditorSection, number>> = { dimensions: d.dimensions.length, stages: d.stages.length, events: d.events.length, lifecycles: d.lifecycles.length, bindings: d.bindings.length };
+  const counts: Partial<Record<LifecycleEditorSection, number>> = { dimensions: d.dimensions.length, stages: d.stages.length, events: d.events.length, lifecycles: d.lifecycles.length, bindings: d.bindings.length, sourceMappings: d.sourceMappings?.length ?? 0 };
   const rename = (kind: 'stages' | 'events' | 'lifecycles' | 'dimensions', from: string, to: string) => { onChange(renameLifecycleKey(d, kind, from, to)); select(to); };
   const replace = <K extends 'dimensions' | 'stages' | 'events' | 'lifecycles' | 'bindings'>(kind: K, index: number, item: LifecycleReleaseDefinition[K][number]) =>
     onChange({ ...d, [kind]: d[kind].map((x, i) => (i === index ? item : x)) });
@@ -153,6 +161,9 @@ export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focu
     </LifecycleItemSection>;
   }
 
+  if (focus.section === 'sourceMappings' && withSources) body = <LifecycleSourceMappingsSection definition={d} metadata={metadata} catalog={sources ?? null}
+    readOnly={readOnly} selected={focus.key} onSelect={select} onChange={onChange} />;
+
   if (focus.section === 'json') body = <JsonEditor definition={d} readOnly={readOnly} onChange={onChange} />;
 
   return <div className={styles.section} data-lifecycle-editor data-readonly={readOnly}>
@@ -177,7 +188,8 @@ function GraphEditor({ graph, definition, readOnly, onRename, onChange, onRemove
   const toggleEvent = (stage: string, event: string, on: boolean) => onChange({ ...graph,
     stageEvents: on ? [...graph.stageEvents, { stage, event }] : graph.stageEvents.filter(m => !(m.stage === stage && m.event === event)) });
   const move = (i: number, by: number) => { const stages = [...graph.stages]; [stages[i], stages[i + by]] = [stages[i + by], stages[i]]; onChange({ ...graph, stages }); };
-  const bound = (stage: string, event: string) => definition.bindings.some(b => b.lifecycle === graph.key && b.stage === stage && b.event === event);
+  const bound = (stage: string, event: string) => definition.bindings.some(b => b.lifecycle === graph.key && b.stage === stage && b.event === event)
+    || (definition.sourceMappings ?? []).some(m => m.lifecycle === graph.key && m.stage === stage && m.event === event);
   return <>
     <div className={styles.fields}>
       <LifecycleKeyField label={t('lifecycle.field.lifecycleKey')} value={graph.key} format="code" disabled={readOnly}
@@ -197,7 +209,8 @@ function GraphEditor({ graph, definition, readOnly, onRename, onChange, onRemove
       <p className={styles.muted}>{t('lifecycle.help.graphStages')}</p>
       {definition.stages.map(stage => {
         const on = graph.stages.includes(stage.key), i = graph.stages.indexOf(stage.key);
-        const used = definition.bindings.some(b => b.lifecycle === graph.key && b.stage === stage.key);
+        const used = definition.bindings.some(b => b.lifecycle === graph.key && b.stage === stage.key)
+          || (definition.sourceMappings ?? []).some(m => m.lifecycle === graph.key && m.stage === stage.key);
         return <div key={stage.key} className={styles.constraint}>
           <Checkbox label={`${stage.label || stage.key} (${stage.key})`} checked={on} disabled={readOnly || (on && used)} onChange={e => toggleStage(stage.key, e.target.checked)} />
           {on ? <div className={styles.actions}>

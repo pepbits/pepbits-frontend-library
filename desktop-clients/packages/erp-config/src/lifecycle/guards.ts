@@ -6,13 +6,15 @@
  * newer server never strips additive fields; unknown enum values are rejected, matching the server.
  */
 import {
-  LIFECYCLE_DIMENSION_TYPES, LIFECYCLE_OPERATORS, LIFECYCLE_OUTCOMES, LIFECYCLE_SEVERITIES,
+  LIFECYCLE_CAPTURE_MODES, LIFECYCLE_SOURCE_OPERATIONS, LIFECYCLE_TRANSFORMS, LIFECYCLE_DIMENSION_TYPES, LIFECYCLE_OPERATORS, LIFECYCLE_OUTCOMES, LIFECYCLE_SEVERITIES,
   LIFECYCLE_STATUSES, LIFECYCLE_TARGET_KINDS,
   type LifecycleActivation, type LifecycleApplicability, type LifecycleBinding, type LifecycleCandidate,
   type LifecycleConstraint, type LifecycleIssue, type LifecycleMetadata, type LifecycleReleaseDefinition,
   type LifecycleReleaseVersion, type LifecycleResolveResult, type LifecycleResolveResults, type LifecycleSlot,
   type LifecycleTarget, type LifecycleValidationReport, type LifecycleVersionDetail, type LifecycleVersionPage,
-  type LifecycleVersionSummary,
+  type LifecycleVersionSummary, type LifecycleFieldMapping, type LifecycleSource, type LifecycleSourceCapabilities,
+  type LifecycleSourceField, type LifecycleSourceMapping, type LifecycleSourcePage, type LifecycleSourceProvenance,
+  type LifecycleSourceSummary, type LifecycleTableCapture,
 } from './contract.ts';
 import type { LifecycleHostCapability, LifecycleHostInfo, LifecycleMetadataResult } from './api.ts';
 
@@ -36,6 +38,14 @@ const nullable = <T>(read: Reader<T>): Reader<T | null> => (v, p) => (v === null
 const optional = <T>(read: Reader<T>): Reader<T | undefined> => (v, p) => (v === undefined ? undefined : read(v, p));
 const list = <T>(read: Reader<T>): Reader<T[]> => (v, p) =>
   Array.isArray(v) ? v.map((item, i) => read(item, `${p}[${i}]`)) : fail(p, 'array');
+/** String → string object. Null/absent is the backend's empty map (it normalises null to `{}`). */
+const stringMap: Reader<Record<string, string>> = (v, p) => {
+  if (v === null || v === undefined) return {};
+  if (typeof v !== 'object' || Array.isArray(v)) return fail(p, 'object');
+  const out: Record<string, string> = {};
+  for (const [k, x] of Object.entries(v as Record<string, unknown>)) out[k] = str(x, `${p}.${k}`);
+  return out;
+};
 const oneOf = <T extends string>(values: readonly T[]): Reader<T> => (v, p) =>
   (values as readonly unknown[]).includes(v) ? (v as T) : fail(p, values.join('|'));
 function object<T>(shape: Shape<T>): Reader<T> {
@@ -60,6 +70,13 @@ const applicability = object<LifecycleApplicability>({ include: list(constraint)
 const binding = object<LifecycleBinding>({
   key: str, lifecycle: str, stage: str, event: nullable(str), purpose: str, priority: int, target, applicability,
 });
+const fieldMapping = object<LifecycleFieldMapping>({ target: str, source: str, transform: oneOf(LIFECYCLE_TRANSFORMS), values: stringMap });
+const sourceMapping = object<LifecycleSourceMapping>({
+  key: str,
+  source: object({ application: str, source: str, release: str, revision: int, fingerprint: str }),
+  capture: oneOf(LIFECYCLE_CAPTURE_MODES), operation: oneOf(LIFECYCLE_SOURCE_OPERATIONS),
+  lifecycle: str, stage: str, event: str, watch: list(str), fields: list(fieldMapping), applicability,
+});
 const definition = object<LifecycleReleaseDefinition>({
   schemaVersion: int, application: str, code: str, version: int, label: str, description: nullable(str),
   dimensions: list(object({ code: str, label: str, type: oneOf(LIFECYCLE_DIMENSION_TYPES) })),
@@ -70,6 +87,7 @@ const definition = object<LifecycleReleaseDefinition>({
     stageEvents: list(object({ stage: str, event: str })),
   })),
   bindings: list(binding),
+  sourceMappings: optional(list(sourceMapping)),
 });
 const releaseVersion = object<LifecycleReleaseVersion>({
   application: str, code: str, version: int, status: oneOf(LIFECYCLE_STATUSES), revision: int, checksum: str,
@@ -144,4 +162,29 @@ export const parseLifecycleMetadata = (v: unknown, path = '$'): LifecycleMetadat
     limits: object({
       stages: int, events: int, lifecycles: int, bindings: int, dimensions: int, constraints: int, values: int, pageSize: int,
     }),
+  })(v, path);
+
+const provenance = object<LifecycleSourceProvenance>({ release: str, revision: int, fingerprint: str });
+const sourceField = object<LifecycleSourceField>({
+  code: str, name: str, type: str, nullable: bool, sensitivity: str, selectable: bool, sensitive: bool, disclosable: bool,
+  tableCapturable: bool, required: bool, description: str,
+});
+const tableCapture = object<LifecycleTableCapture>({
+  operation: oneOf(LIFECYCLE_SOURCE_OPERATIONS), eventType: str, schemaVersion: int, configurationId: int, revision: int, payloadFields: list(str),
+});
+const sourceSummary = object<LifecycleSourceSummary>({
+  application: str, code: str, name: str, description: str, provenance, captureModes: list(oneOf(LIFECYCLE_CAPTURE_MODES)), fieldCount: int,
+});
+/** Registry detail. Unknown capture modes, operations or transforms are rejected like other contract enums. */
+export const parseLifecycleSource = (v: unknown, path = '$'): LifecycleSource => object<LifecycleSource>({
+  application: str, code: str, name: str, description: str, provenance, captureModes: list(oneOf(LIFECYCLE_CAPTURE_MODES)),
+  serviceOperations: list(oneOf(LIFECYCLE_SOURCE_OPERATIONS)), tableEventPrefix: nullable(str), tableCaptures: list(tableCapture),
+  fields: list(sourceField),
+})(v, path);
+export const parseLifecycleSourcePage = (v: unknown, path = '$'): LifecycleSourcePage =>
+  object<LifecycleSourcePage>({ items: list(sourceSummary), nextCursor: nullable(str) })(v, path);
+export const parseLifecycleSourceCapabilities = (v: unknown, path = '$'): LifecycleSourceCapabilities =>
+  object<LifecycleSourceCapabilities>({
+    captureModes: list(oneOf(LIFECYCLE_CAPTURE_MODES)), operations: list(oneOf(LIFECYCLE_SOURCE_OPERATIONS)),
+    transforms: list(oneOf(LIFECYCLE_TRANSFORMS)), sensitiveClasses: list(str), deniedFields: optional(list(str)), mappingLimit: int, fieldLimit: int, mapValueLimit: int,
   })(v, path);

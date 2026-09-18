@@ -38,3 +38,5 @@ Lifecycle contract, adapter and model tests are in `desktop-clients/packages/erp
 Page tests are in `desktop-clients/packages/erp-screens/src/lifecycle/lifecycle.test.tsx`. Both use in-memory ports and
 fictional fixtures. See [the lifecycle increment](../releases/unreleased/lifecycle-configuration-2026-09-18.md);
 host API and browser acceptance belong to the consuming application.
+Source registry and mapping tests are in `erp-config/src/lifecycle/sources.test.ts` and `erp-screens/src/lifecycle/sources.test.tsx`
+(fictional ERP source metadata, in-memory ports); see [the source mapping increment](../releases/unreleased/lifecycle-source-mapping-2026-09-18.md).

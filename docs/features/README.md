@@ -54,4 +54,4 @@ Never substitute a screenshot, an empty route or a passing build for functional 
 
 - [DCP Visual Designer](dcp-designer.md): shared visual authoring, dependent lookups/value sets, bounded CSV/XLSX staging, repeatable fields, preview, lifecycle, scoped recovery and backend v1 runtime demonstration; production host integration remains pending.
 
-- [Shared lifecycle configuration](lifecycle-configuration.md): reusable catalogue, visual editor, validation, resolution preview, approval, publication and activation over a host lifecycle API; host adoption and live acceptance remain separate.
+- [Shared lifecycle configuration](lifecycle-configuration.md): reusable catalogue, visual editor, validation, resolution preview, approval, publication and activation over a host lifecycle API, plus optional source registry browsing and governed source-to-event payload mappings; host adoption and live acceptance remain separate.
