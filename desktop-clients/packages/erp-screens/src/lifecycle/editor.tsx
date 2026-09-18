@@ -183,7 +183,7 @@ export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focu
           onChange={applicability => replace('bindings', index, { ...binding, applicability })} />
       </Card>)}
       {(d.sourceMappings ?? []).map((mapping, index) => <Card className={styles.section} key={mapping.key}><h3>{mapping.key}</h3><p className={styles.code}>{mapping.source.source} · {mapping.event}</p>
-        <LifecycleApplicabilityEditor applicability={mapping.applicability} definition={d} disabled={readOnly || !sources} limits={limits}
+        <LifecycleApplicabilityEditor applicability={mapping.applicability} definition={d} disabled={readOnly || sources?.status !== 'ready'} limits={limits}
           onChange={applicability => onChange({ ...d, sourceMappings: d.sourceMappings?.map((item, i) => i === index ? { ...item, applicability } : item) })} />
       </Card>)}
     </div> : null}

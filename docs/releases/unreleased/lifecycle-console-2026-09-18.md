@@ -31,3 +31,5 @@ The final nonlinguistic brand-mark JSX/whitespace correction followed the runtim
 checked by the repository gate. No runtime behavior changed after the passing suite.
 Browser checks belong to the healthcare consuming host. Native desktop, native-speaker review,
 production API acceptance and production deployment are outside this local change.
+
+Follow-up: applicability controls also inherit source-registry readiness locks; focused lifecycle tests and types rerun for this guard.
