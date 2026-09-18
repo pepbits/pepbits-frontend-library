@@ -84,3 +84,28 @@ Pending: healthcare host adoption, packaging and live API/browser acceptance (pa
 ## Operations and support
 
 Failures use the shared recovery notice (retry only where retryable, with the same operation key) plus a lifecycle-specific explanation for each library error code. `CONFLICT` means a stale revision, a duplicate open draft or a reused idempotency key: reload, then reapply the change. Edits are kept on screen after a failed save. A response that does not match contract v1 is rejected with its JSON path rather than partly rendered. Rollback is activating an earlier published version. It changes future resolution only and does not undo executed actions.
+
+## Lifecycle console layout
+
+The shared page now uses a persistent left worklist, a central tabbed editor and a right live summary.
+Search submits the existing exact-code/status API filters and keeps cursor continuation; it does not
+pretend the server supports full-text name/module search or an active-only query. Open a worklist
+card to edit; leaving a dirty definition prompts before discarding changes. The hierarchy remains
+available in the expandable catalogue beneath the worklist.
+
+Overview edits release identity labels. Stages & Events groups stage/event catalogues and lifecycle
+membership, including module/domain and subject types. Stage cards show only mapped event pairs.
+Bindings configures versioned engine targets. Applicability contains dimensions and the real binding
+and source include/exclude rules. Source mappings retains approved registry pins and payload mappings.
+Release contains independent approval, publication, activation and next-version actions. Validation,
+Preview, Versions and Advanced JSON remain available as dedicated tabs.
+
+The summary derives counts and release state from the current definition and API response. It never
+shows an assumed successful validation or simulated activation. Editing clears validation evidence;
+a late validation response for a different definition is ignored. Unsupported prototype owner fields,
+archive actions and runtime switches are not presented as working services.
+
+The console uses host theme, typography, radius and density tokens with shared controls. On narrow
+screens the summary is hidden and the worklist/editor stack; normal keyboard navigation, RTL and
+reduced motion remain supported. Canonical translations include machine-drafted Arabic, Hindi and
+Malayalam, with native review pending. See the [console delivery](../releases/unreleased/lifecycle-console-2026-09-18.md).

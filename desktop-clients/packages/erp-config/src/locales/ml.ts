@@ -7338,5 +7338,18 @@ export default {
   "lifecycle.source.issue.TABLE_FIELD_MISMATCH": "ഈ ക്യാപ്ചറിന് ഈ ഫീൽഡ് അനുവദനീയമല്ല.",
   "lifecycle.source.issue.SENSITIVE_FIELD": "ഈ സംവേദനക്ഷമ ഫീൽഡ് ‘ഉണ്ട്’ എന്ന രീതിയിൽ മാത്രമേ മാപ്പ് ചെയ്യാനാകൂ.",
   "lifecycle.source.suppliedByCapture": "ടേബിൾ ക്യാപ്ചർ നൽകുന്നു, ഇവിടെ മാപ്പ് ചെയ്യുന്നില്ല: {fields}",
-  "lifecycle.source.targetTableHint": "ടേബിൾ ക്യാപ്ചർ കോളത്തിന്റെ പേര് തന്നെ നിലനിർത്തുന്നു."
+  "lifecycle.source.targetTableHint": "ടേബിൾ ക്യാപ്ചർ കോളത്തിന്റെ പേര് തന്നെ നിലനിർത്തുന്നു.",
+  "lifecycle.console.title": "Pepbits ലൈഫ്‌സൈക്കിൾ കൺസോൾ",
+  "lifecycle.console.worklist": "ലൈഫ്‌സൈക്കിൾ പട്ടിക",
+  "lifecycle.console.select": "ക്രമീകരിക്കാൻ ഒരു ലൈഫ്‌സൈക്കിൾ തുറക്കുക",
+  "lifecycle.console.summary": "നിർവചനത്തിന്റെ തത്സമയ പ്രിവ്യൂ",
+  "lifecycle.console.release": "റിലീസ്",
+  "lifecycle.console.unsaved": "സേവ് ചെയ്യാത്ത ഡ്രാഫ്റ്റ്",
+  "lifecycle.console.valid": "വിജയിച്ചു",
+  "lifecycle.console.invalid": "ശ്രദ്ധ ആവശ്യമാണ്",
+  "lifecycle.console.notValidated": "പരിശോധിച്ചിട്ടില്ല",
+  "lifecycle.console.execution": "നിർവചനങ്ങൾ ബൈൻഡിംഗുകൾ നിർണ്ണയിക്കുന്നു. നിർവ്വഹണം ബന്ധിപ്പിച്ച ആപ്ലിക്കേഷൻ സേവനങ്ങളിൽ തുടരുന്നു.",
+  "lifecycle.console.validate": "പരിശോധിക്കുക",
+  "lifecycle.console.structure": "ഘട്ടങ്ങളും ഇവന്റുകളും",
+  "lifecycle.console.applicability": "ബാധകത"
 };

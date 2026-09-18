@@ -32,3 +32,47 @@
 .matrix{display:grid;gap:.5rem}
 @media(max-width:900px){.layout,.split{grid-template-columns:minmax(0,1fr)}.rail{position:static;max-height:none}}
 @media(prefers-reduced-motion:reduce){.page *{transition:none!important;animation:none!important}}
+/* Console composition: three independent panes, shared themed controls and host typography. */
+.page{background:var(--surface-2);padding:var(--lc-gap);border-radius:var(--radius)}
+.page>.header{padding:.6rem .8rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);align-items:center}
+.consoleBrand{display:flex;gap:.75rem;align-items:center}
+.consoleBrand h1{font-size:calc(16px * var(--fs-form))}
+.brandMark{display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:var(--radius);background:var(--primary);color:var(--on-primary,#fff);font-weight:800;flex-shrink:0}
+.layout{grid-template-columns:minmax(15rem,19rem) minmax(0,1fr) minmax(13rem,17rem);align-items:stretch;height:calc(100dvh - 15rem);min-height:32rem}
+.rail,.summaryPanel,.main{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);box-shadow:0 8px 24px rgb(23 32 51 / .05);overflow:auto;min-width:0;min-height:0}
+.rail{position:static;max-height:none;scrollbar-gutter:auto}
+.main{padding:var(--lc-gap)}
+.main>[data-lifecycle-detail]{border:0;box-shadow:none;border-bottom:1px solid var(--border);border-radius:0;padding:0 0 var(--lc-gap)}
+.main h2{font-size:calc(18px * var(--fs-form));font-weight:700}
+.consoleWorklist h2{font-size:calc(14px * var(--fs-form));font-weight:700}
+.worklistFilters{display:grid;gap:.5rem}
+.worklistCards{padding:.5rem;display:grid;gap:.4rem}
+.lifeCard{display:flex;flex-direction:column;gap:.55rem;width:100%;min-width:0;text-align:start;padding:.75rem;border:1px solid transparent;border-radius:var(--radius);background:transparent;color:var(--text);cursor:pointer}
+.lifeCard:hover{background:var(--surface-2);border-color:var(--border)}
+.lifeCard[aria-current=true]{background:var(--primary-soft);border-color:var(--primary);box-shadow:inset 3px 0 0 var(--primary)}
+.lifeCard:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.lifeCard:disabled{cursor:wait}
+.lifeLine{display:flex;gap:.5rem;align-items:center;min-width:0;width:100%}
+.lifeIcon{display:grid;place-items:center;width:2rem;height:2rem;flex-shrink:0;background:var(--primary-soft);color:var(--primary);border-radius:var(--radius);font-weight:800}
+.lifeName{min-width:0;display:grid;gap:.2rem;overflow-wrap:anywhere}
+.lifeName strong{font-size:calc(12px * var(--fs-form))}
+.lifeName small,.lifeMeta{font-size:calc(10px * var(--fs-form));color:var(--text-muted)}
+.lifeMeta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+.hierarchy{padding:var(--lc-gap);border-top:1px solid var(--border)}
+.hierarchy>summary{cursor:pointer;color:var(--text-muted);font-size:calc(12px * var(--fs-form))}
+.summaryPanel{display:flex;flex-direction:column}
+.summaryHero{padding:1rem;background:linear-gradient(135deg,var(--primary),#17233f);color:#fff;border-radius:var(--radius);overflow-wrap:anywhere}
+.summaryHero h2{font-size:calc(15px * var(--fs-form));margin:.4rem 0;font-weight:700}
+.summaryHero small,.summaryHero p{font-size:calc(11px * var(--fs-form))}
+.metricGrid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.metric{padding:.75rem;display:grid;gap:.2rem}
+.metric strong{font-size:calc(21px * var(--fs-form));font-weight:800}
+.metric span{font-size:calc(11px * var(--fs-form));color:var(--text-muted);overflow-wrap:anywhere}
+.summaryFooter{margin-top:auto;border-top:1px solid var(--border)}
+.main .split{grid-template-columns:minmax(9rem,12rem) minmax(0,1fr)}
+.main [data-lifecycle-editor]{padding:0}
+@media(max-width:1400px){.layout{grid-template-columns:minmax(14rem,17rem) minmax(0,1fr)}.summaryPanel{display:none}}
+@media(max-width:1000px){.main .split{grid-template-columns:minmax(0,1fr)}.fields{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:900px){.layout{grid-template-columns:minmax(0,1fr);height:auto;min-height:0}.rail{max-height:22rem}.main{overflow:visible}.consoleBrand h1{font-size:calc(15px * var(--fs-form))}.page>.header{padding:.5rem}.worklistCards{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}}
+
+.stageCards{display:grid;gap:var(--lc-gap);min-width:0}

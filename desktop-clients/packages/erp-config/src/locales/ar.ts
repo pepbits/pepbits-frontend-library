@@ -7338,5 +7338,18 @@ export default {
   "lifecycle.source.issue.TABLE_FIELD_MISMATCH": "الحقل غير مسموح به لهذا الالتقاط.",
   "lifecycle.source.issue.SENSITIVE_FIELD": "لا يمكن ربط هذا الحقل الحساس إلا بصيغة «موجود».",
   "lifecycle.source.suppliedByCapture": "يوفّرها التقاط الجدول ولا تُربط هنا: {fields}",
-  "lifecycle.source.targetTableHint": "يحتفظ التقاط الجدول باسم العمود."
+  "lifecycle.source.targetTableHint": "يحتفظ التقاط الجدول باسم العمود.",
+  "lifecycle.console.title": "وحدة تحكم دورة الحياة في Pepbits",
+  "lifecycle.console.worklist": "قائمة دورات الحياة",
+  "lifecycle.console.select": "افتح دورة حياة لتكوينها",
+  "lifecycle.console.summary": "معاينة مباشرة للتعريف",
+  "lifecycle.console.release": "الإصدار",
+  "lifecycle.console.unsaved": "مسودة غير محفوظة",
+  "lifecycle.console.valid": "ناجح",
+  "lifecycle.console.invalid": "تحتاج إلى مراجعة",
+  "lifecycle.console.notValidated": "لم يتم التحقق",
+  "lifecycle.console.execution": "تحدد التعريفات الروابط. يبقى التنفيذ في خدمات التطبيقات المتصلة.",
+  "lifecycle.console.validate": "تحقق",
+  "lifecycle.console.structure": "المراحل والأحداث",
+  "lifecycle.console.applicability": "قابلية التطبيق"
 };

@@ -7338,5 +7338,18 @@ export default {
   "lifecycle.source.issue.TABLE_FIELD_MISMATCH": "The field is not permitted for this capture.",
   "lifecycle.source.issue.SENSITIVE_FIELD": "This sensitive field can only be mapped as Present.",
   "lifecycle.source.suppliedByCapture": "Supplied by the table capture, not mapped here: {fields}",
-  "lifecycle.source.targetTableHint": "Table capture keeps the column name."
+  "lifecycle.source.targetTableHint": "Table capture keeps the column name.",
+  "lifecycle.console.title": "Pepbits Lifecycle Console",
+  "lifecycle.console.worklist": "Lifecycle worklist",
+  "lifecycle.console.select": "Open a lifecycle to configure it",
+  "lifecycle.console.summary": "Live definition preview",
+  "lifecycle.console.release": "Release",
+  "lifecycle.console.unsaved": "Unsaved draft",
+  "lifecycle.console.valid": "Passed",
+  "lifecycle.console.invalid": "Needs attention",
+  "lifecycle.console.notValidated": "Not validated",
+  "lifecycle.console.execution": "Definitions resolve bindings. Execution remains in the connected application services.",
+  "lifecycle.console.validate": "Validate",
+  "lifecycle.console.structure": "Stages & Events",
+  "lifecycle.console.applicability": "Applicability"
 };

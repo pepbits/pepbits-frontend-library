@@ -14,8 +14,9 @@ import {
   type LifecycleSourceApi,
 } from '@pepbits/erp-config/lifecycle';
 import type { PreferenceHost } from '../preference-choice';
-import { LifecycleCatalogueTree, LifecycleStatusBadge, LifecycleWorklist, type LifecycleWorklistFilters } from './catalogue';
-import { LifecycleDefinitionEditor, type LifecycleEditorFocus } from './editor';
+import { LifecycleCatalogueTree, LifecycleStatusBadge, type LifecycleWorklistFilters } from './catalogue';
+import { LifecycleConsoleSummary, LifecycleConsoleWorklist } from './console';
+import { LifecycleDefinitionEditor, type LifecycleEditorFocus, type LifecycleEditorSection } from './editor';
 import { LifecycleGovernancePanel } from './governance';
 import { LifecycleHostPanel } from './host';
 import { LifecycleResolvePreview, LifecycleValidationPanel, type LifecyclePreviewPolicy } from './preview';
@@ -109,6 +110,8 @@ function Controller({ api, application, permissions, actorId = null, classify, n
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [changeReason, setChangeReason] = useState(''), [showHost, setShowHost] = useState(false), [showSources, setShowSources] = useState(false);
 
+  const currentDefinition = useRef(open?.definition);
+  currentDefinition.current = open?.definition;
   const busy = inFlight > 0;
   const sourceCatalog = useLifecycleSourceCatalog(sources, { enabled: permissions.read && (permissions.sources ?? true) && metadata?.available === true, pageSize: sourcePageSize });
   const meta: LifecycleMetadata | null = metadata?.available ? metadata : null;
@@ -256,7 +259,7 @@ function Controller({ api, application, permissions, actorId = null, classify, n
     if (!open) return;
     const definition = open.definition;
     void run('validate', () => (stored && version ? api.validateVersion(version.code, version.version) : api.validate(definition)),
-      value => setReport({ value, source: stored ? 'stored' : 'editor' }), () => validate(stored));
+      value => { if (currentDefinition.current && sameLifecycleDefinition(currentDefinition.current, definition)) setReport({ value, source: stored ? 'stored' : 'editor' }); }, () => validate(stored));
   }
 
   const tree = useMemo(() => lifecycleCatalogueTree({
@@ -288,8 +291,8 @@ function Controller({ api, application, permissions, actorId = null, classify, n
   const host = metadata?.available ? metadata.host : null;
   const header = <header className={styles.header}>
     <div>
-      <h1>{t('lifecycle.title')}</h1>
-      <p className={styles.muted}>{t('lifecycle.boundary', { application: application.label })}</p>
+      <div className={styles.consoleBrand}><span className={styles.brandMark} aria-hidden="true">{'P'}</span><div><h1>{t('lifecycle.console.title')}</h1><p className={styles.muted}>{application.label} · {t('lifecycle.title')}</p></div></div>
+
       {host?.execution && (host.execution.triggerExecution === false || host.execution.eventWorkersEnabled === false)
         ? <p className={styles.status} role="note" data-lifecycle-execution="off">{t('lifecycle.host.executionOff')}</p> : null}
     </div>
@@ -332,17 +335,18 @@ function Controller({ api, application, permissions, actorId = null, classify, n
     {header}
     {hostPanel}
     <div className={styles.layout}>
-      <Card className={`${styles.section} ${styles.rail}`}>
-        <LifecycleCatalogueTree root={tree} selected={selectedNode} onSelect={selectNode} />
-        {cursor ? <p className={styles.muted}>{t('lifecycle.catalogueMore')}</p> : null}
-      </Card>
+      <aside className={styles.rail}>
+        <LifecycleConsoleWorklist items={items} application={application.label} filters={filters} onFilters={setFilters}
+          onSearch={() => search(filters)} nextCursor={cursor} onMore={() => search(applied, cursor)} busy={busy}
+          canCreate={permissions.edit} onCreate={() => guard(() => setCreating({ code: '', label: '' }))}
+          selected={version ? `${version.code}:${version.version}` : null} onOpen={s => guard(() => openVersion(s.code, s.version))} />
+        <details className={styles.hierarchy}><summary>{t('lifecycle.catalogue')}</summary>
+          <LifecycleCatalogueTree root={tree} selected={selectedNode} onSelect={selectNode} />
+        </details>
+      </aside>
       <main className={styles.main}>
         {failureView}
-        {!open ? <Card>
-          <LifecycleWorklist items={items} filters={filters} onFilters={setFilters} onSearch={() => search(filters)} nextCursor={cursor}
-            onMore={() => search(applied, cursor)} busy={busy} canCreate={permissions.edit}
-            onCreate={() => setCreating({ code: '', label: '' })} onOpen={s => openVersion(s.code, s.version)} />
-        </Card> : <>
+        {!open ? <Card className={styles.section}><h2>{t('lifecycle.console.select')}</h2><p className={styles.muted}>{t('lifecycle.boundary', { application: application.label })}</p></Card> : <>
           <Card className={styles.section} data-lifecycle-detail>
             <div className={styles.header}>
               <div>
@@ -351,6 +355,8 @@ function Controller({ api, application, permissions, actorId = null, classify, n
               </div>
               <div className={styles.actions}>
                 {version ? <LifecycleStatusBadge status={version.status} active={activation?.version === version.version} /> : null}
+                <Button size="sm" disabled={busy || !permissions.resolve} onClick={() => setTab('preview')}>{t('lifecycle.tab.preview')}</Button>
+                <Button size="sm" disabled={busy} onClick={() => { setTab('validation'); validate(false); }}>{t('lifecycle.console.validate')}</Button>
                 <Button onClick={() => guard(() => setOpen(null))}>{t('lifecycle.backToCatalogue')}</Button>
                 <Button disabled={!dirty || busy || !open.baseline} onClick={() => setOpen(o => (o && o.baseline ? { ...o, definition: o.baseline } : o))}>{t('lifecycle.discardChanges')}</Button>
                 <Button variant="primary" disabled={busy || !saveState.allowed || reasonMissing} onClick={save}>{t('lifecycle.save')}</Button>
@@ -362,10 +368,22 @@ function Controller({ api, application, permissions, actorId = null, classify, n
             {!saveState.allowed && saveState.reason && saveState.reason !== 'lifecycle.reason.noChanges' ? <p className={styles.status}>{t(saveState.reason)}</p> : null}
             {saveState.allowed && reasonMissing ? <p className={styles.status}>{t('lifecycle.reason.changeReason')}</p> : null}
           </Card>
-          <Tabs value={tab} onChange={v => setTab(v as DetailTab)} items={(['definition', 'validation', 'preview', 'governance', 'versions'] as DetailTab[])
-            .map(id => ({ id, label: t(`lifecycle.tab.${id}`), disabled: !version && (id === 'governance' || id === 'versions') }))} />
+          <Tabs value={tab === 'definition' ? (['stages', 'events', 'lifecycles'].includes(focus.section) ? 'structure' : focus.section) : tab}
+            onChange={value => {
+              if (['validation', 'preview', 'governance', 'versions'].includes(value)) setTab(value as DetailTab);
+              else { setTab('definition'); setFocus({ section: (value === 'structure' ? 'stages' : value) as LifecycleEditorSection, key: null }); }
+            }} items={[
+              { id: 'overview', label: t('lifecycle.section.overview') },
+              { id: 'structure', label: t('lifecycle.console.structure') },
+              { id: 'bindings', label: t('lifecycle.section.bindings') },
+              { id: 'dimensions', label: t('lifecycle.console.applicability') },
+              ...(sourceCatalog || open.definition.sourceMappings?.length ? [{ id: 'sourceMappings', label: t('lifecycle.section.sourceMappings') }] : []),
+              { id: 'governance', label: t('lifecycle.console.release'), disabled: !version },
+              ...(['validation', 'preview', 'versions'] as const).map(id => ({ id, label: t(`lifecycle.tab.${id}`), disabled: id === 'versions' && !version })),
+              ...(advancedJson ? [{ id: 'json', label: t('lifecycle.section.json') }] : []),
+            ]} />
           {tab === 'definition' ? <LifecycleDefinitionEditor definition={open.definition} metadata={meta} readOnly={readOnly} focus={focus} onFocus={setFocus}
-            advancedJson={advancedJson} sources={sourceCatalog} onChange={definition => setOpen(o => (o ? { ...o, definition } : o))} /> : null}
+            advancedJson={advancedJson} consoleLayout sources={sourceCatalog} onChange={definition => { setReport(null); setResolution(null); setOpen(o => (o ? { ...o, definition } : o)); }} /> : null}
           {tab === 'validation' ? <LifecycleValidationPanel report={report?.value ?? null} source={report?.source ?? null} definition={open.definition} busy={busy}
             canValidateStored={!!version && !dirty} onValidate={() => validate(false)} onValidateStored={() => validate(true)}
             onFocus={f => { setFocus(f); setTab('definition'); }} /> : null}
@@ -380,6 +398,10 @@ function Controller({ api, application, permissions, actorId = null, classify, n
             onOpen={v => guard(() => openVersion(version.code, v))} load={async v => (await api.detail(version.code, v)).version.definition} /> : null}
         </>}
       </main>
+      <LifecycleConsoleSummary definition={open?.definition ?? null} version={version} activation={activation}
+        report={report?.value ?? null} dirty={dirty}
+        onPreview={() => setTab('preview')} onValidate={() => { setTab('validation'); validate(false); }}
+        busy={busy} canPreview={!!open && permissions.resolve} />
     </div>
     <ConfirmDialog open={pending !== null} title={t('lifecycle.discardTitle')} message={t('lifecycle.discardMessage')} tone="danger"
       confirmLabel={t('lifecycle.discardConfirm')} onCancel={() => setPending(null)}

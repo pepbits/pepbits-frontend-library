@@ -6,7 +6,7 @@ import {
   lifecycleEventTypeValid, lifecycleReferences, parseLifecycleReleaseDefinition, renameLifecycleKey,
   type LifecycleBinding, type LifecycleDimensionType, type LifecycleGraph, type LifecycleMetadata, type LifecycleReleaseDefinition,
 } from '@pepbits/erp-config/lifecycle';
-import { LifecycleBindingEditor } from './bindings';
+import { LifecycleBindingEditor, LifecycleApplicabilityEditor } from './bindings';
 import { LifecycleItemSection, LifecycleKeyField, LifecycleListField, LifecycleOptionalCodeField, LifecycleRemove } from './fields';
 import { LifecycleSourceMappingsSection, type LifecycleSourceCatalog } from './sources';
 import styles from './lifecycle.module.css';
@@ -23,7 +23,7 @@ const unique = (prefix: string, taken: string[], upper = false) => {
  * the owner decides dirty state and persistence. `readOnly` covers published versions and
  * missing edit permission; controls stay visible but disabled.
  */
-export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focus, onFocus, onChange, advancedJson = true, sources }: {
+export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focus, onFocus, onChange, advancedJson = true, sources, consoleLayout = false }: {
   definition: LifecycleReleaseDefinition;
   metadata: LifecycleMetadata;
   readOnly: boolean;
@@ -31,6 +31,7 @@ export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focu
   onFocus: (focus: LifecycleEditorFocus) => void;
   onChange: (next: LifecycleReleaseDefinition) => void;
   advancedJson?: boolean;
+  consoleLayout?: boolean;
   /**
    * Source registry state. `undefined`/`null` when the host supplied no source port: the Source mappings
    * section then appears only for a definition that already has mappings, read-only.
@@ -166,11 +167,26 @@ export function LifecycleDefinitionEditor({ definition, metadata, readOnly, focu
 
   if (focus.section === 'json') body = <JsonEditor definition={d} readOnly={readOnly} onChange={onChange} />;
 
+  const navigation = consoleLayout ? sections.filter(section => ['stages', 'events', 'lifecycles'].includes(focus.section) ? ['stages', 'events', 'lifecycles'].includes(section) : section === focus.section) : sections;
   return <div className={styles.section} data-lifecycle-editor data-readonly={readOnly}>
     {readOnly ? <p className={styles.status} role="note">{t('lifecycle.readOnly')}</p> : null}
-    <Tabs value={focus.section} onChange={section => onFocus({ section: section as LifecycleEditorSection, key: null })}
-      items={sections.map(id => ({ id, label: t(`lifecycle.section.${id}`), badge: counts[id] }))} />
+    {navigation.length > 1 ? <Tabs value={focus.section} onChange={section => onFocus({ section: section as LifecycleEditorSection, key: null })}
+      items={navigation.map(id => ({ id, label: t(`lifecycle.section.${id}`), badge: counts[id] }))} /> : null}
+    {consoleLayout && focus.section === 'stages' ? <div className={styles.stageCards}>{d.stages.map((stage, index) => <Card key={stage.key} className={styles.section}>
+      <div className={styles.header}><Button size="sm" variant="ghost" onClick={() => onFocus({ section: 'stages', key: stage.key })}>{index + 1}. {stage.label || stage.key}</Button><code className={styles.code}>{stage.key}</code></div>
+      <div className={styles.actions}>{d.lifecycles.flatMap(graph => graph.stageEvents.filter(pair => pair.stage === stage.key).map(pair => <Button key={`${graph.key}:${pair.event}`} size="sm" onClick={() => onFocus({ section: 'events', key: pair.event })}>{graph.label || graph.key} · {pair.event}</Button>))}</div>
+    </Card>)}</div> : null}
     {body}
+    {consoleLayout && focus.section === 'dimensions' ? <div className={styles.stageCards}>
+      {d.bindings.map((binding, index) => <Card className={styles.section} key={binding.key}><h3>{binding.key}</h3><p className={styles.code}>{binding.target.kind} · {binding.target.code}</p>
+        <LifecycleApplicabilityEditor applicability={binding.applicability} definition={d} disabled={readOnly} limits={limits}
+          onChange={applicability => replace('bindings', index, { ...binding, applicability })} />
+      </Card>)}
+      {(d.sourceMappings ?? []).map((mapping, index) => <Card className={styles.section} key={mapping.key}><h3>{mapping.key}</h3><p className={styles.code}>{mapping.source.source} · {mapping.event}</p>
+        <LifecycleApplicabilityEditor applicability={mapping.applicability} definition={d} disabled={readOnly || !sources} limits={limits}
+          onChange={applicability => onChange({ ...d, sourceMappings: d.sourceMappings?.map((item, i) => i === index ? { ...item, applicability } : item) })} />
+      </Card>)}
+    </div> : null}
   </div>;
 }
 

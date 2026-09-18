@@ -25,6 +25,31 @@ async function openFirst(api: LifecycleApi, props: Partial<React.ComponentProps<
 const saveButton = () => screen.getByRole('button', { name: 'Save draft' });
 
 describe('LifecycleConfigurationPage', () => {
+  test('console summary uses server validation and clears it after editing', async () => {
+    const api = fakeApi(versionDetail(), { validate: vi.fn().mockResolvedValue({ valid: true, activatable: true, checksum: 'd'.repeat(64), issues: [] }) });
+    await openFirst(api);
+    const summary = within(document.querySelector('[data-lifecycle-summary]') as HTMLElement);
+    expect(summary.getByText('Not validated')).toBeInTheDocument();
+    fireEvent.click(summary.getByRole('button', { name: 'Validate' }));
+    expect(await summary.findByText('Passed')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('tab', { name: 'Overview' }));
+    fireEvent.change(screen.getByLabelText(/^Name/), { target: { value: 'Changed draft' } });
+    expect(summary.getByText('Not validated')).toBeInTheDocument();
+    expect(summary.getByRole('heading', { name: 'Changed draft' })).toBeInTheDocument();
+  });
+
+  test('persistent worklist protects edits before opening another version', async () => {
+    const api = fakeApi(versionDetail());
+    await openFirst(api);
+    fireEvent.change(screen.getByLabelText(/^Name/), { target: { value: 'Keep this edit' } });
+    const worklist = within(document.querySelector('[data-lifecycle-worklist]') as HTMLElement);
+    fireEvent.click(worklist.getByRole('button', { name: 'Open purchase-order version 1' }));
+    const dialog = await screen.findByRole('dialog');
+    fireEvent.click(within(dialog).getByRole('button', { name: 'Cancel' }));
+    expect(api.detail).toHaveBeenCalledTimes(1);
+    expect(screen.getByLabelText(/^Name/)).toHaveValue('Keep this edit');
+  });
+
   test('shows an explicit not-enabled state instead of an empty list', async () => {
     const api = fakeApi(versionDetail(), { metadata: vi.fn().mockResolvedValue({ available: false, code: 'LIFECYCLE_NOT_ENABLED', message: null }) });
     render(<LifecycleConfigurationPage api={api} scopeKey="s" application={{ code: 'erp', label: 'ERP' }} permissions={all} />);
@@ -89,7 +114,7 @@ describe('LifecycleConfigurationPage', () => {
   test('approval is explained as independent when the actor edited the version', async () => {
     const api = fakeApi(versionDetail());
     await openFirst(api, { actorId: 'editor-1' });
-    fireEvent.click(screen.getByRole('tab', { name: 'Approval and activation' }));
+    fireEvent.click(screen.getByRole('tab', { name: 'Release' }));
     expect(screen.getByRole('button', { name: 'Approve' })).toBeDisabled();
     expect(screen.getByText(/another person must approve it/)).toBeInTheDocument();
   });
@@ -101,7 +126,7 @@ describe('LifecycleConfigurationPage', () => {
     const api = fakeApi(detail, { activate, list: vi.fn().mockResolvedValue({ items: [summaryOf(detail.version)], nextCursor: null }) });
     render(<LifecycleConfigurationPage api={api} scopeKey="s" application={{ code: 'erp', label: 'ERP' }} permissions={all} />);
     fireEvent.click(await screen.findByRole('button', { name: /Open purchase-order version 2/ }));
-    fireEvent.click(await screen.findByRole('tab', { name: 'Approval and activation' }));
+    fireEvent.click(await screen.findByRole('tab', { name: 'Release' }));
     const button = screen.getByRole('button', { name: 'Activate' });
     expect(button).toBeDisabled();
     fireEvent.change(screen.getByLabelText(/Activation reason/), { target: { value: 'go live' } });
@@ -149,7 +174,7 @@ describe('LifecycleConfigurationPage', () => {
     await openFirst(api);
     fireEvent.click(screen.getByRole('tab', { name: /Stages/ }));
     const editor = document.querySelector('[data-lifecycle-editor]') as HTMLElement;
-    fireEvent.click(within(editor).getByRole('button', { name: /Order approval/ }));
+    fireEvent.click(within(editor).getByRole('button', { name: /^Order approval/ }));
     const key = screen.getByLabelText('Stage key');
     fireEvent.change(key, { target: { value: 'MANAGER_APPROVAL' } });
     act(() => { fireEvent.keyDown(key, { key: 'Enter' }); });
@@ -163,8 +188,10 @@ describe('LifecycleConfigurationPage', () => {
     const saveDraft = vi.fn().mockResolvedValue(versionDetail({ revision: 4 }));
     const api = fakeApi(versionDetail(), { saveDraft });
     await openFirst(api);
+    fireEvent.click(screen.getByText('Lifecycle catalogue', { selector: 'summary' }));
     const tree = () => screen.getByRole('navigation', { name: 'Lifecycle catalogue' });
     expect(tree().querySelector('[data-lifecycle-node="module"]')).toBeNull();
+    fireEvent.click(screen.getByRole('tab', { name: 'Stages & Events' }));
     fireEvent.click(screen.getByRole('tab', { name: /Lifecycles/ }));
     fireEvent.click(within(document.querySelector('[data-lifecycle-editor]') as HTMLElement).getByRole('button', { name: /purchase-order/ }));
     fireEvent.change(screen.getByLabelText(/^Module/), { target: { value: 'Procurement' } });
@@ -185,7 +212,7 @@ describe('LifecycleConfigurationPage', () => {
     const approve = vi.fn().mockResolvedValue(versionDetail({ status: 'APPROVED', revision: 4, approvedChecksum: 'a'.repeat(64) }));
     const api = fakeApi(versionDetail(), { approve });
     await openFirst(api, { actorId: 'approver-1' });
-    fireEvent.click(screen.getByRole('tab', { name: 'Approval and activation' }));
+    fireEvent.click(screen.getByRole('tab', { name: 'Release' }));
     fireEvent.change(screen.getByLabelText('Comment'), { target: { value: 'Checked' } });
     fireEvent.click(screen.getByRole('button', { name: 'Approve' }));
     await waitFor(() => expect(approve).toHaveBeenCalled());
