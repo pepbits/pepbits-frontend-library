@@ -2,6 +2,8 @@
 import React,{createContext,useContext} from 'react';
 /** Real hosts supply verified presentation data; the shell never resolves permissions itself. */
 export interface ShellHost {
+ /** Render the active branch as text when the host has no alternative branches. */
+ branchReadOnly?:boolean;
  branch:string;
  branches:Array<{value:string;label:string;timezone?:string}>;
  onBranchChange:(value:string)=>void;
