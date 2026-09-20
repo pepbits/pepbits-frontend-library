@@ -101,3 +101,7 @@ Latest activation: [DCP designer style alignment](dcp-style-deployment-2026-09-1
 
 [Patient Query production-host adapter — 17 September 2026](patient-query-host-2026-09-17.md)
 adds an optional production capability contract and cursor pagination to the existing reference renderer.
+
+- [Quantity/unit primitive — 20 September 2026](quantity-unit-field-2026-09-20.md): additive ops-ui composition, host-owned exact preview, no consumer adoption or publication.
+
+- [Fixed-branch documentation receipt review — 20 September 2026](shell-branch-receipt-review-2026-09-20.md)

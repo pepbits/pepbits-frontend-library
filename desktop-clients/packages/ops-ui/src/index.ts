@@ -33,3 +33,4 @@ export * from './scanner-input';
 export * from './form-error-summary';
 
 export * from './choice-fields';
+export * from './quantity-unit-field';

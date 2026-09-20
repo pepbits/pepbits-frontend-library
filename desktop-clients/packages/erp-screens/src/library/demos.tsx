@@ -5,7 +5,7 @@ import { type DataColumn } from "@pepbits/erp-config";
 import {useERP} from "@pepbits/erp-shell";
 import { Plus } from "lucide-react";
 import {
-  FormErrorSummary,RadioGroup,RangeField,ScannerInput, Highlight, Input, SearchInput, Textarea, Select, MultiSelect, Checkbox, Radio, Toggle, FilePicker, RangeInput, FieldShell,
+  QuantityUnitField, FormErrorSummary,RadioGroup,RangeField,ScannerInput, Highlight, Input, SearchInput, Textarea, Select, MultiSelect, Checkbox, Radio, Toggle, FilePicker, RangeInput, FieldShell,
   SearchSelect, ReferenceField, ReferenceDataWarning, Button, IconButton,
   DateInput, TimeInput, DateTimeInput, MonthInput, WeekInput, DateRangeInput, Calendar,
   Card, CardHeader, CardTitle, CardContent, CardFooter, CardGrid, StatCard, Avatar, Badge, StatusBadge,
@@ -18,10 +18,12 @@ import {
 } from "@pepbits/ops-ui";
 
 export function TextDemo() {
+  const [quantityUnit, setQuantityUnit] = useState({quantity:"1",unit:"EA"});
   const [name, setName] = useState("");
   const [search, setSearch] = useState("");
   const [notes, setNotes] = useState("");
   return <div className="space-y-3">
+    <QuantityUnitField label="Amount" quantityLabel="template.field.quantity" unitLabel="template.field.unit" value={quantityUnit} onChange={setQuantityUnit} options={[{value:"EA",label:"EA"},{value:"BOX",label:"BOX"}]} />
     <Input label="Name" required value={name} onChange={e => setName(e.target.value)} />
     <Input label="Email" type="email" placeholder="Email" />
     <Input label="Password" type="password" autoComplete="new-password" />

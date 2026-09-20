@@ -1,0 +1,263 @@
+
+> nexora-monorepo@1.0.0 test
+> vitest run --maxWorkers=2 --minWorkers=1
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients
+
+ ✓ packages/erp-screens/src/clinical-templates/clinical-templates.test.tsx (7 tests) 3181ms
+   ✓ patient form preserves edits through section changes and retries with the same operation  1261ms
+   ✓ read-only metadata blocks saves and form inputs  303ms
+   ✓ scope remounts cannot retain another user patient edits  410ms
+   ✓ New patient resets a saved record in a reused new-record tab  641ms
+   ✓ empty contact editors do not create rows until edited and retain focus while typing  438ms
+ ✓ packages/erp-screens/src/templates/preference-compliance.test.tsx (4 tests) 3931ms
+   ✓ all registered templates inherit managed table preferences in both density profiles  3752ms
+stderr | packages/erp-screens/src/clinical-templates/query.test.tsx > disabled query shortcuts do not focus search or open help
+An update to PatientQueryTemplate inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ packages/erp-screens/src/templates/page-template.test.tsx (8 tests) 2615ms
+   ✓ every configured template renders real shared content and starts with valid sample data  2215ms
+ ✓ packages/erp-screens/src/clinical-templates/query.test.tsx (11 tests) 2406ms
+   ✓ query waits for criteria and preserves filters after a failed search  581ms
+   ✓ inline details belong to the selected row and record actions use navigation  331ms
+ ✓ packages/erp-screens/src/lifecycle/sources.test.tsx (11 tests) 2062ms
+   ✓ Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged  358ms
+   ✓ Lifecycle source mappings > creates a pinned mapping from a registered source and saves it through the governed draft  415ms
+ ✓ packages/erp-screens/src/lifecycle/lifecycle.test.tsx (17 tests) 2524ms
+   ✓ LifecycleConfigurationPage > console summary uses server validation and clears it after editing  354ms
+   ✓ LifecycleConfigurationPage > saves a draft with the expected revision and reuses the operation key on retry  335ms
+ ✓ packages/erp-screens/src/preferences/preferences.test.tsx (4 tests) 1729ms
+   ✓ record layout and all three density options use the central preference update  887ms
+   ✓ Own Settings uses accessible module options and honors locks  412ms
+ ✓ packages/erp-screens/src/drafts/use-shared-draft.test.tsx (4 tests) 1850ms
+   ✓ failed draft write retains the exact payload and operation identity on retry  848ms
+   ✓ completion waits for in-flight autosave before discarding its acknowledged revision  819ms
+ ✓ packages/erp-screens/src/templates/registry-template.test.tsx (3 tests) 663ms
+   ✓ all five registry templates render through shared engines with preference-owned layouts  340ms
+ ✓ packages/erp-screens/src/approvals/approval-workspace.test.tsx (7 tests) 689ms
+ ✓ packages/erp-shell/src/workspace/use-workspace-navigation.test.tsx (17 tests) 1093ms
+ ✓ packages/erp-screens/src/forms/dynamic-record-form.test.tsx (7 tests) 1323ms
+   ✓ StrictMode loads safely and reports only acknowledged saves  369ms
+ ✓ packages/erp-screens/src/drafts/draft-center.test.tsx (3 tests) 1264ms
+   ✓ metadata and policy appear, search/filter use the API and open rechecks access  663ms
+   ✓ discard retry retains its operation id and does not remove a row until confirmed  315ms
+ ✓ packages/ai-client/src/transport.test.ts (22 tests) 1422ms
+   ✓ the echo transport > no credential configured falls back to the mock  352ms
+   ✓ the echo transport > an unreachable service falls back to the mock  351ms
+   ✓ the echo transport > the mock says nothing left the browser, and lists what would have  351ms
+   ✓ the echo transport > the mock shows the redacted value, not the original  351ms
+ ✓ packages/ai-ui/src/administration.test.tsx (20 tests) 2342ms
+ ✓ packages/ops-ui/src/inline-edit-typed.test.tsx (19 tests) 1839ms
+ ✓ packages/ops-ui/src/search-select.test.tsx (14 tests) 800ms
+ ✓ packages/erp-screens/src/clinic-billing/workspace.test.tsx (5 tests) 1237ms
+   ✓ managed layouts update without losing input; failed requests retry the exact operation  514ms
+   ✓ bill correction retains input and operation identity on failure; read-only view can return  548ms
+ ✓ packages/erp-screens/src/library/preference-compliance.test.tsx (4 tests) 1009ms
+   ✓ all 12 component catalog routes render their actual examples under non-default preferences  685ms
+ ✓ packages/erp-shell/src/workspace/workspace-canvas.test.tsx (29 tests) 966ms
+stderr | packages/erp-screens/src/care-pages/workspace.test.tsx > multiple emergency pathways reveal independent fields and preserve values when hidden
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+
+ ✓ packages/erp-screens/src/clinical-consultation/workspace.test.tsx (3 tests) 774ms
+   ✓ expanded panels retain values and validation opens a hidden invalid vital  329ms
+stderr | packages/erp-screens/src/care-pages/workspace.test.tsx > multiple emergency pathways reveal independent fields and preserve values when hidden
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+
+ ✓ packages/erp-screens/src/care-pages/workspace.test.tsx (3 tests) 1081ms
+   ✓ failed saves keep notes and retry the identical operation; selectors cannot discard dirty inputs  734ms
+ ✓ packages/erp-config/src/application-config.test.ts (3 tests) 910ms
+   ✓ API application configuration > uses backend menus and keys while keeping page components and field identities local  441ms
+ ✓ packages/erp-config/src/i18n.test.ts (4 tests) 960ms
+   ✓ localization contracts > provides every catalog message and preserves interpolation names in each language  939ms
+ ✓ packages/erp-shell/src/workspace/workspace-tabs.test.tsx (15 tests) 424ms
+ ✓ packages/ops-ui/src/inline-edit.test.tsx (15 tests) 716ms
+ ✓ packages/ops-ui/src/overlay.test.tsx (23 tests) 699ms
+ ✓ packages/erp-screens/src/records/specialized-editors.test.tsx (2 tests) 930ms
+   ✓ billing fields survive tab changes and are included with line items in a real save  560ms
+   ✓ consultation recovers composition, narrative, codes, orders and review checkboxes  368ms
+ ✓ packages/ai-ui/src/transparency.test.tsx (28 tests) 684ms
+ ✓ packages/ops-ui/src/form-controls.test.tsx (30 tests) 483ms
+ ✓ packages/erp-screens/src/op-registration/workspace.test.tsx (3 tests) 497ms
+ ✓ packages/erp-screens/src/clinical-triage/editor.test.tsx (3 tests) 555ms
+ ✓ packages/erp-screens/src/imports/csv-import-dialog.test.tsx (6 tests) 471ms
+ ✓ packages/ai-ui/src/modes.test.tsx (34 tests) 679ms
+ ✓ packages/ops-ui/src/shared-components.test.tsx (11 tests) 551ms
+ ❯ packages/erp-screens/src/library/component-catalog.test.tsx (5 tests | 1 failed) 565ms
+   × every public ops-ui component is indexed and every example has runnable code 10ms
+     → expected [ 'QuantityUnitField' ] to deeply equal []
+   ✓ form search finds component names and reset clears only the demo 208ms
+   ✓ copy uses actual rendered source and clipboard failure has manual fallback 160ms
+   ✓ navigation exposes only available product pages 89ms
+   ✓ overlays confirm locally and recovery retry preserves inputs 97ms
+ ✓ packages/ops-ui/src/dropdown.test.tsx (11 tests) 553ms
+ ✓ packages/erp-screens/src/worklist/filter-bar.test.tsx (24 tests) 622ms
+ ✓ packages/erp-screens/src/dcp-designer/workspace.test.tsx (3 tests) 560ms
+   ✓ visual edits reuse stable IDs; failed save retains edits and reuses operation on retry  337ms
+ ✓ packages/erp-screens/src/dcp-designer/dependencies.test.tsx (3 tests) 659ms
+   ✓ parent change clears all descendants and late API responses cannot restore old options  308ms
+ ✓ packages/erp-data/src/records.test.ts (11 tests) 735ms
+ ✓ packages/erp-shell/src/erp-context.test.tsx (38 tests) 428ms
+ ✓ packages/ops-ui/src/page-copy-localization.test.tsx (9 tests) 310ms
+ ✓ packages/auth/src/session.test.tsx (32 tests) 314ms
+ ✓ packages/erp-screens/src/worklist/use-column-layout.test.tsx (22 tests) 567ms
+ ✓ packages/erp-screens/src/op-consultation/workspace.test.tsx (1 test) 358ms
+   ✓ OP summary navigates fields; locked layout and review retain unsaved values  357ms
+ ✓ packages/ops-ui/src/pagination.test.tsx (9 tests) 314ms
+ ✓ packages/ops-ui/src/reference-data.test.tsx (17 tests) 239ms
+ ✓ packages/erp-screens/src/comprehensive-consultation/workspace.test.tsx (1 test) 366ms
+   ✓ specialty edits survive context and tenant-locked layout changes; preview never saves  365ms
+ ✓ packages/erp-screens/src/dcp-designer/catalog-manager.test.tsx (4 tests) 328ms
+ ✓ packages/ops-ui/src/segmented.test.tsx (9 tests) 265ms
+ ✓ packages/erp-shell/src/workspace/use-mdi-workspace.test.tsx (7 tests) 189ms
+ ✓ packages/erp-screens/src/dcp-designer/host-runtime.test.tsx (3 tests) 297ms
+ ✓ packages/erp-screens/src/device-integrations/workspace.test.tsx (2 tests) 295ms
+stderr | packages/ai-ui/src/use-assistant.test.tsx > the administration config > arrives once asked for
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | packages/ai-ui/src/use-assistant.test.tsx > the administration config > a refused config leaves it null rather than half-built
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ packages/ai-ui/src/use-assistant.test.tsx (24 tests) 183ms
+ ✓ packages/erp-screens/src/page-library/catalog.test.tsx (4 tests) 261ms
+ ✓ packages/erp-screens/src/worklist/use-filter-sync.test.tsx (9 tests) 249ms
+ ✓ packages/ops-ui/src/recovery-notice.test.tsx (5 tests) 241ms
+ ✓ packages/erp-shell/src/product-context.test.tsx (3 tests) 212ms
+ ✓ packages/erp-screens/src/records/record-panels.test.tsx (4 tests) 241ms
+ ✓ packages/erp-screens/src/identity-devices/workspace.test.tsx (3 tests) 272ms
+ ✓ packages/erp-screens/src/worklist/saved-view.test.tsx (11 tests) 220ms
+ ✓ packages/erp-screens/src/master-transfer/panel.test.tsx (3 tests) 179ms
+ ✓ packages/ops-ui/src/states.test.tsx (24 tests) 263ms
+ ✓ packages/erp-screens/src/templates/configured-template-page.test.tsx (3 tests) 175ms
+ ✓ packages/erp-screens/src/label-printing/workspace.test.tsx (2 tests) 164ms
+ ✓ packages/erp-screens/src/dcp-designer/runtime-fields.test.tsx (5 tests) 136ms
+ ✓ packages/erp-screens/src/dcp-designer/sections.test.tsx (4 tests) 191ms
+ ✓ packages/ops-ui/src/quantity-unit-field.test.tsx (9 tests) 249ms
+ ✓ packages/erp-screens/src/clinical-templates/query-search.test.tsx (2 tests) 182ms
+ ✓ packages/workspace-core/src/use-workspace.test.tsx (19 tests) 203ms
+ ✓ packages/erp-screens/src/login/recovery.test.tsx (1 test) 150ms
+ ✓ packages/ops-ui/src/button.test.tsx (5 tests) 173ms
+ ✓ packages/erp-screens/src/clinical-templates/record-layout.test.tsx (2 tests) 136ms
+ ✓ packages/erp-screens/src/record-page/record-page.test.tsx (2 tests) 193ms
+ ✓ packages/erp-shell/src/workspace/mdi-taskbar.test.tsx (7 tests) 169ms
+ ✓ packages/ops-ui/src/card.test.tsx (6 tests) 120ms
+ ✓ packages/erp-screens/src/preference-preview.test.tsx (1 test) 81ms
+ ✓ packages/erp-screens/src/worklist/export-rows.test.ts (26 tests) 100ms
+ ✓ packages/ops-ui/src/tabs.test.tsx (3 tests) 130ms
+ ✓ packages/ops-ui/src/avatar.test.tsx (10 tests) 133ms
+ ✓ packages/ops-ui/src/localization.test.tsx (1 test) 118ms
+ ✓ packages/erp-data/src/mock.test.ts (148 tests) 69ms
+ ✓ packages/erp-screens/src/product-services.test.tsx (2 tests) 92ms
+ ✓ packages/ops-ui/src/skeleton.test.tsx (4 tests) 98ms
+ ✓ packages/ops-ui/src/stat-card.test.tsx (6 tests) 100ms
+ ✓ packages/erp-screens/src/master-transfer/inflation.test.ts (2 tests) 64ms
+ ✓ packages/erp-shell/src/sentinel.test.tsx (1 test) 79ms
+ ✓ packages/erp-shell/src/workspace/use-detached-windows.test.tsx (13 tests) 61ms
+ ✓ packages/ops-ui/src/badge.test.tsx (12 tests) 76ms
+ ✓ packages/ai-client/src/sources.test.tsx (10 tests) 55ms
+ ✓ packages/ops-ui/src/option-filter.test.tsx (13 tests) 40ms
+ ✓ packages/erp-screens/src/product-access.test.tsx (2 tests) 105ms
+ ✓ packages/ops-ui/src/scanner-input.test.tsx (2 tests) 72ms
+ ✓ packages/erp-screens/src/master-transfer/format.test.ts (8 tests) 112ms
+ ✓ packages/erp-shell/src/chrome.test.tsx (23 tests) 61ms
+ ✓ packages/erp-config/src/lifecycle/sources.test.ts (17 tests) 33ms
+ ✓ packages/platform-ports/src/ports.test.tsx (17 tests) 55ms
+ ✓ packages/erp-config/src/localization-formatting.test.ts (13 tests) 40ms
+ ✓ packages/auth/src/recovery.test.ts (9 tests) 24ms
+ ✓ packages/workspace-core/src/document-manager.test.ts (47 tests) 23ms
+ ✓ packages/erp-config/src/lifecycle/lifecycle.test.ts (19 tests) 52ms
+ ✓ packages/ai-client/src/redact.test.ts (157 tests) 31ms
+ ✓ packages/erp-screens/src/imports/workbook-options.test.ts (2 tests) 20ms
+ ✓ packages/erp-data/src/dcp-runtime.test.ts (4 tests) 14ms
+ ✓ packages/erp-config/src/filter-policy.test.ts (15 tests) 19ms
+ ✓ packages/ops-ui/src/cn.test.ts (9 tests) 27ms
+ ✓ packages/ai-client/src/admin.test.ts (11 tests) 11ms
+ ✓ packages/workspace-core/src/detach.test.ts (14 tests) 10ms
+ ✓ packages/erp-shell/src/workspace/mdi-frames.test.ts (20 tests) 14ms
+ ✓ packages/workspace-core/src/lifecycle.test.ts (11 tests) 10ms
+ ✓ packages/workspace-core/src/split.test.ts (26 tests) 16ms
+ ✓ packages/erp-config/src/draft-policy.test.ts (2 tests) 5ms
+ ✓ packages/erp-data/src/csv-import.test.ts (5 tests) 14ms
+ ✓ packages/ai-client/src/policy.test.ts (9 tests) 12ms
+ ✓ packages/erp-config/src/data-classification.test.ts (22 tests) 16ms
+ ✓ packages/erp-screens/src/spreadsheet/model.test.ts (4 tests) 6ms
+ ✓ packages/ai-client/src/assemble.test.ts (19 tests) 11ms
+ ✓ packages/erp-screens/src/worklist/search-request.test.ts (10 tests) 10ms
+ ✓ packages/ai-config/src/gates.test.ts (22 tests) 7ms
+ ✓ packages/erp-config/src/product.test.ts (6 tests) 9ms
+ ✓ packages/workspace-core/src/document-key.test.ts (9 tests) 6ms
+ ✓ packages/erp-shell/src/workspace/target-document.test.ts (9 tests) 7ms
+ ✓ packages/erp-data/src/draft-center.test.ts (2 tests) 12ms
+ ✓ packages/erp-data/src/dcp-host.test.ts (2 tests) 13ms
+ ✓ packages/erp-config/src/export-policy.test.ts (13 tests) 9ms
+ ✓ packages/erp-screens/src/clinical-templates/overview-data.test.ts (1 test) 12ms
+ ✓ packages/erp-config/src/dcp-repeating.test.ts (4 tests) 8ms
+ ✓ packages/ops-ui/src/error-mapper.test.ts (32 tests) 9ms
+ ✓ packages/ai-config/src/policy.test.ts (13 tests) 7ms
+ ✓ apps/desktop/src/platform/tauri-windows.test.ts (3 tests) 7ms
+ ✓ packages/ai-client/src/guard.test.ts (9 tests) 5ms
+ ✓ packages/platform-ports/src/identity-devices.test.ts (2 tests) 8ms
+ ✓ packages/erp-config/src/dcp-designer-metadata.test.ts (2 tests) 5ms
+ ✓ packages/auth/src/sentinel.test.ts (5 tests) 6ms
+ ✓ packages/workspace-core/src/policy.test.ts (15 tests) 8ms
+ ✓ packages/platform-ports/src/devices.test.ts (1 test) 6ms
+ ✓ packages/erp-screens/src/imports/csv-options.test.ts (3 tests) 6ms
+ ✓ packages/erp-config/src/form-rules.test.ts (3 tests) 6ms
+ ✓ packages/erp-config/src/preference-defaults.test.ts (3 tests) 3ms
+ ✓ packages/erp-screens/src/clinical-templates/record-age.test.ts (1 test) 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/erp-screens/src/library/component-catalog.test.tsx > every public ops-ui component is indexed and every example has runnable code
+AssertionError: expected [ 'QuantityUnitField' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "QuantityUnitField",
++ ]
+
+ ❯ packages/erp-screens/src/library/component-catalog.test.tsx:18:57
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 140 passed (141)
+      Tests  1 failed | 1675 passed (1676)
+   Start at  16:50:33
+   Duration  112.24s (transform 7.56s, setup 39.35s, collect 30.26s, tests 60.16s, environment 56.14s, prepare 9.64s)
+

@@ -13,7 +13,7 @@ export const CATALOG_GROUPS = [
   {pageId:"localization",key:"localization"},
 ] as const;
 export const CATALOG_ENTRIES = [
-  {id:"TextDemo",group:"forms",components:["Input","SearchInput","Textarea","Highlight","ScannerInput"],source:"form-controls.tsx, option-filter.tsx, scanner-input.tsx"},
+  {id:"TextDemo",group:"forms",components:["Input","SearchInput","Textarea","Highlight","ScannerInput","QuantityUnitField"],source:"form-controls.tsx, option-filter.tsx, scanner-input.tsx, quantity-unit-field.tsx"},
   {id:"ValidationDemo",group:"forms",components:["FieldShell","Input","FormErrorSummary"],source:"form-controls.tsx"},
   {id:"SelectDemo",group:"forms",components:["Select","SearchSelect","MultiSelect"],source:"form-controls.tsx, search-select.tsx"},
   {id:"ChoiceDemo",group:"forms",components:["Checkbox","Radio","Toggle","RangeInput","RadioGroup","RangeField"],source:"form-controls.tsx"},

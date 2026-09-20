@@ -57,3 +57,5 @@ Never substitute a screenshot, an empty route or a passing build for functional 
 - [Shared lifecycle configuration](lifecycle-configuration.md): reusable catalogue, visual editor, validation, resolution preview, approval, publication and activation over a host lifecycle API, plus optional source registry browsing and governed source-to-event payload mappings; host adoption and live acceptance remain separate.
 
 - [Master transfer and pricing expression components](master-transfer.md)
+
+- [Quantity and unit field](quantity-unit-field.md): controlled decimal strings and unit choices with a host-provided exact preview; no conversion or API ownership.
