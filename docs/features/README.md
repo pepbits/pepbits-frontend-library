@@ -1,5 +1,7 @@
 # Feature catalog
 
+- [Host-defined workspace modules](host-defined-modules.md): reusable module selector and landing-page behavior for applications with scoped navigation.
+
 Reviewed 13 September 2026. See the [current delivery index](../releases/unreleased/README.md) for deployment status and the [documentation coverage](../README.md#current-status) for remaining authoring/review work. The [page-help audit](../documentation/reference-guide-audit-2026-09-11.md) maps the reference-only pages to their actual implementations and distinguishes platform instructions from missing domain workflows.
 
 - [Own Settings and default module](own-settings.md): API-backed personal startup module with tenant controls.

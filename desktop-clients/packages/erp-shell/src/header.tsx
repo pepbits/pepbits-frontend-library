@@ -9,13 +9,13 @@ import { useProduct } from "./product-context";
 
 import React, { useState } from "react";
 import { ArrowRight, Bell, BookOpen, CircleHelp, Building2, ChevronDown, CircleUserRound, LogOut, Mail, MessageSquareText, Search, Settings, SlidersHorizontal, UserRound } from "lucide-react";
-import { BRANCHES, MESSAGES, NOTIFICATIONS } from "@pepbits/erp-config";
+import { BRANCHES, MESSAGES, NOTIFICATIONS, moduleLandingPage } from "@pepbits/erp-config";
 import { useNavigation } from "@pepbits/platform-ports";
 import { useSession } from "@pepbits/auth";
 import { chromePalette } from "./chrome-palette";
-import { dashboardPageId, useERP } from "./erp-context";
+import { useERP } from "./erp-context";
 import { HeaderClock } from "./header-clock";
-import type { ModuleKey, NotificationKind } from "@pepbits/erp-config";
+import type { ModuleDefinition, ModuleKey, NotificationKind } from "@pepbits/erp-config";
 import { ActionMenu, DropdownSelect, MenuButton, cn } from "@pepbits/ops-ui";
 import { Badge } from "@pepbits/ops-ui";
 
@@ -87,14 +87,17 @@ export function Header(props: {branches?: Array<{value:string;label:string}>; sh
     navigation.open({ pageId, ...options });
   /* The module switcher navigates to that module's dashboard and each shell applies
      its own semantics: web pushes the URL, desktop rebuilds its tab set. */
-  const setModule = (value: ModuleKey) => navigation.open({ pageId: dashboardPageId(value) });
+  const setModule = (value: ModuleKey) => {
+    const landing = moduleLandingPage(product,value);
+    if (landing) navigation.open({ pageId: landing });
+  };
   /* Same mechanism the sidebar uses: a theme id scopes the whole palette to
      this element, and the tone re-points the generic tokens onto that theme's
      chrome seeds. The bar is translucent with a backdrop blur, so
      --surface-translucent is part of what the helper overrides. */
   const headerPalette = chromePalette(preferences.headerTone);
   const page = product.pages[activePageId];
-  const moduleOptions = Object.values(product.modules).map((item) => ({
+  const moduleOptions = Object.values(product.modules).filter((item): item is ModuleDefinition => Boolean(item)).map((item) => ({
     value: item.id,
     label: t(item.shortLabelKey ?? item.shortLabel),
     description: t(item.labelKey ?? item.label),
@@ -109,7 +112,7 @@ export function Header(props: {branches?: Array<{value:string;label:string}>; sh
   return (
     <header data-theme={preferences.headerTheme === "match" ? undefined : preferences.headerTheme} style={headerPalette} className={"no-print relative z-40 flex min-h-[var(--header-height)] shrink-0 items-center gap-1.5 border-b border-[var(--border)] bg-[var(--surface-translucent)] px-3 backdrop-blur-xl "+(host?"flex-wrap py-1 sm:h-[var(--header-height)] sm:flex-nowrap sm:py-0":"h-[var(--header-height)]")}>
       <div data-tour="module" className="shrink-0">
-      <DropdownSelect
+      {moduleOptions.length === 1 ? <span className="flex h-[30px] items-center gap-2 rounded-[min(var(--radius),9px)] border border-[var(--border)] bg-[var(--surface)] px-2 text-xs font-semibold" aria-label={t("Module")}>{moduleOptions[0].icon}{moduleOptions[0].label}</span> : <DropdownSelect
         value={currentModule}
         options={moduleOptions}
         onChange={(value) => setModule(value as ModuleKey)}
@@ -117,7 +120,7 @@ export function Header(props: {branches?: Array<{value:string;label:string}>; sh
         className="shrink-0"
         compact={!!host}
         triggerClassName={host?"max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0":""}
-      />
+      />}
       </div>
 
       <div className="mx-1 h-7 w-px shrink-0 bg-[var(--border)]" />

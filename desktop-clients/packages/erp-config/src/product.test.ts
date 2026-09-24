@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { canProductAction, productForRole, defineProduct, LEDGER_PRODUCT, NEXORA_PRODUCT } from "./product.ts";
+import { canProductAction, productForRole, defineProduct, LEDGER_PRODUCT, NEXORA_PRODUCT, moduleLandingPage } from "./product.ts";
 import { MODULES, PAGE_REGISTRY } from "./navigation.ts";
 
 describe("product profiles", () => {
@@ -21,6 +21,13 @@ describe("product profiles", () => {
     expect(Object.keys(NEXORA_PRODUCT.modules)).toHaveLength(8);
     expect(Object.keys(LEDGER_PRODUCT.modules)).toHaveLength(1);
   });
+});
+
+test("host-defined modules open a registered page without an invented dashboard",()=>{
+ const product={...LEDGER_PRODUCT,defaultModule:"patient-administration",modules:{"patient-administration":{...MODULES.finance,id:"patient-administration",navigation:[{id:"patients",label:"Patients",items:[{id:"missing",pageId:"missing",label:"Unavailable"},{id:"search",pageId:"patient-search",label:"Patient search"}]}]}},pages:{"patient-search":{id:"patient-search",title:"Patient search",subtitle:"",module:"patient-administration",kind:"dashboard" as const}}};
+ expect(moduleLandingPage(product,"patient-administration")).toBe("patient-search");
+ expect(moduleLandingPage(product,"unavailable")).toBeUndefined();
+ expect(moduleLandingPage(LEDGER_PRODUCT,"finance")).toBe("finance-dashboard");
 });
 
 

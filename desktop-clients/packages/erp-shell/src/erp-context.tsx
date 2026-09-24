@@ -127,7 +127,8 @@ export function ERPProvider({ children, fallback = null }: { children: React.Rea
   const [lastModule, setLastModule] = useState<ModuleKey>(product.defaultModule);
 
   const activePage = product.pages[navigation.current.pageId];
-  const currentModule = activePage && activePage.module !== "shared" ? activePage.module : lastModule;
+  const candidateModule = activePage && activePage.module !== "shared" ? activePage.module : lastModule;
+  const currentModule = product.modules[candidateModule] ? candidateModule : product.defaultModule;
 
   useEffect(() => {
     const page = product.pages[navigation.current.pageId];

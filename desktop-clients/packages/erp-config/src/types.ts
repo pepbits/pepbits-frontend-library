@@ -1,7 +1,9 @@
 import type {PageTemplateDefinition} from "./page-templates";
 import type { LucideIcon } from "lucide-react";
 
-export type ModuleKey = "hr" | "finance" | "payroll" | "sales" | "supply" | "healthcare" | "pharmacy" | "library";
+/** Product hosts may register their own stable module codes without changing the
+ * shared shell's ERP demonstration catalogue. */
+export type ModuleKey = "hr" | "finance" | "payroll" | "sales" | "supply" | "healthcare" | "pharmacy" | "library" | (string & {});
 export type ThemeKey = "nexora" | "midnight" | "emerald" | "sand" | "rose" | "slate" | "contrast"
   | "indigo" | "lagoon" | "sunset" | "graphite" | "plum" | "nord" | "solarized";
 export type FormNavigation = "rail" | "tabs" | "wizard";

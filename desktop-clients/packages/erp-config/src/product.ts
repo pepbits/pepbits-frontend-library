@@ -23,6 +23,18 @@ export interface ProductDefinition {
   pages: Record<string, PageDefinition>;
 }
 
+/** Hosts may use named workspaces without a synthetic dashboard page. Resolve
+ * the first registered leaf after checking for a real module dashboard. */
+export function moduleLandingPage(product:ProductDefinition,module:ModuleKey):string|undefined{
+ const definition=product.modules[module];if(!definition)return;
+ const dashboard=module==='library'?'library-dashboard':module+'-dashboard';
+ if(product.pages[dashboard])return dashboard;
+ const first=(items:readonly MenuItem[]):string|undefined=>{
+  for(const item of items){if(item.pageId&&product.pages[item.pageId])return item.pageId;const child=first(item.children??[]);if(child)return child;}
+ };
+ for(const section of definition.navigation){const page=first(section.items);if(page)return page;}
+}
+
 export function defineProduct(input: {
   id: string;
   name: string;
@@ -88,7 +100,7 @@ function pruneModules(modules: ProductDefinition["modules"], pages: ProductDefin
     if (children && !children.length && !item.pageId) return [];
     return [{...item, ...(item.pageId ? {label:pages[item.pageId].title} : {}), ...(children ? {children} : {})}];
   });
-  return Object.fromEntries(Object.entries(modules).map(([id,module]) => [id,{...module,navigation:module.navigation.map(section=>({...section,items:items(section.items)})).filter(section=>section.items.length)}]));
+  return Object.fromEntries(Object.entries(modules).flatMap(([id,module]) => module ? [[id,{...module,navigation:module.navigation.map(section=>({...section,items:items(section.items)})).filter(section=>section.items.length)}]] : []));
 }
 
 /** UI availability only. Services must independently authorize every request. */
