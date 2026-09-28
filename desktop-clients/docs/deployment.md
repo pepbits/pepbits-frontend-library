@@ -69,9 +69,13 @@ deploy. Its API URLs must still match the deployment config:
 npm run deploy -- --activate PREVIOUS_RELEASE_ID
 ```
 
-## Current activation — DCP designer style, 12 September 2026
+## Current activation on the existing demo sites — DCP designer style, 12 September 2026
 
 Release `20260912002147213-851cb66e`, application commit `6ec329f22e589dece2894ef5b12ad4961e5ff8b0`, is the latest recorded activation on both demo sites. The API was not restarted. Previous release `20260911145802227-397d1cf5` is retained for rollback. See the [deployment evidence and hosted-CI follow-up](../../docs/releases/unreleased/dcp-style-deployment-2026-09-12.md). Current state takes precedence over the dated historical entries below; those entries describe their original activation, not multiple simultaneously active releases.
+
+## Isolated frontend test site — 28 September 2026
+
+The separate test site is [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com), release `20260928110944214-b5bb610f`, built from frontend source `954bf19` with API source `3ac4e922`. See the dedicated [test-site deployment runbook](frontend-test-deployment.md) and [deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md). This site uses isolated services and an Nginx virtual host; it does not replace either existing demo site or change ERP, School or healthcare service configuration.
 
 ## Historical activation — Component Library, 9 September 2026
 

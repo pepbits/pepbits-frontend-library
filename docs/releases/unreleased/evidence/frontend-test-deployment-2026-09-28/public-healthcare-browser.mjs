@@ -1,0 +1,9 @@
+import assert from 'node:assert/strict';
+import {mkdirSync,writeFileSync} from 'node:fs';
+import {loadPlaywright} from '../../../../../desktop-clients/e2e/harness.mjs';
+const base='https://frontend.test.pepbits.com',out=process.env.E2E_ARTIFACTS??'/tmp/frontend-test-healthcare-browser';mkdirSync(out,{recursive:true});
+const browser=await loadPlaywright().chromium.launch({chromiumSandbox:false,args:process.env.E2E_DNS_OVERRIDE?['--host-resolver-rules=MAP frontend.test.pepbits.com '+process.env.E2E_DNS_OVERRIDE]:[]});const errors=[],checks=[];
+try{const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));await page.goto(base,{waitUntil:'networkidle'});await page.locator('input').first().fill('admin');await page.locator('input[type=password]').fill('admin');await page.locator('button[type=submit]').click();await page.locator('header [data-tour=module]').waitFor();
+for(const[id,marker,state]of[['allyvora-patient-query','data-clinical-query','query'],['allyvora-patient-record','data-clinical-record','new-patient-editor'],['allyvora-patient-360','data-clinical-overview','patient-selector-overview']]){const failed=[];const watch=r=>{if(r.url().startsWith(base+'/api/')&&r.status()>=400)failed.push({path:new URL(r.url()).pathname,status:r.status()});};page.on('response',watch);await page.goto(base+'/library/'+id,{waitUntil:'networkidle'});await page.locator('['+marker+']').waitFor();await page.screenshot({path:out+'/'+id+'.png'});assert.deepEqual(failed,[]);checks.push({pageId:id,state,status:'passed',apiFailures:failed});page.off('response',watch);}
+assert.deepEqual(errors,[]);console.log('PASS three public existing healthcare read states; no writes or API/page errors.');
+}finally{writeFileSync(out+'/results.json',JSON.stringify({checks,errors,dnsOverride:process.env.E2E_DNS_OVERRIDE??null,certificateVerification:true},null,2)+'\n');await browser.close();}

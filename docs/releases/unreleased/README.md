@@ -1,8 +1,9 @@
 # Current delivery and release records
 
+- [Isolated frontend test site deployment — 28 September 2026](frontend-test-deployment-2026-09-28.md): release `20260928110944214-b5bb610f` is active at `frontend.test.pepbits.com`; the 35 route/runtime checks and public browser checks for 152 static destinations, six dynamic URLs, four header choices and four representative pages passed.
 - [Reference module import — 28 September 2026](reference-modules-2026-09-28.md): active reusable Reports, ERP1, ERP2 and School import; no deployment claimed.
 
-Status reviewed **13 September 2026**. Latest recorded activation: [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`, verified on both demo sites. The earlier [DCP frontend contract/runtime deployment](dcp-frontend-deployment-2026-09-11.md) already delivered the dependent dropdown, value-set, bounded import, repeatable-field and runtime increments; their original implementation records retain historical local-only status.
+Status reviewed **28 September 2026**. The latest deployment is the isolated [frontend test site](frontend-test-deployment-2026-09-28.md), verified through its public HTTPS endpoint. The latest deployment on the two existing demo sites remains [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`. The earlier [DCP frontend contract/runtime deployment](dcp-frontend-deployment-2026-09-11.md) already delivered the dependent dropdown, value-set, bounded import, repeatable-field and runtime increments; their original implementation records retain historical local-only status.
 
 Latest documentation review: [repository audit — 13 September 2026](documentation-audit-2026-09-13.md). This review does not redeploy the application or resolve hosted feature-browser failures.
 
@@ -24,7 +25,8 @@ governed source-to-lifecycle-event payload mappings inside the lifecycle draft. 
 | Area | Current record |
 | --- | --- |
 | Latest implementation | [DCP style alignment](dcp-designer-style-2026-09-12.md), preserving the deployed designer/runtime contracts |
-| Latest deployment | [DCP style on both demo sites](dcp-style-deployment-2026-09-12.md) |
+| Latest deployment | [Isolated frontend test site](frontend-test-deployment-2026-09-28.md) |
+| Latest deployment on the existing demo sites | [DCP style on both demo sites](dcp-style-deployment-2026-09-12.md) |
 | Release evidence review | [11 September release documentation review](documentation-review-2026-09-11.md) |
 | Documentation reconciliation | [13 September repository audit](documentation-audit-2026-09-13.md) |
 | Feature inventory | [Current feature catalog](../../features/README.md) |
@@ -111,3 +113,7 @@ adds an optional production capability contract and cursor pagination to the exi
 ## Local verification — 28 September 2026
 
 [Reports, ERP1, ERP2 and School reference modules](reference-modules-2026-09-28.md): implementation and local validation complete for 152 static destinations across six public packages. Final evidence includes 162 browser route/header checks, module actions, visual comparisons, unit/API suites, type checks and both host builds. Guide translation drafts are populated and await native review; package publication and live deployment are outside this record.
+
+## Isolated frontend test deployment — 28 September 2026
+
+[The isolated public test site](frontend-test-deployment-2026-09-28.md) serves release `20260928110944214-b5bb610f` at `https://frontend.test.pepbits.com`. Its 35 route/runtime checks passed directly and through HTTPS, and the public browser run passed 152 static destinations, six dynamic URLs, four module-header choices and four representative rendered pages with no page errors. Three read-only checks on existing healthcare pages also passed with no writes. This separate site does not change the deployment records for the two existing demo hosts.
