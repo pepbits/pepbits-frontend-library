@@ -1,9 +1,9 @@
 # Current delivery and release records
 
-- [Isolated frontend test site deployment — 28 September 2026](frontend-test-deployment-2026-09-28.md): release `20260928110944214-b5bb610f` is active at `frontend.test.pepbits.com`; the 35 route/runtime checks and public browser checks for 152 static destinations, six dynamic URLs, four header choices and four representative pages passed.
+- [Isolated frontend test site deployment — 28 September 2026](frontend-test-deployment-2026-09-28.md): first activation of release `20260928110944214-b5bb610f` at `frontend.test.pepbits.com`; the 35 route/runtime checks and public browser checks for 152 static destinations, six dynamic URLs, four header choices and four representative pages passed.
 - [Reference module import — 28 September 2026](reference-modules-2026-09-28.md): active reusable Reports, ERP1, ERP2 and School import; no deployment claimed.
 
-Status reviewed **28 September 2026**. The latest deployment is the isolated [frontend test site](frontend-test-deployment-2026-09-28.md), verified through its public HTTPS endpoint. The latest deployment on the two existing demo sites remains [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`. The earlier [DCP frontend contract/runtime deployment](dcp-frontend-deployment-2026-09-11.md) already delivered the dependent dropdown, value-set, bounded import, repeatable-field and runtime increments; their original implementation records retain historical local-only status.
+Status reviewed **28 September 2026**. The latest deployment is the isolated [School role-header update](school-role-header-2026-09-28.md), verified through its public HTTPS endpoint. The latest deployment on the two existing demo sites remains [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`. The earlier [DCP frontend contract/runtime deployment](dcp-frontend-deployment-2026-09-11.md) already delivered the dependent dropdown, value-set, bounded import, repeatable-field and runtime increments; their original implementation records retain historical local-only status.
 
 Latest documentation review: [repository audit — 13 September 2026](documentation-audit-2026-09-13.md). This review does not redeploy the application or resolve hosted feature-browser failures.
 
@@ -25,7 +25,7 @@ governed source-to-lifecycle-event payload mappings inside the lifecycle draft. 
 | Area | Current record |
 | --- | --- |
 | Latest implementation | [DCP style alignment](dcp-designer-style-2026-09-12.md), preserving the deployed designer/runtime contracts |
-| Latest deployment | [Isolated frontend test site](frontend-test-deployment-2026-09-28.md) |
+| Latest deployment | [School role-header update](school-role-header-2026-09-28.md) |
 | Latest deployment on the existing demo sites | [DCP style on both demo sites](dcp-style-deployment-2026-09-12.md) |
 | Release evidence review | [11 September release documentation review](documentation-review-2026-09-11.md) |
 | Documentation reconciliation | [13 September repository audit](documentation-audit-2026-09-13.md) |
@@ -114,8 +114,8 @@ adds an optional production capability contract and cursor pagination to the exi
 
 [Reports, ERP1, ERP2 and School reference modules](reference-modules-2026-09-28.md): implementation and local validation complete for 152 static destinations across six public packages. Final evidence includes 162 browser route/header checks, module actions, visual comparisons, unit/API suites, type checks and both host builds. Guide translation drafts are populated and await native review; package publication and live deployment are outside this record.
 
-[School role views in the header](school-role-header-2026-09-28.md): six authenticated role views over the canonical School pages. Runtime verification and release state are pending; earlier reference-module checks do not cover this change.
+[School role views in the header](school-role-header-2026-09-28.md): six authenticated role views over the canonical School pages, deployed on release `20260928121228378-07561b3d`. Exact source identity, passing local tests, 28 public role checks and 162 public reference records are retained in its record.
 
 ## Isolated frontend test deployment — 28 September 2026
 
-[The isolated public test site](frontend-test-deployment-2026-09-28.md) serves release `20260928110944214-b5bb610f` at `https://frontend.test.pepbits.com`. Its 35 route/runtime checks passed directly and through HTTPS, and the public browser run passed 152 static destinations, six dynamic URLs, four module-header choices and four representative rendered pages with no page errors. Three read-only checks on existing healthcare pages also passed with no writes. This separate site does not change the deployment records for the two existing demo hosts.
+[The first isolated public test-site deployment](frontend-test-deployment-2026-09-28.md) activated release `20260928110944214-b5bb610f` at `https://frontend.test.pepbits.com`. Its 35 route/runtime checks passed directly and through HTTPS, and the public browser run passed 152 static destinations, six dynamic URLs, four module-header choices and four representative rendered pages with no page errors. Three read-only checks on existing healthcare pages also passed with no writes. This separate site does not change the deployment records for the two existing demo hosts.

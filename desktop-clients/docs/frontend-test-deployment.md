@@ -1,6 +1,6 @@
 # Frontend public test site runbook
 
-This runbook covers the isolated test site at [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com). Its current release is `20260928110944214-b5bb610f` (frontend source `954bf19`, API source `3ac4e922`). The [dated deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) is the source for exact deployment and verification evidence.
+This runbook covers the isolated test site at [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com). Its current release is `20260928121228378-07561b3d`, built from frontend/API source `9c3cea72e624dccb454cfd60fd2d0a34b774a69b`. The [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) contains current verification evidence. The [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) remains the historical setup record.
 
 ## Service layout
 
@@ -33,9 +33,11 @@ The isolated deployment root is `/home/pepadmin/pepbits/frontend-test-20260928`;
 the selected release pointer is
 `/home/pepadmin/pepbits/frontend-test-20260928/releases/current`. Check the
 pointer before an update and retain the prior package as a rollback target after
-future deployments. This was the first activation, so there was no older release
-to restore. If removing this first deployment, stop and remove only these three
-new units and the new Nginx virtual host; preserve the isolated data directory.
+future deployments. The retained rollback target is `20260928110944214-b5bb610f`.
+The School role-header update also retains its prior source, configuration and data
+backups. Restore the matching source/configuration/data and release pointer together,
+then restart only these three units and verify health. Preserve the isolated data
+directory and the Nginx virtual host during an ordinary rollback.
 
 Set `HOST=127.0.0.1` in the API service environment. The API's `HOST` setting is optional and otherwise retains its existing `0.0.0.0` default. The browser frontend must use same-origin `/api`; do not put the loopback API address into a public bundle. These processes and the virtual host are separate from ERP, School and healthcare services. The desktop-browser frontend remains a web app; this setup does not package or execute a native Tauri application.
 
@@ -66,6 +68,6 @@ The API and its data are synthetic demo fixtures. The visible `admin` / `admin` 
 
 Record frontend and API source identities, release identity and the isolated service configuration whenever deploying an update. Keep the public route on HTTPS, preserve `/api` as the browser-facing API prefix, and verify the deployed release identity and assets before running browser checks. Do not restart or reconfigure the existing ERP, School or healthcare services as part of this site's maintenance.
 
-Use the deployment host's private runtime notes to identify the active release and available rollback target before changing it. The private notes remain authoritative for exact host commands and unit names; this public runbook deliberately records no credentials or private server configuration. After activation or rollback, check the web release identity, assets, HTTPS certificate and API health through `/api`, then retain sanitized results under `docs/releases/unreleased/evidence/frontend-test-deployment-2026-09-28/`.
+Use the deployment host's private runtime notes to identify the active release and available rollback target before changing it. The private notes remain authoritative for exact host commands and unit names; this public runbook deliberately records no credentials or private server configuration. After activation or rollback, check the web release identity, assets, HTTPS certificate and API health through `/api`, then retain sanitized results under the evidence folder for that update; the current update uses `docs/releases/unreleased/evidence/school-role-header-2026-09-28/`.
 
-Deployment and browser verification are separate from native executable checks, real-backend integration, security certification and domain/native-speaker review. See the dated [deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) for the evidence actually collected.
+Deployment and browser verification are separate from native executable checks, real-backend integration, security certification and domain/native-speaker review. See the [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) for current evidence and the [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) for historical setup checks.

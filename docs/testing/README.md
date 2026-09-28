@@ -40,3 +40,7 @@ fictional fixtures. See [the lifecycle increment](../releases/unreleased/lifecyc
 host API and browser acceptance belong to the consuming application.
 Source registry and mapping tests are in `erp-config/src/lifecycle/sources.test.ts` and `erp-screens/src/lifecycle/sources.test.tsx`
 (fictional ERP source metadata, in-memory ports); see [the source mapping increment](../releases/unreleased/lifecycle-source-mapping-2026-09-18.md).
+
+## School role-header acceptance — 28 September 2026
+
+The [School role-header delivery](../releases/unreleased/school-role-header-2026-09-28.md) records 1,883 frontend tests, 248 API tests, both builds and repository gates against commit `9c3cea72e624dccb454cfd60fd2d0a34b774a69b`. All 28 authenticated role checks also passed on the isolated public HTTPS site. Use `desktop-clients/e2e/school-role-header.mjs` with explicit `E2E_BASE` and `E2E_API` to check header views, role grants, direct URLs, refresh/new tabs, search and representative existing modules. Full reference-page regression and deployment receipts are linked from the delivery record; counts from overlapping suites are not summed. Synthetic API acceptance does not establish real School identity/provider integration or native executable acceptance.

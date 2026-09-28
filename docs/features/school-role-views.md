@@ -1,6 +1,6 @@
 # School role views in the module header
 
-Feature ID: SCHOOL-ROLE-VIEWS. State: implementation in progress; runtime acceptance and deployment pending. Affected application/pages: School reference module in the shared header. Related release: [School role views — 28 September 2026](../releases/unreleased/school-role-header-2026-09-28.md).
+Feature ID: SCHOOL-ROLE-VIEWS. State: implemented and deployed; local and public role acceptance passed. Affected application/pages: School reference module in the shared header. Related release: [School role views — 28 September 2026](../releases/unreleased/school-role-header-2026-09-28.md).
 
 ## Choose a School view
 
@@ -34,4 +34,4 @@ The School frontend sends its selected module identity as `X-Reference-Module`. 
 
 Role views are header-level module entries backed by the existing School page catalogue. There is no duplicate 24-page registry for each role. Reports, ERP1 and ERP2 retain their legacy header behavior. Existing School route and workflow behavior remains in the same reference module.
 
-Runtime, browser, build, localization and deployment results for this change are pending. See the [unreleased change record](../releases/unreleased/school-role-header-2026-09-28.md) for the gate status. This guide does not claim native-speaker review, production authorization acceptance or deployment.
+The committed implementation passed 1,883 frontend tests, 248 API tests, both builds, typechecks and repository gates. Its authenticated local browser check passed 28 records, including all six role views, restricted data access, direct URLs, refresh, new tabs, remembered landing views and existing module navigation. The deployed release `20260928121228378-07561b3d` passed the same 28 role checks over public HTTPS with normal DNS and certificate validation. See the [delivery record](../releases/unreleased/school-role-header-2026-09-28.md) for source identity and deployment evidence. Native-speaker review and production School identity integration remain separate.
