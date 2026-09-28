@@ -1,0 +1,43 @@
+✔ session resolves a fixed fictional identity per role and rejects a role the user does not hold (51.452795ms)
+✔ generic resource list envelope {data,total}, filter, q, pagination (24.71195ms)
+✔ CRUD round trip: students, invoices (payAmount), issues (return), delete (19.590583ms)
+✔ library last-copy conflict on issues create (58.099213ms)
+✔ meta is unwrapped; attendance/marks/report-card/stats use their documented envelopes (90.62678ms)
+✔ branch and tenant isolation (51.543116ms)
+✔ wrong-branch and missing-identity denial (0.327452ms)
+✔ role scoping: student sees only own record/fee/attendance; parent sees only own children (22.566204ms)
+✔ teacher academic writes are limited to their own assigned classes/records (31.251048ms)
+✔ accountant is restricted to fees; librarian to books/issues (20.568869ms)
+✔ quiz attempts: student-only, scored server-side, one attempt, denies a second submission (16.112557ms)
+✔ settings: get/patch profile, change password, delete a session (26.10646ms)
+✔ malformed input never throws and returns structured 4xx (25.352145ms)
+✔ school profile, fee structure and contacts are readable reference data (14.951498ms)
+✔ leave requests, reservations and fee reminders are scoped and validated (15.774326ms)
+✔ quiz answer privacy, server-side grading and idempotent replay (15.017619ms)
+✔ live room: host-only privileges, class isolation, single vote per identity (21.222244ms)
+✔ newly canonical demo role aliases resolve to their school role; a query-role escalation is denied, a plain session is not (25.862108ms)
+✔ dashboard stats trends: admin and accountant carry the documented fixed demo values; other roles never fabricate one (62.220314ms)
+✔ invoice payment receipts: sequential per-scope numbers, honest receiptSent, atomic bounds preserved on negative/over-payment (23.994325ms)
+✔ attachments: create validates base64, permitted type, the 1MB bound, filename traversal, and purpose/role scoping (77.573876ms)
+✔ attachments: assignment-linked downloads follow class membership; an invalid id in the batch rejects atomically (35.67162ms)
+✔ attachments: submission-linked downloads follow student-own / teacher-assigned / parent-child; impersonation and purpose mismatch are denied (32.402646ms)
+✔ attachments: message-linked downloads follow thread ownership; body.owner never overrides it; ids never cross scope (63.281471ms)
+✔ attachments: real frontend roundtrip — assignments.tsx/messages.tsx link the canonical SchoolAttachment object POST /attachments returned; a legacy bare id still resolves; injected/tampered metadata on that object is never trusted (26.342752ms)
+✔ quiz shuffle: deterministic per-identity question/option delivery order, accurate server grading against that order, and revealAnswers:false withholds the answer key even after grading (21.352976ms)
+✔ server-initialized POST metrics: books/classes/quizzes/assignments compute aggregates server-side; client-supplied aggregates are ignored; invalid counts and unknown class/teacher references reject atomically (23.395289ms)
+✔ library return: authoritative $0.50/day-late fine computed from the real due/return dates, on-time return is free, and a repeated return is idempotent (no double fine, no double stock increment) (21.726819ms)
+✔ submissions: a student can never set their own grade/feedback, and a teacher grading can never overwrite the student-authored submission text (24.534618ms)
+✔ thread messages: a caller can never fabricate a new message "from" the other party, and can never rewrite an already-stored message (14.424495ms)
+✔ thread messages: a patch may never silently drop a previously persisted message id (or its attachment links); the real full-array append is unaffected and the rejection is atomic (24.498948ms)
+✔ quiz authority: student list/detail/questions/grade are scoped to their own class; a new attempt requires a Published quiz; a completed attempt is still readable/retryable after the quiz closes; an unassigned teacher never gets the answer key or preview access; the owning/assigned teacher and admin still can (20.752441ms)
+✔ live sessions: offsetMin is anchored to the real current instant (source src/lib/mock/db.ts materializeLive, lines 72-82), not fixture midnight — /live list and /stats agree, and an explicit authored start is always respected (36.824568ms)
+✔ live "end": an accepted host/admin end persists the session as Ended for later /live list/detail and /stats calls, is idempotent on retry, and a non-host end is denied without any mutation (31.735861ms)
+✔ stats: admin may read the accountant finance projection (source ReportsPage fetches both directly) without ever mutating their own session identity; a teacher still cannot request it; an unrecognized role is still rejected; branch scoping and student/parent ownership are unaffected (50.66099ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1281.292076

@@ -1,0 +1,24 @@
+{
+  "name": "@pepbits/reference-reports",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "exports": {
+    ".": "./src/index.tsx",
+    "./styles.css": "./src/reports.css"
+  },
+  "dependencies": {
+    "@pepbits/erp-config": "*",
+    "@pepbits/ops-ui": "*",
+    "@pepbits/reference-host": "*",
+    "lucide-react": "^0.468.0"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

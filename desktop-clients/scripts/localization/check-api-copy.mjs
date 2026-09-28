@@ -14,6 +14,8 @@ for(const file of readdirSync(root).filter(name=>name.endsWith('.mjs')&&!name.in
   if(ts.isPropertyAssignment(node)&&node.name.getText(sf)==='error'&&ts.isStringLiteral(node.initializer))found.add(node.initializer.text);
   // Configuration-loader fail() throws startup diagnostics, not HTTP errors.
   if(file!=='application-config.mjs'&&ts.isCallExpression(node)&&['fail','failure'].includes(node.expression.getText(sf))){const argument=node.arguments.find(ts.isStringLiteral);if(argument)found.add(argument.text);}
+  // Reference report validators use typed HTTP errors rather than literal result objects.
+  if(file.startsWith('reference-')&&ts.isNewExpression(node)&&node.expression.getText(sf)==='HttpError'&&node.arguments?.[1]&&ts.isStringLiteral(node.arguments[1]))found.add(node.arguments[1].text);
   ts.forEachChild(node,visit);
  }visit(sf);
 }

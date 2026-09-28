@@ -1,5 +1,7 @@
 # Feature catalog
 
+- [Reports, ERP1, ERP2 and School reference modules](reference-modules.md): separate reusable module imports, host adapters and preserved source designs; implementation is in progress.
+
 - [Host-defined workspace modules](host-defined-modules.md): reusable module selector and landing-page behavior for applications with scoped navigation.
 
 Reviewed 13 September 2026. See the [current delivery index](../releases/unreleased/README.md) for deployment status and the [documentation coverage](../README.md#current-status) for remaining authoring/review work. The [page-help audit](../documentation/reference-guide-audit-2026-09-11.md) maps the reference-only pages to their actual implementations and distinguishes platform instructions from missing domain workflows.

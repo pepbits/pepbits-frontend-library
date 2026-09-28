@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
     "@pepbits/erp-shell",
     "@pepbits/erp-screens",
     "@pepbits/platform-ports",
+    "@pepbits/reference-host",
+    "@pepbits/reference-keystone-core",
+    "@pepbits/reference-reports",
+    "@pepbits/reference-erp1",
+    "@pepbits/reference-erp2",
+    "@pepbits/reference-school",
   ],
 };
 

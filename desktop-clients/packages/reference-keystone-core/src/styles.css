@@ -1,0 +1,65 @@
+/*
+ * @pepbits/reference-keystone-core styles, shared by reference-erp1 and reference-erp2.
+ * Import once in the host after @pepbits/reference-host/styles.css. The host stylesheet
+ * maps the Keystone semantic utilities (bg-surface-2, text-ink-3, border-line …) and
+ * aliases onto host tokens and applies reduced motion. This file adds only what that
+ * bridge does not cover, scoped to .reference-keystone (both ERP roots carry it): no
+ * :root/body rules; fonts and radius are inherited from host tokens.
+ */
+.reference-keystone {
+  --fs-scale: var(--fs-shell, 1);
+  /* Used directly as var(--…) by source SVG/inline styles. */
+  --rail: var(--sidebar-bg, color-mix(in srgb, var(--text) 88%, var(--primary)));
+  --violet: var(--primary);
+  --font-sans: var(--font-ui);
+}
+.reference-keystone .tnum { font-variant-numeric: tabular-nums; }
+.reference-keystone .shadow-pop { box-shadow: var(--shadow-lg); }
+.reference-keystone .skeleton { background: var(--surface-3); border-radius: var(--radius); }
+.reference-keystone .reference-invalid :is(input, select, textarea) { border-color: var(--danger); }
+
+/* Managed result tables: honour the host wrap / sticky-header preferences over source classes. */
+.reference-keystone table[data-managed-table="true"][data-wrap="true"] :is(td, td *) { white-space: normal; }
+.reference-keystone table[data-managed-table="true"][data-wrap="false"] td { white-space: nowrap; }
+.reference-keystone table[data-managed-table="true"][data-sticky="false"] thead { position: static; }
+
+@keyframes reference-keystone-slide-in { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes reference-keystone-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes reference-keystone-pop-in { from { transform: translateY(-4px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
+.reference-keystone .anim-drawer { animation: reference-keystone-slide-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.reference-keystone .anim-fade { animation: reference-keystone-fade-in 0.18s ease-out; }
+.reference-keystone .anim-pop { animation: reference-keystone-pop-in 0.16s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .reference-keystone *, .reference-keystone *::before, .reference-keystone *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Print: only the document preview leaves the building (source behaviour, scoped). */
+@media print {
+  body:has(.reference-keystone .print-area) * { visibility: hidden !important; }
+  .reference-keystone .print-area, .reference-keystone .print-area * { visibility: visible !important; }
+  .reference-keystone .print-area { position: fixed !important; left: 0; top: 0; width: 100% !important; min-height: auto !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+  .reference-keystone .print-reset { transform: none !important; width: auto !important; height: auto !important; }
+}
+
+/* Source result cards and field grids use the host's distinct font categories. */
+.reference-keystone [data-reference-result] { --fs-scale: var(--fs-result); }
+.reference-keystone [data-reference-form] { --fs-scale: var(--fs-form); }
+
+/* Shared icon controls use this numeric source radius; retain the effective radius. */
+.reference-keystone [class~="rounded-[10px]"] { border-radius: var(--radius); }
+
+/* The invoice is a paper document even when the surrounding application uses a dark theme. */
+.reference-keystone .print-area {
+  background-color: #fff;
+  color: #1c2422;
+  color-scheme: light;
+  --surface: #fff;
+  --surface-2: #eef4f2;
+  --surface-3: #f4f6f5;
+  --text: #1c2422;
+  --text-muted: #5d6b68;
+  --text-subtle: #5d6b68;
+  --border: #e1e8e6;
+  --border-strong: #c5d0cc;
+  --fs-scale: var(--fs-result);
+}

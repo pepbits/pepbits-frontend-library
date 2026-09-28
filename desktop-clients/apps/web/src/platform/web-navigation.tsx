@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { PAGE_REGISTRY } from "@pepbits/erp-config";
+import { PAGE_REGISTRY, REFERENCE_PAGE_BY_ID, referenceInternalPath } from "@pepbits/erp-config";
 import type { NavigationPort, NavigationTarget } from "@pepbits/platform-ports";
 
 /** The canonical module segment for a page. "shared" pages live under /shared. */
@@ -13,6 +13,7 @@ export function moduleSegmentFor(pageId: string): string {
 
 export function hrefFor(target: NavigationTarget): string {
   const base = `/${moduleSegmentFor(target.pageId)}/${target.pageId}`;
+  if (REFERENCE_PAGE_BY_ID[target.pageId] && target.recordId) return `${base}/${encodeURIComponent(target.recordId)}`;
   if (target.mode === "new") return `${base}/new`;
   if (target.recordId) return target.mode === "edit" ? `${base}/${target.recordId}/edit` : `${base}/${target.recordId}`;
   return base;
@@ -41,7 +42,7 @@ export function useWebNavigation(): NavigationPort {
     const current: NavigationTarget = {
       pageId: params.page ?? "finance-dashboard",
       ...(mode ? { mode } : {}),
-      ...(params.recordId ? { recordId: params.recordId } : {}),
+      ...(params.recordId ? { recordId: REFERENCE_PAGE_BY_ID[params.page ?? ''] ? referenceInternalPath(params.recordId) ?? params.recordId : params.recordId } : {}),
     };
 
     return {

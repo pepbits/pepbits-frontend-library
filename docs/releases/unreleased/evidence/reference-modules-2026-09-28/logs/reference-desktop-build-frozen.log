@@ -1,0 +1,80 @@
+
+> desktop@1.0.0 build
+> rm -rf dist && tsc --noEmit && vite build && node ../../scripts/stamp-api.mjs VITE_API_URL dist
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 2122 modules transformed.
+rendering chunks...
+[plugin vite:reporter]
+(!) /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/core.js is dynamically imported by /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/packages/erp-shell/src/sentinel.tsx, /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/packages/erp-shell/src/sentinel.tsx but also statically imported by /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/dpi.js, /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/event.js, /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/image.js, /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/webview.js, /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/webviewWindow.js, /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/window.js, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter]
+(!) /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/event.js is dynamically imported by /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/packages/erp-shell/src/sentinel.tsx but also statically imported by /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/webview.js, /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/webviewWindow.js, /home/pepadmin/pb/saas/worktrees/frontend-reference-modules-20260928/desktop-clients/node_modules/@tauri-apps/api/window.js, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/index.html                                       1.05 kB │ gzip:   0.52 kB
+dist/assets/workbook-options.worker-B47Vz9Ey.js     368.07 kB
+dist/assets/library-page-BZ8DFha9.css                 1.27 kB │ gzip:   0.59 kB
+dist/assets/page-template-DHkRpzaa.css                2.17 kB │ gzip:   0.74 kB
+dist/assets/library-page-B5FBY-Fy.css                 4.55 kB │ gzip:   1.28 kB
+dist/assets/workspace-Bnk30RYg.css                    5.02 kB │ gzip:   1.41 kB
+dist/assets/library-page-CNkCYsR4.css                 5.85 kB │ gzip:   1.45 kB
+dist/assets/library-page-B8oeBtES.css                 9.14 kB │ gzip:   2.17 kB
+dist/assets/index-C0VEpQLa.css                       11.91 kB │ gzip:   2.17 kB
+dist/assets/index-DrfW4Pux.css                       26.29 kB │ gzip:   4.72 kB
+dist/assets/index-Ck7Bdzm8.css                      137.79 kB │ gzip:  23.39 kB
+dist/assets/clinical-triage-DHLgwzOt.js               0.12 kB │ gzip:   0.12 kB
+dist/assets/clinical-consultation-CY0XKaxC.js         0.12 kB │ gzip:   0.12 kB
+dist/assets/bookmark-C-74uK-2.js                      0.16 kB │ gzip:   0.16 kB
+dist/assets/clock-DwfPehdH.js                         0.18 kB │ gzip:   0.17 kB
+dist/assets/type-B6CgWbFg.js                          0.24 kB │ gzip:   0.19 kB
+dist/assets/calendar-CYbPxWup.js                      0.25 kB │ gzip:   0.20 kB
+dist/assets/wallet-AAIFpZMP.js                        0.28 kB │ gzip:   0.20 kB
+dist/assets/key-round-DOVJirYT.js                     0.35 kB │ gzip:   0.26 kB
+dist/assets/preference-choice-BNPlc1zQ.js             0.40 kB │ gzip:   0.26 kB
+dist/assets/clinical-document-CRPU8npr.js             0.42 kB │ gzip:   0.33 kB
+dist/assets/scanner-input-5N5W_jI3.js                 0.44 kB │ gzip:   0.34 kB
+dist/assets/print-document-BqJFnQhS.js                0.60 kB │ gzip:   0.36 kB
+dist/assets/phone-VdDwRFIW.js                         0.60 kB │ gzip:   0.36 kB
+dist/assets/library-page-Dr8F_Sff.js                  0.67 kB │ gzip:   0.40 kB
+dist/assets/library-page-BGEleuuX.js                  0.76 kB │ gzip:   0.42 kB
+dist/assets/clinical-templates-C6qMOJcp.js            0.92 kB │ gzip:   0.52 kB
+dist/assets/undo-2-D7L23zIu.js                        1.03 kB │ gzip:   0.48 kB
+dist/assets/library-page-DosCokls.js                  1.05 kB │ gzip:   0.62 kB
+dist/assets/zap-BYtaaMjg.js                           1.11 kB │ gzip:   0.55 kB
+dist/assets/configured-template-page-CiOpmSj5.js      1.80 kB │ gzip:   0.90 kB
+dist/assets/calendar-DsFnkgyl.js                      3.49 kB │ gzip:   1.61 kB
+dist/assets/template-parts-DvcbEBf3.js                3.85 kB │ gzip:   1.42 kB
+dist/assets/library-page-Y8lUKKGD.js                  5.08 kB │ gzip:   2.27 kB
+dist/assets/choice-fields-HBKrV2BI.js                 7.44 kB │ gzip:   2.74 kB
+dist/assets/library-page-CXTfN3dI.js                  7.45 kB │ gzip:   2.57 kB
+dist/assets/library-page-I8LLiRLs.js                  8.95 kB │ gzip:   3.13 kB
+dist/assets/template-library-B4QwaqKJ.js              9.84 kB │ gzip:   3.32 kB
+dist/assets/library-page-Crdwy4yp.js                  9.94 kB │ gzip:   3.42 kB
+dist/assets/library-page-Dp-7Zryz.js                 11.92 kB │ gzip:   4.37 kB
+dist/assets/library-page-BJ6jraqr.js                 13.96 kB │ gzip:   4.96 kB
+dist/assets/index-DS5hToIf.js                        15.12 kB │ gzip:   2.90 kB
+dist/assets/library-page-B6sCej90.js                 23.93 kB │ gzip:   7.16 kB
+dist/assets/library-page-BUqWSkB7.js                 25.52 kB │ gzip:   7.19 kB
+dist/assets/library-page-m0iCHtvB.js                 34.24 kB │ gzip:  10.63 kB
+dist/assets/page-template-DIzDtElS.js                34.80 kB │ gzip:  10.38 kB
+dist/assets/workspace-CL2Fbztf.js                    46.41 kB │ gzip:  14.28 kB
+dist/assets/component-catalog-D4_HFj8Y.js            47.45 kB │ gzip:  11.73 kB
+dist/assets/library-page-B5kPCq-s.js                 78.61 kB │ gzip:  23.71 kB
+dist/assets/RegistryPage-BCaRCVLr.js                120.82 kB │ gzip:  35.80 kB
+dist/assets/index-Ce_qYbzU.js                       122.11 kB │ gzip:  30.66 kB
+dist/assets/index-Bxxp4MLR.js                       138.78 kB │ gzip:  35.10 kB
+dist/assets/index-GXxQepe4.js                       140.46 kB │ gzip:  42.52 kB
+dist/assets/index-BIJR7JLE.js                       351.71 kB │ gzip:  95.98 kB
+dist/assets/locale-fallback-en-BbyqCgg1.js          532.59 kB │ gzip: 143.28 kB
+dist/assets/locale-fallback-ar-CL_aoMUj.js          685.92 kB │ gzip: 195.74 kB
+dist/assets/locale-fallback-hi-BfPzWu_A.js          913.32 kB │ gzip: 209.13 kB
+dist/assets/locale-fallback-ml-C2Gj4OmP.js        1,075.60 kB │ gzip: 222.72 kB
+dist/assets/index-DblaJ8lA.js                     1,773.89 kB │ gzip: 528.67 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 11.79s

@@ -64,7 +64,10 @@ function filesUnder(dir, ext) {
    versions — matching them by string is how a checker cries wolf. The simple
    ones are enough: if a package is purged they go with everything else. */
 const SIMPLE = /^[a-z][a-z0-9]*(-[a-z0-9.]+)*$/;
-const NOT_EMITTED = new Set(["group", "peer", "dark", "container", "sr", "antialiased"]);
+// Variant identity markers do not style anything: both public ERP wrappers consume
+// the shared .reference-keystone styles. Their real utilities still require @source
+// coverage below; the shared core's distinct utilities must survive both builds.
+const NOT_EMITTED = new Set(["group", "peer", "dark", "container", "sr", "antialiased", "reference-erp1", "reference-erp2"]);
 
 function utilitiesIn(text) {
   const found = new Set();

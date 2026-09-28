@@ -1,0 +1,4396 @@
+{
+ "schema": "pepbits.reference-reports.fixtures.v1",
+ "note": "Fictional demo fixtures copied read-only from the Lumen Reports reference source (catalog.ts, seed.ts, types.ts, sources.ts). No passwords, secrets or real data.",
+ "source": {
+  "root": "/home/pepadmin/pb/saas/reference/frontend/reports/lumen-reports",
+  "files": {
+   "src/lib/catalog.ts": "bf14f160d9a7f792a2af0d32e08ef541e20e7bdb2ed5f34045fd0060b4f5aea8",
+   "src/lib/seed.ts": "63f7e332bb3909b746ec8a122d8cbd66bea812aab34247ad50e1dadf9283268c",
+   "src/lib/types.ts": "913934352cb679fe4adbb53ec1d121991205a66a2b72bc4005f98f696041acc2",
+   "src/lib/sources.ts": "e470273193f98007624caebf6ee851720b622a9203dc4fcd966f6d49bd291073",
+   "src/lib/data/datasets.ts": "28c164d6d29c4541a1820a7ffa882ae89d95bf07284acf6f023d71778b2e8b84",
+   "src/lib/data/rng.ts": "d84bdc16bb4891495e3d387b1af5c75fcd0f473bb985d18f92f1d120f518354d",
+   "src/lib/engine/query.ts": "1d61824c29600c51c1f85aa1dc59d6d8e578c9f0bd2a5c72340850337cd12c9f",
+   "src/lib/engine/expression.ts": "e363188946bc00cdca97bf19baaa2abb89553436eff726688f8acb286b092473"
+  },
+  "inventoryGap": "src/lib/data/* is absent from docs/reference-import/SOURCE-INVENTORY.json (data-folder exclusion); digests recorded here from the read-only source."
+ },
+ "actions": [
+  "view",
+  "print",
+  "export_csv",
+  "export_xlsx",
+  "export_json",
+  "email",
+  "schedule",
+  "api"
+ ],
+ "actionLabels": {
+  "view": "View",
+  "print": "Print",
+  "export_csv": "CSV",
+  "export_xlsx": "Excel",
+  "export_json": "JSON",
+  "email": "Email",
+  "schedule": "Schedule",
+  "api": "API / BI"
+ },
+ "permissions": [
+  "admin.users",
+  "admin.access",
+  "admin.settings",
+  "admin.sources",
+  "audit.view",
+  "reports.build",
+  "reports.share",
+  "dashboards.edit",
+  "data.unmask",
+  "schedules.manage_all",
+  "api.keys"
+ ],
+ "permissionLabels": {
+  "admin.users": "Manage users",
+  "admin.access": "Manage roles and report access",
+  "admin.settings": "Change system settings",
+  "admin.sources": "View and manage data sources",
+  "audit.view": "View audit log and outbox",
+  "reports.build": "Build custom reports",
+  "reports.share": "Share custom reports with roles",
+  "dashboards.edit": "Create and edit dashboards",
+  "data.unmask": "See sensitive columns unmasked",
+  "schedules.manage_all": "Manage everyone's schedules",
+  "api.keys": "Create API keys for BI tools"
+ },
+ "categories": [
+  {
+   "name": "Finance",
+   "subcategories": [
+    "Revenue",
+    "Revenue cycle"
+   ]
+  },
+  {
+   "name": "Accounting",
+   "subcategories": [
+    "General ledger",
+    "Financial statements"
+   ]
+  },
+  {
+   "name": "Patient access",
+   "subcategories": [
+    "Appointments"
+   ]
+  },
+  {
+   "name": "Clinical",
+   "subcategories": [
+    "Activity",
+    "Inpatient"
+   ]
+  },
+  {
+   "name": "Diagnostics",
+   "subcategories": [
+    "Laboratory and radiology"
+   ]
+  },
+  {
+   "name": "Pharmacy and inventory",
+   "subcategories": [
+    "Stock"
+   ]
+  },
+  {
+   "name": "Quality",
+   "subcategories": [
+    "Outcomes"
+   ]
+  },
+  {
+   "name": "Strategy",
+   "subcategories": [
+    "Planning",
+    "Growth"
+   ]
+  }
+ ],
+ "systemReports": [
+  {
+   "id": "revenue-by-service",
+   "title": "Revenue by service line",
+   "description": "Gross, discount, net and collected revenue for each service line.",
+   "category": "Finance",
+   "subcategory": "Revenue",
+   "datasetId": "revenue",
+   "groupBy": [
+    "service_line"
+   ],
+   "columns": [
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "string"
+    },
+    {
+     "key": "invoices",
+     "label": "Invoices",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "gross_amount",
+     "label": "Gross",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "discount",
+     "label": "Discount",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "net_amount",
+     "label": "Net revenue",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "collected",
+     "label": "Collected",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "collection_rate",
+     "label": "Collection rate",
+     "type": "percent",
+     "expression": "collected / net_amount * 100"
+    }
+   ],
+   "defaultColumns": [
+    "service_line",
+    "invoices",
+    "net_amount",
+    "collected",
+    "collection_rate"
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "this_month"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "multiselect",
+     "field": "payer"
+    }
+   ],
+   "sort": {
+    "key": "net_amount",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "service_line",
+    "y": [
+     "net_amount"
+    ]
+   },
+   "tags": [
+    "revenue",
+    "service line",
+    "collections"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "daily-revenue",
+   "title": "Daily revenue and collections",
+   "description": "Net revenue and collections for each day in the period.",
+   "category": "Finance",
+   "subcategory": "Revenue",
+   "datasetId": "revenue",
+   "groupBy": [
+    "date"
+   ],
+   "columns": [
+    {
+     "key": "date",
+     "label": "Date",
+     "type": "date"
+    },
+    {
+     "key": "invoices",
+     "label": "Invoices",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "net_amount",
+     "label": "Net revenue",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "collected",
+     "label": "Collected",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_30_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "multiselect",
+     "field": "service_line"
+    }
+   ],
+   "sort": {
+    "key": "date",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "line",
+    "x": "date",
+    "y": [
+     "net_amount",
+     "collected"
+    ]
+   },
+   "tags": [
+    "daily",
+    "cash"
+   ],
+   "defaultColumns": [
+    "date",
+    "invoices",
+    "net_amount",
+    "collected"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "monthly-revenue-trend",
+   "title": "Monthly revenue trend",
+   "description": "Month-by-month net revenue, discounts and collections.",
+   "category": "Finance",
+   "subcategory": "Revenue",
+   "datasetId": "revenue",
+   "groupBy": [
+    "month"
+   ],
+   "columns": [
+    {
+     "key": "month",
+     "label": "Month",
+     "type": "string"
+    },
+    {
+     "key": "net_amount",
+     "label": "Net revenue",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "discount",
+     "label": "Discount",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "collected",
+     "label": "Collected",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_12_months"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "multiselect",
+     "field": "service_line"
+    },
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "multiselect",
+     "field": "payer"
+    }
+   ],
+   "sort": {
+    "key": "month",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "line",
+    "x": "month",
+    "y": [
+     "net_amount",
+     "collected"
+    ]
+   },
+   "tags": [
+    "trend",
+    "monthly"
+   ],
+   "defaultColumns": [
+    "month",
+    "net_amount",
+    "discount",
+    "collected"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "revenue-transactions",
+   "title": "Revenue transaction detail",
+   "description": "Row-level billed revenue. Long periods run in the background and are delivered as a file.",
+   "category": "Finance",
+   "subcategory": "Revenue",
+   "datasetId": "revenue",
+   "columns": [
+    {
+     "key": "date",
+     "label": "Date",
+     "type": "date"
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "string"
+    },
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "string"
+    },
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "string"
+    },
+    {
+     "key": "invoices",
+     "label": "Invoices",
+     "type": "integer"
+    },
+    {
+     "key": "gross_amount",
+     "label": "Gross",
+     "type": "currency"
+    },
+    {
+     "key": "discount",
+     "label": "Discount",
+     "type": "currency"
+    },
+    {
+     "key": "net_amount",
+     "label": "Net revenue",
+     "type": "currency"
+    },
+    {
+     "key": "collected",
+     "label": "Collected",
+     "type": "currency"
+    },
+    {
+     "key": "month",
+     "label": "Month",
+     "type": "string"
+    },
+    {
+     "key": "year",
+     "label": "Year",
+     "type": "string"
+    }
+   ],
+   "defaultColumns": [
+    "date",
+    "branch",
+    "service_line",
+    "payer",
+    "invoices",
+    "net_amount",
+    "collected"
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_7_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "multiselect",
+     "field": "service_line"
+    },
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "multiselect",
+     "field": "payer"
+    }
+   ],
+   "sort": {
+    "key": "date",
+    "dir": "desc"
+   },
+   "policy": {
+    "maxOnlineRangeDays": 92,
+    "maxOnlineRows": 20000
+   },
+   "tags": [
+    "detail",
+    "transactions",
+    "large"
+   ],
+   "groupBy": [],
+   "chart": {
+    "type": "none"
+   },
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "payer-mix",
+   "title": "Payer mix",
+   "description": "Share of net revenue by payer type.",
+   "category": "Finance",
+   "subcategory": "Revenue",
+   "datasetId": "revenue",
+   "groupBy": [
+    "payer"
+   ],
+   "columns": [
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "string"
+    },
+    {
+     "key": "invoices",
+     "label": "Invoices",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "net_amount",
+     "label": "Net revenue",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "this_month"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "multiselect",
+     "field": "service_line"
+    }
+   ],
+   "sort": {
+    "key": "net_amount",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "donut",
+    "x": "payer",
+    "y": [
+     "net_amount"
+    ]
+   },
+   "tags": [
+    "payer",
+    "insurance"
+   ],
+   "defaultColumns": [
+    "payer",
+    "invoices",
+    "net_amount"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "claims-denials",
+   "title": "Claims and denials by payer",
+   "description": "Submitted, approved and denied claims with denial rate and value.",
+   "category": "Finance",
+   "subcategory": "Revenue cycle",
+   "datasetId": "claims",
+   "groupBy": [
+    "payer"
+   ],
+   "columns": [
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "string"
+    },
+    {
+     "key": "submitted",
+     "label": "Submitted",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "approved",
+     "label": "Approved",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "denied",
+     "label": "Denied",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "denial_rate",
+     "label": "Denial rate",
+     "type": "percent",
+     "expression": "denied / submitted * 100"
+    },
+    {
+     "key": "claim_amount",
+     "label": "Claim value",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "denied_amount",
+     "label": "Denied value",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "this_month"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    }
+   ],
+   "sort": {
+    "key": "denial_rate",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "payer",
+    "y": [
+     "denied"
+    ]
+   },
+   "tags": [
+    "rcm",
+    "claims",
+    "denials"
+   ],
+   "defaultColumns": [
+    "payer",
+    "submitted",
+    "approved",
+    "denied",
+    "denial_rate",
+    "claim_amount",
+    "denied_amount"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "denial-reasons",
+   "title": "Denial reasons",
+   "description": "Denied claims and value by main denial reason.",
+   "category": "Finance",
+   "subcategory": "Revenue cycle",
+   "datasetId": "claims",
+   "groupBy": [
+    "denial_reason"
+   ],
+   "columns": [
+    {
+     "key": "denial_reason",
+     "label": "Denial reason",
+     "type": "string"
+    },
+    {
+     "key": "denied",
+     "label": "Denied claims",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "denied_amount",
+     "label": "Denied value",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_month"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "multiselect",
+     "field": "payer"
+    }
+   ],
+   "sort": {
+    "key": "denied",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "donut",
+    "x": "denial_reason",
+    "y": [
+     "denied"
+    ]
+   },
+   "tags": [
+    "rcm",
+    "denials"
+   ],
+   "defaultColumns": [
+    "denial_reason",
+    "denied",
+    "denied_amount"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "receivables-aging",
+   "title": "Receivables aging",
+   "description": "Outstanding approved claim value by aging bucket.",
+   "category": "Finance",
+   "subcategory": "Revenue cycle",
+   "datasetId": "claims",
+   "groupBy": [
+    "aging_bucket"
+   ],
+   "columns": [
+    {
+     "key": "aging_bucket",
+     "label": "Aging bucket",
+     "type": "string"
+    },
+    {
+     "key": "approved",
+     "label": "Approved claims",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "outstanding",
+     "label": "Outstanding",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_12_months"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "multiselect",
+     "field": "payer"
+    }
+   ],
+   "sort": {
+    "key": "aging_bucket",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "aging_bucket",
+    "y": [
+     "outstanding"
+    ]
+   },
+   "tags": [
+    "ar",
+    "aging",
+    "receivables"
+   ],
+   "defaultColumns": [
+    "aging_bucket",
+    "approved",
+    "outstanding"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "trial-balance",
+   "title": "Trial balance",
+   "description": "Debit and credit movements by account for the period, with net balance. Totals should reconcile to zero.",
+   "category": "Accounting",
+   "subcategory": "General ledger",
+   "datasetId": "gl",
+   "groupBy": [
+    "account_code",
+    "account_name",
+    "account_type"
+   ],
+   "columns": [
+    {
+     "key": "account_code",
+     "label": "Code",
+     "type": "string"
+    },
+    {
+     "key": "account_name",
+     "label": "Account",
+     "type": "string"
+    },
+    {
+     "key": "account_type",
+     "label": "Type",
+     "type": "string"
+    },
+    {
+     "key": "debit",
+     "label": "Debit",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "credit",
+     "label": "Credit",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "balance",
+     "label": "Net balance",
+     "type": "currency",
+     "expression": "debit - credit"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "this_month"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "account_type",
+     "label": "Account type",
+     "type": "multiselect",
+     "field": "account_type"
+    },
+    {
+     "key": "cost_center",
+     "label": "Cost center",
+     "type": "multiselect",
+     "field": "cost_center"
+    }
+   ],
+   "sort": {
+    "key": "account_code",
+    "dir": "asc"
+   },
+   "tags": [
+    "tb",
+    "ledger",
+    "close"
+   ],
+   "defaultColumns": [
+    "account_code",
+    "account_name",
+    "account_type",
+    "debit",
+    "credit",
+    "balance"
+   ],
+   "chart": {
+    "type": "none"
+   },
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "general-ledger",
+   "title": "General ledger detail",
+   "description": "Posted journal lines. Long periods run in the background.",
+   "category": "Accounting",
+   "subcategory": "General ledger",
+   "datasetId": "gl",
+   "columns": [
+    {
+     "key": "date",
+     "label": "Date",
+     "type": "date"
+    },
+    {
+     "key": "journal_no",
+     "label": "Journal no.",
+     "type": "string"
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "string"
+    },
+    {
+     "key": "account_code",
+     "label": "Code",
+     "type": "string"
+    },
+    {
+     "key": "account_name",
+     "label": "Account",
+     "type": "string"
+    },
+    {
+     "key": "account_type",
+     "label": "Type",
+     "type": "string"
+    },
+    {
+     "key": "cost_center",
+     "label": "Cost center",
+     "type": "string"
+    },
+    {
+     "key": "narration",
+     "label": "Narration",
+     "type": "string"
+    },
+    {
+     "key": "debit",
+     "label": "Debit",
+     "type": "currency"
+    },
+    {
+     "key": "credit",
+     "label": "Credit",
+     "type": "currency"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_7_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "account_name",
+     "label": "Account",
+     "type": "multiselect",
+     "field": "account_name"
+    },
+    {
+     "key": "cost_center",
+     "label": "Cost center",
+     "type": "multiselect",
+     "field": "cost_center"
+    },
+    {
+     "key": "journal_no",
+     "label": "Journal no.",
+     "type": "text",
+     "field": "journal_no"
+    }
+   ],
+   "sort": {
+    "key": "date",
+    "dir": "desc"
+   },
+   "policy": {
+    "maxOnlineRangeDays": 92,
+    "maxOnlineRows": 20000
+   },
+   "tags": [
+    "journal",
+    "detail",
+    "large"
+   ],
+   "defaultColumns": [
+    "date",
+    "journal_no",
+    "branch",
+    "account_code",
+    "account_name",
+    "account_type",
+    "cost_center",
+    "narration",
+    "debit",
+    "credit"
+   ],
+   "groupBy": [],
+   "chart": {
+    "type": "none"
+   },
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "income-expense-summary",
+   "title": "Income and expense summary",
+   "description": "Net income and expense by account, the basis of a profit and loss view.",
+   "category": "Accounting",
+   "subcategory": "Financial statements",
+   "datasetId": "gl",
+   "groupBy": [
+    "account_type",
+    "account_name"
+   ],
+   "columns": [
+    {
+     "key": "account_type",
+     "label": "Type",
+     "type": "string"
+    },
+    {
+     "key": "account_name",
+     "label": "Account",
+     "type": "string"
+    },
+    {
+     "key": "debit",
+     "label": "Debit",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "credit",
+     "label": "Credit",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "net",
+     "label": "Net (credit - debit)",
+     "type": "currency",
+     "expression": "credit - debit"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "this_month"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "account_type",
+     "label": "Account type",
+     "type": "multiselect",
+     "field": "account_type",
+     "default": [
+      "Income",
+      "Expense"
+     ]
+    }
+   ],
+   "sort": {
+    "key": "account_type",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "account_name",
+    "y": [
+     "net"
+    ]
+   },
+   "tags": [
+    "p&l",
+    "profit",
+    "loss"
+   ],
+   "defaultColumns": [
+    "account_type",
+    "account_name",
+    "debit",
+    "credit",
+    "net"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "cost-center-expense",
+   "title": "Expense by cost center",
+   "description": "Expense postings by cost center.",
+   "category": "Accounting",
+   "subcategory": "Financial statements",
+   "datasetId": "gl",
+   "groupBy": [
+    "cost_center"
+   ],
+   "columns": [
+    {
+     "key": "cost_center",
+     "label": "Cost center",
+     "type": "string"
+    },
+    {
+     "key": "debit",
+     "label": "Expense",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "this_month"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "account_type",
+     "label": "Account type",
+     "type": "multiselect",
+     "field": "account_type",
+     "default": [
+      "Expense"
+     ]
+    }
+   ],
+   "sort": {
+    "key": "debit",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "cost_center",
+    "y": [
+     "debit"
+    ]
+   },
+   "tags": [
+    "cost",
+    "expense"
+   ],
+   "defaultColumns": [
+    "cost_center",
+    "debit"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "appointment-attendance",
+   "title": "Appointment attendance",
+   "description": "Booked, attended, cancelled and no-show appointments by department.",
+   "category": "Patient access",
+   "subcategory": "Appointments",
+   "datasetId": "appointments",
+   "groupBy": [
+    "department"
+   ],
+   "columns": [
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "string"
+    },
+    {
+     "key": "booked",
+     "label": "Booked",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "attended",
+     "label": "Attended",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "cancelled",
+     "label": "Cancelled",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "no_show",
+     "label": "No-shows",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "no_show_rate",
+     "label": "No-show rate",
+     "type": "percent",
+     "expression": "no_show / booked * 100"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_30_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "multiselect",
+     "field": "department"
+    }
+   ],
+   "sort": {
+    "key": "booked",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "department",
+    "y": [
+     "attended",
+     "no_show"
+    ]
+   },
+   "tags": [
+    "scheduling",
+    "no-show"
+   ],
+   "defaultColumns": [
+    "department",
+    "booked",
+    "attended",
+    "cancelled",
+    "no_show",
+    "no_show_rate"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "no-show-trend",
+   "title": "No-show trend",
+   "description": "Monthly no-show rate.",
+   "category": "Patient access",
+   "subcategory": "Appointments",
+   "datasetId": "appointments",
+   "groupBy": [
+    "month"
+   ],
+   "columns": [
+    {
+     "key": "month",
+     "label": "Month",
+     "type": "string"
+    },
+    {
+     "key": "booked",
+     "label": "Booked",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "no_show",
+     "label": "No-shows",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "no_show_rate",
+     "label": "No-show rate",
+     "type": "percent",
+     "expression": "no_show / booked * 100"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_12_months"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "multiselect",
+     "field": "department"
+    }
+   ],
+   "sort": {
+    "key": "month",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "line",
+    "x": "month",
+    "y": [
+     "no_show_rate"
+    ]
+   },
+   "defaultColumns": [
+    "month",
+    "booked",
+    "no_show",
+    "no_show_rate"
+   ],
+   "tags": [],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "waiting-time",
+   "title": "Waiting time by department",
+   "description": "Average patient waiting time.",
+   "category": "Patient access",
+   "subcategory": "Appointments",
+   "datasetId": "appointments",
+   "groupBy": [
+    "department"
+   ],
+   "columns": [
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "string"
+    },
+    {
+     "key": "attended",
+     "label": "Attended",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "avg_wait_min",
+     "label": "Average wait (min)",
+     "type": "number",
+     "aggregate": "avg"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_30_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    }
+   ],
+   "sort": {
+    "key": "avg_wait_min",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "department",
+    "y": [
+     "avg_wait_min"
+    ]
+   },
+   "defaultColumns": [
+    "department",
+    "attended",
+    "avg_wait_min"
+   ],
+   "tags": [],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "activity-by-department",
+   "title": "Clinical activity by department",
+   "description": "OP visits, ED visits, admissions and discharges.",
+   "category": "Clinical",
+   "subcategory": "Activity",
+   "datasetId": "clinical_activity",
+   "groupBy": [
+    "department"
+   ],
+   "columns": [
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "string"
+    },
+    {
+     "key": "op_visits",
+     "label": "OP visits",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "ed_visits",
+     "label": "ED visits",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "admissions",
+     "label": "Admissions",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "discharges",
+     "label": "Discharges",
+     "type": "integer",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_30_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "multiselect",
+     "field": "department"
+    }
+   ],
+   "sort": {
+    "key": "op_visits",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "department",
+    "y": [
+     "op_visits",
+     "admissions"
+    ]
+   },
+   "tags": [
+    "op",
+    "ed",
+    "ip"
+   ],
+   "defaultColumns": [
+    "department",
+    "op_visits",
+    "ed_visits",
+    "admissions",
+    "discharges"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "bed-occupancy-trend",
+   "title": "Bed occupancy trend",
+   "description": "Monthly occupied and available bed-days with occupancy rate.",
+   "category": "Clinical",
+   "subcategory": "Inpatient",
+   "datasetId": "clinical_activity",
+   "groupBy": [
+    "month"
+   ],
+   "columns": [
+    {
+     "key": "month",
+     "label": "Month",
+     "type": "string"
+    },
+    {
+     "key": "occupied_beds",
+     "label": "Occupied bed-days",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "available_beds",
+     "label": "Available bed-days",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "occupancy",
+     "label": "Occupancy",
+     "type": "percent",
+     "expression": "occupied_beds / available_beds * 100"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_12_months"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "multiselect",
+     "field": "department"
+    }
+   ],
+   "sort": {
+    "key": "month",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "line",
+    "x": "month",
+    "y": [
+     "occupancy"
+    ]
+   },
+   "tags": [
+    "beds",
+    "occupancy"
+   ],
+   "defaultColumns": [
+    "month",
+    "occupied_beds",
+    "available_beds",
+    "occupancy"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "admissions-register",
+   "title": "Admissions register",
+   "description": "Patient-level admissions. Patient identifiers are masked unless your role may see them.",
+   "category": "Clinical",
+   "subcategory": "Inpatient",
+   "datasetId": "admissions",
+   "columns": [
+    {
+     "key": "admission_id",
+     "label": "Admission ID",
+     "type": "string"
+    },
+    {
+     "key": "date",
+     "label": "Admitted",
+     "type": "date"
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "string"
+    },
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "string"
+    },
+    {
+     "key": "doctor",
+     "label": "Consultant",
+     "type": "string"
+    },
+    {
+     "key": "patient_mrn",
+     "label": "MRN",
+     "type": "string",
+     "sensitive": true
+    },
+    {
+     "key": "patient_name",
+     "label": "Patient",
+     "type": "string",
+     "sensitive": true
+    },
+    {
+     "key": "age",
+     "label": "Age",
+     "type": "integer"
+    },
+    {
+     "key": "gender",
+     "label": "Gender",
+     "type": "string"
+    },
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "string"
+    },
+    {
+     "key": "los_days",
+     "label": "LOS (days)",
+     "type": "integer"
+    },
+    {
+     "key": "bill_amount",
+     "label": "Bill",
+     "type": "currency"
+    },
+    {
+     "key": "discharge_status",
+     "label": "Status",
+     "type": "string"
+    },
+    {
+     "key": "readmitted_30d",
+     "label": "Readmitted",
+     "type": "integer"
+    }
+   ],
+   "defaultColumns": [
+    "admission_id",
+    "date",
+    "branch",
+    "department",
+    "patient_mrn",
+    "patient_name",
+    "age",
+    "los_days",
+    "bill_amount",
+    "discharge_status"
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_7_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "multiselect",
+     "field": "department"
+    },
+    {
+     "key": "doctor",
+     "label": "Consultant",
+     "type": "multiselect",
+     "field": "doctor"
+    },
+    {
+     "key": "patient_mrn",
+     "label": "MRN",
+     "type": "text",
+     "field": "patient_mrn"
+    }
+   ],
+   "sort": {
+    "key": "date",
+    "dir": "desc"
+   },
+   "policy": {
+    "maxOnlineRangeDays": 92,
+    "maxOnlineRows": 20000
+   },
+   "tags": [
+    "phi",
+    "patients",
+    "ip"
+   ],
+   "groupBy": [],
+   "chart": {
+    "type": "none"
+   },
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "los-by-department",
+   "title": "Length of stay by department",
+   "description": "Admissions, average length of stay and average bill.",
+   "category": "Clinical",
+   "subcategory": "Inpatient",
+   "datasetId": "admissions",
+   "groupBy": [
+    "department"
+   ],
+   "columns": [
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "string"
+    },
+    {
+     "key": "patients",
+     "label": "Admissions",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "los_days",
+     "label": "Average LOS (days)",
+     "type": "number",
+     "aggregate": "avg"
+    },
+    {
+     "key": "bill_amount",
+     "label": "Billed",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "avg_bill",
+     "label": "Average bill",
+     "type": "currency",
+     "expression": "bill_amount / patients"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_30_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "payer",
+     "label": "Payer",
+     "type": "multiselect",
+     "field": "payer"
+    }
+   ],
+   "sort": {
+    "key": "patients",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "department",
+    "y": [
+     "los_days"
+    ]
+   },
+   "tags": [
+    "los"
+   ],
+   "defaultColumns": [
+    "department",
+    "patients",
+    "los_days",
+    "bill_amount",
+    "avg_bill"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "diagnostics-tat",
+   "title": "Diagnostics turnaround",
+   "description": "Orders, completion and average turnaround time by test group.",
+   "category": "Diagnostics",
+   "subcategory": "Laboratory and radiology",
+   "datasetId": "lab_orders",
+   "groupBy": [
+    "department",
+    "test_group"
+   ],
+   "columns": [
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "string"
+    },
+    {
+     "key": "test_group",
+     "label": "Test group",
+     "type": "string"
+    },
+    {
+     "key": "orders",
+     "label": "Orders",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "completed",
+     "label": "Completed",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "pending",
+     "label": "Pending",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "tat_hours",
+     "label": "Average TAT (hours)",
+     "type": "number",
+     "aggregate": "avg"
+    },
+    {
+     "key": "critical_results",
+     "label": "Critical results",
+     "type": "integer",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_7_days"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "multiselect",
+     "field": "department"
+    }
+   ],
+   "sort": {
+    "key": "orders",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "test_group",
+    "y": [
+     "tat_hours"
+    ]
+   },
+   "tags": [
+    "lab",
+    "radiology",
+    "tat"
+   ],
+   "defaultColumns": [
+    "department",
+    "test_group",
+    "orders",
+    "completed",
+    "pending",
+    "tat_hours",
+    "critical_results"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "diagnostics-volume-trend",
+   "title": "Diagnostics volume trend",
+   "description": "Monthly diagnostic orders.",
+   "category": "Diagnostics",
+   "subcategory": "Laboratory and radiology",
+   "datasetId": "lab_orders",
+   "groupBy": [
+    "month"
+   ],
+   "columns": [
+    {
+     "key": "month",
+     "label": "Month",
+     "type": "string"
+    },
+    {
+     "key": "orders",
+     "label": "Orders",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "critical_results",
+     "label": "Critical results",
+     "type": "integer",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_12_months"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "test_group",
+     "label": "Test group",
+     "type": "multiselect",
+     "field": "test_group"
+    }
+   ],
+   "sort": {
+    "key": "month",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "line",
+    "x": "month",
+    "y": [
+     "orders"
+    ]
+   },
+   "defaultColumns": [
+    "month",
+    "orders",
+    "critical_results"
+   ],
+   "tags": [],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "stock-position",
+   "title": "Stock position",
+   "description": "Receipts, issues and closing value by store and category. Use a single day for closing figures.",
+   "category": "Pharmacy and inventory",
+   "subcategory": "Stock",
+   "datasetId": "inventory",
+   "groupBy": [
+    "store",
+    "item_category"
+   ],
+   "columns": [
+    {
+     "key": "store",
+     "label": "Store",
+     "type": "string"
+    },
+    {
+     "key": "item_category",
+     "label": "Category",
+     "type": "string"
+    },
+    {
+     "key": "receipts_qty",
+     "label": "Receipts",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "issues_qty",
+     "label": "Issues",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "closing_qty",
+     "label": "Closing qty",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "closing_value",
+     "label": "Closing value",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "yesterday"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "store",
+     "label": "Store",
+     "type": "multiselect",
+     "field": "store"
+    }
+   ],
+   "sort": {
+    "key": "closing_value",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "item_category",
+    "y": [
+     "closing_value"
+    ]
+   },
+   "tags": [
+    "inventory",
+    "pharmacy"
+   ],
+   "defaultColumns": [
+    "store",
+    "item_category",
+    "receipts_qty",
+    "issues_qty",
+    "closing_qty",
+    "closing_value"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "expiry-risk",
+   "title": "Near-expiry stock",
+   "description": "Value of stock expiring within 30 days, by branch and category.",
+   "category": "Pharmacy and inventory",
+   "subcategory": "Stock",
+   "datasetId": "inventory",
+   "groupBy": [
+    "branch",
+    "item_category"
+   ],
+   "columns": [
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "string"
+    },
+    {
+     "key": "item_category",
+     "label": "Category",
+     "type": "string"
+    },
+    {
+     "key": "expiring_30d_value",
+     "label": "Expiring in 30 days",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "yesterday"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    }
+   ],
+   "sort": {
+    "key": "expiring_30d_value",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "item_category",
+    "y": [
+     "expiring_30d_value"
+    ]
+   },
+   "tags": [
+    "expiry",
+    "wastage"
+   ],
+   "defaultColumns": [
+    "branch",
+    "item_category",
+    "expiring_30d_value"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "readmissions",
+   "title": "30-day readmissions",
+   "description": "Readmission count and rate by department.",
+   "category": "Quality",
+   "subcategory": "Outcomes",
+   "datasetId": "admissions",
+   "groupBy": [
+    "department"
+   ],
+   "columns": [
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "string"
+    },
+    {
+     "key": "patients",
+     "label": "Admissions",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "readmitted_30d",
+     "label": "Readmissions",
+     "type": "integer",
+     "aggregate": "sum"
+    },
+    {
+     "key": "readmission_rate",
+     "label": "Readmission rate",
+     "type": "percent",
+     "expression": "readmitted_30d / patients * 100"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_12_months"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    }
+   ],
+   "sort": {
+    "key": "readmission_rate",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "department",
+    "y": [
+     "readmission_rate"
+    ]
+   },
+   "tags": [
+    "quality",
+    "readmission"
+   ],
+   "defaultColumns": [
+    "department",
+    "patients",
+    "readmitted_30d",
+    "readmission_rate"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "discharge-outcomes",
+   "title": "Discharge outcomes",
+   "description": "Admissions by discharge status.",
+   "category": "Quality",
+   "subcategory": "Outcomes",
+   "datasetId": "admissions",
+   "groupBy": [
+    "discharge_status"
+   ],
+   "columns": [
+    {
+     "key": "discharge_status",
+     "label": "Discharge status",
+     "type": "string"
+    },
+    {
+     "key": "patients",
+     "label": "Patients",
+     "type": "integer",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_12_months"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "department",
+     "label": "Department",
+     "type": "multiselect",
+     "field": "department"
+    }
+   ],
+   "sort": {
+    "key": "patients",
+    "dir": "desc"
+   },
+   "chart": {
+    "type": "donut",
+    "x": "discharge_status",
+    "y": [
+     "patients"
+    ]
+   },
+   "tags": [
+    "quality",
+    "mortality",
+    "lama"
+   ],
+   "defaultColumns": [
+    "discharge_status",
+    "patients"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "budget-vs-actual",
+   "title": "Budget versus actual",
+   "description": "Target and actual net revenue by service line with variance.",
+   "category": "Strategy",
+   "subcategory": "Planning",
+   "datasetId": "budget",
+   "groupBy": [
+    "service_line"
+   ],
+   "columns": [
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "string"
+    },
+    {
+     "key": "target_revenue",
+     "label": "Target",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "actual_revenue",
+     "label": "Actual",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "variance",
+     "label": "Variance",
+     "type": "currency",
+     "expression": "actual_revenue - target_revenue"
+    },
+    {
+     "key": "variance_pct",
+     "label": "Variance %",
+     "type": "percent",
+     "expression": "(actual_revenue - target_revenue) / target_revenue * 100"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_12_months"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "scenario",
+     "label": "Scenario",
+     "type": "select",
+     "field": "scenario",
+     "default": "Budget"
+    }
+   ],
+   "sort": {
+    "key": "variance_pct",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "bar",
+    "x": "service_line",
+    "y": [
+     "target_revenue",
+     "actual_revenue"
+    ]
+   },
+   "tags": [
+    "budget",
+    "variance",
+    "targets"
+   ],
+   "defaultColumns": [
+    "service_line",
+    "target_revenue",
+    "actual_revenue",
+    "variance",
+    "variance_pct"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "forecast-scenarios",
+   "title": "Forecast scenarios",
+   "description": "Monthly scenario targets alongside actuals, including future months.",
+   "category": "Strategy",
+   "subcategory": "Planning",
+   "datasetId": "budget",
+   "groupBy": [
+    "month"
+   ],
+   "columns": [
+    {
+     "key": "month",
+     "label": "Month",
+     "type": "string"
+    },
+    {
+     "key": "target_revenue",
+     "label": "Scenario target",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "actual_revenue",
+     "label": "Actual",
+     "type": "currency",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "this_year"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "scenario",
+     "label": "Scenario",
+     "type": "select",
+     "field": "scenario",
+     "default": "Forecast (base)"
+    },
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "multiselect",
+     "field": "service_line"
+    }
+   ],
+   "sort": {
+    "key": "month",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "line",
+    "x": "month",
+    "y": [
+     "target_revenue",
+     "actual_revenue"
+    ]
+   },
+   "tags": [
+    "forecast",
+    "scenario"
+   ],
+   "defaultColumns": [
+    "month",
+    "target_revenue",
+    "actual_revenue"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+   "id": "service-line-growth",
+   "title": "Service line growth",
+   "description": "Yearly net revenue across ten years.",
+   "category": "Strategy",
+   "subcategory": "Growth",
+   "datasetId": "revenue",
+   "groupBy": [
+    "year"
+   ],
+   "columns": [
+    {
+     "key": "year",
+     "label": "Year",
+     "type": "string"
+    },
+    {
+     "key": "net_amount",
+     "label": "Net revenue",
+     "type": "currency",
+     "aggregate": "sum"
+    },
+    {
+     "key": "invoices",
+     "label": "Invoices",
+     "type": "integer",
+     "aggregate": "sum"
+    }
+   ],
+   "filters": [
+    {
+     "key": "period",
+     "label": "Period",
+     "type": "daterange",
+     "field": "date",
+     "default": {
+      "preset": "last_10_years"
+     }
+    },
+    {
+     "key": "branch",
+     "label": "Branch",
+     "type": "multiselect",
+     "field": "branch"
+    },
+    {
+     "key": "service_line",
+     "label": "Service line",
+     "type": "multiselect",
+     "field": "service_line"
+    }
+   ],
+   "sort": {
+    "key": "year",
+    "dir": "asc"
+   },
+   "chart": {
+    "type": "line",
+    "x": "year",
+    "y": [
+     "net_amount"
+    ]
+   },
+   "policy": {
+    "maxOnlineRangeDays": 3700
+   },
+   "tags": [
+    "growth",
+    "yearly",
+    "strategy"
+   ],
+   "defaultColumns": [
+    "year",
+    "net_amount",
+    "invoices"
+   ],
+   "kind": "system",
+   "visibility": "roles",
+   "sharedRoleIds": [],
+   "version": 1,
+   "updatedAt": "2026-01-01T00:00:00.000Z"
+  }
+ ],
+ "roles": [
+  {
+   "id": "admin",
+   "name": "Administrator",
+   "description": "Full access to every report, setting and user.",
+   "permissions": [
+    "admin.users",
+    "admin.access",
+    "admin.settings",
+    "admin.sources",
+    "audit.view",
+    "reports.build",
+    "reports.share",
+    "dashboards.edit",
+    "data.unmask",
+    "schedules.manage_all",
+    "api.keys"
+   ],
+   "system": true
+  },
+  {
+   "id": "executive",
+   "name": "Executive",
+   "description": "Leadership view across all domains.",
+   "permissions": [
+    "dashboards.edit"
+   ]
+  },
+  {
+   "id": "finance_manager",
+   "name": "Finance manager",
+   "description": "Owns revenue, revenue cycle, accounting and planning reports.",
+   "permissions": [
+    "reports.build",
+    "reports.share",
+    "dashboards.edit",
+    "api.keys",
+    "schedules.manage_all"
+   ]
+  },
+  {
+   "id": "accountant",
+   "name": "Accountant",
+   "description": "Ledger, trial balance and revenue reporting.",
+   "permissions": [
+    "reports.build"
+   ]
+  },
+  {
+   "id": "clinical_manager",
+   "name": "Clinical manager",
+   "description": "Clinical, quality and diagnostics reporting including patient-level data.",
+   "permissions": [
+    "data.unmask",
+    "dashboards.edit",
+    "reports.build"
+   ]
+  },
+  {
+   "id": "operations_manager",
+   "name": "Operations manager",
+   "description": "Appointments, activity, diagnostics and inventory.",
+   "permissions": [
+    "dashboards.edit"
+   ]
+  },
+  {
+   "id": "analyst",
+   "name": "Analyst",
+   "description": "Builds and exports reports; no patient identifiers.",
+   "permissions": [
+    "reports.build",
+    "api.keys"
+   ]
+  }
+ ],
+ "grants": [
+  {
+   "roleId": "executive",
+   "reportId": "revenue-by-service",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "daily-revenue",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "monthly-revenue-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "revenue-transactions",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "payer-mix",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "claims-denials",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "denial-reasons",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "receivables-aging",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "trial-balance",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "general-ledger",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "income-expense-summary",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "cost-center-expense",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "appointment-attendance",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "no-show-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "waiting-time",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "activity-by-department",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "bed-occupancy-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "admissions-register",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "los-by-department",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "diagnostics-tat",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "diagnostics-volume-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "stock-position",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "expiry-risk",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "readmissions",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "discharge-outcomes",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "budget-vs-actual",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "forecast-scenarios",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "executive",
+   "reportId": "service-line-growth",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "revenue-by-service",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "daily-revenue",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "monthly-revenue-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "revenue-transactions",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "payer-mix",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "claims-denials",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "denial-reasons",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "receivables-aging",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "trial-balance",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "general-ledger",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "income-expense-summary",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "cost-center-expense",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "stock-position",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "expiry-risk",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "budget-vs-actual",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "forecast-scenarios",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "finance_manager",
+   "reportId": "service-line-growth",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule",
+    "api"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "revenue-by-service",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "email"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "daily-revenue",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "email"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "monthly-revenue-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "email"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "revenue-transactions",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "email"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "payer-mix",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "email"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "claims-denials",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "email"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "denial-reasons",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "email"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "receivables-aging",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "email"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "trial-balance",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "general-ledger",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "income-expense-summary",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "accountant",
+   "reportId": "cost-center-expense",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "appointment-attendance",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "no-show-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "waiting-time",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "activity-by-department",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "bed-occupancy-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "admissions-register",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "los-by-department",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "diagnostics-tat",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "diagnostics-volume-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "readmissions",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "clinical_manager",
+   "reportId": "discharge-outcomes",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "appointment-attendance",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "no-show-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "waiting-time",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "activity-by-department",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "bed-occupancy-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "los-by-department",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "diagnostics-tat",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "diagnostics-volume-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "stock-position",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "operations_manager",
+   "reportId": "expiry-risk",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "email",
+    "schedule"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "revenue-by-service",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "daily-revenue",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "monthly-revenue-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "revenue-transactions",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "payer-mix",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "claims-denials",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "denial-reasons",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "receivables-aging",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "appointment-attendance",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "no-show-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "waiting-time",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "export_json",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "activity-by-department",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "bed-occupancy-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "los-by-department",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "diagnostics-tat",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "diagnostics-volume-trend",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "readmissions",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "discharge-outcomes",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "budget-vs-actual",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "forecast-scenarios",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "api"
+   ]
+  },
+  {
+   "roleId": "analyst",
+   "reportId": "service-line-growth",
+   "actions": [
+    "view",
+    "print",
+    "export_csv",
+    "export_xlsx",
+    "api"
+   ]
+  }
+ ],
+ "users": [
+  {
+   "id": "u_admin",
+   "name": "Asha Menon",
+   "email": "admin@lumen.health",
+   "roleIds": [
+    "admin"
+   ],
+   "branchIds": [
+    "*"
+   ],
+   "active": true
+  },
+  {
+   "id": "u_cfo",
+   "name": "Vikram Rao",
+   "email": "cfo@lumen.health",
+   "roleIds": [
+    "executive"
+   ],
+   "branchIds": [
+    "*"
+   ],
+   "active": true
+  },
+  {
+   "id": "u_fin",
+   "name": "Divya Iyer",
+   "email": "finance@lumen.health",
+   "roleIds": [
+    "finance_manager"
+   ],
+   "branchIds": [
+    "*"
+   ],
+   "active": true
+  },
+  {
+   "id": "u_acc",
+   "name": "Karthik Nair",
+   "email": "accountant@lumen.health",
+   "roleIds": [
+    "accountant"
+   ],
+   "branchIds": [
+    "Chennai",
+    "Bengaluru"
+   ],
+   "active": true
+  },
+  {
+   "id": "u_clin",
+   "name": "Dr. Meera Pillai",
+   "email": "clinical@lumen.health",
+   "roleIds": [
+    "clinical_manager"
+   ],
+   "branchIds": [
+    "Chennai"
+   ],
+   "active": true
+  },
+  {
+   "id": "u_ops",
+   "name": "Rahul Das",
+   "email": "ops@lumen.health",
+   "roleIds": [
+    "operations_manager"
+   ],
+   "branchIds": [
+    "Hyderabad",
+    "Kochi"
+   ],
+   "active": true
+  },
+  {
+   "id": "u_ana",
+   "name": "Neha Joshi",
+   "email": "analyst@lumen.health",
+   "roleIds": [
+    "analyst"
+   ],
+   "branchIds": [
+    "*"
+   ],
+   "active": true
+  }
+ ],
+ "dashboards": [
+  {
+   "id": "executive-overview",
+   "name": "Executive overview",
+   "description": "Headline revenue, collections, capacity and access measures.",
+   "ownerId": "u_admin",
+   "visibility": "everyone",
+   "sharedRoleIds": [],
+   "dateRange": {
+    "preset": "last_12_months"
+   },
+   "widgets": [
+    {
+     "id": "w1",
+     "reportId": "revenue-by-service",
+     "title": "Net revenue",
+     "kind": "kpi",
+     "size": "sm",
+     "kpiColumn": "net_amount"
+    },
+    {
+     "id": "w2",
+     "reportId": "claims-denials",
+     "title": "Claim denial rate",
+     "kind": "kpi",
+     "size": "sm",
+     "kpiColumn": "denial_rate"
+    },
+    {
+     "id": "w3",
+     "reportId": "bed-occupancy-trend",
+     "title": "Bed occupancy",
+     "kind": "kpi",
+     "size": "sm",
+     "kpiColumn": "occupancy"
+    },
+    {
+     "id": "w4",
+     "reportId": "appointment-attendance",
+     "title": "No-show rate",
+     "kind": "kpi",
+     "size": "sm",
+     "kpiColumn": "no_show_rate"
+    },
+    {
+     "id": "w5",
+     "reportId": "monthly-revenue-trend",
+     "title": "Revenue and collections by month",
+     "kind": "line",
+     "size": "lg"
+    },
+    {
+     "id": "w6",
+     "reportId": "payer-mix",
+     "title": "Payer mix",
+     "kind": "donut",
+     "size": "md"
+    },
+    {
+     "id": "w7",
+     "reportId": "budget-vs-actual",
+     "title": "Budget versus actual",
+     "kind": "bar",
+     "size": "md"
+    },
+    {
+     "id": "w8",
+     "reportId": "bed-occupancy-trend",
+     "title": "Occupancy by month",
+     "kind": "line",
+     "size": "lg"
+    }
+   ]
+  },
+  {
+   "id": "finance-daily",
+   "name": "Finance daily",
+   "description": "Cash, claims and receivables for the finance team.",
+   "ownerId": "u_fin",
+   "visibility": "roles",
+   "sharedRoleIds": [
+    "finance_manager",
+    "accountant",
+    "executive"
+   ],
+   "dateRange": {
+    "preset": "last_30_days"
+   },
+   "widgets": [
+    {
+     "id": "f1",
+     "reportId": "daily-revenue",
+     "title": "Collected",
+     "kind": "kpi",
+     "size": "sm",
+     "kpiColumn": "collected"
+    },
+    {
+     "id": "f2",
+     "reportId": "claims-denials",
+     "title": "Denied value",
+     "kind": "kpi",
+     "size": "sm",
+     "kpiColumn": "denied_amount"
+    },
+    {
+     "id": "f3",
+     "reportId": "daily-revenue",
+     "title": "Daily revenue and collections",
+     "kind": "line",
+     "size": "lg"
+    },
+    {
+     "id": "f4",
+     "reportId": "claims-denials",
+     "title": "Denials by payer",
+     "kind": "bar",
+     "size": "md"
+    },
+    {
+     "id": "f5",
+     "reportId": "denial-reasons",
+     "title": "Denial reasons",
+     "kind": "donut",
+     "size": "md"
+    },
+    {
+     "id": "f6",
+     "reportId": "trial-balance",
+     "title": "Trial balance",
+     "kind": "table",
+     "size": "lg"
+    }
+   ]
+  },
+  {
+   "id": "clinical-ops",
+   "name": "Clinical operations",
+   "description": "Activity, capacity, diagnostics and quality.",
+   "ownerId": "u_clin",
+   "visibility": "roles",
+   "sharedRoleIds": [
+    "clinical_manager",
+    "operations_manager",
+    "executive"
+   ],
+   "dateRange": {
+    "preset": "last_30_days"
+   },
+   "widgets": [
+    {
+     "id": "c1",
+     "reportId": "activity-by-department",
+     "title": "OP visits",
+     "kind": "kpi",
+     "size": "sm",
+     "kpiColumn": "op_visits"
+    },
+    {
+     "id": "c2",
+     "reportId": "activity-by-department",
+     "title": "Admissions",
+     "kind": "kpi",
+     "size": "sm",
+     "kpiColumn": "admissions"
+    },
+    {
+     "id": "c3",
+     "reportId": "activity-by-department",
+     "title": "Activity by department",
+     "kind": "bar",
+     "size": "lg"
+    },
+    {
+     "id": "c4",
+     "reportId": "diagnostics-tat",
+     "title": "Diagnostics turnaround",
+     "kind": "table",
+     "size": "md"
+    },
+    {
+     "id": "c5",
+     "reportId": "readmissions",
+     "title": "Readmission rate",
+     "kind": "bar",
+     "size": "md"
+    }
+   ]
+  }
+ ],
+ "schedules": [
+  {
+   "id": "sch_daily_rev",
+   "name": "Daily revenue to finance",
+   "ownerId": "u_fin",
+   "reportId": "daily-revenue",
+   "columns": [
+    "date",
+    "invoices",
+    "net_amount",
+    "collected"
+   ],
+   "filters": {
+    "period": {
+     "preset": "yesterday"
+    }
+   },
+   "format": "xlsx",
+   "recipients": [
+    "finance@lumen.health"
+   ],
+   "frequency": "daily",
+   "dayOfWeek": 1,
+   "dayOfMonth": 1,
+   "hour": 7,
+   "minute": 0,
+   "timezone": "Asia/Kolkata",
+   "active": true
+  }
+ ],
+ "settings": {
+  "orgName": "Lumen Health",
+  "timezone": "Asia/Kolkata",
+  "locale": "en-IN",
+  "currency": "INR",
+  "maxOnlineRangeDays": 1096,
+  "maxOnlineRows": 50000,
+  "defaultPageSize": 50,
+  "maxAttachmentMb": 8,
+  "resultRetentionHours": 72,
+  "maxActiveJobsPerUser": 3,
+  "maxConcurrentJobs": 2,
+  "allowedRecipientDomains": [
+   "lumen.health"
+  ],
+  "apiMaxRows": 10000,
+  "emailIn": {
+   "enabled": true,
+   "mailbox": "reports@lumen.health",
+   "requireAuthPass": true,
+   "maxPerHour": 10
+  }
+ },
+ "favorites": [
+  {
+   "userId": "u_fin",
+   "reportId": "trial-balance"
+  },
+  {
+   "userId": "u_fin",
+   "reportId": "budget-vs-actual"
+  }
+ ],
+ "sources": [
+  {
+   "id": "demo-warehouse",
+   "name": "Demo clinical and financial warehouse",
+   "kind": "demo",
+   "status": "connected",
+   "description": "Synthetic, deterministic data for ten years across four branches. Not real business data."
+  },
+  {
+   "id": "hms-postgres",
+   "name": "Hospital system read replica (PostgreSQL)",
+   "kind": "postgresql",
+   "status": "planned",
+   "description": "Read-only replica of the hospital management system. Reports must never query the live primary."
+  },
+  {
+   "id": "erp-sqlserver",
+   "name": "ERP ledger (SQL Server)",
+   "kind": "sqlserver",
+   "status": "planned",
+   "description": "Posted journals and financial periods for trial balance and statements."
+  },
+  {
+   "id": "lab-rest",
+   "name": "Laboratory system API (REST)",
+   "kind": "rest",
+   "status": "planned",
+   "description": "Allow-listed HTTPS endpoint with server-side token and row limits."
+  },
+  {
+   "id": "analytics-warehouse",
+   "name": "Analytics warehouse (ClickHouse / Snowflake)",
+   "kind": "warehouse",
+   "status": "planned",
+   "description": "Column store for multi-year aggregates as volume grows."
+  }
+ ]
+}

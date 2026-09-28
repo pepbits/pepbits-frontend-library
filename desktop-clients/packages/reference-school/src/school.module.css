@@ -1,0 +1,203 @@
+/* Scoped Scholaris styles. Everything is under the module root (styles.root + .reference-school-root), so the host and
+   other modules are unaffected. Source theme names (brand, line, muted, ok …) are aliases of the host's
+   preference-driven tokens, so the tenant theme, dark palettes, contrast theme, corner radius, font family and
+   font-size scales reach the imported markup. The source's per-portal accent is kept as --school-role-accent. */
+
+.root {
+  --canvas: var(--bg);
+  --subtle: var(--surface-2);
+  --line: var(--border);
+  --fg: var(--text);
+  --muted: var(--text-muted);
+  --faint: var(--text-subtle);
+  --brand: var(--primary);
+  --brand-fill: var(--primary-fill, var(--primary));
+  --brand-ink: var(--primary-strong, var(--primary));
+  --brand-fg: #ffffff;
+  --ok: var(--success);
+  --ok-fill: var(--success-fill, var(--success));
+  --ok-ink: var(--success-ink, var(--success));
+  --warn: var(--warning);
+  --warn-ink: var(--warning-ink, var(--warning));
+  --bad: var(--danger);
+  --bad-fill: var(--danger-fill, var(--danger));
+  --bad-ink: var(--danger-ink, var(--danger));
+  --rail: var(--sidebar-surface);
+  --rail-fg: var(--sidebar-text);
+  --rail-muted: color-mix(in oklab, var(--sidebar-text) 62%, var(--sidebar-surface));
+  --rail-hover: color-mix(in oklab, var(--sidebar-text) 10%, var(--sidebar-surface));
+  --school-role-accent: var(--primary);
+
+  font-family: var(--font-ui);
+  font-size: calc(13px * var(--fs-scale));
+  color: var(--fg);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Source portal accents, exposed for host chrome that wants them; page markup uses the theme's --brand. */
+.root[data-role="admin"] { --school-role-accent: #2b4c9b; }
+.root[data-role="teacher"] { --school-role-accent: #1f6f54; }
+.root[data-role="student"] { --school-role-accent: #0f6e8c; }
+.root[data-role="parent"] { --school-role-accent: #8a3563; }
+.root[data-role="librarian"] { --school-role-accent: #8a5a1b; }
+.root[data-role="accountant"] { --school-role-accent: #4d6a14; }
+
+.root :global(.tabular) { font-variant-numeric: tabular-nums; }
+.root * { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.root *::-webkit-scrollbar { width: 8px; height: 8px; }
+.root *::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
+.root :focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
+
+/* Reduced motion from the host preference, and from the operating system as in the source. */
+.root[data-reduced-motion="true"] *, .root[data-reduced-motion="true"] *::before, .root[data-reduced-motion="true"] *::after {
+  animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .root *, .root *::before, .root *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+@media print {
+  .root :global(.no-print) { display: none !important; }
+  .root, .root :global(.print-full) { background: #fff !important; overflow: visible !important; height: auto !important; }
+}
+
+/* Live-class reactions: the source's arbitrary animate-[floatUp_…] class, bound to this module's keyframes. */
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  15% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-260px) scale(1); opacity: 0; }
+}
+.root :global(.animate-\[floatUp_2\.6s_ease-out_forwards\]) { animation: floatUp 2.6s ease-out forwards; }
+
+/* Source KPI tile on the shared StatCard: icon on the left in a tinted square, compact text, trend inline. */
+.root :global(.school-kpi) { padding: 10px 12px; --kpi-tone: var(--brand); }
+.root :global(.school-kpi-ok) { --kpi-tone: var(--ok); }
+.root :global(.school-kpi-warn) { --kpi-tone: var(--warn); }
+.root :global(.school-kpi-bad) { --kpi-tone: var(--bad); }
+.root :global(.school-kpi-info) { --kpi-tone: var(--info); }
+.root :global(.school-kpi) > div:first-child { flex-direction: row-reverse; justify-content: flex-end; align-items: center; gap: 12px; }
+.root :global(.school-kpi) > div:first-child > span[aria-hidden] {
+  width: 36px; height: 36px; border-radius: calc(var(--radius) * 0.45);
+  background: color-mix(in oklab, var(--kpi-tone) 12%, transparent); color: var(--kpi-tone);
+}
+.root :global(.school-kpi) > div:first-child > div > p:first-child {
+  font-size: calc(11px * var(--fs-scale)); font-weight: 400; text-transform: none; letter-spacing: normal; color: var(--muted);
+}
+.root :global(.school-kpi) > div:first-child > div > p:nth-child(2) {
+  margin-top: 0; font-size: calc(18px * var(--fs-scale)); line-height: 1.35; font-weight: 600; letter-spacing: normal;
+}
+.root :global(.school-kpi) > div:first-child > div > p:nth-child(3) { margin-top: 0; font-size: calc(11px * var(--fs-scale)); color: var(--muted); }
+.root :global(.school-kpi) > div:nth-child(2) {
+  margin-top: 0; padding-top: 0; border-top: 0; justify-content: flex-start; gap: 4px; padding-left: 48px;
+}
+.root :global(.school-kpi) > div:nth-child(2) > span { font-size: calc(11px * var(--fs-scale)); }
+
+/* Exact source avatar sizes around the shared Avatar (initials at 38% of the size, as in the source). */
+.root :global(.school-avatar) > span { width: 100%; height: 100%; font-size: calc(var(--school-avatar-size) * 0.38); }
+
+/* @generated:start — node scripts/generate-token-css.mjs */
+.root :global(.bg-bad) { background-color: var(--bad-fill); }
+.root :global(.bg-bad\/10) { background-color: color-mix(in oklab, var(--bad) 10%, transparent); }
+.root :global(.bg-bad\/15) { background-color: color-mix(in oklab, var(--bad) 15%, transparent); }
+.root :global(.bg-bad\/5) { background-color: color-mix(in oklab, var(--bad) 5%, transparent); }
+.root :global(.bg-brand) { background-color: var(--brand-fill); }
+.root :global(.bg-brand\/10) { background-color: color-mix(in oklab, var(--brand) 10%, transparent); }
+.root :global(.bg-brand\/5) { background-color: color-mix(in oklab, var(--brand) 5%, transparent); }
+.root :global(.bg-brand\/\[0\.03\]) { background-color: color-mix(in oklab, var(--brand) 3%, transparent); }
+.root :global(.bg-brand\/\[0\.05\]) { background-color: color-mix(in oklab, var(--brand) 5%, transparent); }
+.root :global(.bg-brand\/\[0\.06\]) { background-color: color-mix(in oklab, var(--brand) 6%, transparent); }
+.root :global(.bg-brand\/\[0\.07\]) { background-color: color-mix(in oklab, var(--brand) 7%, transparent); }
+.root :global(.bg-faint) { background-color: var(--faint); }
+.root :global(.bg-fg) { background-color: var(--fg); }
+.root :global(.bg-info) { background-color: var(--info); }
+.root :global(.bg-info\/10) { background-color: color-mix(in oklab, var(--info) 10%, transparent); }
+.root :global(.bg-info\/15) { background-color: color-mix(in oklab, var(--info) 15%, transparent); }
+.root :global(.bg-line) { background-color: var(--line); }
+.root :global(.bg-line\/60) { background-color: color-mix(in oklab, var(--line) 60%, transparent); }
+.root :global(.bg-line\/70) { background-color: color-mix(in oklab, var(--line) 70%, transparent); }
+.root :global(.bg-ok) { background-color: var(--ok-fill); }
+.root :global(.bg-ok\/10) { background-color: color-mix(in oklab, var(--ok) 10%, transparent); }
+.root :global(.bg-ok\/15) { background-color: color-mix(in oklab, var(--ok) 15%, transparent); }
+.root :global(.bg-ok\/5) { background-color: color-mix(in oklab, var(--ok) 5%, transparent); }
+.root :global(.bg-subtle) { background-color: var(--subtle); }
+.root :global(.bg-subtle\/30) { background-color: color-mix(in oklab, var(--subtle) 30%, transparent); }
+.root :global(.bg-subtle\/40) { background-color: color-mix(in oklab, var(--subtle) 40%, transparent); }
+.root :global(.bg-subtle\/50) { background-color: color-mix(in oklab, var(--subtle) 50%, transparent); }
+.root :global(.bg-subtle\/60) { background-color: color-mix(in oklab, var(--subtle) 60%, transparent); }
+.root :global(.bg-subtle\/70) { background-color: color-mix(in oklab, var(--subtle) 70%, transparent); }
+.root :global(.bg-surface) { background-color: var(--surface); }
+.root :global(.bg-warn) { background-color: var(--warn); }
+.root :global(.bg-warn\/10) { background-color: color-mix(in oklab, var(--warn) 10%, transparent); }
+.root :global(.bg-warn\/15) { background-color: color-mix(in oklab, var(--warn) 15%, transparent); }
+.root :global(.bg-warn\/5) { background-color: color-mix(in oklab, var(--warn) 5%, transparent); }
+.root :global(.border-bad\/40) { border-color: color-mix(in oklab, var(--bad) 40%, transparent); }
+.root :global(.border-brand) { border-color: var(--brand); }
+.root :global(.border-brand\/30) { border-color: color-mix(in oklab, var(--brand) 30%, transparent); }
+.root :global(.border-brand\/40) { border-color: color-mix(in oklab, var(--brand) 40%, transparent); }
+.root :global(.border-info\/30) { border-color: color-mix(in oklab, var(--info) 30%, transparent); }
+.root :global(.border-line) { border-color: var(--line); }
+.root :global(.border-line\/50) { border-color: color-mix(in oklab, var(--line) 50%, transparent); }
+.root :global(.border-line\/60) { border-color: color-mix(in oklab, var(--line) 60%, transparent); }
+.root :global(.border-line\/70) { border-color: color-mix(in oklab, var(--line) 70%, transparent); }
+.root :global(.border-ok) { border-color: var(--ok); }
+.root :global(.border-ok\/40) { border-color: color-mix(in oklab, var(--ok) 40%, transparent); }
+.root :global(.border-warn\/40) { border-color: color-mix(in oklab, var(--warn) 40%, transparent); }
+.root :global(.border-warn\/60) { border-color: color-mix(in oklab, var(--warn) 60%, transparent); }
+.root :global(.divide-line) > :not(:last-child) { border-color: var(--line); }
+.root :global(.divide-line\/50) > :not(:last-child) { border-color: color-mix(in oklab, var(--line) 50%, transparent); }
+.root :global(.divide-line\/60) > :not(:last-child) { border-color: color-mix(in oklab, var(--line) 60%, transparent); }
+.root :global(.divide-line\/70) > :not(:last-child) { border-color: color-mix(in oklab, var(--line) 70%, transparent); }
+.root :global(.fill-warn) { fill: var(--warn); }
+.root :global(.group):hover :global(.group-hover\:bg-subtle) { background-color: var(--subtle); }
+.root :global(.hover\:bg-brand\/15):hover { background-color: color-mix(in oklab, var(--brand) 15%, transparent); }
+.root :global(.hover\:bg-brand\/\[0\.03\]):hover { background-color: color-mix(in oklab, var(--brand) 3%, transparent); }
+.root :global(.hover\:bg-brand\/\[0\.04\]):hover { background-color: color-mix(in oklab, var(--brand) 4%, transparent); }
+.root :global(.hover\:bg-line):hover { background-color: var(--line); }
+.root :global(.hover\:bg-subtle):hover { background-color: var(--subtle); }
+.root :global(.hover\:border-brand\/40):hover { border-color: color-mix(in oklab, var(--brand) 40%, transparent); }
+.root :global(.hover\:text-fg):hover { color: var(--fg); }
+.root :global(.ring-bad\/20) { --tw-ring-color: color-mix(in oklab, var(--bad) 20%, transparent); }
+.root :global(.ring-brand) { --tw-ring-color: var(--brand); }
+.root :global(.ring-brand\/20) { --tw-ring-color: color-mix(in oklab, var(--brand) 20%, transparent); }
+.root :global(.ring-brand\/30) { --tw-ring-color: color-mix(in oklab, var(--brand) 30%, transparent); }
+.root :global(.ring-brand\/40) { --tw-ring-color: color-mix(in oklab, var(--brand) 40%, transparent); }
+.root :global(.ring-offset-surface) { --tw-ring-offset-color: var(--surface); }
+.root :global(.ring-surface) { --tw-ring-color: var(--surface); }
+.root :global(.rounded) { border-radius: calc(var(--radius) * 0.3); }
+.root :global(.rounded-2xl) { border-radius: calc(var(--radius) * 1.15); }
+.root :global(.rounded-lg) { border-radius: calc(var(--radius) * 0.6); }
+.root :global(.rounded-md) { border-radius: calc(var(--radius) * 0.45); }
+.root :global(.rounded-sm) { border-radius: calc(var(--radius) * 0.15); }
+.root :global(.rounded-t-sm) { border-top-left-radius: calc(var(--radius) * 0.15); border-top-right-radius: calc(var(--radius) * 0.15); }
+.root :global(.rounded-xl) { border-radius: calc(var(--radius) * 0.85); }
+.root :global(.text-3xl) { font-size: calc(30px * var(--fs-scale)); }
+.root :global(.text-\[10\.5px\]) { font-size: calc(10.5px * var(--fs-scale)); }
+.root :global(.text-\[10px\]) { font-size: calc(10px * var(--fs-scale)); }
+.root :global(.text-\[11\.5px\]) { font-size: calc(11.5px * var(--fs-scale)); }
+.root :global(.text-\[11px\]) { font-size: calc(11px * var(--fs-scale)); }
+.root :global(.text-\[12\.5px\]) { font-size: calc(12.5px * var(--fs-scale)); }
+.root :global(.text-\[12px\]) { font-size: calc(12px * var(--fs-scale)); }
+.root :global(.text-\[13px\]) { font-size: calc(13px * var(--fs-scale)); }
+.root :global(.text-\[9\.5px\]) { font-size: calc(9.5px * var(--fs-scale)); }
+.root :global(.text-\[9px\]) { font-size: calc(9px * var(--fs-scale)); }
+.root :global(.text-bad) { color: var(--bad-ink); }
+.root :global(.text-base) { font-size: calc(16px * var(--fs-scale)); }
+.root :global(.text-brand) { color: var(--brand-ink); }
+.root :global(.text-brand-fg) { color: var(--brand-fg); }
+.root :global(.text-faint) { color: var(--faint); }
+.root :global(.text-fg) { color: var(--fg); }
+.root :global(.text-info) { color: var(--info-ink); }
+.root :global(.text-lg) { font-size: calc(18px * var(--fs-scale)); }
+.root :global(.text-muted) { color: var(--muted); }
+.root :global(.text-ok) { color: var(--ok-ink); }
+.root :global(.text-sm) { font-size: calc(14px * var(--fs-scale)); }
+.root :global(.text-surface) { color: var(--surface); }
+.root :global(.text-warn) { color: var(--warn-ink); }
+.root :global(.text-xl) { font-size: calc(20px * var(--fs-scale)); }
+.root :global(.text-xs) { font-size: calc(12px * var(--fs-scale)); }
+@media (width >= 40rem) {
+  .root :global(.sm\:text-\[15px\]) { font-size: calc(15px * var(--fs-scale)); }
+  .root :global(.sm\:text-xl) { font-size: calc(20px * var(--fs-scale)); }
+}
+/* @generated:end */

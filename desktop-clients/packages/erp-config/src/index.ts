@@ -50,3 +50,6 @@ export * from './dcp-rules.ts';
 export * from './dcp-lifecycle.ts';
 
 export * from './dcp-runtime.ts';
+
+export * from "./reference-modules.ts";
+export * from "./reference-module-types.ts";

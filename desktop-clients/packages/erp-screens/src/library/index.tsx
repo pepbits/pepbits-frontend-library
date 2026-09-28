@@ -1,5 +1,5 @@
 "use client";
-import {CARE_PAGES,type CarePageId} from "@pepbits/erp-config";
+import {REFERENCE_PAGE_BY_ID,CARE_PAGES,type CarePageId} from "@pepbits/erp-config";
 import React, {Suspense, lazy} from "react";
 const DcpDesigner=lazy(()=>import('../dcp-designer/library-page').then(m=>({default:m.DcpDesignerLibraryPage})));
 const CareLibrary=lazy(()=>import("../care-pages/library-page").then(m=>({default:m.CareLibraryPage})));
@@ -25,7 +25,9 @@ const OPRegistration=lazy(()=>import('../op-registration/library-page').then(m=>
 const OPConsultation=lazy(()=>import('../op-consultation/library-page').then(m=>({default:m.OPConsultationLibraryPage})));
 const BillingClinic=lazy(()=>import('../clinic-billing/library-page').then(m=>({default:m.BillingClinicLibraryPage})));
 const ClinicalLibrary=lazy(()=>import('../clinical-templates/library-page').then(m=>({default:m.ClinicalLibraryPage})));
+const ReferenceModule=lazy(()=>import("../reference-modules/library-page").then(m=>({default:m.ReferenceModuleLibraryPage})));
 export function LibraryPage({page,target={pageId:page.id}}: {page:PageDefinition;target?:NavigationTarget}) {
+  if(REFERENCE_PAGE_BY_ID[page.id])return <Suspense fallback={<p role='status'><LocalizedText message='reference.modules.loading'/></p>}><ReferenceModule pageId={page.id} target={target}/></Suspense>;
   if(page.id==='dcp-designer')return <Suspense fallback={<p role='status'><LocalizedText message='designer.loading'/></p>}><DcpDesigner/></Suspense>;
   if(CARE_PAGES.includes(page.id as CarePageId))return <Suspense fallback={<p role="status"><LocalizedText message="Loading…"/></p>}><CareLibrary pageId={page.id as CarePageId}/></Suspense>;
   if(IDENTITY_PAGES.includes(page.id as typeof IDENTITY_PAGES[number]))return <Suspense fallback={<p role="status"><LocalizedText message="Loading…"/></p>}><IdentityLibrary pageId={page.id}/></Suspense>;

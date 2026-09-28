@@ -4,6 +4,8 @@
    @source built cleanly and shipped a stylesheet with zero theme tokens — an
    entirely colourless app, with only a warning in the build log. */
 @import "@pepbits/tokens/tokens.css";
+@import "@pepbits/reference-host/styles.css";
+@import "@pepbits/reference-keystone-core/styles.css";
 
 /* Tailwind 4 scans the project root. The class strings that style this app live in
    packages/, outside that root — without these every utility they use is purged. */
@@ -13,3 +15,11 @@
 @source "../../../packages/erp-screens/src";
 @source "../../../packages/ai-ui/src";
 @source "./mdi";
+
+@source "../../../packages/reference-host/src";
+@source "../../../packages/reference-reports/src";
+@source "../../../packages/reference-erp1/src";
+@source "../../../packages/reference-erp2/src";
+@source "../../../packages/reference-school/src";
+
+@source "../../../packages/reference-keystone-core/src";

@@ -783,6 +783,13 @@ export const ROLES = [
   { value: "hr-business-partner", label: "HR Business Partner" },
   { value: "operations-analyst", label: "Operations Analyst" },
   { value: "auditor", label: "Internal Auditor" },
+  { value: "school-admin", label: "School Admin" },
+  { value: "school-teacher", label: "School Teacher" },
+  { value: "school-student", label: "School Student" },
+  { value: "school-parent", label: "School Parent" },
+  { value: "school-librarian", label: "School Librarian" },
+  { value: "school-accountant", label: "School Accountant" },
+
 ];
 
 export const HEADER_QUICK_PAGES = [
@@ -825,3 +832,10 @@ MODULES.library.navigation.push({id:'lib-device-integrations',label:'devices.dev
 import {IDENTITY_PAGES} from './identity-devices.ts';
 for(const id of IDENTITY_PAGES)PAGE_REGISTRY[id]={id,title:id,titleKey:'identity.'+id,subtitle:'identity.notice',kind:'library',module:'library',icon:Tags};
 MODULES.library.navigation.find(s=>s.id==='lib-device-integrations')!.items.push(...IDENTITY_PAGES.map(id=>({id,label:'identity.'+id,pageId:id,icon:Tags})));
+
+import {REFERENCE_MODULES} from './reference-modules.ts';
+for(const module of REFERENCE_MODULES){
+ const groups=[...new Set(module.pages.map(page=>page.section))];
+ MODULES[module.id]={id:module.id,label:module.title,shortLabel:module.shortLabel,description:'Reusable reference workspace with authenticated demo adapters',accent:module.accent,icon:module.variant==='school'?BookOpen:module.variant==='reports'?FileChartColumn:Boxes,navigation:groups.map(section=>({id:module.id+'-'+section,label:section.charAt(0).toUpperCase()+section.slice(1),items:module.pages.filter(page=>page.section===section).map(page=>({id:page.id,label:page.title,pageId:page.id,icon:FileText}))}))};
+ for(const page of module.pages)PAGE_REGISTRY[page.id]={id:page.id,title:page.title,titleKey:'page.'+page.id+'.title',subtitle:'reference.modules.demoNotice',kind:'library',module:module.id,icon:FileText,ai:{enabled:false,useCases:[]}};
+}

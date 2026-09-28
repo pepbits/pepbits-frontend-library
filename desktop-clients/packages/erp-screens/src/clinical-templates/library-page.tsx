@@ -3,7 +3,6 @@ import React, { useMemo } from "react";
 import { useSession } from "@pepbits/auth";
 import { useERP, useProduct } from "@pepbits/erp-shell";
 import {
-  CLINICAL_TEMPLATE_PAGES,
   type PageDefinition,
 } from "@pepbits/erp-config";
 import { createClinicalTemplateAdapter } from "@pepbits/erp-data";
@@ -11,7 +10,16 @@ import { useNavigation, type NavigationTarget } from "@pepbits/platform-ports";
 import { useProductRequest } from "../product-services";
 import { ClinicalPatientWorkspace } from "./workspace";
 import type { ClinicalView } from "./shared";
-const views: ClinicalView[] = ["query", "record", "overview"];
+const patientPageByView: Record<ClinicalView, string> = {
+  query: "allyvora-patient-query",
+  record: "allyvora-patient-record",
+  overview: "allyvora-patient-360",
+};
+const patientViewByPage: Record<string, ClinicalView | undefined> = {
+  "allyvora-patient-query": "query",
+  "allyvora-patient-record": "record",
+  "allyvora-patient-360": "overview",
+};
 export function ClinicalLibraryPage({
   page,
   target,
@@ -29,9 +37,8 @@ export function ClinicalLibraryPage({
       () => createClinicalTemplateAdapter(request, product.id),
       [request, product.id],
     ),
-    view =
-      views[CLINICAL_TEMPLATE_PAGES.findIndex((p) => p.id === page.id)] ??
-      "query";
+    view = patientViewByPage[page.id];
+  if (!view) return null;
   return (
     <div data-clinical-library={page.id}>
       <ClinicalPatientWorkspace
@@ -49,7 +56,7 @@ export function ClinicalLibraryPage({
         onPreferenceChange={updatePreference}
         onOpen={(destination) =>
           navigation.openInNewContext({
-            pageId: CLINICAL_TEMPLATE_PAGES[views.indexOf(destination.view)].id,
+            pageId: patientPageByView[destination.view],
             recordId: destination.patientId,
             mode: destination.mode,
           })

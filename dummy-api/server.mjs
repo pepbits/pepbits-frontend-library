@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+import {createReferenceReportsStore} from './reference-reports-store.mjs';
+import {createReferenceSchoolStore} from './reference-school-store.mjs';
+import {createReferenceErpStore} from './reference-erp-store.mjs';
 import {isDcpValues,isDcpRevision} from '../desktop-clients/packages/erp-config/src/dcp-runtime.ts';
 import {createDesignerStore} from './dcp-designer-store.mjs';
 import {createCarePageStore} from './care-page-store.mjs';
@@ -43,7 +46,7 @@ import {withMessageMetadata} from "./message-descriptors.mjs";
  *   PORT=4100 node server.mjs
  */
 import { createApplicationConfig } from "./application-config.mjs";
-import { PAGE_REGISTRY } from "../desktop-clients/packages/erp-config/src/navigation.ts";
+import { BRANCHES, PAGE_REGISTRY } from "../desktop-clients/packages/erp-config/src/navigation.ts";
 import { getEntitySchema } from "../desktop-clients/packages/erp-config/src/entity-schemas.ts";
 import { validateForm } from "../desktop-clients/packages/erp-config/src/form-rules.ts";
 import { createApprovalStore } from "./approval-store.mjs";
@@ -111,8 +114,14 @@ const ACCOUNTS = [
   },
 ];
 
+
+// Explicit fictional school identities. A role comes from this authenticated account, never a UI choice.
+for(const role of ['admin','teacher','student','parent','librarian','accountant'])ACCOUNTS.push({username:'school-'+role,password:'school-'+role,user:{id:'SCHOOL-'+role.toUpperCase(),name:'Demo '+role.charAt(0).toUpperCase()+role.slice(1),email:role+'@school.example',initials:role.slice(0,2).toUpperCase(),title:'School '+role,role:'school-'+role,branch:'hq',tenantId:'NEX-SCHOOL-DEMO',...(role==='admin'?{permissions:['preferences:manage','monitoring:manage']}:{} )}});
+
 /** token -> user. Lost on restart, which is correct for a demo. */
 const sessions = new Map();
+const referenceStores={reports:createReferenceReportsStore({inboundSecret:process.env.REFERENCE_REPORTS_INBOUND_SECRET,inboundIdentity:{user:ACCOUNTS[2].user,scope:{applicationId:'nexora',branchId:ACCOUNTS[2].user.branch}}}),school:createReferenceSchoolStore(),erp1:createReferenceErpStore({variant:'erp1'}),erp2:createReferenceErpStore({variant:'erp2'})};
+
 
 /* Preferences, unlike sessions, are written to disk. An in-memory store would lose
    every saved preference the moment the process restarted, which defeats the whole
@@ -816,8 +825,8 @@ const CORS = {
      not name: the request never leaves, nothing is logged, and the only symptom
      is a cell that will not save. */
   "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization, If-None-Match, X-Product-Id, Pepbits-Contract-Version",
-  "Access-Control-Expose-Headers": "ETag",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, If-None-Match, X-Product-Id, X-Reference-Branch, X-Reports-Api-Key, X-Inbound-Secret, Pepbits-Contract-Version",
+  "Access-Control-Expose-Headers": "ETag, Content-Disposition",
   "Access-Control-Max-Age": "86400",
 };
 
@@ -885,6 +894,36 @@ const server = createServer(async (req, res) => {
   if (allowed && !allowed.includes(req.method)) {
     res.setHeader("Allow", allowed.join(", "));
     return send(res, 405, { error: "Method not allowed." });
+  }
+
+  const referenceMatch=pathname.match(/^\/reference-modules\/(reports|school|erp1|erp2)(\/.*)?$/);
+  if(referenceMatch){
+    const variant=referenceMatch[1],modulePath=referenceMatch[2]??'/';
+    let user=sessions.get(bearer(req)),keyIdentity=null;
+    if(!user&&variant==='reports'&&modulePath.startsWith('/api/v1/')){
+      keyIdentity=referenceStores.reports.authenticateApiKey(req.headers['x-reports-api-key']??bearer(req));
+      if(keyIdentity)user=ACCOUNTS.find(account=>account.user.id===keyIdentity.user.id&&account.user.tenantId===keyIdentity.user.tenantId)?.user;
+    }
+    if(!user&&variant==='reports'&&modulePath==='/api/inbound-email'&&req.method==='POST'){
+      keyIdentity=referenceStores.reports.authenticateInboundSecret(req.headers['x-inbound-secret']);
+      if(keyIdentity)user=ACCOUNTS.find(account=>account.user.id===keyIdentity.user.id&&account.user.tenantId===keyIdentity.user.tenantId)?.user;
+    }
+    if(!user)return send(res,401,{error:'Not signed in.'});
+    // A key's owner and partition come from the server. Client scope headers cannot move a key.
+    const product=keyIdentity?.scope.applicationId??req.headers['x-product-id']??'nexora',nav=applicationConfig.navigation(user,product);
+    if(nav.status!==200)return send(res,nav.status,{error:nav.error});
+    if(!nav.body.nodes.some(node=>node.kind==='module'&&node.moduleId==='reference-'+variant))return send(res,403,{error:'Module is unavailable.'});
+    const branch=keyIdentity?.scope.branchId??req.headers['x-reference-branch']??user.branch;
+    if(typeof branch!=='string'||!BRANCHES.some(item=>item.value===branch)||(user.role!=='enterprise-admin'&&user.role!=='school-admin'&&branch!==user.branch))return send(res,403,{error:'Branch is unavailable.'});
+    let body={};if(!['GET','HEAD'].includes(req.method)){try{body=await readJson(req,2_000_000);}catch{return send(res,400,{error:'Malformed request body.'});}}
+    const scope={applicationId:product,branchId:branch};
+    const result=await referenceStores[variant].handle({...user,branch},scope,{method:req.method,path:modulePath,query:requestUrl.searchParams,body,headers:req.headers});
+    const contentType=result.headers?.['Content-Type']??result.headers?.['content-type'];
+    if(contentType&&!contentType.includes('application/json')){
+      const payload=Buffer.isBuffer(result.body)?result.body:Buffer.from(String(result.body??''));
+      res.writeHead(result.status,{...CORS,'Cache-Control':'no-store',...result.headers,'Content-Length':payload.length});return res.end(payload);
+    }
+    return send(res,result.status,result.body,result.headers);
   }
 
   if (req.method === "POST" && pathname === "/auth/login") {

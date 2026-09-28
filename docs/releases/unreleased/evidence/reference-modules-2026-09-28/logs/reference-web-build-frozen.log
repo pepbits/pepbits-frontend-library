@@ -1,0 +1,28 @@
+
+> web@1.0.0 build
+> rm -rf .next/static && next build && node ../../scripts/stamp-api.mjs NEXT_PUBLIC_API_URL .next
+
+▲ Next.js 16.3.3 (Turbopack)
+✓ Running next.config.ts took 39ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1138ms
+  Running TypeScript ...
+  Finished TypeScript in 6.3s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/3) ...
+✓ Generating static pages using 7 workers (3/3) in 573ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[module]/[page]
+├ ƒ /[module]/[page]/[recordId]
+├ ƒ /[module]/[page]/[recordId]/edit
+├ ƒ /[module]/[page]/new
+└ ƒ /view/[viewId]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

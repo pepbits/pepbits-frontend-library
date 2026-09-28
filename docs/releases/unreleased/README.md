@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Reference module import — 28 September 2026](reference-modules-2026-09-28.md): active reusable Reports, ERP1, ERP2 and School import; no deployment claimed.
+
 Status reviewed **13 September 2026**. Latest recorded activation: [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`, verified on both demo sites. The earlier [DCP frontend contract/runtime deployment](dcp-frontend-deployment-2026-09-11.md) already delivered the dependent dropdown, value-set, bounded import, repeatable-field and runtime increments; their original implementation records retain historical local-only status.
 
 Latest documentation review: [repository audit — 13 September 2026](documentation-audit-2026-09-13.md). This review does not redeploy the application or resolve hosted feature-browser failures.
@@ -105,3 +107,7 @@ adds an optional production capability contract and cursor pagination to the exi
 - [Quantity/unit primitive — 20 September 2026](quantity-unit-field-2026-09-20.md): additive ops-ui composition, host-owned exact preview, no consumer adoption or publication.
 
 - [Fixed-branch documentation receipt review — 20 September 2026](shell-branch-receipt-review-2026-09-20.md)
+
+## Local verification — 28 September 2026
+
+[Reports, ERP1, ERP2 and School reference modules](reference-modules-2026-09-28.md): implementation and local validation complete for 152 static destinations across six public packages. Final evidence includes 162 browser route/header checks, module actions, visual comparisons, unit/API suites, type checks and both host builds. Guide translation drafts are populated and await native review; package publication and live deployment are outside this record.

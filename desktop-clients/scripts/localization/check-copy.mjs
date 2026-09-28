@@ -35,5 +35,5 @@ function walk(dir){for(const entry of readdirSync(dir,{withFileTypes:true})){con
   ts.forEachChild(node,visit);
  }visit(sf);
 }}}
-for(const pkg of ['erp-screens','ai-ui','erp-shell','ops-ui'])walk(join(root,`desktop-clients/packages/${pkg}/src`));
+for(const pkg of ['erp-screens','ai-ui','erp-shell','ops-ui','reference-host','reference-reports','reference-erp1','reference-erp2','reference-school','reference-keystone-core'])walk(join(root,`desktop-clients/packages/${pkg}/src`));
 if(failures.length){console.error([...new Set(failures)].join('\n'));process.exitCode=1;}else console.log(`PASS ${catalogKeys} catalog keys in four languages; ${sites} static presentation references; explicit data/code exceptions.`);

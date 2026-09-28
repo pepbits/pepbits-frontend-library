@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "runtimeStatus": "verified",
+  "documentationStatus": "draft-translations-populated-current-revisions-native-review-pending",
+  "baseCommit": "a9703f1",
+  "sourceFilesUnchanged": 341,
+  "modules": [
+    {
+      "id": "reference-reports",
+      "staticDestinations": 14
+    },
+    {
+      "id": "reference-erp1",
+      "staticDestinations": 57,
+      "templateFamilies": 20
+    },
+    {
+      "id": "reference-erp2",
+      "staticDestinations": 57,
+      "templateFamilies": 20
+    },
+    {
+      "id": "reference-school",
+      "staticDestinations": 24
+    }
+  ],
+  "publicPackages": 6,
+  "checks": {
+    "types": {
+      "status": "passed",
+      "artifact": "evidence/typecheck.log"
+    },
+    "unit": {
+      "status": "passed",
+      "files": 156,
+      "tests": 1859,
+      "artifact": "evidence/unit-tests.log"
+    },
+    "api": {
+      "status": "passed",
+      "javascriptTests": 205,
+      "clinicalTypeScriptTests": 33,
+      "total": 238,
+      "artifact": "evidence/api-tests.log"
+    },
+    "optimizedBuilds": {
+      "web": "passed",
+      "desktop": "passed",
+      "artifacts": [
+        "evidence/web-build.log",
+        "evidence/desktop-build.log"
+      ]
+    },
+    "bundle": {
+      "status": "passed",
+      "budgetGzipBytes": 550000,
+      "desktopLargestGzipBytes": 528673,
+      "webLargestGzipBytes": 266229,
+      "artifact": "evidence/bundle-budget.log"
+    },
+    "localization": {
+      "status": "passed",
+      "catalogKeys": 20317,
+      "languages": [
+        "en",
+        "ar",
+        "hi",
+        "ml"
+      ],
+      "staticPresentationReferences": 2133,
+      "registeredApiErrors": 385,
+      "newUiKeys": 2417,
+      "nativeHumanReview": "pending",
+      "artifact": "evidence/localization.log"
+    },
+    "browser": {
+      "staticDestinations": 152,
+      "dynamicUrls": 6,
+      "desktopModuleRenders": 4,
+      "fourHeaderChoices": "passed",
+      "artifact": "evidence/route-sweep.json"
+    },
+    "existingWorkflows": {
+      "passed": 5,
+      "artifact": "evidence/existing-browser-workflows.json"
+    },
+    "healthcareVisualBaseline": {
+      "statesMatched": 6,
+      "geometryTextFontsStyles": "identical",
+      "pngPairsByteIdentical": 5,
+      "artifact": "evidence/healthcare-baseline-comparison.json"
+    },
+    "correctedPatientRouting": {
+      "componentTests": 8,
+      "actualBrowserViews": 3,
+      "artifact": "evidence/healthcare-corrected-routing.json"
+    },
+    "roleBranchInvalidation": {
+      "status": "passed",
+      "artifact": "evidence/scope-switch.json"
+    },
+    "rtlDarkManagedPreferences": {
+      "status": "passed",
+      "artifact": "evidence/preferences.json"
+    },
+    "reportsActions": {
+      "status": "passed",
+      "artifact": "evidence/reports-actions.json"
+    },
+    "authenticatedRecipientDownload": {
+      "status": "passed",
+      "recipientIsOwner": false,
+      "artifact": "evidence/authenticated-download.json"
+    },
+    "schoolActions": {
+      "status": "passed",
+      "count": 4,
+      "artifact": "evidence/school-actions.json"
+    },
+    "sourceDesignReview": {
+      "pairedStates": 16,
+      "pixelEquivalenceClaim": false,
+      "artifact": "evidence/visual-index.json"
+    },
+    "completeRuleVerifier": {
+      "status": "passed",
+      "exitCode": 0,
+      "artifact": "evidence/rule-verifier.log",
+      "localLog": "/tmp/reference-verify-final-complete3.log",
+      "documentationBaseSHA": "a9703f1"
+    },
+    "erpInvoiceAndNavigation": {
+      "status": "passed",
+      "artifacts": [
+        "evidence/erp1-invoice-and-erp2-navigation.json",
+        "evidence/erp2-invoice-and-print.json"
+      ],
+      "earlierWorkflowProbe": "partial; excluded from complete acceptance"
+    },
+    "guideDraftTranslations": {
+      "status": "passed",
+      "languages": [
+        "ar",
+        "hi",
+        "ml"
+      ],
+      "uniqueMappingsPerLanguage": 1228,
+      "workflowParagraphsPerLanguage": 543,
+      "metadataStringsPerLanguage": 685,
+      "existingMappingsPreservedPerLanguage": 435,
+      "nativeHumanReview": "pending",
+      "artifact": "TRANSLATION-VALIDATION.json"
+    },
+    "freshDocumentationApi": {
+      "status": "passed",
+      "tests": 5,
+      "includedInEarlierFullApiCount": false,
+      "localLog": "/tmp/reference-documentation-api-final-translated.log"
+    }
+  },
+  "limits": [
+    "Fictional API implementation; no production delivery/scheduler/media relay guarantee",
+    "Native human translation and terminology review pending",
+    "No production deployment or native Tauri execution",
+    "Print documents keep fixed paper styling and English amount-in-words as documented"
+  ],
+  "implementationFrozenAtUTC": "2026-09-28T09:10:02Z"
+}
