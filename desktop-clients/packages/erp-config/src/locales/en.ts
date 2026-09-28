@@ -9518,5 +9518,7 @@ export default {
   "Average": "Average",
   "Minimum": "Minimum",
   "Maximum": "Maximum",
-  "Count": "Count"
+  "Count": "Count",
+  "api.reference.1b79a2ba7316": "Malformed School path.",
+  "api.reference.0de69c94e5b5": "School page is unavailable."
 };

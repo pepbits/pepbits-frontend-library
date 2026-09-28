@@ -1,4 +1,5 @@
 "use client";
+import {productModuleForPage, productNavigationTarget, moduleLandingPage} from "@pepbits/erp-config";
 import {useShellHost} from "./shell-host";
 
 import {SessionLock} from "./session-lock";
@@ -127,13 +128,13 @@ export function ERPProvider({ children, fallback = null }: { children: React.Rea
   const [lastModule, setLastModule] = useState<ModuleKey>(product.defaultModule);
 
   const activePage = product.pages[navigation.current.pageId];
-  const candidateModule = activePage && activePage.module !== "shared" ? activePage.module : lastModule;
+  const candidateModule = productModuleForPage(product,navigation.current.pageId,navigation.current.moduleId ?? lastModule) ?? lastModule;
   const currentModule = product.modules[candidateModule] ? candidateModule : product.defaultModule;
 
   useEffect(() => {
     const page = product.pages[navigation.current.pageId];
-    if (page && page.module !== "shared") setLastModule(page.module);
-  }, [navigation.current.pageId, product]);
+    if (page && page.module !== "shared") setLastModule(currentModule);
+  }, [navigation.current.pageId, navigation.current.moduleId, currentModule, product]);
 
   /* Preferences come from the server, keyed by the signed-in user. The shell renders
      `fallback` until they land, so it never paints in one theme and then jumps to
@@ -325,9 +326,9 @@ export function ERPProvider({ children, fallback = null }: { children: React.Rea
     const actions: Record<string, () => void> = {
       command: () => setCommandOpen(true),
       preferences: () => navigation.open({ pageId: "preferences" }),
-      dashboard: () => navigation.open({ pageId: `${currentModule}-dashboard` }),
+      dashboard: () => {const pageId=moduleLandingPage(product,currentModule);if(pageId)navigation.open(productNavigationTarget(product,pageId,currentModule));},
       search: () => window.dispatchEvent(new CustomEvent(SIDEBAR_SEARCH_EVENT)),
-      newRecord: () => navigation.openInNewContext({ pageId: navigation.current.pageId, mode: "new" }),
+      newRecord: () => navigation.openInNewContext({ ...navigation.current, mode: "new", recordId: undefined }),
       pinSidebar: () => updatePreference("sidebarPinned", !preferences.sidebarPinned),
       help: () => setHelpOpen(true),
       split: () => { workspace?.splitWithPrevious("right"); },

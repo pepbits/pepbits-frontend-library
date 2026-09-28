@@ -68,3 +68,14 @@ describe("documentFromTarget", () => {
     expect(targetFromDocument(documentFromTarget(target)).recordId).toBe("C~100");
   });
 });
+
+test('School views keep separate MDI identities and survive restored documents',()=>{
+ const student={pageId:'reference-school-quizzes',moduleId:'reference-school-student',recordId:'/quizzes/qz-1?copy=a~module~b'};
+ const teacher={...student,moduleId:'reference-school-teacher'};
+ const studentDoc=documentFromTarget(student),teacherDoc=documentFromTarget(teacher);
+ expect(studentDoc.entityId).not.toBe(teacherDoc.entityId);
+ expect(studentDoc.module).toBe(student.moduleId);
+ expect(targetFromDocument(studentDoc)).toEqual(student);
+ expect(targetKey(student)).not.toBe(targetKey(teacher));
+ expect(targetFromDocument(documentFromTarget({pageId:'customer-master',recordId:'a~module~b'}))).toEqual({pageId:'customer-master',recordId:'a~module~b'});
+});

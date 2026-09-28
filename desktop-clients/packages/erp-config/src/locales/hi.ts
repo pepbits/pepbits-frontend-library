@@ -9518,5 +9518,7 @@ export default {
   "Average": "औसत",
   "Minimum": "न्यूनतम",
   "Maximum": "अधिकतम",
-  "Count": "गणना"
+  "Count": "गणना",
+  "api.reference.1b79a2ba7316": "विद्यालय पथ अमान्य है।",
+  "api.reference.0de69c94e5b5": "विद्यालय पृष्ठ उपलब्ध नहीं है।"
 };

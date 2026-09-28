@@ -839,3 +839,9 @@ for(const module of REFERENCE_MODULES){
  MODULES[module.id]={id:module.id,label:module.title,shortLabel:module.shortLabel,description:'Reusable reference workspace with authenticated demo adapters',accent:module.accent,icon:module.variant==='school'?BookOpen:module.variant==='reports'?FileChartColumn:Boxes,navigation:groups.map(section=>({id:module.id+'-'+section,label:section.charAt(0).toUpperCase()+section.slice(1),items:module.pages.filter(page=>page.section===section).map(page=>({id:page.id,label:page.title,pageId:page.id,icon:FileText}))}))};
  for(const page of module.pages)PAGE_REGISTRY[page.id]={id:page.id,title:page.title,titleKey:'page.'+page.id+'.title',subtitle:'reference.modules.demoNotice',kind:'library',module:module.id,icon:FileText,ai:{enabled:false,useCases:[]}};
 }
+
+import {SCHOOL_ROLE_VIEWS} from './school-role-views.ts';
+const schoolPages=REFERENCE_MODULES.find(module=>module.id==='reference-school')!.pages;
+for(const view of SCHOOL_ROLE_VIEWS){
+ MODULES[view.id]={...MODULES['reference-school'],id:view.id,label:view.title,labelKey:view.titleKey,shortLabel:view.shortLabel,shortLabelKey:view.shortLabelKey,navigation:[...view.groups,{label:'Account',items:[{href:'/settings',label:'Settings'}]}].map(group=>({id:view.id+'-'+group.label.toLowerCase(),label:group.label,labelKey:'reference-school.section.'+group.label.toLowerCase(),items:group.items.map(item=>({id:view.id+'-'+item.href.slice(1),label:item.label,pageId:schoolPages.find(page=>page.path===item.href)!.id,icon:FileText}))}))};
+}

@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { PAGE_REGISTRY, REFERENCE_PAGE_BY_ID, referenceInternalPath } from "@pepbits/erp-config";
+import { useProduct } from "@pepbits/erp-shell";
+import { legacySchoolModuleAlias, PAGE_REGISTRY, REFERENCE_PAGE_BY_ID, referenceInternalPath } from "@pepbits/erp-config";
 import type { NavigationPort, NavigationTarget } from "@pepbits/platform-ports";
 
 /** The canonical module segment for a page. "shared" pages live under /shared. */
@@ -12,7 +13,7 @@ export function moduleSegmentFor(pageId: string): string {
 }
 
 export function hrefFor(target: NavigationTarget): string {
-  const base = `/${moduleSegmentFor(target.pageId)}/${target.pageId}`;
+  const base = `/${target.moduleId ?? moduleSegmentFor(target.pageId)}/${target.pageId}`;
   if (REFERENCE_PAGE_BY_ID[target.pageId] && target.recordId) return `${base}/${encodeURIComponent(target.recordId)}`;
   if (target.mode === "new") return `${base}/new`;
   if (target.recordId) return target.mode === "edit" ? `${base}/${target.recordId}/edit` : `${base}/${target.recordId}`;
@@ -23,6 +24,7 @@ export const LAST_PAGE_KEY = "nexora-last-page";
 
 export function useWebNavigation(): NavigationPort {
   const router = useRouter();
+  const product = useProduct();
   const pathname = usePathname();
   const params = useParams<{ module?: string; page?: string; recordId?: string }>();
 
@@ -34,6 +36,11 @@ export function useWebNavigation(): NavigationPort {
     try { window.localStorage.setItem(LAST_PAGE_KEY, pathname); } catch { /* storage unavailable */ }
   }, [params.page, pathname]);
 
+  const alias=legacySchoolModuleAlias(product,params.module);
+  useEffect(()=>{
+    if(alias && params.page)router.replace(hrefFor({pageId:params.page,moduleId:alias,...(params.recordId?{recordId:referenceInternalPath(params.recordId)??params.recordId}:{})}));
+  },[alias,params.page,params.recordId,router]);
+
   return useMemo(() => {
     const last = pathname.split("/").filter(Boolean).at(-1);
     const mode: NavigationTarget["mode"] | undefined =
@@ -41,6 +48,7 @@ export function useWebNavigation(): NavigationPort {
 
     const current: NavigationTarget = {
       pageId: params.page ?? "finance-dashboard",
+      ...(params.module?.startsWith("reference-school") ? {moduleId:params.module} : {}),
       ...(mode ? { mode } : {}),
       ...(params.recordId ? { recordId: REFERENCE_PAGE_BY_ID[params.page ?? ''] ? referenceInternalPath(params.recordId) ?? params.recordId : params.recordId } : {}),
     };
@@ -53,5 +61,5 @@ export function useWebNavigation(): NavigationPort {
       openInNewContext: (target) => { window.open(hrefFor(target), "_blank", "noopener"); },
       hrefFor,
     };
-  }, [params.page, params.recordId, pathname, router]);
+  }, [params.module, params.page, params.recordId, pathname, router]);
 }

@@ -1,4 +1,5 @@
 "use client";
+import {moduleContainsPage, legacySchoolModuleAlias} from "@pepbits/erp-config";
 
 import {DraftRecoveryCenter} from "./drafts/draft-center";
 import { RecordApproval } from "./approvals/approval-workspace";
@@ -50,7 +51,10 @@ export function SkeletonFor({ kind }: { kind: string }) {
 
 export function PageRenderer({ target, showTabPreferences = true }: { target: NavigationTarget; showTabPreferences?: boolean }) {
   const product = useProduct();
+  const alias=legacySchoolModuleAlias(product,target.moduleId);
+  if(alias)target={...target,moduleId:alias};
   const page = product.pages[target.pageId];
+  if (target.moduleId && !moduleContainsPage(product,target.moduleId,target.pageId)) return <AccessDenied title="Page unavailable for your role" description="Your account does not have access to this page." />;
   if(page && target.pageId==="draft-recovery")return <DraftRecoveryCenter />;
   if(page && target.pageId==="error-monitor")return <ErrorMonitor />;
   if(page && target.pageId==="documentation-center")return <DocumentationCenter />;

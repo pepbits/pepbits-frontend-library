@@ -9518,5 +9518,7 @@ export default {
   "Average": "المتوسط",
   "Minimum": "الحد الأدنى",
   "Maximum": "الحد الأقصى",
-  "Count": "العدد"
+  "Count": "العدد",
+  "api.reference.1b79a2ba7316": "مسار المدرسة غير صالح.",
+  "api.reference.0de69c94e5b5": "صفحة المدرسة غير متاحة."
 };

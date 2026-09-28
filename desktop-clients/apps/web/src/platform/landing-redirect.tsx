@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import type { ModuleKey } from "@pepbits/erp-config";
-import { dashboardPageId, useERP, useProduct } from "@pepbits/erp-shell";
+import {moduleLandingPage,productNavigationTarget,type ModuleKey} from "@pepbits/erp-config";
+import { useERP, useProduct } from "@pepbits/erp-shell";
 import { SessionSplash } from "@pepbits/erp-screens";
 import { LAST_PAGE_KEY, hrefFor } from "./web-navigation";
 
@@ -20,8 +20,8 @@ export function LandingRedirect() {
   useEffect(() => {
     if(preferences.defaultModule && product.modules[preferences.defaultModule as ModuleKey]) {
       const module=preferences.defaultModule as ModuleKey;
-      const page=product.pages[dashboardPageId(module)]?.id ?? Object.values(product.pages).find(page=>page.module===module)?.id;
-      if(page){router.replace(hrefFor({pageId:page}));return;}
+      const page=moduleLandingPage(product,module);
+      if(page){router.replace(hrefFor(productNavigationTarget(product,page,module)));return;}
     }
     if (preferences.landingPage === "last-visited") {
       const last = read(LAST_PAGE_KEY);
@@ -36,7 +36,8 @@ export function LandingRedirect() {
        back to finance keeps the historical behaviour for a fresh browser. */
     const stored = read("nexora-module");
     const module: ModuleKey = stored && stored in product.modules ? (stored as ModuleKey) : product.defaultModule;
-    router.replace(hrefFor({ pageId: dashboardPageId(module) }));
+    const page=moduleLandingPage(product,module);
+    if(page)router.replace(hrefFor(productNavigationTarget(product,page,module)));
   }, [preferences.landingPage, preferences.defaultModule, router, product]);
 
   return <SessionSplash />;

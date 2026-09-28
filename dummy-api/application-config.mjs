@@ -1,6 +1,8 @@
 import {readFileSync,readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {createHash} from 'node:crypto';
+import {schoolViewRoles} from './school-view-policy.mjs';
+import {schoolRoleView} from '../desktop-clients/packages/erp-config/src/school-role-views.ts';
 const LANGUAGES={en:'ltr',ar:'rtl',hi:'ltr',ml:'ltr'};
 const slug=/^[a-z][a-z0-9.-]*$/;
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex').slice(0,24);
@@ -61,7 +63,18 @@ export function createApplicationConfig(root,knownPages){
  return {
   navigation(user,productId){
    const product=get(user,productId);if(product.error)return product;
-   const allowed=item=>!item.roles||item.roles.includes(user.role);
+   const schoolRoles=schoolViewRoles(user);
+   const nodeById=new Map(product.nav.nodes.map(node=>[node.id,node]));
+   const schoolModule=item=>{
+    let current=item;while(current&&current.kind!=='module')current=nodeById.get(current.parentId);
+    return current?.kind==='module'?schoolRoleView(current.moduleId):undefined;
+   };
+   const allowed=item=>{
+    const view=schoolModule(item);
+    if(view)return schoolRoles.includes(view.role)&&(!item.roles||item.roles.includes('school-'+view.role));
+    if(item.id.startsWith('reference-school-')&&!item.kind)return schoolRoles.length>0&&(!item.roles||schoolRoles.some(role=>item.roles.includes('school-'+role)));
+    return !item.roles||item.roles.includes(user.role);
+   };
    const pages=product.nav.pages.filter(allowed).map(({roles,...page})=>page),pageIds=new Set(pages.map(p=>p.id));
    const build=parentId=>product.nav.nodes.filter(n=>n.parentId===parentId&&allowed(n)&&(!n.pageId||pageIds.has(n.pageId))).sort((a,b)=>a.order-b.order||a.id.localeCompare(b.id)).flatMap(node=>{
     const children=build(node.id);if(node.kind!=='page'&&!node.pageId&&!children.length)return [];

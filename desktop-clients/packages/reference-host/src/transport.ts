@@ -1,5 +1,6 @@
 export interface ReferenceTransportOptions {
   namespace: string;
+  moduleId?: string;
   applicationId: string;
   branchId: string;
   fetch: (path: string, init?: RequestInit) => Promise<Response>;
@@ -17,6 +18,7 @@ export function createReferenceTransport(options: ReferenceTransportOptions) {
     const headers = new Headers(init?.headers);
     headers.set('X-Product-Id', options.applicationId);
     headers.set('X-Reference-Branch', options.branchId);
+    if (options.moduleId) headers.set('X-Reference-Module', options.moduleId);
     return options.fetch(options.namespace + path, {...init, headers});
   };
   const request = async <T,>(endpoint: string, init?: RequestInit): Promise<T> => {

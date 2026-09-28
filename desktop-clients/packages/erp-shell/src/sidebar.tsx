@@ -8,7 +8,7 @@ import { useNavigation } from "@pepbits/platform-ports";
 import { chromePalette } from "./chrome-palette";
 import { useProduct } from "./product-context";
 import { useERP } from "./erp-context";
-import { SIDEBAR_SEARCH_EVENT } from "@pepbits/erp-config";
+import { productNavigationTarget, SIDEBAR_SEARCH_EVENT } from "@pepbits/erp-config";
 import type { MenuItem, MenuSection } from "@pepbits/erp-config";
 
 const matchText = (item: MenuItem, term: string, t: (key: string) => string) => `${item.label} ${t(item.labelKey ?? item.label)}`.toLowerCase().includes(term);
@@ -116,8 +116,8 @@ export function Sidebar() {
   const { module, preferences, updatePreference } = useERP();
   const navigation = useNavigation();
   const activePageId = navigation.current.pageId;
-  const openPage = (pageId: string) => navigation.open({ pageId });
-  const hrefForPage = (pageId: string) => navigation.hrefFor({ pageId });
+  const openPage = (pageId: string) => navigation.open(productNavigationTarget(product,pageId,module.id));
+  const hrefForPage = (pageId: string) => navigation.hrefFor(productNavigationTarget(product,pageId,module.id));
   const [hovered, setHovered] = useState(false);
   /* Click mode keeps its own latch. It is NOT sidebarPinned: pinning also makes
      the rail part of the layout and pushes the page, whereas a clicked-open

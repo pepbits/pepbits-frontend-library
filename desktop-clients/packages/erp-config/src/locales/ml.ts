@@ -9518,5 +9518,7 @@ export default {
   "Average": "ശരാശരി",
   "Minimum": "കുറഞ്ഞത്",
   "Maximum": "കൂടിയത്",
-  "Count": "എണ്ണം"
+  "Count": "എണ്ണം",
+  "api.reference.1b79a2ba7316": "സ്കൂൾ പാത അസാധുവാണ്.",
+  "api.reference.0de69c94e5b5": "സ്കൂൾ പേജ് ലഭ്യമല്ല."
 };

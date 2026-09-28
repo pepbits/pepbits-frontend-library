@@ -8,19 +8,8 @@ import type { Role } from "./types";
 
 export const SCHOOL_ROLES: readonly Role[] = ["admin", "teacher", "accountant", "librarian", "parent", "student"];
 
-/** Host roles that map onto a Scholaris portal. Anything else maps to nothing — never to admin. */
-const ALIASES: Record<string, Role> = {
-  "enterprise-admin": "admin",
-  "finance-manager": "accountant",
-  "operations-analyst": "teacher",
-};
-
-export function schoolRoleFor(hostRole: string): Role | null {
-  const value = hostRole.trim().toLowerCase();
-  if (ALIASES[value]) return ALIASES[value];
-  const match = /^(?:school[:\-._/])?(admin|teacher|student|parent|librarian|accountant)$/.exec(value);
-  return match ? (match[1] as Role) : null;
-}
+export { schoolRoleForHost as schoolRoleFor } from "@pepbits/erp-config";
+import { schoolRoleForHost as schoolRoleFor } from "@pepbits/erp-config";
 
 /** Portals the authenticated host scope allows, in a fixed priority order. */
 export function trustedSchoolRoles(hostRoles: readonly string[]): Role[] {

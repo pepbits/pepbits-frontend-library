@@ -1,3 +1,4 @@
+import { SCHOOL_ROLE_CONFIG, schoolAllowedPaths, type SchoolRoleConfig } from "@pepbits/erp-config";
 import {
   Award, BarChart3, BookOpen, CalendarCheck, CalendarClock, CalendarDays, ClipboardList, FileText, GraduationCap,
   Kanban, LayoutDashboard, Library, ListChecks, Megaphone, MessageSquare, PenTool, School, Settings, Table2,
@@ -33,70 +34,8 @@ const I = {
   settings: { href: "/settings", label: "Settings", icon: Settings },
 } satisfies Record<string, NavItem>;
 
-export interface RoleConfig {
-  label: string;
-  description: string;
-  /** Portals with many modules get a sidebar; small portals get a compact top bar. */
-  navMode: "sidebar" | "topbar";
-  /** Students and teachers work in focus mode: the sidebar folds away after each navigation. */
-  collapseOnNavigate: boolean;
-  nav: NavGroup[];
-}
-
-export const ROLE_CONFIG: Record<Role, RoleConfig> = {
-  admin: {
-    label: "Administration", description: "Run the whole school: people, academics, finance and reporting.",
-    navMode: "sidebar", collapseOnNavigate: false,
-    nav: [
-      { label: "Overview", items: [I.dashboard, I.reports] },
-      { label: "People", items: [I.students, I.teachers, I.admissions] },
-      { label: "Academics", items: [I.classes, I.subjects, I.timetable, I.attendance, I.assignments, I.quizzes, I.exams, I.marks] },
-      { label: "Learning", items: [I.live, I.whiteboard, I.library] },
-      { label: "Operations", items: [I.fees, I.calendar, I.notices, I.messages] },
-    ],
-  },
-  teacher: {
-    label: "Teacher", description: "Teach live, set work, take attendance and enter marks.",
-    navMode: "sidebar", collapseOnNavigate: true,
-    nav: [
-      { label: "Today", items: [I.dashboard, I.timetable, I.attendance] },
-      { label: "Teaching", items: [I.live, I.whiteboard, I.assignments, I.quizzes] },
-      { label: "Assessment", items: [I.exams, I.marks] },
-      { label: "School", items: [{ ...I.classes, label: "My classes" }, I.students, I.library, I.calendar, I.notices, I.messages] },
-    ],
-  },
-  student: {
-    label: "Student", description: "Join classes, submit work, take quizzes and track results.",
-    navMode: "sidebar", collapseOnNavigate: true,
-    nav: [
-      { label: "Today", items: [I.dashboard, I.timetable, I.live] },
-      { label: "Learning", items: [I.assignments, I.quizzes, I.whiteboard, I.library] },
-      { label: "Progress", items: [I.exams, I.results, I.attendance] },
-      { label: "School", items: [I.fees, I.calendar, I.notices, I.messages] },
-    ],
-  },
-  parent: {
-    label: "Parent", description: "Follow your children's attendance, results and fees.",
-    navMode: "topbar", collapseOnNavigate: true,
-    nav: [{ label: "Parent", items: [{ ...I.dashboard, label: "Overview" }, I.attendance, I.results, I.timetable, I.fees, { ...I.live, label: "Meetings" }, I.notices, I.messages] }],
-  },
-  librarian: {
-    label: "Library", description: "Manage the catalogue, circulation and fines.",
-    navMode: "topbar", collapseOnNavigate: true,
-    nav: [{ label: "Library", items: [I.dashboard, { ...I.library, label: "Catalogue & circulation" }, I.students, I.calendar, I.notices, I.messages] }],
-  },
-  accountant: {
-    label: "Finance", description: "Invoices, collections and outstanding balances.",
-    navMode: "topbar", collapseOnNavigate: true,
-    nav: [{ label: "Finance", items: [I.dashboard, I.fees, I.students, I.reports, I.notices, I.messages] }],
-  },
-};
-
-export const ALWAYS_ALLOWED = ["/dashboard", "/settings"];
-
-export function allowedPaths(role: Role) {
-  return [...ALWAYS_ALLOWED, ...ROLE_CONFIG[role].nav.flatMap((g) => g.items.map((i) => i.href))];
-}
+export const ROLE_CONFIG = Object.fromEntries(Object.entries(SCHOOL_ROLE_CONFIG).map(([role, config]) => [role, {...config, nav: config.nav.map(group => ({...group, items: group.items.map(item => ({...item, icon: Object.values(I).find(source => source.href === item.href)!.icon}))}))}])) as Record<Role, SchoolRoleConfig & {nav: NavGroup[]}>;
+export const allowedPaths = schoolAllowedPaths;
 
 const EXTRA_TITLES: [string, string][] = [
   ["/students/new", "Student registration"],

@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { PAGE_REGISTRY } from "@pepbits/erp-config";
+import { PAGE_REGISTRY, schoolRoleView } from "@pepbits/erp-config";
 import type { PageDefinition } from "@pepbits/erp-config";
 
 /** Resolve a (module, page) pair. An unknown page 404s; a page reached under a
@@ -8,6 +8,6 @@ import type { PageDefinition } from "@pepbits/erp-config";
 export function resolvePage(moduleSegment: string, pageId: string, suffix = ""): PageDefinition {
   const page = PAGE_REGISTRY[pageId];
   if (!page) notFound();
-  if (page.module !== moduleSegment) redirect(`/${page.module}/${pageId}${suffix}`);
+  if (page.module !== moduleSegment && !(page.module === 'reference-school' && schoolRoleView(moduleSegment))) redirect(`/${page.module}/${pageId}${suffix}`);
   return page;
 }

@@ -1,3 +1,4 @@
+import {SCHOOL_ROLE_VIEWS, schoolRoleView} from "./school-role-views.ts";
 import type {ReferenceModuleId} from "./reference-module-types.ts";
 /** Source-preserving modules, independent of their reusable render packages. */
 export const REFERENCE_MODULES = [
@@ -946,7 +947,16 @@ export const REFERENCE_MODULES = [
   }
 ] as const;
 export const REFERENCE_PAGE_BY_ID:Readonly<Record<string,{id:string;path:string;title:string;moduleId:ReferenceModuleId;variant:string}>>=Object.fromEntries(REFERENCE_MODULES.flatMap(module=>module.pages.map(page=>[page.id,{...page,moduleId:module.id,variant:module.variant}])));
-export function referenceNavigationTarget(moduleId:ReferenceModuleId,path:string){const module=REFERENCE_MODULES.find(m=>m.id===moduleId)!;const pathname=path.split("?")[0];const page=[...module.pages].sort((a,b)=>b.path.length-a.path.length).find(p=>pathname===p.path||pathname.startsWith(p.path+"/"))??module.pages[0];return {pageId:page.id,recordId:path,title:page.title};}
+/** Extra portals share the original School page descriptors and renderer. */
+export const REFERENCE_ROLE_VIEWS = SCHOOL_ROLE_VIEWS.filter(view => view.id !== 'reference-school');
+export function referenceNavigationTarget(moduleId:ReferenceModuleId,path:string){
+ const view=schoolRoleView(moduleId);
+ const module=REFERENCE_MODULES.find(m=>m.id===(view?'reference-school':moduleId));
+ if(!module)throw new Error('Unknown reference module');
+ const pathname=path.split("?")[0];
+ const page=[...module.pages].sort((a,b)=>b.path.length-a.path.length).find(p=>pathname===p.path||pathname.startsWith(p.path+"/"))??module.pages[0];
+ return {pageId:page.id,recordId:path,title:page.title,...(view?{moduleId:view.id}:{})};
+}
 /** Next keeps encoded slashes in dynamic parameters; desktop paths are already plain. */
 export function referenceInternalPath(recordId:string|undefined):string|undefined {
  if(!recordId)return undefined;

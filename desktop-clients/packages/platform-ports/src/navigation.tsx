@@ -4,6 +4,8 @@ import React, { createContext, useContext } from "react";
 
 export interface NavigationTarget {
   pageId: string;
+  /** Selected catalog view when one page belongs to several modules. */
+  moduleId?: string;
   mode?: "view" | "edit" | "new";
   recordId?: string;
   title?: string;
@@ -24,7 +26,7 @@ export interface NavigationPort {
 /** Stable identity for a target. Desktop uses it as a tab id; web uses it to
     compare the current location against a candidate. */
 export function targetKey(target: NavigationTarget): string {
-  return `${target.pageId}:${target.mode ?? "list"}:${target.recordId ?? "root"}`;
+  return `${target.moduleId ? target.moduleId + ":" : ""}${target.pageId}:${target.mode ?? "list"}:${target.recordId ?? "root"}`;
 }
 
 const NavigationContext = createContext<NavigationPort | null>(null);

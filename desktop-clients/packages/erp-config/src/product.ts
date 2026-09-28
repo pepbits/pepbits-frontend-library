@@ -1,3 +1,5 @@
+import {REFERENCE_PAGE_BY_ID} from "./reference-modules.ts";
+import {schoolRoleView,schoolPathAllowed} from "./school-role-views.ts";
 import type { TranslationCatalog } from "./i18n.ts";
 import { MODULES, PAGE_REGISTRY } from "./navigation.ts";
 import type { MenuItem, ModuleDefinition, ModuleKey, PageDefinition } from "./types.ts";
@@ -58,8 +60,11 @@ export function defineProduct(input: {
   // These shell utilities are catalogued under Library in the original demo.
   // Keep them reachable even in a product that does not include the gallery.
   const utilities = new Set(["preferences", "notifications", "messages", "ai-administration", "documentation-center", "error-monitor", "draft-recovery"]);
+  const itemPageIds=(items:readonly MenuItem[]):string[]=>items.flatMap(item=>[...(item.pageId?[item.pageId]:[]),...itemPageIds(item.children??[])]);
+  const enabledPageIds = new Set(input.enabledModules.flatMap(key => MODULES[key].navigation.flatMap(section=>itemPageIds(section.items))));
+  for(const [id,page] of Object.entries(REFERENCE_PAGE_BY_ID))if(input.enabledModules.some(module=>{const view=schoolRoleView(module);return view&&page.variant==='school'&&schoolPathAllowed(view.role,page.path);}))enabledPageIds.add(id);
   const pages = Object.fromEntries(Object.entries(PAGE_REGISTRY)
-    .filter(([id, page]) => utilities.has(id) || page.module === "shared" || input.enabledModules.includes(page.module))
+    .filter(([id, page]) => utilities.has(id) || page.module === "shared" || input.enabledModules.includes(page.module) || enabledPageIds.has(id))
     .map(([id, page]) => [id, utilities.has(id) ? { ...page, module: "shared" as const } : page]));
   if (input.enabledPages) {
     for (const id of input.enabledPages) if (!pages[id]) throw new Error(`Unknown or disabled product page: ${id}`);
@@ -116,4 +121,31 @@ export function productForRole(product: ProductDefinition, role?: string): Produ
     return !roles || !!role && roles.includes(role);
   }));
   return {...product,currentRole:role,pages,modules:pruneModules(product.modules,pages)};
+}
+
+/** Resolve shared page membership from the effective navigation catalog. */
+export function moduleContainsPage(product:ProductDefinition,moduleId:string,pageId:string):boolean{
+ const visit=(items:readonly MenuItem[]):boolean=>items.some(item=>item.pageId===pageId||visit(item.children??[]));
+ if(!product.pages[pageId]||!product.modules[moduleId])return false;
+ if(product.modules[moduleId]!.navigation.some(section=>visit(section.items)))return true;
+ const view=schoolRoleView(moduleId),page=REFERENCE_PAGE_BY_ID[pageId];
+ return !!view&&page?.variant==='school'&&schoolPathAllowed(view.role,page.path)&&product.modules[moduleId]!.navigation.some(section=>section.items.some(item=>{const base=REFERENCE_PAGE_BY_ID[item.pageId??'']?.path;return !!base&&page.path.startsWith(base+'/');}));
+}
+export function productModuleForPage(product:ProductDefinition,pageId:string,preferred?:string):ModuleKey|undefined{
+ if(preferred && moduleContainsPage(product,preferred,pageId))return preferred;
+ const primary=product.pages[pageId]?.module;
+ if(primary && primary!=='shared' && product.modules[primary] && (!schoolRoleView(primary)||moduleContainsPage(product,primary,pageId)))return primary;
+ return Object.keys(product.modules).find(module=>moduleContainsPage(product,module,pageId));
+}
+export function productNavigationTarget(product:ProductDefinition,pageId:string,preferred?:string){
+ const moduleId=productModuleForPage(product,pageId,preferred);
+ const primary=product.pages[pageId]?.module;
+ return {pageId,...(moduleId && (moduleId!==primary || moduleId.startsWith('reference-school'))?{moduleId}:{})};
+}
+
+/** Preserve old School URLs for accounts whose effective catalog grants one portal. */
+export function legacySchoolModuleAlias(product:ProductDefinition,moduleId:string|undefined):string|undefined{
+ if(moduleId!=='reference-school'||product.modules['reference-school'])return;
+ const views=Object.keys(product.modules).filter(id=>!!schoolRoleView(id));
+ return views.length===1?views[0]:undefined;
 }

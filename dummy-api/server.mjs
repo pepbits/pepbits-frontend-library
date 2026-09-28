@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import {createReferenceReportsStore} from './reference-reports-store.mjs';
 import {createReferenceSchoolStore} from './reference-school-store.mjs';
+import {resolveSchoolView} from './school-view-policy.mjs';
+import {schoolPathAllowed} from '../desktop-clients/packages/erp-config/src/school-role-views.ts';
 import {createReferenceErpStore} from './reference-erp-store.mjs';
 import {isDcpValues,isDcpRevision} from '../desktop-clients/packages/erp-config/src/dcp-runtime.ts';
 import {createDesignerStore} from './dcp-designer-store.mjs';
@@ -109,6 +111,7 @@ const ACCOUNTS = [
       initials: "PM",
       title: "Solution Architecture",
       role: "enterprise-admin",
+      referenceSchoolViews: ['admin','teacher','student','parent','librarian','accountant'],
       branch: "hq",
       tenantId: "NEX-AE-001",
     },
@@ -826,7 +829,7 @@ const CORS = {
      not name: the request never leaves, nothing is logged, and the only symptom
      is a cell that will not save. */
   "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization, If-None-Match, X-Product-Id, X-Reference-Branch, X-Reports-Api-Key, X-Inbound-Secret, Pepbits-Contract-Version",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, If-None-Match, X-Product-Id, X-Reference-Branch, X-Reference-Module, X-Reports-Api-Key, X-Inbound-Secret, Pepbits-Contract-Version",
   "Access-Control-Expose-Headers": "ETag, Content-Disposition",
   "Access-Control-Max-Age": "86400",
 };
@@ -913,12 +916,20 @@ const server = createServer(async (req, res) => {
     // A key's owner and partition come from the server. Client scope headers cannot move a key.
     const product=keyIdentity?.scope.applicationId??req.headers['x-product-id']??'nexora',nav=applicationConfig.navigation(user,product);
     if(nav.status!==200)return send(res,nav.status,{error:nav.error});
-    if(!nav.body.nodes.some(node=>node.kind==='module'&&node.moduleId==='reference-'+variant))return send(res,403,{error:'Module is unavailable.'});
+    const schoolView=variant==='school'?resolveSchoolView(user,req.headers['x-reference-module']):null;
+    const requestedModule=variant==='school'?schoolView?.id:'reference-'+variant;
+    if(!requestedModule||!nav.body.nodes.some(node=>node.kind==='module'&&node.moduleId===requestedModule))return send(res,403,{error:'Module is unavailable.'});
     const branch=keyIdentity?.scope.branchId??req.headers['x-reference-branch']??user.branch;
     if(typeof branch!=='string'||!BRANCHES.some(item=>item.value===branch)||(user.role!=='enterprise-admin'&&user.role!=='school-admin'&&branch!==user.branch))return send(res,403,{error:'Branch is unavailable.'});
+    if(schoolView){
+      let schoolPath;try{schoolPath=decodeURIComponent(modulePath).replace(/\/{2,}/g,'/').replace(/^\/api(?=\/|$)/,'').replace(/\/+$/,'')||'/';}catch{return send(res,400,{error:'Malformed School path.'});}
+      const restrictedPage=['/students/new','/teachers/new','/quizzes/new','/reports'].find(path=>schoolPath===path||schoolPath.startsWith(path+'/'));
+      if(restrictedPage&&!schoolPathAllowed(schoolView.role,restrictedPage))return send(res,403,{error:'School page is unavailable.'});
+    }
     let body={};if(!['GET','HEAD'].includes(req.method)){try{body=await readJson(req,2_000_000);}catch{return send(res,400,{error:'Malformed request body.'});}}
-    const scope={applicationId:product,branchId:branch};
-    const result=await referenceStores[variant].handle({...user,branch},scope,{method:req.method,path:modulePath,query:requestUrl.searchParams,body,headers:req.headers});
+    const scope={applicationId:product,branchId:branch,...(schoolView?{moduleId:schoolView.id}:{})};
+    const effectiveUser={...user,branch,...(schoolView?{role:'school-'+schoolView.role}:{})};
+    const result=await referenceStores[variant].handle(effectiveUser,scope,{method:req.method,path:modulePath,query:requestUrl.searchParams,body,headers:req.headers});
     const contentType=result.headers?.['Content-Type']??result.headers?.['content-type'];
     if(contentType&&!contentType.includes('application/json')){
       const payload=Buffer.isBuffer(result.body)?result.body:Buffer.from(String(result.body??''));

@@ -24,3 +24,10 @@ describe('reference host transport', () => {
     const {transport} = make(vi.fn().mockResolvedValue(response)); expect(await transport.fetch('/api/jobs/1/download')).toBe(response);
   });
 });
+
+it('pins the selected catalog view over caller module headers',async()=>{
+ const fetch=vi.fn().mockResolvedValue(new Response('{}'));
+ const transport=createReferenceTransport({namespace:'/reference-modules/school',moduleId:'reference-school-student',applicationId:'nexora',branchId:'hq',fetch,failureMessage:()=>''});
+ await transport.request('/api/session?role=student',{headers:{'X-Reference-Module':'reference-school'}});
+ expect(new Headers(fetch.mock.calls[0][1].headers).get('X-Reference-Module')).toBe('reference-school-student');
+});

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { act, render, renderHook, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
 import { createWorkspace, type Workspace } from "@pepbits/workspace-core";
@@ -219,4 +219,17 @@ describe("split view", () => {
     await click("split right");
     expect(split()).toBe("none");
   });
+});
+
+test('School module transitions and reopening records retain role identity in MDI documents',()=>{
+ const workspace=newWorkspace();
+ const {result}=renderHook(()=>useWorkspaceNavigation(workspace,{initialModule:'reference-school-student'}));
+ expect(result.current.port.current).toEqual({pageId:'reference-school-dashboard',moduleId:'reference-school-student'});
+ act(()=>result.current.port.open({pageId:'reference-school-fees',moduleId:'reference-school-student'}));
+ expect(result.current.port.current.moduleId).toBe('reference-school-student');
+ act(()=>result.current.port.open({pageId:'reference-school-dashboard',moduleId:'reference-school-teacher'}));
+ expect(result.current.port.current.moduleId).toBe('reference-school-teacher');
+ expect(workspace.getOpenDocuments().every(document=>document.module==='reference-school-teacher')).toBe(true);
+ act(()=>result.current.port.openInNewContext({pageId:'reference-school-quizzes',moduleId:'reference-school-teacher',recordId:'/quizzes/qz-1'}));
+ expect(result.current.port.current).toMatchObject({moduleId:'reference-school-teacher',recordId:'/quizzes/qz-1'});
 });

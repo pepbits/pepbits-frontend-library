@@ -9,7 +9,7 @@ import { useProduct } from "./product-context";
 
 import React, { useState } from "react";
 import { ArrowRight, Bell, BookOpen, CircleHelp, Building2, ChevronDown, CircleUserRound, LogOut, Mail, MessageSquareText, Search, Settings, SlidersHorizontal, UserRound } from "lucide-react";
-import { BRANCHES, MESSAGES, NOTIFICATIONS, moduleLandingPage } from "@pepbits/erp-config";
+import { BRANCHES, MESSAGES, NOTIFICATIONS, moduleLandingPage, productNavigationTarget } from "@pepbits/erp-config";
 import { useNavigation } from "@pepbits/platform-ports";
 import { useSession } from "@pepbits/auth";
 import { chromePalette } from "./chrome-palette";
@@ -89,7 +89,7 @@ export function Header(props: {branches?: Array<{value:string;label:string}>; sh
      its own semantics: web pushes the URL, desktop rebuilds its tab set. */
   const setModule = (value: ModuleKey) => {
     const landing = moduleLandingPage(product,value);
-    if (landing) navigation.open({ pageId: landing });
+    if (landing) navigation.open(productNavigationTarget(product,landing,value));
   };
   /* Same mechanism the sidebar uses: a theme id scopes the whole palette to
      this element, and the tone re-points the generic tokens onto that theme's

@@ -1,11 +1,12 @@
 "use client";
+import {schoolPathAllowed} from "@pepbits/erp-config";
 
 import { AccessDenied, NotFoundState } from "@pepbits/ops-ui";
 import { ReferenceHostProvider, referenceScopeKey, useReferenceHost, type ReferenceHost, type ReferenceModuleProps } from "@pepbits/reference-host";
 import { Lock } from "lucide-react";
 import { useMemo, type ComponentType, type CSSProperties } from "react";
 import { LookupsProvider } from "./lib/lookups";
-import { allowedPaths, ROLE_CONFIG } from "./lib/nav";
+import { ROLE_CONFIG } from "./lib/nav";
 import { RouteParamsProvider, Link } from "./lib/router";
 import { SessionProvider, useSession, useSessionState } from "./lib/session";
 import { AdmissionsPage } from "./pages/admissions";
@@ -135,7 +136,7 @@ function RoutedPage({ match }: { match: ReturnType<typeof matchSchoolRoute> }) {
 
   const { role } = useSession();
   if (!match) return <NotFoundState title={referenceT("Page not found")} description={referenceT("This school page does not exist.")} action={<Link href="/dashboard"><Button variant="primary"><ReferenceText message="Go to dashboard" /></Button></Link>} />;
-  const allowed = allowedPaths(role).some((p) => match.route.path === p || match.route.path.startsWith(p + "/"));
+  const allowed = schoolPathAllowed(role, match.route.path);
   if (!allowed) {
     return (
       <Empty icon={Lock} title={referenceT("This area isn't part of your portal")}

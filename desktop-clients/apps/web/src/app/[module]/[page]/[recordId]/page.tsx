@@ -5,5 +5,5 @@ import { resolvePage } from "../resolve";
 export default async function ViewRecordPage({ params }: { params: Promise<{ module: string; page: string; recordId: string }> }) {
   const { module, page, recordId } = await params;
   resolvePage(module, page, `/${REFERENCE_PAGE_BY_ID[page] ? encodeURIComponent(recordId) : recordId}`);
-  return <PageRenderer target={{ pageId: page, mode: "view", recordId }} showTabPreferences={false} />;
+  return <PageRenderer target={{ ...(module.startsWith("reference-school") ? {moduleId:module} : {}), pageId: page, mode: "view", recordId }} showTabPreferences={false} />;
 }

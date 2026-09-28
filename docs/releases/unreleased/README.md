@@ -114,6 +114,8 @@ adds an optional production capability contract and cursor pagination to the exi
 
 [Reports, ERP1, ERP2 and School reference modules](reference-modules-2026-09-28.md): implementation and local validation complete for 152 static destinations across six public packages. Final evidence includes 162 browser route/header checks, module actions, visual comparisons, unit/API suites, type checks and both host builds. Guide translation drafts are populated and await native review; package publication and live deployment are outside this record.
 
+[School role views in the header](school-role-header-2026-09-28.md): six authenticated role views over the canonical School pages. Runtime verification and release state are pending; earlier reference-module checks do not cover this change.
+
 ## Isolated frontend test deployment — 28 September 2026
 
 [The isolated public test site](frontend-test-deployment-2026-09-28.md) serves release `20260928110944214-b5bb610f` at `https://frontend.test.pepbits.com`. Its 35 route/runtime checks passed directly and through HTTPS, and the public browser run passed 152 static destinations, six dynamic URLs, four module-header choices and four representative rendered pages with no page errors. Three read-only checks on existing healthcare pages also passed with no writes. This separate site does not change the deployment records for the two existing demo hosts.

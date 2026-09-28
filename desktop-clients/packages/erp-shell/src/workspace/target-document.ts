@@ -35,11 +35,11 @@ function titleFor(target: NavigationTarget): string {
 export function documentFromTarget(target: NavigationTarget, options: { closable?: boolean } = {}): OpenRequest {
   const page = PAGE_REGISTRY[target.pageId];
   return {
-    module: page?.module ?? "shared",
+    module: target.moduleId ?? page?.module ?? "shared",
     /* The page id IS the document type. A screen is what the record is: two
        customers on the customer master are two entities of one type. */
     documentType: target.pageId,
-    entityId: encodeEntity(target.mode ?? "list", target.recordId ?? "root"),
+    entityId: (target.moduleId ? "~view~" + encodeURIComponent(target.moduleId) + "~" : "") + encodeEntity(target.mode ?? "list", target.recordId ?? "root"),
     title: titleFor(target),
     route: target.pageId,
     closable: options.closable,
@@ -47,13 +47,17 @@ export function documentFromTarget(target: NavigationTarget, options: { closable
 }
 
 export function targetFromDocument(document: Pick<WorkspaceDocument, "documentType" | "entityId">): NavigationTarget {
-  const at = document.entityId.indexOf(MODE_SEPARATOR);
-  const mode = at < 0 ? "list" : document.entityId.slice(0, at);
-  const recordId = at < 0 ? "root" : decodeURIComponent(document.entityId.slice(at + 1));
+  const viewAt = document.entityId.startsWith("~view~") ? document.entityId.indexOf("~",6) : -1;
+  const moduleId = viewAt < 0 ? undefined : decodeURIComponent(document.entityId.slice(6,viewAt));
+  const entityId = viewAt < 0 ? document.entityId : document.entityId.slice(viewAt+1);
+  const at = entityId.indexOf(MODE_SEPARATOR);
+  const mode = at < 0 ? "list" : entityId.slice(0, at);
+  const recordId = at < 0 ? "root" : decodeURIComponent(entityId.slice(at + 1));
   return {
     /* Lower-cased: the store upper-cases every document type so that "patient"
        and "PATIENT" are one record, and page ids are lower kebab-case. */
     pageId: document.documentType.toLowerCase(),
+    ...(moduleId ? {moduleId} : {}),
     ...(mode === "list" ? {} : { mode: mode as NavigationTarget["mode"] }),
     ...(recordId === "root" ? {} : { recordId }),
   };
