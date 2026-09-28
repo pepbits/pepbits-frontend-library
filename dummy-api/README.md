@@ -10,6 +10,10 @@ node server.mjs                  # default port 3200
 PORT=3330 NEXORA_DATA_DIR=/tmp/enterprise-demo-api node server.mjs
 ```
 
+Set `HOST=127.0.0.1` when a reverse proxy on the same server handles public access.
+The default `HOST=0.0.0.0` preserves existing container and demo deployments.
+Use a dedicated `NEXORA_DATA_DIR` for each test environment.
+
 The frontend workspace also requires its own lockfile installation. Follow the [isolated browser testing guide](../docs/testing/v1.0.0/PRE-COMMIT.md) instead of running write tests against public demo data. `NEXORA_DATA_DIR` selects demo storage; feature stores supporting `RECORD_DATA_DIR` use that override. Do not point an isolated test at live data.
 
 ## Endpoint families

@@ -64,6 +64,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const PORT = Number(process.env.PORT ?? 3200);
+const HOST = process.env.HOST ?? "0.0.0.0";
 const applicationConfig = createApplicationConfig(process.env.NEXORA_CONFIG_DIR ?? join(dirname(fileURLToPath(import.meta.url)), "config"), new Set(Object.keys(PAGE_REGISTRY)));
 
 /* Roles are the `value` strings from packages/erp-config's ROLES, so the shell's role
@@ -1991,7 +1992,7 @@ server.on("upgrade", (req, socket, head) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Nexora demo auth API on http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Nexora demo auth API listening on ${HOST}:${PORT}`);
   console.log(`  accounts: ${ACCOUNTS.map((a) => a.username).join(", ")}  (password == username)`);
 });
