@@ -70,7 +70,7 @@ export default function Dashboard() {
 
       <div className="grid min-h-[320px] flex-1 gap-3 lg:grid-cols-3">
         <section className="hc-panel flex min-h-0 flex-col overflow-hidden lg:col-span-1">
-          <div className="hc-panel-head"><h3 className="hc-panel-title"><LocalizedText message="Next appointments" /></h3><Link href="/appointments" className="flex items-center gap-0.5 text-hc-xs text-hc-petrol-700 hover:underline"><LocalizedText message="Board" /><ArrowUpRight className="h-3 w-3" /></Link></div>
+          <div className="hc-panel-head"><h3 className="hc-panel-title"><LocalizedText message="Next appointments" /></h3><Link href="/appointments" className="flex items-center gap-0.5 text-hc-xs text-hc-petrol-700 hover:underline"><LocalizedText message="healthcareSuite.appointmentBoardLink" /><ArrowUpRight className="h-3 w-3" /></Link></div>
           <div className="min-h-0 flex-1 overflow-y-auto p-1.5">
             {d.upcoming.length === 0 ? <EmptyState title="No more bookings today" /> : d.upcoming.map((a: Row) => (
               <Link key={a.id} href={a.patientId ? `/encounters/new?appointmentId=${a.id}` : `/appointments?focus=${a.id}`} className="flex items-center gap-2.5 rounded-md px-2 py-2 hover:bg-hc-canvas">

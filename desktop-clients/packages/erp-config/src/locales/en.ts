@@ -10049,5 +10049,7 @@ export default {
   "Thu": "Thu",
   "Fri": "Fri",
   "Sat": "Sat",
-  "Sun": "Sun"
+  "Sun": "Sun",
+  "Prior approval and eRx": "Prior approval and eRx",
+  "Register & continue": "Register & continue"
 };

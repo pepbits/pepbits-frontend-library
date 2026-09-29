@@ -100,7 +100,7 @@ function Appointments() {
           <div className="ml-auto flex items-center gap-1.5">
             {view === 'list' && <SearchInput value={search} onChange={setSearch} placeholder="Patient, MRN, mobile" className="w-52" />}
             <Button size="sm" variant="ghost" icon={<RefreshCw className="h-3.5 w-3.5" />} onClick={reload} aria-label="Refresh" />
-            <Segmented size="sm" value={view} onChange={setView} options={[{ value: 'board', label: 'Board', icon: <LayoutGrid className="h-3.5 w-3.5" /> }, { value: 'list', label: 'List', icon: <List className="h-3.5 w-3.5" /> }]} />
+            <Segmented size="sm" value={view} onChange={setView} options={[{ value: 'board', label: 'healthcareSuite.appointmentBoardLink', icon: <LayoutGrid className="h-3.5 w-3.5" /> }, { value: 'list', label: 'List', icon: <List className="h-3.5 w-3.5" /> }]} />
           </div>
         </div>
         {(slots.error || list.error) && <div className="p-3"><ErrorBanner message={(slots.error || list.error)!.message} onRetry={reload} /></div>}

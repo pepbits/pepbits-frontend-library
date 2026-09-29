@@ -10049,5 +10049,7 @@ export default {
   "Thu": "الخميس",
   "Fri": "الجمعة",
   "Sat": "السبت",
-  "Sun": "الأحد"
+  "Sun": "الأحد",
+  "Prior approval and eRx": "الموافقة المسبقة وeRx",
+  "Register & continue": "سجّل وتابع"
 };

@@ -10049,5 +10049,7 @@ export default {
   "Thu": "गुरु",
   "Fri": "शुक्र",
   "Sat": "शनि",
-  "Sun": "रवि"
+  "Sun": "रवि",
+  "Prior approval and eRx": "पूर्व स्वीकृति और eRx",
+  "Register & continue": "पंजीकृत करें और जारी रखें"
 };

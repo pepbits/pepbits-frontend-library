@@ -10049,5 +10049,7 @@ export default {
   "Thu": "വ്യാഴം",
   "Fri": "വെള്ളി",
   "Sat": "ശനി",
-  "Sun": "ഞായർ"
+  "Sun": "ഞായർ",
+  "Prior approval and eRx": "മുൻകൂർ അംഗീകാരവും eRx",
+  "Register & continue": "രജിസ്റ്റർ ചെയ്ത് തുടരുക"
 };

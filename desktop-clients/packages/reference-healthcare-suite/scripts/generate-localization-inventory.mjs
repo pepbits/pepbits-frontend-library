@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {join} from 'node:path';
 const root=fileURLToPath(new URL('../src',import.meta.url));
 const messages=new Set(['Healthcare Suite','Healthcare Suite facility','Healthcare Suite page not found','Loading Healthcare Suite','View or filter','Healthcare Suite is read-only for your role.']);
-const props=new Set(['label','title','subtitle','description','placeholder','aria-label','alt','message','hint','confirmLabel','cancelLabel','emptyMessage','body','header']);
+const props=new Set(['label','title','subtitle','sub','description','placeholder','aria-label','alt','message','hint','confirmLabel','cancelLabel','submitLabel','emptyMessage','body','header']);
 const add=value=>{if(/[A-Za-z]/.test(value)&&!/^hc-/.test(value))messages.add(value.trim());};
 function literal(node){if(ts.isStringLiteral(node)||ts.isNoSubstitutionTemplateLiteral(node))add(node.text);if(ts.isConditionalExpression(node)){literal(node.whenTrue);literal(node.whenFalse);}}
 function walk(dir){for(const e of readdirSync(dir,{withFileTypes:true})){const file=join(dir,e.name);if(e.isDirectory())walk(file);else if(/\.tsx?$/.test(file)&&!file.includes('.test.')){
