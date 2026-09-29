@@ -73,7 +73,11 @@ npm run deploy -- --activate PREVIOUS_RELEASE_ID
 
 Release `20260912002147213-851cb66e`, application commit `6ec329f22e589dece2894ef5b12ad4961e5ff8b0`, is the latest recorded activation on both demo sites. The API was not restarted. Previous release `20260911145802227-397d1cf5` is retained for rollback. See the [deployment evidence and hosted-CI follow-up](../../docs/releases/unreleased/dcp-style-deployment-2026-09-12.md). Current state takes precedence over the dated historical entries below; those entries describe their original activation, not multiple simultaneously active releases.
 
-## Isolated frontend test site — 28 September 2026
+## Current isolated frontend test site — 29 September 2026
+
+The isolated test site is [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com), release `20260929080313644-1b17b579`, built from source `cb679bea5171bbc6b4c440534a3f8cf8fc27fa3c`. This release adds the separate Healthcare Suite header module. Its local frontend/API tests passed (1,903/265); targeted public checks passed 40/40 workflow and 19/19 language/preferences cases; the public web-only sweep passed 175 static and six dynamic destinations, and four local desktop-browser checks passed separately. The three isolated services are active on web port 33410, desktop-browser port 33411 and API port 33412. The previous School role-header release `20260928121228378-07561b3d` remains the rollback target, with protected source/configuration/data retained at `base/backups/healthcare-suite-20260929-cb679be`. See the [deployment record](../../docs/releases/unreleased/healthcare-suite-2026-09-29.md) and [test-site runbook](frontend-test-deployment.md). This update does not change either existing demo host or the ERP, School or healthcare services.
+
+## First isolated frontend test site deployment — 28 September 2026
 
 The separate test site is [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com), release `20260928110944214-b5bb610f`, built from frontend source `954bf19` with API source `3ac4e922`. See the dedicated [test-site deployment runbook](frontend-test-deployment.md) and [deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md). This site uses isolated services and an Nginx virtual host; it does not replace either existing demo site or change ERP, School or healthcare service configuration.
 

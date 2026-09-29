@@ -1,6 +1,6 @@
 # Frontend public test site runbook
 
-This runbook covers the isolated test site at [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com). Its current release is `20260928121228378-07561b3d`, built from frontend/API source `9c3cea72e624dccb454cfd60fd2d0a34b774a69b`. The [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) contains current verification evidence. The [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) remains the historical setup record.
+This runbook covers the isolated test site at [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com). Its current release is `20260929080313644-1b17b579`, built from source `cb679bea5171bbc6b4c440534a3f8cf8fc27fa3c`. The [Healthcare Suite deployment record](../../docs/releases/unreleased/healthcare-suite-2026-09-29.md) contains local verification and deployment identity. Targeted public checks passed 40/40 workflow cases and 19/19 language/preferences cases; the public web-only reference sweep passed 175 static and six dynamic destinations; four local desktop-browser checks passed separately. The [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) preserves evidence from the prior release. The [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) remains the historical setup record.
 
 ## Service layout
 
@@ -33,9 +33,10 @@ The isolated deployment root is `/home/pepadmin/pepbits/frontend-test-20260928`;
 the selected release pointer is
 `/home/pepadmin/pepbits/frontend-test-20260928/releases/current`. Check the
 pointer before an update and retain the prior package as a rollback target after
-future deployments. The retained rollback target is `20260928110944214-b5bb610f`.
-The School role-header update also retains its prior source, configuration and data
-backups. Restore the matching source/configuration/data and release pointer together,
+future deployments. The retained rollback target is `20260928121228378-07561b3d`.
+The Healthcare Suite update retains protected source, configuration and data at
+`base/backups/healthcare-suite-20260929-cb679be`. Restore the matching
+source/configuration/data and release pointer together,
 then restart only these three units and verify health. Preserve the isolated data
 directory and the Nginx virtual host during an ordinary rollback.
 
@@ -68,6 +69,6 @@ The API and its data are synthetic demo fixtures. The visible `admin` / `admin` 
 
 Record frontend and API source identities, release identity and the isolated service configuration whenever deploying an update. Keep the public route on HTTPS, preserve `/api` as the browser-facing API prefix, and verify the deployed release identity and assets before running browser checks. Do not restart or reconfigure the existing ERP, School or healthcare services as part of this site's maintenance.
 
-Use the deployment host's private runtime notes to identify the active release and available rollback target before changing it. The private notes remain authoritative for exact host commands and unit names; this public runbook deliberately records no credentials or private server configuration. After activation or rollback, check the web release identity, assets, HTTPS certificate and API health through `/api`, then retain sanitized results under the evidence folder for that update; the current update uses `docs/releases/unreleased/evidence/school-role-header-2026-09-28/`.
+Use the deployment host's private runtime notes to identify the active release and available rollback target before changing it. The private notes remain authoritative for exact host commands and unit names; this public runbook deliberately records no credentials or private server configuration. After activation or rollback, check the web release identity, assets, HTTPS certificate and API health through `/api`, then retain sanitized results under the evidence folder for that update; the current update uses the Healthcare Suite evidence folder linked from its [deployment record](../../docs/releases/unreleased/healthcare-suite-2026-09-29.md). The public web-only sweep passed 175 static and six dynamic destinations; four local desktop-browser checks passed separately.
 
-Deployment and browser verification are separate from native executable checks, real-backend integration, security certification and domain/native-speaker review. See the [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) for current evidence and the [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) for historical setup checks.
+Deployment and browser verification are separate from native executable checks, real-backend integration, security certification and domain/native-speaker review. See the [Healthcare Suite deployment record](../../docs/releases/unreleased/healthcare-suite-2026-09-29.md) for current evidence, the [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) for prior-release evidence and the [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) for historical setup checks.

@@ -1,0 +1,27 @@
+(node:1981672) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Checked 20/175 reference pages
+Checked 40/175 reference pages
+Checked 60/175 reference pages
+Checked 80/175 reference pages
+Checked 100/175 reference pages
+Checked 120/175 reference pages
+Checked 140/175 reference pages
+Checked 160/175 reference pages
+file:///home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/e2e/harness.mjs:190
+  if(observed!==expected.replace(/\/$/,''))throw new Error(`API target mismatch: shell calls ${observed}; expected ${expected}. Rebuild the shell for this test environment.`);
+                                                 ^
+
+Error: API target mismatch: shell calls http://127.0.0.1:3389; expected https://frontend.test.pepbits.com/api. Rebuild the shell for this test environment.
+    at assertApiTarget (file:///home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/e2e/harness.mjs:190:50)
+    at file:///home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/e2e/harness.mjs:210:17
+    at RouteHandler._handleInternal (/home/pepadmin/pb/saas/.hc096-api-gates/frontend/registration-web/node_modules/playwright-core/lib/client/network.js:695:7)
+    at RouteHandler._handleImpl (/home/pepadmin/pb/saas/.hc096-api-gates/frontend/registration-web/node_modules/playwright-core/lib/client/network.js:662:25)
+    at /home/pepadmin/pb/saas/.hc096-api-gates/frontend/registration-web/node_modules/playwright-core/lib/client/network.js:656:55
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:65:14)
+    at Zone.run (/home/pepadmin/pb/saas/.hc096-api-gates/frontend/registration-web/node_modules/playwright-core/lib/server/utils/zones.js:42:36)
+    at NodeZone.run (/home/pepadmin/pb/saas/.hc096-api-gates/frontend/registration-web/node_modules/playwright-core/lib/server/utils/nodePlatform.js:58:23)
+    at RouteHandler.handle (/home/pepadmin/pb/saas/.hc096-api-gates/frontend/registration-web/node_modules/playwright-core/lib/client/network.js:656:34)
+    at BrowserContext._onRoute (/home/pepadmin/pb/saas/.hc096-api-gates/frontend/registration-web/node_modules/playwright-core/lib/client/browserContext.js:216:42)
+
+Node.js v24.21.0
