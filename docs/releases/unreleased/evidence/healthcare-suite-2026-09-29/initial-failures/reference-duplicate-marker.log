@@ -1,0 +1,22 @@
+Checked 20/175 reference pages
+Checked 40/175 reference pages
+Checked 60/175 reference pages
+Checked 80/175 reference pages
+Checked 100/175 reference pages
+Checked 120/175 reference pages
+Checked 140/175 reference pages
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Error: strict mode violation: locator('.pepbits-reference-module:visible') resolved to 2 elements:
+    1) <div lang="en" dir="ltr" data-theme="nexora" data-density="comfortable" data-reduced-motion="false" class="pepbits-reference-module library-preferences">…</div> aka locator('div').filter({ hasText: 'DashboardAl Noor Medical' }).nth(3)
+    2) <div class="pepbits-reference-module hc-suite flex min-h-0 flex-1 flex-col">…</div> aka locator('div').filter({ hasText: 'DashboardAl Noor Medical' }).nth(4)
+
+Call log:
+[2m  - waiting for locator('.pepbits-reference-module:visible') to be visible[22m
+
+    at ready (/home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/e2e/reference-modules.mjs:15:74)
+    at /home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/e2e/reference-modules.mjs:24:100
+
+Node.js v24.21.0

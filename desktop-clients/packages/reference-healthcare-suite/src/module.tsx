@@ -48,5 +48,5 @@ function Workspace({path}:{path:string}) {
 }
 export function ReferenceHealthcareSuiteModule({path,host}:ReferenceModuleProps) {
  const current=useMemo(()=>({...host,path}),[host,path]);
- return <ReferenceHostProvider host={current}><div className="pepbits-reference-module hc-suite flex min-h-0 flex-1 flex-col"><ApiProvider key={referenceScopeKey(host.scope)}><SessionProvider><ToastProvider><Workspace path={path}/></ToastProvider></SessionProvider></ApiProvider></div></ReferenceHostProvider>;
+ return <ReferenceHostProvider host={current}><div className="hc-suite flex min-h-0 flex-1 flex-col"><ApiProvider key={referenceScopeKey(host.scope)}><SessionProvider><ToastProvider><Workspace path={path}/></ToastProvider></SessionProvider></ApiProvider></div></ReferenceHostProvider>;
 }
