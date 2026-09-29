@@ -1,13 +1,13 @@
 # Current delivery and release records
 
-- [Healthcare Suite RCM — 29 September 2026](healthcare-suite-rcm-2026-09-29.md): nine additional workspaces and dedicated provider simulators, currently under local verification; deployment is pending.
+- [Healthcare Suite RCM — 29 September 2026](healthcare-suite-rcm-2026-09-29.md): nine additional workspaces and dedicated provider simulators, deployed on release `20260929122358894-3da821b0` from source `4fec17b5b482732d3e418879c8a3450108a6515f`; public RCM 53/53, original Suite 49/49 and School 28/28 checks passed.
 
 - [Healthcare Suite reference module — 29 September 2026](healthcare-suite-2026-09-29.md): deployed to the isolated frontend test site on release `20260929080313644-1b17b579` from source `cb679bea5171bbc6b4c440534a3f8cf8fc27fa3c`; local tests and targeted public checks passed, while the public web-only reference sweep passed 175 static and six dynamic destinations; four local desktop-browser checks passed separately.
 
 - [Isolated frontend test site deployment — 28 September 2026](frontend-test-deployment-2026-09-28.md): first activation of release `20260928110944214-b5bb610f` at `frontend.test.pepbits.com`; the 35 route/runtime checks and public browser checks for 152 static destinations, six dynamic URLs, four header choices and four representative pages passed.
 - [Reference module import — 28 September 2026](reference-modules-2026-09-28.md): active reusable Reports, ERP1, ERP2 and School import; no deployment claimed.
 
-Status reviewed **29 September 2026**. The latest deployment is the isolated [Healthcare Suite test-site update](healthcare-suite-2026-09-29.md), active through its public HTTPS endpoint; the targeted workflow (40/40) and language/preferences (19/19) checks passed, and the public web-only reference sweep passed 175 static and six dynamic destinations; four local desktop-browser checks passed separately. The latest deployment on the two existing demo sites remains [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`. The earlier [DCP frontend contract/runtime deployment](dcp-frontend-deployment-2026-09-11.md) already delivered the dependent dropdown, value-set, bounded import, repeatable-field and runtime increments; their original implementation records retain historical local-only status.
+Status reviewed **29 September 2026**. The latest deployment is the isolated [Healthcare Suite RCM test-site update](healthcare-suite-rcm-2026-09-29.md), release `20260929122358894-3da821b0`, active through its public HTTPS endpoint; public RCM 53/53, original Suite 49/49 and School 28/28 checks passed with zero page errors; RCM and original Suite also reported zero console errors. The latest deployment on the two existing demo sites remains [DCP designer style alignment](dcp-style-deployment-2026-09-12.md), release `20260912002147213-851cb66e`. The earlier [DCP frontend contract/runtime deployment](dcp-frontend-deployment-2026-09-11.md) already delivered the dependent dropdown, value-set, bounded import, repeatable-field and runtime increments; their original implementation records retain historical local-only status.
 
 Latest documentation review: [repository audit — 13 September 2026](documentation-audit-2026-09-13.md). This review does not redeploy the application or resolve hosted feature-browser failures.
 
@@ -28,8 +28,8 @@ governed source-to-lifecycle-event payload mappings inside the lifecycle draft. 
 
 | Area | Current record |
 | --- | --- |
-| Latest implementation | [Healthcare Suite reference module](healthcare-suite-2026-09-29.md), separate header module with API-backed demo operations |
-| Latest deployment | [Healthcare Suite test-site update](healthcare-suite-2026-09-29.md), release `20260929080313644-1b17b579`; targeted public checks passed, 175 static/six dynamic public destinations passed |
+| Latest implementation | [Healthcare Suite RCM](healthcare-suite-rcm-2026-09-29.md), nine API-backed synthetic revenue cycle workspaces |
+| Latest deployment | [Healthcare Suite RCM test-site update](healthcare-suite-rcm-2026-09-29.md), release `20260929122358894-3da821b0`; RCM 53/53, original Suite 49/49 and School 28/28 public checks passed |
 | Latest deployment on the existing demo sites | [DCP style on both demo sites](dcp-style-deployment-2026-09-12.md) |
 | Release evidence review | [11 September release documentation review](documentation-review-2026-09-11.md) |
 | Documentation reconciliation | [13 September repository audit](documentation-audit-2026-09-13.md) |
@@ -126,4 +126,4 @@ adds an optional production capability contract and cursor pagination to the exi
 
 ## Healthcare Suite test-site deployment — 29 September 2026
 
-[Healthcare Suite](healthcare-suite-2026-09-29.md) is active as a distinct header module in release `20260929080313644-1b17b579`, built from source `cb679bea5171bbc6b4c440534a3f8cf8fc27fa3c`. The local frontend and API suites passed (1,903 and 265 tests respectively). Targeted public workflow checks passed 40/40 and language/preferences checks passed 19/19; the public web-only sweep passed 175 static and six dynamic reference destinations, and four local desktop-browser checks passed separately. The three isolated test-site units are active, and the 28 September School release remains the rollback target. The two existing demo hosts and their ERP, School and healthcare services are unchanged.
+The earlier [Healthcare Suite import](healthcare-suite-2026-09-29.md) was deployed as a distinct header module in release `20260929080313644-1b17b579`, built from source `cb679bea5171bbc6b4c440534a3f8cf8fc27fa3c`. The local frontend and API suites passed (1,903 and 265 tests respectively). Targeted public workflow checks passed 40/40 and language/preferences checks passed 19/19; the public web-only sweep passed 175 static and six dynamic reference destinations, and four local desktop-browser checks passed separately. That update used three isolated test-site units and retained the 28 September School release as its rollback target. The later [RCM delivery](healthcare-suite-rcm-2026-09-29.md) supersedes its active deployment identity and retains this import release as the rollback target. The two existing demo hosts and their ERP, School and healthcare services are unchanged.

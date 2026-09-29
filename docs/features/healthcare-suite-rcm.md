@@ -1,6 +1,6 @@
 # Healthcare Suite revenue cycle workspaces
 
-Feature ID: CAREPOINT-RCM. Updated 29 September 2026. Current state: implementation and local acceptance passed; deployment pending. Publication and deployment are recorded separately in the [delivery record](../releases/unreleased/healthcare-suite-rcm-2026-09-29.md).
+Feature ID: CAREPOINT-RCM. Updated 29 September 2026. Current state: deployed to the isolated public test site on release `20260929122358894-3da821b0` from source `4fec17b5b482732d3e418879c8a3450108a6515f`; public synthetic acceptance passed. Publication and deployment are recorded separately in the [delivery record](../releases/unreleased/healthcare-suite-rcm-2026-09-29.md).
 
 ## Coverage and navigation
 
@@ -44,7 +44,7 @@ The module uses authenticated `GET /reference-modules/healthcare-suite/api/rcm/w
 
 The host persists original source tables and retry records alongside RCM state. Original invoice identities and stock deductions survive restart. Atomic file replacement and a single-writer lease protect this synthetic service; it is not a replacement for a transactional production database or multi-instance deployment. An unrecognized writer lock fails closed and requires an operator to verify that no writer is live before recovery.
 
-MockIns supports USD/EUR/INR/AED without conversion, and a configured payer-level limit from 2 to 20 (default 3). The host and provider limits must agree when exercising fourth/fifth and later payers. Payment/refund and collection providers use actual loopback HTTP, scoped identity, bounded responses and correlation checks. Pending or lost responses preserve operation ownership for reconciliation.
+MockIns supports USD/EUR/INR/AED without conversion, and a configured payer-level limit from 2 to 20 (default 3). The host and provider limits must agree when exercising fourth/fifth and later payers. The isolated test deployment configures a maximum of five payers and AED flows. Payment/refund and collection providers use actual loopback HTTP on ports 33413/33414, scoped identity, bounded responses and correlation checks. Pending or lost responses preserve operation ownership for reconciliation.
 
 Live activation requires provider-specific contracts, credentials, payer acceptance, payment settlement and licensed grouping content. Corrected Healthcare Enterprise services remain the production domain owners; this module does not copy known AV-RCM financial defects into that application.
 

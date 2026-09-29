@@ -1,0 +1,195 @@
+
+
+added 4 packages in 4s
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 511 packages in 30s
+Preparing release 20260929122358894-3da821b0 in isolation.
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 511 packages in 21s
+npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn install-scripts   unrs-resolver@1.12.2 (postinstall: node postinstall.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+
+> web@1.0.0 build
+> rm -rf .next/static && next build && node ../../scripts/stamp-api.mjs NEXT_PUBLIC_API_URL .next
+
+▲ Next.js 16.3.3 (Turbopack)
+✓ Running next.config.ts took 46ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 18.1s
+  Running TypeScript ...
+  Finished TypeScript in 22.5s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/3) ...
+✓ Generating static pages using 3 workers (3/3) in 548ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[module]/[page]
+├ ƒ /[module]/[page]/[recordId]
+├ ƒ /[module]/[page]/[recordId]/edit
+├ ƒ /[module]/[page]/new
+└ ƒ /view/[viewId]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+> desktop@1.0.0 build
+> rm -rf dist && tsc --noEmit && vite build && node ../../scripts/stamp-api.mjs VITE_API_URL dist
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 2183 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/core.js is dynamically imported by /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/packages/erp-shell/src/sentinel.tsx, /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/packages/erp-shell/src/sentinel.tsx but also statically imported by /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/dpi.js, /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/event.js, /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/image.js, /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/webview.js, /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/webviewWindow.js, /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/window.js, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/event.js is dynamically imported by /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/packages/erp-shell/src/sentinel.tsx but also statically imported by /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/webview.js, /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/webviewWindow.js, /home/pepadmin/pepbits/frontend-test-20260928/releases/build-GB5FTh/desktop-clients/node_modules/@tauri-apps/api/window.js, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/index.html                                       1.05 kB │ gzip:   0.52 kB
+dist/assets/workbook-options.worker-B47Vz9Ey.js     368.07 kB
+dist/assets/library-page-BZ8DFha9.css                 1.27 kB │ gzip:   0.59 kB
+dist/assets/page-template-DHkRpzaa.css                2.17 kB │ gzip:   0.74 kB
+dist/assets/library-page-B5FBY-Fy.css                 4.55 kB │ gzip:   1.28 kB
+dist/assets/workspace-Bnk30RYg.css                    5.02 kB │ gzip:   1.41 kB
+dist/assets/library-page-CNkCYsR4.css                 5.85 kB │ gzip:   1.45 kB
+dist/assets/library-page-B8oeBtES.css                 9.14 kB │ gzip:   2.17 kB
+dist/assets/index-C0VEpQLa.css                       11.91 kB │ gzip:   2.17 kB
+dist/assets/index-DrfW4Pux.css                       26.29 kB │ gzip:   4.72 kB
+dist/assets/index-qCFK2eQq.css                      156.19 kB │ gzip:  26.53 kB
+dist/assets/clinical-triage-DHLgwzOt.js               0.12 kB │ gzip:   0.12 kB
+dist/assets/clinical-consultation-CY0XKaxC.js         0.12 kB │ gzip:   0.12 kB
+dist/assets/bookmark-Cf7s7u9E.js                      0.16 kB │ gzip:   0.16 kB
+dist/assets/clock-C3z-BhNv.js                         0.18 kB │ gzip:   0.17 kB
+dist/assets/type-DYodZPsT.js                          0.24 kB │ gzip:   0.19 kB
+dist/assets/calendar-NiNqJ4Sp.js                      0.25 kB │ gzip:   0.20 kB
+dist/assets/map-pin-CIIRhqUC.js                       0.26 kB │ gzip:   0.22 kB
+dist/assets/wallet-4WhnzdUG.js                        0.28 kB │ gzip:   0.20 kB
+dist/assets/key-round-BGZdreJi.js                     0.35 kB │ gzip:   0.26 kB
+dist/assets/phone-CmX5Z9w0.js                         0.39 kB │ gzip:   0.25 kB
+dist/assets/preference-choice-BbK9pnIE.js             0.40 kB │ gzip:   0.26 kB
+dist/assets/clinical-document-CRPU8npr.js             0.42 kB │ gzip:   0.33 kB
+dist/assets/zap-BSKkBUzw.js                           0.44 kB │ gzip:   0.28 kB
+dist/assets/scanner-input-_c8nqSpl.js                 0.44 kB │ gzip:   0.33 kB
+dist/assets/layout-grid-Dw3sa04q.js                   0.50 kB │ gzip:   0.27 kB
+dist/assets/undo-2-DmVkKhuQ.js                        0.58 kB │ gzip:   0.32 kB
+dist/assets/print-document-CGx0Rqyx.js                0.60 kB │ gzip:   0.36 kB
+dist/assets/user-round-x-EDqer8tB.js                  0.63 kB │ gzip:   0.33 kB
+dist/assets/library-page-BNBC4eV4.js                  0.67 kB │ gzip:   0.40 kB
+dist/assets/users-BIf1rGDA.js                         0.72 kB │ gzip:   0.41 kB
+dist/assets/library-page-C51lsQDX.js                  0.76 kB │ gzip:   0.43 kB
+dist/assets/user-plus-Dyyjphu2.js                     0.86 kB │ gzip:   0.44 kB
+dist/assets/clinical-templates-C6qMOJcp.js            0.92 kB │ gzip:   0.52 kB
+dist/assets/library-page-CGvhNVJ8.js                  1.20 kB │ gzip:   0.65 kB
+dist/assets/configured-template-page-B25qu7O0.js      1.80 kB │ gzip:   0.90 kB
+dist/assets/calendar-BBzFjycz.js                      3.49 kB │ gzip:   1.61 kB
+dist/assets/template-parts-BowMlQWU.js                3.85 kB │ gzip:   1.42 kB
+dist/assets/library-page-pqSGwsjc.js                  6.10 kB │ gzip:   2.68 kB
+dist/assets/choice-fields-BjPhjsy4.js                 7.44 kB │ gzip:   2.74 kB
+dist/assets/library-page-B-VsRZdw.js                  7.45 kB │ gzip:   2.57 kB
+dist/assets/library-page-B5otlEFS.js                  8.95 kB │ gzip:   3.13 kB
+dist/assets/template-library-xe5Ymo6O.js              9.84 kB │ gzip:   3.32 kB
+dist/assets/library-page-D9UDaAy7.js                  9.94 kB │ gzip:   3.42 kB
+dist/assets/library-page-BjJoI1AC.js                 11.92 kB │ gzip:   4.37 kB
+dist/assets/library-page-DRr3wjWO.js                 13.96 kB │ gzip:   4.96 kB
+dist/assets/index-hugFolZB.js                        15.12 kB │ gzip:   2.90 kB
+dist/assets/library-page-Dgc-HhCf.js                 23.93 kB │ gzip:   7.16 kB
+dist/assets/library-page-CRB9WHvh.js                 25.52 kB │ gzip:   7.19 kB
+dist/assets/library-page-BoeZxvd9.js                 34.27 kB │ gzip:  10.64 kB
+dist/assets/page-template-DESM53pf.js                34.80 kB │ gzip:  10.38 kB
+dist/assets/workspace-BO1rjK-m.js                    46.44 kB │ gzip:  14.29 kB
+dist/assets/component-catalog-B8yKNGP2.js            47.45 kB │ gzip:  11.73 kB
+dist/assets/library-page-D8E6nDOs.js                 78.61 kB │ gzip:  23.71 kB
+dist/assets/RegistryPage-KHgQm0eL.js                120.23 kB │ gzip:  35.60 kB
+dist/assets/index-fAVLnr13.js                       122.18 kB │ gzip:  30.69 kB
+dist/assets/index-B_fEIa75.js                       138.85 kB │ gzip:  35.12 kB
+dist/assets/index-BKH7aACK.js                       140.49 kB │ gzip:  42.53 kB
+dist/assets/index-BxkQ0UCX.js                       248.69 kB │ gzip:  65.24 kB
+dist/assets/index-DzwLf7e8.js                       348.79 kB │ gzip:  95.30 kB
+dist/assets/locale-fallback-en-FFo3dZxs.js          613.88 kB │ gzip: 159.77 kB
+dist/assets/locale-fallback-ar-DPlNQVTU.js          793.91 kB │ gzip: 222.35 kB
+dist/assets/locale-fallback-hi-DXB8Eo1f.js        1,059.88 kB │ gzip: 237.47 kB
+dist/assets/locale-fallback-ml-Bq0p7scU.js        1,243.23 kB │ gzip: 252.39 kB
+dist/assets/index-BpXeI_es.js                     1,784.69 kB │ gzip: 530.89 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 9.25s
+Both release builds match the explicit deployment API URLs.
+
+  11 packages use utility classes
+
+  every styled package is @source'd by both apps
+  ok    web: ai-ui                                          
+  ok    web: erp-screens                                    
+  ok    web: erp-shell                                      
+  ok    web: ops-ui                                         
+  ok    web: reference-erp1                                 
+  ok    web: reference-erp2                                 
+  ok    web: reference-healthcare-suite                     
+  ok    web: reference-host                                 
+  ok    web: reference-keystone-core                        
+  ok    web: reference-reports                              
+  ok    web: reference-school                               
+  ok    desktop: ai-ui                                      
+  ok    desktop: erp-screens                                
+  ok    desktop: erp-shell                                  
+  ok    desktop: ops-ui                                     
+  ok    desktop: reference-erp1                             
+  ok    desktop: reference-erp2                             
+  ok    desktop: reference-healthcare-suite                 
+  ok    desktop: reference-host                             
+  ok    desktop: reference-keystone-core                    
+  ok    desktop: reference-reports                          
+  ok    desktop: reference-school                           
+
+  utilities unique to a package survive into the built CSS
+  ok    web: ai-ui                                          2 canaries present
+  ok    web: erp-screens                                    6 canaries present
+  ok    web: erp-shell                                      6 canaries present
+  ok    web: ops-ui                                         6 canaries present
+  ok    web: reference-erp1                                 3 canaries present
+  ok    web: reference-erp2                                 6 canaries present
+  ok    web: reference-healthcare-suite                     6 canaries present
+  ok    web: reference-host                                 2 canaries present
+  ok    web: reference-keystone-core                        6 canaries present
+  ok    web: reference-reports                              6 canaries present
+  ok    web: reference-school                               6 canaries present
+  ok    desktop: ai-ui                                      2 canaries present
+  ok    desktop: erp-screens                                6 canaries present
+  ok    desktop: erp-shell                                  6 canaries present
+  ok    desktop: ops-ui                                     6 canaries present
+  ok    desktop: reference-erp1                             3 canaries present
+  ok    desktop: reference-erp2                             6 canaries present
+  ok    desktop: reference-healthcare-suite                 6 canaries present
+  ok    desktop: reference-host                             2 canaries present
+  ok    desktop: reference-keystone-core                    6 canaries present
+  ok    desktop: reference-reports                          6 canaries present
+  ok    desktop: reference-school                           6 canaries present
+
+  Every styled package is visible to both apps, and its classes survive the build.
+
+▲ Next.js 16.3.3
+- Local:         http://127.0.0.1:45027
+- Network:       http://127.0.0.1:45027
+✓ Ready in 0ms
+✓ Running next.config took 1.3ms
+  web: packaged HTML and assets passed on an isolated port.
+  desktop: packaged HTML and assets passed on an isolated port.
+Prepared and verified: /home/pepadmin/pepbits/frontend-test-20260928/releases/releases/20260929122358894-3da821b0
+Running services were not changed.

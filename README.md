@@ -18,6 +18,7 @@ Domain-specific rules and production integrations belong to the application usin
 | Area | High-level capabilities |
 | --- | --- |
 | Reference application modules | Reports, ERP1, ERP2, six School role views and a separate Healthcare Suite imported from CarePoint; demo data and business simulations remain API-owned |
+| Healthcare Suite revenue cycle | Nine API-backed workspaces for claims, exchange, remittances, patient finance, packages, synthetic DRG/day-case, accounting, commercial approvals and receivables; dedicated HTTP simulators and durable synthetic source/RCM state |
 | Application workspace | Multi-module navigation, backend-defined menus, application and branch context, workspace tabs, record navigation, search and command navigation |
 | Shared component library | Form fields, textboxes, selects, radio buttons, checkboxes, date/time controls, calendars, cards, card grids, tables, dialogs, drawers, tabs and recovery messages |
 | Developer Library | Grouped component demonstrations, copyable TypeScript examples, template previews, integration guidance and a List of pages catalog |
@@ -86,6 +87,8 @@ Application shell and authenticated context
 | `docs` | Feature guides, architecture, development rules, testing and release evidence |
 
 Canonical language catalogs live in `dummy-api/config/localization/shared/`; generated client fallbacks support the frontend. Navigation labels use stable menu/message identifiers. Many demo feature endpoints read CSV/JSON fixtures and persist scoped changes; storage behavior is feature-specific.
+
+The isolated [frontend test site](https://frontend.test.pepbits.com) runs RCM release `20260929122358894-3da821b0` from source `4fec17b5b482732d3e418879c8a3450108a6515f`. Public RCM, original Suite and School checks passed (53/53, 49/49 and 28/28); see the [delivery record](docs/releases/unreleased/healthcare-suite-rcm-2026-09-29.md) for evidence and synthetic integration limits.
 
 The `@pepbits/*` packages are private workspace packages. They are not automatically available from a public package registry.
 

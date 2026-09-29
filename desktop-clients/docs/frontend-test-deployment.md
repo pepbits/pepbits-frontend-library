@@ -1,23 +1,25 @@
 # Frontend public test site runbook
 
-This runbook covers the isolated test site at [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com). Its current release is `20260929080313644-1b17b579`, built from source `cb679bea5171bbc6b4c440534a3f8cf8fc27fa3c`. The [Healthcare Suite deployment record](../../docs/releases/unreleased/healthcare-suite-2026-09-29.md) contains local verification and deployment identity. Targeted public checks passed 40/40 workflow cases and 19/19 language/preferences cases; the public web-only reference sweep passed 175 static and six dynamic destinations; four local desktop-browser checks passed separately. The [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) preserves evidence from the prior release. The [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) remains the historical setup record.
+This runbook covers the isolated test site at [https://frontend.test.pepbits.com](https://frontend.test.pepbits.com). Its current release is `20260929122358894-3da821b0`, built from source `4fec17b5b482732d3e418879c8a3450108a6515f`. The [RCM deployment record](../../docs/releases/unreleased/healthcare-suite-rcm-2026-09-29.md) records the archive checksum, source and runtime identity, guarded backup, and public acceptance: RCM 53/53 checks, original Suite 49/49 and School 28/28, all with zero page errors; RCM and original Suite also reported zero console errors. The [original Healthcare Suite receipt](../../docs/releases/unreleased/healthcare-suite-2026-09-29.md), [School receipt](../../docs/releases/unreleased/school-role-header-2026-09-28.md) and [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) preserve prior-release evidence.
 
 ## Service layout
 
 The public DNS A record points to `145.223.23.91`, the development-server gateway. Nginx proxies to `tools02` at `148.135.138.193`. The public Nginx virtual host exposes only the web frontend over HTTPS and verifies upstream TLS using `frontend.test.pepbits.com` as SNI. The Let's Encrypt certificate was issued for the public hostname and expires on 27 December 2026.
 
-Three new isolated systemd services use loopback ports on `tools02`:
+Five isolated systemd services use loopback ports on `tools02`:
 
 | Process | Port | Exposure |
 | --- | ---: | --- |
 | Web frontend | 33410 | Gateway upstream only |
 | Desktop-browser frontend | 33411 | Loopback only; not exposed publicly |
 | Demo API | 33412 | Loopback only; reached through the web host's `/api` route |
+| Insurance/payment provider simulator | 33413 | Loopback only |
+| Collection provider simulator | 33414 | Loopback only |
 
-The units are `pepbits-frontend-test-web.service`,
+The frontend/API units are `pepbits-frontend-test-web.service`,
 `pepbits-frontend-test-desktop.service` and
 `pepbits-frontend-test-api.service`. Check or restart them on `tools02` with
-the deployment operator account:
+the deployment operator account. Provider unit names and commands are recorded in the private runtime notes:
 
 ```bash
 systemctl status pepbits-frontend-test-web.service
@@ -33,19 +35,11 @@ The isolated deployment root is `/home/pepadmin/pepbits/frontend-test-20260928`;
 the selected release pointer is
 `/home/pepadmin/pepbits/frontend-test-20260928/releases/current`. Check the
 pointer before an update and retain the prior package as a rollback target after
-future deployments. The retained rollback target is `20260928121228378-07561b3d`.
-The Healthcare Suite update retains protected source, configuration and data at
-`base/backups/healthcare-suite-20260929-cb679be`. Restore the matching
-source/configuration/data and release pointer together,
-then restart only these three units and verify health. Preserve the isolated data
-directory and the Nginx virtual host during an ordinary rollback.
+future deployments. The retained rollback target is `20260929080313644-1b17b579`. The RCM update retains a guarded backup of matching prior source, configuration and data. Restore that matching backup and release pointer together, then restart the isolated units and verify health. Preserve the isolated data directory and the Nginx virtual host during an ordinary rollback.
 
 Set `HOST=127.0.0.1` in the API service environment. The API's `HOST` setting is optional and otherwise retains its existing `0.0.0.0` default. The browser frontend must use same-origin `/api`; do not put the loopback API address into a public bundle. These processes and the virtual host are separate from ERP, School and healthcare services. The desktop-browser frontend remains a web app; this setup does not package or execute a native Tauri application.
 
-Reference-module record mutations are held in memory and are cleared when the
-isolated API restarts. Restarting the API also resets its active sessions. Other
-stores and configuration for the new site are isolated from the existing demo
-services.
+Healthcare Suite source mutations and retry records persist alongside a separate RCM state file. Atomic file replacement and a single-writer lease protect the synthetic service; verify that no writer is live before recovering an unrecognized writer lock. Six authenticated HQ/Dubai workspace, patient and invoice JSON hashes remained unchanged across the deployment restart check. Other reference-module mutations retain their existing memory-only behavior. Restarting the API resets active sessions, so operators must sign in again. The provider simulators configure a maximum of five payers and AED flows.
 
 ## DNS and HTTPS checks
 
@@ -69,6 +63,6 @@ The API and its data are synthetic demo fixtures. The visible `admin` / `admin` 
 
 Record frontend and API source identities, release identity and the isolated service configuration whenever deploying an update. Keep the public route on HTTPS, preserve `/api` as the browser-facing API prefix, and verify the deployed release identity and assets before running browser checks. Do not restart or reconfigure the existing ERP, School or healthcare services as part of this site's maintenance.
 
-Use the deployment host's private runtime notes to identify the active release and available rollback target before changing it. The private notes remain authoritative for exact host commands and unit names; this public runbook deliberately records no credentials or private server configuration. After activation or rollback, check the web release identity, assets, HTTPS certificate and API health through `/api`, then retain sanitized results under the evidence folder for that update; the current update uses the Healthcare Suite evidence folder linked from its [deployment record](../../docs/releases/unreleased/healthcare-suite-2026-09-29.md). The public web-only sweep passed 175 static and six dynamic destinations; four local desktop-browser checks passed separately.
+Use the deployment host's private runtime notes to identify the active release and available rollback target before changing it. The private notes remain authoritative for exact host commands and unit names; this public runbook deliberately records no credentials or private server configuration. After activation or rollback, check the web release identity, assets, HTTPS certificate and API health through `/api`, then retain sanitized results under the evidence folder for that update; the current update uses the RCM evidence folder linked from its [deployment record](../../docs/releases/unreleased/healthcare-suite-rcm-2026-09-29.md). Retain navigation abort request records as well as errors; the public RCM/original runs retained 12/6 such records.
 
-Deployment and browser verification are separate from native executable checks, real-backend integration, security certification and domain/native-speaker review. See the [Healthcare Suite deployment record](../../docs/releases/unreleased/healthcare-suite-2026-09-29.md) for current evidence, the [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) for prior-release evidence and the [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) for historical setup checks.
+Deployment and browser verification are separate from native executable checks, real-backend integration, security certification and domain/native-speaker review. See the [RCM deployment record](../../docs/releases/unreleased/healthcare-suite-rcm-2026-09-29.md) for current evidence, the [School role-header deployment record](../../docs/releases/unreleased/school-role-header-2026-09-28.md) for prior-release evidence and the [first deployment record](../../docs/releases/unreleased/frontend-test-deployment-2026-09-28.md) for historical setup checks.

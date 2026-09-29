@@ -1,0 +1,53 @@
+PASS RCM route /rcm/claims
+PASS RCM route /rcm/exchange
+PASS RCM route /rcm/remittances
+PASS RCM route /rcm/patient-finance
+PASS RCM route /rcm/packages
+PASS RCM route /rcm/drg
+PASS RCM route /rcm/accounting
+PASS RCM route /rcm/commercial
+PASS RCM route /rcm/receivables
+PASS UI configure-payer
+PASS UI configure-payer-policy
+PASS UI configure-payer-sequence
+PASS UI create-claim
+PASS UI adjudicate-claim
+PASS UI create-remittance
+PASS UI clawback
+PASS UI replace-claim
+PASS UI configure-package
+PASS UI enroll-package
+PASS UI reserve-package
+PASS UI consume-package-reservation
+PASS UI reserve-package-for-release
+PASS UI release-package
+PASS UI consume-package-excess
+PASS UI configure-package-revision
+PASS UI close-package
+PASS UI configure-drg
+PASS UI group-drg
+PASS UI propose-pricing
+PASS Maker cannot approve own pricing proposal
+PASS UI approve-pricing
+PASS UI quote-price
+PASS UI record-deposit
+PASS UI request-refund
+PASS UI approve-refund
+PASS Manual refund source cannot fabricate provider payout
+PASS UI cancel-refund
+PASS UI capture-deposit
+PASS UI request-refund
+PASS UI approve-provider-refund
+PASS UI pay-refund
+PASS UI create-collection
+PASS UI dispatch-collection
+PASS UI configure-exchange
+PASS UI queue-exchange-for-cancellation
+PASS UI cancel-exchange
+PASS UI queue-exchange
+PASS UI dispatch-exchange
+PASS UI export-gl
+PASS Finance role lacks commercial configuration
+PASS Finance RCM authority preserves clinical write denial
+PASS Server independently denies finance configuration
+PASS Consequential UI mutations retain operation identity and no page errors
