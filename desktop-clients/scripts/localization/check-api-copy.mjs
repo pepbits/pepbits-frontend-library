@@ -13,9 +13,16 @@ for(const file of readdirSync(root).filter(name=>name.endsWith('.mjs')&&!name.in
  function visit(node){
   if(ts.isPropertyAssignment(node)&&node.name.getText(sf)==='error'&&ts.isStringLiteral(node.initializer))found.add(node.initializer.text);
   // Configuration-loader fail() throws startup diagnostics, not HTTP errors.
-  if(file!=='application-config.mjs'&&ts.isCallExpression(node)&&['fail','failure'].includes(node.expression.getText(sf))){const argument=node.arguments.find(ts.isStringLiteral);if(argument)found.add(argument.text);}
+  if(file!=='application-config.mjs'&&file!=='healthcare-suite-rcm-money-provider.mjs'&&ts.isCallExpression(node)&&['fail','failure'].includes(node.expression.getText(sf))){const argument=node.arguments.find(ts.isStringLiteral);if(argument)found.add(argument.text);}
   // Reference report validators use typed HTTP errors rather than literal result objects.
   if(file.startsWith('reference-')&&ts.isNewExpression(node)&&node.expression.getText(sf)==='HttpError'&&node.arguments?.[1]&&ts.isStringLiteral(node.arguments[1]))found.add(node.arguments[1].text);
+  if(file.startsWith('healthcare-suite-rcm-')&&ts.isCallExpression(node)){
+   const name=node.expression.getText(sf),argument=['bad','conflict'].includes(name)?node.arguments[0]:name==='fail'?node.arguments[1]:undefined;
+   if(argument&&ts.isStringLiteral(argument))found.add(argument.text);
+  }
+  if(file.startsWith('healthcare-suite-rcm-')&&ts.isNewExpression(node)&&['RcmError','Error'].includes(node.expression.getText(sf))){
+   const argument=node.arguments?.[node.expression.getText(sf)==='RcmError'?1:0];if(argument&&ts.isStringLiteral(argument))found.add(argument.text);
+  }
   ts.forEachChild(node,visit);
  }visit(sf);
 }

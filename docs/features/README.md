@@ -66,3 +66,5 @@ Never substitute a screenshot, an empty route or a passing build for functional 
 - [Master transfer and pricing expression components](master-transfer.md)
 
 - [Quantity and unit field](quantity-unit-field.md): controlled decimal strings and unit choices with a host-provided exact preview; no conversion or API ownership.
+
+- [Healthcare Suite revenue cycle workspaces](healthcare-suite-rcm.md): nine API-backed RCM destinations; current verification/deployment boundaries are recorded separately.

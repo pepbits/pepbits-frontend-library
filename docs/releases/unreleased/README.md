@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Healthcare Suite RCM — 29 September 2026](healthcare-suite-rcm-2026-09-29.md): nine additional workspaces and dedicated provider simulators, currently under local verification; deployment is pending.
+
 - [Healthcare Suite reference module — 29 September 2026](healthcare-suite-2026-09-29.md): deployed to the isolated frontend test site on release `20260929080313644-1b17b579` from source `cb679bea5171bbc6b4c440534a3f8cf8fc27fa3c`; local tests and targeted public checks passed, while the public web-only reference sweep passed 175 static and six dynamic destinations; four local desktop-browser checks passed separately.
 
 - [Isolated frontend test site deployment — 28 September 2026](frontend-test-deployment-2026-09-28.md): first activation of release `20260928110944214-b5bb610f` at `frontend.test.pepbits.com`; the 35 route/runtime checks and public browser checks for 152 static destinations, six dynamic URLs, four header choices and four representative pages passed.

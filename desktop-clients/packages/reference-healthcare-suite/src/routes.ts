@@ -2,9 +2,10 @@ import { NAV } from './components/shell/nav';
 import { MASTERS } from './lib/masters';
 export const HEALTHCARE_SUITE_NAV = NAV;
 export const healthcareSuiteRoutes = NAV.flatMap(group=>group.links.map(link=>({path:link.href,title:link.label})));
-export type HealthcareSuiteRoute = {kind:'dashboard'|'appointments'|'patients'|'patient-new'|'patient-record'|'encounters'|'encounter-new'|'encounter-record'|'approvals'|'hospital-billing'|'pharmacy-billing'|'invoices'|'contracts'|'master-list'|'master-new'|'master-record';entity?:string;id?:string};
+export type HealthcareSuiteRoute = {kind:'rcm'|'dashboard'|'appointments'|'patients'|'patient-new'|'patient-record'|'encounters'|'encounter-new'|'encounter-record'|'approvals'|'hospital-billing'|'pharmacy-billing'|'invoices'|'contracts'|'master-list'|'master-new'|'master-record';entity?:string;id?:string;section?:string};
 export function resolveHealthcareSuiteRoute(path:string):HealthcareSuiteRoute|null {
  const pathname=path.split('?')[0].replace(/\/$/,'')||'/';
+ if(pathname.startsWith('/rcm/')){const section=pathname.slice(5);if(["claims", "exchange", "remittances", "patient-finance", "packages", "drg", "accounting", "commercial", "receivables"].includes(section))return{kind:'rcm',section};return null;}
  const fixed:Record<string,HealthcareSuiteRoute['kind']>={'/':'dashboard','/appointments':'appointments','/patients':'patients','/patients/new':'patient-new','/encounters':'encounters','/encounters/new':'encounter-new','/approvals':'approvals','/billing/hospital':'hospital-billing','/billing/pharmacy':'pharmacy-billing','/billing/invoices':'invoices','/contracts':'contracts'};
  if(fixed[pathname])return {kind:fixed[pathname]};
  const segments=pathname.split('/').slice(1);

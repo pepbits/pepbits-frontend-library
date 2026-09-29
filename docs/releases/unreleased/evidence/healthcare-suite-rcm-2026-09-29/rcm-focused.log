@@ -1,0 +1,47 @@
+✔ actual MockIns REST_JSON eligibility, claim, status and remittance round trip (634.090003ms)
+✔ actual MockIns REST_XML eligibility, claim, status and remittance round trip (425.915407ms)
+✔ actual MockIns SOAP11 eligibility, claim, status and remittance round trip (591.212647ms)
+✔ actual MockIns SOAP12 eligibility, claim, status and remittance round trip (686.035514ms)
+✔ actual MockIns fourth payer receives ordered frozen prior EOB with posted denial advice provenance (1438.470751ms)
+✔ transport rejects unapproved origin/path and malformed correlated provider responses (2.85857ms)
+✔ RCM HTTP uses authenticated host scope and separate commercial authority (4232.281349ms)
+✔ actual payment/refund/collection providers retain unknown reservations and post reconciled money exactly once (594.542312ms)
+✔ capture and refund: successful, refused and pending outcomes against the real payment simulator (681.41645ms)
+✔ refund timeout_after_accept surfaces an unknown outcome that reconciles via refundStatus (446.693416ms)
+✔ collection intents: successful, refused, pending, partial and timeout/reconcile outcomes (773.913961ms)
+✔ tenant/merchant scope isolation: another scope cannot read or act on a payment, refund or collection intent (483.662259ms)
+✔ client-side validation rejects unsafe/nonpositive amounts, bad currency and bad idempotency keys before any network call (302.639048ms)
+✔ rejects an unconfigured non-loopback or path-bearing origin at construction time (1.150858ms)
+✔ rejects a wrong response content type (13.678427ms)
+✔ rejects an oversized response payload (>128KB) (14.339173ms)
+✔ rejects mismatched amount, currency and malformed status in the response (18.928614ms)
+✔ does not automatically replay on a transport error (5.883482ms)
+✔ captured collection requires explicit provider captured-amount proof for POST and GET (8.659711ms)
+✔ does not leak credentials to a redirect target and refuses to follow the redirect (10.762107ms)
+✔ finance roles are separate from admin configuration and user/client scope cannot escalate (102.379879ms)
+✔ durable tenant/branch/facility partitions and tenant default/branch policy inheritance (139.245953ms)
+✔ safe integer/currency validation, stale versions and durable conflicting replay (206.627013ms)
+✔ two concurrent store instances serialize one optimistic winner and no overcollection (30.295186ms)
+✔ atomic persistence failure rolls back command financial state and replay identity (96.738091ms)
+✔ four-payer waterfall conserves payer/patient balances through denials, remittance and clawback (678.68032ms)
+✔ partially settled denied residual can be appealed, settled without duplicate prior payment (167.161753ms)
+✔ trusted insured Suite import preserves header allocation remainders and opening balance exactly once (127.349419ms)
+✔ untrusted import financial snapshots cannot bypass trusted reader, facility or source currency (31.120082ms)
+✔ deposit reservations, maker-checker refunds and provider-disabled payout cannot overspend (147.123209ms)
+✔ durable preparation precedes provider capture; lost outcome replays same provider key after restart (88.920344ms)
+✔ provider refund unknown keeps funds reserved and correlation-reconciled success posts once (237.520404ms)
+✔ provider pending collection reserves patient receivable and partial receipt conserves cents (93.979812ms)
+✔ package reservations/releases, frozen commercial revisions and one case/excess invoice (179.934574ms)
+✔ versioned maker-checker pricing/tax uses exact rounding and rejects stale proposal and overflow (69.674927ms)
+✔ explicit configurable demo DRG quotes freeze version and never create a charge (38.334194ms)
+✔ GL export is idempotently mapped, journal remains append-only and corruption fails closed (57.336899ms)
+✔ commercial tenant defaults and branch overrides propagate across facilities with immutable histories (421.483477ms)
+✔ cancellation releases only unsent refund reservation and collection captured amount must be proven (80.046902ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4504.785293

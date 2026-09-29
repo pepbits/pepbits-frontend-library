@@ -2,6 +2,7 @@
 import { ReferenceHostProvider, referenceScopeKey, useReferenceHost, type ReferenceModuleProps } from '@pepbits/reference-host';
 import { LocalizedText } from '@pepbits/ops-ui';
 import { useMemo } from 'react';
+import {HealthcareSuiteRcmWorkspace} from './components/rcm/HealthcareSuiteRcmWorkspace';
 import Dashboard from './app/page';
 import Appointments from './app/appointments/page';
 import Patients from './app/patients/page';
@@ -30,6 +31,7 @@ function Pages({path}:{path:string}) {
  if(!r)return <div role="status"><LocalizedText message="Healthcare Suite page not found" /></div>;
  if(!canWrite && ['patient-new','encounter-new','master-new'].includes(r.kind))return <ErrorBanner message="Healthcare Suite is read-only for your role."/>;
  switch(r.kind){
+  case 'rcm':return <HealthcareSuiteRcmWorkspace section={r.section!}/>;
   case 'dashboard':return <Dashboard/>;case 'appointments':return <Appointments/>;case 'patients':return <Patients/>;case 'patient-new':return <NewPatient/>;case 'patient-record':return <PatientRecord params={{id:r.id!}}/>;
   case 'encounters':return <Encounters/>;case 'encounter-new':return <NewEncounter/>;case 'encounter-record':return <EncounterRecord params={{id:r.id!}}/>;case 'approvals':return <Approvals/>;
   case 'hospital-billing':return <HospitalBilling/>;case 'pharmacy-billing':return <PharmacyBilling/>;case 'invoices':return <Invoices/>;case 'contracts':return <Contracts/>;
@@ -42,8 +44,8 @@ function Workspace({path}:{path:string}) {
  if(!session)return <Spinner label="Loading Healthcare Suite"/>;
  return <div className="hc-suite flex min-h-0 flex-1 flex-col gap-3" data-reference-module="healthcare-suite">
   <div className="flex flex-wrap items-center justify-between gap-3"><div><h1 className="text-hc-lg font-semibold"><LocalizedText message={header.title||'Healthcare Suite'}/></h1>{header.subtitle&&<p className="text-hc-xs text-hc-ink-mute"><LocalizedText message={header.subtitle}/></p>}</div><div className="w-60"><Select aria-label="Healthcare Suite facility" value={facilityId} onChange={setFacilityId} options={session.facilities.filter(f=>f.status!=='Inactive').map(f=>({value:f.id,label:f.name}))}/></div></div>
-  {!session.canWrite&&<p role="status" className="rounded border border-hc-info-100 bg-hc-info-50 px-3 py-2 text-hc-info-700"><LocalizedText message="Healthcare Suite is read-only for your role."/></p>}
-  <Pages key={path.split('?')[0]} path={path}/>
+  {!session.canWrite&&!path.startsWith('/rcm/')&&<p role="status" className="rounded border border-hc-info-100 bg-hc-info-50 px-3 py-2 text-hc-info-700"><LocalizedText message="Healthcare Suite is read-only for your role."/></p>}
+  <Pages key={path.split('?')[0]+'|'+facilityId} path={path}/>
  </div>;
 }
 export function ReferenceHealthcareSuiteModule({path,host}:ReferenceModuleProps) {

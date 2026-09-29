@@ -19,6 +19,8 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     globals: true,
+    // Keep component renders and local HTTP integration runners within host capacity.
+    maxWorkers: 4,
     setupFiles: ["./vitest.setup.ts"],
     include: ["packages/**/*.test.{ts,tsx}", "apps/desktop/src/**/*.test.{ts,tsx}"],
     exclude: ["**/node_modules/**", "**/dist/**", "**/.next/**"],

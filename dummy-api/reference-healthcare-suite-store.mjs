@@ -1,7 +1,8 @@
 // CarePoint fictional operations API. Original CSV fixtures and business services remain server-owned.
 // The HTTP host authorizes module access; this adapter also checks actor, product, branch and write roles.
-// Process-lifetime storage is partitioned by trusted tenant/application/branch. No real clinical/payer service.
+// Synthetic state is partitioned by trusted tenant/application/branch. The host can inject private durable snapshots; standalone fixtures remain in-memory. No real clinical/payer service.
 import {createHash} from 'node:crypto';
+import {createHealthcareSuiteSourcePersistence} from './healthcare-suite-source-persistence.mjs';
 import {CsvStore} from './reference-healthcare-suite-source/common/csv-store.service.mjs';
 import {ValidationFailed} from './reference-healthcare-suite-source/common/errors.mjs';
 import {BadRequestException,HttpException} from './reference-healthcare-suite-source/runtime.mjs';
@@ -157,9 +158,10 @@ function route(p,method,path,q,body,user,facility){
  }
  throw new HttpException('Healthcare Suite endpoint or method is unavailable',404);
 }
-export function createReferenceHealthcareSuiteStore(){
+export function createReferenceHealthcareSuiteStore({dataDir,beforePersist}={}){
+ const persistence=dataDir?createHealthcareSuiteSourcePersistence(dataDir,{beforePersist}):null;
  const partitions=new Map();
- return{handle(user,scope,request){
+ return{close:()=>persistence?.close(),handle(user,scope,request){
   if(!user?.id||!user.tenantId)return fail(401,'Not signed in.');
   if(!READ_ROLES.has(user.role))return fail(403,'Healthcare Suite role is unavailable.');
   if(scope?.applicationId!=='nexora')return fail(403,'Healthcare Suite product is unavailable.');
@@ -169,23 +171,24 @@ export function createReferenceHealthcareSuiteStore(){
   if(!['GET','POST','PUT','PATCH','DELETE'].includes(method))return fail(405,'Healthcare Suite method is unavailable.');
   if(method!=='GET'&&!WRITE_ROLES.has(user.role))return fail(403,'Healthcare Suite is read-only for this role.');
   const key=JSON.stringify([user.tenantId,scope.applicationId,scope.branchId]);
-  let p=partitions.get(key);if(!p){p=partition();partitions.set(key,p);}
-  let snapshot;
+  let p=partitions.get(key);if(!p){p=partition();const saved=persistence?.load(key);if(saved){p.store.restore(saved.tables);p.replays=saved.replays;}partitions.set(key,p);}
+  let snapshot,replaySnapshot;
   try{
    const path=decodeURIComponent(String(request.path??'/')).replace(/^\/api(?=\/|$)/,'').replace(/\/+$/,'')||'/';
    const q=request.query instanceof URLSearchParams?Object.fromEntries(request.query):{...(request.query??{})};
    const body=request.body??{};if(method!=='GET')validateShape(body);
    const selected=request.headers?.['x-reference-facility']??request.headers?.['X-Reference-Facility']??scope.facilityId??'F001';
    const facility=p.store.find('facilities',selected);if(!facility||facility.status!=='Active')return fail(403,'Healthcare Suite facility is unavailable.');
-   const replayKey=request.headers?.['idempotency-key']??request.headers?.['Idempotency-Key'];
+   const replayKey=method==='GET'?undefined:(request.headers?.['idempotency-key']??request.headers?.['Idempotency-Key']);
    if(replayKey!==undefined&&(typeof replayKey!=='string'||!/^[\w:.-]{1,128}$/.test(replayKey)))invalid('idempotencyKey','Provide an operation identifier of up to 128 characters');
    const replayId=replayKey?JSON.stringify([user.id,facility.id,replayKey]):null;
    const fingerprint=createHash('sha256').update(JSON.stringify([method,path,q,body])).digest('hex');
    if(replayId&&p.replays.has(replayId)){const replay=p.replays.get(replayId);return replay.fingerprint===fingerprint?structuredClone(replay.result):fail(409,'Operation identifier was already used for another request.');}
-   snapshot=p.store.snapshot();p.store.actor=user;
+   snapshot=p.store.snapshot();replaySnapshot=new Map(p.replays);p.store.actor=user;
    const result={status:method==='POST'?201:200,body:route(p,method,path,q,body,user,facility)};
    if(replayId){p.replays.set(replayId,{fingerprint,result:structuredClone(result)});}
+   persistence?.save(key,p.store.snapshot(),p.replays);
    return structuredClone(result);
-  }catch(error){if(snapshot)p.store.restore(snapshot);if(error instanceof HttpException)return{status:error.status,body:error.response};if(error instanceof URIError)return fail(400,'Malformed Healthcare Suite path.');throw error;}
+  }catch(error){if(!error.sourceCommitted){if(snapshot)p.store.restore(snapshot);if(replaySnapshot)p.replays=replaySnapshot;}if(error instanceof HttpException)return{status:error.status,body:error.response};if(error instanceof URIError)return fail(400,'Malformed Healthcare Suite path.');throw error;}
  }};
 }

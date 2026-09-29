@@ -143,10 +143,65 @@ export const HEALTHCARE_SUITE_REFERENCE = {
       "path": "/masters/resource-blocks",
       "title": "Blocks & leave",
       "section": "scheduling"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-claims",
+      "path": "/rcm/claims",
+      "title": "Claims, payers and appeals",
+      "section": "rcm"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-exchange",
+      "path": "/rcm/exchange",
+      "title": "Payer connections",
+      "section": "rcm"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-remittances",
+      "path": "/rcm/remittances",
+      "title": "Remittances and clawbacks",
+      "section": "rcm"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-patient-finance",
+      "path": "/rcm/patient-finance",
+      "title": "Refunds, credits and deposits",
+      "section": "rcm"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-packages",
+      "path": "/rcm/packages",
+      "title": "Packages and case rates",
+      "section": "rcm"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-drg",
+      "path": "/rcm/drg",
+      "title": "DRG and day-case grouping",
+      "section": "rcm"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-accounting",
+      "path": "/rcm/accounting",
+      "title": "Accounting and reconciliation",
+      "section": "rcm"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-commercial",
+      "path": "/rcm/commercial",
+      "title": "Commercial governance",
+      "section": "rcm"
+    },
+    {
+      "id": "reference-healthcare-suite-rcm-receivables",
+      "path": "/rcm/receivables",
+      "title": "Receivables and collections",
+      "section": "rcm"
     }
   ]
 } as const;
 export const HEALTHCARE_SUITE_SECTION_TITLES:Readonly<Record<string,string>> = {
+  "rcm": "Revenue cycle management",
   "front": "Front office",
   "billing": "Billing",
   "insurance": "Insurance & pricing",

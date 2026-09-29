@@ -5,7 +5,7 @@ import { ApiProvider } from './api';
 import { useApi } from './hooks';
 import type { Row } from './types';
 export type FormLayout = 'tabs' | 'pages';
-interface Session { canWrite:boolean; user: {id:string;name:string;role:string;email:string;initials:string}|null; facilities:Row[];currency:string;today:string;defaultFacilityId:string }
+interface Session { canWrite:boolean;canWriteRcm?:boolean; user: {id:string;name:string;role:string;email:string;initials:string}|null; facilities:Row[];currency:string;today:string;defaultFacilityId:string }
 interface Ctx { session:Session|null;error:string|null;facilityId:string;setFacilityId:(id:string)=>void;facility:Row|null;formLayout:FormLayout;setFormLayout:(layout:FormLayout)=>void;currency:string;header:{title:string;subtitle?:string};setHeader:(header:{title:string;subtitle?:string})=>void }
 const Context = createContext<Ctx|null>(null);
 export function SessionProvider({children}:{children:ReactNode}) {
@@ -21,7 +21,7 @@ export function SessionProvider({children}:{children:ReactNode}) {
     const next=layout==='tabs';
     if(ph?.onPreferenceChange && ph.preferencesAvailable!==false && !rule?.locked && (!rule?.allowedValues || rule.allowedValues.includes(next))) ph.onPreferenceChange('openRecordsInTabs',next);
   },currency:host.preferences.currencyCode,header,setHeader}),[data,error,facilityId,formLayout,host,header]);
-  return <Context.Provider value={value}><ApiProvider facilityId={facilityId} canWrite={data?.canWrite===true}>{children}</ApiProvider></Context.Provider>;
+  return <Context.Provider value={value}><ApiProvider facilityId={facilityId} canWrite={data?.canWrite===true} canWriteRcm={data?.canWriteRcm===true}>{children}</ApiProvider></Context.Provider>;
 }
 export function useSession() {const session=useContext(Context);if(!session)throw new Error('Healthcare Suite session required');return session;}
 export function usePageHeader(title:string,subtitle?:string) {const {setHeader}=useSession();useEffect(()=>{setHeader({title,subtitle});},[title,subtitle,setHeader]);}

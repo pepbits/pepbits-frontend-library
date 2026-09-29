@@ -8,7 +8,7 @@ const output=process.env.E2E_ARTIFACTS??'/tmp/healthcare-suite-browser';mkdirSyn
 const args=process.env.E2E_DNS_OVERRIDE?[`--host-resolver-rules=${process.env.E2E_DNS_OVERRIDE}`]:[];
 const browser=await loadPlaywright().chromium.launch({chromiumSandbox:false,args});
 const moduleId='reference-healthcare-suite',results=[],errors=[],mutations=[],networkFailures=[],consoleErrors=[];const flowOnly=process.env.E2E_HEALTHCARE_SUITE_FLOW_ONLY==='1';let activePage;
-const catalog=REFERENCE_MODULES.find(module=>module.id===moduleId);assert.equal(catalog.pages.length,23);
+const catalog=REFERENCE_MODULES.find(module=>module.id===moduleId);assert.equal(catalog.pages.length,32);
 const root=page=>page.locator('[data-reference-module="healthcare-suite"]');
 const record=(name,detail={})=>{results.push({name,status:'passed',...detail});writeFileSync(`${output}/progress.json`,JSON.stringify({completed:results.length,last:name})+'\n');console.log('PASS '+name);};
 async function login(username){

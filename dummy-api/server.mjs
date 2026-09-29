@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 import {createReferenceReportsStore} from './reference-reports-store.mjs';
+import {acquireHealthcareSuiteInvoice} from './healthcare-suite-source-persistence.mjs';
+import {createRcmMoneyProvider} from './healthcare-suite-rcm-money-provider.mjs';
+import {createHealthcareSuiteRcmStore} from './healthcare-suite-rcm-store.mjs';
 import {createReferenceHealthcareSuiteStore} from './reference-healthcare-suite-store.mjs';
 import {createReferenceSchoolStore} from './reference-school-store.mjs';
 import {resolveSchoolView} from './school-view-policy.mjs';
@@ -125,7 +128,14 @@ for(const role of ['admin','teacher','student','parent','librarian','accountant'
 
 /** token -> user. Lost on restart, which is correct for a demo. */
 const sessions = new Map();
-const referenceStores={reports:createReferenceReportsStore({inboundSecret:process.env.REFERENCE_REPORTS_INBOUND_SECRET,inboundIdentity:{user:ACCOUNTS[2].user,scope:{applicationId:'nexora',branchId:ACCOUNTS[2].user.branch}}}),school:createReferenceSchoolStore(),erp1:createReferenceErpStore({variant:'erp1'}),erp2:createReferenceErpStore({variant:'erp2'}),'healthcare-suite':createReferenceHealthcareSuiteStore()};
+// Synthetic commercial reviewer provides a separate maker/checker actor for the
+// reference RCM workflow. This grants no clinical registration write capability.
+ACCOUNTS.push({username:'rcm-reviewer',password:'rcm-reviewer',user:{
+ id:'USR-RCM-REVIEWER',name:'Synthetic RCM reviewer',email:'rcm-reviewer@nexora.example',
+ initials:'RC',title:'Commercial review',role:'finance-manager',branch:'dubai',tenantId:'NEX-AE-001',
+ permissions:['rcm:configure'],
+}});
+const referenceStores={reports:createReferenceReportsStore({inboundSecret:process.env.REFERENCE_REPORTS_INBOUND_SECRET,inboundIdentity:{user:ACCOUNTS[2].user,scope:{applicationId:'nexora',branchId:ACCOUNTS[2].user.branch}}}),school:createReferenceSchoolStore(),erp1:createReferenceErpStore({variant:'erp1'}),erp2:createReferenceErpStore({variant:'erp2'}),'healthcare-suite':createReferenceHealthcareSuiteStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'healthcare-suite-source')})};
 
 
 /* Preferences, unlike sessions, are written to disk. An in-memory store would lose
@@ -133,6 +143,27 @@ const referenceStores={reports:createReferenceReportsStore({inboundSecret:proces
    point of "log out, log back in, your settings are still there".
    Shape: { "<userId>": { <only the keys that differ from the client's defaults> } } */
 const DATA_DIR = process.env.NEXORA_DATA_DIR ?? join(dirname(fileURLToPath(import.meta.url)), "data");
+// RCM owns immutable financial snapshots after trusted source import. The original
+// clinical demo remains a separate adapter; no caller supplies invoice money or identity.
+const healthcareSuiteRcm=createHealthcareSuiteRcmStore({
+ dataDir:join(DATA_DIR,'healthcare-suite-rcm'),
+ defaultCurrency:process.env.CURRENCY??'AED',
+ moneyProvider:(process.env.HC_RCM_MOCKPAY_URL||process.env.HC_RCM_MOCKCOLLECTION_URL)?createRcmMoneyProvider({
+  payments:process.env.HC_RCM_MOCKPAY_URL?{origin:process.env.HC_RCM_MOCKPAY_URL,apiKey:process.env.HC_RCM_MOCKPAY_KEY}:undefined,
+  collections:process.env.HC_RCM_MOCKCOLLECTION_URL?{origin:process.env.HC_RCM_MOCKCOLLECTION_URL,apiKey:process.env.HC_RCM_MOCKCOLLECTION_KEY}:undefined,
+ }):undefined,
+ provider:process.env.HC_RCM_MOCKINS_URL ? {
+  baseUrl:process.env.HC_RCM_MOCKINS_URL,apiKey:process.env.HC_RCM_MOCKINS_KEY,
+  senderId:process.env.HC_RCM_MOCKINS_SENDER,providerId:process.env.HC_RCM_MOCKINS_PROVIDER,
+  maxPayerLevel:Number(process.env.HC_RCM_MOCKINS_MAX_PAYER_LEVEL??3),
+ } : undefined,
+ referenceReader:async({user,scope,invoiceId})=>{
+  const selected=scope.facilityId;
+  const result=await referenceStores['healthcare-suite'].handle(user,scope,{method:'GET',path:'/api/billing/invoices/'+encodeURIComponent(invoiceId),headers:{'x-reference-facility':selected}});
+  if(result.status!==200||!result.body?.id||result.body.facility?.id!==selected)return null;
+  return {invoice:result.body,facilityId:selected,currency:process.env.CURRENCY??'AED'};
+ },
+});
 const clinicalTemplates=createClinicalTemplateStore(join(process.env.RECORD_DATA_DIR ?? DATA_DIR,"clinical-templates.csv"));
 const clinicalTriage=createClinicalTriageStore(join(process.env.RECORD_DATA_DIR ?? DATA_DIR,"clinical-triage.csv"),(user,product,id)=>clinicalTemplates.handle(user,product,{action:"overview",id},false));
 const clinicalConsultation=createClinicalConsultationStore(join(process.env.RECORD_DATA_DIR ?? DATA_DIR,"clinical-consultation.csv"),(user,product,id)=>clinicalTemplates.handle(user,product,{action:"overview",id},false));
@@ -930,13 +961,44 @@ const server = createServer(async (req, res) => {
     let body={};if(!['GET','HEAD'].includes(req.method)){try{body=await readJson(req,2_000_000);}catch{return send(res,400,{error:'Malformed request body.'});}}
     const scope={applicationId:product,branchId:branch,...(schoolView?{moduleId:schoolView.id}:{})};
     const effectiveUser={...user,branch,...(schoolView?{role:'school-'+schoolView.role}:{})};
-    const result=await referenceStores[variant].handle(effectiveUser,scope,{method:req.method,path:modulePath,query:requestUrl.searchParams,body,headers:req.headers});
+    let financialPath;
+    try{financialPath=decodeURIComponent(modulePath).replace(/^\/api(?=\/|$)/,'').replace(/\/+$/,'')||'/';}
+    catch{return send(res,400,{message:'Malformed reference API path.'});}
+    const sourceCommand=variant==='healthcare-suite'&&req.method==='POST'?financialPath.match(/^\/billing\/invoices\/([^/]+)\/(payments|cancel)$/):null;
+    const transferId=variant==='healthcare-suite'&&financialPath==='/rcm/commands'&&body.kind==='import-invoice'&&typeof body.invoiceId==='string'?body.invoiceId:sourceCommand?.[1];
+    const releaseInvoice=transferId?await acquireHealthcareSuiteInvoice(JSON.stringify([effectiveUser.tenantId,product,branch,transferId])):()=>{};
+    try {
+    const request={method:req.method,path:modulePath,query:requestUrl.searchParams,body,headers:req.headers};
+    const rcmScope={...scope,facilityId:req.headers['x-reference-facility']??'F001'};
+    if(variant==='healthcare-suite'&&req.method==='POST'){
+      let sourcePath;
+      try{sourcePath=decodeURIComponent(modulePath).replace(/^\/api(?=\/|$)/,'').replace(/\/+$/,'')||'/';}
+      catch{return send(res,400,{message:'Malformed Healthcare Suite path.'});}
+      const sourceMutation=sourcePath.match(/^\/billing\/invoices\/([^/]+)\/(payments|cancel)$/);
+      if(sourceMutation){
+        const sourceId=sourceMutation[1];
+        const source=await referenceStores[variant].handle(effectiveUser,scope,{method:'GET',path:'/api/billing/invoices/'+encodeURIComponent(sourceId),headers:{'x-reference-facility':rcmScope.facilityId}});
+        if(source.status!==200)return send(res,source.status,source.body);
+        if(source.body.facility?.id!==rcmScope.facilityId)return send(res,403,{message:'Invoice is outside the selected facility.'});
+        if(await healthcareSuiteRcm.ownsInvoice(effectiveUser,rcmScope,sourceId,rcmScope.facilityId))return send(res,409,{message:'This invoice is managed by RCM. Use the RCM financial workflow.'});
+      }
+    }
+    if(variant==='healthcare-suite'){
+      const scopeCheck=await referenceStores[variant].handle(effectiveUser,scope,{method:'GET',path:'/api/session',headers:{'x-reference-facility':rcmScope.facilityId}});
+      if(scopeCheck.status!==200)return send(res,scopeCheck.status,scopeCheck.body);
+    }
+    const rcmResult=variant==='healthcare-suite'?await healthcareSuiteRcm.handle(effectiveUser,rcmScope,request):null;
+    const result=rcmResult??await referenceStores[variant].handle(effectiveUser,scope,request);
+    if(variant==='healthcare-suite'&&req.method==='GET'&&modulePath.replace(/^\/api(?=\/|$)/,'')==='/session'&&result.status===200){
+      result.body.canWriteRcm=['enterprise-admin','admin','finance-manager','finance'].includes(effectiveUser.role);
+    }
     const contentType=result.headers?.['Content-Type']??result.headers?.['content-type'];
     if(contentType&&!contentType.includes('application/json')){
       const payload=Buffer.isBuffer(result.body)?result.body:Buffer.from(String(result.body??''));
       res.writeHead(result.status,{...CORS,'Cache-Control':'no-store',...result.headers,'Content-Length':payload.length});return res.end(payload);
     }
     return send(res,result.status,result.body,result.headers);
+    }finally{releaseInvoice();}
   }
 
   if (req.method === "POST" && pathname === "/auth/login") {

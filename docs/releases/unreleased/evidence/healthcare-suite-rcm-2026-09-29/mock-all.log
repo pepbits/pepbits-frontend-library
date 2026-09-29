@@ -1,0 +1,486 @@
+test_a_request_body_over_the_registered_limit_is_rejected (test_ai_mock.AiMockTestCase.test_a_request_body_over_the_registered_limit_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 413 -
+ok
+test_a_tool_registered_request_is_rejected (test_ai_mock.AiMockTestCase.test_a_tool_registered_request_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_an_item_with_an_extra_field_such_as_a_name_is_rejected (test_ai_mock.AiMockTestCase.test_an_item_with_an_extra_field_such_as_a_name_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_an_unknown_route_is_rejected (test_ai_mock.AiMockTestCase.test_an_unknown_route_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/unknown HTTP/1.1" 404 -
+ok
+test_free_instructions_are_closed (test_ai_mock.AiMockTestCase.test_free_instructions_are_closed) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_health_endpoint_is_unauthenticated_and_marked_simulated (test_ai_mock.AiMockTestCase.test_health_endpoint_is_unauthenticated_and_marked_simulated) ... ai-responses-mock 127.0.0.1 - "GET /health HTTP/1.1" 200 -
+ok
+test_incomplete_scenario_reports_an_incomplete_status (test_ai_mock.AiMockTestCase.test_incomplete_scenario_reports_an_incomplete_status) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_invalid_unknown_source_scenario_returns_a_token_never_offered (test_ai_mock.AiMockTestCase.test_invalid_unknown_source_scenario_returns_a_token_never_offered) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_library_envelope_rejects_nonempty_evidence_and_unwrapped_facts (test_ai_mock.AiMockTestCase.test_library_envelope_rejects_nonempty_evidence_and_unwrapped_facts) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_lost_response_scenario_closes_without_a_reply (test_ai_mock.AiMockTestCase.test_lost_response_scenario_closes_without_a_reply) ... ok
+test_malformed_json_body_is_rejected (test_ai_mock.AiMockTestCase.test_malformed_json_body_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_malformed_json_output_scenario_is_not_parseable_as_json (test_ai_mock.AiMockTestCase.test_malformed_json_output_scenario_is_not_parseable_as_json) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_missing_bearer_token_is_rejected (test_ai_mock.AiMockTestCase.test_missing_bearer_token_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 401 -
+ok
+test_more_than_eight_items_is_rejected (test_ai_mock.AiMockTestCase.test_more_than_eight_items_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_no_recognized_source_yields_no_suggestion (test_ai_mock.AiMockTestCase.test_no_recognized_source_yields_no_suggestion) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_non_disabled_store_flag_is_rejected (test_ai_mock.AiMockTestCase.test_non_disabled_store_flag_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_normal_decision_echoes_the_exact_offered_token_and_carries_the_simulated_marker (test_ai_mock.AiMockTestCase.test_normal_decision_echoes_the_exact_offered_token_and_carries_the_simulated_marker) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_oversize_scenario_exceeds_the_registered_wire_limit (test_ai_mock.AiMockTestCase.test_oversize_scenario_exceeds_the_registered_wire_limit) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_refusal_scenario_emits_a_refusal_content_item (test_ai_mock.AiMockTestCase.test_refusal_scenario_emits_a_refusal_content_item) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_timeout_scenario_exceeds_a_short_client_deadline (test_ai_mock.AiMockTestCase.test_timeout_scenario_exceeds_a_short_client_deadline) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_tool_call_scenario_emits_a_function_call_output_item (test_ai_mock.AiMockTestCase.test_tool_call_scenario_emits_a_function_call_output_item) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_unknown_output_item_scenario_emits_an_unrecognized_item_type (test_ai_mock.AiMockTestCase.test_unknown_output_item_scenario_emits_an_unrecognized_item_type) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 200 -
+ok
+test_unknown_source_or_raw_reference_is_closed (test_ai_mock.AiMockTestCase.test_unknown_source_or_raw_reference_is_closed) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_unoffered_identity_fields_are_closed_at_root (test_ai_mock.AiMockTestCase.test_unoffered_identity_fields_are_closed_at_root) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_unregistered_model_is_rejected (test_ai_mock.AiMockTestCase.test_unregistered_model_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 400 -
+ok
+test_wrong_bearer_token_is_rejected (test_ai_mock.AiMockTestCase.test_wrong_bearer_token_is_rejected) ... ai-responses-mock 127.0.0.1 - "POST /v1/responses HTTP/1.1" 401 -
+ok
+test_cli_refuses_bad_environment_without_leaking_secrets (test_collection_mock.CliTests.test_cli_refuses_bad_environment_without_leaking_secrets) ... ok
+test_duplicate_authenticated_callback_delivery_is_two_independent_attempts (test_collection_mock.DuplicateAndIdempotencyTests.test_duplicate_authenticated_callback_delivery_is_two_independent_attempts) ... ok
+test_exact_retry_under_the_same_key_replays_without_a_second_effect (test_collection_mock.DuplicateAndIdempotencyTests.test_exact_retry_under_the_same_key_replays_without_a_second_effect) ... ok
+test_same_key_different_payload_conflicts (test_collection_mock.DuplicateAndIdempotencyTests.test_same_key_different_payload_conflicts) ... ok
+test_state_and_idempotency_survive_a_restart (test_collection_mock.DurabilityTests.test_state_and_idempotency_survive_a_restart) ... ok
+test_business_routes_require_bearer_key (test_collection_mock.HealthAndAuthTests.test_business_routes_require_bearer_key) ... ok
+test_business_routes_require_scope_headers (test_collection_mock.HealthAndAuthTests.test_business_routes_require_scope_headers) ... ok
+test_health_is_unauthenticated_and_reports_simulated (test_collection_mock.HealthAndAuthTests.test_health_is_unauthenticated_and_reports_simulated) ... ok
+test_lookup_by_id_in_body_matches_the_get_route (test_collection_mock.LookupRouteTests.test_lookup_by_id_in_body_matches_the_get_route) ... ok
+test_lookup_is_scoped (test_collection_mock.LookupRouteTests.test_lookup_is_scoped) ... ok
+test_lookup_of_unknown_id_is_404 (test_collection_mock.LookupRouteTests.test_lookup_of_unknown_id_is_404) ... ok
+test_lookup_rejects_a_malformed_id (test_collection_mock.LookupRouteTests.test_lookup_rejects_a_malformed_id) ... ok
+test_decline_is_definite_and_immediate (test_collection_mock.ScenarioTests.test_decline_is_definite_and_immediate) ... ok
+test_expired_is_a_distinct_terminal_state_from_decline (test_collection_mock.ScenarioTests.test_expired_is_a_distinct_terminal_state_from_decline) ... ok
+test_partial_captures_less_than_requested_never_more (test_collection_mock.ScenarioTests.test_partial_captures_less_than_requested_never_more) ... ok
+test_pending_requires_an_explicit_resolve_and_is_terminal_once_resolved (test_collection_mock.ScenarioTests.test_pending_requires_an_explicit_resolve_and_is_terminal_once_resolved) ... ok
+test_success_captures_the_exact_requested_amount (test_collection_mock.ScenarioTests.test_success_captures_the_exact_requested_amount) ... ok
+test_timeout_after_accept_commits_but_reports_504_for_reconciliation (test_collection_mock.ScenarioTests.test_timeout_after_accept_commits_but_reports_504_for_reconciliation) ... ok
+test_events_are_scoped_too (test_collection_mock.ScopeIsolationTests.test_events_are_scoped_too) ... ok
+test_wrong_scope_cannot_see_or_resolve_another_scope_s_intent (test_collection_mock.ScopeIsolationTests.test_wrong_scope_cannot_see_or_resolve_another_scope_s_intent) ... ok
+test_delivered_callback_is_signed_and_verifiable_over_raw_bytes (test_collection_mock.SignedCallbackTests.test_delivered_callback_is_signed_and_verifiable_over_raw_bytes) ... ok
+test_no_card_or_phi_data_ever_appears_in_the_callback_payload (test_collection_mock.SignedCallbackTests.test_no_card_or_phi_data_ever_appears_in_the_callback_payload) ... ok
+test_amount_must_be_a_positive_integer_minor_units (test_collection_mock.ValidationTests.test_amount_must_be_a_positive_integer_minor_units) ... ok
+test_currency_must_be_three_uppercase_letters (test_collection_mock.ValidationTests.test_currency_must_be_three_uppercase_letters) ... ok
+test_method_must_be_an_upper_snake_case_code (test_collection_mock.ValidationTests.test_method_must_be_an_upper_snake_case_code) ... ok
+test_unknown_scenario_is_rejected (test_collection_mock.ValidationTests.test_unknown_scenario_is_rejected) ... ok
+test_callback_failure_is_durable_without_refund_rollback (test_contract.Contract.test_callback_failure_is_durable_without_refund_rollback) ... ok
+test_concurrent_last_balance (test_contract.Contract.test_concurrent_last_balance) ... ok
+test_decline_release_pending_and_timeout (test_contract.Contract.test_decline_release_pending_and_timeout) ... ok
+test_invalid_amounts (test_contract.Contract.test_invalid_amounts) ... ok
+test_restart_idempotency_and_isolation (test_contract.Contract.test_restart_idempotency_and_isolation) ... ok
+test_signed_callbacks_replay_and_restricted_destination (test_contract.Contract.test_signed_callbacks_replay_and_restricted_destination) ... ok
+test_terminal_state_cannot_regress_and_events_are_scoped (test_contract.Contract.test_terminal_state_cannot_regress_and_events_are_scoped) ... ok
+test_slow_headers_have_absolute_deadline (test_deadline.Deadline.test_slow_headers_have_absolute_deadline) ... ok
+test_admin_endpoints_require_admin_credential (test_external_identity_mock.IdentityMockTestCase.test_admin_endpoints_require_admin_credential) ... external-identity-mock 127.0.0.1 - "POST /revoke HTTP/1.1" 401 -
+external-identity-mock 127.0.0.1 - "POST /revoke HTTP/1.1" 401 -
+external-identity-mock 127.0.0.1 - "POST /introspect HTTP/1.1" 401 -
+ok
+test_audience_is_fixed_per_oauth_client_and_never_caller_supplied (test_external_identity_mock.IdentityMockTestCase.test_audience_is_fixed_per_oauth_client_and_never_caller_supplied) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+ok
+test_audience_mismatch_fixture_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_audience_mismatch_fixture_is_rejected) ... ok
+test_authorization_code_reuse_is_rejected_sequentially (test_external_identity_mock.IdentityMockTestCase.test_authorization_code_reuse_is_rejected_sequentially) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+ok
+test_authorize_rejects_non_s256_code_challenge_method (test_external_identity_mock.IdentityMockTestCase.test_authorize_rejects_non_s256_code_challenge_method) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 400 -
+ok
+test_authorize_rejects_unregistered_redirect_uri (test_external_identity_mock.IdentityMockTestCase.test_authorize_rejects_unregistered_redirect_uri) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 400 -
+ok
+test_concurrent_authorization_code_reuse_never_succeeds_twice (test_external_identity_mock.IdentityMockTestCase.test_concurrent_authorization_code_reuse_never_succeeds_twice) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 429 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 429 -
+ok
+test_device_account_cannot_be_used_at_login (test_external_identity_mock.IdentityMockTestCase.test_device_account_cannot_be_used_at_login) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 401 -
+ok
+test_disabled_account_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_disabled_account_is_rejected) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 401 -
+ok
+test_disallowed_audience_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_disallowed_audience_is_rejected) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+ok
+test_disallowed_scope_for_oauth_client_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_disallowed_scope_for_oauth_client_is_rejected) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 400 -
+ok
+test_discovery_document_advertises_authorization_code_pkce (test_external_identity_mock.IdentityMockTestCase.test_discovery_document_advertises_authorization_code_pkce) ... external-identity-mock 127.0.0.1 - "GET /.well-known/openid-configuration HTTP/1.1" 200 -
+ok
+test_discovery_document_shape (test_external_identity_mock.IdentityMockTestCase.test_discovery_document_shape) ... external-identity-mock 127.0.0.1 - "GET /.well-known/openid-configuration HTTP/1.1" 200 -
+ok
+test_expired_authorization_code_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_expired_authorization_code_is_rejected) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+ok
+test_expired_token_fixture_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_expired_token_fixture_is_rejected) ... ok
+test_get_authorize_returns_html_login_form_with_no_credentials (test_external_identity_mock.IdentityMockTestCase.test_get_authorize_returns_html_login_form_with_no_credentials) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+ok
+test_https_loopback_round_trip_with_ephemeral_test_cert (test_external_identity_mock.IdentityMockTestCase.test_https_loopback_round_trip_with_ephemeral_test_cert) ... external-identity-mock 127.0.0.1 - "GET /.well-known/openid-configuration HTTP/1.1" 200 -
+ok
+test_human_account_cannot_be_used_at_client_credentials_token (test_external_identity_mock.IdentityMockTestCase.test_human_account_cannot_be_used_at_client_credentials_token) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 401 -
+ok
+test_human_scope_cannot_cross_party_type (test_external_identity_mock.IdentityMockTestCase.test_human_scope_cannot_cross_party_type) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 400 -
+ok
+test_issuer_mismatch_fixture_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_issuer_mismatch_fixture_is_rejected) ... ok
+test_jwks_shape_and_matches_signing_key (test_external_identity_mock.IdentityMockTestCase.test_jwks_shape_and_matches_signing_key) ... external-identity-mock 127.0.0.1 - "GET /jwks.json HTTP/1.1" 200 -
+ok
+test_login_rate_limit_locks_then_unlocks_after_cooldown (test_external_identity_mock.IdentityMockTestCase.test_login_rate_limit_locks_then_unlocks_after_cooldown) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 401 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 401 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 401 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 401 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 401 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 429 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 429 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+ok
+test_login_then_form_encoded_basic_auth_token_happy_path_hand_verifies (test_external_identity_mock.IdentityMockTestCase.test_login_then_form_encoded_basic_auth_token_happy_path_hand_verifies) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "GET /jwks.json HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+ok
+test_logout_rejects_client_mismatch_and_signed_unbound_sid (test_external_identity_mock.IdentityMockTestCase.test_logout_rejects_client_mismatch_and_signed_unbound_sid) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /logout HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /logout HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /introspect HTTP/1.1" 200 -
+ok
+test_logout_requires_authenticated_client_and_signed_id_token_hint (test_external_identity_mock.IdentityMockTestCase.test_logout_requires_authenticated_client_and_signed_id_token_hint) ... external-identity-mock 127.0.0.1 - "POST /logout HTTP/1.1" 401 -
+external-identity-mock 127.0.0.1 - "POST /logout HTTP/1.1" 400 -
+ok
+test_logout_revokes_session_tokens_reported_inactive_via_introspect (test_external_identity_mock.IdentityMockTestCase.test_logout_revokes_session_tokens_reported_inactive_via_introspect) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /logout HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /introspect HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+ok
+test_minted_token_hand_verifies_against_jwks (test_external_identity_mock.IdentityMockTestCase.test_minted_token_hand_verifies_against_jwks) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "GET /jwks.json HTTP/1.1" 200 -
+ok
+test_openid_requires_nonce_and_authorize_rejects_credential_query (test_external_identity_mock.IdentityMockTestCase.test_openid_requires_nonce_and_authorize_rejects_credential_query) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 400 -
+external-identity-mock 127.0.0.1 - "GET /authorize?...login_secret=*** HTTP/1.1" 400 -
+ok
+test_party_ref_mismatch_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_party_ref_mismatch_is_rejected) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+ok
+test_redirect_uri_mismatch_between_authorize_and_token_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_redirect_uri_mismatch_between_authorize_and_token_is_rejected) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+ok
+test_refresh_token_requires_client_authentication (test_external_identity_mock.IdentityMockTestCase.test_refresh_token_requires_client_authentication) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 401 -
+ok
+test_refresh_token_rotation_issues_new_token_and_invalidates_old (test_external_identity_mock.IdentityMockTestCase.test_refresh_token_rotation_issues_new_token_and_invalidates_old) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+ok
+test_register_account_rejects_identifying_party_ref (test_external_identity_mock.IdentityMockTestCase.test_register_account_rejects_identifying_party_ref) ... ok
+test_retired_key_signed_fixture_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_retired_key_signed_fixture_is_rejected) ... external-identity-mock 127.0.0.1 - "GET /jwks.json HTTP/1.1" 200 -
+ok
+test_revocation_distinguishes_revoked_from_valid (test_external_identity_mock.IdentityMockTestCase.test_revocation_distinguishes_revoked_from_valid) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /revoke HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /introspect HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /introspect HTTP/1.1" 200 -
+ok
+test_rotation_grace_window_and_expiry_via_fake_clock (test_external_identity_mock.IdentityMockTestCase.test_rotation_grace_window_and_expiry_via_fake_clock) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "GET /jwks.json HTTP/1.1" 200 -
+external-identity-mock 127.0.0.1 - "GET /jwks.json HTTP/1.1" 200 -
+ok
+test_token_accepts_client_secret_post_form_field_as_alternative_to_basic (test_external_identity_mock.IdentityMockTestCase.test_token_accepts_client_secret_post_form_field_as_alternative_to_basic) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 200 -
+ok
+test_token_rate_limit_locks_after_wrong_verifier_attempts (test_external_identity_mock.IdentityMockTestCase.test_token_rate_limit_locks_after_wrong_verifier_attempts) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 429 -
+ok
+test_token_rejects_missing_client_authentication (test_external_identity_mock.IdentityMockTestCase.test_token_rejects_missing_client_authentication) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 401 -
+ok
+test_unknown_client_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_unknown_client_is_rejected) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 401 -
+ok
+test_wrong_code_verifier_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_wrong_code_verifier_is_rejected) ... external-identity-mock 127.0.0.1 - "GET /authorize?..." 200 -
+external-identity-mock 127.0.0.1 - "POST /login HTTP/1.1" 302 -
+external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 400 -
+ok
+test_wrong_secret_is_rejected (test_external_identity_mock.IdentityMockTestCase.test_wrong_secret_is_rejected) ... external-identity-mock 127.0.0.1 - "POST /token HTTP/1.1" 401 -
+ok
+test_aed_claim_and_remittance_accepted_in_every_wire_format (test_insurance_aed.AedIntegration.test_aed_claim_and_remittance_accepted_in_every_wire_format)
+A synthetic member's AED claim is submitted, auto-adjudicated (scenario 'normal') and ... ok
+test_aed_claim_idempotency_is_durable (test_insurance_aed.AedIntegration.test_aed_claim_idempotency_is_durable) ... ok
+test_unsupported_currency_still_rejected_after_adding_aed (test_insurance_aed.AedIntegration.test_unsupported_currency_still_rejected_after_adding_aed)
+Adding AED must not loosen R12: a currency that is still not on the supported list ... ok
+test_aed_amounts_still_require_exactly_two_fraction_digits (test_insurance_aed.AedSchemaValidation.test_aed_amounts_still_require_exactly_two_fraction_digits) ... ok
+test_aed_secondary_claim_accepts_matching_prior_eob_currency (test_insurance_aed.AedSchemaValidation.test_aed_secondary_claim_accepts_matching_prior_eob_currency) ... ok
+test_aed_secondary_claim_rejects_mismatched_prior_eob_currency (test_insurance_aed.AedSchemaValidation.test_aed_secondary_claim_rejects_mismatched_prior_eob_currency)
+The COB currency-match invariant (priorEob.currency == claim currency) is untouched ... ok
+test_primary_aed_claim_is_valid (test_insurance_aed.AedSchemaValidation.test_primary_aed_claim_is_valid) ... ok
+test_aed_is_supported_alongside_existing_currencies (test_insurance_aed.AedSupportedCurrency.test_aed_is_supported_alongside_existing_currencies) ... ok
+test_amount_currency_id_and_order_errors_rejected (test_insurance_cob.CobIntegration.test_amount_currency_id_and_order_errors_rejected) ... ok
+test_business_level_conflict_on_changed_cob_payload_with_a_new_key (test_insurance_cob.CobIntegration.test_business_level_conflict_on_changed_cob_payload_with_a_new_key)
+A different Idempotency-Key resubmitting the same submissionId with different COB ... ok
+test_idempotency_conflict_on_changed_cob_payload (test_insurance_cob.CobIntegration.test_idempotency_conflict_on_changed_cob_payload) ... ok
+test_idempotency_replay_unchanged_for_cob_claim (test_insurance_cob.CobIntegration.test_idempotency_replay_unchanged_for_cob_claim) ... ok
+test_invalid_allowed_paid_recoup_correct_matrix_in_every_wire_format (test_insurance_cob.CobIntegration.test_invalid_allowed_paid_recoup_correct_matrix_in_every_wire_format)
+Focused matrix for the allowed/paid/recoup/correct simulator-contract bounds ... ok
+test_json_xml_soap11_soap12_decode_parity_for_cob_claim (test_insurance_cob.CobIntegration.test_json_xml_soap11_soap12_decode_parity_for_cob_claim) ... ok
+test_missing_evidence_rejected_in_every_wire_format (test_insurance_cob.CobIntegration.test_missing_evidence_rejected_in_every_wire_format) ... ok
+test_primary_adjudication_unaffected_by_cob_evidence (test_insurance_cob.CobIntegration.test_primary_adjudication_unaffected_by_cob_evidence)
+Adding COB evidence must not change the primary claim's own status or remittance. ... ok
+test_valid_secondary_claim_stored_with_exact_evidence_counts (test_insurance_cob.CobIntegration.test_valid_secondary_claim_stored_with_exact_evidence_counts) ... ok
+test_valid_tertiary_claim_stored_with_exact_evidence_counts (test_insurance_cob.CobIntegration.test_valid_tertiary_claim_stored_with_exact_evidence_counts) ... ok
+test_allowed_must_equal_paid_plus_patient_responsibility (test_insurance_cob.CobSchemaValidation.test_allowed_must_equal_paid_plus_patient_responsibility) ... ok
+test_billed_must_equal_allowed_plus_contractual_plus_rejected (test_insurance_cob.CobSchemaValidation.test_billed_must_equal_allowed_plus_contractual_plus_rejected) ... ok
+test_charge_money_still_requires_strictly_positive (test_insurance_cob.CobSchemaValidation.test_charge_money_still_requires_strictly_positive) ... ok
+test_currency_must_equal_claim_currency (test_insurance_cob.CobSchemaValidation.test_currency_must_equal_claim_currency) ... ok
+test_evidence_money_allows_zero_and_rejects_bad_scale_or_negative (test_insurance_cob.CobSchemaValidation.test_evidence_money_allows_zero_and_rejects_bad_scale_or_negative) ... ok
+test_net_paid_must_equal_paid_minus_recouped_plus_corrected (test_insurance_cob.CobSchemaValidation.test_net_paid_must_equal_paid_minus_recouped_plus_corrected) ... ok
+test_net_paid_must_not_be_negative (test_insurance_cob.CobSchemaValidation.test_net_paid_must_not_be_negative) ... ok
+test_net_paid_must_not_exceed_allowed_amount (test_insurance_cob.CobSchemaValidation.test_net_paid_must_not_exceed_allowed_amount) ... ok
+test_payer_level_must_be_two_or_three (test_insurance_cob.CobSchemaValidation.test_payer_level_must_be_two_or_three) ... ok
+test_primary_claim_must_not_carry_prior_eob (test_insurance_cob.CobSchemaValidation.test_primary_claim_must_not_carry_prior_eob) ... ok
+test_primary_claim_without_cob_fields_is_unchanged (test_insurance_cob.CobSchemaValidation.test_primary_claim_without_cob_fields_is_unchanged) ... ok
+test_prior_eob_array_must_be_non_empty (test_insurance_cob.CobSchemaValidation.test_prior_eob_array_must_be_non_empty) ... ok
+test_prior_eob_rejects_unknown_field (test_insurance_cob.CobSchemaValidation.test_prior_eob_rejects_unknown_field) ... ok
+test_prior_eob_requires_every_field (test_insurance_cob.CobSchemaValidation.test_prior_eob_requires_every_field) ... ok
+test_prior_payer_level_ids_are_positive_integers (test_insurance_cob.CobSchemaValidation.test_prior_payer_level_ids_are_positive_integers) ... ok
+test_prior_payer_level_must_be_less_than_current_level (test_insurance_cob.CobSchemaValidation.test_prior_payer_level_must_be_less_than_current_level) ... ok
+test_prior_payer_level_order_must_be_ascending_and_unique (test_insurance_cob.CobSchemaValidation.test_prior_payer_level_order_must_be_ascending_and_unique) ... ok
+test_recouped_amount_must_not_exceed_paid_amount (test_insurance_cob.CobSchemaValidation.test_recouped_amount_must_not_exceed_paid_amount) ... ok
+test_remittance_line_id_unique_across_whole_claim (test_insurance_cob.CobSchemaValidation.test_remittance_line_id_unique_across_whole_claim) ... ok
+test_secondary_claim_requires_prior_eob_on_every_line (test_insurance_cob.CobSchemaValidation.test_secondary_claim_requires_prior_eob_on_every_line) ... ok
+test_subset_of_earlier_levels_is_accepted_not_full_ladder (test_insurance_cob.CobSchemaValidation.test_subset_of_earlier_levels_is_accepted_not_full_ladder)
+A tertiary (level 3) line may cite only level 2's evidence; MockIns does not require ... ok
+test_valid_secondary_claim_with_one_prior_level_accepted (test_insurance_cob.CobSchemaValidation.test_valid_secondary_claim_with_one_prior_level_accepted) ... ok
+test_valid_tertiary_claim_with_two_prior_levels_accepted (test_insurance_cob.CobSchemaValidation.test_valid_tertiary_claim_with_two_prior_levels_accepted) ... ok
+test_authentication_bearer_api_key_and_format_specific_401 (test_insurance_contract.InsuranceContract.test_authentication_bearer_api_key_and_format_specific_401) ... ok
+test_every_operation_in_every_format_matches_sample_shapes (test_insurance_contract.InsuranceContract.test_every_operation_in_every_format_matches_sample_shapes) ... ok
+test_hostile_xml_and_strict_json_rejected (test_insurance_contract.InsuranceContract.test_hostile_xml_and_strict_json_rejected) ... ok
+test_idempotent_replay_conflict_and_restart_persistence (test_insurance_contract.InsuranceContract.test_idempotent_replay_conflict_and_restart_persistence) ... ok
+test_injections_black_box (test_insurance_contract.InsuranceContract.test_injections_black_box) ... ok
+test_refund_simulator_unchanged (test_insurance_contract.InsuranceContract.test_refund_simulator_unchanged) ... ok
+test_scope_isolation_and_sender_mismatch (test_insurance_contract.InsuranceContract.test_scope_isolation_and_sender_mismatch) ... ok
+test_signed_callbacks_delivered_to_loopback_receiver (test_insurance_contract.InsuranceContract.test_signed_callbacks_delivered_to_loopback_receiver) ... ok
+test_soap_protocol_faults (test_insurance_contract.InsuranceContract.test_soap_protocol_faults) ... ok
+test_default_construction_reads_environment (test_insurance_payer_chain.InsuranceServiceMaxPayerLevel.test_default_construction_reads_environment) ... ok
+test_explicit_construction_argument_wins (test_insurance_payer_chain.InsuranceServiceMaxPayerLevel.test_explicit_construction_argument_wins) ... ok
+test_invalid_explicit_construction_argument_raises (test_insurance_payer_chain.InsuranceServiceMaxPayerLevel.test_invalid_explicit_construction_argument_raises) ... ok
+test_blank_env_value_falls_back_to_default (test_insurance_payer_chain.MaxPayerLevelConfig.test_blank_env_value_falls_back_to_default) ... ok
+test_default_is_three_when_unset (test_insurance_payer_chain.MaxPayerLevelConfig.test_default_is_three_when_unset) ... ok
+test_env_var_non_integer_rejected (test_insurance_payer_chain.MaxPayerLevelConfig.test_env_var_non_integer_rejected) ... ok
+test_env_var_out_of_bounds_rejected (test_insurance_payer_chain.MaxPayerLevelConfig.test_env_var_out_of_bounds_rejected) ... ok
+test_env_var_valid_value_is_used (test_insurance_payer_chain.MaxPayerLevelConfig.test_env_var_valid_value_is_used) ... ok
+test_explicit_boundary_values_accepted (test_insurance_payer_chain.MaxPayerLevelConfig.test_explicit_boundary_values_accepted) ... ok
+test_explicit_non_integer_rejected (test_insurance_payer_chain.MaxPayerLevelConfig.test_explicit_non_integer_rejected) ... ok
+test_explicit_out_of_bounds_rejected (test_insurance_payer_chain.MaxPayerLevelConfig.test_explicit_out_of_bounds_rejected) ... ok
+test_explicit_value_overrides_environment (test_insurance_payer_chain.MaxPayerLevelConfig.test_explicit_value_overrides_environment) ... ok
+test_real_os_environ_used_when_environ_not_given (test_insurance_payer_chain.MaxPayerLevelConfig.test_real_os_environ_used_when_environ_not_given) ... ok
+test_five_payer_chain_accepted_in_every_wire_format (test_insurance_payer_chain.PayerChainIntegration.test_five_payer_chain_accepted_in_every_wire_format) ... ok
+test_idempotency_exact_body_durability_at_depth (test_insurance_payer_chain.PayerChainIntegration.test_idempotency_exact_body_durability_at_depth) ... ok
+test_payer_level_above_configured_max_rejected_in_every_wire_format (test_insurance_payer_chain.PayerChainIntegration.test_payer_level_above_configured_max_rejected_in_every_wire_format) ... ok
+test_tenant_isolation_preserved_at_depth (test_insurance_payer_chain.PayerChainIntegration.test_tenant_isolation_preserved_at_depth)
+A higher configured payerLevel maximum does not change scope isolation: the same ... ok
+test_configured_maximum_takes_effect_only_after_restart_and_does_not_leak (test_insurance_payer_chain.PayerChainRestartAcceptance.test_configured_maximum_takes_effect_only_after_restart_and_does_not_leak) ... ok
+test_invalid_configured_maximum_fails_requests_not_silently_ignored (test_insurance_payer_chain.PayerChainRestartAcceptance.test_invalid_configured_maximum_fails_requests_not_silently_ignored)
+An out-of-bounds MOCK_INS_MAX_PAYER_LEVEL must fail every request that needs the ... ok
+test_absent_payer_level_unaffected_by_higher_configured_max (test_insurance_payer_chain.PayerChainSchemaValidation.test_absent_payer_level_unaffected_by_higher_configured_max) ... ok
+test_conservation_still_enforced_at_depth (test_insurance_payer_chain.PayerChainSchemaValidation.test_conservation_still_enforced_at_depth)
+The evidence money partition is not weakened by extra depth: an inconsistent entry ... ok
+test_default_max_payer_level_unchanged_when_not_specified (test_insurance_payer_chain.PayerChainSchemaValidation.test_default_max_payer_level_unchanged_when_not_specified) ... ok
+test_five_payer_chain_accepted_with_configured_max (test_insurance_payer_chain.PayerChainSchemaValidation.test_five_payer_chain_accepted_with_configured_max) ... ok
+test_four_payer_chain_accepted_with_configured_max (test_insurance_payer_chain.PayerChainSchemaValidation.test_four_payer_chain_accepted_with_configured_max) ... ok
+test_payer_level_above_configured_max_is_rejected (test_insurance_payer_chain.PayerChainSchemaValidation.test_payer_level_above_configured_max_is_rejected) ... ok
+test_payer_level_still_bounded_below_by_two_regardless_of_configured_max (test_insurance_payer_chain.PayerChainSchemaValidation.test_payer_level_still_bounded_below_by_two_regardless_of_configured_max) ... ok
+test_prior_payer_level_must_be_less_than_current_level_at_depth (test_insurance_payer_chain.PayerChainSchemaValidation.test_prior_payer_level_must_be_less_than_current_level_at_depth) ... ok
+test_prior_payer_level_order_must_be_ascending_and_unique_at_depth (test_insurance_payer_chain.PayerChainSchemaValidation.test_prior_payer_level_order_must_be_ascending_and_unique_at_depth) ... ok
+test_remittance_line_id_unique_across_whole_claim_at_depth (test_insurance_payer_chain.PayerChainSchemaValidation.test_remittance_line_id_unique_across_whole_claim_at_depth) ... ok
+test_subset_of_earlier_levels_accepted_at_higher_configured_max (test_insurance_payer_chain.PayerChainSchemaValidation.test_subset_of_earlier_levels_accepted_at_higher_configured_max)
+Depth doesn't force full-ladder coverage either: a level-5 line may cite only ... ok
+test_money_strings (test_insurance_service.AdjudicationMath.test_money_strings) ... ok
+test_paid_and_deny (test_insurance_service.AdjudicationMath.test_paid_and_deny) ... ok
+test_partial_rounds_allowed_down_to_the_cent (test_insurance_service.AdjudicationMath.test_partial_rounds_allowed_down_to_the_cent) ... ok
+test_error_and_fault_samples (test_insurance_service.CodecFidelity.test_error_and_fault_samples) ... ok
+test_sample_requests_decode_identically_in_every_format (test_insurance_service.CodecFidelity.test_sample_requests_decode_identically_in_every_format) ... ok
+test_sample_responses_render_to_the_sample_documents (test_insurance_service.CodecFidelity.test_sample_responses_render_to_the_sample_documents) ... ok
+test_admin_adjudication_of_pending_and_received (test_insurance_service.InProcess.test_admin_adjudication_of_pending_and_received) ... ok
+test_business_dedup_across_keys_and_formats (test_insurance_service.InProcess.test_business_dedup_across_keys_and_formats) ... ok
+test_claim_scenarios (test_insurance_service.InProcess.test_claim_scenarios) ... ok
+test_claim_status_not_found_cases (test_insurance_service.InProcess.test_claim_status_not_found_cases) ... ok
+test_eligibility_cases (test_insurance_service.InProcess.test_eligibility_cases) ... ok
+test_every_injection_mode_in_every_relevant_format (test_insurance_service.InProcess.test_every_injection_mode_in_every_relevant_format) ... ok
+test_injection_matching_and_admin_validation (test_insurance_service.InProcess.test_injection_matching_and_admin_validation) ... ok
+test_intake_rejections (test_insurance_service.InProcess.test_intake_rejections) ... ok
+test_refund_routes_and_dashboard_unaffected (test_insurance_service.InProcess.test_refund_routes_and_dashboard_unaffected) ... ok
+test_remittance_cursor_pagination_and_immutability (test_insurance_service.InProcess.test_remittance_cursor_pagination_and_immutability) ... ok
+test_request_log_and_events (test_insurance_service.InProcess.test_request_log_and_events) ... ok
+test_request_validation (test_insurance_service.InProcess.test_request_validation) ... ok
+test_restart_keeps_state_and_idempotency (test_insurance_service.InProcess.test_restart_keeps_state_and_idempotency) ... ok
+test_xml_replacement_claim_with_prior_payer_claim_id_and_omitted_optionals (test_insurance_service.InProcess.test_xml_replacement_claim_with_prior_payer_claim_id_and_omitted_optionals) ... ok
+test_depth_encoding_and_well_formedness (test_insurance_service.ParserSecurity.test_depth_encoding_and_well_formedness) ... ok
+test_rejects_doctype_entities_and_processing_instructions (test_insurance_service.ParserSecurity.test_rejects_doctype_entities_and_processing_instructions) ... ok
+test_strict_json (test_insurance_service.ParserSecurity.test_strict_json) ... ok
+test_durable_replay_after_restart_and_conflicting_bytes_refused (test_partner_dft.PartnerDft.test_durable_replay_after_restart_and_conflicting_bytes_refused) ... ok
+test_guide_violations_are_refused_without_echo (test_partner_dft.PartnerDft.test_guide_violations_are_refused_without_echo) ... ok
+test_production_nonloopback_and_live_mode_refused (test_partner_dft.PartnerDft.test_production_nonloopback_and_live_mode_refused) ... ok
+test_pure_validation_and_control_extraction (test_partner_dft.PartnerDft.test_pure_validation_and_control_extraction) ... ok
+test_uncorrelatable_or_malformed_frames_get_no_ack (test_partner_dft.PartnerDft.test_uncorrelatable_or_malformed_frames_get_no_ack) ... ok
+test_valid_message_is_transport_accepted_and_correlated (test_partner_dft.PartnerDft.test_valid_message_is_transport_accepted_and_correlated) ... ok
+test_durable_replay_after_restart_and_conflicting_bytes_refused (test_partner_dft.PartnerDftTls.test_durable_replay_after_restart_and_conflicting_bytes_refused) ... ok
+test_guide_violations_are_refused_without_echo (test_partner_dft.PartnerDftTls.test_guide_violations_are_refused_without_echo) ... ok
+test_production_nonloopback_and_live_mode_refused (test_partner_dft.PartnerDftTls.test_production_nonloopback_and_live_mode_refused) ... ok
+test_pure_validation_and_control_extraction (test_partner_dft.PartnerDftTls.test_pure_validation_and_control_extraction) ... ok
+test_uncorrelatable_or_malformed_frames_get_no_ack (test_partner_dft.PartnerDftTls.test_uncorrelatable_or_malformed_frames_get_no_ack) ... ok
+test_untrusted_client_cannot_complete_the_handshake (test_partner_dft.PartnerDftTls.test_untrusted_client_cannot_complete_the_handshake) ... ok
+test_valid_message_is_transport_accepted_and_correlated (test_partner_dft.PartnerDftTls.test_valid_message_is_transport_accepted_and_correlated) ... ok
+test_cli_refuses_unsafe_or_production_configuration (test_partner_service.ConfigurationRefusal.test_cli_refuses_unsafe_or_production_configuration) ... ok
+test_credentials_are_explicit_with_no_defaults (test_partner_service.ConfigurationRefusal.test_credentials_are_explicit_with_no_defaults) ... ok
+test_default_and_production_runtimes_are_refused (test_partner_service.ConfigurationRefusal.test_default_and_production_runtimes_are_refused) ... ok
+test_only_resolved_loopback_is_bound_and_server_is_unstarted (test_partner_service.ConfigurationRefusal.test_only_resolved_loopback_is_bound_and_server_is_unstarted) ... ok
+test_service_url_must_be_an_origin (test_partner_service.ConfigurationRefusal.test_service_url_must_be_an_origin) ... ok
+test_status_is_simulated_only_and_secrets_stay_out_of_repr (test_partner_service.ConfigurationRefusal.test_status_is_simulated_only_and_secrets_stay_out_of_repr) ... ok
+test_replay_returns_same_business_data_with_fresh_correlation (test_partner_service.Idempotency.test_replay_returns_same_business_data_with_fresh_correlation) ... ok
+test_tenant_and_branch_scopes_are_isolated_and_must_be_approved (test_partner_service.Idempotency.test_tenant_and_branch_scopes_are_isolated_and_must_be_approved) ... ok
+test_http_framing (test_partner_service.MetadataEndpoints.test_http_framing) ... ok
+test_status_reports_simulated_only_without_credentials (test_partner_service.MetadataEndpoints.test_status_reports_simulated_only_without_credentials) ... ok
+test_wsdl_is_deterministic_document_literal_without_imports (test_partner_service.MetadataEndpoints.test_wsdl_is_deterministic_document_literal_without_imports) ... ok
+test_attachments_are_resolved_by_cid_in_both_bindings (test_partner_service.Mtom.test_attachments_are_resolved_by_cid_in_both_bindings) ... ok
+test_mime_and_xop_violations_are_rejected (test_partner_service.Mtom.test_mime_and_xop_violations_are_rejected) ... ok
+test_addressing_is_enforced (test_partner_service.Security.test_addressing_is_enforced) ... ok
+test_authentication_failures_are_one_sanitized_401 (test_partner_service.Security.test_authentication_failures_are_one_sanitized_401) ... ok
+test_must_understand_dtd_entities_and_imports_are_refused (test_partner_service.Security.test_must_understand_dtd_entities_and_imports_are_refused) ... ok
+test_nonce_replay_is_rejected_durably (test_partner_service.Security.test_nonce_replay_is_rejected_durably) ... ok
+test_soap11_eligibility_correlates_and_follows_member_registry (test_partner_service.SoapOperations.test_soap11_eligibility_correlates_and_follows_member_registry) ... ok
+test_soap12_claim_status_follows_claim_registry (test_partner_service.SoapOperations.test_soap12_claim_status_follows_claim_registry) ... ok
+test_actual_270_to_271_and_276_to_277 (test_partner_x12.PartnerX12.test_actual_270_to_271_and_276_to_277) ... ok
+test_credentials_and_scope_rejected (test_partner_x12.PartnerX12.test_credentials_and_scope_rejected) ... ok
+test_different_operation_same_key_is_independent (test_partner_x12.PartnerX12.test_different_operation_same_key_is_independent) ... ok
+test_durable_replay_and_conflict_after_restart (test_partner_x12.PartnerX12.test_durable_replay_and_conflict_after_restart) ... ok
+test_inactive_member_remains_advisory (test_partner_x12.PartnerX12.test_inactive_member_remains_advisory) ... ok
+test_malformed_counts_identity_and_unknown_segment_fail_closed (test_partner_x12.PartnerX12.test_malformed_counts_identity_and_unknown_segment_fail_closed) ... ok
+test_production_nonloopback_and_empty_credentials_refused (test_partner_x12.PartnerX12.test_production_nonloopback_and_empty_credentials_refused) ... ok
+test_reviewed_provider_identity_requires_a_real_npi_check_digit (test_partner_x12.PartnerX12.test_reviewed_provider_identity_requires_a_real_npi_check_digit) ... ok
+test_consumer_receives_credentials_and_server_is_cleaned (test_runner.Runner.test_consumer_receives_credentials_and_server_is_cleaned) ... ok
+test_production_mode_is_rejected (test_runner.Runner.test_production_mode_is_rejected) ... ok
+test_concurrent_isolated_tenants (test_service.ConcurrencyTests.test_concurrent_isolated_tenants) ... ok
+test_concurrent_refunds_never_exceed_captured (test_service.ConcurrencyTests.test_concurrent_refunds_never_exceed_captured) ... ok
+test_concurrent_resolve_single_winner (test_service.ConcurrencyTests.test_concurrent_resolve_single_winner) ... ok
+test_concurrent_same_idempotency_key_creates_once (test_service.ConcurrencyTests.test_concurrent_same_idempotency_key_creates_once) ... ok
+test_accepts_test_and_development (test_service.ConfigTests.test_accepts_test_and_development) ... ok
+test_cli_refuses_bad_environment_without_leaking_secrets (test_service.ConfigTests.test_cli_refuses_bad_environment_without_leaking_secrets) ... ok
+test_config_from_env (test_service.ConfigTests.test_config_from_env) ... ok
+test_loopback_only (test_service.ConfigTests.test_loopback_only) ... ok
+test_rejects_prod_staging_and_unset (test_service.ConfigTests.test_rejects_prod_staging_and_unset) ... ok
+test_requires_nonempty_secrets (test_service.ConfigTests.test_requires_nonempty_secrets) ... ok
+test_secrets_not_in_repr (test_service.ConfigTests.test_secrets_not_in_repr) ... ok
+test_failures_recorded_without_undoing_refund (test_service.DeliveryTests.test_failures_recorded_without_undoing_refund) ... ok
+test_ipv6_loopback_callback (test_service.DeliveryTests.test_ipv6_loopback_callback) ... ok
+test_redirects_not_followed (test_service.DeliveryTests.test_redirects_not_followed) ... ok
+test_replay_duplicates_and_out_of_order (test_service.DeliveryTests.test_replay_duplicates_and_out_of_order) ... ok
+test_signed_delivery_and_recorded_attempt (test_service.DeliveryTests.test_signed_delivery_and_recorded_attempt) ... ok
+test_url_restrictions (test_service.DeliveryTests.test_url_restrictions) ... ok
+test_events_for_initial_and_transitions (test_service.EventTests.test_events_for_initial_and_transitions) ... ok
+test_idempotent_replay_does_not_duplicate_events (test_service.EventTests.test_idempotent_replay_does_not_duplicate_events) ... ok
+test_auth_required_everywhere_else (test_service.HttpBasicsTests.test_auth_required_everywhere_else) ... ok
+test_body_limits (test_service.HttpBasicsTests.test_body_limits) ... ok
+test_dashboard (test_service.HttpBasicsTests.test_dashboard) ... ok
+test_health_is_public (test_service.HttpBasicsTests.test_health_is_public) ... ok
+test_internal_errors_hide_details (test_service.HttpBasicsTests.test_internal_errors_hide_details) ... ok
+test_scope_headers_required (test_service.HttpBasicsTests.test_scope_headers_required) ... ok
+test_unknown_route_and_method (test_service.HttpBasicsTests.test_unknown_route_and_method) ... ok
+test_attachment_count_over_the_limit_is_rejected (test_service.MtomParsingTests.test_attachment_count_over_the_limit_is_rejected) ... ok
+test_attachment_with_media_parameters_is_rejected (test_service.MtomParsingTests.test_attachment_with_media_parameters_is_rejected) ... ok
+test_attachments_exactly_at_the_combined_cap_are_accepted (test_service.MtomParsingTests.test_attachments_exactly_at_the_combined_cap_are_accepted) ... ok
+test_attachments_without_mtom_are_rejected (test_service.MtomParsingTests.test_attachments_without_mtom_are_rejected) ... ok
+test_duplicate_content_id_is_rejected (test_service.MtomParsingTests.test_duplicate_content_id_is_rejected) ... ok
+test_duplicate_part_header_is_rejected (test_service.MtomParsingTests.test_duplicate_part_header_is_rejected) ... ok
+test_duplicate_reference_to_same_attachment_is_rejected (test_service.MtomParsingTests.test_duplicate_reference_to_same_attachment_is_rejected) ... ok
+test_empty_attachment_is_rejected (test_service.MtomParsingTests.test_empty_attachment_is_rejected) ... ok
+test_missing_content_id_is_rejected (test_service.MtomParsingTests.test_missing_content_id_is_rejected) ... ok
+test_non_binary_transfer_encoding_is_rejected (test_service.MtomParsingTests.test_non_binary_transfer_encoding_is_rejected) ... ok
+test_orphan_unreferenced_attachment_is_rejected (test_service.MtomParsingTests.test_orphan_unreferenced_attachment_is_rejected) ... ok
+test_oversized_attachment_is_rejected (test_service.MtomParsingTests.test_oversized_attachment_is_rejected) ... ok
+test_root_and_attachment_sharing_content_id_is_rejected (test_service.MtomParsingTests.test_root_and_attachment_sharing_content_id_is_rejected) ... ok
+test_too_many_parts_at_the_multipart_level_is_rejected (test_service.MtomParsingTests.test_too_many_parts_at_the_multipart_level_is_rejected) ... ok
+test_unresolved_reference_to_unknown_cid_is_rejected (test_service.MtomParsingTests.test_unresolved_reference_to_unknown_cid_is_rejected) ... ok
+test_unsupported_attachment_type_is_rejected (test_service.MtomParsingTests.test_unsupported_attachment_type_is_rejected) ... ok
+test_valid_attachment_is_typed_and_referenced (test_service.MtomParsingTests.test_valid_attachment_is_typed_and_referenced) ... ok
+test_create_and_get (test_service.PaymentTests.test_create_and_get) ... ok
+test_idempotency_key_required (test_service.PaymentTests.test_idempotency_key_required) ... ok
+test_idempotent_replay_and_conflict (test_service.PaymentTests.test_idempotent_replay_and_conflict) ... ok
+test_same_key_on_different_route_is_independent (test_service.PaymentTests.test_same_key_on_different_route_is_independent) ... ok
+test_validation (test_service.PaymentTests.test_validation) ... ok
+test_bound_counts_pending_and_succeeded_but_not_failed (test_service.RefundTests.test_bound_counts_pending_and_succeeded_but_not_failed) ... ok
+test_failed_resolution_frees_capacity (test_service.RefundTests.test_failed_resolution_frees_capacity) ... ok
+test_refund_idempotency (test_service.RefundTests.test_refund_idempotency) ... ok
+test_refund_validation (test_service.RefundTests.test_refund_validation) ... ok
+test_rejected_request_does_not_burn_idempotency_key (test_service.RefundTests.test_rejected_request_does_not_burn_idempotency_key) ... ok
+test_resolve_rules (test_service.RefundTests.test_resolve_rules) ... ok
+test_scenarios (test_service.RefundTests.test_scenarios) ... ok
+test_timeout_after_accept_commits_then_504 (test_service.RefundTests.test_timeout_after_accept_commits_then_504) ... ok
+test_state_survives_restart (test_service.RestartTests.test_state_survives_restart) ... ok
+test_roundtrip_and_rejections (test_service.SignatureTests.test_roundtrip_and_rejections) ... ok
+test_signature_is_over_timestamp_dot_body (test_service.SignatureTests.test_signature_is_over_timestamp_dot_body) ... ok
+test_bare_usernametoken_is_never_accepted_under_the_signed_profile (test_service.SoapSecurityContractTests.test_bare_usernametoken_is_never_accepted_under_the_signed_profile) ... ok
+test_binary_security_token_der_must_match_the_keyidentifier_pin (test_service.SoapSecurityContractTests.test_binary_security_token_der_must_match_the_keyidentifier_pin) ... ok
+test_disallowed_signature_algorithm_is_rejected (test_service.SoapSecurityContractTests.test_disallowed_signature_algorithm_is_rejected) ... ok
+test_disallowed_transform_is_rejected (test_service.SoapSecurityContractTests.test_disallowed_transform_is_rejected) ... ok
+test_expired_timestamp_is_rejected_before_the_verifier_is_consulted (test_service.SoapSecurityContractTests.test_expired_timestamp_is_rejected_before_the_verifier_is_consulted) ... ok
+test_malformed_thumbprint_is_rejected (test_service.SoapSecurityContractTests.test_malformed_thumbprint_is_rejected) ... ok
+test_missing_addressing_correlation_reference_is_rejected (test_service.SoapSecurityContractTests.test_missing_addressing_correlation_reference_is_rejected) ... ok
+test_missing_body_wsu_id_is_rejected (test_service.SoapSecurityContractTests.test_missing_body_wsu_id_is_rejected) ... ok
+test_rejected_signature_does_not_consume_replay_identity (test_service.SoapSecurityContractTests.test_rejected_signature_does_not_consume_replay_identity) ... ok
+test_replayed_signed_message_is_rejected (test_service.SoapSecurityContractTests.test_replayed_signed_message_is_rejected) ... ok
+test_signed_profile_rejects_a_verifier_that_is_not_a_securityverifier (test_service.SoapSecurityContractTests.test_signed_profile_rejects_a_verifier_that_is_not_a_securityverifier) ... ok
+test_signed_profile_without_verifier_refuses_to_start (test_service.SoapSecurityContractTests.test_signed_profile_without_verifier_refuses_to_start) ... ok
+test_structurally_valid_signature_is_delegated_to_the_verifier_and_approved (test_service.SoapSecurityContractTests.test_structurally_valid_signature_is_delegated_to_the_verifier_and_approved) ... ok
+test_unknown_security_profile_is_rejected (test_service.SoapSecurityContractTests.test_unknown_security_profile_is_rejected) ... ok
+test_unpinned_certificate_is_rejected_before_the_verifier_is_consulted (test_service.SoapSecurityContractTests.test_unpinned_certificate_is_rejected_before_the_verifier_is_consulted) ... ok
+test_usernametoken_profile_still_works_end_to_end (test_service.SoapSecurityContractTests.test_usernametoken_profile_still_works_end_to_end) ... ok
+test_verifier_exception_is_sanitized_to_authentication_failure (test_service.SoapSecurityContractTests.test_verifier_exception_is_sanitized_to_authentication_failure) ... ok
+test_verifier_or_identities_outside_signed_profile_is_rejected (test_service.SoapSecurityContractTests.test_verifier_or_identities_outside_signed_profile_is_rejected) ... ok
+test_verifier_rejection_fails_closed (test_service.SoapSecurityContractTests.test_verifier_rejection_fails_closed) ... ok
+test_verifier_returning_non_bool_is_rejected (test_service.SoapSecurityContractTests.test_verifier_returning_non_bool_is_rejected) ... ok
+test_all_lookups_are_scoped (test_service.TenantIsolationTests.test_all_lookups_are_scoped) ... ok
+test_closed_without_credentials (test_startup.Startup.test_closed_without_credentials) ... ok
+test_closed_without_explicit_test_environment (test_startup.Startup.test_closed_without_explicit_test_environment) ... ok
+
+----------------------------------------------------------------------
+Ran 329 tests in 133.848s
+
+OK

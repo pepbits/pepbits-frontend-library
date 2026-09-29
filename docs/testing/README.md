@@ -48,3 +48,7 @@ The [School role-header delivery](../releases/unreleased/school-role-header-2026
 ## Healthcare Suite import acceptance — 29 September 2026
 
 The [Healthcare Suite delivery](../releases/unreleased/healthcare-suite-2026-09-29.md) adds the registered `desktop-clients/e2e/healthcare-suite.mjs` suite. It uses real authenticated demo HTTP, not intercepted business responses: 23 static destinations, five dynamic routes and the patient→appointment→encounter→order/sign→paid invoice workflow, plus actual actor, facility and denied-role checks. The focused tests cover trusted transport, preferences, populated encounters, rollback, stock limits and replay. Existing reference and School suites remain independent regression checks; overlapping suite results are not added together.
+
+## Healthcare Suite RCM acceptance — 29 September 2026
+
+The [RCM delivery record](../releases/unreleased/healthcare-suite-rcm-2026-09-29.md) records 1,943 frontend tests, 274 JavaScript and 33 clinical TypeScript API tests, both builds and repository gates. The registered `desktop-clients/e2e/healthcare-suite-rcm.mjs` suite uses actual authenticated UI commands and dedicated provider HTTP: 53 checks, 38 UI commands and 50 screenshots passed without provider skips. Original Suite regression passed 49 checks, including all 32 static routes. These are synthetic local checks; live payer acceptance and licensed DRG remain separate.

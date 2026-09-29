@@ -55,6 +55,17 @@ export const NAV: NavGroup[] = [
       { href: '/masters/resource-blocks', label: 'Blocks & leave', icon: CalendarX2 },
     ],
   },
+  {key: 'rcm', label: 'Revenue cycle management', icon: ReceiptText, links: [
+    {href: '/rcm/claims', label: 'Claims, payers and appeals', icon: ReceiptText},
+    {href: '/rcm/exchange', label: 'Payer connections', icon: ReceiptText},
+    {href: '/rcm/remittances', label: 'Remittances and clawbacks', icon: ReceiptText},
+    {href: '/rcm/patient-finance', label: 'Refunds, credits and deposits', icon: ReceiptText},
+    {href: '/rcm/packages', label: 'Packages and case rates', icon: ReceiptText},
+    {href: '/rcm/drg', label: 'DRG and day-case grouping', icon: ReceiptText},
+    {href: '/rcm/accounting', label: 'Accounting and reconciliation', icon: ReceiptText},
+    {href: '/rcm/commercial', label: 'Commercial governance', icon: ReceiptText},
+    {href: '/rcm/receivables', label: 'Receivables and collections', icon: ReceiptText},
+  ]},
 ];
 
 export const isActive = (pathname: string, href: string) => (href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`));

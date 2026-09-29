@@ -14,14 +14,15 @@ const Context = createContext<Runtime | null>(null);
 // The injected host transport owns /reference-modules/healthcare-suite.
 export const API_BASE = '/api';
 /** Each mounted authenticated host owns its transport and lookups. No global session/cache. */
-export function ApiProvider({ facilityId = '', canWrite = true, children }: { facilityId?: string; canWrite?:boolean; children: ReactNode }) {
+export function ApiProvider({ facilityId = '', canWrite = true, canWriteRcm = false, children }: { facilityId?: string; canWrite?:boolean; canWriteRcm?:boolean; children: ReactNode }) {
   const host = useReferenceHost();
   const scopeKey = referenceScopeKey(host.scope);
   const latestHost=useRef(host);latestHost.current=host;
   const operationKeys = useMemo(() => new Map<string,string>(), [scopeKey]);
   const cache = useMemo(() => new Map<string, Promise<Option[]>>(), [scopeKey, facilityId]);
   const api = useCallback<ApiClient>(async (path, opts = {}) => {
-    if (opts.method && opts.method !== 'GET' && !canWrite) throw new ApiError('Healthcare Suite is read-only for your role.',403);
+    const readOnlyQuote=path==='/rcm/commands' && opts.body!==null && typeof opts.body==='object' && (opts.body as Record<string,unknown>).kind==='quote-price';
+    if (opts.method && opts.method !== 'GET' && !canWrite && !(path === '/rcm/commands' && canWriteRcm) && !readOnlyQuote) throw new ApiError('Healthcare Suite is read-only for your role.',403);
     if (!path.startsWith('/') || path.startsWith('//')) throw new ApiError('Invalid Healthcare Suite API path', 400);
     const fingerprint = opts.method === 'POST' && !opts.operationId ? JSON.stringify([facilityId, path, opts.body ?? null]) : null;
     if (fingerprint && !operationKeys.has(fingerprint)) operationKeys.set(fingerprint, crypto.randomUUID());
@@ -52,8 +53,8 @@ export function ApiProvider({ facilityId = '', canWrite = true, children }: { fa
       const message=Array.isArray(details?.message)?details.message.join(', '):details?.message??details?.error??failure.message??'The Healthcare Suite service is unavailable. Try again.';
       throw new ApiError(message, failure.status ?? 0, details?.fields ?? failure.fields ?? {});
     }
-  }, [facilityId, scopeKey, operationKeys, canWrite]);
-  const value = useMemo(() => ({api, cache, facilityId, scopeKey}), [api, cache, facilityId, scopeKey, operationKeys, canWrite]);
+  }, [facilityId, scopeKey, operationKeys, canWrite, canWriteRcm]);
+  const value = useMemo(() => ({api, cache, facilityId, scopeKey}), [api, cache, facilityId, scopeKey, operationKeys, canWrite, canWriteRcm]);
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 export function useApiRuntime() { const runtime = useContext(Context); if (!runtime) throw new Error('Healthcare Suite requires its host API provider'); return runtime; }

@@ -223,6 +223,8 @@ test("reaching the result sentinel requests the next cursor page",async()=>{
    fireEvent.change(screen.getByLabelText('First name',{exact:true}),{target:{value:'Alex'}});
    fireEvent.click(screen.getByRole('button',{name:'Search'}));
    await screen.findByRole('button',{name:'Load more patients'});
+   // The result button can render before the passive observer effect attaches.
+   await waitFor(() => expect(callback).toBeTypeOf('function'));
    act(() => callback([{isIntersecting:true}] as IntersectionObserverEntry[],{} as IntersectionObserver));
    await screen.findByRole('button',{name:'Scrolled Patient'});
    expect(vi.mocked(adapter.search).mock.calls[1][0]).toMatchObject({page:2,pageSize:20});

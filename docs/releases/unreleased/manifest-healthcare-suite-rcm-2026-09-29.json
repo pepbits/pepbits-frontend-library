@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "recordId": "healthcare-suite-rcm-2026-09-29",
+  "status": "candidate",
+  "baseCommit": "159e1e052722e5e8bc97ba786d474325dd25b3fa",
+  "testGuideVersion": "1.0.0",
+  "implementationDigest": "502b1ec1d68194e89598ba8392b4b9c84214823e977f55e3f131bd70ef5bd5e2",
+  "digestAlgorithm": "sha256",
+  "identityScope": "Changed frontend source, tests, scripts and API configuration; docs evidence is separate. Mock provider main54ebc3b.",
+  "evidence": "healthcare-suite-rcm-2026-09-29.md",
+  "published": false,
+  "deployed": false,
+  "limits": [
+    "Synthetic demo integration only; production Healthcare Enterprise is a separate consumer.",
+    "Licensed DRG content, live provider acceptance and native language/domain reviews remain external.",
+    "Browser desktop builds are not native executable acceptance."
+  ],
+  "files": [
+    {
+      "path": "desktop-clients/e2e/healthcare-suite-rcm.mjs",
+      "sha256": "ff607d72c0150d9b775759e6b40709b150b85c1a103fd54a77d1dbb4a505d837"
+    },
+    {
+      "path": "desktop-clients/e2e/healthcare-suite.mjs",
+      "sha256": "eb985a201d6972006616db9430bef89afc5ff0bc18b8b931548bcb8a9f402a61"
+    },
+    {
+      "path": "desktop-clients/e2e/suites.mjs",
+      "sha256": "bf5416cb73178ebbdddb68dd1aca7017be407d62e3012d521db3ad2ea4d725e4"
+    },
+    {
+      "path": "desktop-clients/package.json",
+      "sha256": "e6fff1abf4f9b846f69b6f0e8ad1b9f46b8345236814b0ad9589abc8282708a6"
+    },
+    {
+      "path": "desktop-clients/packages/erp-config/src/documentation.ts",
+      "sha256": "9cada7b3a75c2624788792a135b84f6b2e49d1b25286c89295317959351c75cb"
+    },
+    {
+      "path": "desktop-clients/packages/erp-config/src/healthcare-suite-reference.ts",
+      "sha256": "4278a7d4be386d243080b8b52d187222f8bb17f85a7bd5413d5f7b4aafcf6a83"
+    },
+    {
+      "path": "desktop-clients/packages/erp-config/src/locales/ar.ts",
+      "sha256": "3d6d371123bd5f99d80677ad00870011cbf6067fdef03cf56d2ca1e4bbc57932"
+    },
+    {
+      "path": "desktop-clients/packages/erp-config/src/locales/en.ts",
+      "sha256": "f111a718f24bce487287a1561046788643cb411a86177a4e616df03b1ee7aa6d"
+    },
+    {
+      "path": "desktop-clients/packages/erp-config/src/locales/hi.ts",
+      "sha256": "85e0ea1ba4c368fa781e343715fbaaa4ffb17294cb8048faa656a532eb2d77d2"
+    },
+    {
+      "path": "desktop-clients/packages/erp-config/src/locales/ml.ts",
+      "sha256": "3782d8b417ed3ea72e02fe11225adec4a0eafb5d0dcf2c91e1187265a955d54a"
+    },
+    {
+      "path": "desktop-clients/packages/erp-screens/src/clinical-templates/query.test.tsx",
+      "sha256": "ffe27bbef14c9564fd4fd8384938f876a70c103e5f73bf5d5a1f00b0b61d9c28"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/components/rcm/HealthcareSuiteRcmWorkspace.test.tsx",
+      "sha256": "e19e789c634fe2a6c9ff630270da3fb9559bb6e5151be4e4f1b27ad9f950f265"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/components/rcm/HealthcareSuiteRcmWorkspace.tsx",
+      "sha256": "ca8fbabeb82c83e3ffcb31746c3ca85ac8aa14dc9bfdad9c49f83ce4ae1fe0f4"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/components/rcm/definitions.ts",
+      "sha256": "f980090e081b9643fc18e9d888661ca3868d0d359040da1968aebb656d76f3a0"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/components/rcm/rcm-fixtures.test-helper.ts",
+      "sha256": "cb28aaac6737003785f6704896cb6b878bb5b1b9085933a7edb8a24e807d17a3"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/components/shell/nav.ts",
+      "sha256": "ca3466d6e9728e77ff64d411d419735fdc17c5550b06f701337d9d5e254838c0"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/index.ts",
+      "sha256": "25b6657a4c9a5808d913836096717f502470a8eeb1869513866c425123530636"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/api.tsx",
+      "sha256": "172f06e8be3d3e624534a7e6e4b964af2f72d1bc5ce6a317cca71117427c8655"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/rcm-contract.test.ts",
+      "sha256": "636ed4d8c71ccf0a318cbe4bd2160ef644cba4e07bda2901811a114362eab706"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/rcm-contract.ts",
+      "sha256": "0136cdeba4bfb1e61c2958f1eb71d484c2b54793a388ff9547eb135e290fc411"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/session.tsx",
+      "sha256": "925ae400321bc9f76bcb4f2f1e010b6bd82d1b8146f932ef22d7ff51945f0bd8"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/module.tsx",
+      "sha256": "661b3fe6ae56a6f4af9372813908f47036fba4d39e6116d75dee42576ba5841d"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/routes.test.ts",
+      "sha256": "afb15681418022a45c81bc2904452069df49c9006043fd32c72f8586ea253829"
+    },
+    {
+      "path": "desktop-clients/packages/reference-healthcare-suite/src/routes.ts",
+      "sha256": "1179aebd9d95c91714315b119a77093273a7154671405eb53c4c41c437b7b886"
+    },
+    {
+      "path": "desktop-clients/scripts/localization/check-api-copy.mjs",
+      "sha256": "101fb60c4446ba86f8a0753561b83f5587370682917ccf69fa7b45dd448f980b"
+    },
+    {
+      "path": "desktop-clients/vitest.config.ts",
+      "sha256": "0cfae7b8d7a4cb6fa79af6b41c71e12ff623ca89be84f74a030b834b1f6060f0"
+    },
+    {
+      "path": "dummy-api/config/api-messages.json",
+      "sha256": "d2e5d1896058d5e81110c4f505f8fe2dc4abd8792fc6f7fa625727eceee9a7e2"
+    },
+    {
+      "path": "dummy-api/config/documentation/availability.json",
+      "sha256": "8138e2f38bb9a0e7a7127c449fa45db050cf5877678c4e3e2e28ad4ff4666134"
+    },
+    {
+      "path": "dummy-api/config/documentation/releases.json",
+      "sha256": "53ace45e9300212e5df8bfc6afded62f8fd7dc9a961424de8724ebdbdcfa26a4"
+    },
+    {
+      "path": "dummy-api/config/documentation/translation-revisions.json",
+      "sha256": "d3cda501f9a5021e59cdf23271be95f94970e66ce6bb72d9f7a633127e027267"
+    },
+    {
+      "path": "dummy-api/config/documentation/translations.json",
+      "sha256": "cb2037ed04756176ecaa12385da5826caeaf606c20235ed08211807f9e5b6b9a"
+    },
+    {
+      "path": "dummy-api/config/localization/shared/ar.json",
+      "sha256": "9cadd4e9a5c415bf24a69a2945be3c3cdf241846c305f1fc2ba2015adc405e8b"
+    },
+    {
+      "path": "dummy-api/config/localization/shared/en.json",
+      "sha256": "217f45d8d69504f741ed251472d193e4138c0ec528447ecca6bfb11f1539b8c6"
+    },
+    {
+      "path": "dummy-api/config/localization/shared/hi.json",
+      "sha256": "5eba917fc06b0605a2e09580026e3fd1131bfac84697093635b0842c0644d896"
+    },
+    {
+      "path": "dummy-api/config/localization/shared/ml.json",
+      "sha256": "72cc61acd9fef8cb21f32654fb3b50302e982e45b9136aa099f7f9daca7d0b99"
+    },
+    {
+      "path": "dummy-api/config/navigation/nexora.json",
+      "sha256": "d741c1a14c379d27d03480193d7349e67f1a680f51eda1a9c8138890a5ec4456"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-rcm-exchange.mjs",
+      "sha256": "f8456c014815578b2639acbcdcf6396e6497984986c4557a7f0028810153ccad"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-rcm-exchange.test.mjs",
+      "sha256": "2ad4255334df37379cb2e0a31acaf90271fb4ae47ff22e106836ecf2fb000f88"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-rcm-host.test.mjs",
+      "sha256": "b0e9bcd7e8befbd0b5e213cf4851cbb4c2a93e22d6fb02ceff39769f13f5d833"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-rcm-money-lifecycle.test.mjs",
+      "sha256": "57c03d0f5d172165225091a9cad7714a0125ea183136dd6bebd57c5fad544736"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-rcm-money-provider.mjs",
+      "sha256": "d78cebc4ce3eb26d2171c7c5cf0b5ade0f8f4aed1336c1f3bb27a44ff353b675"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-rcm-money-provider.test.mjs",
+      "sha256": "b4953285b9368301c463eba5b92a3975656b4449d0649fc752e97259d39e022d"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-rcm-store.mjs",
+      "sha256": "f35ae397f83b164c0a649844a184dc845f5778e7ec6c4f445cea747e0bf3afb1"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-rcm-store.test.mjs",
+      "sha256": "61b8cd3f200fd45ed2bc834ba1ebd367054567f8daa11686147bae79a6015a7f"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-source-persistence.mjs",
+      "sha256": "648f07f1b484e456c20008e5623384aa767edc93853c91574ae77e8d1e5b8b07"
+    },
+    {
+      "path": "dummy-api/healthcare-suite-source-persistence.test.mjs",
+      "sha256": "812c79642bd83837d90804f1bf2575fa5869381c57d8bf0610576e035a39cfc4"
+    },
+    {
+      "path": "dummy-api/reference-healthcare-suite-store.mjs",
+      "sha256": "77464ce92186fc2e02c4d8d75bff5dc7f207cc1cd6db7f26b18bf266d7f1755e"
+    },
+    {
+      "path": "dummy-api/server.mjs",
+      "sha256": "cdb6789cdb9b1192503f510528e2f987bd09aff4f66449ab2051f639593e1ee1"
+    }
+  ]
+}

@@ -64,7 +64,7 @@
     "e2e:native-localization": "node e2e/native-localization.mjs",
     "e2e:components": "node e2e/shared-components.mjs",
     "verify:shared-components": "node scripts/verify-shared-components.mjs",
-    "test:api": "node --test ../dummy-api/*.test.mjs && npm run test:clinical-api",
+    "test:api": "node --test --test-concurrency=4 ../dummy-api/*.test.mjs && npm run test:clinical-api",
     "test:e2e-registry": "node --test e2e/tests/*.test.mjs",
     "e2e:features": "node e2e/run.mjs features",
     "e2e:navigation": "node e2e/run.mjs navigation",

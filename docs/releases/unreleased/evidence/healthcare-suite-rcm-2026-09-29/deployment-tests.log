@@ -1,0 +1,26 @@
+
+> nexora-monorepo@1.0.0 test:deployment
+> node --test scripts/deployment/*.test.mjs
+
+✔ health requires the selected release, not merely any process answering 200 (80.402634ms)
+✔ healthy HTML with a missing script is not a healthy deployment (38.730446ms)
+✔ an SPA fallback returning HTML for a script cannot pass health (18.22519ms)
+✔ deployment requires explicit API URLs and rejects accidental loopback builds (2.494108ms)
+✔ build verification refuses missing stamps, mismatches, and incomplete artifacts (69.099513ms)
+✔ source snapshots exclude secrets, build output, dependency trees, and references (101.970617ms)
+✔ packaging survives deletion of its build tree and includes static/public assets (128.732308ms)
+✔ activation selects a release only after stop and checks it after start (48.701168ms)
+✔ failed start restores and checks the previous release (65.639839ms)
+✔ failed health restores and checks the previous release (63.579054ms)
+✔ failed first deployment removes its pointer and does not pretend to roll back (25.154779ms)
+✔ desktop server serves SPA routes and assets without leaking files or hiding missing chunks (161.105569ms)
+✔ an interruption after start rolls back before reporting success (77.530924ms)
+✔ a partial stop failure attempts to restart the previous release (95.152839ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1047.327871
