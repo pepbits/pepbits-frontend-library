@@ -1,0 +1,45 @@
+
+> nexora-monorepo@1.0.0 test:clinical-api
+> tsc -p ../dummy-api/tsconfig.clinical.json && node --test ../dummy-api/clinical-template-store.test.ts ../dummy-api/clinical-template-csv.test.ts ../dummy-api/clinic-billing-store.test.ts ../dummy-api/clinical-triage-store.test.ts ../dummy-api/clinical-consultation-store.test.ts ../dummy-api/comprehensive-consultation-store.test.ts ../dummy-api/op-registration-store.test.ts
+
+✔ prescription → order → invoice → partial payments → refund survives restart and duplicate retries (73.252549ms)
+✔ permissions, conflicts, duplicate billing, input validation and tenant isolation (31.196704ms)
+✔ void returns unpaid orders for rebilling and blocks paid invoice cancellation (39.36667ms)
+✔ unpaid bill corrections preserve revisions and survive retries; paid, stale and unauthorized edits fail (46.83399ms)
+✔ consultation drafts persist, retry once, validate explicit entries, finalize immutably and isolate scope (29.520122ms)
+✔ expanded notes persist and legacy updates preserve new fields (29.550202ms)
+✔ CSV create round-trips commas quotes Unicode newlines and booleans; query and 360 read the saved record after restart (89.821513ms)
+✔ CSV changes are read on the next API operation; legacy JSON migration preserves records and leaves source intact (71.637199ms)
+✔ corrupt CSV fails closed instead of replacing saved records with seed data (9.484554ms)
+✔ CSV parser enforces quoting, row width and duplicate entity identities (0.322992ms)
+✔ new related entries and their retry receipts survive restart and appear in 360 from CSV (51.894044ms)
+✔ patient search applies combined filters, sorting and pagination (60.951767ms)
+✔ complete registration is atomic, persisted and retried idempotently (62.487128ms)
+✔ validation, duplicate identity and stale versions cannot alter records (35.244441ms)
+✔ patient mutations are tenant/application scoped and permissions are enforced (79.001669ms)
+✔ saved searches are user scoped; appointment writes are patient scoped and retry safe (52.778521ms)
+✔ eligibility reads the saved policy and rejects unknown policy identities (12.057852ms)
+✔ patient record keeps identifiers server managed and projects contact edits into search values (22.872916ms)
+✔ registry search uses whole words, phrases, exclusions and child-record values (70.323579ms)
+✔ draft persists and retries keep one identity; complete locks history and new assessments are blank (15.845958ms)
+✔ completion requires explicit safety/priority and measurements or a reason; malformed input is rejected (8.551908ms)
+✔ server roles, tenant scope, optimistic versions and corrupt CSV are enforced (6.976178ms)
+✔ comprehensive CSV persists linked records, retries once, rejects stale and signed edits, isolates tenants (22.194102ms)
+✔ reject malformed nested data, duplicate diagnoses, dangling orders and unsigned medication review (1.108147ms)
+✔ score totals distinguish zero, incomplete, NT and invalid; E/M uses median and separate bounded time (1.122018ms)
+✔ required validation, persistent check-in and idempotent retries (19.984917ms)
+✔ write permission, optimistic conflict, server-owned eligibility and duplicate encounters (21.486217ms)
+✔ clinical lifecycle: signed note immutable, service charges, payments, completion and addenda (72.292704ms)
+✔ pending results require ownership, draft policy excludes sensitive fields and expires drafts (22.628186ms)
+✔ appointment slot conflict and patient association validation (30.69863ms)
+✔ pending results require an owner, date and plan; clinical closure is independent of payment (24.393917ms)
+✔ discount cannot create overpayment and reversals preserve the original payment (27.79513ms)
+✔ disabled drafts do not prevent check-in or ephemeral eligibility checks (6.834947ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 643.866618

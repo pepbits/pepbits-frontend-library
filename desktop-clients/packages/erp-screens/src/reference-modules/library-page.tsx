@@ -10,6 +10,7 @@ import {useProductRequest} from "../product-services";
 const Reports=lazy(()=>import('@pepbits/reference-reports').then(m=>({default:m.ReferenceReportsModule})));
 const Erp1=lazy(()=>import('@pepbits/reference-erp1').then(m=>({default:m.ReferenceErp1Module})));
 const Erp2=lazy(()=>import('@pepbits/reference-erp2').then(m=>({default:m.ReferenceErp2Module})));
+const HealthcareSuite=lazy(()=>import('@pepbits/reference-healthcare-suite').then(m=>({default:m.ReferenceHealthcareSuiteModule})));
 const School=lazy(()=>import('@pepbits/reference-school').then(m=>({default:m.ReferenceSchoolModule})));
 const schoolRoles:Readonly<Record<string,string>>={'enterprise-admin':'admin','finance-manager':'accountant','operations-analyst':'teacher','school-admin':'admin','school-teacher':'teacher','school-student':'student','school-parent':'parent','school-librarian':'librarian','school-accountant':'accountant'};
 /** The host supplies authentication, policies and navigation; modules import only public contracts. */
@@ -33,6 +34,6 @@ export function ReferenceModuleLibraryPage({pageId,target}:{pageId:string;target
  },[user,descriptor,selectedModule,view,product,pageId,erp.branch,erp.preferences,erp.preferencePolicy,erp.preferencesAvailable,erp.updatePreference,erp.t,product.id,navigation,request,path]);
  if(status==='authenticated'&&erp.preferencesAvailable&&selectedModule&&!moduleContainsPage(product,selectedModule,pageId))return <AccessDenied title="Page unavailable for your role" description="Your account does not have access to this page."/>;
  if(!host||status!=='authenticated'||!erp.preferencesAvailable)return <p role="status"><LocalizedText message="reference.modules.loading"/></p>;
- const Component=descriptor.variant==='reports'?Reports:descriptor.variant==='erp1'?Erp1:descriptor.variant==='erp2'?Erp2:School;
+ const Component=descriptor.variant==='reports'?Reports:descriptor.variant==='erp1'?Erp1:descriptor.variant==='erp2'?Erp2:descriptor.variant==='healthcare-suite'?HealthcareSuite:School;
  return <Suspense fallback={<p role="status"><LocalizedText message="reference.modules.loading"/></p>}><Component key={referenceScopeKey(host.scope)} path={path} host={host}/></Suspense>;
 }

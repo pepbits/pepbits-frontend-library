@@ -14,7 +14,7 @@ function catalogs(dir){for(const item of readdirSync(dir,{withFileTypes:true})){
  for(const lang of languages.slice(1)){const target=JSON.parse(readFileSync(join(dir,lang+'.json'),'utf8')).messages;for(const [key,value] of Object.entries(en)){
   if(!Object.hasOwn(target,key))failures.push(`${relative(root,dir)}/${lang}: missing ${key}`);
   else if(placeholders(value)!==placeholders(target[key]))failures.push(`${lang}: placeholders differ for ${key}`);
-  else if(value===target[key]&&/[A-Za-z]/.test(value)&&!exceptions[value.trim()])failures.push(`${lang}: untranslated ${key}`);
+  else if(value===target[key]&&/[A-Za-z]/.test(value.replace(/\{\w+\}/g,''))&&!exceptions[value.trim()])failures.push(`${lang}: untranslated ${key}`);
  }}
 }}}
 catalogs(join(root,'dummy-api/config/localization'));
@@ -35,5 +35,5 @@ function walk(dir){for(const entry of readdirSync(dir,{withFileTypes:true})){con
   ts.forEachChild(node,visit);
  }visit(sf);
 }}}
-for(const pkg of ['erp-screens','ai-ui','erp-shell','ops-ui','reference-host','reference-reports','reference-erp1','reference-erp2','reference-school','reference-keystone-core'])walk(join(root,`desktop-clients/packages/${pkg}/src`));
+for(const pkg of ['erp-screens','ai-ui','erp-shell','ops-ui','reference-host','reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite','reference-keystone-core'])walk(join(root,`desktop-clients/packages/${pkg}/src`));
 if(failures.length){console.error([...new Set(failures)].join('\n'));process.exitCode=1;}else console.log(`PASS ${catalogKeys} catalog keys in four languages; ${sites} static presentation references; explicit data/code exceptions.`);

@@ -17,6 +17,7 @@ Domain-specific rules and production integrations belong to the application usin
 
 | Area | High-level capabilities |
 | --- | --- |
+| Reference application modules | Reports, ERP1, ERP2, six School role views and a separate Healthcare Suite imported from CarePoint; demo data and business simulations remain API-owned |
 | Application workspace | Multi-module navigation, backend-defined menus, application and branch context, workspace tabs, record navigation, search and command navigation |
 | Shared component library | Form fields, textboxes, selects, radio buttons, checkboxes, date/time controls, calendars, cards, card grids, tables, dialogs, drawers, tabs and recovery messages |
 | Developer Library | Grouped component demonstrations, copyable TypeScript examples, template previews, integration guidance and a List of pages catalog |

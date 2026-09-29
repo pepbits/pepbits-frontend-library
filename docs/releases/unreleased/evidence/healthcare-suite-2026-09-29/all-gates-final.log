@@ -1,0 +1,866 @@
+
+> nexora-monorepo@1.0.0 verify
+> npm run -s verify:parity && npm run -s verify:ai-gates && npm run -s verify:ai-modes && npm run -s verify:ai-context && npm run -s verify:ai-limits && npm run -s verify:em-levels && npm run -s verify:filter-safety && npm run -s verify:ai-egress && npm run -s verify:export-safety && npm run -s verify:contrast && npm run -s verify:form-controls && npm run -s verify:shared-components && npm run -s verify:deployable && npm run -s verify:ai-hardening && npm run -s verify:localization && npm run -s verify:e2e-registry && npm run -s verify:bundle && npm run -s verify:documentation && npm run -s verify:library && npm run -s verify:templates && npm run -s verify:library-preferences
+
+
+  11 packages use utility classes
+
+  every styled package is @source'd by both apps
+  ok    web: ai-ui                                          
+  ok    web: erp-screens                                    
+  ok    web: erp-shell                                      
+  ok    web: ops-ui                                         
+  ok    web: reference-erp1                                 
+  ok    web: reference-erp2                                 
+  ok    web: reference-healthcare-suite                     
+  ok    web: reference-host                                 
+  ok    web: reference-keystone-core                        
+  ok    web: reference-reports                              
+  ok    web: reference-school                               
+  ok    desktop: ai-ui                                      
+  ok    desktop: erp-screens                                
+  ok    desktop: erp-shell                                  
+  ok    desktop: ops-ui                                     
+  ok    desktop: reference-erp1                             
+  ok    desktop: reference-erp2                             
+  ok    desktop: reference-healthcare-suite                 
+  ok    desktop: reference-host                             
+  ok    desktop: reference-keystone-core                    
+  ok    desktop: reference-reports                          
+  ok    desktop: reference-school                           
+
+  utilities unique to a package survive into the built CSS
+  ok    web: ai-ui                                          2 canaries present
+  ok    web: erp-screens                                    6 canaries present
+  ok    web: erp-shell                                      6 canaries present
+  ok    web: ops-ui                                         6 canaries present
+  ok    web: reference-erp1                                 3 canaries present
+  ok    web: reference-erp2                                 6 canaries present
+  ok    web: reference-healthcare-suite                     6 canaries present
+  ok    web: reference-host                                 1 canaries present
+  ok    web: reference-keystone-core                        6 canaries present
+  ok    web: reference-reports                              6 canaries present
+  ok    web: reference-school                               6 canaries present
+  ok    desktop: ai-ui                                      2 canaries present
+  ok    desktop: erp-screens                                6 canaries present
+  ok    desktop: erp-shell                                  6 canaries present
+  ok    desktop: ops-ui                                     6 canaries present
+  ok    desktop: reference-erp1                             3 canaries present
+  ok    desktop: reference-erp2                             6 canaries present
+  ok    desktop: reference-healthcare-suite                 6 canaries present
+  ok    desktop: reference-host                             1 canaries present
+  ok    desktop: reference-keystone-core                    6 canaries present
+  ok    desktop: reference-reports                          6 canaries present
+  ok    desktop: reference-school                           6 canaries present
+
+  Every styled package is visible to both apps, and its classes survive the build.
+
+
+        case                                         result                 use cases
+  -------------------------------------------------- ---------------------- ---------
+  ok    no gate speaks                               denied / useCase       []
+  ok    build gate off                               denied / build         []
+  ok    tenant off beats page on and user on         denied / tenant        []
+  ok    user gate off                                denied / user          []
+  ok    everything allows                            allowed / user         [a]
+  ok    page [a,b] narrowed by user [a]              allowed / user         [a]
+  ok    useCase gate narrows the page's set          allowed / user         [b]
+  ok    requested id outside the set                 denied / useCase       [a]
+  ok    ESCALATION: user names b, page did not       allowed / user         [a]
+  ok    ESCALATION: user is the ONLY gate to name a set denied / useCase       []
+  ok    ESCALATION: user re-adds what useCase removed allowed / user         [a]
+  ok    role is no longer a gate: an unknown key is ignored allowed / user         [a]
+  ok    page names an empty set                      denied / useCase       []
+
+  13 resolver cases passed.
+
+        gatesForPage case                            result                 use cases
+  -------------------------------------------------- ---------------------- ---------
+  ok    pilot page, module allowed                   allowed / user         [a]
+  ok    module gate denies a page that HAS a build block denied / module        []
+  ok    page gate denies                             denied / page          []
+  ok    explicit { enabled: false } denies at gate 1, even with use cases named denied / build         []
+  ok    no build block: gate 1 denies before any policy is consulted denied / build         []
+  ok    user preference off                          denied / user          []
+  ok    policy not fetched: renders build set, server still enforces allowed / user         [a,b]
+
+  20 cases passed in total.
+
+
+  removing a use case at the use-case gate
+
+  ok    both use cases resolve to begin with                    worklist.summarise-selection, record.explain
+  ok    the disabled one is gone from the set                   worklist.summarise-selection
+  ok    the other survives                                      
+  ok    a set emptied by the gate denies outright               
+
+  every surface reads the same engine
+
+  ok    assistant-panel.tsx does not resolve access itself      
+  ok    terminal.tsx does not resolve access itself             
+  ok    inline-action.tsx does not resolve access itself        
+  ok    assistant-panel.tsx reads the shared assistant          
+  ok    terminal.tsx reads the shared assistant                 
+  ok    inline-action.tsx reads the shared assistant            
+  ok    the engine is the only place that resolves              
+  ok    terminal builds its command list from the resolved set  
+  ok    inline checks membership rather than re-resolving       
+  ok    inline refuses to surface a clinical use case           
+  ok    the inline surface is mounted somewhere                 6 call site(s)
+  ok    worklist.summarise-selection has an inline affordance   
+  ok    record.explain has an inline affordance                 
+  ok    form.draft-note has an inline affordance                
+  ok    dashboard.explain-metrics has an inline affordance      
+  ok    report.summarise has an inline affordance               
+  ok    inbox.summarise-unread has an inline affordance         
+  ok    encounter.summarise has NO inline affordance            clinical, correctly absent
+  ok    documentation.gaps has NO inline affordance             clinical, correctly absent
+  ok    cohort.summarise-selection has NO inline affordance     clinical, correctly absent
+  ok    coding.suggest-icd has NO inline affordance             clinical, correctly absent
+  ok    orders.suggest has NO inline affordance                 clinical, correctly absent
+
+  panel, terminal and inline share one engine.
+
+
+  assembly
+
+  ok    only named fields appear                            5 fields
+  ok    a field the page has but reads omits is absent      
+  ok    the internal note never reaches the payload         
+  ok    credit limit was not read                           
+  ok    an absent named field is omitted, not sent empty    
+
+  redaction runs during assembly, so the panel shows what is sent
+
+  ok    email is masked in the payload                      m••••••••••@northgate.example
+  ok    email is flagged redacted                           
+  ok    the raw email is nowhere in the context             
+  ok    iban is masked                                      ••••••••3456
+  ok    the raw iban is nowhere in the context              
+  ok    a non-sensitive field is untouched                  
+  ok    redactField leaves ordinary keys alone              
+
+  removing a field from the use case removes it from the payload
+
+  ok    field count drops                                   5 -> 2
+  ok    the removed field is gone                           
+  ok    its value is gone from the payload too              
+
+  worklist selection
+
+  ok    one entry per row per named field                   4 fields
+  ok    rows are labelled so a user can match them          
+  ok    unnamed row keys never appear                       
+
+  all context checks passed.
+
+
+  a missing or zero limit must mean the DEFAULT, never unlimited
+    ok     requestsPerMinute 0 resolves to 20, got 20
+    ok     tokensPerDay -5 resolves to 200000, got 200000
+
+  the per-minute limit is enforced
+      window held 0, cap 3, sent 6: 400 400 400 429 429 429
+    ok     3 admitted (400, refused at prompt — no provider call), got 3
+    ok     the rest refused 429, got 3
+    ok     429 carries a usable Retry-After, got 60
+
+  the admin's own provider call is not a way round it
+    ok     verify is refused while the window is full, got 429
+
+  restored: 20/min, 200000 tokens/day
+  spent today: 0 tokens (unchanged by this script)
+
+  Limits are enforced, defaults cover a missing or invalid value, and the
+  admin verify path spends from the same budget.
+
+  The per-minute window clears 60s after the last request.
+
+
+  the level is the median of three, over all 64 combinations
+
+  ok    64 combinations all resolve to the median                 
+  ok    the test can distinguish median from maximum              42 cases differ
+  ok    the test can distinguish median from minimum              42 cases differ
+
+  a single high element does not carry a visit
+  ok    minimal/minimal/high stays straightforward                got straightforward (99202)
+  ok    the derivation names which elements carried it            Problems + Data + Risk
+
+  codes, and the one that should not exist
+  ok    new + high = 99205                                        
+  ok    established + low = 99213                                 
+  ok    99201 is absent — deleted in the 2021 revision            
+
+  time bands, at their boundaries
+  ok    new: 15–29 → straightforward                              99202 / 99202
+  ok    new: 30–44 → low                                          99203 / 99203
+  ok    new: 45–59 → moderate                                     99204 / 99204
+  ok    new: 60–74 → high                                         99205 / 99205
+  ok    established: 10–19 → straightforward                      99212 / 99212
+  ok    established: 20–29 → low                                  99213 / 99213
+  ok    established: 30–39 → moderate                             99214 / 99214
+  ok    established: 40–54 → high                                 99215 / 99215
+  ok    under the lowest band supports no level                   14 min → null
+  ok    a non-number supports no level                            
+
+  Two of three is the median, a single element cannot carry a visit,
+  and the time bands hold at their boundaries.
+
+
+  the registry agrees with the written policy
+
+    ok    status is operational                                   operational
+    ok    branch is operational                                   operational
+    ok    department is operational                               operational
+    ok    from is operational                                     operational
+    ok    to is operational                                       operational
+    ok    sort is operational                                     operational
+    ok    page is operational                                     operational
+    ok    pageSize is operational                                 operational
+    ok    patientName never reaches a URL                         phi
+    ok    mrn never reaches a URL                                 phi
+    ok    emiratesId never reaches a URL                          pii
+    ok    dob never reaches a URL                                 phi
+    ok    phone never reaches a URL                               pii
+    ok    diagnosis never reaches a URL                           clinical
+    ok    medication never reaches a URL                          clinical
+    ok    insuranceId never reaches a URL                         pii
+    ok    memberId never reaches a URL                            pii
+    ok    email never reaches a URL                               pii
+    ok    query never reaches a URL                               phi
+    ok    tags never reaches a URL                                phi
+    ok    recordRef never reaches a URL                           phi
+
+  every filter key carries a classification
+
+    ok    the registry is not empty                               140 keys
+    ok    acuity                                                  clinical
+    ok    admitted                                                phi
+    ok    aggregation                                             operational
+    ok    apiKey                                                  credential
+    ok    atc                                                     clinical
+    ok    balance                                                 operational
+    ok    branch                                                  operational
+    ok    budget                                                  operational
+    ok    candidateCodes                                          clinical
+    ok    candidateOrders                                         clinical
+    ok    category                                                operational
+    ok    chiefComplaint                                          clinical
+    ok    city                                                    pii
+    ok    clinicInsuranceShare                                    operational
+    ok    clinicInvoiceRef                                        phi
+    ok    clinicNet                                               operational
+    ok    clinicPatientShare                                      operational
+    ok    clinicQuantity                                          operational
+    ok    clinicServiceDescription                                clinical
+    ok    clinicTax                                               operational
+    ok    clinician                                               pii
+    ok    comparison                                              operational
+    ok    complaint                                               clinical
+    ok    consultedOn                                             phi
+    ok    contact                                                 pii
+    ok    contribution                                            operational
+    ok    controlled                                              clinical
+    ok    cost                                                    operational
+    ok    country                                                 operational
+    ok    createdBy                                               pii
+    ok    creditLimit                                             operational
+    ok    currency                                                operational
+    ok    current                                                 operational
+    ok    customer                                                operational
+    ok    delta                                                   operational
+    ok    department                                              operational
+    ok    diagnosis                                               clinical
+    ok    dimension                                               operational
+    ok    dob                                                     phi
+    ok    dose                                                    clinical
+    ok    drug                                                    clinical
+    ok    dueDate                                                 operational
+    ok    duration                                                clinical
+    ok    email                                                   pii
+    ok    emiratesId                                              pii
+    ok    exposure                                                operational
+    ok    findings                                                clinical
+    ok    followUp                                                clinical
+    ok    form                                                    clinical
+    ok    formulary                                               operational
+    ok    from                                                    operational
+    ok    gender                                                  phi
+    ok    id                                                      operational
+    ok    insuranceId                                             pii
+    ok    invoiceDate                                             operational
+    ok    joinDate                                                pii
+    ok    jurisdiction                                            operational
+    ok    kind                                                    operational
+    ok    label                                                   operational
+    ok    lastInvoice                                             operational
+    ok    leadTime                                                operational
+    ok    leaveBalance                                            pii
+    ok    lengthOfStay                                            clinical
+    ok    manager                                                 pii
+    ok    margin                                                  operational
+    ok    medication                                              clinical
+    ok    memberId                                                pii
+    ok    minimum                                                 operational
+    ok    mrn                                                     phi
+    ok    name                                                    operational
+    ok    nextExpiry                                              operational
+    ok    note                                                    operational
+    ok    onHand                                                  operational
+    ok    onTime                                                  operational
+    ok    openPO                                                  operational
+    ok    orderDate                                               operational
+    ok    outcome                                                 clinical
+    ok    outstanding                                             operational
+    ok    owner                                                   operational
+    ok    page                                                    operational
+    ok    pageSize                                                operational
+    ok    paid                                                    operational
+    ok    password                                                credential
+    ok    patient                                                 phi
+    ok    patientName                                             phi
+    ok    payer                                                   operational
+    ok    performance                                             pii
+    ok    phone                                                   pii
+    ok    position                                                operational
+    ok    prescribedOn                                            phi
+    ok    prescriber                                              pii
+    ok    preset                                                  operational
+    ok    preview                                                 operational
+    ok    previous                                                operational
+    ok    price                                                   operational
+    ok    primaryDiagnosis                                        clinical
+    ok    priority                                                operational
+    ok    problem                                                 clinical
+    ok    procedure                                               clinical
+    ok    quality                                                 operational
+    ok    query                                                   phi
+    ok    recordRef                                               phi
+    ok    reference                                               operational
+    ok    reorder                                                 operational
+    ok    reorderLevel                                            operational
+    ok    requestedDate                                           operational
+    ok    risk                                                    operational
+    ok    role                                                    operational
+    ok    route                                                   clinical
+    ok    secret                                                  credential
+    ok    segment                                                 operational
+    ok    sheetDescription                                        operational
+    ok    sheetDiscount                                           operational
+    ok    sheetItemCode                                           operational
+    ok    sheetNetCost                                            operational
+    ok    sheetQuantity                                           operational
+    ok    sheetSupplier                                           operational
+    ok    sheetTax                                                operational
+    ok    sheetUnitCost                                           operational
+    ok    sort                                                    operational
+    ok    specialty                                               clinical
+    ok    status                                                  operational
+    ok    stock                                                   operational
+    ok    supplier                                                operational
+    ok    tags                                                    phi
+    ok    terms                                                   operational
+    ok    time                                                    operational
+    ok    title                                                   operational
+    ok    to                                                      operational
+    ok    token                                                   credential
+    ok    total                                                   operational
+    ok    type                                                    operational
+    ok    unit                                                    operational
+    ok    unitCost                                                operational
+    ok    updated                                                 operational
+    ok    value                                                   operational
+    ok    variance                                                operational
+    ok    view                                                    operational
+    ok    ward                                                    clinical
+    ok    warehouse                                               operational
+
+  the sensitive ones cannot be serialised
+
+    ok    no phi value is serialised                              
+    ok    no pii value is serialised                              
+    ok    no clinical value is serialised                         
+    ok    no credential value is serialised                       
+    ok    no unclassified value is serialised                     
+    ok    no acuity key appears in the query string               
+    ok    no admitted key appears in the query string             
+    ok    no apiKey key appears in the query string               
+    ok    no atc key appears in the query string                  
+    ok    no candidateCodes key appears in the query string       
+    ok    no candidateOrders key appears in the query string      
+    ok    no chiefComplaint key appears in the query string       
+    ok    no city key appears in the query string                 
+    ok    no clinicInvoiceRef key appears in the query string     
+    ok    no clinicServiceDescription key appears in the query string
+    ok    no clinician key appears in the query string            
+    ok    no complaint key appears in the query string            
+    ok    no consultedOn key appears in the query string          
+    ok    no contact key appears in the query string              
+    ok    no controlled key appears in the query string           
+    ok    no createdBy key appears in the query string            
+    ok    no diagnosis key appears in the query string            
+    ok    no dob key appears in the query string                  
+    ok    no dose key appears in the query string                 
+    ok    no drug key appears in the query string                 
+    ok    no duration key appears in the query string             
+    ok    no email key appears in the query string                
+    ok    no emiratesId key appears in the query string           
+    ok    no findings key appears in the query string             
+    ok    no followUp key appears in the query string             
+    ok    no form key appears in the query string                 
+    ok    no gender key appears in the query string               
+    ok    no insuranceId key appears in the query string          
+    ok    no joinDate key appears in the query string             
+    ok    no leaveBalance key appears in the query string         
+    ok    no lengthOfStay key appears in the query string         
+    ok    no manager key appears in the query string              
+    ok    no medication key appears in the query string           
+    ok    no memberId key appears in the query string             
+    ok    no mrn key appears in the query string                  
+    ok    no outcome key appears in the query string              
+    ok    no password key appears in the query string             
+    ok    no patient key appears in the query string              
+    ok    no patientName key appears in the query string          
+    ok    no performance key appears in the query string          
+    ok    no phone key appears in the query string                
+    ok    no prescribedOn key appears in the query string         
+    ok    no prescriber key appears in the query string           
+    ok    no primaryDiagnosis key appears in the query string     
+    ok    no problem key appears in the query string              
+    ok    no procedure key appears in the query string            
+    ok    no query key appears in the query string                
+    ok    no recordRef key appears in the query string            
+    ok    no route key appears in the query string                
+    ok    no secret key appears in the query string               
+    ok    no specialty key appears in the query string            
+    ok    no tags key appears in the query string                 
+    ok    no token key appears in the query string                
+    ok    no ward key appears in the query string                 
+    ok    operational filters ARE carried                         86 of 140
+
+  Every filter is classified, and only operational ones reach a URL.
+
+
+  redaction agrees with the written policy
+
+    ok    patientName is masked                                   phi
+    ok    mrn is masked                                           phi
+    ok    dob is masked                                           phi
+    ok    emiratesId is masked                                    pii
+    ok    phone is masked                                         pii
+    ok    email is masked                                         pii
+    ok    memberId is masked                                      pii
+    ok    insuranceId is masked                                   pii
+    ok    clinician is masked                                     pii
+    ok    admitted is masked                                      phi
+    ok    createdBy is masked                                     pii
+    ok    primaryDiagnosis stays legible                          clinical
+    ok    problem stays legible                                   clinical
+    ok    complaint stays legible                                 clinical
+    ok    findings stays legible                                  clinical
+    ok    ward stays legible                                      clinical
+    ok    acuity stays legible                                    clinical
+    ok    diagnosis stays legible                                 clinical
+    ok    medication stays legible                                clinical
+    ok    procedure stays legible                                 clinical
+    ok    status stays legible                                    operational
+    ok    id stays legible                                        operational
+    ok    owner stays legible                                     operational
+    ok    outstanding stays legible                               operational
+    ok    branch stays legible                                    operational
+
+  every field a use case reads is classified
+
+    ok    the catalogue names some fields                         43 keys across 11 use cases
+    ok    acuity                                                  clinical
+    ok    admitted                                                phi
+    ok    budget                                                  operational
+    ok    candidateCodes                                          clinical
+    ok    candidateOrders                                         clinical
+    ok    clinician                                               pii
+    ok    complaint                                               clinical
+    ok    contribution                                            operational
+    ok    creditLimit                                             operational
+    ok    current                                                 operational
+    ok    customer                                                operational
+    ok    delta                                                   operational
+    ok    dimension                                               operational
+    ok    dob                                                     phi
+    ok    findings                                                clinical
+    ok    id                                                      operational
+    ok    jurisdiction                                            operational
+    ok    kind                                                    operational
+    ok    label                                                   operational
+    ok    lastInvoice                                             operational
+    ok    lengthOfStay                                            clinical
+    ok    name                                                    operational
+    ok    note                                                    operational
+    ok    outstanding                                             operational
+    ok    owner                                                   operational
+    ok    payer                                                   operational
+    ok    preview                                                 operational
+    ok    previous                                                operational
+    ok    primaryDiagnosis                                        clinical
+    ok    problem                                                 clinical
+    ok    reference                                               operational
+    ok    risk                                                    operational
+    ok    role                                                    operational
+    ok    segment                                                 operational
+    ok    specialty                                               clinical
+    ok    status                                                  operational
+    ok    terms                                                   operational
+    ok    time                                                    operational
+    ok    title                                                   operational
+    ok    type                                                    operational
+    ok    value                                                   operational
+    ok    variance                                                operational
+    ok    ward                                                    clinical
+
+  a general use case reads nothing clinical or identifying
+
+    ok    worklist.summarise-selection                            
+    ok    record.explain                                          
+    ok    form.draft-note                                         
+    ok    dashboard.explain-metrics                               
+    ok    report.summarise                                        
+    ok    inbox.summarise-unread                                  
+
+  no probe value survives assembly
+
+    ok    worklist.summarise-selection sends no phi value         
+    ok    worklist.summarise-selection sends no pii value         
+    ok    worklist.summarise-selection sends no credential value  
+    ok    worklist.summarise-selection passes the dispatch guard  
+    ok    record.explain sends no phi value                       
+    ok    record.explain sends no pii value                       
+    ok    record.explain sends no credential value                
+    ok    record.explain passes the dispatch guard                
+    ok    form.draft-note sends no phi value                      
+    ok    form.draft-note sends no pii value                      
+    ok    form.draft-note sends no credential value               
+    ok    form.draft-note passes the dispatch guard               
+    ok    dashboard.explain-metrics sends no phi value            
+    ok    dashboard.explain-metrics sends no pii value            
+    ok    dashboard.explain-metrics sends no credential value     
+    ok    dashboard.explain-metrics passes the dispatch guard     
+    ok    report.summarise sends no phi value                     
+    ok    report.summarise sends no pii value                     
+    ok    report.summarise sends no credential value              
+    ok    report.summarise passes the dispatch guard              
+    ok    inbox.summarise-unread sends no phi value               
+    ok    inbox.summarise-unread sends no pii value               
+    ok    inbox.summarise-unread sends no credential value        
+    ok    inbox.summarise-unread passes the dispatch guard        
+    ok    encounter.summarise sends no phi value                  
+    ok    encounter.summarise sends no pii value                  
+    ok    encounter.summarise sends no credential value           
+    ok    encounter.summarise passes the dispatch guard           
+    ok    documentation.gaps sends no phi value                   
+    ok    documentation.gaps sends no pii value                   
+    ok    documentation.gaps sends no credential value            
+    ok    documentation.gaps passes the dispatch guard            
+    ok    cohort.summarise-selection sends no phi value           
+    ok    cohort.summarise-selection sends no pii value           
+    ok    cohort.summarise-selection sends no credential value    
+    ok    cohort.summarise-selection passes the dispatch guard    
+    ok    coding.suggest-icd sends no phi value                   
+    ok    coding.suggest-icd sends no pii value                   
+    ok    coding.suggest-icd sends no credential value            
+    ok    coding.suggest-icd passes the dispatch guard            
+    ok    orders.suggest sends no phi value                       
+    ok    orders.suggest sends no pii value                       
+    ok    orders.suggest sends no credential value                
+    ok    orders.suggest passes the dispatch guard                
+
+  the guard refuses what assembly never produced
+
+    ok    a hand-built context is refused                         patientName
+    ok    and an operational field is not                         
+
+  Every field a use case reads is classified, and nothing identifying leaves unmasked.
+
+
+  the writer agrees with the written policy
+
+    ok    token never reaches a file                              credential
+    ok    apiKey never reaches a file                             credential
+    ok    secret never reaches a file                             credential
+    ok    password never reaches a file                           credential
+    ok    patient is exported, but declared first                 phi
+    ok    dob is exported, but declared first                     phi
+    ok    gender is exported, but declared first                  phi
+    ok    prescriber is exported, but declared first              pii
+    ok    clinician is exported, but declared first               pii
+    ok    primaryDiagnosis is exported, but declared first        clinical
+    ok    drug is exported, but declared first                    clinical
+    ok    ward is exported, but declared first                    clinical
+    ok    id needs no announcement                                operational
+    ok    status needs no announcement                            operational
+    ok    branch needs no announcement                            operational
+    ok    priority needs no announcement                          operational
+    ok    total needs no announcement                             operational
+    ok    supplier needs no announcement                          operational
+
+  every column a worklist shows is classified
+
+    ok    the registry offers some worklists                      74 distinct columns
+    ok    acuity                                                  clinical · 2 list(s)
+    ok    admitted                                                phi · 1 list(s)
+    ok    atc                                                     clinical · 4 list(s)
+    ok    balance                                                 operational · 1 list(s)
+    ok    branch                                                  operational · 103 list(s)
+    ok    category                                                operational · 89 list(s)
+    ok    chiefComplaint                                          clinical · 1 list(s)
+    ok    city                                                    pii · 3 list(s)
+    ok    clinician                                               pii · 2 list(s)
+    ok    consultedOn                                             phi · 1 list(s)
+    ok    contact                                                 pii · 8 list(s)
+    ok    controlled                                              clinical · 4 list(s)
+    ok    cost                                                    operational · 5 list(s)
+    ok    country                                                 operational · 5 list(s)
+    ok    creditLimit                                             operational · 3 list(s)
+    ok    customer                                                operational · 12 list(s)
+    ok    department                                              operational · 12 list(s)
+    ok    dob                                                     phi · 1 list(s)
+    ok    dose                                                    clinical · 3 list(s)
+    ok    drug                                                    clinical · 3 list(s)
+    ok    dueDate                                                 operational · 1 list(s)
+    ok    duration                                                clinical · 3 list(s)
+    ok    exposure                                                operational · 5 list(s)
+    ok    followUp                                                clinical · 1 list(s)
+    ok    form                                                    clinical · 4 list(s)
+    ok    formulary                                               operational · 4 list(s)
+    ok    gender                                                  phi · 1 list(s)
+    ok    id                                                      operational · 125 list(s)
+    ok    invoiceDate                                             operational · 1 list(s)
+    ok    joinDate                                                pii · 12 list(s)
+    ok    lastInvoice                                             operational · 3 list(s)
+    ok    leadTime                                                operational · 5 list(s)
+    ok    leaveBalance                                            pii · 12 list(s)
+    ok    lengthOfStay                                            clinical · 1 list(s)
+    ok    manager                                                 pii · 12 list(s)
+    ok    margin                                                  operational · 11 list(s)
+    ok    name                                                    operational · 109 list(s)
+    ok    nextExpiry                                              operational · 4 list(s)
+    ok    onHand                                                  operational · 4 list(s)
+    ok    onTime                                                  operational · 5 list(s)
+    ok    openPO                                                  operational · 5 list(s)
+    ok    orderDate                                               operational · 11 list(s)
+    ok    outcome                                                 clinical · 1 list(s)
+    ok    outstanding                                             operational · 3 list(s)
+    ok    owner                                                   operational · 94 list(s)
+    ok    paid                                                    operational · 1 list(s)
+    ok    patient                                                 phi · 4 list(s)
+    ok    payer                                                   operational · 2 list(s)
+    ok    performance                                             pii · 12 list(s)
+    ok    position                                                operational · 12 list(s)
+    ok    prescribedOn                                            phi · 3 list(s)
+    ok    prescriber                                              pii · 3 list(s)
+    ok    price                                                   operational · 5 list(s)
+    ok    primaryDiagnosis                                        clinical · 2 list(s)
+    ok    priority                                                operational · 94 list(s)
+    ok    quality                                                 operational · 5 list(s)
+    ok    reorder                                                 operational · 5 list(s)
+    ok    reorderLevel                                            operational · 4 list(s)
+    ok    requestedDate                                           operational · 11 list(s)
+    ok    risk                                                    operational · 3 list(s)
+    ok    route                                                   clinical · 3 list(s)
+    ok    segment                                                 operational · 3 list(s)
+    ok    specialty                                               clinical · 1 list(s)
+    ok    status                                                  operational · 125 list(s)
+    ok    stock                                                   operational · 5 list(s)
+    ok    supplier                                                operational · 4 list(s)
+    ok    total                                                   operational · 1 list(s)
+    ok    type                                                    operational · 3 list(s)
+    ok    unit                                                    operational · 5 list(s)
+    ok    unitCost                                                operational · 4 list(s)
+    ok    updated                                                 operational · 79 list(s)
+    ok    value                                                   operational · 11 list(s)
+    ok    ward                                                    clinical · 4 list(s)
+    ok    warehouse                                               operational · 5 list(s)
+
+  no probe value survives into the audit
+
+    ok    no phi value is recorded                                
+    ok    no pii value is recorded                                
+    ok    no clinical value is recorded                           
+    ok    no credential value is recorded                         
+    ok    no operational value is recorded                        
+    ok    but what was exported is                                136 columns, 50 sensitive
+    ok    and so is what was held back                            token,apiKey,secret,password
+
+  a sensitive export is never silent
+
+    ok    a list with an MRN column asks first                    
+    ok    so does one with a column nobody classified             
+    ok    an ordinary list does not                               
+
+  a printed sheet is governed by the document, not by script
+
+    ok    there is a print stylesheet                             
+    ok    the stylesheet refuses credential                       
+    ok    the stylesheet refuses unclassified                     
+    ok    and refuses it by removing it, not by hiding it visually
+    ok    every header and cell is stamped with its class         
+    ok    the sheet carries a banner that is always in the document
+    ok    and an unannounced print is still recorded              
+    ok    as a print rather than as a file                        
+    ok    and nothing pretends it can cancel one                  
+    ok    costing export uses schema review and metadata audit    
+    ok    costing import validates and maps its fixed headers     
+    ok    costing headers and cells carry print classification    
+
+  Every worklist column is classified, and nothing sensitive leaves as a document unannounced.
+
+
+  every theme's text is readable on its own surfaces
+
+    ok    the stylesheet declares some themes                     14 blocks
+    ok    nexora                                                  
+    ok    midnight                                                
+    ok    emerald                                                 
+    ok    sand                                                    
+    ok    rose                                                    
+    ok    slate                                                   
+    ok    solarized                                               
+    ok    indigo                                                  
+    ok    lagoon                                                  
+    ok    sunset                                                  
+    ok    graphite                                                
+    ok    plum                                                    
+    ok    nord                                                    
+    ok    contrast                                                
+
+  and the hierarchy still descends
+
+    ok    nexora                                                  16.0 > 6.5 > 5.2
+    ok    midnight                                                15.5 > 8.2 > 5.4
+    ok    emerald                                                 13.6 > 6.7 > 5.4
+    ok    sand                                                    12.7 > 7.2 > 5.8
+    ok    rose                                                    14.3 > 6.9 > 5.5
+    ok    slate                                                   14.6 > 7.1 > 5.6
+    ok    solarized                                               12.6 > 6.9 > 5.6
+    ok    indigo                                                  16.5 > 6.8 > 5.4
+    ok    lagoon                                                  13.8 > 6.8 > 5.4
+    ok    sunset                                                  13.9 > 6.9 > 5.6
+    ok    graphite                                                15.6 > 7.2 > 5.5
+    ok    plum                                                    15.3 > 8.2 > 5.4
+    ok    nord                                                    8.7 > 7.9 > 6.3
+    ok    contrast                                                21.0 > 15.9 > 9.7
+
+  and white reads on every accent that carries it
+
+    ok    nexora declares a fill for every accent it redefines    
+    ok    nexora · white on a filled accent                       
+    ok    midnight declares a fill for every accent it redefines  
+    ok    midnight · white on a filled accent                     
+    ok    emerald declares a fill for every accent it redefines   
+    ok    emerald · white on a filled accent                      
+    ok    sand declares a fill for every accent it redefines      
+    ok    sand · white on a filled accent                         
+    ok    rose declares a fill for every accent it redefines      
+    ok    rose · white on a filled accent                         
+    ok    slate declares a fill for every accent it redefines     
+    ok    slate · white on a filled accent                        
+    ok    solarized declares a fill for every accent it redefines 
+    ok    solarized · white on a filled accent                    
+    ok    indigo declares a fill for every accent it redefines    
+    ok    indigo · white on a filled accent                       
+    ok    lagoon declares a fill for every accent it redefines    
+    ok    lagoon · white on a filled accent                       
+    ok    sunset declares a fill for every accent it redefines    
+    ok    sunset · white on a filled accent                       
+    ok    graphite declares a fill for every accent it redefines  
+    ok    graphite · white on a filled accent                     
+    ok    plum declares a fill for every accent it redefines      
+    ok    plum · white on a filled accent                         
+    ok    nord declares a fill for every accent it redefines      
+    ok    nord · white on a filled accent                         
+    ok    contrast declares a fill for every accent it redefines  
+    ok    contrast · white on a filled accent                     
+
+  and on every module mark
+
+    ok    the registry gives each module a mark                   8 modules
+    ok    white on #6d5ce7                                        4.84
+    ok    white on #0f8468                                        4.65
+    ok    white on #b65a29                                        4.68
+    ok    white on #2563eb                                        5.17
+    ok    white on #9d6a1f                                        4.65
+    ok    white on #0d8379                                        4.63
+    ok    white on #7a5cd6                                        4.85
+    ok    white on #7c3aed                                        5.70
+
+  Every theme's text meets AA on every surface it paints, white reads on every filled accent, and the three steps still descend.
+
+
+  every form control comes from ops-ui
+
+    ok    there are files to check                                371 components
+    ok    no <table> outside ops-ui                               
+    ok    no <input type="checkbox"> outside ops-ui               
+    ok    no <input type="radio"> outside ops-ui                  
+    ok    no <input type="file"> outside ops-ui                   
+    ok    no <select> outside ops-ui                              
+    ok    no <textarea> outside ops-ui                            
+    ok    no a copy of the field styling outside ops-ui           
+    ok    ops-ui exports its form controls                        
+    ok    Checkbox exists to be used instead                      
+    ok    Radio exists to be used instead                         
+    ok    FilePicker exists to be used instead                    
+    ok    Select exists to be used instead                        
+    ok    Textarea exists to be used instead                      
+    ok    Input exists to be used instead                         
+    ok    SearchInput exists to be used instead                   
+
+  Every form control on every screen comes from the one library.
+
+PASS shared component adoption: 329 page/AI source files checked, 829 shared component uses. Alerts, charts, editor layouts and interactive choice controls retain specialized markup.
+
+  the built shells call the API their env file declares
+
+    ok    apps/web declares no API                                skipped
+    ok    apps/desktop declares no API                            skipped
+
+  Available local builds match their declared API settings.
+
+
+  the ledger and the contract are present
+
+    ok    the hardening ledger exists                               docs/ai-hardening-ledger.md
+    ok    the service contract exists                               docs/ai-service-contract.md
+
+  properties the ledger calls discharged
+
+    ok    D5 prompts live on the server                             PROMPT_TEXT
+    ok    D5 the client holds prompt ids, not text                  
+    ok    D7 no credential file to check                            not configured
+    ok    D7 the credential file is gitignored                      
+    ok    D9 the tenant is never read from a request body           
+    ok    N2 encrypted credential store is wired                    
+    ok    N3 credential expiry is enforced                          
+    ok    N4 durable audit store is wired                           
+    ok    N5 server validates context and refuses clinical egress   
+    ok    N6 provider allowlist and redirect refusal are wired      
+    ok    N8 explicit origins replace wildcard CORS                 
+    ok    N10 per-user limiter is wired                             
+    ok    N1 external dependency stays open                         
+    ok    N7 external dependency stays open                         
+    ok    N9 external dependency stays open                         
+    ok    ledger retains production boundaries                      
+Hardening controls and outstanding external dependencies match the ledger.
+PASS 20928 catalog keys in four languages; 2613 static presentation references; explicit data/code exceptions.
+PASS 396 static API errors registered with catalog message keys.
+PASS 60 suites registered in 5 runtime groups
+PASS desktop: largest client chunk 530699 gzip bytes; budget 550000
+PASS web: largest client chunk 274849 gzip bytes; budget 550000
+PASS 491 page references; 323 authored workflows in four languages; 168 references await detailed workflow authoring. Native/domain reviews remain pending.
+PASS documentation impact receipts, 491 page registrations and translation revisions; 1641 authoring/review items remain explicitly pending
+PASS 26 examples match their compiled demo functions
+(node:1976524) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/scripts/templates/generate-example.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS TypeScript template example matches the rendered demo adapter
+PASS 159 Library routes match API navigation; formatter, clinical token, dedicated-page and public example contracts checked. Runtime policy behavior is covered by preference-compliance tests and e2e/library-preferences.ts.

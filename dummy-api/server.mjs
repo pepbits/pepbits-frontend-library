@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import {createReferenceReportsStore} from './reference-reports-store.mjs';
+import {createReferenceHealthcareSuiteStore} from './reference-healthcare-suite-store.mjs';
 import {createReferenceSchoolStore} from './reference-school-store.mjs';
 import {resolveSchoolView} from './school-view-policy.mjs';
 import {schoolPathAllowed} from '../desktop-clients/packages/erp-config/src/school-role-views.ts';
@@ -124,7 +125,7 @@ for(const role of ['admin','teacher','student','parent','librarian','accountant'
 
 /** token -> user. Lost on restart, which is correct for a demo. */
 const sessions = new Map();
-const referenceStores={reports:createReferenceReportsStore({inboundSecret:process.env.REFERENCE_REPORTS_INBOUND_SECRET,inboundIdentity:{user:ACCOUNTS[2].user,scope:{applicationId:'nexora',branchId:ACCOUNTS[2].user.branch}}}),school:createReferenceSchoolStore(),erp1:createReferenceErpStore({variant:'erp1'}),erp2:createReferenceErpStore({variant:'erp2'})};
+const referenceStores={reports:createReferenceReportsStore({inboundSecret:process.env.REFERENCE_REPORTS_INBOUND_SECRET,inboundIdentity:{user:ACCOUNTS[2].user,scope:{applicationId:'nexora',branchId:ACCOUNTS[2].user.branch}}}),school:createReferenceSchoolStore(),erp1:createReferenceErpStore({variant:'erp1'}),erp2:createReferenceErpStore({variant:'erp2'}),'healthcare-suite':createReferenceHealthcareSuiteStore()};
 
 
 /* Preferences, unlike sessions, are written to disk. An in-memory store would lose
@@ -829,7 +830,7 @@ const CORS = {
      not name: the request never leaves, nothing is logged, and the only symptom
      is a cell that will not save. */
   "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization, If-None-Match, X-Product-Id, X-Reference-Branch, X-Reference-Module, X-Reports-Api-Key, X-Inbound-Secret, Pepbits-Contract-Version",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, If-None-Match, X-Product-Id, X-Reference-Branch, X-Reference-Module, X-Reference-Facility, Idempotency-Key, X-Reports-Api-Key, X-Inbound-Secret, Pepbits-Contract-Version",
   "Access-Control-Expose-Headers": "ETag, Content-Disposition",
   "Access-Control-Max-Age": "86400",
 };
@@ -900,7 +901,7 @@ const server = createServer(async (req, res) => {
     return send(res, 405, { error: "Method not allowed." });
   }
 
-  const referenceMatch=pathname.match(/^\/reference-modules\/(reports|school|erp1|erp2)(\/.*)?$/);
+  const referenceMatch=pathname.match(/^\/reference-modules\/(reports|school|erp1|erp2|healthcare-suite)(\/.*)?$/);
   if(referenceMatch){
     const variant=referenceMatch[1],modulePath=referenceMatch[2]??'/';
     let user=sessions.get(bearer(req)),keyIdentity=null;

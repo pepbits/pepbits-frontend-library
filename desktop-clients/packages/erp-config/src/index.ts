@@ -55,3 +55,5 @@ export * from "./reference-modules.ts";
 export * from "./reference-module-types.ts";
 
 export * from "./school-role-views.ts";
+
+export * from "./healthcare-suite-reference.ts";

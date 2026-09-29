@@ -1,0 +1,116 @@
+{
+  "base": "http://localhost:3189",
+  "api": "http://127.0.0.1:3389",
+  "scope": "workflow-only",
+  "results": [
+    {
+      "name": "authenticated header module selection",
+      "status": "passed"
+    },
+    {
+      "name": "actual host actor session",
+      "status": "passed"
+    },
+    {
+      "name": "UI patient registration and persisted API record",
+      "status": "passed",
+      "patientId": "PT00012"
+    },
+    {
+      "name": "UI appointment books a source provider slot",
+      "status": "passed",
+      "appointmentId": "AP000011",
+      "date": "2026-09-30"
+    }
+  ],
+  "errors": [
+    "page.waitForFunction: Timeout 30000ms exceeded.\n    at ready (/home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/e2e/healthcare-suite.mjs:19:66)\n    at async file:///home/pepadmin/pb/saas/worktrees/healthcare-suite-import-20260929/desktop-clients/e2e/healthcare-suite.mjs:38:329"
+  ],
+  "mutations": [
+    {
+      "path": "/patients",
+      "status": 201,
+      "hasOperationId": true
+    },
+    {
+      "path": "/appointments",
+      "status": 201,
+      "hasOperationId": true
+    },
+    {
+      "path": "/encounters",
+      "status": 201,
+      "hasOperationId": true
+    }
+  ],
+  "networkFailures": [
+    {
+      "url": "http://127.0.0.1:3389/documentation?releaseId=2026-09-29-healthcare-suite&language=en&q=&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/session",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/dashboard",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/documentation?releaseId=2026-09-29-healthcare-suite&language=en&q=&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/session",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/session",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/patients/PT00012",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/auth/me",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/documentation?releaseId=2026-09-29-healthcare-suite&language=en&q=&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/session",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/scheduling/slots?date=2026-09-30&resourceIds=R001",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/appointments?date=2026-09-30&resourceId=R001&pageSize=500",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/session",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/appointments?date=2026-09-29&status=Booked%2CConfirmed&pageSize=100",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/session",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/reference-modules/healthcare-suite/api/encounters/EN000001",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:3389/auth/me",
+      "failure": "net::ERR_ABORTED"
+    }
+  ]
+}

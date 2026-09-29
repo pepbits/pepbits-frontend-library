@@ -1,6 +1,8 @@
 # Feature catalog
 
-- [Reports, ERP1, ERP2 and School reference modules](reference-modules.md): separate reusable module imports, host adapters and preserved source designs; implementation is in progress.
+- [Healthcare Suite reference module](healthcare-suite.md): CarePoint clinic/pharmacy pages, source-backed demo API and a separate header module.
+
+- [Reports, ERP1, ERP2 and School reference modules](reference-modules.md): separate reusable module imports, host adapters and preserved source designs; see the dated delivery record for validation and deployment.
 - [School role views in the module header](school-role-views.md): six authenticated School personas over the existing School page catalogue.
 
 - [Host-defined workspace modules](host-defined-modules.md): reusable module selector and landing-page behavior for applications with scoped navigation.

@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
     "@pepbits/reference-erp1",
     "@pepbits/reference-erp2",
     "@pepbits/reference-school",
+    "@pepbits/reference-healthcare-suite",
   ],
 };
 

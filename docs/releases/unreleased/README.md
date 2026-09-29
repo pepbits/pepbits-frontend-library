@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Healthcare Suite reference module — 29 September 2026](healthcare-suite-2026-09-29.md): additional independent header module; implementation and validation in progress.
+
 - [Isolated frontend test site deployment — 28 September 2026](frontend-test-deployment-2026-09-28.md): first activation of release `20260928110944214-b5bb610f` at `frontend.test.pepbits.com`; the 35 route/runtime checks and public browser checks for 152 static destinations, six dynamic URLs, four header choices and four representative pages passed.
 - [Reference module import — 28 September 2026](reference-modules-2026-09-28.md): active reusable Reports, ERP1, ERP2 and School import; no deployment claimed.
 

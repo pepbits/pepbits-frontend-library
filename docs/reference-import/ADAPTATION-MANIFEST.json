@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-09-28T11:51:16.590Z",
+  "createdAt": "2026-09-29T07:09:55.745913+00:00",
   "sourceMutation": false,
   "acceptance": "Provenance and route coverage. Visual and workflow acceptance is recorded separately; this manifest does not assert pixel equivalence.",
-  "staticDestinationCount": 152,
+  "staticDestinationCount": 175,
   "hostBoundary": "Public exports only; trusted scope, injected API transport, host preferences and navigation. No standalone source application shell or backend imported into client main exports.",
   "modules": [
     {
@@ -4260,6 +4260,608 @@
           "destinations": [
             "desktop-clients/packages/reference-school/package.json"
           ]
+        }
+      ]
+    },
+    {
+      "moduleId": "reference-healthcare-suite",
+      "publicPackage": "@pepbits/reference-healthcare-suite",
+      "sourceRoot": "/home/pepadmin/pb/saas/reference/frontend/healthcare-suite/healthcare-suite",
+      "sourceDigest": "bd83b79982c059e7ebbfcaa4f363b5ba51adb9edc328142b176cbee8efbf0dcd",
+      "sourceFileCount": 131,
+      "sourceInventory": "healthcare-suite/SOURCE-INVENTORY.json",
+      "staticDestinations": [
+        {
+          "pageId": "reference-healthcare-suite-dashboard",
+          "path": "/",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-appointments",
+          "path": "/appointments",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-patients",
+          "path": "/patients",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-encounters",
+          "path": "/encounters",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-approvals",
+          "path": "/approvals",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-billing-hospital",
+          "path": "/billing/hospital",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-billing-pharmacy",
+          "path": "/billing/pharmacy",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-billing-invoices",
+          "path": "/billing/invoices",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-payers",
+          "path": "/masters/payers",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-tpas",
+          "path": "/masters/tpas",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-insurance-plans",
+          "path": "/masters/insurance-plans",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-networks",
+          "path": "/masters/networks",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-price-lists",
+          "path": "/masters/price-lists",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-contracts",
+          "path": "/contracts",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-items",
+          "path": "/masters/items",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-services",
+          "path": "/masters/services",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-facilities",
+          "path": "/masters/facilities",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-departments",
+          "path": "/masters/departments",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-specialties",
+          "path": "/masters/specialties",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-providers",
+          "path": "/masters/providers",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-resources",
+          "path": "/masters/resources",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-resource-schedules",
+          "path": "/masters/resource-schedules",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        },
+        {
+          "pageId": "reference-healthcare-suite-masters-resource-blocks",
+          "path": "/masters/resource-blocks",
+          "package": "desktop-clients/packages/reference-healthcare-suite",
+          "sharedCore": null
+        }
+      ],
+      "implementationFiles": [
+        {
+          "path": "desktop-clients/e2e/healthcare-suite.mjs",
+          "sha256": "b51fde7f9988a65976d1f15444471c1d68b59953a14dc0fd6f8735210c13659f"
+        },
+        {
+          "path": "desktop-clients/packages/erp-config/src/healthcare-suite-reference.ts",
+          "sha256": "ea678052285ba2187278cadb46126b77fd9b0f9ef9f09ec40e067649afbddd16"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/README.md",
+          "sha256": "5d7a19b699ad93b2103de27c326ce91c8406f52c4b27f7f082b24aff9bc595b8"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/localization-inventory.en.json",
+          "sha256": "270dad4a12ff9807cfa631ae06b98e14345ec45f2a6079aa1c71b5c2b4ce75c8"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/package.json",
+          "sha256": "ef2081539ecfca2c0389217f9cc8928790c426ffbd071d85eaede812bd59f279"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/scripts/generate-localization-inventory.mjs",
+          "sha256": "6f4c09b1b1d0e958d824915beb1d8af271db0483415b57fae45a4f34e9b27fc2"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/adapter.test.tsx",
+          "sha256": "151a0c2a9f6e4902b69719f33acd0709da198b207f3d51ba3570a456c2b6f9e8"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/appointments/page.tsx",
+          "sha256": "711e19095bc9fa4c9d60291aa8a995ddf804383b4ca7231467b9bccc3e98d557"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/approvals/page.tsx",
+          "sha256": "92ca0988c09c1522d21226f162afa39c1d5fb36c09691afbe01932442a47f793"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/billing/hospital/page.tsx",
+          "sha256": "8b51adb2c6d24e88d53ac8cd625d581c3661e547bd5f618f548be7e692752ce7"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/billing/invoices/page.tsx",
+          "sha256": "dcbaad01658e957d74382b54e1a9a2341380ae302cc49340c64556b1734111d3"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/billing/pharmacy/page.tsx",
+          "sha256": "e969af123d91d16808ebd02374c3da828f2b870287dd2a187f0179ff5ba9b343"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/contracts/page.tsx",
+          "sha256": "761a87fc2ea9041868b6058919b7d27a79eddc8ed22042086059ae38c2a25647"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/encounters/[id]/page.tsx",
+          "sha256": "0bf8a2cdf10515b779ce883b238d99eda3402fa7c353588577e4d08ed3ad958c"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/encounters/new/page.tsx",
+          "sha256": "dd5ec5297665fa32e076f951c30bdc482b3df3f92500ea09af62a18df26e80e5"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/encounters/page.tsx",
+          "sha256": "621266e3170318e667ca8f3ae6471517c1dc1111f5f8116851e65775a2c25a3c"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/masters/[entity]/[id]/page.tsx",
+          "sha256": "e4dac69b4d03c600b7539eef56fe1ef01370ac1641f4963c654e75599da43eca"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/masters/[entity]/new/page.tsx",
+          "sha256": "e4786f9ea92e5c65c406140b8a6a73f9b84690aa2992e2b60157db4483e28f43"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/masters/[entity]/page.tsx",
+          "sha256": "f3f1db0c715e1c400dfcdfacbfb9a8838c64b5af4401de87c1011a75d8e0762e"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/page.tsx",
+          "sha256": "720bc6ba09afe3b00adf78a522093bd0400439e4fc2a747204ee992effe5f6e1"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/patients/[id]/page.tsx",
+          "sha256": "b8544a34b9883e02a7d39856f539f32aaf5dc68eb5298301395ea04f838ea3e8"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/patients/new/page.tsx",
+          "sha256": "07a58acdf922e954f5661ff4b1a2fbd8f3b1ea1485fce74f254c9887b5fe2ec4"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/app/patients/page.tsx",
+          "sha256": "78129f7de96246699c1e353fd7e67bc5ac5fe10eea0dde8831080dba2259c345"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/appointments/AppointmentPanel.tsx",
+          "sha256": "74728adb4e224d46dbc53f3cb46adbf23568503dcf89944a91b48bb225fe4b76"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/appointments/BookingPanel.tsx",
+          "sha256": "ea054772cd4cdccab921b995b5d6a260f5bf2c65e3a30319a397c4c333ee596d"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/appointments/SlotBoard.tsx",
+          "sha256": "c24b1824d7d96e57f95f71cbb1b20470c741e4debaef440a85d1e5085420478c"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/appointments/types.ts",
+          "sha256": "9c0a34ee1719070d5b3b36b3e60adf9a9ca73ab26b0d87d996a6602ff8ba309d"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/billing/BillingWorkbench.tsx",
+          "sha256": "8bceb636f6046828660554ac8dbefe30d6a09e321bf0937ecde8b8170b1c45f0"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/billing/InvoiceView.tsx",
+          "sha256": "5f538c96aa5fd6eebfcafadb4aeab5360a4ddac26ac793899b1b4a5294a75c63"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/encounter/ApprovalModal.tsx",
+          "sha256": "6693063b1776c70413513080ccce87b63bbb404de4a3beb8c83d936d6030f95c"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/encounter/CatalogSearch.tsx",
+          "sha256": "44e84dd8ac3ebd6dcb5b562b828ff94478969296e6f5ddb66dfe68bdda9b4c16"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/encounter/DrugDosing.tsx",
+          "sha256": "5b1f95256913452ca2ddf92f6c887e424396dfd7603e6defcbbfd390ae1e04a0"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/masters/DaysPicker.tsx",
+          "sha256": "5d113c9799679cb23e9e5d152f4427c125e7719aa3d0adcc46c9adc0bcfc9932"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/masters/DynamicForm.tsx",
+          "sha256": "53fc33ab26e72e7efaca841232b4c8aafb0e1bfe121e6ebf9937b2d0b81d324a"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/masters/MasterRecord.tsx",
+          "sha256": "dc987b158b43476516e2603b5cf2b180cf0bbed83a5c619d22fb00554700542b"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/masters/MasterWorklist.tsx",
+          "sha256": "38385c7d3ef84f573bf1894b8dad0e1a187e51af04f49ec8944bf0c34055789f"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/masters/MasterWorkspace.tsx",
+          "sha256": "19b14121b1b6f3deab7ece8b63169f43fb16ac00510907c84e2d64fdd17464a3"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/masters/RefSelect.tsx",
+          "sha256": "2e336d238f6b9cb381e829429ba2e5658ac9ef0db54cac07db3ce7ae70b255f8"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/masters/cells.tsx",
+          "sha256": "f20e6c87f49c720f78ba5fc84514c9a04412a62e04a6caf337a8a1455aa09c95"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/patients/PatientBanner.tsx",
+          "sha256": "29ad1046f6ecde865159ec5e4165de70251f5c0e6b61dcafbe127690e7f97e9a"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/patients/PatientForm.tsx",
+          "sha256": "e8837f1a1c3af7fc343ecf40d13da33927e46071b59f00f014c33d989b34324f"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/patients/PatientPreview.tsx",
+          "sha256": "e7296b4338ce9f2dabf7d1e24622356d3ba02c1c3c9ea1ceee2d64e265eb0d4e"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/patients/PatientSearch.tsx",
+          "sha256": "4e7077418fa037559e2e3f4bf064bfe27ea01c598a55c98b9a3c89152335b24c"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/patients/PolicyEditor.tsx",
+          "sha256": "2947f5a139b011c129cf7a7cf6778e82525fd4ce9def5d52d38b2c596589ec63"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/patients/QuickRegister.tsx",
+          "sha256": "12d4c56987e71a39fc8e15501bdf26129d38fb3a23304c1e0711c1a1c48b55e1"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/shell/nav.ts",
+          "sha256": "027024cc1fbc0316bc10d9cdb675e6de3f91d14b592f1d290de0f7618bcdb64b"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/ui/DataTable.tsx",
+          "sha256": "c3da4fd27a2c87dea660e1931f04a3dcd4c5e5c86839beb78e98b0b08963356c"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/ui/Tabs.tsx",
+          "sha256": "d69c441825bbec25b0fecc98890258d89c2f5aa188c82c0c2240b5fc5330acd1"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/ui/Toast.tsx",
+          "sha256": "5d652b5e86479c28818a420f4c6041b32161af9ae555174159a99f0c37234d7d"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/ui/controls.tsx",
+          "sha256": "bab4b00db55146c59af624fa184421210187584395c0797cc854cba9cd823ff1"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/ui/display.tsx",
+          "sha256": "c447c1dcd4a924a637694c57a4b0af5fe8fce8cbe876ccbf54d03bc146082c02"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/components/ui/overlay.tsx",
+          "sha256": "99887d47861637d066924cc6c001365d4cfb1de85e96aa5d52ee0b3d562777d8"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/index.ts",
+          "sha256": "c96de73da490b78c0f2cb6d5d2dee7c7af878dd0be434253516798bacc89068c"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/api.tsx",
+          "sha256": "8090267172efc5eaa2ff4221fdd28ef38ba0fa173648566db464c78bb6655321"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/export.ts",
+          "sha256": "d53af3e934e10c4ec918280279cf818b062f2c2e320bd502cde1ecd61288a735"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/format.ts",
+          "sha256": "23ae4c7919d7056fd5bd712d23c23ace5639d8a8f3218ea1be87be3d6cb5f54c"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/hooks.ts",
+          "sha256": "67a4652a004922aac0c18b7b02aa82a2d63dd0cda036aa4351192ef2c7746544"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/lookups.ts",
+          "sha256": "fc99005e5002dee360ba39a81b73b8700a99cb8dff0724b678e09206dda0ec05"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/masters.ts",
+          "sha256": "8b128f4fc4615c24594d0e1cbda7bf767ebe6cb2eb220f8973ba0a51c846c8c4"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/session.tsx",
+          "sha256": "54fe29f09d3db43de47dfe97d6069ed89788bb7fa1e9d4aa12fffd3efd1120ea"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/lib/types.ts",
+          "sha256": "80849fdfc4fe8b787624bd7b53b8793891574b3d1e4c717f2ee0852dabb180f4"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/module.tsx",
+          "sha256": "2c23b742521e6bc44730c9d1357e0cf7e0e0e82ecccfae94daecc06496dea5d7"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/preferences.test.tsx",
+          "sha256": "aa235ff3878ee5d0d9bc187fe94d7b757f8028ddcbbe90405cb6d10c8963865a"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/routes.test.ts",
+          "sha256": "6c75aeddee6e3a792fad1ab13eb2896b4e6a57a0b4b8513b2600de01e75dcf72"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/routes.ts",
+          "sha256": "13d8bc67a3f239f178fb7d238a291817e9a8fced79e04966cc3b1431137cac2a"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/src/styles.css",
+          "sha256": "228ab03cbacf5be718217e416ef881aaeed9d3f4f39b9bb96232a14b9b8a4092"
+        },
+        {
+          "path": "desktop-clients/packages/reference-healthcare-suite/tsconfig.json",
+          "sha256": "2d6c75647ab0afdea4a8ffe4b24662a852347500729b43fa7a910e4ee4a3f706"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-README.md",
+          "sha256": "368ce8cba0ffec066742a7279b959f35f6e7e01bd540470197417dfadf59410a"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/appointments.csv",
+          "sha256": "866cd9162614eebfe9f9d922b9a937369e842a878f3895b4bf2e48b1528f1c43"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/approvals.csv",
+          "sha256": "fd86c4179f16d7269fe58f5b7879820058ca8513afc1f3feae3f9505ecf9f36e"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/departments.csv",
+          "sha256": "37f0ee3393ad8d7372da1244c7107e2fdee39ae664af7c3123af4d030940b637"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/eligibility_checks.csv",
+          "sha256": "455abe444ab523b7196b6bf4d84c34c1f8d8e7f4ef5bd02cfc94a1bbf5146520"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/encounters.csv",
+          "sha256": "21bb51d96eabf799d07b9ab8023a3234e3ec950829724d9a61cf60414ab4f537"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/facilities.csv",
+          "sha256": "e934c5ebba6a9da3e3e0ef03aff26eab372c533eab87b46961e4496d2f77e328"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/insurance_plans.csv",
+          "sha256": "d2914f681231d242f39467cfcc74c4fa4a8dc59f564446b1c86a5530158de15f"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/invoices.csv",
+          "sha256": "c985415c7b998c0f3231b9a74b2a095a68b86f1b994c52b6b7f32f4abb3533c3"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/items.csv",
+          "sha256": "7f212812824a74f0ece33d6fdffd4e5bca3a03a45e3777e24d35c77e41223643"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/networks.csv",
+          "sha256": "8ff76cd20aeffa1d865c69d76423226aae8bb47cf611e6933801772a8cec0b9a"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/orders.csv",
+          "sha256": "f8b690cad0cca84e01aa7a4eda2ae804f67a72b10c90ad555a020e7301b0336a"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/patient_policies.csv",
+          "sha256": "2b589857bbe58edc454b722ee836d192b466c08e980bc64c9f985d3df49a71d8"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/patients.csv",
+          "sha256": "939b36f39cf9c1f5e88fd452b3d94c41ede68ff480c3cfb2a68796ad7b0ab5f4"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/payers.csv",
+          "sha256": "d1bc919cdde115dd413a9a96c8522995bbfd559355d33b14a6b27fadca81a50c"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/price_list_items.csv",
+          "sha256": "d65b8e52481e53b26d08b03b81b9de553fe929ce4594a5e663e5db7a8d907418"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/price_lists.csv",
+          "sha256": "583af4bb5fc013e521deee7e8321d6ab4a9d23136e255026b5f5e38c21177f52"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/providers.csv",
+          "sha256": "118e991f827426bbbba93c58c0d80f9212474fb318752a27ed061c97ada53bb9"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/resource_blocks.csv",
+          "sha256": "d98baf93820036c4d6e1943661320e224be7cb6b359f7a4a4ceae5e3aecb876b"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/resource_schedules.csv",
+          "sha256": "f93cd6107d4a97ff3b76b531f905e993836268c0002403826823a8cdbd7688cd"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/resources.csv",
+          "sha256": "0c60a22ccf7b082c3a68b1737b07087ff5b40a5bd7fb25ee1b7a13baac4bb114"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/services.csv",
+          "sha256": "5c13b4f347d4baf42b4f97b714c3eb4685770212d13e89d9969a4151da8d9351"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/specialties.csv",
+          "sha256": "5ea909157d4dc5ad5930afada1c111c18355772d70ef414b322a3a955cabf309"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/tpas.csv",
+          "sha256": "4e16dc9b2dee3d5bc6b30e7b999d3ed5c58444dfa665221e7933343b27dbbf56"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-data/users.csv",
+          "sha256": "c532922ad018be5f193699ea00ddcf0563fa3c77643f5578585fa2dd65aa9e67"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-http.test.mjs",
+          "sha256": "2a427e596ae4b9310c9c85825860f2faf472dba48b3e64c2894b42a35d4d0f1b"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-import.mjs",
+          "sha256": "d642547eafd6b02d507464b8f20a0878a637425f047d6b461d5deabad2b8b782"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/billing/billing.service.mjs",
+          "sha256": "146ead15b1d99721d05d400faf0b28705472601aaf9b8cae99c30b760b06eedc"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/common/csv-store.service.mjs",
+          "sha256": "a9ec9c23d28410878bf5163d916a6d9c82499a7c339fb4921f15e06b9864a915"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/common/csv.mjs",
+          "sha256": "f74c98f073cd7bca12dbb5dc72091a99bbd7c52dfcdab163acec86a2655410d6"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/common/errors.mjs",
+          "sha256": "4c90d5d36f46703374e79b840fb3feb204e1fd95a1ea2a00d22b72b8eac533f1"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/common/query.mjs",
+          "sha256": "9a98292ab14091d41c309a39e97e4638f440eacd0526f41ea145f3cff155ae1c"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/encounters/eligibility.service.mjs",
+          "sha256": "0089a841375b43f31419bce03d16e4fc06f1b2b5cd0805cce2ba8a3dee75d77c"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/encounters/encounters.service.mjs",
+          "sha256": "339d1f9a40ec9c8dfdc4146906e55c14447b484cbc1b4c4101719d4f2eace707"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/masters/entities.mjs",
+          "sha256": "6cc52c9b4b13f76d709ee38932e1d800b57458c120540eb8529e4f301e2ef45b"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/masters/masters.service.mjs",
+          "sha256": "14a0a76fa3faef78bff11f1d88789f99b859a8b6d39bdc2659f6ebe8a1e34a26"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/orders/approvals.service.mjs",
+          "sha256": "7408f987141bb6254e02d98afdccab429e7eb6557ca3e0448716c9542683acfa"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/orders/orders.service.mjs",
+          "sha256": "a14432db7a946433876755029c0a4f7645bef1b929ff938cc02b27ca0fc2d6a3"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/patients/patients.service.mjs",
+          "sha256": "97d1b11f081b3d6299c085962a907d1125643734c7b92e08b9470dc130dbb5bd"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/pricing/pricing.service.mjs",
+          "sha256": "529f211a3560e2c08f00c815ab2666c904f343cfbfb07ea241d385ccaf196092"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/runtime.mjs",
+          "sha256": "d27f62ab9c70a1f98866c674949ab16b0d096314c09f944f3b00892c812438b4"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/scheduling/scheduling.service.mjs",
+          "sha256": "7bd2f5f88118a7c85f8add3cc708b0890c58a88ff349ec9be0abd1991eca9cd6"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source/system/system.service.mjs",
+          "sha256": "85191db87aa7fda5f76cbbccdfbf3eb1f30b000d2b276332ea3f7b2d8be23ebc"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-source-manifest.json",
+          "sha256": "5477b05535200e57cb1e6690a551519c49a45e4df6fcd9094462df6ddd9b5d7c"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-store.mjs",
+          "sha256": "6a2f2241c180ad94e81fdd4d6541dbc22a2369563534fa68ea7018248a52419e"
+        },
+        {
+          "path": "dummy-api/reference-healthcare-suite-store.test.mjs",
+          "sha256": "c2696e51c5726a786224ee59dc7cc77e9fbfaa1db44255a6d8d30f03ecd0373d"
         }
       ]
     }

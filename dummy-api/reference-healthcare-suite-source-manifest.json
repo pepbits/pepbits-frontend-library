@@ -1,0 +1,164 @@
+{
+  "source": "CarePoint healthcare-suite/backend",
+  "adaptations": [
+    "Remove Nest dependency injection and replace HTTP exceptions with dependency-free equivalents.",
+    "CSV store is separate, branch-partitioned in-memory demo storage; original typed CSV schema and coercion retained.",
+    "Actor stamping and authenticated session are supplied by adapter rather than source users.csv.",
+    "Input validation, rollback and replay protection are implemented by adapter.",
+    "Billing.create validates aggregate stock consumption against its single billing preview; original per-line checks could oversell repeated items."
+  ],
+  "files": [
+    {
+      "path": "src/common/csv.ts",
+      "sha256": "c52ff47b49fb93620ce343b9b97ce886b21d05f5712b70a7f3a85639bdd1c0fe"
+    },
+    {
+      "path": "src/common/query.ts",
+      "sha256": "4311b8b7ff0e86cf52d75fd5fc854c9239c70570aa0e7cf24a9af03ff4d0b2eb"
+    },
+    {
+      "path": "src/common/errors.ts",
+      "sha256": "3911ab35762f3de78e983d2524ac1aa52eb5798e948999769415e954314cd65f"
+    },
+    {
+      "path": "src/masters/entities.ts",
+      "sha256": "a83993ea824f4a4e62c9d959867624dce2c3d74eef4c67335e96ab0e1c505cf6"
+    },
+    {
+      "path": "src/masters/masters.service.ts",
+      "sha256": "8d5029fd16c6094966b0cdb770a05b604fcde90e04f6888f4659e9e2df9a827e"
+    },
+    {
+      "path": "src/patients/patients.service.ts",
+      "sha256": "043edd208a9cb7cf06a6a9508e8a630613f29c34dc6c5d11a4c73729b751a5fa"
+    },
+    {
+      "path": "src/scheduling/scheduling.service.ts",
+      "sha256": "12bdab0b5c943dec459544205c2e0ef14dc60a37122a30457e486e1f7b2008c6"
+    },
+    {
+      "path": "src/encounters/eligibility.service.ts",
+      "sha256": "ccc3629dc48adb8f588475e24cc3bb09b79a448230e29bf6fce28f833c161cea"
+    },
+    {
+      "path": "src/encounters/encounters.service.ts",
+      "sha256": "8ba4ebe5d0e25b49c8f7c580da1f52c0dde149e4c662200e3b50d16451902619"
+    },
+    {
+      "path": "src/orders/orders.service.ts",
+      "sha256": "162673d7d756aaced3530fe41d03a04ba4840333b6358ef99552df819df22829"
+    },
+    {
+      "path": "src/orders/approvals.service.ts",
+      "sha256": "3e3c660ddd2adcc6bae7b94f9398fe2981e6afd75cde5c112481d09dae1e3e1b"
+    },
+    {
+      "path": "src/pricing/pricing.service.ts",
+      "sha256": "7795160543e92c7b978c710bf0ac7aa7bf54512dd2ef27497e51c0a4b1d231e2"
+    },
+    {
+      "path": "src/billing/billing.service.ts",
+      "sha256": "bbd19c675615fc0ef7c496cf6043b263d993a149f6bbe382f813016a70737501"
+    },
+    {
+      "path": "src/system/system.service.ts",
+      "sha256": "cdd1241306ca5d147a1c71d6ab7249d6103fa07c821efc691761942b35804bde"
+    },
+    {
+      "path": "data/appointments.csv",
+      "sha256": "866cd9162614eebfe9f9d922b9a937369e842a878f3895b4bf2e48b1528f1c43"
+    },
+    {
+      "path": "data/approvals.csv",
+      "sha256": "fd86c4179f16d7269fe58f5b7879820058ca8513afc1f3feae3f9505ecf9f36e"
+    },
+    {
+      "path": "data/departments.csv",
+      "sha256": "37f0ee3393ad8d7372da1244c7107e2fdee39ae664af7c3123af4d030940b637"
+    },
+    {
+      "path": "data/eligibility_checks.csv",
+      "sha256": "455abe444ab523b7196b6bf4d84c34c1f8d8e7f4ef5bd02cfc94a1bbf5146520"
+    },
+    {
+      "path": "data/encounters.csv",
+      "sha256": "21bb51d96eabf799d07b9ab8023a3234e3ec950829724d9a61cf60414ab4f537"
+    },
+    {
+      "path": "data/facilities.csv",
+      "sha256": "e934c5ebba6a9da3e3e0ef03aff26eab372c533eab87b46961e4496d2f77e328"
+    },
+    {
+      "path": "data/insurance_plans.csv",
+      "sha256": "d2914f681231d242f39467cfcc74c4fa4a8dc59f564446b1c86a5530158de15f"
+    },
+    {
+      "path": "data/invoices.csv",
+      "sha256": "c985415c7b998c0f3231b9a74b2a095a68b86f1b994c52b6b7f32f4abb3533c3"
+    },
+    {
+      "path": "data/items.csv",
+      "sha256": "7f212812824a74f0ece33d6fdffd4e5bca3a03a45e3777e24d35c77e41223643"
+    },
+    {
+      "path": "data/networks.csv",
+      "sha256": "8ff76cd20aeffa1d865c69d76423226aae8bb47cf611e6933801772a8cec0b9a"
+    },
+    {
+      "path": "data/orders.csv",
+      "sha256": "f8b690cad0cca84e01aa7a4eda2ae804f67a72b10c90ad555a020e7301b0336a"
+    },
+    {
+      "path": "data/patient_policies.csv",
+      "sha256": "2b589857bbe58edc454b722ee836d192b466c08e980bc64c9f985d3df49a71d8"
+    },
+    {
+      "path": "data/patients.csv",
+      "sha256": "939b36f39cf9c1f5e88fd452b3d94c41ede68ff480c3cfb2a68796ad7b0ab5f4"
+    },
+    {
+      "path": "data/payers.csv",
+      "sha256": "d1bc919cdde115dd413a9a96c8522995bbfd559355d33b14a6b27fadca81a50c"
+    },
+    {
+      "path": "data/price_list_items.csv",
+      "sha256": "d65b8e52481e53b26d08b03b81b9de553fe929ce4594a5e663e5db7a8d907418"
+    },
+    {
+      "path": "data/price_lists.csv",
+      "sha256": "583af4bb5fc013e521deee7e8321d6ab4a9d23136e255026b5f5e38c21177f52"
+    },
+    {
+      "path": "data/providers.csv",
+      "sha256": "118e991f827426bbbba93c58c0d80f9212474fb318752a27ed061c97ada53bb9"
+    },
+    {
+      "path": "data/resource_blocks.csv",
+      "sha256": "d98baf93820036c4d6e1943661320e224be7cb6b359f7a4a4ceae5e3aecb876b"
+    },
+    {
+      "path": "data/resource_schedules.csv",
+      "sha256": "f93cd6107d4a97ff3b76b531f905e993836268c0002403826823a8cdbd7688cd"
+    },
+    {
+      "path": "data/resources.csv",
+      "sha256": "0c60a22ccf7b082c3a68b1737b07087ff5b40a5bd7fb25ee1b7a13baac4bb114"
+    },
+    {
+      "path": "data/services.csv",
+      "sha256": "5c13b4f347d4baf42b4f97b714c3eb4685770212d13e89d9969a4151da8d9351"
+    },
+    {
+      "path": "data/specialties.csv",
+      "sha256": "5ea909157d4dc5ad5930afada1c111c18355772d70ef414b322a3a955cabf309"
+    },
+    {
+      "path": "data/tpas.csv",
+      "sha256": "4e16dc9b2dee3d5bc6b30e7b999d3ed5c58444dfa665221e7933343b27dbbf56"
+    },
+    {
+      "path": "data/users.csv",
+      "sha256": "c532922ad018be5f193699ea00ddcf0563fa3c77643f5578585fa2dd65aa9e67"
+    }
+  ]
+}

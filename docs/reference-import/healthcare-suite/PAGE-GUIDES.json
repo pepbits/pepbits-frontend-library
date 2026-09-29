@@ -1,0 +1,1060 @@
+[
+  {
+    "title": "Dashboard",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "The dashboard summarizes today’s appointments, encounters, pending approvals, billing queues and amounts, upcoming appointments, and low stock."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Review the summary cards and lists to identify work waiting in appointments, approvals, billing or stock. 2. Open the related destination from Healthcare Suite navigation to inspect or act on the underlying records."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Dashboard values are API results and may change after a source-backed operation. If the API is unavailable, restore connectivity and reload; this guide does not promise a cached snapshot."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "The source reads GET /dashboard through the API. The demo API holds process-lifetime in-memory partitions initialized from the original CSV fixtures."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-dashboard"
+  },
+  {
+    "title": "Appointments",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "The appointment board places bookings into time slots for providers, rooms or equipment. A list view is also available."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Choose a date and resource view. 2. Select a free slot and choose a registered patient or book a guest without an MRN. 3. Confirm, reschedule by selecting another slot, mark no-show, or cancel with a reason. 4. At check-in, use Register & check in for a guest to issue an MRN."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Only free slots can be booked; the board reflects resource schedule, slot length, lunch breaks and blocks. Reschedule requires a valid new slot. Cancellation asks for a reason. API validation errors are shown by the form; retry after correcting the indicated fields."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "The source uses GET /scheduling/slots and appointment create, detail, reschedule, status and register API operations. Appointment records and generated demo bookings are owned by the backend."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-appointments"
+  },
+  {
+    "title": "Patients",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Patients provides searchable patient records and entry points for full or quick registration and patient preview."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by MRN, name, mobile, national ID or email. 2. Open a result to review its patient record or side preview. 3. Use new patient for full registration, or quick registration from a patient search box when that flow is offered. 4. Link insurance in payer, plan, TPA and network order; plan options depend on payer, and network options depend on plan."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Required values and relationship selections are validated by the API. Insurance selections are dependent: choose payer before plan and plan before network. Correct field errors and retry; do not assume an eligibility result until the API returns one."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses GET/POST /patients, GET/PUT /patients/:id and lookup endpoints. Patient records and policy links are API-owned. The reference names and records are fictional demo data."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-patients"
+  },
+  {
+    "title": "Encounters",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Encounters lists visits and provides entry points to create an encounter or open an encounter workspace."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Open an existing encounter or choose new. 2. For a new encounter, find/register a patient or select one of today’s appointments. 3. Choose department, specialty and treating provider. 4. Select cash or insurance and run the eligibility check. 5. Continue to ordering from the encounter when needed."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "An insured encounter requires an Eligible or verify-manually eligibility result from today. The consultation charge is added by the API, and a linked appointment is marked arrived. If eligibility is ineligible, review the API result and choose the available self-pay path when appropriate."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses GET/POST /encounters, GET /encounters/:id, PATCH status, POST /eligibility/check, patient, appointment and lookup APIs. Encounter and eligibility state belongs to the API."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-encounters"
+  },
+  {
+    "title": "Approvals & eRx",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Approvals & eRx shows simulated prior-approval and electronic-prescription requests and their returned statuses."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Open the queue and review request state and timeline. 2. Open a request to inspect its encounter, diagnosis/justification and returned authorization status. 3. Return to the encounter ordering workflow to create or correct a request when the API reports a missing or rejected request."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Approval and eRx decisions are simulated by the demo API, including configured response delay and demo rules. A pending request is not approved. Follow the returned status and authorization number; do not treat this page as a real payer or prescribing channel."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses GET /approvals and encounter order/approval operations. Request state and simulation are backend-owned."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-approvals"
+  },
+  {
+    "title": "Hospital billing",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Hospital billing presents encounter lines waiting for hospital invoicing, including held lines and patient-share adjustments."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Review the pending queue and select an encounter. 2. Preview the invoice lines, holds and pricing adjustments. 3. Resolve supported holds in the encounter order/approval flow, then return to billing. 4. Create an invoice and record one or more supported payment methods."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Lines may be held for pending approval or other returned API reasons. Network deductible is added once per visit and the co-pay cap applies across hospital and pharmacy billing. Confirm the preview before invoicing; payment errors leave the operation subject to API response and must be retried only after reviewing current invoice state."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses GET /billing/pending, GET /billing/preview/:encounterId and invoice create/payment APIs. Pricing and billing state are produced by the source-backed demo API."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-billing-hospital"
+  },
+  {
+    "title": "Pharmacy billing",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Pharmacy billing presents pharmacy encounter lines waiting for invoicing, including stock and eRx holds."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Review the pharmacy queue and select an encounter. 2. Inspect the preview, line holds and patient share. 3. Resolve a missing eRx or stock issue through the supported API workflow, then refresh the preview. 4. Create the invoice and record a supported payment method."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Lines can be held for an eRx that has not been sent or for out-of-stock items. An approved eRx is a demo API state and may satisfy the source approval rule for that drug. Verify current API status before invoicing; the co-pay cap is shared across hospital and pharmacy billing."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses billing pending/preview and invoice create/payment APIs. Stock, eRx, pricing and billing state are managed by the backend demo contract."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-billing-pharmacy"
+  },
+  {
+    "title": "Invoices",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Invoices searches and filters created invoices, with preview, print, collection, cancellation and CSV export actions."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search or filter the invoice list. 2. Open an invoice to review and print it. 3. Collect an outstanding balance using a supported payment method. 4. Cancel only after reviewing the confirmation; cancellation returns lines to the billing queue and restores stock according to the API."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Payment requires a valid amount/method and card approval code where applicable. A cancellation changes downstream billing and stock state; verify invoice status before retrying a failed request. CSV export contains the current filtered results."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses GET /billing/invoices, GET /billing/invoices/:id, POST payments and POST cancel. The backend owns invoice and payment state."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-billing-invoices"
+  },
+  {
+    "title": "Payers",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Payers is the worklist and editor for payer organizations used by plan, contract and eligibility demo workflows."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search and filter by code, name, payer type or regulator ID. 2. Open a payer to inspect or edit it, or create a payer. 3. Activate or deactivate a record when its status should change."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name and payer type are required; code is unique. Correct API field errors and retry. Deactivation preserves the record and may affect availability in dependent selectors."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Entity metadata binds this page to the payers table and /masters/payers endpoints; lookups are API-backed. Fields include code, name, payerType, regulatorId and other source form fields."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-payers"
+  },
+  {
+    "title": "TPAs",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "TPAs is the worklist and editor for third-party administrators linked from insurance plans."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name or regulator ID. 2. Open a TPA to inspect/update it, or create a new one. 3. Change active status from the worklist when needed."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code and name are required and code is unique. Review field errors from the API before retrying. Plans refer to a TPA, so check dependent use before deactivation."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Entity metadata binds the page to the tpas table and /masters/tpas endpoints; lookup results feed plan forms. Source-required fields are code and name."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-tpas"
+  },
+  {
+    "title": "Plans",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Plans stores payer insurance plans and their TPA relationship for patient policies."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name or plan category. 2. Create a plan or open an existing plan. 3. Select the payer and TPA from API lookups, then save. 4. Use active status controls to manage whether a plan remains selectable."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name, payer and TPA are required; code is unique. Select valid referenced records from lookup results. API field errors identify corrections; dependent network and patient-policy records use the plan reference."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/insurance-plans and lookups for payers and TPAs; data maps to insurance_plans. Required source fields: code, name, payerId and tpaId."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-insurance-plans"
+  },
+  {
+    "title": "Networks",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Networks defines plan-linked coverage and pricing terms used for patient policies and billing quotes."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code or name. 2. Open or create a network. 3. Select its plan and price list from API lookups and enter the network terms. 4. Save and review the resulting record."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name, plan and price list are required; code is unique. Co-pay must be between 0 and 100. Network terms affect quoted patient share, deductible, cap and approval limit; confirm values with the API response before using them in a demo scenario."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/networks, plan and price-list lookups and pricing quote operations. Source metadata validates required relationships and copayPct."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-networks"
+  },
+  {
+    "title": "Contracts",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Contracts is the worklist/editor for price lists that can be linked to payers and networks."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name or contract type. 2. Create or open a price list. 3. Enter contract type and validity dates, and select a payer where applicable. 4. Save, then open Contract pricing to edit line-level prices and coverage."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name, contract type, valid-from and valid-to are required; code is unique and end date must not precede start date. Network references point to a price list, so select the intended list before configuring network terms."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/price-lists and payer lookups; rows are stored in price_lists. Contract line editing is a separate /contracts/:priceListId/lines API workflow."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-price-lists"
+  },
+  {
+    "title": "Contract pricing",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Contract pricing is an editable grid of item and service prices, coverage flags and prior-approval requirements for a selected price list."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Select/open a contract price list. 2. Review item and service lines. 3. Edit a line price and its covered/prior-approval values. 4. Save the line changes and review the returned values."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "A blank contract price uses the base price less the contract default discount. Coverage and approval settings alter later quotes and billing holds. Review saved values before relying on a quote; if save fails, preserve the API error and refresh the current contract lines."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses GET/PUT /contracts/:priceListId/lines with catalog data from /masters/items and /masters/services. The API owns contract pricing state."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-contracts"
+  },
+  {
+    "title": "Items (stock)",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Items is the stock-item catalog worklist and editor for medication and other inventory used in ordering and pharmacy billing."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name, generic name or category. 2. Open an item or create one. 3. Enter its required catalog values, including unit of measure and base price; configure stock and eRx properties as applicable. 4. Save and manage active status from the worklist."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name, category, unit of measure and base price are required; code is unique and base price cannot be negative. eRx-required products can create an approval hold in ordering. Correct API field errors before retrying."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/items and catalog search APIs; maps to items. Source metadata validates required fields, uniqueness and nonnegative basePrice."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-items"
+  },
+  {
+    "title": "Services",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Services is the non-stock catalog worklist and editor for billable clinical or operational services."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name or category. 2. Open a service or create one. 3. Enter required values and select a department where relevant. 4. Save and update active status from the worklist."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name, category and base price are required; code is unique. Base price cannot be negative. Contract pricing can override coverage, price and prior-approval behavior for a service."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/services plus department lookups and catalog search. Source metadata validates required values and stores the service in services."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-services"
+  },
+  {
+    "title": "Facilities",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Facilities is the organization worklist and editor for clinic or pharmacy locations."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name, city or licence number. 2. Open a facility or create one. 3. Enter code, name and facility type, then save. 4. Change active status from the worklist when appropriate."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name and type are required; code is unique. Facility selection is server-validated context in the host API. Check dependent departments before deactivating a facility."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/facilities and facility lookups; maps to facilities. Required source fields are code, name and type."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-facilities"
+  },
+  {
+    "title": "Departments",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Departments links an organizational unit to a facility and provides department choices to specialty, provider, service and resource forms."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name or type. 2. Create or open a department. 3. Select its facility, then enter code, name and type. 4. Save and review its linked facility."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name, facility and type are required; code is unique. Choose the facility from API lookup results. Correct field errors before retrying; dependent records use the department reference."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/departments and facility lookups; maps facilityId to facilityName. Required source fields: code, name, facilityId and type."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-departments"
+  },
+  {
+    "title": "Specialties",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Specialties manages the specialty list linked to departments and used when assigning providers and encounters."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code or name. 2. Create or open a specialty. 3. Select its department and enter code and name. 4. Save and use the specialty in dependent provider/encounter workflows."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name and department are required; code is unique. Choose a department from API lookups. A specialty must refer to an existing department."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/specialties and department lookups; source metadata returns departmentName. Required source fields: code, name and departmentId."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-specialties"
+  },
+  {
+    "title": "Providers & staff",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Providers lists clinical and operational staff records that can be linked to departments, specialties and bookable resources."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name, provider type, licence, phone or email. 2. Create or open a provider. 3. Enter code, name, provider type, gender and department; choose a specialty when applicable. 4. Save and update active status from the worklist."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name, provider type, gender and department are required; code and licence number are unique. Licensed clinician types require a licence number. A supplied email must be valid. Correct API field errors before retrying."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/providers with department and specialty lookups; provider references can populate resource forms. Source metadata enforces clinician licence and email validation."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-providers"
+  },
+  {
+    "title": "Resources",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Resources defines bookable providers, rooms, equipment and other scheduling resources linked to a department."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by code, name or resource type. 2. Create or open a resource. 3. Select its department and, for a provider resource, the provider it books for. 4. Save, then configure availability and blocks using the related scheduling pages."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Code, name, resource type and department are required; code is unique. Provider-type resources require a provider selection. A resource without valid schedules or outside a schedule/block may not offer an appointment slot."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/resources with provider and department lookups; scheduling slots consume resource, schedule and block data through the API."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-resources"
+  },
+  {
+    "title": "Availability",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Availability configures a resource’s repeating schedule window, slot length and valid date range."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by resource or days. 2. Create or open a schedule. 3. Select a resource, days, start/end times, slot duration and validity dates. 4. Save and review the schedule as used by the appointment board."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Resource, days, times, slot minutes and valid dates are required. End time must follow start time, end date must be on or after start date, and slots must be at least five minutes. Lunch breaks and blocks also affect available slots."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/resource-schedules with resource lookups; source validation checks time ordering, date ordering and minimum slot duration. Scheduling slots are API-generated."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-resource-schedules"
+  },
+  {
+    "title": "Blocks & leave",
+    "module": "reference-healthcare-suite",
+    "revision": 1,
+    "status": "authored",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "paragraphs": [
+          "Blocks & leave records unavailable intervals for a resource so appointment slots are not offered during the blocked period."
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How to use this page",
+        "paragraphs": [
+          "1. Search by resource, reason or date. 2. Create or open a block. 3. Select a resource, date, start and end times, and reason. 4. Save and confirm that the blocked interval is excluded from scheduling slots."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation and recovery",
+        "paragraphs": [
+          "Resource, date, times and reason are required; end time must follow start time. Review the date and resource before saving because blocks affect booking availability."
+        ]
+      },
+      {
+        "id": "access",
+        "title": "Access and preferences",
+        "paragraphs": [
+          "The host authenticates the actor and module access. The Healthcare Suite demo adapter checks tenant, product, branch, module, selected active facility and role on every request. Demo read roles are enterprise-admin, admin, operations-analyst, operations, finance-manager, finance and read-only; write roles are enterprise-admin, admin, operations-analyst and operations. These are demo policy roles, not a production permission model."
+        ]
+      },
+      {
+        "id": "integration",
+        "title": "Integration",
+        "paragraphs": [
+          "Uses /masters/resource-blocks and resource lookups; source metadata validates time order and the scheduler consumes the stored block data."
+        ]
+      }
+    ],
+    "fields": [],
+    "tour": [],
+    "pageId": "reference-healthcare-suite-masters-resource-blocks"
+  }
+]

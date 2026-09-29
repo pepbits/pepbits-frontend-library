@@ -1,3 +1,4 @@
+import {HEALTHCARE_SUITE_REFERENCE} from "./healthcare-suite-reference.ts";
 import {SCHOOL_ROLE_VIEWS, schoolRoleView} from "./school-role-views.ts";
 import type {ReferenceModuleId} from "./reference-module-types.ts";
 /** Source-preserving modules, independent of their reusable render packages. */
@@ -945,6 +946,7 @@ export const REFERENCE_MODULES = [
       }
     ]
   }
+, HEALTHCARE_SUITE_REFERENCE
 ] as const;
 export const REFERENCE_PAGE_BY_ID:Readonly<Record<string,{id:string;path:string;title:string;moduleId:ReferenceModuleId;variant:string}>>=Object.fromEntries(REFERENCE_MODULES.flatMap(module=>module.pages.map(page=>[page.id,{...page,moduleId:module.id,variant:module.variant}])));
 /** Extra portals share the original School page descriptors and renderer. */

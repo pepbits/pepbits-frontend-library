@@ -18,7 +18,7 @@ const ready=async page=>{
 };
 try{
  const web=await login(BASE);const pages=REFERENCE_MODULES.flatMap(module=>module.pages.map(page=>({...page,moduleId:module.id,variant:module.variant})));
- assert.equal(pages.length,152);assert.equal(new Set(pages.map(page=>page.id)).size,152);
+ assert.equal(pages.length,175);assert.equal(new Set(pages.map(page=>page.id)).size,175);
  for(const page of pages){
   const failures=[];const watch=response=>{if(response.url().includes('/reference-modules/')&&response.status()>=400)failures.push({url:response.url(),status:response.status()});};web.on('response',watch);
   await web.goto(`${BASE}/${page.moduleId}/${page.id}`,{waitUntil:'networkidle'});const root=await ready(web);const text=await root.innerText();
@@ -31,9 +31,9 @@ try{
  const dynamic=[['reference-reports','/reports/trial-balance'],['reference-reports','/builder/new'],['reference-reports','/dashboards/finance-daily'],['reference-erp2','/masters/customers/new'],['reference-school',`/quizzes/${quizId}`],['reference-school',`/live/${liveId}`]];
  for(const[moduleId,path]of dynamic){const target=referenceNavigationTarget(moduleId,path);const url=`${BASE}/${moduleId}/${target.pageId}/${encodeURIComponent(target.recordId)}`;await web.goto(url,{waitUntil:'networkidle'});const root=await ready(web);assert.ok((await root.innerText()).length>35);results.push({moduleId,path,status:'passed'});await root.screenshot({path:`${output}/${moduleId}-${path.replace(/[^a-zA-Z0-9]+/g,'-')}.png`});}
  const desktop=await login(DESKTOP);await desktop.locator('header [data-tour=module] button').click();const menu=desktop.getByRole('listbox');await menu.waitFor();
- for(const label of ['Reports','ERP 1','ERP 2','School'])assert.ok(await menu.getByText(label,{exact:true}).count(),`missing module choice ${label}`);await desktop.keyboard.press('Escape');
+ for(const label of ['Reports','ERP 1','ERP 2','School Administrator','Healthcare Suite'])assert.ok(await menu.getByText(label,{exact:true}).count(),`missing module choice ${label}`);await desktop.keyboard.press('Escape');
  for(const page of [pages.find(page=>page.id==='reference-reports-overview'),pages.find(page=>page.id==='reference-erp1-masters-customers'),pages.find(page=>page.id==='reference-erp2-masters-customers'),pages.find(page=>page.id==='reference-school-students')]){
   await desktop.keyboard.press('Control+k');const dialog=desktop.getByRole('dialog');await dialog.locator('input').first().fill(page.id);await dialog.locator('button.group').first().click();const root=await ready(desktop);await root.screenshot({path:`${output}/${page.id}.png`});results.push({desktopPageId:page.id,status:'passed'});
  }
- assert.deepEqual(errors,[]);console.log(`PASS ${pages.length} static reference destinations, dynamic host URLs, four header module choices and desktop rendering; no page errors.`);
+ assert.deepEqual(errors,[]);console.log(`PASS ${pages.length} static reference destinations, dynamic host URLs, five reference header module choices and desktop rendering; no page errors.`);
 }finally{writeFileSync(`${output}/results.json`,JSON.stringify({results,errors},null,2)+'\n');await browser.close();}
