@@ -19,7 +19,8 @@ const browser = await chromium.launch({ chromiumSandbox: false });
 // credential-status fixture and intercept dispatch so it needs no secret or
 // network access to an AI provider. Backend credential gates have API/unit tests.
 const context = await browser.newContext();
-await context.route(url => url.pathname === "/ai/config", async route => {
+// Suffix match: a deployed shell may reach the API under a same-origin prefix such as /api.
+await context.route(url => url.pathname.endsWith("/ai/config"), async route => {
   const response = await route.fetch();
   const config = await response.json();
   await route.fulfill({response, body:JSON.stringify({...config, credential:{...config.credential, configured:true, hint:"test-fixture"}})});
