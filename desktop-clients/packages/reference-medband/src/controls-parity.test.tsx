@@ -36,7 +36,8 @@ describe.skipIf(!existsSync(REFERENCE))("source class strings are preserved", ()
     "pointer-events-none fixed right-4 bottom-4 z-[60] flex w-80 flex-col gap-2": "toast placement follows the host toast position preference",
     "rounded-2xl bg-paper shadow-lift": "Panel is built on the shared Card: Card adds border + border-0 restores the source",
   };
-  const files = walk(REFERENCE).filter((f) => /\.tsx$/.test(f) && !f.includes("/api/")).map((f) => [f.slice(REFERENCE.length + 1), f] as const);
+  // Collection still runs inside a skipped describe, so only walk a tree that exists.
+  const files = (existsSync(REFERENCE) ? walk(REFERENCE) : []).filter((f) => /\.tsx$/.test(f) && !f.includes("/api/")).map((f) => [f.slice(REFERENCE.length + 1), f] as const);
 
   it.each(files.filter(([name]) => !ADAPTED[name]))("%s", (_name, file) => {
     const missing = classStrings(readFileSync(file, "utf8")).filter((s) => !ADAPTED[s] && !ours.includes(s));
