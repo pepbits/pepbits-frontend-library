@@ -14,10 +14,11 @@ export function ReferenceHostProvider({host,children}:{host:ReferenceHost;childr
  const p=host.preferences;
  return <HostContext.Provider value={host}><PresentationProvider value={p}><div className="pepbits-reference-module library-preferences" lang={p.language} dir={LANGUAGE_OPTIONS.find(language=>language.value===p.language)?.dir??"ltr"} data-theme={p.theme} data-density={p.density} data-reduced-motion={p.reducedMotion} style={{"--reference-page-size":p.pageSize,"--fs-shell":p.fontSizeBase/13,"--fs-form":p.fontSizeForm/13,"--fs-result":p.fontSizeResult/13,"--radius":`${p.cornerRadius}px`} as React.CSSProperties}>{children}</div></PresentationProvider></HostContext.Provider>;
 }
-export function ReferenceLink({href,onClick,...props}:React.ComponentProps<"a">&{href:string}) {const host=useReferenceHost();return <a {...props} href={host.hrefFor?.(href)??host.href?.(href)??href} onClick={event=>{onClick?.(event);if(!event.defaultPrevented && event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.shiftKey && href.startsWith("/")){event.preventDefault();host.navigate(href);}}}/>;}
+export function ReferenceLink({href,onClick,...props}:React.ComponentProps<"a">&{href:string}) {const host=useReferenceHost();return <a {...props} href={host.hrefFor?.(href)??host.href?.(href)??href} onClick={event=>{onClick?.(event);if(!event.defaultPrevented && event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.shiftKey && (!props.target || props.target === "_self") && !props.download && href.startsWith("/")){event.preventDefault();host.navigate(href);}}}/>;}
 export function useReferenceRouter(){const host=useReferenceHost();return useMemo(()=>({push:host.navigate,replace:host.navigate,refresh:()=>host.navigate(host.path??"/"),back:()=>host.navigate("/")}),[host]);}
 export function useReferencePathname(){return (useReferenceHost().path??"/").split("?")[0];}
-export function useReferenceSearchParams(){return new URLSearchParams((useReferenceHost().path??"").split("?")[1]??"");}
+/** Match the source router lifecycle: local state changes do not change the query. */
+export function useReferenceSearchParams(){const query=(useReferenceHost().path??"").split("?")[1]??"";return useMemo(()=>new URLSearchParams(query),[query]);}
 export function useReferenceFormat(){const host=useReferenceHost();const {t}=useLocalization();const formatter=useMemo(()=>createFormatters(host.preferences),[host.preferences]);return {...formatter,formatDate:formatter.date,formatNumber:formatter.number,formatCurrency:formatter.money,t};}
 export function referenceScopeKey(scope:ReferenceScope){return JSON.stringify([scope.tenantId,scope.applicationId,scope.branchId,scope.userId,scope.roles,scope.moduleId]);}
 

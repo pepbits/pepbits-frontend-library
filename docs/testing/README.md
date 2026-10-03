@@ -52,3 +52,43 @@ The [Healthcare Suite delivery](../releases/unreleased/healthcare-suite-2026-09-
 ## Healthcare Suite RCM acceptance — 29 September 2026
 
 The [RCM delivery record](../releases/unreleased/healthcare-suite-rcm-2026-09-29.md) records 1,943 frontend tests, 274 JavaScript and 33 clinical TypeScript API tests, both builds and repository gates. The registered `desktop-clients/e2e/healthcare-suite-rcm.mjs` suite uses actual authenticated UI commands and dedicated provider HTTP: 53 checks, 38 UI commands and 50 screenshots passed without provider skips. Original Suite regression passed 49 checks, including all 32 static routes. Public HTTPS acceptance against deployed source `4fec17b5b482732d3e418879c8a3450108a6515f`, release `20260929122358894-3da821b0`, passed RCM 53/53 checks (38 UI commands, 50 screenshots), original Suite 49/49 checks (6 UI commands) and School 28/28 checks, with zero page errors; RCM and original Suite also reported zero console errors. Navigation abort requests are retained in the RCM/original logs (12/6); they are not ignored or reclassified as successful requests. Six authenticated HQ/Dubai workspace/patient/invoice JSON hashes remained unchanged across an API restart. The focused 39 backend tests overlap the full API result and are not added. These checks use synthetic Healthcare Suite data and dedicated HTTP simulators; live payer/bank acceptance, licensed DRG, native executable acceptance and native/clinical review remain separate.
+
+## Diagnostic reference acceptance — 1 October 2026
+
+The [diagnostic delivery record](../releases/unreleased/diagnostic-reference-2026-10-01.md) records source identity, dependencies, eight actual diagnostic policy/service checks, 312 API regression checks, frontend tests, both builds and all automated release gates. `desktop-clients/e2e/diagnostic-reference.mjs` passed all 71 checks on the public HTTPS test site, including all 55 menu destinations, explicit sidebar toggles, host actor, API patient writes and branch isolation. Existing Healthcare Suite and School public regression passed 49 and 28 checks respectively. The School suite now waits for the actual Fees URL before recording it and reloading; the failed first attempt and test-only correction remain in the receipt.
+
+`desktop-clients/e2e/diagnostic-localization.mjs` passed 174 local results: nine module/language dashboards plus 165 complete guides. It deliberately rejects a public target because it exercises mutable language preferences. Arabic direction and stable RIS API filter values were checked. These checks do not establish native-speaker/domain approval, every viewer/print/clinical workflow, native executable acceptance or real analyzer/DICOM delivery. Local RCM provider flows explicitly remain not run where their adapters are unconfigured.
+
+
+## Shared sidebar correction acceptance — 1 October 2026
+
+The [sidebar correction record](../releases/unreleased/sidebar-navigation-2026-10-01.md) supersedes the initial diagnostic route-driver scope with 80 public checks: all 55 destinations are reached through actual sidebar links, and physical hit tests prove the expanded rail leaves module selection clickable. It also checks hover, outside dismissal and Escape. Healthcare Suite and School passed 49 and 28 public regression checks. Diagnostics and Healthcare reported no page/console errors; School reported no page errors and does not capture console errors. Eight diagnostic aborted prefetch requests are retained separately; Healthcare recorded no failed requests.
+
+Local multilingual acceptance passed 183 results, including left/right rail and header hit tests in Arabic, Hindi and Malayalam. The complete 1,962-test run preceded final pin/toggle placement; the final focused 52 tests, both builds and automated gates cover the final implementation. The [validation receipt](../releases/unreleased/evidence/sidebar-navigation-2026-10-01/validation.json) records these separate scopes and source digest. Prior failed RTL and test-driver attempts remain evidence. Native/clinical approval and production provider acceptance are not established by these synthetic tests.
+
+
+## Teleconsult import acceptance — 1 October 2026
+
+The [Teleconsult record](../releases/unreleased/teleconsult-reference-2026-10-01.md) separates full frontend/API unit runs, two browser builds, local module and role acceptance, four-language layout/print checks and existing diagnostic/Healthcare/School regressions. Public deployment is recorded only after activation and HTTPS acceptance. The simulated clinical/media boundary and pending native/domain review remain explicit.
+
+## AllyVora Quality acceptance — 1 October 2026
+
+The [Quality delivery record](../releases/unreleased/quality-reference-2026-10-01.md) records 2,199 frontend tests, 355 API tests, all-package typechecking, both production browser builds and automated gates. `desktop-clients/e2e/quality-reference.mjs` passed 24 checks locally and publicly: original sidebar navigation, record routes/designer, an actual shared-modal command, persistence, audit and role/URL denials. `desktop-clients/e2e/quality-localization.mjs` passed 13 local language/help/print checks; it is intentionally restricted to local targets because it changes language preferences. Public regression passed Teleconsult 18, diagnostics 80, Healthcare Suite 49 and School 28 checks. Public Teleconsult did not repeat signing its retained signed fixture; local regression performed signing and passed 19 checks. Counts are separate scopes and are not summed. Simulation, pending native/domain review and untested native executables remain explicit.
+
+
+Pharmacy-1 checks: `npm run test:pharmacy-api`, the package tests, `e2e/pharmacy-reference.mjs` and `e2e/pharmacy-localization.mjs`; see [release evidence](../releases/unreleased/pharmacy-reference-2026-10-01.md).
+
+
+Tenant Admin/MedBand tests: `npm run test:access-api`, the two reference-package tests and the registered access browser suites. See [delivery status](../releases/unreleased/access-reference-2026-10-01.md).
+
+## RCM Workspace and MedBand fidelity acceptance — 1 October 2026
+
+[The current delivery record](../releases/unreleased/rcm-reference-2026-10-01.md) retains 2,537 frontend tests, 329 JavaScript API tests, 33 clinical TypeScript API tests, both browser builds and all gates against the frozen 973-file source. `e2e/rcm-reference.mjs` passed 49 public checks and `e2e/access-reference.mjs` passed 52, including every original destination, source controls/search and denied-role behavior. Six existing-module public regression suites also passed. Public guide reads passed 328; local four-language checks passed 164 RCM and 176 Access results. The additional legacy provider-flow driver is explicitly incomplete because its invoice had no available patient receivable; its correct HTTP 409 guard and prior successful steps are retained separately. No live-provider, native executable or native/domain approval is inferred.
+
+SurgiSuite checks: `test:surgisuite-api`, `reference-surgisuite/src/module.test.tsx` and the registered `e2e/surgisuite-reference.mjs`. See [the exact delivery boundary](../releases/unreleased/surgisuite-reference-2026-10-02.md); socket/network restrictions block browser/deployment acceptance in this session.
+
+Shared reference-font imports are covered by `npm run test:reference-fonts` (actual host Tailwind/PostCSS imports, Next CSS loader, emitted asset identity for both host stylesheets). See [the Webpack font correction](../releases/unreleased/shared-reference-font-resolution-2026-10-02.md); this is separate from complete Next build and browser acceptance.
+
+Canonical English catalog chunk separation is tested with `npm run test:catalog-chunks`; see [the dated Webpack correction](../releases/unreleased/shared-catalog-chunks-2026-10-02.md).
+
+MedSlot checks: `test:medslot-api`, `reference-medslot/src/module.test.tsx` and `e2e/medslot-reference.mjs`; see [the delivery boundary](../releases/unreleased/medslot-reference-2026-10-02.md).

@@ -1,0 +1,57 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {randomUUID} from 'node:crypto';
+import {mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
+import {createReferencePharmacyStore,pharmacyScope,pharmacyRequestAllowed} from './reference-pharmacy-store.mjs';
+const admin={id:'synthetic-pharmacy-admin',name:'Synthetic Pharmacy Administrator',role:'enterprise-admin',tenantId:'synthetic-pharmacy',initials:'SP'};
+const scope={applicationId:'nexora',branchId:'hq'};
+test('Pharmacy rejects forged roles, unsafe scope and clinical/financial authority bypass',()=>{
+ assert.throws(()=>pharmacyScope(admin,{...scope,branchId:'../hq'}));assert.notEqual(pharmacyScope(admin,scope),pharmacyScope({...admin,tenantId:'other'},scope));
+ assert.equal(pharmacyRequestAllowed({...admin,role:'admin'},{method:'GET',path:'/meta'}),403);
+ assert.equal(pharmacyRequestAllowed(admin,{method:'GET',path:'/%2e%2e/seed'}),400);
+ assert.equal(pharmacyRequestAllowed(admin,{method:'POST',path:'/auth/login'}),403);
+ for(const endpoint of ['/prescriptions/x/verify','/dispensings/x/check','/claims/submit','/payers/x'])assert.equal(pharmacyRequestAllowed({...admin,role:'pharmacy-technician'},{method:endpoint.startsWith('/payers')?'PATCH':'POST',path:endpoint}),403);
+ assert.equal(pharmacyRequestAllowed({...admin,role:'pharmacy-billing'},{method:'POST',path:'/prescriptions/x/verify'}),403);
+ assert.equal(pharmacyRequestAllowed({...admin,role:'pharmacy-viewer'},{method:'POST',path:'/sales'}),403);
+});
+test('Pharmacy actual services: retry, rollback, durable partition, host actor and original end-to-end flows',{timeout:120000},async()=>{
+ const dir=await mkdtemp(join(tmpdir(),'pepbits-pharmacy-test-'));let store=createReferencePharmacyStore({dataDir:dir});
+ const call=(method,path,body,user=admin,s=scope,headers={})=>store.handle(user,s,{method,path,body,headers:{...(!['GET','HEAD'].includes(method)?{'idempotency-key':randomUUID()}:{}),...headers}});
+ const j=async(m,p,b)=>{const out=await call(m,p,b);assert.ok(out.status>=200&&out.status<300,`${m} ${p}: ${JSON.stringify(out)}`);return out.body;};
+ try{
+  const registered=await j('POST','/patients',{name:'Synthetic Audit Patient',dob:'1990-01-01',gender:'F'});const patientAudit=await j('GET','/audit?limit=500');assert.ok(patientAudit.rows.some(row=>row.entity==='command'&&row.ref==='POST /api/patients'&&row.actor_name===admin.name));
+  const meta=await j('GET','/meta');assert.equal(meta.currentUser.name,admin.name);assert.equal(meta.hostManagedIdentity,true);assert.equal(meta.currentUser.role,'admin');
+  assert.equal((await call('POST','/sales',{},admin,scope,{'idempotency-key':undefined})).status,400);
+  const otc=(await j('GET','/products/lookup?q=Panadol&schedule=otc'))[0];const saleBody={items:[{product_id:otc.id,qty:2}],payment_method:'cash'};const key={'idempotency-key':'pharmacy-sale-0001'};
+  const created=await call('POST','/sales',saleBody,admin,scope,key);assert.equal(created.status,201);assert.deepEqual(await call('POST','/sales',saleBody,admin,scope,key),created);
+  assert.equal((await call('POST','/sales',{...saleBody,payment_method:'card'},admin,scope,key)).status,409);
+  const audit=await j('GET','/audit?limit=500');assert.ok(audit.rows.some(row=>row.entity==='bill'&&row.actor_name===admin.name));
+  const baseline=(await j('GET','/sales')).length;
+  const short=await call('POST','/sales',{items:[{product_id:otc.id,qty:999999},{product_id:otc.id,qty:2}],payment_method:'cash'});assert.ok(short.status>=400);assert.equal((await j('GET','/sales')).length,baseline);
+  const isolated=await call('GET','/sales',undefined,admin,{...scope,branchId:'other'});assert.equal(isolated.status,200);assert.ok(!isolated.body.some(row=>row.id===created.body.id));
+  assert.equal((await call('GET','/sales/'+created.body.id,undefined,admin,{...scope,branchId:'other'})).status,404);
+  const viewer={...admin,id:'synthetic-pharmacy-viewer',role:'pharmacy-viewer'};assert.equal((await call('GET','/dashboard',undefined,viewer)).status,200);assert.equal((await call('POST','/sales',saleBody,viewer)).status,403);
+  await store.close();store=createReferencePharmacyStore({dataDir:dir});assert.deepEqual(await call('POST','/sales',saleBody,admin,scope,key),created);
+  assert.equal((await call('GET','/dashboard?days=Infinity')).status,400);
+  const patients=await j('GET','/patients'),patient=patients.find(p=>p.payer_code==='GMA')??patients[0],product=(await j('GET','/products/lookup?q=Lipitor'))[0];
+  let rx=await j('POST','/prescriptions',{patient_id:patient.id,doctor_id:meta.doctors[0].id,source:'erx',priority:'urgent',diagnosis_code:'E78.5',items:[{product_id:product.id,dose:1,frequency_per_day:1,days:30,sig:'Synthetic prescription'}]});
+  rx=await j('POST','/prescriptions/'+rx.id+'/review');assert.equal((await call('POST','/prescriptions/'+rx.id+'/verify',{overrides:[]},{...admin,role:'pharmacy-technician'})).status,403);
+  rx=await j('POST','/prescriptions/'+rx.id+'/verify',{overrides:rx.alerts.filter(a=>a.severity==='major').map(a=>({key:a.key,reason:'Synthetic acceptance override'}))});assert.equal(rx.status,'verified');
+  rx=await j('POST','/prescriptions/'+rx.id+'/dispensings',{items:[{prescription_item_id:rx.items[0].id,qty:15}]});const disp=rx.dispensings[0].id;
+  rx=await j('POST','/dispensings/'+disp+'/check');rx=await j('POST','/dispensings/'+disp+'/handover',{payment_method:'card',override_rejected:true});assert.equal(rx.status,'partially_dispensed');assert.ok(rx.chain.some(c=>c.key==='bill'));
+  const rxSale=await call('POST','/sales',{items:[{product_id:product.id,qty:1}],payment_method:'cash'});assert.ok(rxSale.status>=400);assert.match(rxSale.body.error.message,/prescription/i);
+  let order=await j('POST','/orders',{customer_name:'Synthetic Pharmacy Customer',phone:'+971500000000',channel:'web',fulfilment:'delivery',address:'Synthetic address',payment:'cash_on_delivery',items:[{product_id:otc.id,qty:3}]});
+  for(const step of ['confirm','ready','dispatch'])order=await j('POST','/orders/'+order.id+'/'+step,{rider:'Synthetic rider'});
+  order=await j('POST','/orders/'+order.id+'/complete',{payment_method:'cash'});assert.equal(order.status,'completed');assert.ok(order.bill_id);
+  const inv=await j('GET','/sales/'+order.bill_id);for(const qty of [1,2])await j('POST','/sales/'+inv.id+'/returns',{lines:[{bill_line_id:inv.lines[0].id,qty}],reason:'Synthetic return assessment',method:'cash'});
+  const returned=await j('GET','/sales/'+inv.id);assert.equal(returned.status,'reversed');assert.equal(returned.returns.length,2);assert.ok(returned.refunded>0);
+  assert.ok((await call('POST','/sales/'+inv.id+'/returns',{lines:[{bill_line_id:inv.lines[0].id,qty:1}],reason:'Excess return',method:'cash'})).status>=400);
+  const supplier=(await j('GET','/suppliers'))[0];let po=await j('POST','/purchase-orders',{supplier_id:supplier.id,items:[{product_id:product.id,qty:5}]});for(const step of ['approve','send'])po=await j('POST','/purchase-orders/'+po.id+'/'+step);
+  po=await j('POST','/purchase-orders/'+po.id+'/receive',{lines:[{po_item_id:po.items[0].id,qty:5,batch_no:'SYNTHETIC-PHARMACY',expiry:'2028-01-01'}]});assert.equal(po.status,'received');
+  const authProduct=(await j('GET','/products/lookup?q=Humira'))[0];const covered=patients.find(p=>p.payer_code&&p.coverage_to>=new Date().toISOString().slice(0,10));
+  let arx=await j('POST','/prescriptions',{patient_id:covered.id,doctor_id:meta.doctors[0].id,source:'erx',priority:'routine',items:[{product_id:authProduct.id,dose:1,frequency_per_day:1,days:2,qty:4,sig:'Synthetic authorization'}]});arx=await j('POST','/prescriptions/'+arx.id+'/authorizations',{justification:'Synthetic clinical authority evidence'});const authorization=await j('GET','/authorizations/'+arx.authorizations[0].id);
+  await j('POST','/authorizations/'+authorization.id+'/decision',{decision:'partially_approved',items:[{id:authorization.items[0].id,qty_approved:2}],payer_ref:'SYNTHETIC-PA',valid_to:'2027-03-31',note:'Synthetic payer decision'});assert.equal((await j('GET','/authorizations/'+authorization.id)).status,'partially_approved');
+  const advice=(await j('GET','/remittances')).find(row=>row.total_approved>Number(row.paid??0));
+  assert.ok(advice,'Seeded synthetic remittance awaits payment');const posted=await j('POST','/remittances/'+advice.id+'/post-payment',{method:'eft'});assert.ok(posted.payment_ref);
+  assert.ok((await j('GET','/payments')).some(p=>p.id===posted.id));
+  assert.equal((await call('POST','/auth/login',{})).status,403);
+ }finally{await store.close();await rm(dir,{recursive:true,force:true});}
+});

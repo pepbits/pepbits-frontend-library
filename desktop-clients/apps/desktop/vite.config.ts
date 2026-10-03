@@ -43,6 +43,10 @@ export default defineConfig({
       // Cache canonical locale fallbacks independently as translated page catalogs grow.
       const locale = id.match(/\/erp-config\/src\/locales\/(en|ar|hi|ml)\.ts$/)?.[1];
       if (locale) return `locale-fallback-${locale}`;
+      // Standalone control labels share a separately cached canonical fallback.
+      if (/\/ops-ui\/src\/messages\.en\.ts$/.test(id)) return "ui-english-fallback";
+      // Share the React runtime without growing the main shell chunk for each imported workspace.
+      if (/\/node_modules\/(react|react-dom|scheduler)\//.test(id)) return "react-runtime";
     }, onlyExplicitManualChunks: true } },
   },
 });

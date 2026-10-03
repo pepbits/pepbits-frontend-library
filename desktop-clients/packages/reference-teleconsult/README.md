@@ -1,0 +1,57 @@
+# Teleconsult reference module
+
+`@pepbits/reference-teleconsult` renders two imported frontends through the authenticated reference host:
+
+| Export | Source | Header module / variant | Namespace |
+| --- | --- | --- | --- |
+| `ReferenceTeleconsultProviderModule({ path, host })` | `clinician` (Clinic Desk) | `reference-teleconsult-provider` / `teleconsult-provider` | `/reference-modules/teleconsult-provider` |
+| `ReferenceTeleconsultPatientModule({ path, host })` | `patient` (CareCall) | `reference-teleconsult-patient` / `teleconsult-patient` | `/reference-modules/teleconsult-patient` |
+
+Both variants talk to the **same** shared store (per authenticated tenant/application/branch). Also exported: `providerRoutes`, `providerNavigation`, `providerPaths`, `resolveProviderRoute`, `patientRoutes`, `patientNavigation`, `patientPaths`, `resolvePatientRoute`, the session/frame contract (`parseProviderSession`, `parsePatientSession`, `normalizeFrames`, header names), `createTeleconsultClient`/`ApiError`, and `./styles.css`.
+
+The source is `reference/frontend/teleconsult-01/teleconsult` (read only). `scripts/teleconsult/import.mjs` made the one-time mechanical copy; everything after that is hand adaptation.
+
+## Routes
+
+- Provider: `/` (Today), `/schedule`, `/patients`, `/notes` (accepts `?appointment=`), `/consult/[id]`.
+- Patient: `/` (welcome), `/register`, `/home`, `/book`, `/records`, `/visit/[id]`, `/visit/[id]/summary`.
+
+The host owns the sidebar and header. The provider renders only a compact toolbar (title, demo label, API-offline hint, staff identity and the Doctor/Nurse chooser). The source sidebar/top bar and its waiting-count badge are not rendered.
+
+## Backend contract this frontend expects
+
+All requests go through `host.fetch('/api/...')`; the host transport adds the namespace, scope headers and credentials. There is no module-global transport, token or cache: every hook builds its client from the mounted host (`useTeleconsultClient()` in `provider/lib/api.ts` and `patient/lib/api.ts`).
+
+- `GET /api/session` — provider: optional `?role=doctor|nurse`, returns `{role, roles, user, staff, canRegister, settings}`; patient: optional `?patientId=`, returns `{patient?, patients, canRegister, settings}`. `settings` is the effective branch policy `{modes, scheduling, recording, simulation, allowPatientBooking, allowAdminPatientRegistration?}`; it is kept in both session contexts (`useSession().settings`, `usePatient().settings`) and missing or inconsistent settings are a `SessionContractError`, never a permissive default. Responses are validated (`SessionContractError` on malformed payloads). The chooser lists only `roles`; the patient welcome list is only `patients`. A refused mode keeps the previously granted role; a patient choice the session does not echo back is rejected.
+- `GET /api/booking-advice?patientId=&symptoms=<comma-separated>&severity=0..10` → `{specialty, urgent, demo: true}`. Patient Book asks for it (debounced, aborted when the answers change) and takes the suggested specialty, the urgent warning and the booking `priority` only from the reply for the *current* answers; the browser has no specialty or red-flag rules. Until the server has answered (or if it fails, or the payload is malformed) Continue and Confirm stay disabled, with a retry. The suggestion is labelled as demo advice.
+- Booking choices come from `settings`: patients are offered only `settings.modes` and only when `allowPatientBooking` (otherwise the Book page says so and Home/navigation hide Book); the provider booking dialog lists only `settings.modes` and the clinic's slot lengths (default plus every `slotIntervalMin` multiple within min/max), asks `/api/slots?durationMin=` and posts `durationMin`.
+- Registration payloads carry no client-claimed author (`recordedBy` was removed): the server records the authenticated actor. The patient register form is available only when the session says `canRegister`.
+- `X-Teleconsult-Role` (provider) / `X-Teleconsult-Patient` (patient) are sent on every request after the session. They route the requested view; **the server must validate them**. Client locks are not authorization.
+- `Idempotency-Key` on every POST/PUT/PATCH. A mutation with the same method, path and body that failed with an unknown outcome (network error, 5xx, 408, 429) is retried under the same key; definite rejections (4xx, including 409/422) and successes release it. Keys live in the mounted client only.
+- `Encounter.version?: number` comes from responses and is sent back on autosave (`PUT /api/encounters/:id`) and `POST /api/encounters/:id/sign`. The sign request no longer repeats the source's redundant preceding PUT, so its body is stable for replay.
+- 409 never discards the edit. A version conflict keeps the edited note on screen, stops autosave, and offers "keep my edits and save over the latest" or "load the latest" (the other copy stays viewable). If the server note is already signed, the signed copy replaces the editable one and the unsent draft stays readable until dismissed; nothing is PUT over signed evidence.
+- Live data uses authenticated polling, never `EventSource`, never a token in a URL: `GET /api/appointments/:id/vitals/current` (a `LiveVitals` frame, polled at 1 s) and `GET /api/appointments/:id/transcript/current` (a `TranscriptLine` or `{done:true}`, polled at 1.5 s). Arrays and `{frames|lines|line}` wrappers are also accepted. Polling stops on `done`, on a permanent 4xx, when the screen unmounts or the scope changes.
+- The remaining source endpoints are unchanged (`/api/appointments`, `/api/patients`, `/api/catalog`, `/api/slots`, `/api/queue`, `/api/dashboard`, `/api/sim/arrive`, `/api/encounters/:id/{cds,suggest,scribe,sign}`, `/api/scores/compute`, messages, summary, history).
+
+Nurse mode has no sign-off: no Sign off tab, no Alt+8, no palette entry and no "Sign nurse-led visit"; the global trigger reads "Review triage" and the nurse saves (autosave) and hands off through "Complete triage and hand off to doctor". The server still refuses a nurse signature.
+
+Nurse and patient restrictions in the UI (no prescribing for nurses, own record only for patients) are conveniences. The backend must enforce them; the client tests assert what the client sends, not what the server allows.
+
+## Simulation disclosures
+
+Vitals, transcript, the "AI" scribe, suggestions, safety checks and the remote participant are simulated demo content and are labelled as such in the UI. The clinician camera self-view is real (`getUserMedia`) and is **not transmitted**. Screen "share" is a local `getDisplayMedia` preview that is not sent to the patient; the "photo" button only adds a text marker to the Objective section and receives or stores no image; "recording" toggles the demo recording indicator and simulated transcript and captures no media. The patient's mute button changes only local state. The ECG-style trace is drawn from the API's heart-rate value and is illustrative, not a recorded waveform. No pharmacy, laboratory or reminder service is connected.
+
+## Presentation and preferences
+
+- Controls use the shared `@pepbits/ops-ui` primitives: `SourceButton`, `SourceInput`, `SourceDateInput`, `SourceTextarea`, `SourceSelect`, `Table*`, `Card` (provider panels), `Modal` and `Drawer` (booking, registration and chart overlays). The source class names supply the appearance.
+- Dates and times use the host formatter (`useTeleconsultFormat`); a bare calendar date (date of birth, date field value) is read as a local day, so it cannot shift in zones west of UTC. Date fields are the shared native `SourceDateInput` (ISO value, browser picker) with the chosen date written in the effective date format beneath it (`SourceDateField`), because the browser draws the field text in the device locale. Durations stay mm:ss. Keyboard shortcuts (Ctrl/⌘ K, Alt 1–8) attach only while the `keyboardShortcuts` preference is on. Reduced motion follows the host preference (including the ECG canvas).
+- Static copy renders through `LocalizedText`/`t()`. `localization-inventory.en.json` (from `scripts/teleconsult/localization-inventory.mjs`) lists the English strings the host catalogs need; translated catalogs and fallbacks are host-owned.
+- `src/styles.css` is generated by `scripts/teleconsult/styles.mjs` from the two original Tailwind 3 configs, retained byte-exact in `scripts/teleconsult/source-design/` (set `TELECONSULT_REFERENCE_ROOT` to the original reference tree to regenerate from or compare with it; Tailwind 3 comes from `scripts/diagnostics/style-tools`; run it with Node 24; `--check` verifies it is current). Every selector starts with `.teleconsult-provider` or `.teleconsult-patient`; preflight sits under `:where()`; keyframes are prefixed `tc-provider-`/`tc-patient-`; font sizes multiply the host `--fs-scale`, radii multiply the host `--radius` (source look at the default 14 px), the font is `--font-ui`.
+- Provider neutrals (ink, canvas, line, `bg-white`) follow host theme tokens; its teal/red/amber/green accents and the monitor palette keep source colors. **The patient app keeps CareCall's light palette in every host theme.** Contrast of the source accent colors in dark themes has not been reviewed.
+- The patient module opts into the shared `data-reference-layout="fill"` contract and fills the actual available host content area, the phone column fills it (flex 1, min-height 0, max 56rem) and is a non-scrolling transform context; an inner `.tc-phone-scroll` carries the page, so the source's `fixed` bottom navigation, action bars and call overlay stay inside the column and in view above the host footer. The shared host lays out intermediate wrappers as flexible columns, so optional notices and desktop tabs consume their actual height before the phone receives the remainder. Browser measurement is recorded separately in release evidence.
+- The visit summary prints through the shared `PrintDocument` (the browser print dialog, which can also save a PDF): only a plain document of the summary is shown on paper, with a demo disclaimer. It is not a clinical document or PDF service. The provider note's Print button still calls `window.print()` on the page.
+- Known gaps: the source uses physical left/right utilities, so Arabic gets `dir="rtl"` text direction but the layout is not mirrored (original LTR layouts are kept); long Hindi/Malayalam strings have not been checked; the provider note print still prints the surrounding host page.
+
+## Tests and tooling
+
+`npx vitest run packages/reference-teleconsult` (145 tests): client transport/idempotency/path guard, session contracts (including effective settings with no fallback, booking advice) and frame normalization, hooks (abort, sequence guards, polling lifecycle, shortcuts), encounter versioning/conflict/sign behavior, both modules rendered against an in-memory host (granted roles, mode switching, beneficiary routing, layout, demo disclosures, scope remount cancellation), booking advice staleness, settings-driven modes/durations/enablement, registration allowed/denied, nurse sign-off removal, print surface, preference date formatting, route resolution and the generated stylesheet's isolation and layout rules. `npx tsc -p packages/reference-teleconsult --noEmit` typechecks the package. These use fictional fixtures and an in-memory fetch; they are not browser, deployed-backend or native-shell evidence.

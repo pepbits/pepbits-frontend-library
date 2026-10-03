@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "recordedAt": "2026-10-01T11:37:25.621274+00:00",
+  "runtime": {
+    "releaseId": "20261001-quality-01",
+    "baseCommit": "1eba17bdd3584fcfbef722da317ceb353286b5a8",
+    "sourceSha256": "bcad65bef04377d084ae1587627d1421f13f5c05e2e9e585d3f7705f88545fec",
+    "sourceFiles": 530,
+    "sourceVerifiedUnchangedBeforeAcceptanceDocumentation": true,
+    "target": "https://frontend.test.pepbits.com",
+    "deployed": true,
+    "rollbackRelease": "20261001-teleconsult-01",
+    "otherApplicationsTouched": false,
+    "coreDataFilesPreserved": 3
+  },
+  "unitAndBuild": {
+    "frontendTests": 2199,
+    "frontendFiles": 189,
+    "generalApiTests": 322,
+    "clinicalApiTests": 33,
+    "apiTotal": 355,
+    "failures": 0,
+    "apiSkipped": 0,
+    "allPackageTypecheck": "PASS",
+    "webProductionBuild": "PASS",
+    "desktopBrowserBuild": "PASS",
+    "automatedRepositoryGates": "PASS"
+  },
+  "browserCounts": {
+    "local": {
+      "quality-reference": 24,
+      "teleconsult-reference": 19,
+      "diagnostic-reference": 80,
+      "healthcare-suite": 49,
+      "school-role-header": 28
+    },
+    "public": {
+      "quality-reference": 24,
+      "teleconsult-reference": 18,
+      "diagnostic-reference": 80,
+      "healthcare-suite": 49,
+      "school-role-header": 28
+    }
+  },
+  "browserCollection": {
+    "local": {
+      "quality-reference": {
+        "pageErrors": 0,
+        "consoleErrors": 0,
+        "failedResponses": 0,
+        "aborted": 24
+      },
+      "teleconsult-reference": {
+        "pageErrors": 0,
+        "consoleErrors": 0,
+        "failedResponses": 0,
+        "aborted": 7
+      },
+      "diagnostic-reference": {
+        "pageErrors": 0,
+        "consoleErrors": 0,
+        "responses": 0,
+        "aborted": 23
+      },
+      "healthcare-suite": {
+        "consoleErrors": 0,
+        "errors": 0,
+        "networkFailures": 5
+      },
+      "school-role-header": {
+        "errors": 0
+      }
+    },
+    "public": {
+      "quality-reference": {
+        "pageErrors": 0,
+        "consoleErrors": 0,
+        "failedResponses": 0,
+        "aborted": 20
+      },
+      "teleconsult-reference": {
+        "pageErrors": 0,
+        "consoleErrors": 0,
+        "failedResponses": 0,
+        "aborted": 5
+      },
+      "diagnostic-reference": {
+        "pageErrors": 0,
+        "consoleErrors": 0,
+        "responses": 0,
+        "aborted": 3
+      },
+      "healthcare-suite": {
+        "consoleErrors": 0,
+        "errors": 0,
+        "networkFailures": 1
+      },
+      "school-role-header": {
+        "errors": 0
+      }
+    }
+  },
+  "localLanguageChecks": 13,
+  "publicLocalizedGuideReads": 45,
+  "nativeReview": "PENDING",
+  "clinicalDomainReview": "PENDING",
+  "productionAuthorityIntegration": "NOT_IMPLEMENTED",
+  "continuouslyAvailableScheduler": "NOT_IMPLEMENTED",
+  "nativeExecutableTested": false,
+  "providers": "Synthetic API fixtures and simulated authority transmissions only",
+  "gitPushClaimed": false,
+  "npmPublicationClaimed": false,
+  "countsOverlap": "Focused suites are subsets; browser and unit tests are separate scopes, not summed",
+  "previousAttempts": "Earlier failed selectors, namespace guard, hidden designer authorization and localization checks were corrected and rerun; earlier failed/private artifacts retained, not counted as passes",
+  "documentationAfterFreeze": "Final acceptance documentation/evidence differs from the frozen runtime snapshot; it does not change deployed runtime identity",
+  "publicTeleconsultSignature": "Not repeated: the retained fixture was already signed; public acceptance read the preserved signed summary. Local acceptance executed the Doctor signing command.",
+  "postAcceptanceDocumentationChecks": {
+    "status": "PASS",
+    "documentationFiles": 151,
+    "guideRegistrations": 582,
+    "pendingAuthoringNativeReviewItems": 1914,
+    "gitDiffWhitespaceCheck": "PASS",
+    "ownedLocalRuntimesStopped": true
+  }
+}

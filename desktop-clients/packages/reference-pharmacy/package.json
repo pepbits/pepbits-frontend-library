@@ -1,0 +1,33 @@
+{
+  "name": "@pepbits/reference-pharmacy",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pharmacy-1 (Phial) reference module: command center, Rx workbench, counter, orders, sales, inventory, purchasing, authorizations, claims, remittance, patients, audit and settings rendered through the authenticated host.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css",
+    "./pharmacy-copy.json": "./pharmacy-copy.json"
+  },
+  "dependencies": {
+    "@pepbits/erp-config": "*",
+    "@pepbits/ops-ui": "*",
+    "@pepbits/reference-host": "*",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "scripts": {
+    "generate:styles": "node ../../scripts/pharmacy/styles.mjs",
+    "check:styles": "node ../../scripts/pharmacy/styles.mjs --check",
+    "generate:copy": "node ../../scripts/pharmacy/copy.mjs",
+    "check:copy": "node ../../scripts/pharmacy/copy.mjs --check"
+  },
+  "pepbits": {
+    "styleScope": ".reference-pharmacy"
+  }
+}

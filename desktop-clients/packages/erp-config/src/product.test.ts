@@ -18,8 +18,8 @@ describe("product profiles", () => {
     expect(() => defineProduct({ id: "broken", name: "Broken", tagline: "", defaultModule: "hr", enabledModules: ["finance"] })).toThrow(/default module/);
   });
   test("profiles are isolated from the default catalog membership", () => {
-    expect(Object.keys(NEXORA_PRODUCT.modules)).toHaveLength(18);
-    expect(Object.keys(NEXORA_PRODUCT.modules)).toEqual(expect.arrayContaining(["hr","finance","payroll","sales","supply","healthcare","pharmacy","library","reference-erp1","reference-erp2","reference-school","reference-reports","reference-healthcare-suite"]));
+    expect(Object.keys(NEXORA_PRODUCT.modules)).toHaveLength(28);
+    expect(Object.keys(NEXORA_PRODUCT.modules)).toEqual(expect.arrayContaining(["hr","finance","payroll","sales","supply","healthcare","pharmacy","library","reference-erp1","reference-erp2","reference-school","reference-reports","reference-healthcare-suite","reference-lis1","reference-lis2","reference-ris1","reference-teleconsult-provider","reference-teleconsult-patient","reference-quality","reference-pharmacy","reference-tenant-admin","reference-medband","reference-rcm"]));
     expect(Object.keys(LEDGER_PRODUCT.modules)).toHaveLength(1);
   });
 });

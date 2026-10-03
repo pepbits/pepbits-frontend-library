@@ -1,0 +1,120 @@
+{
+  "recordedAt": "2026-10-02T02:28:15.220476+00:00",
+  "source": {
+    "baseCommit": "1eba17bdd3584fcfbef722da317ceb353286b5a8",
+    "workingTreeManifest": "source-manifest.json",
+    "sha256": "8c81177f7d629b35ac645281e1fd86d5dc5f0d44011a534380dc7a5192cda4e9"
+  },
+  "implemented": {
+    "headerModule": "SurgiSuite",
+    "staticSidebarPages": 8,
+    "caseSections": 12,
+    "pageGuides": 9
+  },
+  "frontend": {
+    "status": "PASS",
+    "tests": 67,
+    "files": 4,
+    "surgisuiteTests": 20,
+    "scope": "Synthetic service-captured component fixtures, canonical four-language case tabs, and MedBand/RCM/reference registry regression",
+    "command": "node node_modules/vitest/vitest.mjs run packages/reference-surgisuite/src/module.test.tsx packages/reference-medband/src/module.test.tsx packages/reference-rcm/src/module.test.tsx packages/erp-config/src/reference-modules.test.ts --pool=threads --maxWorkers=1"
+  },
+  "backend": {
+    "status": "PASS",
+    "tests": 3,
+    "command": "node --test --test-isolation=none dummy-api/reference-surgisuite-store.test.mjs dummy-api/reference-surgisuite-documentation.test.mjs",
+    "scope": "Actual original service reads and writes, isolated SQLite workers, guards, scope, replay/restart, booking/conflict/cancel/rollback; actual API configuration serves 36 localized guide reads and denies unrelated roles. Assertions and reads are not counted as separate tests"
+  },
+  "typechecking": {
+    "status": "PASS",
+    "affectedPackages": [
+      "reference-surgisuite",
+      "reference-host",
+      "erp-config",
+      "erp-screens",
+      "erp-shell",
+      "apps/desktop"
+    ],
+    "finalSurgiSuiteRecheck": "typecheck-surgisuite-final.log",
+    "scope": "Six affected package/desktop consumer targets checked directly with pinned TypeScript; final SurgiSuite recheck after localization regeneration."
+  },
+  "desktopBrowserBuild": {
+    "status": "PASS",
+    "command": "node ../../node_modules/vite/bin/vite.js build",
+    "scope": "Vite production browser compilation; native executable not tested"
+  },
+  "nextWebBuild": {
+    "status": "BLOCKED",
+    "command": "node ../../node_modules/next/dist/bin/next build --webpack",
+    "reason": "Restricted child-process TypeScript --showConfig probe returned no usable output; no ignored-build-errors setting used."
+  },
+  "gates": {
+    "formControls": "PASS",
+    "sharedComponents": "PASS",
+    "staticApiMessages": "PASS",
+    "sourceStyleGeneration": "PASS",
+    "originalServiceGeneration": "PASS",
+    "browserSuiteRegistry": "PASS",
+    "documentationContracts": {
+      "status": "PASS",
+      "tests": 3
+    },
+    "documentationStructure": {
+      "status": "PASS",
+      "registeredPages": 686,
+      "command": "DOCS_BASE_SHA=0000000000000000000000000000000000000000 node docs/tools/documentation-lifecycle.mjs check",
+      "historyScope": "Default combined command blocked by spawnSync git EPERM. Historical comparison was performed separately by git show HEAD and exact Python JSON comparison; 32 prior releases unchanged. Normal terminal combined check remains required."
+    },
+    "localization": {
+      "status": "PASS",
+      "missingSurgiSuiteEntries": 0,
+      "catalogKeys": 29663,
+      "presentationReferences": 6062,
+      "scope": "Catalog presence, placeholders, static copy and generated fallbacks. International abbreviations/unit symbols and the source brand have explicit invariant reasons. Native review remains pending."
+    }
+  },
+  "browserAcceptance": {
+    "status": "NOT_RUN",
+    "command": "E2E_BASE=... E2E_API=... node e2e/surgisuite-reference.mjs",
+    "reason": "Session denies socket creation and external networking."
+  },
+  "deployment": {
+    "status": "NOT_DEPLOYED",
+    "currentDocumentedRelease": "20261001-rcm-01"
+  },
+  "pending": [
+    "Native-language and clinical/domain review of generated translations",
+    "Normal-terminal Next build and authenticated browser/visual acceptance",
+    "Offline font and native/domain acceptance",
+    "Isolated test-site deployment and public checks"
+  ],
+  "publication": {
+    "committed": false,
+    "pushed": false
+  },
+  "claude": {
+    "status": "UNAVAILABLE",
+    "reason": "CLI returned EAI_AGAIN reaching its API; no successful Claude execution claimed."
+  },
+  "evidence": {
+    "frontend-delivery.log": "94c51fd55f31d0d615a5b8bd9392ae7256f4abb99c092d012deffeb42b2d6d27",
+    "backend-final.log": "cd11dfe1989ed19a1e4a8c24ce51c8807a320728dfad04eaf1ebf733ed126ecc",
+    "typecheck-delivery.log": "209f7998a05bb95b9b47da57b990fc7dfcf9acd1ce37b5b3dbd2b551c73e4287",
+    "typecheck-surgisuite-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "desktop-build-delivery.log": "dccef8054533e6c85435d4fb18d2ec3268677406f904af49b12e82076ae3a9a7",
+    "web-build.log": "2005c95fdafbfbf49b3bfff89c3aa0875e6e85dd155be2c7d0a31b11a5a8d3bf",
+    "controls-accepted.log": "490d0c42b4e8d12edce21cc4bcc1e8ea116191116da6798b22aa59d0f98647c4",
+    "shared-accepted.log": "acdeb4c11670174954c684322a382a3c2e94a61e49f5413eb60f67e692fe4675",
+    "api-copy-final.log": "0525887370c8e46c755832645a0fd39574386d26b6461ad61ef397c8bc157672",
+    "styles-accepted.log": "dc3eb690d152c5efdc0eea66131cf03ac13e0f191134b49d8d1b634113b451b0",
+    "runtime-accepted.log": "75d1010b636274e276ef23befcfb62652a73a398f4582cf8a6aec0d07d62a8db",
+    "suites-accepted.log": "2c09279b791f25a2396934c2085fd9a81e0e892e9beb59562c2febeae867d195",
+    "e2e-registry.log": "54b633553ec5c2cb417fb1851d2eab115f19d3f6dc3f5545cacb3aef98b4be54",
+    "documentation-tests.log": "66b76d57198d89b79cf3df169cfffcf32b78a167ab2c187e93f48241a046418b",
+    "documentation-accepted-final.log": "6b4bd50eb4d601582cdec623b26aee0620f3e5e876a07d20d99be9db5f42018c",
+    "history-check.json": "e1de92d9f34f92517304960cb8e2ea3bbd883b329aecd64abb5ef3c1081c8ee9",
+    "localization-accepted-final.log": "3be128730f60e1df3e7d46b92fd75d99630d359ffdcef26dbc1a67daf3fb600a",
+    "fallbacks-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "navigation-accepted.json": "3d1dc35f53f9842bd525896b80e3c212514ef736259f297bd16c6e97b4d1aacc"
+  }
+}

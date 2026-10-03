@@ -1,0 +1,24 @@
+{
+  "name": "@pepbits/reference-lis1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css"
+  },
+  "dependencies": {
+    "@pepbits/reference-host": "*",
+    "@pepbits/reference-diagnostics": "*",
+    "@pepbits/ops-ui": "*",
+    "lucide-react": "^0.468.0"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "pepbits": {
+    "styleScope": ".diagnostic-lis1"
+  }
+}

@@ -1,2 +1,5 @@
 /* A reusable record workspace fills actual available chrome height, including notices. */
 .content:has([data-workspace-layout="record"]) {display:flex;flex-direction:column;padding-block:6px;padding-inline-end:6px;}
+/* Embedded workspaces use the space left by all chrome, including desktop tabs. */
+.content:has([data-reference-layout="fill"]) {display:flex;flex-direction:column;}
+.content :has([data-reference-layout="fill"]) {display:flex;flex-direction:column;flex:1 1 0;min-height:0;}

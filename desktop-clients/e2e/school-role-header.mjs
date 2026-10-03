@@ -34,7 +34,7 @@ try{
  }
  const student=SCHOOL_ROLE_VIEWS.find(view=>view.role==='student'),teacher=SCHOOL_ROLE_VIEWS.find(view=>view.role==='teacher');
  await select(page,student);
- await page.locator('aside[data-tour=sidebar]').hover();const fees=page.locator('aside[data-tour=sidebar] a[href*="reference-school-fees"]');await fees.click();await ready(page,'student');const feesUrl=page.url();assert.ok(feesUrl.includes('/reference-school-student/'));
+ await page.locator('aside[data-tour=sidebar]').hover();const fees=page.locator('aside[data-tour=sidebar] a[href*="reference-school-fees"]');await fees.click();await page.waitForURL('**/reference-school-student/reference-school-fees');await ready(page,'student');const feesUrl=page.url();assert.ok(feesUrl.includes('/reference-school-student/'));
  await page.reload({waitUntil:'networkidle'});await ready(page,'student');assert.equal(page.url(),feesUrl);record('student sidebar navigation and refresh preserve role');
  const newTab=await context.newPage();await newTab.goto(feesUrl,{waitUntil:'networkidle'});await ready(newTab,'student');await newTab.close();record('new browser tab preserves role URL');
  await select(page,teacher);await page.goBack({waitUntil:'networkidle'});await ready(page,'student');record('browser back restores student view');

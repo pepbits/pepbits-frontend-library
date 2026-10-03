@@ -7,10 +7,22 @@ import {useNavigation,type NavigationTarget} from "@pepbits/platform-ports";
 import {AccessDenied,LocalizedText} from "@pepbits/ops-ui";
 import {createReferenceTransport,referenceScopeKey,type ReferenceHost} from "@pepbits/reference-host";
 import {useProductRequest} from "../product-services";
+const Medslot=lazy(()=>import("@pepbits/reference-medslot").then(m=>({default:m.ReferenceMedslotModule})));
+const SurgiSuite=lazy(()=>import("@pepbits/reference-surgisuite").then(m=>({default:m.ReferenceSurgiSuiteModule})));
+const Rcm=lazy(()=>import("@pepbits/reference-rcm").then(m=>({default:m.ReferenceRcmModule})));
+const TenantAdmin=lazy(()=>import("@pepbits/reference-tenant-admin").then(m=>({default:m.ReferenceTenantAdminModule})));
+const Medband=lazy(()=>import("@pepbits/reference-medband").then(m=>({default:m.ReferenceMedbandModule})));
+const Pharmacy=lazy(()=>import('@pepbits/reference-pharmacy').then(m=>({default:m.ReferencePharmacyModule})));
+const Quality=lazy(()=>import('@pepbits/reference-quality').then(m=>({default:m.ReferenceQualityModule})));
 const Reports=lazy(()=>import('@pepbits/reference-reports').then(m=>({default:m.ReferenceReportsModule})));
 const Erp1=lazy(()=>import('@pepbits/reference-erp1').then(m=>({default:m.ReferenceErp1Module})));
 const Erp2=lazy(()=>import('@pepbits/reference-erp2').then(m=>({default:m.ReferenceErp2Module})));
 const HealthcareSuite=lazy(()=>import('@pepbits/reference-healthcare-suite').then(m=>({default:m.ReferenceHealthcareSuiteModule})));
+const TeleconsultProvider=lazy(()=>import('@pepbits/reference-teleconsult').then(m=>({default:m.ReferenceTeleconsultProviderModule})));
+const TeleconsultPatient=lazy(()=>import('@pepbits/reference-teleconsult').then(m=>({default:m.ReferenceTeleconsultPatientModule})));
+const LIS1=lazy(()=>import('@pepbits/reference-lis1').then(m=>({default:m.ReferenceLIS1Module})));
+const LIS2=lazy(()=>import('@pepbits/reference-lis2').then(m=>({default:m.ReferenceLIS2Module})));
+const RIS1=lazy(()=>import('@pepbits/reference-ris1').then(m=>({default:m.ReferenceRIS1Module})));
 const School=lazy(()=>import('@pepbits/reference-school').then(m=>({default:m.ReferenceSchoolModule})));
 const schoolRoles:Readonly<Record<string,string>>={'enterprise-admin':'admin','finance-manager':'accountant','operations-analyst':'teacher','school-admin':'admin','school-teacher':'teacher','school-student':'student','school-parent':'parent','school-librarian':'librarian','school-accountant':'accountant'};
 /** The host supplies authentication, policies and navigation; modules import only public contracts. */
@@ -34,6 +46,6 @@ export function ReferenceModuleLibraryPage({pageId,target}:{pageId:string;target
  },[user,descriptor,selectedModule,view,product,pageId,erp.branch,erp.preferences,erp.preferencePolicy,erp.preferencesAvailable,erp.updatePreference,erp.t,product.id,navigation,request,path]);
  if(status==='authenticated'&&erp.preferencesAvailable&&selectedModule&&!moduleContainsPage(product,selectedModule,pageId))return <AccessDenied title="Page unavailable for your role" description="Your account does not have access to this page."/>;
  if(!host||status!=='authenticated'||!erp.preferencesAvailable)return <p role="status"><LocalizedText message="reference.modules.loading"/></p>;
- const Component=descriptor.variant==='reports'?Reports:descriptor.variant==='erp1'?Erp1:descriptor.variant==='erp2'?Erp2:descriptor.variant==='healthcare-suite'?HealthcareSuite:School;
+ const Component=descriptor.variant==='medslot'?Medslot:descriptor.variant==='surgisuite'?SurgiSuite:descriptor.variant==='rcm'?Rcm:descriptor.variant==='tenant-admin'?TenantAdmin:descriptor.variant==='medband'?Medband:descriptor.variant==='pharmacy'?Pharmacy:descriptor.variant==='quality'?Quality:descriptor.variant==='teleconsult-provider'?TeleconsultProvider:descriptor.variant==='teleconsult-patient'?TeleconsultPatient:descriptor.variant==='lis1'?LIS1:descriptor.variant==='lis2'?LIS2:descriptor.variant==='ris1'?RIS1:descriptor.variant==='reports'?Reports:descriptor.variant==='erp1'?Erp1:descriptor.variant==='erp2'?Erp2:descriptor.variant==='healthcare-suite'?HealthcareSuite:School;
  return <Suspense fallback={<p role="status"><LocalizedText message="reference.modules.loading"/></p>}><Component key={referenceScopeKey(host.scope)} path={path} host={host}/></Suspense>;
 }

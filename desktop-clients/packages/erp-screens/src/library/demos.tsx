@@ -14,7 +14,8 @@ import {
   PrintDocument, Modal, Drawer, CenterRecordCard, ConfirmDialog, EmptyState, ErrorState, AccessDenied, NotFoundState,
   ConflictState, SessionExpiredState, LoadingState, Skeleton, TableSkeleton, FormSkeleton, DashboardSkeleton,
   RecoveryNotice, failureFromError, InlineEdit, InlineEditNumber, InlineEditSelect, InlineEditDate, InlineEditStatus,
-  LocalizedText, LocalizationProvider, useLocalization,
+  SourceInput, SourceTextarea, SourceSelect, SourceButton, SourceDateInput, SourceDateTimeInput, SourceDialog,
+  LocalizedText, LocalizationProvider, LocalizationAliasProvider, useLocalization,
 } from "@pepbits/ops-ui";
 
 export function TextDemo() {
@@ -294,7 +295,7 @@ export function LocalizationDemo() {
   const locale = useLocalization();
   const {format} = useERP();
   return <LocalizationProvider value={locale}><div dir={locale.direction} className="space-y-3"><LocalizedText message="catalog.localizationHint"/>
-    <Input label="Name"/><StatusBadge value="Active"/><DataValue value={1234.5} format={format.number}/></div></LocalizationProvider>;
+    <LocalizationAliasProvider aliases={{Name:"ui.common.name"}}><Input label="Name"/></LocalizationAliasProvider><StatusBadge value="Active"/><DataValue value={1234.5} format={format.number}/></div></LocalizationProvider>;
 }
 
 export function WorklistDemo() {
@@ -319,4 +320,18 @@ export function WorklistDemo() {
     density={preferences.density} format={format} zebra={preferences.zebraStripes} stickyHeader={preferences.stickyTableHeader} wrap={preferences.wrapCellText}/>
     <Modal open={preview !== null} onClose={() => setPreview(null)} title="Details"><DataValue value={preview}/><p>{t("catalog.sampleData")}</p></Modal>
   </div>;
+}
+
+export function SourceControlsDemo() {
+ const [value,setValue]=useState("");const [open,setOpen]=useState(false);
+ return <div className="space-y-3">
+  <label><LocalizedText message="Name"/><SourceInput className="block border p-2" value={value} onChange={e=>setValue(e.target.value)}/></label>
+  <label><LocalizedText message="Notes"/><SourceTextarea className="block border p-2"/></label>
+  <SourceSelect aria-label="Status" className="border p-2"><option value="active"><LocalizedText message="Active"/></option></SourceSelect>
+  <SourceDateInput aria-label="Date" className="border p-2"/>
+  <SourceDateTimeInput aria-label="Date and time" className="border p-2"/>
+  <SourceButton className="border p-2" onClick={()=>setValue("")}><LocalizedText message="Reset"/></SourceButton>
+  <SourceButton className="border p-2" onClick={()=>setOpen(true)}><LocalizedText message="Details"/></SourceButton>
+  <SourceDialog open={open} onClose={()=>setOpen(false)} title="Details" className="fixed inset-0 z-[120] flex items-start justify-center bg-black/30 p-8">{panel=><div ref={panel} tabIndex={-1} className="rounded-lg bg-[var(--surface)] p-5"><LocalizedText message="Details"/><SourceButton className="block border p-2" onClick={()=>setOpen(false)}><LocalizedText message="Close"/></SourceButton></div>}</SourceDialog>
+ </div>;
 }

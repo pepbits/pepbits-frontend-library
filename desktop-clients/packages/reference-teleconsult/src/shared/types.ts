@@ -1,0 +1,385 @@
+// Shared contract between the mock backend and both frontends.
+// Only types live here, so frontends import with `import type` and nothing is bundled.
+
+export type Role = "doctor" | "nurse";
+export type Sex = "female" | "male" | "other";
+
+export interface Staff {
+  id: string;
+  name: string;
+  role: Role;
+  title: string;
+  specialty: string;
+  languages: string[];
+  rating: number;
+  yearsExperience: number;
+  bio: string;
+  color: string;
+}
+
+export interface Allergy {
+  id: string;
+  substance: string;
+  category: "drug" | "food" | "environment";
+  allergyClass?: string;
+  reaction: string;
+  severity: "mild" | "moderate" | "severe";
+  status: "active" | "inactive";
+  recordedAt: string;
+  recordedBy: string;
+}
+
+export interface Medication {
+  id: string;
+  name: string;
+  dose: string;
+  frequency: string;
+  status: "active" | "stopped";
+  since: string;
+}
+
+export interface Problem {
+  code: string;
+  display: string;
+  since: string;
+  status: "active" | "resolved";
+}
+
+export interface PatientDevice {
+  name: string;
+  kind: "phone" | "bp-cuff" | "oximeter" | "thermometer" | "glucometer" | "watch";
+  connected: boolean;
+}
+
+export interface Patient {
+  id: string;
+  mrn: string;
+  firstName: string;
+  lastName: string;
+  dob: string;
+  sex: Sex;
+  phone: string;
+  email: string;
+  language: string;
+  address: string;
+  bloodGroup: string;
+  heightCm?: number;
+  weightKg?: number;
+  insurance: { payer: string; memberId: string };
+  emergencyContact: { name: string; phone: string; relation: string };
+  guardian?: string;
+  allergies: Allergy[];
+  noKnownAllergies: boolean;
+  medications: Medication[];
+  problems: Problem[];
+  devices: PatientDevice[];
+  smoking: "never" | "former" | "current";
+  pregnant?: boolean;
+  createdAt: string;
+}
+
+export type AppointmentStatus =
+  | "booked"
+  | "waiting"
+  | "triage"
+  | "ready"
+  | "in-call"
+  | "completed"
+  | "cancelled"
+  | "no-show";
+
+export type VisitMode = "video" | "audio" | "chat";
+
+export interface PreVisit {
+  completed: boolean;
+  symptoms: string[];
+  duration: string;
+  severity: number;
+  notes: string;
+  shareDeviceData: boolean;
+  recordingConsent: boolean;
+  deviceCheck: { camera: boolean; mic: boolean; network: "good" | "fair" | "poor" };
+}
+
+export interface Appointment {
+  id: string;
+  patientId: string;
+  clinicianId: string;
+  start: string;
+  durationMin: number;
+  mode: VisitMode;
+  reason: string;
+  priority: "routine" | "urgent";
+  status: AppointmentStatus;
+  createdBy: "patient" | "staff";
+  joinedAt?: string;
+  startedAt?: string;
+  endedAt?: string;
+  preVisit?: PreVisit;
+  triagedBy?: string;
+}
+
+export interface AppointmentView extends Appointment {
+  patient: Patient;
+  clinician: Staff;
+  waitMinutes?: number;
+  recordingActive?: boolean;
+  queuePosition?: number;
+}
+
+export interface Vitals {
+  id: string;
+  recordedAt: string;
+  source: "device" | "nurse" | "patient" | "doctor";
+  hr?: number;
+  spo2?: number;
+  sys?: number;
+  dia?: number;
+  rr?: number;
+  temp?: number;
+  glucose?: number;
+  weight?: number;
+  pain?: number;
+  consciousness?: "alert" | "confused" | "voice" | "pain" | "unresponsive";
+  onOxygen?: boolean;
+}
+
+export interface LiveVitals {
+  hr: number;
+  spo2: number;
+  sys: number;
+  dia: number;
+  rr: number;
+  temp: number;
+  at: string;
+  signal: "good" | "weak";
+}
+
+export interface Diagnosis {
+  code: string;
+  display: string;
+  type: "primary" | "secondary";
+  certainty: "confirmed" | "provisional";
+  addToProblemList: boolean;
+}
+
+export interface Prescription {
+  id: string;
+  drugId: string;
+  name: string;
+  strength: string;
+  form: string;
+  dose: string;
+  route: string;
+  frequency: string;
+  durationDays: number;
+  quantity: number;
+  refills: number;
+  instructions: string;
+  prn: boolean;
+}
+
+export type OrderKind = "lab" | "imaging" | "procedure" | "referral" | "nursing";
+
+export interface Order {
+  id: string;
+  kind: OrderKind;
+  code: string;
+  name: string;
+  priority: "routine" | "urgent" | "stat";
+  notes: string;
+  orderedBy: string;
+  orderedByRole: Role;
+  status: "pending" | "signed";
+}
+
+export interface ScoreResult {
+  id: string;
+  key: string;
+  name: string;
+  value: number;
+  max: number;
+  interpretation: string;
+  band: "low" | "moderate" | "high";
+  answers: Record<string, number>;
+  at: string;
+}
+
+export interface TranscriptLine {
+  id: string;
+  speaker: "clinician" | "patient";
+  text: string;
+  at: string;
+}
+
+export interface Triage {
+  chiefComplaint: string;
+  onset: string;
+  painScore: number;
+  redFlags: string[];
+  screening: Record<string, boolean>;
+  nurseNote: string;
+  completedBy?: string;
+  completedAt?: string;
+}
+
+export interface Soap {
+  subjective: string;
+  objective: string;
+  assessment: string;
+  plan: string;
+}
+
+export interface Encounter {
+  id: string;
+  appointmentId: string;
+  patientId: string;
+  status: "draft" | "signed";
+  triage: Triage;
+  vitals: Vitals[];
+  soap: Soap;
+  diagnoses: Diagnosis[];
+  prescriptions: Prescription[];
+  orders: Order[];
+  scores: ScoreResult[];
+  allergiesReviewed: boolean;
+  recording: { consent: boolean; active: boolean; seconds: number };
+  transcript: TranscriptLine[];
+  followUp: { inDays: number; mode: VisitMode; note: string } | null;
+  patientInstructions: string;
+  sickNoteDays: number;
+  signedAt?: string;
+  signedBy?: string;
+  /** Server-issued revision. Sent back as the expected version on save and sign. */
+  version?: number;
+  updatedAt: string;
+}
+
+export interface VisitSummary {
+  appointment: Appointment;
+  clinician: Staff;
+  encounter: Encounter;
+}
+
+export interface ChatMessage {
+  id: string;
+  appointmentId: string;
+  from: "patient" | "staff";
+  author: string;
+  text: string;
+  at: string;
+}
+
+// ---- Catalog ----
+
+export interface IcdCode {
+  code: string;
+  display: string;
+  keywords: string[];
+}
+
+export interface Drug {
+  id: string;
+  name: string;
+  strength: string;
+  form: string;
+  drugClass: string;
+  allergyClass?: string;
+  route: string;
+  defaultDose: string;
+  defaultFrequency: string;
+  defaultDays: number;
+  unitsPerDose: number;
+  dosesPerDay: number;
+}
+
+export interface OrderableItem {
+  kind: OrderKind;
+  code: string;
+  name: string;
+  group: string;
+  detail: string;
+}
+
+export interface OrderSet {
+  id: string;
+  name: string;
+  description: string;
+  orders: string[]; // orderable codes
+  drugs: string[]; // drug ids
+  diagnoses: string[]; // icd codes
+  scores: string[];
+}
+
+export interface NoteTemplate {
+  id: string;
+  name: string;
+  soap: Soap;
+}
+
+export interface AllergenOption {
+  substance: string;
+  category: Allergy["category"];
+  allergyClass?: string;
+}
+
+export interface ScoreDefinition {
+  key: string;
+  name: string;
+  purpose: string;
+  auto?: boolean;
+  items: { id: string; label: string; options: { label: string; points: number }[] }[];
+  bands: { min: number; band: ScoreResult["band"]; interpretation: string }[];
+}
+
+export interface Catalog {
+  icd: IcdCode[];
+  drugs: Drug[];
+  orderables: OrderableItem[];
+  orderSets: OrderSet[];
+  templates: NoteTemplate[];
+  allergens: AllergenOption[];
+  scores: ScoreDefinition[];
+  symptoms: string[];
+  specialties: string[];
+}
+
+export interface SearchHit {
+  type: "icd" | "drug" | "order" | "orderset";
+  id: string;
+  label: string;
+  sub: string;
+  kind?: OrderKind;
+}
+
+export interface CdsAlert {
+  id: string;
+  level: "info" | "warning" | "critical";
+  title: string;
+  detail: string;
+  source: "allergy" | "interaction" | "duplicate" | "vitals" | "dose" | "guideline";
+}
+
+export interface AiSuggestion {
+  id: string;
+  type: "diagnosis" | "order" | "drug" | "score" | "orderset";
+  ref: string;
+  label: string;
+  reason: string;
+  confidence: number;
+}
+
+export interface DashboardStats {
+  scheduled: number;
+  waiting: number;
+  inTriage: number;
+  ready: number;
+  inCall: number;
+  completed: number;
+  cancelled: number;
+  avgWaitMin: number;
+}
+
+export interface PatientHistory {
+  encounters: { appointment: Appointment; encounter: Encounter; clinician: Staff }[];
+}

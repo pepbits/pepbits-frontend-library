@@ -1,0 +1,1 @@
+export {ReferenceMedslotModule} from './module';

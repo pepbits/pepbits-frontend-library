@@ -2,7 +2,7 @@ import {describe,it,expect} from 'vitest';
 import {referenceInternalPath,referenceNavigationTarget,REFERENCE_MODULES} from './reference-modules';
 import {PAGE_REGISTRY,MODULES} from './navigation';
 describe('reference module host URLs',()=>{
- it('retains all 152 separate static destinations',()=>{expect(REFERENCE_MODULES.filter(m=>m.id!=='reference-healthcare-suite').map(m=>m.pages.length)).toEqual([14,57,57,24]);});
+ it('retains all 152 separate static destinations',()=>{expect(REFERENCE_MODULES.filter(m=>['erp1','erp2','school','reports'].includes(m.variant)).map(m=>m.pages.length)).toEqual([14,57,57,24]);});
  it('keeps healthcare suite records and queries inside its own header module',()=>{
   const patient=referenceNavigationTarget('reference-healthcare-suite','/patients/patient-7?tab=insurance');
   expect(patient).toMatchObject({pageId:'reference-healthcare-suite-patients',recordId:'/patients/patient-7?tab=insurance'});

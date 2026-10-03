@@ -1,5 +1,5 @@
 /** Compiled into each client so an older native build requests its own manifest. */
-export const DOCUMENTATION_RELEASE = '2026-09-29-healthcare-suite-rcm';
+export const DOCUMENTATION_RELEASE = '2026-10-02-medslot-reference-import';
 export interface GuideSection {id:string;title:string;paragraphs:string[]}
 export interface DocumentationGuide {
  pageId:string;module:string;title:string;revision:number;status:'reference'|'authored';

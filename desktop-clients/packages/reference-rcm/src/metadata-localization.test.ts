@@ -1,0 +1,5 @@
+import {it,expect} from 'vitest';import {localizeRcmMetadata} from './lib/metadata-localization';import type{Meta}from './lib/types';
+it('localizes registry display copy while preserving host identity, source keys and currencies',()=>{
+ const input={resources:[{key:'credit-notes',label:'Credit notes',fields:[{key:'invoice',label:'Invoice',type:'ref'}],actions:[{key:'issue',label:'Approve and issue',hint:'Second person'}]}],categories:[{key:'money',label:'Money',pages:[{key:'refunds',label:'Refunds',href:'/w/refunds'}]}],branches:[{value:'RUH-CENTRAL',label:'Riyadh',short:'Central',currency:'SAR'}],currentUser:{id:22,name:'Synthetic administrator',title:'admin'},users:[{name:'Synthetic clerk'}]} as unknown as Meta;
+ const out=localizeRcmMetadata(input,s=>'translated:'+s);expect(out.resources[0].label).toBe('translated:Credit notes');expect(out.resources[0].fields[0].key).toBe('invoice');expect(out.resources[0].actions[0].hint).toBe('translated:Second person');expect(out.branches[0].currency).toBe('SAR');expect(out.currentUser).toEqual(input.currentUser);expect(out.users).toEqual(input.users);expect(input.resources[0].label).toBe('Credit notes');
+});

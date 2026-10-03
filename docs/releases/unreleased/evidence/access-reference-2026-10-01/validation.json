@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "recordedAt": "2026-10-01T19:03:53.130693+00:00",
+  "releaseId": "20261001-access-01",
+  "publicUrl": "https://frontend.test.pepbits.com",
+  "baseCommit": "1eba17bdd3584fcfbef722da317ceb353286b5a8",
+  "sourceSha256": "87e1e0659b1f52412bf82468daa9fd800a6897f0bd0a9bbad26a198e38fd05d1",
+  "frozenFileCount": 858,
+  "frontend": {
+    "tests": 2409,
+    "files": 214,
+    "failures": 0
+  },
+  "api": {
+    "javascriptTests": 327,
+    "clinicalTypeScriptTests": 33,
+    "totalTests": 360,
+    "failures": 0
+  },
+  "typecheck": "PASS",
+  "productionBrowserBuilds": [
+    "web",
+    "desktop"
+  ],
+  "automatedGates": "PASS",
+  "packagedShellSmoke": "PASS",
+  "localAccessBrowserChecks": 51,
+  "localLanguageAndHelpChecks": 176,
+  "publicGuideReads": 168,
+  "publicBrowser": {
+    "access-reference": {
+      "checks": 51,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "recordedNavigationAborts": 0,
+      "consoleCapture": true
+    },
+    "pharmacy-reference": {
+      "checks": 23,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "recordedNavigationAborts": 0,
+      "consoleCapture": true
+    },
+    "quality-reference": {
+      "checks": 24,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "recordedNavigationAborts": 19,
+      "consoleCapture": true
+    },
+    "teleconsult-reference": {
+      "checks": 18,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "recordedNavigationAborts": 3,
+      "consoleCapture": true
+    },
+    "diagnostic-reference": {
+      "checks": 80,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "recordedNavigationAborts": 2,
+      "consoleCapture": true
+    },
+    "healthcare-suite": {
+      "checks": 49,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "recordedNavigationAborts": 0,
+      "consoleCapture": true
+    },
+    "school-role-header": {
+      "checks": 28,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "recordedNavigationAborts": 0,
+      "consoleCapture": false
+    }
+  },
+  "backendBusinessFixtures": "API-owned original services; no frontend business mocks or intercepted responses",
+  "coreDataFilesPreservedAtCutover": 3,
+  "failedAttemptsRetainedPrivately": true,
+  "stagingCorrection": "The target lacked a build-time TypeScript compiler. Exact local typescript@5.9.3 was checksum-verified into the isolated verification stage; deterministic build checks and runtime preflight then passed. No live changes preceded successful staging.",
+  "unitRunScopeNote": "Full unit runs precede tool-only .ts export suffix and acceptance-driver corrections. Final typecheck, builds, gates and public browser runs cover the final application source.",
+  "nativeExecutableAcceptance": false,
+  "nativeLanguageDomainReview": "PENDING",
+  "livePayerBankClinicalIntegration": false,
+  "otherApplicationsTouched": false,
+  "postFreezeChanges": "Documentation and evidence only; deployed snapshot remains the recorded immutable source digest.",
+  "documentationLinks": "PASS",
+  "documentationLifecycle": "PASS with explicit authoring/native-review backlog",
+  "gitDiffCheck": "PASS"
+}

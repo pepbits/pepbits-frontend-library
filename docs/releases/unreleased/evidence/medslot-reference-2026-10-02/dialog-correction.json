@@ -1,0 +1,47 @@
+{
+  "recordedAt": "2026-10-02T10:19:05.686547+00:00",
+  "failedCandidateSourceSha256": "5170cbef7953d18356258dedd8318fe84d75b110f62f41842727e3d327b14e4a",
+  "failedRun": "/home/pepadmin/pb/saas/.confg/server/frontend-medslot-20261002/run-20261002T094243Z",
+  "confirmedPreviousQueryCorrection": {
+    "headerAndSidebarChecks": 13,
+    "detailRefreshChecks": 2,
+    "status": "PASS"
+  },
+  "failure": "Visible registration overlay had a zero-size dialog role wrapper",
+  "sourceCorrection": {
+    "path": "desktop-clients/packages/reference-medslot/src/components/ui.tsx",
+    "beforeSha256": "c3bac8d1ce6699b91b05c46132bde453805b2f4760ad216b8e72ad6c452082d7",
+    "afterSha256": "eda59fb70a0c141a82dd6e04fdf171377edffe02e027adef1a69e3a64d3bd5ed"
+  },
+  "testCorrection": {
+    "path": "desktop-clients/packages/reference-medslot/src/ui.test.tsx",
+    "sha256": "f037a134776d4d9d4ee88afb9dd46799e6f79e05da48d69308685363dd4c9485"
+  },
+  "focusedTests": {
+    "beforeRegressionFailures": 2,
+    "afterPassed": 29,
+    "logs": {
+      "before": {
+        "path": "/tmp/medslot-dialog-before.log",
+        "sha256": "30f5c965fcb22ea9b9963d30ca3dff37ba1db56970ad1b8b1eedaa43fe0721f9"
+      },
+      "after": {
+        "path": "/tmp/medslot-dialog-after.log",
+        "sha256": "4f22741838245dd42624dffbb7671f5f4ca126224e62ab3e014d5f59512f8302"
+      }
+    }
+  },
+  "normalTerminalReferenceTestsBeforeThisCorrection": {
+    "passed": 832,
+    "skipped": 4
+  },
+  "deploymentSafeguards": {
+    "passed": 16
+  },
+  "browserResultsSha256": "5cda04036ca902d9c73bfbd312492b38193f24bfab81994c63ff5c657007034f",
+  "screenshotSha256": "5efb5c2bc8ff08ce0dc1ae32a640900094eabfacca5f7d9574840ebd3eadfbd9",
+  "testSelectorOrTimeoutChanged": false,
+  "correctedBrowserDialogAcceptance": "PENDING_FRESH_BUILD",
+  "deploymentComplete": false,
+  "retry": "--retry-staged-build"
+}

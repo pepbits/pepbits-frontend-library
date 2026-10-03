@@ -1,0 +1,126 @@
+
+> desktop@1.0.0 build
+> rm -rf dist && tsc --noEmit && vite build && node ../../scripts/stamp-api.mjs VITE_API_URL dist
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 3137 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/core.js is dynamically imported by /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/packages/erp-shell/src/sentinel.tsx, /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/packages/erp-shell/src/sentinel.tsx but also statically imported by /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/dpi.js, /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/event.js, /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/image.js, /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/webview.js, /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/webviewWindow.js, /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/window.js, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/event.js is dynamically imported by /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/packages/erp-shell/src/sentinel.tsx but also statically imported by /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/webview.js, /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/webviewWindow.js, /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/@tauri-apps/api/window.js, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/index.html                                       1.22 kB │ gzip:   0.57 kB
+dist/assets/workbook-options.worker-B47Vz9Ey.js     368.07 kB
+dist/assets/library-page-BZ8DFha9.css                 1.27 kB │ gzip:   0.59 kB
+dist/assets/page-template-DHkRpzaa.css                2.17 kB │ gzip:   0.74 kB
+dist/assets/library-page-B5FBY-Fy.css                 4.55 kB │ gzip:   1.28 kB
+dist/assets/workspace-Bnk30RYg.css                    5.02 kB │ gzip:   1.41 kB
+dist/assets/library-page-CNkCYsR4.css                 5.85 kB │ gzip:   1.45 kB
+dist/assets/library-page-B8oeBtES.css                 9.14 kB │ gzip:   2.17 kB
+dist/assets/index-C0VEpQLa.css                       11.91 kB │ gzip:   2.17 kB
+dist/assets/index-DrfW4Pux.css                       26.29 kB │ gzip:   4.72 kB
+dist/assets/index-DhwZ89jI.css                      575.25 kB │ gzip:  88.50 kB
+dist/assets/clinical-triage-DHLgwzOt.js               0.12 kB │ gzip:   0.12 kB
+dist/assets/clinical-consultation-CY0XKaxC.js         0.12 kB │ gzip:   0.12 kB
+dist/assets/message-circle-BejtGPad.js                0.14 kB │ gzip:   0.16 kB
+dist/assets/bookmark-BakAWalA.js                      0.16 kB │ gzip:   0.16 kB
+dist/assets/arrow-up-right-W-tGeNqA.js                0.16 kB │ gzip:   0.16 kB
+dist/assets/arrow-down-left-BB_xDKA9.js               0.16 kB │ gzip:   0.16 kB
+dist/assets/ban-D3RX588s.js                           0.17 kB │ gzip:   0.16 kB
+dist/assets/clock-cJuKwNV1.js                         0.18 kB │ gzip:   0.17 kB
+dist/assets/kanban-B57j2DzT.js                        0.19 kB │ gzip:   0.16 kB
+dist/assets/corner-up-left-B4k7PSSH.js                0.19 kB │ gzip:   0.18 kB
+dist/assets/circle-play-BPPL24l5.js                   0.19 kB │ gzip:   0.17 kB
+dist/assets/corner-down-left-CK59CWfs.js              0.19 kB │ gzip:   0.18 kB
+dist/assets/circle-x-Bjexxfqw.js                      0.20 kB │ gzip:   0.18 kB
+dist/assets/undo-2-CdKj39ta.js                        0.20 kB │ gzip:   0.18 kB
+dist/assets/square-check-big-BxxINKXd.js              0.22 kB │ gzip:   0.19 kB
+dist/assets/globe-CMcTJ8-l.js                         0.24 kB │ gzip:   0.19 kB
+dist/assets/type-DLNRG0C6.js                          0.24 kB │ gzip:   0.19 kB
+dist/assets/circle-pause-BL9czE9-.js                  0.24 kB │ gzip:   0.18 kB
+dist/assets/arrow-right-left-TmW6VL5B.js              0.24 kB │ gzip:   0.19 kB
+dist/assets/video-CTJw7H4G.js                         0.25 kB │ gzip:   0.22 kB
+dist/assets/search-x-s_9dnMXZ.js                      0.25 kB │ gzip:   0.20 kB
+dist/assets/calendar-vEfd_72N.js                      0.25 kB │ gzip:   0.20 kB
+dist/assets/map-pin-gPJw4vku.js                       0.26 kB │ gzip:   0.22 kB
+dist/assets/pen-line-C9VpHw9M.js                      0.27 kB │ gzip:   0.22 kB
+dist/assets/file-plus-2-BzTqz8Xg.js                   0.28 kB │ gzip:   0.21 kB
+dist/assets/wallet-D5Ioat5n.js                        0.28 kB │ gzip:   0.20 kB
+dist/assets/house-CdORToWH.js                         0.29 kB │ gzip:   0.22 kB
+dist/assets/zoom-in-wjPbpXhL.js                       0.30 kB │ gzip:   0.21 kB
+dist/assets/monitor-smartphone-sqxaLNeV.js            0.32 kB │ gzip:   0.24 kB
+dist/assets/layout-grid-BjNUf9oH.js                   0.34 kB │ gzip:   0.19 kB
+dist/assets/syringe-CjrFcLvN.js                       0.36 kB │ gzip:   0.24 kB
+dist/assets/door-open-BIx_Akon.js                     0.37 kB │ gzip:   0.25 kB
+dist/assets/radio-DO9xqZut.js                         0.37 kB │ gzip:   0.25 kB
+dist/assets/clsx-B-dksMZM.js                          0.37 kB │ gzip:   0.24 kB
+dist/assets/phone-Bch-X4hi.js                         0.39 kB │ gzip:   0.25 kB
+dist/assets/preference-choice-BYFfp0Li.js             0.41 kB │ gzip:   0.27 kB
+dist/assets/clinical-document-CRPU8npr.js             0.42 kB │ gzip:   0.33 kB
+dist/assets/octagon-alert-DF-07y8J.js                 0.43 kB │ gzip:   0.25 kB
+dist/assets/zap-s7MSpXCM.js                           0.44 kB │ gzip:   0.28 kB
+dist/assets/siren-BOKlZKci.js                         0.47 kB │ gzip:   0.27 kB
+dist/assets/star-Vda3eAqh.js                          0.47 kB │ gzip:   0.29 kB
+dist/assets/scanner-input-C5tw_Kxq.js                 0.48 kB │ gzip:   0.36 kB
+dist/assets/user-round-x-qht4EMNe.js                  0.51 kB │ gzip:   0.29 kB
+dist/assets/sun-CH4kU-Zf.js                           0.56 kB │ gzip:   0.30 kB
+dist/assets/print-document-CLDDNvzd.js                0.60 kB │ gzip:   0.36 kB
+dist/assets/square-pen-LAzQhCt0.js                    0.67 kB │ gzip:   0.36 kB
+dist/assets/library-page-Ce3ZRxdD.js                  0.75 kB │ gzip:   0.44 kB
+dist/assets/_commonjsHelpers-CE1G-McA.js              0.76 kB │ gzip:   0.40 kB
+dist/assets/library-page-CS9UtRlK.js                  0.84 kB │ gzip:   0.47 kB
+dist/assets/clinical-templates-C6qMOJcp.js            0.92 kB │ gzip:   0.52 kB
+dist/assets/source-controls-CPGrJ-F2.js               0.94 kB │ gzip:   0.35 kB
+dist/assets/smartphone-DnjKk-o_.js                    1.12 kB │ gzip:   0.55 kB
+dist/assets/library-page-CTz1ijku.js                  1.31 kB │ gzip:   0.71 kB
+dist/assets/configured-template-page-BRQq6Fz9.js      1.88 kB │ gzip:   0.94 kB
+dist/assets/calendar-Dd7srCKU.js                      3.53 kB │ gzip:   1.63 kB
+dist/assets/index-CgQ0bOob.js                         3.85 kB │ gzip:   1.81 kB
+dist/assets/template-parts-B6JUHY9v.js                3.89 kB │ gzip:   1.44 kB
+dist/assets/choice-fields-DNVgptQQ.js                 7.48 kB │ gzip:   2.76 kB
+dist/assets/library-page-BeCZhmpY.js                  7.53 kB │ gzip:   2.61 kB
+dist/assets/library-page-BxajCXJc.js                  9.03 kB │ gzip:   3.17 kB
+dist/assets/library-page-C77cFU_0.js                  9.46 kB │ gzip:   3.82 kB
+dist/assets/template-library-D8T9cOaq.js              9.92 kB │ gzip:   3.37 kB
+dist/assets/library-page-Cf5S_BfT.js                 10.02 kB │ gzip:   3.46 kB
+dist/assets/library-page-_LebCRxB.js                 12.00 kB │ gzip:   4.41 kB
+dist/assets/library-page-CsQ1pnuz.js                 14.04 kB │ gzip:   5.01 kB
+dist/assets/index-CZlE0DNW.js                        15.20 kB │ gzip:   2.95 kB
+dist/assets/library-page-BZfVfahG.js                 24.01 kB │ gzip:   7.21 kB
+dist/assets/library-page-jNuZ6V_s.js                 25.60 kB │ gzip:   7.23 kB
+dist/assets/library-page-MCq-SNta.js                 34.38 kB │ gzip:  10.70 kB
+dist/assets/page-template-DioLoLAp.js                34.84 kB │ gzip:  10.40 kB
+dist/assets/workspace-DrvZaDRd.js                    46.33 kB │ gzip:  14.23 kB
+dist/assets/component-catalog-BiFmzFJJ.js            49.48 kB │ gzip:  12.20 kB
+dist/assets/library-page-COba_8dy.js                 78.34 kB │ gzip:  23.60 kB
+dist/assets/RegistryPage-QaWGzSkz.js                119.63 kB │ gzip:  35.49 kB
+dist/assets/index-DQER_weD.js                       122.43 kB │ gzip:  30.82 kB
+dist/assets/index-DV6NCZWz.js                       139.10 kB │ gzip:  35.25 kB
+dist/assets/index-DVz3jWB4.js                       140.06 kB │ gzip:  42.40 kB
+dist/assets/index-5gCAl4zG.js                       171.52 kB │ gzip:  50.15 kB
+dist/assets/index-CiWS6jTC.js                       186.70 kB │ gzip:  47.40 kB
+dist/assets/react-runtime-DmnU9n7m.js               192.44 kB │ gzip:  60.35 kB
+dist/assets/index-DIWP16cB.js                       207.67 kB │ gzip:  56.40 kB
+dist/assets/index-BghAsm3T.js                       225.64 kB │ gzip:  60.77 kB
+dist/assets/index-BZREcmg_.js                       239.68 kB │ gzip:  65.72 kB
+dist/assets/index-wMdTfhPa.js                       244.71 kB │ gzip:  65.05 kB
+dist/assets/index-DJXMqN2r.js                       247.86 kB │ gzip:  64.91 kB
+dist/assets/index-CMDqQqgA.js                       285.96 kB │ gzip:  76.47 kB
+dist/assets/index-QuqU9uJg.js                       325.29 kB │ gzip:  83.85 kB
+dist/assets/index-BOKPxiFP.js                       345.55 kB │ gzip:  94.45 kB
+dist/assets/BarChart-D8XwDeFp.js                    393.29 kB │ gzip: 107.93 kB
+dist/assets/locale-fallback-en-EqUMCdju.js          961.75 kB │ gzip: 247.48 kB
+dist/assets/locale-fallback-ar-D7Uy1tCG.js        1,226.38 kB │ gzip: 339.00 kB
+dist/assets/locale-fallback-hi-gYInftxk.js        1,613.54 kB │ gzip: 360.37 kB
+dist/assets/index-B7rtI_vM.js                     1,830.53 kB │ gzip: 532.70 kB
+dist/assets/locale-fallback-ml-CxaOy509.js        1,868.71 kB │ gzip: 380.92 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 17.42s

@@ -18,7 +18,7 @@ function catalogs(dir){for(const item of readdirSync(dir,{withFileTypes:true})){
  }}
 }}}
 catalogs(join(root,'dummy-api/config/localization'));
-const props=new Set(['label','title','subtitle','description','placeholder','aria-label','alt','message','hint','confirmLabel','cancelLabel','emptyMessage']);
+const props=new Set(['label','title','subtitle','description','placeholder','aria-label','alt','message','hint','confirmLabel','cancelLabel','emptyMessage','sub','note']);
 function check(value,file,node,sf,raw=false){value=value.trim();if(!/[A-Za-z]/.test(value)||exceptions[value])return;sites++;if(!known.has(value))failures.push(`${relative(root,file)}:${sf.getLineAndCharacterOfPosition(node.pos).line+1}: missing copy ${JSON.stringify(value)}`);else if(raw)failures.push(`${relative(root,file)}:${sf.getLineAndCharacterOfPosition(node.pos).line+1}: raw JSX copy ${JSON.stringify(value)}`);}
 function walk(dir){for(const entry of readdirSync(dir,{withFileTypes:true})){const file=join(dir,entry.name);if(entry.isDirectory())walk(file);else if(file.endsWith('.tsx')&&!file.includes('.test.')){
  const source=readFileSync(file,'utf8'),sf=ts.createSourceFile(file,source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
@@ -35,5 +35,5 @@ function walk(dir){for(const entry of readdirSync(dir,{withFileTypes:true})){con
   ts.forEachChild(node,visit);
  }visit(sf);
 }}}
-for(const pkg of ['erp-screens','ai-ui','erp-shell','ops-ui','reference-host','reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite','reference-keystone-core'])walk(join(root,`desktop-clients/packages/${pkg}/src`));
+for(const pkg of ['erp-screens','ai-ui','erp-shell','ops-ui','reference-host','reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite','reference-keystone-core','reference-diagnostics','reference-lis1','reference-lis2','reference-ris1','reference-teleconsult','reference-quality','reference-pharmacy','reference-tenant-admin','reference-medband','reference-rcm','reference-surgisuite','reference-medslot'])walk(join(root,`desktop-clients/packages/${pkg}/src`));
 if(failures.length){console.error([...new Set(failures)].join('\n'));process.exitCode=1;}else console.log(`PASS ${catalogKeys} catalog keys in four languages; ${sites} static presentation references; explicit data/code exceptions.`);

@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-surface: #f4f7f6;
+  --color-panel: #ffffff;
+  --color-ink: #102a34;
+  --color-ink-2: #3d5560;
+  --color-ink-3: #6b7f87;
+  --color-line: #dde5e3;
+  --color-line-strong: #c6d2cf;
+  --color-side: #0d252c;
+  --color-side-2: #163640;
+  --color-primary: #0e6b5c;
+  --color-primary-strong: #0a5348;
+  --color-primary-soft: #e2f1ed;
+  --color-ok: #2f855a;
+  --color-ok-soft: #e6f4ec;
+  --color-warn: #b7791f;
+  --color-warn-soft: #fbf1df;
+  --color-bad: #c53030;
+  --color-bad-soft: #fbe9e9;
+  --color-info: #2b6cb0;
+  --color-info-soft: #e7f0fa;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-primary-soft);
+}
+
+/* Data tables */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+.data-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f9fbfa;
+  color: var(--color-ink-3);
+  font-weight: 500;
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--color-line);
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: middle;
+}
+.data-table tbody tr:hover td {
+  background: #f7faf9;
+}
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.data-table .right {
+  text-align: right;
+}
+.data-table td.num,
+.data-table td.right {
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print: reports become clean documents */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  body {
+    background: #fff;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-full {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  .print-break {
+    break-inside: avoid;
+  }
+}

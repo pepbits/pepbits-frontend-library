@@ -113,16 +113,28 @@ export function Sidebar() {
   const {t: translateCopy} = useLocalization();
   const product = useProduct();
   const { t } = useLocalization();
-  const { module, preferences, updatePreference } = useERP();
+  const { module, preferences, updatePreference, preferencePolicy } = useERP();
   const navigation = useNavigation();
   const activePageId = navigation.current.pageId;
-  const openPage = (pageId: string) => navigation.open(productNavigationTarget(product,pageId,module.id));
+  const openPage = (pageId: string) => {
+    navigation.open(productNavigationTarget(product,pageId,module.id));
+    if (!preferences.sidebarPinned) dismissRail();
+  };
   const hrefForPage = (pageId: string) => navigation.hrefFor(productNavigationTarget(product,pageId,module.id));
   const [hovered, setHovered] = useState(false);
   /* Click mode keeps its own latch. It is NOT sidebarPinned: pinning also makes
      the rail part of the layout and pushes the page, whereas a clicked-open
      sidebar still floats over it and still closes when you click away. */
   const [latched, setLatched] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const railRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const dismissRail = () => {
+    setLatched(false);
+    setHovered(false);
+    setFocusWithin(false);
+    setDismissed(true);
+  };
   const byHover = preferences.sidebarExpandOn === "hover";
   /* Keyboard focus opens the rail on the same terms hover does, when the
      preference allows it. Without this the rail is mouse-only: tabbing into it
@@ -139,6 +151,7 @@ export function Sidebar() {
      nobody can see is not what was asked for. */
   useEffect(() => {
     const onAsk = () => {
+      setDismissed(false);
       setLatched(true);
       setFocusWithin(true);
       window.setTimeout(() => searchRef.current?.focus(), 0);
@@ -147,7 +160,12 @@ export function Sidebar() {
     return () => window.removeEventListener(SIDEBAR_SEARCH_EVENT, onAsk);
   }, []);
   const focusOpens = preferences.sidebarFocusExpand && focusWithin;
-  const expanded = preferences.sidebarPinned || focusOpens || (byHover ? hovered : latched);
+  // All modules use the same effective hover/click/focus preferences. A manual
+  // dismissal wins until a fresh pointer/focus entry, so the toggle can close a
+  // hovered rail without immediately reopening it under the same pointer.
+  const expanded = preferences.sidebarPinned || (!dismissed && (latched || focusOpens || (byHover && hovered)));
+  // Placement is physical: the shell already compensates its flex direction
+  // for RTL, so applying a second reversal would cover the header's controls.
   const isRight = preferences.sidebarPlacement === "right";
 
   const railPalette = chromePalette(preferences.sidebarTone);
@@ -158,11 +176,28 @@ export function Sidebar() {
   const searching = query.trim().length > 0;
   const sections = useMemo(() => filterNavigation(module.navigation, query, t), [module.navigation, query, t]);
   const resultCount = useMemo(() => (searching ? countPages(sections) : 0), [searching, sections]);
+  const pinLocked = preferencePolicy?.rules.sidebarPinned?.locked;
+  const pinControl = <button type="button" title={preferences.sidebarPinned ? "Unpin sidebar" : "Pin sidebar"} disabled={pinLocked} onClick={() => { if (!pinLocked) updatePreference("sidebarPinned", !preferences.sidebarPinned); }} className={cn("focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition", preferences.sidebarPinned ? "border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]" : "border-[var(--border)] text-[var(--text-muted)] hover:bg-[var(--surface-2)]")}>{preferences.sidebarPinned ? <PinOff className="size-3.5" /> : <Pin className="size-3.5" />}</button>;
 
   /* A query is about one module's tree, so switching module clears it --
      otherwise the new module opens filtered by a word chosen for the old one,
      and usually shows nothing. */
-  useEffect(() => { setQuery(""); }, [module.id]);
+  useEffect(() => { setQuery(""); setLatched(false); setHovered(false); setFocusWithin(false); setDismissed(false); }, [module.id]);
+
+  useEffect(() => {
+    const close = () => { setLatched(false); setHovered(false); setFocusWithin(false); setDismissed(true); };
+    const onOutside = (event: PointerEvent) => {
+      if (!preferences.sidebarPinned && event.target instanceof Node && !railRef.current?.contains(event.target)) close();
+    };
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !query && !preferences.sidebarPinned && railRef.current?.contains(document.activeElement)) {
+        close(); toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("pointerdown", onOutside);
+    document.addEventListener("keydown", onEscape);
+    return () => { document.removeEventListener("pointerdown", onOutside); document.removeEventListener("keydown", onEscape); };
+  }, [preferences.sidebarPinned, query]);
 
   /* Collapsing the rail hides the input; a query left behind would keep the
      tree filtered with nothing on screen explaining why. */
@@ -182,6 +217,7 @@ export function Sidebar() {
         )}
       />
       <aside
+        ref={railRef}
         aria-label={translateCopy("ui.primary.navigation.e1bfe7ec")}
         data-tour="sidebar"
         /* A theme id here re-resolves EVERY palette token inside the rail from
@@ -194,21 +230,28 @@ export function Sidebar() {
            preferences compose rather than fight. */
         data-theme={preferences.sidebarTheme === "match" ? undefined : preferences.sidebarTheme}
         style={railPalette}
-        onMouseEnter={() => byHover && setHovered(true)}
+        onMouseEnter={() => { if (byHover) { setDismissed(false); setHovered(true); } }}
         onMouseLeave={() => byHover && setHovered(false)}
         /* onFocus/onBlur bubble in React, so these fire for any descendant --
            which is the whole point: focus anywhere inside the rail counts.
            relatedTarget is where focus is GOING; if that is still inside the
            rail the sidebar must stay open, otherwise tabbing between two of its
            own links would close it under the user. */
-        onFocus={() => preferences.sidebarFocusExpand && setFocusWithin(true)}
+        onFocus={(event) => {
+          // Focusing the toggle must not reverse its intended action before
+          // click/Space/Enter is delivered. Other menu controls can expand it.
+          if (preferences.sidebarFocusExpand && event.target !== toggleRef.current) { setDismissed(false); setFocusWithin(true); }
+        }}
         onBlur={(event) => {
           if (!preferences.sidebarFocusExpand) return;
           const next = event.relatedTarget as Node | null;
           if (!next || !event.currentTarget.contains(next)) setFocusWithin(false);
         }}
         className={cn(
-          "no-print absolute inset-y-0 z-50 flex flex-col bg-[var(--surface)] transition-[width] duration-200",
+          "no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200",
+          // The floating rail must not cover the header or its dropdowns. A
+          // pinned rail has its own reserved width and can keep the higher layer.
+          preferences.sidebarPinned ? "z-50" : "z-30",
           isRight ? "right-0 border-s border-[var(--border)]" : "left-0 border-r border-[var(--border)]",
           expanded ? "w-[var(--sidebar-expanded)]" : "w-[var(--sidebar-collapsed)]",
           /* Lifted off the page only while it is actually floating over it. Pinned, it
@@ -216,33 +259,35 @@ export function Sidebar() {
           expanded && !preferences.sidebarPinned ? "shadow-[var(--shadow-lg)]" : "shadow-[var(--shadow-sm)]",
         )}
       >
-      <div className="flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3">
-        {byHover ? (
-          <div className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md">
-            <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]" />
-            <Command className="relative size-4" />
-          </div>
-        ) : (
+      <div className="flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3" style={preferences.sidebarPinned ? undefined : { width: "var(--sidebar-collapsed)", marginLeft: isRight ? "auto" : undefined, marginRight: isRight ? undefined : "auto" }}>
           <button
+            ref={toggleRef}
             type="button"
             aria-expanded={expanded}
             aria-label={expanded ? "Collapse navigation" : "Expand navigation"}
             title={expanded ? "Collapse navigation" : "Expand navigation"}
-            onClick={() => setLatched((previous) => !previous)}
+            disabled={preferences.sidebarPinned && preferencePolicy?.rules.sidebarPinned?.locked}
+            onClick={() => {
+              if (preferences.sidebarPinned && preferencePolicy?.rules.sidebarPinned?.locked) return;
+              if (expanded) {
+                if (preferences.sidebarPinned) updatePreference("sidebarPinned",false);
+                dismissRail();
+              } else { setDismissed(false); setLatched(true); }
+            }}
             className="focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"
           >
             <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]" />
             <Command className="relative size-4" />
           </button>
-        )}
-        {expanded ? <div className="min-w-0 flex-1"><div className="truncate text-[length:calc(13px*var(--fs-scale))] font-black tracking-[-.04em]">{product.name} {product.accentName ? <span className="text-[var(--primary-strong)]">{product.accentName}</span> : null}</div><div className="truncate text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] text-[var(--text-subtle)]">{product.tagline}</div></div> : null}
-        {expanded ? <button type="button" title={preferences.sidebarPinned ? "Unpin sidebar" : "Pin sidebar"} onClick={() => updatePreference("sidebarPinned", !preferences.sidebarPinned)} className={cn("focus-ring flex size-8 items-center justify-center rounded-lg border transition", preferences.sidebarPinned ? "border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]" : "border-[var(--border)] text-[var(--text-muted)] hover:bg-[var(--surface-2)]")}>{preferences.sidebarPinned ? <PinOff className="size-3.5" /> : <Pin className="size-3.5" />}</button> : null}
+        {expanded && preferences.sidebarPinned ? <div className="min-w-0 flex-1"><div className="truncate text-[length:calc(13px*var(--fs-scale))] font-black tracking-[-.04em]">{product.name} {product.accentName ? <span className="text-[var(--primary-strong)]">{product.accentName}</span> : null}</div><div className="truncate text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] text-[var(--text-subtle)]">{product.tagline}</div></div> : null}
+        {expanded && preferences.sidebarPinned ? pinControl : null}
       </div>
 
       <div className="shrink-0 border-b border-[var(--border)] px-3 py-3">
         <div className={cn("flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)]", expanded ? "gap-2 px-2.5 py-2" : "justify-center p-1.5")}>
           <div className="flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white" style={{ background: module.accent }}>{brandLetters}</div>
-          {expanded ? <div className="min-w-0"><div className="truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]">{<LocalizedText message={module.labelKey ?? module.label} />}</div><div className="truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"><LocalizedText message="ui.module.navigation.62254823" /></div></div> : null}
+          {expanded ? <div className="min-w-0 flex-1"><div className="truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]">{<LocalizedText message={module.labelKey ?? module.label} />}</div><div className="truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"><LocalizedText message="ui.module.navigation.62254823" /></div></div> : null}
+          {expanded && !preferences.sidebarPinned ? pinControl : null}
         </div>
       </div>
 
@@ -304,7 +349,7 @@ export function Sidebar() {
 
       <div className="shrink-0 border-t border-[var(--border)] p-2">
         {product.pages.preferences && <button type="button" title={translateCopy("ui.my.preferences.164a6ee1")} onClick={() => openPage("preferences")} className={cn("focus-ring flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)]", expanded ? "gap-2.5 px-2.5" : "justify-center")}><span className="flex size-6 items-center justify-center"><SlidersHorizontal className="size-3.5" /></span>{expanded ? <span className="text-[length:calc(11px*var(--fs-scale))] font-bold"><LocalizedText message="ui.my.preferences.164a6ee1" /></span> : null}</button>}
-        <button type="button" title={preferences.sidebarPinned ? "Sidebar is fixed" : "Sidebar expands on hover"} onClick={() => updatePreference("sidebarPinned", !preferences.sidebarPinned)} className={cn("focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)]", expanded ? "gap-2.5 px-2.5" : "justify-center")}>
+        <button type="button" title={preferences.sidebarPinned ? "Sidebar is fixed" : "Sidebar expands on hover"} disabled={pinLocked} onClick={() => { if (!pinLocked) updatePreference("sidebarPinned", !preferences.sidebarPinned); }} className={cn("focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)]", expanded ? "gap-2.5 px-2.5" : "justify-center")}>
           <span className="flex size-6 items-center justify-center">{preferences.sidebarPinned ? <PanelLeftClose className="size-3.5" /> : <PanelLeftOpen className="size-3.5" />}</span>
           {expanded ? <span className="min-w-0 flex-1 text-start text-[length:calc(10px*var(--fs-scale))] font-semibold">{preferences.sidebarPinned ? <LocalizedText message="ui.unfix.sidebar.fcdb31f7" /> : <LocalizedText message="ui.fix.sidebar.open.5cfa2a6b" />}</span> : null}
           {expanded ? <SideIcon className="size-3 text-[var(--text-subtle)]" /> : null}

@@ -1,0 +1,80 @@
+{
+  "recordedAt": "2026-10-01T04:39:33.449192+00:00",
+  "deployed": false,
+  "baseCommit": "1eba17bdd3584fcfbef722da317ceb353286b5a8",
+  "network": {
+    "npmPingMs": 271,
+    "npmLogDirectoryWrite": "PASS",
+    "serverDnsChanged": false
+  },
+  "toolchain": {
+    "node": "v24.21.0",
+    "npm": "11.19.0"
+  },
+  "backendRuntime": {
+    "tests": 8,
+    "pass": 8,
+    "fail": 0,
+    "scope": "policy and actual LIS1/LIS2/RIS1 persistence, branch isolation and read-only denial; policy tests overlap API regression"
+  },
+  "apiRegression": {
+    "tests": 312,
+    "pass": 312,
+    "fail": 0,
+    "skipped": 0
+  },
+  "frontendUnitRegression": {
+    "tests": 1952,
+    "pass": 1952,
+    "files": 168,
+    "scope": "before final diagnostic toggle fix; focused sidebar tests and full browser suites rerun after fix"
+  },
+  "finalSidebarTests": {
+    "tests": 5,
+    "pass": 5
+  },
+  "deploymentAndRegistryTests": {
+    "tests": 16,
+    "pass": 16
+  },
+  "builds": {
+    "web": "PASS",
+    "desktop": "PASS",
+    "apiUrl": "/api"
+  },
+  "gates": {
+    "styleParity": "PASS",
+    "sharedComponents": "PASS",
+    "formControls": "PASS",
+    "bundle": "PASS",
+    "documentationLifecycle": "PASS",
+    "documentationLinks": "PASS",
+    "localization": "FAIL_ENGLISH_FALLBACK",
+    "authoredWorkflowTranslations": "FAIL_MISSING_NON_ENGLISH"
+  },
+  "browser": {
+    "diagnostic-reference": {
+      "checks": 71,
+      "pageErrors": 0,
+      "consoleErrors": 0
+    },
+    "healthcare-suite": {
+      "checks": 49,
+      "pageErrors": 0,
+      "consoleErrors": 0
+    },
+    "school-role-header": {
+      "checks": 28,
+      "pageErrors": 0,
+      "consoleErrors": 0
+    }
+  },
+  "evidenceFiles": {
+    "diagnostic-reference.json": "1f53c9e6b180aaf43f1dc796eb16aad95165d789748f46c7349942b193cef0c5",
+    "healthcare-suite.json": "8ded3fe81a174b88b64cd6869c94f10105568cf1ca63137f52faae54984405b8",
+    "reference-lis1-dashboard.png": "bf55d6dc8520e076b972d27b460ee38dcecc4cbbec7e074c512b5e944768d52c",
+    "reference-lis2-dashboard.png": "cc1b337b3605b38b02515fdefa011db8149efef4ce96a709a27ebae759fbbda8",
+    "reference-ris1-dashboard.png": "1dc13c1b8af5d28fb3772d6a61c4fc807a7b86bb064a590612c5c84c9e81d340",
+    "school-role-header.json": "246efc18ac1f0e355dcb9b4519a1f617a7bbf70b0667c28486e892b14f91fe90"
+  }
+}

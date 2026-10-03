@@ -1,0 +1,130 @@
+{
+  "recordedAt": "2026-10-02T08:47:03.334096+00:00",
+  "status": "LOCAL_IMPLEMENTATION_VERIFIED_DEPLOYMENT_PENDING",
+  "sourceIdentitySha256": "d957aba40eb666f85343abf2244621b1de32e7ebdcbcb7a548afa973fa9bd096",
+  "baseCommit": "1eba17bdd3584fcfbef722da317ceb353286b5a8",
+  "deployed": false,
+  "module": {
+    "menuDestinations": 12,
+    "detailRoutes": 2
+  },
+  "validation": {
+    "frontendFocused": {
+      "passed": 22,
+      "failed": 0
+    },
+    "embeddedBackendRegression": {
+      "passed": 10,
+      "failed": 0
+    },
+    "additionalRcmRegression": {
+      "passed": 2,
+      "failed": 0,
+      "scope": "separate run, nonoverlapping cases"
+    },
+    "e2eRegistryGuards": {
+      "passed": 4
+    },
+    "deploymentSafeguards": {
+      "passed": 12
+    },
+    "typecheck": {
+      "web": "PASS",
+      "desktop": "PASS"
+    },
+    "desktopBrowserBuild": "PASS",
+    "sharedComponents": "PASS",
+    "formControls": "PASS",
+    "localizationCopy": "PASS",
+    "localizationFallbacks": "PASS",
+    "documentationLinks": "PASS",
+    "historicalDocumentationSnapshots": {
+      "unchanged": 32,
+      "scope": "independent direct Git export comparison; full lifecycle remains blocked"
+    },
+    "currentImpactFingerprints": {
+      "verified": 1133,
+      "scope": "partial independent validation, not full lifecycle gate"
+    }
+  },
+  "pending": [
+    "web production build: spawned TypeScript --showConfig returned exit 0 but empty stdout; direct invocation parses valid JSON",
+    "full documentation lifecycle: spawnSync git EPERM",
+    "staged and public browser acceptance",
+    "deployment and public release verification",
+    "native-language/domain review",
+    "offline source font parity",
+    "live external provider integration"
+  ],
+  "artifacts": {
+    "medslot-ui-accepted-final.log": {
+      "sha256": "59bbf8bc16b42fa7a980f9e932e8f0b56c44775663c1c2642c91a40b8240b405",
+      "bytes": 412
+    },
+    "medslot-runtime-final.log": {
+      "sha256": "3f703aba7275212e2fc46df6811a6126eb64e87ea5a383b84cedd5d1da280011",
+      "bytes": 1347
+    },
+    "medslot-rcm-regression.log": {
+      "sha256": "645eeddb232a95472f5d8a7195748448ba7fde525cbb7b0b86dcce611a8735c9",
+      "bytes": 449
+    },
+    "medslot-generated-check.log": {
+      "sha256": "70ce925e55009b9d13d4a0ffc4e4e43d0fc3d9f75d262303924309a1cd1cbf8b",
+      "bytes": 189
+    },
+    "medslot-web-types.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "medslot-desktop-types.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "medslot-desktop-accepted.log": {
+      "sha256": "9c3bf54f88a5e2b41af73acff33de6f12711916cc2788ced9bbe2f4e8baec32c",
+      "bytes": 12336
+    },
+    "medslot-web-build.log": {
+      "sha256": "8e9616a05a841ede6c515a4d953e8280936f3ca5e990e952019d495f624021c0",
+      "bytes": 318
+    },
+    "medslot-parity-final.log": {
+      "sha256": "70899628facb9138141fc6d263a8981819ba79557cfecd28fc73089a8249c810",
+      "bytes": 5777
+    },
+    "medslot-components-final.log": {
+      "sha256": "82560d313e0022b0d08930a94bc3ae9c6ee233e09280672e238dc5a1965cbfc2",
+      "bytes": 184
+    },
+    "medslot-forms-final.log": {
+      "sha256": "043b40c8d8754074cac5009cead799c7f94eeec8d2d01e0cc790ce03d64583ab",
+      "bytes": 1194
+    },
+    "medslot-copy-accepted.log": {
+      "sha256": "cf492007a3db1c4e9dfe59945be7d4923848654f84b943ac9cc1b9b05ca0af43",
+      "bytes": 111
+    },
+    "medslot-fallbacks-accepted.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "medslot-docs-final.log": {
+      "sha256": "afef934d6d1918ba0c49f1dbf7624507e44ae80267daceda3624ff1df0bc9744",
+      "bytes": 147
+    },
+    "medslot-registry.log": {
+      "sha256": "9d78bce3d14181a4810f13049ae4b6b5d7a7643c41a7741ddbcf691d68105b2c",
+      "bytes": 464
+    },
+    "medslot-deployment-safeguards-final.log": {
+      "sha256": "17049a3ed2ee2f1d35d069aa2070c00a2c2f636d9ebfd96b0e7dbf463e54e445",
+      "bytes": 627
+    }
+  },
+  "testOrderingNotes": [
+    "Final roster authority wording and its two locale keys were added after the backend service runs; backend runtime source did not change afterward. Final frontend tests and desktop build include those strings.",
+    "Test driver now rejects console errors as well as page errors; actual browser run is pending.",
+    "Source identity records final tree. Logs cover their stated commands; no final combined web build exists."
+  ]
+}

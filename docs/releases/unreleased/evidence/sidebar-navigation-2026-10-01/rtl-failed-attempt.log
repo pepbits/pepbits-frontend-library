@@ -1,0 +1,62 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: 'Collapse navigation', exact: true })[22m
+[2m    - locator resolved to <button type="button" aria-expanded="true" title="Collapse navigation" aria-label="Collapse navigation" class="focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md">…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <span class="flex min-w-0 flex-1 items-baseline gap-1.5">…</span> from <div class="flex min-w-0 flex-1 flex-col overflow-hidden">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <span class="flex min-w-0 flex-1 items-baseline gap-1.5">…</span> from <div class="flex min-w-0 flex-1 flex-col overflow-hidden">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    57 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <span class="flex min-w-0 flex-1 items-baseline gap-1.5">…</span> from <div class="flex min-w-0 flex-1 flex-col overflow-hidden">…</div> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients/e2e/diagnostic-localization.mjs:30:90 {
+  log: [
+    "  - waiting for getByRole('button', { name: 'Collapse navigation', exact: true })",
+    '    - locator resolved to <button type="button" aria-expanded="true" title="Collapse navigation" aria-label="Collapse navigation" class="focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md">…</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <span class="flex min-w-0 flex-1 items-baseline gap-1.5">…</span> from <div class="flex min-w-0 flex-1 flex-col overflow-hidden">…</div> subtree intercepts pointer events',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <span class="flex min-w-0 flex-1 items-baseline gap-1.5">…</span> from <div class="flex min-w-0 flex-1 flex-col overflow-hidden">…</div> subtree intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    57 × waiting for element to be visible, enabled and stable',
+    '       - element is visible, enabled and stable',
+    '       - scrolling into view if needed',
+    '       - done scrolling',
+    '       - <span class="flex min-w-0 flex-1 items-baseline gap-1.5">…</span> from <div class="flex min-w-0 flex-1 flex-col overflow-hidden">…</div> subtree intercepts pointer events',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.21.0

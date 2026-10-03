@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/*
+  MedBand design tokens.
+  The signature element is the patient wristband: a coloured clasp, the name,
+  and an MRN barcode. Everything else stays quiet so that band and the
+  colour-coded encounter types carry the meaning.
+*/
+@theme {
+  --font-sans: "Public Sans Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --color-ink: #15232b;
+  --color-ink-soft: #46575f;
+  --color-ink-faint: #7f8e95;
+  --color-canvas: #e9eeec;
+  --color-paper: #ffffff;
+  --color-line: #d5dedb;
+  --color-line-soft: #e6ece9;
+
+  --color-scrub-50: #eaf3f4;
+  --color-scrub-100: #cfe5e8;
+  --color-scrub-200: #a2cdd3;
+  --color-scrub-400: #3f98a8;
+  --color-scrub-500: #1f7a8c;
+  --color-scrub-600: #13616f;
+  --color-scrub-700: #0e4c58;
+  --color-scrub-800: #0b3943;
+  --color-scrub-900: #082a31;
+
+  --color-band: #f2c230;
+
+  --radius-band: 999px;
+  --shadow-lift: 0 1px 0 rgba(21, 35, 43, 0.04), 0 8px 24px -12px rgba(8, 42, 49, 0.18);
+  --shadow-pop: 0 24px 48px -16px rgba(8, 42, 49, 0.35);
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-feature-settings: "tnum" 1, "cv11" 1;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-scrub-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--color-scrub-100);
+  }
+}
+
+@layer components {
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line) transparent;
+  }
+  .barcode {
+    display: flex;
+    align-items: stretch;
+    gap: 1px;
+  }
+  .barcode > span {
+    background: currentColor;
+    display: block;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.animate-rise {
+  animation: rise 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.animate-fade {
+  animation: fade 0.18s ease-out both;
+}
+.animate-slide-in {
+  animation: slide-in 0.24s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-fade,
+  .animate-slide-in {
+    animation: none;
+  }
+  * {
+    transition-duration: 0ms !important;
+  }
+}

@@ -1,0 +1,468 @@
+
+> nexora-monorepo@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients
+
+ ✓ packages/erp-screens/src/clinical-templates/clinical-templates.test.tsx (7 tests) 2938ms
+   ✓ patient form preserves edits through section changes and retries with the same operation  1266ms
+   ✓ scope remounts cannot retain another user patient edits  367ms
+   ✓ New patient resets a saved record in a reused new-record tab  489ms
+   ✓ empty contact editors do not create rows until edited and retain focus while typing  460ms
+ ✓ packages/erp-screens/src/templates/preference-compliance.test.tsx (4 tests) 3731ms
+   ✓ all registered templates inherit managed table preferences in both density profiles  3539ms
+ ✓ packages/reference-teleconsult/src/patient/module.test.tsx (25 tests) 4780ms
+   ✓ visit > books with an Idempotency-Key, and a retry after a lost response replays the same key  530ms
+   ✓ booking advice from the server > asks the API for the specialty and urgency, and uses its answer to label the suggestion and book as urgent  473ms
+   ✓ booking advice from the server > shows the urgent warning only from the API's urgency, not from the browser's own reading of the symptoms  619ms
+   ✓ booking advice from the server > cannot continue or book on a stale answer: changed answers wait for new advice and a late old reply is ignored  610ms
+   ✓ booking advice from the server > does not offer Continue when the API cannot answer, reports why, and asks again on retry  598ms
+   ✓ effective settings in patient booking > offers only the visit modes the branch supports and books with one of them  402ms
+ ✓ packages/erp-screens/src/templates/page-template.test.tsx (8 tests) 2927ms
+   ✓ every configured template renders real shared content and starts with valid sample data  2498ms
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > renders '/indicators/7' with its heading, data and no error state
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > renders '/tat' with its heading, data and no error state
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > renders '/events' with its heading, data and no error state
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+ ✓ packages/erp-screens/src/lifecycle/sources.test.tsx (11 tests) 2781ms
+   ✓ Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged  600ms
+   ✓ Lifecycle source mappings > creates a pinned mapping from a registered source and saves it through the governed draft  595ms
+   ✓ Lifecycle source mappings > explains invalid and stale mappings, and re-pins only from the registry  320ms
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > renders '/reports/designer' with its heading, data and no error state
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > renders '/reports/3' with its heading, data and no error state
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > requests the indicator detail endpoint for /indicators/7
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > requests the template and its render for /reports/3
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+ ✓ packages/reference-school/src/module.test.tsx (61 tests) 8373ms
+   ✓ ReferenceSchoolModule > renders /dashboard for an administrator through host.request only  346ms
+   ✓ ReferenceSchoolModule > renders /marks for an administrator through host.request only  366ms
+   ✓ failure handling > a rejected create keeps the dialog and the entered values and shows the server message  357ms
+   ✓ record preview follows previewMode > inline renders the record in the matching shared frame  333ms
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > has every plain English message looked up through t() in quality-copy.json
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > has every plain English message looked up through t() in quality-copy.json
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > has every plain English message looked up through t() in quality-copy.json
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > has every plain English message looked up through t() in quality-copy.json
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > has every plain English message looked up through t() in quality-copy.json
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > has every plain English message looked up through t() in quality-copy.json
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | packages/reference-quality/src/pages.test.tsx > AllyVora Quality pages > has every plain English message looked up through t() in quality-copy.json
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+ ✓ packages/reference-quality/src/pages.test.tsx (21 tests) 3193ms
+   ✓ AllyVora Quality pages > renders '/reports/designer' with its heading, data and no error state  703ms
+   ✓ AllyVora Quality pages > has every plain English message looked up through t() in quality-copy.json  1353ms
+ ✓ packages/erp-screens/src/lifecycle/lifecycle.test.tsx (17 tests) 2555ms
+   ✓ LifecycleConfigurationPage > console summary uses server validation and clears it after editing  387ms
+   ✓ LifecycleConfigurationPage > saves a draft with the expected revision and reuses the operation key on retry  316ms
+ ✓ packages/reference-teleconsult/src/provider/module.test.tsx (19 tests) 3068ms
+   ✓ consultation > signs from the Sign off tab with the expected version and shows server problems without losing the draft  311ms
+   ✓ consultation > shows the conflict banner and keeps the edited text when autosave is refused  857ms
+stderr | packages/erp-screens/src/clinical-templates/query.test.tsx > disabled query shortcuts do not focus search or open help
+An update to PatientQueryTemplate inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ packages/reference-reports/src/module.test.tsx (17 tests) 2533ms
+   ✓ ReferenceReportsModule > runs a report with the effective page size and follows preference changes  373ms
+ ✓ packages/erp-screens/src/clinical-templates/query.test.tsx (11 tests) 2265ms
+   ✓ query waits for criteria and preserves filters after a failed search  593ms
+   ✓ inline details belong to the selected row and record actions use navigation  313ms
+ ✓ packages/reference-healthcare-suite/src/components/rcm/HealthcareSuiteRcmWorkspace.test.tsx (27 tests) 1986ms
+ ✓ packages/reference-school/src/final-parity.test.tsx (9 tests) 2014ms
+   ✓ source option labels > the Select shows the source English labels (static and enum) with unchanged values  393ms
+   ✓ server-initialized creation fields > a new book sends only authored fields; the card shows the server's record  460ms
+   ✓ server-initialized creation fields > a rejected book keeps the dialog and the typed values  342ms
+ ✓ packages/reference-school/src/attachments-locale.test.tsx (7 tests) 1887ms
+   ✓ attachments > a failed upload keeps the file and the draft, Retry sends the same bytes once, and the assignment saves the returned metadata  685ms
+ ✓ packages/erp-shell/src/diagnostic-sidebar.test.tsx (17 tests) 2230ms
+   ✓ library follows hover mode and manual dismissal  508ms
+ ✓ packages/reference-medband/src/module.test.tsx (28 tests) 3384ms
+   ✓ ReferenceMedbandModule host contract > renders every one of the nine routes from the backend data (record id from the route, not a promise)  421ms
+   ✓ creating an encounter > posts the source request through the host: backend counter, chosen records, idempotency key, no actor  301ms
+   ✓ creating an encounter > shows the backend's refusal, keeps the entered values and points at the field  333ms
+   ✓ managed table page size > shows the host page size of encounters and steps by it  430ms
+ ✓ packages/reference-medband/src/flows.test.tsx (4 tests) 2543ms
+   ✓ every state of the long forms goes through the localization boundary > the new-encounter form for each visit type, on each of its steps  2126ms
+ ✓ packages/ops-ui/src/search-select.test.tsx (14 tests) 812ms
+ ✓ packages/reference-tenant-admin/src/module.test.tsx (23 tests) 2585ms
+   ✓ configuration pages > opens the record drawer from ?open=, ?id= and ?new=, and closes it through the host navigator  421ms
+   ✓ configuration pages > saves with Ctrl+S carrying the row version, and only while the form is editable and shortcuts are on  357ms
+ ✓ packages/erp-screens/src/drafts/use-shared-draft.test.tsx (4 tests) 1883ms
+   ✓ failed draft write retains the exact payload and operation identity on retry  834ms
+   ✓ completion waits for in-flight autosave before discarding its acknowledged revision  815ms
+ ✓ packages/reference-pharmacy/src/pages.test.tsx (17 tests) 1754ms
+   ✓ workbench through the host > opens the prescription named in the query and a workflow action posts once with an idempotency key, then follows the Rx to its new stage  370ms
+ ✓ packages/erp-screens/src/preferences/preferences.test.tsx (4 tests) 1469ms
+   ✓ record layout and all three density options use the central preference update  804ms
+ ✓ packages/erp-config/src/i18n.test.ts (4 tests) 1749ms
+   ✓ localization contracts > provides every catalog message and preserves interpolation names in each language  1721ms
+ ✓ packages/reference-quality/src/copy.test.ts (3 tests) 569ms
+   ✓ quality-copy.json > is current with the sources  565ms
+ ✓ packages/erp-shell/src/school-role-header.test.tsx (9 tests) 1620ms
+   ✓ School header and sidebar > selects 'School Administrator' through the shared header  504ms
+ ✓ packages/ai-client/src/transport.test.ts (22 tests) 1425ms
+   ✓ the echo transport > no credential configured falls back to the mock  352ms
+   ✓ the echo transport > an unreachable service falls back to the mock  352ms
+   ✓ the echo transport > the mock says nothing left the browser, and lists what would have  351ms
+   ✓ the echo transport > the mock shows the redacted value, not the original  352ms
+ ✓ packages/reference-pharmacy/src/module.test.tsx (11 tests) 1211ms
+ ✓ packages/erp-screens/src/drafts/draft-center.test.tsx (3 tests) 1320ms
+   ✓ metadata and policy appear, search/filter use the API and open rechecks access  682ms
+   ✓ discard retry retains its operation id and does not remove a row until confirmed  347ms
+ ✓ packages/erp-config/src/application-config.test.ts (3 tests) 1300ms
+   ✓ API application configuration > uses backend menus and keys while keeping page components and field identities local  507ms
+   ✓ API application configuration > never creates unsupported frontend pages from API configuration  511ms
+ ✓ packages/erp-shell/src/workspace/use-workspace-navigation.test.tsx (18 tests) 1172ms
+ ✓ packages/erp-screens/src/forms/dynamic-record-form.test.tsx (7 tests) 1333ms
+   ✓ StrictMode loads safely and reports only acknowledged saves  335ms
+ ✓ packages/ai-ui/src/administration.test.tsx (20 tests) 1200ms
+ ✓ packages/reference-school/src/toast-locale.test.tsx (4 tests) 912ms
+   ✓ localized toasts > a dynamic toast is one translated message that keeps the authored title exactly  494ms
+ ✓ packages/ops-ui/src/overlay.test.tsx (23 tests) 776ms
+ ✓ packages/erp-screens/src/records/specialized-editors.test.tsx (2 tests) 848ms
+   ✓ billing fields survive tab changes and are included with line items in a real save  564ms
+ ✓ packages/reference-tenant-admin/src/styles.test.ts (8 tests) 989ms
+   ✓ generated scoped styles > matches what scripts/tenant-admin/styles.mjs generates from the retained source design  976ms
+ ✓ packages/erp-screens/src/library/preference-compliance.test.tsx (4 tests) 958ms
+   ✓ all 12 component catalog routes render their actual examples under non-default preferences  568ms
+ ✓ packages/reference-school/src/library-return.test.tsx (3 tests) 630ms
+ ✓ packages/ai-ui/src/modes.test.tsx (34 tests) 712ms
+ ✓ packages/ai-ui/src/transparency.test.tsx (28 tests) 570ms
+ ✓ packages/erp-screens/src/clinic-billing/workspace.test.tsx (5 tests) 887ms
+   ✓ managed layouts update without losing input; failed requests retry the exact operation  377ms
+   ✓ bill correction retains input and operation identity on failure; read-only view can return  378ms
+ ✓ packages/reference-pharmacy/src/copy.test.ts (4 tests) 603ms
+   ✓ pharmacy-copy.json > is current with the sources  595ms
+ ✓ packages/ops-ui/src/dropdown.test.tsx (11 tests) 530ms
+ ✓ packages/ops-ui/src/inline-edit.test.tsx (15 tests) 719ms
+ ✓ packages/ops-ui/src/inline-edit-typed.test.tsx (19 tests) 1034ms
+ ✓ packages/erp-shell/src/workspace/workspace-canvas.test.tsx (29 tests) 1148ms
+ ✓ packages/erp-screens/src/dcp-designer/dependencies.test.tsx (3 tests) 927ms
+   ✓ parent change clears all descendants and late API responses cannot restore old options  482ms
+ ✓ packages/erp-screens/src/worklist/filter-bar.test.tsx (24 tests) 1030ms
+ ✓ packages/reference-medband/src/pages.test.tsx (11 tests) 1618ms
+   ✓ English copy goes through the localization boundary > covers the overlays: counter menu, quick search, admissions dialogs  305ms
+stderr | packages/erp-screens/src/care-pages/workspace.test.tsx > multiple emergency pathways reveal independent fields and preserve values when hidden
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+
+stderr | packages/erp-screens/src/care-pages/workspace.test.tsx > multiple emergency pathways reveal independent fields and preserve values when hidden
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+Encountered two children with the same key, `Obstetric`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+
+ ✓ packages/erp-screens/src/care-pages/workspace.test.tsx (3 tests) 1600ms
+   ✓ failed saves keep notes and retry the identical operation; selectors cannot discard dirty inputs  1114ms
+ ✓ packages/reference-teleconsult/src/shared/hooks.test.tsx (10 tests) 821ms
+ ✓ packages/erp-screens/src/clinical-consultation/workspace.test.tsx (3 tests) 842ms
+   ✓ expanded panels retain values and validation opens a hidden invalid vital  358ms
+ ✓ packages/ops-ui/src/shared-components.test.tsx (11 tests) 619ms
+ ✓ packages/erp-screens/src/dcp-designer/workspace.test.tsx (3 tests) 690ms
+   ✓ visual edits reuse stable IDs; failed save retains edits and reuses operation on retry  349ms
+ ✓ packages/erp-shell/src/erp-context.test.tsx (38 tests) 592ms
+ ✓ packages/reference-keystone-core/src/keystone-core.test.tsx (20 tests) 593ms
+ ✓ packages/erp-data/src/records.test.ts (11 tests) 729ms
+ ✓ packages/erp-shell/src/workspace/workspace-tabs.test.tsx (15 tests) 626ms
+ ✓ packages/erp-screens/src/op-registration/workspace.test.tsx (3 tests) 596ms
+ ✓ packages/erp-screens/src/approvals/approval-workspace.test.tsx (7 tests) 716ms
+ ✓ packages/reference-medband/src/copy.test.ts (5 tests) 695ms
+   ✓ medband-copy.json > is current with the sources  689ms
+ ✓ packages/erp-screens/src/imports/csv-import-dialog.test.tsx (6 tests) 602ms
+ ✓ packages/reference-erp2/src/reference-erp2.test.tsx (9 tests) 622ms
+   ✓ reference-erp2 module > requests page lookups before rendering the page  321ms
+ ✓ packages/erp-screens/src/op-consultation/workspace.test.tsx (1 test) 391ms
+   ✓ OP summary navigates fields; locked layout and review retain unsaved values  389ms
+ ✓ packages/erp-screens/src/clinical-triage/editor.test.tsx (3 tests) 658ms
+   ✓ blank readings and unanswered safety choices; completion focuses required complaint  356ms
+ ✓ packages/reference-healthcare-suite/src/preferences.test.tsx (9 tests) 534ms
+ ✓ packages/reference-erp1/src/reference-erp1.test.tsx (9 tests) 579ms
+   ✓ reference-erp1 module > requests page lookups before rendering the page  326ms
+ ✓ packages/ops-ui/src/form-controls.test.tsx (30 tests) 438ms
+ ✓ packages/erp-screens/src/templates/registry-template.test.tsx (3 tests) 662ms
+   ✓ all five registry templates render through shared engines with preference-owned layouts  434ms
+ ✓ packages/erp-screens/src/worklist/use-column-layout.test.tsx (22 tests) 578ms
+ ✓ packages/erp-screens/src/library/component-catalog.test.tsx (5 tests) 755ms
+ ✓ packages/erp-screens/src/comprehensive-consultation/workspace.test.tsx (1 test) 523ms
+   ✓ specialty edits survive context and tenant-locked layout changes; preview never saves  521ms
+ ✓ packages/erp-screens/src/dcp-designer/catalog-manager.test.tsx (4 tests) 406ms
+ ✓ packages/reference-quality/src/module.test.tsx (8 tests) 426ms
+ ✓ packages/reference-pharmacy/src/styles.test.ts (9 tests) 349ms
+   ✓ generated scoped styles > matches what scripts/pharmacy/styles.mjs generates from the retained source design  331ms
+ ✓ packages/ops-ui/src/pagination.test.tsx (9 tests) 405ms
+ ✓ packages/reference-quality/src/errors.test.tsx (4 tests) 582ms
+ ✓ packages/reference-tenant-admin/src/copy.test.ts (4 tests) 557ms
+   ✓ tenant-admin-copy.json > is current with the sources  552ms
+ ✓ packages/reference-quality/src/styles.test.ts (9 tests) 407ms
+   ✓ generated scoped styles > matches what scripts/quality/styles.mjs generates from the retained source design  390ms
+ ✓ packages/ops-ui/src/states.test.tsx (24 tests) 318ms
+ ✓ packages/erp-screens/src/identity-devices/workspace.test.tsx (3 tests) 296ms
+ ✓ packages/erp-screens/src/page-library/catalog.test.tsx (4 tests) 302ms
+ ✓ packages/ops-ui/src/page-copy-localization.test.tsx (9 tests) 280ms
+ ✓ packages/auth/src/session.test.tsx (32 tests) 284ms
+ ✓ packages/erp-screens/src/device-integrations/workspace.test.tsx (2 tests) 309ms
+ ✓ packages/reference-medband/src/styles.test.ts (10 tests) 373ms
+   ✓ generated scoped styles > matches what scripts/medband/styles.mjs generates from the retained source design  358ms
+ ✓ packages/erp-screens/src/worklist/use-filter-sync.test.tsx (9 tests) 322ms
+ ✓ packages/erp-shell/src/product-context.test.tsx (3 tests) 265ms
+ ✓ packages/reference-quality/src/version.test.tsx (1 test) 268ms
+ ✓ packages/erp-screens/src/dcp-designer/host-runtime.test.tsx (3 tests) 327ms
+ ✓ packages/erp-screens/src/records/record-panels.test.tsx (4 tests) 295ms
+ ✓ packages/erp-screens/src/worklist/saved-view.test.tsx (11 tests) 251ms
+ ✓ packages/erp-screens/src/dcp-designer/sections.test.tsx (4 tests) 287ms
+ ✓ packages/ops-ui/src/recovery-notice.test.tsx (5 tests) 293ms
+ ✓ packages/reference-quality/src/controls.test.tsx (6 tests) 312ms
+ ✓ packages/ops-ui/src/reference-data.test.tsx (17 tests) 334ms
+ ✓ packages/ops-ui/src/quantity-unit-field.test.tsx (9 tests) 272ms
+ ✓ packages/ops-ui/src/segmented.test.tsx (9 tests) 227ms
+ ✓ packages/erp-screens/src/master-transfer/panel.test.tsx (3 tests) 228ms
+stderr | packages/ai-ui/src/use-assistant.test.tsx > the administration config > arrives once asked for
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | packages/ai-ui/src/use-assistant.test.tsx > the administration config > a refused config leaves it null rather than half-built
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ packages/ai-ui/src/use-assistant.test.tsx (24 tests) 244ms
+ ✓ packages/erp-shell/src/workspace/use-mdi-workspace.test.tsx (7 tests) 176ms
+ ✓ packages/erp-screens/src/templates/configured-template-page.test.tsx (3 tests) 261ms
+ ✓ packages/erp-screens/src/clinical-templates/record-layout.test.tsx (2 tests) 167ms
+ ✓ packages/erp-shell/src/workspace/mdi-taskbar.test.tsx (7 tests) 170ms
+ ✓ packages/erp-screens/src/login/recovery.test.tsx (1 test) 209ms
+ ✓ packages/erp-screens/src/record-page/record-page.test.tsx (2 tests) 152ms
+ ✓ packages/erp-screens/src/label-printing/workspace.test.tsx (2 tests) 214ms
+ ✓ packages/workspace-core/src/use-workspace.test.tsx (19 tests) 204ms
+ ✓ packages/erp-screens/src/clinical-templates/query-search.test.tsx (2 tests) 211ms
+ ✓ packages/reference-healthcare-suite/src/adapter.test.tsx (8 tests) 169ms
+ ✓ packages/ai-client/src/admin.test.ts (11 tests) 12ms
+ ✓ packages/ops-ui/src/localization.test.tsx (4 tests) 161ms
+ ✓ packages/erp-screens/src/dcp-designer/runtime-fields.test.tsx (5 tests) 115ms
+ ✓ packages/ops-ui/src/button.test.tsx (5 tests) 183ms
+ ✓ packages/ops-ui/src/card.test.tsx (6 tests) 117ms
+ ✓ packages/reference-school/src/contracts.test.ts (12 tests) 114ms
+ ✓ packages/reference-teleconsult/src/shared/format.test.tsx (6 tests) 74ms
+ ✓ packages/ops-ui/src/source-controls.test.tsx (3 tests) 104ms
+ ✓ packages/reference-teleconsult/src/provider/lib/encounter-sync.test.tsx (12 tests) 122ms
+ ✓ packages/ops-ui/src/badge.test.tsx (12 tests) 78ms
+ ✓ packages/erp-screens/src/master-transfer/inflation.test.ts (2 tests) 53ms
+ ✓ packages/ops-ui/src/stat-card.test.tsx (6 tests) 100ms
+ ✓ packages/ops-ui/src/avatar.test.tsx (10 tests) 142ms
+ ✓ packages/erp-screens/src/worklist/export-rows.test.ts (26 tests) 91ms
+ ✓ packages/ops-ui/src/tabs.test.tsx (3 tests) 132ms
+ ✓ packages/ops-ui/src/skeleton.test.tsx (4 tests) 118ms
+ ✓ packages/erp-screens/src/product-services.test.tsx (2 tests) 104ms
+ ✓ packages/erp-screens/src/product-access.test.tsx (2 tests) 97ms
+ ✓ packages/ai-client/src/sources.test.tsx (10 tests) 65ms
+ ✓ packages/erp-shell/src/sentinel.test.tsx (1 test) 94ms
+ ✓ packages/reference-diagnostics/src/client.test.tsx (2 tests) 95ms
+ ✓ packages/erp-screens/src/preference-preview.test.tsx (1 test) 91ms
+ ✓ packages/erp-data/src/mock.test.ts (148 tests) 125ms
+ ✓ packages/erp-shell/src/workspace/use-detached-windows.test.tsx (13 tests) 128ms
+ ✓ packages/erp-data/src/dcp-host.test.ts (2 tests) 15ms
+ ✓ packages/reference-quality/src/format.test.tsx (4 tests) 77ms
+ ✓ packages/reference-pharmacy/src/useAction.test.tsx (1 test) 31ms
+ ✓ packages/ops-ui/src/option-filter.test.tsx (13 tests) 39ms
+ ✓ packages/ops-ui/src/scanner-input.test.tsx (2 tests) 62ms
+ ✓ packages/reference-teleconsult/src/routes.test.ts (20 tests) 11ms
+ ✓ packages/platform-ports/src/ports.test.tsx (17 tests) 52ms
+ ✓ packages/erp-screens/src/master-transfer/format.test.ts (8 tests) 64ms
+ ✓ packages/erp-shell/src/chrome.test.tsx (23 tests) 60ms
+ ✓ packages/erp-config/src/localization-formatting.test.ts (13 tests) 38ms
+ ✓ packages/erp-screens/src/imports/csv-options.test.ts (3 tests) 6ms
+ ✓ packages/erp-screens/src/clinical-templates/library-page.test.tsx (8 tests) 44ms
+ ✓ packages/ai-client/src/policy.test.ts (9 tests) 25ms
+ ✓ packages/erp-shell/src/workspace/mdi-frames.test.ts (20 tests) 13ms
+ ✓ packages/ai-client/src/redact.test.ts (157 tests) 58ms
+ ✓ packages/reference-teleconsult/src/shared/client.test.ts (16 tests) 34ms
+ ✓ packages/platform-ports/src/school-web-navigation.test.tsx (4 tests) 30ms
+ ✓ packages/erp-config/src/lifecycle/lifecycle.test.ts (19 tests) 49ms
+ ✓ packages/workspace-core/src/document-manager.test.ts (47 tests) 18ms
+ ✓ packages/reference-tenant-admin/src/api.test.ts (14 tests) 20ms
+ ✓ packages/platform-ports/src/school-landing.test.tsx (3 tests) 30ms
+ ✓ packages/reference-school/src/bundle-boundary.test.ts (4 tests) 15ms
+ ✓ packages/erp-screens/src/clinical-templates/overview-data.test.ts (1 test) 12ms
+ ✓ packages/reference-teleconsult/src/styles.test.ts (10 tests) 15ms
+ ✓ packages/reference-medband/src/source-boundary.test.ts (5 tests) 26ms
+ ✓ packages/erp-data/src/dcp-runtime.test.ts (4 tests) 17ms
+ ✓ packages/erp-config/src/lifecycle/sources.test.ts (17 tests) 26ms
+ ✓ packages/erp-config/src/filter-policy.test.ts (15 tests) 18ms
+ ✓ packages/reference-healthcare-suite/src/lib/rcm-contract.test.ts (12 tests) 15ms
+ ✓ packages/auth/src/recovery.test.ts (9 tests) 35ms
+ ✓ packages/reference-quality/src/client.test.ts (9 tests) 23ms
+ ✓ packages/ops-ui/src/cn.test.ts (9 tests) 28ms
+ ✓ packages/erp-data/src/draft-center.test.ts (2 tests) 19ms
+ ✓ packages/ops-ui/src/error-mapper.test.ts (32 tests) 12ms
+ ✓ packages/erp-screens/src/worklist/search-request.test.ts (10 tests) 16ms
+ ✓ packages/reference-host/src/transport.test.ts (11 tests) 16ms
+ ✓ packages/workspace-core/src/split.test.ts (26 tests) 15ms
+ ✓ packages/erp-config/src/export-policy.test.ts (13 tests) 11ms
+ ✓ packages/workspace-core/src/detach.test.ts (14 tests) 9ms
+ ✓ packages/reference-teleconsult/src/shared/contract.test.ts (27 tests) 14ms
+ ✓ packages/erp-config/src/product.test.ts (7 tests) 12ms
+ ✓ packages/workspace-core/src/lifecycle.test.ts (11 tests) 9ms
+ ✓ packages/reference-medband/src/api.test.ts (10 tests) 14ms
+ ✓ packages/erp-data/src/csv-import.test.ts (5 tests) 15ms
+ ✓ packages/erp-config/src/data-classification.test.ts (22 tests) 14ms
+ ✓ packages/erp-config/src/dcp-repeating.test.ts (4 tests) 14ms
+ ✓ packages/erp-screens/src/imports/workbook-options.test.ts (2 tests) 13ms
+ ✓ packages/reference-pharmacy/src/api.test.ts (12 tests) 16ms
+ ✓ packages/workspace-core/src/policy.test.ts (15 tests) 10ms
+ ✓ packages/reference-reports/src/routes.test.ts (5 tests) 14ms
+ ✓ packages/ai-client/src/assemble.test.ts (19 tests) 9ms
+ ✓ packages/reference-pharmacy/src/theme.test.ts (4 tests) 6ms
+ ✓ packages/erp-config/src/teleconsult-reference.test.ts (4 tests) 6ms
+ ✓ packages/ai-config/src/gates.test.ts (22 tests) 9ms
+ ✓ packages/platform-ports/src/identity-devices.test.ts (2 tests) 7ms
+ ✓ packages/reference-quality/src/routes.test.ts (14 tests) 11ms
+ ✓ packages/auth/src/sentinel.test.ts (5 tests) 7ms
+ ✓ packages/erp-config/src/dcp-designer-metadata.test.ts (2 tests) 4ms
+ ✓ packages/ai-config/src/policy.test.ts (13 tests) 7ms
+ ✓ packages/reference-pharmacy/src/routes.test.ts (5 tests) 9ms
+ ✓ packages/erp-config/src/draft-policy.test.ts (2 tests) 12ms
+ ✓ packages/workspace-core/src/document-key.test.ts (9 tests) 6ms
+ ✓ packages/reference-medband/src/routes.test.ts (5 tests) 10ms
+ ✓ packages/erp-screens/src/spreadsheet/model.test.ts (4 tests) 11ms
+ ✓ packages/reference-tenant-admin/src/routes.test.ts (6 tests) 11ms
+ ✓ packages/erp-config/src/school-role-views.test.ts (5 tests) 9ms
+ ✓ packages/reference-healthcare-suite/src/routes.test.ts (3 tests) 10ms
+ ✓ packages/platform-ports/src/devices.test.ts (1 test) 6ms
+ ✓ packages/reference-medband/src/utils.test.ts (6 tests) 10ms
+ ✓ packages/erp-shell/src/workspace/target-document.test.ts (10 tests) 11ms
+ ✓ packages/erp-config/src/pharmacy-reference.test.ts (3 tests) 9ms
+ ✓ packages/ai-client/src/guard.test.ts (9 tests) 11ms
+ ✓ apps/desktop/src/platform/tauri-windows.test.ts (3 tests) 9ms
+ ✓ packages/erp-config/src/quality-reference.test.ts (3 tests) 6ms
+ ✓ packages/erp-config/src/access-reference.test.ts (2 tests) 14ms
+ ✓ packages/erp-config/src/reference-modules.test.ts (5 tests) 24ms
+ ✓ packages/erp-config/src/form-rules.test.ts (3 tests) 6ms
+ ✓ packages/erp-config/src/preference-defaults.test.ts (3 tests) 6ms
+ ✓ packages/reference-medband/src/master.test.ts (3 tests) 7ms
+ ✓ packages/erp-screens/src/clinical-templates/record-age.test.ts (1 test) 9ms
+
+ Test Files  214 passed (214)
+      Tests  2409 passed (2409)
+   Start at  18:23:16
+   Duration  111.39s (transform 18.84s, setup 99.90s, collect 63.40s, tests 120.13s, environment 94.49s, prepare 16.24s)
+

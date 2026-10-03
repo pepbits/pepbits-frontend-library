@@ -1,0 +1,33 @@
+{
+  "name": "@pepbits/reference-tenant-admin",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tenant Admin reference module: revenue-cycle configuration overview, governed configuration pages, approvals and activity rendered through the authenticated host.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css",
+    "./tenant-admin-copy.json": "./tenant-admin-copy.json"
+  },
+  "dependencies": {
+    "@pepbits/erp-config": "*",
+    "@pepbits/ops-ui": "*",
+    "@pepbits/reference-host": "*",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "scripts": {
+    "generate:styles": "node ../../scripts/tenant-admin/styles.mjs",
+    "check:styles": "node ../../scripts/tenant-admin/styles.mjs --check",
+    "generate:copy": "node ../../scripts/tenant-admin/copy.mjs",
+    "check:copy": "node ../../scripts/tenant-admin/copy.mjs --check"
+  },
+  "pepbits": {
+    "styleScope": ".reference-tenant-admin"
+  }
+}
