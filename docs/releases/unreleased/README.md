@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Frontend test site on the rebuilt fleet — 3 October 2026](frontend-test-pb-srv5-2026-10-03.md): release `20261003174859147-af92ebb2` from `74c6d28` deployed as Docker stack `frontend-test` on pb-srv5; CI gates, 9/9 browser and 12/18 navigation suites, public HTTPS and authenticated module checks passed. Six navigation suites remain open.
 - [Repository synchronization — 3 October 2026](repository-sync-2026-10-03.md): pending imports preserved, clean-checkout prerequisites repaired, current local gates and two browser journeys passed; no new deployment.
 
 - [RCM Workspace and MedBand control fidelity](rcm-reference-2026-10-01.md): implemented, deployed and verified as `20261001-rcm-01`; forty original RCM pages, shared controls/API and eight public module regression suites.
@@ -41,7 +42,7 @@ governed source-to-lifecycle-event payload mappings inside the lifecycle draft. 
 | Area | Current record |
 | --- | --- |
 | Latest implementation | [RCM Workspace and MedBand correction](rcm-reference-2026-10-01.md) |
-| Latest deployment | [RCM Workspace and MedBand correction](rcm-reference-2026-10-01.md), release `20261001-rcm-01`; all eight public module suites passed |
+| Latest deployment | [Frontend test site on the rebuilt fleet](frontend-test-pb-srv5-2026-10-03.md), release `20261003174859147-af92ebb2` on pb-srv5 |
 | Latest deployment on the existing demo sites | [DCP style on both demo sites](dcp-style-deployment-2026-09-12.md) |
 | Release evidence review | [11 September release documentation review](documentation-review-2026-09-11.md) |
 | Documentation reconciliation | [13 September repository audit](documentation-audit-2026-09-13.md) |
