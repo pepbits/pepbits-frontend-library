@@ -1,4 +1,12 @@
 #!/usr/bin/env node
+import {createReferenceMedslotStore} from "./reference-medslot-store.mjs";
+import {createReferenceSurgiSuiteStore} from "./reference-surgisuite-store.mjs";
+import {createReferenceRcmStore} from './reference-rcm-store.mjs';
+import {createReferenceTenantAdminStore,createReferenceMedbandStore} from './reference-access-store.mjs';
+import {createReferencePharmacyStore} from './reference-pharmacy-store.mjs';
+import {createReferenceQualityStore} from './reference-quality-store.mjs';
+import {createReferenceTeleconsultStore} from './reference-teleconsult-store.mjs';
+import {createDiagnosticStore} from './reference-diagnostics-store.mjs';
 import {createReferenceReportsStore} from './reference-reports-store.mjs';
 import {acquireHealthcareSuiteInvoice} from './healthcare-suite-source-persistence.mjs';
 import {createRcmMoneyProvider} from './healthcare-suite-rcm-money-provider.mjs';
@@ -126,6 +134,12 @@ const ACCOUNTS = [
 // Explicit fictional school identities. A role comes from this authenticated account, never a UI choice.
 for(const role of ['admin','teacher','student','parent','librarian','accountant'])ACCOUNTS.push({username:'school-'+role,password:'school-'+role,user:{id:'SCHOOL-'+role.toUpperCase(),name:'Demo '+role.charAt(0).toUpperCase()+role.slice(1),email:role+'@school.example',initials:role.slice(0,2).toUpperCase(),title:'School '+role,role:'school-'+role,branch:'hq',tenantId:'NEX-SCHOOL-DEMO',...(role==='admin'?{permissions:['preferences:manage','monitoring:manage']}:{} )}});
 
+for(const role of ['admin','pharmacist','technician','billing','viewer'])ACCOUNTS.push({username:'pharmacy-'+role,password:'pharmacy-'+role,user:{id:'PHARMACY-'+role.toUpperCase(),name:'Demo Pharmacy '+role,email:role+'@pharmacy.example',initials:role.slice(0,2).toUpperCase(),title:'Pharmacy '+role,role:'pharmacy-'+role,branch:'hq',tenantId:'NEX-AE-001'}});
+for(const role of ['manager','steward','verifier','approver','viewer'])ACCOUNTS.push({username:'quality-'+role,password:'quality-'+role,user:{id:'QUALITY-'+role.toUpperCase(),name:'Demo Quality '+role,email:role+'@quality.example',initials:role.slice(0,2).toUpperCase(),title:'Quality '+role,role:'quality-'+role,branch:'hq',tenantId:'NEX-AE-001'}});
+
+// Fictional teleconsult accounts; roles and patient grants are authenticated server claims.
+for(const role of ['doctor','nurse','patient'])ACCOUNTS.push({username:'teleconsult-'+role,password:'teleconsult-'+role,user:{id:'TC-'+role.toUpperCase(),name:'Demo teleconsult '+role,email:role+'@teleconsult.example',initials:role.slice(0,2).toUpperCase(),title:'Teleconsult '+role,role:'teleconsult-'+role,branch:'hq',tenantId:'NEX-AE-001',...(role==='patient'?{teleconsultPatientId:'p8'}:{})}});
+
 /** token -> user. Lost on restart, which is correct for a demo. */
 const sessions = new Map();
 // Synthetic commercial reviewer provides a separate maker/checker actor for the
@@ -136,6 +150,23 @@ ACCOUNTS.push({username:'rcm-reviewer',password:'rcm-reviewer',user:{
  permissions:['rcm:configure'],
 }});
 const referenceStores={reports:createReferenceReportsStore({inboundSecret:process.env.REFERENCE_REPORTS_INBOUND_SECRET,inboundIdentity:{user:ACCOUNTS[2].user,scope:{applicationId:'nexora',branchId:ACCOUNTS[2].user.branch}}}),school:createReferenceSchoolStore(),erp1:createReferenceErpStore({variant:'erp1'}),erp2:createReferenceErpStore({variant:'erp2'}),'healthcare-suite':createReferenceHealthcareSuiteStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'healthcare-suite-source')})};
+for(const variant of ['lis1','lis2','ris1'])referenceStores[variant]=createDiagnosticStore({variant,dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'diagnostics',variant)});
+for(const role of ['medslot-admin','medslot-scheduler','medslot-provider','surgisuite-admin','surgisuite-coordinator','surgisuite-surgeon','surgisuite-anesthesia','surgisuite-nurse','surgisuite-approver','surgisuite-coder','surgisuite-viewer','tenant-config-admin','tenant-config-editor','tenant-config-approver','tenant-config-viewer','medband-admin','medband-reception','medband-admissions','medband-clinician','medband-viewer','rcm-reference-admin','rcm-reference-clerk','rcm-reference-supervisor','rcm-reference-insurance','rcm-reference-accountant','rcm-reference-coder','rcm-reference-viewer'])ACCOUNTS.push({username:role,password:role,user:{id:'ACCESS-'+role.toUpperCase(),name:'Demo '+role,email:role+'@access.example',initials:'DA',title:role,role,branch:'hq',tenantId:'NEX-AE-001'}});
+const pharmacyStore=createReferencePharmacyStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'pharmacy')});
+referenceStores.pharmacy=pharmacyStore;
+const tenantAdminStore=createReferenceTenantAdminStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'tenant-admin')});
+const medbandStore=createReferenceMedbandStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'medband')});
+referenceStores['tenant-admin']=tenantAdminStore;referenceStores.medband=medbandStore;
+const rcmReferenceStore=createReferenceRcmStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'rcm-reference')});
+referenceStores.rcm=rcmReferenceStore;
+const surgisuiteStore=createReferenceSurgiSuiteStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'surgisuite')});
+referenceStores.surgisuite=surgisuiteStore;
+const medslotStore=createReferenceMedslotStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'medslot')});
+referenceStores.medslot=medslotStore;
+const qualityStore=createReferenceQualityStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'quality')});
+referenceStores.quality=qualityStore;
+const teleconsultStore=createReferenceTeleconsultStore({dataDir:join(process.env.NEXORA_DATA_DIR??join(dirname(fileURLToPath(import.meta.url)),'data'),'teleconsult'),policy:JSON.parse(readFileSync(join(process.env.NEXORA_CONFIG_DIR??join(dirname(fileURLToPath(import.meta.url)),'config'),'teleconsult','nexora.json'),'utf8'))});
+referenceStores['teleconsult-provider']=teleconsultStore;referenceStores['teleconsult-patient']=teleconsultStore;
 
 
 /* Preferences, unlike sessions, are written to disk. An in-memory store would lose
@@ -932,7 +963,7 @@ const server = createServer(async (req, res) => {
     return send(res, 405, { error: "Method not allowed." });
   }
 
-  const referenceMatch=pathname.match(/^\/reference-modules\/(reports|school|erp1|erp2|healthcare-suite)(\/.*)?$/);
+  const referenceMatch=pathname.match(/^\/reference-modules\/(reports|school|erp1|erp2|healthcare-suite|lis1|lis2|ris1|teleconsult-provider|teleconsult-patient|quality|pharmacy|tenant-admin|medband|rcm|surgisuite|medslot)(\/.*)?$/);
   if(referenceMatch){
     const variant=referenceMatch[1],modulePath=referenceMatch[2]??'/';
     let user=sessions.get(bearer(req)),keyIdentity=null;
@@ -958,9 +989,33 @@ const server = createServer(async (req, res) => {
       const restrictedPage=['/students/new','/teachers/new','/quizzes/new','/reports'].find(path=>schoolPath===path||schoolPath.startsWith(path+'/'));
       if(restrictedPage&&!schoolPathAllowed(schoolView.role,restrictedPage))return send(res,403,{error:'School page is unavailable.'});
     }
+    if(['lis1','lis2','ris1'].includes(variant)){
+      const chunks=[];let bytes=0;
+      for await(const chunk of req){bytes+=chunk.length;if(bytes>16_000_000)return send(res,413,{error:'Diagnostic payload is too large'});chunks.push(chunk);}
+      const result=await referenceStores[variant].handle({...user,branch},{applicationId:product,branchId:branch},{method:req.method,path:modulePath+requestUrl.search,headers:req.headers,raw:Buffer.concat(chunks).toString('base64')});
+      if(Buffer.isBuffer(result.body)){res.writeHead(result.status,{...CORS,'Cache-Control':'no-store',...result.headers,'Content-Length':result.body.length});return res.end(result.body);}
+      return send(res,result.status,result.body,result.headers);
+    }
     let body={};if(!['GET','HEAD'].includes(req.method)){try{body=await readJson(req,2_000_000);}catch{return send(res,400,{error:'Malformed request body.'});}}
     const scope={applicationId:product,branchId:branch,...(schoolView?{moduleId:schoolView.id}:{})};
     const effectiveUser={...user,branch,...(schoolView?{role:'school-'+schoolView.role}:{})};
+    if(['tenant-admin','medband','rcm','surgisuite','medslot'].includes(variant)){
+      const result=await referenceStores[variant].handle(effectiveUser,scope,{method:req.method,path:modulePath+requestUrl.search,body,headers:req.headers});
+      return send(res,result.status,result.body,result.headers);
+    }
+    if(variant==='pharmacy'){
+      const result=await pharmacyStore.handle(effectiveUser,scope,{method:req.method,path:modulePath+requestUrl.search,body,headers:req.headers});
+      return send(res,result.status,result.body,result.headers);
+    }
+    if(variant==='quality'){
+      const result=await qualityStore.handle(effectiveUser,scope,{method:req.method,path:modulePath+requestUrl.search,body,headers:req.headers});
+      if(Buffer.isBuffer(result.body)){res.writeHead(result.status,{...CORS,'Cache-Control':'no-store',...result.headers,'Content-Length':result.body.length});return res.end(result.body);}
+      return send(res,result.status,result.body,result.headers);
+    }
+    if(variant.startsWith('teleconsult-')){
+      const result=await teleconsultStore.handle(effectiveUser,{...scope,moduleId:requestedModule},{method:req.method,path:modulePath,query:requestUrl.searchParams,body,headers:req.headers});
+      return send(res,result.status,result.body,result.headers);
+    }
     let financialPath;
     try{financialPath=decodeURIComponent(modulePath).replace(/^\/api(?=\/|$)/,'').replace(/\/+$/,'')||'/';}
     catch{return send(res,400,{message:'Malformed reference API path.'});}
@@ -2064,6 +2119,13 @@ server.on("upgrade", (req, socket, head) => {
 
     onClose: () => finish("closed"),
   });
+});
+
+let shuttingDown=false;
+for(const signal of ['SIGTERM','SIGINT'])process.once(signal,()=>{
+  if(shuttingDown)return;shuttingDown=true;
+  server.close(async()=>{try{await teleconsultStore.close();await qualityStore.close();await pharmacyStore.close();await tenantAdminStore.close();await medbandStore.close();await rcmReferenceStore.close();await surgisuiteStore.close();await medslotStore.close();process.exit(0);}catch{process.exit(1);}});
+  setTimeout(()=>process.exit(1),10000).unref();
 });
 
 server.listen(PORT, HOST, () => {

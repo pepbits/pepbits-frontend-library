@@ -1,0 +1,33 @@
+{
+  "name": "@pepbits/reference-quality",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AllyVora Quality reference module (indicators, TAT, event pulse, verification, validation, reports, schedules, submissions) rendered through the authenticated host.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css",
+    "./quality-copy.json": "./quality-copy.json"
+  },
+  "dependencies": {
+    "@pepbits/erp-config": "*",
+    "@pepbits/ops-ui": "*",
+    "@pepbits/reference-host": "*",
+    "lucide-react": "^0.468.0",
+    "recharts": "^2.15.4"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "scripts": {
+    "generate:styles": "node ../../scripts/quality/styles.mjs",
+    "check:styles": "node ../../scripts/quality/styles.mjs --check",
+    "generate:copy": "node ../../scripts/quality/copy.mjs",
+    "check:copy": "node ../../scripts/quality/copy.mjs --check"
+  },
+  "pepbits": {
+    "styleScope": ".reference-quality"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "recordedAt": "2026-10-02T04:13:21.225057+00:00",
+  "source": {
+    "baseCommit": "1eba17bdd3584fcfbef722da317ceb353286b5a8",
+    "manifest": "source-manifest.json",
+    "sha256": "c416b60646cb69e1dff4e8f2efa6a8af204f1e4ff9cb916005742c59f85c7c9b"
+  },
+  "applicationDefect": "Normal-terminal Next build could not resolve bare package-style shared font URLs. Relative URLs corrected locally.",
+  "regression": {
+    "before": {
+      "tests": 2,
+      "failed": 2
+    },
+    "after": {
+      "tests": 2,
+      "passed": 2
+    },
+    "command": "node --test --test-isolation=none scripts/reference-fonts.test.mjs",
+    "scope": "Both actual host stylesheets through Tailwind/PostCSS and actual Next Webpack CSS loader; five expected emitted font files per host match source/provenance. Not a full Next application build."
+  },
+  "viteBuild": {
+    "status": "PASS",
+    "command": "node ../../node_modules/vite/bin/vite.js build",
+    "scope": "Desktop browser production bundle; native executable and browser acceptance not run."
+  },
+  "documentationImpact": {
+    "status": "PASS",
+    "command": "DOCS_BASE_SHA=0000000000000000000000000000000000000000 node docs/tools/documentation-lifecycle.mjs check",
+    "scope": "Structural and impact receipt validation; no historical comparison claimed by this command."
+  },
+  "fontProvenanceSha256": "bc3a45ebc58ea51098df02b72083413d7bea1bfa79532390a099b0f31dbf33e0",
+  "fontBytesUnchanged": true,
+  "verifiedFontFiles": [
+    "public-sans-latin-ext-wght-italic.woff2",
+    "public-sans-latin-ext-wght-normal.woff2",
+    "public-sans-latin-wght-italic.woff2",
+    "public-sans-latin-wght-normal.woff2",
+    "bricolage-grotesque-latin-ext-standard-normal.woff2",
+    "bricolage-grotesque-latin-ext-wght-normal.woff2",
+    "bricolage-grotesque-latin-standard-normal.woff2",
+    "bricolage-grotesque-latin-wght-normal.woff2"
+  ],
+  "fullNextBuild": "PENDING_NORMAL_TERMINAL",
+  "browserAcceptance": "NOT_RUN",
+  "deployment": "NOT_DEPLOYED",
+  "evidence": {
+    "font-regression-before.log": "d2c946f4e44f94057dfb3d2c38ab845762c07f17d82a71845c3890e039eb3cfc",
+    "font-regression-after.log": "60b83422749a093a04ffa174113a019d7d429fea29dead61c5f9edb0ad0f0141",
+    "font-vite-build.log": "45d99ecc18652a350df7aedd4c58fdfabaffb8ca39d56cd381fabe4810d7cfb6",
+    "font-documentation-check.log": "6b4bd50eb4d601582cdec623b26aee0620f3e5e876a07d20d99be9db5f42018c"
+  }
+}

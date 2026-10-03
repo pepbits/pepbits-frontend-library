@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* ───────────── Phial design tokens ─────────────
+   Apothecary glass: cobalt for action, amber for attention.
+   Every colour is a token so light/dark switch without dark: variants. */
+:root {
+  --canvas: #eef1f6;
+  --surface: #ffffff;
+  --surface-2: #f6f8fb;
+  --surface-3: #e9edf4;
+  --line: #dce1ea;
+  --line-strong: #c3cad8;
+  --ink: #172036;
+  --ink-2: #48526d;
+  --ink-3: #737d95;
+  --cobalt: #2a4bd7;
+  --cobalt-strong: #1e39b0;
+  --cobalt-wash: #e8edfd;
+  --on-cobalt: #ffffff;
+  --amber: #a5680b;
+  --amber-mark: #e5a43c;
+  --amber-wash: #fcf1dc;
+  --ok: #17734b;
+  --ok-wash: #e2f3e9;
+  --danger: #bb3127;
+  --danger-wash: #fbe7e4;
+  --violet: #6b46c1;
+  --violet-wash: #efe9fb;
+  --rail: #121a33;
+  --rail-2: #1b2547;
+  --rail-ink: #a8b3d4;
+  --rail-ink-strong: #f2f4fb;
+  --shadow-pop: 0 1px 2px rgba(18, 26, 51, 0.06), 0 12px 32px -8px rgba(18, 26, 51, 0.22);
+  --shadow-rail: 12px 0 32px -12px rgba(8, 12, 28, 0.45);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --canvas: #0c1122;
+  --surface: #141a2e;
+  --surface-2: #181f36;
+  --surface-3: #1f2742;
+  --line: #262f4b;
+  --line-strong: #34405f;
+  --ink: #e6eaf5;
+  --ink-2: #a9b2cb;
+  --ink-3: #7c86a0;
+  --cobalt: #7590ff;
+  --cobalt-strong: #9aaeff;
+  --cobalt-wash: #1b2552;
+  --on-cobalt: #0c1122;
+  --amber: #f0b44c;
+  --amber-mark: #f0b44c;
+  --amber-wash: #33270f;
+  --ok: #52c792;
+  --ok-wash: #11301f;
+  --danger: #ff7266;
+  --danger-wash: #3a1613;
+  --violet: #b29cf5;
+  --violet-wash: #261d44;
+  --rail: #080c1a;
+  --rail-2: #131a33;
+  --shadow-pop: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -8px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-strong: var(--cobalt-strong);
+  --color-cobalt-wash: var(--cobalt-wash);
+  --color-on-cobalt: var(--on-cobalt);
+  --color-amber: var(--amber);
+  --color-amber-mark: var(--amber-mark);
+  --color-amber-wash: var(--amber-wash);
+  --color-ok: var(--ok);
+  --color-ok-wash: var(--ok-wash);
+  --color-danger: var(--danger);
+  --color-danger-wash: var(--danger-wash);
+  --color-violet: var(--violet);
+  --color-violet-wash: var(--violet-wash);
+  --color-rail: var(--rail);
+  --color-rail-2: var(--rail-2);
+  --color-rail-ink: var(--rail-ink);
+  --color-rail-ink-strong: var(--rail-ink-strong);
+  --font-sans: "Public Sans Variable", "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --shadow-pop: var(--shadow-pop);
+  --shadow-rail: var(--shadow-rail);
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+}
+
+html, body { height: 100%; }
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01" 0;
+}
+
+/* Numbers line up in every table and figure */
+.num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+
+::selection { background: var(--cobalt-wash); color: var(--ink); }
+
+:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; border-radius: 4px; }
+
+/* Quiet scrollbars inside panes */
+.scroll-y { overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; overscroll-behavior: contain; }
+.scroll-x { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+
+/* The Rx chain connector: a thin rule that fills as records progress */
+.chain-rule { background: linear-gradient(to right, var(--line-strong) 50%, transparent 50%) repeat-x; background-size: 6px 1px; height: 1px; }
+
+@keyframes pop-in { from { opacity: 0; transform: translateY(4px) scale(0.99); } to { opacity: 1; transform: none; } }
+@keyframes slide-in-right { from { transform: translateX(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.anim-pop { animation: pop-in 140ms ease-out; }
+.anim-slide { animation: slide-in-right 160ms ease-out; }
+.live-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Printing a receipt prints only the receipt */
+@media print {
+  @page { margin: 8mm; }
+  body * { visibility: hidden !important; }
+  .print-area, .print-area * { visibility: visible !important; }
+  .print-area { position: absolute; inset: 0 auto auto 0; width: 80mm; color: #000 !important; background: #fff !important; }
+}

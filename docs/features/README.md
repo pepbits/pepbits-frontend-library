@@ -1,5 +1,7 @@
 # Feature catalog
 
+- [Shared sidebar navigation correction](../releases/unreleased/sidebar-navigation-2026-10-01.md): common preference, keyboard, pointer and header behavior verified on the frontend test site.
+
 - [Healthcare Suite reference module](healthcare-suite.md): CarePoint clinic/pharmacy pages, source-backed demo API and a separate header module.
 
 - [Reports, ERP1, ERP2 and School reference modules](reference-modules.md): separate reusable module imports, host adapters and preserved source designs; see the dated delivery record for validation and deployment.
@@ -68,3 +70,19 @@ Never substitute a screenshot, an empty route or a passing build for functional 
 - [Quantity and unit field](quantity-unit-field.md): controlled decimal strings and unit choices with a host-provided exact preview; no conversion or API ownership.
 
 - [Healthcare Suite revenue cycle workspaces](healthcare-suite-rcm.md): nine API-backed RCM destinations deployed to the isolated public test site; 53/53 public synthetic checks passed, with live-provider and licensed-DRG acceptance external.
+
+- [LIS1, LIS2 and RIS1 reference modules](diagnostic-reference/README.md) — 55 destinations deployed to the isolated frontend test site; 80 public diagnostic navigation checks and Healthcare/School regression passed. Translation generation and multilingual checks passed; human/domain review remains pending.
+
+- [Teleconsult reference modules](teleconsult-reference/README.md) — Provider and Patient import, shared integration and demonstration boundaries.
+
+- [AllyVora Quality reference module](quality-reference.md): original source sidebar and quality workflows through authenticated shared UI/API adapters.
+
+- [Pharmacy-1 reference workspace](pharmacy-reference.md)
+
+- [Tenant Admin and MedBand reference modules](access-reference.md)
+
+- [RCM Workspace and MedBand control fidelity](rcm-reference.md) — 40 original RCM pages with API-owned simulation and shared source controls.
+
+- [SurgiSuite reference module](surgisuite-reference.md): original surgical sidebar/pages and case workspace; local validation, browser/deployment pending.
+
+- [MedSlot scheduling module](medslot-reference.md).

@@ -57,3 +57,17 @@ export * from "./reference-module-types.ts";
 export * from "./school-role-views.ts";
 
 export * from "./healthcare-suite-reference.ts";
+
+export * from './teleconsult-reference.ts';
+
+export {QUALITY_REFERENCE} from './quality-reference.ts';
+
+export {PHARMACY_REFERENCE} from './pharmacy-reference.ts';
+
+export {TENANT_ADMIN_REFERENCE,MEDBAND_REFERENCE,TENANT_ADMIN_SECTION_TITLES} from "./access-reference.ts";
+
+export {RCM_REFERENCE,RCM_SECTION_TITLES} from "./rcm-reference.ts";
+
+export {SURGISUITE_REFERENCE} from "./surgisuite-reference.ts";
+
+export {MEDSLOT_REFERENCE} from "./medslot-reference.ts";

@@ -1,0 +1,24 @@
+✔ every suite declares a runtime; native suites never join the browser group (2.980351ms)
+✔ authentication refuses a different backend before submitting credentials (0.602804ms)
+✔ health requires the selected release, not merely any process answering 200 (58.530626ms)
+✔ healthy HTML with a missing script is not a healthy deployment (19.591152ms)
+✔ an SPA fallback returning HTML for a script cannot pass health (9.610501ms)
+✔ deployment requires explicit API URLs and rejects accidental loopback builds (2.453668ms)
+✔ build verification refuses missing stamps, mismatches, and incomplete artifacts (18.871638ms)
+✔ source snapshots exclude secrets, build output, dependency trees, and references (49.442939ms)
+✔ packaging survives deletion of its build tree and includes static/public assets (40.472124ms)
+✔ activation selects a release only after stop and checks it after start (12.611472ms)
+✔ failed start restores and checks the previous release (29.504784ms)
+✔ failed health restores and checks the previous release (18.817337ms)
+✔ failed first deployment removes its pointer and does not pretend to roll back (18.951398ms)
+✔ desktop server serves SPA routes and assets without leaking files or hiding missing chunks (44.285502ms)
+✔ an interruption after start rolls back before reporting success (9.585109ms)
+✔ a partial stop failure attempts to restart the previous release (8.083019ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 393.126949

@@ -1,0 +1,21 @@
+
+> nexora-monorepo@1.0.0 test:pharmacy-api
+> npm run prepare:pharmacy && node --test ../dummy-api/reference-pharmacy-store.test.mjs
+
+
+> nexora-monorepo@1.0.0 prepare:pharmacy
+> node scripts/pharmacy/build-backend.mjs && node node_modules/typescript/bin/tsc --noEmit -p ../dummy-api/pharmacy-source/tsconfig.json
+
+{"status":"TRANSPILED","files":21,"typeChecked":false}
+✔ Pharmacy rejects forged roles, unsafe scope and clinical/financial authority bypass (1.904624ms)
+Seeded demo data in 481 ms
+Seeded demo data in 486 ms
+✔ Pharmacy actual services: retry, rollback, durable partition, host actor and original end-to-end flows (2003.869139ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2093.802264

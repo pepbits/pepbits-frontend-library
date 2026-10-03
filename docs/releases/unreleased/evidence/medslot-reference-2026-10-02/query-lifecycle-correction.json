@@ -1,0 +1,52 @@
+{
+  "recordedAt": "2026-10-02T09:37:39.253931+00:00",
+  "failedCandidateSourceSha256": "9736a3a51ca81229c2057d4cb2faa7db92ed72bbcb5e68f104ffffe8ab12b860",
+  "failedRun": "/home/pepadmin/pb/saas/.confg/server/frontend-medslot-20261002/run-20261002T091954Z",
+  "clickDiagnostic": "/home/pepadmin/pb/saas/.confg/server/frontend-medslot-20261002/navigation-reproduction-g9wzk9nx",
+  "observations": [
+    "Correct Calendar anchor received click",
+    "Login and module identity HTTP 200",
+    "No page/console errors or native dialogs",
+    "Browser stayed on booking"
+  ],
+  "reproducedUnitDefect": "Unchanged search parameters restart a state-updating effect on every render",
+  "sourceCorrection": {
+    "path": "desktop-clients/packages/reference-host/src/index.tsx",
+    "beforeSha256": "ccfdd69278b6c4b8576a4c06b7c266d5d9101ec6222d772e2e1e1eabb5b7435d",
+    "afterSha256": "7c73665a0d5fc1a324ff1a12cc89d37b0db4a39e7b83f3f82bb07cb22fe4e34a"
+  },
+  "unitRegression": {
+    "before": {
+      "failed": 3
+    },
+    "after": {
+      "passed": 36
+    },
+    "logs": {
+      "before": {
+        "path": "/tmp/medslot-routing-before.log",
+        "sha256": "bd11741b19565039619473e66fdd31fc543436c72daaf48bbf758e39f815595a"
+      },
+      "after": {
+        "path": "/tmp/medslot-routing-after.log",
+        "sha256": "0e1cde6f3d2de6ae39b01ed4830e6bb67f4cfcd49394c62f2624c326c390bb3d"
+      }
+    }
+  },
+  "deploymentSafeguards": {
+    "passed": 16
+  },
+  "correctedBrowserNavigation": "PENDING_FRESH_BUILD",
+  "deploymentComplete": false,
+  "retry": "--retry-staged-build",
+  "broaderReferenceRegression": {
+    "status": "PARTIAL_SESSION_RESTRICTIONS",
+    "passed": 816,
+    "failedWithSpawnSyncNodeEperm": 11,
+    "skipped": 4,
+    "overlapsFocusedRun": true,
+    "log": "/tmp/medslot-reference-routing-regression.log",
+    "logSha256": "2cda03b7768652cf989d51df85dbfcd90795e281fdb4acd907b6c870099fcf53",
+    "normalTerminalFullRun": "REQUIRED_IN_DEPLOYMENT_PIPELINE"
+  }
+}

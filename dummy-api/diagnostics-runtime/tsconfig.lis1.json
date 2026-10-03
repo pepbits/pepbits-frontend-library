@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "../diagnostics-source/lis1/src/*"
+      ],
+      "*": [
+        "node_modules/*"
+      ]
+    },
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false
+  },
+  "include": [
+    "../diagnostics-source/lis1/src/**/*.ts"
+  ],
+  "exclude": [
+    "../diagnostics-source/lis1/src/main.ts"
+  ]
+}

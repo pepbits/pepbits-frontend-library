@@ -1,0 +1,48 @@
+{
+  "recordedAt": "2026-10-02T05:00:24.473390+00:00",
+  "status": "LOCAL_CORRECTION_NOT_DEPLOYED",
+  "source": {
+    "baseCommit": "1eba17bdd3584fcfbef722da317ceb353286b5a8",
+    "scope": "Current Webpack configuration, chunk helper/declaration and actual catalog bundling tests. Existing other reference-module modifications remain in the working tree.",
+    "files": {
+      "desktop-clients/apps/web/next.config.ts": "38b0ec71b702ad886eb294396acc30373a3aeab28c1c0087e5f1b52f24d5b16e",
+      "desktop-clients/apps/web/webpack-catalog-chunks.mjs": "77505b96674f46c0ad0825ecef9f5048b24a808c0bbaa89c530f4a22fc24677c",
+      "desktop-clients/apps/web/webpack-catalog-chunks.d.mts": "747621ea11309d79cd7bb40c2eb36440a417bb09716ed4fae13f760476f3e2b6",
+      "desktop-clients/scripts/catalog-chunks.test.mjs": "5602bef2ec08a6a7e4a47c5ebc4db38f1f925440c82f6f49c692ce97484757e7",
+      "desktop-clients/scripts/test-helpers/catalog-typescript-loader.cjs": "74d2449bd8887d20f85c8945c1fff115dcbfed95aaea7393bee03e674fcb4109",
+      "desktop-clients/package.json": "e6fe14221f2f7faf17069717b57a11dfcdf2f6fa8944504721254fc3c5002bf0"
+    }
+  },
+  "before": {
+    "scope": "User normal-terminal deployment runner bundle gate; both builds passed before this gate",
+    "desktopGzipBytes": 431332,
+    "webGzipBytes": 783676,
+    "budgetBytes": 550000,
+    "cutoverAttempted": false
+  },
+  "regression": {
+    "status": "PASS",
+    "tests": 2,
+    "command": "node --test --test-isolation=none scripts/catalog-chunks.test.mjs",
+    "scope": "Actual source English catalogs compiled by Next bundled Webpack into separate assets; configuration preservation and platform path handling. Not a full Next build."
+  },
+  "typecheck": {
+    "status": "PASS",
+    "command": "node node_modules/typescript/bin/tsc --noEmit -p apps/web/tsconfig.json"
+  },
+  "operatorGuards": {
+    "status": "PASS",
+    "tests": 8,
+    "scope": "Offline safeguards including real local PTY auth; no network activation test claimed"
+  },
+  "catalogSourceHashes": {
+    "desktop-clients/packages/erp-config/src/locales/en.ts": "85afd3e3333faccd30382dca399cb94465003921cc960bc3937fcc5e4777ac51",
+    "desktop-clients/packages/ops-ui/src/messages.en.ts": "236e051f71c766c244d81aebbdc5121847965853b5618321f6c386e7a7bf3b7e"
+  },
+  "fullNextRebuild": "PENDING_NORMAL_TERMINAL",
+  "publicDeployment": "NOT_DEPLOYED",
+  "evidence": {
+    "catalog-chunks-regression.log": "d6aa3762781d50d2499f43c498dcee675e30c82a47771979b6373f29658f19a0",
+    "bundle-budget-before.log": "2abf060aebe54eab528e228b4d1e062f549bc9c2b38216de4deae4c7883ede43"
+  }
+}

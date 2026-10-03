@@ -5,7 +5,7 @@ import {referenceNavigationTarget,REFERENCE_PAGE_BY_ID,REFERENCE_MODULES} from '
 describe('School role catalog views',()=>{
  it('keeps canonical pages while six modules select their own dashboard identity',()=>{
   expect(SCHOOL_ROLE_VIEWS.map(view=>view.role)).toEqual(['admin','teacher','student','parent','librarian','accountant']);
-  expect(REFERENCE_MODULES.filter(module=>module.id!=='reference-healthcare-suite').map(module=>module.pages.length)).toEqual([14,57,57,24]);
+  expect(REFERENCE_MODULES.filter(module=>['erp1','erp2','school','reports'].includes(module.variant)).map(module=>module.pages.length)).toEqual([14,57,57,24]);
   for(const view of SCHOOL_ROLE_VIEWS){
    expect(referenceNavigationTarget(view.id,'/dashboard')).toMatchObject({pageId:'reference-school-dashboard',moduleId:view.id});
    expect(productNavigationTarget(NEXORA_PRODUCT,'reference-school-dashboard',view.id).moduleId).toBe(view.id);

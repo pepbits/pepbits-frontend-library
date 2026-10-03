@@ -128,6 +128,8 @@ export function moduleContainsPage(product:ProductDefinition,moduleId:string,pag
  const visit=(items:readonly MenuItem[]):boolean=>items.some(item=>item.pageId===pageId||visit(item.children??[]));
  if(!product.pages[pageId]||!product.modules[moduleId])return false;
  if(product.modules[moduleId]!.navigation.some(section=>visit(section.items)))return true;
+ const dynamic=REFERENCE_PAGE_BY_ID[pageId];
+ if(dynamic?.moduleId===moduleId&&(dynamic.path.includes('[id]')||dynamic.navigation===false))return true;
  const view=schoolRoleView(moduleId),page=REFERENCE_PAGE_BY_ID[pageId];
  return !!view&&page?.variant==='school'&&schoolPathAllowed(view.role,page.path)&&product.modules[moduleId]!.navigation.some(section=>section.items.some(item=>{const base=REFERENCE_PAGE_BY_ID[item.pageId??'']?.path;return !!base&&page.path.startsWith(base+'/');}));
 }

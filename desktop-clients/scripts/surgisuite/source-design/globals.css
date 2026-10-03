@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+/*
+  SurgiSuite tokens.
+  Steel room, scrub-green chrome, ceil-blue actions (the colour of surgical drapes),
+  and monitor-style status colours. Condensed type for the theatre board, like an OR whiteboard.
+*/
+@theme {
+  --color-steel: #edf0f2;
+  --color-steel-2: #e2e7ea;
+  --color-surface: #ffffff;
+  --color-ink: #14232a;
+  --color-muted: #5d6b73;
+  --color-faint: #8a979e;
+  --color-line: #d5dbdf;
+  --color-scrub: #0f3d3a;
+  --color-scrub-2: #175651;
+  --color-scrub-3: #2a6f68;
+  --color-ceil: #4a64b0;
+  --color-ceil-2: #3a519a;
+  --color-ceil-soft: #e6ebf7;
+  --color-amber: #b97b10;
+  --color-amber-soft: #fbf0d9;
+  --color-go: #2e8b62;
+  --color-go-soft: #dff1e8;
+  --color-stop: #c8413b;
+  --color-stop-soft: #f9e1df;
+  --color-violet: #6d55a8;
+  --color-violet-soft: #ece7f6;
+
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-cond: "IBM Plex Sans Condensed", "Arial Narrow", "Roboto Condensed", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-ctl: 6px;
+  --radius-panel: 10px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-steel);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  font-feature-settings: "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-ceil);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer components {
+/* Thin, quiet scrollbars inside panels */
+.scroll-y {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c3cbd0 transparent;
+}
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c3cbd0 transparent;
+}
+
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-panel);
+}
+
+.input {
+  width: 100%;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-ctl);
+  background: #fff;
+  color: var(--color-ink);
+  transition: border-color 0.12s;
+}
+.input:hover {
+  border-color: #b9c3c9;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--color-ceil);
+  box-shadow: 0 0 0 3px var(--color-ceil-soft);
+}
+textarea.input {
+  height: auto;
+  padding: 8px 10px;
+  resize: vertical;
+}
+select.input {
+  padding-right: 28px;
+}
+
+/* Monitor-style phase strip used on the theatre board */
+.phase-cell {
+  height: 6px;
+  border-radius: 2px;
+  background: var(--color-steel-2);
+}
+
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.live-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

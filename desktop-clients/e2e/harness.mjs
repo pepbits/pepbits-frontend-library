@@ -185,9 +185,16 @@ export async function setPreference(page, switchName, on) {
 }
 
 
-export function assertApiTarget(url, expected) {
-  const observed=url.slice(0,url.indexOf('/auth/')).replace(/\/$/,'');
-  if(observed!==expected.replace(/\/$/,''))throw new Error(`API target mismatch: shell calls ${observed}; expected ${expected}. Rebuild the shell for this test environment.`);
+export function assertApiTarget(url, expected, method='GET') {
+  const request=new URL(url),target=new URL(expected);
+  const base=target.pathname.replace(/\/$/,'');
+  // These endpoints read the existing host identity. They never receive login
+  // credentials or create a competing module session. Keep the exact namespace
+  // and method checks as well as the expected API origin/path boundary.
+  const identityPaths=['/reference-modules/quality/auth/me','/reference-modules/surgisuite/api/auth/me','/reference-modules/medslot/api/auth/me'];
+  const hostAuth=['/auth/login','/auth/me','/auth/logout'].some(path=>request.pathname===base+path);
+  const moduleIdentity=method==='GET'&&identityPaths.some(path=>request.pathname===base+path);
+  if(request.origin!==target.origin||request.username||request.password||(!hostAuth&&!moduleIdentity))throw new Error(`API target mismatch: shell calls ${request.origin+request.pathname}; expected ${expected}. Rebuild the shell for this test environment.`);
 }
 
 const wrapped=new WeakMap();
@@ -207,7 +214,7 @@ function guardedPlaywright(playwright) {
           // Installed before tests add fixture routes. Authentication is checked
           // before credentials leave the browser, not after a successful login.
           await context.route(/\/auth\/(?:login|me|logout)(?:[?#]|$)/,async route=>{
-            try{assertApiTarget(route.request().url(),expected);}
+            try{assertApiTarget(route.request().url(),expected,route.request().method());}
             catch(error){await route.abort();throw error;}
             await route.continue();
           });

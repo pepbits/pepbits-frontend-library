@@ -40,6 +40,25 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PACKAGES = join(ROOT, "packages");
+import postcss from "postcss";
+
+// Imported designs supply precompiled scoped CSS instead of adopting host utilities.
+// Validate every selector; a manifest label alone never exempts unstyled markup.
+function compiledScope(name) {
+ const manifest=JSON.parse(readFileSync(join(PACKAGES,name,"package.json"),"utf8"));
+ const declared=manifest.pepbits?.styleScope, file=manifest.exports?.["./styles.css"];
+ const scopes=Array.isArray(declared)?declared:[declared];
+ if(!declared)return null;
+ if(!scopes.length||scopes.some(scope=>typeof scope!=="string"||!/^\.[a-z][a-z0-9-]+$/.test(scope))||new Set(scopes).size!==scopes.length||typeof file!=="string"||!file.startsWith("./src/"))throw new Error(name+": invalid scoped CSS contract");
+ let rules=0;postcss.parse(readFileSync(join(PACKAGES,name,file),"utf8")).walkRules(rule=>{
+  if(rule.parent.type==="atrule"&&/keyframes$/.test(rule.parent.name))return;
+  rules++;for(const selector of postcss.list.comma(rule.selector))if(!scopes.some(scope=>{
+   const value=selector.trim().replace(/^\[data-reduced-motion="true"\] /,'');
+   const prefix=value.startsWith(':where('+scope+')')?':where('+scope+')':scope;
+   return value.startsWith(prefix)&&!/[a-z0-9_-]/i.test(value.slice(prefix.length,prefix.length+1));
+  }))throw new Error(name+": unscoped CSS selector "+selector);
+ });if(!rules)throw new Error(name+": empty scoped stylesheet");return scopes;
+}
 
 const APPS = [
   { name: "web", css: join(ROOT, "apps/web/src/app/globals.css"), built: join(ROOT, "apps/web/.next") },
@@ -102,7 +121,9 @@ for (const app of APPS) {
   const css = readFileSync(app.css, "utf8");
   const sourced = [...css.matchAll(/@source\s+"([^"]+)"/g)].map((m) => m[1]);
   for (const pkg of styled) {
-    const covered = sourced.some((line) => line.includes(`packages/${pkg.name}/`) || line.endsWith(`packages/${pkg.name}`));
+    const scope=compiledScope(pkg.name);
+    const imported=scope && css.includes(`@import "@pepbits/${pkg.name}/styles.css"`);
+    const covered = imported || sourced.some((line) => line.includes(`packages/${pkg.name}/`) || line.endsWith(`packages/${pkg.name}`));
     check(covered, `${app.name}: ${pkg.name}`, covered ? "" : `no @source line reaches packages/${pkg.name}/src — its classes will be purged`);
   }
 }
@@ -118,6 +139,8 @@ for (const app of APPS) {
   if (!sheets.length) { console.log(`    skip   ${app.name}: no build found — run ./run.sh build`); continue; }
   const emitted = sheets.map((f) => readFileSync(f, "utf8")).join("\n");
   for (const pkg of styled) {
+    const scope=compiledScope(pkg.name);
+    if(scope)for(const boundary of scope)check(emitted.includes(boundary),`${app.name}: ${pkg.name} ${boundary}`,"compiled stylesheet boundary");
     const canaries = uniqueTo(pkg.name).slice(0, 6);
     if (!canaries.length) { console.log(`    skip   ${app.name}: ${pkg.name} has no utility unique to it`); continue; }
     /* `.pb-1.5` is emitted as `.pb-1\.5` — CSS escapes the dot in a class

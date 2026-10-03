@@ -1,10 +1,22 @@
+@import "@pepbits/reference-medslot/styles.css";
+@import "@pepbits/reference-surgisuite/styles.css";
+@import "@pepbits/reference-rcm/styles.css";
+@import "@pepbits/reference-tenant-admin/styles.css";
+@import "@pepbits/reference-medband/styles.css";
+@import "@pepbits/reference-pharmacy/styles.css";
+@import "@pepbits/reference-quality/styles.css";
 @import "tailwindcss";
 /* MUST come before the @source lines: CSS requires every @import to precede any
    other statement, and postcss silently DROPS a later one. Ordering it after
    @source built cleanly and shipped a stylesheet with zero theme tokens — an
    entirely colourless app, with only a warning in the build log. */
 @import "@pepbits/tokens/tokens.css";
+@import "@pepbits/tokens/reference-fonts.css";
 @import "@pepbits/reference-host/styles.css";
+@import "@pepbits/reference-teleconsult/styles.css";
+@import "@pepbits/reference-lis1/styles.css";
+@import "@pepbits/reference-lis2/styles.css";
+@import "@pepbits/reference-ris1/styles.css";
 @import "@pepbits/reference-healthcare-suite/styles.css";
 @import "@pepbits/reference-keystone-core/styles.css";
 
@@ -25,3 +37,8 @@
 @source "../../../packages/reference-healthcare-suite/src";
 
 @source "../../../packages/reference-keystone-core/src";
+
+@source "../../../packages/reference-tenant-admin/src";
+@source "../../../packages/reference-medband/src";
+
+@source "../../../packages/reference-rcm/src";

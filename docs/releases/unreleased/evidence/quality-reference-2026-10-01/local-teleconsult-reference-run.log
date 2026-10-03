@@ -1,0 +1,19 @@
+PASS Teleconsult Provider header selection
+PASS Teleconsult Provider /
+PASS Teleconsult Provider /schedule
+PASS Teleconsult Provider /patients
+PASS Teleconsult Provider /notes
+PASS Teleconsult Patient header selection
+PASS Teleconsult Patient /
+PASS Teleconsult Patient /register
+PASS Teleconsult Patient /home
+PASS Teleconsult Patient /book
+PASS Teleconsult Patient /records
+PASS actual appointment opens Provider consultation
+PASS actual appointment opens CareCall visit
+PASS Doctor browser sign publishes the patient summary
+PASS signed record opens distinct summary route
+PASS Provider modes come from the authenticated session
+PASS dedicated Nurse has one mode and cannot spoof Doctor
+PASS dedicated Patient is limited to its linked identity
+PASS no failed browser API calls or console errors

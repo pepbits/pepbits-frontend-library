@@ -1,2 +1,2 @@
 import type {SchoolRoleViewId} from "./school-role-views.ts";
-export type ReferenceModuleId="reference-reports"|"reference-erp1"|"reference-erp2"|"reference-healthcare-suite"|SchoolRoleViewId;
+export type ReferenceModuleId="reference-medslot"|"reference-surgisuite"|"reference-rcm"|"reference-tenant-admin"|"reference-medband"|"reference-pharmacy"|"reference-quality"|"reference-teleconsult-provider"|"reference-teleconsult-patient"|"reference-lis1"|"reference-lis2"|"reference-ris1"|"reference-reports"|"reference-erp1"|"reference-erp2"|"reference-healthcare-suite"|SchoolRoleViewId;

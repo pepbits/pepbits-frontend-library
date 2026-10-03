@@ -17,7 +17,7 @@ Domain-specific rules and production integrations belong to the application usin
 
 | Area | High-level capabilities |
 | --- | --- |
-| Reference application modules | Reports, ERP1, ERP2, six School role views and a separate Healthcare Suite imported from CarePoint; demo data and business simulations remain API-owned |
+| Reference application modules | Reports, ERP1, ERP2, School role views, Healthcare Suite, LIS/RIS, Teleconsult, Quality, Pharmacy, Tenant Admin, MedBand and the 40-page RCM Workspace; demonstration data and business simulations remain API-owned |
 | Healthcare Suite revenue cycle | Nine API-backed workspaces for claims, exchange, remittances, patient finance, packages, synthetic DRG/day-case, accounting, commercial approvals and receivables; dedicated HTTP simulators and durable synthetic source/RCM state |
 | Application workspace | Multi-module navigation, backend-defined menus, application and branch context, workspace tabs, record navigation, search and command navigation |
 | Shared component library | Form fields, textboxes, selects, radio buttons, checkboxes, date/time controls, calendars, cards, card grids, tables, dialogs, drawers, tabs and recovery messages |
@@ -88,7 +88,7 @@ Application shell and authenticated context
 
 Canonical language catalogs live in `dummy-api/config/localization/shared/`; generated client fallbacks support the frontend. Navigation labels use stable menu/message identifiers. Many demo feature endpoints read CSV/JSON fixtures and persist scoped changes; storage behavior is feature-specific.
 
-The isolated [frontend test site](https://frontend.test.pepbits.com) runs RCM release `20260929122358894-3da821b0` from source `4fec17b5b482732d3e418879c8a3450108a6515f`. Public RCM, original Suite and School checks passed (53/53, 49/49 and 28/28); see the [delivery record](docs/releases/unreleased/healthcare-suite-rcm-2026-09-29.md) for evidence and synthetic integration limits.
+The isolated [frontend test site](https://frontend.test.pepbits.com) runs release `20261001-rcm-01`: the new 40-page RCM Workspace and corrected MedBand controls are available from the header. All eight public module regression suites passed. See the [delivery record](docs/releases/unreleased/rcm-reference-2026-10-01.md) for frozen source identity, separate test scopes, retained fixture failures and synthetic integration limits.
 
 The `@pepbits/*` packages are private workspace packages. They are not automatically available from a public package registry.
 
@@ -160,3 +160,28 @@ Start with the **[documentation index](docs/README.md)**.
 - [Illustrated handbook and PDF](desktop-clients/docs/handbook/README.md)
 
 Changes should reuse established package boundaries, honor effective preferences and tenant locks, update canonical translations and keep page help, examples, tests and release evidence aligned with the behavior delivered.
+
+## Diagnostic reference import
+
+LIS1, LIS2 and RIS1 are registered as separate reference modules. See the [implementation, validation and deployment status](docs/features/diagnostic-reference/README.md).
+
+
+## Teleconsult reference modules
+
+Clinic Desk and CareCall are imported as Teleconsult Provider and Teleconsult Patient header modules. Provider retains server-granted Doctor/Nurse modes; each module uses the existing sidebar and shared authenticated API transport. See the [feature guide](docs/features/teleconsult-reference/README.md) and [local validation/deployment record](docs/releases/unreleased/teleconsult-reference-2026-10-01.md) for the exact acceptance scope and synthetic clinical/media boundary.
+
+## AllyVora Quality reference module
+
+AllyVora Quality is available in the header on [the isolated test site](https://frontend.test.pepbits.com), with the original twelve sidebar destinations and shared authenticated UI/API adapters. [The feature guide](docs/features/quality-reference.md) describes workflows and configuration; [the delivery record](docs/releases/unreleased/quality-reference-2026-10-01.md) retains source identity, screenshots, tests and deployment receipts. Regulator delivery and clinical event fixtures remain simulated.
+
+## Pharmacy-1 reference module
+
+Select **Pharmacy-1** in the header on [the isolated test site](https://frontend.test.pepbits.com). All thirteen Phial pages use the shared sidebar, components, preferences and authenticated demo API. See [the feature guide](docs/features/pharmacy-reference.md) and [verified deployment record](docs/releases/unreleased/pharmacy-reference-2026-10-01.md). Prescribing, payer and payment integrations remain simulations.
+
+## Tenant Admin and MedBand reference modules
+
+Select **Tenant Admin** or **MedBand** in the header on [the isolated test site](https://frontend.test.pepbits.com). Tenant Admin preserves thirty configuration pages plus Overview, Approvals and Activity; MedBand preserves patient registration, encounters, admissions and episodes/cases. Both use shared controls, scoped authenticated API services, preferences and four-language help. See [the feature guide](docs/features/access-reference.md) and [delivery evidence](docs/releases/unreleased/access-reference-2026-10-01.md). All demonstration business records are API-owned.
+
+## SurgiSuite reference module
+
+The local import adds **SurgiSuite** to the shared header with its original eight sidebar destinations and twelve-section case workspace. Business data comes from the authenticated demo API. See [the feature guide](docs/features/surgisuite-reference.md) and [local validation/deployment boundary](docs/releases/unreleased/surgisuite-reference-2026-10-02.md). This increment is not yet deployed.

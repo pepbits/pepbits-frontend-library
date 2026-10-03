@@ -6,7 +6,7 @@ const root=new URL('..',import.meta.url).pathname;
 const failures=[];let files=0,uses=0;
 const names=new Set(['Card','CardGrid','Table','TableContainer','DateInput','TimeInput','DateTimeInput','MonthInput','WeekInput','Calendar','DataValue','DescriptionList']);
 function* sources(dir){for(const entry of readdirSync(dir,{withFileTypes:true})){const file=join(dir,entry.name);if(entry.isDirectory())yield* sources(file);else if(file.endsWith('.tsx')&&!file.endsWith('.test.tsx'))yield file;}}
-for(const pkg of ['erp-screens','ai-ui','reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite','reference-keystone-core'])for(const file of sources(join(root,'packages',pkg,'src'))){
+for(const pkg of ['erp-screens','ai-ui','reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite','reference-keystone-core','reference-diagnostics','reference-lis1','reference-lis2','reference-ris1','reference-teleconsult','reference-quality','reference-pharmacy','reference-tenant-admin','reference-medband','reference-rcm','reference-medslot'])for(const file of sources(join(root,'packages',pkg,'src'))){
   files++;const source=ts.createSourceFile(file,readFileSync(file,'utf8'),ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
   function report(node,message){failures.push(`${relative(root,file)}:${source.getLineAndCharacterOfPosition(node.getStart()).line+1}: ${message}`);}
   function visit(node){

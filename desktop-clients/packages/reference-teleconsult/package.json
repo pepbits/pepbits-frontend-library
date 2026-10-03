@@ -1,0 +1,25 @@
+{
+  "name": "@pepbits/reference-teleconsult",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Teleconsult Clinic Desk (doctor/nurse) and CareCall (patient) reference frontends rendered through the authenticated host.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css"
+  },
+  "dependencies": {
+    "@pepbits/erp-config": "*",
+    "@pepbits/ops-ui": "*",
+    "@pepbits/reference-host": "*",
+    "lucide-react": "^0.468.0"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "pepbits": {
+    "styleScope": [".teleconsult-provider", ".teleconsult-patient"]
+  }
+}

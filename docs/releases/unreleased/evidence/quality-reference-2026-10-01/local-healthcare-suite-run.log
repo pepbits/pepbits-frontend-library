@@ -1,0 +1,49 @@
+PASS authenticated header module selection
+PASS actual host actor session
+PASS static /
+PASS static /appointments
+PASS static /patients
+PASS static /encounters
+PASS static /approvals
+PASS static /billing/hospital
+PASS static /billing/pharmacy
+PASS static /billing/invoices
+PASS static /masters/payers
+PASS static /masters/tpas
+PASS static /masters/insurance-plans
+PASS static /masters/networks
+PASS static /masters/price-lists
+PASS static /contracts
+PASS static /masters/items
+PASS static /masters/services
+PASS static /masters/facilities
+PASS static /masters/departments
+PASS static /masters/specialties
+PASS static /masters/providers
+PASS static /masters/resources
+PASS static /masters/resource-schedules
+PASS static /masters/resource-blocks
+PASS static /rcm/claims
+PASS static /rcm/exchange
+PASS static /rcm/remittances
+PASS static /rcm/patient-finance
+PASS static /rcm/packages
+PASS static /rcm/drg
+PASS static /rcm/accounting
+PASS static /rcm/commercial
+PASS static /rcm/receivables
+PASS dynamic /masters/payers/new
+PASS dynamic /masters/providers/P001
+PASS dynamic /patients/PT00001
+PASS dynamic /patients/new
+PASS dynamic /encounters/new
+PASS UI patient registration and persisted API record
+PASS UI appointment books a source provider slot
+PASS UI check-in creates linked encounter and consultation charge
+PASS UI catalog order and signing
+PASS UI hospital invoice, collection and printable invoice
+PASS dynamic invoice URL opens created invoice
+PASS selected source pharmacy facility controls new encounter type
+PASS finance role reads authenticated module and API rejects writes
+PASS School-only actor cannot open Healthcare Suite
+PASS mutation identities and no browser page errors

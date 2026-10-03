@@ -153,8 +153,10 @@ describe("preferences on the document", () => {
     authedFetch.mockResolvedValue(settled({ language: "ar" }));
     mount();
     await ready();
-    expect(document.documentElement.lang).toBe("ar");
-    expect(document.documentElement.dir).toBe("rtl");
+    await waitFor(() => {
+      expect(document.documentElement.lang).toBe("ar");
+      expect(document.documentElement.dir).toBe("rtl");
+    });
   });
 
   test("changing a preference re-writes the document", async () => {

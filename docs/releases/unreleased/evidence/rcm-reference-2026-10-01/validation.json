@@ -1,0 +1,148 @@
+{
+  "status": "PASS",
+  "recordedAt": "2026-10-01T20:38:53.686166+00:00",
+  "releaseId": "20261001-rcm-01",
+  "baseCommit": "1eba17bdd3584fcfbef722da317ceb353286b5a8",
+  "sourceSha256": "0f36ff868d43de73db30c8a0a26d8116f7539fa0e3ab2897f65fe5baa101d2ea",
+  "sourceFiles": 973,
+  "frontend": {
+    "filesPassed": 225,
+    "testsPassed": 2537,
+    "testsSkipped": 4,
+    "skipReason": "Opt-in browser wrappers; actual authenticated browser suites executed separately."
+  },
+  "backend": {
+    "javascriptPassed": 329,
+    "clinicalTypeScriptPassed": 33
+  },
+  "productionBuilds": [
+    "web",
+    "desktop-browser"
+  ],
+  "typecheck": "PASS",
+  "repositoryGates": "PASS",
+  "publicSuites": {
+    "public-access-reference": {
+      "checks": 52,
+      "passed": true,
+      "capturedErrors": {
+        "errors": 0
+      },
+      "navigationAborts": 0,
+      "networkFailures": []
+    },
+    "public-diagnostic-reference": {
+      "checks": 80,
+      "passed": true,
+      "capturedErrors": {
+        "pageErrors": 0,
+        "consoleErrors": 0
+      },
+      "navigationAborts": 4,
+      "networkFailures": []
+    },
+    "public-healthcare-suite": {
+      "checks": 49,
+      "passed": true,
+      "capturedErrors": {
+        "errors": 0,
+        "consoleErrors": 0
+      },
+      "navigationAborts": 0,
+      "networkFailures": [
+        {
+          "url": "https://frontend.test.pepbits.com/api/reference-modules/healthcare-suite/api/appointments?date=2026-10-01&status=Booked%2CConfirmed&pageSize=100",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    "public-pharmacy-reference": {
+      "checks": 23,
+      "passed": true,
+      "capturedErrors": {
+        "errors": 0
+      },
+      "navigationAborts": 0,
+      "networkFailures": []
+    },
+    "public-quality-reference": {
+      "checks": 24,
+      "passed": true,
+      "capturedErrors": {
+        "pageErrors": 0,
+        "consoleErrors": 0,
+        "failedResponses": 0
+      },
+      "navigationAborts": 21,
+      "networkFailures": []
+    },
+    "public-rcm-reference": {
+      "checks": 49,
+      "passed": true,
+      "capturedErrors": {
+        "errors": 0
+      },
+      "navigationAborts": 0,
+      "networkFailures": []
+    },
+    "public-school-role-header": {
+      "checks": 28,
+      "passed": true,
+      "capturedErrors": {
+        "errors": 0
+      },
+      "navigationAborts": 0,
+      "networkFailures": []
+    },
+    "public-teleconsult-reference": {
+      "checks": 18,
+      "passed": true,
+      "capturedErrors": {
+        "pageErrors": 0,
+        "consoleErrors": 0,
+        "failedResponses": 0
+      },
+      "navigationAborts": 4,
+      "networkFailures": []
+    }
+  },
+  "publicGuides": 328,
+  "localLanguageResults": {
+    "rcm": 164,
+    "tenantAdminMedBand": 176
+  },
+  "computedStyleParity": {
+    "medband": 24,
+    "rcm": 28,
+    "failures": 0,
+    "scope": "Measured source control/style checks; not a pixel-perfect certification."
+  },
+  "additionalLegacyRcm": {
+    "status": "INCOMPLETE_FIXTURE_PRECONDITION",
+    "passedChecks": 42,
+    "reason": "Fresh insured invoice has no unreserved patient receivable; backend correctly rejected the driver's fixed 10.00 collection with HTTP 409. Claims, remittances, clawback, packages, pricing, provider deposit capture and refund passed before this fixture guard. Full legacy provider flow is not counted as passed."
+  },
+  "limits": [
+    "Synthetic API/provider data only; no live bank/payer acceptance or certified DRG claim.",
+    "Browser desktop build checked; native executable acceptance not run.",
+    "Native-language and clinical/financial domain review pending."
+  ],
+  "history": "Earlier private failed attempts retained. Initial additional legacy RCM run lacked an unclaimed payer invoice; a fresh synthetic invoice was prepared using normal authenticated UI commands. No existing records reset.",
+  "documentationCheck": {
+    "status": "PASS",
+    "documents": 157,
+    "lifecycleCheck": "PASS"
+  },
+  "finalSourceCheck": {
+    "applicationFilesUnchanged": true,
+    "postFreezeChanges": [
+      "README.md",
+      "desktop-clients/docs/frontend-test-deployment.md",
+      "docs/README.md",
+      "docs/releases/unreleased/README.md",
+      "docs/releases/unreleased/rcm-reference-2026-10-01.md",
+      "docs/testing/README.md"
+    ],
+    "publicRelease": "20261001-rcm-01"
+  }
+}

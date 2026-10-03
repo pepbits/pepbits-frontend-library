@@ -1,3 +1,11 @@
+import {MEDSLOT_REFERENCE} from "./medslot-reference.ts";
+import {SURGISUITE_REFERENCE} from "./surgisuite-reference.ts";
+import {RCM_REFERENCE} from "./rcm-reference.ts";
+import {TENANT_ADMIN_REFERENCE,MEDBAND_REFERENCE} from "./access-reference.ts";
+import {PHARMACY_REFERENCE} from './pharmacy-reference.ts';
+import {QUALITY_REFERENCE} from './quality-reference.ts';
+import {TELECONSULT_REFERENCES,sourceRouteMatches} from './teleconsult-reference.ts';
+import {DIAGNOSTIC_REFERENCES} from './diagnostic-reference.ts';
 import {HEALTHCARE_SUITE_REFERENCE} from "./healthcare-suite-reference.ts";
 import {SCHOOL_ROLE_VIEWS, schoolRoleView} from "./school-role-views.ts";
 import type {ReferenceModuleId} from "./reference-module-types.ts";
@@ -946,9 +954,9 @@ export const REFERENCE_MODULES = [
       }
     ]
   }
-, HEALTHCARE_SUITE_REFERENCE
+, HEALTHCARE_SUITE_REFERENCE, ...DIAGNOSTIC_REFERENCES, ...TELECONSULT_REFERENCES, QUALITY_REFERENCE, PHARMACY_REFERENCE, TENANT_ADMIN_REFERENCE, MEDBAND_REFERENCE, RCM_REFERENCE, SURGISUITE_REFERENCE, MEDSLOT_REFERENCE
 ] as const;
-export const REFERENCE_PAGE_BY_ID:Readonly<Record<string,{id:string;path:string;title:string;moduleId:ReferenceModuleId;variant:string}>>=Object.fromEntries(REFERENCE_MODULES.flatMap(module=>module.pages.map(page=>[page.id,{...page,moduleId:module.id,variant:module.variant}])));
+export const REFERENCE_PAGE_BY_ID:Readonly<Record<string,{id:string;path:string;title:string;moduleId:ReferenceModuleId;variant:string;navigation?:boolean}>>=Object.fromEntries(REFERENCE_MODULES.flatMap(module=>module.pages.map(page=>[page.id,{...page,moduleId:module.id,variant:module.variant}])));
 /** Extra portals share the original School page descriptors and renderer. */
 export const REFERENCE_ROLE_VIEWS = SCHOOL_ROLE_VIEWS.filter(view => view.id !== 'reference-school');
 export function referenceNavigationTarget(moduleId:ReferenceModuleId,path:string){
@@ -956,7 +964,8 @@ export function referenceNavigationTarget(moduleId:ReferenceModuleId,path:string
  const module=REFERENCE_MODULES.find(m=>m.id===(view?'reference-school':moduleId));
  if(!module)throw new Error('Unknown reference module');
  const pathname=path.split("?")[0];
- const page=[...module.pages].sort((a,b)=>b.path.length-a.path.length).find(p=>pathname===p.path||pathname.startsWith(p.path+"/"))??module.pages[0];
+ const ordered=[...module.pages].sort((a,b)=>b.path.length-a.path.length);
+ const page=ordered.find(p=>sourceRouteMatches(p.path,pathname))??ordered.find(p=>!p.path.includes("[id]")&&(pathname===p.path||pathname.startsWith(p.path+"/")))??module.pages[0];
  return {pageId:page.id,recordId:path,title:page.title,...(view?{moduleId:view.id}:{})};
 }
 /** Next keeps encoded slashes in dynamic parameters; desktop paths are already plain. */

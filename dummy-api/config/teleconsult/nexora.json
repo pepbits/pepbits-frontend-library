@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "description": "Teleconsult demo policy for the Nexora application. Tenant defaults apply to every branch; a branch entry overrides only the keys it lists. All values are fictional demo settings, not clinical or legal advice.",
+  "defaults": {
+    "scheduling": {
+      "utcOffsetMinutes": 0,
+      "slotIntervalMin": 15,
+      "opening": "08:00",
+      "closing": "18:00",
+      "breaks": [{ "start": "13:00", "end": "14:00" }],
+      "defaultDurationMin": 15,
+      "minDurationMin": 5,
+      "maxDurationMin": 60,
+      "pastGraceMin": 5,
+      "horizonDays": 90
+    },
+    "modes": ["video", "audio", "chat"],
+    "recording": { "allowed": true, "consentRequired": true },
+    "simulation": { "vitals": true, "transcript": true, "scribe": true, "arrive": true, "transcriptIntervalMs": 2600 },
+    "limits": {
+      "maxBodyBytes": 262144,
+      "maxPatients": 500,
+      "maxAppointments": 2000,
+      "maxMessagesPerAppointment": 500,
+      "maxTranscriptLines": 200,
+      "maxAuditEntries": 2000,
+      "maxIdempotencyKeys": 500
+    },
+    "access": {
+      "enforceClinicianOwnership": false,
+      "allowPatientBooking": true,
+      "allowAdminPatientRegistration": true,
+      "registerRoles": ["doctor", "nurse"],
+      "doctorStaffId": "d1",
+      "nurseStaffId": "n1",
+      "defaultPatientId": "p8"
+    }
+  },
+  "tenants": {
+    "NEX-AE-001": {
+      "branches": {
+        "sharjah": {
+          "scheduling": { "slotIntervalMin": 30, "opening": "09:00", "closing": "17:00", "breaks": [{ "start": "12:00", "end": "13:00" }], "defaultDurationMin": 30 },
+          "modes": ["video", "audio"]
+        }
+      }
+    }
+  }
+}

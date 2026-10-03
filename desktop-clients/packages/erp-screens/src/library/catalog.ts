@@ -13,6 +13,7 @@ export const CATALOG_GROUPS = [
   {pageId:"localization",key:"localization"},
 ] as const;
 export const CATALOG_ENTRIES = [
+  {id:"SourceControlsDemo",group:"forms",components:["SourceInput","SourceTextarea","SourceSelect","SourceButton","SourceDateInput","SourceTimeInput","SourceDateTimeInput","SourceDialog"],source:"source-controls.tsx, source-dialog.tsx"},
   {id:"TextDemo",group:"forms",components:["Input","SearchInput","Textarea","Highlight","ScannerInput","QuantityUnitField"],source:"form-controls.tsx, option-filter.tsx, scanner-input.tsx, quantity-unit-field.tsx"},
   {id:"ValidationDemo",group:"forms",components:["FieldShell","Input","FormErrorSummary"],source:"form-controls.tsx"},
   {id:"SelectDemo",group:"forms",components:["Select","SearchSelect","MultiSelect"],source:"form-controls.tsx, search-select.tsx"},
@@ -38,7 +39,7 @@ export const CATALOG_ENTRIES = [
   {id:"FormDemo",group:"formPatterns",components:["Input","Select","Button"],source:"form-controls.tsx, button.tsx"},
   {id:"WorklistDemo",group:"dataPatterns",components:["DataTable"],source:"@pepbits/erp-screens: worklist/data-table.tsx"},
   {id:"BillingDemo",group:"billing",components:["Input","CardGrid","DescriptionList","DataValue"],source:"form-controls.tsx, card.tsx, data-value.tsx"},
-  {id:"LocalizationDemo",group:"localization",components:["LocalizationProvider","LocalizedText","useLocalization"],source:"localization.tsx"},
+  {id:"LocalizationDemo",group:"localization",components:["LocalizationProvider","LocalizationAliasProvider","LocalizedText","useLocalization"],source:"localization.tsx"},
 ] as const;
 export type CatalogEntry = typeof CATALOG_ENTRIES[number];
 export function filterCatalog(group: string | undefined, query: string) {

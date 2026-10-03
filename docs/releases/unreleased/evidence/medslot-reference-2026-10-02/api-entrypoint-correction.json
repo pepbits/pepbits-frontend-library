@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-10-02T09:14:15.351960+00:00",
+  "failedRun": "/home/pepadmin/pb/saas/.confg/server/frontend-medslot-20261002/run-20261002T090535Z",
+  "acceptedBuildSourceSha256": "06890d74d4b46d9b500cfe5536c799649191a9e9caa7b5fc7f456c01a52a954e",
+  "cause": "Import preceded server entrypoint shebang; Node syntax error before API startup",
+  "correction": {
+    "path": "dummy-api/server.mjs",
+    "beforeSha256": "3c9a7b13a88d9ad39ef1693d1c107e9fe8cb4c158ef84b2be921381786a319af",
+    "afterSha256": "9096b110f1fa618e2b437bf96395f26328c33d5c101d67a92fec10b2f2e7aef6"
+  },
+  "syntaxChecks": {
+    "originalMisplacedShebangRejected": true,
+    "correctedEntrypointAccepted": true
+  },
+  "offlineDeploymentSafeguards": {
+    "tests": 15,
+    "status": "PASS"
+  },
+  "acceptedBuildsBeforeCorrection": [
+    "public-web-build",
+    "public-desktop-build",
+    "bundle-budget",
+    "documentation-impact",
+    "package-and-smoke"
+  ],
+  "stagedBrowserAcceptance": "NOT_RUN",
+  "deploymentComplete": false,
+  "freshFullPipelineRequired": true,
+  "retry": "--retry-runtime",
+  "remoteWritesInFailedAttempt": false
+}

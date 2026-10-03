@@ -1,0 +1,19 @@
+{
+  "recordedAt": "2026-10-02T05:20:32.767912+00:00",
+  "status": "CONFIG_LOADER_CORRECTED_NOT_DEPLOYED",
+  "observedAttempt": "run-20261002T051610Z",
+  "cause": "The local ESM helper import could not be resolved through Next TypeScript configuration loading. Prior catalog compiler tests did not exercise that loader.",
+  "correction": "Inline the client-only cache groups in next.config.ts; remove helper/declaration; load actual config using installed Next transpileConfig in regression tests.",
+  "regression": {
+    "testsPassed": 2,
+    "command": "node --test --test-isolation=none scripts/catalog-chunks.test.mjs",
+    "scope": "Actual Next TypeScript config loading plus actual canonical catalog Webpack compilation and configuration guards; not a full Next build."
+  },
+  "sources": {
+    "desktop-clients/apps/web/next.config.ts": "94dc00534ee9012d5ed62ffc84698894a6df122b35b8962b4c994f0e964392b3",
+    "desktop-clients/scripts/catalog-chunks.test.mjs": "88aca991282f0a71ee8609f7c04e90ae8c72079de8f4e83afb204d1261b4010e",
+    "desktop-clients/scripts/test-helpers/catalog-typescript-loader.cjs": "74d2449bd8887d20f85c8945c1fff115dcbfed95aaea7393bee03e674fcb4109"
+  },
+  "remoteCutoverAttempted": false,
+  "fullRebuild": "PENDING_NORMAL_TERMINAL"
+}

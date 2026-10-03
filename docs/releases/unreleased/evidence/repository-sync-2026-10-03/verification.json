@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-03",
+  "base": "1eba17bd",
+  "sourceTreeBeforeAuditDocumentation": "12666dc0154799d981cc2513decde5ae2e3b09d9",
+  "snapshotPaths": 1529,
+  "originalCheckoutDrift": [],
+  "results": {
+    "typecheck": "PASS",
+    "unit": {
+      "passed": 2579,
+      "skipped": 4
+    },
+    "api": {
+      "passed": 336,
+      "skipped": 0
+    },
+    "clinicalApi": {
+      "passed": 33,
+      "skipped": 0
+    },
+    "registry": {
+      "passed": 4
+    },
+    "deployment": {
+      "passed": 14
+    },
+    "build": "PASS web and desktop",
+    "propertyChecks": "PASS",
+    "browser": [
+      "component-library",
+      "medslot-reference"
+    ],
+    "documentationContracts": {
+      "passed": 6
+    }
+  },
+  "logs": {
+    "typecheck-and-initial-unit": {
+      "path": "typecheck-and-initial-unit.log",
+      "sha256": "0e4055e6707c6341c45e24ed62277c039b241eefc73b5b1ec590105f06a74894"
+    },
+    "units": {
+      "path": "units.log",
+      "sha256": "28f6ff63848585305b5c55580ca59196a299ba31099c4451ec94673724354732"
+    },
+    "api": {
+      "path": "api.log",
+      "sha256": "c782051596ec2ba353800ea4d12ada0783e0fd9505c866d10af239907491c00c"
+    },
+    "registry": {
+      "path": "registry.log",
+      "sha256": "65fe2d612518375e996f466d328838c70d88f2c05d6078e89651b3eb52cdec08"
+    },
+    "deployment": {
+      "path": "deployment.log",
+      "sha256": "91625de4a384d716804a4b5fcb2d9c20f2834f542be833d1e2447075d949bf3e"
+    },
+    "build": {
+      "path": "build.log",
+      "sha256": "b4991ba286a09e6c64255f5c37bb82636fef899736e723c86da5d30b8f5d4d09"
+    },
+    "properties": {
+      "path": "properties.log",
+      "sha256": "d113fdaf34ef8f484ceb11ab9b82a600a50e0ecd9c9f5d34bb7c0d3a989a9285"
+    },
+    "component-browser": {
+      "path": "component-browser.log",
+      "sha256": "f2c3c198d2fb29ad4f0dbaee2f04ed9d98bfa8c30779c08a247988e1b70650b7"
+    },
+    "medslot-browser": {
+      "path": "medslot-browser.log",
+      "sha256": "cd2c99e2ab545ccec0cae52c1c7daac677655e2d3b554ddc5fde1b4cb9589545"
+    },
+    "docs": {
+      "path": "docs.log",
+      "sha256": "afef934d6d1918ba0c49f1dbf7624507e44ae80267daceda3624ff1df0bc9744"
+    },
+    "docs-contracts": {
+      "path": "docs-contracts.log",
+      "sha256": "a5fed86a7c243a60406bfddfbe552aa4046b969f857ea77153e359bf5da2b712"
+    }
+  },
+  "limits": [
+    "Native/domain review remains pending; documentation gate reports 2268 pending items.",
+    "Browser checks used synthetic loopback development servers; no native executable or production acceptance.",
+    "Historical import/release evidence retains original dates.",
+    "65 imported/generated source and historical log files retain pre-existing whitespace warnings; raw staged git diff --check reports these.",
+    "GitHub Actions simulator checkout requires repository-scoped MOCK_SERVICES_READ_TOKEN when github.token cannot read the private simulator repository. No workstation token copied."
+  ],
+  "publication": "Source commit/push follows this record; no artifact publication, tag or deployment."
+}

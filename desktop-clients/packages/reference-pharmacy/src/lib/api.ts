@@ -1,0 +1,248 @@
+"use client";
+import { createContext, createElement, useCallback, useContext, useEffect, useMemo, useRef, useSyncExternalStore, type ReactNode } from "react";
+import { useReferenceHost } from "@pepbits/reference-host";
+
+/** Namespace the host transport maps these paths onto (the host adds the /api prefix, credentials and scope headers). */
+export const PHARMACY_NAMESPACE = "/reference-modules/pharmacy";
+export const IDEMPOTENCY_HEADER = "Idempotency-Key";
+const MUTATING = new Set(["POST", "PUT", "PATCH", "DELETE"]);
+
+/** The source's nested error shape: `{ error: { code, message, details } }` becomes status/code/message/details. */
+export class ApiError extends Error {
+  constructor(public status: number, public code: string, message: string, public details?: unknown) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
+export interface PharmacyTransport {
+  request: <T>(path: string, init?: RequestInit) => Promise<T>;
+}
+export interface CallOptions {
+  signal?: AbortSignal;
+  /** Key for this attempt. An identical earlier mutation whose outcome was lost (network, 503...) keeps its own key and wins over this one. */
+  operationKey?: string;
+}
+
+type Failure = Error & { status?: number; details?: { error?: unknown } | null };
+
+const isAbort = (error: unknown) => (error as { name?: string } | null)?.name === "AbortError";
+
+/** Maps a host transport failure onto the source's ApiError(status, code, message, details). */
+export function toApiError(error: unknown): ApiError {
+  if (error instanceof ApiError) return error;
+  const e = error as Failure;
+  const status = typeof e?.status === "number" ? e.status : 0;
+  if (!status) return new ApiError(0, "network", "Can't reach the Pharmacy-1 service.");
+  const body = e.details?.error;
+  const nested = body && typeof body === "object" ? (body as { code?: unknown; message?: unknown; details?: unknown }) : {};
+  const code = typeof nested.code === "string" ? nested.code : "error";
+  const message = typeof nested.message === "string" ? nested.message : typeof body === "string" ? body : status >= 500 ? "The server could not complete the request." : "The request could not be completed.";
+  return new ApiError(status, code, message, nested.details);
+}
+
+export const newOperationKey = () => crypto.randomUUID();
+
+/** Outcomes where the server may have applied the mutation but the answer never arrived: the retry must replay the same key. */
+const AMBIGUOUS_STATUS = new Set([0, 408, 502, 503, 504]);
+
+/** The source `api.get/post/patch` bound to one host transport. No token store, no /api fetch: the host session authenticates. */
+export function createPharmacyClient(transport: PharmacyTransport) {
+  // Owned by this client (one per authenticated scope): method + path + payload -> key of an attempt whose outcome is unknown.
+  const pending = new Map<string, string>();
+
+  async function call<T>(method: string, path: string, body?: unknown, opts: CallOptions = {}): Promise<T> {
+    const headers: Record<string, string> = {};
+    if (body !== undefined) headers["Content-Type"] = "application/json";
+    const payload = body === undefined ? undefined : JSON.stringify(body);
+    const mutating = MUTATING.has(method);
+    const signature = mutating ? JSON.stringify([method, path, payload ?? null]) : "";
+    if (mutating) headers[IDEMPOTENCY_HEADER] = pending.get(signature) ?? opts.operationKey ?? newOperationKey();
+    try {
+      const result = await transport.request<T>(path, {
+        method,
+        headers: Object.keys(headers).length ? headers : undefined,
+        body: payload,
+        signal: opts.signal,
+      });
+      if (mutating) pending.delete(signature);
+      return result;
+    } catch (error) {
+      if (isAbort(error)) {
+        if (mutating) pending.set(signature, headers[IDEMPOTENCY_HEADER]);
+        throw error;
+      }
+      const apiError = toApiError(error);
+      if (mutating) {
+        if (AMBIGUOUS_STATUS.has(apiError.status)) pending.set(signature, headers[IDEMPOTENCY_HEADER]);
+        else pending.delete(signature);
+      }
+      throw apiError;
+    }
+  }
+  return {
+    get: <T,>(p: string, o?: CallOptions) => call<T>("GET", p, undefined, o),
+    post: <T,>(p: string, b?: unknown, o?: CallOptions) => call<T>("POST", p, b ?? {}, o),
+    patch: <T,>(p: string, b?: unknown, o?: CallOptions) => call<T>("PATCH", p, b ?? {}, o),
+  };
+}
+export type PharmacyClient = ReturnType<typeof createPharmacyClient>;
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Scope-keyed data store. One store lives inside one authenticated scope (the module remounts it when tenant, branch,
+// user or role changes), so nothing cached here can reach another scope. In-flight reads are aborted on unmount and when
+// nobody is listening any more, and a response that lost the race is discarded.
+
+interface Snapshot { data: unknown; error: ApiError | undefined; loading: boolean }
+const EMPTY: Snapshot = { data: undefined, error: undefined, loading: false };
+const DEDUPE_MS = 1500;
+
+interface Entry { snap: Snapshot; at: number; stale: boolean; seq: number; controller: AbortController | null; listeners: Set<() => void>; flight: Promise<void> | null }
+
+export class DataStore {
+  private entries = new Map<string, Entry>();
+  constructor(private client: PharmacyClient) {}
+
+  private entry(key: string): Entry {
+    let e = this.entries.get(key);
+    if (!e) { e = { snap: EMPTY, at: 0, stale: false, seq: 0, controller: null, listeners: new Set(), flight: null }; this.entries.set(key, e); }
+    return e;
+  }
+  private set(e: Entry, patch: Partial<Snapshot>) {
+    e.snap = { ...e.snap, ...patch };
+    e.listeners.forEach((l) => l());
+  }
+  snapshot = (key: string | null): Snapshot => (key ? this.entries.get(key)?.snap ?? EMPTY : EMPTY);
+
+  subscribe(key: string, listener: () => void) {
+    const e = this.entry(key);
+    e.listeners.add(listener);
+    return () => {
+      e.listeners.delete(listener);
+      if (e.listeners.size === 0 && e.controller) {
+        e.controller.abort();
+        e.controller = null; e.seq++; e.flight = null; e.stale = true;
+        e.snap = { ...e.snap, loading: false };
+      }
+    };
+  }
+
+  /** Fetches unless a fresh result is cached (SWR-style dedupe). `force` always refetches. */
+  revalidate(key: string, force = false): Promise<void> {
+    const e = this.entry(key);
+    if (!force && e.flight) return e.flight;
+    if (!force && !e.stale && e.snap.data !== undefined && Date.now() - e.at < DEDUPE_MS) return Promise.resolve();
+    e.controller?.abort();
+    const controller = (e.controller = new AbortController());
+    const seq = ++e.seq;
+    this.set(e, { loading: true });
+    const flight = this.client.get<unknown>(key, { signal: controller.signal }).then(
+      (data) => {
+        if (seq !== e.seq) return;
+        e.at = Date.now(); e.stale = false;
+        this.set(e, { data, error: undefined, loading: false });
+      },
+      (error) => {
+        if (seq !== e.seq || controller.signal.aborted) return;
+        this.set(e, { error: toApiError(error), loading: false });
+      },
+    ).finally(() => { if (seq === e.seq) { e.controller = null; e.flight = null; } });
+    e.flight = flight;
+    return flight;
+  }
+
+  /** Replaces the cached value (optimistic or server-returned); revalidates afterwards unless told otherwise. */
+  async mutate(key: string, data?: unknown, revalidate = true): Promise<unknown> {
+    const e = this.entry(key);
+    if (data !== undefined) {
+      const value = await data;
+      e.at = Date.now(); e.stale = false;
+      this.set(e, { data: value, error: undefined });
+      if (!revalidate) return value;
+    }
+    await this.revalidate(key, true);
+    return e.snap.data;
+  }
+
+  /** Every list and badge shows the effect of a mutation: mounted keys refetch now, unmounted ones on next use. */
+  refreshAll(): Promise<void> {
+    const pending: Promise<void>[] = [];
+    this.entries.forEach((e, key) => {
+      if (e.listeners.size > 0) pending.push(this.revalidate(key, true)); else e.stale = true;
+    });
+    return Promise.allSettled(pending).then(() => undefined);
+  }
+
+  dispose() {
+    this.entries.forEach((e) => { e.controller?.abort(); e.controller = null; e.seq++; e.flight = null; });
+    this.entries.clear();
+  }
+}
+
+interface DataContextValue { client: PharmacyClient; store: DataStore }
+const DataContext = createContext<DataContextValue | null>(null);
+
+/**
+ * Binds the client and the store to the mounted host. Mount it inside the authenticated-scope boundary (keyed by
+ * `referenceScopeKey(host.scope)`); the latest `host.request` is read through a ref so a host that re-creates it each
+ * render does not restart every request.
+ */
+export function PharmacyDataProvider({ children }: { children: ReactNode }) {
+  const host = useReferenceHost();
+  const ref = useRef(host);
+  ref.current = host;
+  const value = useMemo<DataContextValue>(() => {
+    const client = createPharmacyClient({ request: (path, init) => ref.current.request(path, init) });
+    return { client, store: new DataStore(client) };
+  }, []);
+  useEffect(() => () => value.store.dispose(), [value]);
+  return createElement(DataContext.Provider, { value }, children);
+}
+
+function useData() {
+  const ctx = useContext(DataContext);
+  if (!ctx) throw new Error("Pharmacy data hooks must be used inside PharmacyDataProvider");
+  return ctx;
+}
+
+/** The source `api` object (get/post/patch), bound to the authenticated host transport. */
+export const useApiClient = (): PharmacyClient => useData().client;
+/** The source `refreshAll()`: refresh every cached list after a mutation so counts and badges stay true everywhere. */
+export function useRefreshAll() {
+  const { store } = useData();
+  return useCallback(() => store.refreshAll(), [store]);
+}
+
+export interface ApiConfig { refreshInterval?: number; revalidateOnFocus?: boolean; keepPreviousData?: boolean }
+
+/** Scope-keyed replacement for the source's SWR hook: `{ data, error, isLoading, mutate }`. Pass null to skip. */
+export function useApi<T>(path: string | null, config: ApiConfig = {}) {
+  const { store } = useData();
+  const { refreshInterval, revalidateOnFocus = true, keepPreviousData = true } = config;
+  const subscribe = useCallback((listener: () => void) => (path ? store.subscribe(path, listener) : () => {}), [store, path]);
+  const getSnapshot = useCallback(() => store.snapshot(path), [store, path]);
+  const snap = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+  const last = useRef<unknown>(undefined);
+  if (snap.data !== undefined) last.current = snap.data;
+
+  useEffect(() => { if (path) void store.revalidate(path); }, [store, path]);
+  useEffect(() => {
+    if (!path || !refreshInterval) return;
+    const timer = setInterval(() => { if (typeof document === "undefined" || !document.hidden) void store.revalidate(path, true); }, refreshInterval);
+    return () => clearInterval(timer);
+  }, [store, path, refreshInterval]);
+  useEffect(() => {
+    if (!path || !revalidateOnFocus) return;
+    const onFocus = () => void store.revalidate(path);
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+  }, [store, path, revalidateOnFocus]);
+
+  const mutate = useCallback(async (data?: T | Promise<T>, options?: { revalidate?: boolean }) => {
+    if (!path) return undefined;
+    return (await store.mutate(path, data, options?.revalidate ?? true)) as T | undefined;
+  }, [store, path]);
+
+  const data = (snap.data !== undefined ? snap.data : keepPreviousData ? last.current : undefined) as T | undefined;
+  return { data, error: snap.error, isLoading: !!path && snap.loading && snap.data === undefined, mutate };
+}

@@ -1,0 +1,188 @@
+
+> nexora-monorepo@1.0.0 build
+> turbo run build
+
+• turbo 2.10.12
+
+   • Packages in scope: @pepbits/ai-client, @pepbits/ai-config, @pepbits/ai-ui, @pepbits/auth, @pepbits/erp-config, @pepbits/erp-data, @pepbits/erp-screens, @pepbits/erp-shell, @pepbits/ops-ui, @pepbits/platform-ports, @pepbits/reference-diagnostics, @pepbits/reference-erp1, @pepbits/reference-erp2, @pepbits/reference-healthcare-suite, @pepbits/reference-host, @pepbits/reference-keystone-core, @pepbits/reference-lis1, @pepbits/reference-lis2, @pepbits/reference-medband, @pepbits/reference-medslot, @pepbits/reference-pharmacy, @pepbits/reference-quality, @pepbits/reference-rcm, @pepbits/reference-reports, @pepbits/reference-ris1, @pepbits/reference-school, @pepbits/reference-surgisuite, @pepbits/reference-teleconsult, @pepbits/reference-tenant-admin, @pepbits/tokens, @pepbits/workspace-core, desktop, web
+   • Running build in 33 packages
+   • Remote caching disabled, using shared worktree cache
+
+desktop:build: cache miss, executing 868ac246cd7853ce
+web:build: cache miss, executing 0447f9801f216ab3
+web:build: 
+web:build: > web@1.0.0 build
+web:build: > rm -rf .next/static && next build && node ../../scripts/stamp-api.mjs NEXT_PUBLIC_API_URL .next
+web:build: 
+desktop:build: 
+desktop:build: > desktop@1.0.0 build
+desktop:build: > rm -rf dist && tsc --noEmit && vite build && node ../../scripts/stamp-api.mjs VITE_API_URL dist
+desktop:build: 
+web:build: ▲ Next.js 16.3.3 (Turbopack)
+web:build: ✓ Running next.config.ts took 33ms
+web:build: 
+web:build:   Creating an optimized production build ...
+web:build: ✓ Compiled successfully in 33.6s
+web:build:   Running TypeScript ...
+desktop:build: vite v7.3.6 building client environment for production...
+desktop:build: transforming...
+desktop:build: 
+desktop:build: ./fonts/public-sans-latin-ext-wght-normal.woff2 referenced in ./fonts/public-sans-latin-ext-wght-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+desktop:build: 
+desktop:build: ./fonts/public-sans-latin-wght-normal.woff2 referenced in ./fonts/public-sans-latin-wght-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+desktop:build: 
+desktop:build: ./fonts/public-sans-latin-ext-wght-italic.woff2 referenced in ./fonts/public-sans-latin-ext-wght-italic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+desktop:build: 
+desktop:build: ./fonts/public-sans-latin-wght-italic.woff2 referenced in ./fonts/public-sans-latin-wght-italic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+desktop:build: 
+desktop:build: ./fonts/bricolage-grotesque-latin-standard-normal.woff2 referenced in ./fonts/bricolage-grotesque-latin-standard-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+desktop:build: ✓ 3248 modules transformed.
+desktop:build: rendering chunks...
+desktop:build: [plugin vite:reporter] 
+desktop:build: (!) /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/core.js is dynamically imported by /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/packages/erp-shell/src/sentinel.tsx, /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/packages/erp-shell/src/sentinel.tsx but also statically imported by /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/dpi.js, /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/event.js, /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/image.js, /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/webview.js, /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/webviewWindow.js, /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/window.js, dynamic import will not move module into another chunk.
+desktop:build: 
+desktop:build: [plugin vite:reporter] 
+desktop:build: (!) /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/event.js is dynamically imported by /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/packages/erp-shell/src/sentinel.tsx but also statically imported by /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/webview.js, /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/webviewWindow.js, /home/pepadmin/.cache/pepbits-worktrees/pb-sync-frontend-20261003/desktop-clients/node_modules/@tauri-apps/api/window.js, dynamic import will not move module into another chunk.
+desktop:build: 
+desktop:build: computing gzip size...
+desktop:build: dist/index.html                                       1.31 kB │ gzip:   0.59 kB
+desktop:build: dist/assets/workbook-options.worker-B47Vz9Ey.js     368.07 kB
+desktop:build: dist/assets/library-page-BZ8DFha9.css                 1.27 kB │ gzip:   0.59 kB
+desktop:build: dist/assets/page-template-DHkRpzaa.css                2.17 kB │ gzip:   0.74 kB
+desktop:build: dist/assets/library-page-B5FBY-Fy.css                 4.55 kB │ gzip:   1.28 kB
+desktop:build: dist/assets/workspace-Bnk30RYg.css                    5.02 kB │ gzip:   1.41 kB
+desktop:build: dist/assets/library-page-CNkCYsR4.css                 5.85 kB │ gzip:   1.45 kB
+desktop:build: dist/assets/library-page-B8oeBtES.css                 9.14 kB │ gzip:   2.17 kB
+desktop:build: dist/assets/index-C0VEpQLa.css                       11.91 kB │ gzip:   2.17 kB
+desktop:build: dist/assets/index-DrfW4Pux.css                       26.29 kB │ gzip:   4.72 kB
+desktop:build: dist/assets/index-CTiapoYQ.css                      799.11 kB │ gzip: 116.08 kB
+desktop:build: dist/assets/clinical-triage-DHLgwzOt.js               0.12 kB │ gzip:   0.12 kB
+desktop:build: dist/assets/clinical-consultation-CY0XKaxC.js         0.12 kB │ gzip:   0.12 kB
+desktop:build: dist/assets/message-circle-COz6k0aG.js                0.14 kB │ gzip:   0.16 kB
+desktop:build: dist/assets/bookmark-DC7qr5rX.js                      0.16 kB │ gzip:   0.16 kB
+desktop:build: dist/assets/arrow-up-right-DJ16hjpe.js                0.16 kB │ gzip:   0.16 kB
+desktop:build: dist/assets/arrow-down-left-B81b9Pbr.js               0.16 kB │ gzip:   0.16 kB
+desktop:build: dist/assets/ban-CdrC9Bs1.js                           0.17 kB │ gzip:   0.16 kB
+desktop:build: dist/assets/clock-BOixbdZ1.js                         0.18 kB │ gzip:   0.17 kB
+desktop:build: dist/assets/kanban-C5l8OPQP.js                        0.19 kB │ gzip:   0.16 kB
+desktop:build: dist/assets/corner-up-left-BfZQd6LS.js                0.19 kB │ gzip:   0.18 kB
+desktop:build: dist/assets/circle-play-B2F86lbH.js                   0.19 kB │ gzip:   0.17 kB
+desktop:build: dist/assets/corner-down-left-CS2hC1Gd.js              0.19 kB │ gzip:   0.19 kB
+desktop:build: dist/assets/circle-x-BsTBHlr2.js                      0.20 kB │ gzip:   0.18 kB
+desktop:build: dist/assets/square-check-big-BYCxGSQd.js              0.22 kB │ gzip:   0.19 kB
+desktop:build: dist/assets/timer-DAyakQPV.js                         0.24 kB │ gzip:   0.19 kB
+desktop:build: dist/assets/globe-BWzkSBvw.js                         0.24 kB │ gzip:   0.19 kB
+desktop:build: dist/assets/type-C0gJ17rs.js                          0.24 kB │ gzip:   0.19 kB
+desktop:build: dist/assets/circle-pause-BmMvkFG2.js                  0.24 kB │ gzip:   0.18 kB
+desktop:build: dist/assets/video-DmbN87u_.js                         0.25 kB │ gzip:   0.22 kB
+desktop:build: dist/assets/search-x-qDrg3TXQ.js                      0.25 kB │ gzip:   0.20 kB
+desktop:build: dist/assets/calendar-B45wUtPp.js                      0.25 kB │ gzip:   0.20 kB
+desktop:build: dist/assets/map-pin-BNsKH6d9.js                       0.26 kB │ gzip:   0.22 kB
+desktop:build: dist/assets/user-round-x-CF269_uu.js                  0.26 kB │ gzip:   0.21 kB
+desktop:build: dist/assets/pen-line-4v0A_XLP.js                      0.27 kB │ gzip:   0.22 kB
+desktop:build: dist/assets/zoom-in-xP_-XI2u.js                       0.30 kB │ gzip:   0.21 kB
+desktop:build: dist/assets/list-BP28nEq3.js                          0.30 kB │ gzip:   0.18 kB
+desktop:build: dist/assets/calendar-check-DZiyBod8.js                0.30 kB │ gzip:   0.22 kB
+desktop:build: dist/assets/monitor-smartphone-B9cBmqor.js            0.32 kB │ gzip:   0.24 kB
+desktop:build: dist/assets/layout-grid-DHi_9NsR.js                   0.34 kB │ gzip:   0.19 kB
+desktop:build: dist/assets/shield-plus-B-xBoEmG.js                   0.35 kB │ gzip:   0.26 kB
+desktop:build: dist/assets/syringe-BpROPEGs.js                       0.36 kB │ gzip:   0.25 kB
+desktop:build: dist/assets/door-open-saNRMg_b.js                     0.37 kB │ gzip:   0.25 kB
+desktop:build: dist/assets/radio-93TGw4Ds.js                         0.37 kB │ gzip:   0.25 kB
+desktop:build: dist/assets/clsx-B-dksMZM.js                          0.37 kB │ gzip:   0.24 kB
+desktop:build: dist/assets/phone-BuiDO4Ui.js                         0.39 kB │ gzip:   0.25 kB
+desktop:build: dist/assets/preference-choice-BYFfp0Li.js             0.41 kB │ gzip:   0.27 kB
+desktop:build: dist/assets/sunrise-Me1S3S20.js                       0.42 kB │ gzip:   0.25 kB
+desktop:build: dist/assets/clinical-document-CRPU8npr.js             0.42 kB │ gzip:   0.33 kB
+desktop:build: dist/assets/octagon-alert-CND2AsXf.js                 0.43 kB │ gzip:   0.25 kB
+desktop:build: dist/assets/zap-CdtHBI6x.js                           0.44 kB │ gzip:   0.28 kB
+desktop:build: dist/assets/siren-DK-dSs6x.js                         0.47 kB │ gzip:   0.27 kB
+desktop:build: dist/assets/star-B5EbKVFP.js                          0.47 kB │ gzip:   0.29 kB
+desktop:build: dist/assets/scanner-input-FyR6cCUi.js                 0.48 kB │ gzip:   0.36 kB
+desktop:build: dist/assets/monitor-YNQ9VqG1.js                       0.54 kB │ gzip:   0.31 kB
+desktop:build: dist/assets/sun-CYf-au7H.js                           0.56 kB │ gzip:   0.30 kB
+desktop:build: dist/assets/print-document-CLDDNvzd.js                0.60 kB │ gzip:   0.36 kB
+desktop:build: dist/assets/square-pen-NgTQpSyw.js                    0.67 kB │ gzip:   0.36 kB
+desktop:build: dist/assets/_commonjsHelpers-CE1G-McA.js              0.76 kB │ gzip:   0.40 kB
+desktop:build: dist/assets/library-page-0wiSSoIO.js                  0.80 kB │ gzip:   0.46 kB
+desktop:build: dist/assets/smartphone-CjO_Ur9G.js                    0.87 kB │ gzip:   0.47 kB
+desktop:build: dist/assets/library-page-Cxp2OiDu.js                  0.89 kB │ gzip:   0.49 kB
+desktop:build: dist/assets/clinical-templates-C6qMOJcp.js            0.92 kB │ gzip:   0.52 kB
+desktop:build: dist/assets/source-controls-CJilSmsL.js               0.99 kB │ gzip:   0.36 kB
+desktop:build: dist/assets/library-page-CkkaDxTO.js                  1.35 kB │ gzip:   0.73 kB
+desktop:build: dist/assets/source-dialog-BqfSfSJZ.js                 1.46 kB │ gzip:   0.81 kB
+desktop:build: dist/assets/configured-template-page-Rsqji000.js      1.92 kB │ gzip:   0.96 kB
+desktop:build: dist/assets/calendar-DqbVMn0g.js                      3.53 kB │ gzip:   1.63 kB
+desktop:build: dist/assets/index-CcDWBiU_.js                         3.85 kB │ gzip:   1.81 kB
+desktop:build: dist/assets/template-parts-9p3Swh16.js                3.89 kB │ gzip:   1.45 kB
+desktop:build: dist/assets/choice-fields-BkDnA-we.js                 7.48 kB │ gzip:   2.76 kB
+desktop:build: dist/assets/library-page-By8J6ME2.js                  7.57 kB │ gzip:   2.63 kB
+desktop:build: dist/assets/library-page-CQVyOyu9.js                  9.07 kB │ gzip:   3.19 kB
+desktop:build: dist/assets/template-library-BphEDtWA.js              9.82 kB │ gzip:   3.32 kB
+desktop:build: dist/assets/library-page-DKZnmMf2.js                 10.06 kB │ gzip:   3.49 kB
+desktop:build: dist/assets/library-page-B4KL5P3r.js                 10.23 kB │ gzip:   3.99 kB
+desktop:build: dist/assets/library-page-Dw6K2jMz.js                 12.04 kB │ gzip:   4.43 kB
+desktop:build: dist/assets/library-page-pymKs0SW.js                 14.08 kB │ gzip:   5.03 kB
+desktop:build: dist/assets/index-BKYLcEOl.js                        15.24 kB │ gzip:   2.97 kB
+desktop:build: dist/assets/library-page-CBwSh4Pg.js                 24.06 kB │ gzip:   7.23 kB
+desktop:build: dist/assets/library-page-D-MtxzL3.js                 25.64 kB │ gzip:   7.25 kB
+desktop:build: dist/assets/library-page-DACFO6MK.js                 34.39 kB │ gzip:  10.71 kB
+desktop:build: 
+desktop:build: dist/assets/page-template-PyM2FoQb.js                34.84 kB │ gzip:  10.40 kB
+desktop:build: dist/assets/workspace-D0M_IdTF.js                    46.33 kB │ gzip:  14.23 kB
+desktop:build: dist/assets/component-catalog-BO3lhyKy.js            50.77 kB │ gzip:  12.51 kB
+desktop:build: dist/assets/library-page-BW7TYN0m.js                 78.38 kB │ gzip:  23.62 kB
+desktop:build: (!) Some chunks are larger than 500 kB after minification. Consider:
+desktop:build: - Using dynamic import() to code-split the application
+desktop:build: dist/assets/RegistryPage-C8NcgEDr.js                119.63 kB │ gzip:  35.49 kB
+desktop:build: dist/assets/index-XALR2inp.js                       122.47 kB │ gzip:  30.83 kB
+desktop:build: dist/assets/index-BRwaMmy9.js                       139.14 kB │ gzip:  35.27 kB
+desktop:build: dist/assets/index-Bd4hje8H.js                       140.07 kB │ gzip:  42.41 kB
+desktop:build: dist/assets/index-85rIuB-8.js                       171.52 kB │ gzip:  50.16 kB
+desktop:build: - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+desktop:build: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+desktop:build: dist/assets/index-DSWRl7LU.js                       186.64 kB │ gzip:  47.36 kB
+desktop:build: dist/assets/index-XADYqy5C.js                       190.58 kB │ gzip:  56.81 kB
+desktop:build: dist/assets/react-runtime-DmnU9n7m.js               192.44 kB │ gzip:  60.35 kB
+desktop:build: dist/assets/index-BsJey4V4.js                       207.72 kB │ gzip:  56.42 kB
+desktop:build: dist/assets/index-B6qK9giR.js                       225.69 kB │ gzip:  60.80 kB
+desktop:build: dist/assets/index-DKBX6UTQ.js                       226.74 kB │ gzip:  60.18 kB
+desktop:build: dist/assets/index-DC0rhjHT.js                       239.54 kB │ gzip:  65.67 kB
+desktop:build: dist/assets/index-Cd-UaInc.js                       244.43 kB │ gzip:  64.92 kB
+desktop:build: dist/assets/index-DajyY3TK.js                       247.62 kB │ gzip:  64.90 kB
+desktop:build: dist/assets/index-I0scXeQd.js                       261.43 kB │ gzip:  70.69 kB
+desktop:build: dist/assets/index-CH4gdktQ.js                       291.64 kB │ gzip:  78.15 kB
+desktop:build: dist/assets/index-Bvf8gdlY.js                       324.91 kB │ gzip:  83.68 kB
+desktop:build: dist/assets/index-CqrFp4D5.js                       344.97 kB │ gzip:  94.28 kB
+desktop:build: dist/assets/BarChart-D8XwDeFp.js                    393.29 kB │ gzip: 107.93 kB
+desktop:build: dist/assets/ui-english-fallback-ghkGKZJJ.js         657.18 kB │ gzip: 183.27 kB
+desktop:build: dist/assets/locale-fallback-en-BsPY7wzl.js        1,144.32 kB │ gzip: 299.10 kB
+desktop:build: dist/assets/index-BFYX2Fb-.js                     1,369.01 kB │ gzip: 403.15 kB
+desktop:build: dist/assets/locale-fallback-ar-DoVAnQN-.js        1,449.28 kB │ gzip: 398.19 kB
+desktop:build: dist/assets/locale-fallback-hi-CowjZCxZ.js        1,888.69 kB │ gzip: 421.55 kB
+desktop:build: dist/assets/locale-fallback-ml-B70RGdYQ.js        2,182.61 kB │ gzip: 444.91 kB
+desktop:build: ✓ built in 27.16s
+web:build:   Finished TypeScript in 60s ...
+web:build:   Collecting page data using 7 workers ...
+web:build:   Generating static pages using 7 workers (0/3) ...
+web:build: ✓ Generating static pages using 7 workers (3/3) in 450ms
+web:build:   Finalizing page optimization ...
+web:build: 
+web:build: Route (app)
+web:build: ┌ ○ /
+web:build: ├ ○ /_not-found
+web:build: ├ ƒ /[module]/[page]
+web:build: ├ ƒ /[module]/[page]/[recordId]
+web:build: ├ ƒ /[module]/[page]/[recordId]/edit
+web:build: ├ ƒ /[module]/[page]/new
+web:build: └ ƒ /view/[viewId]
+web:build: 
+web:build: 
+web:build: ○  (Static)   prerendered as static content
+web:build: ƒ  (Dynamic)  server-rendered on demand
+web:build: 
+
+ Tasks:    2 successful, 2 total
+Cached:    0 cached, 2 total
+  Time:    1m37.493s 
+
