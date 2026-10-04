@@ -117,9 +117,11 @@ export function Patient360Template(props: ClinicalPageProps) {
                 </TableCell>
                 <TableCell className="p-3">
                   <b>{t(row.title)}</b>
-                  <p className="mt-1 text-sm text-[var(--text-muted)]">
-                    {t(row.detail)}
-                  </p>
+                  {row.detail ? (
+                    <p className="mt-1 text-sm text-[var(--text-muted)]">
+                      {t(row.detail)}
+                    </p>
+                  ) : null}
                   {row.amount !== undefined ? (
                     <p>{format.money(row.amount)}</p>
                   ) : null}

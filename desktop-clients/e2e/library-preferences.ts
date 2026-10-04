@@ -6,6 +6,7 @@ function collect(value:unknown){if(Array.isArray(value))value.forEach(collect);e
 collect(MODULES.library.navigation);
 const checkedIds=process.env.E2E_LIBRARY_PAGES?.split(',')??[...ids];
 for(const id of checkedIds)assert.ok(ids.has(id),`Unknown Library page ${id}`);
+const LIBRARY_SURFACES=['[data-component-catalog]','[data-library-reference]','[data-page-library-catalog]','[data-designer]','[data-care-page]','[data-billing-clinic]','[data-clinical-document]','[data-op-registration]','[data-label-library]','[data-device-library]','[data-identity-library]'].join(', ');
 const engine=process.env.E2E_BROWSER??'chromium';
 const browser=await loadPlaywright()[engine].launch({chromiumSandbox:false});
 try {
@@ -25,7 +26,10 @@ try {
   const root=await open(id),definition=PAGE_REGISTRY[id];
   if(id.startsWith('template-')||id==='page-templates')await root.locator(`[data-template-library="${id}"]`).waitFor();
   else if(id.startsWith('allyvora-'))await root.locator(`[data-clinical-library="${id}"]`).waitFor();
-  else if(definition.kind==='library')await root.locator('[data-component-catalog], [data-library-reference]').waitFor();
+  // Every Library page must render a recognised Library surface: the component catalog or reference pages, or the
+  // root of a dedicated feature page added later (Page Library list, DCP designer, care pages, billing, clinical
+  // documents, OP registration, labels, devices, identity readers).
+  else if(definition.kind==='library')await root.locator(LIBRARY_SURFACES).first().waitFor();
   assert.equal(await root.locator('table:not([data-managed-table="true"])').count(),0,id);
   for(const table of await root.locator('table[data-managed-table="true"]:visible').all()){
    assert.equal(await table.getAttribute('data-density'),density,id);assert.equal(await table.getAttribute('data-striped'),'false',id);assert.equal(await table.getAttribute('data-wrap'),'true',id);

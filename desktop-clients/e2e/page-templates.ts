@@ -2,6 +2,9 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {loadPlaywright} from './harness.mjs';
 import {audit} from './a11y.mjs';
+import {NEXORA_PRODUCT,PAGE_TEMPLATES} from '../packages/erp-config/src/index.ts';
+// The library lists every registered template the product installs; the catalog grows over time.
+const EXPECTED_TEMPLATES=PAGE_TEMPLATES.filter(item=>NEXORA_PRODUCT.pages[item.id]).length;
 const browser=await loadPlaywright().chromium.launch({chromiumSandbox:false});
 try {
  const context=await browser.newContext({viewport:{width:1800,height:1150}}),page=await context.newPage();page.setDefaultTimeout(30000);
@@ -11,7 +14,7 @@ try {
  await page.goto(process.env.E2E_DESKTOP??'http://127.0.0.1:3109');await page.getByPlaceholder('user1').fill('admin');await page.locator('input[type=password]').fill('admin');await page.locator('button[type=submit]').click();await page.locator('header').first().waitFor();
  page.on('request',request=>{if(['POST','PUT','PATCH','DELETE'].includes(request.method())&&/\/(records|drafts|imports|approvals|record-panels)(\/|$)/.test(new URL(request.url()).pathname))writes.push(request.url());});
  async function open(id:string){if(await page.getByRole('tab').count()>=10){await page.getByRole('button',{name:'Tab options',exact:true}).click();await page.getByRole('button',{name:'Close other tabs',exact:true}).click();}await page.keyboard.press('Control+k');const dialog=page.getByRole('dialog');await dialog.locator('input').first().fill(id);await dialog.locator('button.group').first().click();await page.locator(`[data-template-library="${id}"]`).waitFor();}
- await open('page-templates');let root=page.locator('[data-template-library="page-templates"]');assert.equal(await root.getByRole('button',{name:'Open template',exact:true}).count(),97);
+ await open('page-templates');let root=page.locator('[data-template-library="page-templates"]');assert.equal(await root.getByRole('button',{name:'Open template',exact:true}).count(),EXPECTED_TEMPLATES);
  await root.getByLabel('Search templates or applications').fill('patient');assert.ok(await root.getByRole('button',{name:'Open template',exact:true}).count()>=3);
  await open('template-patient-master');root=page.locator('[data-template-library="template-patient-master"]');let workspace=root.locator('[data-page-template]');
  await workspace.getByRole('textbox',{name:/^Name/}).fill('Template local edit');await root.getByRole('tab',{name:'TypeScript example',exact:true}).click();const source=root.getByRole('textbox',{name:'TypeScript source / configuration',exact:true});assert.ok((await source.inputValue()).includes('PageTemplateWorkspace'));await root.getByRole('button',{name:'Copy code'}).click();await root.getByText(/Code copied\.|Clipboard unavailable\./).waitFor();await root.getByRole('tab',{name:'Preview',exact:true}).click();assert.equal(await workspace.getByRole('textbox',{name:/^Name/}).inputValue(),'Template local edit');
@@ -30,5 +33,5 @@ try {
   const translated=page.locator('[data-page-template="template-patient-master"]');await translated.getByRole('heading',{name:catalog['template.name.patient-master'],exact:true}).waitFor();await translated.getByRole('button',{name:catalog['template.save'],exact:true}).waitFor();
   assert.equal(await page.locator('html').getAttribute('dir'),language==='ar'?'rtl':'ltr');assert.ok(await page.locator('body').evaluate(element=>element.scrollWidth<=innerWidth),'localized page does not overflow horizontally');
  }
- assert.deepEqual(writes,[]);assert.deepEqual(errors,[]);console.log('PASS 97-template catalog, all engine families, local state across code/layout changes, save recovery, order lines, booking, CSV mapping, four languages/RTL, accessibility, and no business API writes');
+ assert.deepEqual(writes,[]);assert.deepEqual(errors,[]);console.log(`PASS ${EXPECTED_TEMPLATES}-template catalog, all engine families, local state across code/layout changes, save recovery, order lines, booking, CSV mapping, four languages/RTL, accessibility, and no business API writes`);
 } finally {await browser.close();}

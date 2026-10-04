@@ -171,12 +171,12 @@ try {
     ),
     [],
   );
+  // The record follows the shared "Record form style" preference (its own layout buttons were removed when the
+  // Library adopted managed preferences), so choose the rail layout there.
+  await changeQueryPreference("Record form style", "rail");
   await query.getByRole("button", { name: "New patient", exact: true }).click();
   let record = page.locator("[data-clinical-record]");
   await record.waitFor();
-  await record
-    .getByRole("button", { name: "Rail layout", exact: true })
-    .click();
   await record.locator('[data-layout="rail"]').waitFor();
   assert.equal(await record.locator("[data-record-section]").count(), 9);
   assert.equal(
@@ -217,9 +217,9 @@ try {
       .getAttribute("aria-selected"),
     "true",
   );
-  await record
-    .getByRole("button", { name: "Wizard layout", exact: true })
-    .click();
+  // Layout is a preference: switch it there and reopen a new (still blank) record.
+  await changeQueryPreference("Record form style", "wizard");
+  await query.getByRole("button", { name: "New patient", exact: true }).click();
   await record.locator('[data-layout="wizard"]').waitFor();
   assert.equal(await record.locator("[data-record-section]").count(), 1);
   assert.equal(
@@ -228,7 +228,8 @@ try {
       .count(),
     0,
   );
-  await record.getByRole("button", { name: "Tab layout", exact: true }).click();
+  await changeQueryPreference("Record form style", "tabs");
+  await query.getByRole("button", { name: "New patient", exact: true }).click();
   await record.locator('[data-layout="tabs"]').waitFor();
   assert.equal(await record.locator("[data-record-section]").count(), 1);
 

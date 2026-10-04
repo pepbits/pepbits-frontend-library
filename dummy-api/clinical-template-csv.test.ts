@@ -51,3 +51,13 @@ test('new related entries and their retry receipts survive restart and appear in
  assert.equal(readClinicalCsv(x.file)[scope].care['PT-0001'].filter(row=>row.detail==='CSV related encounter').length,1);
  }finally{x.close();}
 });
+test('a booking without notes keeps detail as an empty string after the CSV round trip',()=>{
+ const x=setup();try{
+ const metadata=x.store.handle(user,'nexora',{action:'metadata'},true).body as {providers:{value:string}[]};
+ const booked=x.store.handle(user,'nexora',{action:'schedule',operationId:'csv-book-no-notes',patientId:'PT-0001',kind:'appointment',date:'2027-03-20',time:'14:30',provider:metadata.providers[0].value},true);
+ assert.equal(booked.status,200);
+ const restarted=createClinicalTemplateStore(x.file);
+ const row=(restarted.handle(user,'nexora',{action:'overview',id:'PT-0001'},true).body as PatientOverview).rows.find(r=>r.kind==='appointment'&&r.date==='2027-03-20T14:30:00.000Z');
+ assert.ok(row);assert.equal(row.detail,'');assert.equal(row.title,'template.clinical.followUp');
+ }finally{x.close();}
+});

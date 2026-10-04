@@ -59,7 +59,8 @@ export function decodeClinicalCsv(source:string):ClinicalData {
   }else if(row.entity==='care'){
    const item=Object.fromEntries(Object.entries(row).filter(([key,value])=>key.startsWith('care.')&&value!=='').map(([key,value])=>[key.slice(5),key==='care.amount'?Number(value):value])) as unknown as PatientCareRow;
    if(!row.owner||!['encounter','appointment','episode','order','billing','pharmacy','team','location','clinical'].includes(item.kind)||!Number.isFinite(Date.parse(item.date))||(item.amount!==undefined&&!Number.isFinite(item.amount)))throw Error('Invalid clinical CSV care row');
-   item.id=row.id;(bucket.care[row.owner]??=[]).push(item);
+   // Empty cells are not stored, but detail is a required string in the contract (a booking without notes).
+   item.detail??='';item.id=row.id;(bucket.care[row.owner]??=[]).push(item);
   }else if(row.entity==='search')(bucket.searches[row.owner]??=[]).push(JSON.parse(row.details));
   else if(row.entity==='receipt')bucket.receipts[row.id]=JSON.parse(row.details);
   else if(row.entity==='export')bucket.exports.push(JSON.parse(row.details));

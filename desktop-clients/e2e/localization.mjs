@@ -37,7 +37,8 @@ try {
    const sidebar=await page.locator('aside[data-tour=sidebar]').boundingBox(),main=await page.locator('main').boundingBox();
    assert.ok(placement==='left'?main.x>=sidebar.x+sidebar.width-1:main.x+main.width<=sidebar.x+1,`${language}: ${placement} sidebar overlaps content`);
    assert.equal(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth),true);
-   assert.ok(await page.getByRole('button',{name:editLabels[language],exact:true}).count(),'record IDs remain stable');
+   // Wait for the re-rendered rows; count() does not wait, and the table can lag the language switch.
+   assert.ok(await page.getByRole('button',{name:editLabels[language],exact:true}).first().waitFor({timeout:15000}).then(()=>true,()=>false),'record IDs remain stable');
    if(placement==='left'&&language==='ar')await page.screenshot({path:'/tmp/localization-ar.png'});
   }
   assert.equal(await page.locator('header select').count(),0,'language setting belongs in Preferences');
