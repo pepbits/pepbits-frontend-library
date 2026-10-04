@@ -44,17 +44,23 @@ Restarting the API resets sessions; users sign in again. Demo state is synthetic
 
 ## Deploying a release
 
-1. Build from a clean checkout with Node 24: the CI steps, then `npm run deploy:prepare` with
-   `deploy.config.json` set to `{"webApiUrl":"/api","desktopApiUrl":"/api"}` and `NEXORA_DEPLOY_ROOT` outside the checkout.
-2. Bundle the runtime as the stack README describes (`src/`, `web/`, `mock/`, `BUILD.json`), copy it to
-   `releases/<release>/` on pb-srv5 through a staging folder, and record its checksum.
-3. Set `FT_RELEASE=<release>` in hub `secrets/pb-srv5.frontend-test.env` and run
-   `bin/deploy-stack.sh pb-srv5 frontend-test`.
-4. Check release identity, `/api/health`, login and representative modules through public HTTPS, then record the
-   evidence in a delivery record.
+Every push to `main` deploys automatically through the repository [`Jenkinsfile`](../../Jenkinsfile) on
+`jenkins.pepbits.com` (pb-srv2). Other branches and pull requests run the same gates without deploying:
 
-Rollback: set `FT_RELEASE` to the previous release folder and deploy again. Keep the previous folder until the new
-release has been checked. Do not edit files on the server by hand; change the stack source and redeploy.
+1. The GitHub Actions `check` gates in `node:24-bookworm` containers (documentation, typecheck, unit, API with the
+   pinned simulators, deployment lifecycle, build, `verify`).
+2. `npm run deploy:prepare` with `deploy.config.json` = `{"webApiUrl":"/api","desktopApiUrl":"/api"}`.
+3. [`scripts/ci/package-test-site.sh`](../scripts/ci/package-test-site.sh) bundles the runtime (`src/`, `web/`,
+   `mock/`, `BUILD.json`) into `frontend-test-<release>.tar.gz` with a SHA-256 file.
+4. The archive is streamed over SSH (credential `frontend-test-deploy`, host key pinned in
+   [`deploy/pb-srv5/known_hosts`](../../deploy/pb-srv5/known_hosts)) to the pb-srv5 receiver, whose forced command
+   verifies, activates and health-checks it, and restores the previous release on failure.
+5. The pipeline waits until the public site reports the new release identity.
+
+Builds run one at a time; pb-srv2 has two CPUs, so a full build takes considerably longer than on a workstation.
+The receiver, its manual use and rollback are documented with the stack in `pepbits-shared-document`
+(`common/deployment/config/stacks/pb-srv5/frontend-test/README.md`). Record browser acceptance for a release in a
+delivery record; the pipeline's own checks do not replace the browser suites.
 
 ## Restricted material
 
