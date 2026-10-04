@@ -26,6 +26,9 @@ try{
    await root.getByText(text(language,label),{exact:true}).first().waitFor();
    const caption={lis1:'All notified',ris1:'All matched to orders'}[module.variant];if(caption)await root.getByText(text(language,caption),{exact:true}).first().waitFor();
    assert.equal(await page.locator('html').getAttribute('dir'),language==='ar'?'rtl':'ltr');
+   // The previous collapse click leaves the pointer on the rail; in hover mode the next page opens it under the
+   // pointer. Start from the collapsed state, as a user whose pointer is elsewhere would.
+   await page.mouse.move(700,70);
    const expand=page.getByRole('button',{name:text(language,'Expand navigation'),exact:true});await expand.focus();await expand.press('Enter');
    const collapse=page.getByRole('button',{name:text(language,'Collapse navigation'),exact:true});
    assert.equal(await collapse.evaluate(n=>{const r=n.getBoundingClientRect();return n.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));}),true,'Expanded sidebar toggle remains physically clickable');
@@ -47,6 +50,7 @@ try{
   const current=await request('/preferences');await request('/preferences','PUT',{preferences:{...current.overrides,sidebarPlacement:'right'},policyRevision:current.policy.revision,userRevision:current.userRevision});
   for(const module of modules){
    await page.goto(`${BASE}/${module.id}/${module.pages[0].id}`);await page.locator(`[data-reference-module="${module.variant}"]`).waitFor();
+   await page.mouse.move(700,70);await page.locator('aside[data-tour=sidebar] button[aria-expanded="false"]').first().waitFor();
    const toggle=page.locator('aside[data-tour=sidebar] button[aria-expanded]').first();await toggle.focus();await toggle.press('Enter');
    assert.equal(await toggle.evaluate(n=>{const r=n.getBoundingClientRect();return n.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));}),true,'Right-side toggle is clickable');
    assert.equal(await page.locator('header [data-tour=module] button').evaluate(n=>{const r=n.getBoundingClientRect();return n.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));}),true,'Right-side rail leaves module selector clickable');

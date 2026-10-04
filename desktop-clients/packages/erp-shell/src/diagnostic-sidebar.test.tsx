@@ -33,6 +33,14 @@ it.each(['reference-lis1','reference-lis2','reference-ris1'])('%s opens its pati
  fireEvent.click(screen.getByRole('link',{name:'Patients'}));expect(open).toHaveBeenCalledWith(expect.objectContaining({pageId:id+'-patients'}));
  expect(screen.getByRole('button',{name:'Expand navigation'})).toHaveAttribute('aria-expanded','false');
 });
+it.each(['reference-lis1','reference-lis2','reference-ris1'])('%s stays closed after choosing a page under a still pointer in hover mode',id=>{
+ state.moduleId=id;state.expandOn='hover';renderRail();
+ fireEvent.mouseEnter(rail());fireEvent.click(screen.getByRole('link',{name:'Patients'}));
+ expect(screen.getByRole('button',{name:'Expand navigation'})).toHaveAttribute('aria-expanded','false');
+ // Chromium re-sends mouseenter when the rail re-renders under a pointer that never moved.
+ fireEvent.mouseEnter(rail());expect(screen.getByRole('button',{name:'Expand navigation'})).toHaveAttribute('aria-expanded','false');
+ fireEvent.mouseLeave(rail());fireEvent.mouseEnter(rail());expect(screen.getByRole('button',{name:'Collapse navigation'})).toHaveAttribute('aria-expanded','true');
+});
 it('keeps managed pinning and blocks manual, outside and navigation dismissal',()=>{
  state.pinned=true;state.locked=true;renderRail();const toggle=screen.getByRole('button',{name:'Collapse navigation'});
  expect(toggle).toBeDisabled();fireEvent.click(toggle);fireEvent.pointerDown(document.body);fireEvent.click(screen.getByRole('link',{name:'Patients'}));

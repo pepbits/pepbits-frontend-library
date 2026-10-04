@@ -17,11 +17,13 @@ const env={...process.env,
 const only=process.argv.find(arg=>arg.startsWith("--suite="))?.slice(8);
 if(only&&!suites[group].includes(only))throw new Error(`Suite ${only} does not belong to ${group}`);
 const selected=only?[only]:suites[group];
+// Five minutes per suite, except sweeps whose length grows with the registry (184 reference pages and counting).
+const SUITE_TIMEOUT_MS={'reference-modules.mjs':900000};
 let failed=0;
 for(const suite of selected){
  let stop;
  try{
- if(process.argv.includes("--managed-api")||process.env.E2E_MANAGED_API==="1")stop=await startApi(env.E2E_API,suite);execFileSync(process.execPath,[fileURLToPath(new URL(suite,import.meta.url))],{stdio:'inherit',env,timeout:300000});}
+ if(process.argv.includes("--managed-api")||process.env.E2E_MANAGED_API==="1")stop=await startApi(env.E2E_API,suite);execFileSync(process.execPath,[fileURLToPath(new URL(suite,import.meta.url))],{stdio:'inherit',env,timeout:SUITE_TIMEOUT_MS[suite]??300000});}
  catch(error){failed++;console.error(`FAIL ${group}/${suite}: ${error.message}`);}
  finally{await stop?.();}
 }

@@ -107,15 +107,20 @@ export function applyApplicationConfig(product: ProductDefinition, nav: Navigati
     const text = (key: string) => english[key] ?? key;
     const pages = Object.fromEntries(nav.pages.flatMap(meta => product.pages[meta.id] ? [[meta.id, { ...product.pages[meta.id], title: text(meta.titleKey), subtitle: text(meta.subtitleKey), titleKey: meta.titleKey, subtitleKey: meta.subtitleKey }]] : []));
     // Legacy screens and stored workspace titles continue to resolve English source
-    // strings while their stable-key migration proceeds.
-    for (const locale of locales)
+    // strings while their stable-key migration proceeds. An alias only fills a gap: many
+    // pages share one legacy string (every reference page's subtitle is
+    // "reference.modules.demoNotice"; several pages are titled "Dashboard"), so overwriting
+    // would leave whichever page came last as the text of all of them.
+    for (const locale of locales) {
+        const catalog = translations[locale.language]!;
         for (const meta of nav.pages) {
             const old = product.pages[meta.id];
             if (old) {
-                translations[locale.language]![old.title] = translations[locale.language]![meta.titleKey] ?? old.title;
-                translations[locale.language]![old.subtitle] = translations[locale.language]![meta.subtitleKey] ?? old.subtitle;
+                if (!(old.title in catalog)) catalog[old.title] = catalog[meta.titleKey] ?? old.title;
+                if (!(old.subtitle in catalog)) catalog[old.subtitle] = catalog[meta.subtitleKey] ?? old.subtitle;
             }
         }
+    }
     const children = (parent: string) => nav.nodes.filter(node => node.parentId === parent).sort((a, b) => a.order - b.order || a.id.localeCompare(b.id));
     const items = (parent: string): MenuItem[] => children(parent).flatMap(node => {
         if (node.pageId && !pages[node.pageId])

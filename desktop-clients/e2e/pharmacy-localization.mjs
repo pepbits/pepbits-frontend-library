@@ -2,7 +2,10 @@ import assert from 'node:assert/strict';
 import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {loadPlaywright,BASE,API} from './harness.mjs';
 const output=process.env.E2E_ARTIFACTS??'/tmp/pepbits-pharmacy-localization';mkdirSync(output,{recursive:true});assert.ok(['127.0.0.1','localhost'].includes(new URL(BASE).hostname),'Preference writes require an isolated local API');
-const catalogs=Object.fromEntries(['en','ar','hi','ml'].map(l=>[l,JSON.parse(readFileSync(new URL(`../../dummy-api/config/localization/shared/${l}.json`,import.meta.url))).messages]));const reverse=new Map(Object.entries(catalogs.en).map(([k,v])=>[v,k]));const text=(l,s)=>catalogs[l][reverse.get(s)]??s;
+const catalogs=Object.fromEntries(['en','ar','hi','ml'].map(l=>[l,JSON.parse(readFileSync(new URL(`../../dummy-api/config/localization/shared/${l}.json`,import.meta.url))).messages]));const reverse=new Map(Object.entries(catalogs.en).map(([k,v])=>[v,k]));
+// Several modules share English copy ("Full name") with different translations; prefer Pharmacy's own keys.
+const own=new Map(Object.entries(catalogs.en).filter(([k])=>k.startsWith('ui.reference.pharmacy.')).map(([k,v])=>[v,k]));
+const text=(l,s)=>catalogs[l][own.get(s)??reverse.get(s)]??s;
 const browser=await loadPlaywright().chromium.launch({chromiumSandbox:false}),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),results=[],errors=[];page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});let before,token;
 async function request(path,method='GET',body){const r=await fetch(API+path,{method,headers:{Authorization:'Bearer '+token,'X-Product-Id':'nexora','X-Reference-Branch':'hq','Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{})});assert.equal(r.status,200,path);return r.json()}
 try{

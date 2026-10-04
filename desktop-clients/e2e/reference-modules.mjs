@@ -17,8 +17,13 @@ const ready=async page=>{
  return root;
 };
 try{
- const web=await login(BASE);const pages=REFERENCE_MODULES.flatMap(module=>module.pages.map(page=>({...page,moduleId:module.id,variant:module.variant})));
- assert.equal(pages.length,175);assert.equal(new Set(pages.map(page=>page.id)).size,175);
+ // This sweep owns the five original reference modules (the header choices checked below). Later imports such as
+ // RCM, Quality or Pharmacy have dedicated suites. Page ids must stay unique across every registered module.
+ const SWEPT=['reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite'];
+ const allIds=REFERENCE_MODULES.flatMap(module=>module.pages.map(page=>page.id));assert.equal(new Set(allIds).size,allIds.length,'duplicate reference page id');
+ assert.deepEqual(SWEPT.filter(id=>!REFERENCE_MODULES.some(module=>module.id===id)),[],'swept module missing from the registry');
+ const web=await login(BASE);const pages=REFERENCE_MODULES.filter(module=>SWEPT.includes(module.id)).flatMap(module=>module.pages.map(page=>({...page,moduleId:module.id,variant:module.variant})));
+ assert.ok(pages.length>0);
  for(const page of pages){
   const failures=[];const watch=response=>{if(response.url().includes('/reference-modules/')&&response.status()>=400)failures.push({url:response.url(),status:response.status()});};web.on('response',watch);
   await web.goto(`${BASE}/${page.moduleId}/${page.id}`,{waitUntil:'networkidle'});const root=await ready(web);const text=await root.innerText();

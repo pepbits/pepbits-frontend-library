@@ -195,7 +195,8 @@ jobs:
   feature-browser:
     runs-on: ubuntu-24.04
     needs: check
-    timeout-minutes: 30
+    # navigation includes the 184-page reference sweep (up to 15 minutes on its own).
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -206,8 +207,11 @@ jobs:
     env:
       E2E_MANAGED_API: "1"
       E2E_API: http://127.0.0.1:3330
+      # Most navigation suites drive the web shell (real links and URLs); the desktop shell is checked separately.
+      E2E_BASE: http://127.0.0.1:3100
       E2E_DESKTOP: http://127.0.0.1:3109
       VITE_API_URL: http://127.0.0.1:3330
+      NEXT_PUBLIC_API_URL: http://127.0.0.1:3330
       E2E_FIXTURE_DIR: /tmp/nexora-ci-fixture
       NEXORA_CONFIG_DIR: /tmp/nexora-ci-fixture/config
       NEXORA_DATA_DIR: /tmp/nexora-ci-fixture/data
@@ -226,16 +230,22 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Prepare fixtures
         run: node scripts/prepare-e2e.mjs ${{ matrix.group }}
-      - name: Build tested desktop browser shell
-        run: npm run build -w desktop
+      # The managed API loads the compiled reference workers (access, quality, pharmacy, diagnostics).
+      - name: Prepare API workers
+        run: npm run pretest:api
+      - name: Build tested web and desktop browser shells
+        run: npx turbo run build --filter=web --filter=desktop
       - name: Start isolated stack
         run: |
+          (cd apps/web && npx next start --hostname 127.0.0.1 --port 3100 > /tmp/feature-web.log 2>&1 &)
           (cd apps/desktop && npm run preview -- --host 127.0.0.1 --port 3109 > /tmp/feature-desktop.log 2>&1 &)
-          for attempt in $(seq 1 90); do
-            if curl -fsS http://127.0.0.1:3109/ > /dev/null; then exit 0; fi
-            sleep 1
+          for url in http://127.0.0.1:3100/ http://127.0.0.1:3109/; do
+            for attempt in $(seq 1 90); do
+              if curl -fsS "$url" > /dev/null; then break; fi
+              [ "$attempt" = 90 ] && { echo "$url never came up"; exit 1; }
+              sleep 1
+            done
           done
-          exit 1
       - name: Run registered suites
         run: node e2e/run.mjs ${{ matrix.group }}
       - uses: actions/upload-artifact@v4

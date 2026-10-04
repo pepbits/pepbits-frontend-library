@@ -129,7 +129,13 @@ export function Sidebar() {
   const [dismissed, setDismissed] = useState(false);
   const railRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  /* A dismissal made with the pointer over the rail (choosing a page, the toggle, Escape) holds until the
+     pointer really leaves. Chromium re-sends mouseenter when the rail's content changes under a still pointer,
+     which would otherwise reopen the rail over the page that was just opened. */
+  const pointerInside = useRef(false);
+  const pointerLeftSinceDismiss = useRef(true);
   const dismissRail = () => {
+    pointerLeftSinceDismiss.current = !pointerInside.current;
     setLatched(false);
     setHovered(false);
     setFocusWithin(false);
@@ -185,7 +191,7 @@ export function Sidebar() {
   useEffect(() => { setQuery(""); setLatched(false); setHovered(false); setFocusWithin(false); setDismissed(false); }, [module.id]);
 
   useEffect(() => {
-    const close = () => { setLatched(false); setHovered(false); setFocusWithin(false); setDismissed(true); };
+    const close = () => { pointerLeftSinceDismiss.current = !pointerInside.current; setLatched(false); setHovered(false); setFocusWithin(false); setDismissed(true); };
     const onOutside = (event: PointerEvent) => {
       if (!preferences.sidebarPinned && event.target instanceof Node && !railRef.current?.contains(event.target)) close();
     };
@@ -230,8 +236,8 @@ export function Sidebar() {
            preferences compose rather than fight. */
         data-theme={preferences.sidebarTheme === "match" ? undefined : preferences.sidebarTheme}
         style={railPalette}
-        onMouseEnter={() => { if (byHover) { setDismissed(false); setHovered(true); } }}
-        onMouseLeave={() => byHover && setHovered(false)}
+        onMouseEnter={() => { pointerInside.current = true; if (byHover && (!dismissed || pointerLeftSinceDismiss.current)) { setDismissed(false); setHovered(true); } }}
+        onMouseLeave={() => { pointerInside.current = false; pointerLeftSinceDismiss.current = true; if (byHover) setHovered(false); }}
         /* onFocus/onBlur bubble in React, so these fire for any descendant --
            which is the whole point: focus anywhere inside the rail counts.
            relatedTarget is where focus is GOING; if that is still inside the

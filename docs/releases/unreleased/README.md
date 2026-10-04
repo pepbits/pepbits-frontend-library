@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Navigation suites and sidebar/subtitle fixes — 4 October 2026](navigation-suites-2026-10-04.md): hover-mode sidebar no longer reopens after choosing a page; 239 reference pages show their own subtitle again; six navigation suites and the CI feature-browser job corrected. Navigation 18/18 and browser 9/9 locally.
 - [Frontend test site on the rebuilt fleet — 3 October 2026](frontend-test-pb-srv5-2026-10-03.md): release `20261003174859147-af92ebb2` from `74c6d28` deployed as Docker stack `frontend-test` on pb-srv5; CI gates, 9/9 browser and 12/18 navigation suites, public HTTPS and authenticated module checks passed. Six navigation suites remain open.
 - [Repository synchronization — 3 October 2026](repository-sync-2026-10-03.md): pending imports preserved, clean-checkout prerequisites repaired, current local gates and two browser journeys passed; no new deployment.
 
