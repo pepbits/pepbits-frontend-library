@@ -22,8 +22,19 @@ page.on("request", (request) => {
   }
 });
 
-/* Type into the worklist's own keyword filter, then Apply. */
+/* Type into the worklist's own keyword filter, then Apply. Confirm the page first, and keep
+   evidence if it is not the one requested: the failure used to be a bare 30 s locator timeout. */
 const field = page.locator('main input[placeholder*="keyword" i]').first();
+try {
+  await page.locator("header h1", { hasText: "Customer Master" }).first().waitFor({ timeout: 30000 });
+  await field.waitFor({ timeout: 30000 });
+} catch (error) {
+  const shot = `${process.env.E2E_ARTIFACTS ?? "/tmp"}/search-post-not-ready.png`;
+  await page.screenshot({ path: shot, fullPage: true }).catch(() => {});
+  const heading = await page.locator("header h1").first().innerText().catch(() => "(none)");
+  console.error(`  search-post: worklist not ready at ${page.url()} (heading ${JSON.stringify(heading)}); screenshot ${shot}`);
+  throw error;
+}
 await field.fill(NAME);
 await page.waitForTimeout(600);
 const apply = page.getByRole("button", { name: /^apply$/i }).first();

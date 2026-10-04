@@ -139,7 +139,10 @@ export async function signIn(browser, url = BASE, viewport = { width: 1500, heig
     await page.locator("input").first().fill("user1");
     await password.fill("user1");
     await page.keyboard.press("Enter");
-    await page.waitForTimeout(6000);
+    /* Wait for the signed-in shell rather than a fixed pause: a fixed 6 s was a guess that a slow
+       first load could outrun, and every suite then failed somewhere unrelated. */
+    await page.locator("header [data-tour=module]").first().waitFor({ timeout: 60000 });
+    await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {});
   }
   /* Checked HERE rather than left to each suite: a guard every caller has to
      remember is a guard that gets forgotten by the tenth caller. */
