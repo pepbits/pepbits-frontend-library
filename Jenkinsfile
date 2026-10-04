@@ -66,7 +66,9 @@ pipeline {
             node --test ../docs/tools/check-docs.test.mjs ../docs/tools/documentation-contracts.test.mjs
             node ../docs/tools/documentation-lifecycle.mjs check
             npm run typecheck
-            npm test
+            # pb-srv2 has two CPUs: the configured four workers oversubscribe it and the heaviest render tests
+            # (MedBand long forms, page templates) exceed the 5 s default. Same tests, sized for this builder.
+            npm test -- --maxWorkers=2 --testTimeout=30000
             npm run test:api && npm run test:e2e-registry
             npm run test:deployment
             npm run build
