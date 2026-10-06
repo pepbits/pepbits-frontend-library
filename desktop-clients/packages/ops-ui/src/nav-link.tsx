@@ -9,6 +9,7 @@ export interface NavLinkProps {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   className?: string;
   title?: string;
+  "aria-current"?: React.AriaAttributes["aria-current"];
   children: React.ReactNode;
 }
 
@@ -19,16 +20,16 @@ export interface NavLinkProps {
    default, and a <button> centres its text. */
 const RESET = "no-underline cursor-pointer text-left appearance-none";
 
-export function NavLink({ href, onClick, className, title, children }: NavLinkProps) {
+export function NavLink({ href, onClick, className, title, children, "aria-current": ariaCurrent }: NavLinkProps) {
   if (href && href !== "#") {
     return (
-      <a href={href} onClick={onClick} title={title} className={cn(RESET, className)}>
+      <a href={href} onClick={onClick} title={title} aria-current={ariaCurrent} className={cn(RESET, className)}>
         {children}
       </a>
     );
   }
   return (
-    <button type="button" onClick={onClick} title={title} className={cn(RESET, className)}>
+    <button type="button" onClick={onClick} title={title} aria-current={ariaCurrent} className={cn(RESET, className)}>
       {children}
     </button>
   );

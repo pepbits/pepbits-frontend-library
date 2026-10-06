@@ -15,7 +15,7 @@ import styles from "./enterprise-shell.module.css";
    tab strip was mounted here directly and is now the `tabs` prop, because it exists
    only on desktop. The desktop app passes <WorkspaceTabs/>; the web app passes
    nothing and the band collapses. Everything else is shared and unchanged. */
-export function EnterpriseShell({ tabs, children, header, footer }: { tabs?: React.ReactNode; children: React.ReactNode; header?: React.ReactNode; footer?: React.ReactNode }) {
+export function EnterpriseShell({ tabs, children, header, footer, navigationExpanded = false }: { navigationExpanded?: boolean; tabs?: React.ReactNode; children: React.ReactNode; header?: React.ReactNode; footer?: React.ReactNode }) {
   const navigation=useNavigation();
   const { preferences, preferencesAvailable } = useERP();
   return (
@@ -24,7 +24,7 @@ export function EnterpriseShell({ tabs, children, header, footer }: { tabs?: Rea
     <div className={`relative flex h-dvh w-full overflow-hidden ${(preferences.sidebarPlacement === "right") !== (preferences.language === "ar") ? "flex-row-reverse" : "flex-row"}`}>
       <SentinelBridge />
       <SentinelBoundary resetKey={navigation.current.pageId}>
-      <Sidebar />
+      <Sidebar forceExpanded={navigationExpanded} />
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         {header ?? <Header />}
         {preferencesAvailable === false ? <div role="status" className="border-b border-[var(--border)] bg-[var(--surface-2)] px-4 py-2 text-sm text-[var(--text-muted)]"><LocalizedText message="ui.settings.could.not.be.loaded.preference.changes.apply.to.9cc9f6fa" /></div> : null}

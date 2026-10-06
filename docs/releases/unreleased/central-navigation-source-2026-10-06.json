@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-06",
+  "completedAt": "2026-10-06T13:20:44.464765+00:00",
+  "status": "LOCAL_CI_PASSED",
+  "sourceBase": "684e553c35f214e50518ba846baf0218133d2ff6",
+  "sourceFiles": {
+    "desktop-clients/packages/ops-ui/src/nav-link.tsx": "8f784bd6e2b8d45861d96d5593a9cedb1b52e3c4874e5ca3537d1ed5fe241b56",
+    "desktop-clients/packages/erp-shell/src/sidebar.tsx": "09864232322aa30b63d72036e0f55d214314ec1c6d55f228ee643b12bb7b6a6f",
+    "desktop-clients/packages/erp-shell/src/enterprise-shell.tsx": "41ddd6c8b25221a218384ed92b8ae83bfa84e6b3c038f004b47d658479a19675",
+    "desktop-clients/packages/erp-shell/src/diagnostic-sidebar.test.tsx": "ea3b00f3d2332d2a58fa5ae17b4e9eb57bff1df21d90953376fb3c799fb7dee1"
+  },
+  "command": "npm run ci (Node 24.21.0, isolated checkout and loopback/synthetic fixtures)",
+  "gateExitCode": 0,
+  "checks": {
+    "typechecks": "PASS",
+    "frontendTests": {
+      "passed": 2566,
+      "skipped": 7,
+      "filesPassed": 229,
+      "filesSkipped": 2
+    },
+    "apiTests": {
+      "passed": 370,
+      "failed": 0
+    },
+    "suiteRegistryTests": {
+      "passed": 4
+    },
+    "deploymentMechanicsTests": {
+      "passed": 14
+    },
+    "webAndDesktopBrowserBuilds": "PASS",
+    "repositoryPropertyChecks": "PASS",
+    "documentationChecks": "PASS",
+    "documentationToolTests": {
+      "passed": 6
+    },
+    "nativeExecution": "NOT_RUN",
+    "hostedCI": "NOT_CLAIMED",
+    "deployment": "NOT_PERFORMED"
+  },
+  "logSha256": "a5e89b58eaa9aba30499eebeba80713dae2e5176a5fbb01478e26a34dc97746e",
+  "limits": [
+    "Focused sidebar component tests overlap the full frontend total; do not add them again.",
+    "Central browser acceptance uses a recorded narrow backport over earlier source archives and is a separate consumer result.",
+    "Seven pre-existing frontend cases are skipped by the normal suite.",
+    "Existing documentation/native/domain review backlog remains pending; normal gates do not certify all routes or production integrations."
+  ]
+}

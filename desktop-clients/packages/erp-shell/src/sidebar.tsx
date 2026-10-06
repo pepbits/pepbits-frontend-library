@@ -50,7 +50,8 @@ function SidebarLeaf({ item, expanded, active, href, onSelect }: { item: MenuIte
     <NavLink
       href={href}
       title={!expanded ? t(item.labelKey ?? item.label) : undefined}
-      onClick={(event) => { event.preventDefault(); onSelect(); }}
+      aria-current={active ? "page" : undefined}
+      onClick={(event) => { if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); onSelect(); }}
       className={cn(
         "focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition",
         expanded ? "gap-2.5 px-2.5" : "justify-center px-1",
@@ -95,7 +96,7 @@ function SidebarGroup({ item, expanded, activePageId, hrefFor, onSelect, forceOp
           {item.children?.map((child) => {
             const active = child.pageId === activePageId;
             return (
-              <NavLink key={child.id} href={child.pageId ? hrefFor(child.pageId) : "#"} onClick={(event) => { event.preventDefault(); if (child.pageId) onSelect(child.pageId); }} className={cn("focus-ring group relative flex min-h-8 w-full items-center gap-2 rounded-lg px-2 py-1.5 text-start text-[length:calc(10.5px*var(--fs-scale))] font-semibold transition", active ? "bg-[var(--primary-soft)] text-[var(--primary-strong)]" : "text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]")}>
+              <NavLink key={child.id} href={child.pageId ? hrefFor(child.pageId) : "#"} aria-current={active ? "page" : undefined} onClick={(event) => { if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); if (child.pageId) onSelect(child.pageId); }} className={cn("focus-ring group relative flex min-h-8 w-full items-center gap-2 rounded-lg px-2 py-1.5 text-start text-[length:calc(10.5px*var(--fs-scale))] font-semibold transition", active ? "bg-[var(--primary-soft)] text-[var(--primary-strong)]" : "text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]")}>
                 <span className={cn("absolute -start-[14px] top-1/2 h-px w-3 bg-[var(--border)]", active && "bg-[var(--primary)]")} />
                 {child.icon ? React.createElement(child.icon, { className: "size-3.5 shrink-0" }) : <span className="size-1.5 shrink-0 rounded-full bg-current opacity-40" />}
                 <span className="min-w-0 flex-1 truncate">{<LocalizedText message={child.labelKey ?? child.label} />}</span>
@@ -109,7 +110,7 @@ function SidebarGroup({ item, expanded, activePageId, hrefFor, onSelect, forceOp
   );
 }
 
-export function Sidebar() {
+export function Sidebar({ forceExpanded = false }: { forceExpanded?: boolean } = {}) {
   const {t: translateCopy} = useLocalization();
   const product = useProduct();
   const { t } = useLocalization();
@@ -169,7 +170,7 @@ export function Sidebar() {
   // All modules use the same effective hover/click/focus preferences. A manual
   // dismissal wins until a fresh pointer/focus entry, so the toggle can close a
   // hovered rail without immediately reopening it under the same pointer.
-  const expanded = preferences.sidebarPinned || (!dismissed && (latched || focusOpens || (byHover && hovered)));
+  const expanded = forceExpanded || preferences.sidebarPinned || (!dismissed && (latched || focusOpens || (byHover && hovered)));
   // Placement is physical: the shell already compensates its flex direction
   // for RTL, so applying a second reversal would cover the header's controls.
   const isRight = preferences.sidebarPlacement === "right";
