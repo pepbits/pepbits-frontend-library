@@ -104,10 +104,19 @@ const check = (ok, label, detail = "") => {
   console.log(`  ${(ok ? "ok" : "FAIL").padEnd(6)}${label.padEnd(52)}${detail}`);
 };
 
+/* ---- packages no app renders --------------------------------------------- */
+// Listed by name with the reason and printed on every run, so the exception stays visible. A package here is compiled
+// by its own host with its own theme; scanning it in these apps would only add unused CSS or theme collisions.
+const NOT_RENDERED = {
+  "registration-wizard": "public registration wizard (HC-157); Healthcare registration-web compiles it with its Orvia theme",
+};
+for (const [name, reason] of Object.entries(NOT_RENDERED)) console.log(`  note  packages/${name} is not rendered by web or desktop: ${reason}`);
+
 /* ---- which packages actually need to be seen ---------------------------- */
 const styled = readdirSync(PACKAGES, { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
   .map((entry) => entry.name)
+  .filter((name) => !(name in NOT_RENDERED))
   .map((name) => ({ name, files: filesUnder(join(PACKAGES, name, "src"), [".tsx", ".ts"]) }))
   .map((pkg) => ({ ...pkg, utilities: pkg.files.reduce((all, f) => { for (const u of utilitiesIn(readFileSync(f, "utf8"))) all.add(u); return all; }, new Set()) }))
   .filter((pkg) => pkg.utilities.size > 0);
