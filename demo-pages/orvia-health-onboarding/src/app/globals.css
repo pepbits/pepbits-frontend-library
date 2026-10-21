@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper font-sans text-ink-900 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: #abd8cf;
+    color: #062f2c;
+  }
+  :focus-visible {
+    outline: 2px solid #1a8075;
+    outline-offset: 2px;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  /* ECG chart paper: 5 mm major squares over 1 mm minor squares */
+  .bg-chart-grid {
+    background-image:
+      linear-gradient(rgba(127, 224, 198, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127, 224, 198, 0.08) 1px, transparent 1px),
+      linear-gradient(rgba(127, 224, 198, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127, 224, 198, 0.035) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+    background-position: -1px -1px;
+  }
+  .origin-fill-center {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #c7d2d9 transparent;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
