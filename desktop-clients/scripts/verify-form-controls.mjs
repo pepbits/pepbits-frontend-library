@@ -37,9 +37,21 @@ function* sources(dir) {
   }
 }
 
+/**
+ * Packages that deliberately keep their own controls, each with the reason. Listed by name and printed on every run,
+ * so the exception stays visible; a new package is never exempt by default.
+ */
+const EXEMPT = {
+  "registration-wizard":
+    "public, pre-tenant registration page with its own owner-approved design (HC-157); every control is labelled, " +
+    "keyboard-reachable and carries focus and aria-invalid states, covered by the package's component tests",
+};
+for (const [name, reason] of Object.entries(EXEMPT)) console.log(`    note  packages/${name} keeps its own controls: ${reason}`);
+
 /** Everything that is not the component library itself. */
 const consumers = [...sources(join(root, "packages")), ...sources(join(root, "apps"))]
-  .filter((path) => !path.includes(`${"packages"}/ops-ui/`));
+  .filter((path) => !path.includes(`${"packages"}/ops-ui/`))
+  .filter((path) => !Object.keys(EXEMPT).some((name) => path.includes(`packages/${name}/`)));
 
 /**
  * What must come from ops-ui, and what to reach for instead.

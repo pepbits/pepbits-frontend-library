@@ -50,6 +50,15 @@ describe("RegistrationWizard", () => {
     expect(await screen.findByRole("button", { name: /Hospital/ })).toBeInTheDocument();
   });
 
+  it("shows the host's optional header link, and nothing when the host gives none", async () => {
+    const host = fakeHost();
+    const { unmount } = renderWizard({ ...host, brand: { ...host.brand, secondaryLink: { label: "Check your registration", href: "/start/status" } } });
+    expect(await screen.findByRole("link", { name: "Check your registration" })).toHaveAttribute("href", "/start/status");
+    unmount();
+    renderWizard();
+    expect(screen.queryByRole("link", { name: "Check your registration" })).toBeNull();
+  });
+
   it("requires a structure and facility type and focuses the first invalid control", async () => {
     const { user } = renderWizard();
     await screen.findByRole("button", { name: /Hospital/ });

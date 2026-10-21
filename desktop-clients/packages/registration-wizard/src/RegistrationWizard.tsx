@@ -566,6 +566,14 @@ export function RegistrationWizard({ host, initial, resendDelaySeconds = 30, cla
                   {index + 1} of {steps.length}
                 </span>
               )}
+              {phase !== "done" && host.brand.secondaryLink && (
+                <a
+                  href={host.brand.secondaryLink.href}
+                  className="rounded-lg px-2.5 py-1.5 text-sm font-semibold text-scrub-700 transition-colors hover:bg-scrub-50 hover:text-scrub-900"
+                >
+                  {host.brand.secondaryLink.label}
+                </a>
+              )}
               {phase !== "done" && host.brand.homeHref && (
                 <a
                   href={host.brand.homeHref}

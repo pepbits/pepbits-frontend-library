@@ -71,6 +71,8 @@ export interface RegistrationBrand {
   supportEmail?: string;
   /** Plain link target for the logo, "Save and exit" and "Back to home". Omitted links are hidden. */
   homeHref?: string;
+  /** Optional extra header link, e.g. `{ label: "Check your registration", href: "/start/status" }` for returning applicants. */
+  secondaryLink?: { label: string; href: string };
 }
 
 /**

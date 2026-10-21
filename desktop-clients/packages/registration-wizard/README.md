@@ -34,7 +34,7 @@ All types are exported from the package entry (`src/types.ts`).
 
 | Member | Purpose |
 | --- | --- |
-| `brand` | `name`, optional `logo` (node, or `(tone: "light" \| "dark") => node`; the rail is dark), optional `supportEmail`, optional `homeHref` (plain link for the logo, "Save and exit" and "Back to home"; hidden when absent). |
+| `brand` | `name`, optional `logo` (node, or `(tone: "light" \| "dark") => node`; the rail is dark), optional `supportEmail`, optional `homeHref` (plain link for the logo, "Save and exit" and "Back to home"; hidden when absent), optional `secondaryLink` (`{ label, href }` shown in the header, e.g. a returning applicant's status page). |
 | `workspaceDomain` | Shown as `{slug}.{workspaceDomain}`. |
 | `lists.*` | `facilityTypes`, `careSettings`, `specialties`, `administratorRoles`, `countries` (with optional `callingCode`), `states(country)`, `districts(country, state)`, `timeZones(country)`, `currencies(country)` (optional `primary` flag), `offers(country)`. Each returns `Promise<Option[]>`-shaped data with stable `code`s; names are display only. |
 | `agreements` | `baa` and `dpa`: `{ version, href, label }`. |
