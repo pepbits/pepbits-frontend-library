@@ -1,0 +1,354 @@
+{
+  "basis": "Expanded parameterized case counts from final root Vitest output, mapped to the original test registrations; excluded source suites counted statically (3 and 2). Old-workspace tests were not executed.",
+  "sourceFiles": 28,
+  "sourceCases": 316,
+  "portedSourceFiles": 26,
+  "portedCases": 311,
+  "excludedCases": 5,
+  "addedCases": [
+    {
+      "path": "packages/i18n/src/localization.test.tsx",
+      "cases": 3
+    },
+    {
+      "path": "packages/components/src/presentation.test.tsx",
+      "cases": 3
+    }
+  ],
+  "files": [
+    {
+      "source": "desktop-clients/packages/ops-ui/src/avatar.test.tsx",
+      "sourceCases": 10,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/avatar.test.tsx",
+          "cases": 10
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/badge.test.tsx",
+      "sourceCases": 12,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/badge.test.tsx",
+          "cases": 12
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/button.test.tsx",
+      "sourceCases": 5,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/button.test.tsx",
+          "cases": 5
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/card.test.tsx",
+      "sourceCases": 6,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/card.test.tsx",
+          "cases": 6
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/cn.test.ts",
+      "sourceCases": 9,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/cn.test.ts",
+          "cases": 9
+        }
+      ],
+      "adaptationOrExclusion": "Four cn/compact cases retained; five currency cases re-expressed against an explicit host i18n formatter because formatCurrency is removed."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/dropdown.test.tsx",
+      "sourceCases": 11,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/dropdown.test.tsx",
+          "cases": 11
+        }
+      ],
+      "adaptationOrExclusion": "Module options replaced with generic priority options, preserving case/description filtering, highlight and keyboard assertions."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/error-mapper.test.ts",
+      "sourceCases": 32,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/error-mapper.test.ts",
+          "cases": 32
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/form-controls.test.tsx",
+      "sourceCases": 30,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/form-controls.test.tsx",
+          "cases": 30
+        }
+      ],
+      "adaptationOrExclusion": "Named branch fixture replaced with a generic option; original control assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/inline-edit-typed.test.tsx",
+      "sourceCases": 19,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/inline-edit-typed.test.tsx",
+          "cases": 19
+        }
+      ],
+      "adaptationOrExclusion": "Original behavior assertions retain host display values, now produced by an explicit i18n formatter; visible whitespace normalized for ICU."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/inline-edit.test.tsx",
+      "sourceCases": 15,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/inline-edit.test.tsx",
+          "cases": 15
+        }
+      ],
+      "adaptationOrExclusion": "Original behavior assertions retain host display values, now produced by an explicit i18n formatter; visible whitespace normalized for ICU."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/localization.test.tsx",
+      "sourceCases": 4,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/localization.test.tsx",
+          "cases": 3
+        },
+        {
+          "path": "packages/i18n/src/localization.test.tsx",
+          "cases": 1
+        }
+      ],
+      "adaptationOrExclusion": "Control integration stays in ui; context-only alias fallback moves to i18n. Generic host alias keys replace module-prefixed fixtures."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/option-filter.test.tsx",
+      "sourceCases": 13,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/option-filter.test.tsx",
+          "cases": 13
+        }
+      ],
+      "adaptationOrExclusion": "Module options replaced with generic priority options, preserving case/description filtering, highlight and keyboard assertions."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/overlay.test.tsx",
+      "sourceCases": 23,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/overlay.test.tsx",
+          "cases": 23
+        }
+      ],
+      "adaptationOrExclusion": "Currency option fixture uses GBP in place of AED; no currency formatting default or behavioral assertion removed."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/page-copy-localization.test.tsx",
+      "sourceCases": 9,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/page-copy-localization.test.tsx",
+          "cases": 5
+        },
+        {
+          "path": "packages/i18n/src/page-copy-localization.test.tsx",
+          "cases": 4
+        }
+      ],
+      "adaptationOrExclusion": "Mixed controls in components, pure helpers/core fallback in i18n. Host catalogs and explicit formatter replace product/AED fixtures; invoice fallback assertion becomes generic core Save."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/pagination.test.tsx",
+      "sourceCases": 9,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/pagination.test.tsx",
+          "cases": 9
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/quantity-unit-field.test.tsx",
+      "sourceCases": 9,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/quantity-unit-field.test.tsx",
+          "cases": 9
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/recovery-notice.test.tsx",
+      "sourceCases": 5,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/recovery-notice.test.tsx",
+          "cases": 5
+        }
+      ],
+      "adaptationOrExclusion": "Original recovery/action assertions use synthetic host-owned catalogs for four languages; no product catalog loading."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/reference-data.test.tsx",
+      "sourceCases": 17,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/reference-data.test.tsx",
+          "cases": 17
+        }
+      ],
+      "adaptationOrExclusion": "Insurance-provider/branch fixtures replaced with generic categories/choices; failure/selection assertions preserved."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/scanner-input.test.tsx",
+      "sourceCases": 2,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/scanner-input.test.tsx",
+          "cases": 2
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/search-select.test.tsx",
+      "sourceCases": 14,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/search-select.test.tsx",
+          "cases": 14
+        }
+      ],
+      "adaptationOrExclusion": "Currency option fixture uses GBP in place of AED; no currency formatting default or behavioral assertion removed."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/segmented.test.tsx",
+      "sourceCases": 9,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/segmented.test.tsx",
+          "cases": 9
+        }
+      ],
+      "adaptationOrExclusion": "Product-specific explanatory test comment generalized; assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/shared-components.test.tsx",
+      "sourceCases": 11,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/shared-components.test.tsx",
+          "cases": 11
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/skeleton.test.tsx",
+      "sourceCases": 4,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/ui/src/skeleton.test.tsx",
+          "cases": 4
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/source-controls.test.tsx",
+      "sourceCases": 3,
+      "ported": false,
+      "destinations": [],
+      "adaptationOrExclusion": "Imported reference-design parity controls; only reference consumers and their gallery demo/catalog."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/source-dialog.test.tsx",
+      "sourceCases": 2,
+      "ported": false,
+      "destinations": [],
+      "adaptationOrExclusion": "Imported reference-design dialog; only reference consumers and its gallery demo/catalog."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/stat-card.test.tsx",
+      "sourceCases": 6,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/stat-card.test.tsx",
+          "cases": 6
+        }
+      ],
+      "adaptationOrExclusion": "Original behavior assertions retain host display values, now produced by an explicit i18n formatter; visible whitespace normalized for ICU."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/states.test.tsx",
+      "sourceCases": 24,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/states.test.tsx",
+          "cases": 24
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    },
+    {
+      "source": "desktop-clients/packages/ops-ui/src/tabs.test.tsx",
+      "sourceCases": 3,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/components/src/tabs.test.tsx",
+          "cases": 3
+        }
+      ],
+      "adaptationOrExclusion": "Imports adapted; behavior assertions retained."
+    }
+  ]
+}

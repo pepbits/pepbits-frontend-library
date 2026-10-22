@@ -1,0 +1,2052 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 6 package(s), 0 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 5.572191
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 16.617388
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 1.836953
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 2.342706
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 3.917237
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 5.429239
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 2.328597
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 8 - demo apps use any layer but not each other
+  ---
+  duration_ms: 3.459595
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 9 - pre-restructure packages are rejected
+  ---
+  duration_ms: 2.677009
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 10 - relative imports may not leave the package
+  ---
+  duration_ms: 2.972441
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 11 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 2.652669
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 12 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 3.242432
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 13 - testing is dev-only
+  ---
+  duration_ms: 11.16146
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 14 - tooling packages are devDependencies only
+  ---
+  duration_ms: 2.469047
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 15 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 3.588996
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 16 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.385663
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 300.942608
+
+> pepbits-frontend-library@0.0.0 typecheck
+> turbo run typecheck
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running typecheck in 7 packages
+   • Remote caching disabled
+
+@pepbits/i18n:typecheck: cache miss, executing 545769f6062426d7
+@pepbits/icons:typecheck: cache hit, replaying logs 0bb6964631c3c244
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+@pepbits/tokens:typecheck: cache hit, replaying logs 9c4d78e5e9e4d1aa
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/ui:typecheck: cache miss, executing 033b81114d9af6e3
+@pepbits/preferences:typecheck: cache miss, executing 7af7a7b94b0106ff
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: > @pepbits/ui@0.0.0 typecheck
+@pepbits/ui:typecheck: > tsc --noEmit -p .
+@pepbits/ui:typecheck: 
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+@pepbits/components:typecheck: cache miss, executing 6aaa781edc30ad9b
+@pepbits/components:typecheck: 
+@pepbits/components:typecheck: > @pepbits/components@0.0.0 typecheck
+@pepbits/components:typecheck: > tsc --noEmit -p .
+@pepbits/components:typecheck: 
+
+ Tasks:    6 successful, 6 total
+Cached:    2 cached, 6 total
+  Time:    9.676s 
+
+
+> pepbits-frontend-library@0.0.0 test
+> turbo run test
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running test in 7 packages
+   • Remote caching disabled
+
+@pepbits/i18n:test: cache miss, executing 8bc1b83e29281ed4
+@pepbits/tokens:test: cache hit, replaying logs df4083a6f3340d75
+@pepbits/tokens:test: 
+@pepbits/tokens:test: > @pepbits/tokens@0.0.0 test
+@pepbits/tokens:test: > vitest run
+@pepbits/tokens:test: 
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/tokens
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  ✓ src/index.test.ts (3 tests) 22ms
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  Test Files  1 passed (1)
+@pepbits/tokens:test:       Tests  3 passed (3)
+@pepbits/tokens:test:    Start at  22:54:16
+@pepbits/tokens:test:    Duration  1.35s (transform 393ms, setup 0ms, collect 280ms, tests 22ms, environment 0ms, prepare 353ms)
+@pepbits/tokens:test: 
+@pepbits/icons:test: cache hit, replaying logs e48d032f23177577
+@pepbits/icons:test: 
+@pepbits/icons:test: > @pepbits/icons@0.0.0 test
+@pepbits/icons:test: > vitest run
+@pepbits/icons:test: 
+@pepbits/icons:test: 
+@pepbits/icons:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/icons
+@pepbits/icons:test: 
+@pepbits/icons:test:  ✓ src/icon.test.tsx (19 tests) 160ms
+@pepbits/icons:test: 
+@pepbits/icons:test:  Test Files  1 passed (1)
+@pepbits/icons:test:       Tests  19 passed (19)
+@pepbits/icons:test:    Start at  22:54:16
+@pepbits/icons:test:    Duration  4.04s (transform 237ms, setup 0ms, collect 927ms, tests 160ms, environment 1.41s, prepare 348ms)
+@pepbits/icons:test: 
+@pepbits/ui:test: cache miss, executing d30874c6f49d4b21
+@pepbits/preferences:test: cache miss, executing 49e037d7c4a62be9
+@pepbits/components:test: cache miss, executing 9f14856e86a781bf
+@pepbits/components:test: 
+@pepbits/components:test: > @pepbits/components@0.0.0 test
+@pepbits/components:test: > vitest run
+@pepbits/components:test: 
+@pepbits/ui:test: 
+@pepbits/ui:test: > @pepbits/ui@0.0.0 test
+@pepbits/ui:test: > vitest run
+@pepbits/ui:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test: > @pepbits/i18n@0.0.0 test
+@pepbits/i18n:test: > vitest run
+@pepbits/i18n:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test: > @pepbits/preferences@0.0.0 test
+@pepbits/preferences:test: > vitest run
+@pepbits/preferences:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/i18n
+@pepbits/i18n:test: 
+@pepbits/components:test: 
+@pepbits/components:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/components
+@pepbits/components:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/preferences
+@pepbits/preferences:test: 
+@pepbits/ui:test: 
+@pepbits/ui:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ui
+@pepbits/ui:test: 
+@pepbits/preferences:test:  ✓ src/preference-defaults.test.ts (3 tests) 45ms
+@pepbits/preferences:test:  ✓ src/policy.test.ts (24 tests) 84ms
+@pepbits/i18n:test:  ✓ src/page-copy-localization.test.tsx (4 tests) 148ms
+@pepbits/i18n:test:  ✓ src/localization.test.tsx (4 tests) 302ms
+@pepbits/preferences:test:  ✓ src/react.test.tsx (6 tests) 264ms
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  Test Files  3 passed (3)
+@pepbits/preferences:test:       Tests  33 passed (33)
+@pepbits/preferences:test:    Start at  22:55:02
+@pepbits/preferences:test:    Duration  3.87s (transform 689ms, setup 0ms, collect 1.37s, tests 393ms, environment 836ms, prepare 684ms)
+@pepbits/preferences:test: 
+@pepbits/ui:test:  ✓ src/form-controls.test.tsx (30 tests) 801ms
+@pepbits/i18n:test:  ✓ src/format.test.ts (12 tests) 73ms
+@pepbits/i18n:test:  ✓ src/localization-formatting.test.ts (13 tests) 58ms
+@pepbits/components:test:  ✓ src/overlay.test.tsx (23 tests) 1191ms
+@pepbits/ui:test:  ✓ src/search-select.test.tsx (14 tests) 1234ms
+@pepbits/components:test:  ✓ src/inline-edit-typed.test.tsx (19 tests) 1314ms
+@pepbits/components:test:    ✓ InlineEditNumber > commits a number, not a string  360ms
+@pepbits/i18n:test:  ✓ src/catalogs.test.ts (5 tests) 13ms
+@pepbits/i18n:test:  ✓ src/i18n.test.ts (26 tests) 46ms
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  Test Files  6 passed (6)
+@pepbits/i18n:test:       Tests  64 passed (64)
+@pepbits/i18n:test:    Start at  22:55:01
+@pepbits/i18n:test:    Duration  6.27s (transform 419ms, setup 1.60s, collect 564ms, tests 639ms, environment 4.90s, prepare 846ms)
+@pepbits/i18n:test: 
+@pepbits/ui:test:  ✓ src/option-filter.test.tsx (13 tests) 73ms
+@pepbits/ui:test:  ✓ src/quantity-unit-field.test.tsx (9 tests) 440ms
+@pepbits/components:test:  ✓ src/states.test.tsx (24 tests) 420ms
+@pepbits/components:test:  ❯ src/inline-edit.test.tsx (15 tests | 4 failed) 903ms
+@pepbits/components:test:    × InlineEdit — reading > shows the formatted value and is reachable by keyboard 110ms
+@pepbits/components:test:      → expect(element).toHaveTextContent()
+@pepbits/components:test: 
+@pepbits/components:test: Expected element to have text content:
+@pepbits/components:test:   GBP 50,000
+@pepbits/components:test: Received:
+@pepbits/components:test:   GBP 50,000
+@pepbits/components:test:    × InlineEdit — reading > a read-only cell offers no editing at all 11ms
+@pepbits/components:test:      → Unable to find an element with the text: GBP 50,000 (normalized from 'GBP 50,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<span[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block truncate"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0mGBP 50,000[0m
+@pepbits/components:test:     [36m</span>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:    ✓ InlineEdit — editing > clicking opens an input carrying the current value 63ms
+@pepbits/components:test:    ✓ InlineEdit — editing > Enter opens it too, so the keyboard is not a second-class path 32ms
+@pepbits/components:test:    ✓ InlineEdit — editing > Enter commits what was typed 88ms
+@pepbits/components:test:    ✓ InlineEdit — editing > clicking away commits as well 73ms
+@pepbits/components:test:    × InlineEdit — editing > Escape puts it back and writes nothing 68ms
+@pepbits/components:test:      → expect(element).toHaveTextContent()
+@pepbits/components:test: 
+@pepbits/components:test: Expected element to have text content:
+@pepbits/components:test:   GBP 50,000
+@pepbits/components:test: Received:
+@pepbits/components:test:   GBP 50,000
+@pepbits/components:test:    ✓ InlineEdit — editing > committing an unchanged value writes nothing 34ms
+@pepbits/components:test:    ✓ InlineEdit — editing > clicking a cell puts the caret in it, with the value selected 53ms
+@pepbits/components:test:    ✓ InlineEdit — validation > a rejected value keeps the field open and explains itself 55ms
+@pepbits/components:test:    ✓ InlineEdit — validation > fixing it commits 74ms
+@pepbits/components:test:    ✓ InlineEdit — validation > an invalid value does not escape through a blur either 54ms
+@pepbits/components:test:    ✓ InlineEdit — saving and conflict > it says it is saving, and refuses a second commit meanwhile 64ms
+@pepbits/components:test:    ✓ InlineEdit — saving and conflict > a rejected save keeps the typed value and shows why 59ms
+@pepbits/components:test:    × InlineEdit — saving and conflict > a successful save closes the editor and shows the new value 61ms
+@pepbits/components:test:      → expect(element).toHaveTextContent()
+@pepbits/components:test: 
+@pepbits/components:test: Expected element to have text content:
+@pepbits/components:test:   GBP 75,000
+@pepbits/components:test: Received:
+@pepbits/components:test:   GBP 75,000
+@pepbits/ui:test:  ✓ src/avatar.test.tsx (10 tests) 172ms
+@pepbits/ui:test:  ✓ src/segmented.test.tsx (9 tests) 313ms
+@pepbits/components:test:  ✓ src/reference-data.test.tsx (17 tests) 419ms
+@pepbits/ui:test:  ✓ src/cn.test.ts (9 tests) 31ms
+@pepbits/ui:test:  ✓ src/localization.test.tsx (3 tests) 217ms
+@pepbits/components:test:  ✓ src/shared-components.test.tsx (11 tests) 899ms
+@pepbits/components:test:    ✓ Calendar > selects leap day, respects bounds and uses date-only values  344ms
+@pepbits/ui:test:  ✓ src/button.test.tsx (5 tests) 255ms
+@pepbits/ui:test:  ✓ src/badge.test.tsx (12 tests) 149ms
+@pepbits/components:test:  ✓ src/error-mapper.test.ts (32 tests) 13ms
+@pepbits/components:test:  ✓ src/dropdown.test.tsx (11 tests) 879ms
+@pepbits/ui:test:  ✓ src/scanner-input.test.tsx (2 tests) 93ms
+@pepbits/ui:test:  ✓ src/skeleton.test.tsx (4 tests) 143ms
+@pepbits/ui:test: 
+@pepbits/ui:test:  Test Files  12 passed (12)
+@pepbits/ui:test:       Tests  120 passed (120)
+@pepbits/ui:test:    Start at  22:55:02
+@pepbits/ui:test:    Duration  12.40s (transform 910ms, setup 2.58s, collect 2.41s, tests 3.92s, environment 8.44s, prepare 1.53s)
+@pepbits/ui:test: 
+@pepbits/components:test:  ✓ src/pagination.test.tsx (9 tests) 455ms
+@pepbits/components:test:  ✓ src/presentation.test.tsx (3 tests) 213ms
+@pepbits/components:test:  ❯ src/page-copy-localization.test.tsx (5 tests | 4 failed) 257ms
+@pepbits/components:test:    × page copy and stable data > translates controls, search results and KPI copy in en without changing values 144ms
+@pepbits/components:test:      → Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mDisplay name[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<input[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+@pepbits/components:test:             [33mvalue[39m=[32m"Save CUS-001"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<button[39m
+@pepbits/components:test:         [33maria-expanded[39m=[32m"false"[39m
+@pepbits/components:test:         [33maria-haspopup[39m=[32m"listbox"[39m
+@pepbits/components:test:         [33maria-label[39m=[32m"Role"[39m
+@pepbits/components:test:         [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40"[39m
+@pepbits/components:test:         [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"flex min-w-0 flex-1 items-baseline gap-1.5"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mRole[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"min-w-0 truncate font-bold text-[var(--text)] text-[length:calc(10.5px*var(--fs-scale))]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mFinance Manager[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<svg[39m
+@pepbits/components:test:           [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-subtle)] transition"[39m
+@pepbits/components:test:           [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:           [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:           [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:           [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:           [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:           [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:           [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<path[39m
+@pepbits/components:test:             [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</svg>[39m
+@pepbits/components:test:       [36m</button>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mAssigned roles[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<button[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-between gap-2 py-1.5 text-start disabled:opacity-60"[39m
+@pepbits/components:test:             [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<span[39m
+@pepbits/components:test:               [33mclass[39m=[32m"flex min-w-0 flex-1 flex-wrap gap-1"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<span[39m
+@pepbits/components:test:                 [33mclass[39m=[32m"text-[var(--text-subtle)]"[39m
+@pepbits/components:test:               [36m>[39m
+@pepbits/components:test:                 [0mSelect values…[0m
+@pepbits/components:test:               [36m</span>[39m
+@pepbits/components:test:             [36m</span>[39m
+@pepbits/components:test:             [36m<svg[39m
+@pepbits/components:test:               [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-muted)] transition"[39m
+@pepbits/components:test:               [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:               [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:               [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:               [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:               [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:               [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:               [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<path[39m
+@pepbits/components:test:                 [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:               [36m/>[39m
+@pepbits/components:test:             [36m</svg>[39m
+@pepbits/components:test:           [36m</button>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<output[39m
+@pepbits/components:test:       [33mdata-testid[39m=[32m"values"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0m{"name":"Save CUS-001","role":"finance","roles":[]}[0m
+@pepbits/components:test:     [36m</output>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mCash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1 truncate text-[length:calc(9.5px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mAcross 12 accounts[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2.5"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33maria-label[39m=[32m"+4.3%, up"[39m
+@pepbits/components:test:           [33mclass[39m=[32m"inline-flex items-center gap-1 text-[length:calc(9.5px*var(--fs-scale))] font-extrabold text-[var(--success-ink)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<svg[39m
+@pepbits/components:test:             [33maria-hidden[39m=[32m"true"[39m
+@pepbits/components:test:             [33mclass[39m=[32m"lucide lucide-trending-up size-3.5"[39m
+@pepbits/components:test:             [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:             [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:             [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:             [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:             [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:             [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:             [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"22 7 13.5 15.5 8.5 10.5 2 17"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"16 7 22 7 22 13"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:           [36m</svg>[39m
+@pepbits/components:test:           [0m+4.3%[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"truncate text-right text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mvs previous period[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:    × page copy and stable data > translates controls, search results and KPI copy in ar without changing values 26ms
+@pepbits/components:test:      → Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mar: Display name[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<input[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+@pepbits/components:test:             [33mvalue[39m=[32m"Save CUS-001"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<button[39m
+@pepbits/components:test:         [33maria-expanded[39m=[32m"false"[39m
+@pepbits/components:test:         [33maria-haspopup[39m=[32m"listbox"[39m
+@pepbits/components:test:         [33maria-label[39m=[32m"ar: Role"[39m
+@pepbits/components:test:         [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40"[39m
+@pepbits/components:test:         [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"flex min-w-0 flex-1 items-baseline gap-1.5"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mar: Role[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"min-w-0 truncate font-bold text-[var(--text)] text-[length:calc(10.5px*var(--fs-scale))]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mar: Finance Manager[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<svg[39m
+@pepbits/components:test:           [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-subtle)] transition"[39m
+@pepbits/components:test:           [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:           [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:           [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:           [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:           [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:           [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:           [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<path[39m
+@pepbits/components:test:             [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</svg>[39m
+@pepbits/components:test:       [36m</button>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mar: Assigned roles[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<button[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-between gap-2 py-1.5 text-start disabled:opacity-60"[39m
+@pepbits/components:test:             [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<span[39m
+@pepbits/components:test:               [33mclass[39m=[32m"flex min-w-0 flex-1 flex-wrap gap-1"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<span[39m
+@pepbits/components:test:                 [33mclass[39m=[32m"text-[var(--text-subtle)]"[39m
+@pepbits/components:test:               [36m>[39m
+@pepbits/components:test:                 [0mSelect values…[0m
+@pepbits/components:test:               [36m</span>[39m
+@pepbits/components:test:             [36m</span>[39m
+@pepbits/components:test:             [36m<svg[39m
+@pepbits/components:test:               [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-muted)] transition"[39m
+@pepbits/components:test:               [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:               [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:               [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:               [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:               [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:               [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:               [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<path[39m
+@pepbits/components:test:                 [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:               [36m/>[39m
+@pepbits/components:test:             [36m</svg>[39m
+@pepbits/components:test:           [36m</button>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<output[39m
+@pepbits/components:test:       [33mdata-testid[39m=[32m"values"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0m{"name":"Save CUS-001","role":"finance","roles":[]}[0m
+@pepbits/components:test:     [36m</output>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mar: Cash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1 truncate text-[length:calc(9.5px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mar: Across 12 accounts[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2.5"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33maria-label[39m=[32m"+4.3%, up"[39m
+@pepbits/components:test:           [33mclass[39m=[32m"inline-flex items-center gap-1 text-[length:calc(9.5px*var(--fs-scale))] font-extrabold text-[var(--success-ink)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<svg[39m
+@pepbits/components:test:             [33maria-hidden[39m=[32m"true"[39m
+@pepbits/components:test:             [33mclass[39m=[32m"lucide lucide-trending-up size-3.5"[39m
+@pepbits/components:test:             [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:             [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:             [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:             [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:             [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:             [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:             [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"22 7 13.5 15.5 8.5 10.5 2 17"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"16 7 22 7 22 13"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:           [36m</svg>[39m
+@pepbits/components:test:           [0m+4.3%[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"truncate text-right text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mar: vs previous period[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:    × page copy and stable data > translates controls, search results and KPI copy in hi without changing values 29ms
+@pepbits/components:test:      → Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mhi: Display name[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<input[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+@pepbits/components:test:             [33mvalue[39m=[32m"Save CUS-001"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<button[39m
+@pepbits/components:test:         [33maria-expanded[39m=[32m"false"[39m
+@pepbits/components:test:         [33maria-haspopup[39m=[32m"listbox"[39m
+@pepbits/components:test:         [33maria-label[39m=[32m"hi: Role"[39m
+@pepbits/components:test:         [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40"[39m
+@pepbits/components:test:         [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"flex min-w-0 flex-1 items-baseline gap-1.5"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mhi: Role[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"min-w-0 truncate font-bold text-[var(--text)] text-[length:calc(10.5px*var(--fs-scale))]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mhi: Finance Manager[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<svg[39m
+@pepbits/components:test:           [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-subtle)] transition"[39m
+@pepbits/components:test:           [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:           [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:           [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:           [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:           [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:           [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:           [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<path[39m
+@pepbits/components:test:             [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</svg>[39m
+@pepbits/components:test:       [36m</button>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mhi: Assigned roles[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<button[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-between gap-2 py-1.5 text-start disabled:opacity-60"[39m
+@pepbits/components:test:             [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<span[39m
+@pepbits/components:test:               [33mclass[39m=[32m"flex min-w-0 flex-1 flex-wrap gap-1"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<span[39m
+@pepbits/components:test:                 [33mclass[39m=[32m"text-[var(--text-subtle)]"[39m
+@pepbits/components:test:               [36m>[39m
+@pepbits/components:test:                 [0mSelect values…[0m
+@pepbits/components:test:               [36m</span>[39m
+@pepbits/components:test:             [36m</span>[39m
+@pepbits/components:test:             [36m<svg[39m
+@pepbits/components:test:               [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-muted)] transition"[39m
+@pepbits/components:test:               [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:               [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:               [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:               [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:               [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:               [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:               [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<path[39m
+@pepbits/components:test:                 [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:               [36m/>[39m
+@pepbits/components:test:             [36m</svg>[39m
+@pepbits/components:test:           [36m</button>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<output[39m
+@pepbits/components:test:       [33mdata-testid[39m=[32m"values"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0m{"name":"Save CUS-001","role":"finance","roles":[]}[0m
+@pepbits/components:test:     [36m</output>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mhi: Cash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1 truncate text-[length:calc(9.5px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mhi: Across 12 accounts[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2.5"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33maria-label[39m=[32m"+4.3%, up"[39m
+@pepbits/components:test:           [33mclass[39m=[32m"inline-flex items-center gap-1 text-[length:calc(9.5px*var(--fs-scale))] font-extrabold text-[var(--success-ink)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<svg[39m
+@pepbits/components:test:             [33maria-hidden[39m=[32m"true"[39m
+@pepbits/components:test:             [33mclass[39m=[32m"lucide lucide-trending-up size-3.5"[39m
+@pepbits/components:test:             [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:             [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:             [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:             [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:             [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:             [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:             [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"22 7 13.5 15.5 8.5 10.5 2 17"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"16 7 22 7 22 13"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:           [36m</svg>[39m
+@pepbits/components:test:           [0m+4.3%[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"truncate text-right text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mhi: vs previous period[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:    × page copy and stable data > translates controls, search results and KPI copy in ml without changing values 19ms
+@pepbits/components:test:      → Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mml: Display name[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<input[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+@pepbits/components:test:             [33mvalue[39m=[32m"Save CUS-001"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<button[39m
+@pepbits/components:test:         [33maria-expanded[39m=[32m"false"[39m
+@pepbits/components:test:         [33maria-haspopup[39m=[32m"listbox"[39m
+@pepbits/components:test:         [33maria-label[39m=[32m"ml: Role"[39m
+@pepbits/components:test:         [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40"[39m
+@pepbits/components:test:         [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"flex min-w-0 flex-1 items-baseline gap-1.5"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mml: Role[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"min-w-0 truncate font-bold text-[var(--text)] text-[length:calc(10.5px*var(--fs-scale))]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mml: Finance Manager[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<svg[39m
+@pepbits/components:test:           [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-subtle)] transition"[39m
+@pepbits/components:test:           [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:           [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:           [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:           [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:           [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:           [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:           [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<path[39m
+@pepbits/components:test:             [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</svg>[39m
+@pepbits/components:test:       [36m</button>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mml: Assigned roles[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<button[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-between gap-2 py-1.5 text-start disabled:opacity-60"[39m
+@pepbits/components:test:             [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<span[39m
+@pepbits/components:test:               [33mclass[39m=[32m"flex min-w-0 flex-1 flex-wrap gap-1"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<span[39m
+@pepbits/components:test:                 [33mclass[39m=[32m"text-[var(--text-subtle)]"[39m
+@pepbits/components:test:               [36m>[39m
+@pepbits/components:test:                 [0mSelect values…[0m
+@pepbits/components:test:               [36m</span>[39m
+@pepbits/components:test:             [36m</span>[39m
+@pepbits/components:test:             [36m<svg[39m
+@pepbits/components:test:               [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-muted)] transition"[39m
+@pepbits/components:test:               [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:               [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:               [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:               [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:               [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:               [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:               [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<path[39m
+@pepbits/components:test:                 [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:               [36m/>[39m
+@pepbits/components:test:             [36m</svg>[39m
+@pepbits/components:test:           [36m</button>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<output[39m
+@pepbits/components:test:       [33mdata-testid[39m=[32m"values"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0m{"name":"Save CUS-001","role":"finance","roles":[]}[0m
+@pepbits/components:test:     [36m</output>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mml: Cash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1 truncate text-[length:calc(9.5px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mml: Across 12 accounts[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2.5"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33maria-label[39m=[32m"+4.3%, up"[39m
+@pepbits/components:test:           [33mclass[39m=[32m"inline-flex items-center gap-1 text-[length:calc(9.5px*var(--fs-scale))] font-extrabold text-[var(--success-ink)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<svg[39m
+@pepbits/components:test:             [33maria-hidden[39m=[32m"true"[39m
+@pepbits/components:test:             [33mclass[39m=[32m"lucide lucide-trending-up size-3.5"[39m
+@pepbits/components:test:             [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:             [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:             [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:             [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:             [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:             [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:             [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"22 7 13.5 15.5 8.5 10.5 2 17"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"16 7 22 7 22 13"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:           [36m</svg>[39m
+@pepbits/components:test:           [0m+4.3%[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"truncate text-right text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mml: vs previous period[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:    ✓ page copy and stable data > keeps a draft and selected code when language changes 36ms
+@pepbits/components:test:  ✓ src/card.test.tsx (6 tests) 208ms
+@pepbits/components:test:  ❯ src/stat-card.test.tsx (6 tests | 1 failed) 139ms
+@pepbits/components:test:    × StatCard > shows the label and the value 94ms
+@pepbits/components:test:      → Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mCash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:    ✓ StatCard > a trend always says what it is measured against 20ms
+@pepbits/components:test:    ✓ StatCard > no trend, no arrow and no comparison 5ms
+@pepbits/components:test:    ✓ StatCard > the direction is in words, not only in colour 8ms
+@pepbits/components:test:    ✓ StatCard > a hint sits under the value when there is one 7ms
+@pepbits/components:test:    ✓ StatCard > an icon is decoration and is not announced 4ms
+@pepbits/components:test:  ✓ src/recovery-notice.test.tsx (5 tests) 328ms
+@pepbits/components:test:  ✓ src/tabs.test.tsx (3 tests) 159ms
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/inline-edit.test.tsx > InlineEdit — reading > shows the formatted value and is reachable by keyboard
+@pepbits/components:test: Error: expect(element).toHaveTextContent()
+@pepbits/components:test: 
+@pepbits/components:test: Expected element to have text content:
+@pepbits/components:test:   GBP 50,000
+@pepbits/components:test: Received:
+@pepbits/components:test:   GBP 50,000
+@pepbits/components:test:  ❯ src/inline-edit.test.tsx:19:20
+@pepbits/components:test:      17|   test("shows the formatted value and is reachable by keyboard", () =>…
+@pepbits/components:test:      18|     render_();
+@pepbits/components:test:      19|     expect(cell()).toHaveTextContent(format.money(50000));
+@pepbits/components:test:        |                    ^
+@pepbits/components:test:      20|     expect(cell()).toHaveAccessibleName(/Credit limit/);
+@pepbits/components:test:      21|   });
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/inline-edit.test.tsx > InlineEdit — reading > a read-only cell offers no editing at all
+@pepbits/components:test: TestingLibraryElementError: Unable to find an element with the text: GBP 50,000 (normalized from 'GBP 50,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<span[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block truncate"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0mGBP 50,000[0m
+@pepbits/components:test:     [36m</span>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:  ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+@pepbits/components:test:  ❯ src/inline-edit.test.tsx:26:19
+@pepbits/components:test:      24|     render_({ disabled: true });
+@pepbits/components:test:      25|     expect(screen.queryByRole("button")).toBeNull();
+@pepbits/components:test:      26|     expect(screen.getByText(format.money(50000))).toBeVisible();
+@pepbits/components:test:        |                   ^
+@pepbits/components:test:      27|   });
+@pepbits/components:test:      28| });
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/inline-edit.test.tsx > InlineEdit — editing > Escape puts it back and writes nothing
+@pepbits/components:test: Error: expect(element).toHaveTextContent()
+@pepbits/components:test: 
+@pepbits/components:test: Expected element to have text content:
+@pepbits/components:test:   GBP 50,000
+@pepbits/components:test: Received:
+@pepbits/components:test:   GBP 50,000
+@pepbits/components:test:  ❯ src/inline-edit.test.tsx:72:20
+@pepbits/components:test:      70|     await userEvent.type(field(), "75000{Escape}");
+@pepbits/components:test:      71|     expect(onCommit).not.toHaveBeenCalled();
+@pepbits/components:test:      72|     expect(cell()).toHaveTextContent(format.money(50000));
+@pepbits/components:test:        |                    ^
+@pepbits/components:test:      73|   });
+@pepbits/components:test:      74| 
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/inline-edit.test.tsx > InlineEdit — saving and conflict > a successful save closes the editor and shows the new value
+@pepbits/components:test: Error: expect(element).toHaveTextContent()
+@pepbits/components:test: 
+@pepbits/components:test: Expected element to have text content:
+@pepbits/components:test:   GBP 75,000
+@pepbits/components:test: Received:
+@pepbits/components:test:   GBP 75,000
+@pepbits/components:test:  ❯ src/inline-edit.test.tsx:177:20
+@pepbits/components:test:     175|     await waitFor(() => expect(screen.queryByRole("textbox")).toBeNull…
+@pepbits/components:test:     176|     rerender(<InlineEdit label="Credit limit" value="75000" display={f…
+@pepbits/components:test:     177|     expect(cell()).toHaveTextContent(format.money(75000));
+@pepbits/components:test:        |                    ^
+@pepbits/components:test:     178|   });
+@pepbits/components:test:     179| });
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/page-copy-localization.test.tsx > page copy and stable data > translates controls, search results and KPI copy in en without changing values
+@pepbits/components:test: TestingLibraryElementError: Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mDisplay name[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<input[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+@pepbits/components:test:             [33mvalue[39m=[32m"Save CUS-001"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<button[39m
+@pepbits/components:test:         [33maria-expanded[39m=[32m"false"[39m
+@pepbits/components:test:         [33maria-haspopup[39m=[32m"listbox"[39m
+@pepbits/components:test:         [33maria-label[39m=[32m"Role"[39m
+@pepbits/components:test:         [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40"[39m
+@pepbits/components:test:         [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"flex min-w-0 flex-1 items-baseline gap-1.5"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mRole[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"min-w-0 truncate font-bold text-[var(--text)] text-[length:calc(10.5px*var(--fs-scale))]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mFinance Manager[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<svg[39m
+@pepbits/components:test:           [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-subtle)] transition"[39m
+@pepbits/components:test:           [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:           [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:           [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:           [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:           [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:           [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:           [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<path[39m
+@pepbits/components:test:             [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</svg>[39m
+@pepbits/components:test:       [36m</button>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mAssigned roles[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<button[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-between gap-2 py-1.5 text-start disabled:opacity-60"[39m
+@pepbits/components:test:             [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<span[39m
+@pepbits/components:test:               [33mclass[39m=[32m"flex min-w-0 flex-1 flex-wrap gap-1"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<span[39m
+@pepbits/components:test:                 [33mclass[39m=[32m"text-[var(--text-subtle)]"[39m
+@pepbits/components:test:               [36m>[39m
+@pepbits/components:test:                 [0mSelect values…[0m
+@pepbits/components:test:               [36m</span>[39m
+@pepbits/components:test:             [36m</span>[39m
+@pepbits/components:test:             [36m<svg[39m
+@pepbits/components:test:               [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-muted)] transition"[39m
+@pepbits/components:test:               [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:               [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:               [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:               [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:               [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:               [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:               [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<path[39m
+@pepbits/components:test:                 [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:               [36m/>[39m
+@pepbits/components:test:             [36m</svg>[39m
+@pepbits/components:test:           [36m</button>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<output[39m
+@pepbits/components:test:       [33mdata-testid[39m=[32m"values"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0m{"name":"Save CUS-001","role":"finance","roles":[]}[0m
+@pepbits/components:test:     [36m</output>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mCash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1 truncate text-[length:calc(9.5px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mAcross 12 accounts[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2.5"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33maria-label[39m=[32m"+4.3%, up"[39m
+@pepbits/components:test:           [33mclass[39m=[32m"inline-flex items-center gap-1 text-[length:calc(9.5px*var(--fs-scale))] font-extrabold text-[var(--success-ink)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<svg[39m
+@pepbits/components:test:             [33maria-hidden[39m=[32m"true"[39m
+@pepbits/components:test:             [33mclass[39m=[32m"lucide lucide-trending-up size-3.5"[39m
+@pepbits/components:test:             [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:             [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:             [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:             [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:             [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:             [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:             [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"22 7 13.5 15.5 8.5 10.5 2 17"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"16 7 22 7 22 13"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:           [36m</svg>[39m
+@pepbits/components:test:           [0m+4.3%[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"truncate text-right text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mvs previous period[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:  ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+@pepbits/components:test:  ❯ src/page-copy-localization.test.tsx:26:76
+@pepbits/components:test:      24|   const t=locale(language).t;
+@pepbits/components:test:      25|   expect(screen.getByLabelText(t('Display name'))).toHaveValue('Save C…
+@pepbits/components:test:      26|   expect(screen.getByText(t('Cash position'))).toBeVisible();expect(sc…
+@pepbits/components:test:        |                                                                            ^
+@pepbits/components:test:      27|   fireEvent.click(screen.getByRole('button',{name:t('Role')}));
+@pepbits/components:test:      28|   fireEvent.change(screen.getByRole('combobox'),{target:{value:t('Oper…
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/page-copy-localization.test.tsx > page copy and stable data > translates controls, search results and KPI copy in ar without changing values
+@pepbits/components:test: TestingLibraryElementError: Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mar: Display name[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<input[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+@pepbits/components:test:             [33mvalue[39m=[32m"Save CUS-001"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<button[39m
+@pepbits/components:test:         [33maria-expanded[39m=[32m"false"[39m
+@pepbits/components:test:         [33maria-haspopup[39m=[32m"listbox"[39m
+@pepbits/components:test:         [33maria-label[39m=[32m"ar: Role"[39m
+@pepbits/components:test:         [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40"[39m
+@pepbits/components:test:         [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"flex min-w-0 flex-1 items-baseline gap-1.5"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mar: Role[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"min-w-0 truncate font-bold text-[var(--text)] text-[length:calc(10.5px*var(--fs-scale))]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mar: Finance Manager[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<svg[39m
+@pepbits/components:test:           [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-subtle)] transition"[39m
+@pepbits/components:test:           [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:           [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:           [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:           [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:           [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:           [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:           [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<path[39m
+@pepbits/components:test:             [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</svg>[39m
+@pepbits/components:test:       [36m</button>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mar: Assigned roles[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<button[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-between gap-2 py-1.5 text-start disabled:opacity-60"[39m
+@pepbits/components:test:             [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<span[39m
+@pepbits/components:test:               [33mclass[39m=[32m"flex min-w-0 flex-1 flex-wrap gap-1"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<span[39m
+@pepbits/components:test:                 [33mclass[39m=[32m"text-[var(--text-subtle)]"[39m
+@pepbits/components:test:               [36m>[39m
+@pepbits/components:test:                 [0mSelect values…[0m
+@pepbits/components:test:               [36m</span>[39m
+@pepbits/components:test:             [36m</span>[39m
+@pepbits/components:test:             [36m<svg[39m
+@pepbits/components:test:               [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-muted)] transition"[39m
+@pepbits/components:test:               [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:               [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:               [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:               [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:               [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:               [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:               [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<path[39m
+@pepbits/components:test:                 [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:               [36m/>[39m
+@pepbits/components:test:             [36m</svg>[39m
+@pepbits/components:test:           [36m</button>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<output[39m
+@pepbits/components:test:       [33mdata-testid[39m=[32m"values"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0m{"name":"Save CUS-001","role":"finance","roles":[]}[0m
+@pepbits/components:test:     [36m</output>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mar: Cash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1 truncate text-[length:calc(9.5px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mar: Across 12 accounts[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2.5"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33maria-label[39m=[32m"+4.3%, up"[39m
+@pepbits/components:test:           [33mclass[39m=[32m"inline-flex items-center gap-1 text-[length:calc(9.5px*var(--fs-scale))] font-extrabold text-[var(--success-ink)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<svg[39m
+@pepbits/components:test:             [33maria-hidden[39m=[32m"true"[39m
+@pepbits/components:test:             [33mclass[39m=[32m"lucide lucide-trending-up size-3.5"[39m
+@pepbits/components:test:             [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:             [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:             [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:             [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:             [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:             [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:             [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"22 7 13.5 15.5 8.5 10.5 2 17"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"16 7 22 7 22 13"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:           [36m</svg>[39m
+@pepbits/components:test:           [0m+4.3%[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"truncate text-right text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mar: vs previous period[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:  ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+@pepbits/components:test:  ❯ src/page-copy-localization.test.tsx:26:76
+@pepbits/components:test:      24|   const t=locale(language).t;
+@pepbits/components:test:      25|   expect(screen.getByLabelText(t('Display name'))).toHaveValue('Save C…
+@pepbits/components:test:      26|   expect(screen.getByText(t('Cash position'))).toBeVisible();expect(sc…
+@pepbits/components:test:        |                                                                            ^
+@pepbits/components:test:      27|   fireEvent.click(screen.getByRole('button',{name:t('Role')}));
+@pepbits/components:test:      28|   fireEvent.change(screen.getByRole('combobox'),{target:{value:t('Oper…
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/page-copy-localization.test.tsx > page copy and stable data > translates controls, search results and KPI copy in hi without changing values
+@pepbits/components:test: TestingLibraryElementError: Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mhi: Display name[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<input[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+@pepbits/components:test:             [33mvalue[39m=[32m"Save CUS-001"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<button[39m
+@pepbits/components:test:         [33maria-expanded[39m=[32m"false"[39m
+@pepbits/components:test:         [33maria-haspopup[39m=[32m"listbox"[39m
+@pepbits/components:test:         [33maria-label[39m=[32m"hi: Role"[39m
+@pepbits/components:test:         [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40"[39m
+@pepbits/components:test:         [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"flex min-w-0 flex-1 items-baseline gap-1.5"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mhi: Role[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"min-w-0 truncate font-bold text-[var(--text)] text-[length:calc(10.5px*var(--fs-scale))]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mhi: Finance Manager[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<svg[39m
+@pepbits/components:test:           [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-subtle)] transition"[39m
+@pepbits/components:test:           [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:           [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:           [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:           [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:           [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:           [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:           [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<path[39m
+@pepbits/components:test:             [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</svg>[39m
+@pepbits/components:test:       [36m</button>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mhi: Assigned roles[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<button[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-between gap-2 py-1.5 text-start disabled:opacity-60"[39m
+@pepbits/components:test:             [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<span[39m
+@pepbits/components:test:               [33mclass[39m=[32m"flex min-w-0 flex-1 flex-wrap gap-1"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<span[39m
+@pepbits/components:test:                 [33mclass[39m=[32m"text-[var(--text-subtle)]"[39m
+@pepbits/components:test:               [36m>[39m
+@pepbits/components:test:                 [0mSelect values…[0m
+@pepbits/components:test:               [36m</span>[39m
+@pepbits/components:test:             [36m</span>[39m
+@pepbits/components:test:             [36m<svg[39m
+@pepbits/components:test:               [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-muted)] transition"[39m
+@pepbits/components:test:               [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:               [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:               [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:               [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:               [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:               [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:               [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<path[39m
+@pepbits/components:test:                 [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:               [36m/>[39m
+@pepbits/components:test:             [36m</svg>[39m
+@pepbits/components:test:           [36m</button>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<output[39m
+@pepbits/components:test:       [33mdata-testid[39m=[32m"values"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0m{"name":"Save CUS-001","role":"finance","roles":[]}[0m
+@pepbits/components:test:     [36m</output>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mhi: Cash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1 truncate text-[length:calc(9.5px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mhi: Across 12 accounts[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2.5"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33maria-label[39m=[32m"+4.3%, up"[39m
+@pepbits/components:test:           [33mclass[39m=[32m"inline-flex items-center gap-1 text-[length:calc(9.5px*var(--fs-scale))] font-extrabold text-[var(--success-ink)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<svg[39m
+@pepbits/components:test:             [33maria-hidden[39m=[32m"true"[39m
+@pepbits/components:test:             [33mclass[39m=[32m"lucide lucide-trending-up size-3.5"[39m
+@pepbits/components:test:             [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:             [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:             [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:             [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:             [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:             [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:             [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"22 7 13.5 15.5 8.5 10.5 2 17"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"16 7 22 7 22 13"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:           [36m</svg>[39m
+@pepbits/components:test:           [0m+4.3%[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"truncate text-right text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mhi: vs previous period[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:  ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+@pepbits/components:test:  ❯ src/page-copy-localization.test.tsx:26:76
+@pepbits/components:test:      24|   const t=locale(language).t;
+@pepbits/components:test:      25|   expect(screen.getByLabelText(t('Display name'))).toHaveValue('Save C…
+@pepbits/components:test:      26|   expect(screen.getByText(t('Cash position'))).toBeVisible();expect(sc…
+@pepbits/components:test:        |                                                                            ^
+@pepbits/components:test:      27|   fireEvent.click(screen.getByRole('button',{name:t('Role')}));
+@pepbits/components:test:      28|   fireEvent.change(screen.getByRole('combobox'),{target:{value:t('Oper…
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/page-copy-localization.test.tsx > page copy and stable data > translates controls, search results and KPI copy in ml without changing values
+@pepbits/components:test: TestingLibraryElementError: Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mml: Display name[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<input[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+@pepbits/components:test:             [33mvalue[39m=[32m"Save CUS-001"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<button[39m
+@pepbits/components:test:         [33maria-expanded[39m=[32m"false"[39m
+@pepbits/components:test:         [33maria-haspopup[39m=[32m"listbox"[39m
+@pepbits/components:test:         [33maria-label[39m=[32m"ml: Role"[39m
+@pepbits/components:test:         [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40"[39m
+@pepbits/components:test:         [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"flex min-w-0 flex-1 items-baseline gap-1.5"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mml: Role[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:           [36m<span[39m
+@pepbits/components:test:             [33mclass[39m=[32m"min-w-0 truncate font-bold text-[var(--text)] text-[length:calc(10.5px*var(--fs-scale))]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mml: Finance Manager[0m
+@pepbits/components:test:           [36m</span>[39m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<svg[39m
+@pepbits/components:test:           [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-subtle)] transition"[39m
+@pepbits/components:test:           [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:           [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:           [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:           [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:           [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:           [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:           [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:           [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<path[39m
+@pepbits/components:test:             [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:           [36m/>[39m
+@pepbits/components:test:         [36m</svg>[39m
+@pepbits/components:test:       [36m</button>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<label[39m
+@pepbits/components:test:         [33mclass[39m=[32m"block min-w-0"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mml: Assigned roles[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"relative"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<button[39m
+@pepbits/components:test:             [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-between gap-2 py-1.5 text-start disabled:opacity-60"[39m
+@pepbits/components:test:             [33mtype[39m=[32m"button"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<span[39m
+@pepbits/components:test:               [33mclass[39m=[32m"flex min-w-0 flex-1 flex-wrap gap-1"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<span[39m
+@pepbits/components:test:                 [33mclass[39m=[32m"text-[var(--text-subtle)]"[39m
+@pepbits/components:test:               [36m>[39m
+@pepbits/components:test:                 [0mSelect values…[0m
+@pepbits/components:test:               [36m</span>[39m
+@pepbits/components:test:             [36m</span>[39m
+@pepbits/components:test:             [36m<svg[39m
+@pepbits/components:test:               [33mclass[39m=[32m"lucide lucide-chevron-down size-3.5 shrink-0 text-[var(--text-muted)] transition"[39m
+@pepbits/components:test:               [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:               [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:               [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:               [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:               [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:               [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:               [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:               [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:             [36m>[39m
+@pepbits/components:test:               [36m<path[39m
+@pepbits/components:test:                 [33md[39m=[32m"m6 9 6 6 6-6"[39m
+@pepbits/components:test:               [36m/>[39m
+@pepbits/components:test:             [36m</svg>[39m
+@pepbits/components:test:           [36m</button>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</label>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:     [36m<output[39m
+@pepbits/components:test:       [33mdata-testid[39m=[32m"values"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [0m{"name":"Save CUS-001","role":"finance","roles":[]}[0m
+@pepbits/components:test:     [36m</output>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mml: Cash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1 truncate text-[length:calc(9.5px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mml: Across 12 accounts[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2.5"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33maria-label[39m=[32m"+4.3%, up"[39m
+@pepbits/components:test:           [33mclass[39m=[32m"inline-flex items-center gap-1 text-[length:calc(9.5px*var(--fs-scale))] font-extrabold text-[var(--success-ink)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<svg[39m
+@pepbits/components:test:             [33maria-hidden[39m=[32m"true"[39m
+@pepbits/components:test:             [33mclass[39m=[32m"lucide lucide-trending-up size-3.5"[39m
+@pepbits/components:test:             [33mfill[39m=[32m"none"[39m
+@pepbits/components:test:             [33mheight[39m=[32m"24"[39m
+@pepbits/components:test:             [33mstroke[39m=[32m"currentColor"[39m
+@pepbits/components:test:             [33mstroke-linecap[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-linejoin[39m=[32m"round"[39m
+@pepbits/components:test:             [33mstroke-width[39m=[32m"2"[39m
+@pepbits/components:test:             [33mviewBox[39m=[32m"0 0 24 24"[39m
+@pepbits/components:test:             [33mwidth[39m=[32m"24"[39m
+@pepbits/components:test:             [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"22 7 13.5 15.5 8.5 10.5 2 17"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:             [36m<polyline[39m
+@pepbits/components:test:               [33mpoints[39m=[32m"16 7 22 7 22 13"[39m
+@pepbits/components:test:             [36m/>[39m
+@pepbits/components:test:           [36m</svg>[39m
+@pepbits/components:test:           [0m+4.3%[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:         [36m<span[39m
+@pepbits/components:test:           [33mclass[39m=[32m"truncate text-right text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [0mml: vs previous period[0m
+@pepbits/components:test:         [36m</span>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:  ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+@pepbits/components:test:  ❯ src/page-copy-localization.test.tsx:26:76
+@pepbits/components:test:      24|   const t=locale(language).t;
+@pepbits/components:test:      25|   expect(screen.getByLabelText(t('Display name'))).toHaveValue('Save C…
+@pepbits/components:test:      26|   expect(screen.getByText(t('Cash position'))).toBeVisible();expect(sc…
+@pepbits/components:test:        |                                                                            ^
+@pepbits/components:test:      27|   fireEvent.click(screen.getByRole('button',{name:t('Role')}));
+@pepbits/components:test:      28|   fireEvent.change(screen.getByRole('combobox'),{target:{value:t('Oper…
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test:  FAIL  src/stat-card.test.tsx > StatCard > shows the label and the value
+@pepbits/components:test: TestingLibraryElementError: Unable to find an element with the text: GBP 42,160,000 (normalized from 'GBP 42,160,000'). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+@pepbits/components:test: 
+@pepbits/components:test: Ignored nodes: comments, script, style
+@pepbits/components:test: [36m<body>[39m
+@pepbits/components:test:   [36m<div>[39m
+@pepbits/components:test:     [36m<div[39m
+@pepbits/components:test:       [33mclass[39m=[32m"min-w-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)]"[39m
+@pepbits/components:test:     [36m>[39m
+@pepbits/components:test:       [36m<div[39m
+@pepbits/components:test:         [33mclass[39m=[32m"flex items-start justify-between gap-2"[39m
+@pepbits/components:test:       [36m>[39m
+@pepbits/components:test:         [36m<div[39m
+@pepbits/components:test:           [33mclass[39m=[32m"min-w-0"[39m
+@pepbits/components:test:         [36m>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mCash position[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:           [36m<p[39m
+@pepbits/components:test:             [33mclass[39m=[32m"mt-1.5 truncate text-[length:calc(19px*var(--fs-scale))] font-black tracking-[-.02em] text-[var(--text)]"[39m
+@pepbits/components:test:           [36m>[39m
+@pepbits/components:test:             [0mGBP 42,160,000[0m
+@pepbits/components:test:           [36m</p>[39m
+@pepbits/components:test:         [36m</div>[39m
+@pepbits/components:test:       [36m</div>[39m
+@pepbits/components:test:     [36m</div>[39m
+@pepbits/components:test:   [36m</div>[39m
+@pepbits/components:test: [36m</body>[39m
+@pepbits/components:test:  ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+@pepbits/components:test:  ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+@pepbits/components:test:  ❯ src/stat-card.test.tsx:10:19
+@pepbits/components:test:       8|     render(<StatCard label="Cash position" value={format.money(4216000…
+@pepbits/components:test:       9|     expect(screen.getByText("Cash position")).toBeVisible();
+@pepbits/components:test:      10|     expect(screen.getByText(format.money(42160000))).toBeVisible();
+@pepbits/components:test:        |                   ^
+@pepbits/components:test:      11|   });
+@pepbits/components:test:      12| 
+@pepbits/components:test: 
+@pepbits/components:test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+@pepbits/components:test: 
+@pepbits/components:test: 
+@pepbits/components:test:  Test Files  3 failed | 12 passed (15)
+@pepbits/components:test:       Tests  9 failed | 180 passed (189)
+@pepbits/components:test:    Start at  22:55:02
+@pepbits/components:test:    Duration  17.38s (transform 1.22s, setup 3.09s, collect 4.22s, tests 7.80s, environment 9.89s, prepare 1.84s)
+@pepbits/components:test: 
+@pepbits/components:test: npm ERR! Lifecycle script `test` failed with error: 
+@pepbits/components:test: npm ERR! Error: command failed 
+@pepbits/components:test: npm ERR!   in workspace: @pepbits/components@0.0.0 
+@pepbits/components:test: npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/components 
+@pepbits/components#test:  ERROR  command (/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/components) /usr/bin/npm run test exited (1)
+
+ Tasks:    5 successful, 6 total
+Cached:    2 cached, 6 total
+  Time:    19.502s 
+Failed:    @pepbits/components#test
+
+ ERROR  run failed: command  exited (1)

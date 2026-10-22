@@ -1,12 +1,12 @@
 # @pepbits/i18n
 
-Host-driven translation, language direction, API-message localization and value formatting. This unpublished `0.0.0` source package is independent of React, preference storage and product schemas.
+Host-driven translation, language direction, API-message localization and value formatting. The root of this unpublished `0.0.0` source package is independent of React, preference storage and product schemas; the opt-in `./react` export peer-depends on React 19 or later.
 
 ## Public API
 
 The root export provides `LanguageKey` (`en | ar | hi | ml`), `LANGUAGE_OPTIONS`, `LANGUAGE_LOCALES`, `directionOf`, and `CORE_CATALOG` (the original 18 keys in each language). Translation exports are `createTranslator`, `createCatalogStore`, `TranslatorOptions`, `Translator`, `TranslationValues`, `TranslationCatalog`, `Messages`, `CatalogLoader` and `CatalogLoaders`.
 
-Presentation exports are `localizeApiMessage`, `localizeFieldError`, `localizeImportError`, `localizeApprovalNotice`, `createFormatters`, `Formatters`, `FormatOptions` and `FormatColumn {type?: string}`. All public imports use `@pepbits/i18n`.
+Presentation exports are `localizeApiMessage`, `localizeFieldError`, `localizeImportError`, `localizeApprovalNotice`, `createFormatters`, `Formatters`, `FormatOptions` and `FormatColumn {type?: string}`. These imports use `@pepbits/i18n`; React bindings use `@pepbits/i18n/react`.
 
 ## Host flow and integration
 
@@ -46,6 +46,16 @@ Money, compact numbers, plain numbers, percentages, calendar dates, clock times,
 
 ## Intentionally excluded and verification
 
-No generated product catalogs, product names, module registry, branch data, backend client or React provider. `LocaleProvider`/`useTranslation` are deferred to phase 2, when the UI consumer contract is available. There is no global `translate`, `UI_MESSAGES` or `loadFallbackLanguage`; the factories replace their singleton ownership while retaining lookup behavior. Hosts continue to own their canonical message sources and generation workflow.
+No generated product catalogs, product names, module registry, branch data or backend client. There is no separate `LocaleProvider`/`useTranslation` store. There is no global `translate`, `UI_MESSAGES` or `loadFallbackLanguage`; the factories replace their singleton ownership while retaining lookup behavior. Hosts continue to own their canonical message sources and generation workflow.
 
 `npm test -w @pepbits/i18n` includes adapted localization/formatting cases, lookup precedence, malformed descriptors, placeholders, lazy-load retries/isolation and formatting edges. `npm run typecheck -w @pepbits/i18n` checks the public contract. These are local unit checks, not native-speaker review or live catalog-service acceptance.
+
+## React localization and differences from ops-ui
+
+`@pepbits/i18n/react` exports `Localization`, `MessageValues`, `LocalizationProvider`, `useLocalization`, `LocalizedText` and `LocalizationAliasProvider`, copied from the UI localization boundary. The provider is controlled and accepts `{language, direction, t, dateTime}`. It does not apply `dir` to the DOM; the host does that. A language change updates labels without modifying input values or unmounting drafts. See the [host composition example](../components/README.md#host-integration-and-styling).
+
+Without a provider, `t` looks up `CORE_CATALOG.en` using an own-property check, then the message itself. It keeps the original `{word}` substitution (`String(value)`; missing values leave placeholders intact). The default `dateTime` stays `new Date(value).toLocaleString('en-US')`; hosted consumers supply their effective formatter. `LocalizedText` renders a translated string or an empty string for an absent message.
+
+Aliases map literal presentation labels to host keys, forward placeholder values, and retry the original label if an alias key is untranslated. They preserve the parent language/direction/formatter and do not translate record values. Alias maps are scoped to descendants. Unlike the old boundary, no generated English product catalog is loaded: host catalogs must supply all non-core keys, including generic UI/recovery keys documented in the new package guides. Strict non-null annotations preserve runtime behavior. The root entry remains free of React runtime imports.
+
+React tests cover core/literal defaults, placeholders, provider updates, default and host date-time formatting and scoped alias fallback. Original UI-control localization tests live in `ui`, mixed page-copy tests in `components`, and context/helper cases here to avoid upward dependencies. The former product-specific English invoice assertion now checks the generic core fallback; host test catalogs replace product catalogs. See the [phase 2 evidence](../../docs/releases/unreleased/restructure-phase-2-2026-10-22.md).

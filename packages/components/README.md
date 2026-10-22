@@ -1,0 +1,128 @@
+# @pepbits/components
+
+Reusable React composites: cards, tables, overlays, inline editing and recovery. Unpublished version `0.0.0`, copied into the independent root workspace. The single `.` export exposes TypeScript source through `src/index.ts`; no build artifact or application migration is included. React 19 or later is required (and React DOM 19 or later for printing).
+
+## Public API
+
+| Group | Exports |
+| --- | --- |
+| Cards and grids | `Card`, `CardHeader`, `CardTitle`, `CardContent`, `CardFooter`, `CardGrid` |
+| Statistics | `StatTrend`, `StatCard` |
+| Tabs |  |
+| Dropdowns and actions | `DropdownOption`, `DropdownSelect`, `ActionMenu`, `MenuButton` |
+| Overlays | `Modal`, `Drawer`, `CenterRecordCard`, `ConfirmDialog` |
+| Tables | `Table`, `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHead`, `TableCell`, `TableCaption`, `TableContainer` |
+| Presentation |  |
+| Pagination |  |
+| Calendar | `CalendarProps`, `Calendar` |
+| States | `EmptyState`, `ErrorState`, `NotFoundState`, `ConflictState`, `SessionExpiredState`, `LoadingState`, `AccessDenied` |
+| Values and descriptions | `DataValue`, `DescriptionItem`, `DescriptionList` |
+| Inline editors | `InlineEdit`, `InlineEditNumber`, `InlineEditSelect`, `InlineEditDate`, `InlineEditStatus` |
+| Reference data |  |
+| Form errors | `FormErrorItem`, `FormErrorSummary` |
+| Printing | `PrintDocument` |
+| Recovery | `failureFromError`, `RecoveryNotice` |
+| Failure descriptors |  |
+
+## Host integration and styling
+
+```tsx
+import type {ReactNode} from 'react';
+import {createFormatters, createTranslator, directionOf, type TranslationCatalog} from '@pepbits/i18n';
+import {LocalizationProvider} from '@pepbits/i18n/react';
+import {formatOptionsFrom} from '@pepbits/preferences';
+import {PreferenceHost, usePreferences, type PreferenceHostProps} from '@pepbits/preferences/react';
+import {PresentationProvider, presentationFromPreferences} from '@pepbits/components';
+import {Button, Input} from '@pepbits/ui';
+import '@pepbits/tokens/tokens.css';
+
+export function Host({catalogs, children, ...settings}: PreferenceHostProps & {catalogs: TranslationCatalog}) {
+  return <PreferenceHost {...settings}><Surface catalogs={catalogs}>{children}</Surface></PreferenceHost>;
+}
+function Surface({catalogs, children}: {catalogs: TranslationCatalog; children: ReactNode}) {
+  const {preferences} = usePreferences();
+  const format = createFormatters(formatOptionsFrom(preferences));
+  const localization = {language: preferences.language, direction: directionOf(preferences.language),
+    t: createTranslator({language: preferences.language, catalogs}), dateTime: format.dateTime};
+  return <LocalizationProvider value={localization}>
+    <PresentationProvider value={presentationFromPreferences(preferences)}>
+      <div dir={localization.direction}>
+        <Input label="Name" /><Button>{localization.t('save')}</Button>{children}
+      </div>
+    </PresentationProvider>
+  </LocalizationProvider>;
+}
+```
+
+The host supplies accepted preference snapshots, tenant policy, availability and its central `update` callback to `Host`. `usePreferences()` resolves effective values, including live locks. The host applies effective theme, font, scale, radius and reduced-motion settings to its surfaces; these components do not persist preferences. Authorization remains a server responsibility. Hosts supply their catalogs, load failures/retries and selected formatters for values; native temporal inputs keep ISO machine values.
+
+Hosts must add **both packages' `src` directories** to Tailwind's `content` (v3) or `@source` (v4), and import **`@pepbits/tokens/tokens.css`** once. Paths are relative to the host stylesheet/config; for example:
+
+```css
+@import "@pepbits/tokens/tokens.css";
+@source "../node_modules/@pepbits/ui/src";
+@source "../node_modules/@pepbits/components/src";
+```
+
+The utility classes, semantic tokens and existing `nex-scrollbar` compatibility class are preserved. No precompiled CSS is emitted. The host owns its Tailwind setup and global utilities. Components retain their existing keyboard, focus, ARIA, RTL and reduced-motion behavior; jsdom tests do not establish visual, screen-reader or native-speaker acceptance.
+
+## Differences from ops-ui
+
+- Import this package's assigned exports from `@pepbits/components`; the other layer has its own barrel. There are no deep component subpaths or compatibility re-exports.
+- `Localization`, `MessageValues`, `LocalizationProvider`, `useLocalization`, `LocalizedText` and `LocalizationAliasProvider` now come from `@pepbits/i18n/react`. Its default translator uses the 18-key English core catalog, then the literal message, with the same placeholder substitution and default date-time formatting. There is no generated product-catalog fallback. Hosts must supply the unchanged `ui.*`/`recovery.*` message keys used by components (see below); otherwise those keys display literally.
+- `formatCurrency` is omitted. Supply formatted strings/callbacks using `createFormatters(formatOptionsFrom(effectivePreferences))`; no currency default is added. `cn` and the original English-only `formatCompact` remain in `ui` for compatibility; hosted regional values should use the host formatter.
+- `SourceInput`, `SourceTextarea`, `SourceSelect`, `SourceButton`, `SourceDateInput`, `SourceTimeInput`, `SourceDateTimeInput`, `SourceDialog` and `SourceDialogProps` are excluded. Inspection found only imported reference-design consumers plus their matching Library gallery demo/catalog; their source-parity purpose stays outside this port.
+- `presentationFromPreferences(UserPreferences)` is additive. It projects `density`, `zebraStripes`, `stickyTableHeader`, `wrapCellText` and `pageSize` from an already effective snapshot; it neither resolves policy nor stores settings. `PresentationProvider`, its hook and interface are otherwise unchanged.
+
+All retained component signatures, markup, classes, event behavior and explanatory comments are preserved except one product-specific dropdown comment is generalized. Strict root TypeScript settings require non-null assertions after existing bounds/length checks; these erase at runtime. Lucide imports use `@pepbits/icons`; all 16 required icons were already exported and covered by phase 1 tests. The requested split needs no implementation-layer adjustment.
+
+## Preferences, failures and completion boundary
+
+`Table` consumes `PresentationProvider` exactly as before: provided density, stripes, sticky header and wrapping override local table props, including on rerender. `Pagination` remains a controlled component; it does not read the provider itself. Pass the same effective `pageSize` into the data controller and pagination, set `pageSizeDisabled` from policy/availability, and route `onPageSizeChange` through the central guarded update path. The helper does not introduce a second store.
+
+Inline editors retain drafts and show rejected-save errors. Reference fields retain empty/failed/unknown states and host retry callbacks. `classifyFailure` maps a plain `FailureInput` into a UI descriptor; it does not parse HTTP responses or API envelopes. `failureFromError` reads only an error's status/name/reference. Recovery actions belong to the host, preserving operation identity; these components do not perform retries, authentication or durable draft storage. UI locks are not authorization.
+
+No product pages/data, API clients, source-parity controls, schema engines or persistence are included. Error mapping and recovery stay here; no phase 3 transport code is pulled in. Printing retains the React DOM portal behavior and relies on host print styling.
+
+`npm test -w @pepbits/components` runs ported unit/jsdom tests with Testing Library and jest-dom; `npm run typecheck -w @pepbits/components` checks the public source contract. There were no axe-core checks in the original ops-ui unit tests, so none are claimed here. Browser journeys, compiled host CSS, native execution, production services and publication remain outside this increment. See the [phase 2 record](../../docs/releases/unreleased/restructure-phase-2-2026-10-22.md) for exact test counts, adaptations and retained evidence.
+
+## Host message keys
+
+These keys retain their original spelling. Supply translations in the host catalog; the following English text documents the expected generic UI copy and is not an automatically loaded catalog.
+
+| Key | English text |
+| --- | --- |
+| `recovery.network` | Check your connection. The result is not confirmed; check the record before starting a new operation. |
+| `recovery.rate` | Wait a moment, then retry the same action. |
+| `recovery.rateTitle` | Too many requests |
+| `recovery.resume` | Your work is still here. Retry the pending action when you are ready. |
+| `recovery.resumeTitle` | You are signed in again |
+| `recovery.retained` | Your values are still here. Keep this page open while recovering. |
+| `recovery.return` | Return to page |
+| `recovery.session` | Sign in with the same account to continue with your unsaved work. Do not reload or close this window. |
+| `recovery.timeout` | The service did not respond in time. The operation may have completed; retry the same action to check its result. |
+| `ui.a.reference.list.could.not.be.loaded.a1e0d208` | A reference list could not be loaded. |
+| `ui.cancel.19766ed6` | Cancel |
+| `ui.close.7d9eb7ac` | Close |
+| `ui.next.1ff57a29` | Next |
+| `ui.next.page.c08ac736` | Next page |
+| `ui.no.match.for.2835c1cf` | No match for “ |
+| `ui.no.matching.options.39a118fc` | No matching options |
+| `ui.of.a4282e4b` |  of  |
+| `ui.previous.a57b08a4` | Previous |
+| `ui.previous.page.1208ec01` | Previous page |
+| `ui.reference.66d13194` | Reference:  |
+| `ui.reload.bdc090ec` | Reload |
+| `ui.rows.per.page.141b69f9` | Rows per page |
+| `ui.saving.8d3085ef` | Saving  |
+| `ui.showing.7282e1fb` | Showing  |
+| `ui.sign.in.bfd402b2` | Sign in |
+| `ui.some.reference.lists.could.not.be.loaded.e9a89fdf` | Some reference lists could not be loaded. |
+| `ui.that.field.533d6c97` | that field |
+| `ui.those.fields.1ad330c4` | those fields |
+| `ui.try.again.d8b8392e` | Try again |
+| `ui.trying.3ff51b0b` | Trying… |
+| `ui.unavailable.so.a3f71a82` |  unavailable, so  |
+| `ui.will.look.empty.other.fields.are.unaffected.04f888e7` |  will look empty. Other fields are unaffected. |
+
+Literal labels and templates (for example `{count} options`) also pass through the host translator. Composite hosts also supply the [primitive keys](../ui/README.md#host-message-keys).

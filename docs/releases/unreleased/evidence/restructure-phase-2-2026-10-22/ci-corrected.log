@@ -1,0 +1,317 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 6 package(s), 0 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 5.808052
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 16.851851
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 2.197225
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 4.949725
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 12.158677
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 9.78528
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 4.015358
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 8 - demo apps use any layer but not each other
+  ---
+  duration_ms: 4.143558
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 9 - pre-restructure packages are rejected
+  ---
+  duration_ms: 3.676595
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 10 - relative imports may not leave the package
+  ---
+  duration_ms: 3.666996
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 11 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 4.589982
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 12 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 4.768255
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 13 - testing is dev-only
+  ---
+  duration_ms: 11.774694
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 14 - tooling packages are devDependencies only
+  ---
+  duration_ms: 6.384167
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 15 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 2.777131
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 16 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.329773
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 312.532051
+
+> pepbits-frontend-library@0.0.0 typecheck
+> turbo run typecheck
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running typecheck in 7 packages
+   • Remote caching disabled
+
+@pepbits/i18n:typecheck: cache miss, executing e86414d56bbdbbb6
+@pepbits/icons:typecheck: cache hit, replaying logs 0bb6964631c3c244
+@pepbits/tokens:typecheck: cache hit, replaying logs 9c4d78e5e9e4d1aa
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/preferences:typecheck: cache miss, executing 77ae04a3ae0948e9
+@pepbits/ui:typecheck: cache miss, executing fc1e181263f73079
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: > @pepbits/ui@0.0.0 typecheck
+@pepbits/ui:typecheck: > tsc --noEmit -p .
+@pepbits/ui:typecheck: 
+@pepbits/components:typecheck: cache miss, executing d515de0336b6185d
+@pepbits/components:typecheck: 
+@pepbits/components:typecheck: > @pepbits/components@0.0.0 typecheck
+@pepbits/components:typecheck: > tsc --noEmit -p .
+@pepbits/components:typecheck: 
+
+ Tasks:    6 successful, 6 total
+Cached:    2 cached, 6 total
+  Time:    9.278s 
+
+
+> pepbits-frontend-library@0.0.0 test
+> turbo run test
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running test in 7 packages
+   • Remote caching disabled
+
+@pepbits/icons:test: cache hit, replaying logs e48d032f23177577
+@pepbits/icons:test: 
+@pepbits/icons:test: > @pepbits/icons@0.0.0 test
+@pepbits/icons:test: > vitest run
+@pepbits/icons:test: 
+@pepbits/icons:test: 
+@pepbits/icons:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/icons
+@pepbits/icons:test: 
+@pepbits/icons:test:  ✓ src/icon.test.tsx (19 tests) 160ms
+@pepbits/icons:test: 
+@pepbits/icons:test:  Test Files  1 passed (1)
+@pepbits/icons:test:       Tests  19 passed (19)
+@pepbits/icons:test:    Start at  22:54:16
+@pepbits/icons:test:    Duration  4.04s (transform 237ms, setup 0ms, collect 927ms, tests 160ms, environment 1.41s, prepare 348ms)
+@pepbits/icons:test: 
+@pepbits/tokens:test: cache hit, replaying logs df4083a6f3340d75
+@pepbits/tokens:test: 
+@pepbits/tokens:test: > @pepbits/tokens@0.0.0 test
+@pepbits/tokens:test: > vitest run
+@pepbits/tokens:test: 
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/tokens
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  ✓ src/index.test.ts (3 tests) 22ms
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  Test Files  1 passed (1)
+@pepbits/tokens:test:       Tests  3 passed (3)
+@pepbits/tokens:test:    Start at  22:54:16
+@pepbits/tokens:test:    Duration  1.35s (transform 393ms, setup 0ms, collect 280ms, tests 22ms, environment 0ms, prepare 353ms)
+@pepbits/tokens:test: 
+@pepbits/preferences:test: cache miss, executing 23192ef1dbf37eba
+@pepbits/ui:test: cache miss, executing e621f327451e35b8
+@pepbits/i18n:test: cache miss, executing e73f85af4dff8bc6
+@pepbits/components:test: cache miss, executing a709c1b631f8b498
+@pepbits/components:test: 
+@pepbits/components:test: > @pepbits/components@0.0.0 test
+@pepbits/components:test: > vitest run
+@pepbits/components:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test: > @pepbits/preferences@0.0.0 test
+@pepbits/preferences:test: > vitest run
+@pepbits/preferences:test: 
+@pepbits/ui:test: 
+@pepbits/ui:test: > @pepbits/ui@0.0.0 test
+@pepbits/ui:test: > vitest run
+@pepbits/ui:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test: > @pepbits/i18n@0.0.0 test
+@pepbits/i18n:test: > vitest run
+@pepbits/i18n:test: 
+@pepbits/ui:test: 
+@pepbits/ui:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ui
+@pepbits/ui:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/preferences
+@pepbits/preferences:test: 
+@pepbits/components:test: 
+@pepbits/components:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/components
+@pepbits/components:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/i18n
+@pepbits/i18n:test: 
+@pepbits/preferences:test:  ✓ src/policy.test.ts (24 tests) 60ms
+@pepbits/preferences:test:  ✓ src/preference-defaults.test.ts (3 tests) 5ms
+@pepbits/preferences:test:  ✓ src/react.test.tsx (6 tests) 204ms
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  Test Files  3 passed (3)
+@pepbits/preferences:test:       Tests  33 passed (33)
+@pepbits/preferences:test:    Start at  22:57:02
+@pepbits/preferences:test:    Duration  2.22s (transform 536ms, setup 0ms, collect 780ms, tests 269ms, environment 818ms, prepare 562ms)
+@pepbits/preferences:test: 
+@pepbits/i18n:test:  ✓ src/page-copy-localization.test.tsx (4 tests) 100ms
+@pepbits/i18n:test:  ✓ src/localization.test.tsx (4 tests) 186ms
+@pepbits/ui:test:  ✓ src/form-controls.test.tsx (30 tests) 681ms
+@pepbits/ui:test:  ✓ src/search-select.test.tsx (14 tests) 930ms
+@pepbits/components:test:  ✓ src/page-copy-localization.test.tsx (5 tests) 485ms
+@pepbits/i18n:test:  ✓ src/format.test.ts (12 tests) 79ms
+@pepbits/components:test:  ✓ src/inline-edit.test.tsx (15 tests) 1099ms
+@pepbits/i18n:test:  ✓ src/localization-formatting.test.ts (13 tests) 58ms
+@pepbits/components:test:  ✓ src/stat-card.test.tsx (6 tests) 154ms
+@pepbits/ui:test:  ✓ src/quantity-unit-field.test.tsx (9 tests) 386ms
+@pepbits/ui:test:  ✓ src/segmented.test.tsx (9 tests) 308ms
+@pepbits/i18n:test:  ✓ src/catalogs.test.ts (5 tests) 10ms
+@pepbits/i18n:test:  ✓ src/i18n.test.ts (26 tests) 45ms
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  Test Files  6 passed (6)
+@pepbits/i18n:test:       Tests  64 passed (64)
+@pepbits/i18n:test:    Start at  22:57:02
+@pepbits/i18n:test:    Duration  5.15s (transform 365ms, setup 1.54s, collect 461ms, tests 477ms, environment 4.00s, prepare 867ms)
+@pepbits/i18n:test: 
+@pepbits/components:test:  ✓ src/inline-edit-typed.test.tsx (19 tests) 871ms
+@pepbits/ui:test:  ✓ src/button.test.tsx (5 tests) 203ms
+@pepbits/ui:test:  ✓ src/localization.test.tsx (3 tests) 234ms
+@pepbits/components:test:  ✓ src/overlay.test.tsx (23 tests) 812ms
+@pepbits/ui:test:  ✓ src/avatar.test.tsx (10 tests) 157ms
+@pepbits/ui:test:  ✓ src/badge.test.tsx (12 tests) 121ms
+@pepbits/components:test:  ✓ src/shared-components.test.tsx (11 tests) 620ms
+@pepbits/components:test:  ✓ src/dropdown.test.tsx (11 tests) 650ms
+@pepbits/ui:test:  ✓ src/skeleton.test.tsx (4 tests) 127ms
+@pepbits/ui:test:  ✓ src/scanner-input.test.tsx (2 tests) 75ms
+@pepbits/components:test:  ✓ src/pagination.test.tsx (9 tests) 386ms
+@pepbits/ui:test:  ✓ src/cn.test.ts (9 tests) 32ms
+@pepbits/ui:test:  ✓ src/option-filter.test.tsx (13 tests) 62ms
+@pepbits/ui:test: 
+@pepbits/ui:test:  Test Files  12 passed (12)
+@pepbits/ui:test:       Tests  120 passed (120)
+@pepbits/ui:test:    Start at  22:57:02
+@pepbits/ui:test:    Duration  10.48s (transform 668ms, setup 2.23s, collect 2.02s, tests 3.32s, environment 7.08s, prepare 1.41s)
+@pepbits/ui:test: 
+@pepbits/components:test:  ✓ src/states.test.tsx (24 tests) 423ms
+@pepbits/components:test:  ✓ src/reference-data.test.tsx (17 tests) 303ms
+@pepbits/components:test:  ✓ src/recovery-notice.test.tsx (5 tests) 347ms
+@pepbits/components:test:  ✓ src/presentation.test.tsx (3 tests) 184ms
+@pepbits/components:test:  ✓ src/card.test.tsx (6 tests) 176ms
+@pepbits/components:test:  ✓ src/tabs.test.tsx (3 tests) 190ms
+@pepbits/components:test:  ✓ src/error-mapper.test.ts (32 tests) 12ms
+@pepbits/components:test: 
+@pepbits/components:test:  Test Files  15 passed (15)
+@pepbits/components:test:       Tests  189 passed (189)
+@pepbits/components:test:    Start at  22:57:02
+@pepbits/components:test:    Duration  15.05s (transform 911ms, setup 2.57s, collect 3.56s, tests 6.71s, environment 8.83s, prepare 1.65s)
+@pepbits/components:test: 
+
+ Tasks:    6 successful, 6 total
+Cached:    2 cached, 6 total
+  Time:    17.543s 
+
+
+> pepbits-frontend-library@0.0.0 build
+> turbo run build
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running build in 7 packages
+   • Remote caching disabled
+
+ WARNING  No tasks were executed as part of this run.
+
+ Tasks:    0 successful, 0 total
+Cached:    0 cached, 0 total
+  Time:    24ms 
+

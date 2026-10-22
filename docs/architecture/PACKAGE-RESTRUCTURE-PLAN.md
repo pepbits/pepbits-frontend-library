@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **phases 0 and 1 implemented; later phases remain a proposal.** Revised 22 October 2026 against `main` `21a3f0f`. This plan replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. See [Phase 0 status](#phase-0-status) and [Phase 1 status](#phase-1-status). Phase 1 follows the owner's copy-only decision; subsequent moves, consumer migration and open questions remain future work.
+Status: **phases 0, 1 and 2 implemented; later phases remain a proposal.** Revised 22 October 2026 against `main` `d8ddf36`. This plan replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. See [Phase 0 status](#phase-0-status), [Phase 1 status](#phase-1-status) and [Phase 2 status](#phase-2-status). Phases 1 and 2 follow the owner's copy-only decision; subsequent moves, shims, consumer migration and open questions remain future work.
 
 ## Summary
 
@@ -36,14 +36,14 @@ pepbits-frontend-library/
 ├── packages/                     THE LIBRARY: reusable only, published as @pepbits/*
 │   ├── tokens/                   colors, typography, spacing, radius, motion, themes, fonts
 │   ├── icons/
-│   ├── i18n/                     host catalogs, core messages, formatters, RTL; future LocaleProvider
+│   ├── i18n/                     host catalogs, core messages, formatters, RTL; ./react localization
 │   ├── preferences/              schema, defaults, tenant-lock resolver, PreferenceHost, themes, shortcuts
 │   ├── ui/                       primitives: button, input, select, search-select, checkbox, radio,
-│   │                             segmented, date-time, quantity-unit-field, scanner-input, otp,
+│   │                             segmented, date-time, quantity-unit-field, scanner-input, option-filter, otp,
 │   │                             password, field, badge, avatar, skeleton, nav-link
 │   ├── components/               table, pagination, card, card-grid, stat-card, tabs, dropdown,
 │   │                             dialog, drawer, toast, calendar, stepper, empty-state, data-value,
-│   │                             inline-edit, option-filter, reference-data, form-error-summary,
+│   │                             inline-edit, reference-data, form-error-summary,
 │   │                             recovery-notice, print-document
 │   ├── patterns/                 form-layout, filter-bar, record-panels, csv-import, approvals,
 │   │                             drafts, wizard, label-printing, identity-devices, spreadsheet,
@@ -208,9 +208,11 @@ Demo apps are never published, so products cannot depend on them. Product source
 | Today | Target |
 | --- | --- |
 | `desktop-clients/packages/tokens` | `packages/tokens` |
-| `ops-ui` primitives (button, inputs, badge, avatar, skeleton…) | `packages/ui` |
-| `ops-ui` composites (table, card, tabs, overlay, calendar, pagination…) | `packages/components` |
-| `ops-ui` localization and messages | `packages/i18n` |
+| `ops-ui` primitives (button, inputs, choice/date/quantity/scanner controls, option-filter, selection, badge, avatar, skeleton, nav-link, cn) | Copied to `packages/ui` in phase 2; `formatCurrency` omitted |
+| `ops-ui` composites (table, cards, tabs, dropdown, overlay, calendar, pagination, presentation, values, editing, references, printing, recovery/error mapping) | Copied to `packages/components` in phase 2; pure error-shape mapping stays with recovery |
+| `ops-ui` localization context | Copied to `packages/i18n` `./react` in phase 2; English core/literal fallback, host-supplied catalogs |
+| `ops-ui` generated `messages.en.ts` | Not copied; product catalogs remain host-owned |
+| `ops-ui` source-controls/source-dialog | Not ported: imported reference-design parity controls and their gallery demos |
 | `erp-config` preferences, themes, shortcuts, formatting, i18n | `packages/preferences`, `packages/i18n` |
 | `erp-config` page templates, navigation types, entity schemas | `packages/page-engines`, `packages/shell` |
 | `erp-config` product definitions (clinical, pharmacy, RCM, school…) | the matching `demo-apps/*` |
@@ -247,7 +249,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 2. Port one package at a time, leaves first. After each port the full gate passes and the change merges on its own.
 3. Remove the old layout and compatibility shims only when nothing uses them.
 
-**Phase 1 copies code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phase 1.
+**Phases 1 and 2 copy code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phases 1 and 2.
 
 ## Order of work
 
@@ -255,7 +257,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | --- | --- | --- |
 | 0. Foundation | Add a new, independent npm workspace at the repository root covering only `packages/*`, `demo-apps/*` and `tooling/*`, with its own lockfile, `turbo.json`, `tsconfig.base.json` and shared TypeScript settings in `tooling/tsconfig`. Add the dependency-boundary check. `desktop-clients/` stays a separate npm project and is not edited. See [Phase 0 status](#phase-0-status). | None |
 | 1. Foundations | Copy `tokens`; extract independent `icons`, `i18n`, `preferences` mechanisms from existing sources. See [Phase 1 status](#phase-1-status). | No existing application changes; new host APIs |
-| 2. UI | Split `ops-ui` into `ui` and `components`; `@pepbits/ops-ui` becomes a shim | None |
+| 2. UI | Copy `ops-ui` into `ui` and `components`, with localization in `i18n/react`; no shim or consumer migration in this increment. See [Phase 2 status](#phase-2-status). | No existing application changes; host catalogs/formatters required for new imports |
 | 3. Services | `data`, `platform` (from `auth`, `platform-ports`, generic `erp-data`), `ai` | None |
 | 4. Patterns and engines | Generic parts of `erp-screens`, `erp-config` and `registration-wizard` → `patterns` and `page-engines` | None |
 | 5. Shell | `erp-shell` + `workspace-core` → `shell`; module contract replaces `reference-host` | None |
@@ -300,9 +302,27 @@ Intentionally excluded: generated product catalogs, product/module registries or
 
 Isolation: phase 1 copies sources; it does not modify `desktop-clients/`, `dummy-api/`, `Jenkinsfile`, `deploy/`, `run.sh`, `run_all.sh` or `.github/`. New packages have no dependencies on those trees. Root installation, boundaries, tooling tests, four package typechecks/tests, documentation and protected-path checks are recorded in the [phase 1 delivery record](../releases/unreleased/restructure-phase-1-2026-10-22.md). The root build command succeeds with zero build tasks because these packages expose source.
 
+### Phase 2 status
+
+Implemented 22 October 2026 alongside the existing workspace, based on `d8ddf36`. Two additional source-export packages at version `0.0.0` have single root barrels, React library TypeScript settings, unit/jsdom tests and integration guides:
+
+| Added or extended | Public surface |
+| --- | --- |
+| [ui](../../packages/ui/README.md) | Fourteen primitive source groups: cn/compact formatting, buttons, fields, choices, dates, quantities, scanners, option filtering, search selection, segmented choices, badges, avatars, skeletons and navigation |
+| [components](../../packages/components/README.md) | Seventeen composite source groups: cards/statistics, tabs/dropdowns, overlays, table/pagination/calendar, presentation, values, editing, references, form errors, printing and failure/recovery descriptors |
+| [i18n/react](../../packages/i18n/README.md#react-localization-and-differences-from-ops-ui) | Controlled localization provider/hook, localized text, alias provider and types; English core then literal fallback, original interpolation/date-time defaults |
+
+The requested implementation split needs no adjustment. `option-filter` belongs to `ui` so both selection layers can use it. Combined component/localization test files are split or hosted in the higher consuming layer, preserving boundaries. All icons already exist in the phase 1 icon surface. `presentationFromPreferences` projects effective preferences without persistence; table management still overrides local props, and the host connects the controlled pagination page size and lock/update guard.
+
+Decisions: `formatCurrency` is omitted; hosts supply selected formatters. The generated product catalog is not copied; unchanged UI/recovery keys require host catalogs. Source controls and source dialog are excluded after inspecting their imported reference-design consumers and matching gallery demo/catalog. Error mapping consumes a plain error shape, not HTTP responses/envelopes, so it and recovery remain in components. Component markup, classes, keyboard/ARIA, RTL and reduced-motion behavior are preserved; strict TypeScript annotations erase at runtime. API differences and required Tailwind sources/tokens CSS are documented in both package guides.
+
+Verification: 26 of 28 ops-ui test files are ported (311 of 316 expanded cases, including adapted host-catalog/formatter fixtures); source controls (3 cases) and source dialog (2 cases) are intentionally excluded. Six new localization/presentation cases bring the root suite to 428 tests in 38 files across six packages. The separate 16 tooling tests, six typechecks, boundaries and documentation validation pass locally. Build reports zero executable tasks because these are source packages. See the [phase 2 record](../releases/unreleased/restructure-phase-2-2026-10-22.md) for exact commands, failures/corrections, counts and source identity.
+
+Isolation: this is a copy-only port. All protected sources and deployment files remain unchanged, with no new imports back into the original workspace. No shim, consumer rewiring, catalog/example regeneration, publication, commit, push or deployment is included.
+
 ## Gate for every port
 
-For the independent phase 1 copy, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
+For the independent phase 1 and phase 2 copies, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
 
 Each port is one reviewable change and passes, from the workspace root:
 

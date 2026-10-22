@@ -1,15 +1,18 @@
 {
-  "extends": "@pepbits/tsconfig/base.json",
+  "extends": "@pepbits/tsconfig/react-library.json",
   "compilerOptions": {
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "types": [
-      "node"
+      "node",
+      "react"
     ],
-    "rootDir": "."
+    "rootDir": ".",
+    "outDir": "dist"
   },
   "include": [
     "src",
-    "vitest.config.ts"
+    "vitest.config.ts",
+    "vitest.setup.ts"
   ]
 }

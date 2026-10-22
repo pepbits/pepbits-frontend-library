@@ -1,0 +1,8 @@
+PASS 32 implementation modules: emitted JavaScript matches the original after documented import, currency removal, core catalog and additive helper adjustments; comments and type-only assertions erase
+PASS product catalog and source-parity controls are absent
+PASS source manifest: 148 hashes match the working tree
+PASS git diff --stat -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github: exit 0, 0 output bytes
+PASS git status --short desktop-clients: exit 0, 0 output bytes
+PASS git status --short -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github: exit 0, 0 output bytes
+PASS git diff --check: exit 0, 0 output bytes
+PASS grep -rn AED\|lucide-react\|@pepbits/ops-ui\|desktop-clients packages/ui/src packages/components/src: exit 1 (no matches), 0 output bytes; no exceptions

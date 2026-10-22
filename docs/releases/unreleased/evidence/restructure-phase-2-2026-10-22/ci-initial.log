@@ -1,0 +1,187 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 6 package(s), 0 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 7.544663
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 15.776183
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 2.860461
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 3.163963
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 8.42806
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 8.047998
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 3.097882
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 8 - demo apps use any layer but not each other
+  ---
+  duration_ms: 2.807761
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 9 - pre-restructure packages are rejected
+  ---
+  duration_ms: 3.194113
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 10 - relative imports may not leave the package
+  ---
+  duration_ms: 3.000761
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 11 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 3.982869
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 12 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 3.522184
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 13 - testing is dev-only
+  ---
+  duration_ms: 5.859921
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 14 - tooling packages are devDependencies only
+  ---
+  duration_ms: 3.985919
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 15 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 3.555266
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 16 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.385743
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 281.75688
+
+> pepbits-frontend-library@0.0.0 typecheck
+> turbo run typecheck
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running typecheck in 7 packages
+   • Remote caching disabled
+
+@pepbits/icons:typecheck: cache miss, executing 0bb6964631c3c244
+@pepbits/i18n:typecheck: cache miss, executing b9bbd5316464f2fd
+@pepbits/tokens:typecheck: cache miss, executing 9c4d78e5e9e4d1aa
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/preferences:typecheck: cache miss, executing fa7f6566057945f3
+@pepbits/ui:typecheck: cache miss, executing d4076ce943f926de
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: > @pepbits/ui@0.0.0 typecheck
+@pepbits/ui:typecheck: > tsc --noEmit -p .
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: src/avatar.tsx(10,34): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: src/avatar.tsx(10,34): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: src/avatar.tsx(11,11): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: src/avatar.tsx(11,11): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: src/avatar.tsx(11,25): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: src/avatar.tsx(11,25): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: src/avatar.tsx(29,3): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+@pepbits/ui:typecheck:   Type 'undefined' is not assignable to type 'string'.
+@pepbits/ui:typecheck: src/form-controls.test.tsx(189,12): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: src/option-filter.tsx(37,10): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: src/search-select.test.tsx(78,43): error TS2322: Type '({ value: string; label: string; description: string; } | { disabled: boolean; value?: string | undefined; label?: string | undefined; description?: string | undefined; } | undefined)[]' is not assignable to type 'SearchSelectOption[]'.
+@pepbits/ui:typecheck:   Type '{ value: string; label: string; description: string; } | { disabled: boolean; value?: string | undefined; label?: string | undefined; description?: string | undefined; } | undefined' is not assignable to type 'SearchSelectOption'.
+@pepbits/ui:typecheck:     Type 'undefined' is not assignable to type 'SearchSelectOption'.
+@pepbits/ui:typecheck: src/segmented.test.tsx(72,25): error TS2322: Type '{ value: string; label: string; } | undefined' is not assignable to type 'SegmentedOption'.
+@pepbits/ui:typecheck:   Type 'undefined' is not assignable to type 'SegmentedOption'.
+@pepbits/ui:typecheck: src/segmented.test.tsx(72,35): error TS2322: Type '{ disabled: true; value?: string | undefined; label?: string | undefined; }' is not assignable to type 'SegmentedOption'.
+@pepbits/ui:typecheck:   Types of property 'value' are incompatible.
+@pepbits/ui:typecheck:     Type 'string | undefined' is not assignable to type 'string'.
+@pepbits/ui:typecheck:       Type 'undefined' is not assignable to type 'string'.
+@pepbits/ui:typecheck: src/segmented.tsx(49,14): error TS18048: 'next' is possibly 'undefined'.
+@pepbits/ui:typecheck: src/segmented.tsx(53,68): error TS18048: 'next' is possibly 'undefined'.
+@pepbits/ui:typecheck: npm ERR! Lifecycle script `typecheck` failed with error: 
+@pepbits/ui:typecheck: npm ERR! Error: command failed 
+@pepbits/ui:typecheck: npm ERR!   in workspace: @pepbits/ui@0.0.0 
+@pepbits/ui:typecheck: npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ui 
+@pepbits/ui#typecheck:  ERROR  command (/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ui) /usr/bin/npm run typecheck exited (1)
+
+ Tasks:    4 successful, 5 total
+Cached:    0 cached, 5 total
+  Time:    7.352s 
+Failed:    @pepbits/ui#typecheck
+
+ ERROR  run failed: command  exited (1)

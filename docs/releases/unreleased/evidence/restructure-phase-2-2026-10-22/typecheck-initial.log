@@ -1,0 +1,48 @@
+
+> pepbits-frontend-library@0.0.0 typecheck
+> turbo run typecheck
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running typecheck in 7 packages
+   • Remote caching disabled
+
+@pepbits/icons:typecheck: cache hit, replaying logs 0bb6964631c3c244
+@pepbits/i18n:typecheck: cache hit, replaying logs b9bbd5316464f2fd
+@pepbits/tokens:typecheck: cache hit, replaying logs 9c4d78e5e9e4d1aa
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/ui:typecheck: cache miss, executing 8968f8263977d9d7
+@pepbits/preferences:typecheck: cache hit, replaying logs fa7f6566057945f3
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: > @pepbits/ui@0.0.0 typecheck
+@pepbits/ui:typecheck: > tsc --noEmit -p .
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: src/form-controls.test.tsx(189,12): error TS2532: Object is possibly 'undefined'.
+@pepbits/ui:typecheck: npm ERR! Lifecycle script `typecheck` failed with error: 
+@pepbits/ui:typecheck: npm ERR! Error: command failed 
+@pepbits/ui:typecheck: npm ERR!   in workspace: @pepbits/ui@0.0.0 
+@pepbits/ui:typecheck: npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ui 
+@pepbits/ui#typecheck:  ERROR  command (/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ui) /usr/bin/npm run typecheck exited (1)
+
+ Tasks:    4 successful, 5 total
+Cached:    4 cached, 5 total
+  Time:    5.171s 
+Failed:    @pepbits/ui#typecheck
+
+ ERROR  run failed: command  exited (1)
