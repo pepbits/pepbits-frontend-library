@@ -1,0 +1,15 @@
+{
+  "name": "settle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Settle — hospital patient billing, receipts, deposits and approvals",
+  "scripts": {
+    "setup": "npm --prefix backend install && npm --prefix frontend install",
+    "dev": "node scripts/run.mjs dev",
+    "build": "npm --prefix frontend run build",
+    "start": "node scripts/run.mjs start",
+    "seed": "npm --prefix backend run seed",
+    "typecheck": "npm --prefix frontend run typecheck"
+  },
+  "engines": { "node": ">=18.18" }
+}

@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Lagoon palette: porcelain surfaces, deep lagoon ink, lagoon teal for action,
+ * turmeric for work in progress and rose for problems.
+ */
+:root {
+  --bg: 243 246 245;
+  --surface: 255 255 255;
+  --sunken: 236 241 240;
+  --ink: 18 36 43;
+  --ink-2: 78 98 104;
+  --ink-3: 128 145 150;
+  --line: 218 226 224;
+  --line-strong: 190 202 200;
+  --brand: 11 122 111;
+  --brand-strong: 7 96 87;
+  --brand-soft: 222 241 237;
+  --brand-ink: 255 255 255;
+  --accent: 214 152 22;
+  --accent-soft: 251 241 216;
+  --accent-ink: 110 72 0;
+  --danger: 196 50 74;
+  --danger-soft: 251 232 236;
+  --ok: 30 132 74;
+  --ok-soft: 224 243 231;
+  --rail: 16 40 46;
+  --rail-2: 26 56 63;
+  --rail-ink: 214 230 228;
+  --shadow: 16 40 46;
+  --header-h: 56px;
+  --footer-h: 32px;
+  --rail-w: 64px;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 11 21 24;
+  --surface: 17 30 34;
+  --sunken: 13 24 28;
+  --ink: 226 236 234;
+  --ink-2: 160 178 180;
+  --ink-3: 110 129 132;
+  --line: 36 55 60;
+  --line-strong: 56 78 84;
+  --brand: 52 190 170;
+  --brand-strong: 92 212 194;
+  --brand-soft: 17 56 54;
+  --brand-ink: 6 30 28;
+  --accent: 236 182 64;
+  --accent-soft: 58 44 14;
+  --accent-ink: 248 214 140;
+  --danger: 240 104 122;
+  --danger-soft: 66 24 32;
+  --ok: 92 200 136;
+  --ok-soft: 18 52 34;
+  --rail: 8 17 20;
+  --rail-2: 20 36 41;
+  --rail-ink: 200 220 218;
+  --shadow: 0 0 0;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-bg font-sans text-[14px] leading-5 text-ink antialiased;
+    font-feature-settings: 'tnum' 0;
+  }
+  ::selection {
+    background: rgb(var(--brand) / 0.22);
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--brand));
+    outline-offset: 2px;
+  }
+  input[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 0.55;
+    cursor: pointer;
+  }
+  .dark input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--line-strong)) transparent;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Base control surface shared by every input type. */
+  .control {
+    @apply w-full rounded-lg border border-line bg-surface text-ink placeholder:text-ink-3
+      transition-[border-color,box-shadow] duration-150
+      hover:border-line-strong focus:border-brand focus:outline-none focus:ring-[3px] focus:ring-brand/15
+      disabled:cursor-not-allowed disabled:bg-sunken disabled:text-ink-3;
+  }
+  .control[aria-invalid='true'] {
+    @apply border-danger focus:border-danger focus:ring-danger/15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .print-hide {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}

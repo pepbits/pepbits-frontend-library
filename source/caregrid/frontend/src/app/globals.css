@@ -1,0 +1,67 @@
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-sans/700.css';
+@import '@fontsource/ibm-plex-sans-condensed/500.css';
+@import '@fontsource/ibm-plex-sans-condensed/600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* The whole interface scales with the screen: ~13px on tablets, ~14.5px on 13" laptops, ~15px on 15", 16px on 16" and larger. */
+html {
+  font-size: clamp(13px, calc(0.42vw + 8.9px), 16px);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body {
+  @apply bg-canvas text-text font-sans;
+  font-feature-settings: 'tnum' 1, 'cv01' 1;
+}
+
+:focus-visible { outline: 2px solid #E8A33D; outline-offset: 2px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+}
+
+/* thin, quiet scrollbars */
+* { scrollbar-width: thin; scrollbar-color: #C5D8DA transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #C5D8DA; border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+
+@layer components {
+  .panel { @apply bg-white rounded-xl border border-line; }
+  .panel-head { @apply flex items-center justify-between gap-3 px-4 pt-3.5 pb-2; }
+  .panel-title { @apply text-[0.95rem] font-semibold text-ink; }
+  .muted { @apply text-muted; }
+
+  .btn { @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3 h-9 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap; }
+  .btn-primary { @apply btn bg-teal-600 text-white hover:bg-teal-700 active:bg-teal-800; }
+  .btn-ink { @apply btn bg-ink text-white hover:bg-ink-800; }
+  .btn-ghost { @apply btn text-ink hover:bg-ink-100; }
+  .btn-outline { @apply btn border border-line bg-white text-ink hover:border-ink-300 hover:bg-canvas; }
+  .btn-danger { @apply btn bg-crimson-600 text-white hover:bg-crimson-700; }
+  .btn-sm { @apply h-8 px-2.5 text-[0.8rem]; }
+  .btn-xs { @apply h-7 px-2 text-xs rounded-md; }
+
+  .field { @apply w-full h-9 rounded-lg border border-line bg-white px-3 text-sm text-text placeholder:text-ink-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-100 outline-none transition; }
+  .label { @apply block text-xs font-medium text-muted mb-1; }
+
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2.5 h-7 text-xs font-medium text-ink hover:border-ink-300 transition-colors whitespace-nowrap; }
+  .chip-on { @apply border-ink bg-ink text-white hover:border-ink; }
+
+  .seg { @apply inline-flex rounded-lg bg-ink-100 p-0.5; }
+  .seg > button { @apply px-2.5 h-7 rounded-md text-xs font-medium text-ink-600 transition; }
+  .seg > button[data-on='true'] { @apply bg-white text-ink shadow-sm; }
+
+  .kbd { @apply inline-flex items-center justify-center min-w-[1.4rem] h-5 px-1 rounded border border-ink-200 bg-white text-[0.68rem] font-medium text-ink-600; }
+  .tabnum { font-variant-numeric: tabular-nums; }
+}
+
+/* Hatched patterns used on the timeline */
+.hatch-block { background-image: repeating-linear-gradient(135deg, rgba(208,74,88,0.18) 0 6px, rgba(208,74,88,0.05) 6px 12px); }
+.hatch-urgent { background-image: repeating-linear-gradient(135deg, rgba(232,163,61,0.22) 0 4px, rgba(232,163,61,0.06) 4px 9px); }
+.dots-walkin { background-image: radial-gradient(rgba(31,122,109,0.28) 1px, transparent 1.2px); background-size: 6px 6px; }
+.grid-hours { background-image: linear-gradient(to right, rgba(15,46,53,0.07) 1px, transparent 1px); }

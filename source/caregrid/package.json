@@ -1,0 +1,16 @@
+{
+  "name": "caregrid",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Clinical appointment scheduling and resource planning: Next.js + Tailwind + TypeScript frontend, Express + SQL backend",
+  "scripts": {
+    "setup": "npm install && npm --prefix backend install && npm --prefix frontend install",
+    "dev": "concurrently -n api,web -c teal,yellow \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "seed": "npm --prefix backend run seed",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "start": "concurrently -n api,web \"npm --prefix backend start\" \"npm --prefix frontend start\""
+  },
+  "devDependencies": {
+    "concurrently": "9.1.0"
+  }
+}

@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --sidebar-collapsed: 68px;
+    --sidebar-expanded: 252px;
+    --header-h: 60px;
+    --footer-h: 34px;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-mist text-ink antialiased;
+    font-feature-settings: 'tnum' 1, 'cv11' 1;
+    font-variant-numeric: tabular-nums;
+  }
+  ::selection { background: #D2E8E2; }
+  :focus-visible { outline: 2px solid #1F8A78; outline-offset: 2px; border-radius: 6px; }
+  input, select, textarea, button { font: inherit; }
+  input[type='number']::-webkit-inner-spin-button { opacity: .4; }
+  * { scrollbar-width: thin; scrollbar-color: #C4D1CE transparent; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+}
+
+@layer components {
+  .panel { @apply bg-white border border-line rounded-panel; }
+  .label { @apply text-[12px] font-medium text-ink-soft; }
+  .input {
+    @apply h-9 w-full rounded-lg border border-line bg-white px-3 text-[14px] text-ink placeholder:text-ink-mute
+      transition-colors hover:border-line-strong focus:border-pine-500 focus:outline-none focus:ring-2 focus:ring-pine-100 disabled:bg-mist disabled:text-ink-mute;
+  }
+  textarea.input { @apply h-auto py-2 leading-relaxed; }
+  .tbl { @apply w-full text-[13.5px] border-separate border-spacing-0; }
+  .tbl thead th {
+    @apply sticky top-0 z-[1] bg-white text-left text-[12px] font-medium text-ink-mute px-3 py-2.5 border-b border-line whitespace-nowrap;
+  }
+  .tbl tbody td { @apply px-3 py-2.5 border-b border-line/70 align-middle; }
+  .tbl tbody tr { @apply transition-colors; }
+  .tbl tbody tr.row-link { @apply cursor-pointer hover:bg-pine-50/60; }
+  .tbl .num { @apply text-right tabular-nums whitespace-nowrap; }
+  .scroll-area { @apply overflow-auto overscroll-contain; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[12px] font-medium leading-5 whitespace-nowrap; }
+}
+
+@layer utilities {
+  .h-viewport { height: calc(100dvh - var(--header-h) - var(--footer-h)); }
+  .min-h-viewport { min-height: calc(100dvh - var(--header-h) - var(--footer-h)); }
+  .text-balance { text-wrap: balance; }
+}
+
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+}
