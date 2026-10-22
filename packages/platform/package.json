@@ -1,0 +1,27 @@
+{
+  "name": "@pepbits/platform",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./auth": "./src/auth.ts",
+    "./devices": "./src/devices.ts",
+    "./windows": "./src/windows.tsx",
+    "./navigation": "./src/navigation.tsx",
+    "./monitoring": "./src/monitoring.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@pepbits/tsconfig": "0.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "dependencies": {
+    "@pepbits/data": "0.0.0"
+  }
+}

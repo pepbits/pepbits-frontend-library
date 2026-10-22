@@ -1,0 +1,9 @@
+PASS 12 implementation module comparisons: original emitted JS after documented imports, error extraction, event rename and identity exclusion; type-only annotations erase
+PASS session emitted JS: only explicit URL/fetch/provider dependencies, configured request factory, generic browser namespace and account exclusion changes
+PASS source manifest: 186 hashes match the working tree
+PASS git diff --stat -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github: exit 0, 0 output bytes
+PASS git status --short desktop-clients: exit 0, 0 output bytes
+PASS git status --short -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github: exit 0, 0 output bytes
+PASS git diff --check: exit 0, 0 output bytes
+PASS grep -rnE @pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-|reference-)|desktop-clients|localhost|AED packages/data/src packages/platform/src: exit 1 (no matches), 0 output bytes; no exceptions
+PASS excluded product modules, fixtures, identity capture and demo accounts are absent

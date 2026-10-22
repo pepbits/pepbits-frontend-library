@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **phases 0, 1 and 2 implemented; later phases remain a proposal.** Revised 22 October 2026 against `main` `d8ddf36`. This plan replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. See [Phase 0 status](#phase-0-status), [Phase 1 status](#phase-1-status) and [Phase 2 status](#phase-2-status). Phases 1 and 2 follow the owner's copy-only decision; subsequent moves, shims, consumer migration and open questions remain future work.
+Status: **phases 0–3 implemented; later phases remain a proposal.** Revised 22 October 2026 against `main` `e18c01d`. This plan replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. See [Phase 0 status](#phase-0-status), [Phase 1 status](#phase-1-status), [Phase 2 status](#phase-2-status) and [Phase 3 status](#phase-3-status). Phases 1–3 follow the owner's copy-only decision; subsequent moves, shims, consumer migration and open questions remain future work.
 
 ## Summary
 
@@ -53,8 +53,8 @@ pepbits-frontend-library/
 │   │                             workflow, scheduling, entity-360
 │   ├── shell/                    app-shell, header, sidebar, footer, workspace (tabs, split, detach),
 │   │                             command-palette, help, session-lock, navigation, context
-│   ├── data/                     API client, structured errors, generic adapter contracts, cache
-│   ├── platform/                 auth, drafts, monitoring (Sentinel), export, devices, windows
+│   ├── data/                     records, drafts/policy, imports, approvals, panels, structured failures
+│   ├── platform/                 auth, monitoring (Sentinel), export, devices, navigation, windows
 │   ├── ai/                       config, client, ui
 │   └── testing/                  render helpers, a11y checks, preference fixtures (dev only)
 │
@@ -119,8 +119,11 @@ demo-apps/healthcare/
 ## Dependency rules
 
 ```
-tokens, icons → i18n, preferences → ui → components → patterns → page-engines → shell → demo-apps
-                                       data, platform ─────────┘
+tokens, icons → i18n, preferences → ui → components → patterns → page-engines → shell → ai → demo-apps
+                     └────────→ data → platform ─────┘
+
+Arrows show lower-to-higher layering; the table lists exact allowed imports.
+Testing may import every layer and remains dev-only for consumers.
 ```
 
 | Layer | May import from |
@@ -130,11 +133,12 @@ tokens, icons → i18n, preferences → ui → components → patterns → page-
 | `preferences` | `tokens`, `i18n` |
 | `ui` | `tokens`, `icons`, `i18n`, `preferences` |
 | `components` | everything above |
-| `data`, `platform` | `i18n`, `preferences` |
+| `data` | `i18n`, `preferences` |
+| `platform` | `i18n`, `preferences`, `data` |
 | `patterns` | everything above, plus `data` and `platform` contracts |
 | `page-engines` | everything above |
 | `shell` | everything above |
-| `ai` | foundations, `ui`, `components`, `data`, `platform` |
+| `ai` | foundations (`tokens`, `icons`, `i18n`, `preferences`), `ui`, `components`, `data`, `platform`, `patterns`, `page-engines`, `shell` |
 | `testing` | every layer except itself; usable by others only from tests and stories, as a devDependency |
 | `demo-apps/*` | any `@pepbits/*` public export; never another demo, never a `src/` deep path |
 | `mock-api` | nothing from the frontend |
@@ -216,7 +220,8 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-config` preferences, themes, shortcuts, formatting, i18n | `packages/preferences`, `packages/i18n` |
 | `erp-config` page templates, navigation types, entity schemas | `packages/page-engines`, `packages/shell` |
 | `erp-config` product definitions (clinical, pharmacy, RCM, school…) | the matching `demo-apps/*` |
-| `erp-data` client, errors, CSV import, drafts, generic records | `packages/data`, `packages/platform` |
+| `erp-data` records/editor, shared drafts/center, CSV import, approvals, record panels; `erp-config` draft policy | Copied to `packages/data` in phase 3; host request callbacks, structured failures and additive volatile memory transport |
+| `erp-data` report-data and mock datasets | Not copied: branch metrics and registry-driven product data belong in phase 6 demos |
 | `erp-data` product adapters (clinic billing, triage, OP registration…) | the matching `demo-apps/*/adapters` |
 | `erp-screens` generic (records, worklist, imports, approvals, drafts, inbox, reports, dashboard, page renderer) | `packages/patterns`, `packages/page-engines` |
 | `erp-screens` DCP designer, label printing, device and identity screens, spreadsheet | `packages/patterns` |
@@ -225,8 +230,9 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-screens` other product screens (clinical, consultation, billing, OP registration, care pages) | `demo-apps/healthcare` |
 | `erp-screens` page library | `demo-apps/showcase` |
 | `erp-shell`, `workspace-core` | `packages/shell` |
-| `auth`, `platform-ports` | `packages/platform` |
-| `ai-config`, `ai-client`, `ai-ui` | `packages/ai` |
+| `auth` session, recovery, Sentinel | Copied to `packages/platform` in phase 3; host URL/fetch, generic browser namespace, no demo accounts; `RequestFailure` extracted to data |
+| `platform-ports` devices, navigation, windows | Generic ports copied to `packages/platform` in phase 3; patient identity capture and School host routing excluded |
+| `ai-config`, `ai-client`, `ai-ui` | `packages/ai` in phase 5 after shell: client sources use workspace context and assistant UI uses shell |
 | `registration-wizard` | generic stepper and wizard → `packages/patterns/wizard`; Orvia screens → `demo-apps/onboarding` |
 | `reference-host` | replaced by demo-app routing; the module contract moves to `packages/shell` |
 | `reference-healthcare-suite`, `lis1`, `lis2`, `ris1`, `diagnostics`, `pharmacy`, `medband`, `medslot`, `rcm`, `surgisuite`, `teleconsult`, `quality` | `demo-apps/healthcare/src/modules/*` |
@@ -249,7 +255,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 2. Port one package at a time, leaves first. After each port the full gate passes and the change merges on its own.
 3. Remove the old layout and compatibility shims only when nothing uses them.
 
-**Phases 1 and 2 copy code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phases 1 and 2.
+**Phases 1–3 copy code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phases 1–3.
 
 ## Order of work
 
@@ -258,9 +264,9 @@ Demo apps are never published, so products cannot depend on them. Product source
 | 0. Foundation | Add a new, independent npm workspace at the repository root covering only `packages/*`, `demo-apps/*` and `tooling/*`, with its own lockfile, `turbo.json`, `tsconfig.base.json` and shared TypeScript settings in `tooling/tsconfig`. Add the dependency-boundary check. `desktop-clients/` stays a separate npm project and is not edited. See [Phase 0 status](#phase-0-status). | None |
 | 1. Foundations | Copy `tokens`; extract independent `icons`, `i18n`, `preferences` mechanisms from existing sources. See [Phase 1 status](#phase-1-status). | No existing application changes; new host APIs |
 | 2. UI | Copy `ops-ui` into `ui` and `components`, with localization in `i18n/react`; no shim or consumer migration in this increment. See [Phase 2 status](#phase-2-status). | No existing application changes; host catalogs/formatters required for new imports |
-| 3. Services | `data`, `platform` (from `auth`, `platform-ports`, generic `erp-data`), `ai` | None |
+| 3. Services | Copy generic `erp-data` plus draft policy → `data`; `auth` and generic `platform-ports` → `platform`. See [Phase 3 status](#phase-3-status). No AI port. | No existing application changes; new host API configuration |
 | 4. Patterns and engines | Generic parts of `erp-screens`, `erp-config` and `registration-wizard` → `patterns` and `page-engines` | None |
-| 5. Shell | `erp-shell` + `workspace-core` → `shell`; module contract replaces `reference-host` | None |
+| 5. Shell and AI | `erp-shell` + `workspace-core` → `shell`; module contract replaces `reference-host`. Then port `ai-config`, `ai-client`, `ai-ui` → `ai`. `ai-client/src/sources.tsx` uses workspace-core and `ai-ui/src/assistant-panel.tsx` uses erp-shell, both becoming shell, so AI must follow it. | None |
 | 6. Demo apps | `showcase` first, then one demo per change: healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Product code leaves `erp-screens`, `erp-config` and `erp-data`. `dummy-api` → `mock-api`. | Yes: routes and hosts change |
 | 7. Publishing and consumers | Changesets and a registry publish job; Healthcare, ERP, School and Platform move from vendored archives to registry versions one at a time, in their own repositories under their own rules. Healthcare also takes `ClinicalPatientWorkspace` into `frontend/packages/healthcare-ui`. | Per consumer |
 | 8. Removal | Delete shims and the empty `desktop-clients/` tree | None |
@@ -320,9 +326,28 @@ Verification: 26 of 28 ops-ui test files are ported (311 of 316 expanded cases, 
 
 Isolation: this is a copy-only port. All protected sources and deployment files remain unchanged, with no new imports back into the original workspace. No shim, consumer rewiring, catalog/example regeneration, publication, commit, push or deployment is included.
 
+### Phase 3 status
+
+Implemented 22 October 2026 alongside the existing workspace, based on `e18c01d`. Two more unpublished source packages bring the library to eight packages:
+
+| Added | Public surface |
+| --- | --- |
+| [data](../../packages/data/README.md) | Record snapshots, HTTP adapter and editor; additive volatile memory adapter; draft policy, filtering/merging, shared drafts/center; CSV imports, approvals, panels and structured failures |
+| [platform](../../packages/platform/README.md) | Sessions and host session provider, authenticated request factory and recovery; Sentinel monitoring; generic device, navigation and window ports; root and area subpath exports |
+
+Layer changes: platform may import i18n, preferences and data; data remains limited to i18n/preferences. AI moves above shell and can also import patterns/page-engines/shell. Testing still imports every layer. Boundary tests verify allowed edges and forbidden reverse imports. No AI source is ported: client workspace sources and assistant-panel shell dependencies require phase 5 to complete first.
+
+Decisions: generic HTTP adapters retain injected request callbacks and wire/error/retry semantics. Draft policy moves to data; `RequestFailure` is extracted unchanged from auth and re-exported by platform. Display error mapping remains in components. Sessions require an explicit host URL, optionally injected fetch; the old standalone authenticated fetch becomes a configured factory. Generic `pepbits-*` browser keys/events replace product-branded identifiers without migrating tokens. The original frontend had no exported memory adapter; the new one is explicitly volatile, with version/replay checks and effective draft retention/exclusions.
+
+Excluded: hardcoded report metrics, product mock data/fixtures, clinical/billing/registration/care/label/identity/device product adapters and all DCP adapters. The patient-specific identity-capture portion of devices, demo accounts and School host routing tests are omitted. Generic device/navigation/window ports remain host-injected without native imports. Wire-level draft kind `dcp` and CSV error key `designer.datasetLimit` remain for compatibility, with no DCP implementation.
+
+Verification and completion: all generic suites are copied, with customer-schema and demo-account cases removed and host fixtures adapted. Added tests exercise HTTP envelopes, memory replay/conflict/retention, injected auth and shared failure identity. Package guides document every API difference, host setup, preferences/permissions, recovery flow and limits. Local CI passes 529 tests in 49 files across eight packages, eight typechecks and 19 tooling tests. The port retains 81 original cases and adds 20 cases; six whole source suites and three product-specific cases are excluded. Exact counts, exclusions, source identity and local checks are in the [phase 3 delivery record](../releases/unreleased/restructure-phase-3-2026-10-22.md). Root builds still have zero executable tasks; no live/native/product acceptance is claimed.
+
+Isolation: copy-only; protected workspace, backend, deployment and CI paths remain untouched. No shim, consumer migration, canonical catalog/example changes, AI port, publication, commit, push or deployment.
+
 ## Gate for every port
 
-For the independent phase 1 and phase 2 copies, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
+For the independent phase 1–3 copies, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
 
 Each port is one reviewable change and passes, from the workspace root:
 

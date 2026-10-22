@@ -1,0 +1,178 @@
+{
+  "basis": "Retained expanded counts from root Vitest output; excluded fixed cases counted statically. No old-workspace tests executed. Product-registry mock suite expansion not evaluated.",
+  "sourceFiles": 15,
+  "portedSourceFiles": 9,
+  "portedCases": 81,
+  "excludedWholeFiles": 6,
+  "excludedCasesInRetainedFiles": 3,
+  "addedCases": [
+    {
+      "path": "packages/data/src/http-adapters.test.ts",
+      "cases": 11
+    },
+    {
+      "path": "packages/data/src/memory-records.test.ts",
+      "cases": 5
+    },
+    {
+      "path": "packages/platform/src/session.test.tsx",
+      "cases": 3
+    },
+    {
+      "path": "packages/platform/src/recovery.test.ts",
+      "cases": 1
+    }
+  ],
+  "files": [
+    {
+      "source": "desktop-clients/packages/erp-data/src/records.test.ts",
+      "sourceCases": 11,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/data/src/records.test.ts",
+          "cases": 11
+        }
+      ],
+      "adaptationOrExclusion": "All controller behaviors retained; strict indexed mock assertions are type-only."
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/csv-import.test.ts",
+      "sourceCases": 5,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/data/src/csv-import.test.ts",
+          "cases": 4
+        }
+      ],
+      "adaptationOrExclusion": "Customer schema validation excluded (one case); generic parser/mapping/HTTP envelope cases retained."
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/draft-center.test.ts",
+      "sourceCases": 2,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/data/src/draft-center.test.ts",
+          "cases": 2
+        }
+      ],
+      "adaptationOrExclusion": "All generic navigation validation/failure cases retained; indexed mock annotation only."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/draft-policy.test.ts",
+      "sourceCases": 2,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/data/src/draft-policy.test.ts",
+          "cases": 2
+        }
+      ],
+      "adaptationOrExclusion": "Copied unchanged; generic draft policy belongs in data."
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/mock.test.ts",
+      "sourceCases": null,
+      "ported": false,
+      "destinations": [],
+      "adaptationOrExclusion": "Excluded entirely: product worklist fixtures, registry and classification. Parameterized registry expansion not executed; source count intentionally not claimed."
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/dcp-host.test.ts",
+      "sourceCases": 2,
+      "ported": false,
+      "destinations": [],
+      "adaptationOrExclusion": "DCP adapters explicitly excluded by task scope, including host conversion contract."
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/dcp-runtime.test.ts",
+      "sourceCases": 4,
+      "ported": false,
+      "destinations": [],
+      "adaptationOrExclusion": "DCP runtime and engine fixtures explicitly excluded by task scope."
+    },
+    {
+      "source": "desktop-clients/packages/auth/src/session.test.tsx",
+      "sourceCases": 32,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/platform/src/session.test.tsx",
+          "cases": 30
+        }
+      ],
+      "adaptationOrExclusion": "Two DEMO_ACCOUNTS cases excluded. Host URL/fetch factory, generic keys, synthetic identity/routes and type-only mock annotations; Testing Library act wrapper for jsdom. Three additional host configuration cases counted separately."
+    },
+    {
+      "source": "desktop-clients/packages/auth/src/recovery.test.ts",
+      "sourceCases": 9,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/platform/src/recovery.test.ts",
+          "cases": 9
+        }
+      ],
+      "adaptationOrExclusion": "All cases including five HTTP statuses retained. Drain Sentinel early queue after each test for isolation; one additional shared failure/monitoring case counted separately."
+    },
+    {
+      "source": "desktop-clients/packages/auth/src/sentinel.test.ts",
+      "sourceCases": 5,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/platform/src/sentinel.test.ts",
+          "cases": 5
+        }
+      ],
+      "adaptationOrExclusion": "Copied unchanged; synthetic sensitive fields test sanitization."
+    },
+    {
+      "source": "desktop-clients/packages/platform-ports/src/devices.test.ts",
+      "sourceCases": 1,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/platform/src/devices.test.ts",
+          "cases": 1
+        }
+      ],
+      "adaptationOrExclusion": "Copied unchanged; generic ticket and acknowledgement validation."
+    },
+    {
+      "source": "desktop-clients/packages/platform-ports/src/ports.test.tsx",
+      "sourceCases": 17,
+      "ported": true,
+      "destinations": [
+        {
+          "path": "packages/platform/src/ports.test.tsx",
+          "cases": 17
+        }
+      ],
+      "adaptationOrExclusion": "Copied unchanged; injected navigation/window ports and stable target identity."
+    },
+    {
+      "source": "desktop-clients/packages/platform-ports/src/identity-devices.test.ts",
+      "sourceCases": 2,
+      "ported": false,
+      "destinations": [],
+      "adaptationOrExclusion": "Patient-specific identity capture contract excluded with implementation."
+    },
+    {
+      "source": "desktop-clients/packages/platform-ports/src/school-landing.test.tsx",
+      "sourceCases": 3,
+      "ported": false,
+      "destinations": [],
+      "adaptationOrExclusion": "Application LandingRedirect, product catalogs and stored School/healthcare modules, not generic navigation port."
+    },
+    {
+      "source": "desktop-clients/packages/platform-ports/src/school-web-navigation.test.tsx",
+      "sourceCases": 4,
+      "ported": false,
+      "destinations": [],
+      "adaptationOrExclusion": "Next.js application routing, product catalog and School role URL resolution, not generic navigation port."
+    }
+  ]
+}

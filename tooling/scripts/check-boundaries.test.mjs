@@ -4,7 +4,7 @@ import {mkdirSync, mkdtempSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname, join, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {checkBoundaries, importSpecifiers} from './check-boundaries.mjs';
+import {checkBoundaries, importSpecifiers, LAYERS} from './check-boundaries.mjs';
 
 const fixtures = [];
 after(() => fixtures.forEach((dir) => rmSync(dir, {recursive: true, force: true})));
@@ -89,6 +89,46 @@ test('library packages may not use demo apps', () => {
     'demo-apps/healthcare/package.json': demo('@pepbits-demo/healthcare'),
   });
   assert.match(errors.join('\n'), /library packages must not use demo apps/);
+});
+
+test('platform may use data; data cannot use platform or UI', () => {
+  assert.deepEqual(errorsFor({
+    'packages/platform/package.json': pkg('@pepbits/platform', {'@pepbits/data': '*'}),
+    'packages/platform/src/auth.ts': "export {RequestFailure} from '@pepbits/data';",
+  }), []);
+  assert.deepEqual(LAYERS.data, ['i18n', 'preferences']);
+  assert.deepEqual(LAYERS.platform, ['i18n', 'preferences', 'data']);
+  for (const [from, to] of [['data', 'platform'], ['data', 'ui'], ['platform', 'components']]) {
+    const errors = errorsFor({
+      [`packages/${from}/package.json`]: pkg(`@pepbits/${from}`, {[`@pepbits/${to}`]: '*'}),
+      [`packages/${from}/src/index.ts`]: `import '@pepbits/${to}';`,
+    });
+    assert.equal(errors.length, 2);
+    assert.match(errors[0], /may not depend on/);
+  }
+});
+
+test('AI sits above shell, patterns and engines; no reverse dependency is allowed', () => {
+  for (const layer of ['tokens', 'icons', 'i18n', 'preferences', 'ui', 'components', 'data', 'platform', 'patterns', 'page-engines', 'shell']) {
+    assert.deepEqual(errorsFor({
+      'packages/ai/package.json': pkg('@pepbits/ai', {[`@pepbits/${layer}`]: '*'}),
+      'packages/ai/src/index.ts': `import '@pepbits/${layer}';`,
+    }), []);
+    const errors = errorsFor({
+      [`packages/${layer}/package.json`]: pkg(`@pepbits/${layer}`, {'@pepbits/ai': '*'}),
+      [`packages/${layer}/src/index.ts`]: "import '@pepbits/ai';",
+    });
+    assert.equal(errors.length, 2);
+    assert.match(errors[0], /may not depend on "ai"/);
+  }
+});
+
+test('testing can import every library layer', () => {
+  const layers = Object.keys(LAYERS).filter(layer => layer !== 'testing');
+  assert.deepEqual(errorsFor({
+    'packages/testing/package.json': pkg('@pepbits/testing', Object.fromEntries(layers.map(layer => [`@pepbits/${layer}`, '*']))),
+    'packages/testing/src/index.ts': layers.map(layer => `import '@pepbits/${layer}';`).join('\n'),
+  }), []);
 });
 
 test('demo apps use any layer but not each other', () => {

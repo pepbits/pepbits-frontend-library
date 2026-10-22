@@ -1,6 +1,6 @@
 # Library packages
 
-The reusable `@pepbits/*` packages. Phases 1 and 2 of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-2-status) add six unpublished source packages alongside the existing workspace:
+The reusable `@pepbits/*` packages. Phases 1–3 of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-3-status) add eight unpublished source packages alongside the existing workspace:
 
 | Package | Purpose |
 | --- | --- |
@@ -10,8 +10,10 @@ The reusable `@pepbits/*` packages. Phases 1 and 2 of the [library restructure p
 | [@pepbits/preferences](preferences/README.md) | Defaults, validation, tenant policy, themes and a controlled React host |
 | [@pepbits/ui](ui/README.md) | Primitives, controls, selection, status and navigation |
 | [@pepbits/components](components/README.md) | Cards, tables, overlays, editing, presentation preferences and recovery |
+| [@pepbits/data](data/README.md) | Record transports/editor, draft policy/storage, CSV imports, approvals, panels and failures |
+| [@pepbits/platform](platform/README.md) | Host-configured sessions/recovery, monitoring, navigation, windows and device ports |
 
-Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits preferences to depend on tokens and i18n; other layer rules are unchanged.
+Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI implementation follows shell in phase 5.
 
 - One folder per layer: `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `data`, `platform`, `patterns`, `page-engines`, `shell`, `ai`, `testing`.
 - The folder name is the package name: `packages/ui` is `@pepbits/ui`.

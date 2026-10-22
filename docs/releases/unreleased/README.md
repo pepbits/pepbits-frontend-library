@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Library restructure phase 3 — 22 October 2026](restructure-phase-3-2026-10-22.md): independent data/platform services, host transport configuration, revised platform/AI layers and local evidence.
+
 - [Library restructure phase 2 — 22 October 2026](restructure-phase-2-2026-10-22.md): independent UI primitives and composites, React localization, effective presentation mapping and 311 ported cases; protected paths unchanged, no publication or deployment.
 - [Library restructure phase 1 — 22 October 2026](restructure-phase-1-2026-10-22.md): four independent foundation packages with host-driven localization/preferences, typed CSS tokens and primitive icons; copied sources, protected paths unchanged, no publication or deployment.
 - [Library restructure phase 0 — 22 October 2026](restructure-phase-0-2026-10-22.md): independent root workspace for `packages/`, `demo-apps/` and `tooling/`, with the dependency-boundary check; `desktop-clients/` unchanged and its typecheck, tests and workspace graph rechecked. No deployment.

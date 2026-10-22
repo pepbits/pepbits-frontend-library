@@ -29,11 +29,11 @@ export const LAYERS = {
   ui: [...FOUNDATIONS],
   components: [...FOUNDATIONS, 'ui'],
   data: ['i18n', 'preferences'],
-  platform: ['i18n', 'preferences'],
+  platform: ['i18n', 'preferences', 'data'],
   patterns: [...COMPONENT_BASE, 'data', 'platform'],
   'page-engines': [...COMPONENT_BASE, 'data', 'platform', 'patterns'],
   shell: [...COMPONENT_BASE, 'data', 'platform', 'patterns', 'page-engines'],
-  ai: [...COMPONENT_BASE, 'data', 'platform'],
+  ai: [...COMPONENT_BASE, 'data', 'platform', 'patterns', 'page-engines', 'shell'],
   testing: [...COMPONENT_BASE, 'data', 'platform', 'patterns', 'page-engines', 'shell', 'ai'],
 };
 
