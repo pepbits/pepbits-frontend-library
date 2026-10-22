@@ -55,6 +55,33 @@ test('a layer may not use a layer above it', () => {
   assert.match(errors[0], /layer "tokens" may not depend on "ui"/);
 });
 
+test('preferences may import tokens and i18n, but i18n may not import preferences', () => {
+  const files = {
+    'packages/tokens/package.json': pkg('@pepbits/tokens'),
+    'packages/i18n/package.json': pkg('@pepbits/i18n'),
+    'packages/preferences/package.json': pkg('@pepbits/preferences', {'@pepbits/tokens': '*', '@pepbits/i18n': '*'}),
+    'packages/preferences/src/index.ts': "import '@pepbits/tokens';\nimport type {LanguageKey} from '@pepbits/i18n';",
+  };
+  assert.deepEqual(errorsFor(files), []);
+  const errors = errorsFor({...files,
+    'packages/i18n/package.json': pkg('@pepbits/i18n', {'@pepbits/preferences': '*'}),
+    'packages/i18n/src/index.ts': "import '@pepbits/preferences';",
+  });
+  assert.equal(errors.length, 2);
+  assert.match(errors[0], /layer "i18n" may not depend on "preferences"/);
+});
+
+test('preferences still cannot import other foundations or UI layers', () => {
+  for (const layer of ['icons', 'ui', 'components']) {
+    const errors = errorsFor({
+      'packages/preferences/package.json': pkg('@pepbits/preferences', {[`@pepbits/${layer}`]: '*'}),
+      'packages/preferences/src/index.ts': `import '@pepbits/${layer}';`,
+    });
+    assert.equal(errors.length, 2);
+    assert.match(errors[0], /layer "preferences" may not depend on/);
+  }
+});
+
 test('library packages may not use demo apps', () => {
   const errors = errorsFor({
     'packages/ui/package.json': pkg('@pepbits/ui'),

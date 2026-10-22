@@ -1,0 +1,158 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 4 package(s), 0 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 5.872712
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 13.238523
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 2.237695
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 3.191533
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 4.2191
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 5.281287
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 3.632906
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 8 - demo apps use any layer but not each other
+  ---
+  duration_ms: 3.803547
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 9 - pre-restructure packages are rejected
+  ---
+  duration_ms: 2.612248
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 10 - relative imports may not leave the package
+  ---
+  duration_ms: 2.387156
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 11 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 2.894581
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 12 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 1.581932
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 13 - testing is dev-only
+  ---
+  duration_ms: 4.442692
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 14 - tooling packages are devDependencies only
+  ---
+  duration_ms: 2.495209
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 15 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 1.353259
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 16 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.410653
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 383.20668
+
+> pepbits-frontend-library@0.0.0 typecheck
+> turbo run typecheck
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig
+   • Running typecheck in 5 packages
+   • Remote caching disabled
+
+@pepbits/i18n:typecheck: cache miss, executing 169fe968b405c7ab
+@pepbits/tokens:typecheck: cache miss, executing 07a988c4e2823229
+@pepbits/icons:typecheck: cache miss, executing 551b356888e7a47f
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/preferences:typecheck: cache miss, executing 0207841dfe60a373
+@pepbits/icons:typecheck: error TS2209: The project root is ambiguous, but is required to resolve export map entry '.' in file '/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/icons/package.json'. Supply the `rootDir` compiler option to disambiguate.
+@pepbits/icons:typecheck: npm ERR! Lifecycle script `typecheck` failed with error: 
+@pepbits/icons:typecheck: npm ERR! Error: command failed 
+@pepbits/icons:typecheck: npm ERR!   in workspace: @pepbits/icons@0.0.0 
+@pepbits/icons:typecheck: npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/icons 
+@pepbits/icons#typecheck:  ERROR  command (/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/icons) /usr/bin/npm run typecheck exited (1)
+
+ Tasks:    2 successful, 4 total
+Cached:    0 cached, 4 total
+  Time:    2.603s 
+Failed:    @pepbits/icons#typecheck
+
+ ERROR  run failed: command  exited (1)

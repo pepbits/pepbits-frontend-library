@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "recordId": "restructure-phase-1-2026-10-22",
+  "status": "unreleased-working-tree",
+  "baseCommit": "21a3f0f65ea278989784d838508373861021fd94",
+  "testGuideVersion": "1.0.0",
+  "implementationDigest": "db127bcd3b17eade0559dd778ec77dd73c3267a67ee33c25b245337ee8d4a126",
+  "digestAlgorithm": "SHA-256 of sorted path + NUL + file SHA-256 + LF entries",
+  "identityScope": "Root workspace manifests/configuration, all tracked and nonignored package/tooling files, restructure plan and delivery index. Excludes delivery record, evidence and this manifest to avoid self-reference; unchanged files are included. Protected legacy source is identified by baseCommit and empty diff/status checks.",
+  "evidence": "restructure-phase-1-2026-10-22.md",
+  "published": false,
+  "deployed": false,
+  "limits": [
+    "Source exports only; no build artifacts or publication.",
+    "Local unit/jsdom and typecheck only; no old workspace, API, browser, native, live-service or hosted CI runs.",
+    "npm install reports 3 audit vulnerabilities; dependency remediation outside this port."
+  ],
+  "files": [
+    {
+      "path": "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
+      "sha256": "4d83780f06ab85ffc55e594e5f82f663d6235e343870f38f96ca003cd48205d4"
+    },
+    {
+      "path": "docs/releases/unreleased/README.md",
+      "sha256": "4584b2d9c2a7288762b1cc08c723828b5094b129d023eda9b61b0bccbe6fad5a"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "dab523976d6349dd3e4e0d2b9f49588c93126eb33b9d629086717f1d46bbc98a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a0e2b2406b83b91226afc4c4c54cb58a891682f8f382d6fc7137f03e28883662"
+    },
+    {
+      "path": "packages/README.md",
+      "sha256": "c98231debeba31acf272fc9955301c3137e49cfb7808888f1bb4636bd8544d2a"
+    },
+    {
+      "path": "packages/i18n/README.md",
+      "sha256": "af21cd8b6ed43e0e4b1d327da2990f302208b9ba57ec511c3da50047d833584f"
+    },
+    {
+      "path": "packages/i18n/package.json",
+      "sha256": "67ce3e65cf3d976ec2e06ab1468c9ccbd98ec28bb92a4feb8ca59f8f90df1f0a"
+    },
+    {
+      "path": "packages/i18n/src/catalogs.test.ts",
+      "sha256": "ff318f9e14c3e89575554aef2d5fd9bbf5fd391366d518e17f89e845963fa3a1"
+    },
+    {
+      "path": "packages/i18n/src/catalogs.ts",
+      "sha256": "e0fa02dc4cc87b6b6ca54f34de691a4914cc2669bf7fda9a51cf9678702d95b1"
+    },
+    {
+      "path": "packages/i18n/src/core.ts",
+      "sha256": "4a8f0aea9a4796ea010589344fadd8b2a1a0676af18cd876d4420fb09843198d"
+    },
+    {
+      "path": "packages/i18n/src/format.test.ts",
+      "sha256": "ded95d54af32a1f25b5f64a767f39617ce04d26dfcfa4f2cb9be8ba5208958d7"
+    },
+    {
+      "path": "packages/i18n/src/format.ts",
+      "sha256": "13e67b9842226a25574381756b795c2e901f406c5b4332e393fb1b3761573750"
+    },
+    {
+      "path": "packages/i18n/src/i18n.test.ts",
+      "sha256": "4766d6a5c041972aceee683f696a0b798e93fe3c5e146b5d4fe76fdaa8e39a16"
+    },
+    {
+      "path": "packages/i18n/src/index.ts",
+      "sha256": "592fd0a33cd4465c4c2de274b96079bc82b46f07a921f7836582c94c4d11f21d"
+    },
+    {
+      "path": "packages/i18n/src/localization-formatting.test.ts",
+      "sha256": "ee357c8a1b5c2dd0b1b80f83e56892073ad13f6213e5ec867b28c2f5b18c2cd6"
+    },
+    {
+      "path": "packages/i18n/src/localize.ts",
+      "sha256": "ca44ca27014b070277a88a635b5fa483c092da9cdc582ff6274a1499f7814cc7"
+    },
+    {
+      "path": "packages/i18n/src/test-options.ts",
+      "sha256": "f8d83e5d2c27e0ed74e14551b89ccc721675687fbbbfd6496cb990564f26b11e"
+    },
+    {
+      "path": "packages/i18n/src/translator.ts",
+      "sha256": "05d506da1788360a97645f84fdc8afb37c7b7389fb2b01f9a4d45b9828268f80"
+    },
+    {
+      "path": "packages/i18n/src/types.ts",
+      "sha256": "8c3aab173a59c618644150cdf4e02f8357dab60fc897e3dd8ffd66e0f0e643a9"
+    },
+    {
+      "path": "packages/i18n/tsconfig.json",
+      "sha256": "171de16807ae3b42eaa81b23ca4dede7649eb6d68d5af28d1e5db732c8b16914"
+    },
+    {
+      "path": "packages/i18n/vitest.config.ts",
+      "sha256": "66e029aed4d5ab76443a5884b9d2c96f58104d8b21663217861b9d157f4cda52"
+    },
+    {
+      "path": "packages/icons/README.md",
+      "sha256": "4eb6ed8ca71fc84d52d58dd6d676570b2375f012810607a88a8e61cf246b4cda"
+    },
+    {
+      "path": "packages/icons/package.json",
+      "sha256": "62e0d0204ade2ddcabb2b4995d0b208c7dcf6cb0b325d6d308e4544c5b7a2a40"
+    },
+    {
+      "path": "packages/icons/src/icon.test.tsx",
+      "sha256": "a811428a51ee4dc95b3d9e3ce0ff51f33e798c8b7839f87401c47052cb18bd4a"
+    },
+    {
+      "path": "packages/icons/src/icon.ts",
+      "sha256": "7b371d845673e25691b56407d58a5b2357dde32478294fc22be92ad4124fdb75"
+    },
+    {
+      "path": "packages/icons/src/index.ts",
+      "sha256": "535bffd4c5370e456859907851c69e6509ea57ed08b33b0a0102d49900ad817e"
+    },
+    {
+      "path": "packages/icons/tsconfig.json",
+      "sha256": "8fab2711a3ffaa9a9755769257c6f67d2e9a7aabcfed60a57a74eeea6c0e91bb"
+    },
+    {
+      "path": "packages/icons/vitest.config.ts",
+      "sha256": "66e029aed4d5ab76443a5884b9d2c96f58104d8b21663217861b9d157f4cda52"
+    },
+    {
+      "path": "packages/preferences/README.md",
+      "sha256": "55f9502c957693cec6fab1dde0b57bac7f271b0e185cd4ab0bf81630fb0f2042"
+    },
+    {
+      "path": "packages/preferences/package.json",
+      "sha256": "349442ec8c497e6af1258b5f186d42c17a77879e049ef22580d259c7c361b445"
+    },
+    {
+      "path": "packages/preferences/src/format-options.ts",
+      "sha256": "a924cf58292d780278f0be1fe74dfd785ff96e19a0d8ecb5880c9b364c007e97"
+    },
+    {
+      "path": "packages/preferences/src/index.ts",
+      "sha256": "ad5af39e16365881c31671caa3e23884f434d6a3718ef2cd1d396f6327d026e2"
+    },
+    {
+      "path": "packages/preferences/src/policy.test.ts",
+      "sha256": "ec79036c75968d0cf6a53723fb716d23c96396d0bf57e5894b3f7cd05482b92c"
+    },
+    {
+      "path": "packages/preferences/src/preference-defaults.test.ts",
+      "sha256": "c08fb03290b2eb65fcd955bfa76b96f70f5ceb74d46ded00633dcdeb096cec44"
+    },
+    {
+      "path": "packages/preferences/src/preference-defaults.ts",
+      "sha256": "df4512d69799c92667956893805b556f2f8bff2145e42bfefea5c24fa30d477e"
+    },
+    {
+      "path": "packages/preferences/src/preference-policy.ts",
+      "sha256": "04665c4b89a1f33f4f93eecae6a503c805fc1ed77dcf8e9f200a162ba9ef9b74"
+    },
+    {
+      "path": "packages/preferences/src/react.test.tsx",
+      "sha256": "a538192f790f625e8fc51791f8cc236b5b945d6d87e0dbf7f0d95e55c39e1041"
+    },
+    {
+      "path": "packages/preferences/src/react.ts",
+      "sha256": "aa2f4ed356c4709ea1fccc7f9c13a447f33fd2c80983ccce527223406915e774"
+    },
+    {
+      "path": "packages/preferences/src/themes.ts",
+      "sha256": "82fe419f731c204966ea28fc31044850ea0517cc8cd079d8e59ccb14dd41510d"
+    },
+    {
+      "path": "packages/preferences/src/types.ts",
+      "sha256": "9e96147f2ce1e4c3d188d0cef869efa0a9893ac6ade0da5d8d00b452353d2903"
+    },
+    {
+      "path": "packages/preferences/tsconfig.json",
+      "sha256": "8fab2711a3ffaa9a9755769257c6f67d2e9a7aabcfed60a57a74eeea6c0e91bb"
+    },
+    {
+      "path": "packages/preferences/vitest.config.ts",
+      "sha256": "66e029aed4d5ab76443a5884b9d2c96f58104d8b21663217861b9d157f4cda52"
+    },
+    {
+      "path": "packages/tokens/README.md",
+      "sha256": "763b7be87cb48c7e40fdc04c011a959577f0c3746bd45d9cc9f4fffd109383bf"
+    },
+    {
+      "path": "packages/tokens/package.json",
+      "sha256": "db7c678668d3af47237ae6e0e887c17e166d80e98d86384aaf684e6c73ad6a45"
+    },
+    {
+      "path": "packages/tokens/src/fonts/bricolage-grotesque-latin-ext-standard-normal.woff2",
+      "sha256": "e1a04c169c022f63ad24fc1b6fbd932dee1ded62ac08734eeb1d5d51afee38dd"
+    },
+    {
+      "path": "packages/tokens/src/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2",
+      "sha256": "e808f16b56f84dc7933e498cc8a41d4a5cd853adc6eef154584baa5de1008b15"
+    },
+    {
+      "path": "packages/tokens/src/fonts/bricolage-grotesque-latin-standard-normal.woff2",
+      "sha256": "a756882d8a7802ebd4663b4544a62ebedafc7227c1c159ab95eea61393af3f8e"
+    },
+    {
+      "path": "packages/tokens/src/fonts/bricolage-grotesque-latin-wght-normal.woff2",
+      "sha256": "a97804dc9fbe5fc972a08018c5eda4dab7ef2346f64c57e61419d05e6de4ea1c"
+    },
+    {
+      "path": "packages/tokens/src/fonts/bricolage-grotesque.LICENSE",
+      "sha256": "923f4ddf0fd39f9b7794ab0df7332f3d95dc43e8ad7ec2289d6d9e8491177f51"
+    },
+    {
+      "path": "packages/tokens/src/fonts/provenance.json",
+      "sha256": "bc3a45ebc58ea51098df02b72083413d7bea1bfa79532390a099b0f31dbf33e0"
+    },
+    {
+      "path": "packages/tokens/src/fonts/public-sans-latin-ext-wght-italic.woff2",
+      "sha256": "a071e35bbfc9c62756e0beb2475bff387d456dbfb2ec7e0d4e90cadeb543b54a"
+    },
+    {
+      "path": "packages/tokens/src/fonts/public-sans-latin-ext-wght-normal.woff2",
+      "sha256": "3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a"
+    },
+    {
+      "path": "packages/tokens/src/fonts/public-sans-latin-wght-italic.woff2",
+      "sha256": "16dc93252adb78785ae56a6465494f73b604b39817760ea92bd4046521bb5a35"
+    },
+    {
+      "path": "packages/tokens/src/fonts/public-sans-latin-wght-normal.woff2",
+      "sha256": "5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68"
+    },
+    {
+      "path": "packages/tokens/src/fonts/public-sans.LICENSE",
+      "sha256": "705a497c781f6463ff819abb513bb495f3fb05256f1d20321e3275813c0bafa5"
+    },
+    {
+      "path": "packages/tokens/src/index.test.ts",
+      "sha256": "1dada9a91a8636bab72e9c37222da461cc8377420a9991ed4993015db56dba8d"
+    },
+    {
+      "path": "packages/tokens/src/index.ts",
+      "sha256": "c7853aa09ba1524314b55e2493e4d2824a6641685d11c9e7754431e752691f2c"
+    },
+    {
+      "path": "packages/tokens/src/reference-fonts.css",
+      "sha256": "a99b4b7391502666ce9e12ee1f3252b98949505ce6ac9d59e1256acaa6ada024"
+    },
+    {
+      "path": "packages/tokens/src/tokens.css",
+      "sha256": "8d674ed183ec69f9038092cca80d7ef5484c0f844563a335141cd6088bfa1125"
+    },
+    {
+      "path": "packages/tokens/tsconfig.json",
+      "sha256": "171de16807ae3b42eaa81b23ca4dede7649eb6d68d5af28d1e5db732c8b16914"
+    },
+    {
+      "path": "packages/tokens/vitest.config.ts",
+      "sha256": "66e029aed4d5ab76443a5884b9d2c96f58104d8b21663217861b9d157f4cda52"
+    },
+    {
+      "path": "tooling/scripts/check-boundaries.mjs",
+      "sha256": "38348842b5e14f5a3fcedb8ffd9e8459b62d9f0bb49f469f39df39e811198eec"
+    },
+    {
+      "path": "tooling/scripts/check-boundaries.test.mjs",
+      "sha256": "76d49bd809a8e20799c7d42c5c93970aa2c868a78235bc59a738bfe8de5ffd9f"
+    },
+    {
+      "path": "tooling/tsconfig/base.json",
+      "sha256": "09af058a77d8c589f8f248afc5a8162a40417ec060906465c09c28bb35e31621"
+    },
+    {
+      "path": "tooling/tsconfig/nextjs.json",
+      "sha256": "91f5a30c48ac4df5c20d0eb2230bad97adafe043deaa33163ff4f81e6527740e"
+    },
+    {
+      "path": "tooling/tsconfig/package.json",
+      "sha256": "67b83fb2b69d88dbe375aaf59238a68b50c00130f4ab96e57bc99131ea52131c"
+    },
+    {
+      "path": "tooling/tsconfig/react-library.json",
+      "sha256": "0da78e1a819b6438da71f5e45ba49d38c0134a3388127bf709d9b005a939867b"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "sha256": "2e2f8ef6cef1847ef65e9c8abc363b5e9c08ea2f5830226601fd5cfacdbf1e25"
+    },
+    {
+      "path": "turbo.json",
+      "sha256": "7f67ca11e3562e68583e938d04cca29b35387ec00318539822f6086b246e5ab9"
+    }
+  ]
+}

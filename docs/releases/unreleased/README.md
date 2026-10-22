@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Library restructure phase 1 — 22 October 2026](restructure-phase-1-2026-10-22.md): four independent foundation packages with host-driven localization/preferences, typed CSS tokens and primitive icons; copied sources, protected paths unchanged, no publication or deployment.
 - [Library restructure phase 0 — 22 October 2026](restructure-phase-0-2026-10-22.md): independent root workspace for `packages/`, `demo-apps/` and `tooling/`, with the dependency-boundary check; `desktop-clients/` unchanged and its typecheck, tests and workspace graph rechecked. No deployment.
 - [Feature suites and patient 360 booking crash — 4 October 2026](feature-suites-2026-10-04.md): booking an appointment without notes no longer crashes the patient 360 overview; five feature suites corrected.
 - [Navigation suites and sidebar/subtitle fixes — 4 October 2026](navigation-suites-2026-10-04.md): hover-mode sidebar no longer reopens after choosing a page; 239 reference pages show their own subtitle again; six navigation suites and the CI feature-browser job corrected. Navigation 18/18 and browser 9/9 locally.

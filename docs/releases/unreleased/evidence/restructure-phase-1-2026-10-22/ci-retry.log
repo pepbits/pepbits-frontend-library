@@ -1,0 +1,250 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 4 package(s), 0 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 4.757604
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 8.322979
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 1.164029
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 2.445158
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 2.722609
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 2.961831
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 1.248798
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 8 - demo apps use any layer but not each other
+  ---
+  duration_ms: 1.171147
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 9 - pre-restructure packages are rejected
+  ---
+  duration_ms: 1.193708
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 10 - relative imports may not leave the package
+  ---
+  duration_ms: 1.621092
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 11 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 1.747453
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 12 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 1.47255
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 13 - testing is dev-only
+  ---
+  duration_ms: 2.553988
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 14 - tooling packages are devDependencies only
+  ---
+  duration_ms: 1.265249
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 15 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 1.53269
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 16 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.354473
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 256.739825
+
+> pepbits-frontend-library@0.0.0 typecheck
+> turbo run typecheck
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig
+   • Running typecheck in 5 packages
+   • Remote caching disabled
+
+@pepbits/icons:typecheck: cache miss, executing 27860a71900c5aa7
+@pepbits/tokens:typecheck: cache miss, executing 5737a8b29e4f631e
+@pepbits/i18n:typecheck: cache miss, executing eb7ae23801624202
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/preferences:typecheck: cache miss, executing 08a00c87e97193fc
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+
+ Tasks:    4 successful, 4 total
+Cached:    0 cached, 4 total
+  Time:    4.582s 
+
+
+> pepbits-frontend-library@0.0.0 test
+> turbo run test
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig
+   • Running test in 5 packages
+   • Remote caching disabled
+
+@pepbits/i18n:test: cache miss, executing 850c45283a302c5e
+@pepbits/icons:test: cache miss, executing 0e02537f2a0a408c
+@pepbits/tokens:test: cache miss, executing 6b339e8e0b0b1fbd
+@pepbits/preferences:test: cache miss, executing d57131231c7ed2c7
+@pepbits/icons:test: 
+@pepbits/icons:test: > @pepbits/icons@0.0.0 test
+@pepbits/icons:test: > vitest run
+@pepbits/icons:test: 
+@pepbits/tokens:test: 
+@pepbits/tokens:test: > @pepbits/tokens@0.0.0 test
+@pepbits/tokens:test: > vitest run
+@pepbits/tokens:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test: > @pepbits/preferences@0.0.0 test
+@pepbits/preferences:test: > vitest run
+@pepbits/preferences:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test: > @pepbits/i18n@0.0.0 test
+@pepbits/i18n:test: > vitest run
+@pepbits/i18n:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/i18n
+@pepbits/i18n:test: 
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/tokens
+@pepbits/tokens:test: 
+@pepbits/icons:test: 
+@pepbits/icons:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/icons
+@pepbits/icons:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/preferences
+@pepbits/preferences:test: 
+@pepbits/tokens:test:  ✓ src/index.test.ts (3 tests) 10ms
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  Test Files  1 passed (1)
+@pepbits/tokens:test:       Tests  3 passed (3)
+@pepbits/tokens:test:    Start at  16:49:28
+@pepbits/tokens:test:    Duration  669ms (transform 109ms, setup 0ms, collect 63ms, tests 10ms, environment 1ms, prepare 150ms)
+@pepbits/tokens:test: 
+@pepbits/i18n:test:  ✓ src/format.test.ts (12 tests) 54ms
+@pepbits/i18n:test:  ✓ src/i18n.test.ts (26 tests) 51ms
+@pepbits/preferences:test:  ✓ src/policy.test.ts (24 tests) 51ms
+@pepbits/i18n:test:  ✓ src/catalogs.test.ts (5 tests) 9ms
+@pepbits/i18n:test:  ✓ src/localization-formatting.test.ts (13 tests) 51ms
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  Test Files  4 passed (4)
+@pepbits/i18n:test:       Tests  56 passed (56)
+@pepbits/i18n:test:    Start at  16:49:28
+@pepbits/i18n:test:    Duration  1.43s (transform 332ms, setup 0ms, collect 629ms, tests 164ms, environment 1ms, prepare 391ms)
+@pepbits/i18n:test: 
+@pepbits/preferences:test:  ✓ src/preference-defaults.test.ts (3 tests) 5ms
+@pepbits/preferences:test:  ✓ src/react.test.tsx (6 tests) 162ms
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  Test Files  3 passed (3)
+@pepbits/preferences:test:       Tests  33 passed (33)
+@pepbits/preferences:test:    Start at  16:49:28
+@pepbits/preferences:test:    Duration  1.57s (transform 288ms, setup 0ms, collect 562ms, tests 219ms, environment 550ms, prepare 320ms)
+@pepbits/preferences:test: 
+@pepbits/icons:test:  ✓ src/icon.test.tsx (19 tests) 162ms
+@pepbits/icons:test: 
+@pepbits/icons:test:  Test Files  1 passed (1)
+@pepbits/icons:test:       Tests  19 passed (19)
+@pepbits/icons:test:    Start at  16:49:28
+@pepbits/icons:test:    Duration  1.68s (transform 91ms, setup 0ms, collect 322ms, tests 162ms, environment 614ms, prepare 119ms)
+@pepbits/icons:test: 
+
+ Tasks:    4 successful, 4 total
+Cached:    0 cached, 4 total
+  Time:    3.13s 
+
+
+> pepbits-frontend-library@0.0.0 build
+> turbo run build
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/i18n, @pepbits/icons, @pepbits/preferences, @pepbits/tokens, @pepbits/tsconfig
+   • Running build in 5 packages
+   • Remote caching disabled
+
+ WARNING  No tasks were executed as part of this run.
+
+ Tasks:    0 successful, 0 total
+Cached:    0 cached, 0 total
+  Time:    31ms 
+

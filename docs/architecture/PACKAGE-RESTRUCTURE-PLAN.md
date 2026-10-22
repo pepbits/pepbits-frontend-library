@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **proposal, not approved.** Revised 22 October 2026 against `main` `aa90bbe`. This revision replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. Phase 0 is implemented (see [Phase 0 status](#phase-0-status)); nothing else is. The owner decides the open questions in the last section before any package moves.
+Status: **phases 0 and 1 implemented; later phases remain a proposal.** Revised 22 October 2026 against `main` `21a3f0f`. This plan replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. See [Phase 0 status](#phase-0-status) and [Phase 1 status](#phase-1-status). Phase 1 follows the owner's copy-only decision; subsequent moves, consumer migration and open questions remain future work.
 
 ## Summary
 
@@ -36,7 +36,7 @@ pepbits-frontend-library/
 ├── packages/                     THE LIBRARY: reusable only, published as @pepbits/*
 │   ├── tokens/                   colors, typography, spacing, radius, motion, themes, fonts
 │   ├── icons/
-│   ├── i18n/                     catalogs (generated), formatters, RTL, LocaleProvider
+│   ├── i18n/                     host catalogs, core messages, formatters, RTL; future LocaleProvider
 │   ├── preferences/              schema, defaults, tenant-lock resolver, PreferenceHost, themes, shortcuts
 │   ├── ui/                       primitives: button, input, select, search-select, checkbox, radio,
 │   │                             segmented, date-time, quantity-unit-field, scanner-input, otp,
@@ -126,7 +126,8 @@ tokens, icons → i18n, preferences → ui → components → patterns → page-
 | Layer | May import from |
 | --- | --- |
 | `tokens`, `icons` | nothing |
-| `i18n`, `preferences` | `tokens` |
+| `i18n` | `tokens` |
+| `preferences` | `tokens`, `i18n` |
 | `ui` | `tokens`, `icons`, `i18n`, `preferences` |
 | `components` | everything above |
 | `data`, `platform` | `i18n`, `preferences` |
@@ -246,14 +247,14 @@ Demo apps are never published, so products cannot depend on them. Product source
 2. Port one package at a time, leaves first. After each port the full gate passes and the change merges on its own.
 3. Remove the old layout and compatibility shims only when nothing uses them.
 
-**A port is a move, not a copy.** Each port uses `git mv` to keep history and updates workspace globs in the same change, so there is never more than one implementation. When a package is renamed or split, the old name remains as a thin deprecated package that re-exports the new ones (a *shim*), so existing imports and consumer archives keep working until they are re-pointed.
+**Phase 1 copies code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phase 1.
 
 ## Order of work
 
 | Phase | Work | Behavior change |
 | --- | --- | --- |
 | 0. Foundation | Add a new, independent npm workspace at the repository root covering only `packages/*`, `demo-apps/*` and `tooling/*`, with its own lockfile, `turbo.json`, `tsconfig.base.json` and shared TypeScript settings in `tooling/tsconfig`. Add the dependency-boundary check. `desktop-clients/` stays a separate npm project and is not edited. See [Phase 0 status](#phase-0-status). | None |
-| 1. Foundations | `tokens`; extract `icons`, `i18n`, `preferences` from `ops-ui` and `erp-config` | None |
+| 1. Foundations | Copy `tokens`; extract independent `icons`, `i18n`, `preferences` mechanisms from existing sources. See [Phase 1 status](#phase-1-status). | No existing application changes; new host APIs |
 | 2. UI | Split `ops-ui` into `ui` and `components`; `@pepbits/ops-ui` becomes a shim | None |
 | 3. Services | `data`, `platform` (from `auth`, `platform-ports`, generic `erp-data`), `ai` | None |
 | 4. Patterns and engines | Generic parts of `erp-screens`, `erp-config` and `registration-wizard` → `patterns` and `page-engines` | None |
@@ -280,9 +281,28 @@ The boundary check enforces the [dependency rules](#dependency-rules), rejects r
 
 Isolation: `desktop-clients/`, `dummy-api/`, `Jenkinsfile`, `deploy/`, `run.sh`, `run_all.sh` and `.github/` are unchanged. `desktop-clients` is not listed in the root workspaces, so npm and Turborepo inside it still treat it as its own project. Verification is recorded in the [phase 0 delivery record](../releases/unreleased/restructure-phase-0-2026-10-22.md).
 
-Consequence for later phases: because the two workspaces are independent, a port cannot be a single `git mv` that both projects see at once. Each later phase moves a package into the new workspace and switches `desktop-clients` to consume it (through a shim or a `file:` dependency) in the same change, so there is still only one implementation. The new `@pepbits/tokens` name does not clash with the existing one until then, because the two workspaces never install each other.
+The original phase 0 expectation was to move each later package and switch `desktop-clients` through a shim or `file:` dependency in the same change. The owner's phase 1 copy-only decision supersedes that expectation for this increment. The new `@pepbits/tokens` name does not clash with the existing one because the two workspaces never install each other.
+
+### Phase 1 status
+
+Implemented 22 October 2026 alongside the existing workspace, based on `21a3f0f`. Four source-export packages at version `0.0.0` now have public manifests, shared TypeScript settings, README integration guides and Vitest tests:
+
+| Added | Public surface |
+| --- | --- |
+| [tokens](../../packages/tokens/README.md) | Unchanged CSS and font assets/licenses/provenance; 46 typed `TOKEN_NAMES`, `TokenName`, `tokenVar`; original stylesheet/font export paths |
+| [icons](../../packages/icons/README.md) | The 16 Lucide icons used by primitives, `IconComponent` and a decorative-by-default `Icon` with accessible labels |
+| [i18n](../../packages/i18n/README.md) | Four languages, direction, the verbatim 18-key core catalog in each language, host-owned translation/lazy loading, four message-localization helpers and preference-independent formatters |
+| [preferences](../../packages/preferences/README.md) | Preference types/defaults/validation, policy parsing/effective values/locks, themes, formatter-option mapping and controlled React `PreferenceHost` hooks |
+
+Decisions: CSS remains hand-written; no JSON token pipeline. Translation lookup and formatting retain their original semantics, but host-owned factories replace global product catalogs. Preferences may import `tokens` and `i18n` (for `LanguageKey`/`FormatOptions`); the reverse dependency remains forbidden, and no other layer rules change. The default theme ID remains `nexora`, matching CSS; its display name is `Blue` to remove the product name. React preference updates go through one host callback without local persistence or optimistic preference state. Compatible host property names and the change from `onPreferenceChange(key, value)` to `update(patch)` are documented in the package guide.
+
+Intentionally excluded: generated product catalogs, product/module registries or icon maps, branch lists/labels/time zones and all navigation imports. The generic empty `defaultModule` setting and `clockZone` choice remain host-interpreted; no actual module IDs or branch mappings are supplied. The existing shortcut registry embeds dashboard/record-tab/shell navigation actions, so it stays for a later shell phase. Optional React locale bindings are deferred to phase 2. No shims, consumer rewiring, builds, registry publication or deployment are added.
+
+Isolation: phase 1 copies sources; it does not modify `desktop-clients/`, `dummy-api/`, `Jenkinsfile`, `deploy/`, `run.sh`, `run_all.sh` or `.github/`. New packages have no dependencies on those trees. Root installation, boundaries, tooling tests, four package typechecks/tests, documentation and protected-path checks are recorded in the [phase 1 delivery record](../releases/unreleased/restructure-phase-1-2026-10-22.md). The root build command succeeds with zero build tasks because these packages expose source.
 
 ## Gate for every port
+
+For the independent phase 1 copy, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
 
 Each port is one reviewable change and passes, from the workspace root:
 

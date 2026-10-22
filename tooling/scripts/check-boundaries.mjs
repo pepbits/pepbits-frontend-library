@@ -25,7 +25,7 @@ export const LAYERS = {
   tokens: [],
   icons: [],
   i18n: ['tokens'],
-  preferences: ['tokens'],
+  preferences: ['tokens', 'i18n'],
   ui: [...FOUNDATIONS],
   components: [...FOUNDATIONS, 'ui'],
   data: ['i18n', 'preferences'],

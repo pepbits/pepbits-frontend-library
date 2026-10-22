@@ -1,0 +1,22 @@
+{
+  "name": "@pepbits/preferences",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./react": "./src/react.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@pepbits/tsconfig": "0.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "dependencies": {
+    "@pepbits/i18n": "0.0.0"
+  }
+}
