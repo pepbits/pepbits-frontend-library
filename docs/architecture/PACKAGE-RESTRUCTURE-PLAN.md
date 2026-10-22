@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **proposal, not approved.** Revised 22 October 2026 against `main` `aa90bbe`. This revision replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. Nothing described here is implemented. The owner decides the open questions in the last section before any package moves.
+Status: **proposal, not approved.** Revised 22 October 2026 against `main` `aa90bbe`. This revision replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. Phase 0 is implemented (see [Phase 0 status](#phase-0-status)); nothing else is. The owner decides the open questions in the last section before any package moves.
 
 ## Summary
 
@@ -133,11 +133,12 @@ tokens, icons → i18n, preferences → ui → components → patterns → page-
 | `patterns` | everything above, plus `data` and `platform` contracts |
 | `page-engines` | everything above |
 | `shell` | everything above |
-| `ai` | `data`, `platform`, `ui`, `components` |
+| `ai` | foundations, `ui`, `components`, `data`, `platform` |
+| `testing` | every layer except itself; usable by others only from tests and stories, as a devDependency |
 | `demo-apps/*` | any `@pepbits/*` public export; never another demo, never a `src/` deep path |
 | `mock-api` | nothing from the frontend |
 
-A dependency-boundary test, added in phase 0, fails the build on any violation. Packages expose their API only through `package.json` `"exports"`.
+A dependency-boundary check, added in phase 0 (`tooling/scripts/check-boundaries.mjs`), fails the build on any violation. Packages expose their API only through `package.json` `"exports"`.
 
 Placement rule: **if two products need it, it belongs in `packages/`; if only one product needs it, it belongs in that product's repository.**
 
@@ -251,7 +252,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 
 | Phase | Work | Behavior change |
 | --- | --- | --- |
-| 0. Foundation | Move the workspace root, lockfile, `turbo.json`, `tsconfig.base.json` and Vitest config from `desktop-clients/` to the repository root, with globs covering old and new folders. Create `tooling/`. Add the dependency-boundary test. Update scripts, Jenkins and deploy paths. | None |
+| 0. Foundation | Add a new, independent npm workspace at the repository root covering only `packages/*`, `demo-apps/*` and `tooling/*`, with its own lockfile, `turbo.json`, `tsconfig.base.json` and shared TypeScript settings in `tooling/tsconfig`. Add the dependency-boundary check. `desktop-clients/` stays a separate npm project and is not edited. See [Phase 0 status](#phase-0-status). | None |
 | 1. Foundations | `tokens`; extract `icons`, `i18n`, `preferences` from `ops-ui` and `erp-config` | None |
 | 2. UI | Split `ops-ui` into `ui` and `components`; `@pepbits/ops-ui` becomes a shim | None |
 | 3. Services | `data`, `platform` (from `auth`, `platform-ports`, generic `erp-data`), `ai` | None |
@@ -261,7 +262,25 @@ Demo apps are never published, so products cannot depend on them. Product source
 | 7. Publishing and consumers | Changesets and a registry publish job; Healthcare, ERP, School and Platform move from vendored archives to registry versions one at a time, in their own repositories under their own rules. Healthcare also takes `ClinicalPatientWorkspace` into `frontend/packages/healthcare-ui`. | Per consumer |
 | 8. Removal | Delete shims and the empty `desktop-clients/` tree | None |
 
-Phase 0 comes first because npm only links workspaces under its root, so the new top-level folders cannot join the build while the root stays in `desktop-clients/`.
+Phase 0 comes first because the new top-level folders need a workspace root of their own before any package can live there.
+
+### Phase 0 status
+
+Implemented 22 October 2026. The owner required that existing code must not affect the new structure, so phase 0 builds the new workspace **alongside** `desktop-clients/` instead of moving its root:
+
+| Added | Purpose |
+| --- | --- |
+| `package.json`, `package-lock.json` | Root workspace `pepbits-frontend-library`; workspaces `packages/*`, `demo-apps/*`, `tooling/*` only; `turbo` and `typescript` |
+| `turbo.json`, `tsconfig.base.json` | Task pipeline and TypeScript base for new packages |
+| `tooling/tsconfig/` | `@pepbits/tsconfig`: `base.json`, `react-library.json`, `nextjs.json`. `types` is explicit, so no ambient types leak in from other `node_modules` folders |
+| `tooling/scripts/check-boundaries.mjs` | Dependency-boundary check (`npm run check:boundaries`), with tests (`npm run test:tooling`) |
+| `packages/README.md`, `demo-apps/README.md` | Placeholders stating each folder's rules |
+
+The boundary check enforces the [dependency rules](#dependency-rules), rejects relative imports that leave a package, imports into another package's `src/`, undeclared `@pepbits/*` imports and any use of a demo app by the library or by another demo. It also rejects every `@pepbits/*` name that is not a layer, so new code cannot depend on `ops-ui`, `erp-*`, `reference-*` or anything else under `desktop-clients/`.
+
+Isolation: `desktop-clients/`, `dummy-api/`, `Jenkinsfile`, `deploy/`, `run.sh`, `run_all.sh` and `.github/` are unchanged. `desktop-clients` is not listed in the root workspaces, so npm and Turborepo inside it still treat it as its own project. Verification is recorded in the [phase 0 delivery record](../releases/unreleased/restructure-phase-0-2026-10-22.md).
+
+Consequence for later phases: because the two workspaces are independent, a port cannot be a single `git mv` that both projects see at once. Each later phase moves a package into the new workspace and switches `desktop-clients` to consume it (through a shim or a `file:` dependency) in the same change, so there is still only one implementation. The new `@pepbits/tokens` name does not clash with the existing one until then, because the two workspaces never install each other.
 
 ## Gate for every port
 

@@ -86,6 +86,12 @@ Application shell and authenticated context
 | `demo-pages` | Original design references; application pages are implemented through shared components |
 | `docs` | Feature guides, architecture, development rules, testing and release evidence |
 
+### Restructure in progress
+
+The [library restructure plan](docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md) is moving the library to a layered `packages/` folder with `demo-apps/` built from it. Phase 0 added an independent npm workspace at the repository root for `packages/*`, `demo-apps/*` and `tooling/*`; it is empty apart from shared tooling. `desktop-clients/` remains its own project and is still where all current code builds and runs.
+
+From the repository root: `npm install`, then `npm run ci` (boundary check, tooling tests, typecheck, tests and build of the new workspace).
+
 Canonical language catalogs live in `dummy-api/config/localization/shared/`; generated client fallbacks support the frontend. Navigation labels use stable menu/message identifiers. Many demo feature endpoints read CSV/JSON fixtures and persist scoped changes; storage behavior is feature-specific.
 
 The isolated [frontend test site](https://frontend.test.pepbits.com) runs release `20261001-rcm-01`: the new 40-page RCM Workspace and corrected MedBand controls are available from the header. All eight public module regression suites passed. See the [delivery record](docs/releases/unreleased/rcm-reference-2026-10-01.md) for frozen source identity, separate test scopes, retained fixture failures and synthetic integration limits.

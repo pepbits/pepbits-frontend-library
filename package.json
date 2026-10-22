@@ -1,0 +1,27 @@
+{
+  "name": "pepbits-frontend-library",
+  "private": true,
+  "version": "0.0.0",
+  "description": "PepBits frontend library: layered @pepbits/* packages and the demo apps built from them. See docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md.",
+  "workspaces": [
+    "packages/*",
+    "demo-apps/*",
+    "tooling/*"
+  ],
+  "packageManager": "npm@11.13.0",
+  "scripts": {
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "check:boundaries": "node tooling/scripts/check-boundaries.mjs",
+    "test:tooling": "node --test tooling/scripts/*.test.mjs",
+    "ci": "npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
