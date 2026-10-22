@@ -1,6 +1,6 @@
 # Library packages
 
-The reusable `@pepbits/*` packages. Phases 1–3 of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-3-status) add eight unpublished source packages alongside the existing workspace:
+The reusable `@pepbits/*` packages. Phases 1–4a of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-4a-status) add nine unpublished source packages alongside the existing workspace:
 
 | Package | Purpose |
 | --- | --- |
@@ -12,6 +12,7 @@ The reusable `@pepbits/*` packages. Phases 1–3 of the [library restructure pla
 | [@pepbits/components](components/README.md) | Cards, tables, overlays, editing, presentation preferences and recovery |
 | [@pepbits/data](data/README.md) | Record transports/editor, draft policy/storage, CSV imports, approvals, panels and failures |
 | [@pepbits/platform](platform/README.md) | Host-configured sessions/recovery, monitoring, navigation, windows and device ports |
+| [@pepbits/patterns](patterns/README.md) | Lifecycle administration, master transfer, DCP runtime fields and a minimal screen-host contract |
 
 Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI implementation follows shell in phase 5.
 

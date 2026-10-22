@@ -1,0 +1,40 @@
+
+> @pepbits/patterns@0.0.0 typecheck
+> tsc --noEmit -p .
+
+src/lifecycle/config/lifecycle.test.ts(233,114): error TS2322: Type '{ lifecycles: ({ key: string; module: string; domain: string; label?: string | undefined; subjectTypes?: string[] | undefined; stages?: string[] | undefined; stageEvents?: LifecycleStageEvent[] | undefined; } | { ...; } | { ...; })[]; ... 10 more ...; sourceMappings?: LifecycleSourceMapping[]; }' is not assignable to type 'LifecycleReleaseDefinition'.
+  Types of property 'lifecycles' are incompatible.
+    Type '({ key: string; module: string; domain: string; label?: string | undefined; subjectTypes?: string[] | undefined; stages?: string[] | undefined; stageEvents?: LifecycleStageEvent[] | undefined; } | { ...; } | { ...; })[]' is not assignable to type 'LifecycleGraph[]'.
+      Type '{ key: string; module: string; domain: string; label?: string | undefined; subjectTypes?: string[] | undefined; stages?: string[] | undefined; stageEvents?: LifecycleStageEvent[] | undefined; } | { ...; } | { ...; }' is not assignable to type 'LifecycleGraph'.
+        Type '{ key: string; module: string; domain: string; label?: string | undefined; subjectTypes?: string[] | undefined; stages?: string[] | undefined; stageEvents?: LifecycleStageEvent[] | undefined; }' is not assignable to type 'LifecycleGraph'.
+          Types of property 'label' are incompatible.
+            Type 'string | undefined' is not assignable to type 'string'.
+              Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/config/lifecycle.test.ts(235,18): error TS2345: Argument of type 'LifecycleCatalogueNode | undefined' is not assignable to parameter of type 'LifecycleCatalogueNode'.
+  Type 'undefined' is not assignable to type 'LifecycleCatalogueNode'.
+src/lifecycle/config/sources.test.ts(170,23): error TS2322: Type '{ payloadFields: string[]; operation?: "CREATED" | "UPDATED" | "RETIRED" | "DELETED" | undefined; eventType?: string | undefined; schemaVersion?: number | undefined; configurationId?: number | undefined; revision?: number | undefined; }' is not assignable to type 'LifecycleTableCapture'.
+  Types of property 'operation' are incompatible.
+    Type '"CREATED" | "UPDATED" | "RETIRED" | "DELETED" | undefined' is not assignable to type '"CREATED" | "UPDATED" | "RETIRED" | "DELETED"'.
+      Type 'undefined' is not assignable to type '"CREATED" | "UPDATED" | "RETIRED" | "DELETED"'.
+src/lifecycle/config/sources.test.ts(181,20): error TS2322: Type '{ stageEvents: LifecycleStageEvent[]; key?: string | undefined; label?: string | undefined; module?: string | null; domain?: string | null; subjectTypes?: string[] | undefined; stages?: string[] | undefined; }' is not assignable to type 'LifecycleGraph'.
+  Types of property 'key' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/editor.tsx(153,73): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/editor.tsx(208,80): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/editor.tsx(208,91): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/lifecycle.test.tsx(139,11): error TS2488: Type 'any[] | undefined' must have a '[Symbol.iterator]()' method that returns an iterator.
+src/lifecycle/preview.tsx(111,5): error TS2322: Type 'string | number | boolean | (string | number | boolean)[] | undefined' is not assignable to type 'LifecycleAttributeValue'.
+  Type 'undefined' is not assignable to type 'LifecycleAttributeValue'.
+src/lifecycle/preview.tsx(179,39): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/sources.test.tsx(80,25): error TS2345: Argument of type 'HTMLElement | undefined' is not assignable to parameter of type 'HTMLElement'.
+  Type 'undefined' is not assignable to type 'HTMLElement'.
+src/master-transfer/format.ts(39,27): error TS2538: Type 'undefined' cannot be used as an index type.
+npm ERR! Lifecycle script `typecheck` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/patterns@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/patterns 

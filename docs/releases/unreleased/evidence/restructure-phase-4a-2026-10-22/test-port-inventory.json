@@ -1,0 +1,220 @@
+{
+  "scope": "Every test file in the requested screen areas, plus inspected configuration test files. Deferred source suites were not executed; no aggregate original case count is inferred for them. There is no erp-config dcp-runtime test file.",
+  "portedFiles": 8,
+  "portedCases": 82,
+  "deferredFiles": 20,
+  "added": [
+    {
+      "file": "packages/patterns/src/screen-host.test.tsx",
+      "cases": 5
+    },
+    {
+      "file": "packages/patterns/src/dcp-fields/preferences.test.tsx",
+      "cases": 1
+    },
+    {
+      "file": "packages/patterns/src/lifecycle/screen-host.test.tsx",
+      "cases": 2
+    }
+  ],
+  "patternsCases": 90,
+  "patternsFiles": 11,
+  "entries": [
+    {
+      "source": "desktop-clients/packages/erp-screens/src/lifecycle/lifecycle.test.tsx",
+      "destination": "packages/patterns/src/lifecycle/lifecycle.test.tsx",
+      "status": "ported",
+      "portedCases": 17,
+      "reason": "All assertions retained; provider/import and neutral fixture adaptation only."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/lifecycle/sources.test.tsx",
+      "destination": "packages/patterns/src/lifecycle/sources.test.tsx",
+      "status": "ported",
+      "portedCases": 11,
+      "reason": "All assertions retained; provider/import and neutral fixture adaptation only."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/master-transfer/format.test.ts",
+      "destination": "packages/patterns/src/master-transfer/format.test.ts",
+      "status": "ported",
+      "portedCases": 8,
+      "reason": "All assertions retained; provider/import and neutral fixture adaptation only."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/master-transfer/inflation.test.ts",
+      "destination": "packages/patterns/src/master-transfer/inflation.test.ts",
+      "status": "ported",
+      "portedCases": 2,
+      "reason": "All assertions retained; provider/import and neutral fixture adaptation only."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/master-transfer/panel.test.tsx",
+      "destination": "packages/patterns/src/master-transfer/panel.test.tsx",
+      "status": "ported",
+      "portedCases": 3,
+      "reason": "All assertions retained; provider/import and neutral fixture adaptation only."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/catalog-manager.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred authoring/host runtime: page-template, shell/document and AI integration remains."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/dependencies.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred authoring/host runtime: page-template, shell/document and AI integration remains."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/host-runtime.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred authoring/host runtime: page-template, shell/document and AI integration remains."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/runtime-fields.test.tsx",
+      "destination": "packages/patterns/src/dcp-fields/runtime-fields.test.tsx",
+      "status": "ported",
+      "portedCases": 5,
+      "reason": "All assertions retained; provider/import and neutral fixture adaptation only."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/sections.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred authoring/host runtime: page-template, shell/document and AI integration remains."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/workspace.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred authoring/host runtime: page-template, shell/document and AI integration remains."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/approvals/approval-workspace.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred: product roles/page rule and product services need host injection."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/drafts/draft-center.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred: product request/session/page registry and import/approval workflow dependencies."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/drafts/use-shared-draft.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred: product request/session/page registry and import/approval workflow dependencies."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/imports/csv-import-dialog.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred coherent import area: dialog needs injected schema/definition in place of product registry; options/worker wait with it."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/imports/csv-options.test.ts",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred coherent import area: dialog needs injected schema/definition in place of product registry; options/worker wait with it."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/imports/workbook-options.test.ts",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred coherent import area: dialog needs injected schema/definition in place of product registry; options/worker wait with it."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/spreadsheet/model.test.ts",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred priority 3, beyond completed mandatory subset."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/label-printing/workspace.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred: product categories/pages and data adapter need generic host ports."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/identity-devices/workspace.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred: product subject types and identity-capture adapter need host ownership."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/device-integrations/workspace.test.tsx",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Deferred: product data adapter and station/policy host integration remains."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/lifecycle/lifecycle.test.ts",
+      "destination": "packages/patterns/src/lifecycle/config/lifecycle.test.ts",
+      "status": "ported",
+      "portedCases": 19,
+      "reason": "All assertions retained; neutral fixture names and type-only annotations."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/lifecycle/sources.test.ts",
+      "destination": "packages/patterns/src/lifecycle/config/sources.test.ts",
+      "status": "ported",
+      "portedCases": 17,
+      "reason": "All assertions retained; neutral fixture names and type-only annotations."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-designer-metadata.test.ts",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Configuration is unused by required subset; authoring/schema logic or product field classification stays with deferred area."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-repeating.test.ts",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Configuration is unused by required subset; authoring/schema logic or product field classification stays with deferred area."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/form-rules.test.ts",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Configuration is unused by required subset; authoring/schema logic or product field classification stays with deferred area."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/export-policy.test.ts",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Configuration is unused by required subset; authoring/schema logic or product field classification stays with deferred area."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/data-classification.test.ts",
+      "destination": null,
+      "status": "deferred",
+      "portedCases": 0,
+      "reason": "Configuration is unused by required subset; authoring/schema logic or product field classification stays with deferred area."
+    }
+  ]
+}

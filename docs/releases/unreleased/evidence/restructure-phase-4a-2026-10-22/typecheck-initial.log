@@ -1,0 +1,108 @@
+
+> @pepbits/patterns@0.0.0 typecheck
+> tsc --noEmit -p .
+
+src/dcp-fields/contract.ts(16,141): error TS2532: Object is possibly 'undefined'.
+src/dcp-fields/runtime-fields.test.tsx(12,51): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/catalogue.tsx(4,106): error TS2305: Module '"@pepbits/components"' has no exported member 'BadgeTone'.
+src/lifecycle/config/lifecycle.test.ts(24,5): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(27,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(32,5): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(69,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(70,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(74,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(124,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(154,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(155,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(187,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(188,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(188,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(189,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(190,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(191,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(191,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(198,5): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(203,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(216,24): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(216,24): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(217,12): error TS18048: 'definition' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(219,23): error TS18048: 'definition' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(219,55): error TS18048: 'lifecycle' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(220,13): error TS18048: 'lifecycle' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(220,29): error TS18048: 'stage' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(220,41): error TS18048: 'stage' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(220,53): error TS18048: 'stage' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(220,53): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(220,77): error TS18048: 'stage' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(220,77): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(221,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(233,114): error TS2322: Type '{ lifecycles: ({ key: string; module: string; domain: string; label?: string | undefined; subjectTypes?: string[] | undefined; stages?: string[] | undefined; stageEvents?: LifecycleStageEvent[] | undefined; } | { ...; } | { ...; })[]; ... 10 more ...; sourceMappings?: LifecycleSourceMapping[]; }' is not assignable to type 'LifecycleReleaseDefinition'.
+  Types of property 'lifecycles' are incompatible.
+    Type '({ key: string; module: string; domain: string; label?: string | undefined; subjectTypes?: string[] | undefined; stages?: string[] | undefined; stageEvents?: LifecycleStageEvent[] | undefined; } | { ...; } | { ...; })[]' is not assignable to type 'LifecycleGraph[]'.
+      Type '{ key: string; module: string; domain: string; label?: string | undefined; subjectTypes?: string[] | undefined; stages?: string[] | undefined; stageEvents?: LifecycleStageEvent[] | undefined; } | { ...; } | { ...; }' is not assignable to type 'LifecycleGraph'.
+        Type '{ key: string; module: string; domain: string; label?: string | undefined; subjectTypes?: string[] | undefined; stages?: string[] | undefined; stageEvents?: LifecycleStageEvent[] | undefined; }' is not assignable to type 'LifecycleGraph'.
+          Types of property 'label' are incompatible.
+            Type 'string | undefined' is not assignable to type 'string'.
+              Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/config/lifecycle.test.ts(235,18): error TS2345: Argument of type 'LifecycleCatalogueNode | undefined' is not assignable to parameter of type 'LifecycleCatalogueNode'.
+  Type 'undefined' is not assignable to type 'LifecycleCatalogueNode'.
+src/lifecycle/config/lifecycle.test.ts(239,20): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(240,13): error TS18048: 'module' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(240,27): error TS18048: 'module' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(240,46): error TS18048: 'module' is possibly 'undefined'.
+src/lifecycle/config/lifecycle.test.ts(240,46): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/sources.test.ts(44,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/sources.test.ts(44,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/sources.test.ts(68,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/sources.test.ts(69,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/config/sources.test.ts(170,23): error TS2322: Type '{ payloadFields: string[]; operation?: "CREATED" | "UPDATED" | "RETIRED" | "DELETED" | undefined; eventType?: string | undefined; schemaVersion?: number | undefined; configurationId?: number | undefined; revision?: number | undefined; }' is not assignable to type 'LifecycleTableCapture'.
+  Types of property 'operation' are incompatible.
+    Type '"CREATED" | "UPDATED" | "RETIRED" | "DELETED" | undefined' is not assignable to type '"CREATED" | "UPDATED" | "RETIRED" | "DELETED"'.
+      Type 'undefined' is not assignable to type '"CREATED" | "UPDATED" | "RETIRED" | "DELETED"'.
+src/lifecycle/config/sources.test.ts(181,20): error TS2322: Type '{ stageEvents: LifecycleStageEvent[]; key?: string | undefined; label?: string | undefined; module?: string | null; domain?: string | null; subjectTypes?: string[] | undefined; stages?: string[] | undefined; }' is not assignable to type 'LifecycleGraph'.
+  Types of property 'key' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/config/sources.test.ts(181,63): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/editor.tsx(153,61): error TS18048: 'first' is possibly 'undefined'.
+src/lifecycle/editor.tsx(153,72): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/editor.tsx(153,79): error TS18048: 'first' is possibly 'undefined'.
+src/lifecycle/editor.tsx(208,80): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/editor.tsx(208,91): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/lifecycle.test.tsx(78,12): error TS18048: 'first' is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(79,12): error TS18048: 'first' is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(80,12): error TS18048: 'second' is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(80,41): error TS18048: 'first' is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(81,12): error TS18048: 'first' is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(139,11): error TS2488: Type 'any[] | undefined' must have a '[Symbol.iterator]()' method that returns an iterator.
+src/lifecycle/lifecycle.test.tsx(167,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(209,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(220,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(221,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/lifecycle.test.tsx(238,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/preview.tsx(4,28): error TS2305: Module '"@pepbits/components"' has no exported member 'Segmented'.
+src/lifecycle/preview.tsx(4,123): error TS2305: Module '"@pepbits/components"' has no exported member 'BadgeTone'.
+src/lifecycle/preview.tsx(110,5): error TS2322: Type 'string | number | boolean | (string | number | boolean)[] | undefined' is not assignable to type 'LifecycleAttributeValue'.
+  Type 'undefined' is not assignable to type 'LifecycleAttributeValue'.
+src/lifecycle/preview.tsx(148,96): error TS7006: Parameter 'v' implicitly has an 'any' type.
+src/lifecycle/preview.tsx(178,39): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lifecycle/sources.test.tsx(54,32): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/sources.test.tsx(80,25): error TS2345: Argument of type 'HTMLElement | undefined' is not assignable to parameter of type 'HTMLElement'.
+  Type 'undefined' is not assignable to type 'HTMLElement'.
+src/lifecycle/sources.test.tsx(148,12): error TS2532: Object is possibly 'undefined'.
+src/lifecycle/sources.tsx(3,73): error TS2305: Module '"@pepbits/components"' has no exported member 'MultiSelect'.
+src/lifecycle/sources.tsx(3,204): error TS2305: Module '"@pepbits/components"' has no exported member 'BadgeTone'.
+src/lifecycle/sources.tsx(371,121): error TS7006: Parameter 'watch' implicitly has an 'any' type.
+src/master-transfer/format.test.ts(8,79): error TS2532: Object is possibly 'undefined'.
+src/master-transfer/format.ts(39,27): error TS2538: Type 'undefined' cannot be used as an index type.
+src/master-transfer/format.ts(44,11): error TS2532: Object is possibly 'undefined'.
+src/master-transfer/panel.test.tsx(10,571): error TS2532: Object is possibly 'undefined'.
+src/master-transfer/panel.test.tsx(10,614): error TS2532: Object is possibly 'undefined'.
+npm ERR! Lifecycle script `typecheck` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/patterns@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/patterns 

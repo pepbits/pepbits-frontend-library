@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **phases 0–3 implemented; later phases remain a proposal.** Revised 22 October 2026 against `main` `e18c01d`. This plan replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. See [Phase 0 status](#phase-0-status), [Phase 1 status](#phase-1-status), [Phase 2 status](#phase-2-status) and [Phase 3 status](#phase-3-status). Phases 1–3 follow the owner's copy-only decision; subsequent moves, shims, consumer migration and open questions remain future work.
+Status: **phases 0–3 and the mandatory phase 4a patterns subset implemented; remaining patterns deferred and phase 4b onward remain a proposal.** Revised 22 October 2026 against `main` `3a34eb4`. This plan replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. See [Phase 0 status](#phase-0-status), [Phase 1 status](#phase-1-status), [Phase 2 status](#phase-2-status), [Phase 3 status](#phase-3-status) and [Phase 4a status](#phase-4a-status). Phases 1–4a follow the owner's copy-only decision; subsequent moves, shims, consumer migration and open questions remain future work.
 
 ## Summary
 
@@ -200,7 +200,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | Export | Used by | Target |
 | --- | --- | --- |
 | `RecordPage`, `RecordIdentity`, `RecordNotice` (`/record-page`) | Healthcare | `packages/page-engines` |
-| `DcpRuntimeFields`, `DcpSectionFields`, `DcpFieldRenderer` (`/dcp-fields`) | Healthcare | `packages/patterns/form-designer` |
+| `DcpRuntimeFields`, `DcpSectionFields`, `DcpFieldRenderer` (`/dcp-fields`) | Healthcare | `packages/patterns` `./dcp-fields` (copied in 4a) |
 | `LifecycleConfigurationPage` (`/lifecycle`) | Healthcare, ERP, School | `packages/patterns` |
 | `MasterTransferPanel` and its port types, `PricingExpressionInput` | School | `packages/patterns` |
 | `ClinicalPatientWorkspace` (`/patient-query`) | Healthcare | Healthcare repository, `frontend/packages/healthcare-ui`; generic parts it relies on go to `packages/page-engines` |
@@ -218,14 +218,17 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `ops-ui` generated `messages.en.ts` | Not copied; product catalogs remain host-owned |
 | `ops-ui` source-controls/source-dialog | Not ported: imported reference-design parity controls and their gallery demos |
 | `erp-config` preferences, themes, shortcuts, formatting, i18n | `packages/preferences`, `packages/i18n` |
+| `erp-config` lifecycle contracts/guards/model/HTTP/source mapping and DCP v1 runtime | Copied to `patterns` in phase 4a; no authoring catalog or product registry |
+| `erp-config` designer/catalog/rules, form/import/export/classification/label/device/inbox configuration | Deferred or excluded after inspection; see [Phase 4a status](#phase-4a-status) |
 | `erp-config` page templates, navigation types, entity schemas | `packages/page-engines`, `packages/shell` |
 | `erp-config` product definitions (clinical, pharmacy, RCM, school…) | the matching `demo-apps/*` |
 | `erp-data` records/editor, shared drafts/center, CSV import, approvals, record panels; `erp-config` draft policy | Copied to `packages/data` in phase 3; host request callbacks, structured failures and additive volatile memory transport |
 | `erp-data` report-data and mock datasets | Not copied: branch metrics and registry-driven product data belong in phase 6 demos |
 | `erp-data` product adapters (clinic billing, triage, OP registration…) | the matching `demo-apps/*/adapters` |
-| `erp-screens` generic (records, worklist, imports, approvals, drafts, inbox, reports, dashboard, page renderer) | `packages/patterns`, `packages/page-engines` |
-| `erp-screens` DCP designer, label printing, device and identity screens, spreadsheet | `packages/patterns` |
-| `erp-screens` record page, DCP fields, lifecycle, master transfer, pricing expression input | `packages/page-engines`, `packages/patterns` (used by products; see [What products import today](#what-products-import-today)) |
+| `erp-screens` generic (records, worklist, imports, approvals, drafts, inbox, reports, dashboard, page renderer) | Engines remain for 4b; imports/approvals/drafts deferred to a follow-up patterns increment |
+| `erp-screens` DCP designer, label printing, device and identity screens, spreadsheet | Deferred patterns work; no Library demo pages copied |
+| `erp-screens` DCP fields, lifecycle, master transfer, pricing expression input | Copied to `packages/patterns` in phase 4a; mandatory phase 4a exports complete |
+| `erp-screens` record page | `packages/page-engines` in 4b (used by products; see [What products import today](#what-products-import-today)) |
 | `erp-screens` patient query (`ClinicalPatientWorkspace`) | Healthcare repository, `frontend/packages/healthcare-ui` |
 | `erp-screens` other product screens (clinical, consultation, billing, OP registration, care pages) | `demo-apps/healthcare` |
 | `erp-screens` page library | `demo-apps/showcase` |
@@ -255,7 +258,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 2. Port one package at a time, leaves first. After each port the full gate passes and the change merges on its own.
 3. Remove the old layout and compatibility shims only when nothing uses them.
 
-**Phases 1–3 copy code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phases 1–3.
+**Phases 1–4a copy code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phases 1–4a.
 
 ## Order of work
 
@@ -265,7 +268,8 @@ Demo apps are never published, so products cannot depend on them. Product source
 | 1. Foundations | Copy `tokens`; extract independent `icons`, `i18n`, `preferences` mechanisms from existing sources. See [Phase 1 status](#phase-1-status). | No existing application changes; new host APIs |
 | 2. UI | Copy `ops-ui` into `ui` and `components`, with localization in `i18n/react`; no shim or consumer migration in this increment. See [Phase 2 status](#phase-2-status). | No existing application changes; host catalogs/formatters required for new imports |
 | 3. Services | Copy generic `erp-data` plus draft policy → `data`; `auth` and generic `platform-ports` → `platform`. See [Phase 3 status](#phase-3-status). No AI port. | No existing application changes; new host API configuration |
-| 4. Patterns and engines | Generic parts of `erp-screens`, `erp-config` and `registration-wizard` → `patterns` and `page-engines` | None |
+| 4a. Patterns | Required lifecycle/master-transfer/DCP-field subset copied to `patterns`; other patterns deferred. See [Phase 4a status](#phase-4a-status). | No existing application changes; new provider boundary |
+| 4b. Engines | Generic page engines/configuration → `page-engines`; no engine package in 4a | Future work |
 | 5. Shell and AI | `erp-shell` + `workspace-core` → `shell`; module contract replaces `reference-host`. Then port `ai-config`, `ai-client`, `ai-ui` → `ai`. `ai-client/src/sources.tsx` uses workspace-core and `ai-ui/src/assistant-panel.tsx` uses erp-shell, both becoming shell, so AI must follow it. | None |
 | 6. Demo apps | `showcase` first, then one demo per change: healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Product code leaves `erp-screens`, `erp-config` and `erp-data`. `dummy-api` → `mock-api`. | Yes: routes and hosts change |
 | 7. Publishing and consumers | Changesets and a registry publish job; Healthcare, ERP, School and Platform move from vendored archives to registry versions one at a time, in their own repositories under their own rules. Healthcare also takes `ClinicalPatientWorkspace` into `frontend/packages/healthcare-ui`. | Per consumer |
@@ -345,9 +349,32 @@ Verification and completion: all generic suites are copied, with customer-schema
 
 Isolation: copy-only; protected workspace, backend, deployment and CI paths remain untouched. No shim, consumer migration, canonical catalog/example changes, AI port, publication, commit, push or deployment.
 
+### Phase 4a status
+
+Implemented the mandatory subset on 22 October 2026 alongside the original workspace, based on `3a34eb4`. One additional unpublished source package brings the library to nine packages. The owner explicitly allowed stopping after a smaller complete package: priorities 2 and 3 remain deferred, not partially exported.
+
+| Added | Public surface |
+| --- | --- |
+| [patterns](../../packages/patterns/README.md) `./lifecycle` | Complete generic lifecycle administration UI, CSS module, contract/guards/model/HTTP adapters/source registry and mapping helpers |
+| `./master-transfer` | Master transfer panel/ports, pricing expression input, CSV/XLSX readers/exporters and limits |
+| `./dcp-fields` | Runtime and section field rendering, extension renderer type, DCP v1 wire types/guards/writable-patch helpers |
+| `./screen-host` and root barrel | ScreenHost provider/hook and typed context; memoized effective-preference formatters |
+
+ScreenHost is a small, controlled host boundary: localized notification callback, fail-closed UI capability check, opaque optional module/branch scope, document identity/focus/transient draft state and no-op write/dirty callbacks. Optional opaque inline-action/source-publication slots are absent by default; AI can implement them after phase 5. The shell implements document ownership in phase 5. Selected screens do not need monitor/documentation/tour/dashboard slots. No AI, shell or page-engine code is imported, and `LAYERS` is unchanged.
+
+Preferences come from the existing single `PreferenceHost`. Lifecycle removes its old preference props, uses effective table/list settings and forwards absent notification/dirty callbacks to ScreenHost; explicit callbacks retain precedence. Read-only DCP numbers/dates use effective formatters; editing and wire values are unchanged. All other APIs, markup, CSS, ARIA, keyboard, retry/conflict and operation identity semantics remain. The package guide enumerates every API difference and CSS-module/Tailwind/token/provider requirements.
+
+Scope boundary: approvals contain product-role/page gates; draft center/shared-draft use product services, sessions and a page registry; imports use a customer-only definition registry and entity/page schemas. These workflows, CSV/workbook options/worker, spreadsheet and the remaining designer/label/identity/device areas are deferred together with their tests. Designer authoring/catalog/rules/repeating logic and generic form rules are unused by the selected subset and remain for that follow-up. Label/identity configuration includes product mappings/subjects; export policy depends on product field classification; inbox contains product messages/currencies. None of those catalogs is copied. All Developer-Library pages remain for phase 6. Page engines remain phase 4b work.
+
+Dependency decision: master transfer requires the exact source XLSX tarball at version 0.20.3; no DnD dependency is needed. Known npm XLSX advisory history remains a documented dependency-review follow-up; no silent upgrade or unrelated package dependency is added. Test-only fixture namespaces are neutralized and generic catalog messages are supplied by the test host, never exported as a runtime fallback.
+
+Verification: eight original generic suites retain all **82 expanded cases**, with **8 additional host/preference cases**; all **90 patterns tests** pass. The complete root suite totals **619 tests in 60 files**, with **19 tooling tests**, **9 typechecks**, boundaries for **9 packages / 0 demo apps** and **0 executable build tasks**. Exact commands, per-file port/defer inventory, source digest and local evidence are in the [phase 4a delivery record](../releases/unreleased/restructure-phase-4a-2026-10-22.md). No browser/native/live-provider acceptance is claimed.
+
+Isolation: copy-only. Protected workspace/backend/deployment/CI paths remain unchanged; no imports back, shim, consumer migration, catalog/example regeneration, publication, commit, push or deployment.
+
 ## Gate for every port
 
-For the independent phase 1–3 copies, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
+For the independent phase 1–4a copies, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
 
 Each port is one reviewable change and passes, from the workspace root:
 
