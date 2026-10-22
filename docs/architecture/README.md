@@ -2,7 +2,7 @@
 
 Reviewed 13 September 2026. These links describe implemented contracts; historical plans remain labelled as plans.
 
-- [Package restructure plan](PACKAGE-RESTRUCTURE-PLAN.md): **proposal, not approved**. Target package layout, module registration and the port-one-by-one order.
+- [Library restructure plan](PACKAGE-RESTRUCTURE-PLAN.md): **proposal, not approved**. Layered `packages/` library, `demo-apps/` built from public exports, registry publishing for product repositories and the port-one-by-one order.
 - [Library, preference policy and component flows](library-preferences.md): current package boundaries, setting resolution, APIs, rendering and failure behavior.
 - [Existing workspace architecture](../../desktop-clients/docs/enterprise-workspace-framework-readme.md): records, tabs, split views and optional windows.
 - [Page-template engine](../../desktop-clients/docs/page-template-library.md): configurations, adapters and reusable engines.

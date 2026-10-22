@@ -1,128 +1,278 @@
-# Package restructure plan
+# Library restructure plan
 
-Status: **proposal, not approved.** Drafted 21 October 2026 against `main` `01b6578`. Nothing described here is implemented. The owner decides the open questions in the last section before any package moves.
+Status: **proposal, not approved.** Revised 22 October 2026 against `main` `aa90bbe`. This revision replaces the 21 October draft (commit `3162a49`), which grouped product modules under `modules/` and kept vendored archives. Nothing described here is implemented. The owner decides the open questions in the last section before any package moves.
 
 ## Summary
 
-The shared packages are sound, but the layout still reflects the first ERP prototype ("Nexora Enterprise ERP"). Every shared package and both shells live under `desktop-clients/`, generic packages carry an `erp-` prefix, and one package (`@pepbits/erp-screens`) imports every product module. This plan builds the intended structure next to the existing one, ports packages one at a time with the build green after each step, and removes the old layout only when nothing uses it.
+This repository becomes two things with a hard line between them:
+
+- **`packages/`, the library.** Reusable UI, page engines, shell and platform services, with no product data or product rules. Products install these packages.
+- **`demo-apps/`, the proof.** Applications built only from the public `@pepbits/*` packages and running against a mock API. They demonstrate and test the library the same way a real product would use it.
+
+Products (Healthcare, ERP, School, Platform) keep their own screens in the `frontend/` folder of their own repositories and install versioned `@pepbits/*` packages from a private registry instead of copying archives.
 
 ## Problems this solves
 
-| Problem | Evidence on `main` `01b6578` | Effect |
+| Problem | Evidence on `main` `aa90bbe` | Effect |
 | --- | --- | --- |
-| The library is filed under one shell | The npm workspace root is `desktop-clients/package.json`, named `nexora-monorepo`, and holds `apps/web`, `apps/desktop` and all 31 packages | The path suggests a desktop client; new contributors and consumers cannot tell the shared library from the shells |
-| One package bundles every product | `erp-screens` depends on `reference-host` and 16 module packages; `src/reference-modules/library-page.tsx` lazy-imports each module | A Healthcare shell build contains School, ERP, laboratory and every other module, and a change in one product module touches every shell |
-| Product knowledge inside shared configuration | `@pepbits/erp-config` exports `REFERENCE_PAGE_BY_ID`, `schoolRoleView` and `legacySchoolModuleAlias`; the web routes special-case `reference-school` | Shared packages must change whenever a product changes |
-| Generic packages named after one product | `erp-config`, `erp-data`, `erp-shell` and `erp-screens` are used by Healthcare, School, ERP and Platform | The names mislead and invite ERP-only assumptions |
-| Products and building blocks in one flat list | 31 folders in `desktop-clients/packages`: 13 foundation and shell packages and 18 product module packages | No visible ownership; no place to put product-specific shared code |
-| Tooling mixed with the library | `dummy-api` (483 files), `demo-pages`, `run.sh` and `run_all.sh` sit at the repository root | Demo and mock material can be mistaken for library contracts |
-
-## Approach: build alongside, port one by one, remove last
-
-1. Create the new structure next to the existing one. The existing layout keeps working throughout.
-2. Port one package at a time, in dependency order (leaves first). After each port the full gate passes and the change is merged on its own.
-3. When every package, app and tool has been ported and every consumer has moved, remove the old layout and the compatibility shims.
-
-**A port is a move, not a copy.** Two live copies of the same package would drift as soon as anyone fixes a bug in one of them. Each port therefore moves the package with `git mv` (keeping its history) and updates the workspace globs in the same change, so there is only ever one implementation.
-
-- If the package keeps its npm name, nothing else changes for consumers.
-- If the package is renamed, the old name stays as a thin, deprecated package that re-exports the new one (a *shim*), so existing imports and consumer archives keep working until they are re-pointed.
+| The library is filed under one shell | The npm workspace root is `desktop-clients/package.json` (`nexora-monorepo`) and holds both shells and all 32 packages | Consumers and new contributors cannot tell the shared library from the shells |
+| Library and products mixed in one list | `desktop-clients/packages` holds 13 shared packages next to 19 `reference-*` product packages | No visible ownership; product changes touch the library |
+| One package bundles every product | `erp-screens` depends on 17 `@pepbits/reference-*` packages | Every shell build carries every product |
+| Product knowledge inside shared configuration | `erp-config` holds generic preferences and formatting next to clinical, pharmacy, school and RCM definitions | Shared packages change whenever a product changes |
+| One primitive package does everything | `ops-ui` holds buttons and inputs next to tables, dialogs, calendars and printing | No layering; hard to version or document |
+| Generic packages named after one product | `erp-config`, `erp-data`, `erp-shell` and `erp-screens` are used by every product | Names invite ERP-only assumptions |
+| Demos scattered | `demo-pages/`, `source/settle`, `source/caregrid`, `source/allyvora-patients` and `dummy-api` sit at the root with their own setups | Demo material can be mistaken for library contracts |
+| Consumers copy archives | Healthcare, ERP and School each vendor `.tgz` files, and one repository holds three builds of `@pepbits/ai-client` (`hc074.2`, `hc096.1`, `hc.fa36d76.1`) | Version drift and manual upgrades |
 
 ## Target layout
 
 ```
 pepbits-frontend-library/
-  package.json              npm workspace root (moved up from desktop-clients/)
-  packages/
-    core/                   tokens, ui, auth, platform-ports, workspace-core
-    shell/                  config, data, shell, screens
-    ai/                     ai-config, ai-client, ai-ui
-    module-host/            the shell-to-module contract
-  modules/
-    healthcare/             suite, lis1, lis2, ris1, diagnostics, pharmacy, medband,
-                            medslot, rcm, surgisuite, teleconsult, quality
-    school/                 school
-    erp/                    erp1, erp2, keystone-core
-    platform/               tenant-admin, reports
-  apps/
-    web/                    Next.js shell
-    desktop/                Vite + Tauri shell
-  tooling/
-    mock-api/               today's dummy-api
-    e2e/
-    scripts/
-  demos/
-    orvia-health-onboarding/
-  docs/
+├── package.json                  npm workspace root (moved up from desktop-clients/)
+├── turbo.json
+├── tsconfig.base.json
+├── .changeset/                   versions and changelogs for published packages
+│
+├── packages/                     THE LIBRARY: reusable only, published as @pepbits/*
+│   ├── tokens/                   colors, typography, spacing, radius, motion, themes, fonts
+│   ├── icons/
+│   ├── i18n/                     catalogs (generated), formatters, RTL, LocaleProvider
+│   ├── preferences/              schema, defaults, tenant-lock resolver, PreferenceHost, themes, shortcuts
+│   ├── ui/                       primitives: button, input, select, search-select, checkbox, radio,
+│   │                             segmented, date-time, quantity-unit-field, scanner-input, otp,
+│   │                             password, field, badge, avatar, skeleton, nav-link
+│   ├── components/               table, pagination, card, card-grid, stat-card, tabs, dropdown,
+│   │                             dialog, drawer, toast, calendar, stepper, empty-state, data-value,
+│   │                             inline-edit, option-filter, reference-data, form-error-summary,
+│   │                             recovery-notice, print-document
+│   ├── patterns/                 form-layout, filter-bar, record-panels, csv-import, approvals,
+│   │                             drafts, wizard, label-printing, identity-devices, spreadsheet,
+│   │                             form-designer (DCP)
+│   ├── page-engines/             core, master-record, worklist, query, order, booking, appointment,
+│   │                             case-encounter, financial-transaction, billing, report, dashboard,
+│   │                             workflow, scheduling, entity-360
+│   ├── shell/                    app-shell, header, sidebar, footer, workspace (tabs, split, detach),
+│   │                             command-palette, help, session-lock, navigation, context
+│   ├── data/                     API client, structured errors, generic adapter contracts, cache
+│   ├── platform/                 auth, drafts, monitoring (Sentinel), export, devices, windows
+│   ├── ai/                       config, client, ui
+│   └── testing/                  render helpers, a11y checks, preference fixtures (dev only)
+│
+├── demo-apps/                    DEMOS: built only from @pepbits/* public exports
+│   ├── showcase/                 component gallery; replaces the Developer Library
+│   ├── healthcare/               patients, registration, triage, consultation, billing, LIS, RIS,
+│   │                             pharmacy, RCM, teleconsult, quality, surgisuite, medband, medslot
+│   ├── erp/                      ERP1, ERP2, Keystone
+│   ├── school/
+│   ├── reports/
+│   ├── tenant-admin/
+│   ├── onboarding/               Orvia landing, workspace finder, sign-in, registration
+│   ├── settle/
+│   ├── caregrid/
+│   ├── allyvora-patients/
+│   └── desktop/                  Tauri wrapper that hosts a demo
+│
+├── mock-api/                     fake backend: routes, stores, simulators, fictional data,
+│                                 canonical localization catalogs
+├── tooling/                      tsconfig, eslint (boundary rules), vitest config,
+│                                 verify gates, codegen, deploy scripts
+├── e2e/                          browser tests against the demo apps
+├── deploy/
+└── docs/
 ```
 
-Rules the layout enforces (checked by a dependency test added in phase 0):
+### Inside a package
 
-- `packages/**` never imports `modules/**` or `apps/**`.
-- A module imports only `packages/core/**` and `packages/module-host`, plus modules of its own product.
-- `apps/**` choose which modules they include.
+```
+packages/components/
+├── src/
+│   ├── table/
+│   │   ├── Table.tsx             implementation
+│   │   ├── Table.types.ts        public props
+│   │   ├── Table.css             token-based styles only
+│   │   ├── parts/                header, row, cell
+│   │   ├── useTable.ts           behavior, separate from markup
+│   │   ├── Table.test.tsx        behavior and a11y tests
+│   │   ├── Table.stories.tsx     states, density, RTL, locked preferences
+│   │   └── index.ts              the only file other packages import
+│   └── index.ts                  public exports
+├── package.json                  "@pepbits/components", "exports", peerDependencies
+└── CHANGELOG.md
+```
 
-## Package map
+### Inside a demo app
 
-Proposed names; the owner confirms them (see open questions).
+```
+demo-apps/healthcare/
+├── src/
+│   ├── app/                      routes
+│   ├── modules/
+│   │   └── patients/
+│   │       ├── patient-list.config.ts     worklist engine configuration
+│   │       ├── patient-record.config.ts   master-record engine configuration
+│   │       └── PatientSummary.tsx         demo screen built from components
+│   ├── adapters/                 page-engine adapters → mock-api
+│   └── navigation.ts
+└── package.json                  depends on @pepbits/* only
+```
 
-| Today | Proposed location | Proposed name | Shim needed |
-| --- | --- | --- | --- |
-| `tokens` | `packages/core/tokens` | `@pepbits/tokens` | No |
-| `platform-ports` | `packages/core/platform-ports` | `@pepbits/platform-ports` | No |
-| `auth` | `packages/core/auth` | `@pepbits/auth` | No |
-| `workspace-core` | `packages/core/workspace-core` | `@pepbits/workspace-core` | No |
-| `ops-ui` | `packages/core/ui` | `@pepbits/ui` | Yes, `@pepbits/ops-ui` |
-| `ai-config` | `packages/ai/ai-config` | `@pepbits/ai-config` | No |
-| `erp-config` | `packages/shell/config` | `@pepbits/shell-config` | Yes, `@pepbits/erp-config` |
-| `erp-data` | `packages/shell/data` | `@pepbits/shell-data` | Yes, `@pepbits/erp-data` |
-| `erp-shell` | `packages/shell/shell` | `@pepbits/shell` | Yes, `@pepbits/erp-shell` |
-| `ai-client` | `packages/ai/ai-client` | `@pepbits/ai-client` | No |
-| `ai-ui` | `packages/ai/ai-ui` | `@pepbits/ai-ui` | No |
-| `reference-host` | `packages/module-host` | `@pepbits/module-host` | Yes, `@pepbits/reference-host` |
-| `erp-screens` | `packages/shell/screens` | `@pepbits/screens` | Yes, `@pepbits/erp-screens` |
-| `reference-healthcare-suite`, `reference-lis1`, `reference-lis2`, `reference-ris1`, `reference-diagnostics`, `reference-pharmacy`, `reference-medband`, `reference-medslot`, `reference-rcm`, `reference-surgisuite`, `reference-teleconsult`, `reference-quality` | `modules/healthcare/<name>` | Unchanged at first | No |
-| `reference-school` | `modules/school/school` | Unchanged at first | No |
-| `reference-erp1`, `reference-erp2`, `reference-keystone-core` | `modules/erp/<name>` | Unchanged at first | No |
-| `reference-tenant-admin`, `reference-reports` | `modules/platform/<name>` | Unchanged at first | No |
+## Dependency rules
 
-Module packages keep their `@pepbits/reference-*` names during the port; renaming them (for example to `@pepbits/healthcare-lis1`) is a separate, later decision because no product consumes them as archives today.
+```
+tokens, icons → i18n, preferences → ui → components → patterns → page-engines → shell → demo-apps
+                                       data, platform ─────────┘
+```
 
-## Module registration instead of hard-wired imports
+| Layer | May import from |
+| --- | --- |
+| `tokens`, `icons` | nothing |
+| `i18n`, `preferences` | `tokens` |
+| `ui` | `tokens`, `icons`, `i18n`, `preferences` |
+| `components` | everything above |
+| `data`, `platform` | `i18n`, `preferences` |
+| `patterns` | everything above, plus `data` and `platform` contracts |
+| `page-engines` | everything above |
+| `shell` | everything above |
+| `ai` | `data`, `platform`, `ui`, `components` |
+| `demo-apps/*` | any `@pepbits/*` public export; never another demo, never a `src/` deep path |
+| `mock-api` | nothing from the frontend |
 
-Today `erp-screens/src/reference-modules/library-page.tsx` lazy-imports 16 module packages, and `erp-config` carries their page tables and School role logic. The target design inverts that dependency:
+A dependency-boundary test, added in phase 0, fails the build on any violation. Packages expose their API only through `package.json` `"exports"`.
 
-- `@pepbits/module-host` defines a `ModuleRegistration` type: module id, page descriptors, a lazy component loader, and optional role-view and legacy-route hooks.
-- Each module package exports its own registration, including its page descriptors (moved out of `erp-config`) and, for School, its role views (moved out of `erp-config` and out of the web routes).
-- `@pepbits/screens` renders whatever registrations it is given and imports no module package.
-- Each app passes its list, for example `registerModules([healthcareSuite, lis1, ...])`. The current demo web and desktop apps register every module, so their behaviour does not change; a product shell registers only its own.
+Placement rule: **if two products need it, it belongs in `packages/`; if only one product needs it, it belongs in that product's repository.**
 
-This is the only step that changes runtime behaviour, so it is scheduled after the shared packages have moved and it carries browser journeys in its gate.
+## How products consume the library
+
+Packages are published from this repository to a private registry (GitHub Packages under the `pepbits` organization is the default; see open questions) with semantic versions managed by Changesets. Each product repository installs them like any npm dependency:
+
+```
+pepbits-healthcare-enterprise/frontend/
+├── package.json                  pins one @pepbits/* version for the whole frontend
+├── .npmrc                        @pepbits:registry=https://npm.pkg.github.com
+├── apps/
+│   ├── provider-web/
+│   │   └── src/{app,modules,adapters,navigation.ts}
+│   ├── patient-web/
+│   ├── tenant-admin-web/
+│   ├── platform-admin-web/
+│   ├── registration-web/
+│   ├── external-web/
+│   └── tenant-desktop/
+├── packages/                     product-only shared code
+│   ├── healthcare-domain/        types and rules
+│   ├── healthcare-api/           client for the real backend
+│   └── healthcare-ui/            product-only widgets built from @pepbits/components
+└── e2e/
+```
+
+| In this repository | In each product's `frontend/` |
+| --- | --- |
+| Primitives, components, patterns | Patient, invoice and student screens |
+| Page engines | Page configurations that use them |
+| Shell, preferences, i18n, platform services | Product navigation and menus |
+| Generic adapter contracts | Adapters for the real backend |
+| Demo apps and mock API | Real API clients, authentication, deployment |
+
+Today the products vendor archives from a pinned snapshot:
+
+| Consumer | Packages vendored today |
+| --- | --- |
+| Healthcare | `ai-client`, `ai-config`, `ai-ui`, `auth`, `erp-config`, `erp-data`, `erp-screens`, `erp-shell`, `ops-ui`, `platform-ports`, `tokens`, `workspace-core` |
+| ERP | Same set |
+| School | Same set |
+| Platform | `auth`, `erp-config`, `erp-shell`, `ops-ui`, `platform-ports`, `tokens`, `workspace-core` |
+
+Because each product pins a snapshot, the restructure does not affect a product until that product moves to the registry (phase 7).
+
+### What products import today
+
+Demo apps are never published, so products cannot depend on them. Product source (excluding `vendor/`, `node_modules/` and build output) was checked on 22 October 2026:
+
+- No product imports any `@pepbits/reference-*` package, so moving those packages into `demo-apps/` removes nothing the products use.
+- Products import these exports from `@pepbits/erp-screens`:
+
+| Export | Used by | Target |
+| --- | --- | --- |
+| `RecordPage`, `RecordIdentity`, `RecordNotice` (`/record-page`) | Healthcare | `packages/page-engines` |
+| `DcpRuntimeFields`, `DcpSectionFields`, `DcpFieldRenderer` (`/dcp-fields`) | Healthcare | `packages/patterns/form-designer` |
+| `LifecycleConfigurationPage` (`/lifecycle`) | Healthcare, ERP, School | `packages/patterns` |
+| `MasterTransferPanel` and its port types, `PricingExpressionInput` | School | `packages/patterns` |
+| `ClinicalPatientWorkspace` (`/patient-query`) | Healthcare | Healthcare repository, `frontend/packages/healthcare-ui`; generic parts it relies on go to `packages/page-engines` |
+
+`ClinicalPatientWorkspace` is the only product-specific screen a product consumes. It moves to the Healthcare repository because Healthcare is its only consumer. Until Healthcare adopts it there, the `@pepbits/erp-screens` shim keeps exporting it.
+
+## Where today's folders go
+
+| Today | Target |
+| --- | --- |
+| `desktop-clients/packages/tokens` | `packages/tokens` |
+| `ops-ui` primitives (button, inputs, badge, avatar, skeleton…) | `packages/ui` |
+| `ops-ui` composites (table, card, tabs, overlay, calendar, pagination…) | `packages/components` |
+| `ops-ui` localization and messages | `packages/i18n` |
+| `erp-config` preferences, themes, shortcuts, formatting, i18n | `packages/preferences`, `packages/i18n` |
+| `erp-config` page templates, navigation types, entity schemas | `packages/page-engines`, `packages/shell` |
+| `erp-config` product definitions (clinical, pharmacy, RCM, school…) | the matching `demo-apps/*` |
+| `erp-data` client, errors, CSV import, drafts, generic records | `packages/data`, `packages/platform` |
+| `erp-data` product adapters (clinic billing, triage, OP registration…) | the matching `demo-apps/*/adapters` |
+| `erp-screens` generic (records, worklist, imports, approvals, drafts, inbox, reports, dashboard, page renderer) | `packages/patterns`, `packages/page-engines` |
+| `erp-screens` DCP designer, label printing, device and identity screens, spreadsheet | `packages/patterns` |
+| `erp-screens` record page, DCP fields, lifecycle, master transfer, pricing expression input | `packages/page-engines`, `packages/patterns` (used by products; see [What products import today](#what-products-import-today)) |
+| `erp-screens` patient query (`ClinicalPatientWorkspace`) | Healthcare repository, `frontend/packages/healthcare-ui` |
+| `erp-screens` other product screens (clinical, consultation, billing, OP registration, care pages) | `demo-apps/healthcare` |
+| `erp-screens` page library | `demo-apps/showcase` |
+| `erp-shell`, `workspace-core` | `packages/shell` |
+| `auth`, `platform-ports` | `packages/platform` |
+| `ai-config`, `ai-client`, `ai-ui` | `packages/ai` |
+| `registration-wizard` | generic stepper and wizard → `packages/patterns/wizard`; Orvia screens → `demo-apps/onboarding` |
+| `reference-host` | replaced by demo-app routing; the module contract moves to `packages/shell` |
+| `reference-healthcare-suite`, `lis1`, `lis2`, `ris1`, `diagnostics`, `pharmacy`, `medband`, `medslot`, `rcm`, `surgisuite`, `teleconsult`, `quality` | `demo-apps/healthcare/src/modules/*` |
+| `reference-erp1`, `reference-erp2`, `reference-keystone-core` | `demo-apps/erp/src/modules/*` |
+| `reference-school` | `demo-apps/school` |
+| `reference-reports` | `demo-apps/reports` |
+| `reference-tenant-admin` | `demo-apps/tenant-admin` |
+| `desktop-clients/apps/web` | per-demo hosts (see open question 2) |
+| `desktop-clients/apps/desktop` | `demo-apps/desktop` |
+| `desktop-clients/scripts` | `tooling/scripts` |
+| `desktop-clients/e2e` | `e2e/` |
+| `dummy-api` | `mock-api` |
+| `demo-pages/*.html` and previews | `docs/design-references/` |
+| `demo-pages/orvia-health-onboarding` | `demo-apps/onboarding` |
+| `source/settle`, `source/caregrid`, `source/allyvora-patients` | `demo-apps/settle`, `demo-apps/caregrid`, `demo-apps/allyvora-patients` |
+
+## Approach: build alongside, port one by one, remove last
+
+1. Create the new structure next to the existing one. The existing layout keeps working throughout.
+2. Port one package at a time, leaves first. After each port the full gate passes and the change merges on its own.
+3. Remove the old layout and compatibility shims only when nothing uses them.
+
+**A port is a move, not a copy.** Each port uses `git mv` to keep history and updates workspace globs in the same change, so there is never more than one implementation. When a package is renamed or split, the old name remains as a thin deprecated package that re-exports the new ones (a *shim*), so existing imports and consumer archives keep working until they are re-pointed.
 
 ## Order of work
 
-| Phase | Work | Behaviour change |
+| Phase | Work | Behavior change |
 | --- | --- | --- |
-| 0. Foundation | Move the npm workspace root, lockfile, `turbo.json`, `tsconfig.base.json` and Vitest configuration from `desktop-clients/` to the repository root, with workspace globs covering both `desktop-clients/{apps,packages}/*` and the new folders. Update scripts, Jenkins and deploy paths. Add the dependency-boundary test. | None |
-| 1. Core | `tokens`, `platform-ports`, `auth`, `workspace-core`, then `ops-ui` → `ui` | None |
-| 2. Shell | `ai-config`, `erp-config` → `shell-config`, `erp-data` → `shell-data`, `erp-shell` → `shell`, `ai-client`, `ai-ui`, `reference-host` → `module-host` | None |
-| 3. Modules | Move the 18 module packages into `modules/<product>/`, one product group per change | None |
-| 4. Registration | Introduce `ModuleRegistration`; move page tables and School role logic into their modules; `erp-screens` → `screens` without module imports; apps register modules | Yes |
-| 5. Apps and tooling | `apps/web`, `apps/desktop`, `e2e`, `scripts`, `dummy-api` → `tooling/mock-api`, `demo-pages` → `demos` | None |
-| 6. Consumers | Healthcare, ERP, School and Platform re-pin to a library commit that has the new names and switch their imports, one product at a time | Per consumer |
-| 7. Removal | Delete the shims and the empty `desktop-clients/` tree once phase 6 is complete | None |
+| 0. Foundation | Move the workspace root, lockfile, `turbo.json`, `tsconfig.base.json` and Vitest config from `desktop-clients/` to the repository root, with globs covering old and new folders. Create `tooling/`. Add the dependency-boundary test. Update scripts, Jenkins and deploy paths. | None |
+| 1. Foundations | `tokens`; extract `icons`, `i18n`, `preferences` from `ops-ui` and `erp-config` | None |
+| 2. UI | Split `ops-ui` into `ui` and `components`; `@pepbits/ops-ui` becomes a shim | None |
+| 3. Services | `data`, `platform` (from `auth`, `platform-ports`, generic `erp-data`), `ai` | None |
+| 4. Patterns and engines | Generic parts of `erp-screens`, `erp-config` and `registration-wizard` → `patterns` and `page-engines` | None |
+| 5. Shell | `erp-shell` + `workspace-core` → `shell`; module contract replaces `reference-host` | None |
+| 6. Demo apps | `showcase` first, then one demo per change: healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Product code leaves `erp-screens`, `erp-config` and `erp-data`. `dummy-api` → `mock-api`. | Yes: routes and hosts change |
+| 7. Publishing and consumers | Changesets and a registry publish job; Healthcare, ERP, School and Platform move from vendored archives to registry versions one at a time, in their own repositories under their own rules. Healthcare also takes `ClinicalPatientWorkspace` into `frontend/packages/healthcare-ui`. | Per consumer |
+| 8. Removal | Delete shims and the empty `desktop-clients/` tree | None |
 
-Phase 0 must come first: npm only links workspaces under its root, so the new top-level folders cannot join the build while the root stays in `desktop-clients/`.
+Phase 0 comes first because npm only links workspaces under its root, so the new top-level folders cannot join the build while the root stays in `desktop-clients/`.
 
 ## Gate for every port
 
-Each port is one reviewable change and must pass, from the workspace root:
+Each port is one reviewable change and passes, from the workspace root:
 
-- `npm ci`, typecheck, the Vitest suite and the API, registry and deployment tests (`npm run ci`).
+- `npm ci`, typecheck, the Vitest suite and the API, registry and deployment tests.
+- The `verify:*` gates (form controls, shared components, localization, contrast, library, templates, bundle).
 - Web and desktop builds.
 - The dependency-boundary test.
 - `node docs/tools/check-docs.mjs`, with moved documentation links updated.
-- For phases 4 and 5, and for any port that touches routes or styles: the browser journeys, including `e2e/reference-modules.mjs`.
+- For phase 6 and any port touching routes or styles: the browser journeys for the affected demos.
 
 Paths that ports must update, counted on `main` `01b6578`:
 
@@ -132,37 +282,28 @@ Paths that ports must update, counted on `main` `01b6578`:
 - 59 files under `desktop-clients/scripts` that reference `packages/`.
 - 24 references to `desktop-clients` in `Jenkinsfile`, `deploy/`, `run.sh`, `run_all.sh` and `.github/`.
 
-## Consumers
-
-The products consume this library as vendored npm archives built from a pinned snapshot, not from `main`:
-
-| Consumer | Packages vendored today |
-| --- | --- |
-| Healthcare | `ai-client`, `ai-config`, `ai-ui`, `auth`, `erp-config`, `erp-data`, `erp-screens`, `erp-shell`, `ops-ui`, `platform-ports`, `tokens`, `workspace-core` |
-| ERP | Same set |
-| School | Same set |
-| Platform | `auth`, `erp-config`, `erp-shell`, `ops-ui`, `platform-ports`, `tokens`, `workspace-core` |
-
-Because each product pins a snapshot, the restructure does not affect a product until that product re-pins. Their packaging scripts read package folders by path, so each product's re-pin (phase 6) updates its packaging script and lock file in that product's repository, under its own rules. The shims let a product re-pin first and switch imports afterwards.
-
 ## Done when
 
-- Every package, app and tool is in the target layout and `desktop-clients/` is gone.
-- No package under `packages/` imports a module, enforced by the boundary test.
-- Every consumer has re-pinned and imports only the new names.
-- The shims are deleted, and the release record lists every rename as a breaking change with its replacement.
+- `packages/` contains only reusable code, and the boundary test enforces the dependency rules.
+- Every demo app builds from public `@pepbits/*` exports only.
+- Packages publish with versions and changelogs, and every consumer installs them from the registry instead of vendoring archives.
+- Shims and `desktop-clients/` are gone, and the release record lists every rename as a breaking change with its replacement.
 
 ## Out of scope
 
-- Behaviour or visual changes other than module registration.
-- Publishing to an npm registry; distribution stays as vendored archives.
-- Renaming the module packages (`@pepbits/reference-*`).
-- The `orvia-health-onboarding` demo's own dependencies (Next 15, Node 18–22); it moves as-is.
+- Visual or behavior changes beyond moving demos into their own hosts.
+- Product repositories' internal restructuring beyond replacing vendored archives.
+- Upgrading the dependencies of the imported demos (`orvia-health-onboarding`, `source/*`); they move as-is and adopt the packages later.
+
+## Decisions
+
+1. **Demo apps are not product code.** `demo-apps/healthcare`, `erp`, `school` and the other demos are never published; products install only `packages/`. Decided 22 October 2026.
+2. **Product screens used by products.** Generic exports that products use move into `packages/`. The one product-specific screen a product uses, `ClinicalPatientWorkspace`, moves to the Healthcare repository's `frontend/packages/healthcare-ui`. Decided 22 October 2026, based on [What products import today](#what-products-import-today).
 
 ## Open questions for the owner
 
-1. Confirm the new package names, especially `ui`, `shell-config`, `shell-data`, `shell`, `screens` and `module-host`.
-2. Confirm the top-level folders `packages/`, `modules/`, `apps/`, `tooling/` and `demos/`.
-3. Keep `dummy-api` and the demos in this repository under `tooling/` and `demos/`, or move them to their own repositories.
-4. How long the shims stay after the last consumer re-pins: one library release, or a fixed date.
-5. Which session owns the work, given that the frontend library is maintained by its own session (`fix/central-navigation-review` worktree).
+1. **Demo hosting.** One Next.js app per demo (recommended: independent, proves packages stand alone), or one shared host that loads demos as modules (closer to today, single deployment).
+2. **Registry.** GitHub Packages under `pepbits`, or another private npm registry.
+3. **Package names.** Confirm `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `patterns`, `page-engines`, `shell`, `data`, `platform`, `ai`, `testing`.
+4. **Component docs.** Storybook inside `demo-apps/showcase`, or keep the custom Developer Library renderer there.
+5. **Shim lifetime.** One library release after the last consumer moves, or a fixed date.
