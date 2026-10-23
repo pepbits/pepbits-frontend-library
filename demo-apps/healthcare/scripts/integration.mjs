@@ -17,7 +17,7 @@ async function stopChildren(){if(stopping)return;stopping=true;for(const child o
  let groupAlive=false;try{process.kill(-child.pid,0);groupAlive=true;}catch{}
  cleanup.push({label:child.serviceLabel,pid:child.pid,exitCode:child.exitCode,signal:child.signalCode,groupAlive});
 }}
-for(const signal of ['SIGINT','SIGTERM'])process.once(signal,()=>{void stopChildren().finally(()=>process.exit(1));});
+for(const signal of ['SIGINT','SIGTERM'])process.once(signal,()=>{void stopChildren().finally(()=>{identity.interrupted=signal;identity.cleanup=cleanup;writeFileSync(process.env.HEALTHCARE_IDENTITY??'/tmp/phase6b-integration-identity.json',JSON.stringify(identity,null,2)+'\n');process.exit(1);});});
 const freePort=()=>new Promise(resolve=>{const server=createServer();server.listen(0,'127.0.0.1',()=>{const port=server.address().port;server.close(()=>resolve(port));});});
 const apiPort=await freePort(),appPort=await freePort();
 const node=process.env.HEALTHCARE_API_NODE??process.execPath;
@@ -48,6 +48,7 @@ if(artifactRoot){
 }
 function start(command,args,env,cwd,label){
  const child=spawn(command,args,{cwd,env:{...process.env,...env},stdio:['ignore','pipe','pipe'],detached:true});children.push(child);child.serviceLabel=label;
+ identity.startedServices??=[];identity.startedServices.push({label,pid:child.pid});writeFileSync(process.env.HEALTHCARE_IDENTITY??'/tmp/phase6b-integration-identity.json',JSON.stringify(identity,null,2)+'\n');
  const output=[];child.stdout.on('data',d=>output.push(String(d)));child.stderr.on('data',d=>output.push(String(d)));
  child.on('exit',code=>{if(code)console.error(`${label} exited ${code}`);});return {child,output};
 }

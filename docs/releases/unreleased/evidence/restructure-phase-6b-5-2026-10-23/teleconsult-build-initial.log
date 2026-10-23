@@ -1,0 +1,113 @@
+
+> @pepbits-demo/healthcare@0.0.0 build
+> next build --webpack
+
+▲ Next.js 16.3.3 (webpack)
+- Environments: .env.local
+✓ Running next.config.ts took 39ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Creating an optimized production build ...
+Failed to compile.
+
+./src/modules/teleconsult/patient/app/register/page.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/teleconsult/patient/app/register/page.tsx:2:1]
+ 1 | import {TeleconsultFields} from "../../../shared/fields";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | import { LocalizedText, useLocalization } from "@pepbits/i18n/react";
+ 4 | import { SourceButton, SourceInput } from "../../../shared/controls";
+ 5 | import { useState } from "react";
+   `----
+
+Import trace for requested module:
+./src/modules/teleconsult/patient/app/register/page.tsx
+./src/modules/teleconsult/patient/module.tsx
+./src/modules/teleconsult/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/teleconsult/provider/app/patients/page.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/teleconsult/provider/app/patients/page.tsx:5:1]
+ 2 | import {Pagination} from "@pepbits/components";
+ 3 | import {useReferenceHost} from "../../../host";
+ 4 | import {usePreferenceChoice} from "../../../../preference-choice";
+ 5 | "use client";
+   : ^^^^^^^^^^^^^
+ 6 | import { LocalizedText, useLocalization } from "@pepbits/i18n/react";
+ 7 | import { SourceInput, Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "../../../shared/controls";
+ 8 | import { useState } from "react";
+   `----
+
+Import trace for requested module:
+./src/modules/teleconsult/provider/app/patients/page.tsx
+./src/modules/teleconsult/provider/module.tsx
+./src/modules/teleconsult/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/teleconsult/provider/components/BookingDialog.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/teleconsult/provider/components/BookingDialog.tsx:2:1]
+ 1 | import {AsyncLookup} from "@pepbits/ui";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | import { LocalizedText, useLocalization } from "@pepbits/i18n/react";
+ 4 | import { SourceButton, SourceInput } from "../../shared/controls";
+ 5 | import { useCallback, useEffect, useMemo, useState } from "react";
+   `----
+
+Import trace for requested module:
+./src/modules/teleconsult/provider/components/BookingDialog.tsx
+./src/modules/teleconsult/provider/app/page.tsx
+./src/modules/teleconsult/provider/module.tsx
+./src/modules/teleconsult/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/teleconsult/provider/components/consult/CommandPalette.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/teleconsult/provider/components/consult/CommandPalette.tsx:2:1]
+ 1 | import {SourceDialog} from "@pepbits/components";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | import { LocalizedText, useLocalization } from "@pepbits/i18n/react";
+ 4 | import { SourceButton, SourceInput } from "../../../shared/controls";
+ 5 | import { useEffect, useMemo, useRef, useState } from "react";
+   `----
+
+Import trace for requested module:
+./src/modules/teleconsult/provider/components/consult/CommandPalette.tsx
+./src/modules/teleconsult/provider/app/consult/[id]/page.tsx
+./src/modules/teleconsult/provider/module.tsx
+./src/modules/teleconsult/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/teleconsult/provider/components/ui.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/teleconsult/provider/components/ui.tsx:2:1]
+ 1 | import {useScreenHost} from "@pepbits/patterns/screen-host";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | import {
+ 4 |   createContext,
+ 5 |   useCallback,
+   `----
+
+Import trace for requested module:
+./src/modules/teleconsult/provider/components/ui.tsx
+./src/modules/teleconsult/provider/module.tsx
+./src/modules/teleconsult/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+
+> Build failed because of webpack errors
+npm ERR! Lifecycle script `build` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

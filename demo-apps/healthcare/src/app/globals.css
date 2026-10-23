@@ -1,3 +1,5 @@
+@import "../modules/teleconsult/styles.css";
+@import "../modules/teleconsult/overrides.css";
 @import "../modules/rcm/styles.css";
 @import "../modules/rcm/overrides.css";
 @import "../modules/pharmacy/styles.css";
@@ -38,3 +40,6 @@ button, input, select, textarea { font:inherit; }
 @font-face {font-family:"Manrope";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2") format("woff2");}
 @font-face {font-family:"Source Sans 3";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2") format("woff2");}
 @font-face {font-family:"Nunito Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/nunito-sans/files/nunito-sans-latin-wght-normal.woff2") format("woff2");}
+
+main:has(> .healthcare-page [data-teleconsult]) {display:flex;flex-direction:column;overflow:hidden;}
+.healthcare-page:has([data-teleconsult]) > [data-page-id] {display:flex;flex:1 1 0;min-height:0;}

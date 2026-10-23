@@ -1,3 +1,4 @@
+import {providerHandler,patientHandler,patient,encounter,appointmentView,staff} from '../modules/teleconsult/test-utils';
 import {readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import type {PreferencePolicy,UserPreferences} from '@pepbits/preferences';
@@ -13,4 +14,10 @@ export function mockHttp(preferences:Partial<UserPreferences>={},policy:Preferen
  if(path==='/personal-views'&&JSON.parse(String(init?.body)).action==='list')return Response.json({views:[]});
  // Reuse one synthetic API image across the seeded series; browser coverage loads the actual instances.
  if(/^\/reference-modules\/ris1\/api\/dicom\/instances\/\d+$/.test(path)&&(!init?.method||init.method==='GET'))return new Response(new Uint8Array(readFileSync(resolve(process.cwd(),'src','test','fixtures','diagnostic-instance.dcm'))),{headers:{'content-type':'application/dicom'}});
+ const tc=path.match(/^\/reference-modules\/teleconsult-(provider|patient)(\/api.*)$/);
+ if(tc){const local=tc[2]!,url=new URL(local,'http://localhost'),record={method:init?.method??'GET',path:local,url,headers:new Headers(init?.headers),body:init?.body?JSON.parse(String(init.body)):undefined,signal:init?.signal};
+  const handler=tc[1]==='provider'?providerHandler({roles:['doctor','nurse']}):patientHandler({patients:[patient()],bound:'p8',canRegister:true});
+  const result=await handler(record)??(url.pathname==='/api/encounters'?{body:[]} :url.pathname==='/api/appointments/a1/summary'?{body:{appointment:appointmentView(),patient:patient(),clinician:staff(),encounter:encounter({status:'signed',signedBy:'d1'})}}:undefined);
+  if(result)return Response.json(result.body??null,{status:result.status??200});
+ }
  const body=init?.body?JSON.parse(String(init.body)):null,method=init?.method??'GET';const match=entries.find(entry=>entry.key[0]===method&&normalized(entry.key[1],entry.key[2])===normalized(path,body));if(!match){unexpected.push(JSON.stringify([method,path,body]));throw new Error('Unmocked synthetic read '+path);}return Response.json(match.value.body,{status:match.value.status});};return {request,unexpected,calls};}

@@ -12,7 +12,7 @@ import {EnterpriseShell, ShellProvider} from '@pepbits/shell';
 import {LoginScreen} from '@pepbits/shell/login';
 import {API_PRODUCT, createRequest, readJson, RequestContext, type Request} from './adapters/http';
 import {loadPreferences, savePreferences, type PreferenceSnapshot} from './adapters/preferences';
-import {product} from './navigation';
+import {healthcareProductForRole} from './navigation';
 
 const brand = {name: 'Healthcare', tagline: 'Fictional healthcare workflows'};
 const SettingsServices = createContext<{request: Request; canManagePreferencePolicy: boolean; saveError?: string; reload: () => Promise<void>} | undefined>(undefined);
@@ -47,6 +47,7 @@ function LocaleSurface({catalogs, children}: {catalogs: TranslationCatalog; chil
 }
 function Authenticated({request, navigation, children}: {request: Request; navigation: NavigationPort; children: React.ReactNode}) {
   const {user} = useSession();
+  const product=useMemo(()=>healthcareProductForRole(user!.role),[user!.role]);
   const [snapshot, setSnapshot] = useState<PreferenceSnapshot | null>(null);
   const accepted = useRef<PreferenceSnapshot | null>(null), live = useRef(true), queue = useRef(Promise.resolve());
   const [error, setError] = useState<unknown>(null), [saveError, setSaveError] = useState<string>();

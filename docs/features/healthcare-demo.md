@@ -50,7 +50,7 @@ Route matrices cover default, Arabic RTL, reduced motion and locked density. Jsd
 | HCD-12 | Pharmacy command replay, structured failure/retry, mounted preferences and cache scope |
 | HCD-06 | Public package boundaries, forced root CI, builds, documentation and protected-path/source checks |
 
-Exact case/file counts and failures are in the delivery record. Later runs cover Teleconsult, quality, SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
+Exact case/file counts and failures are in the delivery record. Later runs cover quality, SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
 
 ## Operations and support
 
@@ -95,3 +95,22 @@ Creation/edit/action forms configure TemplateFields; metadata-driven worklists c
 The configured HTTP adapter supplies existing product/module/branch routing metadata. Authenticated server context establishes permissions, trusted actors and transaction isolation. Data caches are scoped and disposed on identity changes; obsolete reads are aborted/fenced. Commands carry idempotency keys and row versions. Validation failures preserve values; stale-version conflicts reload the current record and explain the conflict. Independent approval failures remain visible. Transient editor state is not a new durable draft service.
 
 Fictional software demonstration only. Payer, payout, accounting and DRG outcomes remain API simulations. Export/device/designer adoption is not applicable to this source workflow. Native, clinical/financial, assistive-technology and human language/domain review remain outside local test acceptance. Original applications and historical evidence remain intact.
+
+## Teleconsult increment
+
+Phase 6b-5 ports Clinic Desk and CareCall as exactly two header modules, with all nine sidebar destinations and three appointment record routes. The [app guide](../../demo-apps/healthcare/README.md#teleconsult-provider-and-patient) gives routes and usage; the [delivery record](../releases/unreleased/restructure-phase-6b-5-2026-10-23.md) separates mocked tests, real local HTTP, browser rendering and remaining acceptance.
+
+| Case | User flow and contract |
+| --- | --- |
+| HCD-18 | Choose Provider or Patient; server-granted Doctor/Nurse modes and beneficiary selection |
+| HCD-19 | Book through patient lookup or patient symptom advice, clinician and available slot; effective branch modes/durations |
+| HCD-20 | Nurse admits, records triage and simulated vitals, then hands off to Doctor |
+| HCD-21 | Replay/stale-version handling, Doctor signing, own-patient summary after reload and shared synthetic printing |
+| HCD-22 | Dedicated-role and cross-patient restrictions; administrator-only registration; branch isolation |
+| HCD-23 | All twelve route patterns across default/Arabic RTL/reduced-motion/locked-density profiles; mounted form retention and managed page size; phone and bottom-nav viewport fit |
+
+The existing provider chain and public renderer registry are unchanged. Product components retain consultation, schedule, patient phone, notes and simulated media layouts. Registration and worklists configure TemplateFields and CollectionView. Public AsyncLookup, Source* controls, SourceDialog, shared printing and ScreenHost notifications replace duplicate infrastructure. The HTTP adapter uses the configured base URL and fixed namespace/scope metadata; the server validates identity, role, ownership, state, consent, idempotency and versions.
+
+Recoverable failures retain unsaved edits; an ambiguous retry uses the original operation key. Conflicts require explicit reload/reapply decisions and signed history stays immutable. This is transient editor retention, not a new durable draft service. Shared canonical catalogs remain backend-owned; English literal source keys resolve against the runtime catalog. CareCall retains its source light palette, with scoped contrast corrections. Effective formatters, typography, form/result scales, table settings, reduced motion and shortcut preferences apply.
+
+This is a fictional software demonstration. Remote media, transcript, scribe, scores and advice remain simulations, and no real prescription/order/billing transaction is posted. Identity/media providers, secure attachments, devices, clinical governance, human language/domain review, assistive-technology acceptance and native executables are outside this port. The phase 4c patterns are available; none is required by the original Teleconsult workflows.

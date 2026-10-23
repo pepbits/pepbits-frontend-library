@@ -6,7 +6,7 @@ import * as icons from "@pepbits/icons";
 
 afterEach(cleanup);
 
-const names = ["AlarmClock","BarChart3","Calculator","Code2","ConciergeBell","FileMinus2","FileOutput","FileSearch","FileStack","GitCompare","Home","Hourglass","KanbanSquare","ListChecks","ListTodo","Megaphone","MessageSquareText","MousePointerClick","Package","PieChart","PiggyBank","RadioTower","Scale","Sigma","Check", "ChevronDown", "ChevronLeft", "ChevronRight", "FileQuestion", "GitCompareArrows",
+const names = ["ArrowRightCircle","CalendarCheck","Camera","CameraOff","Circle","ClipboardPlus","CloudOff","FlaskConical","FolderHeart","MonitorSmartphone","MonitorUp","PhoneOff","PlusCircle","ScanFace","Signal","Smartphone","Video","Wifi","WifiOff","AlarmClock","BarChart3","Calculator","Code2","ConciergeBell","FileMinus2","FileOutput","FileSearch","FileStack","GitCompare","Home","Hourglass","KanbanSquare","ListChecks","ListTodo","Megaphone","MessageSquareText","MousePointerClick","Package","PieChart","PiggyBank","RadioTower","Scale","Sigma","Check", "ChevronDown", "ChevronLeft", "ChevronRight", "FileQuestion", "GitCompareArrows",
   "Banknote", "Bike", "CirclePause", "CornerDownLeft", "Gavel", "HandCoins", "Landmark", "MessageCircle", "Moon", "PackageCheck", "PackageX", "Radio", "ShoppingBag", "ShoppingBasket", "Snowflake", "Store", "Sun",
   "Inbox", "Loader2", "LoaderCircle", "LogIn", "Search", "ShieldOff", "TrendingDown", "TrendingUp", "TriangleAlert", "X"] as const;
 test.each(names)("%s is exported and renders", name => {

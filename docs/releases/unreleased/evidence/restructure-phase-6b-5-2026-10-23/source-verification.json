@@ -1,0 +1,53 @@
+{
+  "base": "23d2f7b292fe9299b113f18ed404588cf07f3f4e",
+  "ciImplementationDigest": "6380559229301f5691cdf5ed408df38900387c0a1a618e2d1bf01bd188611b06",
+  "finalImplementationDigest": "c61b26c1becbef17af245fa4032556f4c053e3d087b830a683973675c1f4471b",
+  "finalFiles": 1198,
+  "changesAfterCiStart": [
+    "demo-apps/healthcare/scripts/teleconsult-flows.mjs"
+  ],
+  "manifestMatchesWorkingTree": true,
+  "browserBuild": {
+    "snapshot": "browser-build-source.json",
+    "artifactIdentity": "frontend-build.json",
+    "matchingBuildInputs": 795,
+    "runtimeChanges": [],
+    "scope": "The full 203-route browser run used the successful healthcare build from the initial CI attempt. Final forced CI rebuilt the same runtime inputs, then the final launcher recheck served that build for all 9 Teleconsult workflows and 12 routes.",
+    "finalBuildArtifactIdentity": "final-ci-build.json"
+  },
+  "browserDriverChangesAfterLaunch": [
+    "demo-apps/healthcare/scripts/integration.mjs",
+    "demo-apps/healthcare/scripts/teleconsult-flows.mjs"
+  ],
+  "driverChangeReason": "Signal cleanup evidence persistence changed after the full run launched; bounded SIGTERM verifies it. After CI, the Teleconsult browser driver was changed to await actual shortcut detachment instead of asserting immediately after density rendering. Final focused HTTP verifies that driver; application and package runtime/unit-test source are unchanged.",
+  "finalIntegrationDrivers": [
+    {
+      "path": "demo-apps/healthcare/scripts/integration.mjs",
+      "sha256": "ea0cd18e796eaeeb1061a2410192c25477da6faf1d6faf046e1f60c0120624f1"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/pharmacy-flows.mjs",
+      "sha256": "fc694a58f7528d01b3d89ea7ee13d27d46c63cbd392a7ab49dc909ffe82a4078"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/rcm-flows.mjs",
+      "sha256": "63d5712c149c8ce11eb0a8b52d3e2e9ae68fafb05a0a02044381f5ab548294a9"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/rcm-presentation.mjs",
+      "sha256": "68ea615b874b5e21259f73f9a19873436d338ffc0ab53841404de72ebca3a874"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/route-cases.mjs",
+      "sha256": "e86d2fe40a1c543631973cba629417c702da2e69e692bf8ef23f14ebe0e8a1e0"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/smoke.mjs",
+      "sha256": "83cbd7a9cc12a8827bf3b06316d148439ad25ade5f1cb9c4f28138e6ad0a94f6"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/teleconsult-flows.mjs",
+      "sha256": "39290ae8a0a9a45af301cf642ebb64a05c8fb9c0a6effbe7cde5a93cb4b3f575"
+    }
+  ]
+}

@@ -16,3 +16,5 @@ routes.push(...[...pharmacy.matchAll(/path: "([^"]+)", title:/g)].map(match=>'/p
 
 const rcm=JSON.parse(readFileSync(new URL('src/modules/rcm/navigation.json',root),'utf8'));
 routes.push(...rcm.flatMap(category=>category.pages.map(page=>'/rcm'+(page.path==='/'?'':page.path))));
+
+routes.push('/teleconsult-provider','/teleconsult-provider/schedule','/teleconsult-provider/patients','/teleconsult-provider/notes','/teleconsult-patient','/teleconsult-patient/register','/teleconsult-patient/home','/teleconsult-patient/book','/teleconsult-patient/records');

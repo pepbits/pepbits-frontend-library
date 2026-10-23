@@ -1,0 +1,132 @@
+{
+  "flows": [
+    {
+      "id": "HCD-18-modes",
+      "mode": "UI + HTTP",
+      "result": "Exactly two modules; Doctor/Nurse working modes and effective recording consent resolved from the server"
+    },
+    {
+      "id": "HCD-22-registration",
+      "mode": "UI + HTTP isolation",
+      "result": "Administrator patient registration with consent and allergy declaration; saved patient searchable in own branch and absent in another branch"
+    },
+    {
+      "id": "HCD-19-provider-booking",
+      "mode": "UI + HTTP persistence",
+      "result": "Shared keyboard lookup, branch slot/duration and visit mode created an appointment visible to the authorized patient"
+    },
+    {
+      "id": "HCD-19-patient-booking",
+      "mode": "UI",
+      "result": "Symptoms → current API advice → clinician → available slot → patient booking"
+    },
+    {
+      "id": "HCD-20-triage",
+      "mode": "UI + HTTP persistence",
+      "result": "Nurse admitted patient, retained complaint, captured simulated vitals and handed off to Doctor"
+    },
+    {
+      "id": "HCD-21-sign-summary",
+      "mode": "HTTP replay/conflict setup + UI sign/summary/print",
+      "pdf": {
+        "bytes": 12238,
+        "sha256": "9b85de307d08b8de7adf78df19c0ae5e71fa473e5b286c8351545972582d5e78"
+      },
+      "result": "Replay and stale-version checks; Doctor signature publishes own-patient summary, persists across reload and renders a synthetic PDF through shared printing"
+    },
+    {
+      "id": "HCD-22-authority",
+      "mode": "Dedicated-role UI + HTTP negative assertions",
+      "result": "Dedicated Nurse cannot spoof Doctor or sign; dedicated Patient cannot read another identity, switch beneficiary or register; own signed summary remains readable"
+    },
+    {
+      "id": "HCD-23-layout",
+      "mode": "Chromium",
+      "result": "Patient phone and bottom navigation fit the shared host at 1000, 800 and 600 pixels"
+    },
+    {
+      "id": "HCD-23-preferences",
+      "mode": "Chromium + accepted HTTP preferences",
+      "result": "Shared quick-add focus/Escape, one palette per shortcut, disabled shortcuts with toolbar access, and mounted registration values through Arabic RTL/Hindi/Malayalam/English, compact density and reduced motion"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/teleconsult-provider",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/schedule",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/notes",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/register",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/home",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/book",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/records",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/consult/a8",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/visit/a_b2269a8bbf0c",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/visit/a8/summary",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

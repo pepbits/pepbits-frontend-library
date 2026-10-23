@@ -1,0 +1,144 @@
+{
+  "flows": [
+    {
+      "id": "HCD-18-modes",
+      "mode": "UI + HTTP",
+      "result": "Exactly two modules; Doctor/Nurse working modes and effective recording consent resolved from the server"
+    },
+    {
+      "id": "HCD-22-registration",
+      "mode": "UI + HTTP isolation",
+      "result": "Administrator patient registration with consent and allergy declaration; saved patient searchable in own branch and absent in another branch"
+    },
+    {
+      "id": "HCD-19-provider-booking",
+      "mode": "UI + HTTP persistence",
+      "result": "Shared keyboard lookup, branch slot/duration and visit mode created an appointment visible to the authorized patient"
+    },
+    {
+      "id": "HCD-19-patient-booking",
+      "mode": "UI",
+      "result": "Symptoms → current API advice → clinician → available slot → patient booking"
+    },
+    {
+      "id": "HCD-20-triage",
+      "mode": "UI + HTTP persistence",
+      "result": "Nurse admitted patient, retained complaint, captured simulated vitals and handed off to Doctor"
+    },
+    {
+      "id": "HCD-21-sign-summary",
+      "mode": "HTTP replay/conflict setup + UI sign/summary/print",
+      "result": "Replay and stale-version checks; Doctor signature publishes own-patient summary, persists across reload and renders a synthetic PDF through shared printing"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/teleconsult-provider",
+      "failure": "/encounters/enc_bc948a6f19ae/sign \"This note is signed and locked\"\n\n409 !== 403\n",
+      "rendered": "TE\nTeleconsult Patient\nVisit summary\nteleconsult\nSearch\n⌘K\n13:24:25\nFri • 2026-10-23 • UTC\nhq\nPM\n\nDemo CareCall with fictional data. The clinician's video, vitals and transcript are simulated.\n\nVisit summary\nMI\n\nDr. Meera Iyer\n\nFri, 2026-10-23, 12:00\n\nWhat we found\nDizziness and giddiness\n\nSigned by Dr. Meera Iyer. If anything is unclear, message your care team from your next visit.\n\nHome\nBook\nMy health\nTeleconsult Patient • hq • Solution Architecture\nSecure session\n13:24"
+    },
+    {
+      "route": "/teleconsult-provider",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/schedule",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/notes",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/register",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/home",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/book",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/records",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/consult/a8",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-slate-100"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium bg-slate-100 text-slate-500\"><span class=\"h-1.5 w-1.5 rounded-full bg-slate-300\"></span>Completed</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.34 (foreground color: #64748b, background color: #f1f5f9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-slate-100"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium bg-slate-100 text-slate-500\"><span class=\"h-1.5 w-1.5 rounded-full bg-slate-300\"></span>Completed</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.34 (foreground color: #64748b, background color: #f1f5f9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/visit/a_620213973a3a",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/visit/a8/summary",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

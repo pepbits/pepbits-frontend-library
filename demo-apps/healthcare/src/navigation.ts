@@ -1,3 +1,6 @@
+import {teleconsultPages,teleconsultMenus} from './modules/teleconsult/navigation';
+import {resolveProviderRoute} from './modules/teleconsult/provider/routes';
+import {resolvePatientRoute} from './modules/teleconsult/patient/routes';
 import rcmCategories from './modules/rcm/navigation.json';
 import {resolveRcmRoute} from './modules/rcm/routes';
 import {pharmacyNavigation,resolvePharmacyRoute} from './modules/pharmacy/routes';
@@ -40,11 +43,12 @@ export const suitePages = [
   {id:'suite-contracts',path:'/contracts',title:'Contract pricing'},
   ...Object.values(MASTERS).map(def=>({id:'suite-master-'+def.entity,path:'/masters/'+def.entity,title:def.title,entity:def.entity})),
 ];
-export type HealthcareTarget = NavigationTarget & {query?:string; diagnosticPath?:string};
+export type HealthcareTarget = NavigationTarget & {query?:string; diagnosticPath?:string; teleconsultPath?:string};
 export const diagnosticPages=DIAGNOSTIC_REFERENCES.flatMap(module=>module.pages.map(page=>({...page,module:module.id,variant:module.variant})));
 export const pharmacyPages=pharmacyNavigation.map(item=>({...item,id:'pharmacy-'+resolvePharmacyRoute(item.path)!.kind}));
 export const rcmPages=rcmCategories.flatMap(category=>category.pages.map(page=>({...page,group:category.label,id:"reference-rcm-"+(page.path==="/"?"home":page.path.split("/").at(-1))})));
 export const pages: PageDefinition[] = [
+  ...teleconsultPages.map(p=>({id:p.id,title:p.title,subtitle:"",kind:"teleconsult",module:p.module})),
   ...rcmPages.map(item=>({id:item.id,title:item.title,subtitle:"",kind:"rcm",module:"reference-rcm"})),
   ...pharmacyPages.map(item=>({id:item.id,title:item.title,subtitle:'',kind:'pharmacy',module:'reference-pharmacy'})),
   ...diagnosticPages.map(item=>({id:item.id,title:item.title,subtitle:'',kind:'diagnostic',module:item.module})),
@@ -54,7 +58,7 @@ export const pages: PageDefinition[] = [
 ];
 const navigation: ShellNavigation = {
   defaultModule: 'reference-healthcare-suite', pages: Object.fromEntries(pages.map(page => [page.id, page])),
-  modules: {'reference-rcm':{id:'reference-rcm',label:'RCM Workspace',shortLabel:'RCM',description:'Fictional revenue-cycle workflows',icon:FileQuestion,accent:'var(--primary)',navigation:rcmCategories.map((category,index)=>({id:'rcm-category-'+index,label:category.label,items:rcmPages.filter(p=>p.group===category.label).map(p=>({id:p.id,pageId:p.id,label:p.title}))}))},'reference-pharmacy':{id:'reference-pharmacy',label:'Pharmacy-1',shortLabel:'Pharmacy',description:'Fictional pharmacy workflows',icon:FileQuestion,accent:'var(--primary)',navigation:[...new Set(pharmacyPages.map(p=>p.group))].map(group=>({id:'pharmacy-'+group,label:group,items:pharmacyPages.filter(p=>p.group===group).map(p=>({id:p.id,pageId:p.id,label:p.title}))}))},...Object.fromEntries(DIAGNOSTIC_REFERENCES.map(module=>[module.id,{id:module.id,label:module.title,shortLabel:module.shortLabel,description:'Fictional diagnostic workflows',icon:FileQuestion,accent:module.accent,navigation:[{id:module.id+'-pages',label:module.title,items:module.pages.map(page=>({id:page.id,pageId:page.id,label:page.title}))}]}])), 'reference-healthcare-suite':{id:'reference-healthcare-suite',label:'Healthcare Suite',shortLabel:'Suite',description:'Front office and care',icon:FileQuestion,accent:'var(--primary)',navigation:[{id:'suite-pages',label:'Healthcare Suite',items:suitePages.map(item=>({id:item.id,pageId:item.id,label:item.title}))}]},library: {id: 'library', label: 'Healthcare', shortLabel: 'Care', description: 'Fictional healthcare workflows',
+  modules: {...Object.fromEntries(teleconsultMenus.map(m=>[m.id,{id:m.id,label:m.title,shortLabel:m.title,description:'Fictional teleconsultation workflows',icon:FileQuestion,accent:'var(--primary)',navigation:[{id:m.id+'-pages',label:m.title,items:teleconsultPages.filter(p=>p.module===m.id&&p.menu).map(p=>({id:p.id,pageId:p.id,label:p.title}))}]}])), 'reference-rcm':{id:'reference-rcm',label:'RCM Workspace',shortLabel:'RCM',description:'Fictional revenue-cycle workflows',icon:FileQuestion,accent:'var(--primary)',navigation:rcmCategories.map((category,index)=>({id:'rcm-category-'+index,label:category.label,items:rcmPages.filter(p=>p.group===category.label).map(p=>({id:p.id,pageId:p.id,label:p.title}))}))},'reference-pharmacy':{id:'reference-pharmacy',label:'Pharmacy-1',shortLabel:'Pharmacy',description:'Fictional pharmacy workflows',icon:FileQuestion,accent:'var(--primary)',navigation:[...new Set(pharmacyPages.map(p=>p.group))].map(group=>({id:'pharmacy-'+group,label:group,items:pharmacyPages.filter(p=>p.group===group).map(p=>({id:p.id,pageId:p.id,label:p.title}))}))},...Object.fromEntries(DIAGNOSTIC_REFERENCES.map(module=>[module.id,{id:module.id,label:module.title,shortLabel:module.shortLabel,description:'Fictional diagnostic workflows',icon:FileQuestion,accent:module.accent,navigation:[{id:module.id+'-pages',label:module.title,items:module.pages.map(page=>({id:page.id,pageId:page.id,label:page.title}))}]}])), 'reference-healthcare-suite':{id:'reference-healthcare-suite',label:'Healthcare Suite',shortLabel:'Suite',description:'Front office and care',icon:FileQuestion,accent:'var(--primary)',navigation:[{id:'suite-pages',label:'Healthcare Suite',items:suitePages.map(item=>({id:item.id,pageId:item.id,label:item.title}))}]},library: {id: 'library', label: 'Healthcare', shortLabel: 'Care', description: 'Fictional healthcare workflows',
     icon: FileQuestion, accent: 'var(--primary)', navigation: [
       {id: 'patients', label: 'Patients', items: clinicalPages.filter(row => row[2] === 'patients').map(([id, label]) => ({id, label, pageId: id}))},
       {id: 'clinical', label: 'Clinical', items: clinicalPages.filter(row => row[2] === 'clinical').map(([id, label]) => ({id, label, pageId: id}))},
@@ -62,8 +66,10 @@ const navigation: ShellNavigation = {
     ]}},
 };
 export const product = defineProduct({id: API_PRODUCT, name: 'Healthcare', tagline: 'Fictional healthcare workflows', navigation,
-  defaultModule: 'reference-healthcare-suite', enabledModules: ['reference-rcm','reference-pharmacy','reference-healthcare-suite','library',...DIAGNOSTIC_REFERENCES.map(module=>module.id)], access: {actions: {create: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], edit: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], archive: [], export: ['enterprise-admin', 'admin', 'operations-analyst', 'operations']}}});
+  defaultModule: 'reference-healthcare-suite', enabledModules: [...teleconsultMenus.map(m=>m.id),'reference-rcm','reference-pharmacy','reference-healthcare-suite','library',...DIAGNOSTIC_REFERENCES.map(module=>module.id)], access: {pages:Object.fromEntries(teleconsultPages.map(p=>[p.id,p.variant==='provider'?['admin','enterprise-admin','teleconsult-doctor','teleconsult-nurse']:['admin','enterprise-admin','teleconsult-patient']])),actions: {create: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], edit: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], archive: [], export: ['enterprise-admin', 'admin', 'operations-analyst', 'operations']}}});
 export function targetFromPath(pathname: string, search = ''): HealthcareTarget {
+  const tc=pathname.match(/^\/teleconsult-(provider|patient)(\/.*)?$/);
+  if(tc){const variant=tc[1],path=tc[2]||'/',route=(variant==='provider'?resolveProviderRoute:resolvePatientRoute)(path),page=teleconsultPages.find(p=>p.variant===variant&&p.kind===route?.kind);return page?{pageId:page.id,teleconsultPath:path,query:search}:{pageId:'not-found'};}
   if(pathname==='/rcm'||pathname.startsWith('/rcm/')){const path=pathname.slice(4)||'/',route=resolveRcmRoute(path),page=rcmPages.find(p=>p.path===path.replace(/\/$/,'')||p.path==='/'&&path==='/');return route&&page?{pageId:page.id,query:search}:{pageId:'not-found'};}
   if(pathname==='/pharmacy'||pathname.startsWith('/pharmacy/')){const route=resolvePharmacyRoute(pathname.slice('/pharmacy'.length)||'/');return route?{pageId:'pharmacy-'+route.kind,query:search}:{pageId:'not-found'};}
   const diagnostic=pathname.match(/^\/(lis1|lis2|ris1)(\/.*)?$/);
@@ -91,6 +97,7 @@ export function targetFromPath(pathname: string, search = ''): HealthcareTarget 
   return {pageId:id||'suite-dashboard',query:search,...(record?record==='new'?{mode:'new' as const}:{recordId:decodeURIComponent(record),mode:params.get('mode')==='edit'?'edit' as const:'view' as const}:{})};
 }
 export function hrefFor(target: HealthcareTarget) {
+  const tc=teleconsultPages.find(p=>p.id===target.pageId);if(tc){const path=target.teleconsultPath??tc.path;return "/teleconsult-"+tc.variant+(path==="/"?"":path)+(target.query?"?"+target.query:"");}
   const rcm=rcmPages.find(p=>p.id===target.pageId);if(rcm)return '/rcm'+(rcm.path==='/'?'':rcm.path)+(target.query?'?'+target.query:'');
   const pharmacy=pharmacyPages.find(p=>p.id===target.pageId);
   if(pharmacy)return '/pharmacy'+(pharmacy.path==='/'?'':pharmacy.path)+(target.query?'?'+target.query:'');
@@ -100,4 +107,10 @@ export function hrefFor(target: HealthcareTarget) {
   const params=new URLSearchParams(target.query);
   if(target.mode==='edit')params.set('mode','edit');else params.delete('mode');
   return (suite?'/suite'+(suite.path==='/'?'':suite.path):'/'+target.pageId)+(target.mode==='new'?'/new':target.recordId?'/'+encodeURIComponent(target.recordId):'')+(params.size?'?'+params:'');
+}
+
+/** Header visibility follows authenticated role grants; API sessions additionally validate mode/beneficiary. */
+export function healthcareProductForRole(role:string){
+ const allowed=(id:string)=>!id.startsWith('reference-teleconsult-')||['admin','enterprise-admin'].includes(role)||(id.endsWith('provider')?['teleconsult-doctor','teleconsult-nurse'].includes(role):role==='teleconsult-patient');
+ return {...product,modules:Object.fromEntries(Object.entries(product.modules).filter(([id])=>allowed(id)))};
 }

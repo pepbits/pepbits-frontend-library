@@ -46,3 +46,5 @@ The public barrel adds 38 direct Lucide exports for laboratory/radiology workflo
 Pharmacy adds direct `Banknote`, `Bike`, `CirclePause`, `CornerDownLeft`, `Gavel`, `HandCoins`, `Landmark`, `MessageCircle`, `Moon`, `PackageCheck`, `PackageX`, `Radio`, `ShoppingBag`, `ShoppingBasket`, `Snowflake`, `Store` and `Sun` primitives. Each export is covered by a render test; product navigation stays in the demo.
 
 RCM adds direct primitives: AlarmClock, BarChart3, Calculator, Code2, ConciergeBell, FileMinus2, FileOutput, FileSearch, FileStack, GitCompare, Home, Hourglass, KanbanSquare, ListChecks, ListTodo, Megaphone, MessageSquareText, MousePointerClick, Package, PieChart, PiggyBank, RadioTower, Scale and Sigma. These are presentation exports, with no product registry.
+
+Phase 6b-5 adds direct Lucide presentation exports: ArrowRightCircle, CalendarCheck, Camera, CameraOff, Circle, ClipboardPlus, CloudOff, FlaskConical, FolderHeart, MonitorSmartphone, MonitorUp, PhoneOff, PlusCircle, ScanFace, Signal, Smartphone, Video, Wifi, WifiOff. Each is covered by the public-export render test; no Teleconsult logic is included.

@@ -11,3 +11,6 @@ test.each(['/pharmacy/unknown','/pharmacy/workbench/extra','/pharmacy/%2e%2e','/
 
 test.each(['/rcm/w/invoices?open=7','/rcm/w/credit-notes?new=1','/rcm/w/claims?status=DENIED','/rcm/w/invoices?q=INV-1&open=first','/rcm/w/coverages?overdue=1'])('RCM query routes round-trip %s',url=>{const [path,query]=url.split('?');expect(hrefFor(targetFromPath(path!,query))).toBe(url);});
 test.each(['/rcm/nope','/rcm/w/nope','/rcm/w/invoices/7','/rcm/w/%2e%2e','/rcm/w/a%2fb','/rcm/w/%'])('rejects unknown/malformed RCM route %s',path=>expect(targetFromPath(path).pageId).toBe('not-found'));
+
+ test.each(['/teleconsult-provider/consult/a1','/teleconsult-patient/visit/a1','/teleconsult-patient/visit/a1/summary','/teleconsult-provider/notes?appointment=a1'])('Teleconsult deep link round-trips %s',url=>{const [path,query]=url.split('?');expect(hrefFor(targetFromPath(path!,query))).toBe(url);});
+ test.each(['/teleconsult-provider/nope','/teleconsult-provider/consult/a%2fb','/teleconsult-patient/visit/%','/teleconsult-patient/visit/a1/summary/extra'])('rejects unsupported Teleconsult path %s',path=>expect(targetFromPath(path).pageId).toBe('not-found'));
