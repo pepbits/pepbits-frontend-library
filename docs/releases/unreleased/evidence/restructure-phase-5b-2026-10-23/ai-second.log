@@ -1,0 +1,221 @@
+
+> @pepbits/ai@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ai
+
+ ✓ src/ui/modes.test.tsx (34 tests) 1825ms
+ ✓ src/ui/administration.test.tsx (20 tests) 2259ms
+ ✓ src/ui/transparency.test.tsx (28 tests) 1363ms
+ ✓ src/client/transport.test.ts (22 tests) 1460ms
+   ✓ the echo transport > no credential configured falls back to the mock  354ms
+   ✓ the echo transport > an unreachable service falls back to the mock  354ms
+   ✓ the echo transport > the mock says nothing left the browser, and lists what would have  353ms
+   ✓ the echo transport > the mock shows the redacted value, not the original  354ms
+ ✓ src/client/sources.test.tsx (10 tests) 103ms
+stderr | src/ui/use-assistant.test.tsx > the administration config > arrives once asked for
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/ui/use-assistant.test.tsx > the administration config > a refused config leaves it null rather than half-built
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/ui/use-assistant.test.tsx (24 tests) 769ms
+ ✓ src/client/policy.test.ts (9 tests) 38ms
+ ✓ src/client/redact.test.ts (157 tests) 34ms
+ ✓ src/client/admin.test.ts (11 tests) 25ms
+ ✓ src/client/assemble.test.ts (19 tests) 18ms
+ ❯ src/gates/verify-ai-egress.test.mjs (121 tests | 1 failed) 29ms
+   ✓ subjectName is masked 2ms
+   ✓ mrn is masked 0ms
+   ✓ dob is masked 0ms
+   ✓ emiratesId is masked 0ms
+   ✓ phone is masked 0ms
+   ✓ email is masked 0ms
+   ✓ memberId is masked 0ms
+   ✓ insuranceId is masked 0ms
+   × clinician is masked 14ms
+     → expected false to be true // Object.is equality
+   ✓ admitted is masked 0ms
+   ✓ createdBy is masked 0ms
+   ✓ primaryDiagnosis stays legible 0ms
+   ✓ problem stays legible 0ms
+   ✓ complaint stays legible 0ms
+   ✓ findings stays legible 0ms
+   ✓ ward stays legible 0ms
+   ✓ acuity stays legible 0ms
+   ✓ diagnosis stays legible 0ms
+   ✓ medication stays legible 0ms
+   ✓ procedure stays legible 0ms
+   ✓ status stays legible 0ms
+   ✓ id stays legible 0ms
+   ✓ owner stays legible 0ms
+   ✓ outstanding stays legible 0ms
+   ✓ branch stays legible 0ms
+   ✓ the catalogue names some fields 0ms
+   ✓ acuity 0ms
+   ✓ admitted 0ms
+   ✓ budget 0ms
+   ✓ candidateCodes 0ms
+   ✓ candidateOrders 0ms
+   ✓ complaint 0ms
+   ✓ contribution 0ms
+   ✓ creditLimit 0ms
+   ✓ current 0ms
+   ✓ customer 0ms
+   ✓ delta 0ms
+   ✓ dimension 0ms
+   ✓ dob 0ms
+   ✓ findings 0ms
+   ✓ id 0ms
+   ✓ jurisdiction 0ms
+   ✓ kind 0ms
+   ✓ label 0ms
+   ✓ lastInvoice 0ms
+   ✓ lengthOfStay 0ms
+   ✓ name 0ms
+   ✓ note 0ms
+   ✓ outstanding 0ms
+   ✓ owner 0ms
+   ✓ payer 0ms
+   ✓ preview 0ms
+   ✓ previous 0ms
+   ✓ primaryDiagnosis 0ms
+   ✓ problem 0ms
+   ✓ reference 0ms
+   ✓ restrictedian 0ms
+   ✓ risk 0ms
+   ✓ role 0ms
+   ✓ segment 0ms
+   ✓ specialty 0ms
+   ✓ status 0ms
+   ✓ terms 0ms
+   ✓ time 0ms
+   ✓ title 0ms
+   ✓ type 0ms
+   ✓ value 0ms
+   ✓ variance 0ms
+   ✓ ward 0ms
+   ✓ worklist.summarise-selection 0ms
+   ✓ record.explain 0ms
+   ✓ form.draft-note 0ms
+   ✓ dashboard.explain-metrics 0ms
+   ✓ report.summarise 0ms
+   ✓ inbox.summarise-unread 0ms
+   ✓ worklist.summarise-selection sends no phi value 0ms
+   ✓ worklist.summarise-selection sends no pii value 0ms
+   ✓ worklist.summarise-selection sends no credential value 0ms
+   ✓ worklist.summarise-selection passes the dispatch guard 0ms
+   ✓ record.explain sends no phi value 0ms
+   ✓ record.explain sends no pii value 0ms
+   ✓ record.explain sends no credential value 0ms
+   ✓ record.explain passes the dispatch guard 0ms
+   ✓ form.draft-note sends no phi value 0ms
+   ✓ form.draft-note sends no pii value 0ms
+   ✓ form.draft-note sends no credential value 0ms
+   ✓ form.draft-note passes the dispatch guard 0ms
+   ✓ dashboard.explain-metrics sends no phi value 0ms
+   ✓ dashboard.explain-metrics sends no pii value 0ms
+   ✓ dashboard.explain-metrics sends no credential value 0ms
+   ✓ dashboard.explain-metrics passes the dispatch guard 0ms
+   ✓ report.summarise sends no phi value 0ms
+   ✓ report.summarise sends no pii value 0ms
+   ✓ report.summarise sends no credential value 0ms
+   ✓ report.summarise passes the dispatch guard 0ms
+   ✓ inbox.summarise-unread sends no phi value 0ms
+   ✓ inbox.summarise-unread sends no pii value 0ms
+   ✓ inbox.summarise-unread sends no credential value 0ms
+   ✓ inbox.summarise-unread passes the dispatch guard 0ms
+   ✓ restricted.summarise sends no phi value 0ms
+   ✓ restricted.summarise sends no pii value 0ms
+   ✓ restricted.summarise sends no credential value 0ms
+   ✓ restricted.summarise passes the dispatch guard 0ms
+   ✓ restricted.gaps sends no phi value 0ms
+   ✓ restricted.gaps sends no pii value 0ms
+   ✓ restricted.gaps sends no credential value 0ms
+   ✓ restricted.gaps passes the dispatch guard 0ms
+   ✓ restricted.selection sends no phi value 0ms
+   ✓ restricted.selection sends no pii value 0ms
+   ✓ restricted.selection sends no credential value 0ms
+   ✓ restricted.selection passes the dispatch guard 0ms
+   ✓ restricted.codes sends no phi value 0ms
+   ✓ restricted.codes sends no pii value 0ms
+   ✓ restricted.codes sends no credential value 0ms
+   ✓ restricted.codes passes the dispatch guard 0ms
+   ✓ restricted.options sends no phi value 0ms
+   ✓ restricted.options sends no pii value 0ms
+   ✓ restricted.options sends no credential value 0ms
+   ✓ restricted.options passes the dispatch guard 0ms
+   ✓ a hand-built context is refused 0ms
+   ✓ and an operational field is not 0ms
+ ✓ src/gates/verify-ai-gates.test.mjs (20 tests) 9ms
+ ✓ src/config/gates.test.ts (22 tests) 19ms
+ ✓ src/config/policy.test.ts (13 tests) 10ms
+ ✓ src/client/guard.test.ts (9 tests) 10ms
+ ✓ src/gates/verify-ai-context.test.mjs (18 tests) 10ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/gates/verify-ai-modes.test.mjs [ src/gates/verify-ai-modes.test.mjs ]
+Error: ENOENT: no such file or directory, open '/src/ui/assistant-panel.tsx'
+ ❯ source src/gates/verify-ai-modes.test.mjs:20:26
+     18| /* ---- structure ----------------------------------------------------…
+     19| 
+     20| const source = (file) => readFileSync(new URL(`../ui/${file}`, import.…
+       |                          ^
+     21| const SURFACES = ["assistant-panel.tsx", "terminal.tsx", "inline-actio…
+     22| 
+ ❯ src/gates/verify-ai-modes.test.mjs:24:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/gates/verify-ai-egress.test.mjs > clinician is masked
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/gates/verify-ai-egress.test.mjs:24:63
+     22|  */
+     23| 
+     24| const check=(condition,name)=>test(name,()=>expect(condition).toBe(tru…
+       |                                                               ^
+     25| 
+     26| /**
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 15 passed (17)
+      Tests  1 failed | 536 passed (537)
+   Start at  03:01:25
+   Duration  19.40s (transform 2.27s, setup 3.21s, collect 7.45s, tests 7.98s, environment 10.60s, prepare 1.83s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/ai@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ai 

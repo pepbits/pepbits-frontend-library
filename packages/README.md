@@ -1,6 +1,6 @@
 # Library packages
 
-The reusable `@pepbits/*` packages. Phases 1–5 (including the bounded phase 5 foundation) of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-5-status) add eleven unpublished source packages alongside the existing workspace:
+The reusable `@pepbits/*` packages. Phases 1–5b of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-5b-status) add twelve unpublished source packages alongside the existing workspace:
 
 | Package | Purpose |
 | --- | --- |
@@ -14,9 +14,10 @@ The reusable `@pepbits/*` packages. Phases 1–5 (including the bounded phase 5 
 | [@pepbits/platform](platform/README.md) | Host-configured sessions/recovery, monitoring, navigation, windows and device ports |
 | [@pepbits/patterns](patterns/README.md) | Lifecycle, master transfer, DCP fields, approvals, drafts, imports and screen-host contracts |
 | [@pepbits/page-engines](page-engines/README.md) | Typed record, worklist, form and template engines with host adapters and a renderer registry |
+| [@pepbits/ai](ai/README.md) | Host-supplied AI configuration, redaction/transport, assistant modes and optional shell extension |
 | [@pepbits/shell](shell/README.md) | Generic host/ScreenHost provider, full chrome, workspace tabs/split/MDI/window adapter, documentation/help layers, session lock and monitoring |
 
-Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI implementation follows shell completion in separate phase 5b.
+Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI is implemented above shell in phase 5b.
 
 - One folder per layer: `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `data`, `platform`, `patterns`, `page-engines`, `shell`, `ai`, `testing`.
 - The folder name is the package name: `packages/ui` is `@pepbits/ui`.

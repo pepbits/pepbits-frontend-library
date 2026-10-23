@@ -1,0 +1,13 @@
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const recordId='restructure-phase-5b-2026-10-23';
+const baseCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const fixed=['package.json','package-lock.json','turbo.json','tsconfig.base.json','docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md','docs/releases/unreleased/README.md','docs/features/README.md','docs/features/library-ai.md'];
+const paths=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8'}).split('\0').filter(path=>path&&(path.startsWith('packages/')||path.startsWith('tooling/')||fixed.includes(path))))].sort();
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const files=paths.map(path=>({path,sha256:sha(readFileSync(path))}));
+const implementationDigest=sha(files.map(file=>`${file.path}\0${file.sha256}\n`).join(''));
+const manifest={schemaVersion:1,recordId,status:'unreleased-working-tree',baseCommit,testGuideVersion:'1.0.0',implementationDigest,digestAlgorithm:'SHA-256 of sorted path + NUL + file SHA-256 + LF entries',identityScope:'Root workspace manifests/configuration, all tracked and nonignored package/tooling files, restructure plan, delivery index and phase 5b feature guide/index. Excludes this record, manifest and evidence to avoid self-reference; unchanged files included. Protected source identified by baseCommit and empty diff/status checks.',evidence:`${recordId}.md`,published:false,deployed:false,limits:['Copy-only phase 5b; no original workspace/backend/deployment/CI source changes.','Backend limits, credential canary/storage and server hardening/isolated-launcher verification not ported or run; client tests do not establish backend enforcement.','Unpublished source exports; zero executable build tasks. Two local Chromium physical RTL cases; remaining scope is unit/jsdom and mocked transports.','No native executable, live-provider, production authorization, native-speaker, hosted CI or deployment acceptance.','Phase 6 demos, priority 3 patterns, publication and consumer migration remain separate; no commit or push.'],files};
+writeFileSync(`docs/releases/unreleased/manifest-${recordId}.json`,JSON.stringify(manifest,null,2)+'\n');
+console.log(`${files.length} files; SHA-256 ${implementationDigest}`);

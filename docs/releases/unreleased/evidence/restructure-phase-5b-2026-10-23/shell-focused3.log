@@ -1,0 +1,32 @@
+
+> @pepbits/shell@0.0.0 test
+> vitest run src/preferences-page src/login src/sidebar-rtl.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell
+
+ ✓ src/preferences-page/preferences.test.tsx (4 tests) 4447ms
+   ✓ record layout and all three density options use the central preference update  1946ms
+   ✓ live policy changes and unavailable preferences prevent layout updates  1225ms
+   ✓ Own Settings uses accessible module options and honors locks  788ms
+   ✓ tenant allowed options constrain the choices and reject programmatic changes  482ms
+ ✓ src/preferences-page/host.test.tsx (2 tests) 5316ms
+   ✓ policy administration is absent by default and disappears immediately when its host capability is removed  4347ms
+   ✓ restore and import use the central guarded path and live managed values replace the page  966ms
+ ✓ src/sidebar-rtl.test.tsx (2 tests) 984ms
+   ✓ Arabic RTL keeps physical left placement during keyboard expansion  556ms
+   ✓ Arabic RTL keeps physical right placement during keyboard expansion  426ms
+ ✓ src/login/login.test.tsx (3 tests) 467ms
+   ✓ host branding and platform session drive login without demo account fixtures  339ms
+ ✓ src/login/recovery.test.tsx (1 test) 336ms
+   ✓ anonymous sign-in uses readable fallback copy before account localization is loaded  332ms
+ ✓ src/preferences-page/product-access.test.tsx (2 tests) 414ms
+   ✓ a direct edit target cannot bypass action permissions  394ms
+ ✓ src/preferences-page/product-services.test.tsx (2 tests) 338ms
+ ✓ src/preferences-page/preference-preview.test.tsx (1 test) 215ms
+
+ Test Files  8 passed (8)
+      Tests  17 passed (17)
+   Start at  03:09:55
+   Duration  21.11s (transform 5.21s, setup 2.03s, collect 14.96s, tests 12.52s, environment 6.43s, prepare 1.22s)
+

@@ -7,6 +7,7 @@ import {ShellProvider, type ShellProviderProps} from '../shell-context';
 import type {ShellNavigation} from '../navigation';
 import {defineProduct} from '../products';
 import {messages} from './messages';
+import {preferenceMessages} from './preference-messages';
 
 export const catalog: ShellNavigation = {
   defaultModule: 'operations',
@@ -30,7 +31,7 @@ export const port: ShellProviderProps['navigation'] = {current:{pageId:'items'},
 export function ShellTestHost({children, settings, session: sessionValue = session, ...props}: Partial<ShellProviderProps> & {
   children?: ReactNode; settings?: Partial<PreferenceHostProps>; session?: SessionValue;
 }) {
-  return <HostSessionProvider value={sessionValue}><TestHost messages={messages} {...settings}>
+  return <HostSessionProvider value={sessionValue}><TestHost messages={{...messages,...preferenceMessages}} {...settings}>
     <ShellProvider navigation={port} product={product} branches={[{value:'north',label:'North'}]} roles={[{value:'editor',label:'Editor'}]}
       brand={{name:'Example',tagline:'Work together'}} preferencesPageId="preferences" {...props}>{children}</ShellProvider>
   </TestHost></HostSessionProvider>;

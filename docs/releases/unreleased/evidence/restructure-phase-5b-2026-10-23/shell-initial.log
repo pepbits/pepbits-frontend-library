@@ -1,0 +1,80 @@
+
+> @pepbits/shell@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell
+
+ ✓ src/workspace/workspace-canvas.test.tsx (29 tests) 1750ms
+   ✓ WorkspaceCanvas — split > arrow keys move it and it stays inside its limits  314ms
+ ✓ src/diagnostic-sidebar.test.tsx (25 tests) 1860ms
+ ✓ src/workspace/workspace-shell.test.tsx (3 tests) 1529ms
+   ✓ workspace frame keeps dirty work until its confirmation, then removes the owning document  737ms
+   ✓ effective floating preference replaces tabs with frames and taskbar without losing screen state  401ms
+   ✓ native detach is hidden without a window port and uses only the supplied port when available  390ms
+ ✓ src/chrome-integration.test.tsx (11 tests) 1648ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx (18 tests) 1294ms
+ ✓ src/full-shell.test.tsx (2 tests) 1158ms
+   ✓ page engine inside the full frame saves to toasts and edits survive suspension until explicit document close  676ms
+   ✓ patterns screen inside the full frame reports dirty changes and localized success through the shell  480ms
+ ✓ src/screen-host.test.tsx (7 tests) 1231ms
+   ✓ page engine saves reach shell toasts and edits survive suspension until explicit document close  458ms
+   ✓ patterns lifecycle screen reports dirty changes and localized success through the shell  336ms
+ ✓ src/workspace/workspace-tabs.test.tsx (15 tests) 1138ms
+ ✓ src/shell-context.test.tsx (22 tests) 1039ms
+ ✓ src/documentation.test.tsx (8 tests) 757ms
+ ✓ src/product-context.test.tsx (3 tests) 339ms
+ ✓ src/monitoring.test.tsx (6 tests) 717ms
+   ✓ monitor uses injected service, effective presentation/formatting and revision conflicts  361ms
+ ✓ src/workspace/use-workspace.test.tsx (19 tests) 303ms
+ ✓ src/workspace/mdi-taskbar.test.tsx (7 tests) 451ms
+ ✓ src/workspace/use-mdi-workspace.test.tsx (7 tests) 262ms
+ ✓ src/session-lock.test.tsx (2 tests) 332ms
+ ✓ src/workspace/use-detached-windows.test.tsx (13 tests) 122ms
+ ✓ src/sentinel.test.tsx (1 test) 169ms
+ ✓ src/workspace/document-manager.test.ts (47 tests) 34ms
+ ✓ src/chrome.test.tsx (14 tests) 354ms
+ ✓ src/workspace/split.test.ts (26 tests) 33ms
+ ✓ src/workspace/mdi-frames.test.ts (20 tests) 20ms
+ ✓ src/workspace/detach.test.ts (14 tests) 19ms
+ ✓ src/products.test.ts (10 tests) 23ms
+ ✓ src/workspace/lifecycle.test.ts (11 tests) 16ms
+ ✓ src/workspace/target-document.test.ts (10 tests) 36ms
+ ✓ src/workspace/document-key.test.ts (9 tests) 31ms
+ ✓ src/workspace/policy.test.ts (15 tests) 35ms
+ ❯ src/preferences-page/preferences.test.tsx (4 tests | 1 failed) 11368ms
+   × record layout and all three density options use the central preference update 5923ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ live policy changes and unavailable preferences prevent layout updates  2366ms
+   ✓ Own Settings uses accessible module options and honors locks  2280ms
+   ✓ tenant allowed options constrain the choices and reject programmatic changes  789ms
+ ✓ src/shortcuts.test.ts (10 tests) 23ms
+ ✓ src/login/recovery.test.tsx (1 test) 472ms
+   ✓ anonymous sign-in uses readable fallback copy before account localization is loaded  469ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/preferences-page/preferences.test.tsx > record layout and all three density options use the central preference update
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/preferences-page/preferences.test.tsx:13:1
+     11| 
+     12| beforeEach(()=>{state.policy={revision:0,rules:{}};state.available=tru…
+     13| test('record layout and all three density options use the central pref…
+       | ^
+     14|  render(<PreferencesPage/>);
+     15|  fireEvent.change(screen.getByRole('combobox',{name:'Record form style…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 30 passed (31)
+      Tests  1 failed | 388 passed (389)
+   Start at  02:59:37
+   Duration  61.06s (transform 3.14s, setup 10.71s, collect 14.06s, tests 28.57s, environment 33.25s, prepare 5.15s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/shell@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell 

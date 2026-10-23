@@ -1,0 +1,87 @@
+
+> @pepbits/ai@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ai
+
+ ✓ src/gates/verify-ai-hardening.test.ts (5 tests) 9ms
+ ✓ src/ui/transparency.test.tsx (28 tests) 1346ms
+ ✓ src/ui/administration.test.tsx (20 tests) 2198ms
+ ✓ src/client/transport.test.ts (22 tests) 1442ms
+   ✓ the echo transport > no credential configured falls back to the mock  353ms
+   ✓ the echo transport > an unreachable service falls back to the mock  353ms
+   ✓ the echo transport > the mock says nothing left the browser, and lists what would have  354ms
+   ✓ the echo transport > the mock shows the redacted value, not the original  352ms
+ ✓ src/ui/modes.test.tsx (34 tests) 1554ms
+stderr | src/ui/use-assistant.test.tsx > the administration config > arrives once asked for
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/ui/use-assistant.test.tsx > the administration config > a refused config leaves it null rather than half-built
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/ui/use-assistant.test.tsx (24 tests) 1129ms
+stderr | src/ui/shell-extension.test.tsx > the host user gate removes inline and panel affordances
+An update to InlineAiAction inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to AssistantPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/ui/shell-extension.test.tsx (4 tests) 1789ms
+   ✓ ScreenHost publishes and retracts sources, renders InlineAiAction, and the help slot mounts the panel  741ms
+   ✓ the actual record form publishes edited values and renders the inline extension  860ms
+ ✓ src/client/sources.test.tsx (10 tests) 316ms
+ ✓ src/client/redact.test.ts (157 tests) 92ms
+ ✓ src/client/admin.test.ts (11 tests) 86ms
+ ✓ src/client/policy.test.ts (11 tests) 87ms
+ ✓ src/gates/verify-ai-limits.test.ts (5 tests) 79ms
+ ✓ src/gates/verify-ai-gates.test.mjs (20 tests) 29ms
+ ✓ src/client/assemble.test.ts (19 tests) 33ms
+ ✓ src/gates/verify-ai-egress.test.mjs (121 tests) 22ms
+ ✓ src/gates/verify-ai-credential.test.ts (3 tests) 13ms
+ ✓ src/gates/check-ai-limits-isolated.test.ts (1 test) 11ms
+ ✓ src/config/gates.test.ts (22 tests) 32ms
+ ✓ src/config/policy.test.ts (13 tests) 10ms
+ ✓ src/client/guard.test.ts (9 tests) 19ms
+ ✓ src/gates/verify-ai-context.test.mjs (18 tests) 20ms
+ ✓ src/gates/verify-ai-modes.test.tsx (26 tests) 901ms
+
+ Test Files  22 passed (22)
+      Tests  583 passed (583)
+   Start at  03:09:09
+   Duration  43.08s (transform 2.89s, setup 8.36s, collect 11.06s, tests 11.22s, environment 26.34s, prepare 5.39s)
+

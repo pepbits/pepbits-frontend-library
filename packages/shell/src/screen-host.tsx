@@ -6,12 +6,15 @@ import {DocumentProvider, useDocumentScope, useIsDocumentFocused, useOptionalWor
 import {useShell} from "./shell-context";
 import {canProductAction} from "./products";
 
+import {useShellExtensions} from "./extensions";
+
 const DRAFTS = "shell:screen-state";
 const EMPTY = Object.freeze({});
 const noSubscribe = () => () => {};
 
 /** A bridge per document: ownership never follows the focused pane while another pane saves. */
 export function ShellScreenHost({children, extensions}: {children?: ReactNode; extensions?: Pick<ScreenHostValue, "renderInlineAction" | "publishSources">}) {
+  const Extension = useShellExtensions().ScreenHost;
   const shell = useShell(), workspace = useOptionalWorkspace(), id = useDocumentScope(), focused = useIsDocumentFocused();
   const {expired, status} = useSession();
   const draftState = useSyncExternalStore(workspace?.subscribeToChanges ?? noSubscribe,
@@ -28,7 +31,7 @@ export function ShellScreenHost({children, extensions}: {children?: ReactNode; e
     scope: {module: owner?.module ?? shell.currentModule, branch: owner?.security.branchId ?? shell.branch},
     document: {id, focused, draftState, setDraftState, reportDirty, subscribeClose},
   }), [extensions, shell.toast, shell.product, shell.currentModule, shell.branch, status, expired, owner?.module, owner?.security.branchId, id, focused, draftState, setDraftState, reportDirty, subscribeClose]);
-  return <ScreenHostProvider value={value}>{children}</ScreenHostProvider>;
+  return <ScreenHostProvider value={value}>{Extension ? <Extension>{children}</Extension> : children}</ScreenHostProvider>;
 }
 
 /** Use for every independently mounted document, including warm/background and split panes. */

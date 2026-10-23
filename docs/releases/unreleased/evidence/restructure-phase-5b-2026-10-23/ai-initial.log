@@ -1,0 +1,141 @@
+
+> @pepbits/ai@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ai
+
+stderr | src/ui/use-assistant.test.tsx > the administration config > arrives once asked for
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/ui/use-assistant.test.tsx > the administration config > a refused config leaves it null rather than half-built
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/ui/use-assistant.test.tsx (24 tests) 869ms
+ ✓ src/ui/modes.test.tsx (34 tests) 1656ms
+ ❯ src/ui/administration.test.tsx (20 tests | 20 failed) 903ms
+   × the credential > is described by its status, never by its value 142ms
+     → useSession must be used within a SessionProvider
+   × the credential > the entry field starts empty and is a password field 42ms
+     → useSession must be used within a SessionProvider
+   × the credential > is submitted once and not kept in the page 51ms
+     → useSession must be used within a SessionProvider
+   × the credential > a rejected key is cleared too 38ms
+     → useSession must be used within a SessionProvider
+   × the credential > cannot be submitted empty 46ms
+     → useSession must be used within a SessionProvider
+   × the credential > says Set rather than Replace when there is none 40ms
+     → useSession must be used within a SessionProvider
+   × the credential > cannot be verified or removed when there is none 39ms
+     → useSession must be used within a SessionProvider
+   × the credential > verifying asks the service and reports what it found 74ms
+     → useSession must be used within a SessionProvider
+   × the credential > a key that no longer works says so, in the service's own words 32ms
+     → useSession must be used within a SessionProvider
+   × the credential > removing says what the assistant falls back to 26ms
+     → useSession must be used within a SessionProvider
+   × the credential > a stored key that last failed shows the error 21ms
+     → useSession must be used within a SessionProvider
+   × the credential > last rotated and last verified read 'never' rather than blank 21ms
+     → useSession must be used within a SessionProvider
+   × who may write > a non-admin is told the server decides, not this screen 21ms
+     → useSession must be used within a SessionProvider
+   × who may write > and every credential control is greyed for them 37ms
+     → useSession must be used within a SessionProvider
+   × who may write > an admin is not warned, and can write 32ms
+     → useSession must be used within a SessionProvider
+   × who may write > an unknown role is named as unknown rather than assumed 40ms
+     → useSession must be used within a SessionProvider
+   × the budget meters > show what has been spent against what is allowed 29ms
+     → useSession must be used within a SessionProvider
+   × the budget meters > say which day the token budget belongs to, and that it is UTC 45ms
+     → useSession must be used within a SessionProvider
+   × the budget meters > render nothing rather than zeroes when usage is unavailable 63ms
+     → useSession must be used within a SessionProvider
+   × when the configuration cannot be read > says why, in the service's own words, rather than rendering an empty form 59ms
+     → useSession must be used within a SessionProvider
+ ✓ src/client/transport.test.ts (22 tests) 1455ms
+   ✓ the echo transport > no credential configured falls back to the mock  353ms
+   ✓ the echo transport > an unreachable service falls back to the mock  352ms
+   ✓ the echo transport > the mock says nothing left the browser, and lists what would have  354ms
+   ✓ the echo transport > the mock shows the redacted value, not the original  355ms
+ ✓ src/client/assemble.test.ts (19 tests) 17ms
+ ✓ src/ui/transparency.test.tsx (28 tests) 1629ms
+ ✓ src/client/sources.test.tsx (10 tests) 97ms
+ ✓ src/client/redact.test.ts (157 tests) 28ms
+ ✓ src/client/admin.test.ts (11 tests) 19ms
+ ✓ src/client/policy.test.ts (9 tests) 32ms
+ ✓ src/config/gates.test.ts (22 tests) 15ms
+ ✓ src/config/policy.test.ts (13 tests) 10ms
+ ✓ src/client/guard.test.ts (9 tests) 8ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 20 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ui/administration.test.tsx > the credential > is described by its status, never by its value
+ FAIL  src/ui/administration.test.tsx > the credential > the entry field starts empty and is a password field
+ FAIL  src/ui/administration.test.tsx > the credential > is submitted once and not kept in the page
+ FAIL  src/ui/administration.test.tsx > the credential > a rejected key is cleared too
+ FAIL  src/ui/administration.test.tsx > the credential > cannot be submitted empty
+ FAIL  src/ui/administration.test.tsx > the credential > says Set rather than Replace when there is none
+ FAIL  src/ui/administration.test.tsx > the credential > cannot be verified or removed when there is none
+ FAIL  src/ui/administration.test.tsx > the credential > verifying asks the service and reports what it found
+ FAIL  src/ui/administration.test.tsx > the credential > a key that no longer works says so, in the service's own words
+ FAIL  src/ui/administration.test.tsx > the credential > removing says what the assistant falls back to
+ FAIL  src/ui/administration.test.tsx > the credential > a stored key that last failed shows the error
+ FAIL  src/ui/administration.test.tsx > the credential > last rotated and last verified read 'never' rather than blank
+ FAIL  src/ui/administration.test.tsx > who may write > a non-admin is told the server decides, not this screen
+ FAIL  src/ui/administration.test.tsx > who may write > and every credential control is greyed for them
+ FAIL  src/ui/administration.test.tsx > who may write > an admin is not warned, and can write
+ FAIL  src/ui/administration.test.tsx > who may write > an unknown role is named as unknown rather than assumed
+ FAIL  src/ui/administration.test.tsx > the budget meters > show what has been spent against what is allowed
+ FAIL  src/ui/administration.test.tsx > the budget meters > say which day the token budget belongs to, and that it is UTC
+ FAIL  src/ui/administration.test.tsx > the budget meters > render nothing rather than zeroes when usage is unavailable
+ FAIL  src/ui/administration.test.tsx > when the configuration cannot be read > says why, in the service's own words, rather than rendering an empty form
+Error: useSession must be used within a SessionProvider
+ ❯ useSession ../platform/src/session.tsx:206:23
+    204| export function useSession(): SessionValue {
+    205|   const context = useContext(SessionContext);
+    206|   if (!context) throw new Error("useSession must be used within a Sess…
+       |                       ^
+    207|   return context;
+    208| }
+ ❯ AiAdministration src/ui/administration.tsx:69:18
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:19
+ ❯ beginWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:18
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ performUnitOfWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:22
+ ❯ workLoopSync ../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:41
+ ❯ renderRootSync ../../node_modules/react-dom/cjs/react-dom-client.development.js:18985:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/20]⎯
+
+
+ Test Files  1 failed | 12 passed (13)
+      Tests  20 failed | 358 passed (378)
+   Start at  02:59:20
+   Duration  15.30s (transform 1.95s, setup 2.54s, collect 5.48s, tests 6.74s, environment 8.13s, prepare 1.63s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/ai@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ai 

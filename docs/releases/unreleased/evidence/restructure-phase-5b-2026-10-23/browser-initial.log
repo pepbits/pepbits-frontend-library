@@ -1,0 +1,31 @@
+
+> @pepbits/shell@0.0.0 test
+> vitest run src/sidebar-rtl.browser.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/sidebar-rtl.browser.test.ts [ src/sidebar-rtl.browser.test.ts ]
+Error: Invariant violation: "new TextEncoder().encode("") instanceof Uint8Array" is incorrectly false
+
+This indicates that your JavaScript environment is broken. You cannot use
+esbuild in this environment because esbuild relies on this invariant. This
+is not a problem with esbuild. You need to fix your environment instead.
+
+ ❯ Object.<anonymous> ../../node_modules/esbuild/lib/main.js:201:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  03:12:58
+   Duration  2.07s (transform 86ms, setup 218ms, collect 0ms, tests 0ms, environment 582ms, prepare 89ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/shell@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell 

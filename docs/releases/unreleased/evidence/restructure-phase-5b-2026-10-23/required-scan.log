@@ -1,0 +1,88 @@
+packages/ai/src/gates/verify-ai-egress.test.mjs:14: * The other half is louder and worse: a GENERAL use case that reads a clinical
+packages/ai/src/gates/verify-ai-egress.test.mjs:76:  if (useCase.category === "clinical") continue;
+packages/ai/src/gates/verify-ai-egress.test.mjs:79:    .filter((key) => ["phi", "pii", "clinical"].includes(classificationFor(key)));
+packages/ai/src/gates/verify-ai-egress.test.mjs:92:  clinical: "CLINICAL_PROBE_E11_9",
+packages/ai/src/gates/verify-ai-modes.test.tsx:41:check("inline refuses to surface a clinical use case",
+packages/ai/src/gates/verify-ai-modes.test.tsx:42:  source("inline-action.tsx").includes('category === "clinical"'));
+packages/ai/src/gates/verify-ai-modes.test.tsx:62: if(useCase.category==='clinical')expect(screen.queryByRole('button',{name:useCase.label})).toBeNull();
+packages/ai/src/ui/inline-action.tsx:23: * clinical use case is never surfaced this way.
+packages/ai/src/ui/inline-action.tsx:33:  if (!assistant.allowed || !useCase || useCase.category === "clinical") return null;
+packages/ai/src/ui/modes.test.tsx:34:const CLINICAL = useCase({ id: "restricted.summarise", label: "Summarise encounter", category: "clinical" });
+packages/ai/src/ui/modes.test.tsx:224:  /* There is no review stage here, so a clinical use case is never surfaced
+packages/ai/src/ui/modes.test.tsx:226:  test("never surfaces a clinical use case", () => {
+packages/ai/src/ui/modes.test.tsx:227:    assistant([CLINICAL]);
+packages/ai/src/ui/modes.test.tsx:228:    const { container } = withNav(<InlineAiAction useCaseId={CLINICAL.id} />);
+packages/ai/src/ui/modes.test.tsx:291:  test("marks a clinical use case in the list", () => {
+packages/ai/src/ui/modes.test.tsx:292:    panel([EXPLAIN, CLINICAL]);
+packages/ai/src/ui/modes.test.tsx:294:    expect(screen.getByText("clinical")).toBeInTheDocument();
+packages/ai/src/ui/transparency.test.tsx:14: * with nothing to read, and a clinical one nobody has acknowledged.
+packages/ai/src/ui/transparency.test.tsx:209: * A clinical use case needs a second, explicit acknowledgement naming the
+packages/ai/src/ui/transparency.test.tsx:213:describe("the clinical acknowledgement", () => {
+packages/ai/src/ui/transparency.test.tsx:214:  const clinical = { useCase: useCase({ category: "clinical", label: "Summarise encounter" }) };
+packages/ai/src/ui/transparency.test.tsx:217:    panel(clinical);
+packages/ai/src/ui/transparency.test.tsx:219:    expect(screen.getByText(/This is a clinical use case/)).toBeInTheDocument();
+packages/ai/src/ui/transparency.test.tsx:224:    panel(clinical);
+packages/ai/src/ui/transparency.test.tsx:231:    panel(clinical);
+packages/ai/src/ui/transparency.test.tsx:246:    panel(clinical);
+packages/ai/src/ui/transparency.tsx:34:  /* Clinical use cases require a second, explicit acknowledgement naming the
+packages/ai/src/ui/transparency.tsx:38:  const clinical = useCase.category === "clinical";
+packages/ai/src/ui/transparency.tsx:133:        {clinical ? (
+packages/ai/src/ui/transparency.tsx:137:              <TriangleAlert className="mr-1 inline size-3.5 text-[var(--warning-ink)]" /><LocalizedText message="ui.this.is.a.clinical.use.case.i.confirm.the.fields.above.m.f472ba9e" /><b>{context.pageId}</b><LocalizedText message="ui.the.assistant.summarises.it.does.not.diagnose.4388468f" /></span>
+packages/ai/src/ui/transparency.tsx:144:            disabled={context.fields.length === 0 || (clinical && !acknowledged) || !config?.credential.configured}
+packages/ai/src/ui/assistant-panel.tsx:135:                      {useCase.category === "clinical" ? <Badge tone="warning"><LocalizedText message="ui.clinical.98569e7e" /></Badge> : null}
+packages/ai/src/config/use-cases.ts:53:   * Clinical use cases require a second confirmation naming the record, and are
+packages/ai/src/config/use-cases.ts:56:  category: "general" | "clinical";
+packages/ai/src/config/gates.ts:32: * intersected back in. For a capability that reads clinical records that is not
+packages/ai/src/client/guard.test.ts:72:  /* Clinical content is meant to be legible: the use case exists to reason
+packages/ai/src/client/guard.test.ts:74:  test("clinical content is not an offence", () => {
+packages/ai/src/client/redact.ts:20: *                     in full — along with the treating clinician and the
+packages/ai/src/client/redact.ts:21: *                     admission date, both of which a clinical use case reads.
+packages/ai/src/client/redact.ts:29: * Clinical content is deliberately NOT masked. A use case that reads a
+packages/ai/src/client/redact.ts:32: * masked. It is governed by the clinical gate and its named-record
+packages/ai/src/client/redact.ts:52:  /* Clinical identifiers. Added with the healthcare module, having checked what
+packages/ai/src/client/redact.ts:57:  { test: /\bmrn\b|medical ?record ?(no|number)|patient ?(id|no)/, mask: maskTail },
+packages/ai/src/client/redact.ts:100:     clinical content the use case exists to reason about. The classification is
+packages/ai/src/client/redact.test.ts:147:  /* Clinical content is NOT masked. The use case that reads a diagnosis exists
+packages/ai/src/client/redact.test.ts:150:     It is governed by the clinical gate and its named-record confirmation
+packages/ai/src/client/redact.test.ts:152:  const clinical = Object.entries(DATA_CLASSIFICATIONS)
+packages/ai/src/client/redact.test.ts:153:    .filter(([, classification]) => classification === "clinical")
+packages/ai/src/client/redact.test.ts:156:  test.each(clinical)("%s stays legible, because the answer depends on it", (key) => {
+packages/ai/src/client/transport.test.ts:192:  test("clinical content is sent, because the answer depends on it", async () => {
+packages/ai/src/client/transport.test.ts:194:    const clinical = {
+packages/ai/src/client/transport.test.ts:198:    expect((await dispatchAi(clinical, useCase)).ok).toBe(true);
+packages/ai/src/test/catalog.ts:58:    description: "Summarises the clinical picture of this record — ward, diagnosis, length of stay and status. The subject's name is never sent.",
+packages/ai/src/test/catalog.ts:61:    category: "clinical",
+packages/ai/src/test/catalog.ts:69:    category: "clinical",
+packages/ai/src/test/catalog.ts:74:    description: "Summarises the clinical records you have selected as a group — where the load is, and which look urgent. No names are sent.",
+packages/ai/src/test/catalog.ts:77:    category: "clinical",
+packages/ai/src/test/catalog.ts:86:    category: "clinical",
+packages/ai/src/test/catalog.ts:94:    category: "clinical",
+packages/ai/src/test/catalog.ts:101:  privateDescription: "clinical",
+packages/ai/src/test/catalog.ts:134:  diagnosis: "clinical",
+packages/ai/src/test/catalog.ts:135:  medication: "clinical",
+packages/ai/src/test/catalog.ts:136:  procedure: "clinical",
+packages/ai/src/test/catalog.ts:197:  chiefComplaint: "clinical",
+packages/ai/src/test/catalog.ts:198:  outcome: "clinical",
+packages/ai/src/test/catalog.ts:199:  followUp: "clinical",
+packages/ai/src/test/catalog.ts:200:  drug: "clinical",
+packages/ai/src/test/catalog.ts:201:  dose: "clinical",
+packages/ai/src/test/catalog.ts:202:  route: "clinical",
+packages/ai/src/test/catalog.ts:203:  duration: "clinical",
+packages/ai/src/test/catalog.ts:204:  form: "clinical",
+packages/ai/src/test/catalog.ts:205:  atc: "clinical",
+packages/ai/src/test/catalog.ts:206:  controlled: "clinical",
+packages/ai/src/test/catalog.ts:259:  ward: "clinical",
+packages/ai/src/test/catalog.ts:260:  acuity: "clinical",
+packages/ai/src/test/catalog.ts:261:  lengthOfStay: "clinical",
+packages/ai/src/test/catalog.ts:262:  specialty: "clinical",
+packages/ai/src/test/catalog.ts:263:  primaryDiagnosis: "clinical",
+packages/ai/src/test/catalog.ts:264:  problem: "clinical",
+packages/ai/src/test/catalog.ts:265:  complaint: "clinical",
+packages/ai/src/test/catalog.ts:266:  findings: "clinical",
+packages/ai/src/test/catalog.ts:267:  candidateCodes: "clinical",
+packages/ai/src/test/catalog.ts:268:  candidateOrders: "clinical",
+packages/ai/src/test/messages.ts:10:  "ui.clinical.98569e7e": "clinical",
+packages/ai/src/test/messages.ts:82:  "ui.this.is.a.clinical.use.case.i.confirm.the.fields.above.m.f472ba9e": "This is a clinical use case. I confirm the fields above may be sent for record ",
+packages/shell/src/preferences-page/index.tsx:307:                <Select aria-label="ui.quick.view.style.c03cba44" value={preferences.previewMode} onChange={(event) => set("previewMode", event.target.value as PreviewMode)} options={[{ label: "template.clinical.inline", value: "inline" }, { label: "Centered record card", value: "center-card" }, { label: "Center modal", value: "center-modal" }, { label: "Left side panel", value: "left-drawer" }, { label: "Right side panel", value: "right-drawer" }]} />
+packages/shell/src/test/preference-messages.ts:215:  "preferences.recordLayout.help": "Rail shows sections beside the form. Tabs show one section at a time. Wizard adds Previous and Next steps. Applies to new, view and edit forms, including Patient Record.",
+packages/shell/src/test/preference-messages.ts:216:  "preferences.spacing.help": "Choose Compact, Comfortable or Spacious spacing and corner rounding for shared page components. Patient Record uses these preferences too.",

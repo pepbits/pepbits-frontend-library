@@ -18,6 +18,8 @@ export interface PreferenceHostProps {
 }
 
 export interface PreferencesContextValue {
+  preferencePolicy: PreferencePolicy;
+  preferencesAvailable: boolean;
   preferences: UserPreferences;
   isLocked(key: PreferenceKey): boolean;
   allowedValues<K extends PreferenceKey>(key: K): ReadonlyArray<UserPreferences[K]> | undefined;
@@ -48,6 +50,7 @@ export function PreferenceHost({preferences, preferencePolicy = EMPTY_PREFERENCE
   }, []);
 
   const value: PreferencesContextValue = {
+    preferencePolicy, preferencesAvailable,
     preferences: effectivePreferences(preferences, preferencePolicy),
     isLocked: key => !preferencesAvailable || preferencePolicy.rules[key]?.locked === true,
     allowedValues: <K extends PreferenceKey>(key: K) =>

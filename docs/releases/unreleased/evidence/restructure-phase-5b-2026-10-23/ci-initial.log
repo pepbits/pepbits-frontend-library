@@ -1,0 +1,10 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+FAIL 1 boundary violation(s):
+  - packages/shell/src/test/browser/style.css: "@pepbits/tokens/tokens.css" is imported but @pepbits/tokens is not listed in packages/shell/package.json

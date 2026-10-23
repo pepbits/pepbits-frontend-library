@@ -21,3 +21,6 @@ export * from "./enterprise-shell";
 export * from "./workspace-page";
 export * from "./chrome-palette";
 export * from "./documentation";
+export * from "./extensions";
+export * from "./preferences-page";
+export * from "./login";

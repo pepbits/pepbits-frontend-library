@@ -4,5 +4,6 @@ import {CommandPalette} from './command-palette';
 import {DocumentationDrawer} from './documentation-drawer';
 import {HelpAssistant} from './help-assistant';
 import {ToastViewport} from './toast-viewport';
+import {useShellExtensions} from "../extensions";
 /** Mount once; EnterpriseShell includes this composition. */
-export function ShellLayers(){return <><CommandPalette/><DocumentationDrawer/><HelpAssistant/><ToastViewport/></>;}
+export function ShellLayers(){return <><CommandPalette/><DocumentationDrawer/><HelpAssistant/>{useShellExtensions().helpAssistant}<ToastViewport/></>;}

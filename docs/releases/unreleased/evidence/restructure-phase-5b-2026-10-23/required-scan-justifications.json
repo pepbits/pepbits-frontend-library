@@ -1,0 +1,541 @@
+{
+  "argv": [
+    "grep",
+    "-rniE",
+    "@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-|reference-)|desktop-clients|lucide-react|@tauri-apps|localhost|api[_-]?key\\s*[:=]\\s*['\"][A-Za-z0-9]|sk-[A-Za-z0-9]{10}|Bearer [A-Za-z0-9]{10}|nexora|ledger|patient|clinic|school",
+    "packages/ai/src",
+    "packages/shell/src"
+  ],
+  "exitCode": 0,
+  "matchLines": 88,
+  "matches": [
+    {
+      "path": "packages/ai/src/gates/verify-ai-egress.test.mjs",
+      "line": 14,
+      "source": " * The other half is louder and worse: a GENERAL use case that reads a clinical",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/gates/verify-ai-egress.test.mjs",
+      "line": 76,
+      "source": "  if (useCase.category === \"clinical\") continue;",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/gates/verify-ai-egress.test.mjs",
+      "line": 79,
+      "source": "    .filter((key) => [\"phi\", \"pii\", \"clinical\"].includes(classificationFor(key)));",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/gates/verify-ai-egress.test.mjs",
+      "line": 92,
+      "source": "  clinical: \"CLINICAL_PROBE_E11_9\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/gates/verify-ai-modes.test.tsx",
+      "line": 41,
+      "source": "check(\"inline refuses to surface a clinical use case\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/gates/verify-ai-modes.test.tsx",
+      "line": 42,
+      "source": "  source(\"inline-action.tsx\").includes('category === \"clinical\"'));",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/gates/verify-ai-modes.test.tsx",
+      "line": 62,
+      "source": " if(useCase.category==='clinical')expect(screen.queryByRole('button',{name:useCase.label})).toBeNull();",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/inline-action.tsx",
+      "line": 23,
+      "source": " * clinical use case is never surfaced this way.",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/inline-action.tsx",
+      "line": 33,
+      "source": "  if (!assistant.allowed || !useCase || useCase.category === \"clinical\") return null;",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/modes.test.tsx",
+      "line": 34,
+      "source": "const CLINICAL = useCase({ id: \"restricted.summarise\", label: \"Summarise encounter\", category: \"clinical\" });",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/modes.test.tsx",
+      "line": 224,
+      "source": "  /* There is no review stage here, so a clinical use case is never surfaced",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/modes.test.tsx",
+      "line": 226,
+      "source": "  test(\"never surfaces a clinical use case\", () => {",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/modes.test.tsx",
+      "line": 227,
+      "source": "    assistant([CLINICAL]);",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/modes.test.tsx",
+      "line": 228,
+      "source": "    const { container } = withNav(<InlineAiAction useCaseId={CLINICAL.id} />);",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/modes.test.tsx",
+      "line": 291,
+      "source": "  test(\"marks a clinical use case in the list\", () => {",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/modes.test.tsx",
+      "line": 292,
+      "source": "    panel([EXPLAIN, CLINICAL]);",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/modes.test.tsx",
+      "line": 294,
+      "source": "    expect(screen.getByText(\"clinical\")).toBeInTheDocument();",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 14,
+      "source": " * with nothing to read, and a clinical one nobody has acknowledged.",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 209,
+      "source": " * A clinical use case needs a second, explicit acknowledgement naming the",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 213,
+      "source": "describe(\"the clinical acknowledgement\", () => {",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 214,
+      "source": "  const clinical = { useCase: useCase({ category: \"clinical\", label: \"Summarise encounter\" }) };",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 217,
+      "source": "    panel(clinical);",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 219,
+      "source": "    expect(screen.getByText(/This is a clinical use case/)).toBeInTheDocument();",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 224,
+      "source": "    panel(clinical);",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 231,
+      "source": "    panel(clinical);",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.test.tsx",
+      "line": 246,
+      "source": "    panel(clinical);",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.tsx",
+      "line": 34,
+      "source": "  /* Clinical use cases require a second, explicit acknowledgement naming the",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.tsx",
+      "line": 38,
+      "source": "  const clinical = useCase.category === \"clinical\";",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.tsx",
+      "line": 133,
+      "source": "        {clinical ? (",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.tsx",
+      "line": 137,
+      "source": "              <TriangleAlert className=\"mr-1 inline size-3.5 text-[var(--warning-ink)]\" /><LocalizedText message=\"ui.this.is.a.clinical.use.case.i.confirm.the.fields.above.m.f472ba9e\" /><b>{context.pageId}</b><LocalizedText message=\"ui.the.assistant.summarises.it.does.not.diagnose.4388468f\" /></span>",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/transparency.tsx",
+      "line": 144,
+      "source": "            disabled={context.fields.length === 0 || (clinical && !acknowledged) || !config?.credential.configured}",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/ui/assistant-panel.tsx",
+      "line": 135,
+      "source": "                      {useCase.category === \"clinical\" ? <Badge tone=\"warning\"><LocalizedText message=\"ui.clinical.98569e7e\" /></Badge> : null}",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/config/use-cases.ts",
+      "line": 53,
+      "source": "   * Clinical use cases require a second confirmation naming the record, and are",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/config/use-cases.ts",
+      "line": 56,
+      "source": "  category: \"general\" | \"clinical\";",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/config/gates.ts",
+      "line": 32,
+      "source": " * intersected back in. For a capability that reads clinical records that is not",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/guard.test.ts",
+      "line": 72,
+      "source": "  /* Clinical content is meant to be legible: the use case exists to reason",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/guard.test.ts",
+      "line": 74,
+      "source": "  test(\"clinical content is not an offence\", () => {",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.ts",
+      "line": 20,
+      "source": " *                     in full — along with the treating clinician and the",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.ts",
+      "line": 21,
+      "source": " *                     admission date, both of which a clinical use case reads.",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.ts",
+      "line": 29,
+      "source": " * Clinical content is deliberately NOT masked. A use case that reads a",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.ts",
+      "line": 32,
+      "source": " * masked. It is governed by the clinical gate and its named-record",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.ts",
+      "line": 52,
+      "source": "  /* Clinical identifiers. Added with the healthcare module, having checked what",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.ts",
+      "line": 57,
+      "source": "  { test: /\\bmrn\\b|medical ?record ?(no|number)|patient ?(id|no)/, mask: maskTail },",
+      "justification": "Unchanged sensitive-name recognition pattern; removing it would weaken redaction. No product data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.ts",
+      "line": 100,
+      "source": "     clinical content the use case exists to reason about. The classification is",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.test.ts",
+      "line": 147,
+      "source": "  /* Clinical content is NOT masked. The use case that reads a diagnosis exists",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.test.ts",
+      "line": 150,
+      "source": "     It is governed by the clinical gate and its named-record confirmation",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.test.ts",
+      "line": 152,
+      "source": "  const clinical = Object.entries(DATA_CLASSIFICATIONS)",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.test.ts",
+      "line": 153,
+      "source": "    .filter(([, classification]) => classification === \"clinical\")",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/redact.test.ts",
+      "line": 156,
+      "source": "  test.each(clinical)(\"%s stays legible, because the answer depends on it\", (key) => {",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/transport.test.ts",
+      "line": 192,
+      "source": "  test(\"clinical content is sent, because the answer depends on it\", async () => {",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/transport.test.ts",
+      "line": 194,
+      "source": "    const clinical = {",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/client/transport.test.ts",
+      "line": 198,
+      "source": "    expect((await dispatchAi(clinical, useCase)).ok).toBe(true);",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 58,
+      "source": "    description: \"Summarises the clinical picture of this record — ward, diagnosis, length of stay and status. The subject's name is never sent.\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 61,
+      "source": "    category: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 69,
+      "source": "    category: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 74,
+      "source": "    description: \"Summarises the clinical records you have selected as a group — where the load is, and which look urgent. No names are sent.\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 77,
+      "source": "    category: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 86,
+      "source": "    category: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 94,
+      "source": "    category: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 101,
+      "source": "  privateDescription: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 134,
+      "source": "  diagnosis: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 135,
+      "source": "  medication: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 136,
+      "source": "  procedure: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 197,
+      "source": "  chiefComplaint: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 198,
+      "source": "  outcome: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 199,
+      "source": "  followUp: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 200,
+      "source": "  drug: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 201,
+      "source": "  dose: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 202,
+      "source": "  route: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 203,
+      "source": "  duration: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 204,
+      "source": "  form: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 205,
+      "source": "  atc: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 206,
+      "source": "  controlled: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 259,
+      "source": "  ward: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 260,
+      "source": "  acuity: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 261,
+      "source": "  lengthOfStay: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 262,
+      "source": "  specialty: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 263,
+      "source": "  primaryDiagnosis: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 264,
+      "source": "  problem: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 265,
+      "source": "  complaint: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 266,
+      "source": "  findings: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 267,
+      "source": "  candidateCodes: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/catalog.ts",
+      "line": 268,
+      "source": "  candidateOrders: \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/messages.ts",
+      "line": 10,
+      "source": "  \"ui.clinical.98569e7e\": \"clinical\",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/ai/src/test/messages.ts",
+      "line": 82,
+      "source": "  \"ui.this.is.a.clinical.use.case.i.confirm.the.fields.above.m.f472ba9e\": \"This is a clinical use case. I confirm the fields above may be sent for record \",",
+      "justification": "Retained clinical wire security category/classification, its acknowledgment copy, explanatory comment or fictional test fixture. No product page, brand or real sensitive data."
+    },
+    {
+      "path": "packages/shell/src/preferences-page/index.tsx",
+      "line": 307,
+      "source": "                <Select aria-label=\"ui.quick.view.style.c03cba44\" value={preferences.previewMode} onChange={(event) => set(\"previewMode\", event.target.value as PreviewMode)} options={[{ label: \"template.clinical.inline\", value: \"inline\" }, { label: \"Centered record card\", value: \"center-card\" }, { label: \"Center modal\", value: \"center-modal\" }, { label: \"Left side panel\", value: \"left-drawer\" }, { label: \"Right side panel\", value: \"right-drawer\" }]} />",
+      "justification": "Existing canonical localization key for the generic inline preview; no product or page registry."
+    },
+    {
+      "path": "packages/shell/src/test/preference-messages.ts",
+      "line": 215,
+      "source": "  \"preferences.recordLayout.help\": \"Rail shows sections beside the form. Tabs show one section at a time. Wizard adds Previous and Next steps. Applies to new, view and edit forms, including Patient Record.\",",
+      "justification": "Unchanged sensitive-name recognition pattern; removing it would weaken redaction. No product data."
+    },
+    {
+      "path": "packages/shell/src/test/preference-messages.ts",
+      "line": 216,
+      "source": "  \"preferences.spacing.help\": \"Choose Compact, Comfortable or Spacious spacing and corner rounding for shared page components. Patient Record uses these preferences too.\",",
+      "justification": "Unchanged sensitive-name recognition pattern; removing it would weaken redaction. No product data."
+    }
+  ]
+}

@@ -1,0 +1,575 @@
+
+> @pepbits/ai@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ai
+
+ ✓ src/gates/verify-ai-egress.test.mjs (121 tests) 15ms
+ ✓ src/ui/administration.test.tsx (20 tests) 1976ms
+ ✓ src/ui/modes.test.tsx (34 tests) 1351ms
+ ✓ src/client/transport.test.ts (22 tests) 1437ms
+   ✓ the echo transport > no credential configured falls back to the mock  352ms
+   ✓ the echo transport > an unreachable service falls back to the mock  353ms
+   ✓ the echo transport > the mock says nothing left the browser, and lists what would have  353ms
+   ✓ the echo transport > the mock shows the redacted value, not the original  353ms
+ ❯ src/ui/transparency.test.tsx (28 tests | 1 failed) 1214ms
+   ✓ the Data tab > lists every field the payload carries, and its source 112ms
+   ✓ the Data tab > counts them, in the badge and on the button 118ms
+   ✓ the Data tab > counts one field in the singular 43ms
+   ✓ the Data tab > shows the redacted value, and says which fields were redacted 27ms
+   ✓ the Data tab > says nothing about redaction when nothing was redacted 26ms
+   ✓ the Data tab > names the use case and describes what it does 32ms
+   ✓ the Data tab > shows what the user typed, under its own heading 31ms
+   ✓ the Data tab > and shows no message box when they typed nothing 24ms
+   ✓ the Data tab > says so when there is nothing to send 39ms
+   × the Flow tab > names all three hops, in order 70ms
+     → Unable to find an element with the text: DeepSeek. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex min-h-0 flex-col"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex shrink-0 border-b border-[var(--border)]"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex h-9 flex-1 items-center justify-center gap-1.5 border-b-2 text-[length:calc(10.5px*var(--fs-scale))] font-bold transition border-transparent text-[var(--text-muted)] hover:text-[var(--text)]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-database size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<ellipse[39m
+              [33mcx[39m=[32m"12"[39m
+              [33mcy[39m=[32m"5"[39m
+              [33mrx[39m=[32m"9"[39m
+              [33mry[39m=[32m"3"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M3 5V19A9 3 0 0 0 21 19V5"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M3 12A9 3 0 0 0 21 12"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mData[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex h-9 flex-1 items-center justify-center gap-1.5 border-b-2 text-[length:calc(10.5px*var(--fs-scale))] font-bold transition border-[var(--primary)] text-[var(--text)]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-route size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"6"[39m
+              [33mcy[39m=[32m"19"[39m
+              [33mr[39m=[32m"3"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"[39m
+            [36m/>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"18"[39m
+              [33mcy[39m=[32m"5"[39m
+              [33mr[39m=[32m"3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mFlow[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex h-9 flex-1 items-center justify-center gap-1.5 border-b-2 text-[length:calc(10.5px*var(--fs-scale))] font-bold transition border-transparent text-[var(--text-muted)] hover:text-[var(--text)]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-shield-check size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m9 12 2 2 4-4"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mPolicy[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-y-auto px-4 py-3"[39m
+      [36m>[39m
+        [36m<ul>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex gap-3 border-b border-[var(--border)] py-2.5 last:border-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mt-0.5 size-2 shrink-0 rounded-full bg-[var(--primary)]"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0 flex-1"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(10.5px*var(--fs-scale))] font-bold"[39m
+              [36m>[39m
+                [0mThis browser[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(9.5px*var(--fs-scale))] leading-relaxed text-[var(--text-muted)]"[39m
+              [36m>[39m
+                [0mAssembled from This record. Redaction has already been applied.[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] text-[var(--text-subtle)]"[39m
+            [36m>[39m
+              [0mnot stored[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex gap-3 border-b border-[var(--border)] py-2.5 last:border-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mt-0.5 size-2 shrink-0 rounded-full bg-[var(--primary)]"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0 flex-1"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(10.5px*var(--fs-scale))] font-bold"[39m
+              [36m>[39m
+                [0mYour AI service[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(9.5px*var(--fs-scale))] leading-relaxed text-[var(--text-muted)]"[39m
+              [36m>[39m
+                [0mResolves the prompt, attaches the provider credential, applies rate limits, writes the audit record.[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] text-[var(--text-subtle)]"[39m
+            [36m>[39m
+              [0m30 days[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex gap-3 border-b border-[var(--border)] py-2.5 last:border-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mt-0.5 size-2 shrink-0 rounded-full bg-[var(--primary)]"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0 flex-1"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(10.5px*var(--fs-scale))] font-bold"[39m
+              [36m>[39m
+                [0mExample Provider[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(9.5px*var(--fs-scale))] leading-relaxed text-[var(--text-muted)]"[39m
+              [36m>[39m
+                [0mhttps://provider.example.invalid/v1[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] text-[var(--text-subtle)]"[39m
+            [36m>[39m
+              [0mno training[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-t border-[var(--border)] px-4 py-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-8 gap-1.5 rounded-lg px-3 text-xs"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mCancel[0m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex-1"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-8 gap-1.5 rounded-lg px-3 text-xs"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSend [0m
+            [0m2[0m
+            [0m [0m
+            [0mfields[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   ✓ the Flow tab > says which sources the payload was assembled from 47ms
+   ✓ the Flow tab > says 'nothing' rather than trailing off when no field was captured 33ms
+   ✓ the Flow tab > carries the retention the service actually applies 38ms
+   ✓ the Flow tab > names no provider when the configuration is unavailable 35ms
+   ✓ the Flow tab > says plainly when the provider trains on what is sent 42ms
+   ✓ the Policy tab > names the gate that allowed this 43ms
+   ✓ the Policy tab > carries retention, region and the training answer 59ms
+   ✓ the Policy tab > names the prompt by id 31ms
+   ✓ the Policy tab > says Unknown rather than guessing when the configuration is unavailable 44ms
+   ✓ sending > confirms through the caller 35ms
+   ✓ sending > cancels through the caller 32ms
+   ✓ sending > is refused, and explained, when no credential is configured 35ms
+   ✓ sending > and the explanation is absent once one is 21ms
+   ✓ the clinical acknowledgement > is asked for, and names the record 37ms
+   ✓ the clinical acknowledgement > holds the send until it is given 61ms
+   ✓ the clinical acknowledgement > and taking it back holds the send again 39ms
+   ✓ the clinical acknowledgement > is not asked for on an ordinary use case 28ms
+   ✓ the clinical acknowledgement > says the assistant summarises rather than diagnoses 26ms
+stderr | src/ui/use-assistant.test.tsx > the administration config > arrives once asked for
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/ui/use-assistant.test.tsx > the administration config > a refused config leaves it null rather than half-built
+An update to Probe inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/ui/use-assistant.test.tsx (24 tests) 703ms
+ ✓ src/client/sources.test.tsx (10 tests) 94ms
+ ✓ src/client/policy.test.ts (9 tests) 17ms
+ ✓ src/client/redact.test.ts (157 tests) 35ms
+ ✓ src/client/admin.test.ts (11 tests) 19ms
+ ✓ src/config/gates.test.ts (22 tests) 11ms
+stderr | src/ui/shell-extension.test.tsx > the host user gate removes inline and panel affordances
+An update to InlineAiAction inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to AssistantPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/ui/shell-extension.test.tsx (14 tests) 663ms
+ ✓ src/client/assemble.test.ts (19 tests) 16ms
+ ✓ src/gates/verify-ai-context.test.mjs (18 tests) 8ms
+ ✓ src/config/policy.test.ts (13 tests) 11ms
+ ✓ src/client/guard.test.ts (9 tests) 8ms
+ ✓ src/gates/verify-ai-gates.test.mjs (20 tests) 16ms
+ ✓ src/gates/verify-ai-credential.test.ts (3 tests) 13ms
+ ✓ src/gates/verify-ai-limits.test.ts (5 tests) 17ms
+ ✓ src/gates/check-ai-limits-isolated.test.ts (1 test) 12ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/gates/verify-ai-hardening.test.ts [ src/gates/verify-ai-hardening.test.ts ]
+ FAIL  src/gates/verify-ai-modes.test.mjs [ src/gates/verify-ai-modes.test.mjs ]
+ReferenceError: Element is not defined
+ ❯ vitest.setup.ts:16:1
+     14|    rather than guarded in the components: not scrolling is exactly rig…
+     15|    test, and a `?.` in the source would be there for the runner's bene…
+     16| if (!Element.prototype.scrollIntoView) {
+       | ^
+     17|   Element.prototype.scrollIntoView = function scrollIntoView() {};
+     18| }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ui/transparency.test.tsx > the Flow tab > names all three hops, in order
+TestingLibraryElementError: Unable to find an element with the text: DeepSeek. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex min-h-0 flex-col"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex shrink-0 border-b border-[var(--border)]"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex h-9 flex-1 items-center justify-center gap-1.5 border-b-2 text-[length:calc(10.5px*var(--fs-scale))] font-bold transition border-transparent text-[var(--text-muted)] hover:text-[var(--text)]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-database size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<ellipse[39m
+              [33mcx[39m=[32m"12"[39m
+              [33mcy[39m=[32m"5"[39m
+              [33mrx[39m=[32m"9"[39m
+              [33mry[39m=[32m"3"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M3 5V19A9 3 0 0 0 21 19V5"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M3 12A9 3 0 0 0 21 12"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mData[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex h-9 flex-1 items-center justify-center gap-1.5 border-b-2 text-[length:calc(10.5px*var(--fs-scale))] font-bold transition border-[var(--primary)] text-[var(--text)]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-route size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"6"[39m
+              [33mcy[39m=[32m"19"[39m
+              [33mr[39m=[32m"3"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"[39m
+            [36m/>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"18"[39m
+              [33mcy[39m=[32m"5"[39m
+              [33mr[39m=[32m"3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mFlow[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex h-9 flex-1 items-center justify-center gap-1.5 border-b-2 text-[length:calc(10.5px*var(--fs-scale))] font-bold transition border-transparent text-[var(--text-muted)] hover:text-[var(--text)]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-shield-check size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m9 12 2 2 4-4"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mPolicy[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-y-auto px-4 py-3"[39m
+      [36m>[39m
+        [36m<ul>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex gap-3 border-b border-[var(--border)] py-2.5 last:border-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mt-0.5 size-2 shrink-0 rounded-full bg-[var(--primary)]"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0 flex-1"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(10.5px*var(--fs-scale))] font-bold"[39m
+              [36m>[39m
+                [0mThis browser[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(9.5px*var(--fs-scale))] leading-relaxed text-[var(--text-muted)]"[39m
+              [36m>[39m
+                [0mAssembled from This record. Redaction has already been applied.[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] text-[var(--text-subtle)]"[39m
+            [36m>[39m
+              [0mnot stored[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex gap-3 border-b border-[var(--border)] py-2.5 last:border-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mt-0.5 size-2 shrink-0 rounded-full bg-[var(--primary)]"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0 flex-1"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(10.5px*var(--fs-scale))] font-bold"[39m
+              [36m>[39m
+                [0mYour AI service[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(9.5px*var(--fs-scale))] leading-relaxed text-[var(--text-muted)]"[39m
+              [36m>[39m
+                [0mResolves the prompt, attaches the provider credential, applies rate limits, writes the audit record.[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] text-[var(--text-subtle)]"[39m
+            [36m>[39m
+              [0m30 days[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex gap-3 border-b border-[var(--border)] py-2.5 last:border-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mt-0.5 size-2 shrink-0 rounded-full bg-[var(--primary)]"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0 flex-1"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(10.5px*var(--fs-scale))] font-bold"[39m
+              [36m>[39m
+                [0mExample Provider[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(9.5px*var(--fs-scale))] leading-relaxed text-[var(--text-muted)]"[39m
+              [36m>[39m
+                [0mhttps://provider.example.invalid/v1[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"shrink-0 text-[length:calc(9px*var(--fs-scale))] text-[var(--text-subtle)]"[39m
+            [36m>[39m
+              [0mno training[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-t border-[var(--border)] px-4 py-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-8 gap-1.5 rounded-lg px-3 text-xs"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mCancel[0m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex-1"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-8 gap-1.5 rounded-lg px-3 text-xs"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSend [0m
+            [0m2[0m
+            [0m [0m
+            [0mfields[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/ui/transparency.test.tsx:110:19
+    108|     expect(screen.getByText("This browser")).toBeInTheDocument();
+    109|     expect(screen.getByText("Your AI service")).toBeInTheDocument();
+    110|     expect(screen.getByText("DeepSeek")).toBeInTheDocument();
+       |                   ^
+    111|   });
+    112| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  3 failed | 19 passed (22)
+      Tests  1 failed | 559 passed (560)
+   Start at  03:07:41
+   Duration  21.15s (transform 2.13s, setup 3.41s, collect 7.48s, tests 7.63s, environment 11.68s, prepare 2.50s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/ai@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ai 

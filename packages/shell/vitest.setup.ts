@@ -13,12 +13,12 @@ afterEach(cleanup);
    test in the file failing for a reason unrelated to any of them. Stubbed
    rather than guarded in the components: not scrolling is exactly right in a
    test, and a `?.` in the source would be there for the runner's benefit. */
-if (!Element.prototype.scrollIntoView) {
+if (typeof Element !== "undefined" && !Element.prototype.scrollIntoView) {
   Element.prototype.scrollIntoView = function scrollIntoView() {};
 }
 
 Object.assign(globalThis, {IS_REACT_ACT_ENVIRONMENT: true});
 
 // jsdom has no native modal top layer; browser focus/inert behavior is not claimed.
-if (!HTMLDialogElement.prototype.showModal) HTMLDialogElement.prototype.showModal = function () {this.setAttribute("open", "");};
-if (!HTMLDialogElement.prototype.close) HTMLDialogElement.prototype.close = function () {this.removeAttribute("open");};
+if (typeof HTMLDialogElement !== "undefined" && !HTMLDialogElement.prototype.showModal) HTMLDialogElement.prototype.showModal = function () {this.setAttribute("open", "");};
+if (typeof HTMLDialogElement !== "undefined" && !HTMLDialogElement.prototype.close) HTMLDialogElement.prototype.close = function () {this.removeAttribute("open");};

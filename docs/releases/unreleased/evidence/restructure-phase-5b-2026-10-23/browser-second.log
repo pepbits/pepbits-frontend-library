@@ -1,0 +1,53 @@
+
+> @pepbits/shell@0.0.0 test
+> vitest run src/sidebar-rtl.browser.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell
+
+ ❯ src/sidebar-rtl.browser.test.ts (2 tests | 2 skipped) 150ms
+   ↓ Chromium Arabic RTL places the rail physically left through focus and keyboard expansion
+   ↓ Chromium Arabic RTL places the rail physically right through focus and keyboard expansion
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/sidebar-rtl.browser.test.ts [ src/sidebar-rtl.browser.test.ts ]
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /home/pepadmin/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/home/pepadmin/codex-tmp/playwright_chromiumdev_profile-PWk3rH --remote-debugging-pipe --no-startup-window
+<launched> pid=142
+[pid=142][err] /home/pepadmin/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell: error while loading shared libraries: libatk-1.0.so.0: cannot open shared object file: No such file or directory
+Call log:
+[2m  - <launching> /home/pepadmin/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/home/pepadmin/codex-tmp/playwright_chromiumdev_profile-PWk3rH --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=142[22m
+[2m  - [pid=142][err] /home/pepadmin/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell: error while loading shared libraries: libatk-1.0.so.0: cannot open shared object file: No such file or directory[22m
+[2m  - [pid=142] <gracefully close start>[22m
+[2m  - [pid=142] <kill>[22m
+[2m  - [pid=142] <will force kill>[22m
+[2m  - [pid=142] exception while trying to kill process: Error: kill ESRCH[22m
+[2m  - [pid=142] <process did exit: exitCode=127, signal=null>[22m
+[2m  - [pid=142] starting temporary directories cleanup[22m
+[2m  - [pid=142] finished temporary directories cleanup[22m
+[2m  - [pid=142] <gracefully close end>[22m
+
+ ❯ src/sidebar-rtl.browser.test.ts:11:26
+      9|     css:{postcss:{plugins:[tailwind()]}},resolve:{dedupe:['react','rea…
+     10|   await server.listen();base=server.resolvedUrls!.local[0]!;
+     11|   browser=await chromium.launch({headless:true});
+       |                          ^
+     12| },60000);
+     13| afterAll(async()=>{await browser?.close();await server?.close();});
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 skipped (2)
+   Start at  03:13:42
+   Duration  1.55s (transform 85ms, setup 219ms, collect 702ms, tests 150ms, environment 1ms, prepare 98ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/shell@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell 
