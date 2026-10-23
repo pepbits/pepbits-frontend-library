@@ -6,3 +6,4 @@ export * from "./approvals";
 export * from "./record-panels";
 export * from "./request-failure";
 export * from "./memory-records";
+export {createMemoryDraftAdapter} from './memory-drafts';

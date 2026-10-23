@@ -50,7 +50,7 @@ test('header clock uses host branch zone and effective date, time and seconds pr
 test('header exposes only host quick destinations and branch changes',()=>{
  const open=vi.fn(),branch=vi.fn();render(<ShellTestHost navigation={{...port,open}} onBranchChange={branch} branches={[{value:'north',label:'North'},{value:'south',label:'South'}]} quickPages={[{id:'items',label:'Quick items'},{id:'absent',label:'Unavailable'}]}><EnterpriseShell>Screen</EnterpriseShell></ShellTestHost>);
  fireEvent.click(screen.getByRole('button',{name:'Quick items'}));expect(open).toHaveBeenCalledWith({pageId:'items'});expect(screen.queryByText('Unavailable')).toBeNull();
- fireEvent.click(screen.getByRole('button',{name:'Branch'}));fireEvent.click(screen.getByRole('option',{name:'South'}));expect(branch).toHaveBeenCalledWith('south');
+ fireEvent.click(screen.getByRole('button',{name:/^Branch\b/}));fireEvent.click(screen.getByRole('option',{name:'South'}));expect(branch).toHaveBeenCalledWith('south');
 });
 test.each([true,false])('tour scroll obeys reducedMotion=%s and opening help never starts a tour',reducedMotion=>{
  const scroll=vi.spyOn(Element.prototype,'scrollIntoView');

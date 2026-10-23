@@ -24,7 +24,7 @@ describe('page copy and stable data',()=>{
   const t=locale(language).t;
   expect(screen.getByLabelText(t('Display name'))).toHaveValue('Save CUS-001');
   expect(screen.getByText(t('Cash position'))).toBeVisible();expect(screen.getByText(format.money(42160000))).toBeVisible();
-  fireEvent.click(screen.getByRole('button',{name:t('Role')}));
+  fireEvent.click(screen.getByRole('button',{name:`${t('Role')} ${t('Finance Manager')}`}));
   fireEvent.change(screen.getByRole('combobox'),{target:{value:t('Operations Analyst')}});
   fireEvent.click(screen.getByRole('option',{name:t('Operations Analyst')}));
   expect(JSON.parse(screen.getByTestId('values').textContent!).role).toBe('ops');

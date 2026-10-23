@@ -1,0 +1,193 @@
+{
+  "scope": "Local next start, fictional in-memory adapters; not deployed/native",
+  "routes": 8,
+  "checks": [
+    {
+      "area": "foundations",
+      "violations": [],
+      "passes": 41,
+      "incomplete": 1
+    },
+    {
+      "area": "ui",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<button type=\"button\" aria-labelledby=\"_r_h_-label\" aria-haspopup=\"listbox\" aria-expanded=\"false\" class=\"focus-ring flex h-9 ...\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<pre dir=\"ltr\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "passes": 44,
+      "incomplete": 1
+    },
+    {
+      "area": "components",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<button type=\"button\" aria-label=\"Status\" aria-haspopup=\"listbox\" aria-expanded=\"false\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 51,
+      "incomplete": 1
+    },
+    {
+      "area": "patterns",
+      "violations": [
+        {
+          "id": "aria-prohibited-attr",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<pre aria-label=\"Staged options\"></pre>",
+              "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"pre\" elements with no valid role attribute."
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<button type=\"button\" class=\"lifecycle_lifeCard__JHVdB\" aria-current=\"false\" aria-label=\"Open item-flow version 1\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "nodes": [
+            {
+              "html": "<input class=\"focus-ring h-9 w-ful...\" type=\"file\" accept=\".csv,.xlsx\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "html": "<input class=\"focus-ring h-9 w-ful...\" maxlength=\"500\" value=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        },
+        {
+          "id": "landmark-main-is-top-level",
+          "impact": "moderate",
+          "nodes": [
+            {
+              "html": "<main class=\"lifecycle_main__mn7BD\">",
+              "summary": "Fix any of the following:\n  The main landmark is contained in another landmark."
+            }
+          ]
+        },
+        {
+          "id": "landmark-no-duplicate-main",
+          "impact": "moderate",
+          "nodes": [
+            {
+              "html": "<main id=\"main\" tabindex=\"-1\">",
+              "summary": "Fix any of the following:\n  Document has more than one main landmark"
+            }
+          ]
+        },
+        {
+          "id": "landmark-unique",
+          "impact": "moderate",
+          "nodes": [
+            {
+              "html": "<main id=\"main\" tabindex=\"-1\">",
+              "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+            }
+          ]
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "nodes": [
+            {
+              "html": "<select class=\"focus-ring h-9 w-ful...\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ],
+      "passes": 39,
+      "incomplete": 3
+    },
+    {
+      "area": "page-engines",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\" role=\"tab\" aria-label=\"Details\" aria-selected=\"true\" id=\"_r_6_-tab-details\" tabindex=\"0\" aria-controls=\"_r_6_-section-detail...\" data-active=\"true\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\" role=\"tab\" aria-label=\"Notes\" aria-selected=\"false\" id=\"_r_6_-tab-notes\" tabindex=\"-1\" aria-controls=\"_r_6_-section-notes\" data-active=\"false\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 45,
+      "incomplete": 2
+    },
+    {
+      "area": "playground",
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<pre aria-label=\"Effective preference snapshot\" dir=\"ltr\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "passes": 38,
+      "incomplete": 1
+    },
+    {
+      "area": "shell",
+      "violations": [],
+      "passes": 36,
+      "incomplete": 0
+    },
+    {
+      "area": "ai",
+      "violations": [],
+      "passes": 36,
+      "incomplete": 0
+    }
+  ],
+  "interactionChecks": 8,
+  "pageErrors": [
+    "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+    "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+  ],
+  "consoleErrors": []
+}

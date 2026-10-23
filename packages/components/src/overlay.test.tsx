@@ -242,7 +242,7 @@ describe("Escape inside a dialog", () => {
         <DropdownSelect label="Currency" value="a" options={options} onChange={() => undefined} />
       </Modal>,
     );
-    await userEvent.click(screen.getByRole("button", { name: "Currency" }));
+    await userEvent.click(screen.getByRole("button", { name: /^Currency / }));
     expect(screen.getAllByRole("option")).toHaveLength(2);
     await userEvent.keyboard("{Escape}");
     expect(screen.queryByRole("option")).toBeNull();
@@ -259,7 +259,7 @@ describe("Escape inside a dialog", () => {
         <SearchSelect label="Currency" value="a" options={options} onChange={() => undefined} />
       </Modal>,
     );
-    await userEvent.click(screen.getByRole("button", { name: "Currency" }));
+    await userEvent.click(screen.getByRole("button", { name: /^Currency / }));
     await userEvent.keyboard("{Escape}");
     expect(screen.queryByRole("option")).toBeNull();
     expect(onClose).not.toHaveBeenCalled();

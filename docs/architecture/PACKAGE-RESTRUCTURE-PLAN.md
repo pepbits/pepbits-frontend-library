@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **phases 0–3, phase 4a priorities 1–2, phase 4b generic engines, phase 5 priorities 1–6 and phase 5b AI/preferences/login implemented; priority 3 patterns and phase 6 demos onward remain future work.** Revised 23 October 2026 against `main` `a5f49fb`. See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status), [Phase 4b](#phase-4b-status), [Phase 5](#phase-5-status) and [Phase 5b](#phase-5b-status). Phases 1–5b follow the owner's copy-only decision; consumer migration and publishing remain future work.
+Status: **phases 0–3, phase 4a priorities 1–2, phase 4b generic engines, phase 5 priorities 1–6 and phase 5b AI/preferences/login implemented; phase 6a showcase implemented with a temporary frame (full shell frame, shell and AI pages follow). Priority 3 patterns and the remaining phase 6 demos onward remain future work.** Revised 23 October 2026 against `main` `a5f49fb`. See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status), [Phase 4b](#phase-4b-status), [Phase 5](#phase-5-status) and [Phase 5b](#phase-5b-status). Phases 1–5b follow the owner's copy-only decision; consumer migration and publishing remain future work.
 
 ## Summary
 
@@ -233,7 +233,10 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-screens` record page and generic record layout | Copied to `packages/page-engines` in 4b (used by products; see [What products import today](#what-products-import-today)) |
 | `erp-screens` patient query (`ClinicalPatientWorkspace`) | Healthcare repository, `frontend/packages/healthcare-ui` |
 | `erp-screens` other product screens (clinical, consultation, billing, OP registration, care pages) | `demo-apps/healthcare` |
-| `erp-screens` page library | `demo-apps/showcase` |
+| `erp-screens` page library | Recreated as fictional typed engine examples in `demo-apps/showcase`; product launchers excluded |
+| `erp-screens/library` catalog, demos and reference pages | Showcase catalog, individual example files, Foundations and policy playground |
+| `erp-screens/templates/template-library.tsx` and example generators | Showcase template selector and source-identical snippet generator |
+| Thirteen `erp-screens/*/library-page.tsx` launchers | [Explicit per-source map](../../demo-apps/showcase/source-mapping.md); product launchers go to later demos, unported designer/device/label areas remain deferred |
 | `workspace-core` | Copied to `packages/shell` `./workspace` in phase 5 priorities 1–3; all seven core suites retained; part 2 adds the shell workspace UI and all eight UI suites. |
 | `erp-shell` | Context/ScreenHost, services, full header/sidebar/footer/frame, clock/palette, workspace tabs/split/MDI/window ports, command palette and documentation/non-AI help copied to `packages/shell`. Preferences/login are copied in phase 5b below. |
 | `erp-config` generic shell configuration | Navigation/module/page types, product helpers, shortcut mechanics, documentation/tour types copied to shell in phase 5; catalogs, brands, branches/roles/time zones, guides and tours stay host-owned and are consumed by the completed chrome/layers. |
@@ -440,6 +443,18 @@ The backend admission/default-limit checks, credential storage/canary/log checks
 
 Phase 6 remains demonstration applications (showcase first), product/page/catalogue/branch content, mock API migration, boot preferences/routing, native window/bootstrap wiring and full browser/live-service acceptance. Phase 4a priority 3 patterns remain independent deferred work; registry publication/consumer migration/removal are phases 7–8. No original workspace/backend/deployment/CI source changes, shim, catalog regeneration, commit, push or deployment.
 
+### Phase 6a status
+
+Implemented in the separate `restructure/phase-6a` worktree from `6c73e50` (phase 5 part 1), 23 October 2026. [Showcase guide](../../demo-apps/showcase/README.md), [feature contract](../features/showcase.md), [delivery evidence](../releases/unreleased/restructure-phase-6a-2026-10-23.md).
+
+The first independent Next.js app is `@pepbits-demo/showcase` (private). Eight destinations cover Foundations, UI primitives, Components, Patterns, Page engines, preferences/policy, and explicit Shell/AI placeholders. Examples use public exports, fictional data and volatile adapters. Displayed code is generated from the executable files. Host preferences follow the central guarded update path; four-language catalogs, Arabic direction and reduced motion are wired.
+
+**Pending after merging with main:** replace `src/app-frame.tsx` with full shell chrome; complete shell workspace tabs/split/MDI, command palette, documentation, toasts and session-lock gallery pages from phase 5 part 2; add AI demonstrations from phase 5b. No `packages/shell` file is edited and no AI package is created in this worktree. Part-1 ShellProvider already supplies appearance and ScreenHost integration.
+
+Small library additions: a controlled value mode on platform SessionProvider and data’s volatile shared-draft adapter. Any accessibility corrections discovered during composed testing are itemized in the phase 6a record and package guides. Protected applications/backend/deploy/CI files remain unchanged. Root CI now has a real showcase Next build task. Evidence is local, not deployment or native execution. No commit or push.
+
+Owner-decided remaining demo order, one independent app at a time: **healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop**. Phase 4a priority 3 authoring/device/label patterns remain independently deferred.
+
 ## Gate for every port
 
 For the independent phase 1–5 copies, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
@@ -481,8 +496,8 @@ Paths that ports must update, counted on `main` `01b6578`:
 
 ## Open questions for the owner
 
-1. **Demo hosting.** One Next.js app per demo (recommended: independent, proves packages stand alone), or one shared host that loads demos as modules (closer to today, single deployment).
+1. **Demo hosting — decided.** One Next.js app per demo, built one at a time, starting with showcase.
 2. **Registry.** GitHub Packages under `pepbits`, or another private npm registry.
 3. **Package names.** Confirm `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `patterns`, `page-engines`, `shell`, `data`, `platform`, `ai`, `testing`.
-4. **Component docs.** Storybook inside `demo-apps/showcase`, or keep the custom Developer Library renderer there.
+4. **Component docs — decided for phase 6a.** Standalone custom gallery with snippets generated from executable example files.
 5. **Shim lifetime.** One library release after the last consumer moves, or a fixed date.

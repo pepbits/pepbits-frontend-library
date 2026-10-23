@@ -106,3 +106,9 @@ Standalone reports/dashboard/inbox/billing still combine product datasets, seede
 XLSX retains the exact original 0.20.3 tarball specification. The inherited advisory history and npm audit findings remain a dependency-review follow-up; no dependency upgrade is included. No DnD packages are needed by the selected engines.
 
 Run root `npm install`, `npm run ci`, and the requested jiti documentation checker. Tests use fictional generic definitions, mocked requests/ports, and the shared `@pepbits/patterns/testing` providers/document helper. The 84-definition test matrix covers all twelve engine IDs across six views, five generic registry fixtures and seven specialization fixtures; it is not the original 102 product templates. See the [phase 4b record](../../docs/releases/unreleased/restructure-phase-4b-2026-10-23.md) for per-file counts, deviations and source identity. Unit/jsdom and source typechecks do not establish browser/native/live-provider acceptance or a deployed release. No consumer migration, commit, push, publication or deployment is included.
+
+## Phase 6a record-layout accessibility
+
+RecordSectionLayout tab names include the visible step number followed by the localized section title (for example, `01 Details`). Checkmark decoration remains hidden. Consumers querying exact names should include the index or match the title suffix. Regressions cover names and keyboard/navigation behavior.
+
+Worklist print provenance omits the timestamp during server/initial client rendering, sets it after mount, and refreshes synchronously for native `beforeprint`. This avoids build-time/client-time hydration differences and stale print timestamps. A regression checks stable server markup and the actual print event. The existing 84-template/two-density preference matrix runs as 168 individual cases to isolate timeouts during concurrent app builds.

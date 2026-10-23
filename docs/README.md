@@ -1,5 +1,7 @@
 # Enterprise frontend documentation
 
+- [Independent showcase](features/showcase.md): public-package gallery, generated examples and an in-memory preference/policy playground.
+
 This repository provides reusable desktop-first frontend pages and components for ERP, healthcare, school and other SaaS applications. Start here for user instructions, integration guidance, development rules and release evidence.
 
 The documentation layout follows the [Pepbits framework documentation](https://github.com/pepbits/pepbits-framework/tree/769a4c0e267f15653ef0994bd8df7da2ef14fc42/docs). The frontend retains its own package versions, source history and deployment records. Java/Maven release identities from that repository do not apply here.

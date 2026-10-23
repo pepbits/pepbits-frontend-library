@@ -69,17 +69,15 @@ export function DropdownSelect({ value, options, onChange, label, hideLabel, com
 
   return (
     <div className={cn("relative", className)} ref={ref}>
-      <button ref={triggerRef} type="button" aria-label={label ? t(label) : undefined} aria-haspopup="listbox" aria-expanded={open} onClick={() => setOpen((previous) => !previous)} onKeyDown={(event) => { if (event.key === "ArrowDown" && !open) { event.preventDefault(); setOpen(true); } }} className={cn("focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)]", compact ? "max-w-40" : "min-w-40", triggerClassName)}>
+      <button ref={triggerRef} type="button" aria-label={label ? `${t(label)} ${t(selected.label)}` : undefined} aria-haspopup="listbox" aria-expanded={open} onClick={() => setOpen((previous) => !previous)} onKeyDown={(event) => { if (event.key === "ArrowDown" && !open) { event.preventDefault(); setOpen(true); } }} className={cn("focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)]", compact ? "max-w-40" : "min-w-40", triggerClassName)}>
         {leading ?? selected.icon}
         {/* Label and value sit side by side, as a host's "Location  Main office"
             does. Stacked, an 8px label over a 10px value needs ~27px of line
             boxes, which in a 30px button leaves the text touching the border.
             Inline, both fit on one line with room to spare. */}
         <span className="flex min-w-0 flex-1 items-baseline gap-1.5">
-          {/* hideLabel drops the TEXT, not the label -- it stays on the button
-              as aria-label, so the control is still announced as "Branch"
-              rather than as whichever place name happens to be selected. */}
-          {label && !hideLabel ? <span className="shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"><LocalizedText message={label} /></span> : null}
+          {/* Keep the field label and displayed selection in the accessible name. */}
+          {label && !hideLabel ? <><span className="shrink-0 text-[length:calc(9px*var(--fs-scale))] font-semibold text-[var(--text-subtle)]"><LocalizedText message={label} /></span>{" "}</> : null}
           <span className={cn("min-w-0 truncate font-bold text-[var(--text)]", label && !hideLabel ? "text-[length:calc(10.5px*var(--fs-scale))]" : "text-[length:calc(11px*var(--fs-scale))]")}><LocalizedText message={selected.label} /></span>
         </span>
         <ChevronDown className={cn("size-3.5 shrink-0 text-[var(--text-subtle)] transition", open && "rotate-180")} />

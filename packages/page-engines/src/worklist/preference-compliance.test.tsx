@@ -1,4 +1,5 @@
 import React from 'react';
+import {renderToString} from 'react-dom/server';
 import {screen,fireEvent,waitFor} from '@testing-library/react';
 import {test,expect,vi} from 'vitest';
 import {render,TestHost} from '../test/render';
@@ -13,6 +14,20 @@ function setup(){
  const request=vi.fn(async(path:string,_init?:RequestInit)=>new Response(JSON.stringify(path==='/personal-views'?{views:[]}:{rows:[{id:'A',name:'Record A'}],total:1,page:1})));
  return {request,adapter:{request,identity:'tenant:app:user',applicationId:'app'}};
 }
+test('print provenance has stable server markup and refreshes immediately before native print',async()=>{
+ vi.useFakeTimers({toFake:['Date']});
+ try {
+  const {adapter}=setup();
+  const tree=<TestHost><WorklistPage page={page} config={config} adapter={adapter}/></TestHost>;
+  const banner=()=>{const node=document.createElement('div');node.innerHTML=renderToString(tree);expect(node.querySelector('.print-only time')).toBeNull();return node.querySelector('.print-only')!.textContent;};
+  vi.setSystemTime(new Date('2026-10-23T01:00:00Z'));const server=banner();
+  vi.setSystemTime(new Date('2026-10-23T03:00:00Z'));expect(banner()).toBe(server);
+  const {container}=render(tree);await screen.findByText('Record A');
+  expect(container.querySelector('.print-only time')).toHaveAttribute('datetime','2026-10-23T03:00:00.000Z');
+  vi.setSystemTime(new Date('2026-10-23T04:00:00Z'));fireEvent(window,new Event('beforeprint'));
+  expect(container.querySelector('.print-only time')).toHaveAttribute('datetime','2026-10-23T04:00:00.000Z');
+ } finally {vi.useRealTimers();}
+});
 test('worklist applies live table, page-size and result-view locks to controls and search requests',async()=>{
  const {request,adapter}=setup(),update=vi.fn();
  const tree=(policy:PreferencePolicy)=><TestHost preferences={{resultView:'cards',pageSize:50}} preferencePolicy={policy} update={update}>

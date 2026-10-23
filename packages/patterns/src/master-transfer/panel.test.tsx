@@ -10,3 +10,11 @@ describe('master transfer commands',()=>{
  it('retains idempotency key when commit response fails',async()=>{const p=port();vi.mocked(p.commit).mockRejectedValueOnce(new Error('Network failed'));render(<MasterTransferPanel port={p} columns={['code']} name="items"/>);await upload();fireEvent.click(screen.getByText('Validate file'));await screen.findByText(/Validation passed/);fireEvent.click(screen.getByText('Import validated records'));await screen.findByText('Network failed');fireEvent.click(screen.getByText('Import validated records'));await waitFor(()=>expect(p.commit).toHaveBeenCalledTimes(2));expect(vi.mocked(p.commit).mock.calls[0]![2]).toBe(vi.mocked(p.commit).mock.calls[1]![2]);});
  it('does not enable commit for validation errors',async()=>{const p=port();vi.mocked(p.preview).mockResolvedValue({valid:false,rows:[],issues:[{row:2,field:'code',message:'Already exists'}]});render(<MasterTransferPanel port={p} columns={['code']} name="items"/>);await upload();fireEvent.click(screen.getByText('Validate file'));await screen.findByText('Row 2, code: Already exists');expect(screen.getByText('Import validated records')).toBeDisabled();});
 });
+
+it('labels shared controls directly without nested labels',()=>{
+ const {container}=render(<MasterTransferPanel port={port()} columns={['code']} name="items"/>);
+ expect(screen.getByRole('combobox',{name:'File format'})).toBeEnabled();
+ expect(screen.getByRole('textbox',{name:'Change reason'})).toBeEnabled();
+ expect(screen.getByLabelText('CSV or Excel file')).toHaveAttribute('type','file');
+ expect(container.querySelector('label label')).toBeNull();
+});

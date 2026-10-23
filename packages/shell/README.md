@@ -136,6 +136,11 @@ Use equivalent `content` paths with Tailwind v3. Hosts load their selected font 
 
 Host catalogs supply unchanged literal/`ui.*`/`recovery.*`/`sentinel.*` messages. No canonical catalog or generated fallback was changed; private English test messages are not shipped fallback content. RTL document direction and reduced-motion attributes are tested. Unit tests cover both physical sidebar placements with English/Arabic direction, hover/click/pin/focus behavior and reduced-motion tour scrolling. Browser layout/hit testing, long Hindi/Malayalam rendering, actual top-layer/focus behavior, screen-reader and native-speaker acceptance remain host/demo work.
 
+## Tests
+
+- `npm test -w @pepbits/shell` runs the jsdom suites. It needs no browser.
+- `npm run test:browser -w @pepbits/shell` runs the real-Chromium suites (`src/**/*.browser.test.ts`, currently the Arabic RTL sidebar placement checks). It needs Playwright's Chromium and its OS libraries: `npx playwright install --with-deps chromium`, or set `LD_LIBRARY_PATH` to an unpacked copy of those libraries. The root `npm run ci` does not run it.
+
 ## Differences from erp-shell / workspace-core
 
 - All sources are copied; existing consumers are untouched. Imports use public packages. Root and area exports replace original package/deep imports. Optional workspace security/request fields are renamed `patientId` → `subjectId`, `encounterId` → `interactionId`, `episodeId` → `contextId`; tests and explanatory examples use fictional generic records. Key normalization, state/policy/restore/detach algorithms and all core assertions remain.

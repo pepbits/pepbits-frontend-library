@@ -15,15 +15,15 @@
     "test": "turbo run test",
     "check:boundaries": "node tooling/scripts/check-boundaries.mjs",
     "test:tooling": "node --test tooling/scripts/*.test.mjs",
-    "ci": "npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build"
+    "ci": "npm run check:boundaries && npm run test:tooling && turbo run typecheck test build --force"
   },
   "devDependencies": {
     "turbo": "^2.5.0",
     "typescript": "^5.9.3",
     "vitest": "^3.2.7",
     "@types/node": "^22.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "~19.2.0",
+    "react-dom": "~19.2.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "jsdom": "^25.0.1",

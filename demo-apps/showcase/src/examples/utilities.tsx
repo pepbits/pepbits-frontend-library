@@ -1,0 +1,5 @@
+"use client";
+import React from 'react';
+import {cn,formatCompact,inputClass,filterOptions,nextEnabledIndex,initialsOf,washFor,statusTone} from '@pepbits/ui';
+import {classifyFailure,isRetryable,referenceFor,referenceStateOf} from '@pepbits/components';
+export function UtilitiesDemo(){const options=[{value:'one',label:'Item one'},{value:'two',label:'Item two',disabled:true}];return <div><p>Pure helpers and compatibility contracts; hosted numbers use effective formatters in the Foundations examples.</p><pre tabIndex={0} dir="ltr">{JSON.stringify({classes:cn('example',false,'active'),inputClassDefined:!!inputClass,legacyEnglishCompact:formatCompact(1234),matches:filterOptions(options,'one'),next:nextEnabledIndex(options,0,1),initials:initialsOf('Fictional Editor'),avatarWash:washFor('sample'),tone:statusTone('Approved'),failure:classifyFailure({status:408,reference:'DEMO-001'}),retryable:isRetryable({status:408}),reference:referenceFor({status:408,reference:'DEMO-001'}),referenceState:referenceStateOf({references:{items:[]},failures:[]},'items')},null,2)}</pre></div>;}

@@ -406,3 +406,12 @@ test('changing provider transport invalidates an earlier validation response', a
   await act(async () => finish(json(200, {user})));
   expect(screen.getByTestId('user')).toHaveTextContent('Current User');
 });
+
+test('controlled SessionProvider uses host snapshots without token or network access',()=>{
+ const login=vi.fn(async()=>null),logout=vi.fn(async()=>{});
+ function Read(){const session=useSession();return <span>{session.status}:{session.user?.name??'none'}</span>;}
+ const {rerender}=render(<SessionProvider value={{status:'authenticated',user,login,logout}}><Read/></SessionProvider>);
+ expect(screen.getByText('authenticated:Sample User')).toBeVisible();expect(fetchMock).not.toHaveBeenCalled();expect(readToken()).toBeNull();
+ rerender(<SessionProvider value={{status:'anonymous',user:null,login,logout}}><Read/></SessionProvider>);
+ expect(screen.getByText('anonymous:none')).toBeVisible();expect(fetchMock).not.toHaveBeenCalled();
+});

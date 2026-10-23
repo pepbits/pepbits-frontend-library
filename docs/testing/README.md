@@ -96,3 +96,7 @@ MedSlot checks: `test:medslot-api`, `reference-medslot/src/module.test.tsx` and 
 ## Clean-checkout verification — 3 October 2026
 
 The [repository integration](../releases/unreleased/repository-sync-2026-10-03.md) records current local gates and exact dependency setup. Install the nested access, diagnostics, Quality source/runtime, Pharmacy runtime and diagnostic style-tool lockfiles listed in `.github/workflows/ci.yml`. Set `HC_RCM_MOCK_REPO` to the pinned independent synthetic simulator checkout before API tests. GitHub uses a repository-scoped read token for that private dependency. Native/domain reviews and any application deployment remain separate.
+
+## Independent showcase acceptance — 23 October 2026
+
+The [phase 6a record](../releases/unreleased/restructure-phase-6a-2026-10-23.md) separates the root public-package CI from the first real Next.js showcase build and local production-server browser checks. `demo-apps/showcase/src/gallery.test.tsx` covers all eight destinations under default, Arabic RTL, reduced motion and locked density, plus mounted policy changes, a memory-backed record save and dialog behavior. Snippet tests verify exact source and public imports; adapter tests use fictional in-memory records. Stable cases and completion boundaries are in the [showcase feature guide](../features/showcase.md). The protected original 159-route inventory is unchanged; these eight independent app destinations do not extend that registry.

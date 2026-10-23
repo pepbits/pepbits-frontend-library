@@ -141,3 +141,8 @@ describe("SearchSelect", () => {
     expect(screen.queryByText("Used on every invoice")).toBeNull();
   });
 });
+
+test('trigger name includes the visible selected value for speech input',()=>{
+ render(<SearchSelect label="Currency" value="usd" options={[{value:'usd',label:'USD'}]} onChange={()=>{}}/>);
+ expect(screen.getByRole('button',{name:'Currency USD'})).toBeVisible();
+});

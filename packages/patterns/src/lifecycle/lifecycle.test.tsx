@@ -44,7 +44,7 @@ describe('LifecycleConfigurationPage', () => {
     await openFirst(api);
     fireEvent.change(screen.getByLabelText(/^Name/), { target: { value: 'Keep this edit' } });
     const worklist = within(document.querySelector('[data-lifecycle-worklist]') as HTMLElement);
-    fireEvent.click(worklist.getByRole('button', { name: 'Open sample-record version 1' }));
+    fireEvent.click(worklist.getByRole('button', { name: /Open sample-record version 1/ }));
     const dialog = await screen.findByRole('dialog');
     fireEvent.click(within(dialog).getByRole('button', { name: 'Cancel' }));
     expect(api.detail).toHaveBeenCalledTimes(1);
@@ -255,4 +255,12 @@ describe('LifecycleConfigurationPage', () => {
     expect(screen.getByText('Lifecycle configuration is not available to your account')).toBeInTheDocument();
     expect(api.metadata).not.toHaveBeenCalled();
   });
+});
+
+test('the reusable lifecycle page does not add a nested main landmark',async()=>{
+ const api=fakeApi(versionDetail());const {container}=render(<main><LifecycleConfigurationPage api={api} scopeKey="fictional" application={{code:'application',label:'Application'}} permissions={all}/></main>);
+ const card=await screen.findByRole('button',{name:/Open sample-record version 1/});
+ expect(card).not.toHaveAttribute('aria-label');
+ expect(card).toHaveAccessibleName(/Sample record/);
+ expect(container.querySelectorAll('main')).toHaveLength(1);
 });

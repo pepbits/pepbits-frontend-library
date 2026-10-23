@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import "@pepbits/tokens/tokens.css";
+@import "@pepbits/tokens/reference-fonts.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/manrope/index.css";
+@import "@fontsource-variable/source-sans-3/index.css";
+@import "@fontsource-variable/nunito-sans/index.css";
+@import "@fontsource-variable/noto-sans-arabic/index.css";
+@import "@fontsource-variable/noto-sans-devanagari/index.css";
+@import "@fontsource-variable/noto-sans-malayalam/index.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+@import "@fontsource/ibm-plex-mono/700.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/components/src";
+@source "../../../../packages/patterns/src";
+@source "../../../../packages/page-engines/src";
+@source "../../../../packages/shell/src";
+@source "../../../../packages/icons/src";
+* { box-sizing: border-box; }
+body { margin:0; overflow:auto; background:var(--bg); color:var(--text); font-family:var(--font-ui), "Noto Sans Arabic Variable", "Noto Sans Devanagari Variable", "Noto Sans Malayalam Variable"; font-size:calc(14px * var(--fs-shell,1)); }
+a { color:inherit; }
+button, input, select, textarea, summary { font:inherit; }
+:focus-visible { outline:3px solid var(--primary); outline-offset:3px; }
+h1 { font-size:calc(32px * var(--fs-shell,1)); font-weight:750; line-height:1.2; }
+h2 { font-size:calc(18px * var(--fs-scale,1)); font-weight:700; }
+p { line-height:1.65; }
+.app-header { padding:1.25rem 2rem; border-block-end:1px solid var(--border); background:var(--surface); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.app-header strong { font-size:1.3em; }
+.app-body { display:grid; grid-template-columns:260px minmax(0,1fr); max-width:1680px; margin:auto; }
+aside { border-inline-end:1px solid var(--border); padding:1rem; }
+nav { display:grid; gap:.25rem; margin-block-end:1.5rem; }
+.area-link { display:block; padding:.65rem .85rem; border-radius:var(--radius); text-decoration:none; }
+.area-link:hover { background:var(--surface-2); }
+.area-link[aria-current=page] { background:var(--primary-soft); color:var(--primary-strong); font-weight:700; }
+main { padding:2rem; min-width:0; }
+.gallery, .settings { display:grid; gap:1rem; }
+.page-heading { margin-block-end:.75rem; }
+.eyebrow { font-family:monospace; font-size:.8em; color:var(--text-muted); }
+.example-heading { display:flex; align-items:start; justify-content:space-between; gap:1rem; }
+.export-list { color:var(--text-muted); font-family:monospace; font-size:.85em; overflow-wrap:anywhere; }
+.example-preview { --fs-scale:var(--fs-form); min-width:0; padding:1rem; border:1px solid var(--border); border-radius:var(--radius); overflow:auto; }
+pre { padding:1rem; background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius); overflow:auto; max-height:32rem; white-space:pre; font-size:13px; }
+summary { cursor:pointer; padding:.75rem 0; font-weight:600; }
+.token-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:1rem; margin-block:1rem; }
+.token-grid > div { display:grid; gap:.5rem; overflow-wrap:anywhere; }
+.token-swatch { display:block; height:2rem; border:1px solid var(--border); border-radius:var(--radius); }
+.skip-link { position:fixed; inset-block-start:-10rem; inset-inline-start:1rem; z-index:999; padding:1rem; background:var(--surface); }
+.skip-link:focus { inset-block-start:1rem; }
+@media(max-width:900px) { .app-body{grid-template-columns:1fr;} aside{border-inline-end:0;} nav{grid-template-columns:repeat(2,minmax(0,1fr));} main{padding:1rem;} }
+@media print { aside,.app-header,details {display:none;} .app-body{display:block;} }
+
+@font-face {font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Manrope";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Source Sans 3";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Nunito Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/nunito-sans/files/nunito-sans-latin-wght-normal.woff2") format("woff2");}

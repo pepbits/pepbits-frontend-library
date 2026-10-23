@@ -1,0 +1,117 @@
+
+> @pepbits-demo/showcase@0.0.0 test
+> node scripts/generate-snippets.mjs && vitest run
+
+Generated 39 source-identical examples
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6a/demo-apps/showcase
+
+ ❯ src/gallery.test.tsx (35 tests | 4 failed) 16174ms
+   ✓ 'default' > 'foundations' renders and passes axe  887ms
+   ✓ 'default' > 'ui' renders and passes axe  620ms
+   ✓ 'default' > 'components' renders and passes axe  903ms
+   × 'default' > 'patterns' renders and passes axe 613ms
+     → expected [ { …(2) }, …(5) ] to deeply equal []
+   ✓ 'default' > 'page-engines' renders and passes axe  800ms
+   ✓ 'default' > 'playground' renders and passes axe  395ms
+   ✓ 'default' > 'shell' renders and passes axe 128ms
+   ✓ 'default' > 'ai' renders and passes axe 118ms
+   ✓ 'Arabic RTL' > 'foundations' renders and passes axe  675ms
+   ✓ 'Arabic RTL' > 'ui' renders and passes axe  571ms
+   ✓ 'Arabic RTL' > 'components' renders and passes axe  710ms
+   × 'Arabic RTL' > 'patterns' renders and passes axe 505ms
+     → expected [ { …(2) }, …(5) ] to deeply equal []
+   ✓ 'Arabic RTL' > 'page-engines' renders and passes axe  729ms
+   ✓ 'Arabic RTL' > 'playground' renders and passes axe  347ms
+   ✓ 'Arabic RTL' > 'shell' renders and passes axe 105ms
+   ✓ 'Arabic RTL' > 'ai' renders and passes axe 133ms
+   ✓ 'reduced motion' > 'foundations' renders and passes axe  433ms
+   ✓ 'reduced motion' > 'ui' renders and passes axe  471ms
+   ✓ 'reduced motion' > 'components' renders and passes axe  713ms
+   × 'reduced motion' > 'patterns' renders and passes axe 508ms
+     → expected [ { …(2) }, …(5) ] to deeply equal []
+   ✓ 'reduced motion' > 'page-engines' renders and passes axe  717ms
+   ✓ 'reduced motion' > 'playground' renders and passes axe  340ms
+   ✓ 'reduced motion' > 'shell' renders and passes axe 103ms
+   ✓ 'reduced motion' > 'ai' renders and passes axe 103ms
+   ✓ 'locked density' > 'foundations' renders and passes axe  523ms
+   ✓ 'locked density' > 'ui' renders and passes axe  617ms
+   ✓ 'locked density' > 'components' renders and passes axe  748ms
+   × 'locked density' > 'patterns' renders and passes axe 466ms
+     → expected [ { …(2) }, …(5) ] to deeply equal []
+   ✓ 'locked density' > 'page-engines' renders and passes axe  672ms
+   ✓ 'locked density' > 'playground' renders and passes axe  382ms
+   ✓ 'locked density' > 'shell' renders and passes axe 107ms
+   ✓ 'locked density' > 'ai' renders and passes axe 113ms
+   ✓ live locks replace values and restricted page sizes are enforced 221ms
+   ✓ record form saves fictional edits through the public memory adapter  338ms
+   ✓ overlays open, label fields, and close with Escape  354ms
+ ✓ src/snippets.test.ts (4 tests) 104ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/gallery.test.tsx > 'default' > 'patterns' renders and passes axe
+ FAIL  src/gallery.test.tsx > 'Arabic RTL' > 'patterns' renders and passes axe
+ FAIL  src/gallery.test.tsx > 'reduced motion' > 'patterns' renders and passes axe
+ FAIL  src/gallery.test.tsx > 'locked density' > 'patterns' renders and passes axe
+AssertionError: expected [ { …(2) }, …(5) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "id": "aria-prohibited-attr",
++     "nodes": [
++       "<pre aria-label=\"Staged options\"></pre>",
++     ],
++   },
++   {
++     "id": "label",
++     "nodes": [
++       "<input class=\"focus-ring h-9 w-ful...\" accept=\".csv,.xlsx\" type=\"file\">",
++       "<input class=\"focus-ring h-9 w-ful...\" maxlength=\"500\" value=\"\">",
++     ],
++   },
++   {
++     "id": "landmark-main-is-top-level",
++     "nodes": [
++       "<main class=\"_main_5da6a2\">",
++     ],
++   },
++   {
++     "id": "landmark-no-duplicate-main",
++     "nodes": [
++       "<main id=\"main\" tabindex=\"-1\">",
++     ],
++   },
++   {
++     "id": "landmark-unique",
++     "nodes": [
++       "<main id=\"main\" tabindex=\"-1\">",
++     ],
++   },
++   {
++     "id": "select-name",
++     "nodes": [
++       "<select class=\"focus-ring h-9 w-ful...\">",
++     ],
++   },
++ ]
+
+ ❯ src/gallery.test.tsx:24:78
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  4 failed | 35 passed (39)
+   Start at  02:44:34
+   Duration  23.18s (transform 2.14s, setup 378ms, collect 4.38s, tests 16.28s, environment 1.12s, prepare 192ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/showcase@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6a/demo-apps/showcase 
