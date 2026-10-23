@@ -1,0 +1,255 @@
+{
+  "flows": [
+    {
+      "id": "HCD-36-medband-identity",
+      "mode": "HTTP",
+      "result": "Authenticated host actor, masters and patient records; no browser seed"
+    },
+    {
+      "id": "HCD-36-medband-palette",
+      "mode": "UI",
+      "result": "One selected-module search palette finds the real patient"
+    },
+    {
+      "id": "HCD-36-medband-registration",
+      "mode": "UI",
+      "result": "Four-step registration persists into the dynamic wristband record after reload"
+    },
+    {
+      "id": "HCD-36-medband-retry-audit",
+      "mode": "HTTP",
+      "result": "Same-key replay returns the same patient; changed content conflicts; patient audit reads"
+    },
+    {
+      "id": "HCD-36-medband-episode",
+      "mode": "UI",
+      "result": "Patient episode created with an API master department"
+    },
+    {
+      "id": "HCD-36-medband-encounter",
+      "mode": "UI",
+      "result": "Outpatient visit creates the Episode → Case → Encounter relationship"
+    },
+    {
+      "id": "HCD-36-medband-lifecycle",
+      "mode": "UI",
+      "result": "Encounter advances from arrived through in progress to completed"
+    },
+    {
+      "id": "HCD-36-medband-clearance",
+      "mode": "HTTP create + UI deposit",
+      "result": "Admission request links the completed visit; UI deposit clears the pending request"
+    },
+    {
+      "id": "HCD-36-medband-admission",
+      "mode": "HTTP",
+      "result": "Cleared IP request allocates a bed; duplicate admission refuses; discharge releases it"
+    },
+    {
+      "id": "HCD-36-medband-case-episode-close",
+      "mode": "HTTP",
+      "result": "Completed case and episode close through source guards"
+    },
+    {
+      "id": "HCD-36-medband-permissions",
+      "mode": "Viewer UI + HTTP",
+      "result": "Viewer reads; writes, module login and reset refuse; another branch excludes the new patient"
+    },
+    {
+      "id": "HCD-36-medband-preferences",
+      "mode": "UI + accepted HTTP preferences",
+      "result": "Mounted registration survives Arabic RTL, Hindi, Malayalam and English; effective theme/font/radius/shortcuts update"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [
+    {
+      "name": "command palette search and Escape",
+      "failures": []
+    },
+    {
+      "name": "registration validation",
+      "failures": []
+    },
+    {
+      "name": "typed contact fields",
+      "failures": []
+    },
+    {
+      "name": "registration payment segment",
+      "failures": []
+    },
+    {
+      "name": "patient wristband and refresh",
+      "failures": []
+    },
+    {
+      "name": "new-episode dialog",
+      "failures": []
+    },
+    {
+      "name": "coverage dialog",
+      "failures": []
+    },
+    {
+      "name": "patient insurance multiselect",
+      "failures": []
+    },
+    {
+      "name": "patient care filters",
+      "failures": []
+    },
+    {
+      "name": "encounter workflow completion",
+      "failures": []
+    },
+    {
+      "name": "encounter lifecycle table",
+      "failures": []
+    },
+    {
+      "name": "admission pending queue",
+      "failures": []
+    },
+    {
+      "name": "deposit confirmation dialog",
+      "failures": []
+    },
+    {
+      "name": "ar mounted values, density and reduced motion",
+      "failures": []
+    },
+    {
+      "name": "hi mounted values, density and reduced motion",
+      "failures": []
+    },
+    {
+      "name": "ml mounted values, density and reduced motion",
+      "failures": []
+    },
+    {
+      "name": "en mounted values, density and reduced motion",
+      "failures": []
+    },
+    {
+      "name": "managed typography, theme, radius and shortcut disablement",
+      "failures": []
+    },
+    {
+      "name": "page /medband",
+      "failures": []
+    },
+    {
+      "name": "page /medband/patients",
+      "failures": []
+    },
+    {
+      "name": "page /medband/patients/new",
+      "failures": []
+    },
+    {
+      "name": "page /medband/encounters/new",
+      "failures": []
+    },
+    {
+      "name": "page /medband/admissions",
+      "failures": []
+    },
+    {
+      "name": "page /medband/encounters",
+      "failures": []
+    },
+    {
+      "name": "page /medband/episodes",
+      "failures": []
+    },
+    {
+      "name": "page /medband/admissions/new",
+      "failures": []
+    },
+    {
+      "name": "page /medband/patients/pat_84429cda-fba",
+      "failures": []
+    },
+    {
+      "name": "page /medband/encounters/new?patientId=pat_84429cda-fba",
+      "failures": []
+    },
+    {
+      "name": "page /medband/admissions/new?patientId=pat_84429cda-fba",
+      "failures": []
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medband",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/patients/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/encounters/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/admissions",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/encounters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/episodes",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/admissions/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/patients/pat_84429cda-fba",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/encounters/new?patientId=pat_84429cda-fba",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/admissions/new?patientId=pat_84429cda-fba",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

@@ -1,0 +1,17 @@
+import type {Request} from './http';
+/** Configured HTTP only. Scope headers are routing metadata; the API authorizes the actor. */
+export function createQualityTransport(request:Request,branch:string){
+ const fetch:Request=async(path,init)=>{
+  try{if(!path.startsWith('/')||path.startsWith('//')||/[\\\u0000-\u001f#]/.test(path)||path.split('?')[0]!.split('/').some(part=>/[\\/]/.test(decodeURIComponent(part))||['.','..'].includes(decodeURIComponent(part))))throw new Error();}
+  catch{throw new Error('Invalid Quality API path');}
+  const headers=new Headers(init?.headers);
+  headers.set('X-Product-Id','nexora');headers.set('X-Reference-Module','reference-quality');headers.set('X-Reference-Branch',branch);
+  return request('/reference-modules/quality/api'+path,{...init,headers});
+ };
+ return {fetch,request:async<T>(path:string,init?:RequestInit):Promise<T>=>{
+  const response=await fetch(path,init),body=await response.json().catch(()=>null);
+  if(!response.ok)throw Object.assign(new Error('Quality request failed'),{status:response.status,details:body});
+  if(body===null)throw Object.assign(new Error('Invalid Quality response'),{status:502});
+  return body as T;
+ }};
+}

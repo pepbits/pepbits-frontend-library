@@ -1,0 +1,1586 @@
+{
+  "flows": [
+    {
+      "id": "HCD-35-surgisuite-identity",
+      "mode": "HTTP",
+      "result": "Trusted actor and original case/master data; no PIN hash returned"
+    },
+    {
+      "id": "HCD-35-surgisuite-sections",
+      "mode": "UI",
+      "result": "All twelve case sections and refresh preserve the real identifier"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration, keyboard ICD/CPT lookup, team, theatre, conflict check and booking persisted"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking-guards",
+      "mode": "HTTP",
+      "result": "Successful booking replay, fresh overlap refusal and incomplete booking refusal"
+    },
+    {
+      "id": "HCD-35-surgisuite-case-edit",
+      "mode": "UI",
+      "result": "Overview changes survive HTTP save and refresh"
+    },
+    {
+      "id": "HCD-35-surgisuite-report-draft",
+      "mode": "UI",
+      "result": "Operative draft persists; readiness blockers prevent premature signing"
+    },
+    {
+      "id": "HCD-35-surgisuite-signature",
+      "mode": "UI + HTTP",
+      "result": "Source PIN simulation signs a ready report and verifies its hash; existing signed versions use amendment"
+    },
+    {
+      "id": "HCD-35-surgisuite-inventory",
+      "mode": "UI + HTTP",
+      "result": "Receive stock dialog updates the synthetic inventory"
+    },
+    {
+      "id": "HCD-35-surgisuite-cancel",
+      "mode": "UI + HTTP",
+      "result": "Cancellation persists and keeps the case available for audit"
+    },
+    {
+      "id": "HCD-35-surgisuite-permissions",
+      "mode": "Viewer UI + HTTP",
+      "result": "Viewer has no booking action; writes, module login and cross-branch record reads are refused"
+    },
+    {
+      "id": "HCD-35-surgisuite-preferences",
+      "mode": "UI + accepted HTTP preferences",
+      "result": "Mounted booking input survives Arabic RTL, Hindi, Malayalam and English plus compact density and reduced motion"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/surgisuite",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".px-3\\.5.py-2.flex-col:nth-child(7) > dd"
+              ],
+              "html": "<dd class=\"font-cond text-[22px] font-semibold leading-none text-amber\">39</dd>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 16.5pt (22px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(2) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(3) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(4) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(5) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(6) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(7) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-2.items-center.flex > .py-\\[1px\\].bg-stop-soft.px-1\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">12</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".px-3\\.5.py-2.flex-col:nth-child(7) > dd"
+              ],
+              "html": "<dd class=\"font-cond text-[22px] font-semibold leading-none text-amber\">39</dd>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 16.5pt (22px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(2) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(3) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(4) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(5) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(6) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-x-4.xl\\:grid-cols-\\[150px_minmax\\(0\\,1\\.3fr\\)_minmax\\(0\\,1fr\\)_minmax\\(0\\,0\\.9fr\\)\\].xl\\:items-center:nth-child(7) > .xl\\:block.justify-between.gap-2 > .rounded-\\[4px\\].py-0\\.5.gap-1\\.5"
+              ],
+              "html": "<span class=\"mt-1.5 inline-flex items-center gap-1.5 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold bg-go text-white\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-white\"></span>Surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #ffffff, background color: #2e8b62, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-2.items-center.flex > .py-\\[1px\\].bg-stop-soft.px-1\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">12</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/schedule",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-go-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">In surgery 7</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval 1</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".top-1\\.5.h-\\[66px\\].pl-2\\.5:nth-child(1) > .gap-1\\.5.text-\\[12px\\].items-center > .text-amber.font-semibold"
+              ],
+              "html": "<span class=\"font-semibold text-amber\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-go-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">In surgery 7</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval 1</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".top-1\\.5.h-\\[66px\\].pl-2\\.5:nth-child(1) > .gap-1\\.5.text-\\[12px\\].items-center > .text-amber.font-semibold"
+              ],
+              "html": "<span class=\"font-semibold text-amber\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "tr:nth-child(4) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(5) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(6) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(6) > td:nth-child(7) > .flex-wrap > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(7) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".flex-wrap > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Emergency</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(10) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(11) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(11) > td:nth-child(7) > .flex-wrap > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-current\"></span>In surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "tr:nth-child(4) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(5) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(6) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(6) > td:nth-child(7) > .flex-wrap > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(7) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".flex-wrap > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Emergency</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(10) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(11) > td:nth-child(2) > .block.text-muted > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(11) > td:nth-child(7) > .flex-wrap > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\"><span class=\"live-dot h-1.5 w-1.5 rounded-full bg-current\"></span>In surgery</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/approvals",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(1) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(1) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(2) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(2) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(3) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(3) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(4) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(4) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(5) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(5) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(6) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(6) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(7) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(7) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(8) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(8) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(9) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(9) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(10) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(10) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(11) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(11) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(12) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(12) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(1) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(1) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(2) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(2) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(3) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(3) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(4) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(4) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(5) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(5) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(6) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(6) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(7) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(7) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(8) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(8) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(9) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(9) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(10) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(10) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(11) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(11) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(12) > .px-4:nth-child(1) > .mt-0\\.5.gap-1.flex > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Pending</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(12) > .text-right.px-4 > .justify-end.gap-2 > .bg-amber-soft.text-amber.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-amber-soft text-amber\">Awaiting approval</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #b97b10, background color: #fbf0d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/patients",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "li:nth-child(1) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(2) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(5) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(6) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(9) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(10) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(11) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(12) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(14) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "li:nth-child(1) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(2) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(5) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(6) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(9) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(10) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(11) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(12) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(14) > .hover\\:bg-steel\\/60.py-2.px-4 > .rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/inventory",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(1) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(2) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(3) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(4) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(5) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(6) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(7) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(8) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(9) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(10) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(11) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(12) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(1) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(2) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(3) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(4) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(5) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(6) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(7) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(8) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(9) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(10) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(11) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-steel\\/40:nth-child(12) > .px-2:nth-child(9) > .bg-go-soft.text-go.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-go-soft text-go\">OK</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/analytics",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/472",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/478",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mx-4"
+              ],
+              "html": "<p class=\"mx-4 mb-3 rounded-[6px] bg-stop-soft px-3 py-2 text-[13px] text-stop\">Cancelled: Patient unfit for surgery</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-amber.min-w-0"
+              ],
+              "html": "<span class=\"min-w-0 text-amber\">Cancelled: Patient unfit for surgery.<span class=\"text-muted\"> Prakash Mathew</span></span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-amber.min-w-0 > .text-muted"
+              ],
+              "html": "<span class=\"text-muted\"> Prakash Mathew</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".bg-steel\\/70"
+              ],
+              "html": "<div class=\"scroll-x border-b border-line bg-steel/70 px-3 py-2 md:px-4\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".rounded-\\[4px\\].py-\\[1px\\].bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mx-4"
+              ],
+              "html": "<p class=\"mx-4 mb-3 rounded-[6px] bg-stop-soft px-3 py-2 text-[13px] text-stop\">Cancelled: Patient unfit for surgery</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-amber.min-w-0"
+              ],
+              "html": "<span class=\"min-w-0 text-amber\">Cancelled: Patient unfit for surgery.<span class=\"text-muted\"> Prakash Mathew</span></span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-amber.min-w-0 > .text-muted"
+              ],
+              "html": "<span class=\"text-muted\"> Prakash Mathew</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".bg-steel\\/70"
+              ],
+              "html": "<div class=\"scroll-x border-b border-line bg-steel/70 px-3 py-2 md:px-4\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/patients?id=65",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "li:nth-child(1) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(2) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(5) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(6) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(9) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(10) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(11) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(12) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(14) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".py-2\\.5 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "li:nth-child(1) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(2) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(5) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(6) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(9) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(10) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(11) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(12) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(14) > .hover\\:bg-steel\\/60.py-2.px-4 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".py-2\\.5 > .bg-stop-soft.text-stop.rounded-\\[4px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/356",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy: Sulfa drugs</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(1) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">In pre-op</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(2) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">In room</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(3) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Dr. Yusuf Demir\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Anesthesia start</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(4) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Dr. Yusuf Demir\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Induction complete</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(5) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Time-out</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(6) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Incision</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(7) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Closure complete</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(8) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Dr. Yusuf Demir\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Anesthesia end</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(9) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Out of room</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(10) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">PACU arrival</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(11) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">PACU discharge</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(12) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Room ready</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-amber"
+              ],
+              "html": "<span class=\"min-w-0 text-amber\">Amendment started (v2): Fictional correction for demonstration.<span class=\"text-muted\"> Prakash Mathew</span></span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-amber > .text-muted"
+              ],
+              "html": "<span class=\"text-muted\"> Prakash Mathew</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-stop-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 whitespace-nowrap rounded-[4px] px-1.5 py-[1px] text-[12px] font-medium bg-stop-soft text-stop\">Allergy: Sulfa drugs</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #c8413b, background color: #f9e1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(1) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">In pre-op</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(2) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">In room</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(3) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Dr. Yusuf Demir\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Anesthesia start</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(4) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Dr. Yusuf Demir\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Induction complete</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(5) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Time-out</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(6) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Incision</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(7) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Closure complete</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(8) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Dr. Yusuf Demir\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Anesthesia end</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(9) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Out of room</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(10) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">PACU arrival</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(11) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">PACU discharge</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-1:nth-child(12) > .border-\\[\\#bfe0cf\\].rounded-\\[6px\\][title=\"Recorded by Julia Costa\"] > .text-go.text-\\[11px\\]"
+              ],
+              "html": "<span class=\"text-[11px] text-go\">Room ready</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.58 (foreground color: #2e8b62, background color: #dff1e8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-amber"
+              ],
+              "html": "<span class=\"min-w-0 text-amber\">Amendment started (v2): Fictional correction for demonstration.<span class=\"text-muted\"> Prakash Mathew</span></span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-amber > .text-muted"
+              ],
+              "html": "<span class=\"text-muted\"> Prakash Mathew</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #b97b10, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

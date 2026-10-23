@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const dir=new URL('./',import.meta.url),read=name=>JSON.parse(readFileSync(new URL(name,dir),'utf8')),sha=value=>createHash('sha256').update(value).digest('hex');
+const ci=read('ci-inputs.json'),final=JSON.parse(readFileSync('docs/releases/unreleased/manifest-restructure-phase-6b-8-2026-10-23.json','utf8'));
+const map=snapshot=>new Map(snapshot.files.map(f=>[f.path,f.sha256]));
+const changes=(before,after)=>[...new Set([...before.keys(),...after.keys()])].filter(path=>before.get(path)!==after.get(path));
+const actual=new Map(final.files.map(f=>[f.path,sha(readFileSync(f.path))]));
+assert.deepEqual(changes(map(final),actual),[]);
+const sinceCi=changes(map(ci),actual);assert.ok(sinceCi.every(path=>path.endsWith('.md')));
+const build=read('build-inputs.json'),afterBuild=changes(map(build),actual);assert.ok(afterBuild.every(path=>path.endsWith('.md')||['demo-apps/healthcare/scripts/medband-flows.mjs','demo-apps/healthcare/scripts/smoke.mjs'].includes(path)));
+const result={base:final.baseCommit,ciImplementationDigest:ci.implementationDigest,finalImplementationDigest:final.implementationDigest,finalFiles:final.files.length,manifestMatchesWorkingTree:true,documentationChangesAfterCiSnapshot:sinceCi,runtimeChangesAfterCiSnapshot:[],browserBuild:{inputSnapshot:'build-inputs.json',artifactIdentity:'frontend-build.json',changedAfterBuild:afterBuild,scope:'Focused MedBand HTTP precheck uses the last pre-CI production build. The final full HTTP run serves the CI build. Bundled runtime code matches both captured input snapshots. After the pre-CI build snapshot, the MedBand driver added a settled-record wait and the shared driver added failure diagnostics; final drivers match the CI snapshot. Only listed Markdown files may differ after CI.',finalBuildArtifactIdentity:'final-ci-build.json'},finalIntegrationDrivers:final.files.filter(f=>f.path.startsWith('demo-apps/healthcare/scripts/')),limits:['Local production browser builds, not deployed release or native executable.','API source equality and reused runtime hashes are in each launcher identity; API runtime artifacts were not rebuilt.']};
+writeFileSync(new URL('source-verification.json',dir),JSON.stringify(result,null,2)+'\n');console.log(final.files.length+' manifest files verified; '+sinceCi.length+' documentation-only changes after CI input capture.');

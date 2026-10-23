@@ -1,0 +1,37 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/rcm/preferences.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/modules/rcm/preferences.test.tsx (3 tests | 1 failed) 533ms
+   ✓ keeps an unsaved editor mounted while accepted presentation and shortcut preferences change  381ms
+   ✓ restores source page size when a mounted host policy changes and keeps operational scope separate 141ms
+   × disables keyboard commands in the same commit as the accepted preference 10ms
+     → expected "spy" to be called 1 times, but got 2 times
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/rcm/preferences.test.tsx > disables keyboard commands in the same commit as the accepted preference
+AssertionError: expected "spy" to be called 1 times, but got 2 times
+ ❯ src/modules/rcm/preferences.test.tsx:32:45
+     30|  const tree=(enabled:boolean)=><ReferenceHostProvider host={{...host,p…
+     31|  const view=render(tree(true));fireEvent.keyDown(window,{key:'k',ctrlK…
+     32|  view.rerender(tree(false));expect(handler).toHaveBeenCalledTimes(1);
+       |                                             ^
+     33|  view.rerender(tree(true));fireEvent.keyDown(window,{key:'k',ctrlKey:t…
+     34| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  20:08:41
+   Duration  3.25s (transform 1.15s, setup 177ms, collect 1.63s, tests 533ms, environment 470ms, prepare 73ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

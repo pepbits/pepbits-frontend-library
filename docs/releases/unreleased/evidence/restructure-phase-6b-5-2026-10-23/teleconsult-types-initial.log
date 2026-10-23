@@ -1,0 +1,106 @@
+
+> @pepbits-demo/healthcare@0.0.0 typecheck
+> tsc --noEmit
+
+src/modules/teleconsult/patient/app/book/page.tsx(106,59): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/teleconsult/patient/app/records/page.tsx(32,75): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/app/register/page.tsx(82,157): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/teleconsult/patient/app/register/page.tsx(89,59): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/teleconsult/patient/app/register/page.tsx(100,156): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/app/register/page.tsx(143,347): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/app/visit/[id]/summary/page.tsx(2,10): error TS2305: Module '"@pepbits/preferences"' has no exported member 'LANGUAGE_OPTIONS'.
+src/modules/teleconsult/patient/app/visit/[id]/summary/page.tsx(4,31): error TS2307: Cannot find module '@pepbits/patterns/printing' or its corresponding type declarations.
+src/modules/teleconsult/patient/app/visit/[id]/summary/page.tsx(63,179): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/app/visit/[id]/summary/page.tsx(164,60): error TS7006: Parameter 'l' implicitly has an 'any' type.
+src/modules/teleconsult/patient/module.test.tsx(147,12): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/module.test.tsx(148,12): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/module.test.tsx(148,61): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/module.test.tsx(149,12): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/module.test.tsx(150,12): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/patient/routes.ts(26,95): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/teleconsult/provider/app/consult/[id]/page.tsx(268,12): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/app/notes/page.tsx(30,57): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/app/patients/page.tsx(68,133): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/modules/teleconsult/provider/app/schedule/page.tsx(181,135): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/app/schedule/page.tsx(181,198): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/components/BookingDialog.tsx(67,66): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/components/BookingDialog.tsx(163,28): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/teleconsult/provider/components/BookingDialog.tsx(163,41): error TS2322: Type 'Dispatch<SetStateAction<VisitMode | undefined>>' is not assignable to type '(v: string) => void'.
+  Types of parameters 'value' and 'v' are incompatible.
+    Type 'string' is not assignable to type 'SetStateAction<VisitMode | undefined>'.
+src/modules/teleconsult/provider/components/PatientChartDrawer.tsx(45,86): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/components/RegisterPatientDrawer.tsx(199,38): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/OrdersPanel.tsx(100,70): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/RxPanel.tsx(33,92): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(26,20): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(26,32): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(31,7): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(38,60): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(41,15): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(58,44): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(60,110): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(91,63): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(92,48): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(94,10): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(109,14): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(140,37): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/ScoresPanel.tsx(140,132): error TS18048: 'def' is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/TriagePanel.tsx(141,135): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/VideoStage.tsx(80,7): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/VideoStage.tsx(142,66): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/components/consult/VideoStage.tsx(143,14): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(44,12): error TS18048: 'first' is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(45,13): error TS18048: 'first' is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(46,13): error TS18048: 'first' is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(47,12): error TS18048: 'first' is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(53,13): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(54,12): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(54,73): error TS18048: 'first' is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(82,13): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(83,13): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(107,13): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(108,13): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(177,12): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(177,58): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(178,12): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/lib/encounter-sync.test.tsx(178,35): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/provider/module.test.tsx(201,21): error TS2345: Argument of type 'HTMLElement | undefined' is not assignable to parameter of type 'Element | Node | Window | Document'.
+  Type 'undefined' is not assignable to type 'Element | Node | Window | Document'.
+src/modules/teleconsult/provider/module.test.tsx(209,19): error TS2345: Argument of type 'HTMLElement | undefined' is not assignable to parameter of type 'HTMLElement'.
+  Type 'undefined' is not assignable to type 'HTMLElement'.
+src/modules/teleconsult/provider/module.test.tsx(221,21): error TS2345: Argument of type 'HTMLElement | undefined' is not assignable to parameter of type 'Element | Node | Window | Document'.
+  Type 'undefined' is not assignable to type 'Element | Node | Window | Document'.
+src/modules/teleconsult/provider/module.test.tsx(234,21): error TS2345: Argument of type 'HTMLElement | undefined' is not assignable to parameter of type 'Element | Node | Window | Document'.
+  Type 'undefined' is not assignable to type 'Element | Node | Window | Document'.
+src/modules/teleconsult/provider/routes.ts(24,60): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/teleconsult/shared/client.test.ts(6,78): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/shared/client.test.ts(19,23): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/shared/client.test.ts(20,24): error TS2532: Object is possibly 'undefined'.
+src/modules/teleconsult/shared/client.ts(37,42): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/teleconsult/shared/client.ts(37,125): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/teleconsult/shared/client.ts(38,21): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/teleconsult/shared/controls.tsx(17,3): error TS2305: Module '"@pepbits/ui"' has no exported member 'Table'.
+src/modules/teleconsult/shared/controls.tsx(18,3): error TS2305: Module '"@pepbits/ui"' has no exported member 'TableHeader'.
+src/modules/teleconsult/shared/controls.tsx(19,3): error TS2305: Module '"@pepbits/ui"' has no exported member 'TableBody'.
+src/modules/teleconsult/shared/controls.tsx(20,3): error TS2305: Module '"@pepbits/ui"' has no exported member 'TableRow'.
+src/modules/teleconsult/shared/controls.tsx(21,3): error TS2305: Module '"@pepbits/ui"' has no exported member 'TableHead'.
+src/modules/teleconsult/shared/controls.tsx(22,3): error TS2305: Module '"@pepbits/ui"' has no exported member 'TableCell'.
+src/modules/teleconsult/shared/format.ts(3,10): error TS2305: Module '"@pepbits/preferences"' has no exported member 'LANGUAGE_LOCALES'.
+src/modules/teleconsult/shared/hooks.test.tsx(21,27): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/modules/teleconsult/shared/hooks.test.tsx(22,27): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/modules/teleconsult/shared/hooks.test.tsx(56,31): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/modules/teleconsult/shared/routes.ts(6,8): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/teleconsult/shared/routes.ts(6,36): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/teleconsult/shared/routes.ts(8,20): error TS18048: 'pathname' is possibly 'undefined'.
+npm ERR! Lifecycle script `typecheck` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

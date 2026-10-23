@@ -1,0 +1,67 @@
+
+> @pepbits-demo/healthcare@0.0.0 typecheck
+> tsc --noEmit
+
+src/modules/quality/app/(app)/events/page.tsx(302,32): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'SetStateAction<string>'.
+  Type 'undefined' is not assignable to type 'SetStateAction<string>'.
+src/modules/quality/app/(app)/reports/[id]/page.tsx(52,14): error TS2345: Argument of type '{ from: string | undefined; to: string | undefined; }' is not assignable to parameter of type 'SetStateAction<{ from: string; to: string; } | null>'.
+  Type '{ from: string | undefined; to: string | undefined; }' is not assignable to type '{ from: string; to: string; }'.
+    Types of property 'from' are incompatible.
+      Type 'string | undefined' is not assignable to type 'string'.
+        Type 'undefined' is not assignable to type 'string'.
+src/modules/quality/app/(app)/reports/designer/page.tsx(107,33): error TS2345: Argument of type 'ReportSection | undefined' is not assignable to parameter of type 'ReportSection'.
+  Type 'undefined' is not assignable to type 'ReportSection'.
+src/modules/quality/app/(app)/reports/designer/page.tsx(166,97): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ name: Dispatch<SetStateAction<string>>; description: Dispatch<SetStateAction<string>>; program: Dispatch<SetStateAction<string>>; authority: Dispatch<...>; }'.
+  No index signature with a parameter of type 'string' was found on type '{ name: Dispatch<SetStateAction<string>>; description: Dispatch<SetStateAction<string>>; program: Dispatch<SetStateAction<string>>; authority: Dispatch<...>; }'.
+src/modules/quality/app/(app)/schedules/page.tsx(52,58): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/quality/app/(app)/schedules/page.tsx(156,191): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/quality/app/(app)/schedules/page.tsx(369,51): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/quality/client.test.ts(20,11): error TS2488: Type '[_path: string, _init?: RequestInit | undefined] | undefined' must have a '[Symbol.iterator]()' method that returns an iterator.
+src/modules/quality/client.test.ts(41,12): error TS2532: Object is possibly 'undefined'.
+src/modules/quality/client.test.ts(42,24): error TS2532: Object is possibly 'undefined'.
+src/modules/quality/components/PeriodPicker.tsx(12,27): error TS18048: 'm' is possibly 'undefined'.
+src/modules/quality/components/kpi.tsx(108,21): error TS18048: 'last' is possibly 'undefined'.
+src/modules/quality/components/kpi.tsx(108,36): error TS18048: 'last' is possibly 'undefined'.
+src/modules/quality/components/ui.tsx(324,36): error TS2322: Type '(v: T) => void' is not assignable to type '(value: string) => void'.
+  Types of parameters 'v' and 'value' are incompatible.
+    Type 'string' is not assignable to type 'T'.
+      'string' is assignable to the constraint of type 'T', but 'T' could be instantiated with a different subtype of constraint 'string'.
+src/modules/quality/components/ui.tsx(324,56): error TS2322: Type '{ id: T; label: Element; badge: number | undefined; }[]' is not assignable to type 'TabItem[]'.
+  Type '{ id: T; label: JSX.Element; badge: number | undefined; }' is not assignable to type 'TabItem'.
+    Types of property 'label' are incompatible.
+      Type 'Element' is not assignable to type 'string'.
+src/modules/quality/errors.test.tsx(42,12): error TS2532: Object is possibly 'undefined'.
+src/modules/quality/errors.test.tsx(46,12): error TS2532: Object is possibly 'undefined'.
+src/modules/quality/errors.test.tsx(46,62): error TS2532: Object is possibly 'undefined'.
+src/modules/quality/lib/format.ts(3,10): error TS2305: Module '"@pepbits/preferences"' has no exported member 'LANGUAGE_LOCALES'.
+src/modules/quality/lib/format.ts(84,52): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(year: number, monthIndex?: number | undefined, date?: number | undefined, hours?: number | undefined, minutes?: number | undefined, seconds?: number | undefined, ms?: number | undefined): number', gave the following error.
+    Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+      Type 'undefined' is not assignable to type 'number'.
+  Overload 2 of 2, '(year: number, monthIndex: number, date?: number | undefined, hours?: number | undefined, minutes?: number | undefined, seconds?: number | undefined, ms?: number | undefined): number', gave the following error.
+    Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+      Type 'undefined' is not assignable to type 'number'.
+src/modules/quality/lib/format.ts(84,55): error TS18048: 'm' is possibly 'undefined'.
+src/modules/quality/routes.ts(50,8): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/quality/routes.ts(50,36): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/quality/routes.ts(52,20): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/quality/test-fixtures.ts(76,10): error TS18048: 'ind' is possibly 'undefined'.
+src/modules/quality/test-fixtures.ts(80,198): error TS18048: 'ind' is possibly 'undefined'.
+src/modules/quality/test-fixtures.ts(177,32): error TS18048: 't' is possibly 'undefined'.
+src/modules/quality/test-fixtures.ts(189,92): error TS2345: Argument of type 'Indicator | undefined' is not assignable to parameter of type 'Indicator'.
+  Type 'undefined' is not assignable to type 'Indicator'.
+src/modules/quality/test-fixtures.ts(189,250): error TS2345: Argument of type 'Indicator | undefined' is not assignable to parameter of type 'Indicator'.
+  Type 'undefined' is not assignable to type 'Indicator'.
+src/modules/quality/test-fixtures.ts(190,93): error TS2345: Argument of type 'Indicator | undefined' is not assignable to parameter of type 'Indicator'.
+  Type 'undefined' is not assignable to type 'Indicator'.
+src/modules/quality/test-fixtures.ts(191,109): error TS2345: Argument of type 'Indicator | undefined' is not assignable to parameter of type 'Indicator'.
+  Type 'undefined' is not assignable to type 'Indicator'.
+src/modules/quality/version.test.tsx(32,12): error TS2532: Object is possibly 'undefined'.
+src/modules/quality/version.test.tsx(33,12): error TS2532: Object is possibly 'undefined'.
+npm ERR! Lifecycle script `typecheck` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

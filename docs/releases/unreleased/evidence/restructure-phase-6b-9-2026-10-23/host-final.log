@@ -1,0 +1,86 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/medslot/host.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/modules/medslot/host.test.tsx (30 tests | 1 failed) 1655ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/' and preserves query identity 3ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/book' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/calendar' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/appointments' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/patients' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/resources' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/services' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/departments' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/holidays' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/notifications' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/settings' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/audit' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/patients/[id]' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > round trips '/resources/[id]' and preserves query identity 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > rejects malformed route /medslot/nope 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > rejects malformed route /medslot/patients/0 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > rejects malformed route /medslot/resources/1/extra 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > rejects malformed route /medslot/patients/%2F 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > rejects malformed route /medslot/patients/not-a-number 0ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > exposes twelve menu destinations and role-scoped pages 2ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > keeps search parameters stable across preference rerenders 19ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > retains a registration editor and transports while effective policy changes  473ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > preserves failed form values and backend field errors for explicit retry  327ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > supports patient lookup keyboard selection through the shared combobox  328ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > uses effective page size in appointment and audit queries 290ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > removes the global accelerator when shortcuts are disabled 103ms
+   ✓ MedSlot operation lifecycle > releases definitive failure keys after an ambiguous retry and fences unmounted replies 4ms
+   ✓ MedSlot operation lifecycle > aborts caller-cancelled reads and rejects late replies after disposal 3ms
+   ✓ MedSlot changing booking inputs > discards an obsolete patient-prefill reply after the query changes 88ms
+   × MedSlot changing booking inputs > formats counts, durations, percentages and facility clocks from host settings 11ms
+     → Unable to find an element with the text: 1.234,5 | 12,34% | 1 h 30 min | 23/10/2026, 14:30. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p>[39m
+      [0m1.234,5 | 12,34% | 1 h 30 min | 23/10/2026 14:30[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/medslot/host.test.tsx > MedSlot changing booking inputs > formats counts, durations, percentages and facility clocks from host settings
+TestingLibraryElementError: Unable to find an element with the text: 1.234,5 | 12,34% | 1 h 30 min | 23/10/2026, 14:30. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p>[39m
+      [0m1.234,5 | 12,34% | 1 h 30 min | 23/10/2026 14:30[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/modules/medslot/host.test.tsx:48:17
+     46|   function Probe(){const f=useMedslotFormat();return <p>{[f.fmtNumber(…
+     47|   const h=host();h.preferences={...h.preferences,numberLocale:'de-DE',…
+     48|   expect(screen.getByText('1.234,5 | 12,34% | 1 h 30 min | 23/10/2026,…
+       |                 ^
+     49|  });
+     50| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 29 passed (30)
+   Start at  19:16:33
+   Duration  5.64s (transform 1.98s, setup 183ms, collect 2.84s, tests 1.66s, environment 506ms, prepare 73ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

@@ -1,0 +1,141 @@
+{
+  "ci": {
+    "command": "npm run ci -- --concurrency=1",
+    "environment": "environment.json",
+    "tasks": 30,
+    "cached": 0,
+    "tests": 4112,
+    "files": 261,
+    "skippedTests": 0,
+    "skippedFiles": 0,
+    "toolingTests": 19,
+    "typechecks": 14,
+    "builds": 2,
+    "workspaces": {
+      "@pepbits/icons": {
+        "files": 1,
+        "tests": 100
+      },
+      "@pepbits/i18n": {
+        "files": 6,
+        "tests": 64
+      },
+      "@pepbits/data": {
+        "files": 12,
+        "tests": 53
+      },
+      "@pepbits/tokens": {
+        "files": 1,
+        "tests": 3
+      },
+      "@pepbits/platform": {
+        "files": 6,
+        "tests": 71
+      },
+      "@pepbits/preferences": {
+        "files": 3,
+        "tests": 33
+      },
+      "@pepbits/ui": {
+        "files": 14,
+        "tests": 133
+      },
+      "@pepbits/components": {
+        "files": 18,
+        "tests": 198
+      },
+      "@pepbits/patterns": {
+        "files": 27,
+        "tests": 151
+      },
+      "@pepbits/page-engines": {
+        "files": 20,
+        "tests": 429
+      },
+      "@pepbits/shell": {
+        "files": 37,
+        "tests": 404
+      },
+      "@pepbits/ai": {
+        "files": 22,
+        "tests": 587
+      },
+      "@pepbits-demo/healthcare": {
+        "files": 89,
+        "tests": 1791
+      },
+      "@pepbits-demo/showcase": {
+        "files": 5,
+        "tests": 95
+      }
+    }
+  },
+  "medslot": {
+    "portedSourceFiles": 2,
+    "casesInPortedSourceSuites": 19,
+    "additionalHostTests": 30,
+    "additionalTransportTests": 10,
+    "routeProfiles": 56,
+    "routePatterns": 14,
+    "sidebarDestinations": 12,
+    "temporalControlTestsAdded": 2,
+    "iconRenderTestsAdded": 7,
+    "rcmCommitGapRegressionTestsAdded": 1
+  },
+  "fullHttp": {
+    "workflows": 86,
+    "medslotWorkflows": 16,
+    "routes": 264,
+    "medslotRoutes": 20,
+    "rcmPresentationChecks": 62,
+    "rcmPresentationFailures": 0,
+    "medbandPresentationChecks": 29,
+    "medbandPresentationFailures": 0,
+    "routeFailures": 0,
+    "axeViolations": 0,
+    "pageAxeViolations": 0,
+    "incompleteAxeRuleResults": 541,
+    "javascriptErrors": 0,
+    "consoleErrors": 0,
+    "unexpectedHttpErrors": 0
+  },
+  "preCiFullHttp": {
+    "workflows": 86,
+    "medslotWorkflows": 16,
+    "routes": 264,
+    "medslotRoutes": 20,
+    "rcmPresentationChecks": 62,
+    "rcmPresentationFailures": 3,
+    "medbandPresentationChecks": 29,
+    "medbandPresentationFailures": 0,
+    "routeFailures": 0,
+    "axeViolations": 1,
+    "pageAxeViolations": 1,
+    "incompleteAxeRuleResults": 541,
+    "javascriptErrors": 0,
+    "consoleErrors": 0,
+    "unexpectedHttpErrors": 0
+  },
+  "receiptRecheck": {
+    "files": 2,
+    "tests": 4,
+    "input": "browser-final.json",
+    "log": "receipt-recheck.log",
+    "scope": "Repeat assertions on final current HTTP evidence; not added to CI or workflow totals."
+  },
+  "shellBrowser": {
+    "tests": 4,
+    "files": 1
+  },
+  "docs": {
+    "files": 192,
+    "log": "docs-final.log"
+  },
+  "receiptAssertions": {
+    "files": 2,
+    "tests": 4,
+    "log": "ci-final.log",
+    "inputs": "environment.json",
+    "scope": "Included in CI totals; receipt assertion inputs are explicitly identified."
+  }
+}

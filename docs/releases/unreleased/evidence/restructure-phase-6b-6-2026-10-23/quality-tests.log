@@ -1,0 +1,171 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/quality
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/modules/quality/client.test.ts (9 tests) 30ms
+ ✓ src/modules/quality/styles.test.ts (9 tests) 17ms
+ ✓ src/modules/quality/routes.test.ts (14 tests) 11ms
+stderr | src/modules/quality/version.test.tsx > result corrections > send the loaded version and an Idempotency-Key, and a stale version keeps the typed correction
+TypeError: Cannot read properties of undefined (reading 'en')
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/quality/lib/format.ts:53:20
+    at mountMemo (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:8777:23)
+    at Object.useMemo (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:26216:18)
+    at process.env.NODE_ENV.exports.useMemo (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react/cjs/react.development.js:1251:34)
+    at useQualityFormat (/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/quality/lib/format.ts:52:10)
+    at ResultDrawer (/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/quality/components/ResultDrawer.tsx:59:69)
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+    at renderWithHooks (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+    at updateFunctionComponent (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+    at beginWork (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+An error occurred in the <ResultDrawer> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+
+ ❯ src/modules/quality/version.test.tsx (1 test | 1 failed) 10037ms
+   × result corrections > send the loaded version and an Idempotency-Key, and a stale version keeps the typed correction 10035ms
+     → Unable to find role="dialog"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+ ❯ src/modules/quality/format.test.tsx (4 tests | 4 failed) 71ms
+   × useQualityFormat follows the host preferences > writes dates and times in the chosen date and time format; a bare day never shifts 51ms
+     → Cannot read properties of undefined (reading 'en')
+   × useQualityFormat follows the host preferences > formats numbers with the preferred locale and keeps the source's per-unit precision 7ms
+     → Cannot read properties of undefined (reading 'en')
+   × useQualityFormat follows the host preferences > formats durations and periods 6ms
+     → Cannot read properties of undefined (reading 'en')
+   × useQualityFormat follows the host preferences > humanizes codes and passes unknown text through the translation boundary 6ms
+     → Cannot read properties of undefined (reading 'en')
+ ✓ src/modules/quality/copy.test.ts (3 tests) 5ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/quality/controls.test.tsx [ src/modules/quality/controls.test.tsx ]
+ FAIL  src/modules/quality/errors.test.tsx [ src/modules/quality/errors.test.tsx ]
+ FAIL  src/modules/quality/module.test.tsx [ src/modules/quality/module.test.tsx ]
+ FAIL  src/modules/quality/pages.test.tsx [ src/modules/quality/pages.test.tsx ]
+Error: Transform failed with 1 error:
+/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/quality/app/(app)/authorities/page.tsx:161:160: ERROR: Expected "}" but found "onChange"
+  Plugin: vite:esbuild
+  File: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/quality/app/(app)/authorities/page.tsx:161:160
+  
+  Expected "}" but found "onChange"
+  159 |          {id:"contact_email",label:t("Contact email"),type:"email"},
+  160 |          ...(!isNew?[{id:"active",label:t(f.active?"Accepting submissions":"Inactive"),type:"checkbox" as const}]:[])
+  161 |  ...endpoint:{hint:t("Portal URL, SFTP host or API base URL")}} onChange={(key,value)=>set(key as keyof typeof f,key==...
+      |                                                                 ^
+  162 |  
+  163 |      </Modal>
+  
+ ❯ failureErrorWithLog ../../node_modules/esbuild/lib/main.js:1752:15
+ ❯ ../../node_modules/esbuild/lib/main.js:1019:50
+ ❯ responseCallbacks.<computed> ../../node_modules/esbuild/lib/main.js:886:9
+ ❯ handleIncomingPacket ../../node_modules/esbuild/lib/main.js:941:12
+ ❯ Socket.readFromStdout ../../node_modules/esbuild/lib/main.js:864:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/quality/format.test.tsx > useQualityFormat follows the host preferences > writes dates and times in the chosen date and time format; a bare day never shifts
+ FAIL  src/modules/quality/format.test.tsx > useQualityFormat follows the host preferences > formats numbers with the preferred locale and keeps the source's per-unit precision
+ FAIL  src/modules/quality/format.test.tsx > useQualityFormat follows the host preferences > formats durations and periods
+ FAIL  src/modules/quality/format.test.tsx > useQualityFormat follows the host preferences > humanizes codes and passes unknown text through the translation boundary
+TypeError: Cannot read properties of undefined (reading 'en')
+ ❯ src/modules/quality/lib/format.ts:53:20
+     51|   const { numberLocale, language } = useReferenceHost().preferences;
+     52|   return useMemo(() => {
+     53|     const locale = LANGUAGE_LOCALES[language ?? "en"];
+       |                    ^
+     54|     const numbers = new Map<number, Intl.NumberFormat>();
+     55|     const fmtNumber = (n: number | null | undefined, dp = 0): string =…
+ ❯ mountMemo ../../node_modules/react-dom/cjs/react-dom-client.development.js:8777:23
+ ❯ Object.useMemo ../../node_modules/react-dom/cjs/react-dom-client.development.js:26216:18
+ ❯ process.env.NODE_ENV.exports.useMemo ../../node_modules/react/cjs/react.development.js:1251:34
+ ❯ useQualityFormat src/modules/quality/lib/format.ts:52:10
+ ❯ wrapper.children.children src/modules/quality/format.test.tsx:10:27
+ ❯ TestComponent ../../node_modules/@testing-library/react/dist/pure.js:339:27
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  src/modules/quality/version.test.tsx > result corrections > send the loaded version and an Idempotency-Key, and a stale version keeps the typed correction
+TestingLibraryElementError: Unable to find role="dialog"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/modules/quality/version.test.tsx:26:33
+     24|     }, sessionHandler()), { path: "/" });
+     25|     render(<ReferenceHostProvider host={h.host}><AuthProvider><ToastPr…
+     26|     const dialog = await screen.findByRole("dialog");
+       |                                 ^
+     27|     fireEvent.click(await within(dialog).findByRole("button", { name: …
+     28|     fireEvent.change(within(dialog).getByLabelText("Numerator"), { tar…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of undefined (reading 'en')
+ ❯ src/modules/quality/lib/format.ts:53:20
+     51|   const { numberLocale, language } = useReferenceHost().preferences;
+     52|   return useMemo(() => {
+     53|     const locale = LANGUAGE_LOCALES[language ?? "en"];
+       |                    ^
+     54|     const numbers = new Map<number, Intl.NumberFormat>();
+     55|     const fmtNumber = (n: number | null | undefined, dp = 0): string =…
+ ❯ mountMemo ../../node_modules/react-dom/cjs/react-dom-client.development.js:8777:23
+ ❯ Object.useMemo ../../node_modules/react-dom/cjs/react-dom-client.development.js:26216:18
+ ❯ process.env.NODE_ENV.exports.useMemo ../../node_modules/react/cjs/react.development.js:1251:34
+ ❯ useQualityFormat src/modules/quality/lib/format.ts:52:10
+ ❯ ResultDrawer src/modules/quality/components/ResultDrawer.tsx:59:69
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+
+This error originated in "src/modules/quality/version.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "send the loaded version and an Idempotency-Key, and a stale version keeps the typed correction". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  6 failed | 4 passed (10)
+      Tests  5 failed | 35 passed (40)
+     Errors  1 error
+   Start at  14:41:20
+   Duration  26.95s (transform 2.04s, setup 1.52s, collect 765ms, tests 10.17s, environment 5.10s, prepare 832ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

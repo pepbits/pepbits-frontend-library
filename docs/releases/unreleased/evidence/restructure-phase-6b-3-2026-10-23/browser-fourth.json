@@ -1,0 +1,423 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    },
+    {
+      "id": "HCD-09-patient",
+      "mode": "UI + HTTP assertions",
+      "result": "Registered fictional patient, reloaded profile, checked trusted actor and branch isolation"
+    },
+    {
+      "id": "HCD-09-search",
+      "mode": "UI",
+      "result": "Command palette searched real API and opened the patient query link"
+    },
+    {
+      "id": "HCD-10-prescription",
+      "mode": "UI",
+      "result": "Created prescription, started review, verified, reserved FEFO stock, checked, handed over and reloaded supplied record"
+    },
+    {
+      "id": "HCD-10-sale",
+      "mode": "UI sale/receipt + HTTP return",
+      "result": "Counter payment persisted, receipt preview opened and synthetic return reversed the invoice"
+    },
+    {
+      "id": "HCD-11-order",
+      "mode": "HTTP",
+      "result": "Created, confirmed, packed, dispatched and completed delivery order with invoice"
+    },
+    {
+      "id": "HCD-11-purchasing",
+      "mode": "HTTP",
+      "result": "Created, approved, sent and received purchase order into a synthetic stock batch"
+    },
+    {
+      "id": "HCD-11-authorization",
+      "mode": "HTTP",
+      "result": "Requested prior authorization and recorded a simulated payer approval"
+    },
+    {
+      "id": "HCD-11-claims",
+      "mode": "HTTP",
+      "resubmissions": 0,
+      "result": "Submitted primary before secondary claims, simulated adjudication, corrected any first-submission simulated denial and posted remittance payment"
+    },
+    {
+      "id": "HCD-12-replay",
+      "mode": "HTTP",
+      "result": "Repeated patient command returned identical result under the same operation key; audit attributed commands to the host actor"
+    },
+    {
+      "id": "HCD-12-authority",
+      "mode": "HTTP negative assertions",
+      "result": "Technician verification, viewer mutation and source identity bypass returned the expected 403 responses"
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/suite/billing/pharmacy",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy",
+      "pageViolations": [
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(2) > .scroll-y"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1 px-4 py-1\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(2) > .scroll-y"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1 px-4 py-1\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/workbench",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/counter",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/sales",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/inventory",
+      "pageViolations": [
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-80"
+              ],
+              "html": "<div class=\"scroll-y max-h-80\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-80"
+              ],
+              "html": "<div class=\"scroll-y max-h-80\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/purchasing",
+      "pageViolations": [
+        {
+          "id": "aria-input-field-name",
+          "nodes": [
+            {
+              "target": [
+                "ul"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1\" role=\"listbox\">",
+              "summary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "aria-input-field-name",
+          "nodes": [
+            {
+              "target": [
+                "ul"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1\" role=\"listbox\">",
+              "summary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/authorizations",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/claims",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/remittance",
+      "pageViolations": [
+        {
+          "id": "aria-input-field-name",
+          "nodes": [
+            {
+              "target": [
+                "ul"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1\" role=\"listbox\">",
+              "summary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "aria-input-field-name",
+          "nodes": [
+            {
+              "target": [
+                "ul"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1\" role=\"listbox\">",
+              "summary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/patients",
+      "pageViolations": [
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-72"
+              ],
+              "html": "<div class=\"scroll-y max-h-72\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-72"
+              ],
+              "html": "<div class=\"scroll-y max-h-72\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/pharmacy/settings",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/patients?id=pat_e107568e38cc",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/workbench?rx=rx_a5fe081e2d94",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/sales?id=bil_a870dc0ee89b",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/orders?id=ord_33557c77d7d6",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/purchasing?po=po_1f4d0f3f886e",
+      "pageViolations": [
+        {
+          "id": "aria-input-field-name",
+          "nodes": [
+            {
+              "target": [
+                "ul"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1\" role=\"listbox\">",
+              "summary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "aria-input-field-name",
+          "nodes": [
+            {
+              "target": [
+                "ul"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1\" role=\"listbox\">",
+              "summary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/inventory?product=prd_024",
+      "pageViolations": [
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-80"
+              ],
+              "html": "<div class=\"scroll-y max-h-80\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-80"
+              ],
+              "html": "<div class=\"scroll-y max-h-80\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/authorizations?id=au_0c599daf6cdf",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/remittance?ra=ra_e2e4d02b7dbe",
+      "pageViolations": [
+        {
+          "id": "aria-input-field-name",
+          "nodes": [
+            {
+              "target": [
+                "ul"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1\" role=\"listbox\">",
+              "summary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "aria-input-field-name",
+          "nodes": [
+            {
+              "target": [
+                "ul"
+              ],
+              "html": "<ul class=\"scroll-y min-h-0 flex-1\" role=\"listbox\">",
+              "summary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/claims?claim=clm_a57ab51aad7c",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

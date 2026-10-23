@@ -136,3 +136,13 @@ Literal labels and templates (for example `{count} options`) also pass through t
 DropdownSelect's trigger name includes its field label and visible selected value, including when `hideLabel` is set. This fixes the composed browser axe label-content check without changing selection/keyboard behavior. Tests cover hidden-label naming and existing interactions. Exact accessible-name queries should include the selection or match the label prefix.
 
 Dropdown field and value spans include an explicit text separator, so their visible and accessible labels agree even when CSS provides the spacing.
+
+## Phase 6b-1 collection slots
+
+`@pepbits/components/collection-view` exports `CollectionView<T>`, `CollectionColumn<T>` and `CollectionViewProps<T>` to provide typed table/card rendering with cell slots, sort callbacks, keyboard row opening and independent row actions. The host owns data, preferences, pagination and commands; pass the effective `resultView` and compose `Pagination`. Existing Table, CardGrid and Presentation behavior is reused. The healthcare demo uses this for product lists instead of copying a table renderer. Three component regressions cover sorting/keyboard/action separation, card presentation and loading/empty states.
+
+StatePanel titles use paragraphs inside their status/alert containers instead of a fixed level-three heading. Embedded loading/empty states no longer create skipped heading levels. Their announcement roles and visible titles are unchanged. See the [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md).
+
+`SourceDialog` supplies dialog semantics, localized naming, focus entry/restore, Tab containment and topmost Escape handling through a panel-ref render function. The consumer supplies its frame and busy-close guard. Use Modal/Drawer for standard overlays; SourceDialog supports existing specialized frames without duplicating focus behavior. Nested dialog and focus tests cover its lifecycle.
+
+TableRow makes an `onClick` row focusable and activates it with Enter/Space, while respecting a supplied keyboard handler and leaving nested controls to handle their own keys. TableContainer makes scrollable tables keyboard reachable; `overflow="hidden"` has no default tab stop and callers may override `tabIndex`. These behaviors are covered by keyboard/scroll-container tests.

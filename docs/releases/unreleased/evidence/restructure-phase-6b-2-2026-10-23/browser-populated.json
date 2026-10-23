@@ -1,0 +1,1214 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    },
+    {
+      "id": "HCD-07-lis1",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    },
+    {
+      "id": "HCD-07-lis2",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    },
+    {
+      "id": "HCD-07-ris1",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/suite",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/appointments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/approvals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/billing/hospital",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/billing/pharmacy",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/billing/invoices",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/contracts",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/departments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/specialties",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/providers",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/payers",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/tpas",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/insurance-plans",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/networks",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/price-lists",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/items",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/services",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resources",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resource-schedules",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resource-blocks",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-query",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-record",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/patient-360",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-triage",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-consultation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-consultation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/comprehensive-consultation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-registration",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinic-billing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/emergency-registration",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/inpatient-admission",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/consultation-entry-design",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/consultation-entry-v2",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/preferences",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/accession",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/automation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/automation/routing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/billing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/collection",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/criticals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/integration/docs",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > .p-4 > pre:nth-child(2)"
+              ],
+              "html": "<pre class=\"overflow-x-auto rounded border border-line bg-[#0F1720] p-3 font-mono text-xs leading-relaxed text-[#D6E2EA]\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.42 (foreground color: #2644a1, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "pre:nth-child(4)"
+              ],
+              "html": "<pre class=\"overflow-x-auto rounded border border-line bg-[#0F1720] p-3 font-mono text-xs leading-relaxed text-[#D6E2EA]\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.42 (foreground color: #2644a1, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "section:nth-child(2) > .p-4 > pre"
+              ],
+              "html": "<pre class=\"overflow-x-auto rounded border border-line bg-[#0F1720] p-3 font-mono text-xs leading-relaxed text-[#D6E2EA]\">curl /api/automation/middleware/orders -H \"x-api-key: &lt;middleware inbound key&gt;\"\n# returns pending order messages and marks them SENT</pre>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.42 (foreground color: #2644a1, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > .p-4 > pre:nth-child(2)"
+              ],
+              "html": "<pre class=\"overflow-x-auto rounded border border-line bg-[#0F1720] p-3 font-mono text-xs leading-relaxed text-[#D6E2EA]\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.42 (foreground color: #2644a1, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "pre:nth-child(4)"
+              ],
+              "html": "<pre class=\"overflow-x-auto rounded border border-line bg-[#0F1720] p-3 font-mono text-xs leading-relaxed text-[#D6E2EA]\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.42 (foreground color: #2644a1, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "section:nth-child(2) > .p-4 > pre"
+              ],
+              "html": "<pre class=\"overflow-x-auto rounded border border-line bg-[#0F1720] p-3 font-mono text-xs leading-relaxed text-[#D6E2EA]\">curl /api/automation/middleware/orders -H \"x-api-key: &lt;middleware inbound key&gt;\"\n# returns pending order messages and marks them SENT</pre>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.42 (foreground color: #2644a1, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                "main"
+              ],
+              "html": "<main class=\"enterprise-shell_content__flBs3 nex-scrollbar relative min-h-0 flex-1 overflow-auto bg-[var(--bg)] p-3 md:p-4\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/integration",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/orders/new",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-lab-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-lab-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/outsource",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/patients",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".py-1\\.5"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".py-1\\.5"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/reports",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/results",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/samples",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/users",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".py-1\\.5"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".py-1\\.5"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/validation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/accession",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 4
+    },
+    {
+      "route": "/lis2/billing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/collection",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/critical",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/integration/console",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/integration/instrument-orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/integration/messages",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/integration/outbox",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/inventory",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/orders/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/orders",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-transparent"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-transparent"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/outsource",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/patients",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-transparent"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-transparent"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/report-designer",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-hema-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-hema-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/reports",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/samples",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/settings",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/signing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/tat",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/worklist",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/analytics",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/billing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/critical",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/integration",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/ris1/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/pacs",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/reading",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/reception",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/schedule",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/technologist",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients/PT00001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities/F001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-record/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-360/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-triage/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/comprehensive-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-registration/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinic-billing/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters/EN000001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/orders/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/masters/tests",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-lab-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-lab-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/billing/1",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-lab-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "link-in-text-block",
+          "nodes": [
+            {
+              "target": [
+                ".text-lab-700"
+              ],
+              "html": "<a class=\"font-mono text-lab-700 hover:underline\" href=\"/lis1/orders/1\">ORD2610230001</a>",
+              "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.33:1 with the surrounding text. (Minimum contrast is 3:1, link text: #2644a1, surrounding text: #4f5f75)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-lab-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "link-in-text-block",
+          "nodes": [
+            {
+              "target": [
+                ".text-lab-700"
+              ],
+              "html": "<a class=\"font-mono text-lab-700 hover:underline\" href=\"/lis1/orders/1\">ORD2610230001</a>",
+              "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.33:1 with the surrounding text. (Minimum contrast is 3:1, link text: #2644a1, surrounding text: #4f5f75)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/reports/1",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".transition-\\[background\\,border-color\\,color\\,box-shadow\\,transform\\]"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "link-in-text-block",
+          "nodes": [
+            {
+              "target": [
+                ".font-mono"
+              ],
+              "html": "<a class=\"font-mono text-lab-700 hover:underline\" href=\"/lis1/orders/1\">ORD2610230001</a>",
+              "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.33:1 with the surrounding text. (Minimum contrast is 3:1, link text: #2644a1, surrounding text: #4f5f75)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".transition-\\[background\\,border-color\\,color\\,box-shadow\\,transform\\]"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "link-in-text-block",
+          "nodes": [
+            {
+              "target": [
+                ".font-mono"
+              ],
+              "html": "<a class=\"font-mono text-lab-700 hover:underline\" href=\"/lis1/orders/1\">ORD2610230001</a>",
+              "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.33:1 with the surrounding text. (Minimum contrast is 3:1, link text: #2644a1, surrounding text: #4f5f75)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/orders/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/masters/tests",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".px-3\\.5"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "link-in-text-block",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:text-ink"
+              ],
+              "html": "<a class=\"text-ink-soft hover:text-ink\" href=\"/lis2/masters\">Master data</a>",
+              "summary": "Fix any of the following:\n  The link has insufficient color contrast of 2.45:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4f5f75, surrounding text: #132238)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".px-3\\.5"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "link-in-text-block",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:text-ink"
+              ],
+              "html": "<a class=\"text-ink-soft hover:text-ink\" href=\"/lis2/masters\">Master data</a>",
+              "summary": "Fix any of the following:\n  The link has insufficient color contrast of 2.45:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4f5f75, surrounding text: #132238)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/patients/1",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-hema-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-hema-600"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/results/sample/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/print/order/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/print/labels?ids=1",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".transition-\\[background\\,border-color\\,color\\,box-shadow\\,transform\\]"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".transition-\\[background\\,border-color\\,color\\,box-shadow\\,transform\\]"
+              ],
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.04 (foreground color: #ffffff, background color: #f8fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/patients/25",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/orders/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/reading/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/print/report/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/print/invoice/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

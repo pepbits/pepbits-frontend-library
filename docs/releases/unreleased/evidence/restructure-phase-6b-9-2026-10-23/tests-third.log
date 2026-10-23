@@ -1,0 +1,23 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/medslot src/adapters/medslot.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/modules/medslot/module.test.tsx (17 tests) 1846ms
+   ✓ MedSlot imported pages and shared host contracts > renders original / without a secondary login  351ms
+   ✓ MedSlot imported pages and shared host contracts > renders original /appointments without a secondary login  463ms
+ ✓ src/modules/medslot/host.test.tsx (28 tests) 1644ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > retains a registration editor and transports while effective policy changes  498ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > preserves failed form values and backend field errors for explicit retry  363ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > supports patient lookup keyboard selection through the shared combobox  309ms
+   ✓ MedSlot navigation, effective presentation and failure recovery > uses effective page size in appointment and audit queries  333ms
+ ✓ src/modules/medslot/ui.test.tsx (2 tests) 144ms
+ ✓ src/adapters/medslot.test.ts (10 tests) 20ms
+
+ Test Files  4 passed (4)
+      Tests  57 passed (57)
+   Start at  19:10:15
+   Duration  12.06s (transform 2.31s, setup 632ms, collect 3.89s, tests 3.65s, environment 2.12s, prepare 318ms)
+

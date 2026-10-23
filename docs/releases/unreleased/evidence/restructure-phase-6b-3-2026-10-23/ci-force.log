@@ -1,0 +1,1507 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && turbo run typecheck test build --force --concurrency=1
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 12 package(s), 2 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 5.155097
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 113.548969
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 1.906803
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 1.235229
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 2.406107
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 2.453107
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 1.151188
+  type: 'test'
+  ...
+# Subtest: platform may use data; data cannot use platform or UI
+ok 8 - platform may use data; data cannot use platform or UI
+  ---
+  duration_ms: 2.96449
+  type: 'test'
+  ...
+# Subtest: AI sits above shell, patterns and engines; no reverse dependency is allowed
+ok 9 - AI sits above shell, patterns and engines; no reverse dependency is allowed
+  ---
+  duration_ms: 23.991658
+  type: 'test'
+  ...
+# Subtest: testing can import every library layer
+ok 10 - testing can import every library layer
+  ---
+  duration_ms: 1.736033
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 11 - demo apps use any layer but not each other
+  ---
+  duration_ms: 2.021344
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 12 - pre-restructure packages are rejected
+  ---
+  duration_ms: 1.643862
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 13 - relative imports may not leave the package
+  ---
+  duration_ms: 0.718216
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 14 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 2.244325
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 15 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 2.033585
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 16 - testing is dev-only
+  ---
+  duration_ms: 2.208925
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 17 - tooling packages are devDependencies only
+  ---
+  duration_ms: 1.511141
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 18 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 0.603004
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 19 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.182701
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 406.124018
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits-demo/healthcare, @pepbits-demo/showcase, @pepbits/ai, @pepbits/components, @pepbits/data, @pepbits/i18n, @pepbits/icons, @pepbits/page-engines, @pepbits/patterns, @pepbits/platform, @pepbits/preferences, @pepbits/shell, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running typecheck, test, build in 15 packages
+   • Remote caching disabled, using shared worktree cache
+
+@pepbits/i18n:typecheck: cache bypass, force executing 3fdbc86bc0ee60ec
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/icons:typecheck: cache bypass, force executing 3431dc13445a65f0
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/data:typecheck: cache bypass, force executing 9eaae2a012dafa63
+@pepbits/data:typecheck: 
+@pepbits/data:typecheck: > @pepbits/data@0.0.0 typecheck
+@pepbits/data:typecheck: > tsc --noEmit -p .
+@pepbits/data:typecheck: 
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/tokens:typecheck: cache bypass, force executing 42ff287e13f57775
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:test: cache bypass, force executing e8d3b93cb57eb3d2
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/tokens:test: 
+@pepbits/tokens:test: > @pepbits/tokens@0.0.0 test
+@pepbits/tokens:test: > vitest run
+@pepbits/tokens:test: 
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/tokens
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  ✓ src/index.test.ts (3 tests) 7ms
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  Test Files  1 passed (1)
+@pepbits/tokens:test:       Tests  3 passed (3)
+@pepbits/tokens:test:    Start at  11:24:35
+@pepbits/tokens:test:    Duration  460ms (transform 63ms, setup 0ms, collect 59ms, tests 7ms, environment 0ms, prepare 73ms)
+@pepbits/tokens:test: 
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/i18n:test: cache bypass, force executing 3987b00049564105
+@pepbits/i18n:test: 
+@pepbits/i18n:test: > @pepbits/i18n@0.0.0 test
+@pepbits/i18n:test: > vitest run
+@pepbits/i18n:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/i18n
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  ✓ src/page-copy-localization.test.tsx (4 tests) 70ms
+@pepbits/i18n:test:  ✓ src/localization.test.tsx (4 tests) 146ms
+@pepbits/i18n:test:  ✓ src/localization-formatting.test.ts (13 tests) 45ms
+@pepbits/i18n:test:  ✓ src/format.test.ts (12 tests) 40ms
+@pepbits/i18n:test:  ✓ src/catalogs.test.ts (5 tests) 11ms
+@pepbits/i18n:test:  ✓ src/i18n.test.ts (26 tests) 35ms
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  Test Files  6 passed (6)
+@pepbits/i18n:test:       Tests  64 passed (64)
+@pepbits/i18n:test:    Start at  11:24:37
+@pepbits/i18n:test:    Duration  3.61s (transform 235ms, setup 923ms, collect 353ms, tests 347ms, environment 3.11s, prepare 475ms)
+@pepbits/i18n:test: 
+@pepbits/icons:test: cache bypass, force executing f2d1547a2bd53cda
+@pepbits/icons:test: 
+@pepbits/icons:test: > @pepbits/icons@0.0.0 test
+@pepbits/icons:test: > vitest run
+@pepbits/icons:test: 
+@pepbits/icons:test: 
+@pepbits/icons:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/icons
+@pepbits/icons:test: 
+@pepbits/icons:test:  ✓ src/icon.test.tsx (36 tests) 164ms
+@pepbits/icons:test: 
+@pepbits/icons:test:  Test Files  1 passed (1)
+@pepbits/icons:test:       Tests  36 passed (36)
+@pepbits/icons:test:    Start at  11:24:42
+@pepbits/icons:test:    Duration  1.33s (transform 73ms, setup 0ms, collect 283ms, tests 164ms, environment 467ms, prepare 66ms)
+@pepbits/icons:test: 
+@pepbits/data:test: cache bypass, force executing a968e068be6271fa
+@pepbits/data:test: 
+@pepbits/data:test: > @pepbits/data@0.0.0 test
+@pepbits/data:test: > vitest run
+@pepbits/data:test: 
+@pepbits/data:test: 
+@pepbits/data:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/data
+@pepbits/data:test: 
+@pepbits/data:test:  ✓ src/memory-records.test.ts (5 tests) 85ms
+@pepbits/data:test:  ✓ src/records.test.ts (11 tests) 743ms
+@pepbits/data:test:  ✓ src/http-adapters.test.ts (11 tests) 37ms
+@pepbits/data:test:  ✓ src/dcp-runtime.test.ts (4 tests) 22ms
+@pepbits/data:test:  ✓ src/workflow-adapters.test.ts (4 tests) 15ms
+@pepbits/data:test:  ✓ src/dcp-host.test.ts (2 tests) 17ms
+@pepbits/data:test:  ✓ src/memory-drafts.test.ts (2 tests) 13ms
+@pepbits/data:test:  ✓ src/csv-import.test.ts (4 tests) 14ms
+@pepbits/data:test:  ✓ src/contracts/dcp-repeating.test.ts (4 tests) 13ms
+@pepbits/data:test:  ✓ src/draft-center.test.ts (2 tests) 13ms
+@pepbits/data:test:  ✓ src/contracts/dcp-designer-metadata.test.ts (2 tests) 6ms
+@pepbits/data:test:  ✓ src/draft-policy.test.ts (2 tests) 7ms
+@pepbits/data:test: 
+@pepbits/data:test:  Test Files  12 passed (12)
+@pepbits/data:test:       Tests  53 passed (53)
+@pepbits/data:test:    Start at  11:24:44
+@pepbits/data:test:    Duration  3.59s (transform 384ms, setup 0ms, collect 796ms, tests 987ms, environment 3ms, prepare 987ms)
+@pepbits/data:test: 
+@pepbits/preferences:typecheck: cache bypass, force executing 363c360b65631e0c
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+@pepbits/ui:typecheck: cache bypass, force executing 066ac82b6b30903d
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: > @pepbits/ui@0.0.0 typecheck
+@pepbits/ui:typecheck: > tsc --noEmit -p .
+@pepbits/ui:typecheck: 
+@pepbits/platform:typecheck: cache bypass, force executing 2998dc120e7548c0
+@pepbits/platform:typecheck: 
+@pepbits/platform:typecheck: > @pepbits/platform@0.0.0 typecheck
+@pepbits/platform:typecheck: > tsc --noEmit -p .
+@pepbits/platform:typecheck: 
+@pepbits/preferences:test: cache bypass, force executing 10a627067c3db609
+@pepbits/preferences:test: 
+@pepbits/preferences:test: > @pepbits/preferences@0.0.0 test
+@pepbits/preferences:test: > vitest run
+@pepbits/preferences:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/preferences
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  ✓ src/policy.test.ts (24 tests) 38ms
+@pepbits/preferences:test:  ✓ src/preference-defaults.test.ts (3 tests) 4ms
+@pepbits/preferences:test:  ✓ src/react.test.tsx (6 tests) 141ms
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  Test Files  3 passed (3)
+@pepbits/preferences:test:       Tests  33 passed (33)
+@pepbits/preferences:test:    Start at  11:24:58
+@pepbits/preferences:test:    Duration  1.34s (transform 227ms, setup 0ms, collect 444ms, tests 184ms, environment 529ms, prepare 253ms)
+@pepbits/preferences:test: 
+@pepbits/ui:test: cache bypass, force executing c9f75dfb39fc19ec
+@pepbits/ui:test: 
+@pepbits/ui:test: > @pepbits/ui@0.0.0 test
+@pepbits/ui:test: > vitest run
+@pepbits/ui:test: 
+@pepbits/ui:test: 
+@pepbits/ui:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/ui
+@pepbits/ui:test: 
+@pepbits/ui:test:  ✓ src/form-controls.test.tsx (30 tests) 631ms
+@pepbits/ui:test:  ✓ src/search-select.test.tsx (15 tests) 879ms
+@pepbits/ui:test:  ✓ src/quantity-unit-field.test.tsx (9 tests) 422ms
+@pepbits/ui:test:  ✓ src/async-lookup.test.tsx (4 tests) 355ms
+@pepbits/ui:test:  ✓ src/segmented.test.tsx (9 tests) 267ms
+@pepbits/ui:test:  ✓ src/button.test.tsx (5 tests) 184ms
+@pepbits/ui:test:  ✓ src/avatar.test.tsx (10 tests) 168ms
+@pepbits/ui:test:  ✓ src/localization.test.tsx (3 tests) 218ms
+@pepbits/ui:test:  ✓ src/badge.test.tsx (12 tests) 110ms
+@pepbits/ui:test:  ✓ src/source-controls.test.tsx (5 tests) 170ms
+@pepbits/ui:test:  ✓ src/skeleton.test.tsx (4 tests) 146ms
+@pepbits/ui:test:  ✓ src/scanner-input.test.tsx (2 tests) 114ms
+@pepbits/ui:test:  ✓ src/option-filter.test.tsx (13 tests) 57ms
+@pepbits/ui:test:  ✓ src/cn.test.ts (9 tests) 31ms
+@pepbits/ui:test: 
+@pepbits/ui:test:  Test Files  14 passed (14)
+@pepbits/ui:test:       Tests  130 passed (130)
+@pepbits/ui:test:    Start at  11:25:02
+@pepbits/ui:test:    Duration  11.78s (transform 574ms, setup 2.24s, collect 1.87s, tests 3.75s, environment 7.95s, prepare 1.33s)
+@pepbits/ui:test: 
+@pepbits/platform:test: cache bypass, force executing 159eee1658bb0317
+@pepbits/platform:test: 
+@pepbits/platform:test: > @pepbits/platform@0.0.0 test
+@pepbits/platform:test: > vitest run
+@pepbits/platform:test: 
+@pepbits/platform:test: 
+@pepbits/platform:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/platform
+@pepbits/platform:test: 
+@pepbits/platform:test:  ✓ src/ports.test.tsx (17 tests) 66ms
+@pepbits/platform:test:  ✓ src/session.test.tsx (34 tests) 397ms
+@pepbits/platform:test:  ✓ src/recovery.test.ts (10 tests) 50ms
+@pepbits/platform:test:  ✓ src/device-workflows.test.ts (4 tests) 15ms
+@pepbits/platform:test:  ✓ src/sentinel.test.ts (5 tests) 10ms
+@pepbits/platform:test:  ✓ src/devices.test.ts (1 test) 8ms
+@pepbits/platform:test: 
+@pepbits/platform:test:  Test Files  6 passed (6)
+@pepbits/platform:test:       Tests  71 passed (71)
+@pepbits/platform:test:    Start at  11:25:15
+@pepbits/platform:test:    Duration  4.30s (transform 446ms, setup 915ms, collect 669ms, tests 547ms, environment 3.16s, prepare 520ms)
+@pepbits/platform:test: 
+@pepbits/components:typecheck: cache bypass, force executing e5bbbc3b2d4f5a7c
+@pepbits/components:typecheck: 
+@pepbits/components:typecheck: > @pepbits/components@0.0.0 typecheck
+@pepbits/components:typecheck: > tsc --noEmit -p .
+@pepbits/components:typecheck: 
+@pepbits/components:test: cache bypass, force executing 5ac76c6d6e4d953e
+@pepbits/components:test: 
+@pepbits/components:test: > @pepbits/components@0.0.0 test
+@pepbits/components:test: > vitest run
+@pepbits/components:test: 
+@pepbits/components:test: 
+@pepbits/components:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/components
+@pepbits/components:test: 
+@pepbits/components:test:  ✓ src/dropdown.test.tsx (11 tests) 826ms
+@pepbits/components:test:  ✓ src/overlay.test.tsx (23 tests) 868ms
+@pepbits/components:test:  ✓ src/inline-edit-typed.test.tsx (19 tests) 846ms
+@pepbits/components:test:  ✓ src/inline-edit.test.tsx (15 tests) 822ms
+@pepbits/components:test:  ✓ src/pagination.test.tsx (10 tests) 447ms
+@pepbits/components:test:  ✓ src/shared-components.test.tsx (11 tests) 649ms
+@pepbits/components:test:  ✓ src/states.test.tsx (25 tests) 389ms
+@pepbits/components:test:  ✓ src/recovery-notice.test.tsx (5 tests) 387ms
+@pepbits/components:test:  ✓ src/reference-data.test.tsx (17 tests) 283ms
+@pepbits/components:test:  ✓ src/page-copy-localization.test.tsx (5 tests) 366ms
+@pepbits/components:test:  ✓ src/card.test.tsx (6 tests) 183ms
+@pepbits/components:test:  ✓ src/presentation.test.tsx (3 tests) 202ms
+@pepbits/components:test:  ✓ src/collection-view.test.tsx (3 tests) 194ms
+@pepbits/components:test:  ✓ src/tabs.test.tsx (3 tests) 212ms
+@pepbits/components:test:  ✓ src/error-mapper.test.ts (32 tests) 14ms
+@pepbits/components:test:  ✓ src/stat-card.test.tsx (6 tests) 154ms
+@pepbits/components:test: 
+@pepbits/components:test:  Test Files  16 passed (16)
+@pepbits/components:test:       Tests  194 passed (194)
+@pepbits/components:test:    Start at  11:25:25
+@pepbits/components:test:    Duration  14.30s (transform 781ms, setup 2.41s, collect 3.68s, tests 6.84s, environment 8.50s, prepare 1.35s)
+@pepbits/components:test: 
+@pepbits/patterns:typecheck: cache bypass, force executing db15dfb248ecc473
+@pepbits/patterns:typecheck: 
+@pepbits/patterns:typecheck: > @pepbits/patterns@0.0.0 typecheck
+@pepbits/patterns:typecheck: > tsc --noEmit -p .
+@pepbits/patterns:typecheck: 
+@pepbits/patterns:test: cache bypass, force executing 562ce2f0df4b8524
+@pepbits/patterns:test: 
+@pepbits/patterns:test: > @pepbits/patterns@0.0.0 test
+@pepbits/patterns:test: > vitest run
+@pepbits/patterns:test: 
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/patterns
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  ✓ src/lifecycle/sources.test.tsx (11 tests) 2728ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged  473ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > creates a pinned mapping from a registered source and saves it through the governed draft  486ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > explains invalid and stale mappings, and re-pins only from the registry  330ms
+@pepbits/patterns:test:  ✓ src/lifecycle/lifecycle.test.tsx (18 tests) 3412ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > console summary uses server validation and clears it after editing  481ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > saves a draft with the expected revision and reuses the operation key on retry  381ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > lifecycle module and domain are editable codes that drive catalogue navigation  331ms
+@pepbits/patterns:test:  ✓ src/form-designer/dependencies.test.tsx (3 tests) 787ms
+@pepbits/patterns:test:    ✓ parent change clears all descendants and late API responses cannot restore old options  404ms
+@pepbits/patterns:test:  ✓ src/drafts/use-shared-draft.test.tsx (4 tests) 1873ms
+@pepbits/patterns:test:    ✓ failed draft write retains the exact payload and operation identity on retry  828ms
+@pepbits/patterns:test:    ✓ completion waits for in-flight autosave before discarding its acknowledged revision  816ms
+@pepbits/patterns:test:  ✓ src/form-designer/workspace.test.tsx (3 tests) 731ms
+@pepbits/patterns:test:    ✓ visual edits reuse stable IDs; failed save retains edits and reuses operation on retry  456ms
+@pepbits/patterns:test:  ✓ src/drafts/draft-center.test.tsx (3 tests) 1410ms
+@pepbits/patterns:test:    ✓ metadata and policy appear, search/filter use the API and open rechecks access  727ms
+@pepbits/patterns:test:    ✓ discard retry retains its operation id and does not remove a row until confirmed  384ms
+@pepbits/patterns:test:  ✓ src/approvals/approval-workspace.test.tsx (7 tests) 1131ms
+@pepbits/patterns:test:    ✓ submission requires a comment and confirmation; unknown outcomes reuse the operation id  307ms
+@pepbits/patterns:test:  ✓ src/imports/csv-import-dialog.test.tsx (6 tests) 830ms
+@pepbits/patterns:test:    ✓ restored validation requires explicit confirmation before writing  375ms
+@pepbits/patterns:test:  ✓ src/lifecycle/screen-host.test.tsx (2 tests) 659ms
+@pepbits/patterns:test:    ✓ live policy overrides explicit list sizes and updates managed presentation  372ms
+@pepbits/patterns:test:  ✓ src/form-designer/catalog-manager.test.tsx (4 tests) 552ms
+@pepbits/patterns:test:  ✓ src/spreadsheet/workspace.test.tsx (2 tests) 458ms
+@pepbits/patterns:test:    ✓ export awaits the host audit, preserves edited values on failure, and uses effective format  344ms
+@pepbits/patterns:test:  ✓ src/form-designer/host-runtime.test.tsx (3 tests) 418ms
+@pepbits/patterns:test:  ✓ src/identity-devices/workspace.test.tsx (3 tests) 314ms
+@pepbits/patterns:test:  ✓ src/device-integrations/workspace.test.tsx (2 tests) 387ms
+@pepbits/patterns:test:  ✓ src/master-transfer/panel.test.tsx (4 tests) 405ms
+@pepbits/patterns:test:  ✓ src/form-designer/sections.test.tsx (5 tests) 321ms
+@pepbits/patterns:test:  ✓ src/label-printing/workspace.test.tsx (2 tests) 251ms
+@pepbits/patterns:test:  ✓ src/dcp-fields/runtime-fields.test.tsx (5 tests) 245ms
+@pepbits/patterns:test:  ✓ src/dcp-fields/preferences.test.tsx (1 test) 99ms
+@pepbits/patterns:test:  ✓ src/screen-host.test.tsx (8 tests) 89ms
+@pepbits/patterns:test:  ✓ src/master-transfer/inflation.test.ts (2 tests) 74ms
+@pepbits/patterns:test:  ✓ src/master-transfer/format.test.ts (8 tests) 57ms
+@pepbits/patterns:test:  ✓ src/lifecycle/config/lifecycle.test.ts (19 tests) 40ms
+@pepbits/patterns:test:  ✓ src/lifecycle/config/sources.test.ts (17 tests) 30ms
+@pepbits/patterns:test:  ✓ src/imports/workbook-options.test.ts (2 tests) 11ms
+@pepbits/patterns:test:  ✓ src/spreadsheet/model.test.ts (4 tests) 10ms
+@pepbits/patterns:test:  ✓ src/imports/csv-options.test.ts (3 tests) 8ms
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  Test Files  27 passed (27)
+@pepbits/patterns:test:       Tests  151 passed (151)
+@pepbits/patterns:test:    Start at  11:25:48
+@pepbits/patterns:test:    Duration  29.10s (transform 2.06s, setup 4.49s, collect 8.34s, tests 17.33s, environment 15.14s, prepare 2.47s)
+@pepbits/patterns:test: 
+@pepbits/page-engines:typecheck: cache bypass, force executing eedbbe68918b02bb
+@pepbits/page-engines:typecheck: 
+@pepbits/page-engines:typecheck: > @pepbits/page-engines@0.0.0 typecheck
+@pepbits/page-engines:typecheck: > tsc --noEmit -p .
+@pepbits/page-engines:typecheck: 
+@pepbits/page-engines:test: cache bypass, force executing 57da6a4ce868f864
+@pepbits/page-engines:test: 
+@pepbits/page-engines:test: > @pepbits/page-engines@0.0.0 test
+@pepbits/page-engines:test: > vitest run
+@pepbits/page-engines:test: 
+@pepbits/page-engines:test: 
+@pepbits/page-engines:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/page-engines
+@pepbits/page-engines:test: 
+@pepbits/page-engines:test:  ✓ src/templates/page-template.test.tsx (92 tests) 3012ms
+@pepbits/page-engines:test:  ✓ src/templates/preference-compliance.test.tsx (171 tests) 4044ms
+@pepbits/page-engines:test:  ✓ src/forms/dynamic-record-form.test.tsx (7 tests) 1396ms
+@pepbits/page-engines:test:    ✓ StrictMode loads safely and reports only acknowledged saves  397ms
+@pepbits/page-engines:test:  ✓ src/worklist/preference-compliance.test.tsx (3 tests) 1446ms
+@pepbits/page-engines:test:    ✓ print provenance has stable server markup and refreshes immediately before native print  462ms
+@pepbits/page-engines:test:    ✓ worklist applies live table, page-size and result-view locks to controls and search requests  624ms
+@pepbits/page-engines:test:    ✓ filter memory retains only declared operational values and unavailable choices are disabled  358ms
+@pepbits/page-engines:test:  ✓ src/worklist/filter-bar.test.tsx (24 tests) 794ms
+@pepbits/page-engines:test:  ✓ src/worklist/use-column-layout.test.tsx (23 tests) 681ms
+@pepbits/page-engines:test:  ✓ src/templates/registry-template.test.tsx (3 tests) 577ms
+@pepbits/page-engines:test:    ✓ all five registry templates render through shared engines with preference-owned layouts  327ms
+@pepbits/page-engines:test:  ✓ src/worklist/use-filter-sync.test.tsx (9 tests) 439ms
+@pepbits/page-engines:test:  ✓ src/worklist/saved-view.test.tsx (11 tests) 342ms
+@pepbits/page-engines:test:  ✓ src/records/record-panels.test.tsx (4 tests) 331ms
+@pepbits/page-engines:test:  ✓ src/record-page/record-page.test.tsx (2 tests) 233ms
+@pepbits/page-engines:test:  ✓ src/record-layout/record-layout.test.tsx (3 tests) 224ms
+@pepbits/page-engines:test:  ✓ src/templates/configured-template-page.test.tsx (3 tests) 247ms
+@pepbits/page-engines:test:  ✓ src/renderer/renderer.test.tsx (6 tests) 162ms
+@pepbits/page-engines:test:  ✓ src/worklist/export-rows.test.ts (26 tests) 102ms
+@pepbits/page-engines:test:  ✓ src/types/filter-policy.test.ts (15 tests) 16ms
+@pepbits/page-engines:test:  ✓ src/worklist/search-request.test.ts (10 tests) 20ms
+@pepbits/page-engines:test:  ✓ src/types/export-policy.test.ts (13 tests) 9ms
+@pepbits/page-engines:test:  ✓ src/types/entity-schemas.test.ts (1 test) 6ms
+@pepbits/page-engines:test:  ✓ src/types/form-rules.test.ts (3 tests) 5ms
+@pepbits/page-engines:test: 
+@pepbits/page-engines:test:  Test Files  20 passed (20)
+@pepbits/page-engines:test:       Tests  429 passed (429)
+@pepbits/page-engines:test:    Start at  11:26:25
+@pepbits/page-engines:test:    Duration  21.35s (transform 1.62s, setup 2.92s, collect 6.30s, tests 14.09s, environment 10.34s, prepare 1.63s)
+@pepbits/page-engines:test: 
+@pepbits/shell:typecheck: cache bypass, force executing 389443a0a9b6cc97
+@pepbits/shell:typecheck: 
+@pepbits/shell:typecheck: > @pepbits/shell@0.0.0 typecheck
+@pepbits/shell:typecheck: > tsc --noEmit -p .
+@pepbits/shell:typecheck: 
+@pepbits/shell:test: cache bypass, force executing 379bcb7cc095e0a4
+@pepbits/shell:test: 
+@pepbits/shell:test: > @pepbits/shell@0.0.0 test
+@pepbits/shell:test: > vitest run
+@pepbits/shell:test: 
+@pepbits/shell:test: 
+@pepbits/shell:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/shell
+@pepbits/shell:test: 
+@pepbits/shell:test:  ✓ src/preferences-page/preferences.test.tsx (4 tests) 3012ms
+@pepbits/shell:test:    ✓ record layout and all three density options use the central preference update  960ms
+@pepbits/shell:test:    ✓ live policy changes and unavailable preferences prevent layout updates  715ms
+@pepbits/shell:test:    ✓ Own Settings uses accessible module options and honors locks  937ms
+@pepbits/shell:test:    ✓ tenant allowed options constrain the choices and reject programmatic changes  399ms
+@pepbits/shell:test:  ✓ src/preferences-page/host.test.tsx (4 tests) 4189ms
+@pepbits/shell:test:    ✓ policy administration is absent by default and disappears immediately when its host capability is removed  2557ms
+@pepbits/shell:test:    ✓ restore uses the central guarded path and live managed values replace the page  999ms
+@pepbits/shell:test:    ✓ boolean allowed values also constrain the inverse animation control  398ms
+@pepbits/shell:test:  ✓ src/diagnostic-sidebar.test.tsx (25 tests) 1967ms
+@pepbits/shell:test:  ✓ src/chrome-integration.test.tsx (12 tests) 1556ms
+@pepbits/shell:test:  ✓ src/workspace/workspace-shell.test.tsx (3 tests) 1161ms
+@pepbits/shell:test:    ✓ workspace frame keeps dirty work until its confirmation, then removes the owning document  570ms
+@pepbits/shell:test:    ✓ native detach is hidden without a window port and uses only the supplied port when available  335ms
+@pepbits/shell:test:  ✓ src/workspace/workspace-canvas.test.tsx (29 tests) 1314ms
+@pepbits/shell:test:  ✓ src/workspace/use-workspace-navigation.test.tsx (18 tests) 1156ms
+@pepbits/shell:test:  ✓ src/full-shell.test.tsx (2 tests) 1077ms
+@pepbits/shell:test:    ✓ page engine inside the full frame saves to toasts and edits survive suspension until explicit document close  571ms
+@pepbits/shell:test:    ✓ patterns screen inside the full frame reports dirty changes and localized success through the shell  505ms
+@pepbits/shell:test:  ✓ src/screen-host.test.tsx (7 tests) 770ms
+@pepbits/shell:test:    ✓ page engine saves reach shell toasts and edits survive suspension until explicit document close  334ms
+@pepbits/shell:test:  ✓ src/workspace/workspace-tabs.test.tsx (15 tests) 772ms
+@pepbits/shell:test:  ✓ src/sidebar-rtl.test.tsx (2 tests) 685ms
+@pepbits/shell:test:    ✓ Arabic RTL keeps physical left placement during keyboard expansion  462ms
+@pepbits/shell:test:  ✓ src/shell-context.test.tsx (22 tests) 587ms
+@pepbits/shell:test:  ✓ src/documentation.test.tsx (8 tests) 550ms
+@pepbits/shell:test:  ✓ src/monitoring.test.tsx (6 tests) 431ms
+@pepbits/shell:test:  ✓ src/login/login.test.tsx (3 tests) 300ms
+@pepbits/shell:test:  ✓ src/workspace/mdi-taskbar.test.tsx (7 tests) 322ms
+@pepbits/shell:test:  ✓ src/preferences-page/product-access.test.tsx (2 tests) 294ms
+@pepbits/shell:test:  ✓ src/product-context.test.tsx (3 tests) 270ms
+@pepbits/shell:test:  ✓ src/session-lock.test.tsx (2 tests) 248ms
+@pepbits/shell:test:  ✓ src/login/recovery.test.tsx (1 test) 231ms
+@pepbits/shell:test:  ✓ src/workspace/use-workspace.test.tsx (19 tests) 241ms
+@pepbits/shell:test:  ✓ src/workspace/use-mdi-workspace.test.tsx (7 tests) 213ms
+@pepbits/shell:test:  ✓ src/preferences-page/product-services.test.tsx (2 tests) 186ms
+@pepbits/shell:test:  ✓ src/sentinel.test.tsx (1 test) 130ms
+@pepbits/shell:test:  ✓ src/preferences-page/preference-preview.test.tsx (1 test) 120ms
+@pepbits/shell:test:  ✓ src/workspace/use-detached-windows.test.tsx (13 tests) 96ms
+@pepbits/shell:test:  ✓ src/chrome.test.tsx (14 tests) 82ms
+@pepbits/shell:test:  ✓ src/workspace/document-manager.test.ts (47 tests) 30ms
+@pepbits/shell:test:  ✓ src/workspace/split.test.ts (26 tests) 23ms
+@pepbits/shell:test:  ✓ src/workspace/mdi-frames.test.ts (20 tests) 16ms
+@pepbits/shell:test:  ✓ src/products.test.ts (10 tests) 12ms
+@pepbits/shell:test:  ✓ src/workspace/detach.test.ts (14 tests) 21ms
+@pepbits/shell:test:  ✓ src/workspace/lifecycle.test.ts (11 tests) 14ms
+@pepbits/shell:test:  ✓ src/workspace/target-document.test.ts (10 tests) 10ms
+@pepbits/shell:test:  ✓ src/workspace/policy.test.ts (15 tests) 10ms
+@pepbits/shell:test:  ✓ src/workspace/document-key.test.ts (9 tests) 9ms
+@pepbits/shell:test:  ✓ src/shortcuts.test.ts (10 tests) 7ms
+@pepbits/shell:test: 
+@pepbits/shell:test:  Test Files  37 passed (37)
+@pepbits/shell:test:       Tests  404 passed (404)
+@pepbits/shell:test:    Start at  11:26:57
+@pepbits/shell:test:    Duration  38.41s (transform 2.43s, setup 5.58s, collect 12.19s, tests 22.11s, environment 19.92s, prepare 3.23s)
+@pepbits/shell:test: 
+@pepbits/ai:typecheck: cache bypass, force executing 672cc25a426aaac3
+@pepbits/ai:typecheck: 
+@pepbits/ai:typecheck: > @pepbits/ai@0.0.0 typecheck
+@pepbits/ai:typecheck: > tsc --noEmit -p .
+@pepbits/ai:typecheck: 
+@pepbits-demo/healthcare:typecheck: cache bypass, force executing d528665d36500b4f
+@pepbits-demo/healthcare:typecheck: 
+@pepbits-demo/healthcare:typecheck: > @pepbits-demo/healthcare@0.0.0 typecheck
+@pepbits-demo/healthcare:typecheck: > tsc --noEmit
+@pepbits-demo/healthcare:typecheck: 
+@pepbits-demo/healthcare:test: cache bypass, force executing 8fda855345215b88
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: > @pepbits-demo/healthcare@0.0.0 test
+@pepbits-demo/healthcare:test: > vitest run
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'default' > 'reference-ris1-dashboard' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'default' > 'reference-ris1-dashboard' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'default' > 'reference-ris1-analytics' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'default' > 'reference-ris1-analytics' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-dashboard' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-dashboard' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-analytics' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-analytics' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'reduced motion' > 'reference-ris1-dashboard' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'reduced motion' > 'reference-ris1-dashboard' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'reduced motion' > 'reference-ris1-analytics' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'reduced motion' > 'reference-ris1-analytics' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'locked density' > 'reference-ris1-dashboard' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'locked density' > 'reference-ris1-dashboard' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'locked density' > 'reference-ris1-analytics' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test: stderr | src/routes.test.tsx > 'locked density' > 'reference-ris1-analytics' renders API data and page content passes axe
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: The width(0) and height(0) of chart should be greater than 0,
+@pepbits-demo/healthcare:test:        please check the style of container, or the props width(100%) and height(100%),
+@pepbits-demo/healthcare:test:        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+@pepbits-demo/healthcare:test:        height and width.
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test:  ✓ src/routes.test.tsx (484 tests) 260352ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-dashboard' renders API data and page content passes axe  1176ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-workbench' renders API data and page content passes axe  594ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-counter' renders API data and page content passes axe  724ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-orders' renders API data and page content passes axe  723ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-sales' renders API data and page content passes axe  965ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-inventory' renders API data and page content passes axe  2252ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-purchasing' renders API data and page content passes axe  765ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-authorizations' renders API data and page content passes axe  696ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-claims' renders API data and page content passes axe  1017ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-remittance' renders API data and page content passes axe  1425ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-patients' renders API data and page content passes axe  1067ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-audit' renders API data and page content passes axe  685ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'pharmacy-settings' renders API data and page content passes axe  556ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-dashboard' renders API data and page content passes axe  379ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-accession' renders API data and page content passes axe  386ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-automation' renders API data and page content passes axe  429ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-automation-routing' renders API data and page content passes axe  476ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-billing' renders API data and page content passes axe  348ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-collection' renders API data and page content passes axe  313ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-criticals' renders API data and page content passes axe  318ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-integration' renders API data and page content passes axe  349ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-integration-docs' renders API data and page content passes axe  328ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-masters' renders API data and page content passes axe  387ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-orders' renders API data and page content passes axe  386ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-orders-new' renders API data and page content passes axe  525ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-outsource' renders API data and page content passes axe  338ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-patients' renders API data and page content passes axe  354ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-reports' renders API data and page content passes axe  381ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-results' renders API data and page content passes axe  422ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-samples' renders API data and page content passes axe  366ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-users' renders API data and page content passes axe  344ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis1-validation' renders API data and page content passes axe  378ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-dashboard' renders API data and page content passes axe  473ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-accession' renders API data and page content passes axe  391ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-billing' renders API data and page content passes axe  425ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-collection' renders API data and page content passes axe  404ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-critical' renders API data and page content passes axe  369ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-integration-console' renders API data and page content passes axe  400ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe  472ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-integration-messages' renders API data and page content passes axe  450ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-integration-outbox' renders API data and page content passes axe  423ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-inventory' renders API data and page content passes axe  535ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-masters' renders API data and page content passes axe  411ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-orders' renders API data and page content passes axe  442ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-orders-new' renders API data and page content passes axe  525ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-outsource' renders API data and page content passes axe  357ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-patients' renders API data and page content passes axe  401ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-report-designer' renders API data and page content passes axe  540ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-reports' renders API data and page content passes axe  572ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-samples' renders API data and page content passes axe  510ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-settings' renders API data and page content passes axe  424ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-signing' renders API data and page content passes axe  477ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-tat' renders API data and page content passes axe  441ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-lis2-worklist' renders API data and page content passes axe  492ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-dashboard' renders API data and page content passes axe  473ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-analytics' renders API data and page content passes axe  450ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-audit' renders API data and page content passes axe  856ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-billing' renders API data and page content passes axe  1926ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-critical' renders API data and page content passes axe  334ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-integration' renders API data and page content passes axe  377ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-masters' renders API data and page content passes axe  481ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-orders' renders API data and page content passes axe  1546ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-pacs' renders API data and page content passes axe  889ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-patients' renders API data and page content passes axe  614ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-reading' renders API data and page content passes axe  542ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-reception' renders API data and page content passes axe  533ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-schedule' renders API data and page content passes axe  556ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'reference-ris1-technologist' renders API data and page content passes axe  491ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-dashboard' renders API data and page content passes axe  445ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-patients' renders API data and page content passes axe  791ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-appointments' renders API data and page content passes axe  1085ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-encounters' renders API data and page content passes axe  425ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-approvals' renders API data and page content passes axe  402ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-hospital-billing' renders API data and page content passes axe  352ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-pharmacy-billing' renders API data and page content passes axe  377ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-invoices' renders API data and page content passes axe  377ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-contracts' renders API data and page content passes axe  905ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-facilities' renders API data and page content passes axe  377ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-departments' renders API data and page content passes axe  397ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-specialties' renders API data and page content passes axe  350ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-providers' renders API data and page content passes axe  361ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-payers' renders API data and page content passes axe  361ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-tpas' renders API data and page content passes axe  367ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-insurance-plans' renders API data and page content passes axe  364ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-networks' renders API data and page content passes axe  353ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-price-lists' renders API data and page content passes axe  372ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-items' renders API data and page content passes axe  384ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-services' renders API data and page content passes axe  382ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-resources' renders API data and page content passes axe  396ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-resource-schedules' renders API data and page content passes axe  386ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'suite-master-resource-blocks' renders API data and page content passes axe  370ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'patient-query' renders API data and page content passes axe  405ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'patient-record' renders API data and page content passes axe  860ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'patient-360' renders API data and page content passes axe  304ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'clinical-triage' renders API data and page content passes axe  379ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'clinical-consultation' renders API data and page content passes axe  345ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'op-consultation' renders API data and page content passes axe  320ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'comprehensive-consultation' renders API data and page content passes axe  310ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'op-registration' renders API data and page content passes axe  458ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'clinic-billing' renders API data and page content passes axe  320ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'emergency-registration' renders API data and page content passes axe  463ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'inpatient-admission' renders API data and page content passes axe  441ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'consultation-entry-design' renders API data and page content passes axe  655ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'consultation-entry-v2' renders API data and page content passes axe  648ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > 'preferences' renders API data and page content passes axe  974ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis1/orders/1' renders API data and page content passes axe  395ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis1/masters/tests' renders API data and page content passes axe  638ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis1/billing/1' renders API data and page content passes axe  340ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis1/reports/1' renders API data and page content passes axe  484ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis2/orders/1' renders API data and page content passes axe  368ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis2/masters/tests' renders API data and page content passes axe  754ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis2/patients/1' renders API data and page content passes axe  399ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis2/results/sample/1' renders API data and page content passes axe  561ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis2/print/order/1' renders API data and page content passes axe  367ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/lis2/print/labels?ids=1' renders API data and page content passes axe  392ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/ris1/patients/25' renders API data and page content passes axe  357ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/ris1/orders/1' renders API data and page content passes axe  483ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/ris1/reading/1' renders API data and page content passes axe  617ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/ris1/print/report/1' renders API data and page content passes axe  387ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/ris1/print/invoice/1' renders API data and page content passes axe  458ms
+@pepbits-demo/healthcare:test:    ✓ 'default' > '/ris1/viewer/999' renders API data and page content passes axe  528ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-dashboard' renders API data and page content passes axe  1575ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-workbench' renders API data and page content passes axe  674ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-counter' renders API data and page content passes axe  753ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-orders' renders API data and page content passes axe  761ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-sales' renders API data and page content passes axe  898ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-inventory' renders API data and page content passes axe  1256ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-purchasing' renders API data and page content passes axe  671ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-authorizations' renders API data and page content passes axe  579ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-claims' renders API data and page content passes axe  895ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-remittance' renders API data and page content passes axe  1114ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-patients' renders API data and page content passes axe  975ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-audit' renders API data and page content passes axe  626ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'pharmacy-settings' renders API data and page content passes axe  527ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-dashboard' renders API data and page content passes axe  349ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-accession' renders API data and page content passes axe  365ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-automation' renders API data and page content passes axe  414ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-automation-routing' renders API data and page content passes axe  507ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-billing' renders API data and page content passes axe  403ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-collection' renders API data and page content passes axe  366ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-criticals' renders API data and page content passes axe  329ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-integration' renders API data and page content passes axe  370ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-integration-docs' renders API data and page content passes axe  307ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-masters' renders API data and page content passes axe  388ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-orders' renders API data and page content passes axe  369ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-orders-new' renders API data and page content passes axe  540ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-outsource' renders API data and page content passes axe  330ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-patients' renders API data and page content passes axe  476ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-reports' renders API data and page content passes axe  340ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-results' renders API data and page content passes axe  385ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-samples' renders API data and page content passes axe  360ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-users' renders API data and page content passes axe  339ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis1-validation' renders API data and page content passes axe  328ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-dashboard' renders API data and page content passes axe  425ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-accession' renders API data and page content passes axe  401ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-billing' renders API data and page content passes axe  402ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-collection' renders API data and page content passes axe  397ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-critical' renders API data and page content passes axe  366ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-integration-console' renders API data and page content passes axe  372ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe  379ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-integration-messages' renders API data and page content passes axe  427ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-integration-outbox' renders API data and page content passes axe  388ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-inventory' renders API data and page content passes axe  566ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-masters' renders API data and page content passes axe  383ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-orders' renders API data and page content passes axe  410ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-orders-new' renders API data and page content passes axe  528ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-outsource' renders API data and page content passes axe  349ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-patients' renders API data and page content passes axe  369ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-report-designer' renders API data and page content passes axe  455ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-reports' renders API data and page content passes axe  424ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-samples' renders API data and page content passes axe  433ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-settings' renders API data and page content passes axe  343ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-signing' renders API data and page content passes axe  431ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-tat' renders API data and page content passes axe  456ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-lis2-worklist' renders API data and page content passes axe  505ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-dashboard' renders API data and page content passes axe  505ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-analytics' renders API data and page content passes axe  453ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-audit' renders API data and page content passes axe  823ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-billing' renders API data and page content passes axe  2000ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-critical' renders API data and page content passes axe  346ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-integration' renders API data and page content passes axe  415ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-masters' renders API data and page content passes axe  495ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-orders' renders API data and page content passes axe  1703ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-pacs' renders API data and page content passes axe  745ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-patients' renders API data and page content passes axe  560ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-reading' renders API data and page content passes axe  498ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-reception' renders API data and page content passes axe  483ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-schedule' renders API data and page content passes axe  514ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'reference-ris1-technologist' renders API data and page content passes axe  493ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-dashboard' renders API data and page content passes axe  469ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-patients' renders API data and page content passes axe  576ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-appointments' renders API data and page content passes axe  1017ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-encounters' renders API data and page content passes axe  409ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-approvals' renders API data and page content passes axe  378ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-hospital-billing' renders API data and page content passes axe  329ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-pharmacy-billing' renders API data and page content passes axe  343ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-invoices' renders API data and page content passes axe  385ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-contracts' renders API data and page content passes axe  835ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-facilities' renders API data and page content passes axe  388ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-departments' renders API data and page content passes axe  381ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-specialties' renders API data and page content passes axe  367ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-providers' renders API data and page content passes axe  416ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-payers' renders API data and page content passes axe  403ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-tpas' renders API data and page content passes axe  386ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-insurance-plans' renders API data and page content passes axe  396ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-networks' renders API data and page content passes axe  375ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-price-lists' renders API data and page content passes axe  386ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-items' renders API data and page content passes axe  385ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-services' renders API data and page content passes axe  407ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-resources' renders API data and page content passes axe  398ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-resource-schedules' renders API data and page content passes axe  381ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'suite-master-resource-blocks' renders API data and page content passes axe  581ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'patient-query' renders API data and page content passes axe  424ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'patient-record' renders API data and page content passes axe  913ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'patient-360' renders API data and page content passes axe  348ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'clinical-triage' renders API data and page content passes axe  326ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'clinical-consultation' renders API data and page content passes axe  306ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'op-consultation' renders API data and page content passes axe  328ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'comprehensive-consultation' renders API data and page content passes axe  347ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'op-registration' renders API data and page content passes axe  495ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'clinic-billing' renders API data and page content passes axe  324ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'emergency-registration' renders API data and page content passes axe  472ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'inpatient-admission' renders API data and page content passes axe  448ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'consultation-entry-design' renders API data and page content passes axe  668ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'consultation-entry-v2' renders API data and page content passes axe  697ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > 'preferences' renders API data and page content passes axe  1002ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis1/orders/1' renders API data and page content passes axe  391ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis1/masters/tests' renders API data and page content passes axe  642ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis1/billing/1' renders API data and page content passes axe  368ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis1/reports/1' renders API data and page content passes axe  460ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis2/orders/1' renders API data and page content passes axe  433ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis2/masters/tests' renders API data and page content passes axe  695ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis2/patients/1' renders API data and page content passes axe  436ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis2/results/sample/1' renders API data and page content passes axe  703ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis2/print/order/1' renders API data and page content passes axe  409ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/lis2/print/labels?ids=1' renders API data and page content passes axe  750ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/ris1/patients/25' renders API data and page content passes axe  991ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/ris1/orders/1' renders API data and page content passes axe  1172ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/ris1/reading/1' renders API data and page content passes axe  934ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/ris1/print/report/1' renders API data and page content passes axe  458ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/ris1/print/invoice/1' renders API data and page content passes axe  623ms
+@pepbits-demo/healthcare:test:    ✓ 'Arabic RTL' > '/ris1/viewer/999' renders API data and page content passes axe  447ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-dashboard' renders API data and page content passes axe  1010ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-workbench' renders API data and page content passes axe  608ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-counter' renders API data and page content passes axe  733ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-orders' renders API data and page content passes axe  696ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-sales' renders API data and page content passes axe  1289ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-inventory' renders API data and page content passes axe  1268ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-purchasing' renders API data and page content passes axe  688ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-authorizations' renders API data and page content passes axe  697ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-claims' renders API data and page content passes axe  892ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-remittance' renders API data and page content passes axe  1097ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-patients' renders API data and page content passes axe  980ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-audit' renders API data and page content passes axe  668ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'pharmacy-settings' renders API data and page content passes axe  555ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-dashboard' renders API data and page content passes axe  364ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-accession' renders API data and page content passes axe  380ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-automation' renders API data and page content passes axe  415ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-automation-routing' renders API data and page content passes axe  453ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-billing' renders API data and page content passes axe  357ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-criticals' renders API data and page content passes axe  336ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-integration' renders API data and page content passes axe  383ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-integration-docs' renders API data and page content passes axe  327ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-masters' renders API data and page content passes axe  429ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-orders' renders API data and page content passes axe  433ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-orders-new' renders API data and page content passes axe  613ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-outsource' renders API data and page content passes axe  370ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-patients' renders API data and page content passes axe  357ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-reports' renders API data and page content passes axe  335ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-results' renders API data and page content passes axe  411ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-samples' renders API data and page content passes axe  369ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-users' renders API data and page content passes axe  332ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis1-validation' renders API data and page content passes axe  349ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-dashboard' renders API data and page content passes axe  457ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-accession' renders API data and page content passes axe  416ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-billing' renders API data and page content passes axe  420ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-collection' renders API data and page content passes axe  426ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-critical' renders API data and page content passes axe  387ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-integration-console' renders API data and page content passes axe  426ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe  464ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-integration-messages' renders API data and page content passes axe  492ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-integration-outbox' renders API data and page content passes axe  430ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-inventory' renders API data and page content passes axe  563ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-masters' renders API data and page content passes axe  377ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-orders' renders API data and page content passes axe  481ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-orders-new' renders API data and page content passes axe  812ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-outsource' renders API data and page content passes axe  355ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-patients' renders API data and page content passes axe  392ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-report-designer' renders API data and page content passes axe  515ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-reports' renders API data and page content passes axe  447ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-samples' renders API data and page content passes axe  493ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-settings' renders API data and page content passes axe  408ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-signing' renders API data and page content passes axe  477ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-tat' renders API data and page content passes axe  493ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-lis2-worklist' renders API data and page content passes axe  586ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-dashboard' renders API data and page content passes axe  527ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-analytics' renders API data and page content passes axe  490ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-audit' renders API data and page content passes axe  909ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-billing' renders API data and page content passes axe  2186ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-critical' renders API data and page content passes axe  340ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-integration' renders API data and page content passes axe  384ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-masters' renders API data and page content passes axe  455ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-orders' renders API data and page content passes axe  1594ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-pacs' renders API data and page content passes axe  715ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-patients' renders API data and page content passes axe  525ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-reading' renders API data and page content passes axe  543ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-reception' renders API data and page content passes axe  528ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-schedule' renders API data and page content passes axe  519ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'reference-ris1-technologist' renders API data and page content passes axe  443ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-dashboard' renders API data and page content passes axe  438ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-patients' renders API data and page content passes axe  690ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-appointments' renders API data and page content passes axe  1075ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-encounters' renders API data and page content passes axe  412ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-approvals' renders API data and page content passes axe  384ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-hospital-billing' renders API data and page content passes axe  352ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-pharmacy-billing' renders API data and page content passes axe  347ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-invoices' renders API data and page content passes axe  411ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-contracts' renders API data and page content passes axe  996ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-facilities' renders API data and page content passes axe  421ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-departments' renders API data and page content passes axe  431ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-specialties' renders API data and page content passes axe  399ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-providers' renders API data and page content passes axe  395ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-payers' renders API data and page content passes axe  435ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-tpas' renders API data and page content passes axe  409ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-insurance-plans' renders API data and page content passes axe  415ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-networks' renders API data and page content passes axe  761ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-price-lists' renders API data and page content passes axe  432ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-items' renders API data and page content passes axe  412ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-services' renders API data and page content passes axe  396ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-resources' renders API data and page content passes axe  399ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-resource-schedules' renders API data and page content passes axe  388ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'suite-master-resource-blocks' renders API data and page content passes axe  395ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'patient-query' renders API data and page content passes axe  440ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'patient-record' renders API data and page content passes axe  918ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'patient-360' renders API data and page content passes axe  345ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'clinical-triage' renders API data and page content passes axe  306ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'clinical-consultation' renders API data and page content passes axe  320ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'op-consultation' renders API data and page content passes axe  331ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'comprehensive-consultation' renders API data and page content passes axe  333ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'op-registration' renders API data and page content passes axe  452ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'clinic-billing' renders API data and page content passes axe  371ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'emergency-registration' renders API data and page content passes axe  543ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'inpatient-admission' renders API data and page content passes axe  690ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'consultation-entry-design' renders API data and page content passes axe  1219ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'consultation-entry-v2' renders API data and page content passes axe  960ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > 'preferences' renders API data and page content passes axe  1206ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis1/orders/1' renders API data and page content passes axe  447ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis1/masters/tests' renders API data and page content passes axe  788ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis1/billing/1' renders API data and page content passes axe  439ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis1/reports/1' renders API data and page content passes axe  535ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis2/orders/1' renders API data and page content passes axe  478ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis2/masters/tests' renders API data and page content passes axe  723ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis2/patients/1' renders API data and page content passes axe  399ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis2/results/sample/1' renders API data and page content passes axe  578ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis2/print/order/1' renders API data and page content passes axe  396ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/lis2/print/labels?ids=1' renders API data and page content passes axe  388ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/ris1/patients/25' renders API data and page content passes axe  368ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/ris1/orders/1' renders API data and page content passes axe  496ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/ris1/reading/1' renders API data and page content passes axe  610ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/ris1/print/report/1' renders API data and page content passes axe  343ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/ris1/print/invoice/1' renders API data and page content passes axe  369ms
+@pepbits-demo/healthcare:test:    ✓ 'reduced motion' > '/ris1/viewer/999' renders API data and page content passes axe  364ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-dashboard' renders API data and page content passes axe  794ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-workbench' renders API data and page content passes axe  496ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-counter' renders API data and page content passes axe  661ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-orders' renders API data and page content passes axe  618ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-sales' renders API data and page content passes axe  799ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-inventory' renders API data and page content passes axe  1148ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-purchasing' renders API data and page content passes axe  653ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-authorizations' renders API data and page content passes axe  623ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-claims' renders API data and page content passes axe  1207ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-remittance' renders API data and page content passes axe  1025ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-patients' renders API data and page content passes axe  968ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-audit' renders API data and page content passes axe  635ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'pharmacy-settings' renders API data and page content passes axe  500ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-dashboard' renders API data and page content passes axe  376ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-accession' renders API data and page content passes axe  373ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-automation' renders API data and page content passes axe  413ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-automation-routing' renders API data and page content passes axe  439ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-billing' renders API data and page content passes axe  338ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-collection' renders API data and page content passes axe  305ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-integration' renders API data and page content passes axe  343ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-integration-docs' renders API data and page content passes axe  307ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-masters' renders API data and page content passes axe  384ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-orders' renders API data and page content passes axe  366ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-orders-new' renders API data and page content passes axe  557ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-outsource' renders API data and page content passes axe  332ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-patients' renders API data and page content passes axe  365ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-reports' renders API data and page content passes axe  311ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-results' renders API data and page content passes axe  407ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-samples' renders API data and page content passes axe  351ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-users' renders API data and page content passes axe  339ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis1-validation' renders API data and page content passes axe  369ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-dashboard' renders API data and page content passes axe  414ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-accession' renders API data and page content passes axe  394ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-billing' renders API data and page content passes axe  438ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-collection' renders API data and page content passes axe  404ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-critical' renders API data and page content passes axe  342ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-integration-console' renders API data and page content passes axe  398ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe  386ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-integration-messages' renders API data and page content passes axe  435ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-integration-outbox' renders API data and page content passes axe  410ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-inventory' renders API data and page content passes axe  526ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-masters' renders API data and page content passes axe  412ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-orders' renders API data and page content passes axe  467ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-orders-new' renders API data and page content passes axe  564ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-outsource' renders API data and page content passes axe  324ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-patients' renders API data and page content passes axe  381ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-report-designer' renders API data and page content passes axe  472ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-reports' renders API data and page content passes axe  413ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-samples' renders API data and page content passes axe  456ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-settings' renders API data and page content passes axe  370ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-signing' renders API data and page content passes axe  459ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-tat' renders API data and page content passes axe  488ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-lis2-worklist' renders API data and page content passes axe  569ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-dashboard' renders API data and page content passes axe  440ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-analytics' renders API data and page content passes axe  468ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-audit' renders API data and page content passes axe  822ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-billing' renders API data and page content passes axe  1857ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-critical' renders API data and page content passes axe  718ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-integration' renders API data and page content passes axe  393ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-masters' renders API data and page content passes axe  481ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-orders' renders API data and page content passes axe  1722ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-pacs' renders API data and page content passes axe  760ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-patients' renders API data and page content passes axe  572ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-reading' renders API data and page content passes axe  553ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-reception' renders API data and page content passes axe  500ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-schedule' renders API data and page content passes axe  544ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'reference-ris1-technologist' renders API data and page content passes axe  460ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-dashboard' renders API data and page content passes axe  454ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-patients' renders API data and page content passes axe  603ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-appointments' renders API data and page content passes axe  1056ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-encounters' renders API data and page content passes axe  420ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-approvals' renders API data and page content passes axe  365ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-hospital-billing' renders API data and page content passes axe  330ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-pharmacy-billing' renders API data and page content passes axe  355ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-invoices' renders API data and page content passes axe  375ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-contracts' renders API data and page content passes axe  940ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-facilities' renders API data and page content passes axe  435ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-departments' renders API data and page content passes axe  408ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-specialties' renders API data and page content passes axe  407ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-providers' renders API data and page content passes axe  382ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-payers' renders API data and page content passes axe  391ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-tpas' renders API data and page content passes axe  352ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-insurance-plans' renders API data and page content passes axe  394ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-networks' renders API data and page content passes axe  397ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-price-lists' renders API data and page content passes axe  381ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-items' renders API data and page content passes axe  413ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-services' renders API data and page content passes axe  396ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-resources' renders API data and page content passes axe  427ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-resource-schedules' renders API data and page content passes axe  433ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'suite-master-resource-blocks' renders API data and page content passes axe  434ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'patient-query' renders API data and page content passes axe  505ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'patient-record' renders API data and page content passes axe  1352ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'patient-360' renders API data and page content passes axe  667ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'clinical-triage' renders API data and page content passes axe  398ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'clinical-consultation' renders API data and page content passes axe  387ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'op-consultation' renders API data and page content passes axe  389ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'comprehensive-consultation' renders API data and page content passes axe  362ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'op-registration' renders API data and page content passes axe  574ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'clinic-billing' renders API data and page content passes axe  388ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'emergency-registration' renders API data and page content passes axe  527ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'inpatient-admission' renders API data and page content passes axe  575ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'consultation-entry-design' renders API data and page content passes axe  867ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'consultation-entry-v2' renders API data and page content passes axe  796ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > 'preferences' renders API data and page content passes axe  1013ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis1/orders/1' renders API data and page content passes axe  438ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis1/masters/tests' renders API data and page content passes axe  699ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis1/billing/1' renders API data and page content passes axe  377ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis1/reports/1' renders API data and page content passes axe  464ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis2/orders/1' renders API data and page content passes axe  418ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis2/masters/tests' renders API data and page content passes axe  785ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis2/patients/1' renders API data and page content passes axe  433ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis2/results/sample/1' renders API data and page content passes axe  976ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis2/print/order/1' renders API data and page content passes axe  370ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/lis2/print/labels?ids=1' renders API data and page content passes axe  402ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/ris1/patients/25' renders API data and page content passes axe  347ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/ris1/orders/1' renders API data and page content passes axe  466ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/ris1/reading/1' renders API data and page content passes axe  626ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/ris1/print/report/1' renders API data and page content passes axe  343ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/ris1/print/invoice/1' renders API data and page content passes axe  393ms
+@pepbits-demo/healthcare:test:    ✓ 'locked density' > '/ris1/viewer/999' renders API data and page content passes axe  364ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/clinical-templates/clinical-templates.test.tsx (7 tests) 3217ms
+@pepbits-demo/healthcare:test:    ✓ patient form preserves edits through section changes and retries with the same operation  1185ms
+@pepbits-demo/healthcare:test:    ✓ scope remounts cannot retain another user patient edits  440ms
+@pepbits-demo/healthcare:test:    ✓ New patient resets a saved record in a reused new-record tab  605ms
+@pepbits-demo/healthcare:test:    ✓ empty contact editors do not create rows until edited and retain focus while typing  541ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/clinical-templates/query.test.tsx (11 tests) 2574ms
+@pepbits-demo/healthcare:test:    ✓ query waits for criteria and preserves filters after a failed search  534ms
+@pepbits-demo/healthcare:test:    ✓ infinite results use twenty-record requests, preserve loaded rows and retain a keyboard load action  344ms
+@pepbits-demo/healthcare:test:    ✓ reaching the result sentinel requests the next cursor page  335ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/pharmacy/module.test.tsx (14 tests) 2040ms
+@pepbits-demo/healthcare:test:    ✓ ReferencePharmacyModule host contract > searches the palette through the host transport and routes through the host navigator  324ms
+@pepbits-demo/healthcare:test:    ✓ managed presentation and mounted edits > updates table presentation and the audit request page size from the effective host snapshot  307ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/pharmacy/pages.test.tsx (18 tests) 2034ms
+@pepbits-demo/healthcare:test:    ✓ workbench through the host > opens the prescription named in the query and a workflow action posts once with an idempotency key, then follows the Rx to its new stage  364ms
+@pepbits-demo/healthcare:test:  ✓ src/providers.test.tsx (4 tests) 1313ms
+@pepbits-demo/healthcare:test:    ✓ one serialized preference path retains adjacent writes and API revisions  416ms
+@pepbits-demo/healthcare:test:    ✓ language catalog refresh preserves the mounted editor  341ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/diagnostics/behavior.test.tsx (5 tests) 1012ms
+@pepbits-demo/healthcare:test:    ✓ lis1 patient editor retains values after a failed save and retries through HTTP  492ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/clinic-billing/workspace.test.tsx (5 tests) 1062ms
+@pepbits-demo/healthcare:test:    ✓ managed layouts update without losing input; failed requests retry the exact operation  399ms
+@pepbits-demo/healthcare:test:    ✓ bill correction retains input and operation identity on failure; read-only view can return  458ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/suite/master-page.test.tsx (1 test) 695ms
+@pepbits-demo/healthcare:test:    ✓ configured master creation preserves fields on failure and navigates only after API acknowledgement  693ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/care-pages/workspace.test.tsx (3 tests) 878ms
+@pepbits-demo/healthcare:test:    ✓ failed saves keep notes and retry the identical operation; selectors cannot discard dirty inputs  531ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/clinical-consultation/workspace.test.tsx (3 tests) 850ms
+@pepbits-demo/healthcare:test:    ✓ completion requires explicit clinical fields and focuses the first missing field  315ms
+@pepbits-demo/healthcare:test:    ✓ expanded panels retain values and validation opens a hidden invalid vital  324ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/op-registration/workspace.test.tsx (4 tests) 644ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/suite/preferences.test.tsx (9 tests) 697ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/clinical-triage/editor.test.tsx (3 tests) 666ms
+@pepbits-demo/healthcare:test:    ✓ blank readings and unanswered safety choices; completion focuses required complaint  329ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/comprehensive-consultation/workspace.test.tsx (1 test) 487ms
+@pepbits-demo/healthcare:test:    ✓ specialty edits survive context and tenant-locked layout changes; preview never saves  486ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/op-consultation/workspace.test.tsx (1 test) 434ms
+@pepbits-demo/healthcare:test:    ✓ OP summary navigates fields; locked layout and review retain unsaved values  433ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/diagnostics/client.test.tsx (4 tests) 275ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/pharmacy/copy.test.ts (4 tests) 210ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/clinical-templates/query-search.test.tsx (2 tests) 247ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/suite/adapter.test.tsx (8 tests) 195ms
+@pepbits-demo/healthcare:test:  ✓ src/navigation.test.ts (35 tests) 53ms
+@pepbits-demo/healthcare:test:  ✓ src/adapters/http-adapters.test.ts (43 tests) 42ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/pharmacy/useAction.test.tsx (1 test) 29ms
+@pepbits-demo/healthcare:test:  ✓ src/adapters/pharmacy.test.ts (9 tests) 21ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/pharmacy/api.test.ts (12 tests) 25ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/pharmacy/styles.test.ts (9 tests) 19ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/pharmacy/routes.test.ts (5 tests) 9ms
+@pepbits-demo/healthcare:test:  ✓ src/adapters/diagnostics.test.ts (10 tests) 17ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/clinical-templates/overview-data.test.ts (1 test) 12ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/pharmacy/theme.test.ts (4 tests) 7ms
+@pepbits-demo/healthcare:test:  ✓ src/modules/clinical-templates/record-age.test.ts (1 test) 5ms
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:test:  Test Files  31 passed (31)
+@pepbits-demo/healthcare:test:       Tests  721 passed (721)
+@pepbits-demo/healthcare:test:    Start at  11:27:48
+@pepbits-demo/healthcare:test:    Duration  329.24s (transform 5.31s, setup 4.69s, collect 14.18s, tests 280.12s, environment 16.26s, prepare 2.59s)
+@pepbits-demo/healthcare:test: 
+@pepbits-demo/healthcare:build: cache bypass, force executing 7749f0e3e4c481c4
+@pepbits-demo/healthcare:build: 
+@pepbits-demo/healthcare:build: > @pepbits-demo/healthcare@0.0.0 build
+@pepbits-demo/healthcare:build: > next build --webpack
+@pepbits-demo/healthcare:build: 
+@pepbits-demo/healthcare:build: ▲ Next.js 16.3.3 (webpack)
+@pepbits-demo/healthcare:build: - Environments: .env.local
+@pepbits-demo/healthcare:build: ✓ Running next.config.ts took 39ms
+@pepbits-demo/healthcare:build: - Experiments (use with caution):
+@pepbits-demo/healthcare:build:   · cpus: 2
+@pepbits-demo/healthcare:build: 
+@pepbits-demo/healthcare:build:   Creating an optimized production build ...
+@pepbits-demo/healthcare:build: ✓ Compiled successfully in 17.6s
+@pepbits-demo/healthcare:build:   Running TypeScript ...
+@pepbits-demo/healthcare:build:   Finished TypeScript in 4.9s ...
+@pepbits-demo/healthcare:build:   Collecting page data using 2 workers ...
+@pepbits-demo/healthcare:build:   Generating static pages using 2 workers (0/2) ...
+@pepbits-demo/healthcare:build: ✓ Generating static pages using 2 workers (2/2) in 651ms
+@pepbits-demo/healthcare:build:   Finalizing page optimization ...
+@pepbits-demo/healthcare:build:   Collecting build traces ...
+@pepbits-demo/healthcare:build: 
+@pepbits-demo/healthcare:build: Route (app)
+@pepbits-demo/healthcare:build: ┌ ○ /_not-found
+@pepbits-demo/healthcare:build: ├ ƒ /[[...path]]
+@pepbits-demo/healthcare:build: └ ƒ /api/[...segments]
+@pepbits-demo/healthcare:build: 
+@pepbits-demo/healthcare:build: 
+@pepbits-demo/healthcare:build: ○  (Static)   prerendered as static content
+@pepbits-demo/healthcare:build: ƒ  (Dynamic)  server-rendered on demand
+@pepbits-demo/healthcare:build: 
+@pepbits/ai:test: cache bypass, force executing 7e66db5f9fd2d750
+@pepbits/ai:test: 
+@pepbits/ai:test: > @pepbits/ai@0.0.0 test
+@pepbits/ai:test: > vitest run
+@pepbits/ai:test: 
+@pepbits/ai:test: 
+@pepbits/ai:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/packages/ai
+@pepbits/ai:test: 
+@pepbits/ai:test:  ✓ src/client/transport.test.ts (24 tests) 1788ms
+@pepbits/ai:test:    ✓ the echo transport > no credential configured falls back to the mock  352ms
+@pepbits/ai:test:    ✓ the echo transport > an unreachable service falls back to the mock  351ms
+@pepbits/ai:test:    ✓ the echo transport > the mock says nothing left the browser, and lists what would have  352ms
+@pepbits/ai:test:    ✓ the echo transport > the mock shows the redacted value, not the original  352ms
+@pepbits/ai:test:    ✓ explicit echo transport answers without calling the request port  353ms
+@pepbits/ai:test:  ✓ src/ui/administration.test.tsx (20 tests) 1761ms
+@pepbits/ai:test:  ✓ src/ui/modes.test.tsx (34 tests) 958ms
+@pepbits/ai:test:  ✓ src/ui/transparency.test.tsx (30 tests) 829ms
+@pepbits/ai:test:  ✓ src/gates/verify-ai-modes.test.tsx (26 tests) 391ms
+@pepbits/ai:test:  ✓ src/ui/shell-extension.test.tsx (4 tests) 710ms
+@pepbits/ai:test:    ✓ ScreenHost publishes and retracts sources, renders InlineAiAction, and the help slot mounts the panel  312ms
+@pepbits/ai:test:    ✓ the actual record form publishes edited values and renders the inline extension  345ms
+@pepbits/ai:test:  ✓ src/client/sources.test.tsx (10 tests) 98ms
+@pepbits/ai:test:  ✓ src/ui/use-assistant.test.tsx (24 tests) 276ms
+@pepbits/ai:test:  ✓ src/client/policy.test.ts (11 tests) 21ms
+@pepbits/ai:test:  ✓ src/client/redact.test.ts (157 tests) 30ms
+@pepbits/ai:test:  ✓ src/client/admin.test.ts (11 tests) 17ms
+@pepbits/ai:test:  ✓ src/gates/verify-ai-limits.test.ts (5 tests) 16ms
+@pepbits/ai:test:  ✓ src/client/assemble.test.ts (19 tests) 17ms
+@pepbits/ai:test:  ✓ src/gates/check-ai-limits-isolated.test.ts (1 test) 11ms
+@pepbits/ai:test:  ✓ src/gates/verify-ai-egress.test.mjs (121 tests) 16ms
+@pepbits/ai:test:  ✓ src/config/gates.test.ts (22 tests) 13ms
+@pepbits/ai:test:  ✓ src/gates/verify-ai-gates.test.mjs (20 tests) 9ms
+@pepbits/ai:test:  ✓ src/gates/verify-ai-credential.test.ts (3 tests) 11ms
+@pepbits/ai:test:  ✓ src/config/policy.test.ts (13 tests) 9ms
+@pepbits/ai:test:  ✓ src/client/guard.test.ts (9 tests) 7ms
+@pepbits/ai:test:  ✓ src/gates/verify-ai-context.test.mjs (18 tests) 8ms
+@pepbits/ai:test:  ✓ src/gates/verify-ai-hardening.test.ts (5 tests) 6ms
+@pepbits/ai:test: 
+@pepbits/ai:test:  Test Files  22 passed (22)
+@pepbits/ai:test:       Tests  587 passed (587)
+@pepbits/ai:test:    Start at  11:34:01
+@pepbits/ai:test:    Duration  20.48s (transform 2.41s, setup 3.52s, collect 7.22s, tests 7.00s, environment 12.59s, prepare 2.11s)
+@pepbits/ai:test: 
+@pepbits-demo/showcase:typecheck: cache bypass, force executing 00037715b4b3c753
+@pepbits-demo/showcase:typecheck: 
+@pepbits-demo/showcase:typecheck: > @pepbits-demo/showcase@0.0.0 typecheck
+@pepbits-demo/showcase:typecheck: > node scripts/generate-snippets.mjs && tsc --noEmit
+@pepbits-demo/showcase:typecheck: 
+@pepbits-demo/showcase:typecheck: Generated 61 source-identical examples
+@pepbits-demo/showcase:build: cache bypass, force executing 0e36c8ba6e77dace
+@pepbits-demo/showcase:build: 
+@pepbits-demo/showcase:build: > @pepbits-demo/showcase@0.0.0 build
+@pepbits-demo/showcase:build: > node scripts/generate-snippets.mjs && next build --webpack
+@pepbits-demo/showcase:build: 
+@pepbits-demo/showcase:build: Generated 61 source-identical examples
+@pepbits-demo/showcase:build: ▲ Next.js 16.3.3 (webpack)
+@pepbits-demo/showcase:build: ✓ Running next.config.ts took 44ms
+@pepbits-demo/showcase:build: - Experiments (use with caution):
+@pepbits-demo/showcase:build:   · cpus: 2
+@pepbits-demo/showcase:build: 
+@pepbits-demo/showcase:build:   Creating an optimized production build ...
+@pepbits-demo/showcase:build: ✓ Compiled successfully in 6.2s
+@pepbits-demo/showcase:build:   Running TypeScript ...
+@pepbits-demo/showcase:build:   Finished TypeScript in 3.0s ...
+@pepbits-demo/showcase:build:   Collecting page data using 2 workers ...
+@pepbits-demo/showcase:build:   Generating static pages using 2 workers (0/11) ...
+@pepbits-demo/showcase:build:   Generating static pages using 2 workers (2/11) 
+@pepbits-demo/showcase:build:   Generating static pages using 2 workers (5/11) 
+@pepbits-demo/showcase:build:   Generating static pages using 2 workers (8/11) 
+@pepbits-demo/showcase:build: ✓ Generating static pages using 2 workers (11/11) in 1188ms
+@pepbits-demo/showcase:build:   Finalizing page optimization ...
+@pepbits-demo/showcase:build:   Collecting build traces ...
+@pepbits-demo/showcase:build: 
+@pepbits-demo/showcase:build: Route (app)
+@pepbits-demo/showcase:build: ┌ ○ /
+@pepbits-demo/showcase:build: ├ ○ /_not-found
+@pepbits-demo/showcase:build: └   /[area]
+@pepbits-demo/showcase:build:   ├ ● /foundations
+@pepbits-demo/showcase:build:   ├ ● /ui
+@pepbits-demo/showcase:build:   ├ ● /components
+@pepbits-demo/showcase:build:   └ ● [+5 more paths]
+@pepbits-demo/showcase:build: 
+@pepbits-demo/showcase:build: 
+@pepbits-demo/showcase:build: ○  (Static)  prerendered as static content
+@pepbits-demo/showcase:build: ●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+@pepbits-demo/showcase:build: 
+@pepbits-demo/showcase:test: cache bypass, force executing 2d1072a51594c9e6
+@pepbits-demo/showcase:test: 
+@pepbits-demo/showcase:test: > @pepbits-demo/showcase@0.0.0 test
+@pepbits-demo/showcase:test: > node scripts/generate-snippets.mjs && vitest run
+@pepbits-demo/showcase:test: 
+@pepbits-demo/showcase:test: Generated 61 source-identical examples
+@pepbits-demo/showcase:test: 
+@pepbits-demo/showcase:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/showcase
+@pepbits-demo/showcase:test: 
+@pepbits-demo/showcase:test:  ✓ src/gallery.test.tsx (35 tests) 38585ms
+@pepbits-demo/showcase:test:    ✓ 'default' > 'foundations' renders and passes axe  4250ms
+@pepbits-demo/showcase:test:    ✓ 'default' > 'ui' renders and passes axe  1543ms
+@pepbits-demo/showcase:test:    ✓ 'default' > 'components' renders and passes axe  1048ms
+@pepbits-demo/showcase:test:    ✓ 'default' > 'patterns' renders and passes axe  1543ms
+@pepbits-demo/showcase:test:    ✓ 'default' > 'page-engines' renders and passes axe  1085ms
+@pepbits-demo/showcase:test:    ✓ 'default' > 'playground' renders and passes axe  578ms
+@pepbits-demo/showcase:test:    ✓ 'default' > 'shell' renders and passes axe  1530ms
+@pepbits-demo/showcase:test:    ✓ 'default' > 'ai' renders and passes axe  326ms
+@pepbits-demo/showcase:test:    ✓ 'Arabic RTL' > 'foundations' renders and passes axe  1568ms
+@pepbits-demo/showcase:test:    ✓ 'Arabic RTL' > 'ui' renders and passes axe  922ms
+@pepbits-demo/showcase:test:    ✓ 'Arabic RTL' > 'components' renders and passes axe  916ms
+@pepbits-demo/showcase:test:    ✓ 'Arabic RTL' > 'patterns' renders and passes axe  1478ms
+@pepbits-demo/showcase:test:    ✓ 'Arabic RTL' > 'page-engines' renders and passes axe  986ms
+@pepbits-demo/showcase:test:    ✓ 'Arabic RTL' > 'playground' renders and passes axe  529ms
+@pepbits-demo/showcase:test:    ✓ 'Arabic RTL' > 'shell' renders and passes axe  1594ms
+@pepbits-demo/showcase:test:    ✓ 'Arabic RTL' > 'ai' renders and passes axe  319ms
+@pepbits-demo/showcase:test:    ✓ 'reduced motion' > 'foundations' renders and passes axe  1633ms
+@pepbits-demo/showcase:test:    ✓ 'reduced motion' > 'ui' renders and passes axe  1042ms
+@pepbits-demo/showcase:test:    ✓ 'reduced motion' > 'components' renders and passes axe  877ms
+@pepbits-demo/showcase:test:    ✓ 'reduced motion' > 'patterns' renders and passes axe  1362ms
+@pepbits-demo/showcase:test:    ✓ 'reduced motion' > 'page-engines' renders and passes axe  911ms
+@pepbits-demo/showcase:test:    ✓ 'reduced motion' > 'playground' renders and passes axe  518ms
+@pepbits-demo/showcase:test:    ✓ 'reduced motion' > 'shell' renders and passes axe  1568ms
+@pepbits-demo/showcase:test:    ✓ 'reduced motion' > 'ai' renders and passes axe  321ms
+@pepbits-demo/showcase:test:    ✓ 'locked density' > 'foundations' renders and passes axe  1633ms
+@pepbits-demo/showcase:test:    ✓ 'locked density' > 'ui' renders and passes axe  1052ms
+@pepbits-demo/showcase:test:    ✓ 'locked density' > 'components' renders and passes axe  906ms
+@pepbits-demo/showcase:test:    ✓ 'locked density' > 'patterns' renders and passes axe  1626ms
+@pepbits-demo/showcase:test:    ✓ 'locked density' > 'page-engines' renders and passes axe  1020ms
+@pepbits-demo/showcase:test:    ✓ 'locked density' > 'playground' renders and passes axe  533ms
+@pepbits-demo/showcase:test:    ✓ 'locked density' > 'shell' renders and passes axe  1597ms
+@pepbits-demo/showcase:test:    ✓ 'locked density' > 'ai' renders and passes axe  353ms
+@pepbits-demo/showcase:test:    ✓ live locks replace values and restricted page sizes are enforced  371ms
+@pepbits-demo/showcase:test:    ✓ record form saves fictional edits through the public memory adapter  556ms
+@pepbits-demo/showcase:test:    ✓ overlays open, label fields, and close with Escape  483ms
+@pepbits-demo/showcase:test:  ✓ src/shell-ai.test.tsx (46 tests) 32147ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > sidebar reaches 'foundations'  668ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > sidebar reaches 'ui'  497ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > sidebar reaches 'components'  553ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > sidebar reaches 'patterns'  462ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > sidebar reaches 'page-engines'  600ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > sidebar reaches 'shell'  530ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > sidebar reaches 'ai'  356ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > command palette reaches 'foundations'  423ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > command palette reaches 'ui'  546ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > command palette reaches 'components'  401ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > command palette reaches 'patterns'  643ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > command palette reaches 'page-engines'  396ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > command palette reaches 'playground'  501ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > command palette reaches 'shell'  462ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts true > command palette reaches 'ai'  470ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > sidebar reaches 'ui'  333ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > sidebar reaches 'components'  564ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > sidebar reaches 'patterns'  459ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > sidebar reaches 'page-engines'  575ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > sidebar reaches 'shell'  446ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > sidebar reaches 'ai'  364ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > command palette reaches 'ui'  497ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > command palette reaches 'components'  440ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > command palette reaches 'patterns'  586ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > command palette reaches 'page-engines'  410ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > command palette reaches 'playground'  506ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > command palette reaches 'shell'  468ms
+@pepbits-demo/showcase:test:    ✓ navigation with shortcuts false > command palette reaches 'ai'  411ms
+@pepbits-demo/showcase:test:    ✓ quick pages, keyboard toggle and browser route changes share one workspace  1287ms
+@pepbits-demo/showcase:test:    ✓ playground sidebar settings drive actual hover, click, pin, focus and live locks  830ms
+@pepbits-demo/showcase:test:    ✓ workspace examples split, reattach fictional windows and arrange MDI frames  4612ms
+@pepbits-demo/showcase:test:    ✓ documentation, help, toast and controlled session lock use shell layers  2754ms
+@pepbits-demo/showcase:test:    ✓ public login preview submits only to the controlled demo session  1310ms
+@pepbits-demo/showcase:test:    ✓ playground enables and disables AI across navigation with no network egress  1526ms
+@pepbits-demo/showcase:test:    ✓ enabled AI surfaces pass axe: 'default'  952ms
+@pepbits-demo/showcase:test:    ✓ enabled AI surfaces pass axe: 'Arabic RTL'  806ms
+@pepbits-demo/showcase:test:    ✓ enabled AI surfaces pass axe: 'reduced motion'  718ms
+@pepbits-demo/showcase:test:    ✓ enabled AI surfaces pass axe: 'locked'  699ms
+@pepbits-demo/showcase:test:    ✓ existing form remains usable with the AI extension enabled inside the workspace  415ms
+@pepbits-demo/showcase:test:    ✓ fictional record targets resolve to the catalog without duplicate gallery documents  454ms
+@pepbits-demo/showcase:test:    ✓ workspace example controls honor single-document mode and managed MDI preferences  1036ms
+@pepbits-demo/showcase:test:  ✓ src/patterns-priority3.test.tsx (5 tests) 2999ms
+@pepbits-demo/showcase:test:    ✓ spreadsheet recalculates fictional costs without a transport  706ms
+@pepbits-demo/showcase:test:    ✓ designer saves a draft and previews the same fields  993ms
+@pepbits-demo/showcase:test:    ✓ labels generate in-memory artwork for the selected record  445ms
+@pepbits-demo/showcase:test:    ✓ identity port simulation returns manual review without authentication  373ms
+@pepbits-demo/showcase:test:    ✓ device job dispatches through the simulated platform port  480ms
+@pepbits-demo/showcase:test:  ✓ src/snippets.test.ts (5 tests) 145ms
+@pepbits-demo/showcase:test:  ✓ src/adapters.test.ts (4 tests) 33ms
+@pepbits-demo/showcase:test: 
+@pepbits-demo/showcase:test:  Test Files  5 passed (5)
+@pepbits-demo/showcase:test:       Tests  95 passed (95)
+@pepbits-demo/showcase:test:    Start at  11:34:55
+@pepbits-demo/showcase:test:    Duration  88.45s (transform 3.40s, setup 827ms, collect 8.42s, tests 73.91s, environment 2.68s, prepare 437ms)
+@pepbits-demo/showcase:test: 
+
+ Tasks:    30 successful, 30 total
+Cached:    0 cached, 30 total
+  Time:    11m59.174s 
+

@@ -1,5 +1,22 @@
 # Current delivery and release records
 
+- [Healthcare phase 6b-9 — MedSlot](restructure-phase-6b-9-2026-10-23.md): twelve destinations, two detail routes, booking and local HTTP verification.
+
+- [Healthcare phase 6b-8 — MedBand Patient Access](restructure-phase-6b-8-2026-10-23.md): nine route patterns, shared engines and local HTTP evidence.
+
+- [Healthcare phase 6b-7 — SurgiSuite](restructure-phase-6b-7-2026-10-23.md): eight sidebar pages, twelve-section case workspace and configured HTTP; local verification and limits.
+
+- [Healthcare phase 6b-6 — Quality](restructure-phase-6b-6-2026-10-23.md): twelve destinations, record routes/designer, public engines and source-scoped local verification.
+
+- [Healthcare phase 6b-5 — Teleconsult Provider and Patient](restructure-phase-6b-5-2026-10-23.md): nine sidebar destinations, three record routes and local synthetic HTTP workflows; no deployment.
+
+- [Healthcare phase 6b-4 — RCM Workspace](restructure-phase-6b-4-2026-10-23.md): forty original destinations, public engine composition and local synthetic HTTP evidence; no deployment.
+
+- [Library restructure phase 6b-3 — Pharmacy](restructure-phase-6b-3-2026-10-23.md): all thirteen Phial destinations, public engines, configured HTTP workflows and local verification; no deployment.
+
+- [Library restructure phase 6b-2 — healthcare diagnostics](restructure-phase-6b-2-2026-10-23.md): LIS1/LIS2/RIS1, shared diagnostic adapters, local verification and full-shell axe recheck; no deployment.
+- [Library restructure phase 6b-1 — 23 October 2026](restructure-phase-6b-1-2026-10-23.md): independent healthcare scaffold, Suite core and clinical subset; local HTTP/build evidence, deferred composer/recorder and shell accessibility follow-up.
+
 - [Phase 4c: remaining priority 3 patterns](restructure-phase-4c-2026-10-23.md): spreadsheet, form designer, labels, identity/device workflows, generic data adapters and five live showcase examples; local verification only.
 
 - [Library restructure phase 6a — 23 October 2026](restructure-phase-6a-2026-10-23.md): independent showcase; follow-up completes the full shell and Shell/AI simulation pages, with fresh local build, navigation, accessibility and browser evidence.

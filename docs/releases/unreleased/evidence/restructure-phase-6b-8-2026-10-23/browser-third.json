@@ -1,0 +1,66 @@
+{
+  "flows": [
+    {
+      "id": "HCD-36-medband-identity",
+      "mode": "HTTP",
+      "result": "Authenticated host actor, masters and patient records; no browser seed"
+    },
+    {
+      "id": "HCD-36-medband-palette",
+      "mode": "UI",
+      "result": "One selected-module search palette finds the real patient"
+    },
+    {
+      "id": "HCD-36-medband-registration",
+      "mode": "UI",
+      "result": "Four-step registration persists into the dynamic wristband record after reload"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [
+    {
+      "name": "command palette search and Escape",
+      "failures": []
+    },
+    {
+      "name": "registration validation",
+      "failures": []
+    },
+    {
+      "name": "typed contact fields",
+      "failures": []
+    },
+    {
+      "name": "registration payment segment",
+      "failures": []
+    },
+    {
+      "name": "patient wristband and refresh",
+      "failures": []
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medband",
+      "failure": "POST /patients: {\"patientId\":\"pat_6692ca88-954\",\"patients\":[{\"id\":\"pat_6692ca88-954\",\"mrn\":\"MRN-100243\",\"firstName\":\"FictionalMedband\",\"lastName\":\"Browser\",\"dob\":\"1992-02-03\",\"gender\":\"Female\",\"phone\":\"+971500000008\",\"preferredLanguage\":\"English\",\"vip\":false,\"unidentified\":false,\"coverages\":[],\"createdAt\":\"2026-10-23T17:33:05.449Z\"}]}\n\n200 !== 201\n"
+    },
+    {
+      "route": "/medband",
+      "failure": "POST /patients: {\"patientId\":\"pat_6692ca88-954\",\"patients\":[{\"id\":\"pat_6692ca88-954\",\"mrn\":\"MRN-100243\",\"firstName\":\"FictionalMedband\",\"lastName\":\"Browser\",\"dob\":\"1992-02-03\",\"gender\":\"Female\",\"phone\":\"+971500000008\",\"preferredLanguage\":\"English\",\"vip\":false,\"unidentified\":false,\"coverages\":[],\"createdAt\":\"2026-10-23T17:33:05.449Z\"}]}\n\n200 !== 201\n",
+      "rendered": {
+        "path": "/medband/patients/pat_6692ca88-954",
+        "pageId": "medband-patient",
+        "headings": [
+          "Contact",
+          "  Insurance",
+          "Care history"
+        ],
+        "inputs": []
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

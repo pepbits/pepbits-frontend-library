@@ -1,0 +1,115 @@
+
+> @pepbits-demo/healthcare@0.0.0 build
+> next build --webpack
+
+▲ Next.js 16.3.3 (webpack)
+- Environments: .env.local
+✓ Running next.config.ts took 345ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Creating an optimized production build ...
+Failed to compile.
+
+./src/modules/lis1/app/(app)/masters/[slug]/page.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/lis1/app/(app)/masters/[slug]/page.tsx:4:1]
+ 1 | import {TemplateFields} from '@pepbits/page-engines/templates';
+ 2 | import type {TemplateField} from '@pepbits/page-engines/types';
+ 3 | import {CollectionView} from '@pepbits/components/collection-view';
+ 4 | 'use client';
+   : ^^^^^^^^^^^^^
+ 5 | import {DiagnosticButton,DiagnosticInput,DiagnosticTable,TableHeader,TableBody,TableRow,TableHead,TableCell} from '../../../../../diagnostics';
+ 6 | import {useDiagnosticClient, useDiagnosticFormat} from '../../../../../diagnostics';
+ 7 | import { useEffect, useMemo, useState } from 'react';
+   `----
+
+Import trace for requested module:
+./src/modules/lis1/app/(app)/masters/[slug]/page.tsx
+./src/modules/lis1/module.tsx
+./src/modules/diagnostics/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/lis1/components/ui.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/lis1/components/ui.tsx:3:1]
+ 1 | import {DiagnosticLabel} from '../../diagnostics/controls';
+ 2 | import {DiagnosticField, DiagnosticModal, DiagnosticTabs, DiagnosticCard, DiagnosticToastProvider, DiagnosticLoading, DiagnosticEmpty, DiagnosticPagination, useDiagnosticToast} from '../../diagnostics/controls';
+ 3 | 'use client';
+   : ^^^^^^^^^^^^^
+ 4 | import {DiagnosticButton,DiagnosticInput,DiagnosticDateInput,DiagnosticTextarea,DiagnosticSelect} from '../../diagnostics';
+ 5 | import { createContext, forwardRef, useCallback, useContext, useEffect, useState } from 'react';
+ 6 | import { AlertTriangle, CheckCircle2, Info, Loader2, X } from '@pepbits/icons';
+   `----
+
+Import trace for requested module:
+./src/modules/lis1/components/ui.tsx
+./src/modules/lis1/module.tsx
+./src/modules/diagnostics/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/lis2/app/(app)/accession/page.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/lis2/app/(app)/accession/page.tsx:2:1]
+ 1 | import {DiagnosticLabel} from '../../../../diagnostics/controls';
+ 2 | 'use client';
+   : ^^^^^^^^^^^^^
+ 3 | import {DiagnosticButton} from '../../../../diagnostics';
+ 4 | import {useDiagnosticClient, useDiagnosticFormat} from '../../../../diagnostics';
+ 5 | import { useRef, useState } from 'react';
+   `----
+
+Import trace for requested module:
+./src/modules/lis2/app/(app)/accession/page.tsx
+./src/modules/lis2/module.tsx
+./src/modules/diagnostics/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/lis2/app/(app)/masters/[key]/page.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/lis2/app/(app)/masters/[key]/page.tsx:4:1]
+ 1 | import {TemplateFields} from '@pepbits/page-engines/templates';
+ 2 | import type {TemplateField} from '@pepbits/page-engines/types';
+ 3 | import {CollectionView} from '@pepbits/components/collection-view';
+ 4 | 'use client';
+   : ^^^^^^^^^^^^^
+ 5 | import {DateInput} from '../../../../components/ui';
+ 6 | 
+ 7 | import {DiagnosticButton,DiagnosticInput} from '../../../../../diagnostics';
+   `----
+
+Import trace for requested module:
+./src/modules/lis2/app/(app)/masters/[key]/page.tsx
+./src/modules/lis2/module.tsx
+./src/modules/diagnostics/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/lis2/app/(app)/results/sample/[id]/page.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/lis2/app/(app)/results/sample/[id]/page.tsx:3:1]
+ 1 | import {DiagnosticLabel} from '../../../../../../diagnostics/controls';
+ 2 | import {usePreferences} from '@pepbits/preferences/react';
+ 3 | 'use client';
+   : ^^^^^^^^^^^^^
+ 4 | import {DiagnosticButton,DiagnosticInput,DiagnosticTextarea,DiagnosticSelect,DiagnosticTable,TableHeader,TableBody,TableRow,TableHead,TableCell} from '../../../../../../diagnostics';
+ 5 | import {useDiagnosticClient, useDiagnosticFormat, useDiagnosticWorklist} from '../../../../../../diagnostics';
+ 6 | import {ReferenceLink as Link} from '../../../../../../diagnostics/host';
+   `----
+
+Import trace for requested module:
+./src/modules/lis2/app/(app)/results/sample/[id]/page.tsx
+./src/modules/lis2/module.tsx
+./src/modules/diagnostics/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+
+> Build failed because of webpack errors
+npm ERR! Lifecycle script `build` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

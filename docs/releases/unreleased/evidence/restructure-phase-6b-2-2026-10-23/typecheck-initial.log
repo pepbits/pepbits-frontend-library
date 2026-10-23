@@ -1,0 +1,93 @@
+
+> @pepbits-demo/healthcare@0.0.0 typecheck
+> tsc --noEmit
+
+src/modules/diagnostics/client.test.tsx(12,9): error TS2532: Object is possibly 'undefined'.
+src/modules/diagnostics/client.test.tsx(12,73): error TS2532: Object is possibly 'undefined'.
+src/modules/diagnostics/controls.tsx(13,227): error TS2322: Type '{ ref: ForwardedRef<HTMLInputElement>; "aria-labelledby"?: string | undefined; "aria-label"?: string | undefined; accept?: string | undefined; alt?: string | undefined; ... 304 more ...; onTransitionStartCapture?: TransitionEventHandler<...> | undefined; } | { ...; } | { ...; }' is not assignable to type 'IntrinsicAttributes & { label?: ReactNode; description?: ReactNode; indeterminate?: boolean | undefined; } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">'.
+  Type '{ ref: ForwardedRef<HTMLInputElement>; "aria-labelledby"?: string | undefined; "aria-label"?: string | undefined; accept?: string | undefined; alt?: string | undefined; ... 304 more ...; onTransitionStartCapture?: TransitionEventHandler<...> | undefined; }' is not assignable to type 'IntrinsicAttributes & { label?: ReactNode; description?: ReactNode; indeterminate?: boolean | undefined; } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">'.
+    Property 'ref' does not exist on type 'IntrinsicAttributes & { label?: ReactNode; description?: ReactNode; indeterminate?: boolean | undefined; } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">'.
+src/modules/diagnostics/controls.tsx(13,298): error TS2322: Type '{ ref: ForwardedRef<HTMLInputElement>; "aria-labelledby"?: string | undefined; "aria-label"?: string | undefined; id?: string | undefined; title?: string | undefined; ... 303 more ...; step?: string | ... 1 more ... | undefined; } | { ...; } | { ...; }' is not assignable to type 'IntrinsicAttributes & BaseFieldProps & Omit<InputHTMLAttributes<HTMLInputElement>, "prefix" | "suffix"> & { ...; }'.
+  Type '{ ref: ForwardedRef<HTMLInputElement>; "aria-labelledby"?: string | undefined; "aria-label"?: string | undefined; id?: string | undefined; title?: string | undefined; ... 303 more ...; step?: string | ... 1 more ... | undefined; }' is not assignable to type 'IntrinsicAttributes & BaseFieldProps & Omit<InputHTMLAttributes<HTMLInputElement>, "prefix" | "suffix"> & { ...; }'.
+    Property 'ref' does not exist on type 'IntrinsicAttributes & BaseFieldProps & Omit<InputHTMLAttributes<HTMLInputElement>, "prefix" | "suffix"> & { ...; }'.
+src/modules/diagnostics/controls.tsx(15,202): error TS2322: Type '{ ref: ForwardedRef<HTMLTextAreaElement>; "aria-labelledby"?: string | undefined; "aria-label"?: string | undefined; autoComplete?: string | undefined; ... 289 more ...; onTransitionStartCapture?: TransitionEventHandler<...> | undefined; } | { ...; } | { ...; }' is not assignable to type 'IntrinsicAttributes & BaseFieldProps & TextareaHTMLAttributes<HTMLTextAreaElement>'.
+  Type '{ ref: ForwardedRef<HTMLTextAreaElement>; "aria-labelledby"?: string | undefined; "aria-label"?: string | undefined; autoComplete?: string | undefined; ... 289 more ...; onTransitionStartCapture?: TransitionEventHandler<...> | undefined; }' is not assignable to type 'IntrinsicAttributes & BaseFieldProps & TextareaHTMLAttributes<HTMLTextAreaElement>'.
+    Property 'ref' does not exist on type 'IntrinsicAttributes & BaseFieldProps & TextareaHTMLAttributes<HTMLTextAreaElement>'.
+src/modules/diagnostics/controls.tsx(17,204): error TS2322: Type '{ ref: ForwardedRef<HTMLSelectElement>; placeholder: string; options: { value: string; label: string; disabled: boolean | undefined; }[]; "aria-labelledby"?: string | undefined; ... 284 more ...; onTransitionStartCapture?: TransitionEventHandler<...> | undefined; } | { ...; } | { ...; }' is not assignable to type 'IntrinsicAttributes & BaseFieldProps & SelectHTMLAttributes<HTMLSelectElement> & { options: Option[]; placeholder?: string | undefined; }'.
+  Type '{ ref: ForwardedRef<HTMLSelectElement>; placeholder: string; options: { value: string; label: string; disabled: boolean | undefined; }[]; "aria-labelledby"?: string | undefined; ... 284 more ...; onTransitionStartCapture?: TransitionEventHandler<...> | undefined; }' is not assignable to type 'IntrinsicAttributes & BaseFieldProps & SelectHTMLAttributes<HTMLSelectElement> & { options: Option[]; placeholder?: string | undefined; }'.
+    Property 'ref' does not exist on type 'IntrinsicAttributes & BaseFieldProps & SelectHTMLAttributes<HTMLSelectElement> & { options: Option[]; placeholder?: string | undefined; }'.
+src/modules/diagnostics/routes.ts(2,43): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/diagnostics/routes.ts(2,69): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/diagnostics/routes.ts(3,37): error TS18048: 'pathname' is possibly 'undefined'.
+src/modules/diagnostics/routes.ts(7,52): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/lis1/app/(app)/masters/[slug]/page.tsx(12,10): error TS1484: 'FieldDef' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/modules/lis1/app/(app)/masters/[slug]/page.tsx(12,34): error TS1484: 'MasterDef' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/modules/lis1/app/(app)/masters/[slug]/page.tsx(166,5): error TS2532: Object is possibly 'undefined'.
+src/modules/lis1/app/(app)/results/page.tsx(26,40): error TS2532: Object is possibly 'undefined'.
+src/modules/lis2/app/(app)/orders/[id]/page.tsx(17,10): error TS1484: 'PickedTest' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/modules/lis2/app/(app)/orders/new/page.tsx(13,10): error TS1484: 'PickedTest' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/modules/lis2/app/(app)/results/sample/[id]/page.tsx(97,95): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/lis2/components/message.tsx(26,82): error TS2532: Object is possibly 'undefined'.
+src/modules/lis2/lib/hooks.ts(4,9): error TS1484: 'Paged' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/modules/ris1/app/(ris)/critical/page.tsx(52,56): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/app/(ris)/critical/page.tsx(70,151): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/app/(ris)/critical/page.tsx(70,187): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/app/(ris)/masters/page.tsx(95,22): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/app/(ris)/reading/[orderId]/page.tsx(11,27): error TS1484: 'StructuredResult' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/modules/ris1/app/(ris)/reading/[orderId]/page.tsx(117,21): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/app/(ris)/reading/[orderId]/page.tsx(127,17): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/components/DicomViewer.tsx(58,24): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/ris1/components/DicomViewer.tsx(83,27): error TS2322: Type '{ pixels: Uint8Array<ArrayBuffer>; error: string; id: number; rows: number; cols: number; frames: number; tags: { tag: string; name: string | undefined; value: string; }[]; ... 9 more ...; max: number; }' is not assignable to type 'Img'.
+  Types of property 'tags' are incompatible.
+    Type '{ tag: string; name: string | undefined; value: string; }[]' is not assignable to type '{ tag: string; name: string; value: string; }[]'.
+      Type '{ tag: string; name: string | undefined; value: string; }' is not assignable to type '{ tag: string; name: string; value: string; }'.
+        Types of property 'name' are incompatible.
+          Type 'string | undefined' is not assignable to type 'string'.
+            Type 'undefined' is not assignable to type 'string'.
+src/modules/ris1/components/DicomViewer.tsx(85,12): error TS2322: Type '{ pixels: Uint8Array<ArrayBuffer>; error: string; id: number; rows: number; cols: number; frames: number; tags: { tag: string; name: string | undefined; value: string; }[]; ... 9 more ...; max: number; }' is not assignable to type 'Img'.
+  Types of property 'tags' are incompatible.
+    Type '{ tag: string; name: string | undefined; value: string; }[]' is not assignable to type '{ tag: string; name: string; value: string; }[]'.
+      Type '{ tag: string; name: string | undefined; value: string; }' is not assignable to type '{ tag: string; name: string; value: string; }'.
+        Types of property 'name' are incompatible.
+          Type 'string | undefined' is not assignable to type 'string'.
+            Type 'undefined' is not assignable to type 'string'.
+src/modules/ris1/components/DicomViewer.tsx(100,76): error TS18048: 'v' is possibly 'undefined'.
+src/modules/ris1/components/DicomViewer.tsx(100,85): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/modules/ris1/components/DicomViewer.tsx(100,98): error TS18048: 'v' is possibly 'undefined'.
+src/modules/ris1/components/DicomViewer.tsx(100,107): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/modules/ris1/components/DicomViewer.tsx(106,3): error TS2322: Type '{ pixels: Int8Array<ArrayBufferLike> | Int16Array<ArrayBufferLike> | Uint8Array<ArrayBufferLike> | Uint16Array<...>; ... 14 more ...; meta: { ...; }; }' is not assignable to type 'Img'.
+  Types of property 'tags' are incompatible.
+    Type '{ tag: string; name: string | undefined; value: string; }[]' is not assignable to type '{ tag: string; name: string; value: string; }[]'.
+      Type '{ tag: string; name: string | undefined; value: string; }' is not assignable to type '{ tag: string; name: string; value: string; }'.
+        Types of property 'name' are incompatible.
+          Type 'string | undefined' is not assignable to type 'string'.
+            Type 'undefined' is not assignable to type 'string'.
+src/modules/ris1/components/DicomViewer.tsx(130,7): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/modules/ris1/components/DicomViewer.tsx(130,41): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/modules/ris1/components/DicomViewer.tsx(130,83): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/modules/ris1/components/DicomViewer.tsx(140,15): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/components/DicomViewer.tsx(319,79): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/modules/ris1/components/DicomViewer.tsx(379,17): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/components/Structured.tsx(38,9): error TS2488: Type '[number | null, number | null] | undefined' must have a '[Symbol.iterator]()' method that returns an iterator.
+src/modules/ris1/components/Structured.tsx(49,12): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/ris1/components/Structured.tsx(50,103): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/components/Structured.tsx(88,9): error TS2488: Type '[string, string] | undefined' must have a '[Symbol.iterator]()' method that returns an iterator.
+src/modules/ris1/components/Structured.tsx(138,236): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/components/Structured.tsx(161,101): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/ris1/components/Structured.tsx(236,42): error TS2532: Object is possibly 'undefined'.
+src/modules/ris1/components/ui.tsx(4,25): error TS1484: 'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+npm ERR! Lifecycle script `typecheck` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

@@ -1,0 +1,36 @@
+{
+  "scope": "Agent visual inspection of local production Chromium screenshots, not exact source pixel parity, human language/domain review or assistive-technology acceptance.",
+  "images": [
+    {
+      "path": "screenshots-full-preci/medslot-registration.png",
+      "sha256": "9d87d17cbda4cf881134626f1174a8cc32c4f266397cfe8156b933239475efed",
+      "observation": "Registration groups metadata into three shared field sections; patient columns retain spacing behind the drawer; save action remains visible after scrolling."
+    },
+    {
+      "path": "screenshots-full-preci/medslot-booking.png",
+      "sha256": "78fb5f00cb35e2ae1af6c5410db13634ab2d7ef2cfdd03f0bde2ac582ffcec19",
+      "observation": "Patient/service/time steps and appointment summary remain readable with source business layout and host controls."
+    },
+    {
+      "path": "screenshots-full-preci/medslot-calendar-day.png",
+      "sha256": "d716f1c67d96e8ef6812e38fee6cb430975f726d384002b0b117ef8f4bccba21",
+      "observation": "Actual created booking is visible on the resource time grid; unavailable time remains hatched."
+    },
+    {
+      "path": "screenshots-full-preci/medslot-calendar-week.png",
+      "sha256": "3c01cac52d789f8c8a35e3a892cd7e9b1bbe8c03b757de8ab3f0b1edbb51458a",
+      "observation": "Actual booking and seeded records occupy the seven-day grid with bounded labels and time rails."
+    },
+    {
+      "path": "screenshots-full-preci/medslot-calendar-month.png",
+      "sha256": "a9076d2d0221ab3455ab1d4e829031077ab49da3a2520ba0f8d237aa304d320d",
+      "observation": "Month geometry, daily counts and actual created booking remain visible."
+    },
+    {
+      "path": "screenshots-full-preci/medslot-editor-ar.png",
+      "sha256": "0d9222a14dcdce1b0c7ebe68ed1405df0c48d1d794118b00060c4c7dd2bd76d5",
+      "observation": "Dark Arabic RTL reverses the drawer/table direction; entered value persists, compact density and zero radius apply. Four inherited English registration labels are recorded in catalog-coverage.json."
+    }
+  ],
+  "automatedComplement": "Full-document axe at registration, booking, reschedule, populated day/week/month and four mounted language editor states; route sweep results remain in browser-final.json."
+}

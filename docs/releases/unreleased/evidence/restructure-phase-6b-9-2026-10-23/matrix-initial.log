@@ -1,0 +1,1164 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/routes.test.tsx -t medslot
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/routes.test.tsx (880 tests | 56 failed | 824 skipped) 39081ms
+   × 'default' > 'medslot-dashboard' renders API data and page content passes axe 1083ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medslot-book' renders API data and page content passes axe 446ms
+     → expected [ …(4) ] to deeply equal []
+   × 'default' > 'medslot-calendar' renders API data and page content passes axe 437ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medslot-appointments' renders API data and page content passes axe 2126ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medslot-patients' renders API data and page content passes axe 748ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medslot-resources' renders API data and page content passes axe 1122ms
+     → expected [ …(4) ] to deeply equal []
+   × 'default' > 'medslot-services' renders API data and page content passes axe 749ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medslot-departments' renders API data and page content passes axe 488ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medslot-holidays' renders API data and page content passes axe 374ms
+     → expected [ …(3) ] to deeply equal []
+   × 'default' > 'medslot-notifications' renders API data and page content passes axe 598ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medslot-settings' renders API data and page content passes axe 400ms
+     → expected [ …(3) ] to deeply equal []
+   × 'default' > 'medslot-audit' renders API data and page content passes axe 327ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'default' > 'medband-today' renders API data and page content passes axe
+   ↓ 'default' > 'medband-patients' renders API data and page content passes axe
+   ↓ 'default' > 'medband-patient-new' renders API data and page content passes axe
+   ↓ 'default' > 'medband-encounters' renders API data and page content passes axe
+   ↓ 'default' > 'medband-encounter-new' renders API data and page content passes axe
+   ↓ 'default' > 'medband-admissions' renders API data and page content passes axe
+   ↓ 'default' > 'medband-admission-new' renders API data and page content passes axe
+   ↓ 'default' > 'medband-episodes' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-board' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-schedule' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-cases' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-approvals' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-patients' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-inventory' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-analytics' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-masters' renders API data and page content passes axe
+   ↓ 'default' > 'quality-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'quality-indicators' renders API data and page content passes axe
+   ↓ 'default' > 'quality-tat' renders API data and page content passes axe
+   ↓ 'default' > 'quality-events' renders API data and page content passes axe
+   ↓ 'default' > 'quality-verification' renders API data and page content passes axe
+   ↓ 'default' > 'quality-validation' renders API data and page content passes axe
+   ↓ 'default' > 'quality-reports' renders API data and page content passes axe
+   ↓ 'default' > 'quality-designer' renders API data and page content passes axe
+   ↓ 'default' > 'quality-schedules' renders API data and page content passes axe
+   ↓ 'default' > 'quality-submissions' renders API data and page content passes axe
+   ↓ 'default' > 'quality-authorities' renders API data and page content passes axe
+   ↓ 'default' > 'quality-users' renders API data and page content passes axe
+   ↓ 'default' > 'quality-audit' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-provider-today' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-provider-schedule' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-provider-patients' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-provider-notes' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-welcome' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-register' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-home' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-book' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-records' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-home' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-coverages' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-authorizations' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-eligibility' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-estimates' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-deposits' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-cash-sessions' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-encounters' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-charges' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-manual-charges' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-invoices' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-debit-notes' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-credit-notes' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-adjustments' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-receipts' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-refunds' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-packages' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-claims' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-exchange-messages' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-remittances' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-remittance-corrections' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-appeals' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-payer-reconciliations' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-responsibility-transfers' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-aging' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-payment-plans' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-statements' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-collections' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-reports' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-coding-cases' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-cdi-queries' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-drg-groupings' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-em-determinations' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-model-settlements' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-journals' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-gl-reconciliations' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-exports' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-approvals' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-tasks' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-assistance' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-workbench' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-counter' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-orders' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-sales' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-inventory' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-purchasing' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-authorizations' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-claims' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-remittance' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-patients' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-audit' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-settings' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-accession' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-automation' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-automation-routing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-billing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-collection' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-criticals' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-integration' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-integration-docs' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-masters' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-orders' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-orders-new' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-outsource' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-patients' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-reports' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-results' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-samples' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-users' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-validation' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-accession' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-billing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-collection' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-critical' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-integration-console' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-integration-messages' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-integration-outbox' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-inventory' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-masters' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-orders' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-orders-new' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-outsource' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-patients' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-report-designer' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-reports' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-samples' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-settings' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-signing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-tat' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-worklist' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-analytics' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-audit' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-billing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-critical' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-integration' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-masters' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-orders' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-pacs' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-patients' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-reading' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-reception' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-schedule' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-technologist' renders API data and page content passes axe
+   ↓ 'default' > 'suite-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'suite-patients' renders API data and page content passes axe
+   ↓ 'default' > 'suite-appointments' renders API data and page content passes axe
+   ↓ 'default' > 'suite-encounters' renders API data and page content passes axe
+   ↓ 'default' > 'suite-approvals' renders API data and page content passes axe
+   ↓ 'default' > 'suite-hospital-billing' renders API data and page content passes axe
+   ↓ 'default' > 'suite-pharmacy-billing' renders API data and page content passes axe
+   ↓ 'default' > 'suite-invoices' renders API data and page content passes axe
+   ↓ 'default' > 'suite-contracts' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-facilities' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-departments' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-specialties' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-providers' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-payers' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-tpas' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-insurance-plans' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-networks' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-price-lists' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-items' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-services' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-resources' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-resource-schedules' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-resource-blocks' renders API data and page content passes axe
+   ↓ 'default' > 'patient-query' renders API data and page content passes axe
+   ↓ 'default' > 'patient-record' renders API data and page content passes axe
+   ↓ 'default' > 'patient-360' renders API data and page content passes axe
+   ↓ 'default' > 'clinical-triage' renders API data and page content passes axe
+   ↓ 'default' > 'clinical-consultation' renders API data and page content passes axe
+   ↓ 'default' > 'op-consultation' renders API data and page content passes axe
+   ↓ 'default' > 'comprehensive-consultation' renders API data and page content passes axe
+   ↓ 'default' > 'op-registration' renders API data and page content passes axe
+   ↓ 'default' > 'clinic-billing' renders API data and page content passes axe
+   ↓ 'default' > 'emergency-registration' renders API data and page content passes axe
+   ↓ 'default' > 'inpatient-admission' renders API data and page content passes axe
+   ↓ 'default' > 'consultation-entry-design' renders API data and page content passes axe
+   ↓ 'default' > 'consultation-entry-v2' renders API data and page content passes axe
+   ↓ 'default' > 'preferences' renders API data and page content passes axe
+   × 'default' > '/medslot/patients/1' renders API data and page content passes axe 413ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > '/medslot/resources/3' renders API data and page content passes axe 540ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'default' > '/medband/patients/pat-1' renders API data and page content passes axe
+   ↓ 'default' > '/surgisuite/cases/472' renders API data and page content passes axe
+   ↓ 'default' > '/quality/indicators/7' renders API data and page content passes axe
+   ↓ 'default' > '/quality/reports/3' renders API data and page content passes axe
+   ↓ 'default' > '/teleconsult-provider/consult/a1' renders API data and page content passes axe
+   ↓ 'default' > '/teleconsult-patient/visit/a1' renders API data and page content passes axe
+   ↓ 'default' > '/teleconsult-patient/visit/a1/summary' renders API data and page content passes axe
+   ↓ 'default' > '/lis1/orders/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis1/masters/tests' renders API data and page content passes axe
+   ↓ 'default' > '/lis1/billing/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis1/reports/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/orders/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/masters/tests' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/patients/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/results/sample/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/print/order/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/print/labels?ids=1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/patients/25' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/orders/1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/reading/1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/print/report/1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/print/invoice/1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/viewer/999' renders API data and page content passes axe
+   × 'Arabic RTL' > 'medslot-dashboard' renders API data and page content passes axe 614ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-book' renders API data and page content passes axe 414ms
+     → expected [ …(4) ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-calendar' renders API data and page content passes axe 424ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-appointments' renders API data and page content passes axe 1941ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-patients' renders API data and page content passes axe 797ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-resources' renders API data and page content passes axe 1115ms
+     → expected [ …(4) ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-services' renders API data and page content passes axe 933ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-departments' renders API data and page content passes axe 532ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-holidays' renders API data and page content passes axe 376ms
+     → expected [ …(3) ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-notifications' renders API data and page content passes axe 550ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-settings' renders API data and page content passes axe 409ms
+     → expected [ …(3) ] to deeply equal []
+   × 'Arabic RTL' > 'medslot-audit' renders API data and page content passes axe 332ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'Arabic RTL' > 'medband-today' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'medband-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'medband-patient-new' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'medband-encounters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'medband-encounter-new' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'medband-admissions' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'medband-admission-new' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'medband-episodes' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-board' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-schedule' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-cases' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-approvals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-inventory' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-analytics' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-masters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-indicators' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-tat' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-events' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-verification' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-validation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-reports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-designer' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-schedules' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-submissions' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-authorities' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-users' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-audit' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-provider-today' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-provider-schedule' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-provider-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-provider-notes' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-welcome' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-register' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-home' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-book' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-records' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-home' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-coverages' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-authorizations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-eligibility' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-estimates' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-deposits' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-cash-sessions' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-encounters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-charges' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-manual-charges' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-invoices' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-debit-notes' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-credit-notes' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-adjustments' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-receipts' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-refunds' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-packages' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-claims' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-exchange-messages' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-remittances' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-remittance-corrections' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-appeals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-payer-reconciliations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-responsibility-transfers' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-aging' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-payment-plans' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-statements' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-collections' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-reports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-coding-cases' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-cdi-queries' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-drg-groupings' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-em-determinations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-model-settlements' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-journals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-gl-reconciliations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-exports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-approvals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-tasks' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-assistance' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-workbench' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-counter' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-orders' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-sales' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-inventory' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-purchasing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-authorizations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-claims' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-remittance' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-audit' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-settings' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-accession' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-automation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-automation-routing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-collection' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-criticals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-integration' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-integration-docs' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-masters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-orders' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-orders-new' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-outsource' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-reports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-results' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-samples' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-users' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-validation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-accession' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-collection' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-critical' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-integration-console' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-integration-messages' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-integration-outbox' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-inventory' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-masters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-orders' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-orders-new' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-outsource' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-report-designer' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-reports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-samples' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-settings' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-signing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-tat' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-worklist' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-analytics' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-audit' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-critical' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-integration' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-masters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-orders' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-pacs' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-reading' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-reception' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-schedule' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-technologist' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-appointments' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-encounters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-approvals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-hospital-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-pharmacy-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-invoices' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-contracts' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-facilities' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-departments' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-specialties' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-providers' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-payers' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-tpas' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-insurance-plans' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-networks' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-price-lists' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-items' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-services' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-resources' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-resource-schedules' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-resource-blocks' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'patient-query' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'patient-record' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'patient-360' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'clinical-triage' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'clinical-consultation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'op-consultation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'comprehensive-consultation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'op-registration' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'clinic-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'emergency-registration' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'inpatient-admission' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'consultation-entry-design' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'consultation-entry-v2' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'preferences' renders API data and page content passes axe
+   × 'Arabic RTL' > '/medslot/patients/1' renders API data and page content passes axe 424ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > '/medslot/resources/3' renders API data and page content passes axe 550ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'Arabic RTL' > '/medband/patients/pat-1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/surgisuite/cases/472' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/quality/indicators/7' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/quality/reports/3' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/teleconsult-provider/consult/a1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/teleconsult-patient/visit/a1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/teleconsult-patient/visit/a1/summary' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis1/orders/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis1/masters/tests' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis1/billing/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis1/reports/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/orders/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/masters/tests' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/patients/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/results/sample/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/print/order/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/print/labels?ids=1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/patients/25' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/orders/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/reading/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/print/report/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/print/invoice/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/viewer/999' renders API data and page content passes axe
+   × 'reduced motion' > 'medslot-dashboard' renders API data and page content passes axe 614ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medslot-book' renders API data and page content passes axe 386ms
+     → expected [ …(4) ] to deeply equal []
+   × 'reduced motion' > 'medslot-calendar' renders API data and page content passes axe 394ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medslot-appointments' renders API data and page content passes axe 2064ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medslot-patients' renders API data and page content passes axe 761ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medslot-resources' renders API data and page content passes axe 1059ms
+     → expected [ …(4) ] to deeply equal []
+   × 'reduced motion' > 'medslot-services' renders API data and page content passes axe 735ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medslot-departments' renders API data and page content passes axe 476ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medslot-holidays' renders API data and page content passes axe 368ms
+     → expected [ …(3) ] to deeply equal []
+   × 'reduced motion' > 'medslot-notifications' renders API data and page content passes axe 596ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medslot-settings' renders API data and page content passes axe 393ms
+     → expected [ …(3) ] to deeply equal []
+   × 'reduced motion' > 'medslot-audit' renders API data and page content passes axe 336ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'reduced motion' > 'medband-today' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'medband-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'medband-patient-new' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'medband-encounters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'medband-encounter-new' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'medband-admissions' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'medband-admission-new' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'medband-episodes' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-board' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-schedule' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-cases' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-approvals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-inventory' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-analytics' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-masters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-indicators' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-tat' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-events' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-verification' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-validation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-reports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-designer' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-schedules' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-submissions' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-authorities' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-users' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-audit' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-provider-today' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-provider-schedule' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-provider-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-provider-notes' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-welcome' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-register' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-home' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-book' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-records' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-home' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-coverages' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-authorizations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-eligibility' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-estimates' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-deposits' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-cash-sessions' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-encounters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-charges' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-manual-charges' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-invoices' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-debit-notes' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-credit-notes' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-adjustments' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-receipts' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-refunds' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-packages' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-claims' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-exchange-messages' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-remittances' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-remittance-corrections' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-appeals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-payer-reconciliations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-responsibility-transfers' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-aging' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-payment-plans' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-statements' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-collections' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-reports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-coding-cases' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-cdi-queries' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-drg-groupings' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-em-determinations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-model-settlements' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-journals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-gl-reconciliations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-exports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-approvals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-tasks' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-assistance' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-workbench' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-counter' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-orders' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-sales' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-inventory' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-purchasing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-authorizations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-claims' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-remittance' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-audit' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-settings' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-accession' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-automation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-automation-routing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-collection' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-criticals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-integration' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-integration-docs' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-masters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-orders' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-orders-new' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-outsource' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-reports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-results' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-samples' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-users' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-validation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-accession' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-collection' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-critical' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-integration-console' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-integration-messages' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-integration-outbox' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-inventory' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-masters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-orders' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-orders-new' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-outsource' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-report-designer' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-reports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-samples' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-settings' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-signing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-tat' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-worklist' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-analytics' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-audit' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-critical' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-integration' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-masters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-orders' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-pacs' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-reading' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-reception' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-schedule' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-technologist' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-appointments' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-encounters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-approvals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-hospital-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-pharmacy-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-invoices' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-contracts' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-facilities' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-departments' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-specialties' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-providers' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-payers' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-tpas' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-insurance-plans' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-networks' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-price-lists' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-items' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-services' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-resources' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-resource-schedules' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-resource-blocks' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'patient-query' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'patient-record' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'patient-360' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'clinical-triage' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'clinical-consultation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'op-consultation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'comprehensive-consultation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'op-registration' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'clinic-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'emergency-registration' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'inpatient-admission' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'consultation-entry-design' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'consultation-entry-v2' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'preferences' renders API data and page content passes axe
+   × 'reduced motion' > '/medslot/patients/1' renders API data and page content passes axe 386ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > '/medslot/resources/3' renders API data and page content passes axe 516ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'reduced motion' > '/medband/patients/pat-1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/surgisuite/cases/472' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/quality/indicators/7' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/quality/reports/3' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/teleconsult-provider/consult/a1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/teleconsult-patient/visit/a1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/teleconsult-patient/visit/a1/summary' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis1/orders/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis1/masters/tests' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis1/billing/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis1/reports/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/orders/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/masters/tests' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/patients/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/results/sample/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/print/order/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/print/labels?ids=1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/patients/25' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/orders/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/reading/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/print/report/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/print/invoice/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/viewer/999' renders API data and page content passes axe
+   × 'locked density' > 'medslot-dashboard' renders API data and page content passes axe 600ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medslot-book' renders API data and page content passes axe 372ms
+     → expected [ …(4) ] to deeply equal []
+   × 'locked density' > 'medslot-calendar' renders API data and page content passes axe 374ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medslot-appointments' renders API data and page content passes axe 2168ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medslot-patients' renders API data and page content passes axe 1642ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medslot-resources' renders API data and page content passes axe 1384ms
+     → expected [ …(4) ] to deeply equal []
+   × 'locked density' > 'medslot-services' renders API data and page content passes axe 826ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medslot-departments' renders API data and page content passes axe 517ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medslot-holidays' renders API data and page content passes axe 366ms
+     → expected [ …(3) ] to deeply equal []
+   × 'locked density' > 'medslot-notifications' renders API data and page content passes axe 622ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medslot-settings' renders API data and page content passes axe 467ms
+     → expected [ …(3) ] to deeply equal []
+   × 'locked density' > 'medslot-audit' renders API data and page content passes axe 353ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'locked density' > 'medband-today' renders API data and page content passes axe
+   ↓ 'locked density' > 'medband-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'medband-patient-new' renders API data and page content passes axe
+   ↓ 'locked density' > 'medband-encounters' renders API data and page content passes axe
+   ↓ 'locked density' > 'medband-encounter-new' renders API data and page content passes axe
+   ↓ 'locked density' > 'medband-admissions' renders API data and page content passes axe
+   ↓ 'locked density' > 'medband-admission-new' renders API data and page content passes axe
+   ↓ 'locked density' > 'medband-episodes' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-board' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-schedule' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-cases' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-approvals' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-inventory' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-analytics' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-masters' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-indicators' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-tat' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-events' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-verification' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-validation' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-reports' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-designer' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-schedules' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-submissions' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-authorities' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-users' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-audit' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-provider-today' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-provider-schedule' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-provider-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-provider-notes' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-welcome' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-register' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-home' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-book' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-records' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-home' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-coverages' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-authorizations' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-eligibility' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-estimates' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-deposits' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-cash-sessions' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-encounters' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-charges' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-manual-charges' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-invoices' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-debit-notes' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-credit-notes' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-adjustments' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-receipts' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-refunds' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-packages' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-claims' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-exchange-messages' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-remittances' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-remittance-corrections' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-appeals' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-payer-reconciliations' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-responsibility-transfers' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-aging' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-payment-plans' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-statements' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-collections' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-reports' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-coding-cases' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-cdi-queries' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-drg-groupings' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-em-determinations' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-model-settlements' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-journals' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-gl-reconciliations' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-exports' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-approvals' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-tasks' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-assistance' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-workbench' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-counter' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-orders' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-sales' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-inventory' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-purchasing' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-authorizations' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-claims' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-remittance' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-audit' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-settings' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-accession' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-automation' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-automation-routing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-collection' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-criticals' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-integration' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-integration-docs' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-masters' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-orders' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-orders-new' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-outsource' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-reports' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-results' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-samples' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-users' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-validation' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-accession' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-collection' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-critical' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-integration-console' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-integration-messages' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-integration-outbox' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-inventory' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-masters' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-orders' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-orders-new' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-outsource' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-report-designer' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-reports' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-samples' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-settings' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-signing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-tat' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-worklist' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-analytics' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-audit' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-critical' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-integration' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-masters' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-orders' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-pacs' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-reading' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-reception' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-schedule' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-technologist' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-appointments' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-encounters' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-approvals' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-hospital-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-pharmacy-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-invoices' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-contracts' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-facilities' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-departments' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-specialties' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-providers' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-payers' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-tpas' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-insurance-plans' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-networks' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-price-lists' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-items' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-services' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-resources' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-resource-schedules' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-resource-blocks' renders API data and page content passes axe
+   ↓ 'locked density' > 'patient-query' renders API data and page content passes axe
+   ↓ 'locked density' > 'patient-record' renders API data and page content passes axe
+   ↓ 'locked density' > 'patient-360' renders API data and page content passes axe
+   ↓ 'locked density' > 'clinical-triage' renders API data and page content passes axe
+   ↓ 'locked density' > 'clinical-consultation' renders API data and page content passes axe
+   ↓ 'locked density' > 'op-consultation' renders API data and page content passes axe
+   ↓ 'locked density' > 'comprehensive-consultation' renders API data and page content passes axe
+   ↓ 'locked density' > 'op-registration' renders API data and page content passes axe
+   ↓ 'locked density' > 'clinic-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'emergency-registration' renders API data and page content passes axe
+   ↓ 'locked density' > 'inpatient-admission' renders API data and page content passes axe
+   ↓ 'locked density' > 'consultation-entry-design' renders API data and page content passes axe
+   ↓ 'locked density' > 'consultation-entry-v2' renders API data and page content passes axe
+   ↓ 'locked density' > 'preferences' renders API data and page content passes axe
+   × 'locked density' > '/medslot/patients/1' renders API data and page content passes axe 458ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > '/medslot/resources/3' renders API data and page content passes axe 582ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'locked density' > '/medband/patients/pat-1' renders API data and page content passes axe
+   ↓ 'locked density' > '/surgisuite/cases/472' renders API data and page content passes axe
+   ↓ 'locked density' > '/quality/indicators/7' renders API data and page content passes axe
+   ↓ 'locked density' > '/quality/reports/3' renders API data and page content passes axe
+   ↓ 'locked density' > '/teleconsult-provider/consult/a1' renders API data and page content passes axe
+   ↓ 'locked density' > '/teleconsult-patient/visit/a1' renders API data and page content passes axe
+   ↓ 'locked density' > '/teleconsult-patient/visit/a1/summary' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis1/orders/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis1/masters/tests' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis1/billing/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis1/reports/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/orders/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/masters/tests' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/patients/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/results/sample/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/print/order/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/print/labels?ids=1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/patients/25' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/orders/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/reading/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/print/report/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/print/invoice/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/viewer/999' renders API data and page content passes axe
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 56 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-dashboard' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-calendar' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-patients' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-departments' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > '/medslot/patients/1' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > '/medslot/resources/3' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-dashboard' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-calendar' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-patients' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-departments' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > '/medslot/patients/1' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > '/medslot/resources/3' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-dashboard' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-calendar' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-patients' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-departments' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > '/medslot/patients/1' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > '/medslot/resources/3' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-dashboard' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-calendar' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-patients' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-departments' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > '/medslot/patients/1' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > '/medslot/resources/3' renders API data and page content passes axe
+AssertionError: expected [ { …(2) }, { …(2) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "id": "landmark-main-is-top-level",
++     "nodes": [
++       "<main class=\"w-full min-w-0 flex-1 px-4 py-5 lg:px-6\">",
++     ],
++   },
++   {
++     "id": "landmark-no-duplicate-main",
++     "nodes": [
++       "<main class=\"w-full min-w-0 flex-1 px-4 py-5 lg:px-6\">",
++     ],
++   },
++ ]
+
+ ❯ src/routes.test.tsx:44:89
+     42|   if(scenario.policy)expect(container.querySelector('[data-effective-d…
+     43|   const result=await axe.run(content,{rules:{'color-contrast':{enabled…
+     44|   expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.slice(0,3).m…
+       |                                                                                         ^
+     45|  });
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/56]⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-book' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-resources' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-book' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-resources' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-book' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-resources' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-book' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-resources' renders API data and page content passes axe
+AssertionError: expected [ …(4) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "id": "definition-list",
++     "nodes": [
++       "<dl class=\"flex flex-col divide-y divide-line-2 text-sm\">",
++     ],
++   },
++   {
++     "id": "dlitem",
++     "nodes": [
++       "<dt class=\"sr-only\">Patient</dt>",
++       "<dd><span class=\"text-mute\">Not chosen</span></dd>",
++       "<dt class=\"sr-only\">Service</dt>",
++     ],
++   },
++   {
++     "id": "landmark-main-is-top-level",
++     "nodes": [
++       "<main class=\"w-full min-w-0 flex-1 px-4 py-5 lg:px-6\">",
++     ],
++   },
++   {
++     "id": "landmark-no-duplicate-main",
++     "nodes": [
++       "<main class=\"w-full min-w-0 flex-1 px-4 py-5 lg:px-6\">",
++     ],
++   },
++ ]
+
+ ❯ src/routes.test.tsx:44:89
+     42|   if(scenario.policy)expect(container.querySelector('[data-effective-d…
+     43|   const result=await axe.run(content,{rules:{'color-contrast':{enabled…
+     44|   expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.slice(0,3).m…
+       |                                                                                         ^
+     45|  });
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/56]⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-appointments' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-services' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-notifications' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-audit' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-appointments' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-services' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-notifications' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-audit' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-appointments' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-services' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-notifications' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-audit' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-appointments' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-services' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-notifications' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-audit' renders API data and page content passes axe
+AssertionError: expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "id": "landmark-main-is-top-level",
++     "nodes": [
++       "<main class=\"w-full min-w-0 flex-1 px-4 py-5 lg:px-6\">",
++     ],
++   },
++   {
++     "id": "landmark-no-duplicate-main",
++     "nodes": [
++       "<main class=\"w-full min-w-0 flex-1 px-4 py-5 lg:px-6\">",
++     ],
++   },
++   {
++     "id": "select-name",
++     "nodes": [
++       "<select class=\"rounded-[var(--radiu...\">",
++       "<select class=\"rounded-[var(--radiu...\">",
++     ],
++   },
++ ]
+
+ ❯ src/routes.test.tsx:44:89
+     42|   if(scenario.policy)expect(container.querySelector('[data-effective-d…
+     43|   const result=await axe.run(content,{rules:{'color-contrast':{enabled…
+     44|   expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.slice(0,3).m…
+       |                                                                                         ^
+     45|  });
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/56]⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-holidays' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medslot-settings' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-holidays' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medslot-settings' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-holidays' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medslot-settings' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-holidays' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medslot-settings' renders API data and page content passes axe
+AssertionError: expected [ …(3) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "id": "empty-table-header",
++     "nodes": [
++       "<th class=\"sticky top-0 z-[1] border-b border-line bg-paper px-3 py-2.5 text-left text-xs font-semibold text-mute whitespace-nowrap\"></th>",
++     ],
++   },
++   {
++     "id": "landmark-main-is-top-level",
++     "nodes": [
++       "<main class=\"w-full min-w-0 flex-1 px-4 py-5 lg:px-6\">",
++     ],
++   },
++   {
++     "id": "landmark-no-duplicate-main",
++     "nodes": [
++       "<main class=\"w-full min-w-0 flex-1 px-4 py-5 lg:px-6\">",
++     ],
++   },
++ ]
+
+ ❯ src/routes.test.tsx:44:89
+     42|   if(scenario.policy)expect(container.querySelector('[data-effective-d…
+     43|   const result=await axe.run(content,{rules:{'color-contrast':{enabled…
+     44|   expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.slice(0,3).m…
+       |                                                                                         ^
+     45|  });
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/56]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  56 failed | 824 skipped (880)
+   Start at  19:01:15
+   Duration  52.78s (transform 8.54s, setup 193ms, collect 12.35s, tests 39.08s, environment 509ms, prepare 87ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

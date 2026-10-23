@@ -1,0 +1,18 @@
+/* Diagnostic layouts keep their workflow geometry; presentation follows the app host. */
+.diagnostics {color:var(--text); background:var(--surface); font-family:var(--font-ui),sans-serif; --fs-scale:var(--fs-form);}
+.diagnostics [class*="rounded"]:not(.rounded-full) {border-radius:var(--radius);}
+.diagnostics table {font-size:calc(12px * var(--fs-result)); color:var(--text);}
+.diagnostics table[data-managed-table] th,.diagnostics table[data-managed-table] td {padding:10px 12px;}
+.diagnostics table[data-density="compact"] th,.diagnostics table[data-density="compact"] td {padding:4px 8px;}
+.diagnostics table[data-density="spacious"] th,.diagnostics table[data-density="spacious"] td {padding:16px;}
+.diagnostics table[data-striped="true"] tbody tr:nth-child(even) {background:var(--surface-2);}
+.diagnostics table[data-wrap="true"] td {white-space:normal; overflow-wrap:anywhere;}
+.diagnostics table[data-wrap="false"] td {white-space:nowrap;}
+.diagnostics table[data-sticky="false"] thead,.diagnostics table[data-sticky="false"] th {position:static;}
+.diagnostics table[data-sticky="true"] thead {position:sticky;top:0;z-index:1;background:var(--surface-2);}
+.diagnostics[data-reduced-motion="true"] *, .diagnostics[data-reduced-motion="true"] *::before,.diagnostics[data-reduced-motion="true"] *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important;}
+
+.diagnostics pre[class] {background:var(--surface-3);color:var(--text);}
+.diagnostics a {text-decoration:underline;text-underline-offset:2px;}
+/* DICOM uses a dark viewing surround independently of the application theme. */
+.diagnostics .film {--surface:#0a0a0a;--surface-2:#171717;--surface-3:#262626;--text:#f4f4f5;--text-muted:#d4d4d8;--text-subtle:#a1a1aa;}

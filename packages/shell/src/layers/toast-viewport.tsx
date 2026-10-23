@@ -29,8 +29,10 @@ export function ToastViewport() {
            "light" is the historical look -- surface background, tinted icon. */
         const solid = preferences.toastStyle === "solid";
         const toneVar = item.type === "success" ? "--success" : item.type === "error" ? "--danger" : item.type === "warning" ? "--warning" : "--info";
+        // A dark tint retains the semantic tone and readable white copy, including bright dark-theme status colors.
+        const solidColor = `color-mix(in srgb, var(${toneVar}) 40%, #000)`;
         return (
-          <div key={item.id} style={solid ? { background: `var(${toneVar})`, borderColor: `var(${toneVar})` } : undefined} className={cn("pointer-events-auto animate-slide-up flex w-[360px] max-w-full items-start gap-3 rounded-2xl border p-3 shadow-[var(--shadow-md)]", solid ? "text-white" : "border-[var(--border)] bg-[var(--surface)]")}>
+          <div key={item.id} style={solid ? { background: solidColor, borderColor: solidColor } : undefined} className={cn("pointer-events-auto animate-slide-up flex w-[360px] max-w-full items-start gap-3 rounded-2xl border p-3 shadow-[var(--shadow-md)]", solid ? "text-white" : "border-[var(--border)] bg-[var(--surface)]")}>
             <span className={cn("mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-xl", solid ? "bg-white/20" : "bg-[var(--surface-2)]")}><Icon className={cn("size-4", solid ? "text-white" : item.type === "success" && "text-[var(--success-ink)]", !solid && item.type === "error" && "text-[var(--danger-ink)]", !solid && item.type === "warning" && "text-[var(--warning-ink)]", !solid && item.type === "info" && "text-[var(--info-ink)]")} /></span>
             <span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className="text-[length:calc(11px*var(--fs-scale))] font-extrabold">{<LocalizedText message={item.title} />}</span>{solid ? null : <Badge tone={tone[item.type]}>{item.type}</Badge>}</span>{item.message ? <span className={cn("mt-1 block text-[length:calc(9.5px*var(--fs-scale))] leading-relaxed", solid ? "text-white/85" : "text-[var(--text-muted)]")}>{<LocalizedText message={item.message} />}</span> : null}</span>
             <IconButton label="ui.dismiss.48845bff" className={cn("size-7", solid && "text-white hover:bg-white/15")} onClick={() => dismissToast(item.id)}><X className="size-3.5" /></IconButton>

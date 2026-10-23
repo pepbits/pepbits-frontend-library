@@ -1,0 +1,2383 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/modules/diagnostics/behavior.test.tsx (4 tests | 1 failed) 10847ms
+   ✓ lis1 patient editor retains values after a failed save and retries through HTTP  490ms
+   ✓ lis2 patient editor retains values after a failed save and retries through HTTP 227ms
+   × ris1 patient editor retains values after a failed save and retries through HTTP 10119ms
+     → Found multiple elements with the role "button" and name "Register patient"
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<button[39m
+  [33maria-label[39m=[32m"Register patient"[39m
+  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] hidden"[39m
+  [33mtype[39m=[32m"submit"[39m
+[36m/>[39m
+
+Ignored nodes: comments, script, style
+[36m<button[39m
+  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] btn-primary"[39m
+  [33mtype[39m=[32m"button"[39m
+[36m>[39m
+  [0mRegister patient[0m
+[36m</button>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"diagnostics"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Register patient"[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+        [33mrole[39m=[32m"dialog"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl max-w-2xl"[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+              [36m>[39m
+                [0mRegister patient[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close"[39m
+              [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+              [33mtitle[39m=[32m"Close"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M18 6 6 18"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 6 12 12"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"diagnostics diagnostic-ris1 p-4"[39m
+            [36m>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m"grid grid-cols-1 gap-3 sm:grid-cols-2"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_14_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_14_"[39m
+                  [36m>[39m
+                    [0mFirst name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_14_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Synthetic"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_16_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_16_"[39m
+                  [36m>[39m
+                    [0mLast name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_16_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Patient"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_18_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_18_"[39m
+                  [36m>...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"diagnostics"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Register patient"[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+        [33mrole[39m=[32m"dialog"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl max-w-2xl"[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+              [36m>[39m
+                [0mRegister patient[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close"[39m
+              [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+              [33mtitle[39m=[32m"Close"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M18 6 6 18"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 6 12 12"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"diagnostics diagnostic-ris1 p-4"[39m
+            [36m>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m"grid grid-cols-1 gap-3 sm:grid-cols-2"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_14_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_14_"[39m
+                  [36m>[39m
+                    [0mFirst name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_14_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Synthetic"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_16_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_16_"[39m
+                  [36m>[39m
+                    [0mLast name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_16_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Patient"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_18_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_18_"[39m
+                  [36m>...
+   ✓ uses effective page size, central updates and mounted tenant locks for LIS2 requests 10ms
+stderr | src/routes.test.tsx > 'default' > 'reference-ris1-dashboard' renders API data and page content passes axe
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+
+stderr | src/routes.test.tsx > 'default' > 'reference-ris1-analytics' renders API data and page content passes axe
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+
+stderr | src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-dashboard' renders API data and page content passes axe
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+
+stderr | src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-analytics' renders API data and page content passes axe
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+
+stderr | src/routes.test.tsx > 'reduced motion' > 'reference-ris1-dashboard' renders API data and page content passes axe
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+
+stderr | src/routes.test.tsx > 'reduced motion' > 'reference-ris1-analytics' renders API data and page content passes axe
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+
+stderr | src/routes.test.tsx > 'locked density' > 'reference-ris1-dashboard' renders API data and page content passes axe
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+
+stderr | src/routes.test.tsx > 'locked density' > 'reference-ris1-analytics' renders API data and page content passes axe
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+ReferenceError: ResizeObserver is not defined
+    at /home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/recharts/lib/component/ResponsiveContainer.js:101:20
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: 'ResizeObserver is not defined'
+}
+
+The above error occurred in the <ForwardRef> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, SentinelBoundary.
+
+
+ ❯ src/routes.test.tsx (368 tests | 12 failed) 268024ms
+   ✓ 'default' > 'reference-lis1-dashboard' renders API data and page content passes axe  697ms
+   ✓ 'default' > 'reference-lis1-accession' renders API data and page content passes axe  435ms
+   ✓ 'default' > 'reference-lis1-automation' renders API data and page content passes axe  525ms
+   ✓ 'default' > 'reference-lis1-automation-routing' renders API data and page content passes axe  472ms
+   ✓ 'default' > 'reference-lis1-billing' renders API data and page content passes axe  386ms
+   ✓ 'default' > 'reference-lis1-collection' renders API data and page content passes axe  368ms
+   ✓ 'default' > 'reference-lis1-criticals' renders API data and page content passes axe  370ms
+   ✓ 'default' > 'reference-lis1-integration' renders API data and page content passes axe  355ms
+   ✓ 'default' > 'reference-lis1-integration-docs' renders API data and page content passes axe  317ms
+   ✓ 'default' > 'reference-lis1-masters' renders API data and page content passes axe  381ms
+   ✓ 'default' > 'reference-lis1-orders' renders API data and page content passes axe  368ms
+   ✓ 'default' > 'reference-lis1-orders-new' renders API data and page content passes axe  697ms
+   ✓ 'default' > 'reference-lis1-outsource' renders API data and page content passes axe  400ms
+   ✓ 'default' > 'reference-lis1-patients' renders API data and page content passes axe  442ms
+   ✓ 'default' > 'reference-lis1-reports' renders API data and page content passes axe  647ms
+   ✓ 'default' > 'reference-lis1-results' renders API data and page content passes axe  744ms
+   ✓ 'default' > 'reference-lis1-samples' renders API data and page content passes axe  472ms
+   ✓ 'default' > 'reference-lis1-users' renders API data and page content passes axe  437ms
+   ✓ 'default' > 'reference-lis1-validation' renders API data and page content passes axe  434ms
+   ✓ 'default' > 'reference-lis2-dashboard' renders API data and page content passes axe  526ms
+   ✓ 'default' > 'reference-lis2-accession' renders API data and page content passes axe  455ms
+   ✓ 'default' > 'reference-lis2-billing' renders API data and page content passes axe  462ms
+   ✓ 'default' > 'reference-lis2-collection' renders API data and page content passes axe  491ms
+   ✓ 'default' > 'reference-lis2-critical' renders API data and page content passes axe  552ms
+   ✓ 'default' > 'reference-lis2-integration-console' renders API data and page content passes axe  495ms
+   ✓ 'default' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe  458ms
+   ✓ 'default' > 'reference-lis2-integration-messages' renders API data and page content passes axe  471ms
+   ✓ 'default' > 'reference-lis2-integration-outbox' renders API data and page content passes axe  411ms
+   ✓ 'default' > 'reference-lis2-inventory' renders API data and page content passes axe  541ms
+   ✓ 'default' > 'reference-lis2-masters' renders API data and page content passes axe  420ms
+   ✓ 'default' > 'reference-lis2-orders' renders API data and page content passes axe  419ms
+   ✓ 'default' > 'reference-lis2-orders-new' renders API data and page content passes axe  542ms
+   ✓ 'default' > 'reference-lis2-outsource' renders API data and page content passes axe  363ms
+   ✓ 'default' > 'reference-lis2-patients' renders API data and page content passes axe  422ms
+   ✓ 'default' > 'reference-lis2-report-designer' renders API data and page content passes axe  518ms
+   ✓ 'default' > 'reference-lis2-reports' renders API data and page content passes axe  480ms
+   ✓ 'default' > 'reference-lis2-samples' renders API data and page content passes axe  416ms
+   ✓ 'default' > 'reference-lis2-settings' renders API data and page content passes axe  353ms
+   ✓ 'default' > 'reference-lis2-signing' renders API data and page content passes axe  437ms
+   ✓ 'default' > 'reference-lis2-tat' renders API data and page content passes axe  424ms
+   ✓ 'default' > 'reference-lis2-worklist' renders API data and page content passes axe  575ms
+   × 'default' > 'reference-ris1-dashboard' renders API data and page content passes axe 10313ms
+     → Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m38055aac-3975-4953-bdc7-1ff857eddeae[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   × 'default' > 'reference-ris1-analytics' renders API data and page content passes axe 10337ms
+     → Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m0c8f09bd-00cc-4f05-b1ba-ad292c237ee3[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   ✓ 'default' > 'reference-ris1-audit' renders API data and page content passes axe  1010ms
+   ✓ 'default' > 'reference-ris1-billing' renders API data and page content passes axe  1866ms
+   ✓ 'default' > 'reference-ris1-critical' renders API data and page content passes axe  387ms
+   ✓ 'default' > 'reference-ris1-integration' renders API data and page content passes axe  425ms
+   ✓ 'default' > 'reference-ris1-masters' renders API data and page content passes axe  529ms
+   ✓ 'default' > 'reference-ris1-orders' renders API data and page content passes axe  1540ms
+   × 'default' > 'reference-ris1-pacs' renders API data and page content passes axe 732ms
+     → expected [ { id: 'label', …(1) }, …(1) ] to deeply equal []
+   ✓ 'default' > 'reference-ris1-patients' renders API data and page content passes axe  531ms
+   ✓ 'default' > 'reference-ris1-reading' renders API data and page content passes axe  508ms
+   ✓ 'default' > 'reference-ris1-reception' renders API data and page content passes axe  479ms
+   ✓ 'default' > 'reference-ris1-schedule' renders API data and page content passes axe  558ms
+   ✓ 'default' > 'reference-ris1-technologist' renders API data and page content passes axe  521ms
+   ✓ 'default' > 'suite-dashboard' renders API data and page content passes axe  425ms
+   ✓ 'default' > 'suite-patients' renders API data and page content passes axe  588ms
+   ✓ 'default' > 'suite-appointments' renders API data and page content passes axe  1042ms
+   ✓ 'default' > 'suite-encounters' renders API data and page content passes axe  410ms
+   ✓ 'default' > 'suite-approvals' renders API data and page content passes axe  380ms
+   ✓ 'default' > 'suite-hospital-billing' renders API data and page content passes axe  382ms
+   ✓ 'default' > 'suite-pharmacy-billing' renders API data and page content passes axe  355ms
+   ✓ 'default' > 'suite-invoices' renders API data and page content passes axe  371ms
+   ✓ 'default' > 'suite-contracts' renders API data and page content passes axe  911ms
+   ✓ 'default' > 'suite-master-facilities' renders API data and page content passes axe  412ms
+   ✓ 'default' > 'suite-master-departments' renders API data and page content passes axe  551ms
+   ✓ 'default' > 'suite-master-specialties' renders API data and page content passes axe  414ms
+   ✓ 'default' > 'suite-master-providers' renders API data and page content passes axe  430ms
+   ✓ 'default' > 'suite-master-payers' renders API data and page content passes axe  405ms
+   ✓ 'default' > 'suite-master-tpas' renders API data and page content passes axe  401ms
+   ✓ 'default' > 'suite-master-insurance-plans' renders API data and page content passes axe  407ms
+   ✓ 'default' > 'suite-master-networks' renders API data and page content passes axe  386ms
+   ✓ 'default' > 'suite-master-price-lists' renders API data and page content passes axe  417ms
+   ✓ 'default' > 'suite-master-items' renders API data and page content passes axe  416ms
+   ✓ 'default' > 'suite-master-services' renders API data and page content passes axe  412ms
+   ✓ 'default' > 'suite-master-resources' renders API data and page content passes axe  417ms
+   ✓ 'default' > 'suite-master-resource-schedules' renders API data and page content passes axe  382ms
+   ✓ 'default' > 'suite-master-resource-blocks' renders API data and page content passes axe  420ms
+   ✓ 'default' > 'patient-query' renders API data and page content passes axe  485ms
+   ✓ 'default' > 'patient-record' renders API data and page content passes axe  1005ms
+   ✓ 'default' > 'patient-360' renders API data and page content passes axe  328ms
+   ✓ 'default' > 'clinical-triage' renders API data and page content passes axe  344ms
+   ✓ 'default' > 'clinical-consultation' renders API data and page content passes axe  332ms
+   ✓ 'default' > 'op-consultation' renders API data and page content passes axe  316ms
+   ✓ 'default' > 'comprehensive-consultation' renders API data and page content passes axe  313ms
+   ✓ 'default' > 'op-registration' renders API data and page content passes axe  515ms
+   ✓ 'default' > 'clinic-billing' renders API data and page content passes axe  324ms
+   ✓ 'default' > 'emergency-registration' renders API data and page content passes axe  576ms
+   ✓ 'default' > 'inpatient-admission' renders API data and page content passes axe  483ms
+   ✓ 'default' > 'consultation-entry-design' renders API data and page content passes axe  830ms
+   ✓ 'default' > 'consultation-entry-v2' renders API data and page content passes axe  1124ms
+   ✓ 'default' > 'preferences' renders API data and page content passes axe  1580ms
+   ✓ 'Arabic RTL' > 'reference-lis1-dashboard' renders API data and page content passes axe  434ms
+   ✓ 'Arabic RTL' > 'reference-lis1-accession' renders API data and page content passes axe  394ms
+   ✓ 'Arabic RTL' > 'reference-lis1-automation' renders API data and page content passes axe  457ms
+   ✓ 'Arabic RTL' > 'reference-lis1-automation-routing' renders API data and page content passes axe  510ms
+   ✓ 'Arabic RTL' > 'reference-lis1-billing' renders API data and page content passes axe  372ms
+   ✓ 'Arabic RTL' > 'reference-lis1-collection' renders API data and page content passes axe  368ms
+   ✓ 'Arabic RTL' > 'reference-lis1-criticals' renders API data and page content passes axe  387ms
+   ✓ 'Arabic RTL' > 'reference-lis1-integration' renders API data and page content passes axe  421ms
+   ✓ 'Arabic RTL' > 'reference-lis1-integration-docs' renders API data and page content passes axe  340ms
+   ✓ 'Arabic RTL' > 'reference-lis1-masters' renders API data and page content passes axe  403ms
+   ✓ 'Arabic RTL' > 'reference-lis1-orders' renders API data and page content passes axe  401ms
+   ✓ 'Arabic RTL' > 'reference-lis1-orders-new' renders API data and page content passes axe  599ms
+   ✓ 'Arabic RTL' > 'reference-lis1-outsource' renders API data and page content passes axe  363ms
+   ✓ 'Arabic RTL' > 'reference-lis1-patients' renders API data and page content passes axe  359ms
+   ✓ 'Arabic RTL' > 'reference-lis1-reports' renders API data and page content passes axe  325ms
+   ✓ 'Arabic RTL' > 'reference-lis1-results' renders API data and page content passes axe  440ms
+   ✓ 'Arabic RTL' > 'reference-lis1-samples' renders API data and page content passes axe  355ms
+   ✓ 'Arabic RTL' > 'reference-lis1-users' renders API data and page content passes axe  447ms
+   ✓ 'Arabic RTL' > 'reference-lis1-validation' renders API data and page content passes axe  396ms
+   ✓ 'Arabic RTL' > 'reference-lis2-dashboard' renders API data and page content passes axe  472ms
+   ✓ 'Arabic RTL' > 'reference-lis2-accession' renders API data and page content passes axe  427ms
+   ✓ 'Arabic RTL' > 'reference-lis2-billing' renders API data and page content passes axe  411ms
+   ✓ 'Arabic RTL' > 'reference-lis2-collection' renders API data and page content passes axe  410ms
+   ✓ 'Arabic RTL' > 'reference-lis2-critical' renders API data and page content passes axe  401ms
+   ✓ 'Arabic RTL' > 'reference-lis2-integration-console' renders API data and page content passes axe  435ms
+   ✓ 'Arabic RTL' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe  404ms
+   ✓ 'Arabic RTL' > 'reference-lis2-integration-messages' renders API data and page content passes axe  414ms
+   ✓ 'Arabic RTL' > 'reference-lis2-integration-outbox' renders API data and page content passes axe  416ms
+   ✓ 'Arabic RTL' > 'reference-lis2-inventory' renders API data and page content passes axe  564ms
+   ✓ 'Arabic RTL' > 'reference-lis2-masters' renders API data and page content passes axe  404ms
+   ✓ 'Arabic RTL' > 'reference-lis2-orders' renders API data and page content passes axe  426ms
+   ✓ 'Arabic RTL' > 'reference-lis2-orders-new' renders API data and page content passes axe  557ms
+   ✓ 'Arabic RTL' > 'reference-lis2-outsource' renders API data and page content passes axe  404ms
+   ✓ 'Arabic RTL' > 'reference-lis2-patients' renders API data and page content passes axe  397ms
+   ✓ 'Arabic RTL' > 'reference-lis2-report-designer' renders API data and page content passes axe  533ms
+   ✓ 'Arabic RTL' > 'reference-lis2-reports' renders API data and page content passes axe  422ms
+   ✓ 'Arabic RTL' > 'reference-lis2-samples' renders API data and page content passes axe  443ms
+   ✓ 'Arabic RTL' > 'reference-lis2-settings' renders API data and page content passes axe  363ms
+   ✓ 'Arabic RTL' > 'reference-lis2-signing' renders API data and page content passes axe  428ms
+   ✓ 'Arabic RTL' > 'reference-lis2-tat' renders API data and page content passes axe  456ms
+   ✓ 'Arabic RTL' > 'reference-lis2-worklist' renders API data and page content passes axe  487ms
+   × 'Arabic RTL' > 'reference-ris1-dashboard' renders API data and page content passes axe 10388ms
+     → Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"rtl"[39m
+  [33mlang[39m=[32m"ar"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"rtl"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row-reverse"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mحدث خطأ في هذه الصفحة. يرجى إعادة المحاولة.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mالمرجع[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m698d8796-8343-48df-9b72-5262ecd62c5e[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mإعادة المحاولة[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mإعادة التحميل[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   × 'Arabic RTL' > 'reference-ris1-analytics' renders API data and page content passes axe 10310ms
+     → Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"rtl"[39m
+  [33mlang[39m=[32m"ar"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"rtl"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row-reverse"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mحدث خطأ في هذه الصفحة. يرجى إعادة المحاولة.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mالمرجع[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m5b585414-bb2c-41e8-92b5-997ab7bee0ab[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mإعادة المحاولة[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mإعادة التحميل[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   ✓ 'Arabic RTL' > 'reference-ris1-audit' renders API data and page content passes axe  839ms
+   ✓ 'Arabic RTL' > 'reference-ris1-billing' renders API data and page content passes axe  1962ms
+   ✓ 'Arabic RTL' > 'reference-ris1-critical' renders API data and page content passes axe  358ms
+   ✓ 'Arabic RTL' > 'reference-ris1-integration' renders API data and page content passes axe  433ms
+   ✓ 'Arabic RTL' > 'reference-ris1-masters' renders API data and page content passes axe  511ms
+   ✓ 'Arabic RTL' > 'reference-ris1-orders' renders API data and page content passes axe  1743ms
+   × 'Arabic RTL' > 'reference-ris1-pacs' renders API data and page content passes axe 784ms
+     → expected [ { id: 'label', …(1) }, …(1) ] to deeply equal []
+   ✓ 'Arabic RTL' > 'reference-ris1-patients' renders API data and page content passes axe  544ms
+   ✓ 'Arabic RTL' > 'reference-ris1-reading' renders API data and page content passes axe  544ms
+   ✓ 'Arabic RTL' > 'reference-ris1-reception' renders API data and page content passes axe  507ms
+   ✓ 'Arabic RTL' > 'reference-ris1-schedule' renders API data and page content passes axe  533ms
+   ✓ 'Arabic RTL' > 'reference-ris1-technologist' renders API data and page content passes axe  479ms
+   ✓ 'Arabic RTL' > 'suite-dashboard' renders API data and page content passes axe  404ms
+   ✓ 'Arabic RTL' > 'suite-patients' renders API data and page content passes axe  595ms
+   ✓ 'Arabic RTL' > 'suite-appointments' renders API data and page content passes axe  982ms
+   ✓ 'Arabic RTL' > 'suite-encounters' renders API data and page content passes axe  406ms
+   ✓ 'Arabic RTL' > 'suite-approvals' renders API data and page content passes axe  377ms
+   ✓ 'Arabic RTL' > 'suite-hospital-billing' renders API data and page content passes axe  355ms
+   ✓ 'Arabic RTL' > 'suite-pharmacy-billing' renders API data and page content passes axe  346ms
+   ✓ 'Arabic RTL' > 'suite-invoices' renders API data and page content passes axe  380ms
+   ✓ 'Arabic RTL' > 'suite-contracts' renders API data and page content passes axe  928ms
+   ✓ 'Arabic RTL' > 'suite-master-facilities' renders API data and page content passes axe  420ms
+   ✓ 'Arabic RTL' > 'suite-master-departments' renders API data and page content passes axe  405ms
+   ✓ 'Arabic RTL' > 'suite-master-specialties' renders API data and page content passes axe  399ms
+   ✓ 'Arabic RTL' > 'suite-master-providers' renders API data and page content passes axe  439ms
+   ✓ 'Arabic RTL' > 'suite-master-payers' renders API data and page content passes axe  434ms
+   ✓ 'Arabic RTL' > 'suite-master-tpas' renders API data and page content passes axe  434ms
+   ✓ 'Arabic RTL' > 'suite-master-insurance-plans' renders API data and page content passes axe  410ms
+   ✓ 'Arabic RTL' > 'suite-master-networks' renders API data and page content passes axe  405ms
+   ✓ 'Arabic RTL' > 'suite-master-price-lists' renders API data and page content passes axe  409ms
+   ✓ 'Arabic RTL' > 'suite-master-items' renders API data and page content passes axe  402ms
+   ✓ 'Arabic RTL' > 'suite-master-services' renders API data and page content passes axe  703ms
+   ✓ 'Arabic RTL' > 'suite-master-resources' renders API data and page content passes axe  529ms
+   ✓ 'Arabic RTL' > 'suite-master-resource-schedules' renders API data and page content passes axe  957ms
+   ✓ 'Arabic RTL' > 'suite-master-resource-blocks' renders API data and page content passes axe  721ms
+   ✓ 'Arabic RTL' > 'patient-query' renders API data and page content passes axe  754ms
+   ✓ 'Arabic RTL' > 'patient-record' renders API data and page content passes axe  1302ms
+   ✓ 'Arabic RTL' > 'patient-360' renders API data and page content passes axe  383ms
+   ✓ 'Arabic RTL' > 'clinical-triage' renders API data and page content passes axe  367ms
+   ✓ 'Arabic RTL' > 'clinical-consultation' renders API data and page content passes axe  355ms
+   ✓ 'Arabic RTL' > 'op-consultation' renders API data and page content passes axe  369ms
+   ✓ 'Arabic RTL' > 'comprehensive-consultation' renders API data and page content passes axe  354ms
+   ✓ 'Arabic RTL' > 'op-registration' renders API data and page content passes axe  578ms
+   ✓ 'Arabic RTL' > 'clinic-billing' renders API data and page content passes axe  392ms
+   ✓ 'Arabic RTL' > 'emergency-registration' renders API data and page content passes axe  588ms
+   ✓ 'Arabic RTL' > 'inpatient-admission' renders API data and page content passes axe  567ms
+   ✓ 'Arabic RTL' > 'consultation-entry-design' renders API data and page content passes axe  768ms
+   ✓ 'Arabic RTL' > 'consultation-entry-v2' renders API data and page content passes axe  745ms
+   ✓ 'Arabic RTL' > 'preferences' renders API data and page content passes axe  1109ms
+   ✓ 'reduced motion' > 'reference-lis1-dashboard' renders API data and page content passes axe  354ms
+   ✓ 'reduced motion' > 'reference-lis1-accession' renders API data and page content passes axe  345ms
+   ✓ 'reduced motion' > 'reference-lis1-automation' renders API data and page content passes axe  423ms
+   ✓ 'reduced motion' > 'reference-lis1-automation-routing' renders API data and page content passes axe  437ms
+   ✓ 'reduced motion' > 'reference-lis1-billing' renders API data and page content passes axe  383ms
+   ✓ 'reduced motion' > 'reference-lis1-collection' renders API data and page content passes axe  313ms
+   ✓ 'reduced motion' > 'reference-lis1-criticals' renders API data and page content passes axe  308ms
+   ✓ 'reduced motion' > 'reference-lis1-integration' renders API data and page content passes axe  358ms
+   ✓ 'reduced motion' > 'reference-lis1-integration-docs' renders API data and page content passes axe  333ms
+   ✓ 'reduced motion' > 'reference-lis1-masters' renders API data and page content passes axe  403ms
+   ✓ 'reduced motion' > 'reference-lis1-orders' renders API data and page content passes axe  387ms
+   ✓ 'reduced motion' > 'reference-lis1-orders-new' renders API data and page content passes axe  788ms
+   ✓ 'reduced motion' > 'reference-lis1-outsource' renders API data and page content passes axe  393ms
+   ✓ 'reduced motion' > 'reference-lis1-patients' renders API data and page content passes axe  340ms
+   ✓ 'reduced motion' > 'reference-lis1-reports' renders API data and page content passes axe  318ms
+   ✓ 'reduced motion' > 'reference-lis1-results' renders API data and page content passes axe  420ms
+   ✓ 'reduced motion' > 'reference-lis1-samples' renders API data and page content passes axe  333ms
+   ✓ 'reduced motion' > 'reference-lis1-users' renders API data and page content passes axe  343ms
+   ✓ 'reduced motion' > 'reference-lis1-validation' renders API data and page content passes axe  333ms
+   ✓ 'reduced motion' > 'reference-lis2-dashboard' renders API data and page content passes axe  439ms
+   ✓ 'reduced motion' > 'reference-lis2-accession' renders API data and page content passes axe  371ms
+   ✓ 'reduced motion' > 'reference-lis2-billing' renders API data and page content passes axe  390ms
+   ✓ 'reduced motion' > 'reference-lis2-collection' renders API data and page content passes axe  409ms
+   ✓ 'reduced motion' > 'reference-lis2-critical' renders API data and page content passes axe  396ms
+   ✓ 'reduced motion' > 'reference-lis2-integration-console' renders API data and page content passes axe  416ms
+   ✓ 'reduced motion' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe  392ms
+   ✓ 'reduced motion' > 'reference-lis2-integration-messages' renders API data and page content passes axe  465ms
+   ✓ 'reduced motion' > 'reference-lis2-integration-outbox' renders API data and page content passes axe  396ms
+   ✓ 'reduced motion' > 'reference-lis2-inventory' renders API data and page content passes axe  559ms
+   ✓ 'reduced motion' > 'reference-lis2-masters' renders API data and page content passes axe  382ms
+   ✓ 'reduced motion' > 'reference-lis2-orders' renders API data and page content passes axe  401ms
+   ✓ 'reduced motion' > 'reference-lis2-orders-new' renders API data and page content passes axe  517ms
+   ✓ 'reduced motion' > 'reference-lis2-outsource' renders API data and page content passes axe  321ms
+   ✓ 'reduced motion' > 'reference-lis2-patients' renders API data and page content passes axe  336ms
+   ✓ 'reduced motion' > 'reference-lis2-report-designer' renders API data and page content passes axe  473ms
+   ✓ 'reduced motion' > 'reference-lis2-reports' renders API data and page content passes axe  435ms
+   ✓ 'reduced motion' > 'reference-lis2-samples' renders API data and page content passes axe  465ms
+   ✓ 'reduced motion' > 'reference-lis2-settings' renders API data and page content passes axe  381ms
+   ✓ 'reduced motion' > 'reference-lis2-signing' renders API data and page content passes axe  459ms
+   ✓ 'reduced motion' > 'reference-lis2-tat' renders API data and page content passes axe  465ms
+   ✓ 'reduced motion' > 'reference-lis2-worklist' renders API data and page content passes axe  528ms
+   × 'reduced motion' > 'reference-ris1-dashboard' renders API data and page content passes axe 10334ms
+     → Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"true"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m0644c0e9-9ecd-4ea0-8743-a0563c7c3a06[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   × 'reduced motion' > 'reference-ris1-analytics' renders API data and page content passes axe 10304ms
+     → Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"true"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m4baea7f0-7668-4c68-89d7-aa2906a1ef54[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   ✓ 'reduced motion' > 'reference-ris1-audit' renders API data and page content passes axe  859ms
+   ✓ 'reduced motion' > 'reference-ris1-billing' renders API data and page content passes axe  2284ms
+   ✓ 'reduced motion' > 'reference-ris1-critical' renders API data and page content passes axe  365ms
+   ✓ 'reduced motion' > 'reference-ris1-integration' renders API data and page content passes axe  410ms
+   ✓ 'reduced motion' > 'reference-ris1-masters' renders API data and page content passes axe  502ms
+   ✓ 'reduced motion' > 'reference-ris1-orders' renders API data and page content passes axe  1713ms
+   × 'reduced motion' > 'reference-ris1-pacs' renders API data and page content passes axe 998ms
+     → expected [ { id: 'label', …(1) }, …(1) ] to deeply equal []
+   ✓ 'reduced motion' > 'reference-ris1-patients' renders API data and page content passes axe  623ms
+   ✓ 'reduced motion' > 'reference-ris1-reading' renders API data and page content passes axe  548ms
+   ✓ 'reduced motion' > 'reference-ris1-reception' renders API data and page content passes axe  491ms
+   ✓ 'reduced motion' > 'reference-ris1-schedule' renders API data and page content passes axe  544ms
+   ✓ 'reduced motion' > 'reference-ris1-technologist' renders API data and page content passes axe  518ms
+   ✓ 'reduced motion' > 'suite-dashboard' renders API data and page content passes axe  444ms
+   ✓ 'reduced motion' > 'suite-patients' renders API data and page content passes axe  598ms
+   ✓ 'reduced motion' > 'suite-appointments' renders API data and page content passes axe  1061ms
+   ✓ 'reduced motion' > 'suite-encounters' renders API data and page content passes axe  483ms
+   ✓ 'reduced motion' > 'suite-approvals' renders API data and page content passes axe  505ms
+   ✓ 'reduced motion' > 'suite-hospital-billing' renders API data and page content passes axe  562ms
+   ✓ 'reduced motion' > 'suite-pharmacy-billing' renders API data and page content passes axe  639ms
+   ✓ 'reduced motion' > 'suite-invoices' renders API data and page content passes axe  482ms
+   ✓ 'reduced motion' > 'suite-contracts' renders API data and page content passes axe  1054ms
+   ✓ 'reduced motion' > 'suite-master-facilities' renders API data and page content passes axe  432ms
+   ✓ 'reduced motion' > 'suite-master-departments' renders API data and page content passes axe  422ms
+   ✓ 'reduced motion' > 'suite-master-specialties' renders API data and page content passes axe  416ms
+   ✓ 'reduced motion' > 'suite-master-providers' renders API data and page content passes axe  427ms
+   ✓ 'reduced motion' > 'suite-master-payers' renders API data and page content passes axe  448ms
+   ✓ 'reduced motion' > 'suite-master-tpas' renders API data and page content passes axe  432ms
+   ✓ 'reduced motion' > 'suite-master-insurance-plans' renders API data and page content passes axe  429ms
+   ✓ 'reduced motion' > 'suite-master-networks' renders API data and page content passes axe  406ms
+   ✓ 'reduced motion' > 'suite-master-price-lists' renders API data and page content passes axe  405ms
+   ✓ 'reduced motion' > 'suite-master-items' renders API data and page content passes axe  398ms
+   ✓ 'reduced motion' > 'suite-master-services' renders API data and page content passes axe  428ms
+   ✓ 'reduced motion' > 'suite-master-resources' renders API data and page content passes axe  426ms
+   ✓ 'reduced motion' > 'suite-master-resource-schedules' renders API data and page content passes axe  397ms
+   ✓ 'reduced motion' > 'suite-master-resource-blocks' renders API data and page content passes axe  392ms
+   ✓ 'reduced motion' > 'patient-query' renders API data and page content passes axe  458ms
+   ✓ 'reduced motion' > 'patient-record' renders API data and page content passes axe  960ms
+   ✓ 'reduced motion' > 'patient-360' renders API data and page content passes axe  346ms
+   ✓ 'reduced motion' > 'clinical-triage' renders API data and page content passes axe  312ms
+   ✓ 'reduced motion' > 'clinical-consultation' renders API data and page content passes axe  310ms
+   ✓ 'reduced motion' > 'op-consultation' renders API data and page content passes axe  319ms
+   ✓ 'reduced motion' > 'comprehensive-consultation' renders API data and page content passes axe  320ms
+   ✓ 'reduced motion' > 'op-registration' renders API data and page content passes axe  486ms
+   ✓ 'reduced motion' > 'clinic-billing' renders API data and page content passes axe  475ms
+   ✓ 'reduced motion' > 'emergency-registration' renders API data and page content passes axe  512ms
+   ✓ 'reduced motion' > 'inpatient-admission' renders API data and page content passes axe  497ms
+   ✓ 'reduced motion' > 'consultation-entry-design' renders API data and page content passes axe  752ms
+   ✓ 'reduced motion' > 'consultation-entry-v2' renders API data and page content passes axe  709ms
+   ✓ 'reduced motion' > 'preferences' renders API data and page content passes axe  1043ms
+   ✓ 'locked density' > 'reference-lis1-dashboard' renders API data and page content passes axe  362ms
+   ✓ 'locked density' > 'reference-lis1-accession' renders API data and page content passes axe  367ms
+   ✓ 'locked density' > 'reference-lis1-automation' renders API data and page content passes axe  399ms
+   ✓ 'locked density' > 'reference-lis1-automation-routing' renders API data and page content passes axe  445ms
+   ✓ 'locked density' > 'reference-lis1-billing' renders API data and page content passes axe  322ms
+   ✓ 'locked density' > 'reference-lis1-collection' renders API data and page content passes axe  324ms
+   ✓ 'locked density' > 'reference-lis1-criticals' renders API data and page content passes axe  363ms
+   ✓ 'locked density' > 'reference-lis1-integration' renders API data and page content passes axe  363ms
+   ✓ 'locked density' > 'reference-lis1-integration-docs' renders API data and page content passes axe  300ms
+   ✓ 'locked density' > 'reference-lis1-masters' renders API data and page content passes axe  359ms
+   ✓ 'locked density' > 'reference-lis1-orders' renders API data and page content passes axe  375ms
+   ✓ 'locked density' > 'reference-lis1-orders-new' renders API data and page content passes axe  586ms
+   ✓ 'locked density' > 'reference-lis1-outsource' renders API data and page content passes axe  335ms
+   ✓ 'locked density' > 'reference-lis1-patients' renders API data and page content passes axe  345ms
+   ✓ 'locked density' > 'reference-lis1-reports' renders API data and page content passes axe  316ms
+   ✓ 'locked density' > 'reference-lis1-results' renders API data and page content passes axe  409ms
+   ✓ 'locked density' > 'reference-lis1-samples' renders API data and page content passes axe  323ms
+   ✓ 'locked density' > 'reference-lis1-users' renders API data and page content passes axe  316ms
+   ✓ 'locked density' > 'reference-lis1-validation' renders API data and page content passes axe  351ms
+   ✓ 'locked density' > 'reference-lis2-dashboard' renders API data and page content passes axe  443ms
+   ✓ 'locked density' > 'reference-lis2-accession' renders API data and page content passes axe  360ms
+   ✓ 'locked density' > 'reference-lis2-billing' renders API data and page content passes axe  383ms
+   ✓ 'locked density' > 'reference-lis2-collection' renders API data and page content passes axe  406ms
+   ✓ 'locked density' > 'reference-lis2-critical' renders API data and page content passes axe  361ms
+   ✓ 'locked density' > 'reference-lis2-integration-console' renders API data and page content passes axe  391ms
+   ✓ 'locked density' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe  391ms
+   ✓ 'locked density' > 'reference-lis2-integration-messages' renders API data and page content passes axe  451ms
+   ✓ 'locked density' > 'reference-lis2-integration-outbox' renders API data and page content passes axe  438ms
+   ✓ 'locked density' > 'reference-lis2-inventory' renders API data and page content passes axe  603ms
+   ✓ 'locked density' > 'reference-lis2-masters' renders API data and page content passes axe  388ms
+   ✓ 'locked density' > 'reference-lis2-orders' renders API data and page content passes axe  431ms
+   ✓ 'locked density' > 'reference-lis2-orders-new' renders API data and page content passes axe  532ms
+   ✓ 'locked density' > 'reference-lis2-outsource' renders API data and page content passes axe  538ms
+   ✓ 'locked density' > 'reference-lis2-patients' renders API data and page content passes axe  379ms
+   ✓ 'locked density' > 'reference-lis2-report-designer' renders API data and page content passes axe  482ms
+   ✓ 'locked density' > 'reference-lis2-reports' renders API data and page content passes axe  419ms
+   ✓ 'locked density' > 'reference-lis2-samples' renders API data and page content passes axe  415ms
+   ✓ 'locked density' > 'reference-lis2-settings' renders API data and page content passes axe  375ms
+   ✓ 'locked density' > 'reference-lis2-signing' renders API data and page content passes axe  445ms
+   ✓ 'locked density' > 'reference-lis2-tat' renders API data and page content passes axe  454ms
+   ✓ 'locked density' > 'reference-lis2-worklist' renders API data and page content passes axe  534ms
+   × 'locked density' > 'reference-ris1-dashboard' renders API data and page content passes axe 10322ms
+     → Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 6px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m57f9489c-3593-44a2-b02b-fe8df7a71493[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   × 'locked density' > 'reference-ris1-analytics' renders API data and page content passes axe 10347ms
+     → Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 6px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m1e9eff12-8fae-4c2a-8d3b-296b2b84937e[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   ✓ 'locked density' > 'reference-ris1-audit' renders API data and page content passes axe  890ms
+   ✓ 'locked density' > 'reference-ris1-billing' renders API data and page content passes axe  1882ms
+   ✓ 'locked density' > 'reference-ris1-critical' renders API data and page content passes axe  486ms
+   ✓ 'locked density' > 'reference-ris1-integration' renders API data and page content passes axe  406ms
+   ✓ 'locked density' > 'reference-ris1-masters' renders API data and page content passes axe  464ms
+   ✓ 'locked density' > 'reference-ris1-orders' renders API data and page content passes axe  1801ms
+   × 'locked density' > 'reference-ris1-pacs' renders API data and page content passes axe 1059ms
+     → expected [ { id: 'label', …(1) }, …(1) ] to deeply equal []
+   ✓ 'locked density' > 'reference-ris1-patients' renders API data and page content passes axe  921ms
+   ✓ 'locked density' > 'reference-ris1-reading' renders API data and page content passes axe  689ms
+   ✓ 'locked density' > 'reference-ris1-reception' renders API data and page content passes axe  637ms
+   ✓ 'locked density' > 'reference-ris1-schedule' renders API data and page content passes axe  644ms
+   ✓ 'locked density' > 'reference-ris1-technologist' renders API data and page content passes axe  508ms
+   ✓ 'locked density' > 'suite-dashboard' renders API data and page content passes axe  437ms
+   ✓ 'locked density' > 'suite-patients' renders API data and page content passes axe  634ms
+   ✓ 'locked density' > 'suite-appointments' renders API data and page content passes axe  1084ms
+   ✓ 'locked density' > 'suite-encounters' renders API data and page content passes axe  435ms
+   ✓ 'locked density' > 'suite-approvals' renders API data and page content passes axe  379ms
+   ✓ 'locked density' > 'suite-hospital-billing' renders API data and page content passes axe  346ms
+   ✓ 'locked density' > 'suite-pharmacy-billing' renders API data and page content passes axe  325ms
+   ✓ 'locked density' > 'suite-invoices' renders API data and page content passes axe  390ms
+   ✓ 'locked density' > 'suite-contracts' renders API data and page content passes axe  959ms
+   ✓ 'locked density' > 'suite-master-facilities' renders API data and page content passes axe  408ms
+   ✓ 'locked density' > 'suite-master-departments' renders API data and page content passes axe  398ms
+   ✓ 'locked density' > 'suite-master-specialties' renders API data and page content passes axe  371ms
+   ✓ 'locked density' > 'suite-master-providers' renders API data and page content passes axe  407ms
+   ✓ 'locked density' > 'suite-master-payers' renders API data and page content passes axe  401ms
+   ✓ 'locked density' > 'suite-master-tpas' renders API data and page content passes axe  388ms
+   ✓ 'locked density' > 'suite-master-insurance-plans' renders API data and page content passes axe  383ms
+   ✓ 'locked density' > 'suite-master-networks' renders API data and page content passes axe  385ms
+   ✓ 'locked density' > 'suite-master-price-lists' renders API data and page content passes axe  391ms
+   ✓ 'locked density' > 'suite-master-items' renders API data and page content passes axe  428ms
+   ✓ 'locked density' > 'suite-master-services' renders API data and page content passes axe  392ms
+   ✓ 'locked density' > 'suite-master-resources' renders API data and page content passes axe  420ms
+   ✓ 'locked density' > 'suite-master-resource-schedules' renders API data and page content passes axe  416ms
+   ✓ 'locked density' > 'suite-master-resource-blocks' renders API data and page content passes axe  399ms
+   ✓ 'locked density' > 'patient-query' renders API data and page content passes axe  482ms
+   ✓ 'locked density' > 'patient-record' renders API data and page content passes axe  854ms
+   ✓ 'locked density' > 'patient-360' renders API data and page content passes axe  347ms
+   ✓ 'locked density' > 'clinical-triage' renders API data and page content passes axe  320ms
+   ✓ 'locked density' > 'clinical-consultation' renders API data and page content passes axe  311ms
+   ✓ 'locked density' > 'op-consultation' renders API data and page content passes axe  312ms
+   ✓ 'locked density' > 'comprehensive-consultation' renders API data and page content passes axe  305ms
+   ✓ 'locked density' > 'op-registration' renders API data and page content passes axe  491ms
+   ✓ 'locked density' > 'clinic-billing' renders API data and page content passes axe  345ms
+   ✓ 'locked density' > 'emergency-registration' renders API data and page content passes axe  551ms
+   ✓ 'locked density' > 'inpatient-admission' renders API data and page content passes axe  498ms
+   ✓ 'locked density' > 'consultation-entry-design' renders API data and page content passes axe  950ms
+   ✓ 'locked density' > 'consultation-entry-v2' renders API data and page content passes axe  652ms
+   ✓ 'locked density' > 'preferences' renders API data and page content passes axe  945ms
+ ✓ src/modules/clinical-templates/clinical-templates.test.tsx (7 tests) 3292ms
+   ✓ patient form preserves edits through section changes and retries with the same operation  1160ms
+   ✓ scope remounts cannot retain another user patient edits  426ms
+   ✓ New patient resets a saved record in a reused new-record tab  640ms
+   ✓ empty contact editors do not create rows until edited and retain focus while typing  611ms
+ ✓ src/modules/clinical-templates/query.test.tsx (11 tests) 2774ms
+   ✓ query waits for criteria and preserves filters after a failed search  567ms
+   ✓ inline details belong to the selected row and record actions use navigation  339ms
+   ✓ production capability limits preserve layout without invoking unavailable workflows  335ms
+   ✓ infinite results use twenty-record requests, preserve loaded rows and retain a keyboard load action  364ms
+ ✓ src/modules/suite/preferences.test.tsx (9 tests) 684ms
+ ✓ src/modules/op-registration/workspace.test.tsx (4 tests) 651ms
+ ✓ src/modules/suite/master-page.test.tsx (1 test) 701ms
+   ✓ configured master creation preserves fields on failure and navigates only after API acknowledgement  699ms
+ ✓ src/modules/comprehensive-consultation/workspace.test.tsx (1 test) 488ms
+   ✓ specialty edits survive context and tenant-locked layout changes; preview never saves  487ms
+ ✓ src/modules/op-consultation/workspace.test.tsx (1 test) 418ms
+   ✓ OP summary navigates fields; locked layout and review retain unsaved values  417ms
+ ✓ src/modules/clinic-billing/workspace.test.tsx (5 tests) 1243ms
+   ✓ managed layouts update without losing input; failed requests retry the exact operation  470ms
+   ✓ bill correction retains input and operation identity on failure; read-only view can return  550ms
+ ✓ src/providers.test.tsx (4 tests) 1294ms
+   ✓ one serialized preference path retains adjacent writes and API revisions  416ms
+   ✓ language catalog refresh preserves the mounted editor  353ms
+ ✓ src/modules/care-pages/workspace.test.tsx (3 tests) 1005ms
+   ✓ failed saves keep notes and retry the identical operation; selectors cannot discard dirty inputs  602ms
+ ✓ src/modules/clinical-triage/editor.test.tsx (3 tests) 723ms
+   ✓ blank readings and unanswered safety choices; completion focuses required complaint  355ms
+ ✓ src/modules/clinical-consultation/workspace.test.tsx (3 tests) 849ms
+   ✓ expanded panels retain values and validation opens a hidden invalid vital  328ms
+ ✓ src/modules/suite/adapter.test.tsx (8 tests) 184ms
+ ✓ src/modules/clinical-templates/query-search.test.tsx (2 tests) 190ms
+ ✓ src/modules/diagnostics/client.test.tsx (3 tests) 210ms
+ ✓ src/adapters/http-adapters.test.ts (43 tests) 43ms
+ ✓ src/modules/clinical-templates/overview-data.test.ts (1 test) 18ms
+ ✓ src/navigation.test.ts (21 tests) 33ms
+ ✓ src/adapters/diagnostics.test.ts (10 tests) 18ms
+ ✓ src/modules/clinical-templates/record-age.test.ts (1 test) 5ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'reference-ris1-dashboard' renders API data and page content passes axe
+TypeError: Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m38055aac-3975-4953-bdc7-1ff857eddeae[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/routes.test.tsx:25:36
+     23|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50…
+     24|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     25|   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).…
+       |                                    ^
+     26|   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim…
+     27|   expect(content.textContent).not.toContain('Loading Healthcare Suite'…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'reference-ris1-analytics' renders API data and page content passes axe
+TypeError: Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m0c8f09bd-00cc-4f05-b1ba-ad292c237ee3[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/routes.test.tsx:25:36
+     23|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50…
+     24|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     25|   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).…
+       |                                    ^
+     26|   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim…
+     27|   expect(content.textContent).not.toContain('Loading Healthcare Suite'…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'reference-ris1-pacs' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-pacs' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'reference-ris1-pacs' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'reference-ris1-pacs' renders API data and page content passes axe
+AssertionError: expected [ { id: 'label', …(1) }, …(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "id": "label",
++     "nodes": [
++       "<input class=\"focus-ring h-9 w-ful...\" multiple=\"\" type=\"file\">",
++     ],
++   },
++   {
++     "id": "nested-interactive",
++     "nodes": [
++       "<div class=\"panel flex cursor-pointer flex-col items-center justify-center border-2 border-dashed px-4 py-6 text-center lg:col-span-2 border-line\" role=\"button\" tabindex=\"0\">",
++     ],
++   },
++ ]
+
+ ❯ src/routes.test.tsx:32:89
+     30|   expect(document.documentElement.dir).toBe(scenario.preferences.langu…
+     31|   expect(document.documentElement.dataset.reducedMotion).toBe(String(!…
+     32|   if(scenario.policy)expect(container.querySelector('[data-effective-d…
+       |                                                                                         ^
+     33|   const result=await axe.run(content,{rules:{'color-contrast':{enabled…
+     34|   expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.slice(0,3).m…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-dashboard' renders API data and page content passes axe
+TypeError: Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"rtl"[39m
+  [33mlang[39m=[32m"ar"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"rtl"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row-reverse"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mحدث خطأ في هذه الصفحة. يرجى إعادة المحاولة.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mالمرجع[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m698d8796-8343-48df-9b72-5262ecd62c5e[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mإعادة المحاولة[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mإعادة التحميل[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/routes.test.tsx:25:36
+     23|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50…
+     24|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     25|   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).…
+       |                                    ^
+     26|   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim…
+     27|   expect(content.textContent).not.toContain('Loading Healthcare Suite'…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'reference-ris1-analytics' renders API data and page content passes axe
+TypeError: Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"rtl"[39m
+  [33mlang[39m=[32m"ar"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"rtl"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row-reverse"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mحدث خطأ في هذه الصفحة. يرجى إعادة المحاولة.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mالمرجع[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m5b585414-bb2c-41e8-92b5-997ab7bee0ab[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mإعادة المحاولة[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mإعادة التحميل[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/routes.test.tsx:25:36
+     23|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50…
+     24|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     25|   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).…
+       |                                    ^
+     26|   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim…
+     27|   expect(content.textContent).not.toContain('Loading Healthcare Suite'…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'reference-ris1-dashboard' renders API data and page content passes axe
+TypeError: Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"true"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m0644c0e9-9ecd-4ea0-8743-a0563c7c3a06[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/routes.test.tsx:25:36
+     23|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50…
+     24|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     25|   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).…
+       |                                    ^
+     26|   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim…
+     27|   expect(content.textContent).not.toContain('Loading Healthcare Suite'…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'reference-ris1-analytics' renders API data and page content passes axe
+TypeError: Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"true"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m4baea7f0-7668-4c68-89d7-aa2906a1ef54[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/routes.test.tsx:25:36
+     23|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50…
+     24|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     25|   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).…
+       |                                    ^
+     26|   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim…
+     27|   expect(content.textContent).not.toContain('Loading Healthcare Suite'…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  src/routes.test.tsx > 'locked density' > 'reference-ris1-dashboard' renders API data and page content passes axe
+TypeError: Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 6px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m57f9489c-3593-44a2-b02b-fe8df7a71493[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/routes.test.tsx:25:36
+     23|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50…
+     24|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     25|   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).…
+       |                                    ^
+     26|   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim…
+     27|   expect(content.textContent).not.toContain('Loading Healthcare Suite'…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  src/routes.test.tsx > 'locked density' > 'reference-ris1-analytics' renders API data and page content passes axe
+TypeError: Cannot read properties of null (reading 'querySelector')
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 6px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"m-5 space-y-3 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mThis page encountered an error. Please retry.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mReference[0m
+              [0m: [0m
+              [36m<bdi>[39m
+                [0m1e9eff12-8fae-4c2a-8d3b-296b2b84937e[0m
+              [36m</bdi>[39m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRetry[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReload[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/routes.test.tsx:25:36
+     23|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50…
+     24|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     25|   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).…
+       |                                    ^
+     26|   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim…
+     27|   expect(content.textContent).not.toContain('Loading Healthcare Suite'…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  src/modules/diagnostics/behavior.test.tsx > ris1 patient editor retains values after a failed save and retries through HTTP
+TestingLibraryElementError: Found multiple elements with the role "button" and name "Register patient"
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<button[39m
+  [33maria-label[39m=[32m"Register patient"[39m
+  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] hidden"[39m
+  [33mtype[39m=[32m"submit"[39m
+[36m/>[39m
+
+Ignored nodes: comments, script, style
+[36m<button[39m
+  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] btn-primary"[39m
+  [33mtype[39m=[32m"button"[39m
+[36m>[39m
+  [0mRegister patient[0m
+[36m</button>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"diagnostics"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Register patient"[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+        [33mrole[39m=[32m"dialog"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl max-w-2xl"[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+              [36m>[39m
+                [0mRegister patient[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close"[39m
+              [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+              [33mtitle[39m=[32m"Close"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M18 6 6 18"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 6 12 12"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"diagnostics diagnostic-ris1 p-4"[39m
+            [36m>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m"grid grid-cols-1 gap-3 sm:grid-cols-2"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_14_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_14_"[39m
+                  [36m>[39m
+                    [0mFirst name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_14_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Synthetic"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_16_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_16_"[39m
+                  [36m>[39m
+                    [0mLast name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_16_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Patient"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_18_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_18_"[39m
+                  [36m>...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"diagnostics"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Register patient"[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+        [33mrole[39m=[32m"dialog"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl max-w-2xl"[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+              [36m>[39m
+                [0mRegister patient[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close"[39m
+              [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+              [33mtitle[39m=[32m"Close"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M18 6 6 18"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 6 12 12"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"diagnostics diagnostic-ris1 p-4"[39m
+            [36m>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m"grid grid-cols-1 gap-3 sm:grid-cols-2"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_14_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_14_"[39m
+                  [36m>[39m
+                    [0mFirst name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_14_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Synthetic"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_16_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_16_"[39m
+                  [36m>[39m
+                    [0mLast name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_16_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Patient"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_18_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_18_"[39m
+                  [36m>...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/modules/diagnostics/behavior.test.tsx:22:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+
+ Test Files  2 failed | 20 passed (22)
+      Tests  13 failed | 500 passed (513)
+   Start at  09:22:34
+   Duration  332.22s (transform 5.00s, setup 3.56s, collect 13.10s, tests 293.70s, environment 11.76s, prepare 1.88s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

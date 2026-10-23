@@ -1,0 +1,193 @@
+{
+  "ci": {
+    "command": "npm run ci -- --concurrency=1 (TURBO_ENV_MODE=loose, TURBO_CONCURRENCY=1, NEXT_PUBLIC_API_URL=/api, HEALTHCARE_BUILD_DIR=.next-phase6b3, NODE_OPTIONS=--max-old-space-size=4096)",
+    "tasks": 30,
+    "cached": 0,
+    "tests": 2971,
+    "files": 201,
+    "toolingTests": 19,
+    "typechecks": 14,
+    "builds": 2,
+    "workspaces": {
+      "@pepbits/tokens": {
+        "files": 1,
+        "tests": 3
+      },
+      "@pepbits/i18n": {
+        "files": 6,
+        "tests": 64
+      },
+      "@pepbits/icons": {
+        "files": 1,
+        "tests": 36
+      },
+      "@pepbits/data": {
+        "files": 12,
+        "tests": 53
+      },
+      "@pepbits/preferences": {
+        "files": 3,
+        "tests": 33
+      },
+      "@pepbits/ui": {
+        "files": 14,
+        "tests": 130
+      },
+      "@pepbits/platform": {
+        "files": 6,
+        "tests": 71
+      },
+      "@pepbits/components": {
+        "files": 16,
+        "tests": 194
+      },
+      "@pepbits/patterns": {
+        "files": 27,
+        "tests": 151
+      },
+      "@pepbits/page-engines": {
+        "files": 20,
+        "tests": 429
+      },
+      "@pepbits/shell": {
+        "files": 37,
+        "tests": 404
+      },
+      "@pepbits-demo/healthcare": {
+        "files": 31,
+        "tests": 721
+      },
+      "@pepbits/ai": {
+        "files": 22,
+        "tests": 587
+      },
+      "@pepbits-demo/showcase": {
+        "files": 5,
+        "tests": 95
+      }
+    }
+  },
+  "shellBrowser": {
+    "tests": 2,
+    "files": 1,
+    "scope": "Physical left/right Arabic RTL sidebar in headless Chromium; same final library source"
+  },
+  "browser": {
+    "scope": "Local browser against the unchanged synthetic demo HTTP API",
+    "flows": 17,
+    "pharmacyFlows": 10,
+    "routes": 144,
+    "pharmacyRoutes": 22,
+    "fullShellViolations": 0,
+    "pageContentViolations": 0,
+    "javascriptErrors": 0,
+    "consoleErrors": 0,
+    "unexpectedHttpFailures": 0,
+    "incompleteRuleResults": 300,
+    "manualReview": "Incomplete automated checks and native-language/domain/assistive-technology review are not acceptance.",
+    "screenshots": [
+      {
+        "path": "screenshots/clinical-consultation-PT-0001.png",
+        "sha256": "a5ca5d1f84c6bda0682344a9e7c606073c03db18d2e4f9211ff7cf5643a13892"
+      },
+      {
+        "path": "screenshots/lis1.png",
+        "sha256": "6f8437c7a312c14e2daa90e8e2d65c5a5eb3715a9ba4245653620d1b4067dd12"
+      },
+      {
+        "path": "screenshots/lis2.png",
+        "sha256": "6cc33910108cbb306dacc2c1abb895f83ea84c024c88a650d3e5e5e577d6eaf0"
+      },
+      {
+        "path": "screenshots/patient-record-PT-0001.png",
+        "sha256": "519e4a642950dcb5b6d0972dc2c7a745996ac96966d94d47a78c09188e778479"
+      },
+      {
+        "path": "screenshots/pharmacy-counter.png",
+        "sha256": "dc82b7b3b117c9bfa1f2117d9a183c153942fc289ea5754fa3a362fd0ae2eaec"
+      },
+      {
+        "path": "screenshots/pharmacy-workbench.png",
+        "sha256": "c01f72c8695f11a6cb5f76efeb9df16ede50418cd3a02dbe9a5232785ba455c6"
+      },
+      {
+        "path": "screenshots/pharmacy.png",
+        "sha256": "c422b22a903dc1c84f58b39733803668ef7409072f79c658e6af931dc36393bd"
+      },
+      {
+        "path": "screenshots/ris1.png",
+        "sha256": "36e90c83f7065d55e175db44efd2c0cfa55adb78a5dfbc92624a314c997e3212"
+      },
+      {
+        "path": "screenshots/suite.png",
+        "sha256": "f755d9cd93d65233608a5e590c3e60ae357a9dc2fed7259f510e0306a7a4635d"
+      }
+    ]
+  },
+  "documentation": {
+    "files": 186,
+    "result": "PASS 186 documentation files: local links/headings, current testing guide, Library inventory, release identity/status and retained evidence hashes",
+    "command": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs"
+  },
+  "cleanup": [
+    {
+      "label": "Browser",
+      "pid": 48,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Next",
+      "pid": 29,
+      "exitCode": 143,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "API",
+      "pid": 20,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    }
+  ],
+  "source": {
+    "base": "79b545bf65a0dbf3de24257f29577e7cf09678db",
+    "ciImplementationDigest": "f32e7d07d6c87deecbbf91fd8e3fc9ceadb63986bc92167f9dd26ce9b037df3b",
+    "finalImplementationDigest": "f32e7d07d6c87deecbbf91fd8e3fc9ceadb63986bc92167f9dd26ce9b037df3b",
+    "finalFiles": 1050,
+    "changesAfterCiStart": [],
+    "changeReason": "No implementation or indexed documentation changed after final forced CI started. The release record and evidence are excluded from the manifest to avoid self-reference.",
+    "browserBuild": {
+      "ciSource": "ci-source.json",
+      "snapshot": "browser-build-source.json",
+      "matchingBuildInputs": 918,
+      "runtimeChanges": [],
+      "digest": "ae2608a9d46056fd205abed20c94bc3fb0c49c6e6c1ff3164b02677a2e5b89b6"
+    },
+    "finalIntegrationDrivers": [
+      {
+        "path": "demo-apps/healthcare/scripts/integration.mjs",
+        "sha256": "00a295ac29fed2e03e578a22e50be599d5fc4b7bc211af7ec2f32a9efe6e76a1"
+      },
+      {
+        "path": "demo-apps/healthcare/scripts/pharmacy-flows.mjs",
+        "sha256": "fc694a58f7528d01b3d89ea7ee13d27d46c63cbd392a7ab49dc909ffe82a4078"
+      },
+      {
+        "path": "demo-apps/healthcare/scripts/route-cases.mjs",
+        "sha256": "b65e79d185c287c5434911a4bd05bd908c88736b9926d29208310ee2550a4ef2"
+      },
+      {
+        "path": "demo-apps/healthcare/scripts/smoke.mjs",
+        "sha256": "d4166e03a37a53c266371f5e4b2e4228dcede8347fa5ead702f1f143e834737e"
+      }
+    ],
+    "manifestMatchesWorkingTree": true
+  },
+  "boundaries": {
+    "Preserved upstream CSS license/browser-fix comment; no network request": 33,
+    "FHIR coding-system identifier in a synthetic message; not a transport URL": 1
+  }
+}

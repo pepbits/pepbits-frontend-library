@@ -1,0 +1,33 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/teleconsult src/adapters/proxy.test.ts src/navigation.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/modules/teleconsult/provider/module.test.tsx (19 tests) 3301ms
+   ✓ consultation > signs from the Sign off tab with the expected version and shows server problems without losing the draft  308ms
+   ✓ consultation > shows the conflict banner and keeps the edited text when autosave is refused  866ms
+   ✓ booking dialog uses the effective settings > asks for slots of the chosen length and books with that duration and a supported mode  326ms
+ ✓ src/modules/teleconsult/patient/module.test.tsx (25 tests) 4339ms
+   ✓ visit > books with an Idempotency-Key, and a retry after a lost response replays the same key  451ms
+   ✓ booking advice from the server > asks the API for the specialty and urgency, and uses its answer to label the suggestion and book as urgent  441ms
+   ✓ booking advice from the server > shows the urgent warning only from the API's urgency, not from the browser's own reading of the symptoms  605ms
+   ✓ booking advice from the server > cannot continue or book on a stale answer: changed answers wait for new advice and a late old reply is ignored  610ms
+   ✓ booking advice from the server > does not offer Continue when the API cannot answer, reports why, and asks again on retry  578ms
+   ✓ effective settings in patient booking > offers only the visit modes the branch supports and books with one of them  404ms
+ ✓ src/modules/teleconsult/shared/hooks.test.tsx (10 tests) 714ms
+ ✓ src/modules/teleconsult/provider/lib/encounter-sync.test.tsx (12 tests) 127ms
+ ✓ src/modules/teleconsult/shared/format.test.tsx (6 tests) 98ms
+ ✓ src/navigation.test.ts (54 tests) 38ms
+ ✓ src/modules/teleconsult/shared/client.test.ts (16 tests) 37ms
+ ✓ src/adapters/proxy.test.ts (1 test) 16ms
+ ✓ src/modules/teleconsult/styles.test.ts (10 tests) 21ms
+ ✓ src/modules/teleconsult/shared/contract.test.ts (27 tests) 19ms
+ ✓ src/modules/teleconsult/routes.test.ts (20 tests) 13ms
+
+ Test Files  11 passed (11)
+      Tests  200 passed (200)
+   Start at  13:13:14
+   Duration  24.27s (transform 2.23s, setup 1.63s, collect 3.99s, tests 8.72s, environment 5.42s, prepare 852ms)
+

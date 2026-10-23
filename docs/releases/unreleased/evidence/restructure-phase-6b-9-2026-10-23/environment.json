@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-23",
+  "base": "eafe80372091834fb970919a7b14970586230cc3",
+  "branch": "restructure/phase-6b",
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "apiNode": "v24.21.0",
+  "install": {
+    "performed": true,
+    "change": "Healthcare tailwind-merge 3.7.0, source-compatible version",
+    "log": "install-dependency.log",
+    "cache": "/tmp/phase6b9-npm-cache"
+  },
+  "configuration": {
+    "TURBO_ENV_MODE": "loose",
+    "TURBO_CONCURRENCY": "1",
+    "NEXT_PUBLIC_API_URL": "/api",
+    "HEALTHCARE_BUILD_DIR": ".next",
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "LD_LIBRARY_PATH": "$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu"
+  },
+  "scope": "Local Linux production browser build, mocked tests and fictional local HTTP; no deployment/native/clinical/financial acceptance.",
+  "receiptInputs": {
+    "RCM_BROWSER_PARITY_RESULT": "../restructure-phase-6b-8-2026-10-23/browser-final.json",
+    "MEDBAND_BROWSER_PARITY_RESULT": "browser-full-preci.json",
+    "note": "Final CI receipt wrappers use the accepted earlier RCM receipt and the passing MedBand subset of this phase pre-CI full run. The new RCM commit-gap test verifies the correction directly. All four receipt assertions are rerun against the final current full HTTP receipt after CI; these are not additional workflow coverage."
+  },
+  "resourcePolicy": "Turbo concurrency 1 and one Vitest tree. Diagnostic HTTP runs were sequential with tests. Final HTTP starts after the final CI healthcare build finishes, overlapping remaining CI tests against the immutable completed build. At launch, available memory was about 23 GB of 31 GB on eight cores. At most one Next server and one API remain active; the independent shell Chromium fixture closes its own browser/Vite after its check. Launcher groups are stopped after each run.",
+  "initialCiReceiptInputs": {
+    "RCM_BROWSER_PARITY_RESULT": "../restructure-phase-6b-8-2026-10-23/browser-final.json",
+    "MEDBAND_BROWSER_PARITY_RESULT": "../restructure-phase-6b-8-2026-10-23/browser-final.json",
+    "note": "CI verifies the inherited receipt wrappers with the prior accepted module receipts. These four assertions will also run against this phase final full HTTP receipt; fresh HTTP checks are reported separately."
+  }
+}

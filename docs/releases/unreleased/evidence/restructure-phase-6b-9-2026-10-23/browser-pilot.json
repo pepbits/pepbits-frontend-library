@@ -1,0 +1,771 @@
+{
+  "flows": [
+    {
+      "id": "HCD-42-medslot-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor and source patient/resource/service data"
+    },
+    {
+      "id": "HCD-42-medslot-details",
+      "mode": "UI",
+      "result": "Patient and resource detail URLs survive refresh with actual identifiers"
+    },
+    {
+      "id": "HCD-42-medslot-dialog",
+      "mode": "UI",
+      "result": "Named shared registration drawer is visible and closes on Escape"
+    },
+    {
+      "id": "HCD-42-medslot-registration",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration persists and opens its durable record"
+    },
+    {
+      "id": "HCD-42-medslot-search",
+      "mode": "UI",
+      "result": "Shared header lookup selects an API patient by keyboard"
+    },
+    {
+      "id": "HCD-42-medslot-booking",
+      "mode": "UI",
+      "result": "Patient keyboard selection, service, real availability, visit details and booking"
+    },
+    {
+      "id": "HCD-42-medslot-conflicts",
+      "mode": "HTTP",
+      "result": "Booking replays once; overlapping booking and changed-payload key reuse are refused"
+    },
+    {
+      "id": "HCD-42-medslot-status",
+      "mode": "UI + HTTP",
+      "result": "Confirmation persists through the appointment drawer"
+    },
+    {
+      "id": "HCD-42-medslot-duration",
+      "mode": "UI",
+      "result": "Shared modal changes appointment duration with server resource checks"
+    },
+    {
+      "id": "HCD-42-medslot-reschedule",
+      "mode": "UI + HTTP",
+      "result": "Move to an available slot retains the old booking as rescheduled"
+    },
+    {
+      "id": "HCD-42-medslot-cancel",
+      "mode": "UI + HTTP",
+      "result": "Cancellation records its reason and keeps the booking history"
+    },
+    {
+      "id": "HCD-42-medslot-schedule",
+      "mode": "HTTP",
+      "result": "Resource weekly schedule uses the unchanged command envelope and persists"
+    },
+    {
+      "id": "HCD-42-medslot-audit-notifications",
+      "mode": "HTTP",
+      "result": "Booking lifecycle is audited and simulated notification records remain available"
+    },
+    {
+      "id": "HCD-42-medslot-authority",
+      "mode": "HTTP",
+      "result": "Scheduler admin restrictions, assigned-provider calendar/record scope, disabled module login and branch isolation"
+    },
+    {
+      "id": "HCD-42-medslot-preferences",
+      "mode": "UI + accepted HTTP preferences",
+      "result": "Mounted registration survives Arabic RTL, Hindi, Malayalam and English with effective compact density, reduced motion and disabled shortcuts"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medslot",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(3) > .bg-slot-soft.text-slot.sm\\:inline-flex"
+              ],
+              "html": "<span class=\"items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot hidden sm:inline-flex\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(4) > .bg-slot-soft.text-slot.sm\\:inline-flex"
+              ],
+              "html": "<span class=\"items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot hidden sm:inline-flex\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(5) > .bg-slot-soft.text-slot.sm\\:inline-flex"
+              ],
+              "html": "<span class=\"items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot hidden sm:inline-flex\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(3) > .bg-slot-soft.text-slot.sm\\:inline-flex"
+              ],
+              "html": "<span class=\"items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot hidden sm:inline-flex\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(4) > .bg-slot-soft.text-slot.sm\\:inline-flex"
+              ],
+              "html": "<span class=\"items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot hidden sm:inline-flex\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(5) > .bg-slot-soft.text-slot.sm\\:inline-flex"
+              ],
+              "html": "<span class=\"items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot hidden sm:inline-flex\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/book",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-triage-soft text-triage ml-1.5\">urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(6) > td:nth-child(5) > .bg-triage-soft.text-triage.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-triage-soft text-triage\"><span class=\"size-1.5 rounded-full bg-triage\" aria-hidden=\"true\"></span>Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-triage-soft text-triage ml-1.5\">urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(6) > td:nth-child(5) > .bg-triage-soft.text-triage.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-triage-soft text-triage\"><span class=\"size-1.5 rounded-full bg-triage\" aria-hidden=\"true\"></span>Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "tr:nth-child(6) > td:nth-child(1) > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">Unregistered</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(15) > td:nth-child(1) > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">Unregistered</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "tr:nth-child(6) > td:nth-child(1) > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">Unregistered</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(15) > td:nth-child(1) > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">Unregistered</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/resources",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/services",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(7) > td:nth-child(5) > .flex-wrap.gap-1.flex > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(8) > td:nth-child(5) > .flex-wrap.gap-1.flex > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(9) > td:nth-child(5) > .flex-wrap.gap-1.flex > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(7) > td:nth-child(5) > .flex-wrap.gap-1.flex > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(8) > td:nth-child(5) > .flex-wrap.gap-1.flex > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(9) > td:nth-child(5) > .flex-wrap.gap-1.flex > .rounded-\\[5px\\].text-\\[11px\\].bg-amber-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-amber-soft text-amber\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b9771a, background color: #fbf0dd, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/departments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/holidays",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "tr:nth-child(2) > td:nth-child(3) > .rounded-\\[5px\\].text-\\[11px\\].bg-slot-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Whole hospital</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(3) > td:nth-child(3) > .rounded-\\[5px\\].text-\\[11px\\].bg-slot-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Whole hospital</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "tr:nth-child(2) > td:nth-child(3) > .rounded-\\[5px\\].text-\\[11px\\].bg-slot-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Whole hospital</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "tr:nth-child(3) > td:nth-child(3) > .rounded-\\[5px\\].text-\\[11px\\].bg-slot-soft"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Whole hospital</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/notifications",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(1) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(2) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(3) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(4) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(5) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(6) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(7) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(8) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(9) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(10) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(11) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(12) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(1) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(2) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(3) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(4) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(5) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(6) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(7) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(8) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(9) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(10) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(11) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(12) > td:nth-child(3) > .bg-slot-soft.text-slot.rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot\">Default</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/settings",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot ml-2\">You</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".rounded-\\[5px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-slot-soft text-slot ml-2\">You</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients/1",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(2) > td:nth-child(5) > .bg-slot-soft.text-slot.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(3) > td:nth-child(5) > .bg-slot-soft.text-slot.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(4) > td:nth-child(5) > .bg-slot-soft.text-slot.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(2) > td:nth-child(5) > .bg-slot-soft.text-slot.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(3) > td:nth-child(5) > .bg-slot-soft.text-slot.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(4) > td:nth-child(5) > .bg-slot-soft.text-slot.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-slot-soft text-slot\"><span class=\"size-1.5 rounded-full bg-slot\" aria-hidden=\"true\"></span>Scheduled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #3e6fb0, background color: #e5edf8, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/resources/3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients/241",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments?open=9170",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".ml-1\\.5.rounded-\\[5px\\].text-\\[11px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-triage-soft text-triage ml-1.5\">urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(6) > td:nth-child(5) > .bg-triage-soft.text-triage.px-2"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-triage-soft text-triage\"><span class=\"size-1.5 rounded-full bg-triage\" aria-hidden=\"true\"></span>Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".ml-1\\.5.rounded-\\[5px\\].text-\\[11px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-triage-soft text-triage ml-1.5\">urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(6) > td:nth-child(5) > .bg-triage-soft.text-triage.px-2"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-triage-soft text-triage\"><span class=\"size-1.5 rounded-full bg-triage\" aria-hidden=\"true\"></span>Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments?open=9171",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".ml-1\\.5.rounded-\\[5px\\].text-\\[11px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-triage-soft text-triage ml-1.5\">urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(6) > td:nth-child(5) > .bg-triage-soft.text-triage.px-2"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-triage-soft text-triage\"><span class=\"size-1.5 rounded-full bg-triage\" aria-hidden=\"true\"></span>Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-2.flex.items-center > .bg-triage-soft.text-triage.px-2"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-triage-soft text-triage\"><span class=\"size-1.5 rounded-full bg-triage\" aria-hidden=\"true\"></span>Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".ml-1\\.5.rounded-\\[5px\\].text-\\[11px\\]"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[11px] font-semibold bg-triage-soft text-triage ml-1.5\">urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-scrub-soft\\/30:nth-child(6) > td:nth-child(5) > .bg-triage-soft.text-triage.px-2"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-triage-soft text-triage\"><span class=\"size-1.5 rounded-full bg-triage\" aria-hidden=\"true\"></span>Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-2.flex.items-center > .bg-triage-soft.text-triage.px-2"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap bg-triage-soft text-triage\"><span class=\"size-1.5 rounded-full bg-triage\" aria-hidden=\"true\"></span>Cancelled</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #c2413a, background color: #f9e4e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

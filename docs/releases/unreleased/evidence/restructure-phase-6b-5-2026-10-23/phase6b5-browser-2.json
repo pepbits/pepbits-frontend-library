@@ -1,0 +1,95 @@
+{
+  "flows": [
+    {
+      "id": "HCD-18-modes",
+      "mode": "UI + HTTP",
+      "result": "Exactly two modules; Doctor/Nurse working modes and effective recording consent resolved from the server"
+    },
+    {
+      "id": "HCD-22-registration",
+      "mode": "UI + HTTP isolation",
+      "result": "Administrator patient registration with consent and allergy declaration; saved patient searchable in own branch and absent in another branch"
+    },
+    {
+      "id": "HCD-19-provider-booking",
+      "mode": "UI + HTTP persistence",
+      "result": "Shared keyboard lookup, branch slot/duration and visit mode created an appointment visible to the authorized patient"
+    },
+    {
+      "id": "HCD-19-patient-booking",
+      "mode": "UI",
+      "result": "Symptoms → current API advice → clinician → available slot → patient booking"
+    },
+    {
+      "id": "HCD-20-triage",
+      "mode": "UI + HTTP persistence",
+      "result": "Nurse admitted patient, retained complaint, captured simulated vitals and handed off to Doctor"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/teleconsult-provider",
+      "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-teleconsult=\"patient\"]').getByText('Dizziness', { exact: true }).first() to be visible\u001b[22m\n",
+      "rendered": "TE\nTeleconsult Patient\nVisit summary\nteleconsult\nSearch\n⌘K\n13:23:11\nFri • 2026-10-23 • UTC\nhq\nPM\n\nDemo CareCall with fictional data. The clinician's video, vitals and transcript are simulated.\n\nVisit summary\nMI\n\nDr. Meera Iyer\n\nFri, 2026-10-23, 12:00\n\nWhat we found\nDizziness and giddiness\n\nSigned by Dr. Meera Iyer. If anything is unclear, message your care team from your next visit.\n\nHome\nBook\nMy health\nTeleconsult Patient • hq • Solution Architecture\nSecure session\n13:23"
+    },
+    {
+      "route": "/teleconsult-provider",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/schedule",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/notes",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/register",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/home",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/book",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/records",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

@@ -1,0 +1,53 @@
+@import "../modules/medslot/styles.css";
+@import "../modules/medslot/overrides.css";
+@import "../modules/medband/styles.css";
+@import "../modules/medband/overrides.css";
+@import "../modules/surgisuite/styles.css";
+@import "../modules/surgisuite/overrides.css";
+@import "../modules/quality/styles.css";
+@import "../modules/quality/overrides.css";
+@import "../modules/teleconsult/styles.css";
+@import "../modules/teleconsult/overrides.css";
+@import "../modules/rcm/styles.css";
+@import "../modules/rcm/overrides.css";
+@import "../modules/pharmacy/styles.css";
+@import "../modules/pharmacy/overrides.css";
+@import "../modules/lis1/styles.css";
+@import "../modules/lis2/styles.css";
+@import "../modules/ris1/styles.css";
+@import "../modules/diagnostics/styles.css";
+@import "tailwindcss";
+@import "@pepbits/tokens/tokens.css";
+@import "../modules/suite/styles.css";
+@import "@pepbits/tokens/reference-fonts.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/manrope/index.css";
+@import "@fontsource-variable/source-sans-3/index.css";
+@import "@fontsource-variable/nunito-sans/index.css";
+@import "@fontsource-variable/noto-sans-arabic/index.css";
+@import "@fontsource-variable/noto-sans-devanagari/index.css";
+@import "@fontsource-variable/noto-sans-malayalam/index.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+@import "@fontsource/ibm-plex-mono/700.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/components/src";
+@source "../../../../packages/patterns/src";
+@source "../../../../packages/page-engines/src";
+@source "../../../../packages/shell/src";
+@source "../../../../packages/icons/src";
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font-ui), "Noto Sans Arabic Variable", "Noto Sans Devanagari Variable", "Noto Sans Malayalam Variable", sans-serif; }
+:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+button, input, select, textarea { font:inherit; }
+.healthcare-page { min-width:0; --fs-scale:var(--fs-form); }
+@font-face {font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Manrope";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Source Sans 3";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Nunito Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/nunito-sans/files/nunito-sans-latin-wght-normal.woff2") format("woff2");}
+
+main:has(> .healthcare-page [data-teleconsult]) {display:flex;flex-direction:column;overflow:hidden;}
+.healthcare-page:has([data-teleconsult]) > [data-page-id] {display:flex;flex:1 1 0;min-height:0;}

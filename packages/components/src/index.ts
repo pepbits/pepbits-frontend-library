@@ -15,3 +15,5 @@ export * from "./form-error-summary";
 export * from "./print-document";
 export * from "./recovery-notice";
 export * from "./error-mapper";
+
+export * from "./source-dialog";

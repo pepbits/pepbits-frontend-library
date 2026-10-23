@@ -1,0 +1,242 @@
+.workspace {
+  --fs-scale: var(--fs-form);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--text);
+  min-width: 0;
+  padding-bottom: 1rem;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.heading h1 {
+  font-size: calc(24px * var(--fs-form));
+  font-weight: 750;
+}
+.note {
+  color: var(--text-muted);
+  font-size: calc(12px * var(--fs-form));
+  line-height: 1.6;
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 318px;
+  gap: 1rem;
+  align-items: start;
+}
+.consultation {
+  grid-template-columns: 215px minmax(0, 1fr) 292px;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+.panel {
+  overflow: hidden;
+  border-radius: var(--radius);
+  scroll-margin-top: 1rem;
+  background: var(--surface);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--text) 3%, transparent);
+}
+.panel > div:first-child {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+}
+.panel > div:last-child {
+  padding: 1.25rem;
+}
+.fields {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  background: linear-gradient(115deg, var(--surface), var(--primary-soft));
+  min-width: 0;
+}
+.hero strong {
+  font-size: calc(17px * var(--fs-form));
+}
+.hero p,
+.hero small {
+  font-size: calc(12px * var(--fs-form));
+  overflow-wrap: anywhere;
+}
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.steps button {
+  height: auto;
+  white-space: normal;
+  justify-content: flex-start;
+  text-align: start;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: var(--surface);
+  min-width: 0;
+}
+.steps button[aria-current="step"] {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.stepNumber {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  width: 1.7rem;
+  height: 1.7rem;
+  background: var(--primary-soft);
+}
+.rail {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem;
+}
+.rail button {
+  justify-content: flex-start;
+  text-align: start;
+  white-space: normal;
+  height: auto;
+  min-height: 2.7rem;
+}
+.aside {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+.actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 15;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  box-shadow: 0 -4px 12px color-mix(in srgb, var(--text) 4%, transparent);
+}
+.actions > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.choices {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.choices button {
+  flex: 1;
+  min-width: 7rem;
+  min-height: 3.5rem;
+  white-space: normal;
+}
+.choices button[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.verification {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-block: 1rem;
+}
+.review {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.bed p {
+  font-size: calc(12px * var(--fs-results));
+  margin-block: 0.5rem;
+}
+.workspace[data-density="compact"] .fields {
+  gap: 0.65rem;
+}
+.workspace[data-density="compact"] .panel > div:last-child {
+  padding: 0.85rem;
+}
+.workspace[data-density="spacious"] .fields {
+  gap: 1.4rem;
+}
+@media (max-width: 1150px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 260px;
+  }
+  .consultation {
+    grid-template-columns: 175px minmax(0, 1fr);
+  }
+  .consultation .aside {
+    grid-column: 2;
+    position: static;
+  }
+  .fields > div {
+    grid-column: span 6 !important;
+  }
+}
+@media (max-width: 800px) {
+  .layout,
+  .consultation {
+    grid-template-columns: 1fr;
+  }
+  .rail,
+  .aside {
+    position: static;
+  }
+  .consultation .aside {
+    grid-column: auto;
+  }
+  .fields > div {
+    grid-column: span 12 !important;
+  }
+  .hero {
+    flex-wrap: wrap;
+  }
+  .review {
+    grid-template-columns: 1fr;
+  }
+}
+/* Keep the reference pages' action bar and patient context visible inside the host workspace. */
+@media (min-width:1000px) {
+ .workspace {height:calc(100dvh - 145px);min-height:520px;overflow:hidden;}
+ .workspace > :not(.layout) {flex-shrink:0;}
+ .layout {flex:1;min-height:0;overflow:auto;scrollbar-gutter:stable;padding:.15rem;}
+ .actions {position:relative;bottom:auto;}
+ .rail,.aside {top:0;}
+}

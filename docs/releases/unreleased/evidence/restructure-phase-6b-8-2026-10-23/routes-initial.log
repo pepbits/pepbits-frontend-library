@@ -1,0 +1,2654 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/routes.test.tsx -t medband
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/routes.test.tsx (824 tests | 36 failed | 788 skipped) 95849ms
+   × 'default' > 'medband-today' renders API data and page content passes axe 719ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medband-patients' renders API data and page content passes axe 559ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medband-patient-new' renders API data and page content passes axe 498ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medband-encounters' renders API data and page content passes axe 437ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medband-encounter-new' renders API data and page content passes axe 10294ms
+     → expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+            ...
+   × 'default' > 'medband-admissions' renders API data and page content passes axe 373ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medband-admission-new' renders API data and page content passes axe 561ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'default' > 'medband-episodes' renders API data and page content passes axe 390ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'default' > 'surgisuite-board' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-schedule' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-cases' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-approvals' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-patients' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-inventory' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-analytics' renders API data and page content passes axe
+   ↓ 'default' > 'surgisuite-masters' renders API data and page content passes axe
+   ↓ 'default' > 'quality-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'quality-indicators' renders API data and page content passes axe
+   ↓ 'default' > 'quality-tat' renders API data and page content passes axe
+   ↓ 'default' > 'quality-events' renders API data and page content passes axe
+   ↓ 'default' > 'quality-verification' renders API data and page content passes axe
+   ↓ 'default' > 'quality-validation' renders API data and page content passes axe
+   ↓ 'default' > 'quality-reports' renders API data and page content passes axe
+   ↓ 'default' > 'quality-designer' renders API data and page content passes axe
+   ↓ 'default' > 'quality-schedules' renders API data and page content passes axe
+   ↓ 'default' > 'quality-submissions' renders API data and page content passes axe
+   ↓ 'default' > 'quality-authorities' renders API data and page content passes axe
+   ↓ 'default' > 'quality-users' renders API data and page content passes axe
+   ↓ 'default' > 'quality-audit' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-provider-today' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-provider-schedule' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-provider-patients' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-provider-notes' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-welcome' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-register' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-home' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-book' renders API data and page content passes axe
+   ↓ 'default' > 'teleconsult-patient-records' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-home' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-coverages' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-authorizations' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-eligibility' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-estimates' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-deposits' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-cash-sessions' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-encounters' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-charges' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-manual-charges' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-invoices' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-debit-notes' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-credit-notes' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-adjustments' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-receipts' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-refunds' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-packages' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-claims' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-exchange-messages' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-remittances' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-remittance-corrections' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-appeals' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-payer-reconciliations' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-responsibility-transfers' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-aging' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-payment-plans' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-statements' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-collections' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-reports' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-coding-cases' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-cdi-queries' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-drg-groupings' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-em-determinations' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-model-settlements' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-journals' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-gl-reconciliations' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-exports' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-approvals' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-tasks' renders API data and page content passes axe
+   ↓ 'default' > 'reference-rcm-assistance' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-workbench' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-counter' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-orders' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-sales' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-inventory' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-purchasing' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-authorizations' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-claims' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-remittance' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-patients' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-audit' renders API data and page content passes axe
+   ↓ 'default' > 'pharmacy-settings' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-accession' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-automation' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-automation-routing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-billing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-collection' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-criticals' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-integration' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-integration-docs' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-masters' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-orders' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-orders-new' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-outsource' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-patients' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-reports' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-results' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-samples' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-users' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis1-validation' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-accession' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-billing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-collection' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-critical' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-integration-console' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-integration-messages' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-integration-outbox' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-inventory' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-masters' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-orders' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-orders-new' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-outsource' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-patients' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-report-designer' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-reports' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-samples' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-settings' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-signing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-tat' renders API data and page content passes axe
+   ↓ 'default' > 'reference-lis2-worklist' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-analytics' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-audit' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-billing' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-critical' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-integration' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-masters' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-orders' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-pacs' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-patients' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-reading' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-reception' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-schedule' renders API data and page content passes axe
+   ↓ 'default' > 'reference-ris1-technologist' renders API data and page content passes axe
+   ↓ 'default' > 'suite-dashboard' renders API data and page content passes axe
+   ↓ 'default' > 'suite-patients' renders API data and page content passes axe
+   ↓ 'default' > 'suite-appointments' renders API data and page content passes axe
+   ↓ 'default' > 'suite-encounters' renders API data and page content passes axe
+   ↓ 'default' > 'suite-approvals' renders API data and page content passes axe
+   ↓ 'default' > 'suite-hospital-billing' renders API data and page content passes axe
+   ↓ 'default' > 'suite-pharmacy-billing' renders API data and page content passes axe
+   ↓ 'default' > 'suite-invoices' renders API data and page content passes axe
+   ↓ 'default' > 'suite-contracts' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-facilities' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-departments' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-specialties' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-providers' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-payers' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-tpas' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-insurance-plans' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-networks' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-price-lists' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-items' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-services' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-resources' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-resource-schedules' renders API data and page content passes axe
+   ↓ 'default' > 'suite-master-resource-blocks' renders API data and page content passes axe
+   ↓ 'default' > 'patient-query' renders API data and page content passes axe
+   ↓ 'default' > 'patient-record' renders API data and page content passes axe
+   ↓ 'default' > 'patient-360' renders API data and page content passes axe
+   ↓ 'default' > 'clinical-triage' renders API data and page content passes axe
+   ↓ 'default' > 'clinical-consultation' renders API data and page content passes axe
+   ↓ 'default' > 'op-consultation' renders API data and page content passes axe
+   ↓ 'default' > 'comprehensive-consultation' renders API data and page content passes axe
+   ↓ 'default' > 'op-registration' renders API data and page content passes axe
+   ↓ 'default' > 'clinic-billing' renders API data and page content passes axe
+   ↓ 'default' > 'emergency-registration' renders API data and page content passes axe
+   ↓ 'default' > 'inpatient-admission' renders API data and page content passes axe
+   ↓ 'default' > 'consultation-entry-design' renders API data and page content passes axe
+   ↓ 'default' > 'consultation-entry-v2' renders API data and page content passes axe
+   ↓ 'default' > 'preferences' renders API data and page content passes axe
+   × 'default' > '/medband/patients/pat-1' renders API data and page content passes axe 10310ms
+     → expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+            ...
+   ↓ 'default' > '/surgisuite/cases/472' renders API data and page content passes axe
+   ↓ 'default' > '/quality/indicators/7' renders API data and page content passes axe
+   ↓ 'default' > '/quality/reports/3' renders API data and page content passes axe
+   ↓ 'default' > '/teleconsult-provider/consult/a1' renders API data and page content passes axe
+   ↓ 'default' > '/teleconsult-patient/visit/a1' renders API data and page content passes axe
+   ↓ 'default' > '/teleconsult-patient/visit/a1/summary' renders API data and page content passes axe
+   ↓ 'default' > '/lis1/orders/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis1/masters/tests' renders API data and page content passes axe
+   ↓ 'default' > '/lis1/billing/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis1/reports/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/orders/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/masters/tests' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/patients/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/results/sample/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/print/order/1' renders API data and page content passes axe
+   ↓ 'default' > '/lis2/print/labels?ids=1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/patients/25' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/orders/1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/reading/1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/print/report/1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/print/invoice/1' renders API data and page content passes axe
+   ↓ 'default' > '/ris1/viewer/999' renders API data and page content passes axe
+   × 'Arabic RTL' > 'medband-today' renders API data and page content passes axe 562ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medband-patients' renders API data and page content passes axe 568ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medband-patient-new' renders API data and page content passes axe 619ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medband-encounters' renders API data and page content passes axe 485ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medband-encounter-new' renders API data and page content passes axe 10292ms
+     → expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"rtl"[39m
+  [33mlang[39m=[32m"ar"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"rtl"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row-reverse"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"التنقل الرئيسي"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"البحث في القائمة"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"البحث في القائمة"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39...
+   × 'Arabic RTL' > 'medband-admissions' renders API data and page content passes axe 387ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medband-admission-new' renders API data and page content passes axe 491ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'Arabic RTL' > 'medband-episodes' renders API data and page content passes axe 383ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'Arabic RTL' > 'surgisuite-board' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-schedule' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-cases' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-approvals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-inventory' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-analytics' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'surgisuite-masters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-indicators' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-tat' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-events' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-verification' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-validation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-reports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-designer' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-schedules' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-submissions' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-authorities' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-users' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'quality-audit' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-provider-today' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-provider-schedule' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-provider-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-provider-notes' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-welcome' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-register' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-home' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-book' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'teleconsult-patient-records' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-home' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-coverages' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-authorizations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-eligibility' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-estimates' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-deposits' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-cash-sessions' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-encounters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-charges' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-manual-charges' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-invoices' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-debit-notes' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-credit-notes' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-adjustments' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-receipts' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-refunds' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-packages' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-claims' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-exchange-messages' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-remittances' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-remittance-corrections' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-appeals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-payer-reconciliations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-responsibility-transfers' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-aging' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-payment-plans' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-statements' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-collections' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-reports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-coding-cases' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-cdi-queries' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-drg-groupings' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-em-determinations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-model-settlements' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-journals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-gl-reconciliations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-exports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-approvals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-tasks' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-rcm-assistance' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-workbench' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-counter' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-orders' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-sales' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-inventory' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-purchasing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-authorizations' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-claims' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-remittance' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-audit' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'pharmacy-settings' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-accession' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-automation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-automation-routing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-collection' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-criticals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-integration' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-integration-docs' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-masters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-orders' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-orders-new' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-outsource' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-reports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-results' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-samples' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-users' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis1-validation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-accession' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-collection' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-critical' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-integration-console' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-integration-messages' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-integration-outbox' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-inventory' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-masters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-orders' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-orders-new' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-outsource' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-report-designer' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-reports' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-samples' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-settings' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-signing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-tat' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-lis2-worklist' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-analytics' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-audit' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-critical' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-integration' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-masters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-orders' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-pacs' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-reading' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-reception' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-schedule' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'reference-ris1-technologist' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-dashboard' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-patients' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-appointments' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-encounters' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-approvals' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-hospital-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-pharmacy-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-invoices' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-contracts' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-facilities' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-departments' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-specialties' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-providers' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-payers' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-tpas' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-insurance-plans' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-networks' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-price-lists' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-items' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-services' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-resources' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-resource-schedules' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'suite-master-resource-blocks' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'patient-query' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'patient-record' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'patient-360' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'clinical-triage' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'clinical-consultation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'op-consultation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'comprehensive-consultation' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'op-registration' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'clinic-billing' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'emergency-registration' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'inpatient-admission' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'consultation-entry-design' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'consultation-entry-v2' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > 'preferences' renders API data and page content passes axe
+   × 'Arabic RTL' > '/medband/patients/pat-1' renders API data and page content passes axe 10355ms
+     → expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"rtl"[39m
+  [33mlang[39m=[32m"ar"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"rtl"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row-reverse"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"التنقل الرئيسي"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"البحث في القائمة"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"البحث في القائمة"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39...
+   ↓ 'Arabic RTL' > '/surgisuite/cases/472' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/quality/indicators/7' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/quality/reports/3' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/teleconsult-provider/consult/a1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/teleconsult-patient/visit/a1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/teleconsult-patient/visit/a1/summary' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis1/orders/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis1/masters/tests' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis1/billing/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis1/reports/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/orders/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/masters/tests' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/patients/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/results/sample/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/print/order/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/lis2/print/labels?ids=1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/patients/25' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/orders/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/reading/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/print/report/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/print/invoice/1' renders API data and page content passes axe
+   ↓ 'Arabic RTL' > '/ris1/viewer/999' renders API data and page content passes axe
+   × 'reduced motion' > 'medband-today' renders API data and page content passes axe 457ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medband-patients' renders API data and page content passes axe 510ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medband-patient-new' renders API data and page content passes axe 455ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medband-encounters' renders API data and page content passes axe 436ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medband-encounter-new' renders API data and page content passes axe 10289ms
+     → expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"true"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+             ...
+   × 'reduced motion' > 'medband-admissions' renders API data and page content passes axe 369ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medband-admission-new' renders API data and page content passes axe 493ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'reduced motion' > 'medband-episodes' renders API data and page content passes axe 371ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'reduced motion' > 'surgisuite-board' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-schedule' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-cases' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-approvals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-inventory' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-analytics' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'surgisuite-masters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-indicators' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-tat' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-events' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-verification' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-validation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-reports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-designer' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-schedules' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-submissions' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-authorities' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-users' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'quality-audit' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-provider-today' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-provider-schedule' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-provider-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-provider-notes' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-welcome' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-register' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-home' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-book' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'teleconsult-patient-records' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-home' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-coverages' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-authorizations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-eligibility' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-estimates' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-deposits' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-cash-sessions' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-encounters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-charges' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-manual-charges' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-invoices' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-debit-notes' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-credit-notes' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-adjustments' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-receipts' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-refunds' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-packages' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-claims' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-exchange-messages' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-remittances' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-remittance-corrections' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-appeals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-payer-reconciliations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-responsibility-transfers' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-aging' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-payment-plans' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-statements' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-collections' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-reports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-coding-cases' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-cdi-queries' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-drg-groupings' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-em-determinations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-model-settlements' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-journals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-gl-reconciliations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-exports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-approvals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-tasks' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-rcm-assistance' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-workbench' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-counter' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-orders' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-sales' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-inventory' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-purchasing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-authorizations' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-claims' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-remittance' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-audit' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'pharmacy-settings' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-accession' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-automation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-automation-routing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-collection' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-criticals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-integration' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-integration-docs' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-masters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-orders' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-orders-new' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-outsource' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-reports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-results' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-samples' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-users' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis1-validation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-accession' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-collection' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-critical' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-integration-console' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-integration-messages' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-integration-outbox' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-inventory' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-masters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-orders' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-orders-new' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-outsource' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-report-designer' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-reports' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-samples' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-settings' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-signing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-tat' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-lis2-worklist' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-analytics' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-audit' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-critical' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-integration' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-masters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-orders' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-pacs' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-reading' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-reception' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-schedule' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'reference-ris1-technologist' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-dashboard' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-patients' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-appointments' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-encounters' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-approvals' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-hospital-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-pharmacy-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-invoices' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-contracts' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-facilities' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-departments' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-specialties' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-providers' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-payers' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-tpas' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-insurance-plans' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-networks' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-price-lists' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-items' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-services' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-resources' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-resource-schedules' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'suite-master-resource-blocks' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'patient-query' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'patient-record' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'patient-360' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'clinical-triage' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'clinical-consultation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'op-consultation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'comprehensive-consultation' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'op-registration' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'clinic-billing' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'emergency-registration' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'inpatient-admission' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'consultation-entry-design' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'consultation-entry-v2' renders API data and page content passes axe
+   ↓ 'reduced motion' > 'preferences' renders API data and page content passes axe
+   × 'reduced motion' > '/medband/patients/pat-1' renders API data and page content passes axe 10266ms
+     → expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"true"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+             ...
+   ↓ 'reduced motion' > '/surgisuite/cases/472' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/quality/indicators/7' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/quality/reports/3' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/teleconsult-provider/consult/a1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/teleconsult-patient/visit/a1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/teleconsult-patient/visit/a1/summary' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis1/orders/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis1/masters/tests' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis1/billing/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis1/reports/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/orders/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/masters/tests' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/patients/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/results/sample/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/print/order/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/lis2/print/labels?ids=1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/patients/25' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/orders/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/reading/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/print/report/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/print/invoice/1' renders API data and page content passes axe
+   ↓ 'reduced motion' > '/ris1/viewer/999' renders API data and page content passes axe
+   × 'locked density' > 'medband-today' renders API data and page content passes axe 461ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medband-patients' renders API data and page content passes axe 456ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medband-patient-new' renders API data and page content passes axe 469ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medband-encounters' renders API data and page content passes axe 499ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medband-encounter-new' renders API data and page content passes axe 10291ms
+     → expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 6px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+             ...
+   × 'locked density' > 'medband-admissions' renders API data and page content passes axe 424ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medband-admission-new' renders API data and page content passes axe 584ms
+     → expected [ { …(2) }, { …(2) } ] to deeply equal []
+   × 'locked density' > 'medband-episodes' renders API data and page content passes axe 438ms
+     → expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+   ↓ 'locked density' > 'surgisuite-board' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-schedule' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-cases' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-approvals' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-inventory' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-analytics' renders API data and page content passes axe
+   ↓ 'locked density' > 'surgisuite-masters' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-indicators' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-tat' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-events' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-verification' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-validation' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-reports' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-designer' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-schedules' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-submissions' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-authorities' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-users' renders API data and page content passes axe
+   ↓ 'locked density' > 'quality-audit' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-provider-today' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-provider-schedule' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-provider-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-provider-notes' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-welcome' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-register' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-home' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-book' renders API data and page content passes axe
+   ↓ 'locked density' > 'teleconsult-patient-records' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-home' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-coverages' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-authorizations' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-eligibility' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-estimates' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-deposits' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-cash-sessions' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-encounters' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-charges' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-manual-charges' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-invoices' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-debit-notes' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-credit-notes' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-adjustments' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-receipts' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-refunds' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-packages' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-claims' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-exchange-messages' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-remittances' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-remittance-corrections' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-appeals' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-payer-reconciliations' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-responsibility-transfers' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-aging' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-payment-plans' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-statements' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-collections' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-reports' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-coding-cases' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-cdi-queries' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-drg-groupings' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-em-determinations' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-model-settlements' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-journals' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-gl-reconciliations' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-exports' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-approvals' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-tasks' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-rcm-assistance' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-workbench' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-counter' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-orders' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-sales' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-inventory' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-purchasing' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-authorizations' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-claims' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-remittance' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-audit' renders API data and page content passes axe
+   ↓ 'locked density' > 'pharmacy-settings' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-accession' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-automation' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-automation-routing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-collection' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-criticals' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-integration' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-integration-docs' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-masters' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-orders' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-orders-new' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-outsource' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-reports' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-results' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-samples' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-users' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis1-validation' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-accession' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-collection' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-critical' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-integration-console' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-integration-instrument…' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-integration-messages' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-integration-outbox' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-inventory' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-masters' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-orders' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-orders-new' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-outsource' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-report-designer' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-reports' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-samples' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-settings' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-signing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-tat' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-lis2-worklist' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-analytics' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-audit' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-critical' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-integration' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-masters' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-orders' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-pacs' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-reading' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-reception' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-schedule' renders API data and page content passes axe
+   ↓ 'locked density' > 'reference-ris1-technologist' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-dashboard' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-patients' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-appointments' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-encounters' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-approvals' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-hospital-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-pharmacy-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-invoices' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-contracts' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-facilities' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-departments' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-specialties' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-providers' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-payers' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-tpas' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-insurance-plans' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-networks' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-price-lists' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-items' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-services' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-resources' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-resource-schedules' renders API data and page content passes axe
+   ↓ 'locked density' > 'suite-master-resource-blocks' renders API data and page content passes axe
+   ↓ 'locked density' > 'patient-query' renders API data and page content passes axe
+   ↓ 'locked density' > 'patient-record' renders API data and page content passes axe
+   ↓ 'locked density' > 'patient-360' renders API data and page content passes axe
+   ↓ 'locked density' > 'clinical-triage' renders API data and page content passes axe
+   ↓ 'locked density' > 'clinical-consultation' renders API data and page content passes axe
+   ↓ 'locked density' > 'op-consultation' renders API data and page content passes axe
+   ↓ 'locked density' > 'comprehensive-consultation' renders API data and page content passes axe
+   ↓ 'locked density' > 'op-registration' renders API data and page content passes axe
+   ↓ 'locked density' > 'clinic-billing' renders API data and page content passes axe
+   ↓ 'locked density' > 'emergency-registration' renders API data and page content passes axe
+   ↓ 'locked density' > 'inpatient-admission' renders API data and page content passes axe
+   ↓ 'locked density' > 'consultation-entry-design' renders API data and page content passes axe
+   ↓ 'locked density' > 'consultation-entry-v2' renders API data and page content passes axe
+   ↓ 'locked density' > 'preferences' renders API data and page content passes axe
+   × 'locked density' > '/medband/patients/pat-1' renders API data and page content passes axe 10289ms
+     → expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 6px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+             ...
+   ↓ 'locked density' > '/surgisuite/cases/472' renders API data and page content passes axe
+   ↓ 'locked density' > '/quality/indicators/7' renders API data and page content passes axe
+   ↓ 'locked density' > '/quality/reports/3' renders API data and page content passes axe
+   ↓ 'locked density' > '/teleconsult-provider/consult/a1' renders API data and page content passes axe
+   ↓ 'locked density' > '/teleconsult-patient/visit/a1' renders API data and page content passes axe
+   ↓ 'locked density' > '/teleconsult-patient/visit/a1/summary' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis1/orders/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis1/masters/tests' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis1/billing/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis1/reports/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/orders/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/masters/tests' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/patients/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/results/sample/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/print/order/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/lis2/print/labels?ids=1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/patients/25' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/orders/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/reading/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/print/report/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/print/invoice/1' renders API data and page content passes axe
+   ↓ 'locked density' > '/ris1/viewer/999' renders API data and page content passes axe
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 36 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'medband-today' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medband-patient-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medband-admissions' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medband-admission-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medband-today' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medband-patient-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medband-admissions' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medband-admission-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medband-today' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medband-patient-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medband-admissions' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medband-admission-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medband-today' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medband-patient-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medband-admissions' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medband-admission-new' renders API data and page content passes axe
+AssertionError: expected [ { …(2) }, { …(2) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "id": "landmark-main-is-top-level",
++     "nodes": [
++       "<main id=\"main\" class=\"scroll-thin min-h-0 flex-1 overflow-auto\">",
++     ],
++   },
++   {
++     "id": "landmark-no-duplicate-main",
++     "nodes": [
++       "<main id=\"main\" class=\"scroll-thin min-h-0 flex-1 overflow-auto\">",
++     ],
++   },
++ ]
+
+ ❯ src/routes.test.tsx:43:89
+     41|   if(scenario.policy)expect(container.querySelector('[data-effective-d…
+     42|   const result=await axe.run(content,{rules:{'color-contrast':{enabled…
+     43|   expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.slice(0,3).m…
+       |                                                                                         ^
+     44|  });
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/36]⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'medband-patients' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medband-encounters' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > 'medband-episodes' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medband-patients' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medband-encounters' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medband-episodes' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medband-patients' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medband-encounters' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medband-episodes' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medband-patients' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medband-encounters' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > 'medband-episodes' renders API data and page content passes axe
+AssertionError: expected [ { …(2) }, { …(2) }, { …(2) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "id": "aria-required-children",
++     "nodes": [
++       "<div class=\"scroll-thin min-h-0 flex-1 overflow-auto p-2\" role=\"listbox\" aria-label=\"Patients\">",
++     ],
++   },
++   {
++     "id": "landmark-main-is-top-level",
++     "nodes": [
++       "<main id=\"main\" class=\"scroll-thin min-h-0 flex-1 overflow-auto\">",
++     ],
++   },
++   {
++     "id": "landmark-no-duplicate-main",
++     "nodes": [
++       "<main id=\"main\" class=\"scroll-thin min-h-0 flex-1 overflow-auto\">",
++     ],
++   },
++ ]
+
+ ❯ src/routes.test.tsx:43:89
+     41|   if(scenario.policy)expect(container.querySelector('[data-effective-d…
+     42|   const result=await axe.run(content,{rules:{'color-contrast':{enabled…
+     43|   expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.slice(0,3).m…
+       |                                                                                         ^
+     44|  });
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/36]⎯
+
+ FAIL  src/routes.test.tsx > 'default' > 'medband-encounter-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'default' > '/medband/patients/pat-1' renders API data and page content passes axe
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+            ...
+ ❯ src/routes.test.tsx:31:109
+     29|   if(page.id.startsWith('reference-rcm'))await waitFor(()=>expect(cont…
+     30|   if(page.id.includes('surgisuite'))await waitFor(()=>expect(container…
+     31|   if(page.id.includes('medband'))await waitFor(()=>expect(container.qu…
+       |                                                                                                             ^
+     32|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     33|   const ready=qualityRouteReady[target.pageId];if(ready)await waitFor(…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/36]⎯
+
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > 'medband-encounter-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'Arabic RTL' > '/medband/patients/pat-1' renders API data and page content passes axe
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"rtl"[39m
+  [33mlang[39m=[32m"ar"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"rtl"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row-reverse"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"التنقل الرئيسي"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"البحث في القائمة"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"البحث في القائمة"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39...
+ ❯ src/routes.test.tsx:31:109
+     29|   if(page.id.startsWith('reference-rcm'))await waitFor(()=>expect(cont…
+     30|   if(page.id.includes('surgisuite'))await waitFor(()=>expect(container…
+     31|   if(page.id.includes('medband'))await waitFor(()=>expect(container.qu…
+       |                                                                                                             ^
+     32|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     33|   const ready=qualityRouteReady[target.pageId];if(ready)await waitFor(…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/36]⎯
+
+ FAIL  src/routes.test.tsx > 'reduced motion' > 'medband-encounter-new' renders API data and page content passes axe
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"true"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+             ...
+ ❯ src/routes.test.tsx:31:109
+     29|   if(page.id.startsWith('reference-rcm'))await waitFor(()=>expect(cont…
+     30|   if(page.id.includes('surgisuite'))await waitFor(()=>expect(container…
+     31|   if(page.id.includes('medband'))await waitFor(()=>expect(container.qu…
+       |                                                                                                             ^
+     32|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     33|   const ready=qualityRouteReady[target.pageId];if(ready)await waitFor(…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/36]⎯
+
+ FAIL  src/routes.test.tsx > 'reduced motion' > '/medband/patients/pat-1' renders API data and page content passes axe
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"true"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+             ...
+ ❯ src/routes.test.tsx:31:109
+     29|   if(page.id.startsWith('reference-rcm'))await waitFor(()=>expect(cont…
+     30|   if(page.id.includes('surgisuite'))await waitFor(()=>expect(container…
+     31|   if(page.id.includes('medband'))await waitFor(()=>expect(container.qu…
+       |                                                                                                             ^
+     32|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     33|   const ready=qualityRouteReady[target.pageId];if(ready)await waitFor(…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ MutationObserver.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+ ❯ MutationObserver.invokeTheCallbackFunction ../../node_modules/jsdom/lib/jsdom/living/generated/MutationCallback.js:19:26
+ ❯ notifyMutationObservers ../../node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:160:22
+ ❯ ../../node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:133:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/36]⎯
+
+ FAIL  src/routes.test.tsx > 'locked density' > 'medband-encounter-new' renders API data and page content passes axe
+ FAIL  src/routes.test.tsx > 'locked density' > '/medband/patients/pat-1' renders API data and page content passes axe
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 6px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mME[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"space-y-0.5"[39m
+             ...
+ ❯ src/routes.test.tsx:31:109
+     29|   if(page.id.startsWith('reference-rcm'))await waitFor(()=>expect(cont…
+     30|   if(page.id.includes('surgisuite'))await waitFor(()=>expect(container…
+     31|   if(page.id.includes('medband'))await waitFor(()=>expect(container.qu…
+       |                                                                                                             ^
+     32|   const content=container.querySelector('.healthcare-page') as HTMLEle…
+     33|   const ready=qualityRouteReady[target.pageId];if(ready)await waitFor(…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/36]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  36 failed | 788 skipped (824)
+   Start at  17:23:28
+   Duration  108.85s (transform 8.08s, setup 187ms, collect 11.75s, tests 95.85s, environment 503ms, prepare 78ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

@@ -7,13 +7,15 @@ Reusable React primitives: controls, selection, status and navigation. Unpublish
 | Group | Exports |
 | --- | --- |
 | Classes and compact formatting |  |
-| Buttons |  |
+| Buttons | `Button`, `IconButton` |
+| Native-layout controls | `SourceButton`, `SourceInput`, `SourceSelect`, `SourceTextarea`, `SourceDateInput` |
 | Form controls | `inputClass` |
 | Choices | `RadioGroup`, `RangeField` |
 | Temporal inputs | `DateTimeInputProps`, `DateInput`, `TimeInput`, `DateTimeInput`, `MonthInput`, `WeekInput`, `DateRangeInput` |
 | Quantity and unit | `QuantityUnitValue`, `QuantityUnitPreview`, `QuantityUnitFieldProps`, `QuantityUnitField` |
 | Scanner input | `ScannerInput` |
 | Option matching | `FilterableOption`, `filterOptions`, `nextEnabledIndex`, `Highlight` |
+| Remote lookup | `AsyncLookup` (host-loaded combobox, cancellation/stale-response fencing and custom record slots) |
 | Search selection | `SearchSelectOption`, `SearchSelect` |
 | Segmented choices | `SegmentedOption`, `Segmented` |
 | Badges |  |
@@ -93,3 +95,11 @@ Literal labels and templates (for example `{count} options`) also pass through t
 ## Phase 6a accessible trigger names
 
 SearchSelect's trigger name now includes both its field label and displayed selection (or placeholder). This aligns speech-input names with visible text; keyboard/listbox behavior is unchanged. A regression verifies the visible value is included. Consumers querying the exact old label should use the complete name or a label-prefix matcher.
+
+Native-layout controls keep standard HTML layout and refs while translating accessible names, placeholders and button text. The host supplies appearance and effective preferences; disabled/required/ARIA attributes remain native. `SourceButton` defaults to `type="button"`; `SourceDateInput` retains an ISO date value. They do not resolve permissions or persist settings.
+
+`AsyncLookup<T>` accepts `loadOptions(query, signal)`, `getKey`, `renderOption` and `onPick`. The host owns transport and record content. `initialQuery`, `minChars` and `debounceMs` configure searching; stale results are fenced even when a loader ignores cancellation. Arrow keys select, Enter picks, Escape closes and Tab leaves the control. Failed queries retain input and recover when the user edits the query. The host translator supplies labels and the existing `Something went wrong` / `Try again` messages; appearance uses shared semantic tokens.
+
+AsyncLookup also accepts native field `id`, `disabled` and `invalid`. Disabling a mounted lookup aborts obsolete reads and hides its options. Healthcare RCM composes selected-value chips around it; endpoints and selection values stay with the product adapter.
+
+`SourceTimeInput` and `SourceDateTimeInput` preserve native `time` and `datetime-local` values, constraints, refs and accessible names for imported layouts. They use the existing SourceInput localization contract; hosts format read-only clock values separately.

@@ -1,0 +1,1267 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/teleconsult
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/modules/teleconsult/patient/module.test.tsx (25 tests | 1 failed) 4395ms
+   ✓ patient identity > binds a dedicated patient account to its own record without touching browser storage or listing patients 102ms
+   ✓ patient identity > lets an administrator pick only server-granted people and routes later requests with the chosen beneficiary 156ms
+   ✓ patient identity > does not switch identity when the server refuses the person 28ms
+   ✓ patient identity > rejects a session that answers for a different person than requested 30ms
+   ✓ patient identity > shows registration only when the session allows it 133ms
+   ✓ patient layout > keeps the phone column, bottom navigation and demo disclosure inside the module 31ms
+   ✓ patient layout > offers a way to switch person only when the account may act for several 23ms
+   ✓ visit > polls the authenticated current vitals frame and labels the readings as simulated 26ms
+   ✓ visit > describes the call as a simulation and does not pretend audio or the clinician video is transmitted 27ms
+   ✓ visit > keeps a typed chat message when sending fails, and reports why 53ms
+   ✓ visit > books with an Idempotency-Key, and a retry after a lost response replays the same key  475ms
+   ✓ booking advice from the server > asks the API for the specialty and urgency, and uses its answer to label the suggestion and book as urgent  414ms
+   ✓ booking advice from the server > shows the urgent warning only from the API's urgency, not from the browser's own reading of the symptoms  599ms
+   ✓ booking advice from the server > cannot continue or book on a stale answer: changed answers wait for new advice and a late old reply is ignored  602ms
+   ✓ booking advice from the server > does not offer Continue when the API cannot answer, reports why, and asks again on retry  570ms
+   ✓ booking advice from the server > does not accept a malformed advice payload 289ms
+   ✓ effective settings in patient booking > offers only the visit modes the branch supports and books with one of them  420ms
+   ✓ effective settings in patient booking > does not let a patient book, or ask for advice, when the branch disables patient booking 43ms
+   ✓ patient registration > registers through the allowed administrator session with the form's own fields, then acts for the new person 107ms
+   ✓ patient registration > shows the welcome entry point to register only for a session that may, and refuses the form otherwise 49ms
+   ✓ patient registration > shows the server's refusal and does not continue as a new person 102ms
+   × dates follow the host preference > writes a chosen date of birth in the effective date format, whatever the browser shows in the field 30ms
+     → expected undefined to be '04/03/1991' // Object.is equality
+   ✓ visit summary print > uses the shared print surface: the summary is a plain document outside the phone column, and the button opens the browser print dialog 48ms
+   ✓ visit summary print > prints nothing before the summary is signed 17ms
+   ✓ phone column layout > keeps the bottom navigation in the phone column but outside the scroller, so it does not scroll away 17ms
+ ❯ src/modules/teleconsult/provider/module.test.tsx (19 tests | 2 failed) 22917ms
+   ✓ provider module > renders the Today workspace without a second sidebar or shell, with the demo disclosure 140ms
+   ✓ provider module > offers only the modes the server granted 91ms
+   ✓ provider module > switches mode through the server: asks /api/session?role= and routes later requests with the validated role 83ms
+   ✓ provider module > falls back to the granted role and reports the problem when the server refuses a mode 74ms
+   ✓ provider module > offers registration only when the server says the account can register 62ms
+   ✓ provider module > aborts every in-flight request when the authenticated scope changes 36ms
+   ✓ provider module > reports an unknown route instead of rendering a page 10ms
+   ✓ consultation > polls authenticated /current frames (never an EventSource or stream URL) and labels simulated content 135ms
+   ✓ consultation > stops polling the vitals once the note is signed 80ms
+   ✓ consultation > signs from the Sign off tab with the expected version and shows server problems without losing the draft  328ms
+   ✓ consultation > locks prescribing in nurse mode 123ms
+   ✓ consultation > shows the conflict banner and keeps the edited text when autosave is refused  873ms
+   ✓ nurse mode > has no sign-off: no Sign off tab, no global Review and sign button, no nurse signature action; triage hand-off stays 182ms
+   ✓ nurse mode > does not list Review and sign in the quick-add palette 100ms
+   ✓ nurse mode > keeps sign-off for the doctor 97ms
+   ✓ nurse mode > drops the sign-off tab when a doctor switches to nurse mode on the sign-off tab 214ms
+   ✓ booking dialog uses the effective settings > offers only the supported visit modes and the clinic's slot durations 100ms
+   × booking dialog uses the effective settings > asks for slots of the chosen length and books with that duration and a supported mode 10076ms
+     → Unable to find role="button" and name `/Sarah O'Connor/`
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-label[39m=[32m"Book a teleconsultation"[39m
+  [33maria-modal[39m=[32m"true"[39m
+  [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+  [33mrole[39m=[32m"dialog"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+        [36m>[39m
+          [0mBook a teleconsultation[0m
+        [36m</h2>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+        [33mtitle[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"24"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"24"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"px-5 py-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid gap-5 md:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mb-1 block text-xs font-medium text-ink-700"[39m
+              [36m>[39m
+                [0mPatient[0m
+              [36m</span>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"rounded-md border border-line"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<input[39m
+                    [33maria-activedescendant[39m=[32m"_r_1_-0"[39m
+                    [33maria-autocomplete[39m=[32m"list"[39m
+                    [33maria-controls[39m=[32m"_r_1_"[39m
+                    [33maria-expanded[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--text)]"[39m
+                    [33mplaceholder[39m=[32m"Name, MRN or phone"[39m
+                    [33mrole[39m=[32m"combobox"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"absolute inset-x-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-1 shadow-lg"[39m
+                    [33mid[39m=[32m"_r_1_"[39m
+                    [33mrole[39m=[32m"listbox"[39m
+                  [36m>[39m
+                    [36m<li[39m
+                      [33maria-selected[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+                      [33mid[39m=[32m"_r_1_-0"[39m
+                      [33mrole[39m=[32m"option"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mSarah O'Connor[0m
+                        [0m · [0m
+                        [0mTC-100248[0m
+                      [36m</span>[39m
+                    [36m</li>[39m
+                  [36m</ul>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex w-full items-center gap-2 border-t border-line px-2.5 py-2 text-sm font-medium text-pulse-600 hover:bg-pulse-50"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-user-plus h-4 w-4"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"19"[39m
+                      [33mx2[39m=[32m"19"[39m
+                      [33my1[39m=[32m"8"[39m
+                      [33my2[39m=[32m"14"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"22"[39m
+                      [33mx2[39m=[32m"16"[39m
+                      [33my1[39m=[32m"11"[39m
+                      [33my2[39m=[32m"11"[39m
+                    [36m/>[39m
+ ...
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-label[39m=[32m"Book a teleconsultation"[39m
+  [33maria-modal[39m=[32m"true"[39m
+  [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+  [33mrole[39m=[32m"dialog"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+        [36m>[39m
+          [0mBook a teleconsultation[0m
+        [36m</h2>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+        [33mtitle[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"24"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"24"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"px-5 py-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid gap-5 md:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mb-1 block text-xs font-medium text-ink-700"[39m
+              [36m>[39m
+                [0mPatient[0m
+              [36m</span>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"rounded-md border border-line"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<input[39m
+                    [33maria-activedescendant[39m=[32m"_r_1_-0"[39m
+                    [33maria-autocomplete[39m=[32m"list"[39m
+                    [33maria-controls[39m=[32m"_r_1_"[39m
+                    [33maria-expanded[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--text)]"[39m
+                    [33mplaceholder[39m=[32m"Name, MRN or phone"[39m
+                    [33mrole[39m=[32m"combobox"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"absolute inset-x-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-1 shadow-lg"[39m
+                    [33mid[39m=[32m"_r_1_"[39m
+                    [33mrole[39m=[32m"listbox"[39m
+                  [36m>[39m
+                    [36m<li[39m
+                      [33maria-selected[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+                      [33mid[39m=[32m"_r_1_-0"[39m
+                      [33mrole[39m=[32m"option"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mSarah O'Connor[0m
+                        [0m · [0m
+                        [0mTC-100248[0m
+                      [36m</span>[39m
+                    [36m</li>[39m
+                  [36m</ul>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex w-full items-center gap-2 border-t border-line px-2.5 py-2 text-sm font-medium text-pulse-600 hover:bg-pulse-50"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-user-plus h-4 w-4"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"19"[39m
+                      [33mx2[39m=[32m"19"[39m
+                      [33my1[39m=[32m"8"[39m
+                      [33my2[39m=[32m"14"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"22"[39m
+                      [33mx2[39m=[32m"16"[39m
+                      [33my1[39m=[32m"11"[39m
+                      [33my2[39m=[32m"11"[39m
+                    [36m/>[39m
+ ...
+   × booking dialog uses the effective settings > falls back to the first allowed mode and the default length when nothing was chosen 10108ms
+     → Unable to find role="button" and name `/Sarah O'Connor/`
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-label[39m=[32m"Book a teleconsultation"[39m
+  [33maria-modal[39m=[32m"true"[39m
+  [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+  [33mrole[39m=[32m"dialog"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+        [36m>[39m
+          [0mBook a teleconsultation[0m
+        [36m</h2>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+        [33mtitle[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"24"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"24"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"px-5 py-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid gap-5 md:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mb-1 block text-xs font-medium text-ink-700"[39m
+              [36m>[39m
+                [0mPatient[0m
+              [36m</span>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"rounded-md border border-line"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<input[39m
+                    [33maria-activedescendant[39m=[32m"_r_2_-0"[39m
+                    [33maria-autocomplete[39m=[32m"list"[39m
+                    [33maria-controls[39m=[32m"_r_2_"[39m
+                    [33maria-expanded[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--text)]"[39m
+                    [33mplaceholder[39m=[32m"Name, MRN or phone"[39m
+                    [33mrole[39m=[32m"combobox"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"absolute inset-x-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-1 shadow-lg"[39m
+                    [33mid[39m=[32m"_r_2_"[39m
+                    [33mrole[39m=[32m"listbox"[39m
+                  [36m>[39m
+                    [36m<li[39m
+                      [33maria-selected[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+                      [33mid[39m=[32m"_r_2_-0"[39m
+                      [33mrole[39m=[32m"option"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mSarah O'Connor[0m
+                        [0m · [0m
+                        [0mTC-100248[0m
+                      [36m</span>[39m
+                    [36m</li>[39m
+                  [36m</ul>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex w-full items-center gap-2 border-t border-line px-2.5 py-2 text-sm font-medium text-pulse-600 hover:bg-pulse-50"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-user-plus h-4 w-4"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"19"[39m
+                      [33mx2[39m=[32m"19"[39m
+                      [33my1[39m=[32m"8"[39m
+                      [33my2[39m=[32m"14"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"22"[39m
+                      [33mx2[39m=[32m"16"[39m
+                      [33my1[39m=[32m"11"[39m
+                      [33my2[39m=[32m"11"[39m
+                    [36m/>[39m
+ ...
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-label[39m=[32m"Book a teleconsultation"[39m
+  [33maria-modal[39m=[32m"true"[39m
+  [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+  [33mrole[39m=[32m"dialog"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+        [36m>[39m
+          [0mBook a teleconsultation[0m
+        [36m</h2>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+        [33mtitle[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"24"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"24"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"px-5 py-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid gap-5 md:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mb-1 block text-xs font-medium text-ink-700"[39m
+              [36m>[39m
+                [0mPatient[0m
+              [36m</span>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"rounded-md border border-line"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<input[39m
+                    [33maria-activedescendant[39m=[32m"_r_2_-0"[39m
+                    [33maria-autocomplete[39m=[32m"list"[39m
+                    [33maria-controls[39m=[32m"_r_2_"[39m
+                    [33maria-expanded[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--text)]"[39m
+                    [33mplaceholder[39m=[32m"Name, MRN or phone"[39m
+                    [33mrole[39m=[32m"combobox"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"absolute inset-x-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-1 shadow-lg"[39m
+                    [33mid[39m=[32m"_r_2_"[39m
+                    [33mrole[39m=[32m"listbox"[39m
+                  [36m>[39m
+                    [36m<li[39m
+                      [33maria-selected[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+                      [33mid[39m=[32m"_r_2_-0"[39m
+                      [33mrole[39m=[32m"option"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mSarah O'Connor[0m
+                        [0m · [0m
+                        [0mTC-100248[0m
+                      [36m</span>[39m
+                    [36m</li>[39m
+                  [36m</ul>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex w-full items-center gap-2 border-t border-line px-2.5 py-2 text-sm font-medium text-pulse-600 hover:bg-pulse-50"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-user-plus h-4 w-4"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"19"[39m
+                      [33mx2[39m=[32m"19"[39m
+                      [33my1[39m=[32m"8"[39m
+                      [33my2[39m=[32m"14"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"22"[39m
+                      [33mx2[39m=[32m"16"[39m
+                      [33my1[39m=[32m"11"[39m
+                      [33my2[39m=[32m"11"[39m
+                    [36m/>[39m
+ ...
+ ✓ src/modules/teleconsult/provider/lib/encounter-sync.test.tsx (12 tests) 112ms
+ ✓ src/modules/teleconsult/shared/hooks.test.tsx (10 tests) 715ms
+ ✓ src/modules/teleconsult/shared/contract.test.ts (27 tests) 18ms
+ ✓ src/modules/teleconsult/shared/client.test.ts (16 tests) 37ms
+ ✓ src/modules/teleconsult/styles.test.ts (10 tests) 18ms
+ ✓ src/modules/teleconsult/routes.test.ts (20 tests) 15ms
+ ✓ src/modules/teleconsult/shared/format.test.tsx (6 tests) 108ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/teleconsult/patient/module.test.tsx > dates follow the host preference > writes a chosen date of birth in the effective date format, whatever the browser shows in the field
+AssertionError: expected undefined to be '04/03/1991' // Object.is equality
+
+- Expected: 
+"04/03/1991"
+
++ Received: 
+undefined
+
+ ❯ src/modules/teleconsult/patient/module.test.tsx:328:72
+    326|     render(<ReferenceTeleconsultPatientModule path="/register" host={h…
+    327|     fireEvent.change(await screen.findByLabelText("Date of birth"), { …
+    328|     expect(document.querySelector("[data-date-preview]")?.textContent)…
+       |                                                                        ^
+    329|     cleanup();
+    330|     const medium = makeHost(patientHandler({ patients: [sarah, other],…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/modules/teleconsult/provider/module.test.tsx > booking dialog uses the effective settings > asks for slots of the chosen length and books with that duration and a supported mode
+TestingLibraryElementError: Unable to find role="button" and name `/Sarah O'Connor/`
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-label[39m=[32m"Book a teleconsultation"[39m
+  [33maria-modal[39m=[32m"true"[39m
+  [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+  [33mrole[39m=[32m"dialog"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+        [36m>[39m
+          [0mBook a teleconsultation[0m
+        [36m</h2>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+        [33mtitle[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"24"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"24"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"px-5 py-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid gap-5 md:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mb-1 block text-xs font-medium text-ink-700"[39m
+              [36m>[39m
+                [0mPatient[0m
+              [36m</span>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"rounded-md border border-line"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<input[39m
+                    [33maria-activedescendant[39m=[32m"_r_1_-0"[39m
+                    [33maria-autocomplete[39m=[32m"list"[39m
+                    [33maria-controls[39m=[32m"_r_1_"[39m
+                    [33maria-expanded[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--text)]"[39m
+                    [33mplaceholder[39m=[32m"Name, MRN or phone"[39m
+                    [33mrole[39m=[32m"combobox"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"absolute inset-x-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-1 shadow-lg"[39m
+                    [33mid[39m=[32m"_r_1_"[39m
+                    [33mrole[39m=[32m"listbox"[39m
+                  [36m>[39m
+                    [36m<li[39m
+                      [33maria-selected[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+                      [33mid[39m=[32m"_r_1_-0"[39m
+                      [33mrole[39m=[32m"option"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mSarah O'Connor[0m
+                        [0m · [0m
+                        [0mTC-100248[0m
+                      [36m</span>[39m
+                    [36m</li>[39m
+                  [36m</ul>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex w-full items-center gap-2 border-t border-line px-2.5 py-2 text-sm font-medium text-pulse-600 hover:bg-pulse-50"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-user-plus h-4 w-4"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"19"[39m
+                      [33mx2[39m=[32m"19"[39m
+                      [33my1[39m=[32m"8"[39m
+                      [33my2[39m=[32m"14"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"22"[39m
+                      [33mx2[39m=[32m"16"[39m
+                      [33my1[39m=[32m"11"[39m
+                      [33my2[39m=[32m"11"[39m
+                    [36m/>[39m
+ ...
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-label[39m=[32m"Book a teleconsultation"[39m
+  [33maria-modal[39m=[32m"true"[39m
+  [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+  [33mrole[39m=[32m"dialog"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+        [36m>[39m
+          [0mBook a teleconsultation[0m
+        [36m</h2>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+        [33mtitle[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"24"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"24"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"px-5 py-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid gap-5 md:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mb-1 block text-xs font-medium text-ink-700"[39m
+              [36m>[39m
+                [0mPatient[0m
+              [36m</span>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"rounded-md border border-line"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<input[39m
+                    [33maria-activedescendant[39m=[32m"_r_1_-0"[39m
+                    [33maria-autocomplete[39m=[32m"list"[39m
+                    [33maria-controls[39m=[32m"_r_1_"[39m
+                    [33maria-expanded[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--text)]"[39m
+                    [33mplaceholder[39m=[32m"Name, MRN or phone"[39m
+                    [33mrole[39m=[32m"combobox"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"absolute inset-x-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-1 shadow-lg"[39m
+                    [33mid[39m=[32m"_r_1_"[39m
+                    [33mrole[39m=[32m"listbox"[39m
+                  [36m>[39m
+                    [36m<li[39m
+                      [33maria-selected[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+                      [33mid[39m=[32m"_r_1_-0"[39m
+                      [33mrole[39m=[32m"option"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mSarah O'Connor[0m
+                        [0m · [0m
+                        [0mTC-100248[0m
+                      [36m</span>[39m
+                    [36m</li>[39m
+                  [36m</ul>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex w-full items-center gap-2 border-t border-line px-2.5 py-2 text-sm font-medium text-pulse-600 hover:bg-pulse-50"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-user-plus h-4 w-4"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"19"[39m
+                      [33mx2[39m=[32m"19"[39m
+                      [33my1[39m=[32m"8"[39m
+                      [33my2[39m=[32m"14"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"22"[39m
+                      [33mx2[39m=[32m"16"[39m
+                      [33my1[39m=[32m"11"[39m
+                      [33my2[39m=[32m"11"[39m
+                    [36m/>[39m
+ ...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/modules/teleconsult/provider/module.test.tsx:218:42
+    216|   it("asks for slots of the chosen length and books with that duration…
+    217|     const { view, dialog } = await openDialog();
+    218|     fireEvent.click(await within(dialog).findByRole("button", { name: …
+       |                                          ^
+    219|     fireEvent.change(within(dialog).getByPlaceholderText(/Cough and fe…
+    220|     fireEvent.change(within(dialog).getByLabelText("Duration"), { targ…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/modules/teleconsult/provider/module.test.tsx > booking dialog uses the effective settings > falls back to the first allowed mode and the default length when nothing was chosen
+TestingLibraryElementError: Unable to find role="button" and name `/Sarah O'Connor/`
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-label[39m=[32m"Book a teleconsultation"[39m
+  [33maria-modal[39m=[32m"true"[39m
+  [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+  [33mrole[39m=[32m"dialog"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+        [36m>[39m
+          [0mBook a teleconsultation[0m
+        [36m</h2>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+        [33mtitle[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"24"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"24"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"px-5 py-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid gap-5 md:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mb-1 block text-xs font-medium text-ink-700"[39m
+              [36m>[39m
+                [0mPatient[0m
+              [36m</span>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"rounded-md border border-line"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<input[39m
+                    [33maria-activedescendant[39m=[32m"_r_2_-0"[39m
+                    [33maria-autocomplete[39m=[32m"list"[39m
+                    [33maria-controls[39m=[32m"_r_2_"[39m
+                    [33maria-expanded[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--text)]"[39m
+                    [33mplaceholder[39m=[32m"Name, MRN or phone"[39m
+                    [33mrole[39m=[32m"combobox"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"absolute inset-x-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-1 shadow-lg"[39m
+                    [33mid[39m=[32m"_r_2_"[39m
+                    [33mrole[39m=[32m"listbox"[39m
+                  [36m>[39m
+                    [36m<li[39m
+                      [33maria-selected[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+                      [33mid[39m=[32m"_r_2_-0"[39m
+                      [33mrole[39m=[32m"option"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mSarah O'Connor[0m
+                        [0m · [0m
+                        [0mTC-100248[0m
+                      [36m</span>[39m
+                    [36m</li>[39m
+                  [36m</ul>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex w-full items-center gap-2 border-t border-line px-2.5 py-2 text-sm font-medium text-pulse-600 hover:bg-pulse-50"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-user-plus h-4 w-4"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"19"[39m
+                      [33mx2[39m=[32m"19"[39m
+                      [33my1[39m=[32m"8"[39m
+                      [33my2[39m=[32m"14"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"22"[39m
+                      [33mx2[39m=[32m"16"[39m
+                      [33my1[39m=[32m"11"[39m
+                      [33my2[39m=[32m"11"[39m
+                    [36m/>[39m
+ ...
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-label[39m=[32m"Book a teleconsultation"[39m
+  [33maria-modal[39m=[32m"true"[39m
+  [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+  [33mrole[39m=[32m"dialog"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+        [36m>[39m
+          [0mBook a teleconsultation[0m
+        [36m</h2>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+        [33mtitle[39m=[32m"ui.close.7d9eb7ac"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"24"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"24"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"px-5 py-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid gap-5 md:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-4"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mb-1 block text-xs font-medium text-ink-700"[39m
+              [36m>[39m
+                [0mPatient[0m
+              [36m</span>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"rounded-md border border-line"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<input[39m
+                    [33maria-activedescendant[39m=[32m"_r_2_-0"[39m
+                    [33maria-autocomplete[39m=[32m"list"[39m
+                    [33maria-controls[39m=[32m"_r_2_"[39m
+                    [33maria-expanded[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--text)]"[39m
+                    [33mplaceholder[39m=[32m"Name, MRN or phone"[39m
+                    [33mrole[39m=[32m"combobox"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul[39m
+                    [33maria-label[39m=[32m"Patient"[39m
+                    [33mclass[39m=[32m"absolute inset-x-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-1 shadow-lg"[39m
+                    [33mid[39m=[32m"_r_2_"[39m
+                    [33mrole[39m=[32m"listbox"[39m
+                  [36m>[39m
+                    [36m<li[39m
+                      [33maria-selected[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+                      [33mid[39m=[32m"_r_2_-0"[39m
+                      [33mrole[39m=[32m"option"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mSarah O'Connor[0m
+                        [0m · [0m
+                        [0mTC-100248[0m
+                      [36m</span>[39m
+                    [36m</li>[39m
+                  [36m</ul>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex w-full items-center gap-2 border-t border-line px-2.5 py-2 text-sm font-medium text-pulse-600 hover:bg-pulse-50"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-user-plus h-4 w-4"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"19"[39m
+                      [33mx2[39m=[32m"19"[39m
+                      [33my1[39m=[32m"8"[39m
+                      [33my2[39m=[32m"14"[39m
+                    [36m/>[39m
+                    [36m<line[39m
+                      [33mx1[39m=[32m"22"[39m
+                      [33mx2[39m=[32m"16"[39m
+                      [33my1[39m=[32m"11"[39m
+                      [33my2[39m=[32m"11"[39m
+                    [36m/>[39m
+ ...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/modules/teleconsult/provider/module.test.tsx:233:42
+    231|     const { view, dialog } = await openDialog({ roles: ["doctor"], set…
+    232|     expect(within(dialog).getAllByRole("radio").map((r) => r.textConte…
+    233|     fireEvent.click(await within(dialog).findByRole("button", { name: …
+       |                                          ^
+    234|     fireEvent.change(within(dialog).getByPlaceholderText(/Cough and fe…
+    235|     fireEvent.click((await within(dialog).findAllByRole("button", { na…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed | 7 passed (9)
+      Tests  3 failed | 142 passed (145)
+   Start at  13:11:44
+   Duration  41.50s (transform 1.75s, setup 1.37s, collect 3.25s, tests 28.34s, environment 4.67s, prepare 751ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

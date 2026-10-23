@@ -1,4 +1,24 @@
 export {
+  ArrowRightCircle,
+  CalendarCheck,
+  Camera,
+  CameraOff,
+  Circle,
+  ClipboardPlus,
+  CloudOff,
+  FlaskConical,
+  FolderHeart,
+  MonitorSmartphone,
+  MonitorUp,
+  PhoneOff,
+  PlusCircle,
+  ScanFace,
+  Signal,
+  Smartphone,
+  Video,
+  Wifi,
+  WifiOff,
+
   AudioLines,
   BadgeCheck,
   BellRing,
@@ -97,6 +117,29 @@ export {
   TriangleAlert,
   X,
 } from "lucide-react";
-export {Type, AlignLeft, Hash, Calendar, Clock, CheckSquare, Mail, WandSparkles} from "lucide-react";
+/* Calendar and Clock are also used by the phase 4c form controls; they are exported once, below. */
+export {Type, AlignLeft, Hash, CheckSquare, Mail, WandSparkles} from "lucide-react";
 export {Icon} from "./icon";
 export type {IconComponent, IconProps} from "./icon";
+
+export {Activity, AlertTriangle, ArrowRightLeft, ArrowUpRight, Ban, Bookmark, Boxes, Calendar, CalendarCheck2, CalendarClock, CalendarDays, CalendarPlus, CalendarX2, ClipboardCheck, ClipboardList, Clock, FileSignature, FileText, Footprints, Globe, Handshake, HeartPulse, Hospital, IdCard, Layers, LayoutGrid, List, MapPin, Network, PenLine, Phone, Pill, PlayCircle, ReceiptText, ShieldPlus, ShieldQuestion, Stethoscope, UserPlus, UserRoundX, Users, Wallet, Wrench, XCircle} from "lucide-react";
+
+// Direct primitives used by diagnostic workflows.
+export {AlertOctagon, ArrowDownLeft, CheckCheck, Contrast, CornerDownRight, CornerUpLeft, CreditCard, DoorOpen, FileJson, FilePen, FilePlus, FilePlus2, Hand, Images, Mic, MicOff, Move, PackagePlus, PenSquare, PencilLine, PhoneCall, PlugZap, Receipt, RotateCw, Ruler, Scan, ScanBarcode, ScanLine, Server, Siren, SkipForward, Square, SunMoon, Syringe, Tags, Truck, Undo2, ZoomIn} from 'lucide-react';
+
+// Direct primitives used by pharmacy workflows.
+export {Banknote, Bike, CirclePause, CornerDownLeft, Gavel, HandCoins, Landmark, MessageCircle, Moon, PackageCheck, PackageX, Radio, ShoppingBag, ShoppingBasket, Snowflake, Store, Sun} from 'lucide-react';
+
+// Direct primitives used by revenue-cycle workflows.
+export {AlarmClock, BarChart3, Calculator, Code2, ConciergeBell, FileMinus2, FileOutput, FileSearch, FileStack, GitCompare, Home, Hourglass, KanbanSquare, ListChecks, ListTodo, Megaphone, MessageSquareText, MousePointerClick, Package, PieChart, PiggyBank, RadioTower, Scale, Sigma} from "lucide-react";
+
+// Quality report and assurance presentation.
+export {ArrowDownRight, Bell, Gauge, LineChart, Timer} from 'lucide-react';
+
+// Surgical presentation primitives.
+export {Droplet, Shield, Scissors} from 'lucide-react';
+
+// Patient access presentation primitives.
+export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from 'lucide-react';
+
+export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";

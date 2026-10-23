@@ -1,0 +1,55 @@
+{"workflow":"medslot-identity","mode":"HTTP","result":"passed"}
+{"workflow":"medslot-details","mode":"UI","result":"passed"}
+{"workflow":"medslot-dialog","mode":"UI","result":"passed"}
+{"workflow":"medslot-registration","mode":"UI + HTTP reload","result":"passed"}
+{"workflow":"medslot-search","mode":"UI","result":"passed"}
+{"workflow":"medslot-booking","mode":"UI","result":"passed"}
+{"workflow":"medslot-conflicts","mode":"HTTP","result":"passed"}
+{"workflow":"medslot-calendar","mode":"UI","result":"passed"}
+{"workflow":"medslot-status","mode":"UI + HTTP","result":"passed"}
+{"workflow":"medslot-duration","mode":"UI","result":"passed"}
+{"workflow":"medslot-reschedule","mode":"UI + HTTP","result":"passed"}
+{"workflow":"medslot-cancel","mode":"UI + HTTP","result":"passed"}
+{"workflow":"medslot-schedule","mode":"HTTP","result":"passed"}
+{"workflow":"medslot-audit-notifications","mode":"HTTP","result":"passed"}
+{"workflow":"medslot-authority","mode":"HTTP","result":"passed"}
+AssertionError [ERR_ASSERTION]: mounted ar editor axe
++ actual - expected
+
++ [
++   {
++     html: [
++       '<div class="flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white" style="background: var(--primary);">ME</div>'
++     ],
++     id: 'color-contrast',
++     summary: [
++       'Fix any of the following:\n' +
++         '  Element has insufficient color contrast of 3.06 (foreground color: #ffffff, background color: #6d8cff, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1'
++     ]
++   }
++ ]
+- []
+
+    at axeState (file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/medslot-flows.mjs:15:326)
+    at async medslotFlows (file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/medslot-flows.mjs:46:773)
+    at async file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/smoke.mjs:115:112
+mounted ar editor axe
++ actual - expected
+
++ [
++   {
++     html: [
++       '<div class="flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white" style="background: var(--primary);">ME</div>'
++     ],
++     id: 'color-contrast',
++     summary: [
++       'Fix any of the following:\n' +
++         '  Element has insufficient color contrast of 3.06 (foreground color: #ffffff, background color: #6d8cff, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1'
++     ]
++   }
++ ]
+- []
+
+Browser exited 1
+{"integrationExit":1,"sourceBase":"eafe80372091834fb970919a7b14970586230cc3","apiPort":34201,"appPort":37825}
+Next exited 143

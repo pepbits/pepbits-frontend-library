@@ -1,0 +1,1487 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/suite",
+      "violations": [
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                ".lg\\:col-span-1 > .hc-panel-head > h3"
+              ],
+              "html": "<h3 class=\"hc-panel-title\">Next appointments</h3>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/appointments",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/approvals",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/billing/hospital",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/billing/pharmacy",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/billing/invoices",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/contracts",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "label",
+          "nodes": [
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(1) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(1) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(2) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(2) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(3) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(3) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(4) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(4) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(5) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(5) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(6) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(6) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(7) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(7) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(8) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(8) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(9) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(9) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(10) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(10) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(11) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(11) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(12) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(12) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(13) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(13) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(14) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(14) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(15) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(15) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(16) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(16) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(17) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(17) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(18) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(18) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(19) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(19) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(20) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(20) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(21) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(21) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(22) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(22) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(23) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(23) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(24) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(24) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(25) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(25) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(26) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(26) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(27) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(27) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(28) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(28) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(29) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(29) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(30) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(30) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(31) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(31) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(32) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(32) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(33) > .text-center:nth-child(8) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\" checked=\"\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            },
+            {
+              "target": [
+                ".\\[\\&\\>td\\]\\:h-9.\\[\\&\\>td\\]\\:border-b.\\[\\&\\>td\\]\\:border-hc-line\\/70:nth-child(33) > .text-center:nth-child(9) > .accent-\\[var\\(--primary\\)\\].disabled\\:opacity-50[type=\"checkbox\"]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50 justify-center\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/departments",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/specialties",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/providers",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/payers",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/tpas",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/insurance-plans",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/networks",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/price-lists",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/items",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/services",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resources",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resource-schedules",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resource-blocks",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-query",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-record",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 3
+    },
+    {
+      "route": "/patient-360",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-triage",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-consultation",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-consultation",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/comprehensive-consultation",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-registration",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinic-billing",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/emergency-registration",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/inpatient-admission",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/consultation-entry-design",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/consultation-entry-v2",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/preferences",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients/new",
+      "violations": [
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > h3"
+              ],
+              "html": "<h3 class=\"border-b border-hc-line px-3 py-2 text-hc-xs font-semibold text-hc-ink-soft\">Demographics</h3>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients/P000001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters/new",
+      "violations": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": [
+            {
+              "target": [
+                "input"
+              ],
+              "html": "<input class=\"focus-ring h-9 w-ful...\" role=\"combobox\" aria-expanded=\"true\" aria-controls=\"patient-search-list\" placeholder=\"Search MRN, name, ph...\" value=\"\">",
+              "summary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-controls=\"patient-search-list\""
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters/EN000001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities/new",
+      "violations": [
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "h3"
+              ],
+              "html": "<h3>Facility</h3>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities/F001",
+      "violations": [
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "h3"
+              ],
+              "html": "<h3>Facility</h3>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-record/PT-0001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-360/PT-0001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-consultation/PT-0001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-triage/PT-0001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-consultation/PT-0001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/comprehensive-consultation/PT-0001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-registration/PT-0001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinic-billing/PT-0001",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [
+    {
+      "route": "/suite/patients/P000001",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "route": "/suite/encounters/EN000001",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "responses": [
+    {
+      "route": "/suite/patients/P000001",
+      "path": "/api/reference-modules/healthcare-suite/api/patients/P000001",
+      "status": 404
+    },
+    {
+      "route": "/suite/encounters/EN000001",
+      "path": "/api/reference-modules/healthcare-suite/api/encounters/EN000001",
+      "status": 404
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/surgisuite src/navigation.test.ts src/routes.test.tsx -t SurgiSuite|surgisuite|case sections|registered page
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/routes.test.tsx (788 tests | 752 skipped) 69294ms
+   ✓ 'default' > 'surgisuite-board' renders API data and page content passes axe  3114ms
+   ✓ 'default' > 'surgisuite-schedule' renders API data and page content passes axe  3843ms
+   ✓ 'default' > 'surgisuite-cases' renders API data and page content passes axe  7227ms
+   ✓ 'default' > 'surgisuite-approvals' renders API data and page content passes axe  867ms
+   ✓ 'default' > 'surgisuite-patients' renders API data and page content passes axe  455ms
+   ✓ 'default' > 'surgisuite-inventory' renders API data and page content passes axe  1190ms
+   ✓ 'default' > 'surgisuite-analytics' renders API data and page content passes axe  642ms
+   ✓ 'default' > 'surgisuite-masters' renders API data and page content passes axe  507ms
+   ✓ 'default' > '/surgisuite/cases/472' renders API data and page content passes axe  570ms
+   ✓ 'Arabic RTL' > 'surgisuite-board' renders API data and page content passes axe  2413ms
+   ✓ 'Arabic RTL' > 'surgisuite-schedule' renders API data and page content passes axe  2659ms
+   ✓ 'Arabic RTL' > 'surgisuite-cases' renders API data and page content passes axe  7138ms
+   ✓ 'Arabic RTL' > 'surgisuite-approvals' renders API data and page content passes axe  922ms
+   ✓ 'Arabic RTL' > 'surgisuite-patients' renders API data and page content passes axe  471ms
+   ✓ 'Arabic RTL' > 'surgisuite-inventory' renders API data and page content passes axe  1189ms
+   ✓ 'Arabic RTL' > 'surgisuite-analytics' renders API data and page content passes axe  656ms
+   ✓ 'Arabic RTL' > 'surgisuite-masters' renders API data and page content passes axe  499ms
+   ✓ 'Arabic RTL' > '/surgisuite/cases/472' renders API data and page content passes axe  521ms
+   ✓ 'reduced motion' > 'surgisuite-board' renders API data and page content passes axe  2203ms
+   ✓ 'reduced motion' > 'surgisuite-schedule' renders API data and page content passes axe  2349ms
+   ✓ 'reduced motion' > 'surgisuite-cases' renders API data and page content passes axe  6742ms
+   ✓ 'reduced motion' > 'surgisuite-approvals' renders API data and page content passes axe  977ms
+   ✓ 'reduced motion' > 'surgisuite-patients' renders API data and page content passes axe  476ms
+   ✓ 'reduced motion' > 'surgisuite-inventory' renders API data and page content passes axe  1196ms
+   ✓ 'reduced motion' > 'surgisuite-analytics' renders API data and page content passes axe  561ms
+   ✓ 'reduced motion' > 'surgisuite-masters' renders API data and page content passes axe  480ms
+   ✓ 'reduced motion' > '/surgisuite/cases/472' renders API data and page content passes axe  513ms
+   ✓ 'locked density' > 'surgisuite-board' renders API data and page content passes axe  2280ms
+   ✓ 'locked density' > 'surgisuite-schedule' renders API data and page content passes axe  2732ms
+   ✓ 'locked density' > 'surgisuite-cases' renders API data and page content passes axe  7549ms
+   ✓ 'locked density' > 'surgisuite-approvals' renders API data and page content passes axe  2014ms
+   ✓ 'locked density' > 'surgisuite-patients' renders API data and page content passes axe  730ms
+   ✓ 'locked density' > 'surgisuite-inventory' renders API data and page content passes axe  1558ms
+   ✓ 'locked density' > 'surgisuite-analytics' renders API data and page content passes axe  712ms
+   ✓ 'locked density' > 'surgisuite-masters' renders API data and page content passes axe  639ms
+   ✓ 'locked density' > '/surgisuite/cases/472' renders API data and page content passes axe  695ms
+ ✓ src/modules/surgisuite/behavior.test.tsx (18 tests) 6446ms
+   ✓ case sections and recovery > Overview uses named accessible controls  752ms
+   ✓ case sections and recovery > Team & equipment uses named accessible controls  497ms
+   ✓ case sections and recovery > Diagnosis & CPT uses named accessible controls  489ms
+   ✓ case sections and recovery > Approvals & consent uses named accessible controls  375ms
+   ✓ case sections and recovery > Checklist & counts uses named accessible controls  507ms
+   ✓ case sections and recovery > Anesthesia record uses named accessible controls  373ms
+   ✓ case sections and recovery > Imaging, lab & blood uses named accessible controls  341ms
+   ✓ case sections and recovery > Materials & implants uses named accessible controls  345ms
+   ✓ case sections and recovery > Risk scores uses named accessible controls  337ms
+   ✓ case sections and recovery > Operative report uses named accessible controls  330ms
+   ✓ case sections and recovery > retains mounted booking values across effective language/font/density changes  539ms
+   ✓ case sections and recovery > preserves failed registration and retries with the same operation identity  394ms
+   ✓ case sections and recovery > removes the palette accelerator when shortcuts are disabled  441ms
+ ✓ src/modules/surgisuite/module.test.tsx (20 tests) 2790ms
+   ✓ SurgiSuite source pages in shared host > renders / from server fixtures through the host  384ms
+   ✓ SurgiSuite source pages in shared host > keeps every original case workspace tab and opens each without throwing  487ms
+   ✓ SurgiSuite source pages in shared host > opens and dismisses the original booking drawer through the shared dialog  554ms
+ ✓ src/navigation.test.ts (54 tests | 53 skipped) 22ms
+ ✓ src/modules/surgisuite/transport.test.ts (26 tests) 25ms
+
+ Test Files  5 passed (5)
+      Tests  101 passed | 805 skipped (906)
+   Start at  16:22:46
+   Duration  97.97s (transform 7.58s, setup 809ms, collect 13.28s, tests 78.58s, environment 2.73s, prepare 450ms)
+

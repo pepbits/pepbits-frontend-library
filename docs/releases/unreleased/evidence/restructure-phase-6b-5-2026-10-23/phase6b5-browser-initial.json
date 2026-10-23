@@ -1,0 +1,796 @@
+{
+  "flows": [
+    {
+      "id": "HCD-18-modes",
+      "mode": "UI + HTTP",
+      "result": "Exactly two modules; Doctor/Nurse working modes and effective recording consent resolved from the server"
+    },
+    {
+      "id": "HCD-19-provider-booking",
+      "mode": "UI + HTTP persistence",
+      "result": "Shared keyboard lookup, branch slot/duration and visit mode created an appointment visible to the authorized patient"
+    },
+    {
+      "id": "HCD-19-patient-booking",
+      "mode": "UI",
+      "result": "Symptoms → current API advice → clinician → available slot → patient booking"
+    },
+    {
+      "id": "HCD-20-triage",
+      "mode": "UI + HTTP persistence",
+      "result": "Nurse admitted patient, retained complaint, captured simulated vitals and handed off to Doctor"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/teleconsult-provider",
+      "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-teleconsult=\"patient\"]').getByText('Synthetic browser acceptance', { exact: true }) to be visible\u001b[22m\n",
+      "rendered": "TE\nTeleconsult Patient\nVisit summary\nteleconsult\nSearch\n⌘K\n13:20:12\nFri • 2026-10-23 • UTC\nhq\nPM\n\nDemo CareCall with fictional data. The clinician's video, vitals and transcript are simulated.\n\nVisit summary\nMI\n\nDr. Meera Iyer\n\nFri, 2026-10-23, 12:00\n\nWhat we found\nDizziness and giddiness\n\nSigned by Dr. Meera Iyer. If anything is unclear, message your care team from your next visit.\n\nHome\nBook\nMy health\nTeleconsult Patient • hq • Solution Architecture\nSecure session\n13:20"
+    },
+    {
+      "route": "/teleconsult-provider",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "span[data-demo-notice=\"true\"]"
+              ],
+              "html": "<span class=\"rounded bg-caution-50 px-1.5 py-0.5 text-2xs font-medium text-caution-600\" data-demo-notice=\"true\">Demo workspace · fictional data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-2 > .text-white.font-semibold[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(15, 139, 141); font-size: 12.16px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".ml-auto.gap-2 > .hover\\:bg-pulse-600.bg-pulse-500.focus-visible\\:ring-offset-1"
+              ],
+              "html": "<button class=\"inline-flex items-ce...\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:flex-row.sm\\:items-center.flex-col:nth-child(1) > .min-w-0.gap-3.flex-1 > .text-white.font-semibold[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 40px; height: 40px; background: rgb(46, 157, 99); font-size: 15.2px;\">GT</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.43 (foreground color: #ffffff, background color: #2e9d63, font size: 11.4pt (15.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:justify-end.gap-3 > .hover\\:bg-pulse-600.bg-pulse-500.focus-visible\\:ring-offset-1"
+              ],
+              "html": "<button class=\"inline-flex items-ce...\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:flex-row.sm\\:items-center.flex-col:nth-child(2) > .sm\\:justify-end.gap-3 > .bg-caution-50.text-caution-600.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium bg-caution-50 text-caution-600\"><span class=\"h-1.5 w-1.5 rounded-full bg-caution-500\"></span>In waiting room</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:flex-row.sm\\:items-center.flex-col:nth-child(3) > .min-w-0.gap-3.flex-1 > .text-white.font-semibold[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 40px; height: 40px; background: rgb(196, 122, 22); font-size: 15.2px;\">KM</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.41 (foreground color: #ffffff, background color: #c47a16, font size: 11.4pt (15.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:flex-row.sm\\:items-center.flex-col:nth-child(3) > .sm\\:justify-end.gap-3 > .bg-caution-50.text-caution-600.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium bg-caution-50 text-caution-600\"><span class=\"h-1.5 w-1.5 rounded-full bg-caution-500\"></span>In waiting room</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "span[data-demo-notice=\"true\"]"
+              ],
+              "html": "<span class=\"rounded bg-caution-50 px-1.5 py-0.5 text-2xs font-medium text-caution-600\" data-demo-notice=\"true\">Demo workspace · fictional data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-2 > .text-white.font-semibold[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(15, 139, 141); font-size: 12.16px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".ml-auto.gap-2 > .hover\\:bg-pulse-600.bg-pulse-500.focus-visible\\:ring-offset-1"
+              ],
+              "html": "<button class=\"inline-flex items-ce...\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:flex-row.sm\\:items-center.flex-col:nth-child(1) > .min-w-0.gap-3.flex-1 > .text-white.font-semibold[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 40px; height: 40px; background: rgb(46, 157, 99); font-size: 15.2px;\">GT</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.43 (foreground color: #ffffff, background color: #2e9d63, font size: 11.4pt (15.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:justify-end.gap-3 > .hover\\:bg-pulse-600.bg-pulse-500.focus-visible\\:ring-offset-1"
+              ],
+              "html": "<button class=\"inline-flex items-ce...\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:flex-row.sm\\:items-center.flex-col:nth-child(2) > .sm\\:justify-end.gap-3 > .bg-caution-50.text-caution-600.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium bg-caution-50 text-caution-600\"><span class=\"h-1.5 w-1.5 rounded-full bg-caution-500\"></span>In waiting room</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:flex-row.sm\\:items-center.flex-col:nth-child(3) > .min-w-0.gap-3.flex-1 > .text-white.font-semibold[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 40px; height: 40px; background: rgb(196, 122, 22); font-size: 15.2px;\">KM</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.41 (foreground color: #ffffff, background color: #c47a16, font size: 11.4pt (15.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sm\\:flex-row.sm\\:items-center.flex-col:nth-child(3) > .sm\\:justify-end.gap-3 > .bg-caution-50.text-caution-600.py-0\\.5"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium bg-caution-50 text-caution-600\"><span class=\"h-1.5 w-1.5 rounded-full bg-caution-500\"></span>In waiting room</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/schedule",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-caution-50"
+              ],
+              "html": "<span class=\"rounded bg-caution-50 px-1.5 py-0.5 text-2xs font-medium text-caution-600\" data-demo-notice=\"true\">Demo workspace · fictional data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".ml-auto.gap-3.flex > .gap-2.flex.items-center > .inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(15, 139, 141); font-size: 12.16px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".focus-visible\\:ring-offset-1"
+              ],
+              "html": "<button class=\"inline-flex items-ce...\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sticky.top-0.z-20:nth-child(2) > .inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 26px; height: 26px; background: rgb(15, 139, 141); font-size: 9.88px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 7.4pt (9.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sticky.top-0.z-20:nth-child(5) > .inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 26px; height: 26px; background: rgb(196, 122, 22); font-size: 9.88px;\">AR</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.41 (foreground color: #ffffff, background color: #c47a16, font size: 7.4pt (9.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-caution-50"
+              ],
+              "html": "<span class=\"rounded bg-caution-50 px-1.5 py-0.5 text-2xs font-medium text-caution-600\" data-demo-notice=\"true\">Demo workspace · fictional data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".ml-auto.gap-3.flex > .gap-2.flex.items-center > .inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(15, 139, 141); font-size: 12.16px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".focus-visible\\:ring-offset-1"
+              ],
+              "html": "<button class=\"inline-flex items-ce...\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sticky.top-0.z-20:nth-child(2) > .inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 26px; height: 26px; background: rgb(15, 139, 141); font-size: 9.88px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 7.4pt (9.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".sticky.top-0.z-20:nth-child(5) > .inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 26px; height: 26px; background: rgb(196, 122, 22); font-size: 9.88px;\">AR</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.41 (foreground color: #ffffff, background color: #c47a16, font size: 7.4pt (9.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/patients",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-caution-50"
+              ],
+              "html": "<span class=\"rounded bg-caution-50 px-1.5 py-0.5 text-2xs font-medium text-caution-600\" data-demo-notice=\"true\">Demo workspace · fictional data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".inline-flex.font-semibold[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(15, 139, 141); font-size: 12.16px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".focus-visible\\:ring-offset-1"
+              ],
+              "html": "<button class=\"inline-flex items-ce...\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-caution-50"
+              ],
+              "html": "<span class=\"rounded bg-caution-50 px-1.5 py-0.5 text-2xs font-medium text-caution-600\" data-demo-notice=\"true\">Demo workspace · fictional data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".inline-flex.font-semibold[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(15, 139, 141); font-size: 12.16px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".focus-visible\\:ring-offset-1"
+              ],
+              "html": "<button class=\"inline-flex items-ce...\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/notes",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-caution-50"
+              ],
+              "html": "<span class=\"rounded bg-caution-50 px-1.5 py-0.5 text-2xs font-medium text-caution-600\" data-demo-notice=\"true\">Demo workspace · fictional data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-2.flex.items-center > .text-white.inline-flex[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(15, 139, 141); font-size: 12.16px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(2) > .hover\\:bg-canvas.py-2\\.5.gap-3 > .text-white.inline-flex[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(196, 122, 22); font-size: 12.16px;\">OH</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.41 (foreground color: #ffffff, background color: #c47a16, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(3) > .hover\\:bg-canvas.py-2\\.5.gap-3 > .text-white.inline-flex[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(46, 157, 99); font-size: 12.16px;\">GT</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.43 (foreground color: #ffffff, background color: #2e9d63, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".bg-vital-50"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-2xs font-medium bg-vital-50 text-vital-600\">Signed</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #22804f, background color: #e9f6ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > h4"
+              ],
+              "html": "<h4 class=\"text-xs font-semibold text-ink-400\">Chief complaint</h4>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".bg-caution-50"
+              ],
+              "html": "<span class=\"rounded bg-caution-50 px-1.5 py-0.5 text-2xs font-medium text-caution-600\" data-demo-notice=\"true\">Demo workspace · fictional data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a06c05, background color: #fbf3e2, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-2.flex.items-center > .text-white.inline-flex[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(15, 139, 141); font-size: 12.16px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(2) > .hover\\:bg-canvas.py-2\\.5.gap-3 > .text-white.inline-flex[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(196, 122, 22); font-size: 12.16px;\">OH</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.41 (foreground color: #ffffff, background color: #c47a16, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(3) > .hover\\:bg-canvas.py-2\\.5.gap-3 > .text-white.inline-flex[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 32px; height: 32px; background: rgb(46, 157, 99); font-size: 12.16px;\">GT</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.43 (foreground color: #ffffff, background color: #2e9d63, font size: 9.1pt (12.16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".bg-vital-50"
+              ],
+              "html": "<span class=\"inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-2xs font-medium bg-vital-50 text-vital-600\">Signed</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #22804f, background color: #e9f6ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > h4"
+              ],
+              "html": "<h4 class=\"text-xs font-semibold text-ink-400\">Chief complaint</h4>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 52px; height: 52px; background: rgb(15, 139, 141); font-size: 18.72px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 14.0pt (18.72px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mt-6:nth-child(4) > ul > li > .px-4.py-3.gap-3 > .flex-1.min-w-0 > .block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block truncate text-xs text-ink-400\">Dr. Meera Iyer · Cough</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mt-6:nth-child(5) > ul > li > .px-4.py-3.gap-3 > .flex-1.min-w-0 > .block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block text-xs text-ink-400\">2026-10-23 · Dr. Meera Iyer</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"book\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/book\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"records\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/records\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 52px; height: 52px; background: rgb(15, 139, 141); font-size: 18.72px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 14.0pt (18.72px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mt-6:nth-child(4) > ul > li > .px-4.py-3.gap-3 > .flex-1.min-w-0 > .block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block truncate text-xs text-ink-400\">Dr. Meera Iyer · Cough</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mt-6:nth-child(5) > ul > li > .px-4.py-3.gap-3 > .flex-1.min-w-0 > .block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block text-xs text-ink-400\">2026-10-23 · Dr. Meera Iyer</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"book\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/book\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"records\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/records\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/register",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-ink-400"
+              ],
+              "html": "<span class=\"text-sm text-ink-400 tabular\">1 of 3</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-ink-400"
+              ],
+              "html": "<span class=\"text-sm text-ink-400 tabular\">1 of 3</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/home",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 52px; height: 52px; background: rgb(15, 139, 141); font-size: 18.72px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 14.0pt (18.72px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mt-6:nth-child(4) > ul > li > .px-4.py-3.gap-3 > .flex-1.min-w-0 > .block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block truncate text-xs text-ink-400\">Dr. Meera Iyer · Cough</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mt-6:nth-child(5) > ul > li > .px-4.py-3.gap-3 > .flex-1.min-w-0 > .block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block text-xs text-ink-400\">2026-10-23 · Dr. Meera Iyer</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"book\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/book\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"records\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/records\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inline-flex.text-white[aria-hidden=\"true\"]"
+              ],
+              "html": "<span class=\"inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white\" aria-hidden=\"true\" style=\"width: 52px; height: 52px; background: rgb(15, 139, 141); font-size: 18.72px;\">MI</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.11 (foreground color: #ffffff, background color: #0f8b8d, font size: 14.0pt (18.72px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mt-6:nth-child(4) > ul > li > .px-4.py-3.gap-3 > .flex-1.min-w-0 > .block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block truncate text-xs text-ink-400\">Dr. Meera Iyer · Cough</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".mt-6:nth-child(5) > ul > li > .px-4.py-3.gap-3 > .flex-1.min-w-0 > .block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block text-xs text-ink-400\">2026-10-23 · Dr. Meera Iyer</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"book\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/book\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"records\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/records\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/book",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".tabular.text-ink-400.text-sm"
+              ],
+              "html": "<span class=\"text-sm text-ink-400 tabular\">1 of 4</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".justify-between.text-ink-400.text-xs > span:nth-child(1)"
+              ],
+              "html": "<span>Mild</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".justify-between.text-ink-400.text-xs > span:nth-child(2)"
+              ],
+              "html": "<span>Worst ever</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"home\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/home\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"records\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/records\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".tabular.text-ink-400.text-sm"
+              ],
+              "html": "<span class=\"text-sm text-ink-400 tabular\">1 of 4</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".justify-between.text-ink-400.text-xs > span:nth-child(1)"
+              ],
+              "html": "<span>Mild</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".justify-between.text-ink-400.text-xs > span:nth-child(2)"
+              ],
+              "html": "<span>Worst ever</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"home\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/home\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"records\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/records\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/records",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block text-xs text-ink-400\">2026-10-23 · Dr. Meera Iyer</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-ink-400.px-2"
+              ],
+              "html": "<p class=\"px-2 text-xs text-ink-400\">TC-100238 · Blue Harbor Health</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"home\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/home\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"book\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/book\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".block.text-ink-400.text-xs"
+              ],
+              "html": "<span class=\"block text-xs text-ink-400\">2026-10-23 · Dr. Meera Iyer</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #7c8a8f, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-ink-400.px-2"
+              ],
+              "html": "<p class=\"px-2 text-xs text-ink-400\">TC-100238 · Blue Harbor Health</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #7c8a8f, background color: #eaf4f0, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"home\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/home\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".gap-0\\.5.py-2\\.5[href$=\"book\"]"
+              ],
+              "html": "<a class=\"flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-400\" href=\"/teleconsult-patient/book\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.53 (foreground color: #7c8a8f, background color: #fefefe, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

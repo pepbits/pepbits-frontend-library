@@ -1,0 +1,78 @@
+{
+  "base": "1f6bd19b318da05e22ac99a276c5ee73355dbd31",
+  "ciImplementationDigest": "22fb0ae61732e284ffee0ab12a057203f7c5f6727c4b9d3e82482f5d2949614c",
+  "finalImplementationDigest": "7bbbaac0fcec611f13fe60afd28a6320ab83ddbf0dae1ff7e1bd7470dc2ec0ca",
+  "finalFiles": 1294,
+  "manifestMatchesWorkingTree": true,
+  "documentationChangesAfterCiSnapshot": [
+    "demo-apps/healthcare/README.md",
+    "demo-apps/healthcare/source-mapping.md",
+    "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
+    "docs/features/healthcare-demo.md"
+  ],
+  "runtimeChangesAfterCiSnapshot": [],
+  "browserBuild": {
+    "inputSnapshot": "build4-source.json",
+    "artifactIdentity": "frontend-build.json",
+    "matchingCapturedInputs": 1282,
+    "changedAfterBuild": [
+      "demo-apps/healthcare/README.md",
+      "demo-apps/healthcare/scripts/smoke.mjs",
+      "demo-apps/healthcare/scripts/surgisuite-flows.mjs",
+      "demo-apps/healthcare/source-mapping.md"
+    ],
+    "scope": "After build4 inputs were captured, two browser drivers and two demo guide files changed. After CI started, only four Markdown guides were corrected. All runtime code, packages and configuration match the tested inputs. The full HTTP run uses build4; the focused post-CI run serves the final CI build.",
+    "finalBuildArtifactIdentity": "final-ci-build.json"
+  },
+  "browserDriverChangesAfterFullLaunch": [],
+  "guideChangesAfterFullLaunch": [
+    "demo-apps/healthcare/README.md",
+    "demo-apps/healthcare/source-mapping.md"
+  ],
+  "finalIntegrationDrivers": [
+    {
+      "path": "demo-apps/healthcare/scripts/integration.mjs",
+      "sha256": "d338aa7ebabc55041d37611e5c54281d8dfab88ba3f2ca3282073d9b89783aac"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/pharmacy-flows.mjs",
+      "sha256": "fc694a58f7528d01b3d89ea7ee13d27d46c63cbd392a7ab49dc909ffe82a4078"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/quality-flows.mjs",
+      "sha256": "f9e06846d67b50b362c9b1db73409a05339e55ef1efcd152dbe9e3f49df94e66"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/rcm-flows.mjs",
+      "sha256": "63d5712c149c8ce11eb0a8b52d3e2e9ae68fafb05a0a02044381f5ab548294a9"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/rcm-presentation.mjs",
+      "sha256": "68ea615b874b5e21259f73f9a19873436d338ffc0ab53841404de72ebca3a874"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/route-cases.mjs",
+      "sha256": "f0c3663f9600845191b685cac0573f6c0038afc36b326c971d386050b87693d2"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/smoke.mjs",
+      "sha256": "826550c2edf31bc30231b590b797ad47c057e405ea8d680c14c35beb4c41b781"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/surgisuite-flows.mjs",
+      "sha256": "bbd040ab15d166781b4ce7559ee28ec3685e32981d2d40149167300e02be59fd"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/teleconsult-flows.mjs",
+      "sha256": "39290ae8a0a9a45af301cf642ebb64a05c8fb9c0a6effbe7cde5a93cb4b3f575"
+    }
+  ],
+  "screenshots": {
+    "fullRun": 25,
+    "syntheticPdfs": 2
+  },
+  "limits": [
+    "The build-input snapshot was made before build4, and its embedded buildId refers to the preceding artifact; frontend-build.json identifies the served build.",
+    "API source equality and reused runtime hashes are in each launcher identity; API runtime artifacts were not rebuilt."
+  ]
+}

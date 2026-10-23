@@ -1,0 +1,279 @@
+{
+  "flows": [
+    {
+      "id": "HCD-24-quality-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor; 32 illustrative indicators, 13 turnaround definitions and eight report templates"
+    },
+    {
+      "id": "HCD-25-quality-authority",
+      "mode": "UI + HTTP isolation",
+      "result": "Shared typed Authority form saved, survived reload and stayed isolated from the other branch"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/quality",
+      "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reference-module=quality]').getByRole('option').first() to be visible\u001b[22m\n\u001b[2m    63 × locator resolved to hidden <option value=\"\">Select…</option>\u001b[22m\n"
+    },
+    {
+      "route": "/quality",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/indicators",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/tat",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/events",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/verification",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/validation",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/reports",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/schedules",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/submissions",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/authorities",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/users",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/audit",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^AllyVora Quality/ })\u001b[22m\n"
+    },
+    {
+      "route": "/quality/indicators/1",
+      "pageViolations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"138 items waiting for you\"]"
+              ],
+              "html": "<button class=\"relative rounded-md p-2 text-ink-2 hover:bg-surface\" aria-label=\"138 items waiting for you\" aria-haspopup=\"menu\" aria-expanded=\"false\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-\\[520px\\]"
+              ],
+              "html": "<div class=\"max-h-[520px] overflow-auto p-0\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"138 items waiting for you\"]"
+              ],
+              "html": "<button class=\"relative rounded-md p-2 text-ink-2 hover:bg-surface\" aria-label=\"138 items waiting for you\" aria-haspopup=\"menu\" aria-expanded=\"false\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-\\[520px\\]"
+              ],
+              "html": "<div class=\"max-h-[520px] overflow-auto p-0\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/reports/2",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".border-warn\\/30"
+              ],
+              "html": "<span class=\"rounded border border-warn/30 bg-warn-soft px-2 py-0.5 text-xs text-warn\">Demonstration data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b7791f, background color: #fbf1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"138 items waiting for you\"]"
+              ],
+              "html": "<button class=\"relative rounded-md p-2 text-ink-2 hover:bg-surface\" aria-label=\"138 items waiting for you\" aria-haspopup=\"menu\" aria-expanded=\"false\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".border-warn\\/30"
+              ],
+              "html": "<span class=\"rounded border border-warn/30 bg-warn-soft px-2 py-0.5 text-xs text-warn\">Demonstration data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b7791f, background color: #fbf1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"138 items waiting for you\"]"
+              ],
+              "html": "<button class=\"relative rounded-md p-2 text-ink-2 hover:bg-surface\" aria-label=\"138 items waiting for you\" aria-haspopup=\"menu\" aria-expanded=\"false\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/reports/designer",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".border-warn\\/30"
+              ],
+              "html": "<span class=\"rounded border border-warn/30 bg-warn-soft px-2 py-0.5 text-xs text-warn\">Demonstration data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b7791f, background color: #fbf1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"138 items waiting for you\"]"
+              ],
+              "html": "<button class=\"relative rounded-md p-2 text-ink-2 hover:bg-surface\" aria-label=\"138 items waiting for you\" aria-haspopup=\"menu\" aria-expanded=\"false\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-\\[calc\\(100vh-170px\\)\\]"
+              ],
+              "html": "<div class=\"max-h-[calc(100vh-170px)] overflow-y-auto rounded-lg\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            },
+            {
+              "target": [
+                ".overflow-x-auto"
+              ],
+              "html": "<div class=\"nex-scrollbar overflow-x-auto rounded-md border border-line\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".border-warn\\/30"
+              ],
+              "html": "<span class=\"rounded border border-warn/30 bg-warn-soft px-2 py-0.5 text-xs text-warn\">Demonstration data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.25 (foreground color: #b7791f, background color: #fbf1df, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"138 items waiting for you\"]"
+              ],
+              "html": "<button class=\"relative rounded-md p-2 text-ink-2 hover:bg-surface\" aria-label=\"138 items waiting for you\" aria-haspopup=\"menu\" aria-expanded=\"false\" type=\"button\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".max-h-\\[calc\\(100vh-170px\\)\\]"
+              ],
+              "html": "<div class=\"max-h-[calc(100vh-170px)] overflow-y-auto rounded-lg\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            },
+            {
+              "target": [
+                ".overflow-x-auto"
+              ],
+              "html": "<div class=\"nex-scrollbar overflow-x-auto rounded-md border border-line\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

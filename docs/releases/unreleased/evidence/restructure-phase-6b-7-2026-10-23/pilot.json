@@ -1,0 +1,65 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    },
+    {
+      "id": "HCD-35-surgisuite-identity",
+      "mode": "HTTP",
+      "result": "Trusted actor and original case/master data; no PIN hash returned"
+    },
+    {
+      "id": "HCD-35-surgisuite-sections",
+      "mode": "UI",
+      "result": "All twelve case sections and refresh preserve the real identifier"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/surgisuite",
+      "failure": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByLabel('Anesthesia', { exact: true })\u001b[22m\n"
+    },
+    {
+      "route": "/surgisuite",
+      "failure": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByLabel('Anesthesia', { exact: true })\u001b[22m\n",
+      "rendered": {
+        "path": "/surgisuite",
+        "pageId": "surgisuite-board",
+        "headings": [
+          "Theatre board",
+          "Alerts, last 24 hours",
+          "Equipment not ready",
+          "Book a case"
+        ],
+        "inputs": [
+          {
+            "type": "text",
+            "placeholder": "Type a code or name"
+          },
+          {
+            "type": "text",
+            "placeholder": "Type a code or name"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

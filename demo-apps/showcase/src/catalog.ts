@@ -1,3 +1,4 @@
+import {SourceControlsDemo} from './examples/source-controls';
 import {DeviceIntegrationsDemo} from "./examples/device-integrations";
 import {IdentityDevicesDemo} from "./examples/identity-devices";
 import {LabelPrintingDemo} from "./examples/label-printing";
@@ -66,6 +67,7 @@ import {RendererDemo} from "./examples/renderer";
 
 export interface Example {id:string;area:AreaId;title:string;description:string;exports:string[];render:ComponentType}
 export const examples:Example[]=[
+{id:"source-controls",area:"ui",title:"Native controls",description:"Fictional fields and an in-memory lookup; changes disappear on reload.",exports:["AsyncLookup","SourceButton","SourceInput","SourceSelect","SourceTextarea","SourceDateInput"],render:SourceControlsDemo},
 {"id": "device-integrations", "area": "patterns", "title": "Device Integrations", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["DeviceIntegrationWorkspace"],render:DeviceIntegrationsDemo},
 {"id": "identity-devices", "area": "patterns", "title": "Identity Devices", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["IdentityDeviceWorkspace"],render:IdentityDevicesDemo},
 {"id": "label-printing", "area": "patterns", "title": "Label Printing", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["LabelPrintingWorkspace"],render:LabelPrintingDemo},
@@ -84,7 +86,7 @@ export const examples:Example[]=[
 {"id":"values","area":"components","title":"Values","exports":["DataValue", "DescriptionList", "StatusBadge", "useFormatters"],"description":"catalog.example.ValuesDemo",render:ValuesDemo},
 {"id":"buttons","area":"ui","title":"Buttons","exports":["Button", "IconButton", "Plus", "useLocalization"],"description":"catalog.example.ButtonsDemo",render:ButtonsDemo},
 {"id":"menus","area":"components","title":"Menus","exports":["ActionMenu", "Button", "DropdownSelect", "MenuButton", "NavLink", "useLocalization"],"description":"catalog.example.MenusDemo",render:MenusDemo},
-{"id":"overlays","area":"components","title":"Overlays","exports":["Button", "CenterRecordCard", "ConfirmDialog", "DataValue", "Drawer", "Input", "Modal", "PrintDocument", "useLocalization"],"description":"catalog.example.OverlaysDemo",render:OverlaysDemo},
+{"id":"overlays","area":"components","title":"Overlays","exports":["Button", "CenterRecordCard", "ConfirmDialog", "DataValue", "Drawer", "Input", "Modal", "PrintDocument", "SourceDialog", "useLocalization"],"description":"catalog.example.OverlaysDemo",render:OverlaysDemo},
 {"id":"status","area":"ui","title":"Status","exports":["Avatar", "Badge", "StatusBadge"],"description":"catalog.example.StatusDemo",render:StatusDemo},
 {"id":"states","area":"components","title":"States","exports":["AccessDenied", "ConflictState", "EmptyState", "ErrorState", "LoadingState", "NotFoundState", "Select", "SessionExpiredState", "useLocalization"],"description":"catalog.example.StatesDemo",render:StatesDemo},
 {"id":"skeletons","area":"ui","title":"Skeletons","exports":["DashboardSkeleton", "FormSkeleton", "Select", "Skeleton", "TableSkeleton"],"description":"catalog.example.SkeletonsDemo",render:SkeletonsDemo},

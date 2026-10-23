@@ -1,0 +1,11 @@
+/* Product frame: the shared shell owns the remaining viewport height. */
+.healthcare-page:has([data-teleconsult]) {display:flex;flex:1 1 0;min-height:0;overflow:hidden;}
+.teleconsult-provider,.teleconsult-patient {width:100%;--fs-scale:var(--fs-form);}
+.teleconsult-provider table {--fs-scale:var(--fs-result);}
+
+/* Source brand colors retain their hue with readable small text. */
+.teleconsult-provider.teleconsult-provider .bg-pulse-500 {background-color:#0b7375;}
+.teleconsult-provider.teleconsult-provider .text-caution-600 {color:#765000;}
+.teleconsult-provider.teleconsult-provider .text-vital-600 {color:#19653d;}
+.teleconsult-patient.teleconsult-patient .text-ink-400 {color:#53676a;}
+.teleconsult-provider.teleconsult-provider .text-slate-500 {color:#526176;}

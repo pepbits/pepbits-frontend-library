@@ -35,10 +35,16 @@ export function Table({ className, density, striped, bordered, stickyHeader, ...
 export function TableHeader(props: React.ComponentProps<"thead">) { return <thead {...props} />; }
 export function TableBody(props: React.ComponentProps<"tbody">) { return <tbody {...props} />; }
 export function TableFooter(props: React.ComponentProps<"tfoot">) { return <tfoot {...props} />; }
-export function TableRow(props: React.ComponentProps<"tr">) { return <tr {...props} />; }
+/** A row action is keyboard reachable; nested controls keep their own activation. */
+export function TableRow({onClick,onKeyDown,tabIndex,...props}: React.ComponentProps<"tr">) {
+  return <tr {...props} onClick={onClick} tabIndex={tabIndex??(onClick?0:undefined)} onKeyDown={event=>{
+    onKeyDown?.(event);
+    if(onClick&&!event.defaultPrevented&&event.target===event.currentTarget&&(event.key==='Enter'||event.key===' ')){event.preventDefault();event.currentTarget.click();}
+  }}/>;
+}
 export function TableHead(props: React.ComponentProps<"th">) { return <th {...props} />; }
 export function TableCell(props: React.ComponentProps<"td">) { return <td {...props} />; }
 export function TableCaption(props: React.ComponentProps<"caption">) { return <caption {...props} />; }
-export function TableContainer({ className, overflow = "both", ...props }: React.ComponentProps<"div"> & { overflow?: "both" | "horizontal" | "hidden" }) {
-  return <div {...props} className={cn("nex-scrollbar", overflow === "both" && "overflow-auto", overflow === "horizontal" && "overflow-x-auto", overflow === "hidden" && "overflow-hidden", className)} />;
+export function TableContainer({ className, overflow = "both", tabIndex, ...props }: React.ComponentProps<"div"> & { overflow?: "both" | "horizontal" | "hidden" }) {
+  return <div {...props} tabIndex={tabIndex??(overflow==="hidden"?undefined:0)} className={cn("nex-scrollbar", overflow === "both" && "overflow-auto", overflow === "horizontal" && "overflow-x-auto", overflow === "hidden" && "overflow-hidden", className)} />;
 }

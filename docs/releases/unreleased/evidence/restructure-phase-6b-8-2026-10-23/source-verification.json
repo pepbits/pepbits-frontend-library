@@ -1,0 +1,65 @@
+{
+  "base": "041c546a3a7d1f607c973226fc3bdabef0273f46",
+  "ciImplementationDigest": "a106c4b59148363e37387d26220c344bdc962cda533fb8171e7b9dd0920c9784",
+  "finalImplementationDigest": "a106c4b59148363e37387d26220c344bdc962cda533fb8171e7b9dd0920c9784",
+  "finalFiles": 1362,
+  "manifestMatchesWorkingTree": true,
+  "documentationChangesAfterCiSnapshot": [],
+  "runtimeChangesAfterCiSnapshot": [],
+  "browserBuild": {
+    "inputSnapshot": "build-inputs.json",
+    "artifactIdentity": "frontend-build.json",
+    "changedAfterBuild": [
+      "demo-apps/healthcare/scripts/medband-flows.mjs",
+      "demo-apps/healthcare/scripts/smoke.mjs"
+    ],
+    "scope": "Focused MedBand HTTP precheck uses the last pre-CI production build. The final full HTTP run serves the CI build. Bundled runtime code matches both captured input snapshots. After the pre-CI build snapshot, the MedBand driver added a settled-record wait and the shared driver added failure diagnostics; final drivers match the CI snapshot. Only listed Markdown files may differ after CI.",
+    "finalBuildArtifactIdentity": "final-ci-build.json"
+  },
+  "finalIntegrationDrivers": [
+    {
+      "path": "demo-apps/healthcare/scripts/integration.mjs",
+      "sha256": "84792b32411bb9bd6eb5eb4adc53580294e34e6a60ebf6287b24b1d354667982"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/medband-flows.mjs",
+      "sha256": "d7461b7f421ee058f4d3a8e011c6456dec72a5654886faf3f6477985bfd3cd75"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/pharmacy-flows.mjs",
+      "sha256": "fc694a58f7528d01b3d89ea7ee13d27d46c63cbd392a7ab49dc909ffe82a4078"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/quality-flows.mjs",
+      "sha256": "f9e06846d67b50b362c9b1db73409a05339e55ef1efcd152dbe9e3f49df94e66"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/rcm-flows.mjs",
+      "sha256": "63d5712c149c8ce11eb0a8b52d3e2e9ae68fafb05a0a02044381f5ab548294a9"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/rcm-presentation.mjs",
+      "sha256": "68ea615b874b5e21259f73f9a19873436d338ffc0ab53841404de72ebca3a874"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/route-cases.mjs",
+      "sha256": "37c9bb48ad28d6725e59d79bb9ed443bf45400ecc414930887cd8aa76099db62"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/smoke.mjs",
+      "sha256": "e48acb2b536155d44ed02576dd887c5abc9299f4a25d9643b68b4542fd5b552d"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/surgisuite-flows.mjs",
+      "sha256": "bbd040ab15d166781b4ce7559ee28ec3685e32981d2d40149167300e02be59fd"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/teleconsult-flows.mjs",
+      "sha256": "39290ae8a0a9a45af301cf642ebb64a05c8fb9c0a6effbe7cde5a93cb4b3f575"
+    }
+  ],
+  "limits": [
+    "Local production browser builds, not deployed release or native executable.",
+    "API source equality and reused runtime hashes are in each launcher identity; API runtime artifacts were not rebuilt."
+  ]
+}

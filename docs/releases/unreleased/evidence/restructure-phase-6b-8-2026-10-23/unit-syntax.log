@@ -1,0 +1,57 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/medband src/adapters/medband.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/modules/medband/cx.test.ts (6 tests) 1284ms
+   ✓ cx is the source's twMerge: later utilities override earlier ones of the same group, shorthands override longhands > every utility pair in both orders matches the retained tailwind-merge oracle  1264ms
+ ✓ src/modules/medband/source-boundary.test.ts (5 tests) 27ms
+ ✓ src/modules/medband/styles.test.ts (12 tests) 19ms
+ ✓ src/adapters/medband.test.ts (10 tests) 24ms
+ ✓ src/modules/medband/api.test.ts (10 tests) 51ms
+ ✓ src/modules/medband/copy.test.ts (5 tests) 51ms
+ ✓ src/modules/medband/utils.test.ts (6 tests) 19ms
+ ✓ src/modules/medband/routes.test.ts (5 tests) 12ms
+ ✓ src/modules/medband/master.test.ts (3 tests) 8ms
+ ↓ src/modules/medband/browser-parity.test.ts (2 tests | 2 skipped)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/medband/controls-parity.test.tsx [ src/modules/medband/controls-parity.test.tsx ]
+ FAIL  src/modules/medband/flows.test.tsx [ src/modules/medband/flows.test.tsx ]
+ FAIL  src/modules/medband/host.test.tsx [ src/modules/medband/host.test.tsx ]
+ FAIL  src/modules/medband/module.test.tsx [ src/modules/medband/module.test.tsx ]
+ FAIL  src/modules/medband/pages.test.tsx [ src/modules/medband/pages.test.tsx ]
+Error: Transform failed with 1 error:
+/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/medband/components/shell/CommandPalette.tsx:46:3: ERROR: Unexpected ","
+  Plugin: vite:esbuild
+  File: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/medband/components/shell/CommandPalette.tsx:46:3
+  
+  Unexpected ","
+  44 |        returnTo?.focus?.();
+  45 |      };
+  46 |    }, [onClose]);
+     |     ^
+  47 |  
+  48 |    return (
+  
+ ❯ failureErrorWithLog ../../node_modules/esbuild/lib/main.js:1752:15
+ ❯ ../../node_modules/esbuild/lib/main.js:1019:50
+ ❯ responseCallbacks.<computed> ../../node_modules/esbuild/lib/main.js:886:9
+ ❯ handleIncomingPacket ../../node_modules/esbuild/lib/main.js:941:12
+ ❯ Socket.readFromStdout ../../node_modules/esbuild/lib/main.js:864:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+
+ Test Files  5 failed | 9 passed | 1 skipped (15)
+      Tests  62 passed | 2 skipped (64)
+   Start at  17:38:42
+   Duration  26.86s (transform 2.41s, setup 2.73s, collect 1.16s, tests 1.50s, environment 9.10s, prepare 1.76s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

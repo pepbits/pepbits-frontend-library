@@ -1,0 +1,20 @@
+
+> @pepbits-demo/showcase@0.0.0 test
+> node scripts/generate-snippets.mjs && vitest run src/snippets.test.ts src/gallery.test.tsx -t primitive and component|ui.*renders
+
+Generated 61 source-identical examples
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/showcase
+
+ ✓ src/snippets.test.ts (5 tests | 4 skipped) 15ms
+ ✓ src/gallery.test.tsx (35 tests | 31 skipped) 5288ms
+   ✓ 'default' > 'ui' renders and passes axe  1707ms
+   ✓ 'Arabic RTL' > 'ui' renders and passes axe  1302ms
+   ✓ 'reduced motion' > 'ui' renders and passes axe  1159ms
+   ✓ 'locked density' > 'ui' renders and passes axe  1117ms
+
+ Test Files  2 passed (2)
+      Tests  5 passed | 35 skipped (40)
+   Start at  11:09:27
+   Duration  15.15s (transform 3.64s, setup 436ms, collect 6.98s, tests 5.30s, environment 1.32s, prepare 220ms)
+

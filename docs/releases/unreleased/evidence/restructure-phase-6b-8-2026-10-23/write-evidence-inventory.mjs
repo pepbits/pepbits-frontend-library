@@ -1,0 +1,10 @@
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {join,relative} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const directory=fileURLToPath(new URL('./',import.meta.url)),sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const walk=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(join(dir,entry.name)):[join(dir,entry.name)]);
+const files=walk(directory).filter(path=>relative(directory,path)!=='evidence-files.json').sort().map(path=>{const bytes=readFileSync(path);return {path:relative(directory,path),bytes:bytes.length,sha256:sha(bytes)};});
+const record='docs/releases/unreleased/restructure-phase-6b-8-2026-10-23.md',manifest='docs/releases/unreleased/manifest-restructure-phase-6b-8-2026-10-23.json';
+const result={scope:'Evidence artifacts including diagnostic attempts, scripts and final receipts. Excludes this inventory to avoid self-reference.',record:{path:record,sha256:sha(readFileSync(record))},manifest:{path:manifest,sha256:sha(readFileSync(manifest))},files};
+writeFileSync(join(directory,'evidence-files.json'),JSON.stringify(result,null,2)+'\n');console.log(files.length+' evidence artifacts hashed.');

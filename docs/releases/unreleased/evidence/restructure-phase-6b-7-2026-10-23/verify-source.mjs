@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const dir=new URL('./',import.meta.url),read=name=>JSON.parse(readFileSync(new URL(name,dir),'utf8')),sha=value=>createHash('sha256').update(value).digest('hex');
+const ci=read('ci-source.json'),final=JSON.parse(readFileSync('docs/releases/unreleased/manifest-restructure-phase-6b-7-2026-10-23.json','utf8'));
+const map=snapshot=>new Map(snapshot.files.map(f=>[f.path,f.sha256]));
+const changes=(before,after)=>[...new Set([...before.keys(),...after.keys()])].filter(path=>before.get(path)!==after.get(path));
+const actual=new Map(final.files.map(f=>[f.path,sha(readFileSync(f.path))]));
+assert.deepEqual(changes(map(final),actual),[]);
+const docUpdates=['demo-apps/healthcare/README.md','demo-apps/healthcare/source-mapping.md','docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md','docs/features/healthcare-demo.md'];
+const sinceCi=changes(map(ci),actual);assert.deepEqual(sinceCi.sort(),docUpdates.sort());
+const build=read('build4-source.json'),driver=read('browser-full-source.json'),current=read('final-inputs.json');
+const afterBuild=changes(map(build),map(current)),driverUpdates=['demo-apps/healthcare/scripts/smoke.mjs','demo-apps/healthcare/scripts/surgisuite-flows.mjs'],demoDocs=docUpdates.filter(p=>p.startsWith('demo-apps/')),allowed=[...driverUpdates,...demoDocs];
+assert.deepEqual(afterBuild.sort(),allowed.sort());assert.deepEqual(changes(map(driver),map(current)).sort(),demoDocs.sort());
+const finalDrivers=current.files.filter(f=>f.path.startsWith('demo-apps/healthcare/scripts/'));
+const result={base:final.baseCommit,ciImplementationDigest:ci.implementationDigest,finalImplementationDigest:final.implementationDigest,finalFiles:final.files.length,manifestMatchesWorkingTree:true,documentationChangesAfterCiSnapshot:sinceCi,runtimeChangesAfterCiSnapshot:[],browserBuild:{inputSnapshot:'build4-source.json',artifactIdentity:'frontend-build.json',matchingCapturedInputs:build.files.length-afterBuild.length,changedAfterBuild:afterBuild,scope:'After build4 inputs were captured, two browser drivers and two demo guide files changed. After CI started, only four Markdown guides were corrected. All runtime code, packages and configuration match the tested inputs. The full HTTP run uses build4; the focused post-CI run serves the final CI build.',finalBuildArtifactIdentity:'final-ci-build.json'},browserDriverChangesAfterFullLaunch:[],guideChangesAfterFullLaunch:demoDocs,finalIntegrationDrivers:finalDrivers,screenshots:{fullRun:readdirSync(new URL('screenshots/',dir)).filter(p=>p.endsWith('.png')).length,syntheticPdfs:readdirSync(new URL('screenshots/',dir)).filter(p=>p.endsWith('.pdf')).length},limits:['The build-input snapshot was made before build4, and its embedded buildId refers to the preceding artifact; frontend-build.json identifies the served build.','API source equality and reused runtime hashes are in each launcher identity; API runtime artifacts were not rebuilt.']};
+writeFileSync(new URL('source-verification.json',dir),JSON.stringify(result,null,2)+'\n');console.log(final.files.length+' manifest files and '+result.browserBuild.matchingCapturedInputs+' unchanged build inputs verified.');

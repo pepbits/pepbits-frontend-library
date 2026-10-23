@@ -1,0 +1,96 @@
+[
+  {
+    "command": [
+      "git",
+      "diff",
+      "--stat",
+      "--",
+      "desktop-clients",
+      "dummy-api",
+      "Jenkinsfile",
+      "deploy",
+      "run.sh",
+      "run_all.sh",
+      ".github"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "matches": 0
+  },
+  {
+    "command": [
+      "git",
+      "status",
+      "--short",
+      "desktop-clients"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "matches": 0
+  },
+  {
+    "command": [
+      "git",
+      "status",
+      "--short",
+      "dummy-api"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "matches": 0
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--stat",
+      "--",
+      "packages/shell",
+      "packages/ai",
+      "demo-apps/showcase"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "matches": 0
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "matches": 0
+  },
+  {
+    "command": [
+      "grep",
+      "-rnE",
+      "@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/",
+      "demo-apps/healthcare/src"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "",
+    "matches": 0
+  },
+  {
+    "command": [
+      "grep",
+      "-rnP",
+      "https?://(?!localhost|127\\.0\\.0\\.1)[a-z0-9.-]+\\.[a-z]{2,}|Bearer [A-Za-z0-9]{10}|password\\s*[:=]\\s*['\"][^'\"]{4,}",
+      "demo-apps/healthcare/src",
+      "docs/releases/unreleased/evidence/restructure-phase-6b-1-2026-10-23"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "",
+    "matches": 0
+  }
+]

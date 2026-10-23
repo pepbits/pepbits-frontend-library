@@ -1,0 +1,16 @@
+/* Surgical timeline/chart geometry is domain output. Host settings govern presentation. */
+.reference-surgisuite {--fs-scale:var(--fs-form,1);--font-cond:var(--font-ui);--color-faint:var(--muted);--color-white:#fff;}
+.reference-surgisuite .font-cond {font-family:var(--font-ui);}
+.reference-surgisuite table[data-sticky="false"] thead {position:static;}
+.reference-surgisuite table[data-sticky="true"] thead {position:sticky;top:0;z-index:1;background:var(--surface);}
+.reference-surgisuite table[data-managed-table] :is(th,td) {height:auto;}
+main:has(> .healthcare-page [data-reference-module="surgisuite"]) {display:flex;flex-direction:column;overflow:hidden;}
+.healthcare-page:has([data-reference-module="surgisuite"]) > [data-page-id] {display:flex;flex:1 1 0;min-height:0;}
+
+.reference-surgisuite {--color-ceil-soft:var(--primary-soft);--color-amber:var(--warning-ink);--color-go:var(--success-ink);--color-stop:var(--danger-ink);}
+.reference-surgisuite.reference-surgisuite .bg-white {background-color:var(--surface);}
+.reference-surgisuite.reference-surgisuite .text-faint {color:var(--text-muted);}
+.reference-surgisuite.reference-surgisuite .bg-amber.text-white {background-color:var(--warning-ink);color:var(--surface);}
+.reference-surgisuite.reference-surgisuite .bg-go.text-white {background-color:var(--success-fill);color:#fff;}
+.reference-surgisuite[data-surgisuite-palette="host"] {--color-steel-2:var(--surface-2);--color-muted:var(--text-muted);--color-faint:var(--text-muted);--color-surface:var(--surface);}
+.reference-surgisuite.reference-surgisuite .input {background:var(--surface);}

@@ -1,0 +1,18 @@
+{
+  "scope": "Agent visual inspection of local production Chromium screenshots; no exact source pixel parity, human language/domain or assistive-technology acceptance.",
+  "finalBuild": "final-ci-build.json",
+  "images": [
+    {
+      "path": "screenshots-final/medslot-registration.png",
+      "sha256": "9d87d17cbda4cf881134626f1174a8cc32c4f266397cfe8156b933239475efed",
+      "observation": "Registration groups metadata into three shared field sections; patient columns retain spacing behind the drawer; save action remains visible after scrolling."
+    },
+    {
+      "path": "screenshots-final/medslot-editor-ar.png",
+      "sha256": "ef6e6095a2e3f1130261a32fdb6ddf73fbfb39e1866ac5ca8a60cb23c39debf2",
+      "observation": "Dark Arabic RTL reverses the drawer/table direction; entered value persists, compact density and zero radius apply. Four inherited English registration labels are recorded in catalog-coverage.json."
+    }
+  ],
+  "additionalInspectedViews": "visual-review-preci.json records the booking and populated day/week/month review. MedSlot runtime and shared-control code is unchanged between that build and final CI; the later runtime corrections concern Suite focus and RCM listener timing.",
+  "automatedComplement": "Final full HTTP includes full-document axe for registration, booking, reschedule, populated calendars, four language editor states and every route."
+}

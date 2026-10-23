@@ -1,0 +1,67 @@
+{
+  "flows": [
+    {
+      "id": "HCD-35-surgisuite-identity",
+      "mode": "HTTP",
+      "result": "Trusted actor and original case/master data; no PIN hash returned"
+    },
+    {
+      "id": "HCD-35-surgisuite-sections",
+      "mode": "UI",
+      "result": "All twelve case sections and refresh preserve the real identifier"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration, keyboard ICD/CPT lookup, team, theatre, conflict check and booking persisted"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking-guards",
+      "mode": "HTTP",
+      "result": "Successful booking replay, fresh overlap refusal and incomplete booking refusal"
+    },
+    {
+      "id": "HCD-35-surgisuite-case-edit",
+      "mode": "UI",
+      "result": "Overview changes survive HTTP save and refresh"
+    },
+    {
+      "id": "HCD-35-surgisuite-report-draft",
+      "mode": "UI",
+      "result": "Operative draft persists; readiness blockers prevent premature signing"
+    },
+    {
+      "id": "HCD-35-surgisuite-signature",
+      "mode": "UI + HTTP",
+      "result": "Source PIN simulation signs a ready report and verifies its hash; existing signed versions use amendment"
+    },
+    {
+      "id": "HCD-35-surgisuite-inventory",
+      "mode": "UI + HTTP",
+      "result": "Receive stock dialog updates the synthetic inventory"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/surgisuite",
+      "failure": "locator.click: Error: strict mode violation: locator('[data-reference-module=surgisuite]').getByRole('row').filter({ hasText: 'Fictional SurgiSuite workflow' }).getByRole('button') resolved to 2 elements:\n    1) <button type=\"button\" class=\"inline-flex items-center justify-center whitespace-nowrap rounded-[6px] border font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 bg-ceil text-white hover:bg-ceil-2 border-transparent h-7 px-2.5 text-[13px] gap-1.5\">Decide</button> aka locator('tr:nth-child(57) > .px-4.py-2\\\\.5.text-right > .flex > .inline-flex.items-center.justify-center')\n    2) <button type=\"button\" class=\"inline-flex items-center justify-center whitespace-nowrap rounded-[6px] border font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 bg-ceil text-white hover:bg-ceil-2 border-transparent h-7 px-2.5 text-[13px] gap-1.5\">Decide</button> aka locator('tr:nth-child(58) > .px-4.py-2\\\\.5.text-right > .flex > .inline-flex.items-center.justify-center')\n\nCall log:\n\u001b[2m  - waiting for locator('[data-reference-module=surgisuite]').getByRole('row').filter({ hasText: 'Fictional SurgiSuite workflow' }).getByRole('button')\u001b[22m\n"
+    },
+    {
+      "route": "/surgisuite",
+      "failure": "locator.click: Error: strict mode violation: locator('[data-reference-module=surgisuite]').getByRole('row').filter({ hasText: 'Fictional SurgiSuite workflow' }).getByRole('button') resolved to 2 elements:\n    1) <button type=\"button\" class=\"inline-flex items-center justify-center whitespace-nowrap rounded-[6px] border font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 bg-ceil text-white hover:bg-ceil-2 border-transparent h-7 px-2.5 text-[13px] gap-1.5\">Decide</button> aka locator('tr:nth-child(57) > .px-4.py-2\\\\.5.text-right > .flex > .inline-flex.items-center.justify-center')\n    2) <button type=\"button\" class=\"inline-flex items-center justify-center whitespace-nowrap rounded-[6px] border font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 bg-ceil text-white hover:bg-ceil-2 border-transparent h-7 px-2.5 text-[13px] gap-1.5\">Decide</button> aka locator('tr:nth-child(58) > .px-4.py-2\\\\.5.text-right > .flex > .inline-flex.items-center.justify-center')\n\nCall log:\n\u001b[2m  - waiting for locator('[data-reference-module=surgisuite]').getByRole('row').filter({ hasText: 'Fictional SurgiSuite workflow' }).getByRole('button')\u001b[22m\n",
+      "rendered": {
+        "path": "/surgisuite/approvals",
+        "pageId": "surgisuite-approvals",
+        "headings": [
+          "Approvals"
+        ],
+        "inputs": []
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

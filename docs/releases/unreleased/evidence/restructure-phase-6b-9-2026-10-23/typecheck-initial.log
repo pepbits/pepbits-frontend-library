@@ -1,0 +1,38 @@
+
+> @pepbits-demo/healthcare@0.0.0 typecheck
+> tsc --noEmit
+
+src/modules/medslot/app/(app)/calendar/page.tsx(72,81): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/medslot/app/(app)/calendar/page.tsx(72,104): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/medslot/app/(app)/page.tsx(252,88): error TS2532: Object is possibly 'undefined'.
+src/modules/medslot/app/(app)/page.tsx(252,123): error TS2532: Object is possibly 'undefined'.
+src/modules/medslot/app/(app)/services/page.tsx(134,94): error TS18048: 't' is possibly 'undefined'.
+src/modules/medslot/app/(app)/services/page.tsx(134,106): error TS18048: 't' is possibly 'undefined'.
+src/modules/medslot/app/(app)/settings/page.tsx(119,189): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/medslot/components/PatientForm.tsx(31,141): error TS2353: Object literal may only specify known properties, and 'help' does not exist in type 'TemplateField'.
+src/modules/medslot/components/ResourceForm.tsx(70,59): error TS2532: Object is possibly 'undefined'.
+src/modules/medslot/components/ScheduleEditor.tsx(23,53): error TS2532: Object is possibly 'undefined'.
+src/modules/medslot/components/ScheduleEditor.tsx(31,28): error TS18048: 'b' is possibly 'undefined'.
+src/modules/medslot/components/ScheduleEditor.tsx(31,32): error TS18048: 'a' is possibly 'undefined'.
+src/modules/medslot/components/ScheduleEditor.tsx(83,85): error TS2532: Object is possibly 'undefined'.
+src/modules/medslot/components/booking/SlotPicker.tsx(55,101): error TS2532: Object is possibly 'undefined'.
+src/modules/medslot/components/booking/SlotPicker.tsx(63,95): error TS2532: Object is possibly 'undefined'.
+src/modules/medslot/components/booking/SlotPicker.tsx(63,117): error TS2532: Object is possibly 'undefined'.
+src/modules/medslot/components/booking/SlotPicker.tsx(153,73): error TS2345: Argument of type 'Slot | null | undefined' is not assignable to parameter of type 'Slot | null'.
+  Type 'undefined' is not assignable to type 'Slot | null'.
+src/modules/medslot/components/shell/nav.ts(2,94): error TS2724: '"@pepbits/icons"' has no exported member named 'Building'. Did you mean 'Building2'?
+src/modules/medslot/components/shell/nav.ts(2,121): error TS2724: '"@pepbits/icons"' has no exported member named 'Settings'. Did you mean 'Settings2'?
+src/modules/medslot/components/ui.tsx(3,50): error TS2724: '"@pepbits/ui"' has no exported member named 'SourceTimeInput'. Did you mean 'SourceInput'?
+src/modules/medslot/components/ui.tsx(3,66): error TS2724: '"@pepbits/ui"' has no exported member named 'SourceDateTimeInput'. Did you mean 'SourceDateInput'?
+src/modules/medslot/module.tsx(23,445): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/medslot/module.tsx(23,481): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/modules/medslot/ui.test.tsx(8,27): error TS2741: Property 'moduleId' is missing in type '{ tenantId: string; applicationId: string; branchId: string; userId: string; roles: string[]; }' but required in type '{ tenantId: string; applicationId: string; branchId: string; moduleId: string; userId: string; roles: readonly string[]; }'.
+npm ERR! Lifecycle script `typecheck` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

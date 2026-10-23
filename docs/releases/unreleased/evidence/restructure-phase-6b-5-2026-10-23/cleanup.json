@@ -1,0 +1,149 @@
+{
+  "processGroups": [
+    {
+      "label": "Browser",
+      "pid": 50,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Next",
+      "pid": 31,
+      "exitCode": 143,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "API",
+      "pid": 22,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    }
+  ],
+  "loopbackListeners": [
+    {
+      "receipt": "cancellation-identity.json",
+      "label": "apiPort",
+      "port": 42665,
+      "reachable": false
+    },
+    {
+      "receipt": "cancellation-identity.json",
+      "label": "appPort",
+      "port": 33441,
+      "reachable": false
+    },
+    {
+      "receipt": "interrupted-pilot-identity.json",
+      "label": "apiPort",
+      "port": 45483,
+      "reachable": false
+    },
+    {
+      "receipt": "interrupted-pilot-identity.json",
+      "label": "appPort",
+      "port": 35531,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-2.json",
+      "label": "apiPort",
+      "port": 32837,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-2.json",
+      "label": "appPort",
+      "port": 34611,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-3.json",
+      "label": "apiPort",
+      "port": 37257,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-3.json",
+      "label": "appPort",
+      "port": 44071,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-4.json",
+      "label": "apiPort",
+      "port": 45335,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-4.json",
+      "label": "appPort",
+      "port": 35275,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-final.json",
+      "label": "apiPort",
+      "port": 36977,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-final.json",
+      "label": "appPort",
+      "port": 45495,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-initial.json",
+      "label": "apiPort",
+      "port": 34207,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-identity-initial.json",
+      "label": "appPort",
+      "port": 44949,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-post-ci-identity.json",
+      "label": "apiPort",
+      "port": 41709,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-post-ci-identity.json",
+      "label": "appPort",
+      "port": 39545,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-post-ci-initial-identity.json",
+      "label": "apiPort",
+      "port": 42725,
+      "reachable": false
+    },
+    {
+      "receipt": "phase6b5-post-ci-initial-identity.json",
+      "label": "appPort",
+      "port": 46423,
+      "reachable": false
+    }
+  ],
+  "verificationCommandExited": true,
+  "shellBrowserCommandExited": true,
+  "integrationCommandExited": true,
+  "fullIntegrationChildExitCode": 0,
+  "fullWrapperExitCode": 127,
+  "postCiWrapperExitCode": 0,
+  "cancellationCheck": {
+    "expectedTimeoutExit": 124,
+    "signal": "SIGTERM",
+    "receipt": "cancellation-identity.json",
+    "processGroupsStopped": true
+  },
+  "resourceDeviation": "An interrupted wrapper left its detached pilot alive, overlapping focused/replacement browser runs. The late pilot failed and cleaned up. The launcher now execs its child; final cancellation and listener checks pass. The overlap is not claimed compliant.",
+  "scope": "Task-owned integration receipts and ports, including failed pilots; no unrelated processes stopped"
+}

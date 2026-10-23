@@ -1,0 +1,152 @@
+{
+  "flows": [
+    {
+      "id": "HCD-13-registry",
+      "mode": "HTTP",
+      "result": "All 40 original destinations in eight categories match the API, with 36 resource definitions and trusted host actor"
+    },
+    {
+      "id": "HCD-13-palette",
+      "mode": "UI",
+      "result": "Command palette opened invoice reference query and financial document"
+    },
+    {
+      "id": "HCD-14-invoice",
+      "mode": "UI",
+      "result": "Independent seeded invoice issued, document shown and persisted across reload"
+    },
+    {
+      "id": "HCD-14-receipt",
+      "mode": "UI create + HTTP allocation",
+      "result": "Receipt created with engine fields and lookup, allocated to an invoice, balances and trusted actor checked"
+    },
+    {
+      "id": "HCD-15-credit",
+      "mode": "UI independent-action guard + HTTP commands",
+      "result": "Credit creation replay, changed-payload conflict, stale-version refusal, second-person issuance, invoice effect, audit and branch isolation verified"
+    },
+    {
+      "id": "HCD-16-claim",
+      "mode": "UI submit + HTTP simulated response/correction",
+      "result": "Claim submitted, acknowledged, denied for synthetic coding error and corrected for resubmission"
+    },
+    {
+      "id": "HCD-16-scope",
+      "mode": "UI + HTTP assertions",
+      "result": "Operational currency filter changes API-backed worklist while host branch authority remains unchanged"
+    },
+    {
+      "id": "HCD-15-authority",
+      "mode": "UI approvals + HTTP negative assertions",
+      "result": "Approvals inbox loaded; viewer definitions are read-only, viewer write and source identity bypass refused"
+    }
+  ],
+  "rcmPresentation": [
+    {
+      "name": "page /rcm",
+      "failures": [
+        "label-content-name-mismatch"
+      ]
+    },
+    {
+      "name": "creation drawer frame, shared fields and focus entry",
+      "failures": []
+    },
+    {
+      "name": "reference lookup keyboard selection",
+      "failures": [
+        "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('option').first() to be visible\u001b[22m\n\u001b[2m    63 × locator resolved to hidden <option value=\"\">Select…</option>\u001b[22m\n"
+      ]
+    },
+    {
+      "name": "drawer Tab containment and Escape closure",
+      "failures": []
+    },
+    {
+      "name": "command palette keyboard opening and closing",
+      "failures": []
+    },
+    {
+      "name": "effective compact table density",
+      "failures": []
+    },
+    {
+      "name": "effective comfortable table density",
+      "failures": []
+    },
+    {
+      "name": "effective spacious table density",
+      "failures": []
+    },
+    {
+      "name": "effective row stripes, wrapping and sticky header",
+      "failures": []
+    },
+    {
+      "name": "mounted shortcut disable removes palette listener",
+      "failures": []
+    },
+    {
+      "name": "ordinary toolbar command works with shortcuts off",
+      "failures": []
+    },
+    {
+      "name": "reduced motion reaches computed styles",
+      "failures": []
+    },
+    {
+      "name": "zero corner radius reaches controls",
+      "failures": []
+    },
+    {
+      "name": "host font applies to module and heading",
+      "failures": []
+    },
+    {
+      "name": "Arabic direction and operable scope menu",
+      "failures": []
+    },
+    {
+      "name": "Hindi and Malayalam layouts retain content",
+      "failures": []
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/rcm",
+      "pageViolations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".text-harbor-900.hover\\:bg-mist[href$=\"approvals\"]"
+              ],
+              "html": "<a class=\"relative flex h-9 items-center gap-2 rounded-lg border border-line px-3 text-[12.5px] font-semibold text-harbor-900 hover:bg-mist\" aria-label=\"Approvals 23 · 23 items awaiting a second person\" href=\"/rcm/approvals\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".text-harbor-900.hover\\:bg-mist[href$=\"approvals\"]"
+              ],
+              "html": "<a class=\"relative flex h-9 items-center gap-2 rounded-lg border border-line px-3 text-[12.5px] font-semibold text-harbor-900 hover:bg-mist\" aria-label=\"Approvals 23 · 23 items awaiting a second person\" href=\"/rcm/approvals\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

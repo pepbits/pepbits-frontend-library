@@ -1,0 +1,71 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/medband
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/modules/medband/module.test.tsx (28 tests) 3696ms
+   ✓ ReferenceMedbandModule host contract > renders every one of the nine routes from the backend data (record id from the route, not a promise)  468ms
+   ✓ creating an encounter > shows the backend's refusal, keeps the entered values and points at the field  301ms
+   ✓ managed table page size > shows the host page size of encounters and steps by it  493ms
+ ✓ src/modules/medband/controls-parity.test.tsx (39 tests) 447ms
+ ✓ src/modules/medband/styles.test.ts (12 tests) 24ms
+ ✓ src/modules/medband/api.test.ts (10 tests) 16ms
+ ✓ src/modules/medband/flows.test.tsx (4 tests) 2908ms
+   ✓ every state of the long forms goes through the localization boundary > the new-encounter form for each visit type, on each of its steps  2427ms
+ ❯ src/modules/medband/pages.test.tsx (11 tests | 1 failed) 1002ms
+   ✓ English copy goes through the localization boundary > /: every reader-facing string is asked of the catalog and has an alias 159ms
+   ✓ English copy goes through the localization boundary > /patients: every reader-facing string is asked of the catalog and has an alias 73ms
+   ✓ English copy goes through the localization boundary > /patients/new: every reader-facing string is asked of the catalog and has an alias 86ms
+   ✓ English copy goes through the localization boundary > /patients/pat-1: every reader-facing string is asked of the catalog and has an alias 75ms
+   × English copy goes through the localization boundary > /encounters: every reader-facing string is asked of the catalog and has an alias 73ms
+     → expected [ 'Actions' ] to deeply equal []
+   ✓ English copy goes through the localization boundary > /encounters/new?patientId=pat-1: every reader-facing string is asked of the catalog and has an alias 89ms
+   ✓ English copy goes through the localization boundary > /encounters/new?type=IP&patientId=pat-1&admissionRequest=adm-1: every reader-facing string is asked of the catalog and has an alias 81ms
+   ✓ English copy goes through the localization boundary > /admissions: every reader-facing string is asked of the catalog and has an alias 32ms
+   ✓ English copy goes through the localization boundary > /admissions/new?patientId=pat-1: every reader-facing string is asked of the catalog and has an alias 86ms
+   ✓ English copy goes through the localization boundary > /episodes: every reader-facing string is asked of the catalog and has an alias 37ms
+   ✓ English copy goes through the localization boundary > covers the overlays: counter menu, quick search, admissions dialogs 208ms
+ ✓ src/modules/medband/cx.test.ts (6 tests) 1446ms
+   ✓ cx is the source's twMerge: later utilities override earlier ones of the same group, shorthands override longhands > every utility pair in both orders matches the retained tailwind-merge oracle  1422ms
+ ✓ src/modules/medband/source-boundary.test.ts (5 tests) 30ms
+ ✓ src/modules/medband/utils.test.ts (6 tests) 13ms
+ ✓ src/modules/medband/routes.test.ts (5 tests) 12ms
+ ✓ src/modules/medband/copy.test.ts (5 tests) 12ms
+ ✓ src/modules/medband/master.test.ts (3 tests) 8ms
+ ↓ src/modules/medband/browser-parity.test.ts (2 tests | 2 skipped)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/medband/pages.test.tsx > English copy goes through the localization boundary > /encounters: every reader-facing string is asked of the catalog and has an alias
+AssertionError: expected [ 'Actions' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "Actions",
++ ]
+
+ ❯ src/modules/medband/pages.test.tsx:94:23
+     92|       expect(untranslated(container)).toEqual([]);
+     93|       const missing = [...p.asked].filter(unknownMessage);
+     94|       expect(missing).toEqual([]);
+       |                       ^
+     95|     });
+     96|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 11 passed | 1 skipped (13)
+      Tests  1 failed | 133 passed | 2 skipped (136)
+   Start at  17:22:25
+   Duration  28.19s (transform 1.78s, setup 1.96s, collect 4.25s, tests 9.61s, environment 6.71s, prepare 1.09s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

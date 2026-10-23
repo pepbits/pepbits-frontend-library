@@ -1,0 +1,40 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/rcm",
+      "failure": "locator.waitFor: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reference-module=\"rcm\"]').locator('[data-rcm-stage]') to be visible\u001b[22m\n",
+      "rendered": "Healthcare\nFICTIONAL HEALTHCARE WORKFLOWS\nsign in to your workspace\n\nFictional demonstration only\nwelcome back\n\nenter your credentials to continue\n\nusername\n*\npassword\n*\nsign in"
+    },
+    {
+      "route": "/rcm",
+      "failure": "locator.waitFor: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reference-module=\"rcm\"]').locator('[data-rcm-stage]') to be visible\u001b[22m\n",
+      "rendered": {
+        "path": "/rcm",
+        "headings": [],
+        "inputs": []
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

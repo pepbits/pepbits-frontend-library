@@ -1,0 +1,251 @@
+{
+  "ci": {
+    "command": "npm run ci -- --concurrency=1",
+    "environment": "environment.json",
+    "tasks": 30,
+    "cached": 0,
+    "tests": 3265,
+    "files": 213,
+    "skippedTests": 2,
+    "skippedFiles": 1,
+    "toolingTests": 19,
+    "typechecks": 14,
+    "builds": 2,
+    "workspaces": {
+      "@pepbits/data": {
+        "files": 12,
+        "skippedFiles": 0,
+        "tests": 53,
+        "skippedTests": 0
+      },
+      "@pepbits/tokens": {
+        "files": 1,
+        "skippedFiles": 0,
+        "tests": 3,
+        "skippedTests": 0
+      },
+      "@pepbits/icons": {
+        "files": 1,
+        "skippedFiles": 0,
+        "tests": 60,
+        "skippedTests": 0
+      },
+      "@pepbits/i18n": {
+        "files": 6,
+        "skippedFiles": 0,
+        "tests": 64,
+        "skippedTests": 0
+      },
+      "@pepbits/platform": {
+        "files": 6,
+        "skippedFiles": 0,
+        "tests": 71,
+        "skippedTests": 0
+      },
+      "@pepbits/preferences": {
+        "files": 3,
+        "skippedFiles": 0,
+        "tests": 33,
+        "skippedTests": 0
+      },
+      "@pepbits/ui": {
+        "files": 14,
+        "skippedFiles": 0,
+        "tests": 131,
+        "skippedTests": 0
+      },
+      "@pepbits/components": {
+        "files": 17,
+        "skippedFiles": 0,
+        "tests": 196,
+        "skippedTests": 0
+      },
+      "@pepbits/patterns": {
+        "files": 27,
+        "skippedFiles": 0,
+        "tests": 151,
+        "skippedTests": 0
+      },
+      "@pepbits/page-engines": {
+        "files": 20,
+        "skippedFiles": 0,
+        "tests": 429,
+        "skippedTests": 0
+      },
+      "@pepbits/shell": {
+        "files": 37,
+        "skippedFiles": 0,
+        "tests": 404,
+        "skippedTests": 0
+      },
+      "@pepbits-demo/healthcare": {
+        "files": 42,
+        "skippedFiles": 1,
+        "tests": 988,
+        "skippedTests": 2
+      },
+      "@pepbits/ai": {
+        "files": 22,
+        "skippedFiles": 0,
+        "tests": 587,
+        "skippedTests": 0
+      },
+      "@pepbits-demo/showcase": {
+        "files": 5,
+        "skippedFiles": 0,
+        "tests": 95,
+        "skippedTests": 0
+      }
+    }
+  },
+  "browserWrappers": {
+    "tests": 2,
+    "files": 1,
+    "result": "Passed separately against final real Chromium receipt; these were the two opt-in cases skipped in root CI, not additional cases."
+  },
+  "shellBrowser": {
+    "tests": 2,
+    "files": 1,
+    "scope": "Physical left/right Arabic RTL sidebar in headless Chromium"
+  },
+  "browser": {
+    "scope": "Local browser against the unchanged synthetic demo HTTP API",
+    "flows": 25,
+    "rcmFlows": 8,
+    "routes": 191,
+    "rcmRoutes": 47,
+    "rcmPresentationChecks": 62,
+    "fullShellViolations": 0,
+    "pageContentViolations": 0,
+    "javascriptErrors": 0,
+    "consoleErrors": 0,
+    "unexpectedHttpFailures": 0,
+    "incompleteRuleResults": 395,
+    "manualReview": "Incomplete automated checks and native-language/domain/assistive-technology review remain outside acceptance.",
+    "screenshots": [
+      {
+        "path": "screenshots/clinical-consultation-PT-0001.png",
+        "sha256": "cbc0b3268640fcad5860e2f6e56cf01a56555ad2c879f63fe93b492d6417465b"
+      },
+      {
+        "path": "screenshots/lis1.png",
+        "sha256": "38828a171aeb76f0fe2b82e7a25c9c302cccd0df89fe7907dcef82a870de8bdd"
+      },
+      {
+        "path": "screenshots/lis2.png",
+        "sha256": "f60b213c1663263dbd1fb163ceb5139ec70a50a623ee1b41084961a22a41dfc9"
+      },
+      {
+        "path": "screenshots/patient-record-PT-0001.png",
+        "sha256": "bde064aef31753d809610391fda95da8d15b3056a656de12ffa3f2dedaa0028e"
+      },
+      {
+        "path": "screenshots/pharmacy-counter.png",
+        "sha256": "fc88a1cbb78159a86e2e4adc3edfe1161b0f802fc97e980b43d1190992072501"
+      },
+      {
+        "path": "screenshots/pharmacy-workbench.png",
+        "sha256": "9df4e92665ccf0fdae5065a238ad51f133e8926f1db41f5c4482744c39553a04"
+      },
+      {
+        "path": "screenshots/pharmacy.png",
+        "sha256": "659d4abc1b25a8c7f66d2cfe269d237066e8d969fbfb7eeee4106e21e3811916"
+      },
+      {
+        "path": "screenshots/rcm-approvals.png",
+        "sha256": "0fdb22083b390d5a57b901c20171f25663a35c6dcb6b2c272f59bf884c9dfbac"
+      },
+      {
+        "path": "screenshots/rcm-w-invoices.png",
+        "sha256": "5dac54a7ea58e083a0b044e408e4737f6d59d12412fe3d3860c5442549ef4cd6"
+      },
+      {
+        "path": "screenshots/rcm.png",
+        "sha256": "e4639a8c0fda8399f7071ab41babffddcc48f06fd04d57b825f00772c27232ba"
+      },
+      {
+        "path": "screenshots/ris1.png",
+        "sha256": "e6af82bfe4fd13f64ec1eb72a48d619a98df46e3cf79e513b89ceca25a1fbd78"
+      },
+      {
+        "path": "screenshots/suite.png",
+        "sha256": "1145fd03c9203c2238ae4e408f54df1075d8ac6c6121e2b16ae7d83d6eaa3cfd"
+      }
+    ]
+  },
+  "documentation": {
+    "files": 187,
+    "result": "PASS 187 documentation files: local links/headings, current testing guide, Library inventory, release identity/status and retained evidence hashes",
+    "command": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs"
+  },
+  "cleanup": [
+    {
+      "label": "Browser",
+      "pid": 51,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Next",
+      "pid": 32,
+      "exitCode": 143,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "API",
+      "pid": 23,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    }
+  ],
+  "source": {
+    "base": "9e08ebb6c4da3ca1c1bb836acfd6cae3532dd4c0",
+    "ciImplementationDigest": "9494a504e2d9f333c846ea4b9a16878728f1d75fede509e0c5e61c93ce068ebc",
+    "finalImplementationDigest": "9494a504e2d9f333c846ea4b9a16878728f1d75fede509e0c5e61c93ce068ebc",
+    "finalFiles": 1117,
+    "changesAfterCiStart": [],
+    "changeReason": "No implementation or indexed documentation changed after final forced CI started. The release record and evidence are excluded from the manifest to avoid self-reference.",
+    "browserBuild": {
+      "ciSource": "ci-source.json",
+      "snapshot": "browser-build-source.json",
+      "matchingBuildInputs": 983,
+      "runtimeChanges": [],
+      "digest": "16b06f608e0b3cdc45dce8bede9a07e67fa71e31b8d84d69ef47b6055fc48fa3"
+    },
+    "finalIntegrationDrivers": [
+      {
+        "path": "demo-apps/healthcare/scripts/integration.mjs",
+        "sha256": "76603e3ff3370a6ac47e19baff9345081eb6750654823f388268475b59560714"
+      },
+      {
+        "path": "demo-apps/healthcare/scripts/pharmacy-flows.mjs",
+        "sha256": "fc694a58f7528d01b3d89ea7ee13d27d46c63cbd392a7ab49dc909ffe82a4078"
+      },
+      {
+        "path": "demo-apps/healthcare/scripts/rcm-flows.mjs",
+        "sha256": "63d5712c149c8ce11eb0a8b52d3e2e9ae68fafb05a0a02044381f5ab548294a9"
+      },
+      {
+        "path": "demo-apps/healthcare/scripts/rcm-presentation.mjs",
+        "sha256": "68ea615b874b5e21259f73f9a19873436d338ffc0ab53841404de72ebca3a874"
+      },
+      {
+        "path": "demo-apps/healthcare/scripts/route-cases.mjs",
+        "sha256": "fb9f6930eea3f66ac4d7a4444e47ae6489db360e94bffc30b88130bf9a57a1c4"
+      },
+      {
+        "path": "demo-apps/healthcare/scripts/smoke.mjs",
+        "sha256": "e1d437966cb83d6f86b82a9faae5d9c32c491307de9a03313761c52e773590f7"
+      }
+    ],
+    "manifestMatchesWorkingTree": true
+  },
+  "boundaries": {
+    "Preserved upstream CSS license/browser-fix comment; no network request": 44,
+    "Negative route-parsing fixture rejects an external URL; no network request": 1,
+    "FHIR coding-system identifier in a synthetic message; not a transport URL": 1
+  }
+}
