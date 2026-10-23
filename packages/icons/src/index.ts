@@ -132,3 +132,6 @@ export {Banknote, Bike, CirclePause, CornerDownLeft, Gavel, HandCoins, Landmark,
 
 // Direct primitives used by revenue-cycle workflows.
 export {AlarmClock, BarChart3, Calculator, Code2, ConciergeBell, FileMinus2, FileOutput, FileSearch, FileStack, GitCompare, Home, Hourglass, KanbanSquare, ListChecks, ListTodo, Megaphone, MessageSquareText, MousePointerClick, Package, PieChart, PiggyBank, RadioTower, Scale, Sigma} from "lucide-react";
+
+// Quality report and assurance presentation.
+export {ArrowDownRight, Bell, Gauge, LineChart, Timer} from 'lucide-react';

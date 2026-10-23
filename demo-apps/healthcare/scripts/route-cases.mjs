@@ -18,3 +18,5 @@ const rcm=JSON.parse(readFileSync(new URL('src/modules/rcm/navigation.json',root
 routes.push(...rcm.flatMap(category=>category.pages.map(page=>'/rcm'+(page.path==='/'?'':page.path))));
 
 routes.push('/teleconsult-provider','/teleconsult-provider/schedule','/teleconsult-provider/patients','/teleconsult-provider/notes','/teleconsult-patient','/teleconsult-patient/register','/teleconsult-patient/home','/teleconsult-patient/book','/teleconsult-patient/records');
+
+routes.push(...['','/indicators','/tat','/events','/verification','/validation','/reports','/schedules','/submissions','/authorities','/users','/audit'].map(path=>'/quality'+path));

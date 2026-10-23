@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Healthcare phase 6b-6 — Quality](restructure-phase-6b-6-2026-10-23.md): twelve destinations, record routes/designer, public engines and source-scoped local verification.
+
 - [Healthcare phase 6b-5 — Teleconsult Provider and Patient](restructure-phase-6b-5-2026-10-23.md): nine sidebar destinations, three record routes and local synthetic HTTP workflows; no deployment.
 
 - [Healthcare phase 6b-4 — RCM Workspace](restructure-phase-6b-4-2026-10-23.md): forty original destinations, public engine composition and local synthetic HTTP evidence; no deployment.

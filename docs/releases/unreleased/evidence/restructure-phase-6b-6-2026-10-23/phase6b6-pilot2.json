@@ -1,0 +1,74 @@
+{
+  "flows": [
+    {
+      "id": "HCD-24-quality-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor; 32 illustrative indicators, 13 turnaround definitions and eight report templates"
+    },
+    {
+      "id": "HCD-25-quality-authority",
+      "mode": "UI + HTTP isolation",
+      "result": "Shared typed Authority form saved, survived reload and stayed isolated from the other branch"
+    },
+    {
+      "id": "HCD-26-quality-designer",
+      "mode": "UI",
+      "result": "Typed metadata, live section preview, shared keyboard indicator lookup, custom trend/text sections and save/reload of the report schema"
+    },
+    {
+      "id": "HCD-27-quality-report-output",
+      "mode": "UI",
+      "pdf": {
+        "bytes": 216262,
+        "sha256": "5987f4a1319bfed7fff90b7ae949e8b4406ddf8b259ea2b8366100cd2055f18a"
+      },
+      "result": "Authenticated CSV download, recorded report run and synthetic PDF through shared PrintDocument"
+    },
+    {
+      "id": "HCD-28-quality-submission",
+      "mode": "UI prepare + HTTP lifecycle/denial",
+      "result": "Frozen submission; self-approval refused; independent approver, simulated transmission and acknowledgement with retained checksum/history"
+    },
+    {
+      "id": "HCD-29-quality-schedule",
+      "mode": "HTTP command + UI read",
+      "result": "Paused monthly schedule created and explicitly run; generated report history retained; no external delivery"
+    },
+    {
+      "id": "HCD-30-quality-results",
+      "mode": "HTTP commands + UI record",
+      "result": "Versioned correction, same-key replay, stale-edit refusal and separate submitter/verifier/approver; final result approved"
+    },
+    {
+      "id": "HCD-31-quality-events-validation",
+      "mode": "UI",
+      "result": "Manual fictional Event Pulse ingestion and validation run via shared forms and authenticated HTTP"
+    },
+    {
+      "id": "HCD-32-quality-audit",
+      "mode": "UI + HTTP",
+      "result": "Audit hash-chain verification succeeds after the workflow commands"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/quality",
+      "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText(/Page unavailable for your role/) to be visible\u001b[22m\n"
+    },
+    {
+      "route": "/quality",
+      "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText(/Page unavailable for your role/) to be visible\u001b[22m\n",
+      "rendered": {
+        "path": "/quality/reports/designer",
+        "pageId": "quality-designer",
+        "headings": [],
+        "inputs": []
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

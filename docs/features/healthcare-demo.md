@@ -50,7 +50,7 @@ Route matrices cover default, Arabic RTL, reduced motion and locked density. Jsd
 | HCD-12 | Pharmacy command replay, structured failure/retry, mounted preferences and cache scope |
 | HCD-06 | Public package boundaries, forced root CI, builds, documentation and protected-path/source checks |
 
-Exact case/file counts and failures are in the delivery record. Later runs cover quality, SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
+Exact case/file counts and failures are in the delivery record. Later runs cover SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
 
 ## Operations and support
 
@@ -114,3 +114,31 @@ The existing provider chain and public renderer registry are unchanged. Product 
 Recoverable failures retain unsaved edits; an ambiguous retry uses the original operation key. Conflicts require explicit reload/reapply decisions and signed history stays immutable. This is transient editor retention, not a new durable draft service. Shared canonical catalogs remain backend-owned; English literal source keys resolve against the runtime catalog. CareCall retains its source light palette, with scoped contrast corrections. Effective formatters, typography, form/result scales, table settings, reduced motion and shortcut preferences apply.
 
 This is a fictional software demonstration. Remote media, transcript, scribe, scores and advice remain simulations, and no real prescription/order/billing transaction is posted. Identity/media providers, secure attachments, devices, clinical governance, human language/domain review, assistive-technology acceptance and native executables are outside this port. The phase 4c patterns are available; none is required by the original Teleconsult workflows.
+
+## Quality increment
+
+Phase 6b-6 adds AllyVora Quality with twelve sidebar destinations, two actual-record routes and the report designer, bringing healthcare to **166 menu destinations**. See the [app route and usage guide](../../demo-apps/healthcare/README.md#allyvora-quality--phase-6b-6), [source behavior](quality-reference.md) and [delivery record](../releases/unreleased/restructure-phase-6b-6-2026-10-23.md).
+
+| Case | User flow and contract |
+| --- | --- |
+| HCD-24 | Header/sidebar and actual indicator/report/designer routes; trusted API identity and source inventory |
+| HCD-25 | Shared Authority form create, persisted reload and authenticated branch isolation |
+| HCD-26 | Designer metadata, report sections, shared indicator lookup, live preview and saved report |
+| HCD-27 | Authenticated CSV, recorded report run and shared synthetic PDF output |
+| HCD-28 | Frozen submission, self-approval refusal, independent approval and simulated transmission/acknowledgement |
+| HCD-29 | Paused monthly schedule, explicit synthetic run and retained history |
+| HCD-30 | Versioned result correction, idempotent replay, stale-edit refusal and separate submitter/verifier/approver |
+| HCD-31 | Manual fictional Event Pulse ingestion and validation run |
+| HCD-32 | Append-only audit hash-chain verification |
+| HCD-33 | Restricted actions/sidebar, direct designer and server write/source-login denial |
+| HCD-34 | Fifteen routes × default/Arabic RTL/reduced-motion/locked-density page-content axe; mounted language/editor, page-size/table and export-policy checks |
+
+Choose Quality, select a period/facility and open a worklist record. Resolve blocking validation before submitting a result; another permitted actor verifies it and a separate actor approves it. Use Reports to design sections, preview actual demo data and save before printing or preparing a submission. Authority recipients, report delivery and clinical events are fictional. Review the frozen checksum/history and Audit after commands.
+
+The existing provider chain and public renderer registry are extended without restructuring. Authority and report metadata configure typed public form-designer fields/panels. Report-section schemas, charts, event geometry and review orchestration remain product components. AsyncLookup, Source* controls, SourceDialog, tables/tabs, PrintDocument and ScreenHost are reused. The configured HTTP adapter supplies only the fixed namespace and routing metadata; the unchanged API establishes permissions, actor identity, scope, transactional replay, versions and separation of duties.
+
+Host preferences govern applicable controls, formatting, typography, table presentation/page size, motion and direction. Managed values replace conflicting mounted presentation without discarding editor input. CSV actions disable when the effective export format is unsupported. Schedule zone/delivery format and analytical output geometry are domain contracts. There are no custom accelerators or physical-device workflows. Shared canonical catalogs are fetched at runtime; no local translation catalog is copied.
+
+Validation and conflict refusals retain input and require explicit resolution. Ambiguous command retries keep their operation key. Read cancellation and response fencing prevent obsolete scope data from appearing. No new durable-draft service is claimed. All source tests are ported; generator parity checks verify frozen generated CSS/alias identities, and notification checks use the shared host.
+
+No Quality destination is deferred. Real authority/event connectors, continuous production scheduling, native execution, human language/domain review and assistive-technology acceptance remain separate. Software checks over fictional data do not establish regulatory, clinical or financial acceptance. No deployment, commit or push is part of this increment.

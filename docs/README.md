@@ -1,6 +1,6 @@
 # Enterprise frontend documentation
 
-- [Independent healthcare demo](features/healthcare-demo.md): phases 6b-1/6b-2/6b-3/6b-4 core, clinical, diagnostics, Pharmacy and RCM app/API verification; no deployment or clinical acceptance.
+- [Independent healthcare demo](features/healthcare-demo.md): phases 6b-1 through 6b-6 core, clinical, diagnostics, Pharmacy, RCM, Teleconsult and Quality app/API verification; no deployment or clinical acceptance.
 
 - [Independent showcase](features/showcase.md): public-package gallery, generated examples and an in-memory preference/policy playground.
 

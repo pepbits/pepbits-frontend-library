@@ -8,16 +8,22 @@ import {createHash} from 'node:crypto';
 const root=fileURLToPath(new URL('../../../',import.meta.url));
 const app=join(root,'demo-apps/healthcare'),temp=mkdtempSync(join(tmpdir(),'healthcare-integration-'));
 const children=[],cleanup=[];
-let stopping=false;
-async function stopChildren(){if(stopping)return;stopping=true;for(const child of [...children].reverse()){
+let stopping;
+function stopChildren(){return stopping??=(async()=>{for(const child of [...children].reverse()){
  try{process.kill(-child.pid,'SIGTERM');}catch{}
  await Promise.race([new Promise(resolve=>child.exitCode!==null||child.signalCode!==null?resolve():child.once('exit',resolve)),new Promise(resolve=>setTimeout(resolve,3000))]);
  try{process.kill(-child.pid,'SIGKILL');}catch{}
  await new Promise(resolve=>setTimeout(resolve,100));
  let groupAlive=false;try{process.kill(-child.pid,0);groupAlive=true;}catch{}
  cleanup.push({label:child.serviceLabel,pid:child.pid,exitCode:child.exitCode,signal:child.signalCode,groupAlive});
-}}
-for(const signal of ['SIGINT','SIGTERM'])process.once(signal,()=>{void stopChildren().finally(()=>{identity.interrupted=signal;identity.cleanup=cleanup;writeFileSync(process.env.HEALTHCARE_IDENTITY??'/tmp/phase6b-integration-identity.json',JSON.stringify(identity,null,2)+'\n');process.exit(1);});});
+}})();}
+let cancellationStarted=false;
+function cancel(reason){if(cancellationStarted)return;cancellationStarted=true;void stopChildren().finally(()=>{identity.interrupted=reason;identity.cleanup=cleanup;writeFileSync(process.env.HEALTHCARE_IDENTITY??'/tmp/phase6b-integration-identity.json',JSON.stringify(identity,null,2)+'\n');process.exit(1);});}
+for(const signal of ['SIGINT','SIGTERM'])process.once(signal,()=>cancel(signal));
+// A shared stop file remains reachable when the execution wrapper has its own PID namespace.
+const stopFile=process.env.HEALTHCARE_STOP_FILE;
+const deadline=setTimeout(()=>cancel('deadline'),Number(process.env.HEALTHCARE_TIMEOUT_MS??1800000));deadline.unref();
+const cancellation=stopFile?setInterval(()=>{if(existsSync(stopFile))cancel('stop-file');},500):null;cancellation?.unref();
 const freePort=()=>new Promise(resolve=>{const server=createServer();server.listen(0,'127.0.0.1',()=>{const port=server.address().port;server.close(()=>resolve(port));});});
 const apiPort=await freePort(),appPort=await freePort();
 const node=process.env.HEALTHCARE_API_NODE??process.execPath;
@@ -31,7 +37,7 @@ if(artifactRoot){
  const mismatches=files.filter(p=>!existsSync(join(built,p.slice('dummy-api/'.length)))||sha(join(root,p))!==sha(join(built,p.slice('dummy-api/'.length))));
  if(mismatches.length)throw new Error(`Runtime artifact source differs in ${mismatches.length} tracked API files`);
  const loader=join(temp,'runtime-loader.mjs'),artifactLog=join(temp,'runtime-artifacts.ndjson');
- writeFileSync(loader,`import {existsSync,readFileSync,appendFileSync} from 'node:fs';import {fileURLToPath,pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';const source=${JSON.stringify(join(root,'dummy-api/'))},built=${JSON.stringify(built+'/')};const seen=new Set();function record(result){if(result.url?.startsWith('file:')){const path=fileURLToPath(result.url);if(path.startsWith(built)&&/^[\\w-]+\\/dist\\//.test(path.slice(built.length))&&!seen.has(path)){seen.add(path);appendFileSync(${JSON.stringify(artifactLog)},JSON.stringify({path:path.slice(built.length),sha256:createHash('sha256').update(readFileSync(path)).digest('hex')})+'\\n');}}return result;}export async function resolve(specifier,context,next){try{return record(await next(specifier,context));}catch(error){if(['pharmacy-runtime/','access-runtime/'].some(dir=>context.parentURL?.startsWith(new URL(dir, 'file://'+source).href))){const mapped={...context,parentURL:context.parentURL.replace('file://'+source,'file://'+built)};return record(await next(specifier,mapped));}const url=new URL(specifier,context.parentURL);if(url.protocol==='file:'){const path=fileURLToPath(url),rel=path.slice(source.length);if(path.startsWith(source)&&/^[\\w-]+\\/dist\\//.test(rel)&&existsSync(built+rel)){appendFileSync(${JSON.stringify(artifactLog)},JSON.stringify({path:rel,sha256:createHash('sha256').update(readFileSync(built+rel)).digest('hex')})+'\\n');return record(await next(pathToFileURL(built+rel).href,context));}}throw error;}}`);
+ writeFileSync(loader,`import {existsSync,readFileSync,appendFileSync} from 'node:fs';import {fileURLToPath,pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';const source=${JSON.stringify(join(root,'dummy-api/'))},built=${JSON.stringify(built+'/')};const seen=new Set();function record(result){if(result.url?.startsWith('file:')){const path=fileURLToPath(result.url);if(path.startsWith(built)&&/^[\\w-]+\\/dist\\//.test(path.slice(built.length))&&!seen.has(path)){seen.add(path);appendFileSync(${JSON.stringify(artifactLog)},JSON.stringify({path:path.slice(built.length),sha256:createHash('sha256').update(readFileSync(path)).digest('hex')})+'\\n');}}return result;}export async function resolve(specifier,context,next){try{return record(await next(specifier,context));}catch(error){if(['pharmacy-runtime/','access-runtime/','quality-runtime/'].some(dir=>context.parentURL?.startsWith(new URL(dir, 'file://'+source).href))){const mapped={...context,parentURL:context.parentURL.replace('file://'+source,'file://'+built)};return record(await next(specifier,mapped));}const url=new URL(specifier,context.parentURL);if(url.protocol==='file:'){const path=fileURLToPath(url),rel=path.slice(source.length);if(path.startsWith(source)&&/^[\\w-]+\\/dist\\//.test(rel)&&existsSync(built+rel)){appendFileSync(${JSON.stringify(artifactLog)},JSON.stringify({path:rel,sha256:createHash('sha256').update(readFileSync(built+rel)).digest('hex')})+'\\n');return record(await next(pathToFileURL(built+rel).href,context));}}throw error;}}`);
  apiArgs.push('--loader',loader);identity.runtimeArtifacts={sourceFilesCompared:files.length,mismatches:0,artifactLog};
  // Diagnostic workers use CommonJS and inherit --require. Resolve only missing diagnostic runtime dependencies
  // against the verified checkout, while the worker and public API still run from this worktree.
@@ -42,6 +48,8 @@ if(artifactRoot){
  walk(join(built,'diagnostics-runtime/dist'));
  const pharmacyStart=runtimeFiles.length;walk(join(built,'pharmacy-runtime/dist'));
  identity.runtimeArtifacts.pharmacyBuild=runtimeFiles.splice(pharmacyStart).sort((a,b)=>a.path.localeCompare(b.path));
+ const qualityStart=runtimeFiles.length;walk(join(built,'quality-runtime/dist'));
+ identity.runtimeArtifacts.qualityBuild=runtimeFiles.splice(qualityStart).sort((a,b)=>a.path.localeCompare(b.path));
  const accessStart=runtimeFiles.length;walk(join(built,'access-runtime/dist'));
  identity.runtimeArtifacts.accessBuild=runtimeFiles.splice(accessStart).sort((a,b)=>a.path.localeCompare(b.path));
  identity.runtimeArtifacts.diagnosticBuild=runtimeFiles.sort((a,b)=>a.path.localeCompare(b.path));
@@ -64,4 +72,4 @@ try{
  if(identity.runtimeArtifacts){identity.runtimeArtifacts.resolved=existsSync(identity.runtimeArtifacts.artifactLog)?readFileSync(identity.runtimeArtifacts.artifactLog,'utf8').trim().split('\n').filter(Boolean).map(JSON.parse):[];identity.runtimeArtifacts.resolved=[...new Map(identity.runtimeArtifacts.resolved.map(entry=>[entry.path,entry])).values()].sort((a,b)=>a.path.localeCompare(b.path));delete identity.runtimeArtifacts.artifactLog;}
  writeFileSync(process.env.HEALTHCARE_IDENTITY??'/tmp/phase6b-integration-identity.json',JSON.stringify(identity,null,2)+'\n');
  console.log(JSON.stringify({integrationExit:code,sourceBase:identity.sourceBase,apiPort,appPort}));
-}finally{await stopChildren();identity.cleanup=cleanup;writeFileSync(process.env.HEALTHCARE_IDENTITY??'/tmp/phase6b-integration-identity.json',JSON.stringify(identity,null,2)+'\n');}
+}finally{clearTimeout(deadline);if(cancellation)clearInterval(cancellation);await stopChildren();identity.cleanup=cleanup;writeFileSync(process.env.HEALTHCARE_IDENTITY??'/tmp/phase6b-integration-identity.json',JSON.stringify(identity,null,2)+'\n');}
