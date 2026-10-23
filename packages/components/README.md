@@ -126,3 +126,7 @@ These keys retain their original spelling. Supply translations in the host catal
 | `ui.will.look.empty.other.fields.are.unaffected.04f888e7` |  will look empty. Other fields are unaffected. |
 
 Literal labels and templates (for example `{count} options`) also pass through the host translator. Composite hosts also supply the [primitive keys](../ui/README.md#host-message-keys).
+
+## Phase 4b pagination integration
+
+`Pagination.allowedPageSizes` is an optional array of supported sizes (10, 20, 50, 100). It filters unavailable options and guards the change callback; omitted preserves the original choices. Page engines pass the effective policy allowance and locked state. The host still owns accepted page-size state and persistence. See the [phase 4b record](../../docs/releases/unreleased/restructure-phase-4b-2026-10-23.md).

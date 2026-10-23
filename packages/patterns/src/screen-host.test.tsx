@@ -1,7 +1,8 @@
 import React from 'react';
 import {renderHook, act} from '@testing-library/react';
 import {expect, test, vi} from 'vitest';
-import {ScreenHostProvider, useScreenHost, useFormatters, type ScreenHostValue} from './screen-host';
+import {ScreenHostProvider, useScreenHost, useScreenDraftState, useFormatters, type ScreenHostValue} from './screen-host';
+import {createTestDocument} from './test/document';
 import {TestHost} from './test/render';
 import {EMPTY_PREFERENCE_POLICY, type PreferencePolicy} from '@pepbits/preferences';
 import {usePreference} from '@pepbits/preferences/react';
@@ -21,6 +22,32 @@ test('standalone host defaults deny actions and document callbacks are safe no-o
   expect(result.current.document.draftState).toEqual({});
   expect(result.current.renderInlineAction).toBeUndefined();
   expect(result.current.publishSources).toBeUndefined();
+  expect(result.current.document.subscribeClose).toBeUndefined();
+});
+
+test('transient document state survives suspension and changing identity starts with clean state',()=>{
+  const document=createTestDocument('a');let value:ScreenHostValue={document:document.document};
+  const wrapper=({children}:{children:React.ReactNode})=><ScreenHostProvider value={value}>{children}</ScreenHostProvider>;
+  const first=renderHook(()=>useScreenDraftState('note',''),{wrapper});
+  act(()=>first.result.current[1]('Retained'));first.unmount();
+  const second=renderHook(()=>useScreenDraftState('note',''),{wrapper});
+  expect(second.result.current[0]).toBe('Retained');
+  value={document:{id:'b'}};second.rerender();expect(second.result.current[0]).toBe('');
+  expect(document.metadata()).toEqual({id:'a',dirty:false});
+});
+
+test('standalone transient state updates locally with no persistence callback',()=>{
+ const {result}=renderHook(()=>useScreenDraftState('count',0));
+ act(()=>{result.current[1](previous=>previous+1);result.current[1](previous=>previous+1);});
+ expect(result.current[0]).toBe(2);
+});
+
+test('explicit closure is distinct from suspension and respects the document dirty guard',()=>{
+ const owner=createTestDocument('a'),closed=vi.fn();
+ const {result,unmount}=renderHook(useScreenHost,{wrapper:({children})=><ScreenHostProvider value={{document:owner.document}}>{children}</ScreenHostProvider>});
+ result.current.document.subscribeClose?.(closed);result.current.document.reportDirty(true);
+ unmount();expect(closed).not.toHaveBeenCalled();expect(owner.close()).toBe(false);
+ expect(owner.close(true)).toBe(true);expect(closed).toHaveBeenCalledOnce();
 });
 
 test('empty and partial providers retain safe document defaults', () => {

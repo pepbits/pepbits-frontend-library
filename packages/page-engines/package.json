@@ -1,0 +1,42 @@
+{
+  "name": "@pepbits/page-engines",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./record-page": "./src/record-page/index.tsx",
+    "./record-layout": "./src/record-layout/index.tsx",
+    "./types": "./src/types/index.ts",
+    "./worklist": "./src/worklist/index.ts",
+    "./records": "./src/records/index.ts",
+    "./forms": "./src/forms/index.ts",
+    "./templates": "./src/templates/index.ts",
+    "./template-state": "./src/templates/template-state.ts",
+    "./renderer": "./src/renderer/index.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@pepbits/tsconfig": "0.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
+  },
+  "dependencies": {
+    "@pepbits/i18n": "0.0.0",
+    "@pepbits/preferences": "0.0.0",
+    "@pepbits/ui": "0.0.0",
+    "@pepbits/components": "0.0.0",
+    "@pepbits/data": "0.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+    "@pepbits/platform": "0.0.0",
+    "@pepbits/patterns": "0.0.0",
+    "@pepbits/icons": "0.0.0"
+  }
+}

@@ -77,4 +77,19 @@ describe("Pagination", () => {
     await userEvent.selectOptions(screen.getByRole("combobox", { name: "Rows per page" }), "50");
     expect(onPageSizeChange).toHaveBeenCalledWith(50);
   });
+
+  /* A tenant policy can narrow page size (PREF-02). Sizes outside it are not
+     offered, and a change event carrying one anyway is ignored. */
+  test("offers only the page sizes a policy allows", () => {
+    const onPageSizeChange = vi.fn();
+    render(<Pagination page={1} pageSize={20} total={137} allowedPageSizes={[20, 50]} onPageChange={noop} onPageSizeChange={onPageSizeChange} />);
+    const select = screen.getByRole("combobox", { name: "Rows per page" }) as HTMLSelectElement;
+    expect([...select.options].map((option) => option.value)).toEqual(["20", "50"]);
+    const outside = document.createElement("option");
+    outside.value = "100";
+    select.append(outside);
+    select.value = "100";
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+    expect(onPageSizeChange).not.toHaveBeenCalled();
+  });
 });

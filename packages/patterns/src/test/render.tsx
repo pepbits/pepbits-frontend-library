@@ -5,18 +5,21 @@ import {LocalizationProvider} from '@pepbits/i18n/react';
 import {PreferenceHost, usePreferences, type PreferenceHostProps} from '@pepbits/preferences/react';
 import { PresentationProvider } from '@pepbits/components';
 import {ScreenHostProvider, useFormatters, type ScreenHostValue} from '../screen-host';
+import {NavigationProvider, type NavigationPort} from '@pepbits/platform/navigation';
 import {messages} from './messages';
 
-export function TestHost({children, screenHost, ...preferences}: Partial<PreferenceHostProps> & {screenHost?: ScreenHostValue; children?: ReactNode}) {
+const navigation: NavigationPort = {current:{pageId:"test"},open:()=>{},openInNewContext:()=>{},hrefFor:()=>"#"};
+
+export function TestHost({children, screenHost, messages:extraMessages, ...preferences}: Partial<PreferenceHostProps> & {screenHost?: ScreenHostValue; messages?: Record<string,string>; children?: ReactNode}) {
   return <PreferenceHost preferences={{}} update={() => {}} {...preferences}>
-    <LocalizedHost screenHost={screenHost}>{children}</LocalizedHost>
+    <LocalizedHost screenHost={screenHost} extraMessages={extraMessages}>{children}</LocalizedHost>
   </PreferenceHost>;
 }
-function LocalizedHost({children, screenHost}: {children?: ReactNode; screenHost?: ScreenHostValue}) {
+function LocalizedHost({children, screenHost, extraMessages}: {children?: ReactNode; screenHost?: ScreenHostValue;extraMessages?:Record<string,string>}) {
   const {preferences} = usePreferences(), format = useFormatters();
   return <LocalizationProvider value={{language: preferences.language, direction: directionOf(preferences.language),
-    t: createTranslator({language: preferences.language, catalogs: {en: messages}}), dateTime: format.dateTime}}>
-    <PresentationProvider value={preferences}><ScreenHostProvider value={screenHost}>{children}</ScreenHostProvider></PresentationProvider>
+    t: createTranslator({language: preferences.language, catalogs: {en: {...messages,...extraMessages}}}), dateTime: format.dateTime}}>
+    <PresentationProvider value={preferences}><ScreenHostProvider value={screenHost}><NavigationProvider value={navigation}>{children}</NavigationProvider></ScreenHostProvider></PresentationProvider>
   </LocalizationProvider>;
 }
 export function render(ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) {

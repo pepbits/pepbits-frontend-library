@@ -20,3 +20,7 @@ Hosts translate accessible labels and apply effective size, color and reduced-mo
 ## Scope and verification
 
 No product/module icon maps, navigation metadata, general wildcard Lucide export, or new icon artwork. `npm test -w @pepbits/icons` renders each re-export and checks decorative/labelled accessibility behavior in jsdom; `npm run typecheck -w @pepbits/icons` checks public types. No browser or screen-reader acceptance is claimed.
+
+## Phase 4b engine icons
+
+The shared barrel additionally exports the 39 Lucide names used by the copied record/worklist/form engines. They use the existing Lucide dependency and decorative/accessibility conventions; page engines never import Lucide directly. See [phase 4b](../../docs/releases/unreleased/restructure-phase-4b-2026-10-23.md).

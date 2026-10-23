@@ -1,5 +1,5 @@
 'use client';
-import React, {createContext, useContext, useMemo, type ReactNode} from 'react';
+import React, {createContext, useContext, useMemo, useRef, useState, type ReactNode} from 'react';
 import {createFormatters} from '@pepbits/i18n';
 import {formatOptionsFrom} from '@pepbits/preferences';
 import {usePreferences} from '@pepbits/preferences/react';
@@ -13,6 +13,8 @@ export interface ScreenDocument {
   draftState: Readonly<Record<string, unknown>>;
   setDraftState(key: string, value: unknown): void;
   reportDirty(dirty: boolean): void;
+  /** Explicit document closure, distinct from suspension/unmount. Absent in standalone hosts. */
+  subscribeClose?: (listener: () => void) => () => void;
 }
 export interface ScreenHost {
   notify(message: string, options: {tone: 'success' | 'error' | 'info' | 'warning'}): void;
@@ -42,12 +44,31 @@ export function ScreenHostProvider({value, children}: {value?: ScreenHostValue; 
       draftState: value?.document?.draftState ?? defaults.document.draftState,
       setDraftState: value?.document?.setDraftState ?? defaults.document.setDraftState,
       reportDirty: value?.document?.reportDirty ?? defaults.document.reportDirty,
+      subscribeClose: value?.document?.subscribeClose,
     },
     renderInlineAction: value?.renderInlineAction, publishSources: value?.publishSources,
   }), [value]);
   return <Context.Provider value={host}>{children}</Context.Provider>;
 }
 export const useScreenHost = () => useContext(Context);
+
+/** Transient state follows the host document across suspension; standalone state lasts until unmount. */
+export function useScreenDraftState<T>(key: string, initial: T): [T, React.Dispatch<React.SetStateAction<T>>] {
+  const {document} = useScreenHost();
+  const identity = JSON.stringify([document.id,key]);
+  const [state, setLocal] = useState(() => ({identity,value:initial}));
+  const local = state.identity===identity?state.value:initial;
+  if(state.identity!==identity)setLocal({identity,value:initial});
+  const current = useRef(local);
+  const value = document.id && Object.hasOwn(document.draftState, key) ? document.draftState[key] as T : local;
+  current.current = value;
+  return [value, next => {
+    const updated = typeof next === 'function' ? (next as (previous: T) => T)(current.current) : next;
+    current.current = updated;
+    if (document.id) document.setDraftState(key, updated);
+    setLocal({identity,value:updated});
+  }];
+}
 
 /** Formatting follows the effective preference snapshot, with no second preference store. */
 export function useFormatters() {

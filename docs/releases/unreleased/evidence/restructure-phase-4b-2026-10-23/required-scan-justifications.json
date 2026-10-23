@@ -1,0 +1,169 @@
+{
+  "command": "grep -rniE \"@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-|reference-)|desktop-clients|lucide-react|localhost|AED|patient|clinic|school|invoice|nexora\" packages/page-engines/src",
+  "exitCode": 0,
+  "matchLines": 27,
+  "matches": [
+    {
+      "file": "packages/page-engines/src/worklist/worklist-page.tsx",
+      "line": 367,
+      "text": "   * something clinical, is exported — a ward list with the names removed is not",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/record-layout/index.tsx",
+      "line": 15,
+      "text": "  return <Card className={styles.card} data-clinical-section={id}>",
+      "reason": "Preserved generic record-section DOM attribute; CSS/markup compatibility, no domain model."
+    },
+    {
+      "file": "packages/page-engines/src/record-layout/index.tsx",
+      "line": 19,
+      "text": "      <span className=\"text-xs font-mono text-[var(--text-muted)]\">{t('template.clinical.sectionNumber', {number: String(index + 1).padStart(2, '0')})}</span>",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/record-layout/index.tsx",
+      "line": 20,
+      "text": "      {onRead && <Button size=\"sm\" variant=\"ghost\" onClick={onRead}>{t(reading ? 'template.clinical.reading' : 'template.clinical.read')}</Button>}",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/record-layout/index.tsx",
+      "line": 192,
+      "text": "            aria-label={t(\"template.clinical.sections\")}",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/record-layout/index.tsx",
+      "line": 204,
+      "text": "                {t(\"template.clinical.completion\")}{\" \"}",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/record-layout/index.tsx",
+      "line": 210,
+      "text": "                aria-label={t(\"template.clinical.completion\")}",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/record-layout/index.tsx",
+      "line": 213,
+      "text": "                {t(\"template.clinical.completeCount\", {",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/templates/registry-template.tsx",
+      "line": 21,
+      "text": " {definition.engine==='list'?<div className={styles.worklist}>{metrics}<TemplateList {...props}/><div className={styles.actions}><Badge tone={dirty?'warning':'success'}>{t(dirty?'template.unsaved':'template.ready')}</Badge><Button disabled={!dirty||busy} onClick={onDiscard}>{t('template.clinical.discard')}</Button><Button data-tour=\"template-actions\" variant=\"primary\" disabled={disabled} loading={busy} onClick={onSave}>{t('template.save')}</Button></div></div>:<RecordSectionLayout sections={sections} active={sections[index]!.id} onActive={onSection}",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/templates/registry-template.tsx",
+      "line": 25,
+      "text": " footer={<div className={styles.actions}><Badge tone={dirty?'warning':'success'}>{t(dirty?'template.unsaved':'template.ready')}</Badge><Button disabled={!dirty||busy} onClick={onDiscard}>{t('template.clinical.discard')}</Button><div className={styles.spacer}/>{preferences.formNavigation==='wizard'?<><Button disabled={index===0} onClick={()=>onSection(sections[index-1]!.id)}>{t('template.previous')}</Button>{index<sections.length-1?<Button onClick={()=>onSection(sections[index+1]!.id)}>{t('template.next')}</Button>:null}</>:null}<Button data-tour=\"template-actions\" variant=\"primary\" disabled={disabled} loading={busy} onClick={onSave}>{t('template.save')}</Button></div>}/>}</div>;",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/templates/page-template.tsx",
+      "line": 70,
+      "text": "  <ConfirmDialog open={discardOpen} title=\"template.clinical.discard\" message=\"template.replaceLocalHelp\" confirmLabel=\"template.clinical.discard\" onCancel={()=>setDiscardOpen(false)} onConfirm={()=>{setDocument(structuredClone(checkpoint.current));setDirty(false);setErrors({});setFailure(null);pending.current=null;setDiscardOpen(false);}}/>",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/types/export-policy.ts",
+      "line": 13,
+      "text": " *   Egress  identifiers masked, clinical content left legible, because a model",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/types/export-policy.ts",
+      "line": 46,
+      "text": "const DECLARED: DataClassification[] = [\"phi\", \"pii\", \"clinical\"];",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/types/filter-policy.ts",
+      "line": 31,
+      "text": "  /** Diagnosis, medication, procedure. Identifying or not, it is clinical. */",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/types/filter-policy.ts",
+      "line": 32,
+      "text": "  \"clinical\",",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/types/export-policy.test.ts",
+      "line": 15,
+      "text": "const column = (key: string, label = key): DataColumn => ({ key, label, classification:({id:\"operational\",status:\"operational\",subject:\"phi\",owner:\"pii\",detail:\"clinical\",token:\"credential\",apiKey:\"credential\"} as Record<string,import(\"./filter-policy\").DataClassification>)[key] });",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/types/export-policy.test.ts",
+      "line": 57,
+      "text": "   * PHI, PII and clinical content ARE written. Stripping them would make the",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/types/export-policy.test.ts",
+      "line": 73,
+      "text": "    expect(review.declared).toContainEqual({ key: \"detail\", label: \"Detail\", classification: \"clinical\" });",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/types/export-policy.test.ts",
+      "line": 122,
+      "text": "      { key: \"detail\", classification: \"clinical\" },",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/types/filter-policy.test.ts",
+      "line": 29,
+      "text": "    for (const classification of [\"phi\", \"pii\", \"credential\", \"clinical\"] as const) {",
+      "reason": "Preserved sensitive-data classification vocabulary or export/storage safety rationale and its tests; no product classifier, records or fixtures."
+    },
+    {
+      "file": "packages/page-engines/src/test/messages.ts",
+      "line": 6,
+      "text": "  \"template.clinical.completeCount\": \"{count} of {total} sections complete\",",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/test/messages.ts",
+      "line": 7,
+      "text": "  \"template.clinical.completion\": \"Completion\",",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/test/messages.ts",
+      "line": 8,
+      "text": "  \"template.clinical.read\": \"Read\",",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/test/messages.ts",
+      "line": 9,
+      "text": "  \"template.clinical.reading\": \"Reading\",",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/test/messages.ts",
+      "line": 10,
+      "text": "  \"template.clinical.sectionNumber\": \"SEC {number}\",",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/test/messages.ts",
+      "line": 11,
+      "text": "  \"template.clinical.sections\": \"Sections\",",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    },
+    {
+      "file": "packages/page-engines/src/test/messages.ts",
+      "line": 185,
+      "text": "  \"template.clinical.discard\": \"Discard\",",
+      "reason": "Unchanged canonical localization key for generic section/completion/read/discard UI; test messages are private, not a runtime catalog."
+    }
+  ]
+}

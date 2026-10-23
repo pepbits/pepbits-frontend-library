@@ -1,0 +1,43 @@
+import React from 'react';
+import {screen,fireEvent,waitFor} from '@testing-library/react';
+import {test,expect,vi} from 'vitest';
+import {render,TestHost} from '../test/render';
+import {WorklistPage} from './worklist-page';
+import type {WorklistConfig,PageDefinition} from '../types';
+import type {PreferencePolicy} from '@pepbits/preferences';
+const page:PageDefinition={id:'items',title:'Items',subtitle:'',kind:'worklist',module:'records'};
+const config:WorklistConfig={id:page.id,title:page.title,description:'',entity:'item',primaryKey:'id',displayKey:'name',rows:[],
+  columns:[{key:'id',label:'ID',classification:'operational'},{key:'name',label:'Name',classification:'pii'}],
+  basicFilters:[{key:'status',label:'Status',type:'select',options:['active'],classification:'operational'},{key:'private',label:'Private filter',type:'text'}],advancedFilters:[]};
+function setup(){
+ const request=vi.fn(async(path:string,_init?:RequestInit)=>new Response(JSON.stringify(path==='/personal-views'?{views:[]}:{rows:[{id:'A',name:'Record A'}],total:1,page:1})));
+ return {request,adapter:{request,identity:'tenant:app:user',applicationId:'app'}};
+}
+test('worklist applies live table, page-size and result-view locks to controls and search requests',async()=>{
+ const {request,adapter}=setup(),update=vi.fn();
+ const tree=(policy:PreferencePolicy)=><TestHost preferences={{resultView:'cards',pageSize:50}} preferencePolicy={policy} update={update}>
+   <WorklistPage page={page} config={config} adapter={adapter}/></TestHost>;
+ const {container,rerender}=render(tree({revision:1,rules:{resultView:{locked:true,value:'table'},pageSize:{locked:true,value:10},density:{locked:true,value:'spacious'},zebraStripes:{locked:true,value:false},stickyTableHeader:{locked:true,value:false},wrapCellText:{locked:true,value:true}}}));
+ await screen.findByText('Record A');
+ expect(container.querySelector('table')).toHaveAttribute('data-density','spacious');
+ expect(container.querySelector('table')).toHaveAttribute('data-striped','false');
+ expect(container.querySelector('table')).toHaveAttribute('data-sticky','false');
+ expect(container.querySelector('table')).toHaveAttribute('data-wrap','true');
+ expect(screen.getByRole('combobox',{name:'Rows per page'})).toBeDisabled();
+ fireEvent.click(screen.getByRole('radio',{name:'Card grid view'}));expect(update).not.toHaveBeenCalled();
+ expect(JSON.parse(request.mock.calls.find(([path])=>path==='/worklists/search')![1]!.body as string).pageSize).toBe(10);
+ rerender(tree({revision:2,rules:{resultView:{locked:true,value:'cards'},pageSize:{locked:true,value:20}}}));
+ await waitFor(()=>expect(container.querySelector('table')).toBeNull());
+ await waitFor(()=>expect(JSON.parse(request.mock.calls.filter(([path])=>path==='/worklists/search').at(-1)![1]!.body as string).pageSize).toBe(20));
+});
+test('filter memory retains only declared operational values and unavailable choices are disabled',async()=>{
+ localStorage.clear();const {adapter}=setup();
+ render(<TestHost preferences={{rememberFilters:true}} preferencePolicy={{revision:1,rules:{resultView:{value:'table',locked:false,allowedValues:['table']},pageSize:{value:20,locked:false,allowedValues:[20,100]}}}}>
+   <WorklistPage page={page} config={config} adapter={adapter}/></TestHost>);
+ await screen.findByText('Record A');
+ expect(screen.getByRole('radio',{name:'Card grid view'})).toBeDisabled();
+ expect(screen.queryByRole('option',{name:'10 / page'})).not.toBeInTheDocument();
+ fireEvent.change(screen.getByLabelText('Private filter'),{target:{value:'PRIVATE-FILTER'}});
+ fireEvent.change(screen.getByLabelText('Status'),{target:{value:'active'}});
+ const stored=localStorage.getItem('pepbits-filters:items');expect(stored).not.toContain('PRIVATE-FILTER');expect(JSON.parse(stored!)).toEqual({search:'',filters:{status:'active'}});
+});

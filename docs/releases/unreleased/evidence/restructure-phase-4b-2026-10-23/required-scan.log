@@ -1,0 +1,27 @@
+packages/page-engines/src/worklist/worklist-page.tsx:367:   * something clinical, is exported — a ward list with the names removed is not
+packages/page-engines/src/record-layout/index.tsx:15:  return <Card className={styles.card} data-clinical-section={id}>
+packages/page-engines/src/record-layout/index.tsx:19:      <span className="text-xs font-mono text-[var(--text-muted)]">{t('template.clinical.sectionNumber', {number: String(index + 1).padStart(2, '0')})}</span>
+packages/page-engines/src/record-layout/index.tsx:20:      {onRead && <Button size="sm" variant="ghost" onClick={onRead}>{t(reading ? 'template.clinical.reading' : 'template.clinical.read')}</Button>}
+packages/page-engines/src/record-layout/index.tsx:192:            aria-label={t("template.clinical.sections")}
+packages/page-engines/src/record-layout/index.tsx:204:                {t("template.clinical.completion")}{" "}
+packages/page-engines/src/record-layout/index.tsx:210:                aria-label={t("template.clinical.completion")}
+packages/page-engines/src/record-layout/index.tsx:213:                {t("template.clinical.completeCount", {
+packages/page-engines/src/templates/registry-template.tsx:21: {definition.engine==='list'?<div className={styles.worklist}>{metrics}<TemplateList {...props}/><div className={styles.actions}><Badge tone={dirty?'warning':'success'}>{t(dirty?'template.unsaved':'template.ready')}</Badge><Button disabled={!dirty||busy} onClick={onDiscard}>{t('template.clinical.discard')}</Button><Button data-tour="template-actions" variant="primary" disabled={disabled} loading={busy} onClick={onSave}>{t('template.save')}</Button></div></div>:<RecordSectionLayout sections={sections} active={sections[index]!.id} onActive={onSection}
+packages/page-engines/src/templates/registry-template.tsx:25: footer={<div className={styles.actions}><Badge tone={dirty?'warning':'success'}>{t(dirty?'template.unsaved':'template.ready')}</Badge><Button disabled={!dirty||busy} onClick={onDiscard}>{t('template.clinical.discard')}</Button><div className={styles.spacer}/>{preferences.formNavigation==='wizard'?<><Button disabled={index===0} onClick={()=>onSection(sections[index-1]!.id)}>{t('template.previous')}</Button>{index<sections.length-1?<Button onClick={()=>onSection(sections[index+1]!.id)}>{t('template.next')}</Button>:null}</>:null}<Button data-tour="template-actions" variant="primary" disabled={disabled} loading={busy} onClick={onSave}>{t('template.save')}</Button></div>}/>}</div>;
+packages/page-engines/src/templates/page-template.tsx:70:  <ConfirmDialog open={discardOpen} title="template.clinical.discard" message="template.replaceLocalHelp" confirmLabel="template.clinical.discard" onCancel={()=>setDiscardOpen(false)} onConfirm={()=>{setDocument(structuredClone(checkpoint.current));setDirty(false);setErrors({});setFailure(null);pending.current=null;setDiscardOpen(false);}}/>
+packages/page-engines/src/types/export-policy.ts:13: *   Egress  identifiers masked, clinical content left legible, because a model
+packages/page-engines/src/types/export-policy.ts:46:const DECLARED: DataClassification[] = ["phi", "pii", "clinical"];
+packages/page-engines/src/types/filter-policy.ts:31:  /** Diagnosis, medication, procedure. Identifying or not, it is clinical. */
+packages/page-engines/src/types/filter-policy.ts:32:  "clinical",
+packages/page-engines/src/types/export-policy.test.ts:15:const column = (key: string, label = key): DataColumn => ({ key, label, classification:({id:"operational",status:"operational",subject:"phi",owner:"pii",detail:"clinical",token:"credential",apiKey:"credential"} as Record<string,import("./filter-policy").DataClassification>)[key] });
+packages/page-engines/src/types/export-policy.test.ts:57:   * PHI, PII and clinical content ARE written. Stripping them would make the
+packages/page-engines/src/types/export-policy.test.ts:73:    expect(review.declared).toContainEqual({ key: "detail", label: "Detail", classification: "clinical" });
+packages/page-engines/src/types/export-policy.test.ts:122:      { key: "detail", classification: "clinical" },
+packages/page-engines/src/types/filter-policy.test.ts:29:    for (const classification of ["phi", "pii", "credential", "clinical"] as const) {
+packages/page-engines/src/test/messages.ts:6:  "template.clinical.completeCount": "{count} of {total} sections complete",
+packages/page-engines/src/test/messages.ts:7:  "template.clinical.completion": "Completion",
+packages/page-engines/src/test/messages.ts:8:  "template.clinical.read": "Read",
+packages/page-engines/src/test/messages.ts:9:  "template.clinical.reading": "Reading",
+packages/page-engines/src/test/messages.ts:10:  "template.clinical.sectionNumber": "SEC {number}",
+packages/page-engines/src/test/messages.ts:11:  "template.clinical.sections": "Sections",
+packages/page-engines/src/test/messages.ts:185:  "template.clinical.discard": "Discard",
