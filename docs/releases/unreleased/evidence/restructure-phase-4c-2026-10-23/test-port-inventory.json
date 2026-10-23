@@ -1,0 +1,123 @@
+{
+  "entries": [
+    {
+      "source": "desktop-clients/packages/erp-screens/src/spreadsheet/model.test.ts",
+      "destination": "packages/patterns/src/spreadsheet/model.test.ts",
+      "status": "ported",
+      "sourceCases": 4,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 4
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/catalog-manager.test.tsx",
+      "destination": "packages/patterns/src/form-designer/catalog-manager.test.tsx",
+      "status": "ported",
+      "sourceCases": 4,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 4
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/dependencies.test.tsx",
+      "destination": "packages/patterns/src/form-designer/dependencies.test.tsx",
+      "status": "ported",
+      "sourceCases": 3,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 3
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/host-runtime.test.tsx",
+      "destination": "packages/patterns/src/form-designer/host-runtime.test.tsx",
+      "status": "ported",
+      "sourceCases": 3,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 3
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/runtime-fields.test.tsx",
+      "destination": "packages/patterns/src/dcp-fields/runtime-fields.test.tsx",
+      "status": "already-ported",
+      "sourceCases": 5,
+      "reason": "Phase 4a suite reused, not duplicated.",
+      "destinationCases": 5
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/sections.test.tsx",
+      "destination": "packages/patterns/src/form-designer/sections.test.tsx",
+      "status": "ported",
+      "sourceCases": 4,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 5
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/dcp-designer/workspace.test.tsx",
+      "destination": "packages/patterns/src/form-designer/workspace.test.tsx",
+      "status": "ported",
+      "sourceCases": 3,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 3
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/label-printing/workspace.test.tsx",
+      "destination": "packages/patterns/src/label-printing/workspace.test.tsx",
+      "status": "ported",
+      "sourceCases": 2,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 2
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/identity-devices/workspace.test.tsx",
+      "destination": "packages/patterns/src/identity-devices/workspace.test.tsx",
+      "status": "ported",
+      "sourceCases": 3,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 3
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/device-integrations/workspace.test.tsx",
+      "destination": "packages/patterns/src/device-integrations/workspace.test.tsx",
+      "status": "ported",
+      "sourceCases": 2,
+      "reason": "All assertions retained; public imports, shared TestHost, strict types and synthetic fixtures adapted. Async state/spies wait for completion.",
+      "destinationCases": 2
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-designer-metadata.test.ts",
+      "destination": "packages/data/src/contracts/dcp-designer-metadata.test.ts",
+      "status": "ported",
+      "sourceCases": 2,
+      "reason": "All assertions retained; generic contracts copied to data.",
+      "destinationCases": 2
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-repeating.test.ts",
+      "destination": "packages/data/src/contracts/dcp-repeating.test.ts",
+      "status": "ported",
+      "sourceCases": 4,
+      "reason": "All assertions retained; generic contracts copied to data.",
+      "destinationCases": 4
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/dcp-host.test.ts",
+      "destination": "packages/data/src/dcp-host.test.ts",
+      "status": "ported",
+      "sourceCases": 2,
+      "reason": "All assertions retained; public/local data contracts and synthetic fixture copies.",
+      "destinationCases": 2
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/dcp-runtime.test.ts",
+      "destination": "packages/data/src/dcp-runtime.test.ts",
+      "status": "ported",
+      "sourceCases": 4,
+      "reason": "All assertions retained; public/local data contracts and synthetic fixture copies.",
+      "destinationCases": 4
+    }
+  ],
+  "notPorted": [],
+  "notes": [
+    "Every generic suite in the requested folders is ported or already present.",
+    "Four library-page.tsx launchers have no suites and remain excluded.",
+    "No separate dcp-rules/catalog/lifecycle or label/identity/integration data suites exist in the source; new adapter/port tests add coverage.",
+    "DCP runtime demo adapter and product page maps/subject seeds stay out; no source test asserts those omitted factories/maps."
+  ]
+}

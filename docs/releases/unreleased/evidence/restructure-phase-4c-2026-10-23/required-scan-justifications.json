@@ -1,0 +1,68 @@
+[
+  {
+    "path": "packages/patterns/src/identity-devices/components.tsx",
+    "line": 34,
+    "text": "                  label: \"identity.patient\",",
+    "reason": "Preserved canonical localization key; generic subject contracts and host wording replace domain data. Private test messages use subject wording."
+  },
+  {
+    "path": "packages/patterns/src/identity-devices/components.tsx",
+    "line": 96,
+    "text": "                <TableHead>{t(\"identity.patient\")}</TableHead>",
+    "reason": "Preserved canonical localization key; generic subject contracts and host wording replace domain data. Private test messages use subject wording."
+  },
+  {
+    "path": "packages/patterns/src/identity-devices/workspace.tsx",
+    "line": 162,
+    "text": "      <h2 className=\"text-xl font-semibold\">{t(props.mode === \"biometric\" ? \"identity.patient-biometric-verification\" : props.mode === \"passport\" ? \"identity.passport-scanner\" : \"identity.identity-card-readers\")}</h2>",
+    "reason": "Preserved canonical localization key; generic subject contracts and host wording replace domain data. Private test messages use subject wording."
+  },
+  {
+    "path": "packages/patterns/src/identity-devices/workspace.tsx",
+    "line": 209,
+    "text": "                  label=\"identity.patient\"",
+    "reason": "Preserved canonical localization key; generic subject contracts and host wording replace domain data. Private test messages use subject wording."
+  },
+  {
+    "path": "packages/patterns/src/spreadsheet/export-policy.ts",
+    "line": 1,
+    "text": "export type DataClassification = 'operational'|'pii'|'phi'|'clinical'|'credential'|'unclassified';",
+    "reason": "Preserved generic sensitive-data classification vocabulary or export-safety explanation; no product import or row data."
+  },
+  {
+    "path": "packages/patterns/src/spreadsheet/export-policy.ts",
+    "line": 12,
+    "text": " *   Egress  identifiers masked, clinical content left legible, because a model",
+    "reason": "Preserved generic sensitive-data classification vocabulary or export-safety explanation; no product import or row data."
+  },
+  {
+    "path": "packages/patterns/src/spreadsheet/export-policy.ts",
+    "line": 45,
+    "text": "const DECLARED: DataClassification[] = [\"phi\", \"pii\", \"clinical\"];",
+    "reason": "Preserved generic sensitive-data classification vocabulary or export-safety explanation; no product import or row data."
+  },
+  {
+    "path": "packages/patterns/src/approvals/approval-workspace.tsx",
+    "line": 70,
+    "text": "  {settings&&data?<fieldset disabled={disabled} className=\"space-y-3 rounded-lg border border-[var(--border)] p-3\"><legend><LocalizedText message=\"ui.approval.stages.1faaedac\" /></legend><p><LocalizedText message=\"ui.changes.apply.to.new.submissions.and.resubmissions.pendi.2d7a336e\" /></p>{stages.map((item,index)=><div key={index} className=\"flex flex-wrap items-end gap-3\"><Input label={t(\"Stage {number} name\",{number:index+1})} maxLength={80} value={item.name} onChange={e=>setStages(stages.map((s,i)=>i===index?{...s,name:e.target.value}:s))}/>{roleOptions.map(role=><Checkbox key={role} label={`${index+1}: ${t(role)}`} checked={item.roles.includes(role)} onChange={e=>setStages(stages.map((s,i)=>i===index?{...s,roles:e.target.checked?[...s.roles,role]:s.roles.filter(r=>r!==role)}:s))}/>)}<Button disabled={stages.length===1} onClick={()=>setStages(stages.filter((_,i)=>i!==index))}><LocalizedText message=\"ui.remove.stage.1c2a084f\" />{\" \"}{index+1}</Button></div>)}<div className=\"flex gap-2\"><Button disabled={stages.length>=5} onClick={()=>setStages([...stages,{name:'New review',roles:roleOptions.length?[roleOptions[0]!]:[]}])}><LocalizedText message=\"ui.add.stage.76fa771d\" /></Button><Button disabled={stages.some(s=>!s.name.trim()||!s.roles.length)} onClick={()=>setConfirmation({action:'configure',version:data.config.version,stages})}><LocalizedText message=\"ui.save.approval.stages.492223a7\" /></Button></div></fieldset>:null}",
+    "reason": "Case-insensitive AED matches the hash in an existing approval localization key; not a currency value."
+  },
+  {
+    "path": "packages/patterns/src/test/messages.ts",
+    "line": 666,
+    "text": "  \"ui.approval.stages.1faaedac\": \"Approval stages\",",
+    "reason": "Case-insensitive AED matches the hash in an existing approval localization key; not a currency value."
+  },
+  {
+    "path": "packages/patterns/src/test/messages.ts",
+    "line": 812,
+    "text": "  \"identity.patient-biometric-verification\": \"Subject biometric verification\",",
+    "reason": "Preserved canonical localization key; generic subject contracts and host wording replace domain data. Private test messages use subject wording."
+  },
+  {
+    "path": "packages/patterns/src/test/messages.ts",
+    "line": 837,
+    "text": "  \"identity.patient\": \"Selected subject\",",
+    "reason": "Preserved canonical localization key; generic subject contracts and host wording replace domain data. Private test messages use subject wording."
+  }
+]

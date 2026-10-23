@@ -1,0 +1,26 @@
+import {execFileSync,spawnSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const dir='docs/releases/unreleased/evidence/restructure-phase-4c-2026-10-23';
+const manifest=JSON.parse(readFileSync('docs/releases/unreleased/manifest-restructure-phase-4c-2026-10-23.json','utf8'));
+for(const f of manifest.files)assert.equal(createHash('sha256').update(readFileSync(f.path)).digest('hex'),f.sha256,f.path);
+assert.equal(createHash('sha256').update(manifest.files.map(f=>`${f.path}\0${f.sha256}\n`).join('')).digest('hex'),manifest.implementationDigest);
+assert.equal(execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),manifest.baseCommit);
+const tested=JSON.parse(readFileSync(`${dir}/implementation-at-ci.json`,'utf8'));
+assert.equal(tested.baseCommit,manifest.baseCommit);
+assert.deepEqual(tested.files.map(f=>f.path),manifest.files.map(f=>f.path));
+const afterRun=manifest.files.flatMap((f,i)=>f.sha256===tested.files[i].sha256?[]:[{path:f.path,before:tested.files[i].sha256,after:f.sha256}]);
+for(const f of afterRun)assert.ok(f.path.endsWith('.md'),`Implementation changed after CI started: ${f.path}`);
+writeFileSync(`${dir}/post-ci-documentation.json`,JSON.stringify({testedDigest:tested.implementationDigest,finalDigest:manifest.implementationDigest,changes:afterRun},null,2)+'\n');
+for(const [old,area,file] of [['dcp-designer','form-designer','designer'],['label-printing','label-printing','printing']])for(const suffix of ['module.css','module.css.d.ts'])assert.deepEqual(readFileSync(`packages/patterns/src/${area}/${file}.${suffix}`),readFileSync(`desktop-clients/packages/erp-screens/src/${old}/${file}.${suffix}`));
+assert.deepEqual(readFileSync('packages/data/src/contracts/dcp-runtime.ts'),execFileSync('git',['show','HEAD:packages/patterns/src/dcp-fields/contract.ts']));
+assert.equal(JSON.parse(readFileSync('packages/patterns/package.json')).dependencies.xlsx,'https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz');
+for(const args of [['diff','--stat','--','desktop-clients','dummy-api','Jenkinsfile','deploy','run.sh','run_all.sh','.github'],['status','--short','desktop-clients'],['status','--short','--','desktop-clients','dummy-api','Jenkinsfile','deploy','run.sh','run_all.sh','.github'],['status','--short','--','demo-apps/healthcare'],['diff','--stat','--','demo-apps/healthcare'],['diff','--stat','--','docs/releases/unreleased/evidence/restructure-phase-6a-2026-10-23']]){const output=execFileSync('git',args);assert.equal(output.length,0);console.log(`git ${args.join(' ')}: 0 output bytes`);}
+execFileSync('git',['diff','--check']);
+const expression='@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-|reference-)|desktop-clients|lucide-react|@tauri-apps|localhost|AED|patient|clinic|school|invoice|nexora';
+const scan=spawnSync('grep',['-rniE',expression,'packages/patterns/src','packages/data/src'],{encoding:'utf8'});assert.ok([0,1].includes(scan.status));writeFileSync(`${dir}/required-scan.log`,scan.stdout);
+const matches=scan.stdout.trim().split('\n').filter(Boolean).map(line=>{const [,path,number,text]=line.match(/^([^:]+):(\d+):(.*)$/);let reason;if(text.includes('identity.patient'))reason='Preserved canonical localization key; generic subject contracts and host wording replace domain data. Private test messages use subject wording.';else if(text.includes('clinical'))reason='Preserved generic sensitive-data classification vocabulary or export-safety explanation; no product import or row data.';else if(text.includes('1faaedac'))reason='Case-insensitive AED matches the hash in an existing approval localization key; not a currency value.';else throw Error('Unjustified match: '+line);return {path,line:Number(number),text,reason};});
+writeFileSync(`${dir}/required-scan-justifications.json`,JSON.stringify(matches,null,2)+'\n');
+console.log(`${manifest.files.length} source hashes; 4 unchanged CSS/declaration files; unchanged v1 contract; exact XLSX; git diff --check passed; ${matches.length} individually justified scan lines.`);
+console.log(`${afterRun.length} documentation-only changes since CI started; implementation bytes unchanged.`);

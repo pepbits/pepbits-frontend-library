@@ -47,3 +47,64 @@ export function createDeviceConnector(
     },
   };
 }
+
+/** Provider-issued capture results are verified by the application backend.
+ * This interface intentionally carries no biometric images or templates. */
+export interface IdentityCaptureTicket {
+  challengeId: string;
+  subjectReference: string;
+  deviceId: string;
+  method: "card" | "eid" | "passport" | "fingerprint" | "face";
+  expiresAt: string;
+}
+export interface IdentityCaptureResult {
+  challengeId: string;
+  status: "captured" | "cancelled" | "unavailable";
+  assertionReference?: string;
+}
+export interface IdentityDeviceConnector {
+  capture(
+    ticket: IdentityCaptureTicket,
+    signal?: AbortSignal,
+  ): Promise<IdentityCaptureResult>;
+}
+
+/** Validates the transport envelope only; provider signatures belong to the backend. */
+export function createIdentityDeviceConnector(
+  call: (
+    ticket: IdentityCaptureTicket,
+    signal?: AbortSignal,
+  ) => Promise<IdentityCaptureResult>,
+): IdentityDeviceConnector {
+  return {
+    async capture(ticket, signal) {
+      if (
+        !ticket.challengeId ||
+        !ticket.subjectReference ||
+        !ticket.deviceId ||
+        !["card", "eid", "passport", "fingerprint", "face"].includes(
+          ticket.method,
+        ) ||
+        !Number.isFinite(Date.parse(ticket.expiresAt)) ||
+        Date.parse(ticket.expiresAt) <= Date.now()
+      )
+        throw new Error("Invalid or expired identity ticket");
+      const result = await call(ticket, signal);
+      if (
+        result.challengeId !== ticket.challengeId ||
+        !["captured", "cancelled", "unavailable"].includes(result.status) ||
+        (result.status === "captured" &&
+          (!result.assertionReference ||
+            result.assertionReference.length > 2048))
+      )
+        throw new Error("Invalid identity capture result");
+      return {
+        challengeId: result.challengeId,
+        status: result.status,
+        ...(result.status === "captured"
+          ? { assertionReference: result.assertionReference }
+          : {}),
+      };
+    },
+  };
+}

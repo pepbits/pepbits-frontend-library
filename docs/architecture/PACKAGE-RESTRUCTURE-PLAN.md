@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **phases 0–3, phase 4a priorities 1–2, phase 4b generic engines, phase 5 priorities 1–6 and phase 5b AI/preferences/login implemented; phase 6a showcase implemented inside the full shell, including Shell and AI simulation pages; phase 6b-1 healthcare demo (Suite core and clinical screens) and phase 6b-2 LIS1/LIS2/RIS1 diagnostics implemented. Phase 4c patterns are on main, pending merge into this worktree; remaining phase 6 demos onward remain future work.** Revised 23 October 2026 on phase-6b base `02e8ef6` (main through `ec73bc3`; phase 4c merge pending). See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status), [Phase 4b](#phase-4b-status), [Phase 5](#phase-5-status) and [Phase 5b](#phase-5b-status). Phases 1–5b follow the owner's copy-only decision; consumer migration and publishing remain future work.
+Status: **phases 0–3, phase 4a priorities 1–3, phase 4b generic engines, phase 5 priorities 1–6 and phase 5b AI/preferences/login implemented; phase 6a showcase implemented inside the full shell, including Shell and AI simulation pages; phase 6b-1 healthcare demo (Suite core and clinical screens) and phase 6b-2 LIS1/LIS2/RIS1 diagnostics implemented. Phase 4c completes priority 3 patterns; the remaining phase 6 demos onward remain future work.** Revised 23 October 2026 against `main` `ec73bc3`. See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status), [Phase 4b](#phase-4b-status), [Phase 5](#phase-5-status) and [Phase 5b](#phase-5b-status). Phases 1–5b follow the owner's copy-only decision; consumer migration and publishing remain future work.
 
 ## Summary
 
@@ -219,7 +219,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `ops-ui` source-controls/source-dialog | Not ported: imported reference-design parity controls and their gallery demos |
 | `erp-config` preferences, themes, shortcuts, formatting, i18n | `packages/preferences`, `packages/i18n` |
 | `erp-config` lifecycle contracts/guards/model/HTTP/source mapping and DCP v1 runtime | Copied to `patterns` in phase 4a; no authoring catalog or product registry |
-| `erp-config` designer/catalog/rules, product import/classification/label/device/inbox configuration | Priority 3 authoring deferred; product registries excluded. Generic form/export rules are included in 4b below. |
+| `erp-config` designer/catalog/rules, product import/classification/label/device/inbox configuration | Priority 3 generic authoring/device/label contracts completed in 4c; product registries excluded. Generic form/export rules are included in 4b below. |
 | `erp-config` generic page/template/schema/filter/form/export contracts and localization helper | Copied to `packages/page-engines` in 4b; classification metadata is host-defined. Product instances/catalogues omitted; navigation types are included in shell phase 5 priorities 1–3. |
 | `erp-config` product definitions (clinical, pharmacy, RCM, school…) | the matching `demo-apps/*` |
 | `erp-data` records/editor, shared drafts/center, CSV import, approvals, record panels; `erp-config` draft policy | Copied to `packages/data` in phase 3; host request callbacks, structured failures and additive volatile memory transport |
@@ -228,7 +228,10 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-screens` record/layout, worklist, records/forms, template engines, renderer | Copied to `packages/page-engines` in 4b with typed configuration/adapters and renderer registration; no product/showcase imports |
 | `erp-screens` approvals, drafts, imports/options/worker | Copied to `packages/patterns` priority 2 during 4b; lower-layer data ports and explicit host inputs |
 | `erp-screens` standalone reports, dashboard, inbox, billing | Product data/registries remain embedded; phase 6 matching demos, with reusable template equivalents already in page-engines |
-| `erp-screens` DCP designer, label printing, device and identity screens, spreadsheet | Deferred patterns work; no Library demo pages copied |
+| `erp-screens` spreadsheet, DCP designer, label printing, identity/devices | Phase 4c → patterns `spreadsheet`, `form-designer`, `label-printing`, `identity-devices`, `device-integrations`; no Library launchers or product data |
+| `erp-config` DCP designer/rules/catalog/lifecycle/runtime/repeating, generic label/identity/device contracts | Phase 4c → data contracts, re-exported by patterns; product page maps excluded |
+| `erp-data` DCP designer/host/runtime, label/identity/device adapters | Phase 4c → data with explicit endpoints and generic subject names; runtime demo wrapper excluded |
+| `platform-ports` identity capture | Phase 4c → platform devices with `subjectReference`; explicit device/identity workflow bridges |
 | `erp-screens` DCP fields, lifecycle, master transfer, pricing expression input | Copied to `packages/patterns` in phase 4a; mandatory phase 4a exports complete |
 | `erp-screens` record page and generic record layout | Copied to `packages/page-engines` in 4b (used by products; see [What products import today](#what-products-import-today)) |
 | `erp-screens` patient query (`ClinicalPatientWorkspace`) | Demo copy in `demo-apps/healthcare/src/modules/clinical-templates` in 6b-1; Healthcare product repository copy remains a separate step |
@@ -236,7 +239,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-screens` page library | Recreated as fictional typed engine examples in `demo-apps/showcase`; product launchers excluded |
 | `erp-screens/library` catalog, demos and reference pages | Showcase catalog, individual example files, Foundations and policy playground |
 | `erp-screens/templates/template-library.tsx` and example generators | Showcase template selector and source-identical snippet generator |
-| Thirteen `erp-screens/*/library-page.tsx` launchers | [Explicit per-source map](../../demo-apps/showcase/source-mapping.md); product launchers go to later demos, unported designer/device/label areas remain deferred |
+| Thirteen `erp-screens/*/library-page.tsx` launchers | [Explicit per-source map](../../demo-apps/showcase/source-mapping.md); product launchers go to later demos; phase 4c supplies new public designer/device/label examples |
 | `workspace-core` | Copied to `packages/shell` `./workspace` in phase 5 priorities 1–3; all seven core suites retained; part 2 adds the shell workspace UI and all eight UI suites. |
 | `erp-shell` | Context/ScreenHost, services, full header/sidebar/footer/frame, clock/palette, workspace tabs/split/MDI/window ports, command palette and documentation/non-AI help copied to `packages/shell`. Preferences/login are copied in phase 5b below. |
 | `erp-config` generic shell configuration | Navigation/module/page types, product helpers, shortcut mechanics, documentation/tour types copied to shell in phase 5; catalogs, brands, branches/roles/time zones, guides and tours stay host-owned and are consumed by the completed chrome/layers. |
@@ -278,7 +281,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | 1. Foundations | Copy `tokens`; extract independent `icons`, `i18n`, `preferences` mechanisms from existing sources. See [Phase 1 status](#phase-1-status). | No existing application changes; new host APIs |
 | 2. UI | Copy `ops-ui` into `ui` and `components`, with localization in `i18n/react`; no shim or consumer migration in this increment. See [Phase 2 status](#phase-2-status). | No existing application changes; host catalogs/formatters required for new imports |
 | 3. Services | Copy generic `erp-data` plus draft policy → `data`; `auth` and generic `platform-ports` → `platform`. See [Phase 3 status](#phase-3-status). No AI port. | No existing application changes; new host API configuration |
-| 4a. Patterns | Required lifecycle/master-transfer/DCP-field subset copied to `patterns`; other patterns deferred. See [Phase 4a status](#phase-4a-status). | No existing application changes; new provider boundary |
+| 4a. Patterns | Lifecycle/master-transfer/DCP fields plus priority 2 and phase 4c priority 3 copied to `patterns`. See [Phase 4a status](#phase-4a-status). | No existing application changes; new provider boundary |
 | 4b. Engines | Complete patterns priority 2; generic record/layout, worklist, forms/records, templates/configuration and registry renderer → `page-engines` | Independent host contracts; existing applications unchanged |
 | 5. Shell | `erp-shell` + `workspace-core` + generic shell configuration → `shell`. Priorities 1–6 delivered in two parts; preferences/login and AI delivered in phase 5b. See [Phase 5 status](#phase-5-status). | Independent host API and fail-closed UI action grants; original applications unchanged |
 | 5b. AI and optional shell pages | Copied AI config/client/UI → `ai`, shell preferences/login, gate tests and Arabic physical-sidebar regression. See [Phase 5b](#phase-5b-status). | Independent host APIs; existing applications unchanged |
@@ -362,7 +365,7 @@ Isolation: copy-only; protected workspace, backend, deployment and CI paths rema
 
 ### Phase 4a status
 
-Implemented the mandatory subset on 22 October 2026 alongside the original workspace, based on `3a34eb4`. One additional unpublished source package brings the library to nine packages. The owner explicitly allowed stopping after a smaller complete package: priorities 2 and 3 were deferred in that record. **Phase 4b now completes priority 2** (approvals, drafts, imports/options/worker); priority 3 remains deferred.
+Implemented the mandatory subset on 22 October 2026 alongside the original workspace, based on `3a34eb4`. One additional unpublished source package brings the library to nine packages. The owner explicitly allowed stopping after a smaller complete package: priorities 2 and 3 were deferred in that record. **Phase 4b completes priority 2** (approvals, drafts, imports/options/worker); **phase 4c completes priority 3** on 23 October 2026 from `ec73bc3`. See the [4c record](../releases/unreleased/restructure-phase-4c-2026-10-23.md) for current evidence; earlier counts below remain historical.
 
 | Added | Public surface |
 | --- | --- |
@@ -370,14 +373,16 @@ Implemented the mandatory subset on 22 October 2026 alongside the original works
 | `./master-transfer` | Master transfer panel/ports, pricing expression input, CSV/XLSX readers/exporters and limits |
 | `./dcp-fields` | Runtime and section field rendering, extension renderer type, DCP v1 wire types/guards/writable-patch helpers |
 | `./screen-host` and root barrel | ScreenHost provider/hook and typed context; memoized effective-preference formatters |
+| Phase 4c `./spreadsheet`, `./form-designer` | Costing workspace and complete generic authoring/catalog/rules/repeating/lifecycle/preview/host runtime, reusing DCP fields |
+| Phase 4c `./label-printing`, `./identity-devices`, `./device-integrations` | Stock/artwork/print, generic subject/reader and device queue/scan/automation workspaces; explicit data adapters and platform ports |
 
 ScreenHost is a small, controlled host boundary: localized notification callback, fail-closed UI capability check, opaque optional module/branch scope, document identity/focus/transient draft state and no-op write/dirty callbacks. Optional opaque inline-action/source-publication slots are absent by default; AI can implement them after phase 5. The shell implements document ownership in phase 5. Selected screens do not need monitor/documentation/tour/dashboard slots. No AI, shell or page-engine code is imported, and `LAYERS` is unchanged.
 
 Preferences come from the existing single `PreferenceHost`. Lifecycle removes its old preference props, uses effective table/list settings and forwards absent notification/dirty callbacks to ScreenHost; explicit callbacks retain precedence. Read-only DCP numbers/dates use effective formatters; editing and wire values are unchanged. All other APIs, markup, CSS, ARIA, keyboard, retry/conflict and operation identity semantics remain. The package guide enumerates every API difference and CSS-module/Tailwind/token/provider requirements.
 
-Scope update in phase 4b: approvals now accept adapter/actor/role choices; shared drafts use an explicit authenticated DraftHost; draft center receives host page metadata and workflow rendering; imports receive adapter and structural definition. Their six suites are ported. Generic form rules and export policy/tests now live in page-engines. Product import lookup and field-classification catalogues remain excluded. Spreadsheet, remaining designer authoring/catalog/rules/repeating logic, label printing and identity/device screens plus tests remain priority 3 follow-up; their product mappings/subjects stay with hosts. All Developer-Library pages remain showcase phase 6. The earlier [4a record](../releases/unreleased/restructure-phase-4a-2026-10-22.md) is preserved unchanged.
+Scope update in phase 4b: approvals now accept adapter/actor/role choices; shared drafts use an explicit authenticated DraftHost; draft center receives host page metadata and workflow rendering; imports receive adapter and structural definition. Their six suites are ported. Generic form rules and export policy/tests now live in page-engines. Product import lookup and field-classification catalogues remain excluded. Phase 4c copies spreadsheet, designer authoring/catalog/rules/repeating logic, labels and identity/device screens with all thirteen deferred generic pattern/config/adapter suites; the runtime-fields suite was already ported. Product mappings/subjects stay with hosts. Shared data contracts avoid upward imports; native work uses platform ports. Five showcase examples use session-memory adapters. All Developer-Library pages remain showcase phase 6. The earlier [4a record](../releases/unreleased/restructure-phase-4a-2026-10-22.md) is preserved unchanged.
 
-Dependency decision: master transfer requires the exact source XLSX tarball at version 0.20.3; no DnD dependency is needed. Known npm XLSX advisory history remains a documented dependency-review follow-up; no silent upgrade or unrelated package dependency is added. Test-only fixture namespaces are neutralized and generic catalog messages are supplied by the test host, never exported as a runtime fallback.
+Dependency decision: master transfer requires the exact source XLSX tarball at version 0.20.3; the original subset needed no DnD dependency, while phase 4c adds the original pinned designer dependencies. Known npm XLSX advisory history remains a documented dependency-review follow-up; no silent upgrade or unrelated package dependency is added. Test-only fixture namespaces are neutralized and generic catalog messages are supplied by the test host, never exported as a runtime fallback.
 
 Verification: eight original generic suites retain all **82 expanded cases**, with **8 additional host/preference cases**; all **90 patterns tests** pass. The complete root suite totals **619 tests in 60 files**, with **19 tooling tests**, **9 typechecks**, boundaries for **9 packages / 0 demo apps** and **0 executable build tasks**. Exact commands, per-file port/defer inventory, source digest and local evidence are in the [phase 4a delivery record](../releases/unreleased/restructure-phase-4a-2026-10-22.md). No browser/native/live-provider acceptance is claimed.
 
@@ -389,7 +394,7 @@ Implemented 22–23 October 2026 alongside the protected original workspace, bas
 
 | Area | Outcome |
 | --- | --- |
-| Patterns priority 2 | Approval workspace/record approval, draft center/shared drafts, CSV dialog/options/workbook worker and six source suites copied to patterns with explicit adapters and host metadata. Priority 3 still deferred. |
+| Patterns priority 2 | Approval workspace/record approval, draft center/shared drafts, CSV dialog/options/workbook worker and six source suites copied to patterns with explicit adapters and host metadata. Priority 3 subsequently completed by phase 4c. |
 | Record page/layout | Product-consumed RecordPage/identity/notice/actions and generic section layout copied with identical CSS. Effective preferences come from PreferenceHost. |
 | Core configuration | Generic page/column/filter/entity/template types, form rules, schema localization, filter partition/storage and export review/audit. No entity/schema/template/module/navigation instances. |
 | Worklist | Table/cards, filters, preview, personal/saved views, column scope, search and safe export; explicit WorklistAdapter/configuration; default-unclassified column/filter metadata. |
@@ -423,7 +428,7 @@ Host boundaries remain explicit: no default product/branch/zone/guide content, n
 
 Part 2 verification: **384 shell tests / 29 files**, including **141 original core cases**, **119 workspace UI cases**, **14 clock/palette cases**, **25 generic sidebar expansions** and **3 adapted product composition cases**. Root CI passes **1,292 tests / 115 files**, **19 tooling tests**, **11 typechecks**, boundaries for **11 packages / 0 demo apps**, and **0 executable build tasks**. Original preference transport/race/cache and three boot-hint cases stay with phase 6 hosts; six old chrome routing/default assertions are replaced by the explicit-catalog part 1 helper/host tests. Product role-header tests and all product content stay product-owned. Local jsdom is not browser/native/live-service acceptance.
 
-Isolation: copy-only; protected workspace/backend/deployment/CI paths unchanged, exact required source grep zero matches. No canonical catalog/generated example changes, consumer migration, publication, commit, push or deployment. Phase 4a priority 3 remains independent deferred patterns work.
+Isolation: copy-only; protected workspace/backend/deployment/CI paths unchanged, exact required source grep zero matches. No canonical catalog/generated example changes, consumer migration, publication, commit, push or deployment. Phase 4a priority 3 is subsequently completed by phase 4c.
 
 ### Phase 5b status
 
@@ -442,7 +447,7 @@ No LAYERS change: AI may depend on shell; shell never depends on AI. Config rema
 
 The backend admission/default-limit checks, credential storage/canary/log checks, server hardening checks and isolated backend launcher remain protected-source host acceptance, not library tests. New client response checks explicitly do not certify backend controls. N1 managed vault, N7 approved restricted-data providers and N9 production authorization remain host obligations.
 
-Phase 6 remains demonstration applications (showcase first), product/page/catalogue/branch content, mock API migration, boot preferences/routing, native window/bootstrap wiring and full browser/live-service acceptance. Phase 4a priority 3 patterns remain independent deferred work; registry publication/consumer migration/removal are phases 7–8. No original workspace/backend/deployment/CI source changes, shim, catalog regeneration, commit, push or deployment.
+Phase 6 remains demonstration applications (showcase first), product/page/catalogue/branch content, mock API migration, boot preferences/routing, native window/bootstrap wiring and full browser/live-service acceptance. Phase 4a priority 3 patterns are completed by phase 4c; registry publication/consumer migration/removal are phases 7–8. No original workspace/backend/deployment/CI source changes, shim, catalog regeneration, commit, push or deployment.
 
 ### Phase 6a status
 
@@ -454,7 +459,7 @@ The first independent Next.js app is `@pepbits-demo/showcase` (private). Eight d
 
 Small library additions: a controlled value mode on platform SessionProvider and data’s volatile shared-draft adapter. Any accessibility corrections discovered during composed testing are itemized in the phase 6a record and package guides. Protected applications/backend/deploy/CI files remain unchanged. Root CI now has a real showcase Next build task. Evidence is local, not deployment or native execution. No commit or push.
 
-Owner-decided remaining demo order, one independent app at a time: **healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop**. Phase 4a priority 3 authoring/device/label patterns remain independently deferred.
+Owner-decided remaining demo order, one independent app at a time: **healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop**. Phase 4c completes priority 3 authoring/device/label/spreadsheet patterns independently of the remaining demos.
 
 ## Gate for every port
 

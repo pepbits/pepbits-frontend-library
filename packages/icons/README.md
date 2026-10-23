@@ -38,3 +38,7 @@ The public barrel additionally exports the Lucide primitives needed by the healt
 ## Phase 6b-2 diagnostic primitives
 
 The public barrel adds 38 direct Lucide exports for laboratory/radiology workflows (including ScanBarcode, Images, Ruler and ZoomIn). These are primitive exports using the existing dependency; no diagnostic registry or product behavior is added. Healthcare component and browser checks exercise their consuming controls.
+
+## Phase 4c pattern icons
+
+`Type`, `AlignLeft`, `Hash`, `Calendar`, `Clock`, `CheckSquare`, `Mail` and `WandSparkles` are additionally re-exported for form authoring and spreadsheet controls. They keep the existing Lucide dependency and named-export behavior; patterns never imports Lucide directly. See the [phase 4c record](../../docs/releases/unreleased/restructure-phase-4c-2026-10-23.md).

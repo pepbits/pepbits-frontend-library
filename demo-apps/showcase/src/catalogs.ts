@@ -16,3 +16,12 @@ const additions = [
 for (const values of additions) { en.push(values[0]!); ar.push(values[1]!); hi.push(values[2]!); ml.push(values[3]!); }
 export const demoCatalog = Object.fromEntries(Object.entries({en,ar,hi,ml}).map(([language,values])=>[language,Object.fromEntries(en.map((key,index)=>[key,values[index]!]))])) as TranslationCatalog;
 export const catalogs: TranslationCatalog = Object.fromEntries(['en','ar','hi','ml'].map(language=>[language,{...CORE_CATALOG[language as keyof typeof CORE_CATALOG],...library[language as keyof typeof library],...demoCatalog[language as keyof typeof demoCatalog]}]));
+
+// Generic subject labels for this host; canonical source files remain unchanged.
+const subjectCopy={
+ en:['Selected subject','Demo results never authenticate a subject, grant access or update the subject record.'],
+ ar:['الشخص المحدد','النتائج التجريبية لا تثبت هوية الشخص ولا تمنح الوصول ولا تعدل سجله.'],
+ hi:['चुना गया व्यक्ति','डेमो परिणाम व्यक्ति को प्रमाणित नहीं करते, पहुँच नहीं देते और उसका रिकॉर्ड नहीं बदलते।'],
+ ml:['തിരഞ്ഞെടുത്ത വ്യക്തി','ഡെമോ ഫലങ്ങൾ വ്യക്തിയെ സ്ഥിരീകരിക്കുകയോ പ്രവേശനം നൽകുകയോ രേഖ മാറ്റുകയോ ചെയ്യുന്നില്ല.']
+};
+for(const language of ['en','ar','hi','ml'] as const) Object.assign(catalogs[language]!,{'identity.patient':subjectCopy[language][0],'identity.boundary':subjectCopy[language][1]});

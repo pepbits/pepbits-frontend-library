@@ -1,0 +1,89 @@
+/* Physical output follows the approved backend template, independently of UI theme. */
+.label {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 2mm;
+  background: white;
+  color: black;
+  font:
+    9pt Arial,
+    sans-serif;
+  line-height: 1.2;
+  text-align: center;
+  break-inside: avoid;
+  direction: ltr;
+}
+.label strong {
+  font-size: 10pt;
+}
+.codeBox {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1mm 0;
+}
+.code {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.sheet {
+  box-sizing: border-box;
+  display: grid;
+  align-content: start;
+  justify-content: start;
+  background: white;
+  color: black;
+  break-after: page;
+  flex-shrink: 0;
+}
+.sheet:last-child {
+  break-after: auto;
+}
+.preview {
+  overflow: auto;
+  max-height: 60vh;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  padding: 1rem;
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  gap: 1rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--text);
+}
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+@media print {
+  .sheet {
+    overflow: hidden;
+  }
+  .label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

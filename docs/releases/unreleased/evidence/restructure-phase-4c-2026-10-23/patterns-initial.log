@@ -1,0 +1,101 @@
+
+> @pepbits/patterns@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/patterns
+
+ ✓ src/lifecycle/sources.test.tsx (11 tests) 6529ms
+   ✓ Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged  1381ms
+   ✓ Lifecycle source mappings > creates a pinned mapping from a registered source and saves it through the governed draft  1266ms
+   ✓ Lifecycle source mappings > explains invalid and stale mappings, and re-pins only from the registry  672ms
+   ✓ Lifecycle source mappings > published mappings are read-only  601ms
+   ✓ Lifecycle source mappings > existing mappings stay visible read-only when the host has no source port  407ms
+   ✓ Lifecycle source mappings > server validation issues on a mapping navigate to it  597ms
+   ✓ Lifecycle source mappings > registry panel lists sources and shows metadata-only detail  390ms
+   ✓ Lifecycle source mappings > registry not enabled state is explicit and offers no invented sources  337ms
+   ✓ Lifecycle source mappings > registry forbidden state is explicit and offers no invented sources  312ms
+ ✓ src/lifecycle/lifecycle.test.tsx (18 tests) 8001ms
+   ✓ LifecycleConfigurationPage > console summary uses server validation and clears it after editing  1161ms
+   ✓ LifecycleConfigurationPage > persistent worklist protects edits before opening another version  308ms
+   ✓ LifecycleConfigurationPage > saves a draft with the expected revision and reuses the operation key on retry  720ms
+   ✓ LifecycleConfigurationPage > keeps edits and explains a stale-revision conflict  346ms
+   ✓ LifecycleConfigurationPage > unsaved changes are protected when leaving the definition  498ms
+   ✓ LifecycleConfigurationPage > approval is explained as independent when the actor edited the version  379ms
+   ✓ LifecycleConfigurationPage > activation requires a reason, confirmation, expected revision and a stable idempotency key  511ms
+   ✓ LifecycleConfigurationPage > validation shows server issues and navigates to the affected item  593ms
+   ✓ LifecycleConfigurationPage > resolution preview is read-only and shows outcomes with missing context  478ms
+   ✓ LifecycleConfigurationPage > visual editor renames a stage key and updates binding references  583ms
+   ✓ LifecycleConfigurationPage > lifecycle module and domain are editable codes that drive catalogue navigation  742ms
+   ✓ LifecycleConfigurationPage > approval sends its comment in the body without a change reason  477ms
+   ✓ LifecycleConfigurationPage > preview policy limits context to one verified organisation selector and no subject reference  616ms
+ ✓ src/identity-devices/workspace.test.tsx (3 tests) 610ms
+   ✓ biometrics disabled still allows separate manual review and never implies authentication  478ms
+ ✓ src/approvals/approval-workspace.test.tsx (7 tests) 1313ms
+   ✓ submission requires a comment and confirmation; unknown outcomes reuse the operation id  492ms
+   ✓ bulk selection excludes ineligible rows and preserves per-row errors  398ms
+ ✓ src/imports/csv-import-dialog.test.tsx (6 tests) 1134ms
+   ✓ restored validation requires explicit confirmation before writing  372ms
+ ✓ src/drafts/use-shared-draft.test.tsx (4 tests) 2184ms
+   ✓ failed draft write retains the exact payload and operation identity on retry  890ms
+   ✓ completion waits for in-flight autosave before discarding its acknowledged revision  849ms
+ ✓ src/dcp-fields/runtime-fields.test.tsx (5 tests) 673ms
+   ✓ host renderer receives only writable unmasked fields and cannot mutate a disabled control  392ms
+ ✓ src/drafts/draft-center.test.tsx (3 tests) 1993ms
+   ✓ metadata and policy appear, search/filter use the API and open rechecks access  1104ms
+   ✓ inaccessible rows hide details, disable open, and retain discard  355ms
+   ✓ discard retry retains its operation id and does not remove a row until confirmed  533ms
+ ✓ src/screen-host.test.tsx (8 tests) 201ms
+ ✓ src/form-designer/dependencies.test.tsx (3 tests) 1475ms
+   ✓ parent change clears all descendants and late API responses cannot restore old options  593ms
+   ✓ lookup failure retains the parent and retry reloads the options  444ms
+   ✓ inserting an API example remaps every dependency to fresh IDs  437ms
+ ✓ src/form-designer/catalog-manager.test.tsx (4 tests) 958ms
+   ✓ catalog save failure preserves edits and retries the identical revision command  364ms
+ ✓ src/device-integrations/workspace.test.tsx (2 tests) 714ms
+   ✓ effective tenant lock disables device preference and unsupported output is filtered  454ms
+ ✓ src/lifecycle/screen-host.test.tsx (2 tests) 879ms
+   ✓ live policy overrides explicit list sizes and updates managed presentation  412ms
+   ✓ lifecycle forwards dirty changes and localized notifications to the screen host  465ms
+ ✓ src/form-designer/sections.test.tsx (4 tests) 821ms
+   ✓ shared section tabs reveal the first error and honor conditional visibility and disabled checkbox states  408ms
+ ✓ src/form-designer/workspace.test.tsx (3 tests) 2456ms
+   ✓ visual edits reuse stable IDs; failed save retains edits and reuses operation on retry  1558ms
+   ✓ preview uses unsaved design, hides authoring, validates and resets test answers without saving  636ms
+ ✓ src/master-transfer/panel.test.tsx (4 tests) 947ms
+   ✓ labels shared controls directly without nested labels  338ms
+ ❯ src/form-designer/host-runtime.test.tsx (3 tests | 1 failed) 992ms
+   ✓ required false is displayed, edits retain values on 422, successful save uses normalized server values  545ms
+   ✓ repeating row edits and adds strip UI identity, read-only fields cannot be edited 282ms
+   × StrictMode remount cancels the initial load without leaving the runtime busy 161ms
+     → expected "spy" to be called 2 times, but got 1 times
+ ✓ src/master-transfer/inflation.test.ts (2 tests) 243ms
+ ✓ src/master-transfer/format.test.ts (8 tests) 97ms
+ ✓ src/dcp-fields/preferences.test.tsx (1 test) 248ms
+ ✓ src/lifecycle/config/lifecycle.test.ts (19 tests) 80ms
+ ✓ src/lifecycle/config/sources.test.ts (17 tests) 46ms
+ ✓ src/spreadsheet/model.test.ts (4 tests) 21ms
+ ✓ src/label-printing/workspace.test.tsx (2 tests) 656ms
+   ✓ incompatible personal default resolves to compatible paper without persisting a preference  476ms
+ ✓ src/imports/csv-options.test.ts (3 tests) 10ms
+ ✓ src/imports/workbook-options.test.ts (2 tests) 42ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/form-designer/host-runtime.test.tsx > StrictMode remount cancels the initial load without leaving the runtime busy
+AssertionError: expected "spy" to be called 2 times, but got 1 times
+ ❯ src/form-designer/host-runtime.test.tsx:20:320
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 25 passed (26)
+      Tests  1 failed | 147 passed (148)
+   Start at  05:43:24
+   Duration  58.00s (transform 4.04s, setup 9.81s, collect 16.40s, tests 33.32s, environment 28.20s, prepare 5.87s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/patterns@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/patterns 

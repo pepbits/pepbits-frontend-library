@@ -1,0 +1,15 @@
+'use client';
+import {usePreferences} from '@pepbits/preferences/react';
+import React,{useState} from 'react';
+import {Button,Select,Textarea} from '@pepbits/ui';
+import {useLocalization} from '@pepbits/i18n/react';
+import type {DesignerCommand,DesignerDefinition,DesignerRecord,DesignerEntity} from '@pepbits/data/dcp-designer';
+export function LifecyclePanel({record,entities,definition,change,send,disabled,dirty,busy}:{record:DesignerRecord|null;entities:DesignerEntity[];definition:DesignerDefinition;change:(d:DesignerDefinition)=>void;send:(c:DesignerCommand)=>void;disabled:boolean;dirty:boolean;busy:boolean}){
+ const {preferences,isLocked}=usePreferences(),layoutLocked=isLocked('formNavigation'),effectiveLayout=layoutLocked?(preferences.formNavigation==='rail'?'stacked':preferences.formNavigation==='wizard'?'steps':'tabs'):(definition.layout??'stacked');
+ const {t,dateTime}=useLocalization(),[comment,setComment]=useState(''),status=record?.status??'draft';const entity=entities.find(e=>e.entityType===definition.binding?.entityType);
+ return <div className="space-y-3"><p>{t('designer.lifecycleHelp')}</p><Select label={t('designer.bindEntity')} value={definition.binding?.entityType??''} disabled={disabled} placeholder={t('designer.none')} options={entities.map(e=>({value:e.entityType,label:t(e.label)}))} onChange={e=>{const match=entities.find(x=>x.entityType===e.target.value);change({...definition,binding:match?{entityType:match.entityType,trigger:match.triggers[0]!}:undefined});}}/>
+ {entity&&<Select label={t('designer.bindTrigger')} value={definition.binding?.trigger??''} disabled={disabled} options={entity.triggers.map(value=>({value,label:t('designer.trigger.'+value)}))} onChange={e=>change({...definition,binding:{entityType:entity.entityType,trigger:e.target.value}})}/>}
+ <Select label={t('designer.layout')} value={effectiveLayout} disabled={disabled||layoutLocked} options={['stacked','tabs','steps'].map(value=>({value,label:t('designer.layout.'+value)}))} onChange={e=>{if(!layoutLocked)change({...definition,layout:e.target.value as DesignerDefinition['layout']});}}/><Select label={t('designer.columns')} value={String(definition.columns??2)} disabled={disabled} options={[1,2,3].map(n=>({value:String(n),label:String(n)}))} onChange={e=>change({...definition,columns:Number(e.target.value) as 1|2|3})}/><p role="status">{t('designer.status.'+status)}</p><Textarea label={t('designer.reviewComment')} value={comment} disabled={busy} onChange={e=>setComment(e.target.value)}/>
+ <div className="flex flex-wrap gap-2">{({draft:['review'],review:['approve','reject'],approved:['publish'],published:['revise','retire'],retired:['revise']} as const)[status].map(action=><Button key={action} disabled={!record||busy||dirty||(['reject','retire'].includes(action)&&!comment.trim())} onClick={()=>send({action,id:record!.id,revision:record!.revision,comment,operationId:crypto.randomUUID()})}>{t('designer.action.'+action)}</Button>)}</div>
+ {(record?.history??[]).slice().reverse().map((h,i)=><p key={i}>{t('designer.action.'+h.action)} · {dateTime(h.at)} · {h.actor}{h.comment?' · '+h.comment:''}</p>)}</div>;
+}

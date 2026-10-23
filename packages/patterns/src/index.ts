@@ -5,3 +5,8 @@ export * from './screen-host';
 export * from "./approvals";
 export * from "./drafts";
 export * from "./imports";
+export * from "./spreadsheet";
+export * from "./form-designer";
+export * from "./label-printing";
+export * from "./identity-devices";
+export * from "./device-integrations";

@@ -1,0 +1,13 @@
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const recordId='restructure-phase-4c-2026-10-23';
+const baseCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const fixed=['package.json','package-lock.json','turbo.json','tsconfig.base.json','docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md','docs/releases/unreleased/README.md','docs/features/showcase.md'];
+const paths=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8'}).split('\0').filter(path=>path&&(path.startsWith('packages/')||path.startsWith('tooling/')||path.startsWith('demo-apps/showcase/')||fixed.includes(path))))].sort();
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const files=paths.map(path=>({path,sha256:sha(readFileSync(path))}));
+const implementationDigest=sha(files.map(file=>`${file.path}\0${file.sha256}\n`).join(''));
+const manifest={schemaVersion:1,recordId,status:'unreleased-working-tree',baseCommit,testGuideVersion:'1.0.0',implementationDigest,digestAlgorithm:'SHA-256 of sorted path + NUL + file SHA-256 + LF entries',identityScope:'All tracked/nonignored packages, tooling, showcase source/configuration/guides; root manifests/configuration, plan, feature guide and release index. Excludes healthcare, record, manifest and evidence to avoid self-reference. Protected sources identified by base commit and empty diff/status checks.',evidence:`${recordId}.md`,published:false,deployed:false,limits:['Local generic package/jsdom tests and showcase build; shell browser suite is a browser shell, not a native executable.','All ports, HTTP and records mocked or in-memory; no real hardware, provider, backend, deployment or native-speaker acceptance.','Original XLSX CDN 0.20.3 and DnD versions retained; install audit findings are recorded, no remediation claimed.','No protected-path or healthcare edits, commit, push, consumer migration or publication.'],files};
+writeFileSync(`docs/releases/unreleased/manifest-${recordId}.json`,JSON.stringify(manifest,null,2)+'\n');
+console.log(`${files.length} files; SHA-256 ${implementationDigest}`);

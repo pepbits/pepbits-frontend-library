@@ -1,6 +1,6 @@
 # @pepbits/patterns
 
-Generic lifecycle administration, master-file transfer and server-authorized DCP fields. Phase 4a delivers the product-consumed subset; phase 4b adds approvals, drafts and imports. Priority 3 patterns remain deferred. Version `0.0.0` is an unpublished ESM TypeScript source package, requiring React/React DOM 19 or later. Existing applications keep using their original workspace.
+Generic lifecycle administration, master-file transfer and server-authorized DCP fields. Phase 4a delivers the product-consumed subset; phase 4b adds approvals, drafts and imports. Phase 4c completes priority 3. Version `0.0.0` is an unpublished ESM TypeScript source package, requiring React/React DOM 19 or later. Existing applications keep using their original workspace.
 
 ## Public API by area
 
@@ -17,7 +17,7 @@ The root barrel re-exports the following areas. Prefer subpaths to avoid loading
 | `./imports` | `CsvImportDialog`, structural `ImportDefinition`/`ImportPage`/`ImportField`, `CsvOptionsEditor`, `mapCsvOptions`, `readOptionsWorkbook`, workbook sheet type and isolated worker. |
 | `./testing` | Shared `TestHost`, render wrapper and `createTestDocument` for tests only; not exported by the runtime root. |
 
-There are no placeholder exports for `./form-designer`, `./spreadsheet`, `./label-printing`, `./identity-devices` or `./device-integrations`. Those areas have not been ported.
+Phase 4c adds `./form-designer`, `./spreadsheet`, `./label-printing`, `./identity-devices` and `./device-integrations`; see the complete API and differences below.
 
 ## User and administrator flows
 
@@ -111,13 +111,13 @@ Page engines now call these slots; the patterns themselves do not. The AI layer 
 
 ## Intentionally not included
 
-Phase 4b completed priority 2. Approvals, drafts, CSV/workbook options and worker now live here; their six original test files are ported. Remaining exclusions:
+Phase 4b completed priority 2. Approvals, drafts, CSV/workbook options and worker now live here; their six original test files are ported. Historical deferrals, resolved below in phase 4c where generic:
 
 | Area/configuration | Reason |
 | --- | --- |
-| Spreadsheet and remaining form designer | Follow-up patterns work; designer types extend page-template field/section types and the screens own shell/document/AI integration. The independent DCP v1 runtime contract is the only designer configuration needed here. No upward dependency is added. |
-| Label printing, identity devices, device integrations | Follow-up extraction of generic ports/UI. Label configuration contains product page/category maps; identity contracts name a specific subject type; device screens rely on product adapters and host station/policy behavior. |
-| `dcp-designer*`, `dcp-rules`, `dcp-lifecycle`, repeating logic and `dcp-catalog` | Generic authoring/catalog logic is inspected but unused by DCP v1 fields; defer with the authoring UI and its page-template types. Repeating helpers currently live in `dcp-designer.ts`. |
+| Spreadsheet and remaining form designer | Completed in phase 4c with structural field contracts and explicit host inputs. |
+| Label printing, identity devices, device integrations | Generic UI/contracts/adapters completed in phase 4c; product page/category maps and subject data remain excluded. |
+| `dcp-designer*`, `dcp-rules`, `dcp-lifecycle`, repeating logic and `dcp-catalog` | Completed in phase 4c; shared contracts/helpers live in data. Repeating helpers remain in `dcp-designer.ts`. |
 | `form-rules` | Generic schema rules and their tests now live in page-engines; patterns imports use a minimal structural schema contract to avoid an upward dependency. |
 | Product import/classification/inbox registries | Host-owned. Export policy now lives in page-engines and reads explicit column metadata. No product catalogues or seeded notifications/currencies are copied. |
 | Developer-Library `library-page.tsx`, product screens, page engines | Showcase pages belong to phase 6; page engines belong to 4b; product definitions remain host-owned. |
@@ -126,7 +126,7 @@ The phase 4a package is extended in phase 4b. `LAYERS` is unchanged. No shell, A
 
 ## Dependency follow-up, testing and support
 
-Master transfer imports `xlsx` using the source package's exact specification: `https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`. npm-distributed XLSX versions have known advisories; retain a security/dependency review as follow-up without silently changing the pinned implementation. Root install currently reports three existing audit findings (one moderate, two critical). No DnD dependencies are needed by this subset. Phase 4b worklist exports use the same XLSX specification in page-engines. Hosts using workbook operations need the original browser APIs, including `DecompressionStream('deflate-raw')`; upload verifies actual expansion before synchronous decoding.
+Master transfer imports `xlsx` using the source package's exact specification: `https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`. npm-distributed XLSX versions have known advisories; retain a security/dependency review as follow-up without silently changing the pinned implementation. The phase 4c root install reports four audit findings (one moderate, three critical); this port does not remediate them. The earlier subset needed no DnD dependencies; phase 4c adds the original pinned designer dependencies. Phase 4b worklist exports use the same XLSX specification in page-engines. Hosts using workbook operations need the original browser APIs, including `DecompressionStream('deflate-raw')`; upload verifies actual expansion before synchronous decoding.
 
 Lifecycle retries preserve the original operation fingerprint and expected revision; conflicts remain explicit. Master transfer retains its pending idempotency key across an uncertain commit response. Hosts enforce permissions, draft retention, sensitive-field policy and production durability. A `ScreenHost` callback or UI lock is not evidence that a server implements those policies.
 
@@ -151,3 +151,42 @@ See the [phase 4b record](../../docs/releases/unreleased/restructure-phase-4b-20
 Composed gallery axe checks found nested landmarks and labels. Lifecycle's inner content container is now a `div` (same CSS class), leaving the host responsible for its single `main` landmark. MasterTransferPanel passes `label` directly to shared Select/Input controls for format, file and reason; it no longer nests an outer label around FieldShell's label. Tests verify a single host landmark and the three accessible control names without nested labels. No lifecycle, transfer or persistence protocol changes.
 
 Lifecycle worklist card names include their visible record details, with the localized open action as a screen-reader prefix. They no longer replace visible content with a shorter `aria-label`; exact-name consumers should use a prefix matcher.
+
+## Phase 4c: remaining priority 3 patterns
+
+Priority 3 is implemented. All areas below are also available from the root barrel. The [phase 4c record](../../docs/releases/unreleased/restructure-phase-4c-2026-10-23.md) retains source identity, per-file test mappings, exact verification and exclusions.
+
+| Subpath | Public API and flow |
+| --- | --- |
+| `./spreadsheet` | `SpreadsheetPage`, `SpreadsheetPageProps`, `SheetCell`, `SHEET_FIELDS`, `SHEET_COLUMNS`, `importSheet`, `reviewSheetExport`, `exportAudit`, `ExportAudit`. Edit eight-column costing sheets, import validated headers/rows, recalculate costs, then record a value-free audit before download. |
+| `./form-designer` | `DcpDesignerWorkspace`/`DcpDesignerProps`; `DesignerSections`, `DesignerPreview`, `DesignerPresentationField`, `RepeatingDesignerSection`, `TemplateFields`/`TemplateFieldState`, `useDesignerLookups`; designer panel/palette/sortable/field controls; catalog source/mapping/manager, rule/label/multi-parent properties, lifecycle panel, release comparison, runtime panel, `DcpHostRuntime`, `DcpRuntimeDraft`; complete designer/rule/catalog/lifecycle contracts and helpers, `DesignerAdapter`, `createDesignerAdapter`. |
+| `./label-printing` | `LabelPrintingWorkspace`/`LabelWorkspaceProps`, `CodePreview`, `LabelPreview`, `WristbandPreview`, `PrintSheet`, `LabelPrintDialog`; label contracts, `labelFitsProfile`, `LabelAdapter`, `createLabelAdapter`. Select compatible stock and records, generate server artwork, review/reprint with a reason, inspect job history and permitted policy controls. |
+| `./identity-devices` | `IdentityDeviceWorkspace`/`IdentityWorkspaceProps`, `IdentityResultPanel`, `IdentityHistory`; subject/device/policy/attempt/command contracts, `IdentityAdapter`, `createIdentityAdapter`. Choose a subject and reader, consent, start/resume/cancel, simulate or route to manual review. Results retain `authenticated: false`. |
+| `./device-integrations` | `DeviceIntegrationWorkspace`/`DeviceWorkspaceProps`, `DeviceJobList`, `DeviceDocument`; integration contracts, `IntegrationAdapter`, `createIntegrationAdapter`. Select workstation/destination/source, queue, dispatch, scan within a host context, inspect history and permitted automation/policy controls. |
+
+The existing provider example applies to every workspace. Adapters are explicit and receive authenticated host requests; the new HTTP factories live in data. For example:
+
+```tsx
+import {createDesignerAdapter} from '@pepbits/data/dcp-designer';
+import {DcpDesignerWorkspace} from '@pepbits/patterns/form-designer';
+// Mount inside the PreferenceHost, LocalizationProvider and ScreenHostProvider shown above.
+const adapter = createDesignerAdapter(authenticatedRequest, applicationId, '/host/designer');
+<DcpDesignerWorkspace adapter={adapter} scopeKey={JSON.stringify([tenantId, applicationId, userId])}/>;
+```
+
+Designer users add/reorder sections and fields using drag handles or the existing keyboard/up/down controls, edit rules and pinned catalog mappings, preview unsaved values, and save a draft. Review/approval/publication/retirement remain server-authorized operations; runtime answers bind a release to a host entity. Repeating rows retain identity, limits and independent values. Catalog and save retries retain the same operation/revision. Backend v1 runtime uses the existing `./dcp-fields` contract and renderer, per-row write authorization, filtered preview violations, explicit conflict reload and optional `DraftHost` recovery. The helper `TemplateFields` is the original structural field renderer needed by designer sections; no page engine or product template registry is imported.
+
+### Priority 3 API differences
+
+- Preference props (`preferences`, `preferencePolicy`, `preferencesAvailable`, `onPreferenceChange`) are removed from the four old workspace prop interfaces. Use `PreferenceHost`. Effective density, table settings, history size and formatters are applied. Managed form navigation overrides authored preview/runtime layout and disables/guards the corresponding authoring control; unlocked definitions retain their authored layout. Read-only designer number/date/time controls use effective formatters. Physical label dimensions remain server stock geometry, independent of screen density.
+- `DcpDesignerWorkspace` reports dirty state through ScreenHost, preserving its before-unload/discard controls. `DcpHostRuntime.onDirtyChange` still takes precedence; absent callbacks forward to ScreenHost. Scope keys remount state when identity changes. Authoring values otherwise remain mounted state; only `DcpRuntimeDraft` uses the existing explicit shared draft service.
+- Shared serializable designer/configuration and v1 runtime contracts live in `@pepbits/data`, with area re-exports here. `./dcp-fields` keeps exactly its original public exports. The three structural `TemplateField`, `TemplateSection`, `TemplateValue` types are independent of page engines. No original-workspace compatibility shim exists.
+- `IdentityPatient`, `patients`, `patientId` become `IdentitySubject`, `subjects`, `subjectId`. Hosts must map old product wire schemas. `pageId` becomes `mode: 'card' | 'passport' | 'biometric'`; `stationId` is required. Existing canonical `identity.patient` and biometric heading localization keys remain for host compatibility; hosts supply appropriate subject wording. No subject data or identity page registry is shipped.
+- Device integrations replace `pageId` with `mode: 'workbench' | 'automation'`, require `stationId`, and accept explicit `contexts: {value,label}[]`. The first context initializes lookup; there is no product context list or demo workstation fallback. Native execution is supplied through platform `withDeviceConnector` / `withIdentityConnector` and their validated device ports. Browser printing remains `window.print`; no native import is used.
+- Labels add optional `isWristband(job)` instead of checking a product template ID. Omit it for the standard label preview. Product `LABEL_PAGES`, `IDENTITY_PAGES`, `DEVICE_PAGES` maps are not exported. Generic `batch`/`profiles` display modes, payment-state polling and policy contracts remain.
+- `SpreadsheetPage` accepts `initialRows`, required `audit(entry)`, optional `pageId` and `filename`. Empty rows replace product seeds. ScreenHost controls `can('export', {pageId})`, notifications and transient document rows. There is no product request or export endpoint default. The audit must resolve before download; failures retain edited rows. Explicit operational schema classifications replace product lookup; unknown classifications still require review. Effective `exportFormat` selects CSV/XLSX and replaces the filename extension (default `pepbits-costing-workbook.xlsx`); sticky header and radius follow host presentation. Eight-column math, import limits, header validation, markup and ARIA remain.
+- Embedded informational integration panels retain their structure but refer to the new provider/adapter boundary; complete executable snippets belong to showcase. CSS modules and declarations are byte-identical. Strict indexed-access assertions are type-only; tests use neutral local fixtures and shared providers. Icons are routed through `@pepbits/icons`.
+
+Install adds the original DnD specifications (`@dnd-kit/core` 6.3.1, sortable 10.0.0, utilities 3.2.2). XLSX remains the exact 0.20.3 CDN tarball. Hosts must scan pattern source and load tokens/CSS modules as above. Canonical catalogs remain unchanged; showcase regenerates its read-only subset. Missing translations are a host integration responsibility.
+
+No Developer-Library launcher, product page/category/context/subject registry, product row seed or DCP demo endpoint wrapper is included. The showcase supplies five independent in-memory examples. Native output, real identity verification, live backends, durable storage, deployment and native-speaker review remain host acceptance, not results of these local package tests. Rollback removes this independent increment without changing protected applications or stored data.
