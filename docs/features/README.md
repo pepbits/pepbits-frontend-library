@@ -1,6 +1,6 @@
 # Feature catalog
 
-- [Independent healthcare demo](healthcare-demo.md): Healthcare Suite core and clinical workflows against the synthetic demo API; local validation and explicit remaining scope.
+- [Independent healthcare demo](healthcare-demo.md): Healthcare Suite core, clinical and LIS/RIS diagnostic workflows against the synthetic demo API; local validation and explicit remaining scope.
 
 - [Independent library AI, preferences and login](library-ai.md): host wiring, user/admin flows and explicit server enforcement boundary.
 - [Independent library showcase](showcase.md): standalone gallery and effective-policy examples with fictional data.

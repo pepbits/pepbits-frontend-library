@@ -1,0 +1,30 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/lis1/patients",
+      "failure": "Cannot read properties of undefined (reading 'map')"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

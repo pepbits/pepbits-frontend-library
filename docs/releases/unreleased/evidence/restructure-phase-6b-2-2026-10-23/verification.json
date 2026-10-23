@@ -1,0 +1,126 @@
+{
+  "sourceManifest": "../../manifest-restructure-phase-6b-2-2026-10-23.json",
+  "baseCommit": "02e8ef6f04dec2b8202ac511242b50ecc8c90ac3",
+  "mode": "Local Linux Next production build with unchanged synthetic HTTP API, jsdom and Chromium; not deployment, native execution or clinical acceptance",
+  "ci": "ci-counts.json",
+  "healthcare": {
+    "tests": 579,
+    "files": 22,
+    "routeMatrix": {
+      "menuRoutes": 92,
+      "diagnosticDetailPatterns": 16,
+      "profiles": [
+        "default",
+        "Arabic RTL",
+        "reduced motion",
+        "locked density"
+      ],
+      "cases": 432,
+      "pageContentViolations": 0,
+      "colorContrast": "disabled in jsdom only"
+    }
+  },
+  "browser": {
+    "commandExit": 0,
+    "routeCases": 122,
+    "menuDestinations": 92,
+    "diagnosticSidebarDestinations": 55,
+    "additionalDeepLinkCases": 30,
+    "flows": [
+      {
+        "id": "HCD-02",
+        "result": "patient search returned the fictional patient"
+      },
+      {
+        "id": "HCD-03",
+        "result": "patient record opened"
+      },
+      {
+        "id": "HCD-04",
+        "result": "consultation draft saved through HTTP and survived reload"
+      },
+      {
+        "id": "HCD-03-encounter",
+        "result": "Suite encounter created through the UI for a fictional patient"
+      },
+      {
+        "id": "HCD-07-lis1",
+        "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+      },
+      {
+        "id": "HCD-07-lis2",
+        "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+      },
+      {
+        "id": "HCD-07-ris1",
+        "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+      }
+    ],
+    "signIn": "passed",
+    "routeFailures": 0,
+    "pageErrors": 0,
+    "consoleErrors": 0,
+    "httpErrors": 0,
+    "pageContentViolations": 0,
+    "fullShellViolations": 0,
+    "incompletePerRouteRuleResults": 255,
+    "contrast": "enabled",
+    "profileButtonFollowUp": "resolved for this source",
+    "screenshotsReviewed": 6
+  },
+  "shellBrowser": {
+    "command": "npm run test:browser -w @pepbits/shell",
+    "exitCode": 0,
+    "files": 1,
+    "tests": 2,
+    "scope": "Chromium Arabic RTL physical rail placement, focus, keyboard expansion"
+  },
+  "api": {
+    "sourceFilesCompared": 483,
+    "sourceMismatches": 0,
+    "diagnosticRuntimeFilesHashed": 99,
+    "reusedEsmFilesHashed": 1,
+    "receipt": "identity-final.json"
+  },
+  "documentation": {
+    "command": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs",
+    "exitCode": 0,
+    "files": 184
+  },
+  "boundaries": {
+    "protectedDiffsAndStatusEmpty": true,
+    "reservedPackagesAndShowcaseUnchanged": true,
+    "forbiddenSourceMatches": 0,
+    "externalReferenceLines": 46,
+    "credentialMatches": 0,
+    "receipt": "boundary-scans.json"
+  },
+  "cleanup": [
+    {
+      "label": "Browser",
+      "pid": 58,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Next",
+      "pid": 39,
+      "exitCode": 143,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "API",
+      "pid": 30,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    }
+  ],
+  "manifest": {
+    "files": 905,
+    "sha256": "3f81017d505761434e1e1aad45fb8251ea96a105e6ed3cb6a2c2cfade8e5541b"
+  },
+  "afterCi": "Only the HTTP driver gained a wait for the existing post-registration redirect; final HTTP rerun covers it. Documentation/evidence then finalized; application source and build unchanged."
+}

@@ -6,24 +6,44 @@ const require=createRequire(import.meta.url),base=process.env.HEALTHCARE_BASE??'
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw new Error('Local synthetic demo checks only');
 const resultPath=process.env.HEALTHCARE_RESULT??'/tmp/phase6b-browser.json';
 const fixtureCapture=process.env.HEALTHCARE_CAPTURE;
+const routeFilter=process.env.HEALTHCARE_ROUTE_FILTER;
+
 const flows=[],createdRoutes=[];
 const fixtureSource=readFileSync(new URL('../../../dummy-api/server.mjs',import.meta.url),'utf8');
 const secret=fixtureSource.match(/username:\s*"admin",\s*password:\s*"([^\"]+)"/)[1];
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1000}}),checks=[],errors=[],consoleErrors=[],responses=[],captures=fixtureCapture&&existsSync(fixtureCapture)?JSON.parse(readFileSync(fixtureCapture,'utf8')):{},pending=[];
-let current='login';
+function scrub(value){if(Array.isArray(value))return value.map(scrub);if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,/password|secret|token|api.?key/i.test(key)&&item?'[redacted]':scrub(item)]));return value;}
+let current='login',selectedDiagnostic='';
+async function diagnosticMenu(route){
+ const variant=route.split('/')[1],side=page.locator('aside[data-tour=sidebar]');
+ if(selectedDiagnostic!==variant){
+  await page.locator('header [data-tour=module] button').click();
+  await page.getByRole('listbox').getByRole('option',{name:new RegExp('^'+variant.toUpperCase()+'(?:\\s|$)')}).click();
+  await page.locator('[data-reference-module="'+variant+'"]').waitFor();selectedDiagnostic=variant;
+ }
+ const toggle=side.locator('button[aria-expanded]').first();
+ await page.mouse.move(700,70);
+ if(await toggle.getAttribute('aria-expanded')==='false'){await toggle.focus();await toggle.press('Enter');}
+ const header=page.locator('header [data-tour=module] button');
+ if(!await header.evaluate(node=>{const r=node.getBoundingClientRect();return node.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));}))throw new Error('Diagnostic sidebar covers module selector');
+ await side.locator('a[href="'+route+'"]').click();await page.waitForURL(base+route);
+ await side.getByRole('button',{name:'Expand navigation',exact:true}).waitFor();
+}
+
 page.on('pageerror',error=>errors.push({route:current,message:error.message}));
 page.on('console',message=>{if(message.type()==='error')consoleErrors.push({route:current,message:message.text()});});
 page.on('response',response=>{
  const url=new URL(response.url());if(!url.pathname.startsWith('/api/')||url.pathname.startsWith('/api/auth/'))return;
  if(response.status()>=400)responses.push({route:current,path:url.pathname,status:response.status()});
+ if(process.env.HEALTHCARE_DICOM_FIXTURE&&url.pathname==='/api/reference-modules/ris1/api/dicom/instances/1'&&response.ok())pending.push(response.body().then(bytes=>writeFileSync(process.env.HEALTHCARE_DICOM_FIXTURE,bytes)));
  if(!fixtureCapture||url.pathname==='/api/localization'||url.pathname==='/api/preferences')return;
  const request=response.request();const method=request.method();const body=request.postData();
  // Capture only read operations over fictional fixtures. Authentication and preference payloads are excluded.
  let parsed; try {parsed=body?JSON.parse(body):null;} catch {return;}
  const action=parsed?.action;
  if(method!=='GET'&&!['metadata','new','search','load','overview','saved-searches','config','worklist','list'].includes(action))return;
- pending.push(response.json().then(data=>{captures[JSON.stringify([method,url.pathname.slice(4)+url.search,parsed])]={status:response.status(),body:data};}).catch(()=>{}));
+ pending.push(response.json().then(data=>{captures[JSON.stringify([method,url.pathname.slice(4)+url.search,parsed])]={status:response.status(),body:scrub(data)};}).catch(()=>{}));
 });
 try{
  await page.goto(base+'/patient-query',{timeout:120000});await page.locator('input[type=password]').waitFor({timeout:60000});
@@ -42,19 +62,60 @@ try{
   const encounterSaved=page.waitForResponse(response=>response.url().endsWith('/healthcare-suite/api/encounters')&&response.request().method()==='POST');
   await page.getByRole('button',{name:/Create outpatient encounter/i}).click();const encounterResponse=await encounterSaved;if(!encounterResponse.ok())throw new Error('Encounter create failed '+encounterResponse.status());const encounter=await encounterResponse.json();createdRoutes.push('/suite/encounters/'+encounter.id);flows.push({id:'HCD-03-encounter',result:'Suite encounter created through the UI for a fictional patient'});
  }
- for(const route of [...routes,...(process.env.HEALTHCARE_EXAMPLES==='1'?examples:[]),...createdRoutes]){
+ if(process.env.HEALTHCARE_FLOW==='1'&&!routeFilter){
+  for(const variant of ['lis1','lis2','ris1']){
+   current='/'+variant+'/patients';await page.goto(base+current);const root=page.locator('[data-reference-module="'+variant+'"]');
+   await root.getByRole('button',{name:'Register patient',exact:true}).click();const dialog=page.getByRole('dialog');
+   const name='DemoPort'+variant;
+   await dialog.getByRole('textbox',{name:/First name/}).fill(name);await dialog.getByRole('textbox',{name:/Last name/}).fill('Synthetic');
+   await dialog.locator('input[type=date]').fill('1990-01-01');if(variant==='ris1')await dialog.getByRole('combobox',{name:'Sex',exact:true}).selectOption('M');
+   const saved=page.waitForResponse(r=>r.url().endsWith('/reference-modules/'+variant+'/api/patients')&&r.request().method()==='POST');
+   await dialog.getByRole('button',{name:variant==='lis1'?'Save patient':'Register patient',exact:true}).click();
+   const response=await saved;if(!response.ok())throw new Error(variant+' patient save failed '+response.status());const patient=await response.json();
+   await dialog.waitFor({state:'hidden'});
+   // Both modules navigate after saving; wait for that navigation before returning to search.
+   if(variant!=='lis1')await page.waitForURL(base+'/'+variant+'/patients/'+patient.id,{timeout:60000});
+   await page.goto(base+'/'+variant+'/patients');
+   await root.getByRole('textbox').first().fill(name);await root.getByText(new RegExp(name)).first().waitFor();
+   const isolation=await page.evaluate(async({variant,name})=>{const response=await fetch('/api/reference-modules/'+variant+'/api/patients?q='+name,{headers:{Authorization:'Bearer '+localStorage.getItem('pepbits-session-token'),'X-Product-Id':'nexora','X-Reference-Branch':'dubai','X-Reference-Module':'reference-'+variant}});const body=await response.json();return {status:response.status,count:(Array.isArray(body)?body:body.data).length};},{variant,name});
+   if(isolation.status!==200||isolation.count!==0)throw new Error(variant+' branch isolation failed');
+   if(variant!=='ris1'){
+    const request=async(path,body)=>page.evaluate(async({variant,path,body})=>{const response=await fetch('/api/reference-modules/'+variant+'/api'+path,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+localStorage.getItem('pepbits-session-token'),'X-Product-Id':'nexora','X-Reference-Branch':'hq','X-Reference-Module':'reference-'+variant,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});if(!response.ok)throw new Error('Diagnostic fixture '+path+' failed '+response.status);return response.json();},{variant,path,body});
+    const tests=await request('/masters/tests'),test=(Array.isArray(tests)?tests:tests.data).find(t=>t.active&&!t.requiresBodySite&&!t.body_site_required);
+    const createdOrder=await request('/orders',variant==='lis1'?{patientId:patient.id,testIds:[test.id],profileIds:[],priority:'ROUTINE'}:{patientId:patient.id,tests:[{testId:test.id}],priority:'ROUTINE',encounter:{type:'OP'}});
+    const order=await request('/orders/'+createdOrder.id);
+    createdRoutes.push('/'+variant+'/orders/'+order.id,'/'+variant+'/masters/tests');
+    if(variant==='lis1'){
+     const invoice=await request('/billing/orders/'+order.id+'/invoice',{payerType:'SELF'});
+     await request('/samples/collect',{orderTestIds:order.tests.map(t=>t.id)});
+     createdRoutes.push('/lis1/billing/'+invoice.id,'/lis1/reports/'+order.id);
+    }else{
+     const collection=await request('/samples/collect',{itemIds:order.items.map(t=>t.id)}),sample=collection.samples[0];
+     await request('/samples/receive',{barcode:sample.sample_no});
+     createdRoutes.push('/lis2/patients/'+patient.id,'/lis2/results/sample/'+sample.id,'/lis2/print/order/'+order.id,'/lis2/print/labels?ids='+sample.id);
+    }
+   }else{
+    createdRoutes.push('/ris1/patients/'+patient.id,'/ris1/orders/1','/ris1/reading/1','/ris1/print/report/1','/ris1/print/invoice/1');
+   }
+   flows.push({id:'HCD-07-'+variant,result:'Patient registered through UI and real HTTP, searchable in own branch, absent in other branch'});
+  }
+ }
+ for(const route of [...routes,...(process.env.HEALTHCARE_EXAMPLES==='1'?examples:[]),...createdRoutes].filter(route=>!routeFilter||new RegExp(routeFilter).test(route))){
   current=route;
   try{
-   await page.goto(base+route,{timeout:120000});await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
+   if(/^\/(lis1|lis2|ris1)(?:\/|$)/.test(route)&&routes.includes(route))await diagnosticMenu(route);else await page.goto(base+route,{timeout:120000});await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
    await page.waitForTimeout(750);await page.waitForLoadState('networkidle',{timeout:30000});await page.waitForFunction(()=>!Array.from(document.querySelectorAll('[role=status], [aria-busy=true]')).some(node=>node.textContent.includes('Loading')||node.getAttribute('aria-busy')==='true'),{},{timeout:30000});await page.waitForTimeout(300);await page.evaluate(()=>document.fonts.ready);
    await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
    const axe=await page.evaluate(async()=>{const result=await window.axe.run(document);const page=await window.axe.run(document.querySelector('.healthcare-page'));return {pageViolations:page.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,summary:n.failureSummary}))})),violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,summary:n.failureSummary}))})),incomplete:result.incomplete.length};});
-   checks.push({route,...axe});if(process.env.HEALTHCARE_SCREENSHOTS_DIR&&['/suite','/patient-record/PT-0001','/clinical-consultation/PT-0001'].includes(route)){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.HEALTHCARE_SCREENSHOTS_DIR+'/'+route.slice(1).replaceAll('/','-')+'.png',fullPage:true});}console.log(JSON.stringify({route,violations:axe.violations.map(v=>v.id)}));
+   checks.push({route,...axe});if(process.env.HEALTHCARE_SCREENSHOTS_DIR&&['/suite','/patient-record/PT-0001','/clinical-consultation/PT-0001','/lis1','/lis2','/ris1'].includes(route)){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.HEALTHCARE_SCREENSHOTS_DIR+'/'+route.slice(1).replaceAll('/','-')+'.png',fullPage:true});}console.log(JSON.stringify({route,violations:axe.violations.map(v=>v.id)}));
   }catch(error){checks.push({route,failure:error.message});console.log(JSON.stringify({route,failure:error.message}));}
  }
+ }catch(error){checks.push({route:current,failure:error.message});process.exitCode=1;console.error(error.message);}
+ finally{
  await Promise.all(pending);
  if(fixtureCapture){mkdirSync(new URL('../src/test/fixtures/',import.meta.url),{recursive:true});writeFileSync(fixtureCapture,JSON.stringify(captures,null,2)+'\n');}
  const result={flows,scope:'Local browser against the unchanged synthetic demo HTTP API',checks,errors,consoleErrors,responses};
  writeFileSync(resultPath,JSON.stringify(result,null,2)+'\n');
  if(checks.some(c=>c.failure||c.violations.length)||errors.length||consoleErrors.length||responses.length)process.exitCode=1;
-}finally{await browser.close();}
+ await browser.close();
+}

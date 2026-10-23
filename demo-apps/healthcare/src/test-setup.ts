@@ -10,3 +10,6 @@ Element.prototype.scrollTo=vi.fn();
 afterEach(()=>{cleanup();localStorage.clear();sessionStorage.clear();vi.clearAllMocks();});
 
 HTMLCanvasElement.prototype.getContext=(()=>null) as typeof HTMLCanvasElement.prototype.getContext;
+
+// jsdom has no layout observer; actual chart layout is checked by Chromium.
+globalThis.ResizeObserver=class {observe(){} unobserve(){} disconnect(){}};

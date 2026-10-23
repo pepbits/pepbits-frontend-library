@@ -1,0 +1,45 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/diagnostics src/adapters/diagnostics.test.ts src/navigation.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/modules/diagnostics/behavior.test.tsx (4 tests | 1 failed) 1121ms
+   ✓ lis1 patient editor retains values after a failed save and retries through HTTP  568ms
+   ✓ lis2 patient editor retains values after a failed save and retries through HTTP 271ms
+   × ris1 patient editor retains values after a failed save and retries through HTTP 268ms
+     → expected [ 'button-name' ] to deeply equal []
+   ✓ uses effective page size, central updates and mounted tenant locks for LIS2 requests 12ms
+ ✓ src/modules/diagnostics/client.test.tsx (3 tests) 221ms
+ ✓ src/navigation.test.ts (21 tests) 34ms
+ ✓ src/adapters/diagnostics.test.ts (10 tests) 19ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/diagnostics/behavior.test.tsx > ris1 patient editor retains values after a failed save and retries through HTTP
+AssertionError: expected [ 'button-name' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "button-name",
++ ]
+
+ ❯ src/modules/diagnostics/behavior.test.tsx:24:139
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  1 failed | 37 passed (38)
+   Start at  09:14:51
+   Duration  9.42s (transform 1.70s, setup 697ms, collect 3.08s, tests 1.40s, environment 2.37s, prepare 353ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

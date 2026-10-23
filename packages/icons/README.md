@@ -34,3 +34,7 @@ Phase 5 part 2 adds 23 primitive exports used by shell chrome, tours and workspa
 ## Phase 6b-1 product primitives
 
 The public barrel additionally exports the Lucide primitives needed by the healthcare product screens (patient, calendar, clinical, billing and resource symbols). These are direct primitive re-exports; there is no healthcare icon registry or product logic in the library. Existing icon wrapper/export tests are retained; healthcare component and route tests exercise the newly consumed primitives. See the [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) for the exact source manifest.
+
+## Phase 6b-2 diagnostic primitives
+
+The public barrel adds 38 direct Lucide exports for laboratory/radiology workflows (including ScanBarcode, Images, Ruler and ZoomIn). These are primitive exports using the existing dependency; no diagnostic registry or product behavior is added. Healthcare component and browser checks exercise their consuming controls.

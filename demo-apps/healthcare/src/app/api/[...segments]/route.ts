@@ -7,7 +7,7 @@ async function forward(request: NextRequest, context: {params: Promise<{segments
   const {segments} = await context.params;
   if (segments.some(segment => !segment || segment === '.' || segment === '..' || /[\\/\u0000-\u001f]/.test(segment))) return Response.json({error: 'Invalid API path.'}, {status: 400});
   const headers = new Headers();
-  for (const key of ['authorization', 'content-type', 'x-product-id', 'x-reference-module', 'x-reference-branch', 'x-reference-facility', 'idempotency-key']) {
+  for (const key of ['authorization', 'content-type', 'x-product-id', 'x-reference-module', 'x-reference-branch', 'x-reference-facility', 'idempotency-key', 'x-api-key', 'x-calling-ae']) {
     const value = request.headers.get(key); if (value) headers.set(key, value);
   }
   try {

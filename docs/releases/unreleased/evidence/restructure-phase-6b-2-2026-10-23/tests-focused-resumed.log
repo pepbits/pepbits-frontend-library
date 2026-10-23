@@ -1,0 +1,845 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/diagnostics src/adapters/diagnostics.test.ts src/navigation.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+stderr | src/modules/diagnostics/behavior.test.tsx > lis2 patient editor retains values after a failed save and retries through HTTP
+TypeError: opts.map is not a function
+    at RefSelect (/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/lis2/components/refselect.tsx:17:150)
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+    at renderWithHooks (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+    at updateFunctionComponent (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+    at beginWork (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at performUnitOfWork (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+    at workLoopSync (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+    at renderRootSync (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+    at performWorkOnRoot (/home/pepadmin/pb/worktrees/frontend-phase6b/node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+An error occurred in the <RefSelect> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+
+ ❯ src/modules/diagnostics/behavior.test.tsx (4 tests | 3 failed) 554ms
+   × lis1 patient editor retains values after a failed save and retries through HTTP 317ms
+     → Found multiple elements with the text of: /Date of birth/
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-labelledby[39m=[32m"_r_4_"[39m
+  [33mrole[39m=[32m"group"[39m
+[36m>[39m
+  [36m<span[39m
+    [33mclass[39m=[32m"label"[39m
+    [33mid[39m=[32m"_r_4_"[39m
+  [36m>[39m
+    [0mDate of birth[0m
+    [0m *[0m
+  [36m</span>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"block min-w-0 input"[39m
+  [36m>[39m
+    [36m<label[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"relative"[39m
+      [36m>[39m
+        [36m<input[39m
+          [33maria-labelledby[39m=[32m"_r_4_"[39m
+          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+          [33mmax[39m=[32m"2026-10-23"[39m
+          [33mtype[39m=[32m"date"[39m
+          [33mvalue[39m=[32m""[39m
+        [36m/>[39m
+      [36m</div>[39m
+    [36m</label>[39m
+  [36m</div>[39m
+[36m</div>[39m
+
+Ignored nodes: comments, script, style
+[36m<input[39m
+  [33maria-labelledby[39m=[32m"_r_4_"[39m
+  [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+  [33mmax[39m=[32m"2026-10-23"[39m
+  [33mtype[39m=[32m"date"[39m
+  [33mvalue[39m=[32m""[39m
+[36m/>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"diagnostics"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Register patient"[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+        [33mrole[39m=[32m"dialog"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+              [36m>[39m
+                [0mRegister patient[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close"[39m
+              [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+              [33mtitle[39m=[32m"Close"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M18 6 6 18"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 6 12 12"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"diagnostics diagnostic-lis1 p-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid grid-cols-2 gap-3"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_0_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_0_"[39m
+                  [36m>[39m
+                    [0mFirst name[0m
+                    [0m *[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 input"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_0_"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Synthetic"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_2_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_2_"[39m
+                  [36m>[39m
+                    [0mLast name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 input"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_2_"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Patient"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_4_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_4_"[39m
+                  [36m>[39m
+                    [0mDate of birth[0m
+                    [0m *[0m
+                  [36m</span>[39m
+                  [36m...
+   × lis2 patient editor retains values after a failed save and retries through HTTP 98ms
+     → Unable to find an accessible element with the role "textbox" and name `/Last name/`
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × ris1 patient editor retains values after a failed save and retries through HTTP 120ms
+     → Found multiple elements with the text of: /Date of birth/
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-labelledby[39m=[32m"_r_18_"[39m
+  [33mrole[39m=[32m"group"[39m
+[36m>[39m
+  [36m<span[39m
+    [33mclass[39m=[32m"label"[39m
+    [33mid[39m=[32m"_r_18_"[39m
+  [36m>[39m
+    [0mDate of birth[0m
+  [36m</span>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"block min-w-0 field"[39m
+  [36m>[39m
+    [36m<label[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"relative"[39m
+      [36m>[39m
+        [36m<input[39m
+          [33maria-labelledby[39m=[32m"_r_18_"[39m
+          [33maria-required[39m=[32m"true"[39m
+          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+          [33mmax[39m=[32m"2026-10-23"[39m
+          [33mtype[39m=[32m"date"[39m
+          [33mvalue[39m=[32m""[39m
+        [36m/>[39m
+      [36m</div>[39m
+    [36m</label>[39m
+  [36m</div>[39m
+[36m</div>[39m
+
+Ignored nodes: comments, script, style
+[36m<input[39m
+  [33maria-labelledby[39m=[32m"_r_18_"[39m
+  [33maria-required[39m=[32m"true"[39m
+  [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+  [33mmax[39m=[32m"2026-10-23"[39m
+  [33mtype[39m=[32m"date"[39m
+  [33mvalue[39m=[32m""[39m
+[36m/>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"diagnostics"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Register patient"[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+        [33mrole[39m=[32m"dialog"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl max-w-2xl"[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+              [36m>[39m
+                [0mRegister patient[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close"[39m
+              [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+              [33mtitle[39m=[32m"Close"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M18 6 6 18"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 6 12 12"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"diagnostics diagnostic-ris1 p-4"[39m
+            [36m>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m"grid grid-cols-1 gap-3 sm:grid-cols-2"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_14_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_14_"[39m
+                  [36m>[39m
+                    [0mFirst name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_14_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Synthetic"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_16_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_16_"[39m
+                  [36m>[39m
+                    [0mLast name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_16_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Patient"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_18_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_18_"[39m
+                  [36m>...
+   ✓ uses effective page size, central updates and mounted tenant locks for LIS2 requests 18ms
+ ✓ src/modules/diagnostics/client.test.tsx (3 tests) 213ms
+ ✓ src/navigation.test.ts (21 tests) 33ms
+ ✓ src/adapters/diagnostics.test.ts (10 tests) 18ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/diagnostics/behavior.test.tsx > lis1 patient editor retains values after a failed save and retries through HTTP
+TestingLibraryElementError: Found multiple elements with the text of: /Date of birth/
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-labelledby[39m=[32m"_r_4_"[39m
+  [33mrole[39m=[32m"group"[39m
+[36m>[39m
+  [36m<span[39m
+    [33mclass[39m=[32m"label"[39m
+    [33mid[39m=[32m"_r_4_"[39m
+  [36m>[39m
+    [0mDate of birth[0m
+    [0m *[0m
+  [36m</span>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"block min-w-0 input"[39m
+  [36m>[39m
+    [36m<label[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"relative"[39m
+      [36m>[39m
+        [36m<input[39m
+          [33maria-labelledby[39m=[32m"_r_4_"[39m
+          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+          [33mmax[39m=[32m"2026-10-23"[39m
+          [33mtype[39m=[32m"date"[39m
+          [33mvalue[39m=[32m""[39m
+        [36m/>[39m
+      [36m</div>[39m
+    [36m</label>[39m
+  [36m</div>[39m
+[36m</div>[39m
+
+Ignored nodes: comments, script, style
+[36m<input[39m
+  [33maria-labelledby[39m=[32m"_r_4_"[39m
+  [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+  [33mmax[39m=[32m"2026-10-23"[39m
+  [33mtype[39m=[32m"date"[39m
+  [33mvalue[39m=[32m""[39m
+[36m/>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"diagnostics"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Register patient"[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+        [33mrole[39m=[32m"dialog"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl"[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+              [36m>[39m
+                [0mRegister patient[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close"[39m
+              [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+              [33mtitle[39m=[32m"Close"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M18 6 6 18"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 6 12 12"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"diagnostics diagnostic-lis1 p-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid grid-cols-2 gap-3"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_0_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_0_"[39m
+                  [36m>[39m
+                    [0mFirst name[0m
+                    [0m *[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 input"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_0_"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Synthetic"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_2_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_2_"[39m
+                  [36m>[39m
+                    [0mLast name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 input"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_2_"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Patient"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_4_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_4_"[39m
+                  [36m>[39m
+                    [0mDate of birth[0m
+                    [0m *[0m
+                  [36m</span>[39m
+                  [36m...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getElementError ../../node_modules/@testing-library/dom/dist/query-helpers.js:20:35
+ ❯ getMultipleElementsFoundError ../../node_modules/@testing-library/dom/dist/query-helpers.js:23:10
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/modules/diagnostics/behavior.test.tsx:21:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/modules/diagnostics/behavior.test.tsx > lis2 patient editor retains values after a failed save and retries through HTTP
+TestingLibraryElementError: Unable to find an accessible element with the role "textbox" and name `/Last name/`
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/modules/diagnostics/behavior.test.tsx:20:26
+     18|  render(<TestHost messages={sharedMessages}><ReferenceHostProvider hos…
+     19|  const first=await screen.findByRole('textbox',{name:/First name/});fi…
+     20|  fireEvent.change(screen.getByRole('textbox',{name:/Last name/}),{targ…
+       |                          ^
+     21|  fireEvent.change(screen.getByLabelText(/Date of birth/),{target:{valu…
+     22|  const save=await screen.findByRole('button',{name:variant==='lis1'?'S…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/modules/diagnostics/behavior.test.tsx > ris1 patient editor retains values after a failed save and retries through HTTP
+TestingLibraryElementError: Found multiple elements with the text of: /Date of birth/
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-labelledby[39m=[32m"_r_18_"[39m
+  [33mrole[39m=[32m"group"[39m
+[36m>[39m
+  [36m<span[39m
+    [33mclass[39m=[32m"label"[39m
+    [33mid[39m=[32m"_r_18_"[39m
+  [36m>[39m
+    [0mDate of birth[0m
+  [36m</span>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"block min-w-0 field"[39m
+  [36m>[39m
+    [36m<label[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"relative"[39m
+      [36m>[39m
+        [36m<input[39m
+          [33maria-labelledby[39m=[32m"_r_18_"[39m
+          [33maria-required[39m=[32m"true"[39m
+          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+          [33mmax[39m=[32m"2026-10-23"[39m
+          [33mtype[39m=[32m"date"[39m
+          [33mvalue[39m=[32m""[39m
+        [36m/>[39m
+      [36m</div>[39m
+    [36m</label>[39m
+  [36m</div>[39m
+[36m</div>[39m
+
+Ignored nodes: comments, script, style
+[36m<input[39m
+  [33maria-labelledby[39m=[32m"_r_18_"[39m
+  [33maria-required[39m=[32m"true"[39m
+  [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+  [33mmax[39m=[32m"2026-10-23"[39m
+  [33mtype[39m=[32m"date"[39m
+  [33mvalue[39m=[32m""[39m
+[36m/>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"diagnostics"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Register patient"[39m
+        [33maria-modal[39m=[32m"true"[39m
+        [33mclass[39m=[32m"animate-fade fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/45 p-5 backdrop-blur-[2px]"[39m
+        [33mrole[39m=[32m"dialog"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"animate-slide-up flex max-h-[calc(100vh-40px)] w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-lg)] outline-none max-w-4xl max-w-2xl"[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-extrabold tracking-[-.02em] text-[var(--text)]"[39m
+              [36m>[39m
+                [0mRegister patient[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Close"[39m
+              [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+              [33mtitle[39m=[32m"Close"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-x size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M18 6 6 18"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 6 12 12"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-auto"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"diagnostics diagnostic-ris1 p-4"[39m
+            [36m>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m"grid grid-cols-1 gap-3 sm:grid-cols-2"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_14_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_14_"[39m
+                  [36m>[39m
+                    [0mFirst name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_14_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Synthetic"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_16_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_16_"[39m
+                  [36m>[39m
+                    [0mLast name[0m
+                  [36m</span>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0 field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33maria-labelledby[39m=[32m"_r_16_"[39m
+                          [33maria-required[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m"Patient"[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-labelledby[39m=[32m"_r_18_"[39m
+                  [33mrole[39m=[32m"group"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"label"[39m
+                    [33mid[39m=[32m"_r_18_"[39m
+                  [36m>...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getElementError ../../node_modules/@testing-library/dom/dist/query-helpers.js:20:35
+ ❯ getMultipleElementsFoundError ../../node_modules/@testing-library/dom/dist/query-helpers.js:23:10
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/modules/diagnostics/behavior.test.tsx:21:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: opts.map is not a function
+ ❯ RefSelect src/modules/lis2/components/refselect.tsx:17:150
+
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ performUnitOfWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:17641:22
+ ❯ workLoopSync ../../node_modules/react-dom/cjs/react-dom-client.development.js:17469:41
+ ❯ renderRootSync ../../node_modules/react-dom/cjs/react-dom-client.development.js:17450:11
+ ❯ performWorkOnRoot ../../node_modules/react-dom/cjs/react-dom-client.development.js:16583:35
+
+This error originated in "src/modules/diagnostics/behavior.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "lis2 patient editor retains values after a failed save and retries through HTTP". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  3 failed | 35 passed (38)
+     Errors  1 error
+   Start at  09:14:09
+   Duration  9.60s (transform 1.64s, setup 972ms, collect 2.97s, tests 818ms, environment 2.91s, prepare 374ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

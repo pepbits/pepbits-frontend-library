@@ -14,4 +14,4 @@ Remaining order after healthcare: erp, school, reports, tenant-admin, onboarding
 
 ## Healthcare
 
-[Healthcare](healthcare/README.md) is the separate Next.js demo on port 3310. Phase 6b-1 adds the Healthcare Suite core, patient workspace and clinical screens against the unchanged synthetic demo HTTP API, using the full shared shell and API-backed preferences. Its [source map](healthcare/source-mapping.md) and [release record](../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) distinguish completed scope, known accessibility follow-up and remaining healthcare runs. This is not clinical acceptance.
+[Healthcare](healthcare/README.md) is the separate Next.js demo on port 3310. Phases 6b-1/6b-2 add the Healthcare Suite core, patient workspace, clinical screens and 55 LIS1/LIS2/RIS1 diagnostic destinations against the unchanged synthetic demo HTTP API, using the full shared shell and API-backed preferences. Its [source map](healthcare/source-mapping.md) and [release record](../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) distinguish completed scope, local verification and remaining healthcare runs. This is not clinical acceptance.

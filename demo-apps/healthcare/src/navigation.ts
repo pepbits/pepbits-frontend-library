@@ -1,3 +1,8 @@
+import {DIAGNOSTIC_REFERENCES} from './modules/diagnostics/navigation';
+import {matchDiagnosticRoute} from './modules/diagnostics/routes';
+import lis1Routes from './modules/lis1/routes.json';
+import lis2Routes from './modules/lis2/routes.json';
+import ris1Routes from './modules/ris1/routes.json';
 import {FileQuestion} from '@pepbits/icons';
 import {defineProduct, type ShellNavigation} from '@pepbits/shell';
 import type {PageDefinition} from '@pepbits/page-engines/types';
@@ -32,15 +37,17 @@ export const suitePages = [
   {id:'suite-contracts',path:'/contracts',title:'Contract pricing'},
   ...Object.values(MASTERS).map(def=>({id:'suite-master-'+def.entity,path:'/masters/'+def.entity,title:def.title,entity:def.entity})),
 ];
-export type HealthcareTarget = NavigationTarget & {query?:string};
+export type HealthcareTarget = NavigationTarget & {query?:string; diagnosticPath?:string};
+export const diagnosticPages=DIAGNOSTIC_REFERENCES.flatMap(module=>module.pages.map(page=>({...page,module:module.id,variant:module.variant})));
 export const pages: PageDefinition[] = [
+  ...diagnosticPages.map(item=>({id:item.id,title:item.title,subtitle:'',kind:'diagnostic',module:item.module})),
   ...suitePages.map(item=>({id:item.id,title:item.title,subtitle:'',kind:'suite',module:'reference-healthcare-suite',entity:'entity' in item?item.entity:undefined})),
   ...clinicalPages.map(([id, title]) => ({id, title, subtitle: '', kind: 'clinical', module: 'library', ai: {enabled: false, useCases: []}})),
   {id: 'preferences', title: 'Preferences', subtitle: '', kind: 'preferences', module: 'shared'},
 ];
 const navigation: ShellNavigation = {
   defaultModule: 'reference-healthcare-suite', pages: Object.fromEntries(pages.map(page => [page.id, page])),
-  modules: {'reference-healthcare-suite':{id:'reference-healthcare-suite',label:'Healthcare Suite',shortLabel:'Suite',description:'Front office and care',icon:FileQuestion,accent:'var(--primary)',navigation:[{id:'suite-pages',label:'Healthcare Suite',items:suitePages.map(item=>({id:item.id,pageId:item.id,label:item.title}))}]},library: {id: 'library', label: 'Healthcare', shortLabel: 'Care', description: 'Fictional healthcare workflows',
+  modules: {...Object.fromEntries(DIAGNOSTIC_REFERENCES.map(module=>[module.id,{id:module.id,label:module.title,shortLabel:module.shortLabel,description:'Fictional diagnostic workflows',icon:FileQuestion,accent:module.accent,navigation:[{id:module.id+'-pages',label:module.title,items:module.pages.map(page=>({id:page.id,pageId:page.id,label:page.title}))}]}])), 'reference-healthcare-suite':{id:'reference-healthcare-suite',label:'Healthcare Suite',shortLabel:'Suite',description:'Front office and care',icon:FileQuestion,accent:'var(--primary)',navigation:[{id:'suite-pages',label:'Healthcare Suite',items:suitePages.map(item=>({id:item.id,pageId:item.id,label:item.title}))}]},library: {id: 'library', label: 'Healthcare', shortLabel: 'Care', description: 'Fictional healthcare workflows',
     icon: FileQuestion, accent: 'var(--primary)', navigation: [
       {id: 'patients', label: 'Patients', items: clinicalPages.filter(row => row[2] === 'patients').map(([id, label]) => ({id, label, pageId: id}))},
       {id: 'clinical', label: 'Clinical', items: clinicalPages.filter(row => row[2] === 'clinical').map(([id, label]) => ({id, label, pageId: id}))},
@@ -48,8 +55,15 @@ const navigation: ShellNavigation = {
     ]}},
 };
 export const product = defineProduct({id: API_PRODUCT, name: 'Healthcare', tagline: 'Fictional healthcare workflows', navigation,
-  defaultModule: 'reference-healthcare-suite', enabledModules: ['reference-healthcare-suite','library'], access: {actions: {create: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], edit: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], archive: [], export: ['enterprise-admin', 'admin', 'operations-analyst', 'operations']}}});
+  defaultModule: 'reference-healthcare-suite', enabledModules: ['reference-healthcare-suite','library',...DIAGNOSTIC_REFERENCES.map(module=>module.id)], access: {actions: {create: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], edit: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], archive: [], export: ['enterprise-admin', 'admin', 'operations-analyst', 'operations']}}});
 export function targetFromPath(pathname: string, search = ''): HealthcareTarget {
+  const diagnostic=pathname.match(/^\/(lis1|lis2|ris1)(\/.*)?$/);
+  if(diagnostic){const variant=diagnostic[1] as 'lis1'|'lis2'|'ris1',path=diagnostic[2]||'/';
+    if(!matchDiagnosticRoute({lis1:lis1Routes,lis2:lis2Routes,ris1:ris1Routes}[variant],path))return {pageId:'not-found'};
+    const candidates=diagnosticPages.filter(p=>p.variant===variant);
+    const page=[...candidates].sort((a,b)=>b.path.length-a.path.length).find(p=>p.path===path||p.path!=='/'&&path.startsWith(p.path+'/'))??candidates.find(p=>p.path==='/')!;
+    return {pageId:page.id,diagnosticPath:path,query:search};
+  }
   const params=new URLSearchParams(search);
   try {if(pathname.split('/').some(part=>/[\\/?#]/.test(decodeURIComponent(part))))return {pageId:'not-found'};} catch {return {pageId:'not-found'};}
   if(pathname.split('/').filter(Boolean).length>5)return {pageId:'not-found'};
@@ -68,6 +82,8 @@ export function targetFromPath(pathname: string, search = ''): HealthcareTarget 
   return {pageId:id||'suite-dashboard',query:search,...(record?record==='new'?{mode:'new' as const}:{recordId:decodeURIComponent(record),mode:params.get('mode')==='edit'?'edit' as const:'view' as const}:{})};
 }
 export function hrefFor(target: HealthcareTarget) {
+  const diagnostic=diagnosticPages.find(p=>p.id===target.pageId);
+  if(diagnostic)return '/'+diagnostic.variant+((target.diagnosticPath??diagnostic.path)==='/'?'':target.diagnosticPath??diagnostic.path)+(target.query?'?'+target.query:'');
   const suite=suitePages.find(item=>item.id===target.pageId);
   const params=new URLSearchParams(target.query);
   if(target.mode==='edit')params.set('mode','edit');else params.delete('mode');
