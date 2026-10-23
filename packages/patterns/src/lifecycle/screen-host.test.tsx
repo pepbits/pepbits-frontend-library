@@ -40,5 +40,5 @@ test('lifecycle forwards dirty changes and localized notifications to the screen
   fireEvent.change(screen.getByLabelText(/^Change reason/), {target: {value: 'Reviewed'}});
   fireEvent.click(screen.getByRole('button', {name: 'Save draft'}));
   await waitFor(() => expect(notify).toHaveBeenCalledWith('Saved sample-record version 1.', {tone: 'success'}));
-  expect(reportDirty).toHaveBeenLastCalledWith(false);
+  await waitFor(() => expect(reportDirty).toHaveBeenLastCalledWith(false));
 });

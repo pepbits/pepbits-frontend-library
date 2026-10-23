@@ -57,7 +57,7 @@ describe("MdiTaskbar", () => {
      should not be a question answered by counting. */
   test("it is a named toolbar", () => {
     render_();
-    expect(screen.getByRole("toolbar", { name: "Open windows" })).toBeVisible();
+    expect(screen.getByRole("navigation", { name: "Open windows" })).toContainElement(screen.getByRole("toolbar", { name: "Open windows" }));
   });
 
   test("nothing open, nothing drawn", () => {

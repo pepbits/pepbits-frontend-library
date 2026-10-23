@@ -1,8 +1,7 @@
 # Current delivery and release records
 
 - [Library restructure phase 6b-1 — 23 October 2026](restructure-phase-6b-1-2026-10-23.md): independent healthcare scaffold, Suite core and clinical subset; local HTTP/build evidence, deferred composer/recorder and shell accessibility follow-up.
-
-- [Library restructure phase 6a — 23 October 2026](restructure-phase-6a-2026-10-23.md): independent showcase with temporary frame; local Next.js build and accessibility evidence, full shell/AI pending the parallel merge.
+- [Library restructure phase 6a — 23 October 2026](restructure-phase-6a-2026-10-23.md): independent showcase; follow-up completes the full shell and Shell/AI simulation pages, with fresh local build, navigation, accessibility and browser evidence.
 - [Library restructure phase 5b — 23 October 2026](restructure-phase-5b-2026-10-23.md): AI config/client/UI, optional shell preferences/login, gate ports and Chromium physical Arabic RTL sidebar regression; local source evidence, no publication.
 
 - [Shell phase 5 part 2 — 23 October 2026](restructure-phase-5-2026-10-23.md#part-2): completes priorities 4–6 with full chrome, workspace UI and non-AI layers; part 1 evidence preserved. Preferences/login and AI remain phase 5b. Local source verification only.

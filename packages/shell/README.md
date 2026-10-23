@@ -17,6 +17,8 @@ Generic shell, workspace UI, help layers and optional preferences/login pages, u
 
 The workspace has pure state implementations but its public barrel includes React bindings. This source package requires React/React DOM 19, a TypeScript-aware bundler, and the public lower-layer packages. There is no prebuilt application, registry publication, default product or default API URL.
 
+Workspace tabs and the MDI taskbar own named navigation landmarks, including their commands. The profile trigger’s accessible name includes the localized action, user name and visible initials; consumers should match the action prefix when the identity can change. These corrections were found by the full-shell showcase Chromium axe sweep.
+
 ## Host contract and full wiring
 
 `ShellProvider` receives a platform navigation port and one host-created product (which contains its module/page catalog), branches, roles and brand. Optional inputs are a controlled branch/change callback, quick pages, preferences destination, time-zone resolver, documentation/monitoring services, tours and an existing workspace. The catalog, branch choices, role labels, brand and service release IDs are always host-owned. Header/sidebar/footer and the help panel consume these inputs. Quick-page `id` is a catalog page ID. Missing `onBranchChange` makes the branch display read-only. `Header.inbox` accepts host inbox UI; footer status/tenant/region/version labels are optional props, with no invented operational status.

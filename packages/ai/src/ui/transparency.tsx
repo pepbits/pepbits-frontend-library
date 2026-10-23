@@ -20,7 +20,7 @@ type Tab = "data" | "flow" | "policy";
  * nor hide one it has, because it has no other source. Any other arrangement
  * turns this screen into a claim about the request rather than a view of it.
  */
-export function TransparencyPanel({ context, useCase, config, decidedBy, onConfirm, onCancel, sending }: {
+export function TransparencyPanel({ context, useCase, config, decidedBy, onConfirm, onCancel, sending, simulation = false }: {
   context: AiContext;
   useCase: AiUseCase;
   /** Null while the administration config has not loaded, or is unavailable. */
@@ -29,6 +29,8 @@ export function TransparencyPanel({ context, useCase, config, decidedBy, onConfi
   onConfirm: () => void;
   onCancel: () => void;
   sending?: boolean;
+  /** Only for a client explicitly configured with the echo transport. */
+  simulation?: boolean;
 }) {
   const [tab, setTab] = useState<Tab>("data");
   /* Clinical use cases require a second, explicit acknowledgement naming the
@@ -141,11 +143,11 @@ export function TransparencyPanel({ context, useCase, config, decidedBy, onConfi
           <Button variant="ghost" size="sm" onClick={onCancel}><LocalizedText message="ui.cancel.19766ed6" /></Button>
           <span className="flex-1" />
           <Button variant="primary" size="sm" loading={sending}
-            disabled={context.fields.length === 0 || (clinical && !acknowledged) || !config?.credential.configured}
-            onClick={onConfirm}><LocalizedText message="ui.send.e8fbd3f3" />{context.fields.length} {context.fields.length === 1 ? <LocalizedText message="ui.field.c0d2856b" /> : <LocalizedText message="ui.fields.bfe5d697" />}
+            disabled={context.fields.length === 0 || (clinical && !acknowledged) || (!simulation && !config?.credential.configured)}
+            onClick={onConfirm}><LocalizedText message={simulation ? "ui.mock.transport.d72848f2" : "ui.send.e8fbd3f3"} /> {context.fields.length} {context.fields.length === 1 ? <LocalizedText message="ui.field.c0d2856b" /> : <LocalizedText message="ui.fields.bfe5d697" />}
           </Button>
         </div>
-        {!config?.credential.configured ? (
+        {simulation ? <p className="mt-2"><LocalizedText message="ui.mock.transport.no.provider.was.contacted.a98a191e" /></p> : !config?.credential.configured ? (
           <p className="mt-2 text-[length:calc(8.5px*var(--fs-scale))] text-[var(--text-muted)]"><LocalizedText message="ui.no.provider.credential.is.configured.for.this.tenant.so.a77c2f62" /></p>
         ) : null}
       </div>

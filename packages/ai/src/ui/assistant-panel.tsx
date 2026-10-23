@@ -60,7 +60,8 @@ export function AssistantPanel() {
   const [reply, setReply] = useState<AiReply | null>(null);
   const [sending, setSending] = useState(false);
 
-  useEffect(() => { if (open) assistant.loadConfig(); }, [assistant, open]);
+  useEffect(() => { if (open && assistant.allowed) assistant.loadConfig(); }, [assistant.loadConfig, assistant.allowed, open]);
+  useEffect(() => { if (!assistant.allowed) setOpen(false); }, [assistant.allowed]);
 
   /* A page change invalidates everything: the use cases differ, and a context
      assembled from the previous page's record must never survive into the next
@@ -142,7 +143,7 @@ export function AssistantPanel() {
           ) : null}
 
           {mode === "panel" && stage === "review" && chosen && context ? (
-            <TransparencyPanel context={context} useCase={chosen} config={assistant.config} decidedBy={assistant.decidedBy}
+            <TransparencyPanel context={context} useCase={chosen} config={assistant.config} decidedBy={assistant.decidedBy} simulation={assistant.simulation}
               sending={sending} onCancel={() => setStage("choose")} onConfirm={() => void send()} />
           ) : null}
 

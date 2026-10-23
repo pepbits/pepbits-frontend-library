@@ -80,7 +80,7 @@ describe('LifecycleConfigurationPage', () => {
     expect(second![1].operationKey).toBe(first![1].operationKey);
     expect(first![1].reason).toBe('സംഭരണത്തിനായി പേര് മാറ്റി');
     expect(await screen.findByText('Saved sample-record version 1.')).toBeInTheDocument();
-    expect(dirty).toHaveBeenLastCalledWith(false);
+    await waitFor(() => expect(dirty).toHaveBeenLastCalledWith(false));
   });
 
   test('keeps edits and explains a stale-revision conflict', async () => {

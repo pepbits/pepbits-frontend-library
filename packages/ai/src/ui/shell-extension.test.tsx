@@ -44,8 +44,8 @@ test('two documents with the same publication id remain isolated across focus an
  await waitFor(()=>expect(screen.getByTestId('sources')).toHaveTextContent('beta'));
 });
 test('the host user gate removes inline and panel affordances',async()=>{
- const {value}=setup();await act(async()=>{render(<AiTestHost value={{...value,userEnabled:false}}><Screen/><ShellLayers/></AiTestHost>);});
- expect(screen.queryByRole('button',{name:'Explain this record'})).toBeNull();expect(screen.queryByRole('button',{name:'Open the AI assistant'})).toBeNull();
+ const {value,request}=setup();await act(async()=>{render(<AiTestHost value={{...value,userEnabled:false}}><Screen/><ShellLayers/></AiTestHost>);});
+ expect(screen.queryByRole('button',{name:'Explain this record'})).toBeNull();expect(screen.queryByRole('button',{name:'Open the AI assistant'})).toBeNull();expect(request).not.toHaveBeenCalled();
 });
 
 test('the actual record form publishes edited values and renders the inline extension',async()=>{
@@ -54,9 +54,11 @@ test('the actual record form publishes edited values and renders the inline exte
  const {createMemoryRecordAdapter}=await import('@pepbits/data');
  const {product}=await import('../test/host');
  const {value,request}=setup([useCase({reads:[{source:'form-values',fields:['status']}]})]);
- render(<AiTestHost value={value}><RecordAdapterProvider value={{adapter:createMemoryRecordAdapter(),identity:'t:u',applicationId:'example',sessionAvailable:true}}>
+ const workspace=createWorkspace({session:{tenantId:'t',userId:'u'},policy:{platform:{modes:['TAB']}}});
+ const document=workspace.openDocument({module:'operations',documentType:'item',entityId:'form',title:'Form',route:'items-a'}).document!;
+ render(<AiTestHost value={value} workspace={workspace}><ShellDocumentProvider documentId={document.documentId}><RecordAdapterProvider value={{adapter:createMemoryRecordAdapter(),identity:'t:u',applicationId:'example',sessionAvailable:true}}>
   <DynamicRecordForm page={product.pages['items-a']!} target={{pageId:'items-a',mode:'new'}} schema={{id:'item',singular:'Item',plural:'Items',description:'Records',sections:[{id:'main',title:'Main',description:'',fields:[{id:'status',label:'Status',type:'text'}]}]}}/>
- </RecordAdapterProvider><Sources/></AiTestHost>);
+ </RecordAdapterProvider></ShellDocumentProvider><Sources/></AiTestHost>);
  const input=await screen.findByLabelText('Status');await waitFor(()=>expect(input).toBeEnabled());fireEvent.change(input,{target:{value:'Ready'}});
  await waitFor(()=>expect(screen.getByTestId('sources')).toHaveTextContent('Ready'));fireEvent.click(screen.getByRole('button',{name:'Explain'}));expect(await screen.findByText('Answer')).toBeVisible();
  const dispatch=request.mock.calls.find(call=>call[0]==='/ai/dispatch') as unknown as [string,RequestInit];

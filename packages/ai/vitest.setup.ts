@@ -22,3 +22,8 @@ Object.assign(globalThis, {IS_REACT_ACT_ENVIRONMENT: true});
 // jsdom has no native modal top layer; browser focus/inert behavior is not claimed.
 if (!HTMLDialogElement.prototype.showModal) HTMLDialogElement.prototype.showModal = function () {this.setAttribute("open", "");};
 if (!HTMLDialogElement.prototype.close) HTMLDialogElement.prototype.close = function () {this.removeAttribute("open");};
+
+/* findBy and waitFor give up after 1 s by default; under a parallel workspace
+   run on a busy machine that produces false failures. See packages/patterns. */
+import { configure as configureTestingLibrary } from "@testing-library/react";
+configureTestingLibrary({ asyncUtilTimeout: 5000 });

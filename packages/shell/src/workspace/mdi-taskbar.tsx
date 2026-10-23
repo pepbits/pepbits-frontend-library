@@ -22,6 +22,7 @@ export function MdiTaskbar({ documents, frames, activeDocumentId, onSelect }: {
   const {t: translateCopy} = useLocalization();
   if (documents.length === 0) return null;
   return (
+    <nav aria-label={translateCopy("ui.open.windows.6cbd4f67")}>
     <div
       role="toolbar"
       /* Named for the same reason the tab strip is: a page can have toolbars of
@@ -55,5 +56,6 @@ export function MdiTaskbar({ documents, frames, activeDocumentId, onSelect }: {
         );
       })}
     </div>
+    </nav>
   );
 }

@@ -1,0 +1,154 @@
+{
+  "scope": "Local worktree, jsdom and Chromium production-build smoke; no deployment, hosted CI, provider integration or native executable acceptance",
+  "base": "88f55553d22b648dfb270ef7218f5706d47c919f",
+  "sourceDigest": "6321fc081ab0a8d275ac697de1d83301442e5eccb6c654f01475907b9eb2393b",
+  "manifestFiles": 592,
+  "changesAfterRuntimeCapture": [],
+  "rootCI": {
+    "command": "TURBO_CONCURRENCY=2 DEBUG_PRINT_LIMIT=0 npm run ci",
+    "exitCode": 0,
+    "cachedTasks": 0,
+    "tasks": 27,
+    "libraryBoundaries": 12,
+    "demoBoundaries": 1,
+    "toolingTests": 19,
+    "typecheckTasks": 13,
+    "testTasks": 13,
+    "testFiles": 150,
+    "tests": 2164,
+    "workspaces": [
+      {
+        "workspace": "@pepbits-demo/showcase",
+        "testFiles": 4,
+        "tests": 90
+      },
+      {
+        "workspace": "@pepbits/ai",
+        "testFiles": 22,
+        "tests": 587
+      },
+      {
+        "workspace": "@pepbits/components",
+        "testFiles": 15,
+        "tests": 190
+      },
+      {
+        "workspace": "@pepbits/data",
+        "testFiles": 7,
+        "tests": 37
+      },
+      {
+        "workspace": "@pepbits/i18n",
+        "testFiles": 6,
+        "tests": 64
+      },
+      {
+        "workspace": "@pepbits/icons",
+        "testFiles": 1,
+        "tests": 19
+      },
+      {
+        "workspace": "@pepbits/page-engines",
+        "testFiles": 20,
+        "tests": 429
+      },
+      {
+        "workspace": "@pepbits/patterns",
+        "testFiles": 17,
+        "tests": 120
+      },
+      {
+        "workspace": "@pepbits/platform",
+        "testFiles": 5,
+        "tests": 67
+      },
+      {
+        "workspace": "@pepbits/preferences",
+        "testFiles": 3,
+        "tests": 33
+      },
+      {
+        "workspace": "@pepbits/shell",
+        "testFiles": 37,
+        "tests": 404
+      },
+      {
+        "workspace": "@pepbits/tokens",
+        "testFiles": 1,
+        "tests": 3
+      },
+      {
+        "workspace": "@pepbits/ui",
+        "testFiles": 12,
+        "tests": 121
+      }
+    ]
+  },
+  "showcase": {
+    "routes": 8,
+    "examples": 55,
+    "existingExamples": 42,
+    "shellExamples": 10,
+    "aiExamples": 3,
+    "jsdomAxeChecks": 37
+  },
+  "build": {
+    "staticPages": 11,
+    "exitCode": 0
+  },
+  "shellBrowser": {
+    "tests": 2,
+    "files": 1,
+    "exitCode": 0
+  },
+  "browser": {
+    "routes": 8,
+    "navigation": 16,
+    "interactions": 21,
+    "axeChecks": 12,
+    "violations": 0,
+    "incompleteRuleResults": 26,
+    "pageErrors": 0,
+    "consoleErrors": 0,
+    "externalRequests": 0
+  },
+  "docs": {
+    "files": 181,
+    "exitCode": 0
+  },
+  "protectedResults": [
+    {
+      "command": "git diff --stat -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github",
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "command": "git status --short desktop-clients",
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "command": "git status --short -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github",
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "stdout": ""
+    }
+  ],
+  "scan": {
+    "matchingLines": 22,
+    "requestedCommandExit": 2,
+    "equivalentCommandExit": 0,
+    "review": "Every match is identified by file and line in scan-review.json."
+  },
+  "notRun": [
+    "Original application/API suites",
+    "Native executables/devices",
+    "Real AI providers or production services",
+    "Manual assistive-technology and native-speaker acceptance",
+    "Deployment, hosted CI, commit and push"
+  ]
+}

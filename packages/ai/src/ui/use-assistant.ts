@@ -24,6 +24,8 @@ import { useNavigation } from "@pepbits/platform";
  * No component below may call `resolveAi` or `getUseCase` itself.
  */
 export interface Assistant {
+  /** Explicit echo dispatch; absent is ordinary service mode. */
+  simulation?: boolean;
   /** Null when there is no page, or the page is not in the registry. */
   allowed: boolean;
   /** The gate that decided — shown to the user and written to the audit. */
@@ -53,13 +55,14 @@ export function useAssistant(): Assistant {
   const [wantConfig, setWantConfig] = useState(false);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || !userEnabled) { setPolicy(null); return; }
     let cancelled = false;
     void fetchAiPolicy(user.id).then((value) => { if (!cancelled) setPolicy(value); });
     return () => { cancelled = true; };
-  }, [user,fetchAiPolicy]);
+  }, [user,userEnabled,fetchAiPolicy]);
 
   useEffect(() => {
+    if (!userEnabled) { setConfig(null); setWantConfig(false); return; }
     if (!wantConfig) return;
     let cancelled = false;
     /* Fetched on demand, not on every page load: it is the administrator's
@@ -67,7 +70,7 @@ export function useAssistant(): Assistant {
        limit data do not ride along with every navigation. */
     void fetchAiConfig().then((result) => { if (!cancelled) setConfig(result.data ?? null); });
     return () => { cancelled = true; };
-  }, [wantConfig,fetchAiConfig]);
+  }, [wantConfig,userEnabled,fetchAiConfig]);
 
   const scope = useDocumentScope();
   const workspace = useOptionalWorkspace();
@@ -95,6 +98,7 @@ export function useAssistant(): Assistant {
   }, [pageId, sources, assembleContext, dispatchAi]);
 
   return {
+    simulation: client.transport === 'echo',
     allowed: access.allowed && useCases.length > 0,
     decidedBy: access.decidedBy,
     reason: access.reason,

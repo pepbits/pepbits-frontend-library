@@ -251,3 +251,13 @@ describe("the echo transport", () => {
     expect(text).not.toContain("aisha");
   });
 });
+
+test('explicit echo transport answers without calling the request port',async()=>{
+ const echo=createAiTransport(authedFetch,classificationFor,'echo');
+ const result=await echo(context,useCase);
+ expect(result.via).toBe('mock');expect(result.text).toContain('C-100');expect(authedFetch).not.toHaveBeenCalled();
+});
+test('explicit echo transport retains the classified-field guard',async()=>{
+ const echo=createAiTransport(authedFetch,()=> 'pii','echo');
+ expect((await echo(context,useCase)).via).toBe('blocked');expect(authedFetch).not.toHaveBeenCalled();
+});

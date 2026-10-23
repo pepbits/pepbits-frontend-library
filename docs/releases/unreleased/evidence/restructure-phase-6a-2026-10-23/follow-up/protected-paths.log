@@ -1,0 +1,11 @@
+git diff --stat -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github
+[empty output; exit 0]
+
+git status --short desktop-clients
+[empty output; exit 0]
+
+git status --short -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github
+[empty output; exit 0]
+
+git diff --check
+[empty output; exit 0]

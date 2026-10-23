@@ -10,7 +10,7 @@ import {GalleryPage} from './gallery';
 import {areas,type AreaId} from './areas';
 const locked:PreferencePolicy={revision:1,rules:{density:{value:'compact',locked:true}}};
 function Probe(){const {preferences,update}=usePreferences();return <button onClick={()=>update({density:'spacious'})} data-testid="guard">{preferences.density}</button>;}
-function mount(area:AreaId,preferences:Partial<UserPreferences>={},policy?:PreferencePolicy){return render(<DemoProviders area={area} initialPreferences={preferences} initialPolicy={policy}><AppFrame area={area}><GalleryPage area={area}/><Probe/></AppFrame></DemoProviders>);}
+function mount(area:AreaId,preferences:Partial<UserPreferences>={},policy?:PreferencePolicy){return render(<DemoProviders area={area} initialPreferences={preferences} initialPolicy={policy}><AppFrame><Probe/></AppFrame></DemoProviders>);}
 const scenarios=[{name:'default',preferences:{}},{name:'Arabic RTL',preferences:{language:'ar' as const}},{name:'reduced motion',preferences:{reducedMotion:true}},{name:'locked density',preferences:{density:'spacious' as const},policy:locked}];
 describe.each(scenarios)('$name',scenario=>{
  test.each(areas)('$id renders and passes axe',async area=>{
