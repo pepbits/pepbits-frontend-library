@@ -9,6 +9,9 @@ export interface TemplateColumn {key:string;label:string;type?:"text"|"number"|"
 export interface TemplateLine {id:string;description:string;quantity:number;price:number;debit:number;credit:number;result:string;reference:string;checked:boolean}
 export interface TemplateDocument {id:string;version:number;values:Record<string,TemplateValue>;lines:TemplateLine[];rows:Array<Record<string,TemplateValue>>}
 export interface TemplateConfiguration {
+ /** Null disables the optional report range or monetary summary. Undefined retains legacy date/amount keys. */
+ reportDateKey?:string|null;
+ reportAmountKey?:string|null;
  resources?:Array<{value:string;label:string}>;
  slots?:Array<{start:string;end:string;available?:boolean}>;
  scheduleDays?:Array<{value:string;label:string}>;

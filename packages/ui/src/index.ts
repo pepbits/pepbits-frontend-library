@@ -15,3 +15,5 @@ export * from "./nav-link";
 
 export * from "./source-controls";
 export * from "./async-lookup";
+
+export {splitFieldClasses,optionsFromChildren} from './field-interop';

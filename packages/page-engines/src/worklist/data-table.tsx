@@ -49,7 +49,7 @@ function formatValue(column: DataColumn, value: unknown, format: Formatters, wra
   return <DataValue value={text} className="block max-w-[260px]" />;
 }
 
-export function DataTable({ rows, columns, primaryKey, displayKey, selected, onToggle, onToggleAll, sort, onSort, onPreview, onView, onEdit, canEdit = true, onCellCommit, density, format, stickyHeader = true, zebra = false, wrap = false }: {
+export function DataTable({ rows, columns, primaryKey, displayKey, selected, onToggle, onToggleAll, sort, onSort, onPreview, onView, onEdit, onRowOpen, canEdit = true, onCellCommit, density, format, stickyHeader = true, zebra = false, wrap = false }: {
   rows: Array<Record<string, string | number | boolean>>;
   columns: DataColumn[];
   primaryKey: string;
@@ -59,6 +59,7 @@ export function DataTable({ rows, columns, primaryKey, displayKey, selected, onT
   onToggleAll: () => void;
   sort: { key: string; direction: "asc" | "desc" } | null;
   onSort: (column: DataColumn) => void;
+  onRowOpen?: (row: Record<string, string | number | boolean>) => void;
   onPreview: (row: Record<string, string | number | boolean>) => void;
   onView: (row: Record<string, string | number | boolean>) => void;
   canEdit?: boolean;
@@ -102,9 +103,9 @@ export function DataTable({ rows, columns, primaryKey, displayKey, selected, onT
                selected whichever stripe it landed on. */
             const stripe = zebra && rowIndex % 2 === 1 && !checked ? "bg-[color-mix(in_srgb,var(--surface-2)_60%,transparent)]" : undefined;
             return (
-              <TableRow key={id} data-selected={checked ? "true" : undefined} onDoubleClick={() => onView(row)} className={cn("group border-b border-[var(--border)] transition hover:bg-[var(--surface-2)]", stripe, checked && "bg-[var(--primary-soft)]")}>
+              <TableRow key={id} data-selected={checked ? "true" : undefined} tabIndex={onRowOpen?0:undefined} onKeyDown={event=>{if(event.key==='Enter'&&event.target===event.currentTarget)onRowOpen?.(row);}} onDoubleClick={() => onView(row)} className={cn("group border-b border-[var(--border)] transition hover:bg-[var(--surface-2)]", stripe, checked && "bg-[var(--primary-soft)]")}>
                 <TableCell className={cn("px-3", padding)} onClick={(event) => event.stopPropagation()}><Checkbox aria-label={t("Select {item}",{item:id})} checked={checked} onChange={() => onToggle(id)} /></TableCell>
-                {columns.map((column, index) => <TableCell key={column.key} data-classification={column.classification ?? "unclassified"} onClick={() => onPreview(row)} className={cn("cursor-pointer px-3 text-[length:calc(10.5px*var(--fs-scale))] font-medium text-[var(--text-muted)]", padding, index === 0 && "font-extrabold text-[var(--primary)]", column.key === displayKey && "font-extrabold text-[var(--text)]")}>{onCellCommit && column.editable
+                {columns.map((column, index) => <TableCell key={column.key} data-classification={column.classification ?? "unclassified"} onClick={() => (onRowOpen??onPreview)(row)} className={cn("cursor-pointer px-3 text-[length:calc(10.5px*var(--fs-scale))] font-medium text-[var(--text-muted)]", padding, index === 0 && "font-extrabold text-[var(--primary)]", column.key === displayKey && "font-extrabold text-[var(--text)]")}>{onCellCommit && column.editable
                     /* stopPropagation: the cell opens the record preview, and
                        clicking into an editor must not also open a drawer over
                        the thing being edited. */

@@ -1,0 +1,52 @@
+import React,{useEffect,useRef,useState} from 'react';
+import {RecordPage,RecordIdentity} from '@pepbits/page-engines/record-page';
+import {FieldRows,type FieldRow} from '@pepbits/page-engines/templates';
+import {LoadingState,RecoveryNotice,failureFromError,DescriptionList} from '@pepbits/components';
+import {Button} from '@pepbits/ui';
+import {useLocalization} from '@pepbits/i18n/react';
+import {useScreenHost,useFormatters} from '@pepbits/patterns/screen-host';
+import {usePreferences} from '@pepbits/preferences/react';
+import {useEntityApi,useFetch,useNeighbours} from './client';
+import {useEntitySupport,useProcessRunner} from './api';
+import {Fields,templateField} from './fields';
+import type {Field,PageDef,Row} from './types';
+import type {ErpTarget} from '../../navigation';
+export const defaultsFor=(fields:Field[])=>Object.fromEntries(fields.flatMap<[string,unknown]>(f=>f.type==='status'&&f.options?.length?[[f.key,f.options[0]]]:f.type==='boolean'?[[f.key,false]]:[]));
+export function RecordEditor({def,target,onClose,onOpen,onSaved}:{def:PageDef;target:ErpTarget;onClose:()=>void;onOpen:(target:ErpTarget)=>void;onSaved:(row:Row)=>void}){
+ const creating=target.mode==='new',params=new URLSearchParams(target.query),copy=creating?params.get('copy'):null;
+ const fetched=useFetch<Row>(!creating||copy?`/api/entities/${encodeURIComponent(def.entity)}/${encodeURIComponent(copy??target.recordId??'1')}`+(params.get('period')?'?period='+encodeURIComponent(params.get('period')!):''):null);
+ if((!creating||copy)&&!fetched.data)return fetched.error?<RecoveryNotice failure={failureFromError(new Error(fetched.error))} onRetry={fetched.reload}/>:<LoadingState/>;
+ const initial=creating?{...defaultsFor(def.fields),...Object.fromEntries([...params].filter(([k])=>def.fields.some(f=>f.key===k))),...(copy?{...fetched.data,id:undefined,code:undefined,version:undefined}:{}),id:''} as Row:fetched.data!;
+ return <LoadedRecord key={JSON.stringify([target.pageId,target.recordId,target.mode,copy,initial.version])} def={def} target={target} initial={initial} onClose={onClose} onOpen={onOpen} onSaved={row=>{fetched.setData(row);onSaved(row);}} onReload={fetched.reload}/>;
+}
+function LoadedRecord({def,target,initial,onClose,onOpen,onSaved,onReload}:{def:PageDef;target:ErpTarget;initial:Row;onClose:()=>void;onOpen:(target:ErpTarget)=>void;onSaved:(row:Row)=>void;onReload:()=>void}){
+ const {t}=useLocalization(),host=useScreenHost(),format=useFormatters(),{preferences}=usePreferences(),api=useEntityApi(),run=useProcessRunner(def.entity);
+ const creating=target.mode==='new',process=def.template==='process',inbox=def.template==='inbox';
+ const [draft,setDraft]=useState<Row>(initial),[active,setActive]=useState('details'),[busy,setBusy]=useState(false),[failure,setFailure]=useState<unknown>(),[errors,setErrors]=useState<Record<string,string>>({}),[events,setEvents]=useState<{time:string;text:string}[]>([]);
+ const retryPatch=useRef<Partial<Row>|undefined>(undefined);const pending=useRef<{signature:string;operationId:string}|undefined>(undefined),live=useRef(true);useEffect(()=>{live.current=true;return()=>{live.current=false;};},[]);
+ const edit=(creating||target.mode==='edit')&&!['print','inbox'].includes(def.template)&&host.can(creating?'create':'edit');
+ const support=useEntitySupport(def.entity,creating?undefined:initial.id),neighbours=useNeighbours(def.slug,initial.id);
+ const fields=process&&creating?def.params??[]:def.sections?def.sections.flatMap(s=>s.fields):def.fields;
+ const groups=def.sections?.map((s,i)=>({id:'section-'+i,title:s.title,heading:s.title,fields:s.fields}))??[{id:'details',title:'Details',heading:'Details',fields}];
+ const sections=[...groups,...(def.template==='checklist'?[{id:'checks',title:'Checks',heading:'Checks',fields:[]}]:[]),...(def.template==='process'&&!creating?[{id:'process-events',title:'Run log',heading:'Run log',fields:[]}]:[]),...(def.lines?[{id:'lines',title:def.lines.label??'Items',heading:def.lines.label??'Items',fields:[]}]:[]),...(!creating?[{id:'activity',title:'Activity',heading:'Activity',fields:[]},{id:'documents',title:'Documents',heading:'Documents',fields:[]}]:[])];
+ const set=(key:string,value:unknown)=>setDraft(d=>({...d,[key]:value}));
+ const save=async(patch?:Partial<Row>)=>{if(busy||(!edit&&!patch))return;retryPatch.current=patch;const value=patch?{...draft,...patch}:draft,missing=fields.filter(f=>f.required&&!f.readOnly&&(value[f.key]===''||value[f.key]==null));if(missing.length){setErrors(Object.fromEntries(missing.map(f=>[f.key,t('is required')])));return;}setBusy(true);setFailure(undefined);
+  const signature=JSON.stringify(value);if(pending.current?.signature!==signature)pending.current={signature,operationId:crypto.randomUUID()};
+  try{let saved:Row;if(process&&creating){const result=await run(Object.fromEntries((def.params??[]).map(f=>[f.key,value[f.key]])));saved=result.row;if(live.current)setEvents(result.events);}else{const payload={...value,operationId:pending.current.operationId,...(!creating&&typeof draft.version==='number'?{expectedVersion:draft.version}:{})};saved=creating?await api.create(def.entity,payload):await api.update(def.entity,initial.id,payload,new URLSearchParams(target.query).get('period')??undefined);}
+   if(!live.current)return;pending.current=undefined;setDraft(saved);host.notify(t('Changes saved'),{tone:'success'});onSaved(saved);
+  }catch(error){if(!live.current)return;setFailure(error);const status=(error as {status?:number}).status;if(status&&status<500)pending.current=undefined;}finally{if(live.current)setBusy(false);}
+ };
+ const saveRef=useRef(save);saveRef.current=save;
+ useEffect(()=>{if(!preferences.keyboardShortcuts||!edit)return;const key=(e:KeyboardEvent)=>{if(e.altKey&&e.key.toLowerCase()==='s'){e.preventDefault();void saveRef.current();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[preferences.keyboardShortcuts,edit]);
+ const lines=(draft.lines??[]) as Record<string,any>[];
+ const changeLines=(rows:FieldRow[])=>set('lines',rows.map(r=>{const v={...r.values};if('qty'in v||'rate'in v)v.amount=Math.round(Number(v.qty||0)*Number(v.rate||0)*100)/100;return v;}));
+ return <div data-erp-record><h2>{t(creating?'New record':'Record details')}</h2><RecordPage sections={sections} active={active} onActive={setActive} isDone={()=>false} showCompletion={false} identity={<RecordIdentity label={def.title} name={creating?t('New'):String(draft.name??draft.code??draft.id)} reference={creating?undefined:String(draft.code??draft.id)}/>} actions={[
+ {id:'back',label:'Back',onClick:onClose,disabled:busy,hidden:def.template==='settings'},
+ {id:'save',label:process&&creating?'Run process':creating?'Create':'Save',onClick:()=>void save(),primary:true,hidden:!edit,disabled:busy},
+ {id:'edit',label:'Edit',onClick:()=>onOpen({...target,mode:'edit'}),hidden:edit||['print','inbox','process'].includes(def.template)||!host.can('edit'),disabled:busy},
+ {id:'previous',label:'Previous record',onClick:()=>onOpen({...target,recordId:neighbours.prev!,mode:'view'}),disabled:!neighbours.prev||busy,hidden:creating||def.template==='settings'},
+ {id:'next',label:'Next record',onClick:()=>onOpen({...target,recordId:neighbours.next!,mode:'view'}),disabled:!neighbours.next||busy,hidden:creating||def.template==='settings'},
+ ...(inbox?['Approved','Rejected'].map(status=>({id:status,label:status==='Approved'?'Approve':'Reject',onClick:()=>void save({status}),disabled:busy||draft.status!=='Pending'||!host.can('edit')})):[]),
+ {id:'print',label:'Print',onClick:()=>window.print(),hidden:def.template!=='print'}
+ ]} feedback={failure?<div><RecoveryNotice failure={failureFromError(failure)} onRetry={()=>void save(retryPatch.current)}/>{(failure as {status?:number}).status===409?<Button onClick={onReload}>{t('Reload')}</Button>:null}</div>:undefined} renderSection={section=>section.id==='process-events'?<ol>{(draft.processEvents??[]).map((event:{time:string;text:string},i:number)=><li key={i}>{event.time} · {event.text}</li>)}</ol>:section.id==='checks'?<>{(draft.checks??def.checks??[]).map((check:Record<string,any>,index:number)=><Fields key={index} title={check.parameter} fields={[{key:'observed',label:'Observed',type:'text'},{key:'result',label:'Result',type:'select',options:['Pass','Fail','NA']},{key:'remarks',label:'Remarks',type:'textarea'}]} value={check} readOnly={!edit||busy} onChange={(key,value)=>set('checks',(draft.checks??def.checks??[]).map((c:Record<string,any>,i:number)=>i===index?{...c,[key]:value}:c))}/>)}</>:section.id==='lines'?<><FieldRows title={def.lines!.label??'Items'} fields={def.lines!.fields.map(templateField)} rows={lines.map((values,index)=>({id:String(index),values}))} onChange={changeLines} readOnlyKeys={def.lines!.fields.filter(f=>f.readOnly).map(f=>f.key)} disabled={!edit||busy} createRow={()=>({id:crypto.randomUUID(),values:Object.fromEntries(def.lines!.fields.map(f=>[f.key,f.key==='qty'?1:['number','currency','percent'].includes(f.type)?0:'']))})}/><p>{t('Total')}: {format.money(lines.reduce((sum,l)=>sum+Number(l.amount??l.debit??0),0))}</p></>:section.id==='activity'?support.error?<RecoveryNotice failure={failureFromError(new Error(support.error))} onRetry={support.retry}/>:<ul>{support.data?.activities.map((event,i)=><li key={i}>{format.dateTime(event.when)} · {event.who} · {event.text}</li>)}</ul>:section.id==='documents'?<ul>{support.data?.documents.map((doc,i)=><li key={i}>{doc.name} · {doc.size}</li>)}</ul>:<Fields fields={section.fields} value={draft} onChange={set} readOnly={!edit||busy} errors={errors} title={section.title}/>}/>{events.map((event,i)=><p key={i}>{event.time} · {event.text}</p>)}</div>;
+}

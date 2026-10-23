@@ -62,3 +62,5 @@ The identity/device examples use `withIdentityConnector` and `withDeviceConnecto
 Phase 6b-3 adds Native controls on UI primitives: five public native-layout controls and AsyncLookup with fictional in-memory search. Form values and selection disappear on reload. Its executable source generates the copyable snippet; the existing four-profile gallery axe tests cover the card. See the [6b-3 record](../../docs/releases/unreleased/restructure-phase-6b-3-2026-10-23.md).
 
 Phase 6b-9 extends that example with public SourceTimeInput and SourceDateTimeInput. Both retain native machine values and share the effective control presentation. See the [MedSlot record](../../docs/releases/unreleased/restructure-phase-6b-9-2026-10-23.md).
+
+The phase 6c-1 Select example also exercises public `optionsFromChildren` and `splitFieldClasses` interoperability helpers. The generated source snippet is refreshed; no new showcase route is added.

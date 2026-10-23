@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [ERP phase 6c-1 — scaffold and Keystone ERP1/ERP2](restructure-phase-6c-1-2026-10-23.md): shared-engine catalogue/data-flow subset and local evidence; specialized views deferred.
+
 - [Healthcare phase 6b-9 — MedSlot](restructure-phase-6b-9-2026-10-23.md): twelve destinations, two detail routes, booking and local HTTP verification.
 
 - [Healthcare phase 6b-8 — MedBand Patient Access](restructure-phase-6b-8-2026-10-23.md): nine route patterns, shared engines and local HTTP evidence.

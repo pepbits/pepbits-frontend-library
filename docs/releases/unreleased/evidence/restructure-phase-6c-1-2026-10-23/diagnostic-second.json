@@ -1,0 +1,24 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "ERP-01",
+      "scope": "UI",
+      "result": "Fixture sign-in and shared provider chain"
+    },
+    {
+      "id": "erp1-search",
+      "scope": "UI",
+      "result": "Worklist search returned API rows"
+    }
+  ],
+  "checks": [],
+  "errors": [
+    {
+      "route": "/erp1/masters/customers",
+      "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Fictional erp1 customer', { exact: true }).first() to be visible\u001b[22m\n"
+    }
+  ],
+  "consoleErrors": [],
+  "httpErrors": []
+}

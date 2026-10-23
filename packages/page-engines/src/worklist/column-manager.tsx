@@ -1,6 +1,6 @@
 "use client";
 import {Card} from "@pepbits/components";
-import {LocalizedText} from "@pepbits/i18n/react";
+import {LocalizedText,useLocalization} from "@pepbits/i18n/react";
 
 import React from "react";
 import { ArrowDown, ArrowUp, Check, GripVertical, RotateCcw } from "@pepbits/icons";
@@ -10,6 +10,7 @@ import {cn} from "@pepbits/ui";
 import type {DataColumn} from "../types";
 
 export function ColumnManager({ open, onClose, columns, visibleKeys, onChange, onReset }: { open: boolean; onClose: () => void; columns: DataColumn[]; visibleKeys: string[]; onChange: (keys: string[]) => void; onReset: () => void }) {
+  const {t}=useLocalization();
   const toggle = (key: string) => {
     if (visibleKeys.includes(key)) {
       if (visibleKeys.length === 1) return;
@@ -36,7 +37,7 @@ export function ColumnManager({ open, onClose, columns, visibleKeys, onChange, o
           {ordered.map((column) => {
             const visible = visibleKeys.includes(column.key);
             const index = visibleKeys.indexOf(column.key);
-            return <div key={column.key} className={cn("flex items-center gap-2 rounded-xl border px-2.5 py-2", visible ? "border-[var(--border)] bg-[var(--surface)]" : "border-transparent bg-[var(--surface-2)] opacity-65")}><GripVertical className="size-3.5 text-[var(--text-subtle)]" /><button type="button" onClick={() => toggle(column.key)} className={cn("flex size-5 shrink-0 items-center justify-center rounded-md border", visible ? "border-[var(--primary)] bg-[var(--primary-fill)] text-white" : "border-[var(--border-strong)]")}><Check className={cn("size-3", !visible && "opacity-0")} /></button><span className="min-w-0 flex-1 text-[length:calc(10.5px*var(--fs-scale))] font-bold"><LocalizedText message={column.label} /></span>{visible ? <div className="flex"><IconButton label="ui.move.up.c66feb5e" className="size-7" disabled={index <= 0} onClick={() => move(column.key, -1)}><ArrowUp className="size-3" /></IconButton><IconButton label="ui.move.down.40bb50da" className="size-7" disabled={index >= visibleKeys.length - 1} onClick={() => move(column.key, 1)}><ArrowDown className="size-3" /></IconButton></div> : null}</div>;
+            return <div key={column.key} className={cn("flex items-center gap-2 rounded-xl border px-2.5 py-2", visible ? "border-[var(--border)] bg-[var(--surface)]" : "border-transparent bg-[var(--surface-2)] opacity-65")}><GripVertical className="size-3.5 text-[var(--text-subtle)]" /><button type="button" aria-label={t(column.label)} aria-pressed={visible} onClick={() => toggle(column.key)} className={cn("flex size-5 shrink-0 items-center justify-center rounded-md border", visible ? "border-[var(--primary)] bg-[var(--primary-fill)] text-white" : "border-[var(--border-strong)]")}><Check className={cn("size-3", !visible && "opacity-0")} /></button><span className="min-w-0 flex-1 text-[length:calc(10.5px*var(--fs-scale))] font-bold"><LocalizedText message={column.label} /></span>{visible ? <div className="flex"><IconButton label="ui.move.up.c66feb5e" className="size-7" disabled={index <= 0} onClick={() => move(column.key, -1)}><ArrowUp className="size-3" /></IconButton><IconButton label="ui.move.down.40bb50da" className="size-7" disabled={index >= visibleKeys.length - 1} onClick={() => move(column.key, 1)}><ArrowDown className="size-3" /></IconButton></div> : null}</div>;
           })}
         </div>
       </div>

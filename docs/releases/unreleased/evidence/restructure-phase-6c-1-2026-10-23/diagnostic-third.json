@@ -1,0 +1,683 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "ERP-01",
+      "scope": "UI",
+      "result": "Fixture sign-in and shared provider chain"
+    },
+    {
+      "id": "erp1-search",
+      "scope": "UI",
+      "result": "Worklist search returned API rows"
+    },
+    {
+      "id": "erp1-edit",
+      "scope": "UI",
+      "result": "Record open, edit and HTTP save"
+    },
+    {
+      "id": "erp1-create",
+      "scope": "UI",
+      "result": "New record created through API"
+    },
+    {
+      "id": "erp1-approval",
+      "scope": "UI",
+      "result": "Pending approval updated through API"
+    },
+    {
+      "id": "erp2-search",
+      "scope": "UI",
+      "result": "Worklist search returned API rows"
+    },
+    {
+      "id": "erp2-edit",
+      "scope": "UI",
+      "result": "Record open, edit and HTTP save"
+    },
+    {
+      "id": "erp2-refresh",
+      "scope": "UI",
+      "result": "Record deep-link reload persisted edit"
+    },
+    {
+      "id": "erp2-create",
+      "scope": "UI",
+      "result": "New record created through API"
+    },
+    {
+      "id": "erp2-approval",
+      "scope": "UI",
+      "result": "Pending approval updated through API"
+    },
+    {
+      "id": "ERP-module",
+      "scope": "UI",
+      "result": "Header switches to module-owned navigation"
+    }
+  ],
+  "checks": [
+    {
+      "path": "/erp1/workspace/dashboard",
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "targets": [
+            [
+              "main"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/workspace/approvals",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/countries",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/states",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/currencies",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/units",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/holidays",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/org-structure",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/departments",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/chart-of-accounts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/tax-rates",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/customers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/suppliers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/items",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/product-categories",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/price-lists",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/bill-of-materials",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/employees",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/leave-types",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/shifts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/salary-structures",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/patients",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/doctors",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/lab-tests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/consultation-fees",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/students",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/fee-structures",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/vehicles",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/sales-orders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/sales-invoices",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/purchase-orders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/goods-receipts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/journal-vouchers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/payment-vouchers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/petty-cash",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/leave-requests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/expense-claims",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/attendance",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/timesheets",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/payroll-run",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/depreciation-run",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/appointments",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/room-bookings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/quality-inspections",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/support-tickets",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/maintenance-requests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/marks-entry",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/sales-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/purchase-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/stock-summary",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/receivables-aging",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/customer-ledger",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/invoice-print",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/setup/company-settings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/setup/users",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/setup/number-series",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/setup/notifications",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/workspace/dashboard",
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "targets": [
+            [
+              "main"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/workspace/approvals",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/countries",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/states",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/currencies",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/units",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/holidays",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/org-structure",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/departments",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/chart-of-accounts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/tax-rates",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/customers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/suppliers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/items",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/product-categories",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/price-lists",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/bill-of-materials",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/employees",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/leave-types",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/shifts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/salary-structures",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/patients",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/doctors",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/lab-tests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/consultation-fees",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/students",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/fee-structures",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/vehicles",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/sales-orders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/sales-invoices",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/purchase-orders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/goods-receipts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/journal-vouchers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/payment-vouchers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/petty-cash",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/leave-requests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/expense-claims",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/attendance",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/timesheets",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/payroll-run",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/depreciation-run",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/appointments",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/room-bookings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/quality-inspections",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/support-tickets",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/maintenance-requests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/marks-entry",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/sales-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/purchase-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/stock-summary",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/receivables-aging",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/customer-ledger",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/invoice-print",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/setup/company-settings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/setup/users",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/setup/number-series",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/setup/notifications",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "div[data-clinical-section=\"section-0\"] > .record-layout_cardHead__uW5dC > .font-mono.text-xs.text-\\[var\\(--text-muted\\)\\]"
+            ],
+            [
+              "div[data-template-section=\"Approvals\"] > .p-4 > .grid.gap-3 > .block.min-w-0:nth-child(2) > label > .gap-1.mb-1\\.5.text-\\[length\\:calc\\(11px\\*var\\(--fs-scale\\)\\)\\]"
+            ],
+            [
+              "div[data-template-section=\"Approvals\"] > .p-4 > .grid.gap-3 > .block.min-w-0:nth-child(3) > label > .gap-1.mb-1\\.5.text-\\[length\\:calc\\(11px\\*var\\(--fs-scale\\)\\)\\]"
+            ],
+            [
+              "div[data-clinical-section=\"section-1\"] > .record-layout_cardHead__uW5dC > .font-mono.text-xs.text-\\[var\\(--text-muted\\)\\]"
+            ],
+            [
+              "div[data-template-section=\"Finance\"] > .p-4 > .grid.gap-3 > .block.min-w-0 > label > .gap-1.mb-1\\.5.text-\\[length\\:calc\\(11px\\*var\\(--fs-scale\\)\\)\\]"
+            ],
+            [
+              "div[data-clinical-section=\"section-2\"] > .record-layout_cardHead__uW5dC > .font-mono.text-xs.text-\\[var\\(--text-muted\\)\\]"
+            ],
+            [
+              "div[data-template-section=\"Inventory\"] > .p-4 > .grid.gap-3 > .block.min-w-0:nth-child(2) > label > .gap-1.mb-1\\.5.text-\\[length\\:calc\\(11px\\*var\\(--fs-scale\\)\\)\\]"
+            ],
+            [
+              "div[data-template-section=\"Inventory\"] > .p-4 > .grid.gap-3 > .block.min-w-0:nth-child(3) > label > .gap-1.mb-1\\.5.text-\\[length\\:calc\\(11px\\*var\\(--fs-scale\\)\\)\\]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": []
+}

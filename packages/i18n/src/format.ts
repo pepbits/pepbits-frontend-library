@@ -156,3 +156,15 @@ export function createFormatters(preferences: FormatOptions): Formatters {
     },
   };
 }
+
+/** Compact currency values retain the host's currency visibility and negative style. */
+export function formatCompactMoney(preferences:FormatOptions,value:unknown):string {
+ if(typeof value!=='number'||!Number.isFinite(value))return '—';
+ const accounting=preferences.negativeStyle==='parentheses';
+ const formatter=new Intl.NumberFormat(preferences.numberLocale,{notation:'compact',maximumFractionDigits:1,signDisplay:accounting?'never':'auto',...(preferences.currencyDisplay==='none'?{}:{style:'currency',currency:preferences.currencyCode,currencyDisplay:preferences.currencyDisplay==='code'?'code':'symbol'})});
+ const text=formatter.format(value);return accounting&&value<0?`(${text})`:text;
+}
+/** Calendar display without a year; native input values remain unchanged. */
+export function formatShortDate(preferences:FormatOptions,value:string):string {
+ const full=createFormatters(preferences).date(value),parts=parseDate(value);return parts?full.replace(new RegExp(`^${parts.y}[-/.\\s]|[-/.\\s]${parts.y}$`),'').trim():full;
+}

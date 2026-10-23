@@ -1,0 +1,15 @@
+import React,{useCallback} from 'react';
+import {TemplateFields} from '@pepbits/page-engines/templates';
+import type {TemplateField,TemplateValue} from '@pepbits/page-engines/types';
+import {AsyncLookup} from '@pepbits/ui';
+import {DescriptionList} from '@pepbits/components';
+import {usePreferences} from '@pepbits/preferences/react';
+import {createReferenceFormat} from './format';
+import {useLocalization} from '@pepbits/i18n/react';
+import {useApi,listUrl} from './client';
+import type {Field,Row,ListResponse} from './types';
+export function templateField(field:Field):TemplateField{return {id:field.key,label:field.label,type:field.type==='boolean'?'checkbox':['number','currency','percent'].includes(field.type)?'number':['status','select'].includes(field.type)?'select':['email','date','time','textarea'].includes(field.type)?field.type as TemplateField['type']:'text',required:field.required&&!field.readOnly,options:field.options?.map(value=>({value,label:value}))};}
+export function useValueFormat(){const {preferences}=usePreferences(),{t}=useLocalization(),format=createReferenceFormat(preferences);return (field:Field,value:unknown)=>field.type==='boolean'?t(value?'Yes':'No'):format.fmtValue(field,value);}
+function ReferenceField({field,value,onChange,disabled}:{field:Field;value:unknown;onChange:(value:string)=>void;disabled:boolean}){const request=useApi(),{t}=useLocalization();const load=useCallback(async(q:string,signal:AbortSignal)=>field.ref?(await request<ListResponse>(listUrl(field.ref,{q,size:50}),{signal})).rows.map(r=>String(r.name??r.code??r.id)):(field.pool??[]).filter(x=>x.toLowerCase().includes(q.toLowerCase())),[request,field]);return <div><p>{t(field.label)}: {String(value??'')}</p><AsyncLookup label={t(field.label)} disabled={disabled} loadOptions={load} getKey={x=>x} renderOption={x=>x} onPick={onChange}/></div>;}
+/** ERP metadata translated into the public field engine; source keys remain wire values. */
+export function Fields({fields,value,onChange,readOnly=false,errors={},title='Details'}:{fields:Field[];value:Partial<Row>;onChange:(key:string,value:TemplateValue)=>void;readOnly?:boolean;errors?:Record<string,string>;title?:string}){const format=useValueFormat();return readOnly?<DescriptionList items={fields.map(f=>({id:f.key,label:f.label,value:format(f,value[f.key])}))}/>:<TemplateFields section={{id:title,title,fields:fields.map(templateField)}} values={value as Record<string,TemplateValue>} errors={errors} fieldStates={Object.fromEntries(fields.map(f=>[f.key,{disabled:f.readOnly,options:f.options?.map(x=>({value:x,label:x})),placeholder:'Select…'}]))} onChange={onChange} renderField={field=>{const original=fields.find(f=>f.key===field.id)!;return original.type==='ref'||original.pool?<ReferenceField field={original} value={value[original.key]} onChange={v=>onChange(original.key,v)} disabled={!!original.readOnly}/>:undefined;}}/>;}

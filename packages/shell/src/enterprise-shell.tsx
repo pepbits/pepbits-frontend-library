@@ -31,7 +31,7 @@ export function EnterpriseShell({ tabs, children, header, footer, navigationExpa
         {header ?? <Header />}
 
         {tabs}
-        <main className={`${styles.content} nex-scrollbar relative min-h-0 flex-1 overflow-auto bg-[var(--bg)] p-3 md:p-4`}><PageDocumentationNotice />{children}</main>
+        <main tabIndex={0} className={`${styles.content} nex-scrollbar relative min-h-0 flex-1 overflow-auto bg-[var(--bg)] p-3 md:p-4`}><PageDocumentationNotice />{children}</main>
         {footer ?? <Footer />}
       </div>
       <ShellLayers />

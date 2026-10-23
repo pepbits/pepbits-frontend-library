@@ -204,3 +204,9 @@ The Arabic regression now includes jsdom direction/classes/focus cases and **rea
 Phase 6 still owns demonstration applications, routing/bootstrap/native integration, product content, live server authorization and browser journeys beyond the isolated sidebar regression.
 
 Solid notification surfaces use a dark tint of their semantic tone so white title/detail text remains readable, including bright status palettes in dark themes. Chromium checks all four tones in Nexora and Midnight; placement, duration, limits, dismissal and light-style behavior remain preference-controlled.
+
+## Shared application provider chain
+
+`@pepbits/shell/application-providers` supplies `ApplicationProviders` and `useSettingsServices`. The host supplies API base URL, product ID, brand, role-to-product mapping, navigation and optional request/session overrides. It composes SessionProvider, PreferenceHost, runtime LocalizationProvider and ShellProvider/EnterpriseShell. Preference writes serialize accepted revisions; failed writes retain accepted values and disable edits until reload. Focus/policy events refresh tenant rules. Language catalog loading preserves mounted editors. Healthcare and ERP both consume this extraction and run the original host regression cases. No app navigation, fixture identity, AI service or origin is owned by the library.
+
+EnterpriseShell keeps its scrollable main region keyboard focusable even when a dashboard has no interactive children; the shell regression and real-browser axe sweep cover this case.

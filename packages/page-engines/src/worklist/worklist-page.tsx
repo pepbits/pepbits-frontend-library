@@ -131,7 +131,7 @@ export function WorklistPage(props:WorklistPageProps) {
  const {preferences}=usePreferences();
  return <PresentationProvider value={preferences}><WorklistContent key={JSON.stringify([props.adapter.identity,props.page.id])} {...props}/></PresentationProvider>;
 }
-function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPreferences}:WorklistPageProps) {
+function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPreferences,personalViews=true,rowClick='preview'}:WorklistPageProps) {
  const {t}=useLocalization(),{preferences,isLocked,allowedValues,update}=usePreferences(),format=useFormatters();
  const [printedAt,setPrintedAt]=useState<Date|null>(null);
  useEffect(()=>{
@@ -503,9 +503,9 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
         <div data-tour="search" className="min-w-[240px] flex-1 lg:max-w-xl"><SearchInput value={search} onChange={(value) => { setSearch(value); persist(value, filters); setPageNumber(1); }} className="w-full" placeholder={t("Search {page} by ID, name or any visible value…",{page:t(page.title)})} /></div>
         <Button disabled={!host.can("create",page)} data-tour="new" variant="primary" leftIcon={<Plus className="size-3.5" />} onClick={() => openRecord({ pageId: page.id, mode: "new", title: `New ${page.title.replace(/ (Master|Worklist)$/i, "")}` })}><LocalizedText message="ui.new.18fdd549" /></Button>
         <div className="hidden h-7 w-px bg-[var(--border)] md:block" />
-        <PersonalViews request={authedFetch} key={`${product.id}:${page.id}`} productId={product.id} pageId={page.id}
+        {personalViews && <PersonalViews request={authedFetch} key={`${product.id}:${page.id}`} productId={product.id} pageId={page.id}
           layout={{ filters: {...filters,...(search ? {query:search} : {})},columns:visibleKeys,sort,pageSize }}
-          onApply={applyPersonalView} allowDefault={() => !explicitView.current} onShare={createSavedView} />
+          onApply={applyPersonalView} allowDefault={() => !explicitView.current} onShare={createSavedView} />}
         <div className="ml-auto flex items-center gap-1">
             {/* Was two IconButtons in a bordered box, which is a segmented
                 control drawn by hand: no group name, no radio semantics, and
@@ -578,7 +578,7 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
         {searchFailure ? (
           <RecoveryNotice sessionRestored={adapter.sessionAvailable ?? false} failure={searchFailure} onRetry={()=>void runSearch()} onReturn={onReturn} />
         ) : loading ? <div role="status" className="p-6"><LocalizedText message="ui.loading.results.cf2c6389" /></div> : pageRows.length ? preferences.resultView === "table" ? (
-          <DataTable
+          <DataTable onRowOpen={rowClick==='open'?view:undefined}
             onCellCommit={canEdit ? async (row, column, next) => {
               const id = String(row[config.primaryKey]);
               /* What this browser believes the cell says — the local edit if

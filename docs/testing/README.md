@@ -114,3 +114,7 @@ The [6b-2 diagnostics increment](../releases/unreleased/restructure-phase-6b-2-2
 [Healthcare 6b-8 MedBand](../releases/unreleased/restructure-phase-6b-8-2026-10-23.md) ports all thirteen source test files and adds configured HTTP, host navigation, mounted preference/lookup and nine-route four-profile axe coverage. Real local HTTP/Chromium workflows distinguish UI actions from direct API guards. The original desktop inventory is unchanged; fictional software checks do not establish clinical/financial or native acceptance.
 
 [Healthcare 6b-9 MedSlot](../releases/unreleased/restructure-phase-6b-9-2026-10-23.md) retains both original component test files and browser contracts, adds HTTP/host/recovery tests and fourteen-route four-profile axe coverage, and extends the local HTTP driver with registration and scheduling lifecycle workflows. The record distinguishes UI actions, direct API guards, mocked tests and manual/native/domain boundaries.
+
+## ERP phase 6c-1
+
+The [ERP feature contract](../features/erp-demo.md) defines ERD-01 through ERD-07. Its [local record](../releases/unreleased/restructure-phase-6c-1-2026-10-23.md) separates all 38 original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks. Route coverage is not specialized workflow, accounting or human accessibility acceptance.

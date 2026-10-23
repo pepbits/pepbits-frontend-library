@@ -1,0 +1,54 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "ERP-01",
+      "scope": "UI",
+      "result": "Fixture sign-in and shared provider chain"
+    },
+    {
+      "id": "ERP-preferences",
+      "scope": "UI",
+      "result": "Accepted host preference selects account column storage"
+    },
+    {
+      "id": "erp1-columns",
+      "scope": "UI",
+      "result": "Column visibility and reset"
+    },
+    {
+      "id": "erp1-search",
+      "scope": "UI",
+      "result": "Worklist search returned API rows"
+    },
+    {
+      "id": "erp1-edit",
+      "scope": "UI",
+      "result": "Record open, edit and HTTP save"
+    },
+    {
+      "id": "erp1-create",
+      "scope": "UI",
+      "result": "New record created through API"
+    },
+    {
+      "id": "erp1-approval",
+      "scope": "UI",
+      "result": "Pending approval updated through API"
+    },
+    {
+      "id": "erp2-columns",
+      "scope": "UI",
+      "result": "Column visibility and reset"
+    }
+  ],
+  "checks": [],
+  "errors": [
+    {
+      "route": "/erp2/masters/customers",
+      "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Next record', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" class=\"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-8 gap-1.5 rounded-lg px-3 text-xs\">Next record</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    }
+  ],
+  "consoleErrors": [],
+  "httpErrors": []
+}

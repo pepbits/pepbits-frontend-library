@@ -179,3 +179,7 @@ All original component tests and browser scenario contracts are ported, alongsid
 MedSlot registration retains four inherited English fallback labels: Emergency contact name, Emergency contact phone, Insurance provider and Policy or member number. They have no module alias or canonical entry in any supported language. Correcting these belongs in the protected backend catalog; the demo does not add a substitute translation catalog.
 
 The 6b-9 regression sweep also makes the Suite appointment board keyboard-scrollable when all slots are past and applies RCM shortcut disablement before the next paint. These corrections preserve their existing API contracts.
+
+## Shared host extraction in phase 6c-1
+
+The app now consumes public `@pepbits/shell/application-providers`, `@pepbits/platform/http` and `@pepbits/platform/preference-service`. Its existing provider tests retain the preference revision, policy and language/editor contracts. The integration wrapper delegates service lifecycle to `tooling/scripts/run-demo-integration.mjs`; all `HEALTHCARE_*` environment options remain supported. ERP uses the same library/tooling exports without importing this app. The [6c-1 record](../../docs/releases/unreleased/restructure-phase-6c-1-2026-10-23.md) records the regression scope.
