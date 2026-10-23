@@ -13,6 +13,7 @@ import { ApprovalWorkspace } from "@pepbits/patterns/approvals";
 
 import { CsvImportDialog } from "@pepbits/patterns/imports";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {flushSync} from 'react-dom';
 import { Archive, Columns3, Download, FilterX, Grid2X2, ListFilter, MoreHorizontal, Plus, Printer, RefreshCw, Rows3, Save, Settings2, Star, Upload } from "@pepbits/icons";
 import { PersonalViews, type PersonalViewLayout } from "./personal-views";
 
@@ -132,6 +133,14 @@ export function WorklistPage(props:WorklistPageProps) {
 }
 function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPreferences}:WorklistPageProps) {
  const {t}=useLocalization(),{preferences,isLocked,allowedValues,update}=usePreferences(),format=useFormatters();
+ const [printedAt,setPrintedAt]=useState<Date|null>(null);
+ useEffect(()=>{
+   setPrintedAt(new Date());
+   // Server and first client render agree; native printing gets a fresh timestamp.
+   const beforePrint=()=>flushSync(()=>setPrintedAt(new Date()));
+   window.addEventListener('beforeprint',beforePrint);
+   return ()=>window.removeEventListener('beforeprint',beforePrint);
+ },[]);
  const host=useScreenHost(),navigation=useNavigation(),authedFetch=adapter.request;
  const toast=useCallback((notice:{title:string;message?:string;type:'success'|'error'|'warning'|'info'})=>host.notify([t(notice.title),notice.message&&t(notice.message)].filter(Boolean).join(' — '),{tone:notice.type}),[host.notify,t]);
  const product={id:adapter.applicationId},user=adapter.actor;
@@ -484,7 +493,7 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
           See tokens.css for why Ctrl+P cannot be intercepted. */}
       <div className="print-only mb-3 border-b-2 border-black pb-2 text-black">
         <div className="text-[11px] font-black uppercase tracking-[.14em]"><LocalizedText message={page.title} /></div>
-        <div className="mt-1 text-[9px] leading-relaxed"><LocalizedText message="ui.printed.by.c16730e3" />{" "}{user?.name ?? "an unidentified user"}{user?.email ? ` (${user.email})` : ""}{" "}<LocalizedText message="ui.tenant.b34b287f" />{" "}{user?.tenantId ?? "unknown"} · {format.dateTime(new Date())} · {pageRows.length}{" "}<LocalizedText message="ui.records.a94e7bcf" /></div>
+        <div className="mt-1 text-[9px] leading-relaxed"><LocalizedText message="ui.printed.by.c16730e3" />{" "}{user?.name ?? "an unidentified user"}{user?.email ? ` (${user.email})` : ""}{" "}<LocalizedText message="ui.tenant.b34b287f" />{" "}{user?.tenantId ?? "unknown"}{printedAt?<> · <time dateTime={printedAt.toISOString()}>{format.dateTime(printedAt)}</time></>:null} · {pageRows.length}{" "}<LocalizedText message="ui.records.a94e7bcf" /></div>
         {printReview.declared.length ? (
           <div className="mt-1 text-[9px] font-bold leading-relaxed"><LocalizedText message="ui.contains.2eaecb3d" />{" "}{printReview.declared.map((note) => note.label).join(", ")}.
             {printReview.declared.some((note) => note.classification === "phi") ? " Person-identifying information — handle under the tenant's retention policy." : ""}

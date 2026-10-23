@@ -10,12 +10,14 @@ const priorities = [
   { value: "highest", label: "TOP", description: "Highest priority" },
 ];
 
-const trigger = () => screen.getByRole("button", { name: "Priority" });
+const trigger = () => screen.getByRole("button", { name: /^Priority / });
 
 describe("DropdownSelect", () => {
   test("the trigger shows the selection and is named by its label", () => {
     render(<DropdownSelect label="Priority" value="high" options={priorities} onChange={() => undefined} />);
     expect(trigger()).toHaveTextContent("HI");
+    expect(trigger().textContent).toBe("Priority HI");
+    expect(trigger()).toHaveAccessibleName("Priority HI");
     expect(trigger()).toHaveAttribute("aria-expanded", "false");
   });
 
@@ -23,8 +25,9 @@ describe("DropdownSelect", () => {
      announce as "Choice" rather than as whichever place happens to be picked. */
   test("hideLabel keeps the accessible name and drops the visible one", () => {
     render(<DropdownSelect label="Choice" hideLabel value="high" options={priorities} onChange={() => undefined} />);
-    const button = screen.getByRole("button", { name: "Choice" });
+    const button = screen.getByRole("button", { name: /^Choice / });
     expect(button).toHaveTextContent("HI");
+    expect(button).toHaveAccessibleName("Choice HI");
     expect(button).not.toHaveTextContent("Choice");
   });
 
@@ -108,5 +111,5 @@ describe("ActionMenu", () => {
 
 test('empty authorized options render safely while the host loads access',()=>{
  render(<DropdownSelect label="Choice" value="" options={[]} onChange={()=>undefined}/>);
- expect(screen.getByRole('button',{name:'Choice'})).toHaveTextContent('—');
+ expect(screen.getByRole('button',{name:/^Choice /})).toHaveTextContent('—');
 });

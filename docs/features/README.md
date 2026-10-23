@@ -1,5 +1,7 @@
 # Feature catalog
 
+- [Independent library showcase](showcase.md): standalone gallery and effective-policy examples with fictional data.
+
 - [Shared sidebar navigation correction](../releases/unreleased/sidebar-navigation-2026-10-01.md): common preference, keyboard, pointer and header behavior verified on the frontend test site.
 
 - [Healthcare Suite reference module](healthcare-suite.md): CarePoint clinic/pharmacy pages, source-backed demo API and a separate header module.

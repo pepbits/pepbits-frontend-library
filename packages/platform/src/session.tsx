@@ -40,7 +40,7 @@ export interface SessionOptions {
   apiBaseUrl: string;
   fetch?: (path: string, init?: RequestInit) => Promise<Response>;
 }
-export interface SessionProviderProps extends SessionOptions { children: React.ReactNode }
+export type SessionProviderProps = (SessionOptions | {value: SessionValue}) & {children: React.ReactNode};
 
 /**
  * The session token, for callers that cannot go through authedFetch — a
@@ -80,7 +80,14 @@ export function expireCurrentSession(token:string|null) {
 
 const SessionContext = createContext<SessionValue | null>(null);
 
-export function SessionProvider({ children, apiBaseUrl, fetch: fetcher = globalThis.fetch }: SessionProviderProps) {
+/** A controlled host can supply a session without reading or writing browser tokens. */
+export function SessionProvider(props: SessionProviderProps) {
+  return 'value' in props
+    ? <HostSessionProvider value={props.value}>{props.children}</HostSessionProvider>
+    : <TokenSessionProvider {...props}/>;
+}
+
+function TokenSessionProvider({ children, apiBaseUrl, fetch: fetcher = globalThis.fetch }: SessionOptions & {children: React.ReactNode}) {
   const [status, setStatus] = useState<SessionStatus>("loading");
   const [user, setUser] = useState<SessionUser | null>(null);
   const generation = useRef(0);

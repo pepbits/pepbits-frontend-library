@@ -1,0 +1,96 @@
+{
+  "scope": "Local worktree; no deployment, hosted CI or native executable acceptance",
+  "base": "6c73e50e85280a86d359ab5473a0b346dfe0ed64",
+  "sourceDigest": "ef27732b9deeb3b4a10618ac6331f466c8e791dd1d9845348763083be7d65ad5",
+  "manifestFiles": 452,
+  "addedShowcaseFiles": 72,
+  "rootCI": {
+    "command": "npm run ci",
+    "exitCode": 0,
+    "libraryBoundaries": 11,
+    "demoBoundaries": 1,
+    "toolingTests": 19,
+    "typecheckTasks": 12,
+    "testTasks": 12,
+    "testFiles": 104,
+    "tests": 1326,
+    "workspaces": [
+      {
+        "workspace": "@pepbits/tokens",
+        "tests": 3
+      },
+      {
+        "workspace": "@pepbits/icons",
+        "tests": 19
+      },
+      {
+        "workspace": "@pepbits/preferences",
+        "tests": 33
+      },
+      {
+        "workspace": "@pepbits/data",
+        "tests": 37
+      },
+      {
+        "workspace": "@pepbits/i18n",
+        "tests": 64
+      },
+      {
+        "workspace": "@pepbits/platform",
+        "tests": 67
+      },
+      {
+        "workspace": "@pepbits/ui",
+        "tests": 121
+      },
+      {
+        "workspace": "@pepbits/shell",
+        "tests": 199
+      },
+      {
+        "workspace": "@pepbits/components",
+        "tests": 190
+      },
+      {
+        "workspace": "@pepbits/patterns",
+        "tests": 120
+      },
+      {
+        "workspace": "@pepbits/page-engines",
+        "tests": 429
+      },
+      {
+        "workspace": "@pepbits-demo/showcase",
+        "tests": 44
+      }
+    ],
+    "buildTasks": 1,
+    "next": "16.3.3",
+    "staticPagesGenerated": 11,
+    "buildTaskSeconds": 39.374
+  },
+  "browser": {
+    "command": "bash docs/releases/unreleased/evidence/restructure-phase-6a-2026-10-23/run-browser.sh",
+    "serverCommand": "npm run start -w @pepbits-demo/showcase -- --port 3304",
+    "exitCode": 0,
+    "routes": 8,
+    "interactionChecks": 8,
+    "violations": 0,
+    "incompleteRules": 9,
+    "pageErrors": 0,
+    "consoleErrors": 0
+  },
+  "documentation": {
+    "files": 179,
+    "additionalGuides": 9,
+    "exitCode": 0
+  },
+  "scanMatches": [
+    "demo-apps/showcase/.next/types/validator.ts",
+    "demo-apps/showcase/.next/types/app/[area]/page.ts",
+    "demo-apps/showcase/.next/types/app/page.ts",
+    "demo-apps/showcase/.next/dev/types/validator.ts",
+    "demo-apps/showcase/vitest.config.ts"
+  ],
+  "protectedChanges": 0
+}

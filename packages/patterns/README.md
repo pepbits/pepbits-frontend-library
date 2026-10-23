@@ -145,3 +145,9 @@ Approval props add `productId`, `adapter`, `actorId` and `roleOptions`. Hosts de
 The shared testing export reuses phase 4a provider/catalog/presentation/navigation wiring; callers may add private test messages. The in-memory test document exposes focus, transient drafts, dirty guarding and close subscriptions without pretending to be durable storage or a native shell. Never bundle it as application runtime code.
 
 See the [phase 4b record](../../docs/releases/unreleased/restructure-phase-4b-2026-10-23.md) for current counts and API differences. The earlier phase 4a record remains historical evidence. UI/service ports remain mocked in tests; browser workers, native execution and live server authorization are not certified.
+
+## Phase 6a embedding accessibility corrections
+
+Composed gallery axe checks found nested landmarks and labels. Lifecycle's inner content container is now a `div` (same CSS class), leaving the host responsible for its single `main` landmark. MasterTransferPanel passes `label` directly to shared Select/Input controls for format, file and reason; it no longer nests an outer label around FieldShell's label. Tests verify a single host landmark and the three accessible control names without nested labels. No lifecycle, transfer or persistence protocol changes.
+
+Lifecycle worklist card names include their visible record details, with the localized open action as a screen-reader prefix. They no longer replace visible content with a shorter `aria-label`; exact-name consumers should use a prefix matcher.

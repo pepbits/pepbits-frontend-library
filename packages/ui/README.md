@@ -89,3 +89,7 @@ These keys retain their original spelling. Supply translations in the host catal
 | `ui.no.matching.options.39a118fc` | No matching options |
 
 Literal labels and templates (for example `{count} options`) also pass through the host translator.
+
+## Phase 6a accessible trigger names
+
+SearchSelect's trigger name now includes both its field label and displayed selection (or placeholder). This aligns speech-input names with visible text; keyboard/listbox behavior is unchanged. A regression verifies the visible value is included. Consumers querying the exact old label should use the complete name or a label-prefix matcher.

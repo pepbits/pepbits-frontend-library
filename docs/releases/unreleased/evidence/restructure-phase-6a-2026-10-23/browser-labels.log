@@ -1,0 +1,94 @@
+{
+  "scope": "Local next start, fictional in-memory adapters; not deployed/native",
+  "routes": 8,
+  "checks": [
+    {
+      "area": "foundations",
+      "violations": [],
+      "passes": 41,
+      "incomplete": 1
+    },
+    {
+      "area": "ui",
+      "violations": [],
+      "passes": 46,
+      "incomplete": 1
+    },
+    {
+      "area": "components",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<button type=\"button\" aria-label=\"Status Active\" aria-haspopup=\"listbox\" aria-expanded=\"false\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] min-w-40\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 51,
+      "incomplete": 1
+    },
+    {
+      "area": "patterns",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<button type=\"button\" class=\"lifecycle_lifeCard__JHVdB\" aria-current=\"false\" aria-label=\"Open item-flow version 1\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 40,
+      "incomplete": 3
+    },
+    {
+      "area": "page-engines",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "nodes": [
+            {
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\" role=\"tab\" aria-label=\"Details\" aria-selected=\"true\" id=\"_R_2bapbsnrdb_-tab-d...\" tabindex=\"0\" aria-controls=\"_R_2bapbsnrdb_-secti...\" data-active=\"true\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            },
+            {
+              "html": "<button type=\"button\" class=\"focus-ring inline-fl...\" role=\"tab\" aria-label=\"Notes\" aria-selected=\"false\" id=\"_R_2bapbsnrdb_-tab-n...\" tabindex=\"-1\" aria-controls=\"_R_2bapbsnrdb_-secti...\" data-active=\"false\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 45,
+      "incomplete": 2
+    },
+    {
+      "area": "playground",
+      "violations": [],
+      "passes": 39,
+      "incomplete": 1
+    },
+    {
+      "area": "shell",
+      "violations": [],
+      "passes": 36,
+      "incomplete": 0
+    },
+    {
+      "area": "ai",
+      "violations": [],
+      "passes": 36,
+      "incomplete": 0
+    }
+  ],
+  "interactionChecks": 8,
+  "pageErrors": [],
+  "consoleErrors": []
+}

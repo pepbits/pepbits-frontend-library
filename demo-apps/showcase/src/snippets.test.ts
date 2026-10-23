@@ -1,0 +1,14 @@
+import {readFileSync,readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import ts from 'typescript';
+import {expect,test} from 'vitest';
+import snippets from './generated/snippets.json';
+import {examples} from './catalog';
+import {demoCatalog,catalogs} from './catalogs';
+import * as ui from '@pepbits/ui';
+import * as components from '@pepbits/components';
+test('every example has its exact executable file as the snippet',()=>{const files=readdirSync(resolve('src/examples')).filter(name=>name.endsWith('.tsx'));expect(Object.keys(snippets).sort()).toEqual(files.map(name=>name.slice(0,-4)).sort());expect(examples.map(example=>example.id).sort()).toEqual(Object.keys(snippets).sort());for(const [name,source] of Object.entries(snippets))expect(source).toBe(readFileSync(resolve('src/examples',name+'.tsx'),'utf8'));});
+test('examples import only React and public package exports',()=>{for(const [name,source] of Object.entries(snippets)){const parsed=ts.createSourceFile(name+'.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);for(const node of parsed.statements)if(ts.isImportDeclaration(node)){const specifier=(node.moduleSpecifier as ts.StringLiteral).text;expect(specifier==='react'||/^@pepbits\/(?!.*\/src(?:\/|$))/.test(specifier)).toBe(true);}}});
+test('every primitive and component runtime export appears in an executable example',()=>{const source=Object.values(snippets).join('\n');for(const name of [...Object.keys(ui),...Object.keys(components)])expect(source,new Error('Missing '+name).message).toMatch(new RegExp('\\b'+name+'\\b'));});
+test('the small app catalog has the same nonempty messages in all four languages',()=>{for(const language of ['en','ar','hi','ml'] as const){expect(Object.keys(demoCatalog[language]!).sort()).toEqual(Object.keys(demoCatalog.en!).sort());expect(Object.values(demoCatalog[language]!).every(value=>typeof value==='string'&&value.trim())).toBe(true);}});
+test('generated catalogs retain dynamically selected lifecycle status messages',()=>{for(const language of ['en','ar','hi','ml'] as const)for(const status of ['DRAFT','APPROVED','PUBLISHED']){const key='lifecycle.status.'+status;expect(catalogs[language]?.[key]).toBeTruthy();expect(catalogs[language]?.[key]).not.toBe(key);}});

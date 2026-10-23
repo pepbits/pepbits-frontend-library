@@ -127,7 +127,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
     <Button
       key={s.id}
       role="tab"
-      aria-label={t(s.title)}
+      aria-label={`${layout === "wizard" ? i + 1 : String(i + 1).padStart(2, "0")} ${t(s.title)}`}
       aria-selected={active === s.id}
       id={`${instance}-tab-${s.id}`}
       tabIndex={active === s.id ? 0 : -1}
@@ -162,13 +162,13 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
       data-active={active === s.id}
       onClick={() => go(s.id)}
     >
-      <span className={styles.number} data-done={isDone(s.id)}>
+      <span aria-hidden="true" className={styles.number} data-done={isDone(s.id)}>
         {isDone(s.id) && (layout !== "wizard" || active !== s.id)
           ? "✓"
           : layout === "wizard"
             ? i + 1
             : String(i + 1).padStart(2, "0")}
-      </span>
+      </span>{" "}
       {layout !== "wizard" || active === s.id ? (
         <span>{t(s.title)}</span>
       ) : null}

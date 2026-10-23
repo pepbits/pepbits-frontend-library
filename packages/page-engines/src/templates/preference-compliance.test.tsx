@@ -9,9 +9,8 @@ import {TemplateUnderTest as PageTemplateWorkspace} from '../test/template-host'
 
 import {usePreference} from '@pepbits/preferences/react';
 const scope={tenantId:'t',applicationId:'a',userId:'u',pageId:'p',recordId:'r'};
-// This case renders two workspaces per template; allow for slower hosts and concurrent builds.
-test('all registered templates inherit managed table preferences in both density profiles',()=>{
-  for(const density of ['compact','spacious'] as const)for(const definition of PAGE_TEMPLATES){
+// Isolate each template/profile so concurrent app builds do not share one timeout.
+test.each((['compact','spacious'] as const).flatMap(density=>PAGE_TEMPLATES.map(definition=>({density,definition}))))('$definition.id inherits managed table preferences in $density density',({density,definition})=>{
     const preferences={...DEFAULT_PREFERENCES,density,zebraStripes:false,stickyTableHeader:false,wrapCellText:true};
     const {container}=render(<PageTemplateWorkspace definition={definition} preferences={preferences} scope={scope} initialDocument={createTemplateSample(definition)}/>);
     for(const table of container.querySelectorAll('table')){
@@ -22,8 +21,7 @@ test('all registered templates inherit managed table preferences in both density
       expect(table,definition.id).toHaveAttribute('data-wrap','true');
     }
     cleanup();
-  }
-}, 15000);
+});
 test('locked policy resolves conflicting input preferences and explicit layout overrides',()=>{
   const definition=TEMPLATE_BY_ID['template-master-table']!;
   const preferencePolicy:PreferencePolicy={revision:1,rules:{formNavigation:{locked:true,value:'rail'}}};

@@ -347,7 +347,7 @@ function Controller({ api, application, permissions, actorId = null, classify, n
           <LifecycleCatalogueTree root={tree} selected={selectedNode} onSelect={selectNode} />
         </details>
       </aside>
-      <main className={styles.main}>
+      <div className={styles.main}>
         {failureView}
         {!open ? <Card className={styles.section}><h2>{t('lifecycle.console.select')}</h2><p className={styles.muted}>{t('lifecycle.boundary', { application: application.label })}</p></Card> : <>
           <Card className={styles.section} data-lifecycle-detail>
@@ -400,7 +400,7 @@ function Controller({ api, application, permissions, actorId = null, classify, n
             nextCursor={versionCursor} busy={busy} onMore={() => loadVersions(version.code, versionCursor)}
             onOpen={v => guard(() => openVersion(version.code, v))} load={async v => (await api.detail(version.code, v)).version.definition} /> : null}
         </>}
-      </main>
+      </div>
       <LifecycleConsoleSummary definition={open?.definition ?? null} version={version} activation={activation}
         report={report?.value ?? null} dirty={dirty}
         onPreview={() => setTab('preview')} onValidate={() => { setTab('validation'); validate(false); }}

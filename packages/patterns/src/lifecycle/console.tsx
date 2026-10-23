@@ -30,7 +30,8 @@ export function LifecycleConsoleWorklist({ items, application, filters, onFilter
     <div className={styles.worklistCards} aria-busy={busy}>
       {items.map(item => <button type="button" key={`${item.code}:${item.version}`} className={styles.lifeCard}
         aria-current={selected === `${item.code}:${item.version}`} disabled={busy}
-        aria-label={t('lifecycle.openVersion', { code: item.code, version: item.version })} onClick={() => onOpen(item)}>
+        onClick={() => onOpen(item)}>
+        <span className="sr-only">{t('lifecycle.openVersion', { code: item.code, version: item.version })}{' '}</span>
         <span className={styles.lifeLine}><span className={styles.lifeIcon} aria-hidden="true">{application.slice(0, 2).toUpperCase()}</span>
           <span className={styles.lifeName}><strong>{item.label}</strong><small>{application} · {item.code}</small></span></span>
         <span className={styles.lifeMeta}><span>v{item.version}</span><LifecycleStatusBadge status={item.status} active={item.active} /></span>

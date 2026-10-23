@@ -120,8 +120,8 @@ export function SearchSelect({ label, hint, error, required, className, options,
           ref={triggerRef}
           type="button"
           disabled={disabled}
-          aria-labelledby={label ? labelId : undefined}
-          aria-label={label ? undefined : t(placeholder)}
+          aria-labelledby={label ? `${labelId} ${base}-value` : undefined}
+          aria-label={label ? undefined : t(selected?.label ?? placeholder)}
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-invalid={error ? true : undefined}
@@ -130,7 +130,7 @@ export function SearchSelect({ label, hint, error, required, className, options,
           className={cn("focus-ring flex h-9 w-full items-center gap-2 rounded-[10px] border bg-[var(--surface)] px-3 text-left shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] transition hover:border-[var(--border-strong)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]", error ? "border-[var(--danger)]" : "border-[var(--border)]", open && "border-[var(--primary)]")}
         >
           {selected?.icon ? <span className="shrink-0 text-[var(--text-muted)]">{selected.icon}</span> : null}
-          <span className={cn("min-w-0 flex-1 truncate text-[length:calc(12px*var(--fs-scale))] font-medium", selected ? "text-[var(--text)]" : "text-[var(--text-subtle)]")}>{t(selected?.label ?? placeholder)}</span>
+          <span id={`${base}-value`} className={cn("min-w-0 flex-1 truncate text-[length:calc(12px*var(--fs-scale))] font-medium", selected ? "text-[var(--text)]" : "text-[var(--text-subtle)]")}>{t(selected?.label ?? placeholder)}</span>
           <ChevronDown className={cn("size-3.5 shrink-0 text-[var(--text-muted)] transition", open && "rotate-180")} />
         </button>
         {open ? (

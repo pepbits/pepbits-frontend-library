@@ -1,0 +1,210 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 11 package(s), 1 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 5.475108
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 51.476908
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 1.891344
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 1.625152
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 2.313416
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 2.80047
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 1.372381
+  type: 'test'
+  ...
+# Subtest: platform may use data; data cannot use platform or UI
+ok 8 - platform may use data; data cannot use platform or UI
+  ---
+  duration_ms: 2.661859
+  type: 'test'
+  ...
+# Subtest: AI sits above shell, patterns and engines; no reverse dependency is allowed
+ok 9 - AI sits above shell, patterns and engines; no reverse dependency is allowed
+  ---
+  duration_ms: 12.60701
+  type: 'test'
+  ...
+# Subtest: testing can import every library layer
+ok 10 - testing can import every library layer
+  ---
+  duration_ms: 1.681012
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 11 - demo apps use any layer but not each other
+  ---
+  duration_ms: 1.247499
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 12 - pre-restructure packages are rejected
+  ---
+  duration_ms: 0.823646
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 13 - relative imports may not leave the package
+  ---
+  duration_ms: 0.836635
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 14 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 1.49083
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 15 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 1.30372
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 16 - testing is dev-only
+  ---
+  duration_ms: 2.475658
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 17 - tooling packages are devDependencies only
+  ---
+  duration_ms: 1.314289
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 18 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 0.623274
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 19 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.200211
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 360.916972
+
+> pepbits-frontend-library@0.0.0 typecheck
+> turbo run typecheck
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits-demo/showcase, @pepbits/components, @pepbits/data, @pepbits/i18n, @pepbits/icons, @pepbits/page-engines, @pepbits/patterns, @pepbits/platform, @pepbits/preferences, @pepbits/shell, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running typecheck in 13 packages
+   • Remote caching disabled, using shared worktree cache
+
+@pepbits/data:typecheck: cache miss, executing 4f07816c3b4caa64
+@pepbits/i18n:typecheck: cache miss, executing 9887f8e5d1773324
+@pepbits/icons:typecheck: cache miss, executing 4aed09891a3254ad
+@pepbits/tokens:typecheck: cache miss, executing 925b12e4a46fdb3a
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/data:typecheck: 
+@pepbits/data:typecheck: > @pepbits/data@0.0.0 typecheck
+@pepbits/data:typecheck: > tsc --noEmit -p .
+@pepbits/data:typecheck: 
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+ WARNING  IO error: Read-only file system (os error 30)
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/platform:typecheck: cache miss, executing 851c77e8bf2ba20c
+@pepbits/preferences:typecheck: cache miss, executing 2939481687d6eb67
+ WARNING  IO error: Read-only file system (os error 30)
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/ui:typecheck: cache miss, executing 96f5e75f3e4ade53
+@pepbits/platform:typecheck: 
+@pepbits/platform:typecheck: > @pepbits/platform@0.0.0 typecheck
+@pepbits/platform:typecheck: > tsc --noEmit -p .
+@pepbits/platform:typecheck: 
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: > @pepbits/ui@0.0.0 typecheck
+@pepbits/ui:typecheck: > tsc --noEmit -p .
+@pepbits/ui:typecheck: 
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/components:typecheck: cache miss, executing 1e4cb6937fcda26f
+@pepbits/components:typecheck: 
+@pepbits/components:typecheck: > @pepbits/components@0.0.0 typecheck
+@pepbits/components:typecheck: > tsc --noEmit -p .
+@pepbits/components:typecheck: 
+@pepbits/patterns:typecheck: cache miss, executing 3f54d62239cd28de
+@pepbits/patterns:typecheck: 
+@pepbits/patterns:typecheck: > @pepbits/patterns@0.0.0 typecheck
+@pepbits/patterns:typecheck: > tsc --noEmit -p .
+@pepbits/patterns:typecheck: 
+@pepbits/patterns:typecheck: src/lifecycle/lifecycle.test.tsx(264,71): error TS2339: Property 'label' does not exist on type 'LifecycleReleaseVersion'.
+@pepbits/patterns:typecheck: npm ERR! Lifecycle script `typecheck` failed with error: 
+@pepbits/patterns:typecheck: npm ERR! Error: command failed 
+@pepbits/patterns:typecheck: npm ERR!   in workspace: @pepbits/patterns@0.0.0 
+@pepbits/patterns:typecheck: npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6a/packages/patterns 
+@pepbits/patterns#typecheck:  ERROR  command (/home/pepadmin/pb/worktrees/frontend-phase6a/packages/patterns) /usr/bin/npm run typecheck exited (1)
+
+ Tasks:    8 successful, 9 total
+Cached:    0 cached, 9 total
+  Time:    18.93s 
+Failed:    @pepbits/patterns#typecheck
+
+ ERROR  run failed: command  exited (1)

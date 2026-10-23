@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Library restructure phase 6a — 23 October 2026](restructure-phase-6a-2026-10-23.md): independent showcase with temporary frame; local Next.js build and accessibility evidence, full shell/AI pending the parallel merge.
+
 - [Library restructure phase 5 foundation — 23 October 2026](restructure-phase-5-2026-10-23.md): priorities 1–3, workspace core and shell/ScreenHost integration; chrome, workspace UI and remaining layers explicitly deferred. Local source-workspace evidence only.
 
 - [Library restructure phase 4b — 23 October 2026](restructure-phase-4b-2026-10-23.md): generic page engines, registry renderer, and patterns approvals/drafts/imports; local source-workspace verification only.

@@ -130,3 +130,9 @@ Literal labels and templates (for example `{count} options`) also pass through t
 ## Phase 4b pagination integration
 
 `Pagination.allowedPageSizes` is an optional array of supported sizes (10, 20, 50, 100). It filters unavailable options and guards the change callback; omitted preserves the original choices. Page engines pass the effective policy allowance and locked state. The host still owns accepted page-size state and persistence. See the [phase 4b record](../../docs/releases/unreleased/restructure-phase-4b-2026-10-23.md).
+
+## Phase 6a accessible dropdown names
+
+DropdownSelect's trigger name includes its field label and visible selected value, including when `hideLabel` is set. This fixes the composed browser axe label-content check without changing selection/keyboard behavior. Tests cover hidden-label naming and existing interactions. Exact accessible-name queries should include the selection or match the label prefix.
+
+Dropdown field and value spans include an explicit text separator, so their visible and accessible labels agree even when CSS provides the spacing.
