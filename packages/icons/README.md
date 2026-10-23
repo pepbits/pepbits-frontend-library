@@ -50,3 +50,5 @@ RCM adds direct primitives: AlarmClock, BarChart3, Calculator, Code2, ConciergeB
 Phase 6b-5 adds direct Lucide presentation exports: ArrowRightCircle, CalendarCheck, Camera, CameraOff, Circle, ClipboardPlus, CloudOff, FlaskConical, FolderHeart, MonitorSmartphone, MonitorUp, PhoneOff, PlusCircle, ScanFace, Signal, Smartphone, Video, Wifi, WifiOff. Each is covered by the public-export render test; no Teleconsult logic is included.
 
 Quality adds direct Lucide exports `ArrowDownRight`, `Bell`, `Gauge`, `LineChart` and `Timer` for assurance dashboards and report sections, covered by the public icon render tests.
+
+Phase 6b-7 adds direct `Droplet`, `Shield` and `Scissors` primitives for the SurgiSuite demonstration. Export/render cases cover all three; product aliases stay in the demo.

@@ -1,0 +1,105 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/surgisuite/module.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/modules/surgisuite/module.test.tsx (20 tests | 4 failed) 2086ms
+   × SurgiSuite source pages in shared host > renders the original case tabs using the canonical en catalog without translating API identifiers 68ms
+     → ENOENT: no such file or directory, open '/home/pepadmin/pb/worktrees/dummy-api/config/localization/shared/en.json'
+   × SurgiSuite source pages in shared host > renders the original case tabs using the canonical ar catalog without translating API identifiers 11ms
+     → ENOENT: no such file or directory, open '/home/pepadmin/pb/worktrees/dummy-api/config/localization/shared/ar.json'
+   × SurgiSuite source pages in shared host > renders the original case tabs using the canonical hi catalog without translating API identifiers 9ms
+     → ENOENT: no such file or directory, open '/home/pepadmin/pb/worktrees/dummy-api/config/localization/shared/hi.json'
+   × SurgiSuite source pages in shared host > renders the original case tabs using the canonical ml catalog without translating API identifiers 9ms
+     → ENOENT: no such file or directory, open '/home/pepadmin/pb/worktrees/dummy-api/config/localization/shared/ml.json'
+   ✓ SurgiSuite source pages in shared host > resolves eight static destinations and the real case identifier 3ms
+   ✓ SurgiSuite source pages in shared host > renders / from server fixtures through the host  535ms
+   ✓ SurgiSuite source pages in shared host > renders /schedule from server fixtures through the host 30ms
+   ✓ SurgiSuite source pages in shared host > renders /cases from server fixtures through the host 30ms
+   ✓ SurgiSuite source pages in shared host > renders /approvals from server fixtures through the host 30ms
+   ✓ SurgiSuite source pages in shared host > renders /patients from server fixtures through the host 19ms
+   ✓ SurgiSuite source pages in shared host > renders /inventory from server fixtures through the host 23ms
+   ✓ SurgiSuite source pages in shared host > renders /analytics from server fixtures through the host 118ms
+   ✓ SurgiSuite source pages in shared host > renders /masters from server fixtures through the host 27ms
+   ✓ SurgiSuite source pages in shared host > keeps every original case workspace tab and opens each without throwing  432ms
+   ✓ SurgiSuite source pages in shared host > opens and dismisses the original booking drawer through the shared dialog  376ms
+   ✓ SurgiSuite source pages in shared host > shows failed authentication and recovers without invented records 174ms
+   ✓ SurgiSuite source pages in shared host > does not offer booking for a viewer 162ms
+   ✓ SurgiSuite source pages in shared host > follows date/time preferences while retaining the source denomination 6ms
+   ✓ SurgiSuite source pages in shared host > reuses write identity after an ambiguous error 12ms
+   ✓ SurgiSuite source pages in shared host > refreshes open master consumers after master changes 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/surgisuite/module.test.tsx > SurgiSuite source pages in shared host > renders the original case tabs using the canonical en catalog without translating API identifiers
+Error: ENOENT: no such file or directory, open '/home/pepadmin/pb/worktrees/dummy-api/config/localization/shared/en.json'
+ ❯ translate src/modules/surgisuite/module.test.tsx:9:63
+
+ ❯ Object.t src/modules/surgisuite/module.test.tsx:22:246
+ ❯ Object.t ../../packages/i18n/src/react.tsx:29:27
+ ❯ LocalizedText ../../packages/i18n/src/react.tsx:22:34
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/modules/surgisuite/module.test.tsx > SurgiSuite source pages in shared host > renders the original case tabs using the canonical ar catalog without translating API identifiers
+Error: ENOENT: no such file or directory, open '/home/pepadmin/pb/worktrees/dummy-api/config/localization/shared/ar.json'
+ ❯ translate src/modules/surgisuite/module.test.tsx:9:63
+
+ ❯ Object.t src/modules/surgisuite/module.test.tsx:22:246
+ ❯ Object.t ../../packages/i18n/src/react.tsx:29:27
+ ❯ LocalizedText ../../packages/i18n/src/react.tsx:22:34
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/modules/surgisuite/module.test.tsx > SurgiSuite source pages in shared host > renders the original case tabs using the canonical hi catalog without translating API identifiers
+Error: ENOENT: no such file or directory, open '/home/pepadmin/pb/worktrees/dummy-api/config/localization/shared/hi.json'
+ ❯ translate src/modules/surgisuite/module.test.tsx:9:63
+
+ ❯ Object.t src/modules/surgisuite/module.test.tsx:22:246
+ ❯ Object.t ../../packages/i18n/src/react.tsx:29:27
+ ❯ LocalizedText ../../packages/i18n/src/react.tsx:22:34
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/modules/surgisuite/module.test.tsx > SurgiSuite source pages in shared host > renders the original case tabs using the canonical ml catalog without translating API identifiers
+Error: ENOENT: no such file or directory, open '/home/pepadmin/pb/worktrees/dummy-api/config/localization/shared/ml.json'
+ ❯ translate src/modules/surgisuite/module.test.tsx:9:63
+
+ ❯ Object.t src/modules/surgisuite/module.test.tsx:22:246
+ ❯ Object.t ../../packages/i18n/src/react.tsx:29:27
+ ❯ LocalizedText ../../packages/i18n/src/react.tsx:22:34
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 16 passed (20)
+   Start at  16:00:16
+   Duration  7.01s (transform 2.58s, setup 211ms, collect 3.67s, tests 2.09s, environment 557ms, prepare 80ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

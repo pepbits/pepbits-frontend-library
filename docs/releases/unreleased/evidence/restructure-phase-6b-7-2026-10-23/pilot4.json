@@ -1,0 +1,88 @@
+{
+  "flows": [
+    {
+      "id": "HCD-35-surgisuite-identity",
+      "mode": "HTTP",
+      "result": "Trusted actor and original case/master data; no PIN hash returned"
+    },
+    {
+      "id": "HCD-35-surgisuite-sections",
+      "mode": "UI",
+      "result": "All twelve case sections and refresh preserve the real identifier"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration, keyboard ICD/CPT lookup, team, theatre, conflict check and booking persisted"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking-guards",
+      "mode": "HTTP",
+      "result": "Successful booking replay, fresh overlap refusal and incomplete booking refusal"
+    },
+    {
+      "id": "HCD-35-surgisuite-case-edit",
+      "mode": "UI",
+      "result": "Overview changes survive HTTP save and refresh"
+    },
+    {
+      "id": "HCD-35-surgisuite-report-draft",
+      "mode": "UI",
+      "result": "Operative draft persists; readiness blockers prevent premature signing"
+    },
+    {
+      "id": "HCD-35-surgisuite-signature",
+      "mode": "UI + HTTP",
+      "result": "Source PIN simulation signs a ready report and verifies its hash; existing signed versions use amendment"
+    },
+    {
+      "id": "HCD-35-surgisuite-inventory",
+      "mode": "UI + HTTP",
+      "result": "Receive stock dialog updates the synthetic inventory"
+    },
+    {
+      "id": "HCD-35-surgisuite-cancel",
+      "mode": "UI + HTTP",
+      "result": "Cancellation persists and keeps the case available for audit"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/surgisuite",
+      "failure": "GET /patients/65: {\"error\":\"Branch is unavailable.\",\"errorMessage\":{\"messageKey\":\"api.reference.654a56e95f9e\",\"messageValues\":{}}}\n\n403 !== 404\n"
+    },
+    {
+      "route": "/surgisuite",
+      "failure": "GET /patients/65: {\"error\":\"Branch is unavailable.\",\"errorMessage\":{\"messageKey\":\"api.reference.654a56e95f9e\",\"messageValues\":{}}}\n\n403 !== 404\n",
+      "rendered": {
+        "path": "/surgisuite/cases/478",
+        "pageId": "surgisuite-case",
+        "headings": [
+          "Fictional SurgiSuite workflow",
+          "Case details",
+          "Readiness",
+          "Recent activity"
+        ],
+        "inputs": [
+          {
+            "type": "datetime-local",
+            "placeholder": ""
+          },
+          {
+            "type": "number",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": "Special requests, isolation, interpreter…"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

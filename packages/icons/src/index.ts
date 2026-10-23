@@ -135,3 +135,6 @@ export {AlarmClock, BarChart3, Calculator, Code2, ConciergeBell, FileMinus2, Fil
 
 // Quality report and assurance presentation.
 export {ArrowDownRight, Bell, Gauge, LineChart, Timer} from 'lucide-react';
+
+// Surgical presentation primitives.
+export {Droplet, Shield, Scissors} from 'lucide-react';

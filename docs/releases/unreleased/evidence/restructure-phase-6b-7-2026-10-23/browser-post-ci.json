@@ -1,0 +1,148 @@
+{
+  "flows": [
+    {
+      "id": "HCD-35-surgisuite-identity",
+      "mode": "HTTP",
+      "result": "Trusted actor and original case/master data; no PIN hash returned"
+    },
+    {
+      "id": "HCD-35-surgisuite-sections",
+      "mode": "UI",
+      "result": "All twelve case sections and refresh preserve the real identifier"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration, keyboard ICD/CPT lookup, team, theatre, conflict check and booking persisted"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking-guards",
+      "mode": "HTTP",
+      "result": "Successful booking replay, fresh overlap refusal and incomplete booking refusal"
+    },
+    {
+      "id": "HCD-35-surgisuite-case-edit",
+      "mode": "UI",
+      "result": "Overview changes survive HTTP save and refresh"
+    },
+    {
+      "id": "HCD-35-surgisuite-report-draft",
+      "mode": "UI",
+      "result": "Operative draft persists; readiness blockers prevent premature signing"
+    },
+    {
+      "id": "HCD-35-surgisuite-signature",
+      "mode": "UI + HTTP",
+      "result": "Source PIN simulation signs a ready report and verifies its hash; existing signed versions use amendment"
+    },
+    {
+      "id": "HCD-35-surgisuite-inventory",
+      "mode": "UI + HTTP",
+      "result": "Receive stock dialog updates the synthetic inventory"
+    },
+    {
+      "id": "HCD-35-surgisuite-approval",
+      "mode": "UI + HTTP",
+      "result": "Synthetic anesthesia approval records the source simulated signature"
+    },
+    {
+      "id": "HCD-35-surgisuite-master",
+      "mode": "UI + HTTP",
+      "result": "Typed procedure metadata plus mapping/preference-card writes persist and refresh consumers"
+    },
+    {
+      "id": "HCD-35-surgisuite-cancel",
+      "mode": "UI + HTTP",
+      "result": "Cancellation persists and keeps the case available for audit"
+    },
+    {
+      "id": "HCD-35-surgisuite-permissions",
+      "mode": "Viewer UI + HTTP",
+      "result": "Viewer has no booking action; writes, module login and cross-branch record reads are refused"
+    },
+    {
+      "id": "HCD-35-surgisuite-preferences",
+      "mode": "UI + accepted HTTP preferences",
+      "result": "Mounted booking input survives Arabic RTL, Hindi, Malayalam and English plus compact density and reduced motion"
+    }
+  ],
+  "rcmPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/surgisuite",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/schedule",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/approvals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/inventory",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/analytics",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/467",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/476",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/patients?id=65",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/356",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

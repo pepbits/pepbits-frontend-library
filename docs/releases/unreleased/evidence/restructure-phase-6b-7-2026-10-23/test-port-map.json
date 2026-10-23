@@ -1,0 +1,34 @@
+{
+  "sourcePackage": "desktop-clients/packages/reference-surgisuite",
+  "originalComponentFiles": [
+    {
+      "source": "src/module.test.tsx",
+      "sha256": "8a1664cd61f6bd80de5a8d724e07a78e776b97e277995b7a11d24d3957740643",
+      "originalCases": 20,
+      "destination": "demo-apps/healthcare/src/modules/surgisuite/module.test.tsx",
+      "adaptations": "Public preferences/localization, application host/routes; read-only canonical test catalogs"
+    }
+  ],
+  "browser": {
+    "source": "desktop-clients/e2e/surgisuite-reference.mjs",
+    "sha256": "94b8837e18bce08b7dd10f2dc0b770f3a8ba7fdc06c7e7f3d44608853ebb0688",
+    "originalAssertions": 26,
+    "destination": [
+      "demo-apps/healthcare/scripts/surgisuite-flows.mjs",
+      "demo-apps/healthcare/scripts/smoke.mjs"
+    ],
+    "mapping": [
+      "header and eight sidebar destinations: shared smoke sweep",
+      "twelve case sections, refresh, drawer, trusted actor and viewer: SurgiSuite flow",
+      "no page errors: shared smoke result gate"
+    ]
+  },
+  "additions": {
+    "behaviorCases": 18,
+    "transportRouteCases": 26,
+    "routeProfiles": 36
+  },
+  "sourceCssSha256": "f175aa1670475959f7081280c04c279a42c068d813cbb8b94fb083279b10cd67",
+  "portedCssSha256": "f175aa1670475959f7081280c04c279a42c068d813cbb8b94fb083279b10cd67",
+  "aliasSha256": "cea86cf093c8e0f71df58c531bd4e3bb4d6b6c48a387c003a1379a01b011d344"
+}

@@ -1,3 +1,4 @@
+import {surgisuiteFlows} from './surgisuite-flows.mjs';
 import {qualityFlows} from './quality-flows.mjs';
 import {teleconsultFlows} from './teleconsult-flows.mjs';
 import {rcmPresentation as checkRcmPresentation} from './rcm-presentation.mjs';
@@ -25,7 +26,7 @@ async function diagnosticMenu(route){
  const variant=route.split('/')[1],side=page.locator('aside[data-tour=sidebar]');
  if(selectedDiagnostic!==variant){
   await page.locator('header [data-tour=module] button').first().click();
-  await page.getByRole('listbox').getByRole('option',{name:new RegExp(variant.startsWith('teleconsult-')?'^Teleconsult '+(variant.endsWith('provider')?'Provider':'Patient')+'(?:\\s|$)':variant==='quality'?'^Quality(?:\\s|$)':variant==='rcm'?'^RCM(?:\\s|$)':variant==='pharmacy'?'^Pharmacy\\b':'^'+variant.toUpperCase()+'(?:\\s|$)')}).click();
+  await page.getByRole('listbox').getByRole('option',{name:new RegExp(variant.startsWith('teleconsult-')?'^Teleconsult '+(variant.endsWith('provider')?'Provider':'Patient')+'(?:\\s|$)':variant==='surgisuite'?'^SurgiSuite(?:\\s|$)':variant==='quality'?'^Quality(?:\\s|$)':variant==='rcm'?'^RCM(?:\\s|$)':variant==='pharmacy'?'^Pharmacy\\b':'^'+variant.toUpperCase()+'(?:\\s|$)')}).click();
   await page.locator('[data-reference-module="'+variant+'"]').waitFor();selectedDiagnostic=variant;
  }
  const toggle=side.locator('button[aria-expanded]').first();
@@ -55,7 +56,7 @@ try{
  await page.goto(base+'/patient-query',{timeout:120000});await page.locator('input[type=password]').waitFor({timeout:60000});
  await page.locator('input[autocomplete=username]').fill('admin');await page.locator('input[type=password]').fill(secret);
  await page.getByRole('button',{name:/sign in/i}).click();await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
- if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('suite'))){
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||new RegExp(routeFilter).test('/suite'))){
   await page.getByRole('textbox',{name:/Search/i}).first().fill('Alex');await page.getByRole('button',{name:'Search',exact:true}).click();
   await page.getByText('Alex Morgan',{exact:true}).first().waitFor();flows.push({id:'HCD-02',result:'patient search returned the fictional patient'});
   await page.goto(base+'/patient-record/PT-0001');await page.getByRole('heading',{name:'Alex Morgan'}).waitFor({timeout:60000});flows.push({id:'HCD-03',result:'patient record opened'});
@@ -109,15 +110,16 @@ try{
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('rcm'))){current='/rcm';try{await rcmFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(JSON.stringify({error:error.message,errors,consoleErrors,responses,rendered:await page.locator('body').innerText()}));if(!await page.locator('[data-rcm-stage]').count())throw error;}}
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('pharmacy'))){current='/pharmacy';try{await pharmacyFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.message);}}
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('teleconsult'))){current='/teleconsult-provider';try{await teleconsultFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(error.stack);}}
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('surgisuite'))){current='/surgisuite';try{await surgisuiteFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('quality'))){current='/quality';try{await qualityFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
  for(const route of [...routes,...(process.env.HEALTHCARE_EXAMPLES==='1'?examples:[]),...createdRoutes].filter(route=>!routeFilter||new RegExp(routeFilter).test(route))){
   current=route;
   try{
-   if(/^\/(lis1|lis2|ris1|pharmacy|rcm|quality|teleconsult-provider|teleconsult-patient)(?:\/|$)/.test(route)&&routes.includes(route))await diagnosticMenu(route);else await page.goto(base+route,{timeout:120000});await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
+   if(/^\/(lis1|lis2|ris1|pharmacy|rcm|quality|surgisuite|teleconsult-provider|teleconsult-patient)(?:\/|$)/.test(route)&&routes.includes(route))await diagnosticMenu(route);else await page.goto(base+route,{timeout:120000});await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
    await page.waitForTimeout(750);await page.waitForLoadState('networkidle',{timeout:30000});await page.waitForFunction(()=>!Array.from(document.querySelectorAll('[role=status], [aria-busy=true]')).some(node=>node.textContent.includes('Loading')||node.getAttribute('aria-busy')==='true'),{},{timeout:30000});await page.waitForTimeout(300);await page.evaluate(()=>document.fonts.ready);
    await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
    const axe=await page.evaluate(async()=>{const result=await window.axe.run(document);const page=await window.axe.run(document.querySelector('.healthcare-page'));return {pageViolations:page.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,summary:n.failureSummary}))})),violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,summary:n.failureSummary}))})),incomplete:result.incomplete.length};});
-   checks.push({route,...axe});if(route.startsWith("/rcm"))rcmPresentation.push({name:"page "+route,failures:axe.violations.map(v=>v.id)});if(process.env.HEALTHCARE_SCREENSHOTS_DIR&&['/suite','/quality','/quality/authorities','/quality/reports/designer','/patient-record/PT-0001','/clinical-consultation/PT-0001','/lis1','/lis2','/ris1','/pharmacy','/pharmacy/workbench','/pharmacy/counter','/rcm','/rcm/w/invoices','/rcm/approvals','/teleconsult-provider','/teleconsult-patient/home','/teleconsult-patient/visit/a8/summary'].includes(route)){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.HEALTHCARE_SCREENSHOTS_DIR+'/'+route.slice(1).replaceAll('/','-')+'.png',fullPage:true});}console.log(JSON.stringify({route,violations:axe.violations.map(v=>v.id)}));
+   checks.push({route,...axe});if(route.startsWith("/rcm"))rcmPresentation.push({name:"page "+route,failures:axe.violations.map(v=>v.id)});if(process.env.HEALTHCARE_SCREENSHOTS_DIR&&(['/surgisuite','/surgisuite/cases','/surgisuite/analytics','/suite','/quality','/quality/authorities','/quality/reports/designer','/patient-record/PT-0001','/clinical-consultation/PT-0001','/lis1','/lis2','/ris1','/pharmacy','/pharmacy/workbench','/pharmacy/counter','/rcm','/rcm/w/invoices','/rcm/approvals','/teleconsult-provider','/teleconsult-patient/home','/teleconsult-patient/visit/a8/summary'].includes(route)||/^\/surgisuite\/cases\/\d+$/.test(route))){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.HEALTHCARE_SCREENSHOTS_DIR+'/'+route.slice(1).replaceAll('/','-')+'.png',fullPage:true});}console.log(JSON.stringify({route,violations:axe.violations.map(v=>v.id)}));
   }catch(error){checks.push({route,failure:error.message});console.log(JSON.stringify({route,failure:error.message}));}
  }
  if(!routeFilter||routeFilter.includes('rcm'))rcmPresentation.push(...await checkRcmPresentation({page,base}));

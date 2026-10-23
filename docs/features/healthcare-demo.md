@@ -1,10 +1,10 @@
 # Independent healthcare demo
 
-Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-4 delivery record](../releases/unreleased/restructure-phase-6b-4-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
+Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-7 delivery record](../releases/unreleased/restructure-phase-6b-7-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
 
 ## User problem and outcome
 
-Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. Phase 6b-4 adds all forty RCM Workspace pages and their query workflows. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
+Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. Phase 6b-4 adds all forty RCM Workspace pages and their query workflows. Phases 6b-5 through 6b-7 add Teleconsult Provider/Patient, AllyVora Quality and SurgiSuite, bringing the app to 174 menu destinations. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
 
 ## User and administrator flows
 
@@ -50,7 +50,7 @@ Route matrices cover default, Arabic RTL, reduced motion and locked density. Jsd
 | HCD-12 | Pharmacy command replay, structured failure/retry, mounted preferences and cache scope |
 | HCD-06 | Public package boundaries, forced root CI, builds, documentation and protected-path/source checks |
 
-Exact case/file counts and failures are in the delivery record. Later runs cover SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
+Exact case/file counts and failures are in the delivery record. The remaining healthcare run covers MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
 
 ## Operations and support
 
@@ -80,7 +80,7 @@ Pharmacy lookup adapters supply product endpoints and row content to public `@pe
 
 ## RCM Workspace increment
 
-Phase 6b-4 adds all forty RCM reference pages under `/rcm`, keeping eight sidebar categories and the original record/filter query links. The source inventory is [listed in the app](../../demo-apps/healthcare/src/modules/rcm/navigation.json); expected business behavior comes from the [RCM reference guide](rcm-reference.md). The [6b-4 delivery record](../releases/unreleased/restructure-phase-6b-4-2026-10-23.md) identifies the local source and test boundary.
+Phase 6b-4 adds all forty RCM reference pages under `/rcm`, keeping eight sidebar categories and the original record/filter query links. The source inventory is [listed in the app](../../demo-apps/healthcare/src/modules/rcm/navigation.json); expected business behavior comes from the [RCM reference guide](rcm-reference.md). The [6b-7 delivery record](../releases/unreleased/restructure-phase-6b-7-2026-10-23.md) identifies the local source and test boundary.
 
 | Case | User flow and verification |
 | --- | --- |
@@ -142,3 +142,25 @@ Host preferences govern applicable controls, formatting, typography, table prese
 Validation and conflict refusals retain input and require explicit resolution. Ambiguous command retries keep their operation key. Read cancellation and response fencing prevent obsolete scope data from appearing. No new durable-draft service is claimed. All source tests are ported; generator parity checks verify frozen generated CSS/alias identities, and notification checks use the shared host.
 
 No Quality destination is deferred. Real authority/event connectors, continuous production scheduling, native execution, human language/domain review and assistive-technology acceptance remain separate. Software checks over fictional data do not establish regulatory, clinical or financial acceptance. No deployment, commit or push is part of this increment.
+
+## SurgiSuite increment
+
+Phase 6b-7 ports eight sidebar destinations and the dynamic twelve-section case workspace into the existing app, now **174 menu destinations**. See the [app usage/routes](../../demo-apps/healthcare/README.md#surgisuite--phase-6b-7), [source behavior](surgisuite-reference.md) and [delivery record](../releases/unreleased/restructure-phase-6b-7-2026-10-23.md).
+
+| Case | User flow and contract |
+| --- | --- |
+| HCD-35 | Header/sidebar, all twelve case sections, real identifier refresh and trusted API actor |
+| HCD-36 | Patient registration, keyboard diagnosis/procedure lookups, team/equipment and theatre/time booking |
+| HCD-37 | Conflict/incomplete-booking refusal, successful operation replay and retained failed editor input |
+| HCD-38 | Case update and operative draft save/reload, readiness guards, simulated signing and archived amendments |
+| HCD-39 | Inventory receipt, approval decision, procedure metadata save and cancellation with retained case/audit history |
+| HCD-40 | Viewer presentation/server refusal, branch isolation and disabled module login |
+| HCD-41 | Nine route patterns across default, Arabic RTL, reduced motion and tenant-locked density; case-section axe, shortcut cleanup and mounted editor retention |
+
+Use Book case from the board or Schedule, complete all four steps and resolve reported conflicts. Open the case to review readiness before recording milestones, consent, checklist/counts, anesthesia, materials, scores, coding, report or claim actions. Signed reports require amendment before further editing. The API enforces source roles and workflow guards; UI visibility is not authority.
+
+The provider chain stays SessionProvider → PreferenceHost → LocalizationProvider → ShellProvider. The public renderer registry dispatches the product module. CollectionView supplies Cases; TemplateFields supplies patient/procedure metadata; AsyncLookup, Source* controls, SourceDialog and ScreenHost replace duplicate infrastructure. Original surgical timeline/chart geometry and twelve-section orchestration stay demo-owned. The fixed API namespace is applied by the adapter to the configured authenticated HTTP callback. Scope disposal aborts requests; generation fences reject late reads. Ambiguous write retries keep their operation identity, definitive refusals release it, and recoverable failures preserve values. No new durable draft or concurrency contract is claimed.
+
+Applicable presentation follows effective host preferences/tenant locks, including typography/scales/radius, table settings, formatting, direction, motion and shortcut enablement. Daily timelines and bounded source queues are not paginated; page size has no source contract here. USD remains the backend denomination. Preview/export/device settings are inapplicable where the source supplies no corresponding control. Canonical catalogs remain backend-owned and unchanged; local bundles replace the external source font request.
+
+All destinations and original tests are included. Synthetic PINs, signatures, tariffs, inventory and clinical records demonstrate source behavior only. Production clinical authorization, real patient/payer/inventory/devices, native executables, human language/domain and assistive-technology review remain separate. No deployment, commit or push is part of this work.

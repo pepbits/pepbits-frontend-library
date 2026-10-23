@@ -20,3 +20,5 @@ routes.push(...rcm.flatMap(category=>category.pages.map(page=>'/rcm'+(page.path=
 routes.push('/teleconsult-provider','/teleconsult-provider/schedule','/teleconsult-provider/patients','/teleconsult-provider/notes','/teleconsult-patient','/teleconsult-patient/register','/teleconsult-patient/home','/teleconsult-patient/book','/teleconsult-patient/records');
 
 routes.push(...['','/indicators','/tat','/events','/verification','/validation','/reports','/schedules','/submissions','/authorities','/users','/audit'].map(path=>'/quality'+path));
+
+routes.push(...['','/schedule','/cases','/approvals','/patients','/inventory','/analytics','/masters'].map(path=>'/surgisuite'+path));

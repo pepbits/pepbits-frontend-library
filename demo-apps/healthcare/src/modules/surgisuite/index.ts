@@ -1,0 +1,1 @@
+export {ReferenceSurgiSuiteModule} from './module';

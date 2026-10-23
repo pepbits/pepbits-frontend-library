@@ -1,6 +1,6 @@
 import {expect,test} from 'vitest';
 import {pages,hrefFor,targetFromPath,suitePages,clinicalPages} from './navigation';
-test('every registered page round-trips through its deep link',()=>{for(const page of pages){const target={pageId:page.id};expect(targetFromPath(hrefFor(target)).pageId).toBe(page.id);}});
+test('every registered page round-trips through its deep link',()=>{for(const page of pages){const target={pageId:page.id};expect(targetFromPath(hrefFor(target).replace("[id]","472")).pageId).toBe(page.id);}});
 test('record, creation and query targets preserve their identity',()=>{for(const pageId of ['suite-patients','suite-encounters','suite-master-facilities',...clinicalPages.map(row=>row[0])]){for(const target of [{pageId,recordId:'PT-0001',mode:'edit' as const,query:'filter=active'},{pageId,mode:'new' as const}]){const url=new URL(hrefFor(target),'http://localhost');expect(targetFromPath(url.pathname,url.search.slice(1))).toMatchObject(target.mode==='new'?target:{...target,query:'filter=active&mode=edit'});}}});
 test.each(['/suite/appointments/extra','/suite/missing','/patient-record/p/extra','/suite/patients/%','/patient-record/a%2Fb'])('rejects malformed or unsupported route %s',path=>expect(targetFromPath(path).pageId).toBe('not-found'));
 test('static destinations exclude later RCM workspaces',()=>{expect(suitePages.some(page=>page.path.includes('/rcm'))).toBe(false);expect(new Set(pages.map(p=>p.id)).size).toBe(pages.length);});

@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Healthcare phase 6b-7 — SurgiSuite](restructure-phase-6b-7-2026-10-23.md): eight sidebar pages, twelve-section case workspace and configured HTTP; local verification and limits.
+
 - [Healthcare phase 6b-6 — Quality](restructure-phase-6b-6-2026-10-23.md): twelve destinations, record routes/designer, public engines and source-scoped local verification.
 
 - [Healthcare phase 6b-5 — Teleconsult Provider and Patient](restructure-phase-6b-5-2026-10-23.md): nine sidebar destinations, three record routes and local synthetic HTTP workflows; no deployment.

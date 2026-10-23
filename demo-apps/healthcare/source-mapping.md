@@ -1,6 +1,6 @@
 # Healthcare source map
 
-Sources remain untouched in the original desktop workspace. Destinations below are in this demo unless a public package is named. See the [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) [6b-2 record](../../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) and [6b-3 record](../../docs/releases/unreleased/restructure-phase-6b-3-2026-10-23.md) plus the [6b-4 record](../../docs/releases/unreleased/restructure-phase-6b-4-2026-10-23.md) for source-scoped validation and deferrals.
+Sources remain untouched in the original desktop workspace. Destinations below are in this demo unless a public package is named. See the [current 6b-7 record](../../docs/releases/unreleased/restructure-phase-6b-7-2026-10-23.md) and the increment records below for source-scoped validation and deferrals.
 
 | Original source | Destination / treatment |
 | --- | --- |
@@ -15,7 +15,8 @@ Sources remain untouched in the original desktop workspace. Destinations below a
 | Corresponding `erp-config` types and product definitions | `src/domain`; product-owned, not library exports |
 | Clinical library-page launchers | Replaced by app navigation and renderer registry, rather than nesting the old page library |
 | `erp-screens/src/consultation` (composer and recorder) | Deferred together with its specialized-editor cases; no dead route exposed |
-| Suite RCM workspaces and remaining healthcare reference products | Deferred to subsequent healthcare runs |
+| RCM, Pharmacy, Teleconsult, Quality and SurgiSuite | Ported in the increments below |
+| MedBand/MedSlot | Remaining healthcare increment |
 | Existing generic record-layout tests | Remain in page-engines; not duplicated in this app |
 
 ClinicalPatientWorkspace's product migration into the Healthcare repository is separately owned and is not performed by this demo port.
@@ -62,3 +63,7 @@ The reusable Pharmacy lookup interaction lives in public `@pepbits/ui` AsyncLook
 ## Phase 6b-6 Quality
 
 `reference-quality/src` maps to `src/modules/quality`; all twelve sidebar destinations, the indicator/report records and designer retain their API contracts. The configured HTTP adapter and thin product host connect the existing session/navigation/preferences. All ten source test files (79 original cases) are retained with public-host adaptations. Frozen CSS and alias identity checks replace desktop-only generators; notification assertions target ScreenHost. Authority and report metadata configure public form-designer TemplateFields; report-section panels reuse DesignerPanel and the indicator chooser uses AsyncLookup. SourceDialog supplies modal lifecycle; shared tables/tabs/printing/notifications are reused. KPI/report section geometry, event timelines, assurance orchestration and schedule definitions remain product UI. Five direct icon exports and keyboard access for shared table rows/scroll containers are the library additions. No original source, backend or generated canonical catalog is changed. [Delivery](../../docs/releases/unreleased/restructure-phase-6b-6-2026-10-23.md).
+
+## Phase 6b-7 SurgiSuite
+
+`reference-surgisuite/src` maps to `src/modules/surgisuite`: eight original sidebar pages and the twelve-section case workspace. The single original test file retains all 20 cases with public-host/catalog adaptations; the original browser scenario inventory is covered by the real-HTTP driver and sidebar sweep. Product host and configured HTTP adapter replace the old package dependencies. Cases uses public CollectionView; patient/procedure forms use TemplateFields; code lookups use AsyncLookup; dialogs and notifications use SourceDialog and ScreenHost. Surgical timelines, charts, sections and booking orchestration remain demo-owned. Source CSS/alias provenance is retained; separate overrides apply effective preferences. Three direct icon exports replace the source icon renderer. No protected source or canonical catalog changes. [Delivery](../../docs/releases/unreleased/restructure-phase-6b-7-2026-10-23.md).
