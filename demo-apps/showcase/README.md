@@ -1,6 +1,6 @@
 # Showcase
 
-An independent Next.js 16.3.3 / React 19.2 / Tailwind 4.1 component gallery. All runtime library imports use public `@pepbits/*` exports. [src/app-frame.tsx](src/app-frame.tsx) is a thin `WorkspaceShell` composition. The library owns its header, sidebar, footer, document canvas, tabs and layers. Eight routes contain 60 executable examples, including ten Shell and three AI examples.
+An independent Next.js 16.3.3 / React 19.2 / Tailwind 4.1 component gallery. All runtime library imports use public `@pepbits/*` exports. [src/app-frame.tsx](src/app-frame.tsx) is a thin `WorkspaceShell` composition. The library owns its header, sidebar, footer, document canvas, tabs and layers. Eight routes contain 61 executable examples, including ten Shell and three AI examples.
 
 From the repository root:
 
@@ -58,3 +58,5 @@ Patterns includes five additional executable examples: edit/recalculate a costin
 The identity/device examples use `withIdentityConnector` and `withDeviceConnector` with in-memory `createIdentityDeviceConnector`/`createDeviceConnector` calls. No hardware, driver, provider, raw biometrics or production identity is involved. Labels use synthetic base64 SVG as an image resource; browser printing is explicit. Canonical identity localization keys are retained with generic subject wording supplied by this host. Catalog generation excludes dependency folders and includes dynamically composed designer/label/device message families.
 
 `src/patterns-priority3.test.tsx` covers all five live flows. Existing whole-page axe scenarios include the new surfaces in default, Arabic RTL, reduced-motion and locked-density modes. Counts and source identity are in the [phase 4c record](../../docs/releases/unreleased/restructure-phase-4c-2026-10-23.md).
+
+Phase 6b-3 adds Native controls on UI primitives: five public native-layout controls and AsyncLookup with fictional in-memory search. Form values and selection disappear on reload. Its executable source generates the copyable snippet; the existing four-profile gallery axe tests cover the card. See the [6b-3 record](../../docs/releases/unreleased/restructure-phase-6b-3-2026-10-23.md).

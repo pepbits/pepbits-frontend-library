@@ -1,0 +1,42 @@
+
+> @pepbits-demo/healthcare@0.0.0 build
+> next build --webpack
+
+▲ Next.js 16.3.3 (webpack)
+- Environments: .env.local
+✓ Running next.config.ts took 45ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Creating an optimized production build ...
+Failed to compile.
+
+./src/modules/pharmacy/components/views/Patients.tsx
+Error:   x Expected '</', got 'ident'
+     ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/pharmacy/components/views/Patients.tsx:228:1]
+ 225 |   return (
+ 226 |     <Dialog open={open} onClose={onClose} title="Register patient" sub="Allergies feed straight into the safety screen on every prescription."
+ 227 |       footer={<><Button variant="ghost" onClick={onClose}><LocalizedText message="Cancel" /></Button><Button variant="primary" disabled={!valid} loading={busy === "create"} onClick={save}><LocalizedText message="Register patient" /></Button></>}>
+ 228 |       <TemplateFields section={patientSection} values={f} errors={{}} disabled={!!busy} fieldStates={{allergies:{hint:"Ingredients or drug classes, separated by commas, e.g. penicillin, NSAID"},conditions:{hint:"Separated by commas"}} onChange={(id,value)=>setF(previous=>({...previous,[id]:String(value)}))}
+     :                                                                                                                                                                                                                                            ^^^^^^^^
+ 229 |         renderField={field=>field.id==='dob'?<Field label={field.label}><DateInput max={todayIso()} value={f.dob} onChange={e=>setF({...f,dob:e.target.value})}/></Field>:undefined}/>
+ 230 | 
+ 231 |     </Dialog>
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/modules/pharmacy/components/views/Patients.tsx
+./src/modules/pharmacy/module.tsx
+./src/modules/pharmacy/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+
+> Build failed because of webpack errors
+npm ERR! Lifecycle script `build` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

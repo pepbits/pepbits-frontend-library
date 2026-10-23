@@ -10,3 +10,6 @@ for(const variant of diagnosticModules){
  const definitions=JSON.parse(readFileSync(new URL('src/modules/'+variant+'/routes.json',root),'utf8'));
  routes.push(...definitions.filter(route=>!route.path.includes('[')&&!route.path.startsWith('/print')).map(route=>'/'+variant+(route.path==='/'?'':route.path)));
 }
+
+const pharmacy=readFileSync(new URL('src/modules/pharmacy/routes.ts',root),'utf8').split('export const pharmacyNavigation')[0];
+routes.push(...[...pharmacy.matchAll(/path: "([^"]+)", title:/g)].map(match=>'/pharmacy'+(match[1]==='/'?'':match[1])));

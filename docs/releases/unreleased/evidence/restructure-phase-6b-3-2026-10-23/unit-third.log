@@ -1,0 +1,51 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/pharmacy src/adapters/pharmacy.test.ts src/navigation.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/modules/pharmacy/copy.test.ts (4 tests) 305ms
+ ✓ src/navigation.test.ts (35 tests) 54ms
+ ✓ src/modules/pharmacy/useAction.test.tsx (1 test) 44ms
+ ✓ src/modules/pharmacy/api.test.ts (12 tests) 20ms
+ ✓ src/adapters/pharmacy.test.ts (9 tests) 21ms
+ ✓ src/modules/pharmacy/styles.test.ts (9 tests) 22ms
+ ✓ src/modules/pharmacy/routes.test.ts (5 tests) 13ms
+ ✓ src/modules/pharmacy/theme.test.ts (4 tests) 10ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/pharmacy/module.test.tsx [ src/modules/pharmacy/module.test.tsx ]
+ FAIL  src/modules/pharmacy/pages.test.tsx [ src/modules/pharmacy/pages.test.tsx ]
+Error: Transform failed with 1 error:
+/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/pharmacy/components/views/Patients.tsx:228:235: ERROR: Expected "}" but found "onChange"
+  Plugin: vite:esbuild
+  File: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/pharmacy/components/views/Patients.tsx:228:235
+  
+  Expected "}" but found "onChange"
+  226 |      <Dialog open={open} onClose={onClose} title="Register patient" sub="Allergies feed straight into the safety scree...
+  227 |        footer={<><Button variant="ghost" onClick={onClose}><LocalizedText message="Cancel" /></Button><Button variant=...
+  228 |  ...enicillin, NSAID"},conditions:{hint:"Separated by commas"}} onChange={(id,value)=>setF(previous=>({...previous,[id...
+      |                                                                 ^
+  229 |          renderField={field=>field.id==='dob'?<Field label={field.label}><DateInput max={todayIso()} value={f.dob} onC...
+  230 |  
+  
+ ❯ failureErrorWithLog ../../node_modules/esbuild/lib/main.js:1752:15
+ ❯ ../../node_modules/esbuild/lib/main.js:1019:50
+ ❯ responseCallbacks.<computed> ../../node_modules/esbuild/lib/main.js:886:9
+ ❯ handleIncomingPacket ../../node_modules/esbuild/lib/main.js:941:12
+ ❯ Socket.readFromStdout ../../node_modules/esbuild/lib/main.js:864:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  2 failed | 8 passed (10)
+      Tests  79 passed (79)
+   Start at  10:36:54
+   Duration  18.45s (transform 2.68s, setup 1.90s, collect 3.43s, tests 490ms, environment 6.23s, prepare 889ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

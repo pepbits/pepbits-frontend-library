@@ -1,6 +1,6 @@
 # Healthcare source map
 
-Sources remain untouched in the original desktop workspace. Destinations below are in this demo unless a public package is named. See the [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) and [6b-2 record](../../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) for source-scoped validation and deferrals.
+Sources remain untouched in the original desktop workspace. Destinations below are in this demo unless a public package is named. See the [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) [6b-2 record](../../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) and [6b-3 record](../../docs/releases/unreleased/restructure-phase-6b-3-2026-10-23.md) for source-scoped validation and deferrals.
 
 | Original source | Destination / treatment |
 | --- | --- |
@@ -32,6 +32,21 @@ ClinicalPatientWorkspace's product migration into the Healthcare repository is s
 | Product master lists/editors | Public CollectionView and typed TemplateFields configurations; no generic renderer copied |
 | Original UI controls, tables, modal, tabs, pagination, toast | Thin product wrappers around public UI/components and ScreenHost; effective host presentation and updates |
 | Original standalone login, role switching and outer shell | Excluded; public session and shell own authentication, role, module selection and sidebar |
-| LIS2 report designer, labels and integration consoles | Retained product/API-specific workflows. After merging main phase 4c, assess adoption of public form-designer, label-printing and device-integration patterns/adapters; none are recreated here |
+| LIS2 report designer, labels and integration consoles | Retained product/API-specific workflows. With main phase 4c merged, assess adoption of public form-designer, label-printing and device-integration patterns/adapters; none are recreated here |
 
 The three product packages contain no source unit tests. Both original diagnostic client cases are ported, with additional transport, stale resource, patient failure/retry, route, preference and accessibility cases. The route tables retain 71 patterns (55 menu destinations and 16 detail/viewer/print patterns). The API's clinical/provider simulations and their data remain backend-owned. DICOM canvas/windowing and print report geometry are product behavior, with shared controls; no reusable spreadsheet/designer/device engine is copied. Full detailed clinical, physical print and DICOM/analyzer acceptance remain separate.
+
+## Phase 6b-3 Pharmacy
+
+| Original source | Destination / treatment |
+| --- | --- |
+| `reference-pharmacy/src` | `src/modules/pharmacy`, all thirteen destinations and query-based record selection |
+| Generic patient form and audit table | Public TemplateFields and CollectionView definitions; command mapping and filters stay product-owned |
+| Generic controls, tabs, toasts, dialogs and print | Public UI/components, ScreenHost notification adapter and PrintDocument; native-layout controls added to UI |
+| API client, retry keys, cache, module-relative navigation | Product client/host with `src/adapters/pharmacy.ts` using configured host HTTP, fixed namespace/branch metadata and structured failures |
+| Eight original test files | All 63 cases retained/adapted; new transport, mounted preference, recovery, route/RTL/axe cases added |
+| Source CSS and copy aliases | Frozen scoped stylesheet plus demo overrides, canonical message-key aliases; no backend translation catalog copied |
+
+Receipt geometry, chart bars, stock/prescription stages and multi-pane product orchestration remain specialized demo components. No phase 4c renderer is copied. The earlier source CSS generation check becomes a frozen-baseline hash check; source-copy generation becomes canonical alias/placeholder and explicit catalog-gap verification. No standalone identity or staff switcher is imported.
+
+The reusable Pharmacy lookup interaction lives in public `@pepbits/ui` AsyncLookup; its demo wrapper supplies only product endpoints and row content. Five native-layout field/button primitives and seventeen icon exports are the other library additions.

@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Library restructure phase 6b-3 — Pharmacy](restructure-phase-6b-3-2026-10-23.md): all thirteen Phial destinations, public engines, configured HTTP workflows and local verification; no deployment.
+
 - [Library restructure phase 6b-2 — healthcare diagnostics](restructure-phase-6b-2-2026-10-23.md): LIS1/LIS2/RIS1, shared diagnostic adapters, local verification and full-shell axe recheck; no deployment.
 - [Library restructure phase 6b-1 — 23 October 2026](restructure-phase-6b-1-2026-10-23.md): independent healthcare scaffold, Suite core and clinical subset; local HTTP/build evidence, deferred composer/recorder and shell accessibility follow-up.
 

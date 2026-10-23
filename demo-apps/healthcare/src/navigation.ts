@@ -1,3 +1,4 @@
+import {pharmacyNavigation,resolvePharmacyRoute} from './modules/pharmacy/routes';
 import {DIAGNOSTIC_REFERENCES} from './modules/diagnostics/navigation';
 import {matchDiagnosticRoute} from './modules/diagnostics/routes';
 import lis1Routes from './modules/lis1/routes.json';
@@ -39,7 +40,9 @@ export const suitePages = [
 ];
 export type HealthcareTarget = NavigationTarget & {query?:string; diagnosticPath?:string};
 export const diagnosticPages=DIAGNOSTIC_REFERENCES.flatMap(module=>module.pages.map(page=>({...page,module:module.id,variant:module.variant})));
+export const pharmacyPages=pharmacyNavigation.map(item=>({...item,id:'pharmacy-'+resolvePharmacyRoute(item.path)!.kind}));
 export const pages: PageDefinition[] = [
+  ...pharmacyPages.map(item=>({id:item.id,title:item.title,subtitle:'',kind:'pharmacy',module:'reference-pharmacy'})),
   ...diagnosticPages.map(item=>({id:item.id,title:item.title,subtitle:'',kind:'diagnostic',module:item.module})),
   ...suitePages.map(item=>({id:item.id,title:item.title,subtitle:'',kind:'suite',module:'reference-healthcare-suite',entity:'entity' in item?item.entity:undefined})),
   ...clinicalPages.map(([id, title]) => ({id, title, subtitle: '', kind: 'clinical', module: 'library', ai: {enabled: false, useCases: []}})),
@@ -47,7 +50,7 @@ export const pages: PageDefinition[] = [
 ];
 const navigation: ShellNavigation = {
   defaultModule: 'reference-healthcare-suite', pages: Object.fromEntries(pages.map(page => [page.id, page])),
-  modules: {...Object.fromEntries(DIAGNOSTIC_REFERENCES.map(module=>[module.id,{id:module.id,label:module.title,shortLabel:module.shortLabel,description:'Fictional diagnostic workflows',icon:FileQuestion,accent:module.accent,navigation:[{id:module.id+'-pages',label:module.title,items:module.pages.map(page=>({id:page.id,pageId:page.id,label:page.title}))}]}])), 'reference-healthcare-suite':{id:'reference-healthcare-suite',label:'Healthcare Suite',shortLabel:'Suite',description:'Front office and care',icon:FileQuestion,accent:'var(--primary)',navigation:[{id:'suite-pages',label:'Healthcare Suite',items:suitePages.map(item=>({id:item.id,pageId:item.id,label:item.title}))}]},library: {id: 'library', label: 'Healthcare', shortLabel: 'Care', description: 'Fictional healthcare workflows',
+  modules: {'reference-pharmacy':{id:'reference-pharmacy',label:'Pharmacy-1',shortLabel:'Pharmacy',description:'Fictional pharmacy workflows',icon:FileQuestion,accent:'var(--primary)',navigation:[...new Set(pharmacyPages.map(p=>p.group))].map(group=>({id:'pharmacy-'+group,label:group,items:pharmacyPages.filter(p=>p.group===group).map(p=>({id:p.id,pageId:p.id,label:p.title}))}))},...Object.fromEntries(DIAGNOSTIC_REFERENCES.map(module=>[module.id,{id:module.id,label:module.title,shortLabel:module.shortLabel,description:'Fictional diagnostic workflows',icon:FileQuestion,accent:module.accent,navigation:[{id:module.id+'-pages',label:module.title,items:module.pages.map(page=>({id:page.id,pageId:page.id,label:page.title}))}]}])), 'reference-healthcare-suite':{id:'reference-healthcare-suite',label:'Healthcare Suite',shortLabel:'Suite',description:'Front office and care',icon:FileQuestion,accent:'var(--primary)',navigation:[{id:'suite-pages',label:'Healthcare Suite',items:suitePages.map(item=>({id:item.id,pageId:item.id,label:item.title}))}]},library: {id: 'library', label: 'Healthcare', shortLabel: 'Care', description: 'Fictional healthcare workflows',
     icon: FileQuestion, accent: 'var(--primary)', navigation: [
       {id: 'patients', label: 'Patients', items: clinicalPages.filter(row => row[2] === 'patients').map(([id, label]) => ({id, label, pageId: id}))},
       {id: 'clinical', label: 'Clinical', items: clinicalPages.filter(row => row[2] === 'clinical').map(([id, label]) => ({id, label, pageId: id}))},
@@ -55,8 +58,9 @@ const navigation: ShellNavigation = {
     ]}},
 };
 export const product = defineProduct({id: API_PRODUCT, name: 'Healthcare', tagline: 'Fictional healthcare workflows', navigation,
-  defaultModule: 'reference-healthcare-suite', enabledModules: ['reference-healthcare-suite','library',...DIAGNOSTIC_REFERENCES.map(module=>module.id)], access: {actions: {create: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], edit: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], archive: [], export: ['enterprise-admin', 'admin', 'operations-analyst', 'operations']}}});
+  defaultModule: 'reference-healthcare-suite', enabledModules: ['reference-pharmacy','reference-healthcare-suite','library',...DIAGNOSTIC_REFERENCES.map(module=>module.id)], access: {actions: {create: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], edit: ['enterprise-admin', 'admin', 'operations-analyst', 'operations'], archive: [], export: ['enterprise-admin', 'admin', 'operations-analyst', 'operations']}}});
 export function targetFromPath(pathname: string, search = ''): HealthcareTarget {
+  if(pathname==='/pharmacy'||pathname.startsWith('/pharmacy/')){const route=resolvePharmacyRoute(pathname.slice('/pharmacy'.length)||'/');return route?{pageId:'pharmacy-'+route.kind,query:search}:{pageId:'not-found'};}
   const diagnostic=pathname.match(/^\/(lis1|lis2|ris1)(\/.*)?$/);
   if(diagnostic){const variant=diagnostic[1] as 'lis1'|'lis2'|'ris1',path=diagnostic[2]||'/';
     if(!matchDiagnosticRoute({lis1:lis1Routes,lis2:lis2Routes,ris1:ris1Routes}[variant],path))return {pageId:'not-found'};
@@ -82,6 +86,8 @@ export function targetFromPath(pathname: string, search = ''): HealthcareTarget 
   return {pageId:id||'suite-dashboard',query:search,...(record?record==='new'?{mode:'new' as const}:{recordId:decodeURIComponent(record),mode:params.get('mode')==='edit'?'edit' as const:'view' as const}:{})};
 }
 export function hrefFor(target: HealthcareTarget) {
+  const pharmacy=pharmacyPages.find(p=>p.id===target.pageId);
+  if(pharmacy)return '/pharmacy'+(pharmacy.path==='/'?'':pharmacy.path)+(target.query?'?'+target.query:'');
   const diagnostic=diagnosticPages.find(p=>p.id===target.pageId);
   if(diagnostic)return '/'+diagnostic.variant+((target.diagnosticPath??diagnostic.path)==='/'?'':target.diagnosticPath??diagnostic.path)+(target.query?'?'+target.query:'');
   const suite=suitePages.find(item=>item.id===target.pageId);

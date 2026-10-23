@@ -1,0 +1,2565 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    },
+    {
+      "id": "HCD-09-patient",
+      "mode": "UI + HTTP assertions",
+      "result": "Registered fictional patient, reloaded profile, checked trusted actor and branch isolation"
+    },
+    {
+      "id": "HCD-09-search",
+      "mode": "UI",
+      "result": "Command palette searched real API and opened the patient query link"
+    },
+    {
+      "id": "HCD-10-prescription",
+      "mode": "UI",
+      "result": "Created prescription, started review, verified, reserved FEFO stock, checked, handed over and reloaded supplied record"
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/pharmacy",
+      "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByText('INV-100692', { exact: true }) to be visible\u001b[22m\n"
+    },
+    {
+      "route": "/suite/billing/pharmacy",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option', { name: /^Pharmacy-1/ })\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/workbench",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/counter",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/orders",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/sales",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/inventory",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/purchasing",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/authorizations",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/claims",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/remittance",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/patients",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/audit",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/settings",
+      "failure": "locator.click: Error: strict mode violation: locator('header [data-tour=module] button') resolved to 7 elements:\n    1) <button type=\"button\" aria-expanded=\"true\" aria-haspopup=\"listbox\" class=\"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0\">…</button> aka getByRole('button', { name: 'Suite' })\n    2) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"0\" id=\"_r_0_-option-0\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Pharmacy Pharmacy-' })\n    3) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"1\" id=\"_r_0_-option-1\" aria-selected=\"true\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40 bg-[var(--surface-2)] bg-[var(--primary-soft)]\">…</button> aka getByRole('option', { name: 'Suite Healthcare Suite' })\n    4) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"2\" id=\"_r_0_-option-2\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'Care Healthcare' })\n    5) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"3\" id=\"_r_0_-option-3\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS1 LIS1' })\n    6) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"4\" id=\"_r_0_-option-4\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'LIS2 LIS2' })\n    7) <button role=\"option\" tabindex=\"-1\" type=\"button\" data-index=\"5\" id=\"_r_0_-option-5\" aria-selected=\"false\" class=\"flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition disabled:opacity-40\">…</button> aka getByRole('option', { name: 'RIS1 RIS1' })\n\nCall log:\n\u001b[2m  - waiting for locator('header [data-tour=module] button')\u001b[22m\n"
+    },
+    {
+      "route": "/pharmacy/patients?id=pat_0d9d2c17de28",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".border-amber-mark\\/40"
+              ],
+              "html": "<span class=\"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block\">Demonstration data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "nested-interactive",
+          "nodes": [
+            {
+              "target": [
+                "li[data-patient=\"pat_001\"]"
+              ],
+              "html": "<li data-patient=\"pat_001\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_029\"]"
+              ],
+              "html": "<li data-patient=\"pat_029\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_016\"]"
+              ],
+              "html": "<li data-patient=\"pat_016\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_006\"]"
+              ],
+              "html": "<li data-patient=\"pat_006\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_034\"]"
+              ],
+              "html": "<li data-patient=\"pat_034\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_013\"]"
+              ],
+              "html": "<li data-patient=\"pat_013\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_017\"]"
+              ],
+              "html": "<li data-patient=\"pat_017\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_024\"]"
+              ],
+              "html": "<li data-patient=\"pat_024\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_025\"]"
+              ],
+              "html": "<li data-patient=\"pat_025\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_002\"]"
+              ],
+              "html": "<li data-patient=\"pat_002\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_030\"]"
+              ],
+              "html": "<li data-patient=\"pat_030\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_008\"]"
+              ],
+              "html": "<li data-patient=\"pat_008\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_015\"]"
+              ],
+              "html": "<li data-patient=\"pat_015\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_020\"]"
+              ],
+              "html": "<li data-patient=\"pat_020\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_023\"]"
+              ],
+              "html": "<li data-patient=\"pat_023\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_007\"]"
+              ],
+              "html": "<li data-patient=\"pat_007\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_021\"]"
+              ],
+              "html": "<li data-patient=\"pat_021\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_009\"]"
+              ],
+              "html": "<li data-patient=\"pat_009\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_012\"]"
+              ],
+              "html": "<li data-patient=\"pat_012\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_004\"]"
+              ],
+              "html": "<li data-patient=\"pat_004\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_032\"]"
+              ],
+              "html": "<li data-patient=\"pat_032\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_018\"]"
+              ],
+              "html": "<li data-patient=\"pat_018\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_027\"]"
+              ],
+              "html": "<li data-patient=\"pat_027\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_010\"]"
+              ],
+              "html": "<li data-patient=\"pat_010\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_011\"]"
+              ],
+              "html": "<li data-patient=\"pat_011\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_0d9d2c17de28\"]"
+              ],
+              "html": "<li data-patient=\"pat_0d9d2c17de28\" role=\"option\" aria-selected=\"true\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_005\"]"
+              ],
+              "html": "<li data-patient=\"pat_005\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_033\"]"
+              ],
+              "html": "<li data-patient=\"pat_033\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_022\"]"
+              ],
+              "html": "<li data-patient=\"pat_022\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_026\"]"
+              ],
+              "html": "<li data-patient=\"pat_026\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_014\"]"
+              ],
+              "html": "<li data-patient=\"pat_014\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_019\"]"
+              ],
+              "html": "<li data-patient=\"pat_019\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_003\"]"
+              ],
+              "html": "<li data-patient=\"pat_003\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_031\"]"
+              ],
+              "html": "<li data-patient=\"pat_031\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_028\"]"
+              ],
+              "html": "<li data-patient=\"pat_028\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".border-amber-mark\\/40"
+              ],
+              "html": "<span class=\"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block\">Demonstration data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "nested-interactive",
+          "nodes": [
+            {
+              "target": [
+                "li[data-patient=\"pat_001\"]"
+              ],
+              "html": "<li data-patient=\"pat_001\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_029\"]"
+              ],
+              "html": "<li data-patient=\"pat_029\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_016\"]"
+              ],
+              "html": "<li data-patient=\"pat_016\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_006\"]"
+              ],
+              "html": "<li data-patient=\"pat_006\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_034\"]"
+              ],
+              "html": "<li data-patient=\"pat_034\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_013\"]"
+              ],
+              "html": "<li data-patient=\"pat_013\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_017\"]"
+              ],
+              "html": "<li data-patient=\"pat_017\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_024\"]"
+              ],
+              "html": "<li data-patient=\"pat_024\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_025\"]"
+              ],
+              "html": "<li data-patient=\"pat_025\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_002\"]"
+              ],
+              "html": "<li data-patient=\"pat_002\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_030\"]"
+              ],
+              "html": "<li data-patient=\"pat_030\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_008\"]"
+              ],
+              "html": "<li data-patient=\"pat_008\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_015\"]"
+              ],
+              "html": "<li data-patient=\"pat_015\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_020\"]"
+              ],
+              "html": "<li data-patient=\"pat_020\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_023\"]"
+              ],
+              "html": "<li data-patient=\"pat_023\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_007\"]"
+              ],
+              "html": "<li data-patient=\"pat_007\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_021\"]"
+              ],
+              "html": "<li data-patient=\"pat_021\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_009\"]"
+              ],
+              "html": "<li data-patient=\"pat_009\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_012\"]"
+              ],
+              "html": "<li data-patient=\"pat_012\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_004\"]"
+              ],
+              "html": "<li data-patient=\"pat_004\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_032\"]"
+              ],
+              "html": "<li data-patient=\"pat_032\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_018\"]"
+              ],
+              "html": "<li data-patient=\"pat_018\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_027\"]"
+              ],
+              "html": "<li data-patient=\"pat_027\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_010\"]"
+              ],
+              "html": "<li data-patient=\"pat_010\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_011\"]"
+              ],
+              "html": "<li data-patient=\"pat_011\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_0d9d2c17de28\"]"
+              ],
+              "html": "<li data-patient=\"pat_0d9d2c17de28\" role=\"option\" aria-selected=\"true\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_005\"]"
+              ],
+              "html": "<li data-patient=\"pat_005\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_033\"]"
+              ],
+              "html": "<li data-patient=\"pat_033\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_022\"]"
+              ],
+              "html": "<li data-patient=\"pat_022\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_026\"]"
+              ],
+              "html": "<li data-patient=\"pat_026\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_014\"]"
+              ],
+              "html": "<li data-patient=\"pat_014\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_019\"]"
+              ],
+              "html": "<li data-patient=\"pat_019\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_003\"]"
+              ],
+              "html": "<li data-patient=\"pat_003\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_031\"]"
+              ],
+              "html": "<li data-patient=\"pat_031\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "li[data-patient=\"pat_028\"]"
+              ],
+              "html": "<li data-patient=\"pat_028\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/workbench?rx=rx_6ada4c40d31a",
+      "pageViolations": [
+        {
+          "id": "aria-required-children",
+          "nodes": [
+            {
+              "target": [
+                "div[role=\"listbox\"]"
+              ],
+              "html": "<div class=\"scroll-y min-h-0 flex-1\" role=\"listbox\" aria-label=\"Done queue\">",
+              "summary": "Fix any of the following:\n  Element has children which are not allowed: ul"
+            }
+          ]
+        },
+        {
+          "id": "aria-required-parent",
+          "nodes": [
+            {
+              "target": [
+                "#q-rx_05b48da4c923"
+              ],
+              "html": "<li id=\"q-rx_05b48da4c923\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_a71526a19bef"
+              ],
+              "html": "<li id=\"q-rx_a71526a19bef\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_f55b3a981ca3"
+              ],
+              "html": "<li id=\"q-rx_f55b3a981ca3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_63c851e1dd29"
+              ],
+              "html": "<li id=\"q-rx_63c851e1dd29\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_edf1de53df56"
+              ],
+              "html": "<li id=\"q-rx_edf1de53df56\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_d024f9a1d4de"
+              ],
+              "html": "<li id=\"q-rx_d024f9a1d4de\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_ca8a9c285ea1"
+              ],
+              "html": "<li id=\"q-rx_ca8a9c285ea1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_6347f0882903"
+              ],
+              "html": "<li id=\"q-rx_6347f0882903\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_ada11d70cd9d"
+              ],
+              "html": "<li id=\"q-rx_ada11d70cd9d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_50e8367f2ac3"
+              ],
+              "html": "<li id=\"q-rx_50e8367f2ac3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_af5b036eb04c"
+              ],
+              "html": "<li id=\"q-rx_af5b036eb04c\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_e366a6912b31"
+              ],
+              "html": "<li id=\"q-rx_e366a6912b31\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_29855974f248"
+              ],
+              "html": "<li id=\"q-rx_29855974f248\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_2e6568350074"
+              ],
+              "html": "<li id=\"q-rx_2e6568350074\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_a4bd11a37d1b"
+              ],
+              "html": "<li id=\"q-rx_a4bd11a37d1b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_e4ead435d4a0"
+              ],
+              "html": "<li id=\"q-rx_e4ead435d4a0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8642666e8161"
+              ],
+              "html": "<li id=\"q-rx_8642666e8161\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1953e876bd1a"
+              ],
+              "html": "<li id=\"q-rx_1953e876bd1a\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1825de337f06"
+              ],
+              "html": "<li id=\"q-rx_1825de337f06\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_3666869aa292"
+              ],
+              "html": "<li id=\"q-rx_3666869aa292\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_cca4bcad6c22"
+              ],
+              "html": "<li id=\"q-rx_cca4bcad6c22\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_0edd08dc9198"
+              ],
+              "html": "<li id=\"q-rx_0edd08dc9198\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8cbfc63db4a3"
+              ],
+              "html": "<li id=\"q-rx_8cbfc63db4a3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_07e9dbc87e3c"
+              ],
+              "html": "<li id=\"q-rx_07e9dbc87e3c\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_966702020316"
+              ],
+              "html": "<li id=\"q-rx_966702020316\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_b665d2f0c51b"
+              ],
+              "html": "<li id=\"q-rx_b665d2f0c51b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_b4aa395b9aa6"
+              ],
+              "html": "<li id=\"q-rx_b4aa395b9aa6\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_c6d3b9374cf4"
+              ],
+              "html": "<li id=\"q-rx_c6d3b9374cf4\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_e40a6479d8ac"
+              ],
+              "html": "<li id=\"q-rx_e40a6479d8ac\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_cb0d30cca3c0"
+              ],
+              "html": "<li id=\"q-rx_cb0d30cca3c0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_c24a266e05c1"
+              ],
+              "html": "<li id=\"q-rx_c24a266e05c1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_db6765c23d0b"
+              ],
+              "html": "<li id=\"q-rx_db6765c23d0b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_6ada4c40d31a"
+              ],
+              "html": "<li id=\"q-rx_6ada4c40d31a\" role=\"option\" aria-selected=\"true\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8de6e9ec8758"
+              ],
+              "html": "<li id=\"q-rx_8de6e9ec8758\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1c40daac0375"
+              ],
+              "html": "<li id=\"q-rx_1c40daac0375\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1ced47a90ac7"
+              ],
+              "html": "<li id=\"q-rx_1ced47a90ac7\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_101b1b7a5361"
+              ],
+              "html": "<li id=\"q-rx_101b1b7a5361\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_013ee7ac7147"
+              ],
+              "html": "<li id=\"q-rx_013ee7ac7147\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8e2a0fcff82d"
+              ],
+              "html": "<li id=\"q-rx_8e2a0fcff82d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_3db3e62efae0"
+              ],
+              "html": "<li id=\"q-rx_3db3e62efae0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8e1e18480268"
+              ],
+              "html": "<li id=\"q-rx_8e1e18480268\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_0b3112527892"
+              ],
+              "html": "<li id=\"q-rx_0b3112527892\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_58b455930f0a"
+              ],
+              "html": "<li id=\"q-rx_58b455930f0a\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_e0b99582ab0f"
+              ],
+              "html": "<li id=\"q-rx_e0b99582ab0f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_f3b7b5728dec"
+              ],
+              "html": "<li id=\"q-rx_f3b7b5728dec\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_b807c83fa46b"
+              ],
+              "html": "<li id=\"q-rx_b807c83fa46b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_c67c16532287"
+              ],
+              "html": "<li id=\"q-rx_c67c16532287\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_860c34d3970f"
+              ],
+              "html": "<li id=\"q-rx_860c34d3970f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_0545b77792f1"
+              ],
+              "html": "<li id=\"q-rx_0545b77792f1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_f0e168c4b761"
+              ],
+              "html": "<li id=\"q-rx_f0e168c4b761\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8873cf9fb4de"
+              ],
+              "html": "<li id=\"q-rx_8873cf9fb4de\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_9686ff9f7a9f"
+              ],
+              "html": "<li id=\"q-rx_9686ff9f7a9f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_b6bd17e8b6b8"
+              ],
+              "html": "<li id=\"q-rx_b6bd17e8b6b8\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_bd1b25f91f78"
+              ],
+              "html": "<li id=\"q-rx_bd1b25f91f78\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1cc1a4f03ca6"
+              ],
+              "html": "<li id=\"q-rx_1cc1a4f03ca6\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_f3497f41ed4d"
+              ],
+              "html": "<li id=\"q-rx_f3497f41ed4d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1f81c07270a3"
+              ],
+              "html": "<li id=\"q-rx_1f81c07270a3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_7293c72553b9"
+              ],
+              "html": "<li id=\"q-rx_7293c72553b9\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_587b85b2b64b"
+              ],
+              "html": "<li id=\"q-rx_587b85b2b64b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_42fe25199145"
+              ],
+              "html": "<li id=\"q-rx_42fe25199145\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".border-amber-mark\\/40"
+              ],
+              "html": "<span class=\"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block\">Demonstration data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_05b48da4c923 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_a71526a19bef > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_f55b3a981ca3 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_63c851e1dd29 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_edf1de53df56 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_d024f9a1d4de > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_ca8a9c285ea1 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-amber-wash.text-amber.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-amber-wash text-amber capitalize\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_6347f0882903 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-amber-wash.text-amber.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-amber-wash text-amber capitalize\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_ada11d70cd9d > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-amber-wash.text-amber.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-amber-wash text-amber capitalize\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "list",
+          "nodes": [
+            {
+              "target": [
+                "div[role=\"listbox\"] > .divide-y.divide-line"
+              ],
+              "html": "<ul class=\"divide-y divide-line\">",
+              "summary": "Fix all of the following:\n  List element has direct children that are not allowed: [role=option]"
+            }
+          ]
+        },
+        {
+          "id": "nested-interactive",
+          "nodes": [
+            {
+              "target": [
+                "#q-rx_05b48da4c923"
+              ],
+              "html": "<li id=\"q-rx_05b48da4c923\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_a71526a19bef"
+              ],
+              "html": "<li id=\"q-rx_a71526a19bef\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_f55b3a981ca3"
+              ],
+              "html": "<li id=\"q-rx_f55b3a981ca3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_63c851e1dd29"
+              ],
+              "html": "<li id=\"q-rx_63c851e1dd29\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_edf1de53df56"
+              ],
+              "html": "<li id=\"q-rx_edf1de53df56\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_d024f9a1d4de"
+              ],
+              "html": "<li id=\"q-rx_d024f9a1d4de\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_ca8a9c285ea1"
+              ],
+              "html": "<li id=\"q-rx_ca8a9c285ea1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_6347f0882903"
+              ],
+              "html": "<li id=\"q-rx_6347f0882903\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_ada11d70cd9d"
+              ],
+              "html": "<li id=\"q-rx_ada11d70cd9d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_50e8367f2ac3"
+              ],
+              "html": "<li id=\"q-rx_50e8367f2ac3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_af5b036eb04c"
+              ],
+              "html": "<li id=\"q-rx_af5b036eb04c\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_e366a6912b31"
+              ],
+              "html": "<li id=\"q-rx_e366a6912b31\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_29855974f248"
+              ],
+              "html": "<li id=\"q-rx_29855974f248\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_2e6568350074"
+              ],
+              "html": "<li id=\"q-rx_2e6568350074\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_a4bd11a37d1b"
+              ],
+              "html": "<li id=\"q-rx_a4bd11a37d1b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_e4ead435d4a0"
+              ],
+              "html": "<li id=\"q-rx_e4ead435d4a0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8642666e8161"
+              ],
+              "html": "<li id=\"q-rx_8642666e8161\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1953e876bd1a"
+              ],
+              "html": "<li id=\"q-rx_1953e876bd1a\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1825de337f06"
+              ],
+              "html": "<li id=\"q-rx_1825de337f06\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_3666869aa292"
+              ],
+              "html": "<li id=\"q-rx_3666869aa292\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_cca4bcad6c22"
+              ],
+              "html": "<li id=\"q-rx_cca4bcad6c22\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_0edd08dc9198"
+              ],
+              "html": "<li id=\"q-rx_0edd08dc9198\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8cbfc63db4a3"
+              ],
+              "html": "<li id=\"q-rx_8cbfc63db4a3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_07e9dbc87e3c"
+              ],
+              "html": "<li id=\"q-rx_07e9dbc87e3c\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_966702020316"
+              ],
+              "html": "<li id=\"q-rx_966702020316\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_b665d2f0c51b"
+              ],
+              "html": "<li id=\"q-rx_b665d2f0c51b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_b4aa395b9aa6"
+              ],
+              "html": "<li id=\"q-rx_b4aa395b9aa6\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_c6d3b9374cf4"
+              ],
+              "html": "<li id=\"q-rx_c6d3b9374cf4\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_e40a6479d8ac"
+              ],
+              "html": "<li id=\"q-rx_e40a6479d8ac\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_cb0d30cca3c0"
+              ],
+              "html": "<li id=\"q-rx_cb0d30cca3c0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_c24a266e05c1"
+              ],
+              "html": "<li id=\"q-rx_c24a266e05c1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_db6765c23d0b"
+              ],
+              "html": "<li id=\"q-rx_db6765c23d0b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_6ada4c40d31a"
+              ],
+              "html": "<li id=\"q-rx_6ada4c40d31a\" role=\"option\" aria-selected=\"true\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8de6e9ec8758"
+              ],
+              "html": "<li id=\"q-rx_8de6e9ec8758\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1c40daac0375"
+              ],
+              "html": "<li id=\"q-rx_1c40daac0375\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1ced47a90ac7"
+              ],
+              "html": "<li id=\"q-rx_1ced47a90ac7\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_101b1b7a5361"
+              ],
+              "html": "<li id=\"q-rx_101b1b7a5361\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_013ee7ac7147"
+              ],
+              "html": "<li id=\"q-rx_013ee7ac7147\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8e2a0fcff82d"
+              ],
+              "html": "<li id=\"q-rx_8e2a0fcff82d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_3db3e62efae0"
+              ],
+              "html": "<li id=\"q-rx_3db3e62efae0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8e1e18480268"
+              ],
+              "html": "<li id=\"q-rx_8e1e18480268\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_0b3112527892"
+              ],
+              "html": "<li id=\"q-rx_0b3112527892\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_58b455930f0a"
+              ],
+              "html": "<li id=\"q-rx_58b455930f0a\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_e0b99582ab0f"
+              ],
+              "html": "<li id=\"q-rx_e0b99582ab0f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_f3b7b5728dec"
+              ],
+              "html": "<li id=\"q-rx_f3b7b5728dec\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_b807c83fa46b"
+              ],
+              "html": "<li id=\"q-rx_b807c83fa46b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_c67c16532287"
+              ],
+              "html": "<li id=\"q-rx_c67c16532287\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_860c34d3970f"
+              ],
+              "html": "<li id=\"q-rx_860c34d3970f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_0545b77792f1"
+              ],
+              "html": "<li id=\"q-rx_0545b77792f1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_f0e168c4b761"
+              ],
+              "html": "<li id=\"q-rx_f0e168c4b761\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8873cf9fb4de"
+              ],
+              "html": "<li id=\"q-rx_8873cf9fb4de\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_9686ff9f7a9f"
+              ],
+              "html": "<li id=\"q-rx_9686ff9f7a9f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_b6bd17e8b6b8"
+              ],
+              "html": "<li id=\"q-rx_b6bd17e8b6b8\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_bd1b25f91f78"
+              ],
+              "html": "<li id=\"q-rx_bd1b25f91f78\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1cc1a4f03ca6"
+              ],
+              "html": "<li id=\"q-rx_1cc1a4f03ca6\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_f3497f41ed4d"
+              ],
+              "html": "<li id=\"q-rx_f3497f41ed4d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1f81c07270a3"
+              ],
+              "html": "<li id=\"q-rx_1f81c07270a3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_7293c72553b9"
+              ],
+              "html": "<li id=\"q-rx_7293c72553b9\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_587b85b2b64b"
+              ],
+              "html": "<li id=\"q-rx_587b85b2b64b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_42fe25199145"
+              ],
+              "html": "<li id=\"q-rx_42fe25199145\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".overflow-hidden.rounded-xl.min-w-0 > .scroll-x"
+              ],
+              "html": "<div class=\"scroll-x\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "aria-required-children",
+          "nodes": [
+            {
+              "target": [
+                "div[role=\"listbox\"]"
+              ],
+              "html": "<div class=\"scroll-y min-h-0 flex-1\" role=\"listbox\" aria-label=\"Done queue\">",
+              "summary": "Fix any of the following:\n  Element has children which are not allowed: ul"
+            }
+          ]
+        },
+        {
+          "id": "aria-required-parent",
+          "nodes": [
+            {
+              "target": [
+                "#q-rx_05b48da4c923"
+              ],
+              "html": "<li id=\"q-rx_05b48da4c923\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_a71526a19bef"
+              ],
+              "html": "<li id=\"q-rx_a71526a19bef\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_f55b3a981ca3"
+              ],
+              "html": "<li id=\"q-rx_f55b3a981ca3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_63c851e1dd29"
+              ],
+              "html": "<li id=\"q-rx_63c851e1dd29\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_edf1de53df56"
+              ],
+              "html": "<li id=\"q-rx_edf1de53df56\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_d024f9a1d4de"
+              ],
+              "html": "<li id=\"q-rx_d024f9a1d4de\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_ca8a9c285ea1"
+              ],
+              "html": "<li id=\"q-rx_ca8a9c285ea1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_6347f0882903"
+              ],
+              "html": "<li id=\"q-rx_6347f0882903\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_ada11d70cd9d"
+              ],
+              "html": "<li id=\"q-rx_ada11d70cd9d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_50e8367f2ac3"
+              ],
+              "html": "<li id=\"q-rx_50e8367f2ac3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_af5b036eb04c"
+              ],
+              "html": "<li id=\"q-rx_af5b036eb04c\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_e366a6912b31"
+              ],
+              "html": "<li id=\"q-rx_e366a6912b31\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_29855974f248"
+              ],
+              "html": "<li id=\"q-rx_29855974f248\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_2e6568350074"
+              ],
+              "html": "<li id=\"q-rx_2e6568350074\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_a4bd11a37d1b"
+              ],
+              "html": "<li id=\"q-rx_a4bd11a37d1b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_e4ead435d4a0"
+              ],
+              "html": "<li id=\"q-rx_e4ead435d4a0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8642666e8161"
+              ],
+              "html": "<li id=\"q-rx_8642666e8161\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1953e876bd1a"
+              ],
+              "html": "<li id=\"q-rx_1953e876bd1a\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1825de337f06"
+              ],
+              "html": "<li id=\"q-rx_1825de337f06\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_3666869aa292"
+              ],
+              "html": "<li id=\"q-rx_3666869aa292\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_cca4bcad6c22"
+              ],
+              "html": "<li id=\"q-rx_cca4bcad6c22\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_0edd08dc9198"
+              ],
+              "html": "<li id=\"q-rx_0edd08dc9198\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8cbfc63db4a3"
+              ],
+              "html": "<li id=\"q-rx_8cbfc63db4a3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_07e9dbc87e3c"
+              ],
+              "html": "<li id=\"q-rx_07e9dbc87e3c\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_966702020316"
+              ],
+              "html": "<li id=\"q-rx_966702020316\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_b665d2f0c51b"
+              ],
+              "html": "<li id=\"q-rx_b665d2f0c51b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_b4aa395b9aa6"
+              ],
+              "html": "<li id=\"q-rx_b4aa395b9aa6\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_c6d3b9374cf4"
+              ],
+              "html": "<li id=\"q-rx_c6d3b9374cf4\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_e40a6479d8ac"
+              ],
+              "html": "<li id=\"q-rx_e40a6479d8ac\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_cb0d30cca3c0"
+              ],
+              "html": "<li id=\"q-rx_cb0d30cca3c0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_c24a266e05c1"
+              ],
+              "html": "<li id=\"q-rx_c24a266e05c1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_db6765c23d0b"
+              ],
+              "html": "<li id=\"q-rx_db6765c23d0b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_6ada4c40d31a"
+              ],
+              "html": "<li id=\"q-rx_6ada4c40d31a\" role=\"option\" aria-selected=\"true\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8de6e9ec8758"
+              ],
+              "html": "<li id=\"q-rx_8de6e9ec8758\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1c40daac0375"
+              ],
+              "html": "<li id=\"q-rx_1c40daac0375\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1ced47a90ac7"
+              ],
+              "html": "<li id=\"q-rx_1ced47a90ac7\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_101b1b7a5361"
+              ],
+              "html": "<li id=\"q-rx_101b1b7a5361\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_013ee7ac7147"
+              ],
+              "html": "<li id=\"q-rx_013ee7ac7147\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8e2a0fcff82d"
+              ],
+              "html": "<li id=\"q-rx_8e2a0fcff82d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_3db3e62efae0"
+              ],
+              "html": "<li id=\"q-rx_3db3e62efae0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8e1e18480268"
+              ],
+              "html": "<li id=\"q-rx_8e1e18480268\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_0b3112527892"
+              ],
+              "html": "<li id=\"q-rx_0b3112527892\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_58b455930f0a"
+              ],
+              "html": "<li id=\"q-rx_58b455930f0a\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_e0b99582ab0f"
+              ],
+              "html": "<li id=\"q-rx_e0b99582ab0f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_f3b7b5728dec"
+              ],
+              "html": "<li id=\"q-rx_f3b7b5728dec\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_b807c83fa46b"
+              ],
+              "html": "<li id=\"q-rx_b807c83fa46b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_c67c16532287"
+              ],
+              "html": "<li id=\"q-rx_c67c16532287\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_860c34d3970f"
+              ],
+              "html": "<li id=\"q-rx_860c34d3970f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_0545b77792f1"
+              ],
+              "html": "<li id=\"q-rx_0545b77792f1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_f0e168c4b761"
+              ],
+              "html": "<li id=\"q-rx_f0e168c4b761\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_8873cf9fb4de"
+              ],
+              "html": "<li id=\"q-rx_8873cf9fb4de\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_9686ff9f7a9f"
+              ],
+              "html": "<li id=\"q-rx_9686ff9f7a9f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_b6bd17e8b6b8"
+              ],
+              "html": "<li id=\"q-rx_b6bd17e8b6b8\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_bd1b25f91f78"
+              ],
+              "html": "<li id=\"q-rx_bd1b25f91f78\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1cc1a4f03ca6"
+              ],
+              "html": "<li id=\"q-rx_1cc1a4f03ca6\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_f3497f41ed4d"
+              ],
+              "html": "<li id=\"q-rx_f3497f41ed4d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_1f81c07270a3"
+              ],
+              "html": "<li id=\"q-rx_1f81c07270a3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_7293c72553b9"
+              ],
+              "html": "<li id=\"q-rx_7293c72553b9\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_587b85b2b64b"
+              ],
+              "html": "<li id=\"q-rx_587b85b2b64b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            },
+            {
+              "target": [
+                "#q-rx_42fe25199145"
+              ],
+              "html": "<li id=\"q-rx_42fe25199145\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Required ARIA parents role not present: group, listbox"
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".border-amber-mark\\/40"
+              ],
+              "html": "<span class=\"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block\">Demonstration data</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_05b48da4c923 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_a71526a19bef > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_f55b3a981ca3 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_63c851e1dd29 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_edf1de53df56 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_d024f9a1d4de > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-danger-wash.text-danger.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-danger-wash text-danger capitalize\">Stat</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.8 (foreground color: #dc3545, background color: #fbe7e4, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_ca8a9c285ea1 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-amber-wash.text-amber.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-amber-wash text-amber capitalize\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_6347f0882903 > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-amber-wash.text-amber.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-amber-wash text-amber capitalize\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#q-rx_ada11d70cd9d > .px-4.hover\\:bg-surface-2.py-2\\.5 > .flex-wrap > .bg-amber-wash.text-amber.capitalize"
+              ],
+              "html": "<span class=\"inline-flex h-5 items-center gap-1 whitespace-nowrap rounded-[5px] px-1.5 text-[11.5px] font-medium bg-amber-wash text-amber capitalize\">Urgent</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.09 (foreground color: #a5680b, background color: #fcf1dc, font size: 8.6pt (11.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "list",
+          "nodes": [
+            {
+              "target": [
+                "div[role=\"listbox\"] > .divide-y.divide-line"
+              ],
+              "html": "<ul class=\"divide-y divide-line\">",
+              "summary": "Fix all of the following:\n  List element has direct children that are not allowed: [role=option]"
+            }
+          ]
+        },
+        {
+          "id": "nested-interactive",
+          "nodes": [
+            {
+              "target": [
+                "#q-rx_05b48da4c923"
+              ],
+              "html": "<li id=\"q-rx_05b48da4c923\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_a71526a19bef"
+              ],
+              "html": "<li id=\"q-rx_a71526a19bef\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_f55b3a981ca3"
+              ],
+              "html": "<li id=\"q-rx_f55b3a981ca3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_63c851e1dd29"
+              ],
+              "html": "<li id=\"q-rx_63c851e1dd29\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_edf1de53df56"
+              ],
+              "html": "<li id=\"q-rx_edf1de53df56\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_d024f9a1d4de"
+              ],
+              "html": "<li id=\"q-rx_d024f9a1d4de\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_ca8a9c285ea1"
+              ],
+              "html": "<li id=\"q-rx_ca8a9c285ea1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_6347f0882903"
+              ],
+              "html": "<li id=\"q-rx_6347f0882903\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_ada11d70cd9d"
+              ],
+              "html": "<li id=\"q-rx_ada11d70cd9d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_50e8367f2ac3"
+              ],
+              "html": "<li id=\"q-rx_50e8367f2ac3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_af5b036eb04c"
+              ],
+              "html": "<li id=\"q-rx_af5b036eb04c\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_e366a6912b31"
+              ],
+              "html": "<li id=\"q-rx_e366a6912b31\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_29855974f248"
+              ],
+              "html": "<li id=\"q-rx_29855974f248\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_2e6568350074"
+              ],
+              "html": "<li id=\"q-rx_2e6568350074\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_a4bd11a37d1b"
+              ],
+              "html": "<li id=\"q-rx_a4bd11a37d1b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_e4ead435d4a0"
+              ],
+              "html": "<li id=\"q-rx_e4ead435d4a0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8642666e8161"
+              ],
+              "html": "<li id=\"q-rx_8642666e8161\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1953e876bd1a"
+              ],
+              "html": "<li id=\"q-rx_1953e876bd1a\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1825de337f06"
+              ],
+              "html": "<li id=\"q-rx_1825de337f06\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_3666869aa292"
+              ],
+              "html": "<li id=\"q-rx_3666869aa292\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_cca4bcad6c22"
+              ],
+              "html": "<li id=\"q-rx_cca4bcad6c22\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_0edd08dc9198"
+              ],
+              "html": "<li id=\"q-rx_0edd08dc9198\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8cbfc63db4a3"
+              ],
+              "html": "<li id=\"q-rx_8cbfc63db4a3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_07e9dbc87e3c"
+              ],
+              "html": "<li id=\"q-rx_07e9dbc87e3c\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_966702020316"
+              ],
+              "html": "<li id=\"q-rx_966702020316\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_b665d2f0c51b"
+              ],
+              "html": "<li id=\"q-rx_b665d2f0c51b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_b4aa395b9aa6"
+              ],
+              "html": "<li id=\"q-rx_b4aa395b9aa6\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_c6d3b9374cf4"
+              ],
+              "html": "<li id=\"q-rx_c6d3b9374cf4\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_e40a6479d8ac"
+              ],
+              "html": "<li id=\"q-rx_e40a6479d8ac\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_cb0d30cca3c0"
+              ],
+              "html": "<li id=\"q-rx_cb0d30cca3c0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_c24a266e05c1"
+              ],
+              "html": "<li id=\"q-rx_c24a266e05c1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_db6765c23d0b"
+              ],
+              "html": "<li id=\"q-rx_db6765c23d0b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_6ada4c40d31a"
+              ],
+              "html": "<li id=\"q-rx_6ada4c40d31a\" role=\"option\" aria-selected=\"true\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8de6e9ec8758"
+              ],
+              "html": "<li id=\"q-rx_8de6e9ec8758\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1c40daac0375"
+              ],
+              "html": "<li id=\"q-rx_1c40daac0375\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1ced47a90ac7"
+              ],
+              "html": "<li id=\"q-rx_1ced47a90ac7\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_101b1b7a5361"
+              ],
+              "html": "<li id=\"q-rx_101b1b7a5361\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_013ee7ac7147"
+              ],
+              "html": "<li id=\"q-rx_013ee7ac7147\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8e2a0fcff82d"
+              ],
+              "html": "<li id=\"q-rx_8e2a0fcff82d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_3db3e62efae0"
+              ],
+              "html": "<li id=\"q-rx_3db3e62efae0\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8e1e18480268"
+              ],
+              "html": "<li id=\"q-rx_8e1e18480268\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_0b3112527892"
+              ],
+              "html": "<li id=\"q-rx_0b3112527892\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_58b455930f0a"
+              ],
+              "html": "<li id=\"q-rx_58b455930f0a\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_e0b99582ab0f"
+              ],
+              "html": "<li id=\"q-rx_e0b99582ab0f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_f3b7b5728dec"
+              ],
+              "html": "<li id=\"q-rx_f3b7b5728dec\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_b807c83fa46b"
+              ],
+              "html": "<li id=\"q-rx_b807c83fa46b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_c67c16532287"
+              ],
+              "html": "<li id=\"q-rx_c67c16532287\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_860c34d3970f"
+              ],
+              "html": "<li id=\"q-rx_860c34d3970f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_0545b77792f1"
+              ],
+              "html": "<li id=\"q-rx_0545b77792f1\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_f0e168c4b761"
+              ],
+              "html": "<li id=\"q-rx_f0e168c4b761\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_8873cf9fb4de"
+              ],
+              "html": "<li id=\"q-rx_8873cf9fb4de\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_9686ff9f7a9f"
+              ],
+              "html": "<li id=\"q-rx_9686ff9f7a9f\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_b6bd17e8b6b8"
+              ],
+              "html": "<li id=\"q-rx_b6bd17e8b6b8\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_bd1b25f91f78"
+              ],
+              "html": "<li id=\"q-rx_bd1b25f91f78\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1cc1a4f03ca6"
+              ],
+              "html": "<li id=\"q-rx_1cc1a4f03ca6\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_f3497f41ed4d"
+              ],
+              "html": "<li id=\"q-rx_f3497f41ed4d\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_1f81c07270a3"
+              ],
+              "html": "<li id=\"q-rx_1f81c07270a3\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_7293c72553b9"
+              ],
+              "html": "<li id=\"q-rx_7293c72553b9\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_587b85b2b64b"
+              ],
+              "html": "<li id=\"q-rx_587b85b2b64b\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            },
+            {
+              "target": [
+                "#q-rx_42fe25199145"
+              ],
+              "html": "<li id=\"q-rx_42fe25199145\" role=\"option\" aria-selected=\"false\">",
+              "summary": "Fix any of the following:\n  Element has focusable descendants. Move them outside of the element, or remove them."
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "nodes": [
+            {
+              "target": [
+                ".overflow-hidden.rounded-xl.min-w-0 > .scroll-x"
+              ],
+              "html": "<div class=\"scroll-x\">",
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

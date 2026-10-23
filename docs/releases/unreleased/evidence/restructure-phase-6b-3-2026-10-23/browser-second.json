@@ -1,0 +1,40 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    },
+    {
+      "id": "HCD-09-patient",
+      "mode": "UI + HTTP assertions",
+      "result": "Registered fictional patient, reloaded profile, checked trusted actor and branch isolation"
+    },
+    {
+      "id": "HCD-09-search",
+      "mode": "UI",
+      "result": "Command palette searched real API and opened the patient query link"
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/pharmacy",
+      "failure": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog', { name: 'New prescription' }).getByLabel('Prescriber', { exact: true })\u001b[22m\n"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

@@ -7,6 +7,7 @@ import * as icons from "@pepbits/icons";
 afterEach(cleanup);
 
 const names = ["Check", "ChevronDown", "ChevronLeft", "ChevronRight", "FileQuestion", "GitCompareArrows",
+  "Banknote", "Bike", "CirclePause", "CornerDownLeft", "Gavel", "HandCoins", "Landmark", "MessageCircle", "Moon", "PackageCheck", "PackageX", "Radio", "ShoppingBag", "ShoppingBasket", "Snowflake", "Store", "Sun",
   "Inbox", "Loader2", "LoaderCircle", "LogIn", "Search", "ShieldOff", "TrendingDown", "TrendingUp", "TriangleAlert", "X"] as const;
 test.each(names)("%s is exported and renders", name => {
   const Component: icons.IconComponent = icons[name];

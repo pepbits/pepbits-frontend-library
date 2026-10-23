@@ -1,0 +1,9 @@
+/* Demo host presentation overrides; the generated Phial baseline stays immutable. */
+.reference-pharmacy { --fs-scale:var(--fs-form,1); }
+.reference-pharmacy table[data-sticky="false"] th { position:static; }
+.reference-pharmacy table[data-sticky="true"] thead { position:sticky;top:0;z-index:1;background:var(--surface-2); }
+
+.reference-pharmacy { --amber:var(--warning-ink); --amber-wash:color-mix(in srgb,var(--warning) 12%,var(--surface)); --danger-wash:color-mix(in srgb,var(--danger) 12%,var(--surface)); --ok:var(--success-ink); --ok-wash:color-mix(in srgb,var(--success) 12%,var(--surface)); }
+.reference-pharmacy .text-danger {color:var(--danger-ink);}
+
+.reference-pharmacy table[data-managed-table] :is(th,td) {height:auto;}

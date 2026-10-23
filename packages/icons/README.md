@@ -42,3 +42,5 @@ The public barrel adds 38 direct Lucide exports for laboratory/radiology workflo
 ## Phase 4c pattern icons
 
 `Type`, `AlignLeft`, `Hash`, `Calendar`, `Clock`, `CheckSquare`, `Mail` and `WandSparkles` are additionally re-exported for form authoring and spreadsheet controls. They keep the existing Lucide dependency and named-export behavior; patterns never imports Lucide directly. See the [phase 4c record](../../docs/releases/unreleased/restructure-phase-4c-2026-10-23.md).
+
+Pharmacy adds direct `Banknote`, `Bike`, `CirclePause`, `CornerDownLeft`, `Gavel`, `HandCoins`, `Landmark`, `MessageCircle`, `Moon`, `PackageCheck`, `PackageX`, `Radio`, `ShoppingBag`, `ShoppingBasket`, `Snowflake`, `Store` and `Sun` primitives. Each export is covered by a render test; product navigation stays in the demo.

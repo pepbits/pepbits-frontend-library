@@ -7,9 +7,10 @@ import {useSettingsServices} from './providers';
 import {SuitePage} from './modules/suite/page';
 import {ClinicalPage} from './modules/clinical-pages';
 import {DiagnosticPage} from './modules/diagnostics/page';
+import {PharmacyPage} from './modules/pharmacy/page';
 import {pages} from './navigation';
 function SettingsPage() {return <PreferencesPage showTabPreferences={false} services={useSettingsServices()}/>;}
-const Renderer = createPageRenderer({renderers: {diagnostic: DiagnosticPage, suite: SuitePage, clinical: ClinicalPage, preferences: SettingsPage}});
+const Renderer = createPageRenderer({renderers: {pharmacy: PharmacyPage, diagnostic: DiagnosticPage, suite: SuitePage, clinical: ClinicalPage, preferences: SettingsPage}});
 export function HealthcarePage({target}: {target: NavigationTarget}) {
   const page = pages.find(item => item.id === target.pageId);
   return page ? <Renderer page={page} target={target}/> : <NotFoundState/>;

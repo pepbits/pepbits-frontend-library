@@ -1,10 +1,10 @@
 # Independent healthcare demo
 
-Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-2 delivery record](../releases/unreleased/restructure-phase-6b-2-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
+Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-3 delivery record](../releases/unreleased/restructure-phase-6b-3-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
 
 ## User problem and outcome
 
-Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
+Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
 
 ## User and administrator flows
 
@@ -44,9 +44,13 @@ Route matrices cover default, Arabic RTL, reduced motion and locked density. Jsd
 | HCD-05 | Every static page under four preference profiles with page-body axe; full-browser axe results separately identify shell and product findings |
 | HCD-07 | All 55 diagnostic destinations, strict detail routing and configured HTTP scope; original diagnostic client cases and three patient failure/retry cases |
 | HCD-08 | Diagnostic route preference/RTL/axe matrix, effective page size/locks and synthetic HTTP browser navigation |
+| HCD-09 | Pharmacy destinations/query links, patient registration, search, trusted identity and branch isolation |
+| HCD-10 | Prescription dispensing chain, counter sale, receipt and return workflows over real local HTTP |
+| HCD-11 | Synthetic customer orders, purchasing/stock receipt, prior authorization and claims/remittance workflows |
+| HCD-12 | Pharmacy command replay, structured failure/retry, mounted preferences and cache scope |
 | HCD-06 | Public package boundaries, forced root CI, builds, documentation and protected-path/source checks |
 
-Exact case/file counts and failures are in the delivery record. Later runs cover pharmacy, RCM, teleconsult, quality, SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
+Exact case/file counts and failures are in the delivery record. Later runs cover RCM, teleconsult, quality, SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
 
 ## Operations and support
 
@@ -60,4 +64,16 @@ The product modules configure public TemplateFields/CollectionView and reuse sha
 
 Effective table/font/format/motion preferences apply; locked page size cannot be changed locally. Work-queue/lookup service limits, print-template geometry, tube cap colors and DICOM pixels are domain-specific. Shared catalogs are fetched at runtime. Existing source wording without a canonical translation remains fallback text; automated Arabic/RTL checks are not native-speaker approval.
 
-Phase 4c adoption is a post-merge follow-up for generic label-printing, form-designer and device-integration patterns/adapters. Printed output, report signing, all detailed DICOM tools, real analyzers, native hardware and domain acceptance are not established by route rendering or automated axe. The app guide and delivery record state the exact verified workflows.
+Phase 4c is merged; adoption by existing diagnostic workflows remains a follow-up for generic label-printing, form-designer and device-integration patterns/adapters. Printed output, report signing, all detailed DICOM tools, real analyzers, native hardware and domain acceptance are not established by route rendering or automated axe. The app guide and delivery record state the exact verified workflows.
+
+## Pharmacy user flow and boundaries
+
+Select Pharmacy-1, register a fictional patient and use the command palette to open the profile. New prescription selects a patient, prescriber and medicine; the workbench progresses through review, verification, stock reservation, final check and handover. Validation errors retain the form; stock conflicts and refused commands remain visible through shared notifications. A retry of a command whose response was lost retains its operation key. A confirmed rejection allows a fresh corrected attempt. Scope changes discard cached data and pending reads.
+
+Counter sale takes a synthetic payment and opens its invoice; Receipt previews the thermal document and Print uses the shared print surface. Sales records returns. Purchasing receives stock batches. Prior authorizations records simulated payer decisions. Claims submits/adjudicates synthetic claims; Remittance posts their simulated payment. Audit identifies the signed-in actor. Settings lists staff without impersonation and routes appearance changes through the same policy-controlled preference host. Browser controls do not authorize these operations; the unchanged API does.
+
+The port configures typed TemplateFields and CollectionView and uses public UI, tabs, dialogs, notifications and printing. Specialized queues, prescription chain, charts and receipt geometry remain product components. Effective presentation, formatting, shortcuts and managed table settings apply; currency comes from API pharmacy settings. No new durable draft, physical label printer, identity device, designer, external payer, bank or prescribing service is introduced. Phase 4c patterns are available where their contracts fit future work.
+
+All thirteen destinations receive default, Arabic RTL, reduced-motion and locked-density page-content axe coverage. Original pharmacy tests are preserved with explicit adaptation of generation checks to frozen CSS provenance/canonical alias checks, and notification assertions to the shared ScreenHost. The release record separates mocked tests, real HTTP/UI workflows and direct API commands, with exact counts and retained failures. The backend catalog still lacks the two inherited aliases `Configuration` and `Pharmacy, people, appearance`; English fallback is explicit. Demonstration only, not clinical/financial, native-language, assistive-technology or native executable acceptance.
+
+Pharmacy lookup adapters supply product endpoints and row content to public `@pepbits/ui` AsyncLookup. The shared control owns keyboard selection, popup semantics and stale-read cancellation; the app continues to own its authenticated transport.

@@ -1,3 +1,4 @@
+import {pharmacyFlows} from './pharmacy-flows.mjs';
 import {chromium} from 'playwright';
 import {createRequire} from 'node:module';
 import {readFileSync,writeFileSync,mkdirSync,existsSync} from 'node:fs';
@@ -18,14 +19,14 @@ let current='login',selectedDiagnostic='';
 async function diagnosticMenu(route){
  const variant=route.split('/')[1],side=page.locator('aside[data-tour=sidebar]');
  if(selectedDiagnostic!==variant){
-  await page.locator('header [data-tour=module] button').click();
-  await page.getByRole('listbox').getByRole('option',{name:new RegExp('^'+variant.toUpperCase()+'(?:\\s|$)')}).click();
+  await page.locator('header [data-tour=module] button').first().click();
+  await page.getByRole('listbox').getByRole('option',{name:new RegExp(variant==='pharmacy'?'^Pharmacy\\b':'^'+variant.toUpperCase()+'(?:\\s|$)')}).click();
   await page.locator('[data-reference-module="'+variant+'"]').waitFor();selectedDiagnostic=variant;
  }
  const toggle=side.locator('button[aria-expanded]').first();
  await page.mouse.move(700,70);
  if(await toggle.getAttribute('aria-expanded')==='false'){await toggle.focus();await toggle.press('Enter');}
- const header=page.locator('header [data-tour=module] button');
+ const header=page.locator('header [data-tour=module] button').first();
  if(!await header.evaluate(node=>{const r=node.getBoundingClientRect();return node.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));}))throw new Error('Diagnostic sidebar covers module selector');
  await side.locator('a[href="'+route+'"]').click();await page.waitForURL(base+route);
  await side.getByRole('button',{name:'Expand navigation',exact:true}).waitFor();
@@ -74,7 +75,7 @@ try{
    const response=await saved;if(!response.ok())throw new Error(variant+' patient save failed '+response.status());const patient=await response.json();
    await dialog.waitFor({state:'hidden'});
    // Both modules navigate after saving; wait for that navigation before returning to search.
-   if(variant!=='lis1')await page.waitForURL(base+'/'+variant+'/patients/'+patient.id,{timeout:60000});
+   if(variant!=='lis1'){await page.waitForURL(base+'/'+variant+'/patients/'+patient.id,{timeout:60000});await root.getByText(new RegExp(name)).first().waitFor({timeout:60000});}
    await page.goto(base+'/'+variant+'/patients');
    await root.getByRole('textbox').first().fill(name);await root.getByText(new RegExp(name)).first().waitFor();
    const isolation=await page.evaluate(async({variant,name})=>{const response=await fetch('/api/reference-modules/'+variant+'/api/patients?q='+name,{headers:{Authorization:'Bearer '+localStorage.getItem('pepbits-session-token'),'X-Product-Id':'nexora','X-Reference-Branch':'dubai','X-Reference-Module':'reference-'+variant}});const body=await response.json();return {status:response.status,count:(Array.isArray(body)?body:body.data).length};},{variant,name});
@@ -100,17 +101,18 @@ try{
    flows.push({id:'HCD-07-'+variant,result:'Patient registered through UI and real HTTP, searchable in own branch, absent in other branch'});
   }
  }
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('pharmacy'))){current='/pharmacy';try{await pharmacyFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.message);}}
  for(const route of [...routes,...(process.env.HEALTHCARE_EXAMPLES==='1'?examples:[]),...createdRoutes].filter(route=>!routeFilter||new RegExp(routeFilter).test(route))){
   current=route;
   try{
-   if(/^\/(lis1|lis2|ris1)(?:\/|$)/.test(route)&&routes.includes(route))await diagnosticMenu(route);else await page.goto(base+route,{timeout:120000});await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
+   if(/^\/(lis1|lis2|ris1|pharmacy)(?:\/|$)/.test(route)&&routes.includes(route))await diagnosticMenu(route);else await page.goto(base+route,{timeout:120000});await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
    await page.waitForTimeout(750);await page.waitForLoadState('networkidle',{timeout:30000});await page.waitForFunction(()=>!Array.from(document.querySelectorAll('[role=status], [aria-busy=true]')).some(node=>node.textContent.includes('Loading')||node.getAttribute('aria-busy')==='true'),{},{timeout:30000});await page.waitForTimeout(300);await page.evaluate(()=>document.fonts.ready);
    await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
    const axe=await page.evaluate(async()=>{const result=await window.axe.run(document);const page=await window.axe.run(document.querySelector('.healthcare-page'));return {pageViolations:page.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,summary:n.failureSummary}))})),violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,summary:n.failureSummary}))})),incomplete:result.incomplete.length};});
-   checks.push({route,...axe});if(process.env.HEALTHCARE_SCREENSHOTS_DIR&&['/suite','/patient-record/PT-0001','/clinical-consultation/PT-0001','/lis1','/lis2','/ris1'].includes(route)){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.HEALTHCARE_SCREENSHOTS_DIR+'/'+route.slice(1).replaceAll('/','-')+'.png',fullPage:true});}console.log(JSON.stringify({route,violations:axe.violations.map(v=>v.id)}));
+   checks.push({route,...axe});if(process.env.HEALTHCARE_SCREENSHOTS_DIR&&['/suite','/patient-record/PT-0001','/clinical-consultation/PT-0001','/lis1','/lis2','/ris1','/pharmacy','/pharmacy/workbench','/pharmacy/counter'].includes(route)){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.HEALTHCARE_SCREENSHOTS_DIR+'/'+route.slice(1).replaceAll('/','-')+'.png',fullPage:true});}console.log(JSON.stringify({route,violations:axe.violations.map(v=>v.id)}));
   }catch(error){checks.push({route,failure:error.message});console.log(JSON.stringify({route,failure:error.message}));}
  }
- }catch(error){checks.push({route:current,failure:error.message});process.exitCode=1;console.error(error.message);}
+ }catch(error){checks.push({route:current,failure:error.message,rendered:await page.evaluate(()=>({path:location.pathname,pageId:document.querySelector('[data-page-id]')?.getAttribute('data-page-id'),headings:Array.from(document.querySelectorAll('.healthcare-page h1,.healthcare-page h2')).map(n=>n.textContent),inputs:Array.from(document.querySelectorAll('.healthcare-page input')).map(n=>({type:n.type,placeholder:n.placeholder}))})).catch(()=>null)});process.exitCode=1;console.error(error.message);}
  finally{
  await Promise.all(pending);
  if(fixtureCapture){mkdirSync(new URL('../src/test/fixtures/',import.meta.url),{recursive:true});writeFileSync(fixtureCapture,JSON.stringify(captures,null,2)+'\n');}

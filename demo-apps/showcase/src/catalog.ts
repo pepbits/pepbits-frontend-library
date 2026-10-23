@@ -1,3 +1,4 @@
+import {SourceControlsDemo} from './examples/source-controls';
 import {DeviceIntegrationsDemo} from "./examples/device-integrations";
 import {IdentityDevicesDemo} from "./examples/identity-devices";
 import {LabelPrintingDemo} from "./examples/label-printing";
@@ -66,6 +67,7 @@ import {RendererDemo} from "./examples/renderer";
 
 export interface Example {id:string;area:AreaId;title:string;description:string;exports:string[];render:ComponentType}
 export const examples:Example[]=[
+{id:"source-controls",area:"ui",title:"Native controls",description:"Fictional fields and an in-memory lookup; changes disappear on reload.",exports:["AsyncLookup","SourceButton","SourceInput","SourceSelect","SourceTextarea","SourceDateInput"],render:SourceControlsDemo},
 {"id": "device-integrations", "area": "patterns", "title": "Device Integrations", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["DeviceIntegrationWorkspace"],render:DeviceIntegrationsDemo},
 {"id": "identity-devices", "area": "patterns", "title": "Identity Devices", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["IdentityDeviceWorkspace"],render:IdentityDevicesDemo},
 {"id": "label-printing", "area": "patterns", "title": "Label Printing", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["LabelPrintingWorkspace"],render:LabelPrintingDemo},

@@ -1,0 +1,1367 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/pharmacy src/adapters/pharmacy.test.ts src/navigation.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ❯ src/modules/pharmacy/module.test.tsx (14 tests | 1 failed) 11988ms
+   ✓ ReferencePharmacyModule host contract > authenticates through the host session only: /meta then the page data via host.request, no token, no storage, no /api  321ms
+   ✓ ReferencePharmacyModule host contract > renders the page body only: no source sidebar, skip link, user switcher or sign-in 139ms
+   ✓ ReferencePharmacyModule host contract > shows a recoverable error, not a login form, when the host session is refused, and retries 130ms
+   ✓ ReferencePharmacyModule host contract > says so for an unknown path instead of rendering a page 20ms
+   ✓ ReferencePharmacyModule host contract > remounts on a scope change: it reloads identity and starts with none of the previous scope's data 108ms
+   ✓ ReferencePharmacyModule host contract > formats money in the pharmacy's server currency with the host's number format 106ms
+   ✓ ReferencePharmacyModule host contract > keeps the source shortcuts (N opens New prescription, Ctrl+K the palette) and unbinds them when the host turns shortcuts off 208ms
+   × ReferencePharmacyModule host contract > searches the palette through the host transport and routes through the host navigator 10170ms
+     → Found multiple elements with the text of: Search or run a command
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<dialog[39m
+  [33maria-label[39m=[32m"Search or run a command"[39m
+  [33mclass[39m=[32m"m-0 mx-auto mt-[12vh] w-[calc(100%-2rem)] max-w-[620px] bg-transparent p-0 backdrop:bg-[rgba(10,14,30,0.42)]"[39m
+  [33mopen[39m=[32m""[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"anim-pop overflow-hidden rounded-xl border border-line bg-surface text-ink shadow-pop"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-center gap-2.5 border-b border-line px-4"[39m
+    [36m>[39m
+      [36m<svg[39m
+        [33mclass[39m=[32m"lucide lucide-search size-4 text-ink-3"[39m
+        [33mfill[39m=[32m"none"[39m
+        [33mheight[39m=[32m"24"[39m
+        [33mstroke[39m=[32m"currentColor"[39m
+        [33mstroke-linecap[39m=[32m"round"[39m
+        [33mstroke-linejoin[39m=[32m"round"[39m
+        [33mstroke-width[39m=[32m"2"[39m
+        [33mviewBox[39m=[32m"0 0 24 24"[39m
+        [33mwidth[39m=[32m"24"[39m
+        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+      [36m>[39m
+        [36m<circle[39m
+          [33mcx[39m=[32m"11"[39m
+          [33mcy[39m=[32m"11"[39m
+          [33mr[39m=[32m"8"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"m21 21-4.3-4.3"[39m
+        [36m/>[39m
+      [36m</svg>[39m
+      [36m<input[39m
+        [33maria-label[39m=[32m"Search or run a command"[39m
+        [33mclass[39m=[32m"h-12 flex-1 bg-transparent text-[14px] outline-none placeholder:text-ink-3"[39m
+        [33mplaceholder[39m=[32m"Search patients, Rx numbers, products, claims, or type a command"[39m
+        [33mvalue[39m=[32m""[39m
+      [36m/>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"scroll-y max-h-[52vh] p-1.5"[39m
+      [33mrole[39m=[32m"listbox"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mb-1"[39m
+      [36m>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"px-2.5 pb-1 pt-2 text-[11.5px] font-medium text-ink-3"[39m
+        [36m>[39m
+          [0mActions[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left bg-cobalt-wash"[39m
+          [33mrole[39m=[32m"option"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-plus size-4 shrink-0 text-cobalt"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M5 12h14"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M12 5v14"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block truncate text-[13.5px] font-medium"[39m
+            [36m>[39m
+              [0mNew prescription[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block truncate text-xs text-ink-3"[39m
+            [36m>[39m
+              [0mEnter a paper or phoned-in prescription[0m
+            [36m</span>[39m
+          [36m</span>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-corner-down-left size-3.5 text-cobalt"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<polyline[39m
+              [33mpoints[39m=[32m"9 10 4 15 9 20"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M20 4v7a4 4 0 0 1-4 4H4"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m"flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left"[39m
+          [33mrole[39m=[32m"option"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-radio size-4 shrink-0 text-ink-3"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M4.9 19.1C1 15.2 1 8.8 4.9 4.9"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"[39m
+            [36m/>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"12"[39m
+              [33mcy[39m=[32m"12"[39m
+              [33mr[39m=[32m"2"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M19.1 4.9C23 8.8 23 15.1 19.1 19"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block truncate text-[13.5px] font-medium"[39m
+            [36m>[39m
+              [0mReceive a test eRx[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block truncate text-xs text-ink-3"[39m
+            [36m>[39m
+              [0mSimulates an inbound electronic prescription[0m
+            [36m</span>[39m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m"flex w-full item...
+
+Ignored nodes: comments, script, style
+[36m<input[39m
+  [33maria-label[39m=[32m"Search or run a command"[39m
+  [33mclass[39m=[32m"h-12 flex-1 bg-transparent text-[14px] outline-none placeholder:text-ink-3"[39m
+  [33mplaceholder[39m=[32m"Search patients, Rx numbers, products, claims, or type a command"[39m
+  [33mvalue[39m=[32m""[39m
+[36m/>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-pharmacy"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reference-module[39m=[32m"pharmacy"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-pharmacy-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--pharmacy-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-14 shrink-0 items-center gap-3 border-b border-line bg-surface px-3 md:px-5"[39m
+          [33mdata-pharmacy-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"mx-auto hidden h-9 w-full max-w-md items-center gap-2 rounded-lg border border-line bg-surface-2 px-3 text-left text-[13px] text-ink-3 transition-colors hover:border-line-strong hover:text-ink-2 sm:flex"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex-1 truncate"[39m
+            [36m>[39m
+              [0mFind a patient, prescription, product or claim[0m
+            [36m</span>[39m
+            [36m<kbd[39m
+              [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3"[39m
+            [36m>[39m
+              [0m⌘K[0m
+            [36m</kbd>[39m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex-1 sm:hidden"[39m
+          [36m/>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden md:block"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 h-8 px-3 text-[13px] bg-cobalt text-on-cobalt hover:bg-cobalt-strong shadow-[inset_0_-1px_0_rgba(0,0,0,0.15)] disabled:bg-cobalt/50"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 12h14"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M12 5v14"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mNew prescription[0m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3 ml-1 border-current/30 bg-transparent text-on-cobalt opacity-80"[39m
+              [36m>[39m
+                [0mN[0m
+              [36m</kbd>[39m
+            [36m</button>[39m
+          [36m</span>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"New prescription"[39m
+            [33mclass[39m=[32m"flex size-8 shrink-0 items-center justify-center rounded-md bg-cobalt text-on-cobalt hover:bg-cobalt-strong md:hidden"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-[18px]"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-h-0 flex-1"[39m
+          [33mid[39m=[32m"pharmacy-main"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"scroll-y h-full"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mx-auto grid max-w-[1600px] gap-4 p-4 md:p-5 xl:h-full xl:grid-rows-[auto_minmax(0,1fr)_minmax(0,1fr)]"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto]"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"border border-[var(--border)] rounded-xl bg-[var(--surface)] flex min-h-0 flex-col rounded-xl border border-line bg-surface overflow-hidden"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex items-center...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-pharmacy"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reference-module[39m=[32m"pharmacy"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-pharmacy-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--pharmacy-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-14 shrink-0 items-center gap-3 border-b border-line bg-surface px-3 md:px-5"[39m
+          [33mdata-pharmacy-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"mx-auto hidden h-9 w-full max-w-md items-center gap-2 rounded-lg border border-line bg-surface-2 px-3 text-left text-[13px] text-ink-3 transition-colors hover:border-line-strong hover:text-ink-2 sm:flex"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex-1 truncate"[39m
+            [36m>[39m
+              [0mFind a patient, prescription, product or claim[0m
+            [36m</span>[39m
+            [36m<kbd[39m
+              [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3"[39m
+            [36m>[39m
+              [0m⌘K[0m
+            [36m</kbd>[39m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex-1 sm:hidden"[39m
+          [36m/>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden md:block"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 h-8 px-3 text-[13px] bg-cobalt text-on-cobalt hover:bg-cobalt-strong shadow-[inset_0_-1px_0_rgba(0,0,0,0.15)] disabled:bg-cobalt/50"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 12h14"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M12 5v14"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mNew prescription[0m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3 ml-1 border-current/30 bg-transparent text-on-cobalt opacity-80"[39m
+              [36m>[39m
+                [0mN[0m
+              [36m</kbd>[39m
+            [36m</button>[39m
+          [36m</span>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"New prescription"[39m
+            [33mclass[39m=[32m"flex size-8 shrink-0 items-center justify-center rounded-md bg-cobalt text-on-cobalt hover:bg-cobalt-strong md:hidden"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-[18px]"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-h-0 flex-1"[39m
+          [33mid[39m=[32m"pharmacy-main"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"scroll-y h-full"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mx-auto grid max-w-[1600px] gap-4 p-4 md:p-5 xl:h-full xl:grid-rows-[auto_minmax(0,1fr)_minmax(0,1fr)]"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto]"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"border border-[var(--border)] rounded-xl bg-[var(--surface)] flex min-h-0 flex-col rounded-xl border border-line bg-surface overflow-hidden"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex items-center...
+   ✓ ReferencePharmacyModule host contract > changes the theme only through the host preference path, and not while the tenant locks it 123ms
+   ✓ ReferencePharmacyModule host contract > cannot impersonate: the settings page lists people but offers no switching 43ms
+   ✓ ReferencePharmacyModule host contract > resolves source labels through the host catalog, leaving record values untouched 84ms
+   ✓ managed presentation and mounted edits > updates table presentation and the audit request page size from the effective host snapshot  305ms
+   ✓ managed presentation and mounted edits > retains an unsaved patient form across a preference refresh and unbinds shortcuts while mounted 141ms
+   ✓ managed presentation and mounted edits > replaces the mounted theme selection and disables switching when policy locks it 89ms
+ ❯ src/modules/pharmacy/pages.test.tsx (18 tests | 1 failed) 1998ms
+   ✓ every original route mounts through the host > / loads its data with host GETs only and shows no failure 225ms
+   ✓ every original route mounts through the host > /workbench loads its data with host GETs only and shows no failure 93ms
+   ✓ every original route mounts through the host > /counter loads its data with host GETs only and shows no failure 93ms
+   ✓ every original route mounts through the host > /orders loads its data with host GETs only and shows no failure 71ms
+   ✓ every original route mounts through the host > /sales loads its data with host GETs only and shows no failure 81ms
+   ✓ every original route mounts through the host > /inventory loads its data with host GETs only and shows no failure 77ms
+   ✓ every original route mounts through the host > /purchasing loads its data with host GETs only and shows no failure 72ms
+   ✓ every original route mounts through the host > /authorizations loads its data with host GETs only and shows no failure 66ms
+   ✓ every original route mounts through the host > /claims loads its data with host GETs only and shows no failure 79ms
+   ✓ every original route mounts through the host > /remittance loads its data with host GETs only and shows no failure 63ms
+   ✓ every original route mounts through the host > /patients loads its data with host GETs only and shows no failure 65ms
+   ✓ every original route mounts through the host > /audit loads its data with host GETs only and shows no failure 69ms
+   ✓ every original route mounts through the host > /settings loads its data with host GETs only and shows no failure 75ms
+   ✓ workbench through the host > opens the prescription named in the query and a workflow action posts once with an idempotency key, then follows the Rx to its new stage  392ms
+   ✓ workbench through the host > shows the server's message, in place, when an action is refused 194ms
+   ✓ links that target a tab, and server figures shown as reported > selects the claims tab a link names while the page is already open, and asks the server for that status 64ms
+   ✓ links that target a tab, and server figures shown as reported > keeps the decimals of a rate the server reports (denial rate 12.5%) and lets the host decide the currency decimals 93ms
+   × patient failure recovery > preserves the typed form after validation failure and saves once on explicit retry 123ms
+     → Found multiple elements with the text of: Date of birth
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-labelledby[39m=[32m"_r_1_"[39m
+  [33mclass[39m=[32m"flex flex-col gap-1"[39m
+  [33mrole[39m=[32m"group"[39m
+[36m>[39m
+  [36m<span[39m
+    [33mclass[39m=[32m"text-xs font-medium text-ink-2"[39m
+    [33mid[39m=[32m"_r_1_"[39m
+  [36m>[39m
+    [0mDate of birth[0m
+  [36m</span>[39m
+  [36m<input[39m
+    [33maria-labelledby[39m=[32m"_r_1_"[39m
+    [33mclass[39m=[32m"rounded-md border border-line-strong bg-surface px-2.5 text-[13px] text-ink placeholder:text-ink-3 transition-colors focus:border-cobalt focus:outline-none focus:ring-2 focus:ring-cobalt/20 disabled:opacity-60 w-full h-8"[39m
+    [33mmax[39m=[32m"2026-10-23"[39m
+    [33mtype[39m=[32m"date"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+[36m</div>[39m
+
+Ignored nodes: comments, script, style
+[36m<input[39m
+  [33maria-labelledby[39m=[32m"_r_1_"[39m
+  [33mclass[39m=[32m"rounded-md border border-line-strong bg-surface px-2.5 text-[13px] text-ink placeholder:text-ink-3 transition-colors focus:border-cobalt focus:outline-none focus:ring-2 focus:ring-cobalt/20 disabled:opacity-60 w-full h-8"[39m
+  [33mmax[39m=[32m"2026-10-23"[39m
+  [33mtype[39m=[32m"date"[39m
+  [33mvalue[39m=[32m""[39m
+[36m/>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-pharmacy"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reference-module[39m=[32m"pharmacy"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-pharmacy-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--pharmacy-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-14 shrink-0 items-center gap-3 border-b border-line bg-surface px-3 md:px-5"[39m
+          [33mdata-pharmacy-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"mx-auto hidden h-9 w-full max-w-md items-center gap-2 rounded-lg border border-line bg-surface-2 px-3 text-left text-[13px] text-ink-3 transition-colors hover:border-line-strong hover:text-ink-2 sm:flex"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex-1 truncate"[39m
+            [36m>[39m
+              [0mFind a patient, prescription, product or claim[0m
+            [36m</span>[39m
+            [36m<kbd[39m
+              [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3"[39m
+            [36m>[39m
+              [0m⌘K[0m
+            [36m</kbd>[39m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex-1 sm:hidden"[39m
+          [36m/>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden md:block"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 h-8 px-3 text-[13px] bg-cobalt text-on-cobalt hover:bg-cobalt-strong shadow-[inset_0_-1px_0_rgba(0,0,0,0.15)] disabled:bg-cobalt/50"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 12h14"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M12 5v14"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mNew prescription[0m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3 ml-1 border-current/30 bg-transparent text-on-cobalt opacity-80"[39m
+              [36m>[39m
+                [0mN[0m
+              [36m</kbd>[39m
+            [36m</button>[39m
+          [36m</span>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"New prescription"[39m
+            [33mclass[39m=[32m"flex size-8 shrink-0 items-center justify-center rounded-md bg-cobalt text-on-cobalt hover:bg-cobalt-strong md:hidden"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-[18px]"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-h-0 flex-1"[39m
+          [33mid[39m=[32m"pharmacy-main"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"grid h-full min-h-0 grid-cols-1 lg:grid-cols-[340px_minmax(0,1fr)]"[39m
+          [36m>[39m
+            [36m<aside[39m
+              [33maria-label[39m=[32m"Patients"[39m
+              [33mclass[39m=[32m"flex min-h-0 flex-col border-r border-line bg-surface"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex shrink-0 gap-2 border-b border-line p-2.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative flex-1"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute left-2.5 top-1/2 size-4 -tran...
+ ✓ src/modules/pharmacy/copy.test.ts (4 tests) 221ms
+ ✓ src/navigation.test.ts (35 tests) 31ms
+ ✓ src/modules/pharmacy/useAction.test.tsx (1 test) 34ms
+ ✓ src/modules/pharmacy/styles.test.ts (9 tests) 20ms
+ ✓ src/adapters/pharmacy.test.ts (9 tests) 18ms
+ ✓ src/modules/pharmacy/api.test.ts (12 tests) 20ms
+ ✓ src/modules/pharmacy/routes.test.ts (5 tests) 12ms
+ ✓ src/modules/pharmacy/theme.test.ts (4 tests) 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/pharmacy/module.test.tsx > ReferencePharmacyModule host contract > searches the palette through the host transport and routes through the host navigator
+TestingLibraryElementError: Found multiple elements with the text of: Search or run a command
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<dialog[39m
+  [33maria-label[39m=[32m"Search or run a command"[39m
+  [33mclass[39m=[32m"m-0 mx-auto mt-[12vh] w-[calc(100%-2rem)] max-w-[620px] bg-transparent p-0 backdrop:bg-[rgba(10,14,30,0.42)]"[39m
+  [33mopen[39m=[32m""[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"anim-pop overflow-hidden rounded-xl border border-line bg-surface text-ink shadow-pop"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-center gap-2.5 border-b border-line px-4"[39m
+    [36m>[39m
+      [36m<svg[39m
+        [33mclass[39m=[32m"lucide lucide-search size-4 text-ink-3"[39m
+        [33mfill[39m=[32m"none"[39m
+        [33mheight[39m=[32m"24"[39m
+        [33mstroke[39m=[32m"currentColor"[39m
+        [33mstroke-linecap[39m=[32m"round"[39m
+        [33mstroke-linejoin[39m=[32m"round"[39m
+        [33mstroke-width[39m=[32m"2"[39m
+        [33mviewBox[39m=[32m"0 0 24 24"[39m
+        [33mwidth[39m=[32m"24"[39m
+        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+      [36m>[39m
+        [36m<circle[39m
+          [33mcx[39m=[32m"11"[39m
+          [33mcy[39m=[32m"11"[39m
+          [33mr[39m=[32m"8"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"m21 21-4.3-4.3"[39m
+        [36m/>[39m
+      [36m</svg>[39m
+      [36m<input[39m
+        [33maria-label[39m=[32m"Search or run a command"[39m
+        [33mclass[39m=[32m"h-12 flex-1 bg-transparent text-[14px] outline-none placeholder:text-ink-3"[39m
+        [33mplaceholder[39m=[32m"Search patients, Rx numbers, products, claims, or type a command"[39m
+        [33mvalue[39m=[32m""[39m
+      [36m/>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"scroll-y max-h-[52vh] p-1.5"[39m
+      [33mrole[39m=[32m"listbox"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mb-1"[39m
+      [36m>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"px-2.5 pb-1 pt-2 text-[11.5px] font-medium text-ink-3"[39m
+        [36m>[39m
+          [0mActions[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left bg-cobalt-wash"[39m
+          [33mrole[39m=[32m"option"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-plus size-4 shrink-0 text-cobalt"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M5 12h14"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M12 5v14"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block truncate text-[13.5px] font-medium"[39m
+            [36m>[39m
+              [0mNew prescription[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block truncate text-xs text-ink-3"[39m
+            [36m>[39m
+              [0mEnter a paper or phoned-in prescription[0m
+            [36m</span>[39m
+          [36m</span>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-corner-down-left size-3.5 text-cobalt"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<polyline[39m
+              [33mpoints[39m=[32m"9 10 4 15 9 20"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M20 4v7a4 4 0 0 1-4 4H4"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m"flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left"[39m
+          [33mrole[39m=[32m"option"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-radio size-4 shrink-0 text-ink-3"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M4.9 19.1C1 15.2 1 8.8 4.9 4.9"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"[39m
+            [36m/>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"12"[39m
+              [33mcy[39m=[32m"12"[39m
+              [33mr[39m=[32m"2"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M19.1 4.9C23 8.8 23 15.1 19.1 19"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block truncate text-[13.5px] font-medium"[39m
+            [36m>[39m
+              [0mReceive a test eRx[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block truncate text-xs text-ink-3"[39m
+            [36m>[39m
+              [0mSimulates an inbound electronic prescription[0m
+            [36m</span>[39m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m"flex w-full item...
+
+Ignored nodes: comments, script, style
+[36m<input[39m
+  [33maria-label[39m=[32m"Search or run a command"[39m
+  [33mclass[39m=[32m"h-12 flex-1 bg-transparent text-[14px] outline-none placeholder:text-ink-3"[39m
+  [33mplaceholder[39m=[32m"Search patients, Rx numbers, products, claims, or type a command"[39m
+  [33mvalue[39m=[32m""[39m
+[36m/>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-pharmacy"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reference-module[39m=[32m"pharmacy"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-pharmacy-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--pharmacy-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-14 shrink-0 items-center gap-3 border-b border-line bg-surface px-3 md:px-5"[39m
+          [33mdata-pharmacy-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"mx-auto hidden h-9 w-full max-w-md items-center gap-2 rounded-lg border border-line bg-surface-2 px-3 text-left text-[13px] text-ink-3 transition-colors hover:border-line-strong hover:text-ink-2 sm:flex"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex-1 truncate"[39m
+            [36m>[39m
+              [0mFind a patient, prescription, product or claim[0m
+            [36m</span>[39m
+            [36m<kbd[39m
+              [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3"[39m
+            [36m>[39m
+              [0m⌘K[0m
+            [36m</kbd>[39m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex-1 sm:hidden"[39m
+          [36m/>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden md:block"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 h-8 px-3 text-[13px] bg-cobalt text-on-cobalt hover:bg-cobalt-strong shadow-[inset_0_-1px_0_rgba(0,0,0,0.15)] disabled:bg-cobalt/50"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 12h14"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M12 5v14"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mNew prescription[0m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3 ml-1 border-current/30 bg-transparent text-on-cobalt opacity-80"[39m
+              [36m>[39m
+                [0mN[0m
+              [36m</kbd>[39m
+            [36m</button>[39m
+          [36m</span>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"New prescription"[39m
+            [33mclass[39m=[32m"flex size-8 shrink-0 items-center justify-center rounded-md bg-cobalt text-on-cobalt hover:bg-cobalt-strong md:hidden"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-[18px]"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-h-0 flex-1"[39m
+          [33mid[39m=[32m"pharmacy-main"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"scroll-y h-full"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mx-auto grid max-w-[1600px] gap-4 p-4 md:p-5 xl:h-full xl:grid-rows-[auto_minmax(0,1fr)_minmax(0,1fr)]"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto]"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"border border-[var(--border)] rounded-xl bg-[var(--surface)] flex min-h-0 flex-col rounded-xl border border-line bg-surface overflow-hidden"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex items-center...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-pharmacy"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reference-module[39m=[32m"pharmacy"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-pharmacy-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--pharmacy-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-14 shrink-0 items-center gap-3 border-b border-line bg-surface px-3 md:px-5"[39m
+          [33mdata-pharmacy-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"mx-auto hidden h-9 w-full max-w-md items-center gap-2 rounded-lg border border-line bg-surface-2 px-3 text-left text-[13px] text-ink-3 transition-colors hover:border-line-strong hover:text-ink-2 sm:flex"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex-1 truncate"[39m
+            [36m>[39m
+              [0mFind a patient, prescription, product or claim[0m
+            [36m</span>[39m
+            [36m<kbd[39m
+              [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3"[39m
+            [36m>[39m
+              [0m⌘K[0m
+            [36m</kbd>[39m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex-1 sm:hidden"[39m
+          [36m/>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden md:block"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 h-8 px-3 text-[13px] bg-cobalt text-on-cobalt hover:bg-cobalt-strong shadow-[inset_0_-1px_0_rgba(0,0,0,0.15)] disabled:bg-cobalt/50"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 12h14"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M12 5v14"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mNew prescription[0m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3 ml-1 border-current/30 bg-transparent text-on-cobalt opacity-80"[39m
+              [36m>[39m
+                [0mN[0m
+              [36m</kbd>[39m
+            [36m</button>[39m
+          [36m</span>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"New prescription"[39m
+            [33mclass[39m=[32m"flex size-8 shrink-0 items-center justify-center rounded-md bg-cobalt text-on-cobalt hover:bg-cobalt-strong md:hidden"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-[18px]"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-h-0 flex-1"[39m
+          [33mid[39m=[32m"pharmacy-main"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"scroll-y h-full"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mx-auto grid max-w-[1600px] gap-4 p-4 md:p-5 xl:h-full xl:grid-rows-[auto_minmax(0,1fr)_minmax(0,1fr)]"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto]"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"border border-[var(--border)] rounded-xl bg-[var(--surface)] flex min-h-0 flex-col rounded-xl border border-line bg-surface overflow-hidden"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex items-center...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/modules/pharmacy/module.test.tsx:94:35
+     92|     await screen.findByRole("heading", { name: "Prescriptions in the p…
+     93|     fireEvent.click(screen.getByRole("button", { name: /Find a patient…
+     94|     fireEvent.change(await screen.findByLabelText("Search or run a com…
+       |                                   ^
+     95|     const hit = await screen.findByRole("option", { name: /RX-0009/ });
+     96|     fireEvent.click(hit);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/modules/pharmacy/pages.test.tsx > patient failure recovery > preserves the typed form after validation failure and saves once on explicit retry
+TestingLibraryElementError: Found multiple elements with the text of: Date of birth
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<div[39m
+  [33maria-labelledby[39m=[32m"_r_1_"[39m
+  [33mclass[39m=[32m"flex flex-col gap-1"[39m
+  [33mrole[39m=[32m"group"[39m
+[36m>[39m
+  [36m<span[39m
+    [33mclass[39m=[32m"text-xs font-medium text-ink-2"[39m
+    [33mid[39m=[32m"_r_1_"[39m
+  [36m>[39m
+    [0mDate of birth[0m
+  [36m</span>[39m
+  [36m<input[39m
+    [33maria-labelledby[39m=[32m"_r_1_"[39m
+    [33mclass[39m=[32m"rounded-md border border-line-strong bg-surface px-2.5 text-[13px] text-ink placeholder:text-ink-3 transition-colors focus:border-cobalt focus:outline-none focus:ring-2 focus:ring-cobalt/20 disabled:opacity-60 w-full h-8"[39m
+    [33mmax[39m=[32m"2026-10-23"[39m
+    [33mtype[39m=[32m"date"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+[36m</div>[39m
+
+Ignored nodes: comments, script, style
+[36m<input[39m
+  [33maria-labelledby[39m=[32m"_r_1_"[39m
+  [33mclass[39m=[32m"rounded-md border border-line-strong bg-surface px-2.5 text-[13px] text-ink placeholder:text-ink-3 transition-colors focus:border-cobalt focus:outline-none focus:ring-2 focus:ring-cobalt/20 disabled:opacity-60 w-full h-8"[39m
+  [33mmax[39m=[32m"2026-10-23"[39m
+  [33mtype[39m=[32m"date"[39m
+  [33mvalue[39m=[32m""[39m
+[36m/>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-pharmacy"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-reference-module[39m=[32m"pharmacy"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-pharmacy-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--pharmacy-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-14 shrink-0 items-center gap-3 border-b border-line bg-surface px-3 md:px-5"[39m
+          [33mdata-pharmacy-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded border border-amber-mark/40 bg-amber-wash px-2 py-0.5 text-xs text-amber lg:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"mx-auto hidden h-9 w-full max-w-md items-center gap-2 rounded-lg border border-line bg-surface-2 px-3 text-left text-[13px] text-ink-3 transition-colors hover:border-line-strong hover:text-ink-2 sm:flex"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex-1 truncate"[39m
+            [36m>[39m
+              [0mFind a patient, prescription, product or claim[0m
+            [36m</span>[39m
+            [36m<kbd[39m
+              [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3"[39m
+            [36m>[39m
+              [0m⌘K[0m
+            [36m</kbd>[39m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex-1 sm:hidden"[39m
+          [36m/>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden md:block"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"inline-flex select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 h-8 px-3 text-[13px] bg-cobalt text-on-cobalt hover:bg-cobalt-strong shadow-[inset_0_-1px_0_rgba(0,0,0,0.15)] disabled:bg-cobalt/50"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 12h14"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M12 5v14"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mNew prescription[0m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-[18px] min-w-[18px] items-center justify-center rounded border border-line-strong bg-surface-2 px-1 font-sans text-[10.5px] font-medium text-ink-3 ml-1 border-current/30 bg-transparent text-on-cobalt opacity-80"[39m
+              [36m>[39m
+                [0mN[0m
+              [36m</kbd>[39m
+            [36m</button>[39m
+          [36m</span>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"New prescription"[39m
+            [33mclass[39m=[32m"flex size-8 shrink-0 items-center justify-center rounded-md bg-cobalt text-on-cobalt hover:bg-cobalt-strong md:hidden"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-[18px]"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-h-0 flex-1"[39m
+          [33mid[39m=[32m"pharmacy-main"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"grid h-full min-h-0 grid-cols-1 lg:grid-cols-[340px_minmax(0,1fr)]"[39m
+          [36m>[39m
+            [36m<aside[39m
+              [33maria-label[39m=[32m"Patients"[39m
+              [33mclass[39m=[32m"flex min-h-0 flex-col border-r border-line bg-surface"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex shrink-0 gap-2 border-b border-line p-2.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative flex-1"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute left-2.5 top-1/2 size-4 -tran...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getElementError ../../node_modules/@testing-library/dom/dist/query-helpers.js:20:35
+ ❯ getMultipleElementsFoundError ../../node_modules/@testing-library/dom/dist/query-helpers.js:23:10
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/modules/pharmacy/pages.test.tsx:113:27
+    111|   fireEvent.click(await screen.findByRole('button',{name:'New patient'…
+    112|   fireEvent.change(await screen.findByRole('textbox',{name:'Full name'…
+    113|   fireEvent.change(screen.getByLabelText('Date of birth',{exact:true})…
+       |                           ^
+    114|   fireEvent.click(screen.getByRole('button',{name:'Register patient',e…
+    115|   await waitFor(()=>expect(notify).toHaveBeenCalledWith('Review the fi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 8 passed (10)
+      Tests  2 failed | 109 passed (111)
+   Start at  10:39:21
+   Duration  30.18s (transform 2.47s, setup 1.52s, collect 4.46s, tests 14.35s, environment 5.38s, prepare 886ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

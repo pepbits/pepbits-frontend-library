@@ -24,3 +24,5 @@ This is a recreation against the public library APIs, with the original workspac
 | `label-printing/library-page.tsx` | Replaced by synthetic label artwork and compatible stock; product mappings excluded |
 
 Primitive source-parity controls/dialog were excluded in phase 2 and are not recreated. Every currently exported primitive/component runtime identifier is checked against the example source. Higher-level screens exercise their child renderers and helpers through the composed engine; this does not claim every helper branch, workflow permission, template/view combination or server protocol has browser acceptance.
+
+Phase 6b-3 adds `src/examples/source-controls.tsx` for the new public native-layout controls and AsyncLookup, registered in the existing UI gallery. Its snippet is generated from the same executable source; fictional values and lookup results are session memory.

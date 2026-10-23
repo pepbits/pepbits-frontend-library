@@ -106,3 +106,6 @@ export {Activity, AlertTriangle, ArrowRightLeft, ArrowUpRight, Ban, Bookmark, Bo
 
 // Direct primitives used by diagnostic workflows.
 export {AlertOctagon, ArrowDownLeft, CheckCheck, Contrast, CornerDownRight, CornerUpLeft, CreditCard, DoorOpen, FileJson, FilePen, FilePlus, FilePlus2, Hand, Images, Mic, MicOff, Move, PackagePlus, PenSquare, PencilLine, PhoneCall, PlugZap, Receipt, RotateCw, Ruler, Scan, ScanBarcode, ScanLine, Server, Siren, SkipForward, Square, SunMoon, Syringe, Tags, Truck, Undo2, ZoomIn} from 'lucide-react';
+
+// Direct primitives used by pharmacy workflows.
+export {Banknote, Bike, CirclePause, CornerDownLeft, Gavel, HandCoins, Landmark, MessageCircle, Moon, PackageCheck, PackageX, Radio, ShoppingBag, ShoppingBasket, Snowflake, Store, Sun} from 'lucide-react';

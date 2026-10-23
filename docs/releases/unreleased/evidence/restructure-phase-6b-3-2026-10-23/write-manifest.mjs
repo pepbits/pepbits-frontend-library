@@ -1,0 +1,13 @@
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const recordId='restructure-phase-6b-3-2026-10-23';
+const baseCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const fixed=['package.json','package-lock.json','turbo.json','tsconfig.base.json','docs/README.md','docs/features/README.md','docs/features/healthcare-demo.md','docs/features/showcase.md','docs/testing/README.md','docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md','docs/releases/unreleased/README.md','docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md'];
+const paths=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8'}).split('\0').filter(path=>path&&(path.startsWith('packages/')||path.startsWith('tooling/')||path.startsWith('demo-apps/')||fixed.includes(path))))].sort();
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const files=paths.map(path=>({path,sha256:sha(readFileSync(path))}));
+const implementationDigest=sha(files.map(file=>`${file.path}\0${file.sha256}\n`).join(''));
+const manifest={schemaVersion:1,recordId,status:'unreleased-working-tree',baseCommit,testGuideVersion:'1.0.0',implementationDigest,digestAlgorithm:'SHA-256 of sorted path + NUL + file SHA-256 + LF entries',identityScope:'Root workspace configuration, all tracked/nonignored packages/tooling/demo-apps files, plan and affected documentation/indexes. Excludes this release record, manifest and evidence to avoid self-reference. Protected source is identified by base commit and empty diff/status checks.',evidence:`${recordId}.md`,published:false,deployed:false,limits:['Healthcare Suite, clinical and diagnostics plus all thirteen Pharmacy destinations; later healthcare modules remain deferred.','Local Next build, mocked tests and real local synthetic HTTP; not deployed, native, clinical or financial acceptance.','API runtimes reused from a source-matched checkout with hashes; not rebuilt.','Shared catalog and native-speaker/domain/assistive-technology review gaps remain explicit.','Original desktop/backend/deployment/CI unchanged; no commit or push.'],files};
+writeFileSync(`docs/releases/unreleased/manifest-${recordId}.json`,JSON.stringify(manifest,null,2)+'\n');
+console.log(`${files.length} files; SHA-256 ${implementationDigest}`);
