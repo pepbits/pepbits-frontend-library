@@ -1,0 +1,329 @@
+{
+  "part": 2,
+  "baseCommit": "6c73e50e85280a86d359ab5473a0b346dfe0ed64",
+  "sourceFiles": [
+    {
+      "source": "desktop-clients/packages/workspace-core/src/detach.test.ts",
+      "destination": "packages/shell/src/workspace/detach.test.ts",
+      "status": "ported",
+      "sourceCases": 14,
+      "finalCases": 14,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/document-key.test.ts",
+      "destination": "packages/shell/src/workspace/document-key.test.ts",
+      "status": "ported",
+      "sourceCases": 9,
+      "finalCases": 9,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/document-manager.test.ts",
+      "destination": "packages/shell/src/workspace/document-manager.test.ts",
+      "status": "ported",
+      "sourceCases": 47,
+      "finalCases": 47,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/lifecycle.test.ts",
+      "destination": "packages/shell/src/workspace/lifecycle.test.ts",
+      "status": "ported",
+      "sourceCases": 11,
+      "finalCases": 11,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/policy.test.ts",
+      "destination": "packages/shell/src/workspace/policy.test.ts",
+      "status": "ported",
+      "sourceCases": 15,
+      "finalCases": 15,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/split.test.ts",
+      "destination": "packages/shell/src/workspace/split.test.ts",
+      "status": "ported",
+      "sourceCases": 26,
+      "finalCases": 26,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/use-workspace.test.tsx",
+      "destination": "packages/shell/src/workspace/use-workspace.test.tsx",
+      "status": "ported",
+      "sourceCases": 19,
+      "finalCases": 19,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/chrome.test.tsx",
+      "status": "partially-ported-part-2",
+      "destination": "packages/shell/src/chrome.test.tsx",
+      "reason": "14 palette/clock cases retained; six routing/default-product cases replaced by explicit-catalog part 1 product/host cases; three pre-provider boot-cache cases remain phase 6 host-owned.",
+      "finalCases": 14,
+      "sourceCases": 23
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/diagnostic-sidebar.test.tsx",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/diagnostic-sidebar.test.tsx",
+      "reason": "All 25 expanded assertions retained across four fictional modules and English/Arabic. Real PreferenceHost/ShellProvider replace source mocks; web hrefs retained for modifier-link assertions.",
+      "finalCases": 25,
+      "sourceCases": 25
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/erp-context.test.tsx",
+      "destination": "packages/shell/src/shell-context.test.tsx",
+      "status": "partially-ported",
+      "sourceCases": 38,
+      "finalCases": 22,
+      "directBehavioralPorts": 13,
+      "replacementOrAdditionalCases": 9,
+      "reason": "Thirteen toast/shortcut cases copied with controlled host setup. Nine host/appearance/identity/lock cases adapt or consolidate old assertions and add listener-removal coverage. Transport/loading/optimistic-store/persistence/language-race/boot-cache behavior belongs to a phase 6 host preference integration. See contextCaseDisposition."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/product-context.test.tsx",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/product-context.test.tsx",
+      "reason": "Two composition scenarios retained using real ShellProvider and fictional catalog; silent default-product case replaced by explicit missing-host failure, as required by the host contract.",
+      "finalCases": 3,
+      "sourceCases": 3
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/school-role-header.test.tsx",
+      "status": "excluded-product",
+      "destination": "phase 6 product demo / product repository",
+      "reason": "Product-specific roles and header catalog; no product role views are in this library."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/sentinel.test.tsx",
+      "destination": "packages/shell/src/sentinel.test.tsx",
+      "status": "ported",
+      "sourceCases": 1,
+      "finalCases": 1,
+      "reason": "Same safe-reference, sanitization and reset behavior; platform import and fictional secret marker."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/mdi-frames.test.ts",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/workspace/mdi-frames.test.ts",
+      "reason": "Original assertions retained with fictional generic fixtures, public imports and part 1 TestHost. Strict indexed-access annotations erase at runtime.",
+      "finalCases": 20,
+      "sourceCases": 20
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/mdi-taskbar.test.tsx",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/workspace/mdi-taskbar.test.tsx",
+      "reason": "Original assertions retained with fictional generic fixtures, public imports and part 1 TestHost. Strict indexed-access annotations erase at runtime.",
+      "finalCases": 7,
+      "sourceCases": 7
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/target-document.test.ts",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/workspace/target-document.test.ts",
+      "reason": "Original assertions retained with fictional generic fixtures, public imports and part 1 TestHost. Strict indexed-access annotations erase at runtime. The product-role scenario becomes generic host view/module identity with the same round-trip and transition assertions.",
+      "finalCases": 10,
+      "sourceCases": 10
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/use-detached-windows.test.tsx",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/workspace/use-detached-windows.test.tsx",
+      "reason": "Original assertions retained with fictional generic fixtures, public imports and part 1 TestHost. Strict indexed-access annotations erase at runtime.",
+      "finalCases": 13,
+      "sourceCases": 13
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/use-mdi-workspace.test.tsx",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/workspace/use-mdi-workspace.test.tsx",
+      "reason": "Original assertions retained with fictional generic fixtures, public imports and part 1 TestHost. Strict indexed-access annotations erase at runtime.",
+      "finalCases": 7,
+      "sourceCases": 7
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/use-workspace-navigation.test.tsx",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/workspace/use-workspace-navigation.test.tsx",
+      "reason": "Original assertions retained with fictional generic fixtures, public imports and part 1 TestHost. Strict indexed-access annotations erase at runtime. The product-role scenario becomes generic host view/module identity with the same round-trip and transition assertions.",
+      "finalCases": 18,
+      "sourceCases": 18
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/workspace-canvas.test.tsx",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/workspace/workspace-canvas.test.tsx",
+      "reason": "Original assertions retained with fictional generic fixtures, public imports and part 1 TestHost. Strict indexed-access annotations erase at runtime.",
+      "finalCases": 29,
+      "sourceCases": 29
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/workspace-tabs.test.tsx",
+      "status": "ported-part-2",
+      "destination": "packages/shell/src/workspace/workspace-tabs.test.tsx",
+      "reason": "Original assertions retained with fictional generic fixtures, public imports and part 1 TestHost. Strict indexed-access annotations erase at runtime.",
+      "finalCases": 15,
+      "sourceCases": 15
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/product.test.ts",
+      "destination": "packages/shell/src/products.test.ts",
+      "status": "adapted",
+      "sourceCases": 7,
+      "finalCases": 10,
+      "reason": "Seven generic fixture scenarios plus three added validation/capability/navigation cases. Exact explicit allowlist replaces original implicit dashboard retention; no global/default product or product-specific module list."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/preferences/preferences.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5b shell/platform optional page follow-up",
+      "reason": "Optional page was not ported in this priorities 1\u20133 increment."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/login/recovery.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5b shell/platform optional page follow-up",
+      "reason": "Optional page was not ported in this priorities 1\u20133 increment."
+    }
+  ],
+  "contextCaseDispositionUnchanged": "../test-port-inventory.json",
+  "executedFiles": [
+    {
+      "file": "packages/shell/src/chrome-integration.test.tsx",
+      "cases": 11
+    },
+    {
+      "file": "packages/shell/src/chrome.test.tsx",
+      "cases": 14
+    },
+    {
+      "file": "packages/shell/src/diagnostic-sidebar.test.tsx",
+      "cases": 25
+    },
+    {
+      "file": "packages/shell/src/documentation.test.tsx",
+      "cases": 8
+    },
+    {
+      "file": "packages/shell/src/full-shell.test.tsx",
+      "cases": 2
+    },
+    {
+      "file": "packages/shell/src/monitoring.test.tsx",
+      "cases": 6
+    },
+    {
+      "file": "packages/shell/src/product-context.test.tsx",
+      "cases": 3
+    },
+    {
+      "file": "packages/shell/src/products.test.ts",
+      "cases": 10
+    },
+    {
+      "file": "packages/shell/src/screen-host.test.tsx",
+      "cases": 7
+    },
+    {
+      "file": "packages/shell/src/sentinel.test.tsx",
+      "cases": 1
+    },
+    {
+      "file": "packages/shell/src/session-lock.test.tsx",
+      "cases": 2
+    },
+    {
+      "file": "packages/shell/src/shell-context.test.tsx",
+      "cases": 22
+    },
+    {
+      "file": "packages/shell/src/shortcuts.test.ts",
+      "cases": 10
+    },
+    {
+      "file": "packages/shell/src/workspace/detach.test.ts",
+      "cases": 14
+    },
+    {
+      "file": "packages/shell/src/workspace/document-key.test.ts",
+      "cases": 9
+    },
+    {
+      "file": "packages/shell/src/workspace/document-manager.test.ts",
+      "cases": 47
+    },
+    {
+      "file": "packages/shell/src/workspace/lifecycle.test.ts",
+      "cases": 11
+    },
+    {
+      "file": "packages/shell/src/workspace/mdi-frames.test.ts",
+      "cases": 20
+    },
+    {
+      "file": "packages/shell/src/workspace/mdi-taskbar.test.tsx",
+      "cases": 7
+    },
+    {
+      "file": "packages/shell/src/workspace/policy.test.ts",
+      "cases": 15
+    },
+    {
+      "file": "packages/shell/src/workspace/split.test.ts",
+      "cases": 26
+    },
+    {
+      "file": "packages/shell/src/workspace/target-document.test.ts",
+      "cases": 10
+    },
+    {
+      "file": "packages/shell/src/workspace/use-detached-windows.test.tsx",
+      "cases": 13
+    },
+    {
+      "file": "packages/shell/src/workspace/use-mdi-workspace.test.tsx",
+      "cases": 7
+    },
+    {
+      "file": "packages/shell/src/workspace/use-workspace-navigation.test.tsx",
+      "cases": 18
+    },
+    {
+      "file": "packages/shell/src/workspace/use-workspace.test.tsx",
+      "cases": 19
+    },
+    {
+      "file": "packages/shell/src/workspace/workspace-canvas.test.tsx",
+      "cases": 29
+    },
+    {
+      "file": "packages/shell/src/workspace/workspace-shell.test.tsx",
+      "cases": 3
+    },
+    {
+      "file": "packages/shell/src/workspace/workspace-tabs.test.tsx",
+      "cases": 15
+    }
+  ],
+  "additionalPart2Files": {
+    "chrome-integration.test.tsx": 11,
+    "documentation.test.tsx": 8,
+    "full-shell.test.tsx": 2,
+    "workspace/workspace-shell.test.tsx": 3
+  },
+  "counts": {
+    "part1": 199,
+    "added": 185,
+    "total": 384,
+    "files": 29,
+    "workspaceUiOriginal": 119,
+    "genericSidebar": 25,
+    "chromeRetained": 14
+  },
+  "countsSource": "shell-tests-incremental.log; final repository CI corroborates total and file counts"
+}

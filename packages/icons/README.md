@@ -28,3 +28,5 @@ The shared barrel additionally exports the 39 Lucide names used by the copied re
 ## Phase 5 shell icons
 
 `AlertCircle` and `Info` are additionally re-exported for the shell toast viewport. Existing icon behavior is unchanged. See the [phase 5 record](../../docs/releases/unreleased/restructure-phase-5-2026-10-23.md).
+
+Phase 5 part 2 adds 23 primitive exports used by shell chrome, tours and workspace controls (including BookOpen, Command, Pin/PinOff, LayoutDashboard, ArrowLeftRight and Maximize2). Shell imports these through this package; no second icon system or runtime wrapper was introduced.

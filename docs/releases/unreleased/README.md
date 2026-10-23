@@ -1,5 +1,8 @@
 # Current delivery and release records
 
+- [Shell phase 5 part 2 — 23 October 2026](restructure-phase-5-2026-10-23.md#part-2): completes priorities 4–6 with full chrome, workspace UI and non-AI layers; part 1 evidence preserved. Preferences/login and AI remain phase 5b. Local source verification only.
+
+
 - [Library restructure phase 5 foundation — 23 October 2026](restructure-phase-5-2026-10-23.md): priorities 1–3, workspace core and shell/ScreenHost integration; chrome, workspace UI and remaining layers explicitly deferred. Local source-workspace evidence only.
 
 - [Library restructure phase 4b — 23 October 2026](restructure-phase-4b-2026-10-23.md): generic page engines, registry renderer, and patterns approvals/drafts/imports; local source-workspace verification only.

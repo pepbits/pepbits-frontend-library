@@ -49,7 +49,7 @@ export interface ShellProviderProps {
 }
 interface ShellState extends Omit<ShellProviderProps, "children" | "productAccess" | "branch"> {
   currentModule: string;
-  module: ProductDefinition["modules"][string];
+  module: NonNullable<ProductDefinition["modules"][string]>;
   branch: string;
   setBranch(branch: string): void;
   role: string;
@@ -79,6 +79,7 @@ function ShellStateProvider(props: ShellProviderProps) {
     ? lastModule : productModuleForPage(product, navigation.current.pageId, navigation.current.moduleId ?? lastModule) ?? lastModule;
   const currentModule = product.modules[candidate] ? candidate : product.defaultModule;
   useEffect(() => {if (product.pages[navigation.current.pageId]?.module !== "shared") setLastModule(currentModule);}, [navigation.current.pageId, currentModule, product]);
+  if (!product.modules[currentModule]) throw new Error("ShellProvider requires a configured default module.");
   const branch = props.branch ?? user?.branch ?? "";
   const setBranch = useCallback((value: string) => {if (props.branches.some(item => item.value === value)) props.onBranchChange?.(value);}, [props.branches, props.onBranchChange]);
   const [toasts, setToasts] = useState<ToastItem[]>([]);
@@ -128,7 +129,7 @@ function ShellStateProvider(props: ShellProviderProps) {
       previousIdentity.current = identity;
     }
   }, [identity, workspace]);
-  const value: ShellState = {...props, product, currentModule, module: product.modules[currentModule], branch, setBranch, role: user?.role ?? "", toasts, toast, dismissToast,
+  const value: ShellState = {...props, product, currentModule, module: product.modules[currentModule]!, branch, setBranch, role: user?.role ?? "", toasts, toast, dismissToast,
     commandOpen, setCommandOpen, helpOpen, setHelpOpen, documentationOpen, setDocumentationOpen};
   return <Context.Provider value={value}><PresentationProvider value={presentationFromPreferences(preferences)}><ShellScreenHost><ShellAppearance /><SessionLock>{children}</SessionLock></ShellScreenHost></PresentationProvider></Context.Provider>;
 }

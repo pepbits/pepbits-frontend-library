@@ -6,3 +6,13 @@ export * from "./document-manager.ts";
    a script that wants the logic alone imports ./policy.ts or ./document-key.ts
    directly -- the same arrangement other pure packages use for verification scripts. */
 export * from "./use-workspace.tsx";
+
+export * from "./target-document.ts";
+export * from "./mdi-frames.ts";
+export * from "./mdi-taskbar.tsx";
+export * from "./use-detached-windows.tsx";
+export * from "./use-mdi-workspace.tsx";
+export * from "./use-workspace-navigation.tsx";
+export * from "./workspace-canvas.tsx";
+export * from "./workspace-tabs.tsx";
+export * from './workspace-shell';

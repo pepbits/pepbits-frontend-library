@@ -2,29 +2,29 @@
   "schemaVersion": 1,
   "recordId": "restructure-phase-5-2026-10-23",
   "status": "unreleased-working-tree",
-  "baseCommit": "aba0e4e43052454ecd545867a50016f4097d01f3",
+  "baseCommit": "6c73e50e85280a86d359ab5473a0b346dfe0ed64",
   "testGuideVersion": "1.0.0",
-  "implementationDigest": "4c129c90713dc992ca64fd5236543839fadde06f489c2177ddae42a5a961778c",
+  "implementationDigest": "86fa410baa7e6fd58138a82e070f011c4476d12b2834f048e3419e40bea59aaa",
   "digestAlgorithm": "SHA-256 of sorted path + NUL + file SHA-256 + LF entries",
   "identityScope": "Root workspace manifests/configuration, all tracked and nonignored package/tooling files, restructure plan and delivery index. Excludes this record, manifest and evidence to avoid self-reference; unchanged files included. Protected source identified by baseCommit and empty diff/status checks.",
   "evidence": "restructure-phase-5-2026-10-23.md",
   "published": false,
   "deployed": false,
   "limits": [
-    "Phase 5 priorities 1–3 only; chrome/workspace UI/remaining layers and tests deferred to phase 5 completion before 5b.",
-    "AI and optional preferences/login pages remain separate phase 5b follow-up.",
-    "Unpublished source exports; zero executable build tasks; no browser/native/live-service/hosted acceptance.",
-    "No consumer migration, shim, original-workspace runtime checks, catalog/example changes, commit, push or deployment.",
-    "Existing install audit findings remain: one moderate and two critical; no dependency remediation is claimed."
+    "Phase 5 priorities 1–6 complete in source; optional preferences/login and AI remain phase 5b.",
+    "Native runtime and child-window data/state wiring belong to phase 6 hosts; no native executable or window acceptance.",
+    "Unpublished source exports; zero executable build tasks; no browser/live-service/hosted acceptance.",
+    "No consumer migration, original-workspace runtime checks, catalog/example changes, commit, push or deployment.",
+    "Install retains one moderate and two critical audit findings; no dependency remediation."
   ],
   "files": [
     {
       "path": "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
-      "sha256": "911427cd4660dad7234eee196c6fad784c56ac9f5e1e3b4f87c6b37fe54ca383"
+      "sha256": "e6c2db8b429074f3145523fdbcf46c76a3a56d6d3d467d1731cf8d286282103a"
     },
     {
       "path": "docs/releases/unreleased/README.md",
-      "sha256": "ad720ad38b161b71758140839ac85be20a833144a412bdc082e484820bcd6587"
+      "sha256": "1bb48d55687a4cd6838c7c1fd1e4fc6f9b8972f7151f8caa6334910527d532cc"
     },
     {
       "path": "package-lock.json",
@@ -36,7 +36,7 @@
     },
     {
       "path": "packages/README.md",
-      "sha256": "94e9b5d7c71ec61d2376ea9a936905e2842ca6724302eb06aeb97b6ec7d1e987"
+      "sha256": "7fb216b03d9f1c8255d46a6850e3d4782852a469f2aa5af70deda6839cd198b8"
     },
     {
       "path": "packages/components/README.md",
@@ -360,7 +360,7 @@
     },
     {
       "path": "packages/icons/README.md",
-      "sha256": "44da42dd3e327fdace9a18edbf76e4cdb73dc7ba0157d8425791e1f3a921fcd5"
+      "sha256": "ff38507f631808795cbddcb5a650b5507eb9731ceead9b4cf733f831d0ec036b"
     },
     {
       "path": "packages/icons/package.json",
@@ -376,7 +376,7 @@
     },
     {
       "path": "packages/icons/src/index.ts",
-      "sha256": "ba602c40f8f872165647d84dee375ba8ba529b1a08c118b618567ac0d2df7935"
+      "sha256": "1c015c1bb113d499c01f62a49a387b319acd71ed607d1d3449b1dd63afdc43d0"
     },
     {
       "path": "packages/icons/tsconfig.json",
@@ -1100,31 +1100,99 @@
     },
     {
       "path": "packages/shell/README.md",
-      "sha256": "b2c4606c02a4f898a418e33a87b6ef4f70afcce79e397f038c285a15f7766f7c"
+      "sha256": "453765c76d62b3cb7091d995a5e969219b834d0ee6e9a33c3aeb79927b9868d2"
     },
     {
       "path": "packages/shell/package.json",
-      "sha256": "7332d4f7b5cde9ac0f8c88963275830d8953a26fa80b93b497f7ef4d53598f5a"
+      "sha256": "64d216701e3f541dfe3a30a00e9b810b30a36300ed266c2d1b8332800c214284"
     },
     {
       "path": "packages/shell/src/appearance.tsx",
       "sha256": "f34611869f07aaece196310c2d87b024ecced54f4ebcf01322b6517f01c7b24f"
     },
     {
+      "path": "packages/shell/src/chrome-integration.test.tsx",
+      "sha256": "9650456aac557c61b53a6a1eb89ecc0d276a2c3b67bb13af5256881364938a7f"
+    },
+    {
+      "path": "packages/shell/src/chrome-palette.ts",
+      "sha256": "70aa487d18de45d038de3b26a53bf1fa4528fb49ca7bb6be6855279b79b04650"
+    },
+    {
+      "path": "packages/shell/src/chrome.test.tsx",
+      "sha256": "629e9f12c8d324ac809242e1e87aeb45ab2c30db7e624fe1fe24c038e036088f"
+    },
+    {
+      "path": "packages/shell/src/diagnostic-sidebar.test.tsx",
+      "sha256": "73e1e4dbf68bc56b233bf310b3328fca641a48bed30ffa61bfc0907af244952d"
+    },
+    {
       "path": "packages/shell/src/documentation-types.ts",
       "sha256": "d486153bf43d17e6ef5fded062175b9ddcaecd9ffda21ae741d1f43cbe0b70d3"
+    },
+    {
+      "path": "packages/shell/src/documentation.test.tsx",
+      "sha256": "a2b767c389709c0a948cdc011a5e9f54b9a8a57bc0e6019d9e82dda5ff3eb0db"
+    },
+    {
+      "path": "packages/shell/src/documentation.tsx",
+      "sha256": "cb95f2bbd14a0d7da1fea0af1bac453f10695bc73888713180851c8fa1c12d92"
+    },
+    {
+      "path": "packages/shell/src/enterprise-shell.module.css",
+      "sha256": "c68dfcfe0572896029299b648685e34a464372b033e0d2f2a58040fbc74eaf49"
+    },
+    {
+      "path": "packages/shell/src/enterprise-shell.module.css.d.ts",
+      "sha256": "b9933fdbee05947b5c36a6159352a2eb3e326092b1ed23043223853c9cfbbadf"
+    },
+    {
+      "path": "packages/shell/src/enterprise-shell.tsx",
+      "sha256": "5bc99df0e1ebb4e364bb53bfe6e61ea637cf2232f24eab505bf30cc8f98f6ac5"
     },
     {
       "path": "packages/shell/src/error-monitor.tsx",
       "sha256": "c1ff907b122cd2ae563aa33cfa18cc389cad4b2f2a335e45fcf88121ecf754d4"
     },
     {
+      "path": "packages/shell/src/footer.tsx",
+      "sha256": "17b4f935eb6d18dee18652fa6a6c84b80ca9d9404a04b776097affbfc270569d"
+    },
+    {
+      "path": "packages/shell/src/full-shell.test.tsx",
+      "sha256": "488153b3869325c8f4a85a6df17cb3ce14e85a5e38a0ee26fcc018aa38158db9"
+    },
+    {
+      "path": "packages/shell/src/header-clock.tsx",
+      "sha256": "4b87fe674e4b714728fade10ae0eff053c649f6da9c9adb5c99a5689bab11cce"
+    },
+    {
+      "path": "packages/shell/src/header.tsx",
+      "sha256": "d4bd9ae86cb2cf36740247566488909b3b4d94815e3b670f885273ba6bc69972"
+    },
+    {
       "path": "packages/shell/src/index.ts",
-      "sha256": "29fd55995651001e8f17e0822b206aae8438918f5842efbb8fc3520c6d77a6ff"
+      "sha256": "304711feed8a1537b520bb986de390ec108d7a80dc456f628bdc08fc117c059f"
+    },
+    {
+      "path": "packages/shell/src/layers/command-palette.tsx",
+      "sha256": "f40c895404204a3fbb48fc8e42402efb84d92cd6f677a00f4c36b63de15dc0be"
+    },
+    {
+      "path": "packages/shell/src/layers/documentation-drawer.tsx",
+      "sha256": "ff464682fcdeda26b4c0a918d38c1e6ece9d3b0574e0ca55f8406a893d5fb41b"
+    },
+    {
+      "path": "packages/shell/src/layers/help-assistant.tsx",
+      "sha256": "2c524d53d5467866cbae390053ece672c1b797ea7d41b1f2cfb5ac41785b8a0a"
     },
     {
       "path": "packages/shell/src/layers/index.ts",
-      "sha256": "f422d3f194a47e2c9eee317fbe8fb62e2f62b19aebc77c4d529a800a84e474e3"
+      "sha256": "4f9ad82a5e33ad07ad24be3c5175e9599b268b492a7343421126ddd4c479e46a"
+    },
+    {
+      "path": "packages/shell/src/layers/shell-layers.tsx",
+      "sha256": "f5262d74c7591a6ba85954abf2ce1fff5463d48322ce6876573a6017b140b4cf"
     },
     {
       "path": "packages/shell/src/layers/toast-viewport.tsx",
@@ -1137,6 +1205,10 @@
     {
       "path": "packages/shell/src/navigation.ts",
       "sha256": "520a6d822ce4b8a806b8196db4154f59b77f36f444e74dead811376432b2c140"
+    },
+    {
+      "path": "packages/shell/src/product-context.test.tsx",
+      "sha256": "348c6054e52cef354064f8f13365e4c76444f3daa8c95a74797d4ee549abd67d"
     },
     {
       "path": "packages/shell/src/products.test.ts",
@@ -1176,7 +1248,7 @@
     },
     {
       "path": "packages/shell/src/shell-context.tsx",
-      "sha256": "000c67ccfb41e918bace2fce92d0aa63654c1e48cc28b09457af855ca094f7e9"
+      "sha256": "f5f5d61bdc8cd3fa6c1d7c9cce540e27d62a57cef78c990d235026fb6d29f368"
     },
     {
       "path": "packages/shell/src/shortcuts.test.ts",
@@ -1185,6 +1257,10 @@
     {
       "path": "packages/shell/src/shortcuts.ts",
       "sha256": "70ca3b778f225c301305e27ee9d769fd587a1e692d4aaf9686956996925d625d"
+    },
+    {
+      "path": "packages/shell/src/sidebar.tsx",
+      "sha256": "3545feab64c20e935aff7a44599e6571967b08da4511286905cc5d33ce6ec81a"
     },
     {
       "path": "packages/shell/src/test/host.tsx",
@@ -1196,11 +1272,35 @@
     },
     {
       "path": "packages/shell/src/test/messages.ts",
-      "sha256": "59b7645d72a4bf42d46310a61f6c52372ce5eac641c7fc28f89653813081ddc9"
+      "sha256": "24b596bc4a391e3c361b6541ff59661375d8dca750e8ec24adf8b1017de66b53"
+    },
+    {
+      "path": "packages/shell/src/test/render.tsx",
+      "sha256": "27f8494855af0cfa3bac3389183da981c0d887ad1e5842bf6f2e94256d6b2465"
+    },
+    {
+      "path": "packages/shell/src/test/workspace-product.ts",
+      "sha256": "785eefdef4f1e46b3db5f5dea5104624d3d07bf55f29055781c14cab353e85db"
     },
     {
       "path": "packages/shell/src/tours.ts",
       "sha256": "4c27382a12dc8426e02906d7de1ac77861d2e5f144686c0e812d508b08aafe3a"
+    },
+    {
+      "path": "packages/shell/src/use-clock.ts",
+      "sha256": "fc6f5121dbbab7260dbf51244c3851c1ad0901e3fd683d06771449e820320ffd"
+    },
+    {
+      "path": "packages/shell/src/workspace-page.module.css",
+      "sha256": "4a8c21e5e592a521fcc7ecbd7c2c30bb1b3b6d56a79e44567fe4ad48902317c8"
+    },
+    {
+      "path": "packages/shell/src/workspace-page.module.css.d.ts",
+      "sha256": "b9933fdbee05947b5c36a6159352a2eb3e326092b1ed23043223853c9cfbbadf"
+    },
+    {
+      "path": "packages/shell/src/workspace-page.tsx",
+      "sha256": "4233d68983fd1106710d7e9e3ca450cc69672ac9d5e9c4ae2ad283c33ddec312"
     },
     {
       "path": "packages/shell/src/workspace/detach.test.ts",
@@ -1224,11 +1324,27 @@
     },
     {
       "path": "packages/shell/src/workspace/index.ts",
-      "sha256": "196b44f10b204edff86f1b75907524437b55d69a905eb2510adf41d5758442eb"
+      "sha256": "ca2adee3e862b16b1da894a5fd4cddd8708b4a4e108eafc662694908beda78ee"
     },
     {
       "path": "packages/shell/src/workspace/lifecycle.test.ts",
       "sha256": "887cf81b342d1e3e5bb1a98a504f98ebaf9d68d21427a3599cfaf8ba82fc2a9d"
+    },
+    {
+      "path": "packages/shell/src/workspace/mdi-frames.test.ts",
+      "sha256": "c4c8efc789e49f7ca54e91e2e8e6df9766ad696ce263e698f091cb52e52d52a5"
+    },
+    {
+      "path": "packages/shell/src/workspace/mdi-frames.ts",
+      "sha256": "faecb306d70ccddeff9794fc929da8f22a8239717254c2605b7c3c5fea86fb6b"
+    },
+    {
+      "path": "packages/shell/src/workspace/mdi-taskbar.test.tsx",
+      "sha256": "6e23a834d60a067ba37651d5de3738f19128e24a6283708a96af7057ab9d4f61"
+    },
+    {
+      "path": "packages/shell/src/workspace/mdi-taskbar.tsx",
+      "sha256": "338a697e27e4b337cd61cb3c14f4db7c1956d1609219378e7dbc6694c31af03d"
     },
     {
       "path": "packages/shell/src/workspace/policy.test.ts",
@@ -1243,8 +1359,40 @@
       "sha256": "e9128dcdf3ad340209024fe4db0d965b18434e22b7c4e3968ef1262c1fb36dc9"
     },
     {
+      "path": "packages/shell/src/workspace/target-document.test.ts",
+      "sha256": "8365272ee05c0be547bb275facb16fa6eb944b2c9690918b85088ab06df61e93"
+    },
+    {
+      "path": "packages/shell/src/workspace/target-document.ts",
+      "sha256": "ae354815448d08977a34dd8e0486d9064581579a966edb9899dfdcab26d53484"
+    },
+    {
       "path": "packages/shell/src/workspace/types.ts",
       "sha256": "1368ee1564c4dd3dbe2b1c845336798480b93ea2438013f86920ab47d41c79b0"
+    },
+    {
+      "path": "packages/shell/src/workspace/use-detached-windows.test.tsx",
+      "sha256": "1f849c013b458d71deb5de8da8dab4449d63f072b8b5e360bb6a2a169108e9eb"
+    },
+    {
+      "path": "packages/shell/src/workspace/use-detached-windows.tsx",
+      "sha256": "9234c42b61dfd613c2b54b5fdd807778a1e352a05125317eb36c4243d86e181f"
+    },
+    {
+      "path": "packages/shell/src/workspace/use-mdi-workspace.test.tsx",
+      "sha256": "8ded64a9055e085b4ce86432132105488420d6b0401dfb2f424fb506df7ac0de"
+    },
+    {
+      "path": "packages/shell/src/workspace/use-mdi-workspace.tsx",
+      "sha256": "3d17b6bfb3dba7b1beaf1ef240e2f4e53d87b6cf61de1b4ec53374962814e4f3"
+    },
+    {
+      "path": "packages/shell/src/workspace/use-workspace-navigation.test.tsx",
+      "sha256": "e510cce1582d63c480ad4fb35632956dfc7541ab2475ddccaf7995e86a63be03"
+    },
+    {
+      "path": "packages/shell/src/workspace/use-workspace-navigation.tsx",
+      "sha256": "9c7cbb8f42064fad2743b9faa09d4abff500cc52960a54685e5a13a2501c0f75"
     },
     {
       "path": "packages/shell/src/workspace/use-workspace.test.tsx",
@@ -1253,6 +1401,30 @@
     {
       "path": "packages/shell/src/workspace/use-workspace.tsx",
       "sha256": "4061c675b55f5cdcfecdb74df9649e82fe7f30ac0fe2d77971b993f6f918590a"
+    },
+    {
+      "path": "packages/shell/src/workspace/workspace-canvas.test.tsx",
+      "sha256": "41ed6484b7f7bcb4578dd03b2c6b0145d94ee607d50f711e61a8973badab7176"
+    },
+    {
+      "path": "packages/shell/src/workspace/workspace-canvas.tsx",
+      "sha256": "f4f9464823d1e774756a157497d83c8db0d3f9e036020faee8af401fa0a06a70"
+    },
+    {
+      "path": "packages/shell/src/workspace/workspace-shell.test.tsx",
+      "sha256": "99de066363577b869a30028617f20bf3944c986a3538cb83dbcb31b081c49181"
+    },
+    {
+      "path": "packages/shell/src/workspace/workspace-shell.tsx",
+      "sha256": "b719df0ce2de4bd8fe271fd7e395d4a6391be629c85e83a96e8ccebe8a3a51e2"
+    },
+    {
+      "path": "packages/shell/src/workspace/workspace-tabs.test.tsx",
+      "sha256": "0e3a8e641218805e9561bbe9d2f64cd0bc88529ef5247064fa2f892848556c72"
+    },
+    {
+      "path": "packages/shell/src/workspace/workspace-tabs.tsx",
+      "sha256": "4820727e0f3e0cbc2ad165807f9c9592afeabfc53c5fd5c3fe8249b94f55f04c"
     },
     {
       "path": "packages/shell/tsconfig.json",
@@ -1510,5 +1682,7 @@
       "path": "turbo.json",
       "sha256": "7f67ca11e3562e68583e938d04cca29b35387ec00318539822f6086b246e5ab9"
     }
-  ]
+  ],
+  "part": 2,
+  "previousPartManifest": "evidence/restructure-phase-5-2026-10-23/part-2/part-1-manifest.json"
 }

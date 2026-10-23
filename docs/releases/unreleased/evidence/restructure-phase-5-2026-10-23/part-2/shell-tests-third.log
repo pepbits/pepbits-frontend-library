@@ -1,0 +1,33 @@
+
+> @pepbits/shell@0.0.0 test
+> vitest run --reporter=dot
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell
+
+·········x······················································································································································································································································································································································································
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/documentation.test.tsx > drawer uses host center target and preference placement
+Error: expect(element).toHaveClass("left-0")
+
+Expected the element to have class:
+  left-0
+Received:
+  fixed inset-0 z-[115] bg-slate-950/35 backdrop-blur-[1px]
+ ❯ src/documentation.test.tsx:49:161
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 28 passed (29)
+      Tests  1 failed | 383 passed (384)
+   Start at  02:32:15
+   Duration  24.84s (transform 1.71s, setup 4.18s, collect 7.31s, tests 11.82s, environment 14.57s, prepare 2.21s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/shell@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell 

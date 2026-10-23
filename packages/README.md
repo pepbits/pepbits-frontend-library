@@ -14,7 +14,7 @@ The reusable `@pepbits/*` packages. Phases 1–5 (including the bounded phase 5 
 | [@pepbits/platform](platform/README.md) | Host-configured sessions/recovery, monitoring, navigation, windows and device ports |
 | [@pepbits/patterns](patterns/README.md) | Lifecycle, master transfer, DCP fields, approvals, drafts, imports and screen-host contracts |
 | [@pepbits/page-engines](page-engines/README.md) | Typed record, worklist, form and template engines with host adapters and a renderer registry |
-| [@pepbits/shell](shell/README.md) | Workspace core, generic configuration, shell/ScreenHost provider, toasts, session lock and monitoring; chrome/workspace UI/layers deferred |
+| [@pepbits/shell](shell/README.md) | Generic host/ScreenHost provider, full chrome, workspace tabs/split/MDI/window adapter, documentation/help layers, session lock and monitoring |
 
 Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI implementation follows shell completion in separate phase 5b.
 

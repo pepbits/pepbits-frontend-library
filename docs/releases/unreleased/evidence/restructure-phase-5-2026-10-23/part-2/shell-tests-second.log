@@ -1,0 +1,2056 @@
+
+> @pepbits/shell@0.0.0 test
+> vitest run --reporter=dot
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell
+
+·····································································································xxxxxxx···xxxxx··x·x···x························································································································································································································································
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 15 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/chrome-integration.test.tsx > a live policy locks the real pin controls and rejects retained handlers
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Sidebar is fixed"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "Primary navigation":
+  [36m<aside[39m
+    [33maria-label[39m=[32m"Primary navigation"[39m
+    [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-50 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-sm)]"[39m
+    [33mdata-tour[39m=[32m"sidebar"[39m
+    [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Collapse navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Collapse navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unpin sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Unpin sidebar"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Overview":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Items":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Preferences":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "My Preferences":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"My Preferences"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unfix sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Sidebar is fixed"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "OPS":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"false"[39m
+    [33maria-haspopup[39m=[32m"listbox"[39m
+    [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Search ⌘K":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring hidden h-[30px] w-36 items-center gap-2 rounded-[9px] border border-[var(--border)] bg-[var(--surface-2)] px-2.5 text-left text-[length:calc(10px*var(--fs-scale))] font-semibold text-[var(--text-subtle)] transition hover:border-[var(--border-strong)] xl:flex"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Open page helper":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Open page helper"[39m
+    [33mclass[39m=[32m"focus-ring grid size-[30px] shrink-0 place-items-center rounded-lg text-[var(--text-muted)] hover:bg-[var(--surface-2)]"[39m
+    [33mtitle[39m=[32m"Help (?)"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Open profile menu":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Open profile menu"[39m
+    [33mclass[39m=[32m"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]"[39m
+    [33mdata-tour[39m=[32m"profile"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search the Operations menu":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the Operations menu"[39m
+    [33mclass[39m=[32m"focus-ring h-8 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] ps-8 pe-7 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--text)] transition placeholder:font-normal placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:bg-[var(--surface)]"[39m
+    [33mplaceholder[39m=[32m"Search OPS menu…"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"no-print relative z-40 flex min-h-[var(--header-height)] shrink-0 items-center gap-1.5 border-b border-[var(--border)] bg-[var(--surface-translucent)] px-3 backdrop-blur-xl flex-wrap py-1 sm:h-[var(--header-height)] sm:flex-nowrap sm:py-0"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Items":
+  [36m<h1[39m
+    [33mclass[39m=[32m"min-w-0 shrink-0 max-w-full truncate text-[length:calc(15px*var(--fs-scale))] font-black tracking-[-.025em] text-[var(--text)]"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "Branch":
+  [36m<span[39m
+    [33maria-label[39m=[32m"Branch"[39m
+    [33mclass[39m=[32m"flex min-w-0 max-w-[180px] items-center gap-2 truncate text-[var(--text)] text-[length:calc(12px*var(--fs-scale))] sm:max-w-[220px] lg:max-w-[296px]"[39m
+    [33mrole[39m=[32m"status"[39m
+    [33mtitle[39m=[32m"North"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  main:
+
+  Name "":
+  [36m<main[39m
+    [33mclass[39m=[32m"_content_bea77d nex-scrollbar relative min-h-0 flex-1 overflow-auto bg-[var(--bg)] p-3 md:p-4"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  contentinfo:
+
+  Name "":
+  [36m<footer[39m
+    [33mclass[39m=[32m"no-print flex h-[var(--footer-height)] shrink-0 items-center justify-between border-t border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-hidden[39m=[32m"true"[39m
+        [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-expanded)]"[39m
+      [36m/>[39m
+      [36m<aside[39m
+        [33maria-label[39m=[32m"Primary navigation"[39m
+        [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-50 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-sm)]"[39m
+        [33mdata-tour[39m=[32m"sidebar"[39m
+        [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+          [33mstyle[39m=[32m""[39m
+        [36m>[39m
+          [36m<button[39m
+            [33maria-expanded[39m=[32m"true"[39m
+            [33maria-label[39m=[32m"Collapse navigation"[39m
+            [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+            [33mdisabled[39m=[32m""[39m
+            [33mtitle[39m=[32m"Collapse navigation"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+            [36m/>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(13px*var(--fs-scale))] font-black tracking-[-.04em]"[39m
+            [36m>[39m
+              [0mExample[0m
+              [0m [0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] text-[var(--text-subtle)]"[39m
+            [36m>[39m
+              [0mWork together[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+            [33mdisabled[39m=[32m""[39m
+            [33mtitle[39m=[32m"Unpin sidebar"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-pin-off size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 17v5"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M15 9.34V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H7.89"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m2 2 20 20"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h11"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] gap-2 px-2.5 py-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+              [33mstyle[39m=[32m"background: var(--primary);"[39m
+            [36m>[39m
+              [0mOP[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"min-w-0 flex-1"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]"[39m
+              [36m>[39m
+                [0mOperations[0m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+              [36m>[39m
+                [0mModule navigation[0m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          ...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/chrome-integration.test.tsx:20:93
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/15]⎯
+
+ FAIL  src/chrome-integration.test.tsx > keyboard focus expands readable navigation and moving focus out collapses it
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Items"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "Primary navigation":
+  [36m<aside[39m
+    [33maria-label[39m=[32m"Primary navigation"[39m
+    [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+    [33mdata-tour[39m=[32m"sidebar"[39m
+    [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Expand navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"false"[39m
+    [33maria-label[39m=[32m"Expand navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mtitle[39m=[32m"Expand navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Search menu":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Search menu"[39m
+    [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+    [33mtitle[39m=[32m"Search menu"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Overview":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtitle[39m=[32m"Overview"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Items":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mtitle[39m=[32m"Items"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Preferences":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtitle[39m=[32m"Preferences"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "My Preferences":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] justify-center"[39m
+    [33mtitle[39m=[32m"My Preferences"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Sidebar expands on hover":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] justify-center"[39m
+    [33mtitle[39m=[32m"Sidebar expands on hover"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Outside":
+  [36m<button />[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33maria-hidden[39m=[32m"true"[39m
+      [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+    [36m/>[39m
+    [36m<aside[39m
+      [33maria-label[39m=[32m"Primary navigation"[39m
+      [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+      [33mdata-tour[39m=[32m"sidebar"[39m
+      [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+        [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-expanded[39m=[32m"false"[39m
+          [33maria-label[39m=[32m"Expand navigation"[39m
+          [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+          [33mtitle[39m=[32m"Expand navigation"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+          [36m/>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+            [33mstyle[39m=[32m"background: var(--primary);"[39m
+          [36m>[39m
+            [0mOP[0m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-label[39m=[32m"Search menu"[39m
+          [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+          [33mtitle[39m=[32m"Search menu"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"11"[39m
+              [33mcy[39m=[32m"11"[39m
+              [33mr[39m=[32m"8"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m21 21-4.3-4.3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<nav[39m
+        [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m""[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+          [36m/>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"space-y-0.5"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+              [33mtitle[39m=[32m"Overview"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"flex size-6 shrink-0 items-center justify-center rounded-lg transition group-hover:bg-[var(--surface)]"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"size-1.5 rounded-full bg-current opacity-55"[39m
+                [36m/>[39m
+              [36m</span>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-current[39m=[32m"page"[39m
+              [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+              [33mtitle[39m=[32m"Items"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"flex size-6 shrink-0 items-center justify-center rounded-lg transition bg-[var(--surface)] shadow-sm"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"size-1.5 rounded-full bg-current opacity-55"[39m
+                [36m/>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"absolute inset-y-2 w-0.5 rounded-full bg-[var(--primary)] left-0"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+              [33mtitle[39m=[32m"Preferences"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"flex size-6 shrink-0 items-center justify-center rounded-lg transition group-hover:bg-[var(--surface)]"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"size-1.5 rounded-full bg-current opacity-55"[39m
+                [36m/>[39m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</nav>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-t border-[var(--border)] p-2"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] justify-center"[39m
+          [33mtitle[39m=[32m"My Preferences"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex size-6 items-center justify-center"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-sliders-horizontal size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"21"[39m
+                [33mx2[39m=[32m"14"[39m
+                [33my1[39m=[32m"4"[39m
+                [33my2[39m=[32m"4"[39m
+              [36m/>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"10"[39m
+                [33mx2[39m=[32m"3"[39m
+                [33my1[39m=[32m"4"[39m
+                [33my2[39m=[32m"4"[39m
+              [36m/>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"21"[39m
+                [33mx2[39m=[32m"12"[39m
+                [33my1[39m=[32m"12"[39m
+                [33my2[39m=[32m"12"[39m
+              [36m/>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"8"[39m
+                [33mx2[39m=[32m"3"[39m
+                [33my1[39m=[32m"12"[39m
+                [33my2[39m=[32m"12"[39m
+              [36m/>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"21"[39m
+                [33mx2[39m=[32m"16"[39m
+                [33my1[39m=[32m"20"[39m
+                [33my2[39m=[32m"20"[39m
+              [36m/>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"12"[39m
+                [33mx2[39m=[32m"3"[39m
+                [33my1[39m=[32m"20"[39m
+                [33my2[39m=[32m"20"[39m
+              [36m/>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"14"[39m
+                [33mx2[39m=[32m"14"[39m
+                [33my1[39m=[32m"2"[39m
+                [33my2[39m=[32m"6"[39m
+              [36m/>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"8"[39m
+                [33mx2[39m=[32m"8"[39m
+                [33my1[39m=[32m"10"[39m
+                [33my2[39m=[32m"14"[39m
+              [36m/>[39m
+              [36m<line[39m
+                [33mx1[39m=[32m"16"[39m
+                [33mx2[39m=[32m"16"[39m
+                [33my1[39m=[32m"18"[39m
+                [33my2[39m=[32m"22"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] justify-center"[39m
+          [33mtitle[39m=[32m"Sidebar expands on hover"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"flex size-6 items-center justify-center"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-panel-left-open size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<rect[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mrx[39m=[32m"2"[39m
+                [33mwidth[39m=[32m"18"[39m
+                [33mx[39m=[32m"3"[39m
+                [33my[39m=[32m"3"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 3v18"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m14 9 3 3-3 3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</aside>[39m
+    [36m<button>[39m
+      [0mOutside[0m
+    [36m</button>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/chrome-integration.test.tsx:29:17
+     27| test('keyboard focus expands readable navigation and moving focus out …
+     28|  render(<ShellTestHost settings={{preferences:{sidebarPinned:false,sid…
+     29|  act(()=>screen.getByRole('link',{name:'Items'}).focus());expect(scree…
+       |                 ^
+     30|  act(()=>screen.getByRole('button',{name:'Outside'}).focus());expect(s…
+     31| });
+ ❯ ../../node_modules/@testing-library/react/dist/act-compat.js:47:24
+ ❯ process.env.NODE_ENV.exports.act ../../node_modules/react/cjs/react.development.js:890:22
+ ❯ ../../node_modules/@testing-library/react/dist/act-compat.js:46:25
+ ❯ src/chrome-integration.test.tsx:29:2
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/15]⎯
+
+ FAIL  src/chrome-integration.test.tsx > header exposes only host quick destinations and branch changes
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/North/`
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "Primary navigation":
+  [36m<aside[39m
+    [33maria-label[39m=[32m"Primary navigation"[39m
+    [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+    [33mdata-tour[39m=[32m"sidebar"[39m
+    [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Expand navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"false"[39m
+    [33maria-label[39m=[32m"Expand navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mtitle[39m=[32m"Expand navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Search menu":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Search menu"[39m
+    [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+    [33mtitle[39m=[32m"Search menu"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Overview":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtitle[39m=[32m"Overview"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Items":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mtitle[39m=[32m"Items"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Preferences":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtitle[39m=[32m"Preferences"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "My Preferences":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] justify-center"[39m
+    [33mtitle[39m=[32m"My Preferences"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Sidebar expands on hover":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] justify-center"[39m
+    [33mtitle[39m=[32m"Sidebar expands on hover"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "OPS":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"false"[39m
+    [33maria-haspopup[39m=[32m"listbox"[39m
+    [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 max-sm:w-[76px] max-sm:max-w-[76px] max-sm:min-w-0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Search ⌘K":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring hidden h-[30px] w-36 items-center gap-2 rounded-[9px] border border-[var(--border)] bg-[var(--surface-2)] px-2.5 text-left text-[length:calc(10px*var(--fs-scale))] font-semibold text-[var(--text-subtle)] transition hover:border-[var(--border-strong)] xl:flex"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Quick items":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring rounded-lg px-2 py-1 text-xs"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Open page helper":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Open page helper"[39m
+    [33mclass[39m=[32m"focus-ring grid size-[30px] shrink-0 place-items-center rounded-lg text-[var(--text-muted)] hover:bg-[var(--surface-2)]"[39m
+    [33mtitle[39m=[32m"Help (?)"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Branch":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"false"[39m
+    [33maria-haspopup[39m=[32m"listbox"[39m
+    [33maria-label[39m=[32m"Branch"[39m
+    [33mclass[39m=[32m"focus-ring group flex h-[30px] items-center gap-2 rounded-[10px] border border-transparent px-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] max-w-40 w-full lg:w-[296px] lg:max-w-none"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Open profile menu":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Open profile menu"[39m
+    [33mclass[39m=[32m"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]"[39m
+    [33mdata-tour[39m=[32m"profile"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"no-print relative z-40 flex min-h-[var(--header-height)] shrink-0 items-center gap-1.5 border-b border-[var(--border)] bg-[var(--surface-translucent)] px-3 backdrop-blur-xl flex-wrap py-1 sm:h-[var(--header-height)] sm:flex-nowrap sm:py-0"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Items":
+  [36m<h1[39m
+    [33mclass[39m=[32m"min-w-0 shrink-0 max-w-full truncate text-[length:calc(15px*var(--fs-scale))] font-black tracking-[-.025em] text-[var(--text)]"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  main:
+
+  Name "":
+  [36m<main[39m
+    [33mclass[39m=[32m"_content_bea77d nex-scrollbar relative min-h-0 flex-1 overflow-auto bg-[var(--bg)] p-3 md:p-4"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  contentinfo:
+
+  Name "":
+  [36m<footer[39m
+    [33mclass[39m=[32m"no-print flex h-[var(--footer-height)] shrink-0 items-center justify-between border-t border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(8.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-hidden[39m=[32m"true"[39m
+        [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+      [36m/>[39m
+      [36m<aside[39m
+        [33maria-label[39m=[32m"Primary navigation"[39m
+        [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+        [33mdata-tour[39m=[32m"sidebar"[39m
+        [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+          [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33maria-expanded[39m=[32m"false"[39m
+            [33maria-label[39m=[32m"Expand navigation"[39m
+            [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+            [33mtitle[39m=[32m"Expand navigation"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+            [36m/>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+              [33mstyle[39m=[32m"background: var(--primary);"[39m
+            [36m>[39m
+              [0mOP[0m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Search menu"[39m
+            [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+            [33mtitle[39m=[32m"Search menu"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<nav[39m
+          [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m""[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+            [36m/>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"space-y-0.5"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Overview"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"flex size-6 shrink-0 items-center justify-center rounded-lg transition group-hover:bg-[var(--surface)]"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"size-1.5 rounded-full bg-current opacity-55"[39m
+                  [36m/>[39m
+                [36m<...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/chrome-integration.test.tsx:53:25
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/15]⎯
+
+ FAIL  src/diagnostic-sidebar.test.tsx > tools opens its item destination and closes an unpinned rail
+ FAIL  src/diagnostic-sidebar.test.tsx > projects opens its item destination and closes an unpinned rail
+ FAIL  src/diagnostic-sidebar.test.tsx > operations opens its item destination and closes an unpinned rail
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Items"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "Primary navigation":
+  [36m<aside[39m
+    [33maria-label[39m=[32m"Primary navigation"[39m
+    [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-lg)]"[39m
+    [33mdata-tour[39m=[32m"sidebar"[39m
+    [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Collapse navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mtitle[39m=[32m"Collapse navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Pin sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[var(--border)] text-[var(--text-muted)] hover:bg-[var(--surface-2)]"[39m
+    [33mtitle[39m=[32m"Pin sidebar"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Overview":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Items":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Fix sidebar open":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"Sidebar expands on hover"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search the Operations menu":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the Operations menu"[39m
+    [33mclass[39m=[32m"focus-ring h-8 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] ps-8 pe-7 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--text)] transition placeholder:font-normal placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:bg-[var(--surface)]"[39m
+    [33mplaceholder[39m=[32m"Search OPS menu…"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33maria-hidden[39m=[32m"true"[39m
+      [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+    [36m/>[39m
+    [36m<aside[39m
+      [33maria-label[39m=[32m"Primary navigation"[39m
+      [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-lg)]"[39m
+      [33mdata-tour[39m=[32m"sidebar"[39m
+      [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+        [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-expanded[39m=[32m"true"[39m
+          [33maria-label[39m=[32m"Collapse navigation"[39m
+          [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+          [33mtitle[39m=[32m"Collapse navigation"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+          [36m/>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] gap-2 px-2.5 py-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+            [33mstyle[39m=[32m"background: var(--primary);"[39m
+          [36m>[39m
+            [0mOP[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]"[39m
+            [36m>[39m
+              [0mOperations[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mModule navigation[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[var(--border)] text-[var(--text-muted)] hover:bg-[var(--surface-2)]"[39m
+            [33mtitle[39m=[32m"Pin sidebar"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-pin size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 17v5"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-2.5"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"group relative"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-subtle)] transition group-focus-within:text-[var(--primary)]"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"11"[39m
+              [33mcy[39m=[32m"11"[39m
+              [33mr[39m=[32m"8"[39m
+            [36m/>[39m
+            [36...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/diagnostic-sidebar.test.tsx:35:25
+     33| it.each(['tools','projects','operations'])('%s opens its item destinat…
+     34|  state.moduleId=id;renderRail();fireEvent.click(screen.getByRole('butt…
+     35|  fireEvent.click(screen.getByRole('link',{name:'Items'}));expect(open)…
+       |                         ^
+     36|  expect(screen.getByRole('button',{name:'Expand navigation'})).toHaveA…
+     37| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/15]⎯
+
+ FAIL  src/diagnostic-sidebar.test.tsx > tools stays closed after choosing a page under a still pointer in hover mode
+ FAIL  src/diagnostic-sidebar.test.tsx > projects stays closed after choosing a page under a still pointer in hover mode
+ FAIL  src/diagnostic-sidebar.test.tsx > operations stays closed after choosing a page under a still pointer in hover mode
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Items"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "Primary navigation":
+  [36m<aside[39m
+    [33maria-label[39m=[32m"Primary navigation"[39m
+    [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-lg)]"[39m
+    [33mdata-tour[39m=[32m"sidebar"[39m
+    [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Collapse navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mtitle[39m=[32m"Collapse navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Pin sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[var(--border)] text-[var(--text-muted)] hover:bg-[var(--surface-2)]"[39m
+    [33mtitle[39m=[32m"Pin sidebar"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Overview":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Items":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Fix sidebar open":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"Sidebar expands on hover"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search the Operations menu":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the Operations menu"[39m
+    [33mclass[39m=[32m"focus-ring h-8 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] ps-8 pe-7 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--text)] transition placeholder:font-normal placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:bg-[var(--surface)]"[39m
+    [33mplaceholder[39m=[32m"Search OPS menu…"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33maria-hidden[39m=[32m"true"[39m
+      [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+    [36m/>[39m
+    [36m<aside[39m
+      [33maria-label[39m=[32m"Primary navigation"[39m
+      [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-lg)]"[39m
+      [33mdata-tour[39m=[32m"sidebar"[39m
+      [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+        [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-expanded[39m=[32m"true"[39m
+          [33maria-label[39m=[32m"Collapse navigation"[39m
+          [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+          [33mtitle[39m=[32m"Collapse navigation"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+          [36m/>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] gap-2 px-2.5 py-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+            [33mstyle[39m=[32m"background: var(--primary);"[39m
+          [36m>[39m
+            [0mOP[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]"[39m
+            [36m>[39m
+              [0mOperations[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mModule navigation[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[var(--border)] text-[var(--text-muted)] hover:bg-[var(--surface-2)]"[39m
+            [33mtitle[39m=[32m"Pin sidebar"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-pin size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 17v5"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-2.5"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"group relative"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-subtle)] transition group-focus-within:text-[var(--primary)]"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"11"[39m
+              [33mcy[39m=[32m"11"[39m
+              [33mr[39m=[32m"8"[39m
+            [36m/>[39m
+            [36...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/diagnostic-sidebar.test.tsx:40:54
+     38| it.each(['tools','projects','operations'])('%s stays closed after choo…
+     39|  state.moduleId=id;state.expandOn='hover';renderRail();
+     40|  fireEvent.mouseEnter(rail());fireEvent.click(screen.getByRole('link',…
+       |                                                      ^
+     41|  expect(screen.getByRole('button',{name:'Expand navigation'})).toHaveA…
+     42|  // Chromium re-sends mouseenter when the rail re-renders under a poin…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/15]⎯
+
+ FAIL  src/diagnostic-sidebar.test.tsx > keeps managed pinning and blocks manual, outside and navigation dismissal
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Items"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "Primary navigation":
+  [36m<aside[39m
+    [33maria-label[39m=[32m"Primary navigation"[39m
+    [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-50 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-sm)]"[39m
+    [33mdata-tour[39m=[32m"sidebar"[39m
+    [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Collapse navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Collapse navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unpin sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Unpin sidebar"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Overview":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Items":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unfix sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Sidebar is fixed"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search the Operations menu":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the Operations menu"[39m
+    [33mclass[39m=[32m"focus-ring h-8 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] ps-8 pe-7 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--text)] transition placeholder:font-normal placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:bg-[var(--surface)]"[39m
+    [33mplaceholder[39m=[32m"Search OPS menu…"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33maria-hidden[39m=[32m"true"[39m
+      [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-expanded)]"[39m
+    [36m/>[39m
+    [36m<aside[39m
+      [33maria-label[39m=[32m"Primary navigation"[39m
+      [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-50 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-sm)]"[39m
+      [33mdata-tour[39m=[32m"sidebar"[39m
+      [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-expanded[39m=[32m"true"[39m
+          [33maria-label[39m=[32m"Collapse navigation"[39m
+          [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtitle[39m=[32m"Collapse navigation"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+          [36m/>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-w-0 flex-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"truncate text-[length:calc(13px*var(--fs-scale))] font-black tracking-[-.04em]"[39m
+          [36m>[39m
+            [0mExample[0m
+            [0m [0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] text-[var(--text-subtle)]"[39m
+          [36m>[39m
+            [0mWork together[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtitle[39m=[32m"Unpin sidebar"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-pin-off size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M12 17v5"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M15 9.34V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H7.89"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m2 2 20 20"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h11"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] gap-2 px-2.5 py-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+            [33mstyle[39m=[32m"background: var(--primary);"[39m
+          [36m>[39m
+            [0mOP[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]"[39m
+            [36m>[39m
+              [0mOperations[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mModule navigation[0m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-2.5"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"group relative"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-subtle)] transition group-focus-wi...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/diagnostic-sidebar.test.tsx:48:116
+     46| it('keeps managed pinning and blocks manual, outside and navigation di…
+     47|  state.pinned=true;state.locked=true;renderRail();const toggle=screen.…
+     48|  expect(toggle).toBeDisabled();fireEvent.click(toggle);fireEvent.point…
+       |                                                                                                                    ^
+     49|  expect(update).not.toHaveBeenCalled();expect(toggle).toHaveAttribute(…
+     50|  expect(screen.getByRole('button',{name:'Unpin sidebar'})).toBeDisable…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/15]⎯
+
+ FAIL  src/diagnostic-sidebar.test.tsx > preserves native ctrlKey link behavior and active semantics
+ FAIL  src/diagnostic-sidebar.test.tsx > preserves native metaKey link behavior and active semantics
+ FAIL  src/diagnostic-sidebar.test.tsx > preserves native shiftKey link behavior and active semantics
+ FAIL  src/diagnostic-sidebar.test.tsx > preserves native altKey link behavior and active semantics
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Items"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "Primary navigation":
+  [36m<aside[39m
+    [33maria-label[39m=[32m"Primary navigation"[39m
+    [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-50 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-sm)]"[39m
+    [33mdata-tour[39m=[32m"sidebar"[39m
+    [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Collapse navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mtitle[39m=[32m"Collapse navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unpin sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+    [33mtitle[39m=[32m"Unpin sidebar"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Overview":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Items":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unfix sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"Sidebar is fixed"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search the Operations menu":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the Operations menu"[39m
+    [33mclass[39m=[32m"focus-ring h-8 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] ps-8 pe-7 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--text)] transition placeholder:font-normal placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:bg-[var(--surface)]"[39m
+    [33mplaceholder[39m=[32m"Search OPS menu…"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33maria-hidden[39m=[32m"true"[39m
+      [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-expanded)]"[39m
+    [36m/>[39m
+    [36m<aside[39m
+      [33maria-label[39m=[32m"Primary navigation"[39m
+      [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-50 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-sm)]"[39m
+      [33mdata-tour[39m=[32m"sidebar"[39m
+      [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-expanded[39m=[32m"true"[39m
+          [33maria-label[39m=[32m"Collapse navigation"[39m
+          [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+          [33mtitle[39m=[32m"Collapse navigation"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+          [36m/>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-w-0 flex-1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"truncate text-[length:calc(13px*var(--fs-scale))] font-black tracking-[-.04em]"[39m
+          [36m>[39m
+            [0mExample[0m
+            [0m [0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] text-[var(--text-subtle)]"[39m
+          [36m>[39m
+            [0mWork together[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+          [33mtitle[39m=[32m"Unpin sidebar"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-pin-off size-3.5"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M12 17v5"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M15 9.34V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H7.89"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m2 2 20 20"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h11"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] gap-2 px-2.5 py-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+            [33mstyle[39m=[32m"background: var(--primary);"[39m
+          [36m>[39m
+            [0mOP[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]"[39m
+            [36m>[39m
+              [0mOperations[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mModule navigation[0m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-2.5"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"group relative"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-subtle)] transition group-focus-within:text-[var(--primary)]"[39m
+            [33mfill[39m=[32m"none"[39m
+       ...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/diagnostic-sidebar.test.tsx:68:20
+     66| it.each(['ctrlKey','metaKey','shiftKey','altKey'])('preserves native %…
+     67|  state.pinned=true;renderRail();
+     68|  const link=screen.getByRole('link',{name:'Items'});
+       |                    ^
+     69|  expect(fireEvent.click(link,{[modifier]:true})).toBe(true);expect(ope…
+     70|  expect(screen.getAllByRole('link').filter(item=>item.getAttribute('ar…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/15]⎯
+
+ FAIL  src/diagnostic-sidebar.test.tsx > host drawer expansion survives outside clicks without changing managed preferences
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Items"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "Primary navigation":
+  [36m<aside[39m
+    [33maria-label[39m=[32m"Primary navigation"[39m
+    [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-lg)]"[39m
+    [33mdata-tour[39m=[32m"sidebar"[39m
+    [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Collapse navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mtitle[39m=[32m"Collapse navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Pin sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[var(--border)] text-[var(--text-muted)] hover:bg-[var(--surface-2)]"[39m
+    [33mtitle[39m=[32m"Pin sidebar"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Overview":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Items":
+  [36m<button[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Fix sidebar open":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"Sidebar expands on hover"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search the Operations menu":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the Operations menu"[39m
+    [33mclass[39m=[32m"focus-ring h-8 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] ps-8 pe-7 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--text)] transition placeholder:font-normal placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:bg-[var(--surface)]"[39m
+    [33mplaceholder[39m=[32m"Search OPS menu…"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33maria-hidden[39m=[32m"true"[39m
+      [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+    [36m/>[39m
+    [36m<aside[39m
+      [33maria-label[39m=[32m"Primary navigation"[39m
+      [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-lg)]"[39m
+      [33mdata-tour[39m=[32m"sidebar"[39m
+      [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+        [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-expanded[39m=[32m"true"[39m
+          [33maria-label[39m=[32m"Collapse navigation"[39m
+          [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+          [33mtitle[39m=[32m"Collapse navigation"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+          [36m/>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] gap-2 px-2.5 py-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+            [33mstyle[39m=[32m"background: var(--primary);"[39m
+          [36m>[39m
+            [0mOP[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-0 flex-1"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]"[39m
+            [36m>[39m
+              [0mOperations[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mModule navigation[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[var(--border)] text-[var(--text-muted)] hover:bg-[var(--surface-2)]"[39m
+            [33mtitle[39m=[32m"Pin sidebar"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-pin size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 17v5"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-2.5"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"group relative"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-subtle)] transition group-focus-within:text-[var(--primary)]"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<circle[39m
+              [33mcx[39m=[32m"11"[39m
+              [33mcy[39m=[32m"11"[39m
+              [33mr[39m=[32m"8"[39m
+            [36m/>[39m
+            [36...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/diagnostic-sidebar.test.tsx:77:16
+     75|  fireEvent.pointerDown(document.body);
+     76|  expect(screen.getByRole('button',{name:'Collapse navigation'})).toHav…
+     77|  expect(screen.getByRole('link',{name:'Items'})).toBeVisible();expect(…
+       |                ^
+     78| });
+     79| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/15]⎯
+
+
+ Test Files  2 failed | 25 passed (27)
+      Tests  15 failed | 358 passed (373)
+   Start at  02:29:30
+   Duration  23.72s (transform 1.81s, setup 4.03s, collect 6.55s, tests 11.26s, environment 14.20s, prepare 2.15s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/shell@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell 

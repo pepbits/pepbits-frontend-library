@@ -1,0 +1,565 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && npm run typecheck && npm test && npm run build
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 11 package(s), 0 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 6.005564
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 53.765133
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 1.979664
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 3.155763
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 5.5855
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 6.392677
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 2.70679
+  type: 'test'
+  ...
+# Subtest: platform may use data; data cannot use platform or UI
+ok 8 - platform may use data; data cannot use platform or UI
+  ---
+  duration_ms: 5.737911
+  type: 'test'
+  ...
+# Subtest: AI sits above shell, patterns and engines; no reverse dependency is allowed
+ok 9 - AI sits above shell, patterns and engines; no reverse dependency is allowed
+  ---
+  duration_ms: 30.546083
+  type: 'test'
+  ...
+# Subtest: testing can import every library layer
+ok 10 - testing can import every library layer
+  ---
+  duration_ms: 1.930435
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 11 - demo apps use any layer but not each other
+  ---
+  duration_ms: 2.76729
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 12 - pre-restructure packages are rejected
+  ---
+  duration_ms: 1.811484
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 13 - relative imports may not leave the package
+  ---
+  duration_ms: 1.26863
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 14 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 2.583059
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 15 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 2.967452
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 16 - testing is dev-only
+  ---
+  duration_ms: 9.366658
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 17 - tooling packages are devDependencies only
+  ---
+  duration_ms: 3.789938
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 18 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 3.020152
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 19 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.205542
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 411.802314
+
+> pepbits-frontend-library@0.0.0 typecheck
+> turbo run typecheck
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/data, @pepbits/i18n, @pepbits/icons, @pepbits/page-engines, @pepbits/patterns, @pepbits/platform, @pepbits/preferences, @pepbits/shell, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running typecheck in 12 packages
+   • Remote caching disabled
+
+@pepbits/tokens:typecheck: cache hit, replaying logs 9c4d78e5e9e4d1aa
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/i18n:typecheck: cache hit, replaying logs e86414d56bbdbbb6
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+@pepbits/icons:typecheck: cache hit, replaying logs e03efa0b3986c49a
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+@pepbits/data:typecheck: cache hit, replaying logs 48c53be71d0932a6
+@pepbits/data:typecheck: 
+@pepbits/data:typecheck: > @pepbits/data@0.0.0 typecheck
+@pepbits/data:typecheck: > tsc --noEmit -p .
+@pepbits/data:typecheck: 
+@pepbits/preferences:typecheck: cache hit, replaying logs 77ae04a3ae0948e9
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+@pepbits/ui:typecheck: cache hit, replaying logs 04896031e9d6d866
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: > @pepbits/ui@0.0.0 typecheck
+@pepbits/ui:typecheck: > tsc --noEmit -p .
+@pepbits/ui:typecheck: 
+@pepbits/platform:typecheck: cache hit, replaying logs 26c8bc83700bc3f4
+@pepbits/platform:typecheck: 
+@pepbits/platform:typecheck: > @pepbits/platform@0.0.0 typecheck
+@pepbits/platform:typecheck: > tsc --noEmit -p .
+@pepbits/platform:typecheck: 
+@pepbits/components:typecheck: cache hit, replaying logs e2cb67a90a2fdb50
+@pepbits/components:typecheck: 
+@pepbits/components:typecheck: > @pepbits/components@0.0.0 typecheck
+@pepbits/components:typecheck: > tsc --noEmit -p .
+@pepbits/components:typecheck: 
+@pepbits/patterns:typecheck: cache hit, replaying logs 1ea15ddf8c7abdb9
+@pepbits/patterns:typecheck: 
+@pepbits/patterns:typecheck: > @pepbits/patterns@0.0.0 typecheck
+@pepbits/patterns:typecheck: > tsc --noEmit -p .
+@pepbits/patterns:typecheck: 
+@pepbits/page-engines:typecheck: cache hit, replaying logs fb2256523c8d0431
+@pepbits/page-engines:typecheck: 
+@pepbits/page-engines:typecheck: > @pepbits/page-engines@0.0.0 typecheck
+@pepbits/page-engines:typecheck: > tsc --noEmit -p .
+@pepbits/page-engines:typecheck: 
+@pepbits/shell:typecheck: cache hit, replaying logs 8a8e73234c48c641
+@pepbits/shell:typecheck: 
+@pepbits/shell:typecheck: > @pepbits/shell@0.0.0 typecheck
+@pepbits/shell:typecheck: > tsc --noEmit -p .
+@pepbits/shell:typecheck: 
+
+ Tasks:    11 successful, 11 total
+Cached:    11 cached, 11 total
+  Time:    58ms >>> FULL TURBO
+
+
+> pepbits-frontend-library@0.0.0 test
+> turbo run test
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/data, @pepbits/i18n, @pepbits/icons, @pepbits/page-engines, @pepbits/patterns, @pepbits/platform, @pepbits/preferences, @pepbits/shell, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running test in 12 packages
+   • Remote caching disabled
+
+@pepbits/icons:test: cache hit, replaying logs a7b44ab2327db5f4
+@pepbits/icons:test: 
+@pepbits/icons:test: > @pepbits/icons@0.0.0 test
+@pepbits/icons:test: > vitest run
+@pepbits/icons:test: 
+@pepbits/icons:test: 
+@pepbits/icons:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/icons
+@pepbits/icons:test: 
+@pepbits/icons:test:  ✓ src/icon.test.tsx (19 tests) 426ms
+@pepbits/icons:test: 
+@pepbits/icons:test:  Test Files  1 passed (1)
+@pepbits/icons:test:       Tests  19 passed (19)
+@pepbits/icons:test:    Start at  02:41:07
+@pepbits/icons:test:    Duration  6.65s (transform 1.14s, setup 0ms, collect 2.91s, tests 426ms, environment 2.41s, prepare 284ms)
+@pepbits/icons:test: 
+@pepbits/tokens:test: cache hit, replaying logs df4083a6f3340d75
+@pepbits/tokens:test: 
+@pepbits/tokens:test: > @pepbits/tokens@0.0.0 test
+@pepbits/tokens:test: > vitest run
+@pepbits/tokens:test: 
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/tokens
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  ✓ src/index.test.ts (3 tests) 22ms
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  Test Files  1 passed (1)
+@pepbits/tokens:test:       Tests  3 passed (3)
+@pepbits/tokens:test:    Start at  22:54:16
+@pepbits/tokens:test:    Duration  1.35s (transform 393ms, setup 0ms, collect 280ms, tests 22ms, environment 0ms, prepare 353ms)
+@pepbits/tokens:test: 
+@pepbits/ui:test: cache hit, replaying logs 9440d1d7e69efee5
+@pepbits/ui:test: 
+@pepbits/ui:test: > @pepbits/ui@0.0.0 test
+@pepbits/ui:test: > vitest run
+@pepbits/ui:test: 
+@pepbits/ui:test: 
+@pepbits/ui:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ui
+@pepbits/ui:test: 
+@pepbits/ui:test:  ✓ src/form-controls.test.tsx (30 tests) 1222ms
+@pepbits/ui:test:    ✓ Input > types through to the handler  302ms
+@pepbits/ui:test:  ✓ src/search-select.test.tsx (14 tests) 1985ms
+@pepbits/ui:test:    ✓ SearchSelect > shows the placeholder until something is chosen  312ms
+@pepbits/ui:test:    ✓ SearchSelect > announces how many options are left  314ms
+@pepbits/ui:test:  ✓ src/quantity-unit-field.test.tsx (9 tests) 651ms
+@pepbits/ui:test:    ✓ QuantityUnitField > provides a named group and independent control labels  351ms
+@pepbits/ui:test:  ✓ src/segmented.test.tsx (9 tests) 653ms
+@pepbits/ui:test:  ✓ src/localization.test.tsx (3 tests) 444ms
+@pepbits/ui:test:    ✓ switches displayed labels without remounting drafts or changing option values  398ms
+@pepbits/ui:test:  ✓ src/button.test.tsx (5 tests) 541ms
+@pepbits/ui:test:  ✓ src/avatar.test.tsx (10 tests) 319ms
+@pepbits/ui:test:  ✓ src/badge.test.tsx (12 tests) 436ms
+@pepbits/ui:test:    ✓ Badge > shows its content  307ms
+@pepbits/ui:test:  ✓ src/skeleton.test.tsx (4 tests) 179ms
+@pepbits/ui:test:  ✓ src/scanner-input.test.tsx (2 tests) 133ms
+@pepbits/ui:test:  ✓ src/cn.test.ts (9 tests) 57ms
+@pepbits/ui:test:  ✓ src/option-filter.test.tsx (13 tests) 93ms
+@pepbits/ui:test: 
+@pepbits/ui:test:  Test Files  12 passed (12)
+@pepbits/ui:test:       Tests  120 passed (120)
+@pepbits/ui:test:    Start at  02:41:07
+@pepbits/ui:test:    Duration  27.41s (transform 4.69s, setup 6.36s, collect 10.15s, tests 6.71s, environment 17.78s, prepare 2.61s)
+@pepbits/ui:test: 
+@pepbits/components:test: cache hit, replaying logs 94fbfb01287a4962
+@pepbits/preferences:test: cache hit, replaying logs 23192ef1dbf37eba
+@pepbits/preferences:test: 
+@pepbits/preferences:test: > @pepbits/preferences@0.0.0 test
+@pepbits/preferences:test: > vitest run
+@pepbits/preferences:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/preferences
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  ✓ src/policy.test.ts (24 tests) 60ms
+@pepbits/preferences:test:  ✓ src/preference-defaults.test.ts (3 tests) 5ms
+@pepbits/preferences:test:  ✓ src/react.test.tsx (6 tests) 204ms
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  Test Files  3 passed (3)
+@pepbits/preferences:test:       Tests  33 passed (33)
+@pepbits/preferences:test:    Start at  22:57:02
+@pepbits/preferences:test:    Duration  2.22s (transform 536ms, setup 0ms, collect 780ms, tests 269ms, environment 818ms, prepare 562ms)
+@pepbits/preferences:test: 
+@pepbits/platform:test: cache hit, replaying logs ec725c765a9de906
+@pepbits/data:test: cache hit, replaying logs 118382da324ae9c6
+@pepbits/patterns:test: cache hit, replaying logs 902cf18707d6ca37
+@pepbits/data:test: 
+@pepbits/data:test: > @pepbits/data@0.0.0 test
+@pepbits/data:test: > vitest run
+@pepbits/data:test: 
+@pepbits/data:test: 
+@pepbits/data:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/data
+@pepbits/data:test: 
+@pepbits/data:test:  ✓ src/memory-records.test.ts (5 tests) 76ms
+@pepbits/data:test:  ✓ src/http-adapters.test.ts (11 tests) 29ms
+@pepbits/data:test:  ✓ src/records.test.ts (11 tests) 747ms
+@pepbits/data:test:  ✓ src/draft-center.test.ts (2 tests) 12ms
+@pepbits/data:test:  ✓ src/csv-import.test.ts (4 tests) 13ms
+@pepbits/data:test:  ✓ src/draft-policy.test.ts (2 tests) 7ms
+@pepbits/data:test: 
+@pepbits/data:test:  Test Files  6 passed (6)
+@pepbits/data:test:       Tests  35 passed (35)
+@pepbits/data:test:    Start at  23:17:43
+@pepbits/data:test:    Duration  1.98s (transform 268ms, setup 0ms, collect 394ms, tests 884ms, environment 2ms, prepare 529ms)
+@pepbits/data:test: 
+@pepbits/page-engines:test: cache miss, executing 27c31caf2dc1af2b
+@pepbits/i18n:test: cache hit, replaying logs e73f85af4dff8bc6
+@pepbits/platform:test: 
+@pepbits/platform:test: > @pepbits/platform@0.0.0 test
+@pepbits/platform:test: > vitest run
+@pepbits/platform:test: 
+@pepbits/platform:test: 
+@pepbits/platform:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/platform
+@pepbits/platform:test: 
+@pepbits/platform:test:  ✓ src/ports.test.tsx (17 tests) 62ms
+@pepbits/platform:test:  ✓ src/session.test.tsx (33 tests) 378ms
+@pepbits/platform:test:  ✓ src/recovery.test.ts (10 tests) 42ms
+@pepbits/platform:test:  ✓ src/sentinel.test.ts (5 tests) 8ms
+@pepbits/platform:test:  ✓ src/devices.test.ts (1 test) 5ms
+@pepbits/platform:test: 
+@pepbits/platform:test:  Test Files  5 passed (5)
+@pepbits/platform:test:       Tests  66 passed (66)
+@pepbits/platform:test:    Start at  23:20:50
+@pepbits/platform:test:    Duration  3.46s (transform 302ms, setup 755ms, collect 424ms, tests 495ms, environment 2.50s, prepare 392ms)
+@pepbits/platform:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test: > @pepbits/i18n@0.0.0 test
+@pepbits/i18n:test: > vitest run
+@pepbits/i18n:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/i18n
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  ✓ src/page-copy-localization.test.tsx (4 tests) 100ms
+@pepbits/i18n:test:  ✓ src/localization.test.tsx (4 tests) 186ms
+@pepbits/i18n:test:  ✓ src/format.test.ts (12 tests) 79ms
+@pepbits/i18n:test:  ✓ src/localization-formatting.test.ts (13 tests) 58ms
+@pepbits/i18n:test:  ✓ src/catalogs.test.ts (5 tests) 10ms
+@pepbits/i18n:test:  ✓ src/i18n.test.ts (26 tests) 45ms
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  Test Files  6 passed (6)
+@pepbits/i18n:test:       Tests  64 passed (64)
+@pepbits/i18n:test:    Start at  22:57:02
+@pepbits/i18n:test:    Duration  5.15s (transform 365ms, setup 1.54s, collect 461ms, tests 477ms, environment 4.00s, prepare 867ms)
+@pepbits/i18n:test: 
+@pepbits/patterns:test: 
+@pepbits/patterns:test: > @pepbits/patterns@0.0.0 test
+@pepbits/patterns:test: > vitest run
+@pepbits/patterns:test: 
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/patterns
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  ✓ src/lifecycle/sources.test.tsx (11 tests) 5886ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged  976ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > creates a pinned mapping from a registered source and saves it through the governed draft  1222ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > explains invalid and stale mappings, and re-pins only from the registry  758ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > published mappings are read-only  465ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > server validation issues on a mapping navigate to it  511ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > registry panel lists sources and shows metadata-only detail  371ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > a failed registry read keeps editor values and can be retried  551ms
+@pepbits/patterns:test:  ✓ src/lifecycle/lifecycle.test.tsx (17 tests) 7367ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > console summary uses server validation and clears it after editing  1289ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > persistent worklist protects edits before opening another version  844ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > saves a draft with the expected revision and reuses the operation key on retry  698ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > keeps edits and explains a stale-revision conflict  388ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > unsaved changes are protected when leaving the definition  310ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > activation requires a reason, confirmation, expected revision and a stable idempotency key  331ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > validation shows server issues and navigates to the affected item  841ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > resolution preview is read-only and shows outcomes with missing context  349ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > visual editor renames a stage key and updates binding references  411ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > lifecycle module and domain are editable codes that drive catalogue navigation  517ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > approval sends its comment in the body without a change reason  364ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > preview policy limits context to one verified organisation selector and no subject reference  465ms
+@pepbits/patterns:test:  ✓ src/drafts/use-shared-draft.test.tsx (4 tests) 2405ms
+@pepbits/patterns:test:    ✓ a reopened draft stays separate until Restore, displays time and does not autosave over it  510ms
+@pepbits/patterns:test:    ✓ failed draft write retains the exact payload and operation identity on retry  883ms
+@pepbits/patterns:test:    ✓ completion waits for in-flight autosave before discarding its acknowledged revision  846ms
+@pepbits/patterns:test:  ✓ src/drafts/draft-center.test.tsx (3 tests) 1793ms
+@pepbits/patterns:test:    ✓ metadata and policy appear, search/filter use the API and open rechecks access  910ms
+@pepbits/patterns:test:    ✓ inaccessible rows hide details, disable open, and retain discard  365ms
+@pepbits/patterns:test:    ✓ discard retry retains its operation id and does not remove a row until confirmed  512ms
+@pepbits/patterns:test:  ✓ src/approvals/approval-workspace.test.tsx (7 tests) 1097ms
+@pepbits/patterns:test:    ✓ submission requires a comment and confirmation; unknown outcomes reuse the operation id  427ms
+@pepbits/patterns:test:  ✓ src/imports/csv-import-dialog.test.tsx (6 tests) 1116ms
+@pepbits/patterns:test:    ✓ restored validation requires explicit confirmation before writing  445ms
+@pepbits/patterns:test:  ✓ src/master-transfer/panel.test.tsx (3 tests) 519ms
+@pepbits/patterns:test:    ✓ master transfer commands > requires server validation and invalidates it on changed reason  352ms
+@pepbits/patterns:test:  ✓ src/lifecycle/screen-host.test.tsx (2 tests) 932ms
+@pepbits/patterns:test:    ✓ live policy overrides explicit list sizes and updates managed presentation  481ms
+@pepbits/patterns:test:    ✓ lifecycle forwards dirty changes and localized notifications to the screen host  446ms
+@pepbits/patterns:test:  ✓ src/dcp-fields/runtime-fields.test.tsx (5 tests) 326ms
+@pepbits/patterns:test:  ✓ src/dcp-fields/preferences.test.tsx (1 test) 152ms
+@pepbits/patterns:test:  ✓ src/master-transfer/inflation.test.ts (2 tests) 113ms
+@pepbits/patterns:test:  ✓ src/screen-host.test.tsx (8 tests) 110ms
+@pepbits/patterns:test:  ✓ src/master-transfer/format.test.ts (8 tests) 66ms
+@pepbits/patterns:test:  ✓ src/lifecycle/config/lifecycle.test.ts (19 tests) 58ms
+@pepbits/patterns:test:  ✓ src/imports/csv-options.test.ts (3 tests) 9ms
+@pepbits/patterns:test:  ✓ src/lifecycle/config/sources.test.ts (17 tests) 50ms
+@pepbits/patterns:test:  ✓ src/imports/workbook-options.test.ts (2 tests) 20ms
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  Test Files  17 passed (17)
+@pepbits/patterns:test:       Tests  118 passed (118)
+@pepbits/patterns:test:    Start at  02:41:08
+@pepbits/patterns:test:    Duration  40.34s (transform 7.47s, setup 6.10s, collect 17.60s, tests 22.02s, environment 18.59s, prepare 3.16s)
+@pepbits/patterns:test: 
+@pepbits/components:test: 
+@pepbits/components:test: > @pepbits/components@0.0.0 test
+@pepbits/components:test: > vitest run
+@pepbits/components:test: 
+@pepbits/components:test: 
+@pepbits/components:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/components
+@pepbits/components:test: 
+@pepbits/components:test:  ✓ src/overlay.test.tsx (23 tests) 1545ms
+@pepbits/components:test:  ✓ src/dropdown.test.tsx (11 tests) 1721ms
+@pepbits/components:test:    ✓ DropdownSelect > the search box is empty again next time it opens  355ms
+@pepbits/components:test:  ✓ src/inline-edit.test.tsx (15 tests) 2014ms
+@pepbits/components:test:    ✓ InlineEdit — reading > shows the formatted value and is reachable by keyboard  349ms
+@pepbits/components:test:  ✓ src/inline-edit-typed.test.tsx (19 tests) 1682ms
+@pepbits/components:test:    ✓ InlineEditNumber > commits a number, not a string  327ms
+@pepbits/components:test:  ✓ src/page-copy-localization.test.tsx (5 tests) 954ms
+@pepbits/components:test:    ✓ page copy and stable data > translates controls, search results and KPI copy in en without changing values  452ms
+@pepbits/components:test:  ✓ src/shared-components.test.tsx (11 tests) 1767ms
+@pepbits/components:test:    ✓ Calendar > selects leap day, respects bounds and uses date-only values  835ms
+@pepbits/components:test:    ✓ Calendar > keyboard navigation crosses months without submitting or selecting  386ms
+@pepbits/components:test:  ✓ src/pagination.test.tsx (10 tests) 950ms
+@pepbits/components:test:  ✓ src/states.test.tsx (24 tests) 712ms
+@pepbits/components:test:  ✓ src/recovery-notice.test.tsx (5 tests) 531ms
+@pepbits/components:test:  ✓ src/reference-data.test.tsx (17 tests) 479ms
+@pepbits/components:test:  ✓ src/presentation.test.tsx (3 tests) 298ms
+@pepbits/components:test:  ✓ src/card.test.tsx (6 tests) 280ms
+@pepbits/components:test:  ✓ src/tabs.test.tsx (3 tests) 230ms
+@pepbits/components:test:  ✓ src/stat-card.test.tsx (6 tests) 247ms
+@pepbits/components:test:  ✓ src/error-mapper.test.ts (32 tests) 21ms
+@pepbits/components:test: 
+@pepbits/components:test:  Test Files  15 passed (15)
+@pepbits/components:test:       Tests  190 passed (190)
+@pepbits/components:test:    Start at  02:41:07
+@pepbits/components:test:    Duration  33.72s (transform 5.10s, setup 6.39s, collect 13.02s, tests 13.43s, environment 18.65s, prepare 3.34s)
+@pepbits/components:test: 
+@pepbits/shell:test: cache miss, executing ecf3225f6a0a530b
+@pepbits/page-engines:test: 
+@pepbits/page-engines:test: > @pepbits/page-engines@0.0.0 test
+@pepbits/page-engines:test: > vitest run
+@pepbits/page-engines:test: 
+@pepbits/shell:test: 
+@pepbits/shell:test: > @pepbits/shell@0.0.0 test
+@pepbits/shell:test: > vitest run
+@pepbits/shell:test: 
+@pepbits/page-engines:test: 
+@pepbits/page-engines:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/page-engines
+@pepbits/page-engines:test: 
+@pepbits/shell:test: 
+@pepbits/shell:test:  RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell
+@pepbits/shell:test: 
+@pepbits/shell:test:  ✓ src/workspace/workspace-canvas.test.tsx (29 tests) 2211ms
+@pepbits/shell:test:    ✓ WorkspaceCanvas — split > arrow keys move it and it stays inside its limits  381ms
+@pepbits/shell:test:  ✓ src/diagnostic-sidebar.test.tsx (25 tests) 2572ms
+@pepbits/shell:test:  ✓ src/chrome-integration.test.tsx (11 tests) 1712ms
+@pepbits/shell:test:    ✓ physical sidebar placement matches the full frame in en  320ms
+@pepbits/shell:test:  ✓ src/workspace/workspace-shell.test.tsx (3 tests) 1612ms
+@pepbits/shell:test:    ✓ workspace frame keeps dirty work until its confirmation, then removes the owning document  797ms
+@pepbits/shell:test:    ✓ effective floating preference replaces tabs with frames and taskbar without losing screen state  369ms
+@pepbits/shell:test:    ✓ native detach is hidden without a window port and uses only the supplied port when available  442ms
+@pepbits/page-engines:test:  ✓ src/templates/page-template.test.tsx (92 tests) 7091ms
+@pepbits/shell:test:  ✓ src/workspace/use-workspace-navigation.test.tsx (18 tests) 1573ms
+@pepbits/shell:test:  ✓ src/full-shell.test.tsx (2 tests) 1311ms
+@pepbits/shell:test:    ✓ page engine inside the full frame saves to toasts and edits survive suspension until explicit document close  770ms
+@pepbits/shell:test:    ✓ patterns screen inside the full frame reports dirty changes and localized success through the shell  538ms
+@pepbits/page-engines:test:  ✓ src/templates/preference-compliance.test.tsx (4 tests) 11233ms
+@pepbits/page-engines:test:    ✓ all registered templates inherit managed table preferences in both density profiles  10635ms
+@pepbits/page-engines:test:  ✓ src/forms/dynamic-record-form.test.tsx (7 tests) 2182ms
+@pepbits/page-engines:test:    ✓ StrictMode loads safely and reports only acknowledged saves  550ms
+@pepbits/page-engines:test:    ✓ failed save keeps edits and exposes retry  320ms
+@pepbits/page-engines:test:    ✓ suspension retains edits and explicit discard reloads the baseline  344ms
+@pepbits/shell:test:  ✓ src/workspace/workspace-tabs.test.tsx (15 tests) 952ms
+@pepbits/shell:test:  ✓ src/screen-host.test.tsx (7 tests) 1076ms
+@pepbits/shell:test:    ✓ page engine saves reach shell toasts and edits survive suspension until explicit document close  465ms
+@pepbits/shell:test:    ✓ patterns lifecycle screen reports dirty changes and localized success through the shell  314ms
+@pepbits/page-engines:test:  ✓ src/worklist/filter-bar.test.tsx (24 tests) 1338ms
+@pepbits/page-engines:test:  ✓ src/worklist/preference-compliance.test.tsx (2 tests) 1282ms
+@pepbits/page-engines:test:    ✓ worklist applies live table, page-size and result-view locks to controls and search requests  840ms
+@pepbits/page-engines:test:    ✓ filter memory retains only declared operational values and unavailable choices are disabled  440ms
+@pepbits/shell:test:  ✓ src/shell-context.test.tsx (22 tests) 842ms
+@pepbits/shell:test:  ✓ src/documentation.test.tsx (8 tests) 677ms
+@pepbits/page-engines:test:  ✓ src/templates/registry-template.test.tsx (3 tests) 1147ms
+@pepbits/page-engines:test:    ✓ all five registry templates render through shared engines with preference-owned layouts  727ms
+@pepbits/page-engines:test:  ✓ src/worklist/use-column-layout.test.tsx (23 tests) 851ms
+@pepbits/shell:test:  ✓ src/monitoring.test.tsx (6 tests) 519ms
+@pepbits/shell:test:  ✓ src/workspace/mdi-taskbar.test.tsx (7 tests) 354ms
+@pepbits/page-engines:test:  ✓ src/worklist/saved-view.test.tsx (11 tests) 833ms
+@pepbits/page-engines:test:  ✓ src/records/record-panels.test.tsx (4 tests) 676ms
+@pepbits/shell:test:  ✓ src/product-context.test.tsx (3 tests) 378ms
+@pepbits/shell:test:  ✓ src/session-lock.test.tsx (2 tests) 290ms
+@pepbits/shell:test:  ✓ src/workspace/use-workspace.test.tsx (19 tests) 296ms
+@pepbits/page-engines:test:  ✓ src/record-layout/record-layout.test.tsx (2 tests) 328ms
+@pepbits/shell:test:  ✓ src/workspace/use-mdi-workspace.test.tsx (7 tests) 267ms
+@pepbits/page-engines:test:  ✓ src/worklist/use-filter-sync.test.tsx (9 tests) 787ms
+@pepbits/shell:test:  ✓ src/sentinel.test.tsx (1 test) 160ms
+@pepbits/page-engines:test:  ✓ src/templates/configured-template-page.test.tsx (3 tests) 316ms
+@pepbits/shell:test:  ✓ src/workspace/use-detached-windows.test.tsx (13 tests) 118ms
+@pepbits/page-engines:test:  ✓ src/renderer/renderer.test.tsx (6 tests) 313ms
+@pepbits/shell:test:  ✓ src/chrome.test.tsx (14 tests) 93ms
+@pepbits/shell:test:  ✓ src/workspace/document-manager.test.ts (47 tests) 33ms
+@pepbits/page-engines:test:  ✓ src/record-page/record-page.test.tsx (2 tests) 279ms
+@pepbits/page-engines:test:  ✓ src/worklist/export-rows.test.ts (26 tests) 133ms
+@pepbits/shell:test:  ✓ src/workspace/split.test.ts (26 tests) 28ms
+@pepbits/shell:test:  ✓ src/workspace/mdi-frames.test.ts (20 tests) 23ms
+@pepbits/page-engines:test:  ✓ src/types/filter-policy.test.ts (15 tests) 22ms
+@pepbits/page-engines:test:  ✓ src/worklist/search-request.test.ts (10 tests) 17ms
+@pepbits/shell:test:  ✓ src/workspace/lifecycle.test.ts (11 tests) 14ms
+@pepbits/shell:test:  ✓ src/workspace/detach.test.ts (14 tests) 19ms
+@pepbits/page-engines:test:  ✓ src/types/export-policy.test.ts (13 tests) 16ms
+@pepbits/page-engines:test:  ✓ src/types/entity-schemas.test.ts (1 test) 9ms
+@pepbits/shell:test:  ✓ src/workspace/document-key.test.ts (9 tests) 11ms
+@pepbits/shell:test:  ✓ src/products.test.ts (10 tests) 15ms
+@pepbits/page-engines:test:  ✓ src/types/form-rules.test.ts (3 tests) 10ms
+@pepbits/page-engines:test: 
+@pepbits/page-engines:test:  Test Files  20 passed (20)
+@pepbits/page-engines:test:       Tests  260 passed (260)
+@pepbits/page-engines:test:    Start at  02:44:59
+@pepbits/page-engines:test:    Duration  35.85s (transform 3.67s, setup 5.30s, collect 11.84s, tests 28.86s, environment 13.45s, prepare 2.31s)
+@pepbits/page-engines:test: 
+@pepbits/shell:test:  ✓ src/workspace/policy.test.ts (15 tests) 11ms
+@pepbits/shell:test:  ✓ src/workspace/target-document.test.ts (10 tests) 13ms
+@pepbits/shell:test:  ✓ src/shortcuts.test.ts (10 tests) 9ms
+@pepbits/shell:test: 
+@pepbits/shell:test:  Test Files  29 passed (29)
+@pepbits/shell:test:       Tests  384 passed (384)
+@pepbits/shell:test:    Start at  02:44:59
+@pepbits/shell:test:    Duration  38.41s (transform 4.92s, setup 7.31s, collect 15.05s, tests 17.19s, environment 19.53s, prepare 3.55s)
+@pepbits/shell:test: 
+
+ Tasks:    11 successful, 11 total
+Cached:    9 cached, 11 total
+  Time:    40.081s 
+
+
+> pepbits-frontend-library@0.0.0 build
+> turbo run build
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/components, @pepbits/data, @pepbits/i18n, @pepbits/icons, @pepbits/page-engines, @pepbits/patterns, @pepbits/platform, @pepbits/preferences, @pepbits/shell, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running build in 12 packages
+   • Remote caching disabled
+
+ WARNING  No tasks were executed as part of this run.
+
+ Tasks:    0 successful, 0 total
+Cached:    0 cached, 0 total
+  Time:    50ms 
+

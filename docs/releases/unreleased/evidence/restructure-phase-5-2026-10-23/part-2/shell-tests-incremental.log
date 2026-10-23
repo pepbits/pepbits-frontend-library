@@ -1,0 +1,397 @@
+
+> @pepbits/shell@0.0.0 test
+> vitest run --reporter=verbose
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/shell
+
+ ✓ src/documentation.test.tsx > article loads host content, release and language and retries a failed service 184ms
+ ✓ src/documentation.test.tsx > effective documentation disablement performs no transport and hides content 22ms
+ ✓ src/diagnostic-sidebar.test.tsx > matches the shell spacer placement in en 153ms
+ ✓ src/diagnostic-sidebar.test.tsx > matches the shell spacer placement in ar 23ms
+ ✓ src/diagnostic-sidebar.test.tsx > tools follows click mode and closes after outside clicks 104ms
+ ✓ src/diagnostic-sidebar.test.tsx > projects follows click mode and closes after outside clicks 60ms
+ ✓ src/documentation.test.tsx > request cache is session scoped and read-only offline fallback never masks HTTP rejection 31ms
+ ✓ src/documentation.test.tsx > pending documentation cannot resolve into a changed session 20ms
+ ✓ src/documentation.test.tsx > aborted reads never fall back to cached content 14ms
+ ✓ src/documentation.test.tsx > drawer uses host center target and preference placement 63ms
+ ✓ src/documentation.test.tsx > center keeps guide navigation and records acknowledgment against the selected change release 118ms
+ ✓ src/documentation.test.tsx > host-selected notices open their requested section and report a failed reading update 51ms
+ ✓ src/diagnostic-sidebar.test.tsx > operations follows click mode and closes after outside clicks 54ms
+ ✓ src/diagnostic-sidebar.test.tsx > resources follows click mode and closes after outside clicks 50ms
+ ✓ src/diagnostic-sidebar.test.tsx > tools follows hover mode and manual dismissal 81ms
+ ✓ src/diagnostic-sidebar.test.tsx > projects follows hover mode and manual dismissal 69ms
+ ✓ src/diagnostic-sidebar.test.tsx > operations follows hover mode and manual dismissal 78ms
+ ✓ src/diagnostic-sidebar.test.tsx > resources follows hover mode and manual dismissal 73ms
+ ✓ src/diagnostic-sidebar.test.tsx > tools opens its item destination and closes an unpinned rail 50ms
+ ✓ src/diagnostic-sidebar.test.tsx > projects opens its item destination and closes an unpinned rail 50ms
+ ✓ src/diagnostic-sidebar.test.tsx > operations opens its item destination and closes an unpinned rail 56ms
+ ✓ src/diagnostic-sidebar.test.tsx > tools stays closed after choosing a page under a still pointer in hover mode 73ms
+ ✓ src/diagnostic-sidebar.test.tsx > projects stays closed after choosing a page under a still pointer in hover mode 66ms
+ ✓ src/diagnostic-sidebar.test.tsx > operations stays closed after choosing a page under a still pointer in hover mode 63ms
+ ✓ src/diagnostic-sidebar.test.tsx > keeps managed pinning and blocks manual, outside and navigation dismissal 49ms
+ ✓ src/diagnostic-sidebar.test.tsx > an unpinned rail keeps its pin control below the header strip 52ms
+ ✓ src/diagnostic-sidebar.test.tsx > keyboard focus on the toggle does not change its action; Escape restores focus and collapses 43ms
+ ✓ src/diagnostic-sidebar.test.tsx > unpinning through the toggle uses the shared preference update 40ms
+ ✓ src/diagnostic-sidebar.test.tsx > preserves native ctrlKey link behavior and active semantics 42ms
+ ✓ src/diagnostic-sidebar.test.tsx > preserves native metaKey link behavior and active semantics 30ms
+ ✓ src/diagnostic-sidebar.test.tsx > preserves native shiftKey link behavior and active semantics 43ms
+ ✓ src/diagnostic-sidebar.test.tsx > preserves native altKey link behavior and active semantics 25ms
+ ✓ src/diagnostic-sidebar.test.tsx > host drawer expansion survives outside clicks without changing managed preferences 51ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas > shows the active document 181ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas > keeps a warm document mounted but out of sight 33ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas > does not mount a suspended one at all 17ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas > switching away and back keeps what was typed 143ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas > a hidden document is not reachable by keyboard 21ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > draws both panes 40ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > each pane is a named region and one is marked focused 38ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > a warm document behind the split is mounted but not announced 36ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > an unsaved pane says so in its name 30ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > clicking a pane focuses it 48ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > each pane closes itself 52ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > swap and full screen are offered once for the arrangement 57ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > the divider is a separator that reports where it is 27ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > arrow keys move it and it stays inside its limits 255ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > Home puts it back in the middle 34ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > no divider and no pane chrome when not split 11ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — split > entering a split keeps what was typed 57ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > every open document gets a frame of its own 21ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > a frame sits where its geometry says 25ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > the frames stack in z order 17ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > pressing on a frame raises it 32ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > each frame minimises itself 37ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > a minimised frame stays mounted, hidden 30ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > each frame closes itself 47ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > an unsaved frame says so in its name 18ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > a suspended document has no frame at all 21ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > there is no split divider in MDI 19ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > it tells the arrangement how much room there is 14ms
+ ✓ src/workspace/workspace-canvas.test.tsx > WorkspaceCanvas — MDI > switching from tabs to MDI keeps what was typed 55ms
+ ✓ src/workspace/workspace-shell.test.tsx > workspace frame keeps dirty work until its confirmation, then removes the owning document 541ms
+ ✓ src/workspace/workspace-shell.test.tsx > effective floating preference replaces tabs with frames and taskbar without losing screen state 259ms
+ ✓ src/workspace/workspace-shell.test.tsx > native detach is hidden without a window port and uses only the supplied port when available 310ms
+ ✓ src/chrome-integration.test.tsx > physical sidebar placement matches the full frame in en 269ms
+ ✓ src/chrome-integration.test.tsx > physical sidebar placement matches the full frame in ar 80ms
+ ✓ src/chrome-integration.test.tsx > a live policy locks the real pin controls and rejects retained handlers 172ms
+ ✓ src/chrome-integration.test.tsx > an excluded pin value disables shell controls 57ms
+ ✓ src/chrome-integration.test.tsx > keyboard focus expands readable navigation and moving focus out collapses it 111ms
+ ✓ src/chrome-integration.test.tsx > click-mode search expands and focuses even when focus expansion is off 77ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > starts on the module dashboard, and that tab cannot be closed 101ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > opening appends a tab and makes it current 73ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > opening the same target twice focuses the tab it already has 95ms
+ ✓ src/chrome-integration.test.tsx > shortcuts off removes the full-frame dispatcher while normal navigation remains usable 127ms
+ ✓ src/chrome-integration.test.tsx > header clock uses host branch zone and effective date, time and seconds preferences 26ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > crossing to another module rebuilds the tabs around its dashboard 52ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > crossing modules with unsaved work asks first and changes nothing yet 68ms
+ ✓ src/chrome-integration.test.tsx > header exposes only host quick destinations and branch changes 135ms
+ ✓ src/chrome-integration.test.tsx > tour scroll obeys reducedMotion=true and opening help never starts a tour 82ms
+ ✓ src/chrome-integration.test.tsx > tour scroll obeys reducedMotion=false and opening help never starts a tour 68ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > confirming goes through with it 90ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > cancelling leaves the work exactly where it was 83ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > closing a clean tab just closes it 39ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > closing a dirty tab asks first 73ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > in SINGLE mode opening a record replaces the last one 41ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > SINGLE still asks before dropping unsaved work 73ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > useWorkspaceNavigation > hrefFor is inert on desktop 7ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > split view > splitting puts the current document beside the previous one 59ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > split view > swapping reverses them 69ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > split view > exiting leaves both open as tabs 70ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > split view > a workspace without SPLIT refuses, and says which level removed it 54ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > split view > splitting with only the dashboard open does nothing to complain about 17ms
+ ✓ src/workspace/use-workspace-navigation.test.tsx > Host module transitions and reopening records retain role identity in MDI documents 4ms
+ ✓ src/screen-host.test.tsx > ScreenHost fails closed without action grants, unknown action, role or an active session 102ms
+ ✓ src/screen-host.test.tsx > each pane keeps its identity, focus, scope and dirty owner when another pane becomes active 22ms
+ ✓ src/screen-host.test.tsx > transient state survives suspension, close is distinct from unmount, and close deletes it 62ms
+ ✓ src/screen-host.test.tsx > explicit close subscribers can unsubscribe and transient state supports multiple same-turn writes 17ms
+ ✓ src/full-shell.test.tsx > page engine inside the full frame saves to toasts and edits survive suspension until explicit document close 499ms
+ ✓ src/screen-host.test.tsx > page engine saves reach shell toasts and edits survive suspension until explicit document close 305ms
+ ✓ src/full-shell.test.tsx > patterns screen inside the full frame reports dirty changes and localized success through the shell 358ms
+ ✓ src/screen-host.test.tsx > patterns lifecycle screen reports dirty changes and localized success through the shell 210ms
+ ✓ src/screen-host.test.tsx > notifications honor toast style, duration, placement, limits and dismiss 29ms
+ ✓ src/shell-context.test.tsx > current module follows navigation and shared pages retain the last module 92ms
+ ✓ src/shell-context.test.tsx > missing providers fail explicitly 7ms
+ ✓ src/shell-context.test.tsx > shortcut disablement removes its existing listener on a live policy change 32ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > shows a tab per open document 166ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > exactly one tab reports as selected 34ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > activating asks for that document 61ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > an unsaved document is marked, and says so in words 35ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > a fixed tab offers no close button 38ms
+ ✓ src/shell-context.test.tsx > effective locks disable controls, guard stale handlers and use only the host update path 108ms
+ ✓ src/shell-context.test.tsx > a host update needs acknowledgement and never creates an optimistic preference store 22ms
+ ✓ src/shell-context.test.tsx > bulk preference updates reject policy-excluded values 18ms
+ ✓ src/shell-context.test.tsx > host branch changes use the latest authorized options after asynchronous loading 30ms
+ ✓ src/shell-context.test.tsx > effective appearance applies independent scales, reduced motion and localization direction 21ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > closing asks for that document and not the tab under it 40ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > close others works on the active tab 58ms
+ ✓ src/shell-context.test.tsx > invalid host preference values fall back to the existing preference resolver 22ms
+ ✓ src/shell-context.test.tsx > toasts > never hold more than the preference allows 33ms
+ ✓ src/shell-context.test.tsx > toasts > the newest survives the trim 22ms
+ ✓ src/shell-context.test.tsx > toasts > two raised in the same millisecond are still two 15ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > open the command palette 23ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > offers to split the current tab 54ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > offers swap and full screen only while split 41ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > navigate to the module dashboard 20ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > ignore an OS key repeat 20ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > turning them off releases the key rather than swallowing it 17ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > a shortcut that does act says so, so the browser does not act too 29ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > typing in a field suppresses the shortcuts that would interrupt it 16ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > but not the ones declared to work while typing 12ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > a workspace shortcut is inert, and unbound, in a shell with no workspace 20ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > survive an event dispatched at window rather than at an element 14ms
+ ✓ src/shell-context.test.tsx > keyboard shortcuts > stop firing once the shell unmounts 19ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > and offers them when it is 59ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > offers to open the current tab in a window when the shell can 54ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > and does not offer it when the shell cannot 36ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > a detached tab says where its record is 25ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > the plus opens the command palette 48ms
+ ✓ src/workspace/workspace-tabs.test.tsx > WorkspaceTabs > it is a tablist with a name of its own 19ms
+ ✓ src/monitoring.test.tsx > the bridge sends only sanitized diagnostics through the injected transport 79ms
+ ✓ src/monitoring.test.tsx > bridge stops delivery after an authorization rejection 12ms
+ ✓ src/monitoring.test.tsx > no monitoring host means no capture or network and no monitor UI 25ms
+ ✓ src/workspace/mdi-taskbar.test.tsx > MdiTaskbar > one chip per open window 138ms
+ ✓ src/workspace/mdi-taskbar.test.tsx > MdiTaskbar > a minimised window is still listed, and says it is minimised 26ms
+ ✓ src/workspace/mdi-taskbar.test.tsx > MdiTaskbar > clicking one asks for it 57ms
+ ✓ src/workspace/mdi-taskbar.test.tsx > MdiTaskbar > the focused window is marked, and only that one 20ms
+ ✓ src/workspace/mdi-taskbar.test.tsx > MdiTaskbar > unsaved work is named, not just dotted 22ms
+ ✓ src/workspace/mdi-taskbar.test.tsx > MdiTaskbar > it is a named toolbar 17ms
+ ✓ src/workspace/mdi-taskbar.test.tsx > MdiTaskbar > nothing open, nothing drawn 12ms
+ ✓ src/monitoring.test.tsx > monitor uses injected service, effective presentation/formatting and revision conflicts 249ms
+ ✓ src/monitoring.test.tsx > monitor exposes permission errors without diagnostic response content 42ms
+ ✓ src/monitoring.test.tsx > late incident results cannot populate a changed session 35ms
+ ✓ src/product-context.test.tsx > unconfigured consumers require an explicit host 22ms
+ ✓ src/session-lock.test.tsx > session lock opens a modal, preserves the mounted workspace and submits only to platform session 198ms
+ ✓ src/session-lock.test.tsx > identity changes close workspace documents and clear transient state 23ms
+ ✓ src/product-context.test.tsx > a second host brands the existing sidebar 150ms
+ ✓ src/product-context.test.tsx > command search cannot offer pages from disabled modules 74ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspaceDocuments > renders what is open 90ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspaceDocuments > re-renders when a document is opened after mount 39ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspaceDocuments > shows which document is active, and follows a focus change 23ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspaceDocuments > a closed document leaves the screen 11ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspaceDocuments > dirty state reaches the tab 9ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspaceDocuments > a stable store does not re-render forever 4ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspaceDocuments > no-op changes do not re-render 2ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspaceDocuments > unmounting stops listening 2ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspace > throws outside a provider rather than returning an empty workspace 8ms
+ ✓ src/workspace/use-workspace.test.tsx > useWorkspace > hands back the same workspace it was given 2ms
+ ✓ src/workspace/use-workspace.test.tsx > useReportDirty > marks the document the user is looking at 3ms
+ ✓ src/workspace/use-workspace.test.tsx > useReportDirty > a background save clears only its owning document 2ms
+ ✓ src/workspace/use-workspace.test.tsx > useReportDirty > saving clears it again 1ms
+ ✓ src/workspace/use-workspace.test.tsx > useReportDirty > does nothing at all when there is no workspace 1ms
+ ✓ src/workspace/use-workspace.test.tsx > useReportDirty > useOptionalWorkspace returns null rather than throwing 1ms
+ ✓ src/workspace/use-workspace.test.tsx > useDocumentState > tells a screen whether it is the one on screen 7ms
+ ✓ src/workspace/use-workspace.test.tsx > useDocumentState > and follows the workspace when focus moves 5ms
+ ✓ src/workspace/use-workspace.test.tsx > useDocumentState > says ACTIVE where there is no workspace at all 3ms
+ ✓ src/workspace/use-workspace.test.tsx > useDocumentState > and where a document has not been declared 3ms
+ ✓ src/workspace/use-mdi-workspace.test.tsx > useMdiWorkspace — optional > returns nothing at all when it is off 45ms
+ ✓ src/workspace/use-mdi-workspace.test.tsx > useMdiWorkspace — optional > and writes no remembered sizes while it is off 9ms
+ ✓ src/workspace/use-mdi-workspace.test.tsx > useMdiWorkspace — on > gives each open document a frame 8ms
+ ✓ src/workspace/use-mdi-workspace.test.tsx > useMdiWorkspace — on > a closed document loses its frame 9ms
+ ✓ src/workspace/use-mdi-workspace.test.tsx > useMdiWorkspace — on > moving one keeps it where it was put 74ms
+ ✓ src/workspace/use-mdi-workspace.test.tsx > useMdiWorkspace — on > minimising is remembered 21ms
+ ✓ src/workspace/use-mdi-workspace.test.tsx > useMdiWorkspace — on > selecting a minimised window restores it 27ms
+ ✓ src/sentinel.test.tsx > render failures expose a safe reference and recover when navigation changes 136ms
+ ✓ src/workspace/use-detached-windows.test.tsx > useDetachedWindows > opens a window for a document the store detached 37ms
+ ✓ src/workspace/use-detached-windows.test.tsx > useDetachedWindows > and titles it without the subject's name 7ms
+ ✓ src/workspace/use-detached-windows.test.tsx > useDetachedWindows > closes the window when the document comes home 6ms
+ ✓ src/workspace/use-detached-windows.test.tsx > useDetachedWindows > and when the document is closed outright 3ms
+ ✓ src/workspace/use-detached-windows.test.tsx > useDetachedWindows > a window the user closes brings its document home 16ms
+ ✓ src/workspace/use-detached-windows.test.tsx > useDetachedWindows > opens nothing twice for one document 3ms
+ ✓ src/workspace/use-detached-windows.test.tsx > useDetachedWindows > closes every window when the workspace is cleared 4ms
+ ✓ src/workspace/use-detached-windows.test.tsx > useDetachedWindows > a shell without windows opens none 2ms
+ ✓ src/workspace/use-detached-windows.test.tsx > window lifetime > unmounting the authenticated workspace closes its native windows 3ms
+ ✓ src/workspace/use-detached-windows.test.tsx > window lifetime > a window that finishes opening after unmount is still closed 2ms
+ ✓ src/workspace/use-detached-windows.test.tsx > window lifetime > a failed open brings the document back into the main workspace 3ms
+ ✓ src/workspace/use-detached-windows.test.tsx > Strict Mode cleanup finishes before the replacement window opens 3ms
+ ✓ src/workspace/use-detached-windows.test.tsx > an open failure cleans up a partially created native window 3ms
+ ✓ src/chrome.test.tsx > chromePalette > the page's own surface is a no-op, not an empty override 2ms
+ ✓ src/chrome.test.tsx > chromePalette > re-points the generic tokens rather than introducing new names 2ms
+ ✓ src/chrome.test.tsx > chromePalette > light and contrast are the same recipe over different seeds 2ms
+ ✓ src/chrome.test.tsx > chromePalette > every derived value on the contrast rail is opaque 1ms
+ ✓ src/chrome.test.tsx > chromePalette > every derived value on the light rail is opaque 1ms
+ ✓ src/chrome.test.tsx > chromePalette > the header's translucent surface is the exception, and mixes its own 0ms
+ ✓ src/chrome.test.tsx > chromePalette > each derived value is mixed toward the chrome, not the page 0ms
+ ✓ src/chrome.test.tsx > chromePalette > the active row is tinted against the chrome rather than the page 0ms
+ ✓ src/chrome.test.tsx > useClock > is null on the first render, before any effect has run 23ms
+ ✓ src/chrome.test.tsx > useClock > fills in once the client has mounted 23ms
+ ✓ src/chrome.test.tsx > useClock > ticks at the interval it was given, and not before 7ms
+ ✓ src/chrome.test.tsx > useClock > a display asking for minutes is not woken every second 3ms
+ ✓ src/chrome.test.tsx > useClock > stops when the component goes away 4ms
+ ✓ src/chrome.test.tsx > useClock > changing the interval re-subscribes at the new rate 5ms
+ ✓ src/workspace/document-manager.test.ts > opening > an opened document is active and listed 5ms
+ ✓ src/workspace/document-manager.test.ts > opening > opening the same record again focuses it instead of duplicating 1ms
+ ✓ src/workspace/document-manager.test.ts > opening > different document types for one subject are separate documents 1ms
+ ✓ src/workspace/document-manager.test.ts > opening > isAlreadyOpen answers without opening anything 1ms
+ ✓ src/workspace/document-manager.test.ts > presentation is chosen by policy > an explicitly requested mode that policy forbids is refused, with the level named 1ms
+ ✓ src/workspace/document-manager.test.ts > presentation is chosen by policy > with no mode requested it uses the first permitted one 0ms
+ ✓ src/workspace/document-manager.test.ts > presentation is chosen by policy > a workspace with no permitted mode refuses and says so 0ms
+ ✓ src/workspace/document-manager.test.ts > limits > refuses past maxOpenDocuments and names the limit 0ms
+ ✓ src/workspace/document-manager.test.ts > limits > at the limit, reopening something already open still focuses it 1ms
+ ✓ src/workspace/document-manager.test.ts > limits > focusing a document backgrounds the others 1ms
+ ✓ src/workspace/document-manager.test.ts > dirty state > belongs to the document, not the workspace 0ms
+ ✓ src/workspace/document-manager.test.ts > dirty state > closing a dirty document is refused until the caller says discard 1ms
+ ✓ src/workspace/document-manager.test.ts > dirty state > markClean lets it close normally 0ms
+ ✓ src/workspace/document-manager.test.ts > dirty state > closeAll reports which documents are dirty rather than closing them 1ms
+ ✓ src/workspace/document-manager.test.ts > dirty state > closeOthers keeps the one named 0ms
+ ✓ src/workspace/document-manager.test.ts > lifecycle > suspending releases it; resuming requires revalidation 0ms
+ ✓ src/workspace/document-manager.test.ts > lifecycle > a document that fails revalidation is closed, not shown 0ms
+ ✓ src/workspace/document-manager.test.ts > security context > each document carries its own subject 0ms
+ ✓ src/workspace/document-manager.test.ts > security context > the session's tenant and user are stamped on every document 0ms
+ ✓ src/workspace/document-manager.test.ts > security context > switching tenant clears everything 0ms
+ ✓ src/workspace/document-manager.test.ts > security context > a dirty document does not keep another tenant's data on screen 0ms
+ ✓ src/workspace/document-manager.test.ts > security context > logout clears the workspace the same way 0ms
+ ✓ src/workspace/document-manager.test.ts > restore metadata > carries no titles or names 0ms
+ ✓ src/workspace/document-manager.test.ts > restore metadata > refuses entries belonging to another tenant or user 0ms
+ ✓ src/workspace/document-manager.test.ts > restore metadata > restores this user's own documents, and asks for authorisation on each 1ms
+ ✓ src/workspace/document-manager.test.ts > restore metadata > a document the user may no longer see is not restored 0ms
+ ✓ src/workspace/document-manager.test.ts > restore metadata > restored documents come back suspended 0ms
+ ✓ src/workspace/document-manager.test.ts > events > opening, focusing and closing are reported with their context 0ms
+ ✓ src/workspace/document-manager.test.ts > events > focusing the already-active document reports nothing 0ms
+ ✓ src/workspace/document-manager.test.ts > events > an event carries the security context an audit record needs 1ms
+ ✓ src/workspace/document-manager.test.ts > events > unsubscribing stops the events 0ms
+ ✓ src/workspace/document-manager.test.ts > snapshots > the document list keeps its identity while nothing changes 0ms
+ ✓ src/workspace/document-manager.test.ts > snapshots > and takes a new one when something does 0ms
+ ✓ src/workspace/document-manager.test.ts > snapshots > a changed document is a new object 0ms
+ ✓ src/workspace/document-manager.test.ts > snapshots > an untouched document keeps its identity 0ms
+ ✓ src/workspace/document-manager.test.ts > snapshots > a no-op reports no change 0ms
+ ✓ src/workspace/document-manager.test.ts > snapshots > subscribers are told when the snapshot moves 0ms
+ ✓ src/workspace/document-manager.test.ts > unclosable documents > refuses to close, and says why 0ms
+ ✓ src/workspace/document-manager.test.ts > unclosable documents > discardChanges does not override it 0ms
+ ✓ src/workspace/document-manager.test.ts > unclosable documents > closeAll and closeOthers leave it alone 0ms
+ ✓ src/workspace/document-manager.test.ts > unclosable documents > closeOthers keeps both it and the one named 0ms
+ ✓ src/workspace/document-manager.test.ts > unclosable documents > closeAll can be told to take the fixed tab too 0ms
+ ✓ src/workspace/document-manager.test.ts > unclosable documents > and it still asks about unsaved work first 1ms
+ ✓ src/workspace/document-manager.test.ts > unclosable documents > documents are closable unless told otherwise 0ms
+ ✓ src/workspace/document-manager.test.ts > setPolicy > changes what may be opened next 0ms
+ ✓ src/workspace/document-manager.test.ts > setPolicy > leaves what is already open alone 0ms
+ ✓ src/workspace/document-manager.test.ts > setPolicy > a new limit applies from now on 0ms
+ ✓ src/workspace/split.test.ts > openInSplit > puts the new document beside the current one 5ms
+ ✓ src/workspace/split.test.ts > openInSplit > opening on the left puts it first 1ms
+ ✓ src/workspace/split.test.ts > openInSplit > both panes are active; anything else is not 1ms
+ ✓ src/workspace/split.test.ts > openInSplit > a workspace that permits only one active document refuses to split 1ms
+ ✓ src/workspace/split.test.ts > openInSplit > refuses when the mode is not permitted, and names the level 0ms
+ ✓ src/workspace/split.test.ts > openInSplit > splitting with nothing open just opens it 1ms
+ ✓ src/workspace/split.test.ts > openInSplit > a third pane is refused while maxSplitPanes is two 1ms
+ ✓ src/workspace/split.test.ts > openInSplit > splitting something already open moves it instead of duplicating 1ms
+ ✓ src/workspace/split.test.ts > moveToSplit > brings an already-open document into the split 1ms
+ ✓ src/workspace/split.test.ts > moveToSplit > a document in the split reports its presentation as SPLIT 0ms
+ ✓ src/workspace/split.test.ts > moveToSplit > and gets an ordinary presentation back when it leaves 1ms
+ ✓ src/workspace/split.test.ts > living in a split > swapping reverses the panes and keeps the focus where it was 0ms
+ ✓ src/workspace/split.test.ts > living in a split > focusing the other pane keeps the split 0ms
+ ✓ src/workspace/split.test.ts > living in a split > opening a new document leaves the split 0ms
+ ✓ src/workspace/split.test.ts > living in a split > focusing a tab outside the split leaves the split 0ms
+ ✓ src/workspace/split.test.ts > living in a split > exitSplit keeps the focused pane and leaves the other open 1ms
+ ✓ src/workspace/split.test.ts > living in a split > closing one pane collapses the split onto the other 1ms
+ ✓ src/workspace/split.test.ts > living in a split > a dirty pane still asks before closing 0ms
+ ✓ src/workspace/split.test.ts > living in a split > closing everything leaves no split behind 1ms
+ ✓ src/workspace/split.test.ts > living in a split > a tenant switch clears the split with the documents 0ms
+ ✓ src/workspace/split.test.ts > living in a split > split changes move the snapshot 0ms
+ ✓ src/workspace/split.test.ts > splitWithPrevious > splits the focused document against the one used before it 0ms
+ ✓ src/workspace/split.test.ts > splitWithPrevious > orders by use even when every timestamp is identical 0ms
+ ✓ src/workspace/split.test.ts > splitWithPrevious > to the left when asked 0ms
+ ✓ src/workspace/split.test.ts > splitWithPrevious > nothing to compare against is quiet, not an error 0ms
+ ✓ src/workspace/split.test.ts > splitWithPrevious > but a policy refusal still explains itself 0ms
+ ✓ src/workspace/detach.test.ts > detaching > the document stays open, in a window of its own 5ms
+ ✓ src/workspace/detach.test.ts > detaching > it is neither on screen here nor suspended 1ms
+ ✓ src/workspace/detach.test.ts > detaching > detaching the focused document hands focus to what is left 1ms
+ ✓ src/workspace/detach.test.ts > detaching > a detached pane leaves the split 1ms
+ ✓ src/workspace/detach.test.ts > detaching > refuses when policy does not allow detaching 1ms
+ ✓ src/workspace/detach.test.ts > detaching > refuses when WINDOW is not a permitted mode, and names the level 0ms
+ ✓ src/workspace/detach.test.ts > detaching > refuses past maxDetachedWindows 1ms
+ ✓ src/workspace/detach.test.ts > detaching > detaching one already detached changes nothing 0ms
+ ✓ src/workspace/detach.test.ts > coming back > attaching brings it home and focuses it 1ms
+ ✓ src/workspace/detach.test.ts > coming back > closing a detached document removes it from both 1ms
+ ✓ src/workspace/detach.test.ts > coming back > a tenant switch clears the detached list too 0ms
+ ✓ src/workspace/detach.test.ts > coming back > detaching moves the snapshot so the shell can open the window 0ms
+ ✓ src/workspace/detach.test.ts > windowTitleFor > never carries the subject's name 0ms
+ ✓ src/workspace/detach.test.ts > windowTitleFor > says enough to tell two windows apart 0ms
+ ✓ src/workspace/lifecycle.test.ts > warm and cold > keeps the most recent few warm and suspends the rest 5ms
+ ✓ src/workspace/lifecycle.test.ts > warm and cold > coming back to one warms it and cools the oldest 2ms
+ ✓ src/workspace/lifecycle.test.ts > warm and cold > never suspends a document with unsaved changes 1ms
+ ✓ src/workspace/lifecycle.test.ts > warm and cold > and lets it cool once it is saved 1ms
+ ✓ src/workspace/lifecycle.test.ts > warm and cold > both panes of a split stay on screen whatever the limit 1ms
+ ✓ src/workspace/lifecycle.test.ts > warm and cold > a warm limit of zero suspends everything off screen 1ms
+ ✓ src/workspace/lifecycle.test.ts > warm and cold > an unconfigured workspace keeps everything warm 2ms
+ ✓ src/workspace/lifecycle.test.ts > coming back > a suspended document resumes and asks to be revalidated 1ms
+ ✓ src/workspace/lifecycle.test.ts > coming back > one the user may no longer see is closed rather than shown 1ms
+ ✓ src/workspace/lifecycle.test.ts > coming back > focusing a suspended tab resumes it rather than merely focusing it 1ms
+ ✓ src/workspace/lifecycle.test.ts > coming back > focusing a warm tab is an ordinary focus 0ms
+ ✓ src/workspace/mdi-frames.test.ts > cascade > each new frame steps down and across 2ms
+ ✓ src/workspace/mdi-frames.test.ts > cascade > it wraps rather than walking off the bottom 2ms
+ ✓ src/workspace/mdi-frames.test.ts > cascade > a frame is never bigger than the space it opens into 0ms
+ ✓ src/workspace/mdi-frames.test.ts > clampFrame > pulls a frame back inside when the space shrinks 1ms
+ ✓ src/workspace/mdi-frames.test.ts > clampFrame > and shrinks one that no longer fits at all 0ms
+ ✓ src/workspace/mdi-frames.test.ts > clampFrame > a frame already inside is returned unchanged 0ms
+ ✓ src/workspace/mdi-frames.test.ts > bringToFront > puts the named frame above every other 0ms
+ ✓ src/workspace/mdi-frames.test.ts > bringToFront > leaves the order of the others alone 0ms
+ ✓ src/workspace/mdi-frames.test.ts > bringToFront > raising the front frame changes nothing 0ms
+ ✓ src/workspace/mdi-frames.test.ts > toggleMinimised > keeps the geometry across a round trip 1ms
+ ✓ src/workspace/mdi-frames.test.ts > toggleMinimised > restoring brings it to the front 0ms
+ ✓ src/workspace/mdi-frames.test.ts > syncFrames > gives a new document a frame 0ms
+ ✓ src/workspace/mdi-frames.test.ts > syncFrames > drops frames for documents that closed 0ms
+ ✓ src/workspace/mdi-frames.test.ts > syncFrames > leaves an existing frame exactly as it was 0ms
+ ✓ src/workspace/mdi-frames.test.ts > syncFrames > returns the same array when nothing changed 0ms
+ ✓ src/workspace/mdi-frames.test.ts > remembered sizes > round-trips a size for a type 1ms
+ ✓ src/workspace/mdi-frames.test.ts > remembered sizes > stores no record identifiers at all 1ms
+ ✓ src/workspace/mdi-frames.test.ts > remembered sizes > survives storage being unavailable 3ms
+ ✓ src/workspace/mdi-frames.test.ts > remembered sizes > and survives storage refusing a write 0ms
+ ✓ src/workspace/mdi-frames.test.ts > remembered sizes > ignores anything that is not a size 1ms
+ ✓ src/products.test.ts > host product profiles > the complete profile retains the supplied catalog 2ms
+ ✓ src/products.test.ts > host product profiles > a smaller profile excludes other domains while retaining explicitly shared pages 1ms
+ ✓ src/products.test.ts > host product profiles > rejects a landing module that is not enabled 1ms
+ ✓ src/products.test.ts > host product profiles > profiles are isolated from the host catalog membership 1ms
+ ✓ src/products.test.ts > host product profiles > host modules open a registered leaf without an invented dashboard 1ms
+ ✓ src/products.test.ts > host product profiles > page selection and role rules prune nested navigation without changing the catalog 1ms
+ ✓ src/products.test.ts > host product profiles > rejects unknown pages and malformed permissions 1ms
+ ✓ src/products.test.ts > host product profiles > rejects malformed identity, unknown and duplicated modules 1ms
+ ✓ src/products.test.ts > host product profiles > action grants fail closed with absent access, role or action 1ms
+ ✓ src/products.test.ts > host product profiles > shared pages retain explicit module membership and detail pages use declared ownership 1ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > two targets that share a targetKey share a document 2ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > and two that do not, do not 1ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > carries the module from the page registry 0ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > titles the tab from the registry when the caller gives none 0ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > a record and a mode show in the title 0ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > survives a target whose parts contain the key separator 1ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > round-trips back to the target it came from 1ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > a record id containing the separator round-trips too 0ms
+ ✓ src/workspace/target-document.test.ts > documentFromTarget > a record id containing a tilde round-trips too 0ms
+ ✓ src/workspace/target-document.test.ts > Host views keep separate MDI identities and survive restored documents 1ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — modes > an unconfigured workspace permits nothing 3ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — modes > the first level to name a set establishes it 1ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — modes > later levels can only remove 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — modes > a page can remove a mode the shell allows 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — modes > a user preference cannot add a mode policy removed 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — modes > a narrowing level alone establishes nothing 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — modes > a user preference still narrows within what is permitted 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — modes > says which level removed each mode 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — limits > unconfigured limits fall back to the defaults 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — limits > the most restrictive level wins, whichever it is 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — limits > a level that says nothing about a limit does not change it 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — limits > a user preference may lower a limit but never raise one 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — limits > a lower device limit beats a higher tenant limit 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — flags > false anywhere wins 0ms
+ ✓ src/workspace/policy.test.ts > resolveWorkspacePolicy — flags > a flag nobody sets defaults to off 0ms
+ ✓ src/workspace/document-key.test.ts > documentKey > is tenant, type and entity 2ms
+ ✓ src/workspace/document-key.test.ts > documentKey > the same subject in different document types is different documents 1ms
+ ✓ src/workspace/document-key.test.ts > documentKey > two interactions of one subject are two documents 1ms
+ ✓ src/workspace/document-key.test.ts > documentKey > the document type is case-insensitive 0ms
+ ✓ src/workspace/document-key.test.ts > documentKey > the entity id is left exactly as given 0ms
+ ✓ src/workspace/document-key.test.ts > documentKey > refuses a separator inside any part 2ms
+ ✓ src/workspace/document-key.test.ts > documentKey > refuses an empty part 0ms
+ ✓ src/workspace/document-key.test.ts > parseDocumentKey > round-trips 1ms
+ ✓ src/workspace/document-key.test.ts > parseDocumentKey > returns null for anything that is not a key 0ms
+ ✓ src/shortcuts.test.ts > 'command' matches physical code and exact modifiers 3ms
+ ✓ src/shortcuts.test.ts > 'preferences' matches physical code and exact modifiers 0ms
+ ✓ src/shortcuts.test.ts > 'dashboard' matches physical code and exact modifiers 0ms
+ ✓ src/shortcuts.test.ts > 'search' matches physical code and exact modifiers 0ms
+ ✓ src/shortcuts.test.ts > 'newRecord' matches physical code and exact modifiers 0ms
+ ✓ src/shortcuts.test.ts > 'pinSidebar' matches physical code and exact modifiers 0ms
+ ✓ src/shortcuts.test.ts > 'split' matches physical code and exact modifiers 0ms
+ ✓ src/shortcuts.test.ts > 'exitSplit' matches physical code and exact modifiers 0ms
+ ✓ src/shortcuts.test.ts > 'help' matches physical code and exact modifiers 1ms
+ ✓ src/shortcuts.test.ts > help and dispatcher share capability checks and platform display 0ms
+
+ Test Files  29 passed (29)
+      Tests  384 passed (384)
+   Start at  02:34:18
+   Duration  25.56s (transform 1.76s, setup 4.26s, collect 7.50s, tests 11.86s, environment 14.70s, prepare 2.33s)
+

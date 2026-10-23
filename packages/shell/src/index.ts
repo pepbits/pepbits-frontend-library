@@ -11,3 +11,13 @@ export * from "./session-lock";
 export * from "./sentinel";
 export * from "./error-monitor";
 export * from "./appearance";
+
+export * from "./header";
+export * from "./header-clock";
+export * from "./use-clock";
+export * from "./sidebar";
+export * from "./footer";
+export * from "./enterprise-shell";
+export * from "./workspace-page";
+export * from "./chrome-palette";
+export * from "./documentation";

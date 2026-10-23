@@ -1,8 +1,10 @@
 # Library restructure phase 5 foundation — 23 October 2026
 
+**Continuation:** [Part 2](#part-2) completes priorities 4–6. The part 1 text and verification below are historical; all original evidence files are preserved byte-for-byte. Its manifest is preserved as a separate snapshot; the main manifest now identifies part 2.
+
 Status: **priorities 1–3 implemented and locally verified; phase 5 remains incomplete**. Chrome, workspace UI and remaining layers are deferred under the owner's smaller-complete-increment allowance. Base: `aba0e4e43052454ecd545867a50016f4097d01f3` on `main`, initially clean. Unreleased working tree; no commit, tag, push, publication or deployment. New package version `0.0.0` is a source-workspace version. [Plan status](../../architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-5-status); [testing guide 1.0.0](../../testing/v1.0.0/PRE-COMMIT.md); [host/user integration guide](../../../packages/shell/README.md).
 
-Source identity: **4c129c90713dc992ca64fd5236543839fadde06f489c2177ddae42a5a961778c**, SHA-256 over sorted `path + NUL + file SHA-256 + LF` entries in the [373-file source manifest](manifest-restructure-phase-5-2026-10-23.json). Scope includes root configuration, all packages/tooling, the restructure plan and delivery index. This record, manifest and evidence are excluded to avoid self-reference. Final CI covers implementation bytes; only guide/plan/index wording and release evidence were finalized afterward. Documentation checks cover final text.
+Source identity: **4c129c90713dc992ca64fd5236543839fadde06f489c2177ddae42a5a961778c**, SHA-256 over sorted `path + NUL + file SHA-256 + LF` entries in the [373-file source manifest](evidence/restructure-phase-5-2026-10-23/part-2/part-1-manifest.json). Scope includes root configuration, all packages/tooling, the restructure plan and delivery index. This record, manifest and evidence are excluded to avoid self-reference. Final CI covers implementation bytes; only guide/plan/index wording and release evidence were finalized afterward. Documentation checks cover final text.
 
 ## Changes and public API
 
@@ -114,3 +116,81 @@ Not run: deferred suites; original-workspace install/typecheck/tests/Turbo; API/
 ## Upgrade and rollback
 
 New consumers opt into public source imports and explicit provider/service configuration. Existing applications remain unchanged. Hosts recreate workspace identity, validate resume permission, supply actual adapters and render the deferred chrome/confirmation/layer UI themselves until phase 5 completion. Session-only state is not durable recovery. Rollback removes the independent shell package, lock registration and additive icon exports; no protected consumer or stored-data rollback is required.
+
+
+## Part 2
+
+Status: **priorities 4–6 complete; phase 5 priorities 1–6 locally verified**, 23 October 2026. Base: committed part 1 `6c73e50e85280a86d359ab5473a0b346dfe0ed64` on `main`, initially clean. All changes remain uncommitted and unpublished. Preferences/login and AI remain separate phase 5b work; no placeholder pages are exported. Package version remains `0.0.0`.
+
+Source identity: **86fa410baa7e6fd58138a82e070f011c4476d12b2834f048e3419e40bea59aaa**, **416 files**, with the same sorted-path/NUL/file-hash/LF algorithm as part 1. The current [source manifest](manifest-restructure-phase-5-2026-10-23.json) identifies this base plus working-tree hashes. The [manifest receipt](evidence/restructure-phase-5-2026-10-23/part-2/manifest.log) records the exact file count/digest; [source isolation](evidence/restructure-phase-5-2026-10-23/part-2/source-isolation.log) verifies every file and the aggregate. Only README/plan/index/release/evidence wording was finalized after implementation checks; documentation validation covers the final text. [Preserved part 1 hashes](evidence/restructure-phase-5-2026-10-23/part-2/preserved-part-1.json) separately verify every historical evidence artifact against the starting commit. Part 1 results are not relabeled as current.
+
+### Added and changed
+
+Added **43 shell files** (including 15 test files), extended the existing exports/test messages/provider module type, and added 23 icon exports. Existing workspace-core implementations and all part 1 test cases remain.
+
+| Area | Completed public API and behavior |
+| --- | --- |
+| Chrome/root | Header, HeaderClock/useClock, Sidebar, Footer, EnterpriseShell, WorkspacePage and chromePalette. Host branch zones, quick pages, brand/role labels, profile preferences/logout and optional inbox/status props; two byte-identical CSS modules/declarations. Actual sidebar controls consume PreferenceHost locks/allowed values. |
+| Workspace | All eight original UI modules plus tests: target-document, workspace-navigation, tabs, canvas/split, MDI geometry/hook/taskbar and detached-window reconciliation. Additive WorkspaceShell wires them to the full frame, unsaved-change confirmation and platform windows. Canvas wraps every screen in the existing ShellDocumentProvider. |
+| Layers | ShellLayers, command palette, documentation drawer and non-AI HelpAssistant. Frame mounts layers once; helper uses host page/kind tours or service steps, filters absent anchors and honors reduced motion. |
+| Documentation | Existing types plus article, center, launcher, notices and request cache through `./documentation`. Explicit host transport/release/center/notice targets; search/paging, release/patch views, acknowledgment/dismissal/read actions, loading/retry/offline states. |
+| Shared support | 23 additional primitive icon exports; existing providers, shared UI, patterns TestHost and part 1 workspace/test helpers reused. No new runtime dependency, package, preference store or localization provider. |
+
+Host contract and integration: [shell README](../../../packages/shell/README.md) contains the complete SessionProvider → PreferenceHost → LocalizationProvider → ShellProvider example, workspace policy and window wiring, user flows, API differences and styling sources. Workspace navigation receives an explicit role-filtered product before ShellProvider; target-document conversion receives page metadata. Effective `openRecordsInTabs` is resolved into host workspace policy; effective `floatingWindows` drives the provided composition without recreating the store. Hosts retain authenticated routing, resume validation, data adapters and all product content. Server authorization remains independent of UI controls.
+
+ScreenHost contracts are unchanged. Per-document identity/focus, scope, transient draft/dirty state and close subscriptions now run in actual warm/split/MDI canvas trees. Full-frame tests render a real DynamicRecordForm and LifecycleConfigurationPage and exercise edits, save, close guards and toast delivery. No durable recovery or live backend is implied.
+
+Compatibility decisions: hardcoded inbox fixtures/profile/settings/support destinations are omitted in favor of host slots and destinations; no implicit product, branch or documentation release is introduced. MDI storage and documentation/tour event names use generic namespaces. Documentation's persistent sessionStorage fallback becomes a bounded per-hook session-memory cache, isolated by tenant/user/role/branch/product and transport; aborts, HTTP denial and writes cannot use offline fallback. A reading-state write uses its change's release/revision. Platform windows replace native imports; the host must supply child-window bootstrapping and state/data synchronization in phase 6. Clock/palette/sidebar markup and CSS classes are preserved. Click-mode search now reliably expands with focus expansion disabled; helper closing restores trigger focus. See the README's complete differences list.
+
+### Test port inventory
+
+**384 shell tests in 29 files**, zero failed/skipped/todo in the final run: the prior 199 plus **185 part 2 cases**. The [new inventory](evidence/restructure-phase-5-2026-10-23/part-2/test-port-inventory.json) covers every original file and preserves context-case dispositions by reference. [Parsed CI totals](evidence/restructure-phase-5-2026-10-23/part-2/test-counts.json) and [verbose shell cases](evidence/restructure-phase-5-2026-10-23/part-2/shell-tests-incremental.log) distinguish totals from overlapping coverage.
+
+| Original erp-shell file | Part 2 disposition / final cases |
+| --- | --- |
+| `chrome.test.tsx` | 14 palette/clock cases retained. Six routing/default assertions replaced by part 1 explicit-catalog helpers/host tests; three pre-provider skeleton-hint cases remain phase 6 host-owned. |
+| `diagnostic-sidebar.test.tsx` | All 25 expanded cases with four fictional generic modules, real ShellProvider/PreferenceHost and web hrefs; no assertion removed. |
+| `product-context.test.tsx` | 3 adapted cases: host branding, unavailable module filtering, required host configuration replacing the incompatible silent default product. |
+| `workspace/mdi-frames.test.ts` | All 20 |
+| `workspace/mdi-taskbar.test.tsx` | All 7 |
+| `workspace/target-document.test.ts` | All 10; product-role fixture replaced by generic host view identity with all round-trip assertions |
+| `workspace/use-detached-windows.test.tsx` | All 13; fake platform port, sanitized OS titles, failures, late completion and Strict Mode ordering |
+| `workspace/use-mdi-workspace.test.tsx` | All 7 |
+| `workspace/use-workspace-navigation.test.tsx` | All 18; explicit product input and generic module/view transition fixture |
+| `workspace/workspace-canvas.test.tsx` | All 29; shared host wrapper and document ScreenHost bridge |
+| `workspace/workspace-tabs.test.tsx` | All 15 |
+
+All **119 original workspace UI cases** are retained, including the two structurally generic view-identity scenarios formerly using a product catalog. New files add **24 cases**: chrome integration 11, documentation 8, full-frame page-engine/patterns integration 2 and WorkspaceShell composition 3. Real pin controls disable on policy updates and excluded values; shortcut disabling removes the full-frame dispatcher; both physical sidebar placements respect Arabic/English direction; reduced-motion tours scroll without animation. Documentation tests cover retry, denied/aborted/offline requests, identity isolation, host targets, disabled services and reading-state failures. Ports and network are mocked; no live service is contacted.
+
+Not ported: `school-role-header.test.tsx` remains product-specific (phase 6 product demo/repository); preferences and login suites remain phase 5b. Original preference HTTP/load/write/language races and boot caches remain phase 6 host integration, as detailed in part 1. Nothing in priorities 4–6 remains deferred. Native runtime wiring and browser/assistive-technology acceptance are separate from delivery of the generic source UI.
+
+### Verification and retained evidence
+
+Executed locally by Codex, not hosted CI or independent review. [Environment](evidence/restructure-phase-5-2026-10-23/part-2/environment.json) records versions. Commands below run from repository root; stdout/stderr redirection only retains output. The root build still executes zero build tasks.
+
+| Exact command | Result and scope | Evidence |
+| --- | --- | --- |
+| `npm install --cache /tmp/pepbits-npm-cache` | Exit 0; up to date, 172 audited; inherited one moderate/two critical findings, no dependency remediation | [install](evidence/restructure-phase-5-2026-10-23/part-2/install.log) |
+| `npm test -w @pepbits/shell -- --reporter=dot` (initial) | Exit 0; 332 tests / 23 files before added composition/host cases | [initial](evidence/restructure-phase-5-2026-10-23/part-2/shell-tests-initial.log) |
+| Same command (second) | Exit 1; 358/373. Ported link tests initially used the desktop `#` port, and three new queries assumed visible text rather than accessible names | [second](evidence/restructure-phase-5-2026-10-23/part-2/shell-tests-second.log) |
+| Same command (third) | Exit 1; 383/384. Drawer placement assertion targeted overlay instead of its inner panel | [third](evidence/restructure-phase-5-2026-10-23/part-2/shell-tests-third.log) |
+| `npm run typecheck -w @pepbits/shell` | Exit 0 | [shell typecheck](evidence/restructure-phase-5-2026-10-23/part-2/shell-typecheck.log) |
+| `npm test -w @pepbits/shell -- --reporter=verbose` | Exit 0; **384/384 in 29 files** | [incremental](evidence/restructure-phase-5-2026-10-23/part-2/shell-tests-incremental.log) |
+| `npm run ci` (first attempt) | Exit 1; existing page-engine template preference test exceeded its 15-second limit under parallel load, 259/260 engine cases passed; Turbo reported 9/11 successful test tasks and stopped before all tasks completed. No assertions/timeouts changed | [initial CI](evidence/restructure-phase-5-2026-10-23/part-2/ci-initial.log) |
+| `npm run ci` (retry) | Exit 0; boundaries **11 packages / 0 demos**, **19 tooling**, **11 typechecks (11 cached)**, **1,292 tests / 115 files**, **11 test tasks (9 cached)**, **0 build tasks** | [CI](evidence/restructure-phase-5-2026-10-23/part-2/ci.log) |
+| `node docs/tools/check-docs.mjs` | Exit 1; existing `.ts` import rejected by plain Node, no content error established | [plain Node](evidence/restructure-phase-5-2026-10-23/part-2/docs-node.log) |
+| `desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs` | Exit 0; **177 documentation files** | [documentation](evidence/restructure-phase-5-2026-10-23/part-2/docs-jiti.log) |
+| `desktop-clients/node_modules/.bin/jiti docs/releases/unreleased/evidence/restructure-phase-5-2026-10-23/check-package-guides.mjs` | Exit 0; **3 package/index guides** | [guide links](evidence/restructure-phase-5-2026-10-23/part-2/package-guide-links.log) |
+| `node node_modules/typescript/bin/tsc --noEmit --strict --skipLibCheck --jsx react-jsx --module ESNext --moduleResolution bundler --target ES2022 --allowImportingTsExtensions --esModuleInterop /tmp/pepbits-shell-part2-example/host.tsx` | Exit 0; exact README example, root node_modules linked; typecheck only | [example](evidence/restructure-phase-5-2026-10-23/part-2/host-example-typecheck.log) |
+| `node docs/releases/unreleased/evidence/restructure-phase-5-2026-10-23/write-manifest.mjs` | Regenerates current source identity using the record's unchanged writer | [manifest](evidence/restructure-phase-5-2026-10-23/part-2/manifest.log) |
+| `node docs/releases/unreleased/evidence/restructure-phase-5-2026-10-23/part-2/verify-part-2.mjs` | Updates manifest part/limits metadata, verifies hashes/counts, old evidence, CSS identity, exact scan and protected paths | [source isolation](evidence/restructure-phase-5-2026-10-23/part-2/source-isolation.log) |
+| `git diff --stat -- desktop-clients dummy-api Jenkinsfile deploy run.sh run_all.sh .github` and `git status --short desktop-clients` | Exit 0; **zero output bytes** | [source isolation](evidence/restructure-phase-5-2026-10-23/part-2/source-isolation.log) |
+| `git diff --check` | Exit 0 | [source isolation](evidence/restructure-phase-5-2026-10-23/part-2/source-isolation.log) |
+
+Nonoverlapping package totals: tokens 3/1 file, icons 19/1, i18n 64/6, preferences 33/3, ui 120/12, components 190/15, data 35/6, platform 66/5, patterns 118/17, page-engines 260/20, shell 384/29 = **1,292/115**. Tooling's 19 cases are separate. Earlier strict-type diagnostics while adapting imports, fixtures and indexed access were corrected before these passing checks; temporary diagnostics are not all retained.
+
+The exact required source grep from part 1 is rerun by the verifier: **zero matching lines**, exit 1 for no matches. [Raw output](evidence/restructure-phase-5-2026-10-23/part-2/required-scan.log) and [receipt](evidence/restructure-phase-5-2026-10-23/part-2/required-scan-justifications.json) contain no exceptions. [Part 2 checksums](evidence/restructure-phase-5-2026-10-23/part-2/checksums.sha256) cover retained artifacts. No credentials are retained.
+
+Not run: original-workspace install/typecheck/tests/Turbo; backend/API or `verify:*` gates; browser journeys, compiled application CSS/builds, physical layout/hit testing, native executables/child windows/devices, live identity/providers, screen-reader/axe/native-speaker review or hosted CI. No canonical catalog/generated example regeneration, preferences/login/AI implementation, dependency remediation, consumer migration, publication, commit, push or deployment. Local jsdom and an empty source build do not establish native or deployed acceptance.
+
+Upgrade/rollback: hosts opt into the public frame or WorkspaceShell composition and explicit metadata/ports. Existing consumers remain unchanged. No stored-data migration is needed; removing part 2 restores the part 1 source API. New generic geometry/event names have no automatic legacy migration. Part 1 evidence and its original completion boundary remain historical.
