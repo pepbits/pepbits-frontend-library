@@ -1,0 +1,7 @@
+Scope: unchanged API from main 88f55553d22b648dfb270ef7218f5706d47c919f, local worktree.
+Default frontend Node: 22.22.1; API runtime requires Node 24.
+Plain startup using Node 24 and isolated temporary data directories failed:
+ERR_MODULE_NOT_FOUND: dummy-api/access-runtime/dist/rcm/registry.js
+API node_modules was absent; installed its declared dependencies with npm ci --ignore-scripts and a /tmp npm cache. No tracked API files changed.
+Successful integration uses the optional runtime resolver after matching all 483 tracked API source files to an existing checkout, with zero differences. The receipt hashes the loaded generated runtime files. This is reuse of existing build artifacts, not an API build or release.
+Raw API startup output is not retained because the source announces fixture account/password conventions. No account/password line, token or authorization header is included here.

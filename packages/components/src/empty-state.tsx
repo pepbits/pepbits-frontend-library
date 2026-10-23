@@ -35,7 +35,7 @@ function StatePanel({ icon, tone, title, description, detail, reference, action,
        result is not an event and does not interrupt. */
     <div role={alert ? "alert" : status ? "status" : undefined} className="flex min-h-64 flex-col items-center justify-center px-6 text-center">
       <div className={cn("mb-3 flex size-12 items-center justify-center rounded-2xl", badge)}>{icon}</div>
-      <h3 className="text-[length:calc(13px*var(--fs-scale))] font-extrabold"><LocalizedText message={title} /></h3>
+      <p className="text-[length:calc(13px*var(--fs-scale))] font-extrabold"><LocalizedText message={title} /></p>
       <p className="mt-1 max-w-sm text-[length:calc(11px*var(--fs-scale))] leading-relaxed text-[var(--text-muted)]"><LocalizedText message={description} /></p>
       {/* The slot the whole component turns on. A shared panel that swallows the
           specific message is worse than the twenty bespoke ones it replaced,

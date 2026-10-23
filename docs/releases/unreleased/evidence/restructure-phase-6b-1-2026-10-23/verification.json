@@ -1,0 +1,78 @@
+{
+  "sourceManifest": "../../manifest-restructure-phase-6b-1-2026-10-23.json",
+  "mode": "Local synthetic HTTP API and production Next build; no deployment or clinical acceptance",
+  "ci": "ci-counts.json",
+  "routeMatrix": {
+    "routes": 37,
+    "scenarios": [
+      "default",
+      "Arabic RTL",
+      "reduced motion",
+      "locked density"
+    ],
+    "cases": 148,
+    "pageContentViolations": 0,
+    "colorContrast": "disabled in jsdom only"
+  },
+  "browser": {
+    "routeCases": 51,
+    "staticDestinations": 37,
+    "additionalDeepLinkCases": 14,
+    "flows": [
+      {
+        "id": "HCD-02",
+        "result": "patient search returned the fictional patient"
+      },
+      {
+        "id": "HCD-03",
+        "result": "patient record opened"
+      },
+      {
+        "id": "HCD-04",
+        "result": "consultation draft saved through HTTP and survived reload"
+      },
+      {
+        "id": "HCD-03-encounter",
+        "result": "Suite encounter created through the UI for a fictional patient"
+      }
+    ],
+    "signIn": "passed",
+    "routeFailures": 0,
+    "httpErrors": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "pageContentViolations": 0,
+    "fullShellViolatingRoutes": 51,
+    "fullShellRule": "label-content-name-mismatch",
+    "fullShellNodes": 51,
+    "fullShellZeroViolationsRequirement": "not met; protected shell profile-button accessible name omits visible initials",
+    "integrationCommandExit": 1,
+    "screenshotsReviewed": 3
+  },
+  "api": {
+    "unchangedTrackedFilesCompared": 483,
+    "sourceMismatches": 0,
+    "reusedRuntimeFiles": 1,
+    "artifactReceipt": "integration-final-identity.json"
+  },
+  "visualFollowUps": [
+    "Canonical API shared catalog lacks template.clinical.internalCode; the patient record displays that key. Backend catalog is protected in this run."
+  ],
+  "documentation": {
+    "files": 183,
+    "exit": 0,
+    "command": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs"
+  },
+  "boundaries": {
+    "protectedDiffsEmpty": true,
+    "desktopStatusEmpty": true,
+    "apiStatusEmpty": true,
+    "parallelOwnedDiffEmpty": true,
+    "forbiddenImports": 0,
+    "secretAndExternalUrlMatches": 0
+  },
+  "manifest": {
+    "files": 750,
+    "sha256": "fc49e35beddd9d39f3559e775cc9c7644c9b6650e725a9a88599a1a30b51571f"
+  }
+}

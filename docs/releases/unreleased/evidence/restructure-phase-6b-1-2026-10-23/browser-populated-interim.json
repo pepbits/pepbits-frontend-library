@@ -1,0 +1,1117 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/suite",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/appointments",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/approvals",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/billing/hospital",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/billing/pharmacy",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/billing/invoices",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/contracts",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/departments",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/specialties",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/providers",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/payers",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/tpas",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/insurance-plans",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/networks",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/price-lists",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/items",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/services",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resources",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resource-schedules",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resource-blocks",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-query",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-record",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 3
+    },
+    {
+      "route": "/patient-360",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-triage",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-consultation",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-consultation",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/comprehensive-consultation",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-registration",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinic-billing",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/emergency-registration",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/inpatient-admission",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/consultation-entry-design",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/consultation-entry-v2",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/preferences",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients/new",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients/PT00001",
+      "pageViolations": [
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > h4"
+              ],
+              "html": "<h4 class=\"mb-1.5 text-hc-xs font-semibold text-hc-ink-soft\">Appointments</h4>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        },
+        {
+          "id": "select-name",
+          "nodes": [
+            {
+              "target": [
+                ".w-28 > label > .relative > select"
+              ],
+              "html": "<select class=\"focus-ring h-9 w-ful...\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > h4"
+              ],
+              "html": "<h4 class=\"mb-1.5 text-hc-xs font-semibold text-hc-ink-soft\">Appointments</h4>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "select-name",
+          "nodes": [
+            {
+              "target": [
+                ".w-28 > label > .relative > select"
+              ],
+              "html": "<select class=\"focus-ring h-9 w-ful...\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters/new",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities/new",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities/F001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-record/PT-0001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-360/PT-0001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-triage/PT-0001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/comprehensive-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-registration/PT-0001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".p-0\\.5"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinic-billing/PT-0001",
+      "pageViolations": [],
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                ".h-8"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters/EN000001",
+      "pageViolations": [
+        {
+          "id": "empty-table-header",
+          "nodes": [
+            {
+              "target": [
+                ".w-8:nth-child(10)"
+              ],
+              "html": "<th class=\"w-8\"></th>",
+              "summary": "Fix any of the following:\n  Element does not have text that is visible to screen readers"
+            }
+          ]
+        },
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > .hc-panel-head > h3"
+              ],
+              "html": "<h3 class=\"hc-panel-title\">Billing</h3>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        },
+        {
+          "id": "label",
+          "nodes": [
+            {
+              "target": [
+                ".accent-\\[var\\(--primary\\)\\]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "empty-table-header",
+          "nodes": [
+            {
+              "target": [
+                ".w-8:nth-child(10)"
+              ],
+              "html": "<th class=\"w-8\"></th>",
+              "summary": "Fix any of the following:\n  Element does not have text that is visible to screen readers"
+            }
+          ]
+        },
+        {
+          "id": "heading-order",
+          "nodes": [
+            {
+              "target": [
+                "section:nth-child(1) > .hc-panel-head > h3"
+              ],
+              "html": "<h3 class=\"hc-panel-title\">Billing</h3>",
+              "summary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-tour=\"profile\"]"
+              ],
+              "html": "<button type=\"button\" data-tour=\"profile\" aria-label=\"Open profile menu\" class=\"focus-ring flex h-8 items-center gap-1 rounded-[10px] p-0.5 transition hover:bg-[var(--surface-2)]\">",
+              "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          ]
+        },
+        {
+          "id": "label",
+          "nodes": [
+            {
+              "target": [
+                ".accent-\\[var\\(--primary\\)\\]"
+              ],
+              "html": "<input class=\"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50\" type=\"checkbox\">",
+              "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

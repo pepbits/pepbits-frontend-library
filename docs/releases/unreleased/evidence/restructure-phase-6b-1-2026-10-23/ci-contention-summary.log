@@ -1,0 +1,29 @@
+Extracted failure/count summary from the third forced root CI attempt. TURBO_CONCURRENCY=4; browser running concurrently. Verbose DOM dumps omitted.
+@pepbits/tokens:test:  Test Files  1 passed (1)
+@pepbits/tokens:test:       Tests  3 passed (3)
+@pepbits/icons:test:  Test Files  1 passed (1)
+@pepbits/icons:test:       Tests  19 passed (19)
+@pepbits/data:test:  Test Files  7 passed (7)
+@pepbits/data:test:       Tests  37 passed (37)
+@pepbits/i18n:test:  Test Files  6 passed (6)
+@pepbits/i18n:test:       Tests  64 passed (64)
+@pepbits/preferences:test:  Test Files  3 passed (3)
+@pepbits/preferences:test:       Tests  33 passed (33)
+@pepbits/platform:test:  Test Files  5 passed (5)
+@pepbits/platform:test:       Tests  67 passed (67)
+@pepbits/ui:test:  Test Files  12 passed (12)
+@pepbits/ui:test:       Tests  121 passed (121)
+@pepbits/patterns:test:    × Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged 1923ms
+@pepbits/patterns:test:    × lifecycle forwards dirty changes and localized notifications to the screen host 673ms
+@pepbits/components:test:  Test Files  16 passed (16)
+@pepbits/components:test:       Tests  194 passed (194)
+@pepbits/patterns:test:  FAIL  src/lifecycle/screen-host.test.tsx > lifecycle forwards dirty changes and localized notifications to the screen host
+@pepbits/patterns:test: AssertionError: expected last "spy" call to have been called with [ false ]
+@pepbits/patterns:test:  FAIL  src/lifecycle/sources.test.tsx > Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged
+@pepbits/patterns:test: TestingLibraryElementError: Unable to find role="button" and name `/Open sample-record version/`
+@pepbits/patterns:test:  Test Files  2 failed | 15 passed (17)
+@pepbits/patterns:test:       Tests  2 failed | 118 passed (120)
+ Tasks:    17 successful, 26 total
+Cached:    0 cached, 26 total
+  Time:    3m3.161s 
+Failed:    @pepbits/patterns#test

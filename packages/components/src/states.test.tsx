@@ -200,3 +200,9 @@ describe("the family is distinguishable", () => {
     }
   });
 });
+
+test('embedded state titles preserve the owning page heading hierarchy',()=>{
+ render(<main><h1>Records</h1><LoadingState/><EmptyState/></main>);
+ expect(screen.getAllByRole('heading')).toHaveLength(1);
+ expect(screen.getByRole('status')).toHaveTextContent('Loading');
+});

@@ -99,3 +99,5 @@ export {
 } from "lucide-react";
 export {Icon} from "./icon";
 export type {IconComponent, IconProps} from "./icon";
+
+export {Activity, AlertTriangle, ArrowRightLeft, ArrowUpRight, Ban, Bookmark, Boxes, Calendar, CalendarCheck2, CalendarClock, CalendarDays, CalendarPlus, CalendarX2, ClipboardCheck, ClipboardList, Clock, FileSignature, FileText, Footprints, Globe, Handshake, HeartPulse, Hospital, IdCard, Layers, LayoutGrid, List, MapPin, Network, PenLine, Phone, Pill, PlayCircle, ReceiptText, ShieldPlus, ShieldQuestion, Stethoscope, UserPlus, UserRoundX, Users, Wallet, Wrench, XCircle} from "lucide-react";

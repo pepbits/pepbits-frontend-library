@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **phases 0–3, phase 4a priorities 1–2, phase 4b generic engines, phase 5 priorities 1–6 and phase 5b AI/preferences/login implemented; phase 6a showcase implemented with a temporary frame (full shell frame, shell and AI pages follow). Priority 3 patterns and the remaining phase 6 demos onward remain future work.** Revised 23 October 2026 against `main` `a5f49fb`. See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status), [Phase 4b](#phase-4b-status), [Phase 5](#phase-5-status) and [Phase 5b](#phase-5b-status). Phases 1–5b follow the owner's copy-only decision; consumer migration and publishing remain future work.
+Status: **phases 0–3, phase 4a priorities 1–2, phase 4b generic engines, phase 5 priorities 1–6 and phase 5b AI/preferences/login implemented; phase 6a showcase implemented with a temporary frame (full shell frame, shell and AI pages follow). Phase 6b-1 adds the independent healthcare scaffold, Suite core and clinical subset; the standalone composer/recorder and subsequent healthcare modules remain deferred. Priority 3 patterns and the remaining phase 6 demos onward remain future work.** Revised 23 October 2026; phase 6b-1 uses a separate worktree from `main` `88f5555`. See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status), [Phase 4b](#phase-4b-status), [Phase 5](#phase-5-status) [Phase 5b](#phase-5b-status) and [Phase 6b](#phase-6b-status). Phases 1–5b follow the owner's copy-only decision; consumer migration and publishing remain future work.
 
 ## Summary
 
@@ -224,15 +224,15 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-config` product definitions (clinical, pharmacy, RCM, school…) | the matching `demo-apps/*` |
 | `erp-data` records/editor, shared drafts/center, CSV import, approvals, record panels; `erp-config` draft policy | Copied to `packages/data` in phase 3; host request callbacks, structured failures and additive volatile memory transport |
 | `erp-data` report-data and mock datasets | Not copied: branch metrics and registry-driven product data belong in phase 6 demos |
-| `erp-data` product adapters (clinic billing, triage, OP registration…) | the matching `demo-apps/*/adapters` |
+| `erp-data` product adapters (clinic billing, triage, OP registration…) | Healthcare adapters ported to `demo-apps/healthcare/src/adapters` in 6b-1; remaining products deferred |
 | `erp-screens` record/layout, worklist, records/forms, template engines, renderer | Copied to `packages/page-engines` in 4b with typed configuration/adapters and renderer registration; no product/showcase imports |
 | `erp-screens` approvals, drafts, imports/options/worker | Copied to `packages/patterns` priority 2 during 4b; lower-layer data ports and explicit host inputs |
 | `erp-screens` standalone reports, dashboard, inbox, billing | Product data/registries remain embedded; phase 6 matching demos, with reusable template equivalents already in page-engines |
 | `erp-screens` DCP designer, label printing, device and identity screens, spreadsheet | Deferred patterns work; no Library demo pages copied |
 | `erp-screens` DCP fields, lifecycle, master transfer, pricing expression input | Copied to `packages/patterns` in phase 4a; mandatory phase 4a exports complete |
 | `erp-screens` record page and generic record layout | Copied to `packages/page-engines` in 4b (used by products; see [What products import today](#what-products-import-today)) |
-| `erp-screens` patient query (`ClinicalPatientWorkspace`) | Healthcare repository, `frontend/packages/healthcare-ui` |
-| `erp-screens` other product screens (clinical, consultation, billing, OP registration, care pages) | `demo-apps/healthcare` |
+| `erp-screens` patient query (`ClinicalPatientWorkspace`) | Demo copy in `demo-apps/healthcare/src/modules/clinical-templates` in 6b-1; Healthcare product repository copy remains a separate step |
+| `erp-screens` other product screens (clinical, consultation, billing, OP registration, care pages) | Clinical templates/triage/clinical-consultation/comprehensive/OP consultation/registration/billing/care/document ported in 6b-1; standalone `consultation` composer/recorder deferred; [source map](../../demo-apps/healthcare/source-mapping.md) |
 | `erp-screens` page library | Recreated as fictional typed engine examples in `demo-apps/showcase`; product launchers excluded |
 | `erp-screens/library` catalog, demos and reference pages | Showcase catalog, individual example files, Foundations and policy playground |
 | `erp-screens/templates/template-library.tsx` and example generators | Showcase template selector and source-identical snippet generator |
@@ -247,7 +247,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-screens/src/login` | Copied in phase 5b to shell `./login`; platform session and host brand, no demo accounts |
 | `registration-wizard` | generic stepper and wizard → `packages/patterns/wizard`; Orvia screens → `demo-apps/onboarding` |
 | `reference-host` | replaced by demo-app routing; the module contract moves to `packages/shell` |
-| `reference-healthcare-suite`, `lis1`, `lis2`, `ris1`, `diagnostics`, `pharmacy`, `medband`, `medslot`, `rcm`, `surgisuite`, `teleconsult`, `quality` | `demo-apps/healthcare/src/modules/*` |
+| `reference-healthcare-suite`, `lis1`, `lis2`, `ris1`, `diagnostics`, `pharmacy`, `medband`, `medslot`, `rcm`, `surgisuite`, `teleconsult`, `quality` | Suite static core ported in 6b-1; RCM workspaces and the other product modules remain later healthcare runs |
 | `reference-erp1`, `reference-erp2`, `reference-keystone-core` | `demo-apps/erp/src/modules/*` |
 | `reference-school` | `demo-apps/school` |
 | `reference-reports` | `demo-apps/reports` |
@@ -501,3 +501,11 @@ Paths that ports must update, counted on `main` `01b6578`:
 3. **Package names.** Confirm `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `patterns`, `page-engines`, `shell`, `data`, `platform`, `ai`, `testing`.
 4. **Component docs — decided for phase 6a.** Standalone custom gallery with snippets generated from executable example files.
 5. **Shim lifetime.** One library release after the last consumer moves, or a fixed date.
+
+### Phase 6b status
+
+Phase **6b-1** implements the independent `@pepbits-demo/healthcare` Next.js scaffold, full shared shell/login/preferences, API-backed preferences/localization and Healthcare Suite core plus clinical screens. There are 37 static destinations, with patient/encounter/master and patient-specific clinical deep links. Generic master layouts, tables, tabs, exports and notifications use public engines/components; the small CollectionView addition, icon exports and state-title correction are listed in the [release record](../releases/unreleased/restructure-phase-6b-1-2026-10-23.md). See the [app guide](../../demo-apps/healthcare/README.md), [source mapping](../../demo-apps/healthcare/source-mapping.md) and [feature contract](../features/healthcare-demo.md).
+
+This is an implemented subset with local test/build/HTTP/browser evidence, not a deployment or clinical acceptance. The standalone four-layer consultation composer and ambient recorder remain deferred. Full-shell accessibility requires the protected profile-button naming follow-up; exact verification outcomes remain in the record. ClinicalPatientWorkspace is present as a demo module; moving the product copy into the Healthcare repository is separate work.
+
+Remaining healthcare runs add LIS/RIS/diagnostics, pharmacy, RCM, teleconsult, quality, SurgiSuite and MedBand/MedSlot. The mock-api move, consumer migration, publication and original workspace removal remain later phases. This run does not modify the backend, original desktop workspace, shell/AI packages or showcase; it is a separate worktree from main `88f5555` and does not commit or push.

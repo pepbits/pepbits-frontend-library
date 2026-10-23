@@ -1,5 +1,7 @@
 # Enterprise frontend documentation
 
+- [Independent healthcare demo](features/healthcare-demo.md): phase 6b-1 local app and API verification; no deployment or clinical acceptance.
+
 - [Independent showcase](features/showcase.md): public-package gallery, generated examples and an in-memory preference/policy playground.
 
 This repository provides reusable desktop-first frontend pages and components for ERP, healthcare, school and other SaaS applications. Start here for user instructions, integration guidance, development rules and release evidence.
