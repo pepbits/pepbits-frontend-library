@@ -22,6 +22,7 @@ describe.each(scenarios)('$name',scenario=>{
   const {container}=render(<HealthcareProviders apiBaseUrl="/api" request={mock.request} session={fixtureSession} navigation={navigation}><HealthcarePage target={target}/><DensityProbe/></HealthcareProviders>);
   await waitFor(()=>expect(container.querySelector('[data-page-id]')).toBeInTheDocument(),{timeout:10000});
   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50));});
+  if(page.id.startsWith('reference-rcm'))await waitFor(()=>expect(container.querySelector('[data-rcm-stage]')).toBeInTheDocument());
   const content=container.querySelector('.healthcare-page') as HTMLElement;
   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).toBeNull());
   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim().length).toBeGreaterThan(15);

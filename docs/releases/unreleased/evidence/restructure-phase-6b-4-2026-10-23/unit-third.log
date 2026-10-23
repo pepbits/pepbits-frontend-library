@@ -1,0 +1,74 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/rcm src/adapters/rcm.test.ts src/navigation.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+12:08:54 PM [vite] (client) warning: Duplicate "aria-label" attribute in JSX element
+53 |        if ((f.options?.length ?? 0) <= 8)
+54 |          return (
+55 |  ...="flex min-h-9 flex-wrap items-center gap-1.5" role="group" aria-label={f.label}>
+   |                                                                 ^
+56 |              {f.options?.map((o) => {
+57 |                const on = vals.includes(o.value);
+
+  Plugin: vite:esbuild
+  File: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/rcm/components/form/FieldInput.tsx
+ ✓ src/modules/rcm/pages.test.tsx (33 tests) 8138ms
+   ✓ registry worklists > KPI cards, status chips, Overdue and search drive the list query, and a second click on a card clears it  708ms
+   ✓ record actions > runs a plain action once: a double click posts one write, with the row version and an idempotency key, and the pane shows the server's record  325ms
+   ✓ record actions > collects a required reason through the shared Modal, keeps it and the server's field errors when refused, and sends it on success  343ms
+   ✓ record actions > edits an editable record in place and saves with the row version  445ms
+   ✓ layouts > board: one column per stage with every card, asks for the server's largest page, and opens a card in the side panel  347ms
+   ✓ layouts > keyboard: N opens the New drawer, arrows move the selection, / focuses search; none of it while the host's shortcut preference is off  443ms
+   ✓ layouts > shows the server's list error with a retry instead of an empty list  721ms
+   ✓ layouts > formats dates and amounts with the host's preferences, not the source's fixed en-GB / en-US  813ms
+ ✓ src/modules/rcm/module.test.tsx (14 tests) 2178ms
+   ✓ ReferenceRcmModule host contract > authenticates through the host session only: /meta then scoped page data via host.request, no actor header, no storage, no /api  335ms
+   ✓ scope filter > lists the source's SAR/AED scopes, refetches with the chosen filter and never changes the host scope or branch header  300ms
+ ✓ src/modules/rcm/copy.test.ts (5 tests) 530ms
+ ✓ src/modules/rcm/components/ui/dialog.test.tsx (5 tests) 228ms
+ ✓ src/navigation.test.ts (46 tests) 47ms
+ ✓ src/modules/rcm/api.test.ts (9 tests) 22ms
+ ✓ src/modules/rcm/styles.test.ts (9 tests) 25ms
+ ✓ src/modules/rcm/preferences.test.tsx (2 tests) 630ms
+   ✓ keeps an unsaved editor mounted while accepted presentation and shortcut preferences change  454ms
+ ✓ src/adapters/rcm.test.ts (9 tests) 22ms
+ ❯ src/modules/rcm/routes.test.ts (8 tests | 1 failed) 19ms
+   ✓ RCM routes > exposes the four source dashboard routes and the one dynamic worklist route 3ms
+   ✓ RCM routes > resolves the dashboards and the dynamic resource page, keeping the source query parameters 3ms
+   ✓ RCM routes > keeps a question mark inside the query and decodes a percent-encoded key 1ms
+   ✓ RCM routes > rejects traversal, encoded separators, control characters, odd segment counts and unknown pages 1ms
+   ✓ RCM routes > builds deep links with the source's query parameters, encoding the key 2ms
+   ✓ RCM routes > follows only module routes for links the server supplies 0ms
+   ✓ RCM routes > derives the host navigation from the backend registry: every category's pages, in registry order, with the source hrefs 2ms
+   × RCM routes > covers the source registry: 4 dashboards + 36 resources, every one routable 6ms
+     → The URL must be of scheme file
+ ✓ src/modules/rcm/metadata-localization.test.ts (1 test) 5ms
+ ↓ src/modules/rcm/browser-parity.test.ts (2 tests | 2 skipped)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/rcm/routes.test.ts > RCM routes > covers the source registry: 4 dashboards + 36 resources, every one routable
+TypeError: The URL must be of scheme file
+ ❯ src/modules/rcm/routes.test.ts:67:18
+     65| 
+     66|   it("covers the source registry: 4 dashboards + 36 resources, every o…
+     67|     const text = readFileSync(SOURCE_REGISTRY, "utf8");
+       |                  ^
+     68|     const resources = [...text.matchAll(/^ {4}key: '([a-z-]+)', label:…
+     69|     expect(resources).toHaveLength(36);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 10 passed | 1 skipped (12)
+      Tests  1 failed | 140 passed | 2 skipped (143)
+   Start at  12:08:51
+   Duration  33.70s (transform 2.26s, setup 2.23s, collect 5.44s, tests 11.84s, environment 7.21s, prepare 1.27s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

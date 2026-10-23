@@ -1,6 +1,6 @@
 # Healthcare demo
 
-Private `@pepbits-demo/healthcare`: Next.js 16.3.3, React 19.2 and Tailwind 4.1. Phases 6b-1, 6b-2 and 6b-3 provide the Healthcare Suite core, clinical workspaces and LIS1/LIS2/RIS1 diagnostics and Pharmacy-1 through public `@pepbits/*` exports. All patient and operational data is fictional and comes from the existing demo HTTP API. This is a software demonstration, **not clinical acceptance**, a production health record system or a deployed release.
+Private `@pepbits-demo/healthcare`: Next.js 16.3.3, React 19.2 and Tailwind 4.1. Phases 6b-1 through 6b-4 provide the Healthcare Suite core, clinical workspaces and LIS1/LIS2/RIS1 diagnostics, Pharmacy-1 and RCM Workspace through public `@pepbits/*` exports. All patient and operational data is fictional and comes from the existing demo HTTP API. This is a software demonstration, **not clinical acceptance**, a production health record system or a deployed release.
 
 ## Run locally
 
@@ -37,7 +37,7 @@ Build before integration. `HEALTHCARE_BUILD_DIR` optionally isolates Next output
 
 ## Modules and routes
 
-There are **105 menu destinations**, plus patient/encounter/master creation and record links and patient-specific clinical links. [Source mapping](source-mapping.md) records the port and exclusions. [Navigation](src/navigation.ts) is the route/page registry; [renderer](src/renderer.tsx) registers suite, clinical, diagnostic, pharmacy and preferences engines. Unknown paths show a not-found state. The root uses the effective default module; deep links retain their destination.
+There are **145 menu destinations**, plus patient/encounter/master creation and record links and patient-specific clinical links. [Source mapping](source-mapping.md) records the port and exclusions. [Navigation](src/navigation.ts) is the route/page registry; [renderer](src/renderer.tsx) registers suite, clinical, diagnostic, pharmacy, RCM and preferences engines. Unknown paths show a not-found state. The root uses the effective default module; deep links retain their destination.
 
 | Module | Destinations and implementation |
 | --- | --- |
@@ -51,6 +51,7 @@ There are **105 menu destinations**, plus patient/encounter/master creation and 
 | LIS2 | `/lis2`: 22 laboratory destinations, plus patient/order/master/sample details and print pages |
 | RIS1 | `/ris1`: 14 radiology destinations, plus patient/order/reading details, DICOM viewer and report/invoice print pages |
 | Pharmacy-1 | `/pharmacy`: all thirteen Phial destinations, including query links to prescriptions, patients, stock, orders, sales, purchases, authorizations, claims and remittances |
+| RCM Workspace | `/rcm`: forty destinations in eight categories, plus creation, record, status, search and overdue query links |
 | Settings | `/preferences`, public shell preferences page; shared shell login appears before authentication |
 
 `src/domain` owns product types/configuration. `src/adapters` owns the unchanged API contracts. No runtime import reaches an old package, another demo or a library's internal source. The Suite's generic master renderer, table renderer, tabs, toasts and CSV writer were replaced with public engines/components. Small missing library capabilities are documented in the release record.
@@ -65,9 +66,9 @@ ShellProvider receives app-owned healthcare navigation and the authenticated bra
 
 ## Limits and verification
 
-The [feature guide](../../docs/features/healthcare-demo.md) defines flows and case IDs. The [6b-3 record](../../docs/releases/unreleased/restructure-phase-6b-3-2026-10-23.md) records Pharmacy and the latest verification. The [6b-2 record](../../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) records the diagnostics increment and rechecks the earlier shell finding. The [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) contains exact counts, source identity and known failures. Mocked component tests use synthetic HTTP responses; a separate script signs in, searches, opens a record, saves/reloads a consultation draft and runs browser axe over routes. These checks do not establish medical, payer, accessibility-assistive-technology or native executable acceptance.
+The [feature guide](../../docs/features/healthcare-demo.md) defines flows and case IDs. The [6b-4 record](../../docs/releases/unreleased/restructure-phase-6b-4-2026-10-23.md) records RCM and the latest verification. The [6b-3 record](../../docs/releases/unreleased/restructure-phase-6b-3-2026-10-23.md) records Pharmacy. The [6b-2 record](../../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) records the diagnostics increment and rechecks the earlier shell finding. The [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) contains exact counts, source identity and known failures. Mocked component tests use synthetic HTTP responses; a separate script signs in, searches, opens a record, saves/reloads a consultation draft and runs browser axe over routes. These checks do not establish medical, payer, accessibility-assistive-technology or native executable acceptance.
 
-ClinicalPatientWorkspace is ported here as a demo module. Moving its product copy into the Healthcare repository is a separate step. The standalone four-layer `consultation` composer and ambient speech recorder are deferred; the compact clinical, OP and comprehensive consultation workspaces are included. No speech provider or AI credentials are configured. RCM workspaces, teleconsult, quality, SurgiSuite and MedBand/MedSlot remain later healthcare runs. Suite hospital/pharmacy billing is the existing core workflow, not those later product modules.
+ClinicalPatientWorkspace is ported here as a demo module. Moving its product copy into the Healthcare repository is a separate step. The standalone four-layer `consultation` composer and ambient speech recorder are deferred; the compact clinical, OP and comprehensive consultation workspaces are included. No speech provider or AI credentials are configured. Teleconsult, quality, SurgiSuite and MedBand/MedSlot remain later healthcare runs. Suite hospital/pharmacy billing is the existing core workflow, not those later product modules.
 
 Unsaved clinical edits, explicit completion, API validation/conflicts and retry identity retain their original product behavior. Suite patient/master editors preserve input on failed saves; the Suite API does not provide the generic record engine's versioned draft contract, so durable master drafts and cross-window concurrency acceptance are not claimed. Routed web pages replace the old Suite master tab manager; no native or detached-window behavior is claimed. Full-shell and page-content axe results are reported separately in the latest delivery record.
 
@@ -100,3 +101,13 @@ Effective theme, font/scales/radius, table density/stripes/wrapping/sticky heade
 All eight original test files (63 cases) are retained with public-host adaptations, plus HTTP/path, mounted preference/editor, failure/retry, route/RTL/axe tests. The integration driver reports UI workflows separately from direct HTTP commands. Canonical copy remains backend-owned; inherited aliases `Configuration` and `Pharmacy, people, appearance` have no catalog entry in any of the four languages and fall back to their source text. Native-speaker/domain review remains pending.
 
 Pharmacy lookup adapters supply product endpoints and row content to public `@pepbits/ui` AsyncLookup. The shared control owns keyboard selection, popup semantics and stale-read cancellation; the app continues to own its authenticated transport.
+
+## RCM Workspace — phase 6b-4
+
+Choose **RCM Workspace** in the header. Its forty destinations keep the eight original categories: Front office, Charges and documents, Money, Insurance, Receivables, Coding and models, Accounting and Cross-cutting. The four dashboards are `/rcm`, `/rcm/aging`, `/rcm/reports` and `/rcm/approvals`; the thirty-six worklists are `/rcm/w/{resource}`. [Navigation configuration](src/modules/rcm/navigation.json) lists every destination. Query links preserve `new=1`, `open=<id>|first`, `q`, `status` and `overdue=1`. Unknown resources and malformed paths show not-found.
+
+The module composes public TemplateFields for creation, edits and action inputs, CollectionView for resource lists, AsyncLookup for reference choices, Source* native controls and shared cards/tables. Product boards, charts, lifecycle maps, financial document geometry and command-palette orchestration remain demo components. `src/adapters/rcm.ts` binds the unchanged `/reference-modules/rcm/api/...` API to the configured authenticated request. No second session store, origin, business-data fallback or library-internal import is added.
+
+Use the palette to open an invoice by reference, issue an eligible draft, register a receipt and allocate it, or prepare a credit note for a second person to approve. Claims support simulated submission, acknowledgements, denials and correction. The backend owns row versions, durable idempotency, actor attribution, independent approvals and branch isolation. Recoverable failures retain editor values; ambiguous command retries reuse their operation key. Browser disabled states are presentation only. Operational SAR/AED scope filters narrow the reference data without changing authenticated branch authority.
+
+Effective host typography, theme, form/result scales, radius, table density/stripes/wrapping/sticky headers, page size, formatting, motion and shortcuts apply. Board queries retain the API's 300-record maximum to display all stages; paginated list queries follow the host page-size setting. This source has no spreadsheet/designer/device workflow. Financial documents are on-screen previews; no physical printing, live payer/bank/accounting service, certified DRG, financial acceptance, native executable or human language/domain acceptance is claimed. See the [6b-4 record](../../docs/releases/unreleased/restructure-phase-6b-4-2026-10-23.md) for exact verification and limits.

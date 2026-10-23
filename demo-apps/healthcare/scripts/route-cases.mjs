@@ -13,3 +13,6 @@ for(const variant of diagnosticModules){
 
 const pharmacy=readFileSync(new URL('src/modules/pharmacy/routes.ts',root),'utf8').split('export const pharmacyNavigation')[0];
 routes.push(...[...pharmacy.matchAll(/path: "([^"]+)", title:/g)].map(match=>'/pharmacy'+(match[1]==='/'?'':match[1])));
+
+const rcm=JSON.parse(readFileSync(new URL('src/modules/rcm/navigation.json',root),'utf8'));
+routes.push(...rcm.flatMap(category=>category.pages.map(page=>'/rcm'+(page.path==='/'?'':page.path))));

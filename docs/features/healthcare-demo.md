@@ -1,10 +1,10 @@
 # Independent healthcare demo
 
-Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-3 delivery record](../releases/unreleased/restructure-phase-6b-3-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
+Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-4 delivery record](../releases/unreleased/restructure-phase-6b-4-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
 
 ## User problem and outcome
 
-Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
+Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. Phase 6b-4 adds all forty RCM Workspace pages and their query workflows. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
 
 ## User and administrator flows
 
@@ -50,7 +50,7 @@ Route matrices cover default, Arabic RTL, reduced motion and locked density. Jsd
 | HCD-12 | Pharmacy command replay, structured failure/retry, mounted preferences and cache scope |
 | HCD-06 | Public package boundaries, forced root CI, builds, documentation and protected-path/source checks |
 
-Exact case/file counts and failures are in the delivery record. Later runs cover RCM, teleconsult, quality, SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
+Exact case/file counts and failures are in the delivery record. Later runs cover Teleconsult, quality, SurgiSuite and MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
 
 ## Operations and support
 
@@ -77,3 +77,21 @@ The port configures typed TemplateFields and CollectionView and uses public UI, 
 All thirteen destinations receive default, Arabic RTL, reduced-motion and locked-density page-content axe coverage. Original pharmacy tests are preserved with explicit adaptation of generation checks to frozen CSS provenance/canonical alias checks, and notification assertions to the shared ScreenHost. The release record separates mocked tests, real HTTP/UI workflows and direct API commands, with exact counts and retained failures. The backend catalog still lacks the two inherited aliases `Configuration` and `Pharmacy, people, appearance`; English fallback is explicit. Demonstration only, not clinical/financial, native-language, assistive-technology or native executable acceptance.
 
 Pharmacy lookup adapters supply product endpoints and row content to public `@pepbits/ui` AsyncLookup. The shared control owns keyboard selection, popup semantics and stale-read cancellation; the app continues to own its authenticated transport.
+
+## RCM Workspace increment
+
+Phase 6b-4 adds all forty RCM reference pages under `/rcm`, keeping eight sidebar categories and the original record/filter query links. The source inventory is [listed in the app](../../demo-apps/healthcare/src/modules/rcm/navigation.json); expected business behavior comes from the [RCM reference guide](rcm-reference.md). The [6b-4 delivery record](../releases/unreleased/restructure-phase-6b-4-2026-10-23.md) identifies the local source and test boundary.
+
+| Case | User flow and verification |
+| --- | --- |
+| HCD-13 | Choose RCM Workspace, visit forty sidebar destinations, open a reference with the command palette; navigation and API registry agree across eight categories |
+| HCD-14 | Issue an eligible invoice, reload its financial document, create a receipt with shared fields/lookups and allocate it to an open invoice |
+| HCD-15 | Prepare a credit note, retain retry identity, reject stale edits and same-person approval, issue through a second authenticated person, inspect audit and enforce read-only roles/branch isolation |
+| HCD-16 | Submit a claim, record simulated acknowledgement/denial/correction, use currency scope and approvals; real HTTP workflows are distinguished from UI actions |
+| HCD-17 | Default, Arabic RTL, reduced motion and tenant-locked density route/axe matrix; mounted editors retain input during accepted preference changes; browser presentation and focus checks |
+
+Creation/edit/action forms configure TemplateFields; metadata-driven worklists configure CollectionView. Product financial documents, boards, charts and lifecycle/palette behavior stay in `src/modules/rcm`. Public AsyncLookup and Source* controls are reused. SourceDialog provides generic focus semantics for the original specialized overlay frames; it is exported from components with lifecycle tests. Host settings remain authoritative for the composed presentation, including the default settings.
+
+The configured HTTP adapter supplies existing product/module/branch routing metadata. Authenticated server context establishes permissions, trusted actors and transaction isolation. Data caches are scoped and disposed on identity changes; obsolete reads are aborted/fenced. Commands carry idempotency keys and row versions. Validation failures preserve values; stale-version conflicts reload the current record and explain the conflict. Independent approval failures remain visible. Transient editor state is not a new durable draft service.
+
+Fictional software demonstration only. Payer, payout, accounting and DRG outcomes remain API simulations. Export/device/designer adoption is not applicable to this source workflow. Native, clinical/financial, assistive-technology and human language/domain review remain outside local test acceptance. Original applications and historical evidence remain intact.

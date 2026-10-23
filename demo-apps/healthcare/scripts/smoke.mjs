@@ -1,3 +1,5 @@
+import {rcmPresentation as checkRcmPresentation} from './rcm-presentation.mjs';
+import {rcmFlows} from './rcm-flows.mjs';
 import {pharmacyFlows} from './pharmacy-flows.mjs';
 import {chromium} from 'playwright';
 import {createRequire} from 'node:module';
@@ -9,18 +11,19 @@ const resultPath=process.env.HEALTHCARE_RESULT??'/tmp/phase6b-browser.json';
 const fixtureCapture=process.env.HEALTHCARE_CAPTURE;
 const routeFilter=process.env.HEALTHCARE_ROUTE_FILTER;
 
-const flows=[],createdRoutes=[];
+const flows=[],createdRoutes=[],rcmPresentation=[];
 const fixtureSource=readFileSync(new URL('../../../dummy-api/server.mjs',import.meta.url),'utf8');
 const secret=fixtureSource.match(/username:\s*"admin",\s*password:\s*"([^\"]+)"/)[1];
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1000}}),checks=[],errors=[],consoleErrors=[],responses=[],captures=fixtureCapture&&existsSync(fixtureCapture)?JSON.parse(readFileSync(fixtureCapture,'utf8')):{},pending=[];
+page.setDefaultTimeout(30000);page.setDefaultNavigationTimeout(60000);
 function scrub(value){if(Array.isArray(value))return value.map(scrub);if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,/password|secret|token|api.?key/i.test(key)&&item?'[redacted]':scrub(item)]));return value;}
 let current='login',selectedDiagnostic='';
 async function diagnosticMenu(route){
  const variant=route.split('/')[1],side=page.locator('aside[data-tour=sidebar]');
  if(selectedDiagnostic!==variant){
   await page.locator('header [data-tour=module] button').first().click();
-  await page.getByRole('listbox').getByRole('option',{name:new RegExp(variant==='pharmacy'?'^Pharmacy\\b':'^'+variant.toUpperCase()+'(?:\\s|$)')}).click();
+  await page.getByRole('listbox').getByRole('option',{name:new RegExp(variant==='rcm'?'^RCM(?:\\s|$)':variant==='pharmacy'?'^Pharmacy\\b':'^'+variant.toUpperCase()+'(?:\\s|$)')}).click();
   await page.locator('[data-reference-module="'+variant+'"]').waitFor();selectedDiagnostic=variant;
  }
  const toggle=side.locator('button[aria-expanded]').first();
@@ -50,7 +53,7 @@ try{
  await page.goto(base+'/patient-query',{timeout:120000});await page.locator('input[type=password]').waitFor({timeout:60000});
  await page.locator('input[autocomplete=username]').fill('admin');await page.locator('input[type=password]').fill(secret);
  await page.getByRole('button',{name:/sign in/i}).click();await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
- if(process.env.HEALTHCARE_FLOW==='1'){
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('suite'))){
   await page.getByRole('textbox',{name:/Search/i}).first().fill('Alex');await page.getByRole('button',{name:'Search',exact:true}).click();
   await page.getByText('Alex Morgan',{exact:true}).first().waitFor();flows.push({id:'HCD-02',result:'patient search returned the fictional patient'});
   await page.goto(base+'/patient-record/PT-0001');await page.getByRole('heading',{name:'Alex Morgan'}).waitFor({timeout:60000});flows.push({id:'HCD-03',result:'patient record opened'});
@@ -61,7 +64,7 @@ try{
   await page.goto(base+'/suite/encounters/new?patientId=PT00001');
   await page.getByRole('combobox',{name:/^Department/}).selectOption('D001');await page.getByRole('combobox',{name:/^Treating provider/}).selectOption('P001');await page.getByRole('radio',{name:'Self-pay',exact:true}).click();
   const encounterSaved=page.waitForResponse(response=>response.url().endsWith('/healthcare-suite/api/encounters')&&response.request().method()==='POST');
-  await page.getByRole('button',{name:/Create outpatient encounter/i}).click();const encounterResponse=await encounterSaved;if(!encounterResponse.ok())throw new Error('Encounter create failed '+encounterResponse.status());const encounter=await encounterResponse.json();createdRoutes.push('/suite/encounters/'+encounter.id);flows.push({id:'HCD-03-encounter',result:'Suite encounter created through the UI for a fictional patient'});
+  await page.getByRole('button',{name:/Create outpatient encounter/i}).click();const encounterResponse=await encounterSaved;if(!encounterResponse.ok())throw new Error('Encounter create failed '+encounterResponse.status());const encounter=await encounterResponse.json();await page.waitForURL(base+'/suite/encounters/'+encounter.id,{timeout:60000});await page.getByRole('heading',{name:new RegExp(encounter.encNo)}).first().waitFor({timeout:60000});createdRoutes.push('/suite/encounters/'+encounter.id);flows.push({id:'HCD-03-encounter',result:'Suite encounter created through the UI for a fictional patient'});
  }
  if(process.env.HEALTHCARE_FLOW==='1'&&!routeFilter){
   for(const variant of ['lis1','lis2','ris1']){
@@ -101,23 +104,25 @@ try{
    flows.push({id:'HCD-07-'+variant,result:'Patient registered through UI and real HTTP, searchable in own branch, absent in other branch'});
   }
  }
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('rcm'))){current='/rcm';try{await rcmFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(JSON.stringify({error:error.message,errors,consoleErrors,responses,rendered:await page.locator('body').innerText()}));if(!await page.locator('[data-rcm-stage]').count())throw error;}}
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('pharmacy'))){current='/pharmacy';try{await pharmacyFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.message);}}
  for(const route of [...routes,...(process.env.HEALTHCARE_EXAMPLES==='1'?examples:[]),...createdRoutes].filter(route=>!routeFilter||new RegExp(routeFilter).test(route))){
   current=route;
   try{
-   if(/^\/(lis1|lis2|ris1|pharmacy)(?:\/|$)/.test(route)&&routes.includes(route))await diagnosticMenu(route);else await page.goto(base+route,{timeout:120000});await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
+   if(/^\/(lis1|lis2|ris1|pharmacy|rcm)(?:\/|$)/.test(route)&&routes.includes(route))await diagnosticMenu(route);else await page.goto(base+route,{timeout:120000});await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
    await page.waitForTimeout(750);await page.waitForLoadState('networkidle',{timeout:30000});await page.waitForFunction(()=>!Array.from(document.querySelectorAll('[role=status], [aria-busy=true]')).some(node=>node.textContent.includes('Loading')||node.getAttribute('aria-busy')==='true'),{},{timeout:30000});await page.waitForTimeout(300);await page.evaluate(()=>document.fonts.ready);
    await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
    const axe=await page.evaluate(async()=>{const result=await window.axe.run(document);const page=await window.axe.run(document.querySelector('.healthcare-page'));return {pageViolations:page.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,summary:n.failureSummary}))})),violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,summary:n.failureSummary}))})),incomplete:result.incomplete.length};});
-   checks.push({route,...axe});if(process.env.HEALTHCARE_SCREENSHOTS_DIR&&['/suite','/patient-record/PT-0001','/clinical-consultation/PT-0001','/lis1','/lis2','/ris1','/pharmacy','/pharmacy/workbench','/pharmacy/counter'].includes(route)){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.HEALTHCARE_SCREENSHOTS_DIR+'/'+route.slice(1).replaceAll('/','-')+'.png',fullPage:true});}console.log(JSON.stringify({route,violations:axe.violations.map(v=>v.id)}));
+   checks.push({route,...axe});if(route.startsWith("/rcm"))rcmPresentation.push({name:"page "+route,failures:axe.violations.map(v=>v.id)});if(process.env.HEALTHCARE_SCREENSHOTS_DIR&&['/suite','/patient-record/PT-0001','/clinical-consultation/PT-0001','/lis1','/lis2','/ris1','/pharmacy','/pharmacy/workbench','/pharmacy/counter','/rcm','/rcm/w/invoices','/rcm/approvals'].includes(route)){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.HEALTHCARE_SCREENSHOTS_DIR+'/'+route.slice(1).replaceAll('/','-')+'.png',fullPage:true});}console.log(JSON.stringify({route,violations:axe.violations.map(v=>v.id)}));
   }catch(error){checks.push({route,failure:error.message});console.log(JSON.stringify({route,failure:error.message}));}
  }
+ if(!routeFilter||routeFilter.includes('rcm'))rcmPresentation.push(...await checkRcmPresentation({page,base}));
  }catch(error){checks.push({route:current,failure:error.message,rendered:await page.evaluate(()=>({path:location.pathname,pageId:document.querySelector('[data-page-id]')?.getAttribute('data-page-id'),headings:Array.from(document.querySelectorAll('.healthcare-page h1,.healthcare-page h2')).map(n=>n.textContent),inputs:Array.from(document.querySelectorAll('.healthcare-page input')).map(n=>({type:n.type,placeholder:n.placeholder}))})).catch(()=>null)});process.exitCode=1;console.error(error.message);}
  finally{
  await Promise.all(pending);
  if(fixtureCapture){mkdirSync(new URL('../src/test/fixtures/',import.meta.url),{recursive:true});writeFileSync(fixtureCapture,JSON.stringify(captures,null,2)+'\n');}
- const result={flows,scope:'Local browser against the unchanged synthetic demo HTTP API',checks,errors,consoleErrors,responses};
+ const result={flows,rcmPresentation,scope:'Local browser against the unchanged synthetic demo HTTP API',checks,errors,consoleErrors,responses};
  writeFileSync(resultPath,JSON.stringify(result,null,2)+'\n');
- if(checks.some(c=>c.failure||c.violations.length)||errors.length||consoleErrors.length||responses.length)process.exitCode=1;
+ if(rcmPresentation.some(c=>c.failures.length)||checks.some(c=>c.failure||c.violations.length)||errors.length||consoleErrors.length||responses.length)process.exitCode=1;
  await browser.close();
 }

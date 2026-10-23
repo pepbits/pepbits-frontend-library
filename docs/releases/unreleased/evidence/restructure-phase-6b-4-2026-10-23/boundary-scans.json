@@ -1,0 +1,357 @@
+{
+  "checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--stat",
+        "HEAD",
+        "--",
+        "desktop-clients",
+        "dummy-api",
+        "Jenkinsfile",
+        "deploy",
+        "run.sh",
+        "run_all.sh",
+        ".github"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short",
+        "--",
+        "desktop-clients",
+        "dummy-api",
+        "Jenkinsfile",
+        "deploy",
+        "run.sh",
+        "run_all.sh",
+        ".github"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "grep",
+        "-rnE",
+        "@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/",
+        "demo-apps/healthcare/src"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "sensitiveAndExternalScan": {
+    "command": [
+      "grep",
+      "-rnP",
+      "https?://(?!localhost|127\\.0\\.0\\.1|www\\.w3\\.org)[a-z0-9.-]+\\.[a-z]{2,}|Bearer [A-Za-z0-9]{10}|password\\s*[:=]\\s*['\"][^'\"]{4,}",
+      "demo-apps/healthcare/src",
+      "docs/releases/unreleased/evidence/restructure-phase-6b-4-2026-10-23"
+    ],
+    "exitCode": 0,
+    "stderr": ""
+  },
+  "matchedLines": 46,
+  "categories": {
+    "Preserved upstream CSS license/browser-fix comment; no network request": 44,
+    "Negative route-parsing fixture rejects an external URL; no network request": 1,
+    "FHIR coding-system identifier in a synthetic message; not a transport URL": 1
+  },
+  "matches": [
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 109,
+      "sha256": "39df50a703034e987501c4b51217d2e63718b6b05f2956894665a7e669f38236",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 111,
+      "sha256": "95f479df0fb6f420caa9e8c14bbdd27d81959dce6fddb11b229e5aefbaa5f964",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 112,
+      "sha256": "f446be8a158397c0c22e0ac56100f1e767b1d551628912a4f11c1ad012c9a5ac",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 163,
+      "sha256": "8046c6d9be748d72be30c510044e862f3c3dc6ea5530bef9dd3e2b2c4e8f9ee2",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 259,
+      "sha256": "fee00f1bfa30155b6adc01b667183d13d60fb5913fecb63f24b1be1bd39cd2d3",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 260,
+      "sha256": "ec7125f16606a69ed69c228682742dd478a3664051a4a37893fb181b630b2401",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 325,
+      "sha256": "b7c885c439ee6fd93d582b8f3b7953dacb7fd6714f509b3363c0fe830c9b083d",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 438,
+      "sha256": "759201b47871d57402ef0ce9b147302e5340f8ae441e64a2549c633e6658ba7e",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 465,
+      "sha256": "4f103fb10778dfcba57d5435278d5a78fb50550715b2ae143235cdbac7c49e97",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 466,
+      "sha256": "ea847ef9b251e5e44d384aff49ebfc3e578029d99549eedb8e0e83e76d0062f7",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis1/styles.css",
+      "line": 483,
+      "sha256": "6ac66150d1d8192f77175fec2780855c8699704ea2cc624f687e7ecf91adf2e2",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/routes.test.ts",
+      "line": 54,
+      "sha256": "df405b6a67d2658c0f3feb0c2aeeda8baf316f673a3150416b0e8311cc1eeb9f",
+      "justification": "Negative route-parsing fixture rejects an external URL; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 109,
+      "sha256": "dd093c01fee7d50dd9047d2d6da398802890333f0895eaf7ec79ee52632d13d0",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 111,
+      "sha256": "95f479df0fb6f420caa9e8c14bbdd27d81959dce6fddb11b229e5aefbaa5f964",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 112,
+      "sha256": "f446be8a158397c0c22e0ac56100f1e767b1d551628912a4f11c1ad012c9a5ac",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 159,
+      "sha256": "8046c6d9be748d72be30c510044e862f3c3dc6ea5530bef9dd3e2b2c4e8f9ee2",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 245,
+      "sha256": "fee00f1bfa30155b6adc01b667183d13d60fb5913fecb63f24b1be1bd39cd2d3",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 246,
+      "sha256": "ec7125f16606a69ed69c228682742dd478a3664051a4a37893fb181b630b2401",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 303,
+      "sha256": "b7c885c439ee6fd93d582b8f3b7953dacb7fd6714f509b3363c0fe830c9b083d",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 401,
+      "sha256": "759201b47871d57402ef0ce9b147302e5340f8ae441e64a2549c633e6658ba7e",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 427,
+      "sha256": "4f103fb10778dfcba57d5435278d5a78fb50550715b2ae143235cdbac7c49e97",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 428,
+      "sha256": "ea847ef9b251e5e44d384aff49ebfc3e578029d99549eedb8e0e83e76d0062f7",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/rcm/styles.css",
+      "line": 438,
+      "sha256": "6ac66150d1d8192f77175fec2780855c8699704ea2cc624f687e7ecf91adf2e2",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 109,
+      "sha256": "39df50a703034e987501c4b51217d2e63718b6b05f2956894665a7e669f38236",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 111,
+      "sha256": "95f479df0fb6f420caa9e8c14bbdd27d81959dce6fddb11b229e5aefbaa5f964",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 112,
+      "sha256": "f446be8a158397c0c22e0ac56100f1e767b1d551628912a4f11c1ad012c9a5ac",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 163,
+      "sha256": "8046c6d9be748d72be30c510044e862f3c3dc6ea5530bef9dd3e2b2c4e8f9ee2",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 259,
+      "sha256": "fee00f1bfa30155b6adc01b667183d13d60fb5913fecb63f24b1be1bd39cd2d3",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 260,
+      "sha256": "ec7125f16606a69ed69c228682742dd478a3664051a4a37893fb181b630b2401",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 325,
+      "sha256": "b7c885c439ee6fd93d582b8f3b7953dacb7fd6714f509b3363c0fe830c9b083d",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 438,
+      "sha256": "759201b47871d57402ef0ce9b147302e5340f8ae441e64a2549c633e6658ba7e",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 465,
+      "sha256": "4f103fb10778dfcba57d5435278d5a78fb50550715b2ae143235cdbac7c49e97",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 466,
+      "sha256": "ea847ef9b251e5e44d384aff49ebfc3e578029d99549eedb8e0e83e76d0062f7",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/ris1/styles.css",
+      "line": 483,
+      "sha256": "6ac66150d1d8192f77175fec2780855c8699704ea2cc624f687e7ecf91adf2e2",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 109,
+      "sha256": "39df50a703034e987501c4b51217d2e63718b6b05f2956894665a7e669f38236",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 111,
+      "sha256": "95f479df0fb6f420caa9e8c14bbdd27d81959dce6fddb11b229e5aefbaa5f964",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 112,
+      "sha256": "f446be8a158397c0c22e0ac56100f1e767b1d551628912a4f11c1ad012c9a5ac",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 163,
+      "sha256": "8046c6d9be748d72be30c510044e862f3c3dc6ea5530bef9dd3e2b2c4e8f9ee2",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 259,
+      "sha256": "fee00f1bfa30155b6adc01b667183d13d60fb5913fecb63f24b1be1bd39cd2d3",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 260,
+      "sha256": "ec7125f16606a69ed69c228682742dd478a3664051a4a37893fb181b630b2401",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 325,
+      "sha256": "b7c885c439ee6fd93d582b8f3b7953dacb7fd6714f509b3363c0fe830c9b083d",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 438,
+      "sha256": "759201b47871d57402ef0ce9b147302e5340f8ae441e64a2549c633e6658ba7e",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 465,
+      "sha256": "4f103fb10778dfcba57d5435278d5a78fb50550715b2ae143235cdbac7c49e97",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 466,
+      "sha256": "ea847ef9b251e5e44d384aff49ebfc3e578029d99549eedb8e0e83e76d0062f7",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/styles.css",
+      "line": 483,
+      "sha256": "6ac66150d1d8192f77175fec2780855c8699704ea2cc624f687e7ecf91adf2e2",
+      "justification": "Preserved upstream CSS license/browser-fix comment; no network request"
+    },
+    {
+      "path": "demo-apps/healthcare/src/modules/lis2/app/(app)/integration/console/page.tsx",
+      "line": 51,
+      "sha256": "30200ff0ff7bfe90af4dffb1e21282ce5271d4d49bed964878ba4684d83362a0",
+      "justification": "FHIR coding-system identifier in a synthetic message; not a transport URL"
+    }
+  ]
+}

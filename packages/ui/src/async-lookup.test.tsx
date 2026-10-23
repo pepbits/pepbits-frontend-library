@@ -31,3 +31,10 @@ it('does not query short values, isolates Escape and aborts requests on unmount'
  fireEvent.change(input,{target:{value:'ab'}});await screen.findByRole('option');fireEvent.keyDown(input,{key:'Escape'});expect(outer).not.toHaveBeenCalled();expect(screen.queryByRole('listbox')).toBeNull();
  view.unmount();expect(load.mock.calls[0]![1].aborted).toBe(true);
 });
+
+it('applies field identity/invalid state and cancels reads when a mounted field becomes disabled',async()=>{
+ const load=vi.fn(async(_q:string,_signal:AbortSignal)=>[row]);const view=render(<AsyncLookup {...props} id="reference" invalid loadOptions={load}/>);
+ const input=screen.getByRole('combobox');expect(input).toHaveAttribute('id','reference');expect(input).toHaveAttribute('aria-invalid','true');
+ fireEvent.change(input,{target:{value:'reference'}});await screen.findByRole('option');
+ view.rerender(<AsyncLookup {...props} id="reference" disabled loadOptions={load}/>);expect(input).toBeDisabled();expect(screen.queryByRole('listbox')).toBeNull();expect(load.mock.calls[0]![1].aborted).toBe(true);
+});

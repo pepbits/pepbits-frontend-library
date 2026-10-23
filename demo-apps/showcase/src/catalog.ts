@@ -86,7 +86,7 @@ export const examples:Example[]=[
 {"id":"values","area":"components","title":"Values","exports":["DataValue", "DescriptionList", "StatusBadge", "useFormatters"],"description":"catalog.example.ValuesDemo",render:ValuesDemo},
 {"id":"buttons","area":"ui","title":"Buttons","exports":["Button", "IconButton", "Plus", "useLocalization"],"description":"catalog.example.ButtonsDemo",render:ButtonsDemo},
 {"id":"menus","area":"components","title":"Menus","exports":["ActionMenu", "Button", "DropdownSelect", "MenuButton", "NavLink", "useLocalization"],"description":"catalog.example.MenusDemo",render:MenusDemo},
-{"id":"overlays","area":"components","title":"Overlays","exports":["Button", "CenterRecordCard", "ConfirmDialog", "DataValue", "Drawer", "Input", "Modal", "PrintDocument", "useLocalization"],"description":"catalog.example.OverlaysDemo",render:OverlaysDemo},
+{"id":"overlays","area":"components","title":"Overlays","exports":["Button", "CenterRecordCard", "ConfirmDialog", "DataValue", "Drawer", "Input", "Modal", "PrintDocument", "SourceDialog", "useLocalization"],"description":"catalog.example.OverlaysDemo",render:OverlaysDemo},
 {"id":"status","area":"ui","title":"Status","exports":["Avatar", "Badge", "StatusBadge"],"description":"catalog.example.StatusDemo",render:StatusDemo},
 {"id":"states","area":"components","title":"States","exports":["AccessDenied", "ConflictState", "EmptyState", "ErrorState", "LoadingState", "NotFoundState", "Select", "SessionExpiredState", "useLocalization"],"description":"catalog.example.StatesDemo",render:StatesDemo},
 {"id":"skeletons","area":"ui","title":"Skeletons","exports":["DashboardSkeleton", "FormSkeleton", "Select", "Skeleton", "TableSkeleton"],"description":"catalog.example.SkeletonsDemo",render:SkeletonsDemo},

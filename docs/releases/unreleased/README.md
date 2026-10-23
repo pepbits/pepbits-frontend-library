@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Healthcare phase 6b-4 — RCM Workspace](restructure-phase-6b-4-2026-10-23.md): forty original destinations, public engine composition and local synthetic HTTP evidence; no deployment.
+
 - [Library restructure phase 6b-3 — Pharmacy](restructure-phase-6b-3-2026-10-23.md): all thirteen Phial destinations, public engines, configured HTTP workflows and local verification; no deployment.
 
 - [Library restructure phase 6b-2 — healthcare diagnostics](restructure-phase-6b-2-2026-10-23.md): LIS1/LIS2/RIS1, shared diagnostic adapters, local verification and full-shell axe recheck; no deployment.

@@ -7,3 +7,5 @@
 Use `HEALTHCARE_CAPTURE` and `HEALTHCARE_DICOM_FIXTURE` on the local integration script to refresh these files; never capture real patient data or credentials. Source identity and exact check scope belong to the phase 6b-2 and 6b-3 release evidence.
 
 `pharmacy.json` contains 52 fictional GET snapshots captured during phase 6b-3 local HTTP development runs, including the successful workflow run and route sweep. Authentication responses are excluded and credential fields are redacted. These reads exercise all thirteen Pharmacy destinations across the same four preference/RTL profiles. Commands are tested separately with mocked failure/replay contracts and with the real local HTTP API.
+
+`rcm.json` contains redacted read-only captures from a temporary fictional RCM store through the local HTTP adapter. The integration driver verifies registry identity, commands, role checks and branch isolation separately. These fixtures are test-only; the shipped module loads HTTP data and has no business-data fallback.

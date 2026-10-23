@@ -17,6 +17,6 @@ function RoutedClient() {
 }
 function LandingRedirect({pathname}:{pathname:string}) {
  const {preferences}=usePreferences(),router=useRouter();
- useEffect(()=>{if(pathname==='/')router.replace(preferences.defaultModule==='library'?'/patient-query':['reference-lis1','reference-lis2','reference-ris1'].includes(preferences.defaultModule)?'/'+preferences.defaultModule.slice(10):'/suite');},[pathname,preferences.defaultModule,router]);return null;
+ useEffect(()=>{if(pathname==='/')router.replace(preferences.defaultModule==='reference-rcm'?'/rcm':preferences.defaultModule==='reference-pharmacy'?'/pharmacy':preferences.defaultModule==='library'?'/patient-query':['reference-lis1','reference-lis2','reference-ris1'].includes(preferences.defaultModule)?'/'+preferences.defaultModule.slice(10):'/suite');},[pathname,preferences.defaultModule,router]);return null;
 }
 export function HealthcareClient() {return <Suspense fallback={<LoadingState/>}><RoutedClient/></Suspense>;}

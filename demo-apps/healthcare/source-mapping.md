@@ -1,6 +1,6 @@
 # Healthcare source map
 
-Sources remain untouched in the original desktop workspace. Destinations below are in this demo unless a public package is named. See the [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) [6b-2 record](../../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) and [6b-3 record](../../docs/releases/unreleased/restructure-phase-6b-3-2026-10-23.md) for source-scoped validation and deferrals.
+Sources remain untouched in the original desktop workspace. Destinations below are in this demo unless a public package is named. See the [6b-1 record](../../docs/releases/unreleased/restructure-phase-6b-1-2026-10-23.md) [6b-2 record](../../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) and [6b-3 record](../../docs/releases/unreleased/restructure-phase-6b-3-2026-10-23.md) plus the [6b-4 record](../../docs/releases/unreleased/restructure-phase-6b-4-2026-10-23.md) for source-scoped validation and deferrals.
 
 | Original source | Destination / treatment |
 | --- | --- |
@@ -50,3 +50,7 @@ The three product packages contain no source unit tests. Both original diagnosti
 Receipt geometry, chart bars, stock/prescription stages and multi-pane product orchestration remain specialized demo components. No phase 4c renderer is copied. The earlier source CSS generation check becomes a frozen-baseline hash check; source-copy generation becomes canonical alias/placeholder and explicit catalog-gap verification. No standalone identity or staff switcher is imported.
 
 The reusable Pharmacy lookup interaction lives in public `@pepbits/ui` AsyncLookup; its demo wrapper supplies only product endpoints and row content. Five native-layout field/button primitives and seventeen icon exports are the other library additions.
+
+## Phase 6b-4 RCM Workspace
+
+`desktop-clients/packages/reference-rcm` maps to `src/modules/rcm`; all forty original destinations and eight groups are retained. Four dashboards plus thirty-six metadata resources use the existing host renderer. Original nine test files are retained with public-host adaptations (the real-browser wrapper reads the integration receipt). Creation/edit/action field layouts use TemplateFields, list columns use CollectionView, lookup behavior uses AsyncLookup, notifications use ScreenHost and specialized overlay frames use public SourceDialog. The configured adapter maps to the unchanged RCM API. Source CSS is retained as a provenance baseline with host-preference overrides; exact old default pixel geometry is replaced by shared-engine presentation. Financial document, chart, board and lifecycle geometry remains product UI. No source/backend relocation or deletion occurs.

@@ -1,0 +1,55 @@
+{
+  "source": "desktop-clients/packages/reference-rcm/src",
+  "target": "demo-apps/healthcare/src/modules/rcm",
+  "files": [
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/api.test.ts",
+      "destination": "demo-apps/healthcare/src/modules/rcm/api.test.ts",
+      "ported": true
+    },
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/browser-parity.test.ts",
+      "destination": "demo-apps/healthcare/src/modules/rcm/browser-parity.test.ts",
+      "ported": true
+    },
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/components/ui/dialog.test.tsx",
+      "destination": "demo-apps/healthcare/src/modules/rcm/components/ui/dialog.test.tsx",
+      "ported": true
+    },
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/copy.test.ts",
+      "destination": "demo-apps/healthcare/src/modules/rcm/copy.test.ts",
+      "ported": true
+    },
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/metadata-localization.test.ts",
+      "destination": "demo-apps/healthcare/src/modules/rcm/metadata-localization.test.ts",
+      "ported": true
+    },
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/module.test.tsx",
+      "destination": "demo-apps/healthcare/src/modules/rcm/module.test.tsx",
+      "ported": true
+    },
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/pages.test.tsx",
+      "destination": "demo-apps/healthcare/src/modules/rcm/pages.test.tsx",
+      "ported": true
+    },
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/routes.test.ts",
+      "destination": "demo-apps/healthcare/src/modules/rcm/routes.test.ts",
+      "ported": true
+    },
+    {
+      "source": "desktop-clients/packages/reference-rcm/src/styles.test.ts",
+      "destination": "demo-apps/healthcare/src/modules/rcm/styles.test.ts",
+      "ported": true
+    }
+  ],
+  "notes": [
+    "Nine original source test files are present at the destination. The original two opt-in browser wrappers use the real full-app integration receipt, with effective host/engine presentation replacing isolated legacy pixel comparison.",
+    "Additional tests: preferences.test.tsx, adapters/rcm.test.ts, adapters/proxy.test.ts, navigation cases and forty routes across four profiles."
+  ]
+}

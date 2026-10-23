@@ -109,3 +109,6 @@ export {AlertOctagon, ArrowDownLeft, CheckCheck, Contrast, CornerDownRight, Corn
 
 // Direct primitives used by pharmacy workflows.
 export {Banknote, Bike, CirclePause, CornerDownLeft, Gavel, HandCoins, Landmark, MessageCircle, Moon, PackageCheck, PackageX, Radio, ShoppingBag, ShoppingBasket, Snowflake, Store, Sun} from 'lucide-react';
+
+// Direct primitives used by revenue-cycle workflows.
+export {AlarmClock, BarChart3, Calculator, Code2, ConciergeBell, FileMinus2, FileOutput, FileSearch, FileStack, GitCompare, Home, Hourglass, KanbanSquare, ListChecks, ListTodo, Megaphone, MessageSquareText, MousePointerClick, Package, PieChart, PiggyBank, RadioTower, Scale, Sigma} from "lucide-react";
