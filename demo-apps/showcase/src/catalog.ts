@@ -1,3 +1,8 @@
+import {DeviceIntegrationsDemo} from "./examples/device-integrations";
+import {IdentityDevicesDemo} from "./examples/identity-devices";
+import {LabelPrintingDemo} from "./examples/label-printing";
+import {FormDesignerDemo} from "./examples/form-designer";
+import {SpreadsheetDemo} from "./examples/spreadsheet";
 import React from "react";
 import {useDemoPolicy} from "./demo-state";
 import {ShellWorkspaceDemo} from "./examples/shell-workspace";
@@ -61,6 +66,11 @@ import {RendererDemo} from "./examples/renderer";
 
 export interface Example {id:string;area:AreaId;title:string;description:string;exports:string[];render:ComponentType}
 export const examples:Example[]=[
+{"id": "device-integrations", "area": "patterns", "title": "Device Integrations", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["DeviceIntegrationWorkspace"],render:DeviceIntegrationsDemo},
+{"id": "identity-devices", "area": "patterns", "title": "Identity Devices", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["IdentityDeviceWorkspace"],render:IdentityDevicesDemo},
+{"id": "label-printing", "area": "patterns", "title": "Label Printing", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["LabelPrintingWorkspace"],render:LabelPrintingDemo},
+{"id": "form-designer", "area": "patterns", "title": "Form Designer", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["DcpDesignerWorkspace"],render:FormDesignerDemo},
+{"id": "spreadsheet", "area": "patterns", "title": "Spreadsheet", "description": "Explore a fictional workflow with explicit in-memory adapters.", "exports": ["SpreadsheetPage"],render:SpreadsheetDemo},
 {"id":"text","area":"ui","title":"Text","exports":["Highlight", "Input", "QuantityUnitField", "ScannerInput", "SearchInput", "Textarea"],"description":"catalog.example.TextDemo",render:TextDemo},
 {"id":"validation","area":"ui","title":"Validation","exports":["FieldShell", "FormErrorSummary", "Input", "useLocalization"],"description":"catalog.example.ValidationDemo",render:ValidationDemo},
 {"id":"select","area":"ui","title":"Select","exports":["MultiSelect", "SearchSelect", "Select"],"description":"catalog.example.SelectDemo",render:SelectDemo},

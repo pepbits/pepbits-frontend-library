@@ -1,0 +1,19 @@
+'use client';
+import React from 'react';
+import {Input,Select,Checkbox} from '@pepbits/ui';
+import {useLocalization} from '@pepbits/i18n/react';
+import type {DesignerField,DesignerRules,DesignerCondition} from '@pepbits/data/dcp-designer';
+export function RuleProperties({field,fields,disabled,change}:{field:DesignerField;fields:DesignerField[];disabled:boolean;change:(f:DesignerField)=>void}){
+ const {t}=useLocalization(),rules=field.rules??{};const set=(patch:Partial<DesignerRules>)=>change({...field,rules:{...rules,...patch}}),others=fields.filter(f=>f.id!==field.id),numbers=others.filter(f=>f.type==='number');
+ return <div className="space-y-3"><h3>{t('designer.rules')}</h3>
+ {field.type==='number'&&<><Input type="number" label={t('designer.maximum')} value={rules.max??''} disabled={disabled} onChange={e=>set({max:e.target.value===''?undefined:Number(e.target.value)})}/><Checkbox label={t('designer.integer')} checked={!!rules.integer} disabled={disabled} onChange={e=>set({integer:e.target.checked})}/>
+ <Select label={t('designer.calculation')} value={rules.calculation?.operation??''} disabled={disabled} placeholder={t('designer.none')} options={['sum','difference','product','ratio'].map(value=>({value,label:t('designer.'+value)}))} onChange={e=>set({calculation:e.target.value?{operation:e.target.value as NonNullable<DesignerRules['calculation']>['operation'],left:'',right:''}:undefined})}/>
+ {rules.calculation&&(['left','right'] as const).map(side=><Select key={side} label={t('designer.'+side)} value={rules.calculation![side]} disabled={disabled} options={numbers.map(f=>({value:f.id,label:t(f.label)}))} onChange={e=>set({calculation:{...rules.calculation!,[side]:e.target.value}})}/>)}</>}
+ {['text','textarea','email'].includes(field.type)&&<>{(['minLength','maxLength'] as const).map(k=><Input key={k} type="number" label={t('designer.'+k)} value={rules[k]??''} disabled={disabled} onChange={e=>set({[k]:e.target.value===''?undefined:Number(e.target.value)})}/>)}
+ <Select label={t('designer.format')} value={rules.format??''} disabled={disabled} placeholder={t('designer.none')} options={['ascii-letters','unicode-letters','uppercase','alphanumeric'].map(value=>({value,label:t('designer.'+value)}))} onChange={e=>set({format:(e.target.value||undefined) as DesignerRules['format']})}/>
+ <Select label={t('designer.normalize')} value={rules.normalize??''} disabled={disabled} placeholder={t('designer.none')} options={['trim','trim-uppercase'].map(value=>({value,label:t('designer.'+value)}))} onChange={e=>set({normalize:(e.target.value||undefined) as DesignerRules['normalize']})}/></>}
+ {(['visibleWhen','requiredWhen','readOnlyWhen'] as const).map(k=>{const c=rules[k],parent=others.find(f=>f.id===c?.fieldId);return <div className="space-y-2" key={k}><Select label={t('designer.'+k)} value={c?.fieldId??''} disabled={disabled} placeholder={t('designer.none')} options={others.map(f=>({value:f.id,label:t(f.label)}))} onChange={e=>set({[k]:e.target.value?{fieldId:e.target.value,operator:'filled'}:undefined})}/>
+ {c&&<><Select label={t('designer.operator')} value={c.operator} disabled={disabled} options={['filled','eq','ne'].map(value=>({value,label:t('designer.'+value)}))} onChange={e=>set({[k]:{...c,operator:e.target.value as DesignerCondition['operator'],value:parent?.type==='checkbox'?true:parent?.type==='number'?0:''}})}/>
+ {c.operator!=='filled'&&(parent?.type==='checkbox'?<Checkbox label={t('designer.compareValue')} checked={c.value===true} disabled={disabled} onChange={e=>set({[k]:{...c,value:e.target.checked}})}/>:<Input label={t('designer.compareValue')} type={parent?.type==='number'?'number':'text'} value={String(c.value??'')} disabled={disabled} onChange={e=>set({[k]:{...c,value:parent?.type==='number'?Number(e.target.value):e.target.value}})}/>)}</>}</div>;})}
+ <p>{t('designer.rulesHelp')}</p></div>;
+}

@@ -18,9 +18,9 @@ This is a recreation against the public library APIs, with the original workspac
 | `op-registration/library-page.tsx` | Healthcare demo later; product launcher excluded |
 | `clinical-templates/library-page.tsx` | Healthcare demo later; product launcher excluded |
 | `reference-modules/library-page.tsx` | Matching product demos later; no product module wrapper copied |
-| `dcp-designer/library-page.tsx` | Public DCP runtime/section fields demonstrated; authoring awaits deferred phase 4a priority 3 |
-| `device-integrations/library-page.tsx` | Deferred generic pattern extraction; device/backend/native integration not implemented |
-| `identity-devices/library-page.tsx` | Deferred generic pattern extraction; subject-specific flows belong to product demos |
-| `label-printing/library-page.tsx` | Deferred generic pattern extraction; product label mappings excluded |
+| `dcp-designer/library-page.tsx` | Replaced by public field and form-designer examples; original launcher excluded |
+| `device-integrations/library-page.tsx` | Replaced by an in-memory device workflow and simulated platform connector; no native hardware |
+| `identity-devices/library-page.tsx` | Replaced by generic subjects and simulated capture/manual review; product subjects remain host-owned |
+| `label-printing/library-page.tsx` | Replaced by synthetic label artwork and compatible stock; product mappings excluded |
 
 Primitive source-parity controls/dialog were excluded in phase 2 and are not recreated. Every currently exported primitive/component runtime identifier is checked against the example source. Higher-level screens exercise their child renderers and helpers through the composed engine; this does not claim every helper branch, workflow permission, template/view combination or server protocol has browser acceptance.

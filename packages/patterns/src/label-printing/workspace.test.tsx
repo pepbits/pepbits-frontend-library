@@ -1,0 +1,9 @@
+import {render,TestHost} from '../test';
+import React from 'react';
+import {screen,waitFor} from '@testing-library/react';
+import {test,expect,vi} from 'vitest';
+import {type LabelLibrary} from '@pepbits/data/label-printing';
+import {LabelPrintingWorkspace} from './workspace';
+const base:LabelLibrary={templates:[{id:'payment-static',title:'Payment',category:'payment',symbology:'qrcode',widthMm:80,heightMm:80,version:1,fields:[]}],profiles:[{id:'sheet-a4',title:'A4',widthMm:210,heightMm:297,columns:2,marginMm:10,gapMm:4},{id:'wristband',title:'Wristband',widthMm:110,heightMm:40,columns:1,marginMm:2,gapMm:0}],records:[],jobs:[],defaultProfile:'wristband',canManage:false,policy:{version:1,maxCopies:100,reprintAllowed:true,lockedProfile:''}};
+test('incompatible personal default resolves to compatible paper without persisting a preference',async()=>{const command=vi.fn();render(<LabelPrintingWorkspace category="payment" scopeKey="a" adapter={{library:async()=>base,command}}/>);await waitFor(()=>expect(screen.getByLabelText('Paper / printer profile')).toHaveValue('sheet-a4'));expect(screen.getByText(/Your default stock does not fit/)).toBeVisible();await waitFor(()=>{expect(command).not.toHaveBeenCalled();});});
+test('incompatible tenant lock is preserved and explains why generation is blocked',async()=>{render(<LabelPrintingWorkspace category="payment" scopeKey="b" adapter={{library:async()=>({...base,policy:{...base.policy,lockedProfile:'wristband'}}),command:vi.fn()}}/>);await waitFor(()=>expect(screen.getByLabelText('Paper / printer profile')).toHaveValue('wristband'));expect(screen.getByLabelText('Paper / printer profile')).toBeDisabled();expect(screen.getByText(/tenant-locked printer stock does not fit/)).toBeVisible();expect(screen.getByRole('button',{name:'Generate preview from API'})).toBeDisabled();});

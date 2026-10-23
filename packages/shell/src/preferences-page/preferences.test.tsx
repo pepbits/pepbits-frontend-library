@@ -22,7 +22,7 @@ test('record layout and all three density options use the central preference upd
   fireEvent.change(density,{target:{value}});
   expect(state.update).toHaveBeenCalledWith({density:value});
  }
-});
+},20000);
 test('live policy changes and unavailable preferences prevent layout updates',()=>{
  const view=render(<PreferencesPage/>);
  state.policy={revision:1,rules:{formNavigation:{locked:true,value:'rail'}}};

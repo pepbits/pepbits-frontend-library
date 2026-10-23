@@ -97,5 +97,6 @@ export {
   TriangleAlert,
   X,
 } from "lucide-react";
+export {Type, AlignLeft, Hash, Calendar, Clock, CheckSquare, Mail, WandSparkles} from "lucide-react";
 export {Icon} from "./icon";
 export type {IconComponent, IconProps} from "./icon";

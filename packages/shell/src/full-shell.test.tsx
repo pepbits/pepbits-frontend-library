@@ -26,7 +26,7 @@ test('page engine inside the full frame saves to toasts and edits survive suspen
   expect(workspace.closeDocument(a.documentId).ok).toBe(false);view.rerender(tree(false));view.rerender(tree(true));
   await waitFor(()=>expect(screen.getByRole('textbox',{name:/Name/})).toHaveValue('Retained edit'));
   fireEvent.click(screen.getByRole('button',{name:'Save'}));await waitFor(()=>expect(save).toHaveBeenCalledOnce());
-  expect(await screen.findByText(/Changes saved/)).toBeVisible();expect(workspace.getDocument(a.documentId)?.dirty).toBe(false);
+  expect(await screen.findByText(/Changes saved/)).toBeVisible();await waitFor(()=>expect(workspace.getDocument(a.documentId)?.dirty).toBe(false));
   act(()=>{workspace.closeDocument(a.documentId);});expect(workspace.getOpenDocuments()).toHaveLength(0);
 });
 test('patterns screen inside the full frame reports dirty changes and localized success through the shell',async()=>{
@@ -35,5 +35,5 @@ test('patterns screen inside the full frame reports dirty changes and localized 
   render(<ShellTestHost workspace={workspace}><EnterpriseShell><ShellDocumentProvider documentId={a.documentId}><LifecycleConfigurationPage api={api} scopeKey="test" application={{code:'application',label:'Application'}} permissions={{read:true,edit:true,approve:true,publish:true,activate:true,resolve:true}}/></ShellDocumentProvider></EnterpriseShell></ShellTestHost>);
   fireEvent.click(await screen.findByRole('button',{name:/Open sample-record version 1/}));fireEvent.change(await screen.findByLabelText(/^Name/),{target:{value:'Changed'}});
   expect(workspace.getDocument(a.documentId)?.dirty).toBe(true);fireEvent.change(screen.getByLabelText(/^Change reason/),{target:{value:'Reviewed'}});fireEvent.click(screen.getByRole('button',{name:'Save draft'}));
-  expect(await within(document.querySelector('[data-shell-toasts]') as HTMLElement).findByText('Saved sample-record version 1.')).toBeVisible();expect(workspace.getDocument(a.documentId)?.dirty).toBe(false);
+  expect(await within(document.querySelector('[data-shell-toasts]') as HTMLElement).findByText('Saved sample-record version 1.')).toBeVisible();await waitFor(()=>expect(workspace.getDocument(a.documentId)?.dirty).toBe(false));
 });

@@ -1,0 +1,19 @@
+
+> @pepbits/patterns@0.0.0 test
+> vitest run src/form-designer/host-runtime.test.tsx src/spreadsheet/workspace.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/patterns
+
+ ✓ src/spreadsheet/workspace.test.tsx (2 tests) 2543ms
+   ✓ export awaits the host audit, preserves edited values on failure, and uses effective format  1827ms
+   ✓ absent export capability fails closed  715ms
+ ✓ src/form-designer/host-runtime.test.tsx (3 tests) 2992ms
+   ✓ required false is displayed, edits retain values on 422, successful save uses normalized server values  1886ms
+   ✓ repeating row edits and adds strip UI identity, read-only fields cannot be edited  837ms
+
+ Test Files  2 passed (2)
+      Tests  5 passed (5)
+   Start at  05:48:55
+   Duration  15.67s (transform 5.01s, setup 2.38s, collect 12.00s, tests 5.53s, environment 5.07s, prepare 954ms)
+

@@ -30,3 +30,7 @@ The shared barrel additionally exports the 39 Lucide names used by the copied re
 `AlertCircle` and `Info` are additionally re-exported for the shell toast viewport. Existing icon behavior is unchanged. See the [phase 5 record](../../docs/releases/unreleased/restructure-phase-5-2026-10-23.md).
 
 Phase 5 part 2 adds 23 primitive exports used by shell chrome, tours and workspace controls (including BookOpen, Command, Pin/PinOff, LayoutDashboard, ArrowLeftRight and Maximize2). Shell imports these through this package; no second icon system or runtime wrapper was introduced.
+
+## Phase 4c pattern icons
+
+`Type`, `AlignLeft`, `Hash`, `Calendar`, `Clock`, `CheckSquare`, `Mail` and `WandSparkles` are additionally re-exported for form authoring and spreadsheet controls. They keep the existing Lucide dependency and named-export behavior; patterns never imports Lucide directly. See the [phase 4c record](../../docs/releases/unreleased/restructure-phase-4c-2026-10-23.md).

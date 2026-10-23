@@ -1,6 +1,6 @@
 # Showcase
 
-An independent Next.js 16.3.3 / React 19.2 / Tailwind 4.1 component gallery. All runtime library imports use public `@pepbits/*` exports. [src/app-frame.tsx](src/app-frame.tsx) is a thin `WorkspaceShell` composition. The library owns its header, sidebar, footer, document canvas, tabs and layers. Eight routes contain 55 executable examples, including ten Shell and three AI examples.
+An independent Next.js 16.3.3 / React 19.2 / Tailwind 4.1 component gallery. All runtime library imports use public `@pepbits/*` exports. [src/app-frame.tsx](src/app-frame.tsx) is a thin `WorkspaceShell` composition. The library owns its header, sidebar, footer, document canvas, tabs and layers. Eight routes contain 60 executable examples, including ten Shell and three AI examples.
 
 From the repository root:
 
@@ -35,7 +35,7 @@ To add an example, create a TSX file with an exported component, register it in 
 
 The identity, roles, tenant and records are fictional. No credential, backend or production endpoint is configured. Preference and policy changes disappear on reload. Record/draft adapters are isolated session memory, with explicit recovery and version checks; no durable draft claim is made. Local policy controls demonstrate presentation guards and are not authorization.
 
-Lifecycle permits illustrative draft editing/validation; independent approval/publication/activation are disabled because there is no server or second actor. Approval and import adapters simulate only the displayed workflows. The worklist transport handles relative requests in memory. Native devices, production services, deployment and native-speaker acceptance are outside this app. Shell examples operate the actual workspace and its layers. AI is an explicit echo simulation, off by default. Deferred phase 4a authoring/device/label screens are not exported by this worktree and therefore are not invented in the gallery.
+Lifecycle permits illustrative draft editing/validation; independent approval/publication/activation are disabled because there is no server or second actor. Approval and import adapters simulate only the displayed workflows. The worklist transport handles relative requests in memory. Native devices, production services, deployment and native-speaker acceptance are outside this app. Shell examples operate the actual workspace and its layers. AI is an explicit echo simulation, off by default. Phase 4c adds spreadsheet, form designer, label printing, identity devices and device integrations on Patterns, with explicit in-memory adapters and platform port simulations.
 
 See the [feature guide](../../docs/features/showcase.md), [source mapping](source-mapping.md) and [phase 6a record](../../docs/releases/unreleased/restructure-phase-6a-2026-10-23.md) for acceptance evidence and pending work.
 
@@ -50,3 +50,11 @@ In Preferences and policy, turn on **Enable AI simulation**, then choose **AI**.
 The explicit echo dispatch never calls its request port. Policy/configuration/usage responses come from [src/ai-simulation.ts](src/ai-simulation.ts), which performs no I/O and rejects every write. **This is a simulation: real servers enforce permissions, egress, redaction and limits (PREF-08).** Displayed quotas are illustrative. No provider, production integration, native executable or deployment is tested.
 
 Tests cover all routes inside the full shell in four preference scenarios with axe, sidebar/command navigation with shortcuts on/off, shell interactions and enabled/disabled AI. The local production browser smoke lives in [scripts/smoke.mjs](scripts/smoke.mjs); its exact launcher, counts and source identity are in the [follow-up evidence](../../docs/releases/unreleased/restructure-phase-6a-2026-10-23.md#follow-up--full-shell-and-ai-pages). Run root `npm run ci` for fresh forced build/typecheck/test tasks and run the shell Chromium suite separately with `npm run test:browser -w @pepbits/shell`.
+
+## Phase 4c pattern flows
+
+Patterns includes five additional executable examples: edit/recalculate a costing spreadsheet and audit its export; edit/save a form draft and preview its fields; generate synthetic label artwork and inspect stock; start a fictional identity capture that always routes to manual review; and queue/dispatch a fictional label through the platform connector. All data and operation receipts are volatile. The designer example supports draft save/preview only; catalog mutation and release governance return a clear host-required rejection. The ported reusable designer includes those complete interfaces and UI for a real adapter.
+
+The identity/device examples use `withIdentityConnector` and `withDeviceConnector` with in-memory `createIdentityDeviceConnector`/`createDeviceConnector` calls. No hardware, driver, provider, raw biometrics or production identity is involved. Labels use synthetic base64 SVG as an image resource; browser printing is explicit. Canonical identity localization keys are retained with generic subject wording supplied by this host. Catalog generation excludes dependency folders and includes dynamically composed designer/label/device message families.
+
+`src/patterns-priority3.test.tsx` covers all five live flows. Existing whole-page axe scenarios include the new surfaces in default, Arabic RTL, reduced-motion and locked-density modes. Counts and source identity are in the [phase 4c record](../../docs/releases/unreleased/restructure-phase-4c-2026-10-23.md).

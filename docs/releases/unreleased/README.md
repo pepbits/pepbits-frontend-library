@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Phase 4c: remaining priority 3 patterns](restructure-phase-4c-2026-10-23.md): spreadsheet, form designer, labels, identity/device workflows, generic data adapters and five live showcase examples; local verification only.
+
 - [Library restructure phase 6a — 23 October 2026](restructure-phase-6a-2026-10-23.md): independent showcase; follow-up completes the full shell and Shell/AI simulation pages, with fresh local build, navigation, accessibility and browser evidence.
 - [Library restructure phase 5b — 23 October 2026](restructure-phase-5b-2026-10-23.md): AI config/client/UI, optional shell preferences/login, gate ports and Chromium physical Arabic RTL sidebar regression; local source evidence, no publication.
 

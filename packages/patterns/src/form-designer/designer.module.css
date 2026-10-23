@@ -1,0 +1,47 @@
+/* Designer composition only: controls, colors, typography and radius use host preferences. */
+.workspace{--fs-scale:var(--fs-form);--designer-gap:1rem;color:var(--text);display:flex;flex-direction:column;gap:.75rem;min-width:0;font-size:calc(13px * var(--fs-form))}
+.workspace[data-density=compact]{--designer-gap:.65rem}
+.workspace[data-density=spacious]{--designer-gap:1.4rem}
+.workspace h1{font-size:calc(22px * var(--fs-form));font-weight:700;line-height:1.3}
+.workspace button{border-radius:var(--radius)}
+.toolbar{display:flex;align-items:center;gap:var(--designer-gap);justify-content:space-between}
+.toolbar>div{min-width:0}
+.toolbar p{color:var(--text-muted);font-size:calc(12px * var(--fs-form));margin-block-start:.35rem;max-width:75ch}
+.documentToolbar{display:grid;grid-template-columns:minmax(12rem,1fr) minmax(12rem,.7fr) auto;align-items:end;gap:var(--designer-gap);padding:var(--designer-gap);border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}
+.saveState{color:var(--text-muted);font-size:calc(11px * var(--fs-form));min-height:1.4em}
+.layout{display:grid;grid-template-columns:minmax(12rem,.7fr) minmax(0,2fr) minmax(18rem,1fr);gap:var(--designer-gap);align-items:start;min-width:0}
+.layout>aside{min-width:0;max-height:max(32rem,calc(100dvh - 19rem));overflow:auto;scrollbar-gutter:stable;position:sticky;top:1rem}
+.panel{min-width:0;overflow:hidden}
+.panelHeader{padding:.8rem 1rem;background:var(--surface)}
+.panelBody{display:flex;flex-direction:column;gap:var(--designer-gap);padding:var(--designer-gap)}
+.panelBody>p{color:var(--text-muted);font-size:calc(12px * var(--fs-form));line-height:1.6}
+.panelBody>button{white-space:normal;height:auto;min-height:2.25rem;padding:.5rem .7rem;text-align:start;justify-content:start}
+.palette{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.paletteItem{position:relative;min-width:0}
+.paletteButton{width:100%;height:auto;min-height:5rem;flex-direction:column;align-items:start;justify-content:start;gap:.6rem;padding:.7rem;padding-inline-end:1.6rem;white-space:normal;text-align:start;background:var(--surface);font-size:calc(12px * var(--fs-form))}
+.paletteButton svg{color:var(--primary);flex-shrink:0}
+.paletteDrag{position:absolute;inset-inline-end:1px;top:1px;width:1.5rem;height:1.75rem;padding:0;background:transparent;border-color:transparent;color:var(--text-muted)}
+.canvas{display:flex;flex-direction:column;gap:var(--designer-gap);min-width:0;padding:.75rem;background:var(--surface-2);background-image:radial-gradient(var(--border) .7px,transparent .7px);background-size:12px 12px;border-radius:var(--radius)}
+.sortable{min-width:0}
+.sortableCard{min-width:0;overflow:hidden}
+.itemHeader{display:flex;align-items:center;gap:.25rem;padding:.55rem;background:var(--surface)}
+.itemDrag{width:1.5rem;padding:0;background:transparent;border-color:transparent;color:var(--text-muted)}
+.itemSelect{flex:1;min-width:0;height:auto;min-height:2.25rem;padding:.35rem;text-align:start;justify-content:start;white-space:normal;overflow-wrap:anywhere;color:var(--text);font-size:calc(13px * var(--fs-form))}
+.itemMoves{display:flex;gap:.15rem}
+.itemMoves button{width:1.6rem;padding:0;background:transparent;border-color:transparent;color:var(--text-muted)}
+.sortableCard[data-selected=true]{border-color:var(--primary);box-shadow:0 0 0 1px var(--primary)}
+.sortableCard[data-selected=true]>.itemHeader{background:color-mix(in srgb,var(--primary) 8%,var(--surface))}
+.fields{display:grid;grid-template-columns:repeat(var(--designer-columns,2),minmax(0,1fr));gap:var(--designer-gap);padding:var(--designer-gap);border-top:1px solid var(--border)}
+.fields>p{grid-column:1/-1;padding:var(--designer-gap);text-align:center;color:var(--text-muted)}
+.sortableCard[data-kind=field] .itemHeader{flex-wrap:wrap;gap:0}
+.sortableCard[data-kind=field] .itemSelect{flex-basis:calc(100% - 1.5rem)}
+.sortableCard[data-kind=field] .itemMoves{margin-inline-start:auto}
+.meta{display:block;margin:0 .8rem .8rem;padding:.55rem .7rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-2);font-size:calc(11px * var(--fs-form));color:var(--text-muted);overflow-wrap:anywhere}
+.inspector{display:flex;flex-direction:column;gap:var(--designer-gap)}
+.preview{display:flex;flex-direction:column;gap:var(--designer-gap);min-width:0}
+.preview h2{font-size:calc(20px * var(--fs-form));font-weight:600;overflow-wrap:anywhere}
+@media(max-width:1200px){.layout{grid-template-columns:11rem minmax(0,1fr) 17rem}.fields{grid-template-columns:1fr}.palette{grid-template-columns:1fr}.paletteButton{min-height:2.75rem;flex-direction:row;align-items:center}.canvas{padding:.4rem}}
+@media(max-width:950px){.layout{grid-template-columns:11rem minmax(0,1fr)}.layout>.inspector{grid-column:1/-1;position:static;max-height:none;overflow:visible;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.fields{grid-template-columns:repeat(var(--designer-columns,2),minmax(0,1fr))}}
+@media(max-width:650px){.toolbar{align-items:start;flex-wrap:wrap}.documentToolbar,.layout{grid-template-columns:1fr}.layout>aside{position:static;max-height:none;overflow:visible}.layout>.inspector{display:flex}.palette{grid-template-columns:repeat(2,minmax(0,1fr))}.fields{grid-template-columns:1fr}.canvas{padding:.4rem}}
+/* Inspector cards must keep their intrinsic height inside the scrolling column. */
+.inspector>.panel{flex-shrink:0}
