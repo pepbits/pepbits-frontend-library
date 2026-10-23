@@ -35,3 +35,6 @@ test("blank labels stay decorative and an explicit external name can opt out", (
   rerender(<icons.Icon icon={icons.Search} aria-hidden={false} role="img" aria-label="Search" />);
   expect(screen.getByRole("img", {name: "Search"})).not.toBeNull();
 });
+
+import {Armchair,Bed,Brush,CalendarX,Menu,Monitor,Trash} from './index';
+test.each([Armchair,Bed,Brush,CalendarX,Menu,Monitor,Trash])('renders MedSlot primitive %s',Icon=>{const {container}=render(<Icon aria-label="Scheduling icon"/>);expect(container.querySelector('svg')).toBeTruthy();});

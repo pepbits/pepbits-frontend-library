@@ -1,3 +1,4 @@
+import medslotFixtures from '../modules/medslot/__fixtures__/api.json';
 import {bootstrap as medbandBootstrap} from "../modules/medband/test-utils";
 import surgisuiteFixtures from '../modules/surgisuite/__fixtures__/api.json';
 import {qualityHandler} from '../modules/quality/test-fixtures';
@@ -26,5 +27,6 @@ export function mockHttp(preferences:Partial<UserPreferences>={},policy:Preferen
   const result=await handler(record)??(url.pathname==='/api/encounters'?{body:[]} :url.pathname==='/api/appointments/a1/summary'?{body:{appointment:appointmentView(),patient:patient(),clinician:staff(),encounter:encounter({status:'signed',signedBy:'d1'})}}:undefined);
   if(result)return Response.json(result.body??null,{status:result.status??200});
  }
+ if(path.startsWith('/reference-modules/medslot/api/')){const key=path.slice('/reference-modules/medslot/api'.length).split('?')[0]!;const value=(medslotFixtures as Record<string,unknown>)[key];if(value!==undefined)return Response.json(value);}
  if(path.startsWith('/reference-modules/surgisuite/api/')){const key=path.slice('/reference-modules/surgisuite/api'.length).split('?')[0]!;const value=(surgisuiteFixtures as Record<string,unknown>)[key];if(value!==undefined)return Response.json(value);}
  const body=init?.body?JSON.parse(String(init.body)):null,method=init?.method??'GET';const match=entries.find(entry=>entry.key[0]===method&&normalized(entry.key[1],entry.key[2])===normalized(path,body));if(!match){unexpected.push(JSON.stringify([method,path,body]));throw new Error('Unmocked synthetic read '+path);}return Response.json(match.value.body,{status:match.value.status});};return {request,unexpected,calls};}

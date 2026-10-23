@@ -1,0 +1,22 @@
+/* Effective host presentation. Calendar positions, resource colors and printed IDs are domain geometry. */
+.reference-medslot[data-medslot-palette="host"] {--color-ink-2:var(--text-muted);--color-mute:var(--text-muted);--color-line-2:var(--surface-2);--color-scrub-soft:var(--primary-soft);--color-scrub-dark:var(--primary-strong);--radius-ctl:var(--radius);}
+.reference-medslot :is([class*="rounded-"]):not(.rounded-full) {border-radius:var(--radius);}
+.reference-medslot table[data-sticky="false"] :is(thead,th) {position:static;}
+.reference-medslot table[data-sticky="true"] thead {position:sticky;top:0;z-index:1;background:var(--color-paper);}
+.reference-medslot table[data-wrap="true"] :is(th,td) {white-space:normal!important;}
+.reference-medslot table[data-striped="true"] tbody tr:nth-child(even) {background:var(--surface-2);}
+.reference-medslot[data-medslot-table="host"] table[data-density="compact"] :is(th,td) {padding-block:.25rem!important;}
+.reference-medslot[data-medslot-table="host"] table[data-density="spacious"] :is(th,td) {padding-block:1rem!important;}
+/* Source status ink/soft-background pairs failed browser contrast at the original small label sizes. */
+.reference-medslot {--color-slot:#345f9b;--color-triage:#a92d28;--color-amber:#825014;}
+.reference-medslot.reference-medslot .bg-ink,.reference-medslot.reference-medslot .bg-scrub {background-color:var(--primary-fill);}
+.reference-medslot.reference-medslot .bg-ink [class*="text-white/"] {color:#fff;}
+
+.reference-medslot.reference-medslot .bg-ink [class*="text-[#7fe0c9]"] {color:#fff;}
+
+/* The source reset is unlayered; preserve the shared collection's managed cell spacing. */
+.reference-medslot .medslot-patient-collection table {width:100%;}
+.reference-medslot .medslot-patient-collection :is(th,td) {text-align:start;padding-inline:1rem;}
+.reference-medslot .medslot-patient-collection table[data-density="compact"] :is(th,td) {padding-inline:.75rem;}
+.reference-medslot .medslot-patient-collection table[data-density="comfortable"] :is(th,td) {padding-block:.75rem;}
+.reference-medslot .medslot-patient-collection table[data-wrap="false"] :is(th,td) {white-space:nowrap;}

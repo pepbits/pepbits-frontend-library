@@ -101,3 +101,5 @@ Native-layout controls keep standard HTML layout and refs while translating acce
 `AsyncLookup<T>` accepts `loadOptions(query, signal)`, `getKey`, `renderOption` and `onPick`. The host owns transport and record content. `initialQuery`, `minChars` and `debounceMs` configure searching; stale results are fenced even when a loader ignores cancellation. Arrow keys select, Enter picks, Escape closes and Tab leaves the control. Failed queries retain input and recover when the user edits the query. The host translator supplies labels and the existing `Something went wrong` / `Try again` messages; appearance uses shared semantic tokens.
 
 AsyncLookup also accepts native field `id`, `disabled` and `invalid`. Disabling a mounted lookup aborts obsolete reads and hides its options. Healthcare RCM composes selected-value chips around it; endpoints and selection values stay with the product adapter.
+
+`SourceTimeInput` and `SourceDateTimeInput` preserve native `time` and `datetime-local` values, constraints, refs and accessible names for imported layouts. They use the existing SourceInput localization contract; hosts format read-only clock values separately.

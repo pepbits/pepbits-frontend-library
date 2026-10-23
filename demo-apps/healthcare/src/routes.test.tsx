@@ -16,7 +16,7 @@ const scenarios:{name:string;preferences:Partial<UserPreferences>;policy?:Prefer
  {name:'default',preferences:{}},{name:'Arabic RTL',preferences:{language:'ar'}},{name:'reduced motion',preferences:{reducedMotion:true}},
  {name:'locked density',preferences:{density:'spacious'},policy:{revision:2,rules:{density:{value:'compact',locked:true}}}},
 ];
-const cases=[...pages.filter(page=>!hrefFor({pageId:page.id}).includes('[id]')).map(page=>({id:page.id,target:{pageId:page.id}})),...["/medband/patients/pat-1","/surgisuite/cases/472","/quality/indicators/7","/quality/reports/3","/teleconsult-provider/consult/a1","/teleconsult-patient/visit/a1","/teleconsult-patient/visit/a1/summary","/lis1/orders/1", "/lis1/masters/tests", "/lis1/billing/1", "/lis1/reports/1", "/lis2/orders/1", "/lis2/masters/tests", "/lis2/patients/1", "/lis2/results/sample/1", "/lis2/print/order/1", "/lis2/print/labels?ids=1", "/ris1/patients/25", "/ris1/orders/1", "/ris1/reading/1", "/ris1/print/report/1", "/ris1/print/invoice/1", "/ris1/viewer/999"].map(path=>{const [pathname,query]=path.split('?');return {id:path,target:targetFromPath(pathname!,query)};})];
+const cases=[...pages.filter(page=>!hrefFor({pageId:page.id}).includes('[id]')).map(page=>({id:page.id,target:{pageId:page.id}})),...["/medslot/patients/1","/medslot/resources/3","/medband/patients/pat-1","/surgisuite/cases/472","/quality/indicators/7","/quality/reports/3","/teleconsult-provider/consult/a1","/teleconsult-patient/visit/a1","/teleconsult-patient/visit/a1/summary","/lis1/orders/1", "/lis1/masters/tests", "/lis1/billing/1", "/lis1/reports/1", "/lis2/orders/1", "/lis2/masters/tests", "/lis2/patients/1", "/lis2/results/sample/1", "/lis2/print/order/1", "/lis2/print/labels?ids=1", "/ris1/patients/25", "/ris1/orders/1", "/ris1/reading/1", "/ris1/print/report/1", "/ris1/print/invoice/1", "/ris1/viewer/999"].map(path=>{const [pathname,query]=path.split('?');return {id:path,target:targetFromPath(pathname!,query)};})];
 describe.each(scenarios)('$name',scenario=>{
  test.each(cases)('$id renders API data and page content passes axe',async page=>{
   const mock=mockHttp(scenario.preferences,scenario.policy),target=page.target;
@@ -28,6 +28,7 @@ describe.each(scenarios)('$name',scenario=>{
   if(page.id.includes('teleconsult'))await waitFor(()=>expect(contentText(container)).not.toMatch(/Loading your session|Loading workspace/));
   if(page.id.startsWith('reference-rcm'))await waitFor(()=>expect(container.querySelector('[data-rcm-stage]')).toBeInTheDocument());
   if(page.id.includes('surgisuite'))await waitFor(()=>expect(container.querySelector('[data-tour=surgisuite-workspace] h1')).toBeInTheDocument());
+  if(page.id.includes('medslot'))await waitFor(()=>expect(container.querySelector('.reference-medslot [data-medslot-stage] h1')).toBeInTheDocument());
   if(page.id.includes('medband'))await waitFor(()=>expect(container.querySelector('.reference-medband [data-medband-stage]')).toBeInTheDocument());
   const content=container.querySelector('.healthcare-page') as HTMLElement;
   const ready=qualityRouteReady[target.pageId];if(ready)await waitFor(()=>expect(content.textContent).toContain(ready),{timeout:10000});

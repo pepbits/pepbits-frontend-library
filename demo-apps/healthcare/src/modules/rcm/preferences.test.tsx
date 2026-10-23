@@ -1,6 +1,8 @@
 import React from 'react';
 import {fireEvent,screen,waitFor,within} from '@testing-library/react';
-import {expect,it} from 'vitest';
+import {expect,it,vi} from 'vitest';
+import {ReferenceHostProvider} from './host';
+import {useKeyHandler} from './lib/hooks';
 import {render} from './render-test';
 import {ReferenceRcmModule} from './module';
 import {makeHost,sessionHandler} from './test-utils';
@@ -19,4 +21,14 @@ it('restores source page size when a mounted host policy changes and keeps opera
  view.rerender(<ReferenceRcmModule path="/w/invoices" host={{...h.host,preferences:{...h.host.preferences,pageSize:10,density:'compact'}}}/>);
  await waitFor(()=>expect(h.calls.some(c=>c.url.searchParams.get('pageSize')==='10')).toBe(true));
  expect(h.calls.filter(c=>c.url.pathname==='/records/invoices').every(c=>c.headers.get('x-rcm-scope')==='ALL:SAR')).toBe(true);
+});
+
+it('disables keyboard commands in the same commit as the accepted preference',()=>{
+ const {host}=makeHost(sessionHandler()),handler=vi.fn();
+ function Listener(){useKeyHandler(handler);return null;}
+ function CommitInput({send}:{send:boolean}){React.useLayoutEffect(()=>{if(send)window.dispatchEvent(new KeyboardEvent('keydown',{key:'k',ctrlKey:true}));},[send]);return null;}
+ const tree=(enabled:boolean)=><ReferenceHostProvider host={{...host,preferences:{...host.preferences,keyboardShortcuts:enabled}}}><Listener/><CommitInput send={!enabled}/></ReferenceHostProvider>;
+ const view=render(tree(true));fireEvent.keyDown(window,{key:'k',ctrlKey:true});expect(handler).toHaveBeenCalledTimes(1);
+ view.rerender(tree(false));expect(handler).toHaveBeenCalledTimes(1);
+ view.rerender(tree(true));fireEvent.keyDown(window,{key:'k',ctrlKey:true});expect(handler).toHaveBeenCalledTimes(2);
 });

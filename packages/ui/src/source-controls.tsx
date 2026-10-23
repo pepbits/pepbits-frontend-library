@@ -10,3 +10,7 @@ export function SourceButton({children,ref,type='button',...props}:React.Compone
 
 /** A native date field for imported layouts; callers cannot change its temporal type. */
 export function SourceDateInput(props:Omit<React.ComponentPropsWithRef<'input'>,'type'>){return <SourceInput {...props} type="date"/>;}
+
+/** Native facility clock fields. Machine values stay independent of display locale. */
+export function SourceTimeInput(props:Omit<React.ComponentPropsWithRef<'input'>,'type'>){return <SourceInput {...props} type="time"/>;}
+export function SourceDateTimeInput(props:Omit<React.ComponentPropsWithRef<'input'>,'type'>){return <SourceInput {...props} type="datetime-local"/>;}

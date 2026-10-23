@@ -1,3 +1,4 @@
+import {MedslotPage} from './modules/medslot/page';
 import {MedbandPage} from "./modules/medband/page";
 import {SurgiSuitePage} from './modules/surgisuite/page';
 import {QualityPage} from './modules/quality/page';
@@ -15,7 +16,7 @@ import {DiagnosticPage} from './modules/diagnostics/page';
 import {PharmacyPage} from './modules/pharmacy/page';
 import {pages} from './navigation';
 function SettingsPage() {return <PreferencesPage showTabPreferences={false} services={useSettingsServices()}/>;}
-const Renderer = createPageRenderer({renderers: {medband:MedbandPage,surgisuite:SurgiSuitePage,quality:QualityPage,teleconsult:TeleconsultPage,rcm:RcmPage,pharmacy: PharmacyPage, diagnostic: DiagnosticPage, suite: SuitePage, clinical: ClinicalPage, preferences: SettingsPage}});
+const Renderer = createPageRenderer({renderers: {medslot:MedslotPage,medband:MedbandPage,surgisuite:SurgiSuitePage,quality:QualityPage,teleconsult:TeleconsultPage,rcm:RcmPage,pharmacy: PharmacyPage, diagnostic: DiagnosticPage, suite: SuitePage, clinical: ClinicalPage, preferences: SettingsPage}});
 export function HealthcarePage({target}: {target: NavigationTarget}) {
   const page = pages.find(item => item.id === target.pageId);
   return page ? <Renderer page={page} target={target}/> : <NotFoundState/>;

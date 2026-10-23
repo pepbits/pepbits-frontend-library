@@ -1,0 +1,114 @@
+{
+  "flows": [
+    {
+      "id": "HCD-42-medslot-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor and source patient/resource/service data"
+    },
+    {
+      "id": "HCD-42-medslot-details",
+      "mode": "UI",
+      "result": "Patient and resource detail URLs survive refresh with actual identifiers"
+    },
+    {
+      "id": "HCD-42-medslot-dialog",
+      "mode": "UI",
+      "result": "Named shared registration drawer is visible and closes on Escape"
+    },
+    {
+      "id": "HCD-42-medslot-registration",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration persists and opens its durable record"
+    },
+    {
+      "id": "HCD-42-medslot-search",
+      "mode": "UI",
+      "result": "Shared header lookup selects an API patient by keyboard"
+    },
+    {
+      "id": "HCD-42-medslot-booking",
+      "mode": "UI",
+      "result": "Patient keyboard selection, service, real availability, visit details and booking"
+    },
+    {
+      "id": "HCD-42-medslot-conflicts",
+      "mode": "HTTP",
+      "result": "Booking replays once; overlapping booking and changed-payload key reuse are refused"
+    },
+    {
+      "id": "HCD-42-medslot-calendar",
+      "mode": "UI",
+      "result": "Populated Day, Week and Month calendars show the actual booking and pass full-document axe"
+    },
+    {
+      "id": "HCD-42-medslot-status",
+      "mode": "UI + HTTP",
+      "result": "Confirmation persists through the appointment drawer"
+    },
+    {
+      "id": "HCD-42-medslot-duration",
+      "mode": "UI",
+      "result": "Shared modal changes appointment duration with server resource checks"
+    },
+    {
+      "id": "HCD-42-medslot-reschedule",
+      "mode": "UI + HTTP",
+      "result": "Move to an available slot retains the old booking as rescheduled"
+    },
+    {
+      "id": "HCD-42-medslot-cancel",
+      "mode": "UI + HTTP",
+      "result": "Cancellation records its reason and keeps the booking history"
+    },
+    {
+      "id": "HCD-42-medslot-schedule",
+      "mode": "HTTP",
+      "result": "Resource weekly schedule uses the unchanged command envelope and persists"
+    },
+    {
+      "id": "HCD-42-medslot-audit-notifications",
+      "mode": "HTTP",
+      "result": "Booking lifecycle is audited and simulated notification records remain available"
+    },
+    {
+      "id": "HCD-42-medslot-authority",
+      "mode": "HTTP",
+      "result": "Scheduler admin restrictions, assigned-provider calendar/record scope, disabled module login and branch isolation"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medslot",
+      "failure": "mounted ar editor axe\n+ actual - expected\n\n+ [\n+   {\n+     html: [\n+       '<div class=\"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white\" style=\"background: var(--primary);\">ME</div>'\n+     ],\n+     id: 'color-contrast',\n+     summary: [\n+       'Fix any of the following:\\n' +\n+         '  Element has insufficient color contrast of 3.06 (foreground color: #ffffff, background color: #6d8cff, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1'\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "route": "/medslot",
+      "failure": "mounted ar editor axe\n+ actual - expected\n\n+ [\n+   {\n+     html: [\n+       '<div class=\"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white\" style=\"background: var(--primary);\">ME</div>'\n+     ],\n+     id: 'color-contrast',\n+     summary: [\n+       'Fix any of the following:\\n' +\n+         '  Element has insufficient color contrast of 3.06 (foreground color: #ffffff, background color: #6d8cff, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1'\n+     ]\n+   }\n+ ]\n- []\n",
+      "rendered": {
+        "path": "/medslot",
+        "body": "ME\nMedSlot\nDashboard\nmedslot\nSearch\n⌘K\n19:21:35\nFri • 2026-10-23 • UTC\nhq\nPM\n\n19:21\n\nFriday, 2026-10-23\n\nBook\n\nGood evening, Prakash Mathew\n\nHow the hospital is running\nAll departments\nCardiology\nDental\nDermatology\nGeneral Medicine\nLaboratory\nLong-term Care\nObstetrics & Gynaecology\nOrthopaedics\nPaediatrics\nPharmacy\nPhysiotherapy\nRadiology\nSurgery\n7 days\n30 days\n90 days\n\nToday\n\n235\n\nappointments on the books\n\n1\n\nWaiting or in visit\n\n3\n\nStill to come\n\n203\n\nSeen\n\nUp next\n\nAll of today\n19:20\nRahul Kulkarni\nPrescription pickup, Pickup Counter\nChecked in\nStart\n19:30\nKarthik Bose\nPrescription pickup, Pickup Counter\nScheduled\nCheck in\n20:20\nChetan Sharma\nCT abdomen with contrast, CT 1 (128-slice)\nScheduled\nCheck in\n20:30\nJoseph Singh\nMRI brain, MRI 1 (3T Siemens)\nScheduled\nCheck in\n\nAppointments\n\n6,661\n\nlast 30 days\n\nCompleted\n\n77%\n\nof visits that were due\n\nNo-shows\n\n10%\n\naim below 8%\n\nCancellations\n\n13%\n\nof visits that were due\n\nResource use\n\n20%\n\nbooked of open time\n\nBooking lead time\n\n6 d\n\nrequest to visit\n\nWait after check-in\n\n12 min\n\npatients arrive 0 min early\n\nDaily volume and outcomes\nCompleted\nBooked\nNo-show\nCancelled\nHover a day for details\nThu, 2026-09-24\nFri, 2026-10-23\nPatients\nNew patients 79\nExisting 6582\n\n1% of visits are a patient's first visit here.\n\nHow patients booked\n\nOnline\n29%\nFront desk\n15%\nReferral\n15%\nWalk-in\n14%\nPhone\n14%\nWhatsApp\n13%\nBy department\nLaboratory\n1335\n10% NS\nRadiology\n1259\n10% NS\nPharmacy\n1237\n12% NS\nGeneral Medicine\n763\n10% NS\nPaediatrics\n466\n12% NS\nCardiology\n306\n11% NS\nSurgery\n266\n10% NS\nOrthopaedics\n210\n9% NS\nDental\n209\n7% NS\nBusiest resources\nManage\nDr. Kavya Nair Doctor\n45%\nDr. Arjun Mehta Doctor\n41%\nDr. Lakshmi Pillai Anaesthetist\n38%\nDental Chair 1 Dental chair\n38%\nPharmacist Ritu Bansal Pharmacist\n37%\nDr. Neha Joshi Dentist\n29%\nX-ray Room 1 X-ray unit\n28%\nNurse Priya Thomas Nurse\n27%\nDr. Karan Malhotra Dentist\n27%\nMost booked services\nComplete blood count\nLaboratory\n692\nFasting lipid profile\nLaboratory\n643\nPrescription pickup\nPharmacy\n597\nChest X-ray\nRadiology\n453\nGeneral consultation\nConsultation\n437\nUltrasound abdomen\nRadiology\n399\n\nMessages to patients\n\nOpted out 46\nSent 231\nMedSlot General Hospital\nPatient information is confidential. Sign-in and session expiry are managed by the workspace.\nMedSlot 1.0\nMedSlot • hq • Solution Architecture\nSecure session\n19:21",
+        "pageId": "medslot-dashboard",
+        "headings": [
+          "How the hospital is running",
+          "Daily volume and outcomes",
+          "Patients",
+          "By department",
+          "Busiest resources",
+          "Most booked services"
+        ],
+        "inputs": [
+          {
+            "type": "text",
+            "placeholder": "Find a patient, MRN, phone or booking ref"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

@@ -1,0 +1,90 @@
+{
+  "flows": [
+    {
+      "id": "HCD-42-medslot-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor and source patient/resource/service data"
+    },
+    {
+      "id": "HCD-42-medslot-details",
+      "mode": "UI",
+      "result": "Patient and resource detail URLs survive refresh with actual identifiers"
+    },
+    {
+      "id": "HCD-42-medslot-dialog",
+      "mode": "UI",
+      "result": "Named shared registration drawer is visible and closes on Escape"
+    },
+    {
+      "id": "HCD-42-medslot-registration",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration persists and opens its durable record"
+    },
+    {
+      "id": "HCD-42-medslot-search",
+      "mode": "UI",
+      "result": "Shared header lookup selects an API patient by keyboard"
+    },
+    {
+      "id": "HCD-42-medslot-booking",
+      "mode": "UI",
+      "result": "Patient keyboard selection, service, real availability, visit details and booking"
+    },
+    {
+      "id": "HCD-42-medslot-conflicts",
+      "mode": "HTTP",
+      "result": "Booking replays once; overlapping booking and changed-payload key reuse are refused"
+    },
+    {
+      "id": "HCD-42-medslot-calendar",
+      "mode": "UI",
+      "result": "Populated Day, Week and Month calendars show the actual booking and pass full-document axe"
+    },
+    {
+      "id": "HCD-42-medslot-status",
+      "mode": "UI + HTTP",
+      "result": "Confirmation persists through the appointment drawer"
+    },
+    {
+      "id": "HCD-42-medslot-duration",
+      "mode": "UI",
+      "result": "Shared modal changes appointment duration with server resource checks"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medslot",
+      "failure": "reschedule dialog axe\n+ actual - expected\n\n+ [\n+   {\n+     html: [\n+       '<span class=\"tabular text-[10px] font-medium text-[#7fe0c9]\">20 open</span>',\n+       '<span class=\"text-[length:calc(11px*var(--fs-scale))] font-extrabold\">Length changed · AP-5B2152 now ends at 09:05</span>'\n+     ],\n+     id: 'color-contrast',\n+     summary: [\n+       'Fix any of the following:\\n' +\n+         '  Element has insufficient color contrast of 3.87 (foreground color: #7fe0c9, background color: #3156d9, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1',\n+       'Fix any of the following:\\n' +\n+         '  Element has insufficient color contrast of 4.34 (foreground color: #ffffff, background color: #138a60, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1'\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "route": "/medslot",
+      "failure": "reschedule dialog axe\n+ actual - expected\n\n+ [\n+   {\n+     html: [\n+       '<span class=\"tabular text-[10px] font-medium text-[#7fe0c9]\">20 open</span>',\n+       '<span class=\"text-[length:calc(11px*var(--fs-scale))] font-extrabold\">Length changed · AP-5B2152 now ends at 09:05</span>'\n+     ],\n+     id: 'color-contrast',\n+     summary: [\n+       'Fix any of the following:\\n' +\n+         '  Element has insufficient color contrast of 3.87 (foreground color: #7fe0c9, background color: #3156d9, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1',\n+       'Fix any of the following:\\n' +\n+         '  Element has insufficient color contrast of 4.34 (foreground color: #ffffff, background color: #138a60, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1'\n+     ]\n+   }\n+ ]\n- []\n",
+      "rendered": {
+        "path": "/medslot/appointments",
+        "body": "ME\nMedSlot\nAppointments\nmedslot\nSearch\n⌘K\n19:14:21\nFri • 2026-10-23 • UTC\nhq\nPM\n\n19:14\n\nFriday, 2026-10-23\n\nBook\nAppointments\n\nEvery booking across departments. Click a row to check in, reschedule, extend or cancel.\n\nAll departments\nCardiology\nDental\nDermatology\nGeneral Medicine\nLaboratory\nLong-term Care\nObstetrics & Gynaecology\nOrthopaedics\nPaediatrics\nPharmacy\nPhysiotherapy\nRadiology\nSurgery\nAll service types\nConsultation\nLaboratory\nRadiology\nDental\nSurgery\nPharmacy\nTherapy\nProcedure\nVaccination\nVideo visit\nDay care / bed\nLast 7 days\nToday\nTomorrow\nThis week\nNext 7 days\nDates\nRequested\nScheduled\nConfirmed\nChecked in\nIn progress\nCompleted\nCancelled\nNo-show\nRescheduled\nTime\tPatient\tService\tWith\tStatus\tBooked via\tRef\n07:00\nto 07:10\n\tRitika Patel\nMRN26000173\n\t\nFasting lipid profile\nLaboratory\n\tCollection Bay A\t\nCompleted\tWalk-in\tAP-00060R\n07:00\nto 07:10\n\tTanvi Chopraurgent\nTMP26000149\n\t\nFasting lipid profile\nLaboratory\n\tCollection Bay B\t\nCompleted\tWalk-in\tAP-000612\n07:00\nto 07:20\n\tJoseph Singh\nMRN26000110\n\t\nCT abdomen with contrast\nRadiology\n\tCT 1 (128-slice)\t\nCompleted\tOnline\tAP-00061W\n07:10\nto 07:20\n\tSneha Menon\nMRN26000043\n\t\nComplete blood count\nLaboratory\n\tCollection Bay B\t\nCompleted\tWalk-in\tAP-00060G\n07:20\nto 07:30\n\tAnjali Patel\nMRN26000009\n\t\nComplete blood count\nLaboratory\n\tCollection Bay A\t\nCompleted\tWhatsApp\tAP-000603\n07:40\nto 07:50\n\tAbhishek Sharma\nMRN26000096\n\t\nFasting lipid profile\nLaboratory\n\tCollection Bay B\t\nCancelled\tFront desk\tAP-000613\n07:40\nto 08:00\n\tNisha Agarwal\nMRN26000011\n\t\nCT abdomen with contrast\nRadiology\n\tCT 1 (128-slice)\t\nCompleted\tReferral\tAP-00061X\n07:50\nto 08:00\n\tLavanya Reddy\nMRN26000217\n\t\nFasting lipid profile\nLaboratory\n\tCollection Bay A\t\nCompleted\tReferral\tAP-00060S\n07:50\nto 08:00\n\tAisha Thomas\nMRN26000065\n\t\nFasting lipid profile\nLaboratory\n\tCollection Bay B\t\nCompleted\tReferral\tAP-000614\n08:20\nto 08:30\n\tLavanya Fernandes\nMRN26000177\n\t\nChest X-ray\nRadiology\n\tX-ray Room 1\t\nCompleted\tOnline\tAP-00061A\n08:20\nto 08:40\n\tShreya Verma\nMRN26000019\n\t\nCT abdomen with contrast\nRadiology\n\tCT 1 (128-slice)\t\nCompleted\tPhone\tAP-00061Y\n08:20\nto 08:40\n\tHema Khan\nMRN26000117\n\t\nUltrasound abdomen\nRadiology\n\tUltrasound 1\t\nNo-show\tFront desk\tAP-000626\n08:30\nto 08:40\n\tRahul Menon\nMRN26000002\n\t\nFasting lipid profile\nLaboratory\n\tCollection Bay A\t\nCompleted\tWalk-in\tAP-00060T\n08:30\nto 08:40\n\tKarthik Chopra\nMRN26000008\n\t\nFasting lipid profile\nLaboratory\n\tCollection Bay B\t\nCompleted\tOnline\tAP-000615\n08:30\nto 09:15\n\tGita Menon\nMRN26000061\n\t\nMRI brain\nRadiology\n\tMRI 1 (3T Siemens)\t\nCompleted\tFront desk\tAP-00061R\n08:30\nto 08:40\n\tIrfan Nair\nMRN26000118\n\t\nPrescription pickup\nPharmacy\n\tPickup Counter\t\nNo-show\tReferral\tAP-00063L\n08:40\nto 08:50\n\tImran Iyer\nTMP26000086\n\t\nComplete blood count\nLaboratory\n\tCollection Bay A\t\nCompleted\tWalk-in\tAP-000604\n08:40\nto 08:50\n\tSuresh Singh\nMRN26000010\n\t\nComplete blood count\nLaboratory\n\tCollection Bay B\t\nCompleted\tOnline\tAP-00060H\n08:40\nto 08:50\n\tHema Kulkarni\nMRN26000157\n\t\nPrescription pickup\nPharmacy\n\tPickup Counter\t\nCancelled\tOnline\tAP-00063M\n08:50\nto 09:00\n\tSuresh Singh\nMRN26000010\n\t\nChest X-ray\nRadiology\n\tX-ray Room 1\t\nCompleted\tFront desk\tAP-00061B\n1–20 of 268\nPrevious\nNext\nFictionalMedslot Workflow\nConfirmed\nAP-5B2152, booked 2026-10-23 19:14 by Prakash Mathew\n\nMonday, 2026-10-26\n\n09:00 to 09:05\n\nCardiology consultation Consultation, Cardiology\n\nCardiologist\nDr. Samuel D'Souza\nReschedule\nChange length (5 min)\nPatient\nFictionalMedslot Workflow\nMRN26000241, 35 y\nPatient type\nExisting patient\nReason for visit\nFictional scheduling demonstration\nVisit type\nFollow-up\nPriority\nRoutine\nBooked via\nFront desk\nPatient asked for\nNot recorded\nHistory\n\nScheduled: Booked\n\n2026-10-23, 19:14:15 UTC, Prakash Mathew\n\nConfirmed\n\n2026-10-23, 19:14:21 UTC, Prakash Mathew\n\nUpdated: Duration changed to 5 min\n\n2026-10-23, 19:14:21 UTC, Prakash Mathew\n\nConfirmed\n2026-10-23 19:14\nMessages to patient\nConfirmed\nsms\nSent\nBooked\nsms\nSent\nReschedule AP-5B2152\n\nCurrently 2026-10-26 09:00 with Dr. Samuel D'Souza. The old booking is kept as “Rescheduled” for the record.\n\nCardiologist\nAny available\nDr. Meera Iyer\nDr. Samuel D'Souza\nFri\n23\nFull\nSat\n24\nFull\nSun\n25\nFull\nMon\n26\n20 open\nTue\n27\n15 open\nWed\n28\n19 open\nThu\n29\n15 open\nFri\n30\n15 open\nSat\n31\nFull\nSun\n1\nFull\nMon\n2\n20 open\nTue\n3\n21 open\nWed\n4\n19 open\nThu\n5\n19 open\n\nMorning\n(8)\n\n09:00\n09:20\n09:40\n10:00\n10:20\n11:00\n11:20\n11:40\n\nAfternoon\n(10)\n\n12:00\n12:20\n12:40\n14:20\n14:40\n15:00\n15:20\n15:40\n16:20\n16:40\n\nEvening\n(2)\n\n17:00\n17:20\nReason for change *\nClose\nMove to 2026-10-26 17:20\nCancel\nMedSlot General Hospital\nPatient information is confidential. Sign-in and session expiry are managed by the workspace.\nMedSlot 1.0\nMedSlot • hq • Solution Architecture\nSecure session\n19:14\nConfirmed · AP-5B2152, FictionalMedslot Workflow\nLength changed · AP-5B2152 now ends at 09:05",
+        "pageId": "medslot-appointments",
+        "headings": [
+          "Appointments",
+          "FictionalMedslot WorkflowConfirmed",
+          "Reschedule AP-5B2152"
+        ],
+        "inputs": [
+          {
+            "type": "text",
+            "placeholder": "Find a patient, MRN, phone or booking ref"
+          },
+          {
+            "type": "text",
+            "placeholder": "Patient name, MRN or booking ref (searches all dates)"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

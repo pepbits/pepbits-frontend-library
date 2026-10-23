@@ -46,7 +46,7 @@ export function SlotBoard({ data, isToday, picked, selectedApptId, onPickSlot, o
   const hours = useMemo(() => { const h: number[] = []; for (let m = Math.ceil(start / 60) * 60; m <= end; m += 60) h.push(m); return h; }, [start, end]);
 
   return (
-    <div ref={scroller} className="relative min-h-0 flex-1 overflow-auto">
+    <div ref={scroller} tabIndex={0} className="relative min-h-0 flex-1 overflow-auto">
       <div className="sticky top-0 z-20 flex min-w-max border-b border-hc-line bg-hc-surface">
         <div className="sticky left-0 z-10 w-14 shrink-0 bg-hc-surface" />
         {data.resources.map((r) => (

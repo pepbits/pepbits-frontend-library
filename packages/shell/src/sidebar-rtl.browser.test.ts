@@ -36,3 +36,19 @@ test.each(['left','right'] as const)('Chromium Arabic RTL places the rail physic
     expect(errors).toEqual([]);
   } finally {await page.close();}
 },30000);
+
+test.each(['nexora','midnight'])('solid notifications retain readable copy for every tone in %s',async theme=>{
+ const page=await browser.newPage({viewport:{width:1280,height:800}});
+ try{
+  await page.goto(`${base}src/test/browser/index.html?toasts=1&theme=${theme}`);
+  await page.getByRole('button',{name:'Show notifications'}).click();
+  await page.getByText('success notification',{exact:true}).waitFor();
+  const contrasts=await page.locator('[data-shell-toasts] > div').evaluateAll(nodes=>{
+   const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const context=canvas.getContext('2d')!;
+   const pixel=(color:string,background='#fff')=>{context.clearRect(0,0,1,1);context.fillStyle=background;context.fillRect(0,0,1,1);context.fillStyle=color;context.fillRect(0,0,1,1);return [...context.getImageData(0,0,1,1).data].slice(0,3);};
+   const luminance=(rgb:number[])=>rgb.map(c=>{const n=c/255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4;}).reduce((total,v,i)=>total+v*[.2126,.7152,.0722][i]!,0);
+   return nodes.flatMap(node=>{const bg=getComputedStyle(node).backgroundColor,b=luminance(pixel(bg));return [...node.querySelectorAll('span')].filter(span=>span.childElementCount===0&&span.textContent?.trim()).map(span=>{const f=luminance(pixel(getComputedStyle(span).color,bg));return {text:span.textContent,ratio:(Math.max(f,b)+.05)/(Math.min(f,b)+.05)};});});
+  });
+  expect(contrasts).toHaveLength(8);expect(contrasts.filter(item=>item.ratio<4.5)).toEqual([]);
+ }finally{await page.close();}
+},30000);

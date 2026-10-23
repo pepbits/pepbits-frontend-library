@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useReferenceHost } from "../host";
 
 const typing = (e: KeyboardEvent) => {
@@ -13,14 +13,15 @@ export function useShortcutsEnabled() {
 }
 
 /**
- * Window key handler that exists only while the host's keyboard-shortcut preference is on (turning it off removes the listener).
+ * Window key handler updated before paint, so committed preference changes leave no stale-listener frame.
+ * It exists only while the host's keyboard-shortcut preference is on (turning it off removes the listener).
  * `handler` always sees the latest closure; it decides whether the event is its own and calls preventDefault itself.
  */
 export function useKeyHandler(handler: (e: KeyboardEvent) => void, active = true, capture = false) {
   const enabled = useShortcutsEnabled();
   const ref = useRef(handler);
-  useEffect(() => { ref.current = handler; });
-  useEffect(() => {
+  useLayoutEffect(() => { ref.current = handler; });
+  useLayoutEffect(() => {
     if (!enabled || !active) return;
     const onKey = (e: KeyboardEvent) => ref.current(e);
     window.addEventListener("keydown", onKey, capture);

@@ -1,0 +1,309 @@
+{
+  "flows": [
+    {
+      "id": "HCD-42-medslot-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor and source patient/resource/service data"
+    },
+    {
+      "id": "HCD-42-medslot-details",
+      "mode": "UI",
+      "result": "Patient and resource detail URLs survive refresh with actual identifiers"
+    },
+    {
+      "id": "HCD-42-medslot-dialog",
+      "mode": "UI",
+      "result": "Named shared registration drawer is visible and closes on Escape"
+    },
+    {
+      "id": "HCD-42-medslot-registration",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration persists and opens its durable record"
+    },
+    {
+      "id": "HCD-42-medslot-search",
+      "mode": "UI",
+      "result": "Shared header lookup selects an API patient by keyboard"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medslot",
+      "failure": "booking axe\n+ actual - expected\n\n+ [\n+   {\n+     html: [\n+       '<p class=\"text-xs text-white/60\">Appointment</p>',\n+       '<span class=\"text-base text-white/50\"> to 09:20</span>'\n+     ],\n+     id: 'color-contrast',\n+     summary: [\n+       'Fix any of the following:\\n' +\n+         '  Element has insufficient color contrast of 3.21 (foreground color: #adbbf0, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1',\n+       'Fix any of the following:\\n' +\n+         '  Element has insufficient color contrast of 2.68 (foreground color: #98aaec, background color: #3156d9, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1'\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "route": "/medslot",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-white\\/60:nth-child(1)"
+              ],
+              "html": "<p class=\"text-sm text-white/60\">Today</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.21 (foreground color: #adbbf0, background color: #3156d9, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-white\\/60:nth-child(3)"
+              ],
+              "html": "<p class=\"text-sm text-white/60\">appointments on the books</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.21 (foreground color: #adbbf0, background color: #3156d9, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(1) > .text-white\\/55"
+              ],
+              "html": "<p class=\"text-xs text-white/55\">Waiting or in visit</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #a2b3ee, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(2) > .text-white\\/55"
+              ],
+              "html": "<p class=\"text-xs text-white/55\">Still to come</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #a2b3ee, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(3) > .text-white\\/55"
+              ],
+              "html": "<p class=\"text-xs text-white/55\">Seen</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #a2b3ee, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:text-white"
+              ],
+              "html": "<a class=\"inline-flex items-center gap-1 text-xs text-white/60 hover:text-white\" href=\"/medslot/appointments\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #afbdf0, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(1) > .text-left > .min-w-0 > .text-white\\/50.block.truncate"
+              ],
+              "html": "<span class=\"block truncate text-xs text-white/50\">Chest X-ray, X-ray Room 1</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.61 (foreground color: #9badec, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(2) > .text-left > .min-w-0 > .text-white\\/50.block.truncate"
+              ],
+              "html": "<span class=\"block truncate text-xs text-white/50\">Prescription pickup, Pickup Counter</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.61 (foreground color: #9badec, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(3) > .text-left > .min-w-0 > .text-white\\/50.block.truncate"
+              ],
+              "html": "<span class=\"block truncate text-xs text-white/50\">Prescription pickup, Pickup Counter</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.61 (foreground color: #9badec, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(4) > .text-left > .min-w-0 > .text-white\\/50.block.truncate"
+              ],
+              "html": "<span class=\"block truncate text-xs text-white/50\">CT abdomen with contrast, CT 1 (128-slice)</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.61 (foreground color: #9badec, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-white\\/60:nth-child(1)"
+              ],
+              "html": "<p class=\"text-sm text-white/60\">Today</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.21 (foreground color: #adbbf0, background color: #3156d9, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".text-white\\/60:nth-child(3)"
+              ],
+              "html": "<p class=\"text-sm text-white/60\">appointments on the books</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.21 (foreground color: #adbbf0, background color: #3156d9, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(1) > .text-white\\/55"
+              ],
+              "html": "<p class=\"text-xs text-white/55\">Waiting or in visit</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #a2b3ee, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(2) > .text-white\\/55"
+              ],
+              "html": "<p class=\"text-xs text-white/55\">Still to come</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #a2b3ee, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "div:nth-child(3) > .text-white\\/55"
+              ],
+              "html": "<p class=\"text-xs text-white/55\">Seen</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #a2b3ee, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:text-white"
+              ],
+              "html": "<a class=\"inline-flex items-center gap-1 text-xs text-white/60 hover:text-white\" href=\"/medslot/appointments\">",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #afbdf0, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(1) > .text-left > .min-w-0 > .text-white\\/50.block.truncate"
+              ],
+              "html": "<span class=\"block truncate text-xs text-white/50\">Chest X-ray, X-ray Room 1</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.61 (foreground color: #9badec, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(2) > .text-left > .min-w-0 > .text-white\\/50.block.truncate"
+              ],
+              "html": "<span class=\"block truncate text-xs text-white/50\">Prescription pickup, Pickup Counter</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.61 (foreground color: #9badec, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(3) > .text-left > .min-w-0 > .text-white\\/50.block.truncate"
+              ],
+              "html": "<span class=\"block truncate text-xs text-white/50\">Prescription pickup, Pickup Counter</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.61 (foreground color: #9badec, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".hover\\:bg-white\\/\\[0\\.06\\].py-2.group:nth-child(4) > .text-left > .min-w-0 > .text-white\\/50.block.truncate"
+              ],
+              "html": "<span class=\"block truncate text-xs text-white/50\">CT abdomen with contrast, CT 1 (128-slice)</span>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.61 (foreground color: #9badec, background color: #375bda, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/book",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-white\\/60"
+              ],
+              "html": "<p class=\"text-xs text-white/60\">Appointment</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.21 (foreground color: #adbbf0, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-white\\/60"
+              ],
+              "html": "<p class=\"text-xs text-white/60\">Appointment</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.21 (foreground color: #adbbf0, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/resources",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/services",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/departments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/holidays",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/notifications",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/settings",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/resources/3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients/241",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

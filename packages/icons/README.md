@@ -54,3 +54,5 @@ Quality adds direct Lucide exports `ArrowDownRight`, `Bell`, `Gauge`, `LineChart
 Phase 6b-7 adds direct `Droplet`, `Shield` and `Scissors` primitives for the SurgiSuite demonstration. Export/render cases cover all three; product aliases stay in the demo.
 
 Patient access adds `BedDouble`, `CircleDollarSign`, `FolderPlus`, `SearchX`, `Sunrise` and `Crown` as direct primitives, covered by public render tests.
+
+MedSlot uses the public `Armchair`, `Bed`, `Brush`, `CalendarX`, `Menu`, `Monitor` and `Trash` primitives. Product category mappings remain in the demo.

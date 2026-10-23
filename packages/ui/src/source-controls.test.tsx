@@ -2,7 +2,7 @@ import {LocalizationProvider} from '@pepbits/i18n/react';
 import React,{createRef} from 'react';
 import {render,screen,fireEvent} from '@testing-library/react';
 import {it,expect,vi} from 'vitest';
-import {SourceButton,SourceInput,SourceSelect,SourceDateInput,SourceTextarea} from './source-controls';
+import {SourceButton,SourceInput,SourceSelect,SourceTimeInput,SourceDateTimeInput,SourceDateInput,SourceTextarea} from './source-controls';
 it('does not submit forms from a default action button',()=>{
  const submit=vi.fn((e:React.FormEvent)=>e.preventDefault());render(<form onSubmit={submit}><SourceButton>Open record</SourceButton></form>);
  fireEvent.click(screen.getByRole('button'));expect(submit).not.toHaveBeenCalled();
@@ -25,4 +25,10 @@ it('localizes placeholders and names without changing ISO date values or refs',(
 it('preserves explicit form submission and disabled textarea semantics',()=>{
  const submit=vi.fn((e:React.FormEvent)=>e.preventDefault());render(<form onSubmit={submit}><SourceTextarea aria-label="Notes" disabled value="Draft"/><SourceButton type="submit">Save</SourceButton></form>);
  fireEvent.click(screen.getByRole('button'));expect(submit).toHaveBeenCalledOnce();expect(screen.getByRole('textbox',{name:'Notes'})).toBeDisabled();
+});
+
+it.each([[SourceTimeInput,'time','14:30'],[SourceDateTimeInput,'datetime-local','2026-10-23T14:30']] as const)('retains native temporal value, ref and constraints (%s)',(Control,type,value)=>{
+ const ref=createRef<HTMLInputElement>(),change=vi.fn();render(<Control ref={ref} aria-label="Facility time" value={value} min={value} required onChange={change}/>);
+ expect(ref.current).toHaveAttribute('type',type);expect(ref.current).toHaveValue(value);expect(ref.current).toHaveAttribute('min',value);expect(ref.current).toBeRequired();
+ fireEvent.change(ref.current!,{target:{value:type==='time'?'15:00':'2026-10-23T15:00'}});expect(change).toHaveBeenCalledOnce();
 });

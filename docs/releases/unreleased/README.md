@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Healthcare phase 6b-9 — MedSlot](restructure-phase-6b-9-2026-10-23.md): twelve destinations, two detail routes, booking and local HTTP verification.
+
 - [Healthcare phase 6b-8 — MedBand Patient Access](restructure-phase-6b-8-2026-10-23.md): nine route patterns, shared engines and local HTTP evidence.
 
 - [Healthcare phase 6b-7 — SurgiSuite](restructure-phase-6b-7-2026-10-23.md): eight sidebar pages, twelve-section case workspace and configured HTTP; local verification and limits.

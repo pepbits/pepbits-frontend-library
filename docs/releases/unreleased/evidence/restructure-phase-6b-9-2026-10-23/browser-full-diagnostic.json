@@ -1,0 +1,297 @@
+{
+  "flows": [
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    },
+    {
+      "id": "HCD-07-lis1",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    },
+    {
+      "id": "HCD-07-lis2",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    },
+    {
+      "id": "HCD-07-ris1",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    },
+    {
+      "id": "HCD-13-registry",
+      "mode": "HTTP",
+      "result": "All 40 original destinations in eight categories match the API, with 36 resource definitions and trusted host actor"
+    },
+    {
+      "id": "HCD-13-palette",
+      "mode": "UI",
+      "result": "Command palette opened invoice reference query and financial document"
+    },
+    {
+      "id": "HCD-14-invoice",
+      "mode": "UI",
+      "result": "Independent seeded invoice issued, document shown and persisted across reload"
+    },
+    {
+      "id": "HCD-14-receipt",
+      "mode": "UI create + HTTP allocation",
+      "result": "Receipt created with engine fields and lookup, allocated to an invoice, balances and trusted actor checked"
+    },
+    {
+      "id": "HCD-15-credit",
+      "mode": "UI independent-action guard + HTTP commands",
+      "result": "Credit creation replay, changed-payload conflict, stale-version refusal, second-person issuance, invoice effect, audit and branch isolation verified"
+    },
+    {
+      "id": "HCD-16-claim",
+      "mode": "UI submit + HTTP simulated response/correction",
+      "result": "Claim submitted, acknowledged, denied for synthetic coding error and corrected for resubmission"
+    },
+    {
+      "id": "HCD-16-scope",
+      "mode": "UI + HTTP assertions",
+      "result": "Operational currency filter changes API-backed worklist while host branch authority remains unchanged"
+    },
+    {
+      "id": "HCD-15-authority",
+      "mode": "UI approvals + HTTP negative assertions",
+      "result": "Approvals inbox loaded; viewer definitions are read-only, viewer write and source identity bypass refused"
+    },
+    {
+      "id": "HCD-09-patient",
+      "mode": "UI + HTTP assertions",
+      "result": "Registered fictional patient, reloaded profile, checked trusted actor and branch isolation"
+    },
+    {
+      "id": "HCD-09-search",
+      "mode": "UI",
+      "result": "Command palette searched real API and opened the patient query link"
+    },
+    {
+      "id": "HCD-10-prescription",
+      "mode": "UI",
+      "result": "Created prescription, started review, verified, reserved FEFO stock, checked, handed over and reloaded supplied record"
+    },
+    {
+      "id": "HCD-10-sale",
+      "mode": "UI sale/receipt + HTTP return",
+      "result": "Counter payment persisted, receipt preview opened and synthetic return reversed the invoice"
+    },
+    {
+      "id": "HCD-11-order",
+      "mode": "HTTP",
+      "result": "Created, confirmed, packed, dispatched and completed delivery order with invoice"
+    },
+    {
+      "id": "HCD-11-purchasing",
+      "mode": "HTTP",
+      "result": "Created, approved, sent and received purchase order into a synthetic stock batch"
+    },
+    {
+      "id": "HCD-11-authorization",
+      "mode": "HTTP",
+      "result": "Requested prior authorization and recorded a simulated payer approval"
+    },
+    {
+      "id": "HCD-11-claims",
+      "mode": "HTTP",
+      "resubmissions": 0,
+      "result": "Submitted primary before secondary claims, simulated adjudication, corrected any first-submission simulated denial and posted remittance payment"
+    },
+    {
+      "id": "HCD-12-replay",
+      "mode": "HTTP",
+      "result": "Repeated patient command returned identical result under the same operation key; audit attributed commands to the host actor"
+    },
+    {
+      "id": "HCD-12-authority",
+      "mode": "HTTP negative assertions",
+      "result": "Technician verification, viewer mutation and source identity bypass returned the expected 403 responses"
+    },
+    {
+      "id": "HCD-18-modes",
+      "mode": "UI + HTTP",
+      "result": "Exactly two modules; Doctor/Nurse working modes and effective recording consent resolved from the server"
+    },
+    {
+      "id": "HCD-22-registration",
+      "mode": "UI + HTTP isolation",
+      "result": "Administrator patient registration with consent and allergy declaration; saved patient searchable in own branch and absent in another branch"
+    },
+    {
+      "id": "HCD-19-provider-booking",
+      "mode": "UI + HTTP persistence",
+      "result": "Shared keyboard lookup, branch slot/duration and visit mode created an appointment visible to the authorized patient"
+    },
+    {
+      "id": "HCD-19-patient-booking",
+      "mode": "UI",
+      "result": "Symptoms → current API advice → clinician → available slot → patient booking"
+    },
+    {
+      "id": "HCD-20-triage",
+      "mode": "UI + HTTP persistence",
+      "result": "Nurse admitted patient, retained complaint, captured simulated vitals and handed off to Doctor"
+    },
+    {
+      "id": "HCD-21-sign-summary",
+      "mode": "HTTP replay/conflict setup + UI sign/summary/print",
+      "pdf": {
+        "bytes": 12238,
+        "sha256": "a71cf1c9eb6811fe73767b09840b2a18ce10cf57b1f3d716aad6e55b994501a8"
+      },
+      "result": "Replay and stale-version checks; Doctor signature publishes own-patient summary, persists across reload and renders a synthetic PDF through shared printing"
+    },
+    {
+      "id": "HCD-22-authority",
+      "mode": "Dedicated-role UI + HTTP negative assertions",
+      "result": "Dedicated Nurse cannot spoof Doctor or sign; dedicated Patient cannot read another identity, switch beneficiary or register; own signed summary remains readable"
+    },
+    {
+      "id": "HCD-23-layout",
+      "mode": "Chromium",
+      "result": "Patient phone and bottom navigation fit the shared host at 1000, 800 and 600 pixels"
+    },
+    {
+      "id": "HCD-23-preferences",
+      "mode": "Chromium + accepted HTTP preferences",
+      "result": "Shared quick-add focus/Escape, one palette per shortcut, disabled shortcuts with toolbar access, and mounted registration values through Arabic RTL/Hindi/Malayalam/English, compact density and reduced motion"
+    },
+    {
+      "id": "HCD-42-medslot-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor and source patient/resource/service data"
+    },
+    {
+      "id": "HCD-42-medslot-details",
+      "mode": "UI",
+      "result": "Patient and resource detail URLs survive refresh with actual identifiers"
+    },
+    {
+      "id": "HCD-42-medslot-dialog",
+      "mode": "UI",
+      "result": "Named shared registration drawer is visible and closes on Escape"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medslot",
+      "failure": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('textbox', { name: 'Mobile number', exact: true })\u001b[22m\n"
+    },
+    {
+      "route": "/medslot",
+      "failure": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('textbox', { name: 'Mobile number', exact: true })\u001b[22m\n",
+      "rendered": {
+        "path": "/medslot/patients",
+        "body": "ME\nMedSlot\nPatients\nmedslot\nSearch\n⌘K\n19:46:46\nFri • 2026-10-23 • UTC\nhq\nPM\n\n19:46\n\nFriday, 2026-10-23\n\nBook\nPatients\n\nContact details are partly hidden in lists. Open a record to see everything; each view is logged.\n\nRegister patient\nOnly unregistered (new) patients\nPatient\tMRN\tAge\tPhone\tLast visit\tNext visit\tActions\nAsha Verma\tMRN26000001\t76\t+91••••••••98\t2026-10-23\t2026-10-26\tBook\nRahul Menon\tMRN26000002\t61\t+91••••••••07\t2026-10-23\t2026-10-26\tBook\nSneha Bose\tMRN26000003\t70\t+91••••••••51\t2026-10-23\t2026-10-26\tBook\nVivek Iyer\tMRN26000004\t49\t+91••••••••38\t2026-10-23\t2026-10-26\tBook\nPooja JoshiUnregistered\tTMP26000005\t–\t+91••••••••86\t2026-10-23\t2026-10-26\tBook\nImran Thomas\tMRN26000006\t30\t+91••••••••87\t2026-10-23\t2026-10-24\tBook\nDivya Das\tMRN26000007\t45\t+91••••••••13\t2026-10-20\t2026-10-26\tBook\nKarthik Chopra\tMRN26000008\t17\t+91••••••••23\t2026-10-23\t2026-10-26\tBook\nAnjali Patel\tMRN26000009\t50\t+91••••••••41\t2026-10-23\t2026-10-24\tBook\nSuresh Singh\tMRN26000010\t54\t+91••••••••24\t2026-10-23\t2026-10-26\tBook\nNisha Agarwal\tMRN26000011\t36\t+91••••••••19\t2026-10-23\t2026-10-26\tBook\nHarish Reddy\tMRN26000012\t25\t+91••••••••41\t2026-10-23\t2026-10-24\tBook\nRitika Fernandes\tMRN26000013\t42\t+91••••••••20\t2026-10-23\t2026-10-25\tBook\nManoj SharmaUnregistered\tTMP26000014\t–\t+91••••••••49\t2026-10-22\t2026-10-24\tBook\nZara Gupta\tMRN26000015\t69\t+91••••••••79\t2026-10-23\t2026-10-24\tBook\nAbhishek Kulkarni\tMRN26000016\t48\t+91••••••••91\t2026-10-21\t2026-10-27\tBook\nLavanya Khan\tMRN26000017\t41\t+91••••••••32\t2026-10-23\t2026-10-24\tBook\nDeepak Nair\tMRN26000018\t65\t+91••••••••45\t2026-10-22\t2026-10-24\tBook\nShreya Verma\tMRN26000019\t19\t+91••••••••95\t2026-10-23\t2026-10-26\tBook\nFarhan Menon\tMRN26000020\t51\t+91••••••••17\t2026-10-16\t2026-10-24\tBook\nGita Bose\tMRN26000021\t64\t+91••••••••00\t2026-10-21\t2026-10-26\tBook\nYash Iyer\tMRN26000022\t27\t+91••••••••33\t2026-10-23\t2026-10-24\tBook\nMeenal JoshiUnregistered\tTMP26000023\t–\t+91••••••••38\t2026-10-23\t2026-10-26\tBook\nTarun Thomas\tMRN26000024\t69\t+91••••••••48\t2026-10-23\t2026-10-24\tBook\nAisha Das\tMRN26000025\t64\t+91••••••••21\t2026-10-23\t2026-10-27\tBook\nNikhil Chopra\tMRN26000026\t47\t+91••••••••45\t2026-10-23\t2026-10-24\tBook\nSunita Patel\tMRN26000027\t63\t+91••••••••31\t2026-10-22\t2026-10-24\tBook\nPrakash Singh\tMRN26000028\t28\t+91••••••••34\t2026-10-21\t2026-10-25\tBook\nTanvi Agarwal\tMRN26000029\t54\t+91••••••••08\t2026-10-22\t2026-10-24\tBook\nJoseph Reddy\tMRN26000030\t33\t+91••••••••69\t2026-10-22\t2026-10-24\tBook\nRekha Fernandes\tMRN26000031\t19\t+91••••••••81\t2026-10-23\t2026-10-24\tBook\nAman SharmaUnregistered\tTMP26000032\t–\t+91••••••••45\t2026-10-22\t2026-10-24\tBook\nBhavna Gupta\tMRN26000033\t37\t+91••••••••45\t2026-10-22\t2026-10-26\tBook\nChetan Kulkarni\tMRN26000034\t49\t+91••••••••14\t2026-10-22\t2026-10-26\tBook\nEsha Khan\tMRN26000035\t71\t+91••••••••64\t2026-10-23\t2026-10-27\tBook\nGaurav Nair\tMRN26000036\t59\t+91••••••••65\t2026-10-22\t2026-10-26\tBook\nHema Verma\tMRN26000037\t47\t+91••••••••88\t2026-10-23\t2026-10-27\tBook\nIrfan Menon\tMRN26000038\t39\t+91••••••••04\t2026-10-23\t2026-10-28\tBook\nJaya Bose\tMRN26000039\t75\t+91••••••••91\t2026-10-23\t2026-10-24\tBook\nKunal Iyer\tMRN26000040\t69\t+91••••••••81\t2026-10-22\t2026-10-24\tBook\nAsha NairUnregistered\tTMP26000041\t–\t+91••••••••58\t2026-10-22\t2026-10-26\tBook\nRahul Verma\tMRN26000042\t70\t+91••••••••41\t2026-10-23\t2026-10-24\tBook\nSneha Menon\tMRN26000043\t45\t+91••••••••62\t2026-10-23\t2026-10-24\tBook\nVivek Bose\tMRN26000044\t47\t+91••••••••00\t2026-10-23\t2026-10-26\tBook\nPooja Iyer\tMRN26000045\t68\t+91••••••••55\t2026-10-22\t2026-10-24\tBook\nImran Joshi\tMRN26000046\t44\t+91••••••••89\t2026-10-23\t2026-10-27\tBook\nDivya Thomas\tMRN26000047\t31\t+91••••••••38\t2026-10-20\t2026-10-24\tBook\nKarthik Das\tMRN26000048\t37\t+91••••••••67\t2026-10-23\t2026-10-24\tBook\nAnjali Chopra\tMRN26000049\t57\t+91••••••••36\t2026-10-22\t2026-10-26\tBook\nSuresh PatelUnregistered\tTMP26000050\t–\t+91••••••••79\t2026-10-23\t2026-10-24\tBook\nNisha Singh\tMRN26000051\t36\t+91••••••••28\t2026-10-22\t2026-10-24\tBook\nHarish Agarwal\tMRN26000052\t54\t+91••••••••58\t2026-10-22\t2026-10-27\tBook\nRitika Reddy\tMRN26000053\t69\t+91••••••••77\t2026-10-22\t2026-10-26\tBook\nManoj Fernandes\tMRN26000054\t61\t+91••••••••24\t2026-10-23\t2026-10-26\tBook\nZara Sharma\tMRN26000055\t25\t+91••••••••89\t2026-10-20\t2026-10-24\tBook\nAbhishek Gupta\tMRN26000056\t22\t+91••••••••46\t2026-10-23\t2026-10-28\tBook\nLavanya Kulkarni\tMRN26000057\t20\t+91••••••••05\t2026-10-23\t2026-10-26\tBook\nDeepak Khan\tMRN26000058\t18\t+91••••••••51\t2026-10-22\t2026-10-24\tBook\nShreya NairUnregistered\tTMP26000059\t–\t+91••••••••88\t2026-10-22\t2026-10-24\tBook\nFarhan Verma\tMRN26000060\t68\t+91••••••••32\t2026-10-23\t2026-10-24\tBook\nGita Menon\tMRN26000061\t31\t+91••••••••27\t2026-10-23\t2026-10-29\tBook\nYash Bose\tMRN26000062\t39\t+91••••••••23\t2026-10-23\t2026-10-26\tBook\nMeenal Iyer\tMRN26000063\t50\t+91••••••••86\t2026-10-22\t2026-10-25\tBook\nTarun Joshi\tMRN26000064\t25\t+91••••••••47\t2026-10-23\t2026-10-24\tBook\nAisha Thomas\tMRN26000065\t44\t+91••••••••90\t2026-10-23\t2026-10-26\tBook\nNikhil Das\tMRN26000066\t63\t+91••••••••18\t2026-10-23\t2026-10-24\tBook\nSunita Chopra\tMRN26000067\t70\t+91••••••••88\t2026-10-22\t2026-10-26\tBook\nPrakash PatelUnregistered\tTMP26000068\t–\t+91••••••••51\t2026-10-23\t2026-10-24\tBook\nTanvi Singh\tMRN26000069\t38\t+91••••••••67\t2026-10-23\t2026-10-24\tBook\nJoseph Agarwal\tMRN26000070\t69\t+91••••••••94\t2026-10-23\t2026-10-24\tBook\nRekha Reddy\tMRN26000071\t35\t+91••••••••06\t2026-10-17\t2026-10-24\tBook\nAman Fernandes\tMRN26000072\t58\t+91••••••••60\t2026-10-23\t2026-10-24\tBook\nBhavna Sharma\tMRN26000073\t49\t+91••••••••88\t2026-10-23\t2026-10-26\tBook\nChetan Gupta\tMRN26000074\t52\t+91••••••••74\t2026-10-23\t2026-10-24\tBook\nEsha Kulkarni\tMRN26000075\t50\t+91••••••••55\t2026-10-23\t2026-10-24\tBook\nGaurav Khan\tMRN26000076\t35\t+91••••••••06\t2026-10-23\t2026-10-24\tBook\nHema NairUnregistered\tTMP26000077\t–\t+91••••••••08\t2026-10-23\t2026-10-24\tBook\nIrfan Verma\tMRN26000078\t74\t+91••••••••77\t2026-10-23\t2026-10-24\tBook\nJaya Menon\tMRN26000079\t32\t+91••••••••06\t2026-10-19\t2026-10-24\tBook\nKunal Bose\tMRN26000080\t62\t+91••••••••62\t2026-10-22\t2026-10-24\tBook\nAsha Khan\tMRN26000081\t35\t+91••••••••64\t2026-10-22\t2026-10-24\tBook\nRahul Nair\tMRN26000082\t20\t+91••••••••37\t2026-10-23\t2026-10-24\tBook\nSneha Verma\tMRN26000083\t66\t+91••••••••31\t2026-10-23\t2026-10-24\tBook\nVivek Menon\tMRN26000084\t70\t+91••••••••26\t2026-10-23\t2026-10-24\tBook\nPooja Bose\tMRN26000085\t60\t+91••••••••83\t2026-10-23\t2026-10-26\tBook\nImran IyerUnregistered\tTMP26000086\t–\t+91••••••••63\t2026-10-23\t2026-10-26\tBook\nDivya Joshi\tMRN26000087\t48\t+91••••••••19\t2026-10-23\t2026-10-26\tBook\nKarthik Thomas\tMRN26000088\t76\t+91••••••••44\t2026-10-21\t2026-10-26\tBook\nAnjali Das\tMRN26000089\t48\t+91••••••••58\t2026-10-23\t2026-10-26\tBook\nSuresh Chopra\tMRN26000090\t51\t+91••••••••72\t2026-10-23\t2026-10-24\tBook\nNisha Patel\tMRN26000091\t50\t+91••••••••93\t2026-10-21\t2026-10-26\tBook\nHarish Singh\tMRN26000092\t70\t+91••••••••15\t2026-10-21\t2026-10-24\tBook\nRitika Agarwal\tMRN26000093\t43\t+91••••••••54\t2026-10-23\t2026-10-24\tBook\nManoj Reddy\tMRN26000094\t67\t+91••••••••67\t2026-10-21\t2026-10-26\tBook\nZara FernandesUnregistered\tTMP26000095\t–\t+91••••••••88\t2026-10-23\t2026-10-24\tBook\nAbhishek Sharma\tMRN26000096\t27\t+91••••••••86\t2026-10-23\t2026-10-26\tBook\nLavanya Gupta\tMRN26000097\t58\t+91••••••••58\t2026-10-23\t2026-10-26\tBook\nDeepak Kulkarni\tMRN26000098\t17\t+91••••••••50\t2026-10-22\t2026-10-26\tBook\nShreya Khan\tMRN26000099\t38\t+91••••••••95\t2026-10-21\t2026-10-29\tBook\nFarhan Nair\tMRN26000100\t38\t+91••••••••30\t2026-10-23\t2026-10-24\tBook\nRegister patient\nFull registration. For a quick booking with minimal details, use Book appointment.\nIdentity\nFirst name\n*\nLast name\n*\nDate of birth\nSex\nSelect…\nPrefer not to say\nFemale\nMale\nOther\nPreferred language\nContact\nMobile number\n*\nEmail\nAddress\nCity\nPostal code\nEmergency contact and insurance\nEmergency contact name\nEmergency contact phone\nInsurance provider\nPolicy or member number\nMessages and consent\nSMS\nEmail\nWhatsApp\nPatient consents to us storing their details\nRegister patient\nMedSlot General Hospital\nPatient information is confidential. Sign-in and session expiry are managed by the workspace.\nMedSlot 1.0\nMedSlot • hq • Solution Architecture\nSecure session\n19:46",
+        "pageId": "medslot-patients",
+        "headings": [
+          "Patients",
+          "Register patient",
+          "Identity",
+          "Contact",
+          "Emergency contact and insurance"
+        ],
+        "inputs": [
+          {
+            "type": "text",
+            "placeholder": "Find a patient, MRN, phone or booking ref"
+          },
+          {
+            "type": "text",
+            "placeholder": "Name, MRN, phone or email"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "date",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "tel",
+            "placeholder": ""
+          },
+          {
+            "type": "email",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "tel",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "checkbox",
+            "placeholder": ""
+          },
+          {
+            "type": "checkbox",
+            "placeholder": ""
+          },
+          {
+            "type": "checkbox",
+            "placeholder": ""
+          },
+          {
+            "type": "checkbox",
+            "placeholder": ""
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

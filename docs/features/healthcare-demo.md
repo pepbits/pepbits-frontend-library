@@ -1,10 +1,10 @@
 # Independent healthcare demo
 
-Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-8 delivery record](../releases/unreleased/restructure-phase-6b-8-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
+Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-9 delivery record](../releases/unreleased/restructure-phase-6b-9-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
 
 ## User problem and outcome
 
-Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. Phase 6b-4 adds all forty RCM Workspace pages and their query workflows. Phases 6b-5 through 6b-7 add Teleconsult Provider/Patient, AllyVora Quality and SurgiSuite. Phase 6b-8 adds MedBand Patient Access, bringing the app to 181 menu destinations. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
+Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. Phase 6b-4 adds all forty RCM Workspace pages and their query workflows. Phases 6b-5 through 6b-7 add Teleconsult Provider/Patient, AllyVora Quality and SurgiSuite. Phase 6b-8 adds MedBand Patient Access. Phase 6b-9 adds all twelve MedSlot destinations and both record routes, bringing the app to 193 menu destinations. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
 
 ## User and administrator flows
 
@@ -50,7 +50,7 @@ Route matrices cover default, Arabic RTL, reduced motion and locked density. Jsd
 | HCD-12 | Pharmacy command replay, structured failure/retry, mounted preferences and cache scope |
 | HCD-06 | Public package boundaries, forced root CI, builds, documentation and protected-path/source checks |
 
-Exact case/file counts and failures are in the delivery record. The remaining healthcare run covers MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
+Exact case/file counts and failures are in the delivery record. MedSlot is included in phase 6b-9 with twelve destinations, both detail routes and the booking flow. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
 
 ## Operations and support
 
@@ -179,3 +179,28 @@ Seven sidebar destinations and two additional route patterns preserve Today, pat
 | HCD-36-F | Mounted edits survive effective preference/language changes; default, Arabic RTL, reduced-motion and locked-density routes pass automated page-content axe |
 
 SessionProvider → PreferenceHost → LocalizationProvider → ShellProvider remains unchanged. The configured adapter maps module-relative requests to `/reference-modules/medband/api/...`; the server establishes identity/role/scope. Public CollectionView and TemplateFields own ordinary table/form rendering; AsyncLookup, Source* controls, SourceDialog and ScreenHost own shared interaction. The demo owns visit, coverage, admission and wristband composition under CMP-04. Errors retain backend status/code/field; ambiguous attempts retain retry identity; unmount aborts pending operations and fences obsolete responses. Counter choice is scoped workstation storage only. No durable clinical draft, live device, payer/bank, native executable, native-language/domain or clinical acceptance is inferred.
+
+## MedSlot increment — HCD-42
+
+All twelve original destinations, patient/resource details and the four-stage booking flow extend the existing healthcare app. See the [app usage/routes](../../demo-apps/healthcare/README.md#medslot-scheduling--phase-6b-9), [source behavior](medslot-reference.md) and [delivery record](../releases/unreleased/restructure-phase-6b-9-2026-10-23.md).
+
+| Case | User flow and contract |
+| --- | --- |
+| HCD-42-A | Header/sidebar exposes twelve destinations including Calendar; patient/resource details retain real identifiers and refresh |
+| HCD-42-B | Register with consent, retain failed input, persist the record and select patients by keyboard lookup |
+| HCD-42-C | Patient → service → available resource/time → visit details → booking, with successful replay and conflict refusal |
+| HCD-42-D | Confirm, change duration, reschedule and cancel; retain predecessor, reasons, audit and simulated notifications |
+| HCD-42-E | Resource schedules, setup and administrator/scheduler/provider restrictions; branch and provider-resource isolation |
+| HCD-42-F | Fourteen route patterns × default/Arabic RTL/reduced-motion/locked-density axe; mounted input, effective page size and shortcut cleanup |
+
+Patient fields and collections configure public TemplateFields and CollectionView. AsyncLookup, Source* controls, SourceDialog and ScreenHost supply shared behavior; scheduling/calendar geometry and orchestration remain product components. SessionProvider → PreferenceHost → LocalizationProvider → ShellProvider stays unchanged. The adapter uses configured authenticated HTTP; the unchanged API owns trusted scope, authorization, serialization, validation, durable replay and actor attribution.
+
+Use Book appointment to search/register, choose a service and available time, then enter a reason and book. Resolve a capacity/patient conflict by selecting refreshed availability. Other recoverable errors preserve input for explicit retry. Identical ambiguous retries keep their command identity; confirmed refusals release it. No new durable draft contract is introduced. Change permitted status, duration or time from the appointment drawer; cancellation and rescheduling keep historical evidence. Setup edits require the appropriate source role, and host identities cannot be changed through the source roster.
+
+Applicable host presentation and policy locks govern forms, results, tables, formatting, motion, direction and accelerators. Facility clocks remain wall-clock values. Appointment/audit pagination follows effective page size; bounded calendars/lookups do not add pagination. Resource/status colors and timeline geometry remain domain data. Canonical catalogs are loaded from the backend, and bundled host fonts replace the external source request. No export/designer/device workflow is inherited here.
+
+No MedSlot destination is deferred. Automated software checks over fictional records do not establish clinical/financial, live notification/provider, physical-device, native executable, human language/domain or assistive-technology acceptance. The earlier consultation composer/ambient recorder and later backend relocation/consumer migration/publication remain separate.
+
+MedSlot’s four observed registration fallback labels are Emergency contact name, Emergency contact phone, Insurance provider and Policy or member number. Their canonical entries are absent in all four languages. This inherited catalog gap remains explicit; the 505-alias coverage check does not claim every source string is translated.
+
+Regression corrections in 6b-9: the Suite appointment board remains reachable by Tab when past slots provide no interactive children; RCM removes disabled shortcut listeners in the same commit as accepted preferences.

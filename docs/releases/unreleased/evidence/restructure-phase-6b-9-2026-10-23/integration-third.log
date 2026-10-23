@@ -1,0 +1,56 @@
+{"workflow":"medslot-identity","mode":"HTTP","result":"passed"}
+{"workflow":"medslot-details","mode":"UI","result":"passed"}
+{"workflow":"medslot-dialog","mode":"UI","result":"passed"}
+{"workflow":"medslot-registration","mode":"UI + HTTP reload","result":"passed"}
+{"workflow":"medslot-search","mode":"UI","result":"passed"}
+{"workflow":"medslot-booking","mode":"UI","result":"passed"}
+{"workflow":"medslot-conflicts","mode":"HTTP","result":"passed"}
+{"workflow":"medslot-calendar","mode":"UI","result":"passed"}
+{"workflow":"medslot-status","mode":"UI + HTTP","result":"passed"}
+{"workflow":"medslot-duration","mode":"UI","result":"passed"}
+AssertionError [ERR_ASSERTION]: reschedule dialog axe
++ actual - expected
+
++ [
++   {
++     html: [
++       '<span class="tabular text-[10px] font-medium text-[#7fe0c9]">20 open</span>',
++       '<span class="text-[length:calc(11px*var(--fs-scale))] font-extrabold">Length changed · AP-5B2152 now ends at 09:05</span>'
++     ],
++     id: 'color-contrast',
++     summary: [
++       'Fix any of the following:\n' +
++         '  Element has insufficient color contrast of 3.87 (foreground color: #7fe0c9, background color: #3156d9, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1',
++       'Fix any of the following:\n' +
++         '  Element has insufficient color contrast of 4.34 (foreground color: #ffffff, background color: #138a60, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1'
++     ]
++   }
++ ]
+- []
+
+    at axeState (file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/medslot-flows.mjs:15:326)
+    at async medslotFlows (file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/medslot-flows.mjs:35:396)
+    at async file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/smoke.mjs:115:112
+reschedule dialog axe
++ actual - expected
+
++ [
++   {
++     html: [
++       '<span class="tabular text-[10px] font-medium text-[#7fe0c9]">20 open</span>',
++       '<span class="text-[length:calc(11px*var(--fs-scale))] font-extrabold">Length changed · AP-5B2152 now ends at 09:05</span>'
++     ],
++     id: 'color-contrast',
++     summary: [
++       'Fix any of the following:\n' +
++         '  Element has insufficient color contrast of 3.87 (foreground color: #7fe0c9, background color: #3156d9, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1',
++       'Fix any of the following:\n' +
++         '  Element has insufficient color contrast of 4.34 (foreground color: #ffffff, background color: #138a60, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1'
++     ]
++   }
++ ]
+- []
+
+Browser exited 1
+{"integrationExit":1,"sourceBase":"eafe80372091834fb970919a7b14970586230cc3","apiPort":37473,"appPort":41279}
+Next exited 143

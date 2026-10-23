@@ -25,3 +25,5 @@ routes.push(...['','/schedule','/cases','/approvals','/patients','/inventory','/
 
 routes.push(...['','/patients','/patients/new','/encounters/new','/admissions','/encounters','/episodes'].map(path=>'/medband'+path));
 examples.push('/medband/admissions/new');
+
+routes.push(...['','/book','/calendar','/appointments','/patients','/resources','/services','/departments','/holidays','/notifications','/settings','/audit'].map(path=>'/medslot'+path));

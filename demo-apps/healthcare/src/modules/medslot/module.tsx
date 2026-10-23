@@ -1,0 +1,24 @@
+"use client";
+import {useMemo} from "react";
+import {ReferenceHostProvider,referenceScopeKey,type ReferenceModuleProps} from "./host";
+import {LocalizationAliasProvider,LocalizedText} from "@pepbits/i18n/react";
+import copy from "./medslot-copy.json";
+import {MedslotApiProvider} from "./lib/api";
+import {AppShell} from "./components/shell/AppShell";
+import {ToastProvider} from "./components/toast";
+import Page0 from "./app/(app)/page";
+import Page1 from "./app/(app)/book/page";
+import Page2 from "./app/(app)/calendar/page";
+import Page3 from "./app/(app)/appointments/page";
+import Page4 from "./app/(app)/patients/page";
+import Page5 from "./app/(app)/resources/page";
+import Page6 from "./app/(app)/services/page";
+import Page7 from "./app/(app)/departments/page";
+import Page8 from "./app/(app)/holidays/page";
+import Page9 from "./app/(app)/notifications/page";
+import Page10 from "./app/(app)/settings/page";
+import Page11 from "./app/(app)/audit/page";
+import Page12 from "./app/(app)/patients/[id]/page";
+import Page13 from "./app/(app)/resources/[id]/page";
+export function ReferenceMedslotModule({path,host}:ReferenceModuleProps){const current=useMemo(()=>({...host,path}),[host,path]),p=path.split("?")[0]!,Page=p==="/"?Page0:p==="/book"?Page1:p==="/calendar"?Page2:p==="/appointments"?Page3:p==="/patients"?Page4:p==="/resources"?Page5:p==="/services"?Page6:p==="/departments"?Page7:p==="/holidays"?Page8:p==="/notifications"?Page9:p==="/settings"?Page10:p==="/audit"?Page11:/^\/patients\/\d+$/.test(p)?Page12:/^\/resources\/\d+$/.test(p)?Page13:null;
+return <ReferenceHostProvider host={current}><LocalizationAliasProvider aliases={copy}><div className="reference-medslot min-h-full min-w-0" data-reference-module="medslot" data-theme={host.preferences.theme} data-medslot-font="host" data-medslot-palette="host" data-medslot-table="host"><MedslotApiProvider key={referenceScopeKey(host.scope)}><ToastProvider><AppShell>{Page?<Page key={p}/>:<p role="status"><LocalizedText message="Page not found"/></p>}</AppShell></ToastProvider></MedslotApiProvider></div></LocalizationAliasProvider></ReferenceHostProvider>;}

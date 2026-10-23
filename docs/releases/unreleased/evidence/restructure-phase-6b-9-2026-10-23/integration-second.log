@@ -1,0 +1,41 @@
+AssertionError [ERR_ASSERTION]: booking axe
++ actual - expected
+
++ [
++   {
++     html: [
++       '<p class="text-xs text-white/60">Appointment</p>',
++       '<span class="text-base text-white/50"> to 09:20</span>'
++     ],
++     id: 'color-contrast',
++     summary: [
++       'Fix any of the following:\n' +
++         '  Element has insufficient color contrast of 3.21 (foreground color: #adbbf0, background color: #3156d9, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1',
++       'Fix any of the following:\n' +
++         '  Element has insufficient color contrast of 2.68 (foreground color: #98aaec, background color: #3156d9, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1'
++     ]
++   }
++ ]
+- []
+
+    at axeState (file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/medslot-flows.mjs:15:326)
+    at async medslotFlows (file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/medslot-flows.mjs:29:247)
+    at async file:///home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/scripts/smoke.mjs:115:112
+{"route":"/medslot","violations":["color-contrast"]}
+{"route":"/medslot/book","violations":["color-contrast"]}
+{"route":"/medslot/calendar","violations":[]}
+{"route":"/medslot/appointments","violations":[]}
+{"route":"/medslot/patients","violations":[]}
+{"route":"/medslot/resources","violations":[]}
+{"route":"/medslot/services","violations":[]}
+{"route":"/medslot/departments","violations":[]}
+{"route":"/medslot/holidays","violations":[]}
+{"route":"/medslot/notifications","violations":[]}
+{"route":"/medslot/settings","violations":[]}
+{"route":"/medslot/audit","violations":[]}
+{"route":"/medslot/patients/1","violations":[]}
+{"route":"/medslot/resources/3","violations":[]}
+{"route":"/medslot/patients/241","violations":[]}
+Browser exited 1
+{"integrationExit":1,"sourceBase":"eafe80372091834fb970919a7b14970586230cc3","apiPort":37845,"appPort":38881}
+Next exited 143

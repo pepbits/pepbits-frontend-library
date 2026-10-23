@@ -1,0 +1,73 @@
+{
+  "base": "eafe80372091834fb970919a7b14970586230cc3",
+  "ciImplementationDigest": "1eb5c24a651f0b9f5b0eeed2450482f7b840229198ec846375a2145278e5e117",
+  "finalImplementationDigest": "9c912740f7390963ec8b337f92fc0b0e269b16e5d90adb709098e81066fced1c",
+  "finalFiles": 1414,
+  "manifestMatchesWorkingTree": true,
+  "documentationChangesAfterCiSnapshot": [
+    "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
+    "docs/features/healthcare-demo.md"
+  ],
+  "runtimeChangesAfterCiSnapshot": [],
+  "ciCapture": "ci-source.json",
+  "changesAfterHttpBuild": [
+    "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
+    "docs/features/healthcare-demo.md"
+  ],
+  "httpRuntimeMatchesFinalCi": true,
+  "browserBuild": {
+    "finalBuildArtifactIdentity": "final-ci-build.json",
+    "httpBuildArtifactIdentity": "final-ci-build.json",
+    "inputSnapshot": "ci-source.json",
+    "scope": "Final full HTTP serves the final CI production build. Runtime sources and browser drivers match the CI snapshot. Diagnostic builds and receipts remain separate; no deployed release or native executable test is claimed."
+  },
+  "finalIntegrationDrivers": [
+    {
+      "path": "demo-apps/healthcare/scripts/integration.mjs",
+      "sha256": "84792b32411bb9bd6eb5eb4adc53580294e34e6a60ebf6287b24b1d354667982"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/medband-flows.mjs",
+      "sha256": "d7461b7f421ee058f4d3a8e011c6456dec72a5654886faf3f6477985bfd3cd75"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/medslot-flows.mjs",
+      "sha256": "685b5afbad129eaaad7e014f2c1bb33c53e527006bb004a6896f1314e7ed3307"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/pharmacy-flows.mjs",
+      "sha256": "fc694a58f7528d01b3d89ea7ee13d27d46c63cbd392a7ab49dc909ffe82a4078"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/quality-flows.mjs",
+      "sha256": "f9e06846d67b50b362c9b1db73409a05339e55ef1efcd152dbe9e3f49df94e66"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/rcm-flows.mjs",
+      "sha256": "63d5712c149c8ce11eb0a8b52d3e2e9ae68fafb05a0a02044381f5ab548294a9"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/rcm-presentation.mjs",
+      "sha256": "16ac027a5ceb73598095bbcefd0b063448a807a7a34dd8bcd07e52d161eb383f"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/route-cases.mjs",
+      "sha256": "fb2961b46eb0d0d6bf82835abb23de59a9c1cfd52f261ec5c221d39889627abe"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/smoke.mjs",
+      "sha256": "478e86cf788f53f15d0be5cce2c71c517cd72b7826a3e9b02b0067d2f3ee858a"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/surgisuite-flows.mjs",
+      "sha256": "bbd040ab15d166781b4ce7559ee28ec3685e32981d2d40149167300e02be59fd"
+    },
+    {
+      "path": "demo-apps/healthcare/scripts/teleconsult-flows.mjs",
+      "sha256": "39290ae8a0a9a45af301cf642ebb64a05c8fb9c0a6effbe7cde5a93cb4b3f575"
+    }
+  ],
+  "limits": [
+    "API source equality and reused runtime hashes are in each launcher identity; backend runtime artifacts were not rebuilt."
+  ]
+}

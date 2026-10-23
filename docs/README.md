@@ -1,6 +1,6 @@
 # Enterprise frontend documentation
 
-- [Independent healthcare demo](features/healthcare-demo.md): phases 6b-1 through 6b-8 core, clinical, diagnostics, Pharmacy, RCM, Teleconsult, Quality, SurgiSuite and MedBand app/API verification; no deployment or clinical acceptance.
+- [Independent healthcare demo](features/healthcare-demo.md): phases 6b-1 through 6b-9 core, clinical, diagnostics, Pharmacy, RCM, Teleconsult, Quality, SurgiSuite, MedBand and MedSlot app/API verification; no deployment or clinical acceptance.
 
 - [Independent showcase](features/showcase.md): public-package gallery, generated examples and an in-memory preference/policy playground.
 

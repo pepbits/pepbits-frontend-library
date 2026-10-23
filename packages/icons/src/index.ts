@@ -141,3 +141,5 @@ export {Droplet, Shield, Scissors} from 'lucide-react';
 
 // Patient access presentation primitives.
 export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from 'lucide-react';
+
+export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";

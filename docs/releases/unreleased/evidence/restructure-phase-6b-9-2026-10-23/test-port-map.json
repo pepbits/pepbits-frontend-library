@@ -1,0 +1,35 @@
+{
+  "original": [
+    {
+      "source": "desktop-clients/packages/reference-medslot/src/module.test.tsx",
+      "sourceSha256": "54910d25f7f22adf22283793753257a51d14126a0d1bfb22d78b8acec9d21c6d",
+      "ported": "demo-apps/healthcare/src/modules/medslot/module.test.tsx",
+      "originalCases": 17,
+      "adaptation": "Public host, preferences and navigation contracts; named stage replaces nested main landmark; async assertions await completion."
+    },
+    {
+      "source": "desktop-clients/packages/reference-medslot/src/ui.test.tsx",
+      "sourceSha256": "f037a134776d4d9d4ee88afb9dd46799e6f79e05da48d69308685363dd4c9485",
+      "ported": "demo-apps/healthcare/src/modules/medslot/ui.test.tsx",
+      "originalCases": 2,
+      "adaptation": "Public host, preferences and navigation contracts; named stage replaces nested main landmark; async assertions await completion."
+    }
+  ],
+  "browser": {
+    "source": "desktop-clients/e2e/medslot-reference.mjs",
+    "sourceSha256": "cff3b0f94a468cbe97eb2406e553bb791cd41c735b7bddd0413ae2639e2ec825",
+    "ported": [
+      "demo-apps/healthcare/scripts/medslot-flows.mjs",
+      "demo-apps/healthcare/scripts/smoke.mjs"
+    ],
+    "adaptation": "Real independent API/Next launcher, original header/sidebar, detail refresh, positioned dialog/Escape and role/actor checks. Effective host presentation replaces fixed 40-pixel input height."
+  },
+  "frozenProvenance": [
+    {
+      "path": "demo-apps/healthcare/src/modules/medslot/styles.css",
+      "sha256": "c7301b56a9e88805b6e9c0fdcd7f01bd3520edb477a791042eaf7c7fb50c3240",
+      "source": "desktop-clients/packages/reference-medslot/src/styles.css",
+      "sourceSha256": "c7301b56a9e88805b6e9c0fdcd7f01bd3520edb477a791042eaf7c7fb50c3240"
+    }
+  ]
+}

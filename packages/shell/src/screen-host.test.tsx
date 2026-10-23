@@ -73,7 +73,7 @@ test('patterns lifecycle screen reports dirty changes and localized success thro
 test('notifications honor toast style, duration, placement, limits and dismiss',()=>{
   vi.useFakeTimers();let host!:ScreenHost;function Probe(){host=useScreenHost();return null;}
   const view=render(<ShellTestHost settings={{preferences:{toastPosition:'bottom-left',toastStyle:'solid',toastDuration:2000,maxVisibleToasts:1}}}><Probe/><ToastViewport/></ShellTestHost>);
-  act(()=>{host.notify('First',{tone:'info'});host.notify('Last',{tone:'success'});});expect(screen.queryByText('First')).toBeNull();expect(screen.getByText('Last').closest('[style]')).toHaveStyle({background:'var(--success)'});
+  act(()=>{host.notify('First',{tone:'info'});host.notify('Last',{tone:'success'});});expect(screen.queryByText('First')).toBeNull();expect(screen.getByText('Last').closest('[style]')).toHaveStyle({background:'color-mix(in srgb, var(--success) 40%, #000)'});
   expect(view.container.querySelector('.bottom-12.left-4')).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'Dismiss'}));expect(screen.queryByText('Last')).toBeNull();
   act(()=>host.notify('Temporary',{tone:'warning'}));act(()=>vi.advanceTimersByTime(2000));expect(screen.queryByText('Temporary')).toBeNull();view.unmount();vi.useRealTimers();
 });
