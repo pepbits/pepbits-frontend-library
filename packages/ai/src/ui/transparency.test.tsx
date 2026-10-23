@@ -247,3 +247,13 @@ describe("the clinical acknowledgement", () => {
     expect(screen.getByText(/does not diagnose/)).toBeInTheDocument();
   });
 });
+
+test('explicit simulation can confirm without a credential and still requires captured fields',()=>{
+ const props=panel({simulation:true,config:null});
+ const button=screen.getByRole('button',{name:/mock transport.*2/i});
+ expect(button).toBeEnabled();fireEvent.click(button);expect(props.onConfirm).toHaveBeenCalledOnce();
+});
+test('explicit simulation cannot confirm empty context',()=>{
+ panel({simulation:true,config:null,context:context({fields:[]})});
+ expect(screen.getByRole('button',{name:/mock transport.*0/i})).toBeDisabled();
+});

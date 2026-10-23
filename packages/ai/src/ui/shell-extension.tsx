@@ -1,9 +1,9 @@
 'use client';
-import React, {useCallback, useRef, useState, type ReactNode} from 'react';
+import React, {useCallback, useMemo, useRef, useState, type ReactNode} from 'react';
 import {ShellExtensionsProvider} from '@pepbits/shell';
 import {ScreenHostProvider, useScreenHost} from '@pepbits/patterns/screen-host';
 import {usePublishAiSources, type AiSources} from '../client';
-import {AiProvider, type AiHost} from './provider';
+import {AiProvider, useAiHost, type AiHost} from './provider';
 import {AssistantPanel} from './assistant-panel';
 import {InlineAiAction} from './inline-action';
 
@@ -11,6 +11,7 @@ export interface AiSourcePublication {id: string; sources: AiSources}
 function Publication({id,sources}: AiSourcePublication) {usePublishAiSources(id,sources);return null;}
 function AiScreenHost({children}: {children?: ReactNode}) {
   const host = useScreenHost();
+  const {userEnabled=true} = useAiHost();
   const serial = useRef(0);
   const [publications,setPublications] = useState<Record<number,AiSourcePublication[]>>({});
   const publishSources = useCallback((sources: readonly unknown[]) => {
@@ -23,8 +24,9 @@ function AiScreenHost({children}: {children?: ReactNode}) {
   const renderInlineAction = useCallback((props: Readonly<Record<string,unknown>>) => typeof props.useCaseId === 'string'
     ? <InlineAiAction useCaseId={props.useCaseId} label={typeof props.label === 'string' ? props.label : undefined}
         className={typeof props.className === 'string' ? props.className : undefined}/> : null,[]);
-  return <ScreenHostProvider value={{...host,publishSources,renderInlineAction}}>
-    {Object.entries(publications).flatMap(([registration,entries])=>entries.map((entry,index)=><Publication key={`${registration}:${index}`} {...entry}/>))}
+  const value=useMemo(()=>({...host,publishSources:userEnabled?publishSources:undefined,renderInlineAction:userEnabled?renderInlineAction:undefined}),[host,userEnabled,publishSources,renderInlineAction]);
+  return <ScreenHostProvider value={value}>
+    {userEnabled && Object.entries(publications).flatMap(([registration,entries])=>entries.map((entry,index)=><Publication key={`${registration}:${index}`} {...entry}/>))}
     {children}
   </ScreenHostProvider>;
 }

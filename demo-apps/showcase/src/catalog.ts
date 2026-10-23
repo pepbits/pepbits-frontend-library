@@ -1,3 +1,19 @@
+import React from "react";
+import {useDemoPolicy} from "./demo-state";
+import {ShellWorkspaceDemo} from "./examples/shell-workspace";
+import {ShellMdiDemo} from "./examples/shell-mdi";
+import {ShellDetachedDemo} from "./examples/shell-detached";
+import {ShellCommandDemo} from "./examples/shell-command";
+import {ShellDocumentationDemo} from "./examples/shell-documentation";
+import {ShellHelpDemo} from "./examples/shell-help";
+import {ShellToastsDemo} from "./examples/shell-toasts";
+import {ShellSessionDemo} from "./examples/shell-session";
+import {ShellPreferencesDemo} from "./examples/shell-preferences";
+import {ShellLoginDemo} from "./examples/shell-login";
+import {AiActionsDemo} from "./examples/ai-actions";
+import {AiTransparencyDemo} from "./examples/ai-transparency";
+import {AiAdministrationDemo} from "./examples/ai-administration";
+function SessionExample(){const {expireSession}=useDemoPolicy();return React.createElement(ShellSessionDemo,{expireSession});}
 import {PanelsDemo} from "./examples/panels";
 import {DraftCenterDemo} from "./examples/draft-center";
 import {ControlStatesDemo} from "./examples/control-states";
@@ -87,4 +103,30 @@ export const examples:Example[]=[
 ,{"id": "control-states", "area": "ui", "title": "Control states", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "Checkbox", "DateInput", "DateRangeInput", "DateTimeInput", "FilePicker", "Input", "MonthInput", "MultiSelect", "QuantityUnitField", "Radio", "RadioGroup", "RangeField", "RangeInput", "ScannerInput", "SearchSelect", "Select", "Textarea", "TimeInput", "Toggle", "WeekInput", "usePreference"],render:ControlStatesDemo}
 ,{"id": "draft-center", "area": "patterns", "title": "Draft recovery center", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "DraftCenterAdapter", "DraftCenterItem", "DraftHost", "DraftRecoveryCenter", "createMemoryDraftAdapter"],render:DraftCenterDemo}
 ,{"id": "panels", "area": "page-engines", "title": "Record panels", "description": "Explore fictional values through public controls and host adapters.", "exports": ["RecordAdapterProvider", "RecordPanels", "RecordPanelsAdapter", "RecordPanelsPanel", "createMemoryRecordAdapter"],render:PanelsDemo}
+,
+{"id": "shell-workspace", "area": "shell", "title": "Workspace tabs and split canvas", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "useNavigation", "useWorkspace", "useSplit", "documentFromTarget", "useShell", "usePreferences"],render:ShellWorkspaceDemo}
+,
+{"id": "shell-mdi", "area": "shell", "title": "MDI windows", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Toggle", "usePreference"],render:ShellMdiDemo}
+,
+{"id": "shell-detached", "area": "shell", "title": "Detached window port", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "useWorkspace", "useDetachedIn", "usePreferences", "documentFromTarget", "useShell", "useWindowPort"],render:ShellDetachedDemo}
+,
+{"id": "shell-command", "area": "shell", "title": "Command palette", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "useShell"],render:ShellCommandDemo}
+,
+{"id": "shell-documentation", "area": "shell", "title": "Documentation drawer", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "useShell", "usePreferences"],render:ShellDocumentationDemo}
+,
+{"id": "shell-help", "area": "shell", "title": "Help and tours", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "useShell", "usePreferences"],render:ShellHelpDemo}
+,
+{"id": "shell-toasts", "area": "shell", "title": "Toasts", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "useScreenHost"],render:ShellToastsDemo}
+,
+{"id": "shell-session", "area": "shell", "title": "Session lock", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button"],render:SessionExample}
+,
+{"id": "shell-preferences", "area": "shell", "title": "Preferences page", "description": "Explore fictional values through public controls and host adapters.", "exports": ["PreferencesPage"],render:ShellPreferencesDemo}
+,
+{"id": "shell-login", "area": "shell", "title": "Login", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Button", "useSession", "LoginScreen"],render:ShellLoginDemo}
+,
+{"id": "ai-actions", "area": "ai", "title": "AI sources and actions", "description": "Explore fictional values through public controls and host adapters.", "exports": ["Input", "useScreenHost", "useAiHost"],render:AiActionsDemo}
+,
+{"id": "ai-transparency", "area": "ai", "title": "AI transparency", "description": "Explore fictional values through public controls and host adapters.", "exports": ["TransparencyPanel", "useAiHost", "useAssistant"],render:AiTransparencyDemo}
+,
+{"id": "ai-administration", "area": "ai", "title": "AI administration", "description": "Explore fictional values through public controls and host adapters.", "exports": ["AiAdministration", "useAiHost"],render:AiAdministrationDemo}
 ];

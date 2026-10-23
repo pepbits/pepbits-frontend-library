@@ -1,38 +1,62 @@
 import {createRequire} from 'node:module';
 import {writeFileSync,mkdirSync} from 'node:fs';
 import {resolve} from 'node:path';
+import assert from 'node:assert/strict';
 const require=createRequire(import.meta.url);
 const {chromium}=require(process.env.SHOWCASE_PLAYWRIGHT_PATH??'playwright');
 const base=process.env.SHOWCASE_BASE??'http://127.0.0.1:3300';
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw new Error('Local smoke only');
-const evidence=resolve(process.env.SHOWCASE_EVIDENCE??'docs/releases/unreleased/evidence/restructure-phase-6a-2026-10-23');mkdirSync(evidence,{recursive:true});
+const evidence=resolve(process.env.SHOWCASE_EVIDENCE??'docs/releases/unreleased/evidence/restructure-phase-6a-2026-10-23/follow-up');mkdirSync(evidence,{recursive:true});
 const browser=await chromium.launch({headless:true,executablePath:process.env.SHOWCASE_CHROMIUM});
 const page=await browser.newPage({viewport:{width:1440,height:1000}});
-let currentArea='startup';
-const errors=[],checks=[];page.on('pageerror',error=>errors.push({area:currentArea,message:error.message}));
-const consoleErrors=[];page.on('console',message=>{if(message.type()==='error')consoleErrors.push(message.text());});
 const routes=['foundations','ui','components','patterns','page-engines','playground','shell','ai'];
+const titles=['Foundations','UI primitives','Components','Patterns','Page engines','Preferences and policy','Shell','AI'];
+const summary={scope:'Local next start, fictional in-memory adapters; not deployed/native',axe:[],navigation:[],interactions:[],pageErrors:[],consoleErrors:[],externalRequests:[],failure:null};
+let currentArea='startup';
+page.on('pageerror',error=>summary.pageErrors.push({area:currentArea,message:error.message}));
+page.on('console',message=>{if(message.type()==='error')summary.consoleErrors.push({area:currentArea,message:message.text()});});
+await page.route('**/*',route=>{const url=route.request().url();if(new URL(url).origin!==new URL(base).origin){summary.externalRequests.push(url);return route.abort();}return route.continue();});
+await page.addInitScript(()=>{window.showcaseFetches=[];const original=window.fetch;window.fetch=function(input,...args){window.showcaseFetches.push(String(input instanceof Request?input.url:input));return original.call(this,input,...args);};});
+const gallery=area=>page.locator('#gallery-'+area);
+async function settled(area){currentArea=area;await gallery(area).waitFor({state:'visible'});await page.waitForLoadState('networkidle');await page.evaluate(()=>document.fonts.ready);}
+async function expandSidebar(){const rail=page.locator('aside[data-tour="sidebar"]');await rail.hover();const expand=rail.getByRole('button',{name:'Expand navigation',exact:true});if(await expand.isVisible())await expand.click();return rail;}
+async function sidebar(area){const rail=await expandSidebar();await rail.locator(`a[href="/${area}"]`).click();await settled(area);await page.waitForURL(base+'/'+area);}
+async function palette(area){await page.locator('header').getByRole('button',{name:/Search/}).click();const dialog=page.getByRole('dialog',{name:'Open page or command'});await dialog.getByRole('textbox').fill(area);await dialog.getByRole('button',{name:new RegExp('^'+titles[routes.indexOf(area)])}).click();await settled(area);}
+async function axeCheck(area,scenario){await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});const result=await page.evaluate(async()=>{const r=await window.axe.run(document);return {violations:r.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({html:n.html,summary:n.failureSummary}))})),passes:r.passes.length,incomplete:r.incomplete.length};});summary.axe.push({area,scenario,...result});}
+async function check(name,run){await run();summary.interactions.push(name);console.log('PASS interaction: '+name);}
 try {
- for(const area of routes){currentArea=area;
-  await page.goto(base+'/'+area);await page.locator('.page-heading h1').waitFor();await page.waitForFunction(()=>document.documentElement.dataset.theme==='nexora');
-  await page.waitForLoadState('networkidle');await page.evaluate(()=>document.fonts.ready);
-  await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
-  const result=await page.evaluate(async()=>{const result=await window.axe.run(document);return {violations:result.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({html:n.html,summary:n.failureSummary}))})),passes:result.passes.length,incomplete:result.incomplete.length};});
-  checks.push({area,...result});
- }
- await page.goto(base+'/playground');await page.getByRole('switch',{name:'Lock density',exact:true}).click();
- const density=page.getByRole('combobox',{name:'Density',exact:true}).first();if(!await density.isDisabled()||await density.inputValue()!=='compact')throw new Error('Density lock failed');
- await page.getByRole('switch',{name:'Restrict page sizes',exact:true}).click();if(await page.getByRole('combobox',{name:'pageSize',exact:true}).locator('option').count()!==2)throw new Error('Allowed page sizes failed');
- await page.locator('aside').getByRole('combobox',{name:'Language',exact:true}).selectOption('ar');await page.waitForFunction(()=>document.documentElement.dir==='rtl');
- await page.screenshot({path:resolve(evidence,'playground-rtl.png'),fullPage:false});
- // Client navigation retains the accepted session-only preferences and policy.
- await page.locator('nav a[href="/components"]').click();await page.locator('.page-heading h1').waitFor();if(await page.locator('html').getAttribute('dir')!=='rtl')throw new Error('Client navigation reset language');
- await page.locator('aside select').nth(1).selectOption('en');await page.waitForFunction(()=>document.documentElement.dir==='ltr');
- await page.getByRole('button',{name:'Modal',exact:true}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'hidden'});
- await page.locator('nav a[href="/page-engines"]').click();await page.getByRole('textbox',{name:/Item name/}).fill('Browser fictional item');await page.locator('[data-example="form"]').getByRole('button',{name:'Save',exact:true}).click();await page.locator('[data-example="form"]').getByText('Saved',{exact:true}).waitFor();
- await page.screenshot({path:resolve(evidence,'page-engines.png'),fullPage:false});
- for(const language of ['hi','ml']){await page.locator('aside select').nth(1).selectOption(language);await page.waitForFunction(language=>document.documentElement.lang===language,language);}
- const summary={scope:'Local next start, fictional in-memory adapters; not deployed/native',routes:checks.length,checks,interactionChecks:8,pageErrors:errors,consoleErrors};writeFileSync(resolve(evidence,'browser.json'),JSON.stringify(summary,null,2)+'\n');
- console.log(JSON.stringify(summary,null,2));
- if(errors.length||consoleErrors.length||checks.some(check=>check.violations.length))process.exitCode=1;
-} finally {await browser.close();}
+ for(const area of routes){await page.goto(base+'/'+area);await settled(area);await axeCheck(area,'default');}
+ for(const area of routes){await sidebar(area);summary.navigation.push({area,via:'sidebar'});}
+ await expandSidebar();await axeCheck('ai','expanded sidebar');
+ for(const area of routes){await palette(area);summary.navigation.push({area,via:'command'});}
+ await sidebar('playground');
+ await check('density lock',async()=>{await gallery('playground').getByRole('switch',{name:'Lock density',exact:true}).click();const density=gallery('playground').getByRole('combobox',{name:'Density',exact:true});assert(await density.isDisabled());assert.equal(await density.inputValue(),'compact');});
+ await check('allowed page sizes',async()=>{await page.getByRole('switch',{name:'Restrict page sizes',exact:true}).click();assert.equal(await gallery('playground').getByRole('combobox',{name:'pageSize',exact:true}).locator('option').count(),2);});
+ await check('Arabic RTL and live sidebar locks',async()=>{await gallery('playground').getByRole('combobox',{name:'Language',exact:true}).selectOption('ar');await page.waitForFunction(()=>document.documentElement.dir==='rtl');await gallery('playground').getByRole('switch',{name:'قفل تفضيلات الشريط الجانبي'}).click();await expandSidebar();assert(await page.locator('aside[data-tour="sidebar"]').getByTitle('Pin sidebar',{exact:true}).isDisabled());await axeCheck('playground','Arabic locked sidebar');await page.screenshot({path:resolve(evidence,'playground-rtl.png')});});
+ await sidebar('components');
+ await check('preferences retained through navigation',async()=>{assert.equal(await page.locator('html').getAttribute('dir'),'rtl');assert.equal(await gallery('components').getByRole('combobox',{name:'الكثافة',exact:true}).inputValue(),'compact');await gallery('components').getByRole('combobox',{name:'اللغة',exact:true}).selectOption('en');});
+ await check('modal and Escape',async()=>{await gallery('components').getByRole('button',{name:'Modal',exact:true}).click();await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'hidden'});});
+ await sidebar('page-engines');
+ await check('memory record save',async()=>{await gallery('page-engines').getByRole('textbox',{name:/Item name/}).fill('Browser fictional item');await page.locator('[data-example="form"]').getByRole('button',{name:'Save',exact:true}).click();await page.locator('[data-example="form"]').getByText('Saved',{exact:true}).waitFor();await page.screenshot({path:resolve(evidence,'page-engines.png')});});
+ for(const language of ['hi','ml'])await check('language '+language,async()=>{await gallery('page-engines').locator('select').filter({has:page.locator('option[value="'+language+'"]')}).selectOption(language);await page.waitForFunction(language=>document.documentElement.lang===language,language);});
+ await gallery('page-engines').locator('select').filter({has:page.locator('option[value="en"]')}).selectOption('en');
+ await sidebar('shell');
+ await check('shortcuts off retains navigation',async()=>{await gallery('shell').getByRole('switch',{name:'Keyboard shortcuts',exact:true}).click();await page.keyboard.press('Control+k');assert.equal(await page.getByRole('dialog',{name:'Open page or command'}).count(),0);await palette('ai');await page.locator('header').getByRole('button',{name:'Shell',exact:true}).click();await settled('shell');});
+ await check('split workspace canvas',async()=>{await gallery('shell').getByRole('button',{name:'Split with Foundations'}).click();assert(await gallery('foundations').isVisible());assert(await gallery('shell').isVisible());await gallery('shell').getByRole('button',{name:'Exit split canvas'}).click();});
+ await check('fictional detach and reattach',async()=>{await page.getByRole('button',{name:'Simulate detach Foundations'}).click();await page.getByText('Detached documents: 1',{exact:true}).waitFor();await page.getByRole('button',{name:'Reattach Foundations'}).click();await page.locator('header').getByRole('button',{name:'Shell',exact:true}).click();await page.getByText('Detached documents: 0',{exact:true}).waitFor();});
+ await check('MDI arrangement',async()=>{await gallery('shell').getByRole('switch',{name:'Floating workspace windows'}).click();await page.getByRole('button',{name:/Minimise/}).first().waitFor();await axeCheck('shell','MDI');await gallery('shell').getByRole('switch',{name:'Floating workspace windows'}).click();});
+ await check('fictional documentation drawer',async()=>{await page.getByRole('button',{name:'Open fictional guide'}).click();await page.getByText('Fictional showcase guide',{exact:true}).waitFor();await page.keyboard.press('Escape');});
+ await check('help and tour',async()=>{await page.getByRole('button',{name:'Open help and tours'}).click();const help=page.getByRole('dialog',{name:'Help',exact:true});await help.getByRole('button',{name:'Tour',exact:true}).click();await help.getByRole('button',{name:'Play tour'}).click();await help.getByRole('button',{name:'Pause',exact:true}).waitFor();await help.getByRole('button',{name:'Stop',exact:true}).click();await help.getByRole('button',{name:'Close help',exact:true}).click();});
+ await check('toast',async()=>{await page.getByRole('button',{name:'Show success toast'}).click();await page.getByText('Fictional change saved',{exact:true}).waitFor();});
+ await check('session lock renewal',async()=>{await page.getByRole('button',{name:'Lock demo session'}).click();const lock=page.getByRole('dialog',{name:'Your session has ended'});await lock.getByLabel(/^Username/).fill('fictional');await lock.getByLabel(/^Password/).fill('ignored');await lock.getByRole('button',{name:'Sign in',exact:true}).click();await lock.waitFor({state:'hidden'});});
+ await check('controlled login preview',async()=>{await page.getByRole('button',{name:'Preview login'}).click();const login=page.locator('[data-example="shell-login"]');await login.getByLabel(/^Username/).fill('fictional');await login.getByLabel(/^Password/).fill('ignored');await login.getByRole('button',{name:'Sign in',exact:true}).click();await page.getByRole('button',{name:'Preview login'}).waitFor();});
+ await page.locator('header').getByRole('button',{name:'AI',exact:true}).click();await settled('ai');
+ await check('AI off has no surfaces or service requests',async()=>{assert.equal(await page.getByRole('button',{name:'Open the AI assistant'}).count(),0);assert.equal(await page.getByRole('button',{name:'Summarize fictional item',exact:true}).count(),0);assert.deepEqual(await page.evaluate(()=>window.showcaseFetches.filter(url=>url.includes('/ai/'))),[]);});
+ await sidebar('playground');await gallery('playground').getByRole('switch',{name:'Enable AI simulation'}).click();await page.locator('header').getByRole('button',{name:'AI',exact:true}).click();await settled('ai');
+ await check('echo, redaction and blocked inline action without fetch',async()=>{await page.evaluate(()=>{window.showcaseFetches=[];});assert.equal(await page.getByTestId('blocked-ai-action').textContent(),'');await page.getByRole('button',{name:'Summarize fictional item',exact:true}).click();const reply=page.getByText(/Mock reply for/);await reply.waitFor();assert((await reply.textContent()).includes('••••••••'));assert(!(await reply.textContent()).includes('Fictional Owner'));assert.deepEqual(await page.evaluate(()=>window.showcaseFetches),[]);});
+ await check('assistant panel, terminal and transparency',async()=>{await page.getByRole('button',{name:'Open the AI assistant'}).click();const panel=page.getByRole('dialog',{name:'AI assistant',exact:true});await panel.getByRole('button',{name:'Terminal mode'}).click();await panel.getByRole('button',{name:'Panel mode'}).click();await panel.getByRole('button',{name:/^Summarize fictional item/}).click();await panel.getByRole('button',{name:/mock transport.*2/i}).click();await panel.getByText(/Mock reply for/).waitFor();assert.deepEqual(await page.evaluate(()=>window.showcaseFetches),[]);await panel.getByRole('button',{name:'Close',exact:true}).click();});
+ await axeCheck('ai','enabled');await page.screenshot({path:resolve(evidence,'ai-simulation.png')});
+ await check('AI disabled again removes surfaces',async()=>{await sidebar('playground');await gallery('playground').getByRole('switch',{name:'Enable AI simulation'}).click();await page.locator('header').getByRole('button',{name:'AI',exact:true}).click();await settled('ai');assert.equal(await page.getByRole('button',{name:'Open the AI assistant'}).count(),0);});
+ assert.deepEqual(summary.externalRequests,[]);assert.deepEqual(summary.pageErrors,[]);assert.deepEqual(summary.consoleErrors,[]);assert(summary.axe.every(result=>!result.violations.length));
+} catch(error){summary.failure=String(error.stack??error);process.exitCode=1;}
+finally{writeFileSync(resolve(evidence,'browser.json'),JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary,null,2));await browser.close();}

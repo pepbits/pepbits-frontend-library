@@ -136,6 +136,8 @@ describe("WorkspaceTabs", () => {
      one holding the open documents has to be distinguishable from them. */
   test("it is a tablist with a name of its own", () => {
     render_();
-    expect(screen.getByRole("tablist", { name: "Open documents" })).toBeVisible();
+    const navigation=screen.getByRole("navigation", { name: "Open documents" });
+    expect(navigation).toContainElement(screen.getByRole("tablist", { name: "Open documents" }));
+    expect(navigation).toContainElement(screen.getByRole("button", { name: "Open page" }));
   });
 });

@@ -28,7 +28,7 @@ export interface AiReply {
  * "no provider was contacted" banner from, so a mock can never be mistaken for
  * a real answer. That distinction is the reason this returns `via` at all.
  */
-export function createAiTransport(authedFetch: AiRequest, classificationFor: AiClassification) {
+export function createAiTransport(authedFetch: AiRequest, classificationFor: AiClassification, mode: "service" | "echo" = "service") {
 return async function dispatchAi(context: AiContext, useCase: AiUseCase): Promise<AiReply> {
   /* Before anything is sent, and before the mock is reached either -- a mock
      reply for a leaking context would report success for a request that should
@@ -43,6 +43,9 @@ return async function dispatchAi(context: AiContext, useCase: AiUseCase): Promis
       via: "blocked",
     };
   }
+
+  // Explicit simulations still pass the redaction guard, but never call the request port.
+  if (mode === "echo") return mockReply(context, useCase);
 
   const response = await authedFetch("/ai/dispatch", {
     method: "POST",

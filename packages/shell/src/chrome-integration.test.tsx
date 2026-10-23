@@ -59,3 +59,10 @@ test.each([true,false])('tour scroll obeys reducedMotion=%s and opening help nev
  fireEvent.click(screen.getByRole('button',{name:'Open help'}));expect(scroll).not.toHaveBeenCalled();fireEvent.click(screen.getByRole('button',{name:'Tour'}));expect(within(screen.getByRole('dialog')).getByText('1 / 1')).toBeVisible();
  fireEvent.click(screen.getByRole('button',{name:'Play tour'}));expect(scroll).toHaveBeenCalledWith({block:'center',inline:'nearest',behavior:reducedMotion?'auto':'smooth'});expect(document.documentElement.dataset.reducedMotion).toBe(String(reducedMotion));
 });
+
+test('profile action name includes the visible initials and user identity',()=>{
+ const view=render(<ShellTestHost><EnterpriseShell>Screen</EnterpriseShell></ShellTestHost>);
+ expect(screen.getByRole('button',{name:'Open profile menu — Alex Example — AE'})).toHaveTextContent('AE');
+ view.rerender(<ShellTestHost session={{status:'anonymous',user:null,login:async()=>null,logout:async()=>{}}}><EnterpriseShell>Screen</EnterpriseShell></ShellTestHost>);
+ expect(screen.getByRole('button',{name:'Open profile menu — --'})).toHaveTextContent('--');
+});

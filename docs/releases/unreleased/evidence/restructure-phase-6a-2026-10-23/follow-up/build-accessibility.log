@@ -1,0 +1,36 @@
+
+> @pepbits-demo/showcase@0.0.0 build
+> node scripts/generate-snippets.mjs && next build --webpack
+
+Generated 55 source-identical examples
+▲ Next.js 16.3.3 (webpack)
+✓ Running next.config.ts took 100ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 28.8s
+  Running TypeScript ...
+  Finished TypeScript in 17.6s ...
+  Collecting page data using 2 workers ...
+  Generating static pages using 2 workers (0/11) ...
+  Generating static pages using 2 workers (2/11) 
+  Generating static pages using 2 workers (5/11) 
+  Generating static pages using 2 workers (8/11) 
+✓ Generating static pages using 2 workers (11/11) in 3.9s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+└   /[area]
+  ├ ● /foundations
+  ├ ● /ui
+  ├ ● /components
+  └ ● [+5 more paths]
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

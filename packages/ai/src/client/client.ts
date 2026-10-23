@@ -14,10 +14,11 @@ export function createAiClient(options: AiClientOptions) {
   return createAiClientWithRequest(createAuthedFetch(options), options.classificationFor);
 }
 /** For hosts with an existing authenticated server transport. */
-export function createAiClientWithRequest(request: AiRequest, classificationFor: AiClassification) {
+export function createAiClientWithRequest(request: AiRequest, classificationFor: AiClassification, transport: "service" | "echo" = "service") {
   return {
+    transport,
     ...createAiAdmin(request), ...createAiPolicyClient(request),
-    dispatchAi: createAiTransport(request, classificationFor),
+    dispatchAi: createAiTransport(request, classificationFor, transport),
     assembleContext: (useCase: AiUseCase, pageId: string, sources: AiSources, userInput?: string) =>
       assembleContext(useCase, pageId, sources, userInput, classificationFor),
     redactField: (key: string, value: string) => redactField(key, value, classificationFor),

@@ -1,0 +1,20 @@
+import {spawnSync} from 'node:child_process';
+import {writeFileSync} from 'node:fs';
+const folder='docs/releases/unreleased/evidence/restructure-phase-6a-2026-10-23/follow-up';
+const pattern=String.raw`https?://(?!localhost|127\.0\.0\.1)[a-z0-9.-]+\.[a-z]{2,}|sk-[A-Za-z0-9]{10}|Bearer [A-Za-z0-9]{10}|api[_-]?key\s*[:=]`;
+const paths=['demo-apps/showcase/src',folder];
+const exact=spawnSync('grep',['-rnE',pattern,'-P',...paths],{encoding:'utf8',maxBuffer:16*1024*1024});
+const corrected=spawnSync('grep',['-rnP',pattern,...paths],{encoding:'utf8',maxBuffer:16*1024*1024});
+const matches=(corrected.stdout??'').trim().split('\n').filter(Boolean).map(line=>{
+ const match=/^(.+?):(\d+):(.*)$/.exec(line);
+ if(!match)throw Error('Unexpected scan output');
+ const [,path,lineNumber,source]=match;
+ const occurrences=[...source.matchAll(new RegExp(pattern,'g'))];
+ const onlySvg=occurrences.every(match=>{try{return new URL(match[0]).hostname==='www.w3.org';}catch{return false;}});
+ const category=onlySvg&&source.includes('www.w3.org/2000/svg')?'SVG XML namespace in retained failing-test DOM output':source.includes('nextjs.org/telemetry')?'Next build telemetry documentation notice':source.includes('nextjs.org/docs')?'Next build documentation notice':source.includes('turborepo.dev')?'Turbo tool documentation notice':'REQUIRES REVIEW';
+ return {path,line:Number(lineNumber),occurrences:occurrences.length,category};
+});
+const result={requested:{arguments:['-rnE',pattern,'-P',...paths],exitCode:exact.status,stderr:exact.stderr.trim()},equivalent:{arguments:['-rnP',pattern,...paths],exitCode:corrected.status,stderr:corrected.stderr.trim()},matchingLines:matches.length,matchingOccurrences:matches.reduce((n,match)=>n+match.occurrences,0),matches};
+writeFileSync(folder+'/scan-review.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({requestedExit:exact.status,requestedError:exact.stderr.trim(),correctedExit:corrected.status,matchingLines:matches.length,matchingOccurrences:result.matchingOccurrences,unreviewed:matches.filter(m=>m.category==='REQUIRES REVIEW')},null,2));
+if(exact.status!==2||![0,1].includes(corrected.status)||matches.some(m=>m.category==='REQUIRES REVIEW'))process.exitCode=1;

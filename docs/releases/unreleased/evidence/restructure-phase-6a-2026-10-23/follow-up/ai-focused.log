@@ -1,0 +1,22 @@
+
+> @pepbits/ai@0.0.0 test
+> vitest run src/client/transport.test.ts src/ui/transparency.test.tsx src/ui/shell-extension.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/packages/ai
+
+ ✓ src/ui/transparency.test.tsx (30 tests) 1086ms
+ ✓ src/ui/shell-extension.test.tsx (4 tests) 642ms
+   ✓ the actual record form publishes edited values and renders the inline extension  324ms
+ ✓ src/client/transport.test.ts (24 tests) 1789ms
+   ✓ the echo transport > no credential configured falls back to the mock  353ms
+   ✓ the echo transport > an unreachable service falls back to the mock  353ms
+   ✓ the echo transport > the mock says nothing left the browser, and lists what would have  353ms
+   ✓ the echo transport > the mock shows the redacted value, not the original  352ms
+   ✓ explicit echo transport answers without calling the request port  353ms
+
+ Test Files  3 passed (3)
+      Tests  58 passed (58)
+   Start at  04:03:53
+   Duration  6.14s (transform 1.77s, setup 524ms, collect 2.72s, tests 3.52s, environment 1.64s, prepare 262ms)
+

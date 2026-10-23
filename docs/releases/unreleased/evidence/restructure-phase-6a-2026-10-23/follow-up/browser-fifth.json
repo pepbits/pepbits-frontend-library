@@ -1,0 +1,135 @@
+{
+  "scope": "Local next start, fictional in-memory adapters; not deployed/native",
+  "axe": [
+    {
+      "area": "foundations",
+      "scenario": "default",
+      "violations": [],
+      "passes": 48,
+      "incomplete": 2
+    },
+    {
+      "area": "ui",
+      "scenario": "default",
+      "violations": [],
+      "passes": 50,
+      "incomplete": 2
+    },
+    {
+      "area": "components",
+      "scenario": "default",
+      "violations": [],
+      "passes": 54,
+      "incomplete": 2
+    },
+    {
+      "area": "patterns",
+      "scenario": "default",
+      "violations": [],
+      "passes": 50,
+      "incomplete": 3
+    },
+    {
+      "area": "page-engines",
+      "scenario": "default",
+      "violations": [],
+      "passes": 52,
+      "incomplete": 2
+    },
+    {
+      "area": "playground",
+      "scenario": "default",
+      "violations": [],
+      "passes": 45,
+      "incomplete": 2
+    },
+    {
+      "area": "shell",
+      "scenario": "default",
+      "violations": [],
+      "passes": 46,
+      "incomplete": 2
+    },
+    {
+      "area": "ai",
+      "scenario": "default",
+      "violations": [],
+      "passes": 45,
+      "incomplete": 2
+    }
+  ],
+  "navigation": [
+    {
+      "area": "foundations",
+      "via": "sidebar"
+    },
+    {
+      "area": "ui",
+      "via": "sidebar"
+    },
+    {
+      "area": "components",
+      "via": "sidebar"
+    },
+    {
+      "area": "patterns",
+      "via": "sidebar"
+    },
+    {
+      "area": "page-engines",
+      "via": "sidebar"
+    },
+    {
+      "area": "playground",
+      "via": "sidebar"
+    },
+    {
+      "area": "shell",
+      "via": "sidebar"
+    },
+    {
+      "area": "ai",
+      "via": "sidebar"
+    },
+    {
+      "area": "foundations",
+      "via": "command"
+    },
+    {
+      "area": "ui",
+      "via": "command"
+    },
+    {
+      "area": "components",
+      "via": "command"
+    },
+    {
+      "area": "patterns",
+      "via": "command"
+    },
+    {
+      "area": "page-engines",
+      "via": "command"
+    },
+    {
+      "area": "playground",
+      "via": "command"
+    },
+    {
+      "area": "shell",
+      "via": "command"
+    },
+    {
+      "area": "ai",
+      "via": "command"
+    }
+  ],
+  "interactions": [
+    "density lock",
+    "allowed page sizes"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "externalRequests": [],
+  "failure": "locator.isDisabled: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('aside[data-tour=\"sidebar\"]').getByTitle('Pin sidebar', { exact: true })\u001b[22m\n\n    at /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/demo-apps/showcase/scripts/smoke.mjs:33:414\n    at async check (/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/demo-apps/showcase/scripts/smoke.mjs:25:32)\n    at /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/async file:/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/demo-apps/showcase/scripts/smoke.mjs:33:2"
+}

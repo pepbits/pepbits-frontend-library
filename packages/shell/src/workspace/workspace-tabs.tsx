@@ -46,7 +46,7 @@ export function WorkspaceTabs({ documents, activeDocumentId, onActivate, onClose
   };
   const activeId = documents.some((doc) => doc.documentId === activeDocumentId) ? activeDocumentId : documents[0]?.documentId ?? null;
   return (
-    <div className="no-print flex h-[var(--tabbar-height)] shrink-0 items-end border-b border-[var(--border)] bg-[var(--surface-2)] px-2">
+    <nav aria-label={translateCopy("ui.open.documents.eadd61ba")} className="no-print flex h-[var(--tabbar-height)] shrink-0 items-end border-b border-[var(--border)] bg-[var(--surface-2)] px-2">
       {/* Named, because a page can have tablists of its own — a billing record has
           six — and "tablist" on its own does not say which one holds the open
           documents. */}
@@ -99,6 +99,6 @@ export function WorkspaceTabs({ documents, activeDocumentId, onActivate, onClose
           </>}
         </ActionMenu>
       </div>
-    </div>
+    </nav>
   );
 }

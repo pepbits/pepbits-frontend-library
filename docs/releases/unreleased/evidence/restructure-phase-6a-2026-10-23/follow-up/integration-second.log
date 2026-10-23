@@ -1,0 +1,1592 @@
+
+> @pepbits-demo/showcase@0.0.0 test
+> node scripts/generate-snippets.mjs && vitest run src/shell-ai.test.tsx --reporter=verbose
+
+Generated 55 source-identical examples
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/demo-apps/showcase
+
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'foundations' 1346ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'ui' 1357ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'components' 1090ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'patterns' 873ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'page-engines' 981ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'playground' 768ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'shell' 1122ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'ai' 437ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'foundations' 1044ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'ui' 3671ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'components' 2039ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'patterns' 1635ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'page-engines' 1353ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'playground' 1535ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'shell' 1626ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'ai' 1142ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'foundations' 947ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'ui' 1852ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'components' 810ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'patterns' 1397ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'page-engines' 815ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'playground' 735ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'shell' 1093ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'ai' 549ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'foundations' 738ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'ui' 1166ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'components' 619ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'patterns' 529ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'page-engines' 743ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'playground' 471ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'shell' 641ms
+ ✓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'ai' 835ms
+ ✓ src/shell-ai.test.tsx > quick pages, keyboard toggle and browser route changes share one workspace 2346ms
+ × src/shell-ai.test.tsx > playground sidebar settings drive actual hover, click, pin, focus and live locks 1275ms
+   → Unable to find an accessible element with the role "button" and name "Expand navigation"
+
+Here are the accessible roles:
+
+  button:
+
+  Name "Collapse navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mtitle[39m=[32m"Collapse navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unpin sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+    [33mtitle[39m=[32m"Unpin sidebar"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------textbox:
+
+  Name "Search the Showcase menu":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the Showcase menu"[39m
+    [33mclass[39m=[32m"focus-ring h-8 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] ps-8 pe-7 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--text)] transition placeholder:font-normal placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:bg-[var(--surface)]"[39m
+    [33mplaceholder[39m=[32m"Search UI menu…"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Foundations":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/foundations"[39m
+  [36m/>[39m
+
+  Name "UI primitives":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/ui"[39m
+  [36m/>[39m
+
+  Name "Components":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/components"[39m
+  [36m/>[39m
+
+  Name "Patterns":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/patterns"[39m
+  [36m/>[39m
+
+  Name "Page engines":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/page-engines"[39m
+  [36m/>[39m
+
+  Name "Preferences and policy":
+  [36m<a[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mhref[39m=[32m"/playground"[39m
+  [36m/>[39m
+
+  Name "Shell":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/shell"[39m
+  [36m/>[39m
+
+  Name "AI":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/ai"[39m
+  [36m/>[39m
+
+  --------------------------------------------------button:
+
+  Name "My Preferences":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"My Preferences"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unfix sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"Sidebar is fixed"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<aside[39m
+  [33maria-label[39m=[32m"Primary navigation"[39m
+  [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-50 right-0 border-s border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-sm)]"[39m
+  [33mdata-tour[39m=[32m"sidebar"[39m
+  [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+    [33mstyle[39m=[32m""[39m
+  [36m>[39m
+    [36m<button[39m
+      [33maria-expanded[39m=[32m"true"[39m
+      [33maria-label[39m=[32m"Collapse navigation"[39m
+      [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+      [33mtitle[39m=[32m"Collapse navigation"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<span[39m
+        [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+      [36m/>[39m
+      [36m<svg[39m
+        [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+        [33mfill[39m=[32m"none"[39m
+        [33mheight[39m=[32m"24"[39m
+        [33mstroke[39m=[32m"currentColor"[39m
+        [33mstroke-linecap[39m=[32m"round"[39m
+        [33mstroke-linejoin[39m=[32m"round"[39m
+        [33mstroke-width[39m=[32m"2"[39m
+        [33mviewBox[39m=[32m"0 0 24 24"[39m
+        [33mwidth[39m=[32m"24"[39m
+        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+      [36m>[39m
+        [36m<path[39m
+          [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+        [36m/>[39m
+      [36m</svg>[39m
+    [36m</button>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-w-0 flex-1"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"truncate text-[length:calc(13px*var(--fs-scale))] font-black tracking-[-.04em]"[39m
+      [36m>[39m
+        [0mShowcase[0m
+        [0m [0m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] text-[var(--text-subtle)]"[39m
+      [36m>[39m
+        [0mLibrary examples[0m
+      [36m</div>[39m
+    [36m</div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+      [33mtitle[39m=[32m"Unpin sidebar"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<svg[39m
+        [33mclass[39m=[32m"lucide lucide-pin-off size-3.5"[39m
+        [33mfill[39m=[32m"none"[39m
+        [33mheight[39m=[32m"24"[39m
+        [33mstroke[39m=[32m"currentColor"[39m
+        [33mstroke-linecap[39m=[32m"round"[39m
+        [33mstroke-linejoin[39m=[32m"round"[39m
+        [33mstroke-width[39m=[32m"2"[39m
+        [33mviewBox[39m=[32m"0 0 24 24"[39m
+        [33mwidth[39m=[32m"24"[39m
+        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+      [36m>[39m
+        [36m<path[39m
+          [33md[39m=[32m"M12 17v5"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"M15 9.34V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H7.89"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"m2 2 20 20"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h11"[39m
+        [36m/>[39m
+      [36m</svg>[39m
+    [36m</button>[39m
+  [36m</div>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] gap-2 px-2.5 py-2"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+        [33mstyle[39m=[32m"background: var(--primary);"[39m
+      [36m>[39m
+        [0mUI[0m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-w-0 flex-1"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]"[39m
+        [36m>[39m
+          [0mShowcase[0m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+        [36m>[39m
+          [0mModule navigation[0m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-2.5"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"group relative"[39m
+    [36m>[39m
+      [36m<svg[39m
+        [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-subtle)] transition group-focus-within:text-[var(--primary)]"[39m
+        [33mfill[39m=[32m"none"[39m
+        [33mheight[39m=[32m"24"[39m
+        [33mstroke[39m=[32m"currentColor"[39m
+        [33mstroke-linecap[39m=[32m"round"[39m
+        [33mstroke-linejoin[39m=[32m"round"[39m
+        [33mstroke-width[39m=[32m"2"[39m
+        [33mviewBox[39m=[32m"0 0 24 24"[39m
+        [33mwidth[39m=[32m"24"[39m
+        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+      [36m>[39m
+        [36m<circle[39m
+          [33mcx[39m=[32m"11"[39m
+          [33mcy[39m=[32m"11"[39m
+          [33mr[39m=[32m"8"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"m21 21-4.3-4.3"[39m
+        [36m/>[39m
+      [36m</svg>[3...
+ × src/shell-ai.test.tsx > workspace examples split, reattach fictional windows and honor MDI locks 3971ms
+   → expect(element).toBeVisible()
+
+Received element is not visible:
+  <p
+  role="status"
+/>
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"library-preferences"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"skip-link"[39m
+          [33mhref[39m=[32m"#gallery-foundations"[39m
+        [36m>[39m
+          [0mSkip to content[0m
+        [36m</a>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mUI[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+               ...
+ × src/shell-ai.test.tsx > documentation, help, toast and controlled session lock use shell layers 3242ms
+   → Unable to find role="tab" and name `/Tour/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"library-preferences"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"skip-link"[39m
+        [33mhref[39m=[32m"#gallery-shell"[39m
+      [36m>[39m
+        [0mSkip to content[0m
+      [36m</a>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33maria-hidden[39m=[32m"true"[39m
+          [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+        [36m/>[39m
+        [36m<aside[39m
+          [33maria-label[39m=[32m"Primary navigation"[39m
+          [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+          [33mdata-tour[39m=[32m"sidebar"[39m
+          [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+            [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-expanded[39m=[32m"false"[39m
+              [33maria-label[39m=[32m"Expand navigation"[39m
+              [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+              [33mtitle[39m=[32m"Expand navigation"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+              [36m/>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                [33mstyle[39m=[32m"background: var(--primary);"[39m
+              [36m>[39m
+                [0mUI[0m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Search menu"[39m
+              [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+              [33mtitle[39m=[32m"Search menu"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<nav[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"space-y-0.5"[39m
+              [36m>[39m
+                [36m<a[39m
+                  [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+                  [33mhref[39m=[32...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"library-preferences"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"skip-link"[39m
+        [33mhref[39m=[32m"#gallery-shell"[39m
+      [36m>[39m
+        [0mSkip to content[0m
+      [36m</a>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33maria-hidden[39m=[32m"true"[39m
+          [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+        [36m/>[39m
+        [36m<aside[39m
+          [33maria-label[39m=[32m"Primary navigation"[39m
+          [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+          [33mdata-tour[39m=[32m"sidebar"[39m
+          [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+            [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-expanded[39m=[32m"false"[39m
+              [33maria-label[39m=[32m"Expand navigation"[39m
+              [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+              [33mtitle[39m=[32m"Expand navigation"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+              [36m/>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                [33mstyle[39m=[32m"background: var(--primary);"[39m
+              [36m>[39m
+                [0mUI[0m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Search menu"[39m
+              [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+              [33mtitle[39m=[32m"Search menu"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<nav[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"space-y-0.5"[39m
+              [36m>[39m
+                [36m<a[39m
+                  [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+                  [33mhref[39m=[32...
+ × src/shell-ai.test.tsx > public login preview submits only to the controlled demo session 769ms
+   → Unable to find a label with the text of: Username
+
+Ignored nodes: comments, script, style
+[36m<article[39m
+  [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)]"[39m
+  [33mdata-example[39m=[32m"shell-login"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"p-4 space-y-4"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"example-heading"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2>[39m
+          [0mLogin[0m
+        [36m</h2>[39m
+        [36m<p>[39m
+          [0mExplore fictional values through public controls and host adapters.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mReset example[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"export-list"[39m
+      [33mdir[39m=[32m"ltr"[39m
+    [36m>[39m
+      [0mButton · useSession · LoginScreen[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33maria-label[39m=[32m"Live example: Login"[39m
+      [33mclass[39m=[32m"example-preview"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<p>[39m
+          [0mPreview the public login page against the same controlled demo session. Arbitrary fictional input is ignored; no request is sent. Signing out from the profile menu also opens this login flow.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mClose login preview[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-h-dvh w-full items-center justify-center bg-[var(--bg)] p-4"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-lg)] grid w-full max-w-4xl overflow-hidden lg:grid-cols-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative hidden flex-col justify-between overflow-hidden bg-[var(--primary-fill)] p-8 text-white lg:flex"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(255,255,255,.28),transparent_46%)]"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-3"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"flex size-11 items-center justify-center rounded-[13px] bg-white/15"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33mclass[39m=[32m"lucide lucide-command size-5"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</span>[39m
+                  [36m<div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-black tracking-[-.04em]"[39m
+                    [36m>[39m
+                      [0mShowcase[0m
+                      [0m [0m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] opacity-70"[39m
+                    [36m>[39m
+                      [0mLibrary examples[0m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"mt-8 text-[length:calc(26px*var(--fs-scale))] font-black leading-tight tracking-[-.04em]"[39m
+                [36m>[39m
+                  [0mSign in to your workspace[0m
+                [36m</h1>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-3 max-w-sm text-[length:calc(11px*var(--fs-scale))] leading-relaxed opacity-80"[39m
+                [36m/>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative flex items-center gap-2 text-[length:calc(9.5px*var(--fs-scale))] font-semibold opacity-75"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-shield-check size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"[39m
+                  ...
+ ✓ src/shell-ai.test.tsx > AI starts off: no AI surfaces or transport calls, including policy and administration 151ms
+ ✓ src/shell-ai.test.tsx > playground enables and disables AI across navigation with no network egress 1793ms
+ ✓ src/shell-ai.test.tsx > enabled AI surfaces pass axe: 'default' 1548ms
+ ✓ src/shell-ai.test.tsx > enabled AI surfaces pass axe: 'Arabic RTL' 1652ms
+ ✓ src/shell-ai.test.tsx > enabled AI surfaces pass axe: 'reduced motion' 2186ms
+ ✓ src/shell-ai.test.tsx > enabled AI surfaces pass axe: 'locked' 1634ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/shell-ai.test.tsx > playground sidebar settings drive actual hover, click, pin, focus and live locks
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Expand navigation"
+
+Here are the accessible roles:
+
+  button:
+
+  Name "Collapse navigation":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse navigation"[39m
+    [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+    [33mtitle[39m=[32m"Collapse navigation"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unpin sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+    [33mtitle[39m=[32m"Unpin sidebar"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------textbox:
+
+  Name "Search the Showcase menu":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the Showcase menu"[39m
+    [33mclass[39m=[32m"focus-ring h-8 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] ps-8 pe-7 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--text)] transition placeholder:font-normal placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:bg-[var(--surface)]"[39m
+    [33mplaceholder[39m=[32m"Search UI menu…"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------navigation:
+
+  Name "":
+  [36m<nav[39m
+    [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Foundations":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/foundations"[39m
+  [36m/>[39m
+
+  Name "UI primitives":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/ui"[39m
+  [36m/>[39m
+
+  Name "Components":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/components"[39m
+  [36m/>[39m
+
+  Name "Patterns":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/patterns"[39m
+  [36m/>[39m
+
+  Name "Page engines":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/page-engines"[39m
+  [36m/>[39m
+
+  Name "Preferences and policy":
+  [36m<a[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-[color-mix(in_srgb,var(--primary)_20%,transparent)] bg-[var(--primary-soft)] text-[var(--primary-strong)]"[39m
+    [33mhref[39m=[32m"/playground"[39m
+  [36m/>[39m
+
+  Name "Shell":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/shell"[39m
+  [36m/>[39m
+
+  Name "AI":
+  [36m<a[39m
+    [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition gap-2.5 px-2.5 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+    [33mhref[39m=[32m"/ai"[39m
+  [36m/>[39m
+
+  --------------------------------------------------button:
+
+  Name "My Preferences":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"My Preferences"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Unfix sidebar":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring mt-0.5 flex h-9 w-full items-center rounded-[10px] text-[var(--text-muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text)] gap-2.5 px-2.5"[39m
+    [33mtitle[39m=[32m"Sidebar is fixed"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<aside[39m
+  [33maria-label[39m=[32m"Primary navigation"[39m
+  [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-50 right-0 border-s border-[var(--border)] w-[var(--sidebar-expanded)] shadow-[var(--shadow-sm)]"[39m
+  [33mdata-tour[39m=[32m"sidebar"[39m
+  [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+    [33mstyle[39m=[32m""[39m
+  [36m>[39m
+    [36m<button[39m
+      [33maria-expanded[39m=[32m"true"[39m
+      [33maria-label[39m=[32m"Collapse navigation"[39m
+      [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+      [33mtitle[39m=[32m"Collapse navigation"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<span[39m
+        [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+      [36m/>[39m
+      [36m<svg[39m
+        [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+        [33mfill[39m=[32m"none"[39m
+        [33mheight[39m=[32m"24"[39m
+        [33mstroke[39m=[32m"currentColor"[39m
+        [33mstroke-linecap[39m=[32m"round"[39m
+        [33mstroke-linejoin[39m=[32m"round"[39m
+        [33mstroke-width[39m=[32m"2"[39m
+        [33mviewBox[39m=[32m"0 0 24 24"[39m
+        [33mwidth[39m=[32m"24"[39m
+        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+      [36m>[39m
+        [36m<path[39m
+          [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+        [36m/>[39m
+      [36m</svg>[39m
+    [36m</button>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-w-0 flex-1"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"truncate text-[length:calc(13px*var(--fs-scale))] font-black tracking-[-.04em]"[39m
+      [36m>[39m
+        [0mShowcase[0m
+        [0m [0m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] text-[var(--text-subtle)]"[39m
+      [36m>[39m
+        [0mLibrary examples[0m
+      [36m</div>[39m
+    [36m</div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"focus-ring flex size-8 shrink-0 items-center justify-center rounded-lg border transition border-[color-mix(in_srgb,var(--primary)_25%,transparent)] bg-[var(--primary-soft)] text-[var(--primary)]"[39m
+      [33mtitle[39m=[32m"Unpin sidebar"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<svg[39m
+        [33mclass[39m=[32m"lucide lucide-pin-off size-3.5"[39m
+        [33mfill[39m=[32m"none"[39m
+        [33mheight[39m=[32m"24"[39m
+        [33mstroke[39m=[32m"currentColor"[39m
+        [33mstroke-linecap[39m=[32m"round"[39m
+        [33mstroke-linejoin[39m=[32m"round"[39m
+        [33mstroke-width[39m=[32m"2"[39m
+        [33mviewBox[39m=[32m"0 0 24 24"[39m
+        [33mwidth[39m=[32m"24"[39m
+        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+      [36m>[39m
+        [36m<path[39m
+          [33md[39m=[32m"M12 17v5"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"M15 9.34V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H7.89"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"m2 2 20 20"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h11"[39m
+        [36m/>[39m
+      [36m</svg>[39m
+    [36m</button>[39m
+  [36m</div>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] gap-2 px-2.5 py-2"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+        [33mstyle[39m=[32m"background: var(--primary);"[39m
+      [36m>[39m
+        [0mUI[0m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-w-0 flex-1"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"truncate text-[length:calc(11px*var(--fs-scale))] font-extrabold text-[var(--text)]"[39m
+        [36m>[39m
+          [0mShowcase[0m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"truncate text-[length:calc(9px*var(--fs-scale))] text-[var(--text-muted)]"[39m
+        [36m>[39m
+          [0mModule navigation[0m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-2.5"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"group relative"[39m
+    [36m>[39m
+      [36m<svg[39m
+        [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-subtle)] transition group-focus-within:text-[var(--primary)]"[39m
+        [33mfill[39m=[32m"none"[39m
+        [33mheight[39m=[32m"24"[39m
+        [33mstroke[39m=[32m"currentColor"[39m
+        [33mstroke-linecap[39m=[32m"round"[39m
+        [33mstroke-linejoin[39m=[32m"round"[39m
+        [33mstroke-width[39m=[32m"2"[39m
+        [33mviewBox[39m=[32m"0 0 24 24"[39m
+        [33mwidth[39m=[32m"24"[39m
+        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+      [36m>[39m
+        [36m<circle[39m
+          [33mcx[39m=[32m"11"[39m
+          [33mcy[39m=[32m"11"[39m
+          [33mr[39m=[32m"8"[39m
+        [36m/>[39m
+        [36m<path[39m
+          [33md[39m=[32m"m21 21-4.3-4.3"[39m
+        [36m/>[39m
+      [36m</svg>[3...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/shell-ai.test.tsx:52:31
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/shell-ai.test.tsx > workspace examples split, reattach fictional windows and honor MDI locks
+Error: expect(element).toBeVisible()
+
+Received element is not visible:
+  <p
+  role="status"
+/>
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"library-preferences"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"skip-link"[39m
+          [33mhref[39m=[32m"#gallery-foundations"[39m
+        [36m>[39m
+          [0mSkip to content[0m
+        [36m</a>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mUI[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+               ...
+ ❯ src/shell-ai.test.tsx:58:144
+     56|  fireEvent.click(screen.getByRole('button',{name:'Exit split canvas'})…
+     57|  fireEvent.click(screen.getByRole('button',{name:'Simulate detach Foun…
+     58|  fireEvent.click(screen.getByRole('button',{name:'Reattach Foundations…
+       |                                                                                                                                                ^
+     59|  fireEvent.click(screen.getByRole('switch',{name:'Floating workspace w…
+     60| });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/shell-ai.test.tsx > documentation, help, toast and controlled session lock use shell layers
+TestingLibraryElementError: Unable to find role="tab" and name `/Tour/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"library-preferences"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"skip-link"[39m
+        [33mhref[39m=[32m"#gallery-shell"[39m
+      [36m>[39m
+        [0mSkip to content[0m
+      [36m</a>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33maria-hidden[39m=[32m"true"[39m
+          [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+        [36m/>[39m
+        [36m<aside[39m
+          [33maria-label[39m=[32m"Primary navigation"[39m
+          [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+          [33mdata-tour[39m=[32m"sidebar"[39m
+          [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+            [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-expanded[39m=[32m"false"[39m
+              [33maria-label[39m=[32m"Expand navigation"[39m
+              [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+              [33mtitle[39m=[32m"Expand navigation"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+              [36m/>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                [33mstyle[39m=[32m"background: var(--primary);"[39m
+              [36m>[39m
+                [0mUI[0m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Search menu"[39m
+              [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+              [33mtitle[39m=[32m"Search menu"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<nav[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"space-y-0.5"[39m
+              [36m>[39m
+                [36m<a[39m
+                  [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+                  [33mhref[39m=[32...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"library-preferences"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"skip-link"[39m
+        [33mhref[39m=[32m"#gallery-shell"[39m
+      [36m>[39m
+        [0mSkip to content[0m
+      [36m</a>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33maria-hidden[39m=[32m"true"[39m
+          [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+        [36m/>[39m
+        [36m<aside[39m
+          [33maria-label[39m=[32m"Primary navigation"[39m
+          [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+          [33mdata-tour[39m=[32m"sidebar"[39m
+          [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+            [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-expanded[39m=[32m"false"[39m
+              [33maria-label[39m=[32m"Expand navigation"[39m
+              [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+              [33mtitle[39m=[32m"Expand navigation"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+              [36m/>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                [33mstyle[39m=[32m"background: var(--primary);"[39m
+              [36m>[39m
+                [0mUI[0m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Search menu"[39m
+              [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+              [33mtitle[39m=[32m"Search menu"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<nav[39m
+            [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"space-y-0.5"[39m
+              [36m>[39m
+                [36m<a[39m
+                  [33mclass[39m=[32m"no-underline cursor-pointer text-left appearance-none focus-ring group relative flex h-9 w-full items-center rounded-[10px] border text-start transition justify-center px-1 border-transparent text-[var(--text-muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]"[39m
+                  [33mhref[39m=[32...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/shell-ai.test.tsx:63:95
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/shell-ai.test.tsx > public login preview submits only to the controlled demo session
+TestingLibraryElementError: Unable to find a label with the text of: Username
+
+Ignored nodes: comments, script, style
+[36m<article[39m
+  [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)]"[39m
+  [33mdata-example[39m=[32m"shell-login"[39m
+[36m>[39m
+  [36m<div[39m
+    [33mclass[39m=[32m"p-4 space-y-4"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"example-heading"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<h2>[39m
+          [0mLogin[0m
+        [36m</h2>[39m
+        [36m<p>[39m
+          [0mExplore fictional values through public controls and host adapters.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mReset example[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"export-list"[39m
+      [33mdir[39m=[32m"ltr"[39m
+    [36m>[39m
+      [0mButton · useSession · LoginScreen[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33maria-label[39m=[32m"Live example: Login"[39m
+      [33mclass[39m=[32m"example-preview"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<p>[39m
+          [0mPreview the public login page against the same controlled demo session. Arbitrary fictional input is ignored; no request is sent. Signing out from the profile menu also opens this login flow.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mClose login preview[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-h-dvh w-full items-center justify-center bg-[var(--bg)] p-4"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-lg)] grid w-full max-w-4xl overflow-hidden lg:grid-cols-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative hidden flex-col justify-between overflow-hidden bg-[var(--primary-fill)] p-8 text-white lg:flex"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(255,255,255,.28),transparent_46%)]"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-3"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"flex size-11 items-center justify-center rounded-[13px] bg-white/15"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33mclass[39m=[32m"lucide lucide-command size-5"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</span>[39m
+                  [36m<div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"text-[length:calc(15px*var(--fs-scale))] font-black tracking-[-.04em]"[39m
+                    [36m>[39m
+                      [0mShowcase[0m
+                      [0m [0m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"text-[length:calc(9px*var(--fs-scale))] font-bold uppercase tracking-[.15em] opacity-70"[39m
+                    [36m>[39m
+                      [0mLibrary examples[0m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"mt-8 text-[length:calc(26px*var(--fs-scale))] font-black leading-tight tracking-[-.04em]"[39m
+                [36m>[39m
+                  [0mSign in to your workspace[0m
+                [36m</h1>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-3 max-w-sm text-[length:calc(11px*var(--fs-scale))] leading-relaxed opacity-80"[39m
+                [36m/>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative flex items-center gap-2 text-[length:calc(9.5px*var(--fs-scale))] font-semibold opacity-75"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-shield-check size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"[39m
+                  ...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText ../../node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/shell-ai.test.tsx:71:27
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 39 passed (43)
+   Start at  04:16:38
+   Duration  69.47s (transform 5.88s, setup 552ms, collect 9.21s, tests 56.54s, environment 1.53s, prepare 361ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/showcase@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/demo-apps/showcase 

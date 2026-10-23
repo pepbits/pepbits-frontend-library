@@ -1,0 +1,153 @@
+
+> @pepbits-demo/showcase@0.0.0 test
+> node scripts/generate-snippets.mjs && vitest run src/shell-ai.test.tsx --testNamePattern=playground sidebar|workspace examples|documentation, help|public login|existing form --reporter=verbose
+
+Generated 55 source-identical examples
+
+ RUN  v3.2.7 /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/demo-apps/showcase
+
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'foundations'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'ui'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'components'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'patterns'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'page-engines'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'playground'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'shell'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > sidebar reaches 'ai'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'foundations'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'ui'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'components'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'patterns'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'page-engines'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'playground'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'shell'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts true > command palette reaches 'ai'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'foundations'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'ui'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'components'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'patterns'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'page-engines'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'playground'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'shell'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > sidebar reaches 'ai'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'foundations'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'ui'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'components'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'patterns'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'page-engines'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'playground'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'shell'
+ ↓ src/shell-ai.test.tsx > navigation with shortcuts false > command palette reaches 'ai'
+ ↓ src/shell-ai.test.tsx > quick pages, keyboard toggle and browser route changes share one workspace
+ ✓ src/shell-ai.test.tsx > playground sidebar settings drive actual hover, click, pin, focus and live locks 3137ms
+ ✓ src/shell-ai.test.tsx > workspace examples split, reattach fictional windows and honor MDI locks 6512ms
+ × src/shell-ai.test.tsx > documentation, help, toast and controlled session lock use shell layers 2141ms
+   → Unable to find an accessible element with the role "button" and name "Close"
+
+Here are the accessible roles:
+
+  button:
+
+  Name "Tour":
+  ...
+
+  Name "Docs":
+  ...
+
+  Name "Shortcuts":
+  ...
+
+  Name "Close help":
+  ...
+
+  --------------------------------------------------button:
+
+  Name "Library examples":
+  ...
+
+  Name "Search examples":
+  ...
+
+  Name "Play tour":
+  ...
+
+  Name "Previous step":
+  ...
+
+  Name "Next step":
+  ...
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+...
+ ✓ src/shell-ai.test.tsx > public login preview submits only to the controlled demo session 1793ms
+ ↓ src/shell-ai.test.tsx > AI starts off: no AI surfaces or transport calls, including policy and administration
+ ↓ src/shell-ai.test.tsx > playground enables and disables AI across navigation with no network egress
+ ↓ src/shell-ai.test.tsx > enabled AI surfaces pass axe: 'default'
+ ↓ src/shell-ai.test.tsx > enabled AI surfaces pass axe: 'Arabic RTL'
+ ↓ src/shell-ai.test.tsx > enabled AI surfaces pass axe: 'reduced motion'
+ ↓ src/shell-ai.test.tsx > enabled AI surfaces pass axe: 'locked'
+ ✓ src/shell-ai.test.tsx > existing form remains usable with the AI extension enabled inside the workspace 529ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/shell-ai.test.tsx > documentation, help, toast and controlled session lock use shell layers
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Close"
+
+Here are the accessible roles:
+
+  button:
+
+  Name "Tour":
+  ...
+
+  Name "Docs":
+  ...
+
+  Name "Shortcuts":
+  ...
+
+  Name "Close help":
+  ...
+
+  --------------------------------------------------button:
+
+  Name "Library examples":
+  ...
+
+  Name "Search examples":
+  ...
+
+  Name "Play tour":
+  ...
+
+  Name "Previous step":
+  ...
+
+  Name "Next step":
+  ...
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/shell-ai.test.tsx:63:430
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed | 39 skipped (44)
+   Start at  04:18:50
+   Duration  26.26s (transform 6.01s, setup 518ms, collect 9.47s, tests 14.12s, environment 903ms, prepare 204ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/showcase@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/demo-apps/showcase 
