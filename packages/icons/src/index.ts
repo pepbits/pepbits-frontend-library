@@ -97,7 +97,8 @@ export {
   TriangleAlert,
   X,
 } from "lucide-react";
-export {Type, AlignLeft, Hash, Calendar, Clock, CheckSquare, Mail, WandSparkles} from "lucide-react";
+/* Calendar and Clock are also used by the phase 4c form controls; they are exported once, below. */
+export {Type, AlignLeft, Hash, CheckSquare, Mail, WandSparkles} from "lucide-react";
 export {Icon} from "./icon";
 export type {IconComponent, IconProps} from "./icon";
 
