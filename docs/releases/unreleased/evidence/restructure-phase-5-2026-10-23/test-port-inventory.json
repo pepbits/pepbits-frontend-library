@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "scope": "Phase 5 priorities 1\u20133 only; original suites were inspected, not executed in the protected workspace. Final counts parsed from retained npm run ci log.",
+  "finalShellTests": 199,
+  "finalShellFiles": 14,
+  "finalRootTests": 1107,
+  "finalRootFiles": 100,
+  "toolingTestsSeparate": 19,
+  "sourceFiles": [
+    {
+      "source": "desktop-clients/packages/workspace-core/src/detach.test.ts",
+      "destination": "packages/shell/src/workspace/detach.test.ts",
+      "status": "ported",
+      "sourceCases": 14,
+      "finalCases": 14,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/document-key.test.ts",
+      "destination": "packages/shell/src/workspace/document-key.test.ts",
+      "status": "ported",
+      "sourceCases": 9,
+      "finalCases": 9,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/document-manager.test.ts",
+      "destination": "packages/shell/src/workspace/document-manager.test.ts",
+      "status": "ported",
+      "sourceCases": 47,
+      "finalCases": 47,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/lifecycle.test.ts",
+      "destination": "packages/shell/src/workspace/lifecycle.test.ts",
+      "status": "ported",
+      "sourceCases": 11,
+      "finalCases": 11,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/policy.test.ts",
+      "destination": "packages/shell/src/workspace/policy.test.ts",
+      "status": "ported",
+      "sourceCases": 15,
+      "finalCases": 15,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/split.test.ts",
+      "destination": "packages/shell/src/workspace/split.test.ts",
+      "status": "ported",
+      "sourceCases": 26,
+      "finalCases": 26,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/workspace-core/src/use-workspace.test.tsx",
+      "destination": "packages/shell/src/workspace/use-workspace.test.tsx",
+      "status": "ported",
+      "sourceCases": 19,
+      "finalCases": 19,
+      "reason": "All original behavioral assertions retained; domain-neutral optional subject/interaction/context fields and fictional fixtures. Strict indexed-access assertions erase at runtime."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/chrome.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Chrome/product/layer composition is not included. Generic assertions require the actual ported UI and are not replaced with placeholder tests."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/diagnostic-sidebar.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Chrome/product/layer composition is not included. Generic assertions require the actual ported UI and are not replaced with placeholder tests."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/erp-context.test.tsx",
+      "destination": "packages/shell/src/shell-context.test.tsx",
+      "status": "partially-ported",
+      "sourceCases": 38,
+      "finalCases": 22,
+      "directBehavioralPorts": 13,
+      "replacementOrAdditionalCases": 9,
+      "reason": "Thirteen toast/shortcut cases copied with controlled host setup. Nine host/appearance/identity/lock cases adapt or consolidate old assertions and add listener-removal coverage. Transport/loading/optimistic-store/persistence/language-race/boot-cache behavior belongs to a phase 6 host preference integration. See contextCaseDisposition."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/product-context.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Chrome/product/layer composition is not included. Generic assertions require the actual ported UI and are not replaced with placeholder tests."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/school-role-header.test.tsx",
+      "status": "excluded-product",
+      "destination": "phase 6 product demo / product repository",
+      "reason": "Product-specific roles and header catalog; no product role views are in this library."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/sentinel.test.tsx",
+      "destination": "packages/shell/src/sentinel.test.tsx",
+      "status": "ported",
+      "sourceCases": 1,
+      "finalCases": 1,
+      "reason": "Same safe-reference, sanitization and reset behavior; platform import and fictional secret marker."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/mdi-frames.test.ts",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Workspace UI/port adapter not included; core state coverage is separate."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/mdi-taskbar.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Workspace UI/port adapter not included; core state coverage is separate."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/target-document.test.ts",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Workspace UI/port adapter not included; core state coverage is separate."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/use-detached-windows.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Workspace UI/port adapter not included; core state coverage is separate."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/use-mdi-workspace.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Workspace UI/port adapter not included; core state coverage is separate."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/use-workspace-navigation.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Workspace UI/port adapter not included; core state coverage is separate."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/workspace-canvas.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Workspace UI/port adapter not included; core state coverage is separate."
+    },
+    {
+      "source": "desktop-clients/packages/erp-shell/src/workspace/workspace-tabs.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5 completion before phase 5b",
+      "reason": "Workspace UI/port adapter not included; core state coverage is separate."
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/product.test.ts",
+      "destination": "packages/shell/src/products.test.ts",
+      "status": "adapted",
+      "sourceCases": 7,
+      "finalCases": 10,
+      "reason": "Seven generic fixture scenarios plus three added validation/capability/navigation cases. Exact explicit allowlist replaces original implicit dashboard retention; no global/default product or product-specific module list."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/preferences/preferences.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5b shell/platform optional page follow-up",
+      "reason": "Optional page was not ported in this priorities 1\u20133 increment."
+    },
+    {
+      "source": "desktop-clients/packages/erp-screens/src/login/recovery.test.tsx",
+      "status": "deferred",
+      "destination": "phase 5b shell/platform optional page follow-up",
+      "reason": "Optional page was not ported in this priorities 1\u20133 increment."
+    }
+  ],
+  "contextCaseDisposition": [
+    {
+      "sourceCase": "renders the fallback until the server answers",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "reads them from the server, not from storage",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "a theme nobody defines does not reach the shell",
+      "status": "adapted/consolidated",
+      "reason": "Invalid host preferences use the existing preference resolver."
+    },
+    {
+      "sourceCase": "an unreachable API falls through to defaults rather than blocking the shell",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "a refused request also renders, on defaults",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "theme, density, radius and font are written as variables",
+      "status": "adapted/consolidated",
+      "reason": "Consolidated effective appearance case also asserts independent font scales and reduced motion."
+    },
+    {
+      "sourceCase": "a font nobody knows falls back rather than writing an empty stack",
+      "status": "adapted/consolidated",
+      "reason": "Consolidated with invalid host preferences; the font stack assertion remains."
+    },
+    {
+      "sourceCase": "the language sets both lang and direction",
+      "status": "adapted/consolidated",
+      "reason": "Consolidated effective appearance case uses existing LocalizationProvider."
+    },
+    {
+      "sourceCase": "changing a preference re-writes the document",
+      "status": "adapted/consolidated",
+      "reason": "Controlled snapshot acknowledgement replaces optimistic mutation; appearance observes accepted snapshots."
+    },
+    {
+      "sourceCase": "never hold more than the preference allows",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "the newest survives the trim",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "two raised in the same millisecond are still two",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "open the command palette",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "navigate to the module dashboard",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "ignore an OS key repeat",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "turning them off releases the key rather than swallowing it",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "a shortcut that does act says so, so the browser does not act too",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "typing in a field suppresses the shortcuts that would interrupt it",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "but not the ones declared to work while typing",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "a workspace shortcut is inert, and unbound, in a shell with no workspace",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "survive an event dispatched at window rather than at an element",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "stop firing once the shell unmounts",
+      "status": "ported",
+      "reason": "Same assertions with controlled provider and fictional navigation."
+    },
+    {
+      "sourceCase": "comes from where the user is",
+      "status": "adapted/consolidated",
+      "reason": "Navigation-derived module plus shared-page retention."
+    },
+    {
+      "sourceCase": "and is remembered for the sidebar",
+      "status": "adapted/consolidated",
+      "reason": "In-memory shared-page retention replaces module localStorage; persisted routing belongs to the host."
+    },
+    {
+      "sourceCase": "throws outside the provider rather than rendering an empty shell",
+      "status": "adapted/consolidated",
+      "reason": "useShell fails explicitly without ShellProvider."
+    },
+    {
+      "sourceCase": "loading alone does not write; explicit edits do, including reverting to defaults",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "the skeleton preference is remembered after a successful load",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "a pending language switch preserves a later theme edit",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "locked preferences resist shared updates and resets without writing an override",
+      "status": "adapted/consolidated",
+      "reason": "Managed controls and retained update callback use PreferenceHost guard; no shell reset/store."
+    },
+    {
+      "sourceCase": "a refreshed language lock cancels a pending personal language switch",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "preference saves serialize later edits against the latest server revision",
+      "status": "host-owned-not-ported",
+      "reason": "Preference HTTP/loading/language race/persistence or boot hint belongs to phase 6 host integration; no second shell store is introduced."
+    },
+    {
+      "sourceCase": "bulk preference updates cannot apply values excluded by tenant policy",
+      "status": "adapted/consolidated",
+      "reason": "Same allowed/excluded update behavior through PreferenceHost; host acknowledgement is required."
+    },
+    {
+      "sourceCase": "host branch changes use the latest authorized options after asynchronous loading",
+      "status": "adapted/consolidated",
+      "reason": "Same latest-choice checks through ShellProvider."
+    },
+    {
+      "sourceCase": "a %s load failure never overwrites stored preferences",
+      "expandedCases": 5,
+      "status": "host-owned-not-ported",
+      "reason": "HTTP/offline/malformed/missing/array preference responses are owned by host transport; shell only consumes PreferenceHost snapshots."
+    }
+  ],
+  "executedFiles": [
+    {
+      "file": "packages/shell/src/monitoring.test.tsx",
+      "cases": 6
+    },
+    {
+      "file": "packages/shell/src/products.test.ts",
+      "cases": 10
+    },
+    {
+      "file": "packages/shell/src/screen-host.test.tsx",
+      "cases": 7
+    },
+    {
+      "file": "packages/shell/src/sentinel.test.tsx",
+      "cases": 1
+    },
+    {
+      "file": "packages/shell/src/session-lock.test.tsx",
+      "cases": 2
+    },
+    {
+      "file": "packages/shell/src/shell-context.test.tsx",
+      "cases": 22
+    },
+    {
+      "file": "packages/shell/src/shortcuts.test.ts",
+      "cases": 10
+    },
+    {
+      "file": "packages/shell/src/workspace/detach.test.ts",
+      "cases": 14
+    },
+    {
+      "file": "packages/shell/src/workspace/document-key.test.ts",
+      "cases": 9
+    },
+    {
+      "file": "packages/shell/src/workspace/document-manager.test.ts",
+      "cases": 47
+    },
+    {
+      "file": "packages/shell/src/workspace/lifecycle.test.ts",
+      "cases": 11
+    },
+    {
+      "file": "packages/shell/src/workspace/policy.test.ts",
+      "cases": 15
+    },
+    {
+      "file": "packages/shell/src/workspace/split.test.ts",
+      "cases": 26
+    },
+    {
+      "file": "packages/shell/src/workspace/use-workspace.test.tsx",
+      "cases": 19
+    }
+  ],
+  "additionalFiles": {
+    "screen-host.test.tsx": 7,
+    "monitoring.test.tsx": 6,
+    "session-lock.test.tsx": 2,
+    "shortcuts.test.ts": 10
+  }
+}

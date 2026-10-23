@@ -24,3 +24,7 @@ No product/module icon maps, navigation metadata, general wildcard Lucide export
 ## Phase 4b engine icons
 
 The shared barrel additionally exports the 39 Lucide names used by the copied record/worklist/form engines. They use the existing Lucide dependency and decorative/accessibility conventions; page engines never import Lucide directly. See [phase 4b](../../docs/releases/unreleased/restructure-phase-4b-2026-10-23.md).
+
+## Phase 5 shell icons
+
+`AlertCircle` and `Info` are additionally re-exported for the shell toast viewport. Existing icon behavior is unchanged. See the [phase 5 record](../../docs/releases/unreleased/restructure-phase-5-2026-10-23.md).

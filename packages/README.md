@@ -1,6 +1,6 @@
 # Library packages
 
-The reusable `@pepbits/*` packages. Phases 1–4b of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-4b-status) add ten unpublished source packages alongside the existing workspace:
+The reusable `@pepbits/*` packages. Phases 1–5 (including the bounded phase 5 foundation) of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-5-status) add eleven unpublished source packages alongside the existing workspace:
 
 | Package | Purpose |
 | --- | --- |
@@ -14,8 +14,9 @@ The reusable `@pepbits/*` packages. Phases 1–4b of the [library restructure pl
 | [@pepbits/platform](platform/README.md) | Host-configured sessions/recovery, monitoring, navigation, windows and device ports |
 | [@pepbits/patterns](patterns/README.md) | Lifecycle, master transfer, DCP fields, approvals, drafts, imports and screen-host contracts |
 | [@pepbits/page-engines](page-engines/README.md) | Typed record, worklist, form and template engines with host adapters and a renderer registry |
+| [@pepbits/shell](shell/README.md) | Workspace core, generic configuration, shell/ScreenHost provider, toasts, session lock and monitoring; chrome/workspace UI/layers deferred |
 
-Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI implementation follows shell in phase 5.
+Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI implementation follows shell completion in separate phase 5b.
 
 - One folder per layer: `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `data`, `platform`, `patterns`, `page-engines`, `shell`, `ai`, `testing`.
 - The folder name is the package name: `packages/ui` is `@pepbits/ui`.

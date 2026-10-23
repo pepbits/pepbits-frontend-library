@@ -1,4 +1,6 @@
 export {
+  AlertCircle,
+  Info,
   ArrowLeft,
   ArrowRight,
   CheckCircle2,

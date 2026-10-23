@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Library restructure phase 5 foundation — 23 October 2026](restructure-phase-5-2026-10-23.md): priorities 1–3, workspace core and shell/ScreenHost integration; chrome, workspace UI and remaining layers explicitly deferred. Local source-workspace evidence only.
+
 - [Library restructure phase 4b — 23 October 2026](restructure-phase-4b-2026-10-23.md): generic page engines, registry renderer, and patterns approvals/drafts/imports; local source-workspace verification only.
 
 - [Library restructure phase 4a — 22 October 2026](restructure-phase-4a-2026-10-22.md): required patterns subset (lifecycle, master transfer, DCP fields), ScreenHost, 82 ported cases and explicit remaining-pattern deferrals; local source-only evidence.

@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import {execFileSync,spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const id='restructure-phase-5-2026-10-23',folder=`docs/releases/unreleased/evidence/${id}`;
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const manifest=JSON.parse(readFileSync(`docs/releases/unreleased/manifest-${id}.json`));
+assert.equal(execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),manifest.baseCommit);
+for(const file of manifest.files)assert.equal(sha(readFileSync(file.path)),file.sha256,file.path);
+assert.equal(sha(manifest.files.map(file=>`${file.path}\0${file.sha256}\n`).join('')),manifest.implementationDigest);
+console.log(`PASS ${manifest.files.length} source hashes and aggregate digest`);
+const protectedPaths=['desktop-clients','dummy-api','Jenkinsfile','deploy','run.sh','run_all.sh','.github'];
+for(const args of [['diff','--stat','--',...protectedPaths],['status','--short','desktop-clients'],['status','--short','--',...protectedPaths],['diff','--check']]){
+  const output=execFileSync('git',args,{encoding:'utf8'});assert.equal(output,'');console.log(`PASS git ${args.join(' ')}: 0 output bytes`);
+}
+const pattern='@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-|reference-)|desktop-clients|lucide-react|@tauri-apps|localhost|AED|nexora|ledger|patient|clinic|school|invoice|dubai|sharjah|kochi';
+const scan=spawnSync('grep',['-rniE',pattern,'packages/shell/src'],{encoding:'utf8'});
+assert.equal(scan.status,1);assert.equal(scan.stderr,'');assert.equal(scan.stdout,'');
+writeFileSync(`${folder}/required-scan.log`,scan.stdout);
+writeFileSync(`${folder}/required-scan-justifications.json`,JSON.stringify({command:`grep -rniE "${pattern}" packages/shell/src`,exitCode:scan.status,matchLines:0,matches:[]},null,2)+'\n');
+console.log('PASS exact required grep: 0 matching lines; exit 1 means no matches');
+const inventory=JSON.parse(readFileSync(`${folder}/test-port-inventory.json`));
+assert.equal(inventory.executedFiles.length,14);
+assert.equal(inventory.executedFiles.reduce((sum,file)=>sum+file.cases,0),199);
+const core=inventory.sourceFiles.filter(file=>file.source.includes('/workspace-core/'));
+assert.equal(core.length,7);assert.equal(core.reduce((sum,file)=>sum+file.finalCases,0),141);
+const ci=readFileSync(`${folder}/ci.log`,'utf8');
+const tests=[...ci.matchAll(/@pepbits\/([^:]+):test: +Tests +(\d+) passed/g)];
+const files=[...ci.matchAll(/@pepbits\/([^:]+):test: +Test Files +(\d+) passed/g)];
+assert.equal(tests.length,11);assert.equal(tests.reduce((sum,match)=>sum+Number(match[2]),0),1107);
+assert.equal(files.reduce((sum,match)=>sum+Number(match[2]),0),100);
+assert.match(ci,/# tests 19\n/);assert.match(ci,/# fail 0\n/);
+console.log('PASS retained CI counts: 1107 tests / 100 files; shell 199 / 14; original core 141 / 7; tooling 19');
+const environment={capturedAt:new Date().toISOString(),node:process.version,npm:execFileSync('npm',['--version'],{encoding:'utf8'}).trim()};
+for(const pkg of ['turbo','vitest','typescript','react','react-dom','jsdom','@testing-library/react'])environment[pkg]=JSON.parse(readFileSync(`node_modules/${pkg}/package.json`)).version;
+writeFileSync(`${folder}/environment.json`,JSON.stringify(environment,null,2)+'\n');

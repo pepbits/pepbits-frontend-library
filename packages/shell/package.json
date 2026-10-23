@@ -1,0 +1,40 @@
+{
+  "name": "@pepbits/shell",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./workspace": "./src/workspace/index.ts",
+    "./navigation": "./src/navigation.ts",
+    "./products": "./src/products.ts",
+    "./shortcuts": "./src/shortcuts.ts",
+    "./documentation": "./src/documentation-types.ts",
+    "./tours": "./src/tours.ts",
+    "./layers": "./src/layers/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@pepbits/tsconfig": "0.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
+  },
+  "dependencies": {
+    "@pepbits/icons": "0.0.0",
+    "@pepbits/i18n": "0.0.0",
+    "@pepbits/preferences": "0.0.0",
+    "@pepbits/ui": "0.0.0",
+    "@pepbits/components": "0.0.0",
+    "@pepbits/data": "0.0.0",
+    "@pepbits/platform": "0.0.0",
+    "@pepbits/patterns": "0.0.0",
+    "@pepbits/page-engines": "0.0.0"
+  }
+}

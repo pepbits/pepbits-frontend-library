@@ -1,0 +1,13 @@
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const recordId='restructure-phase-5-2026-10-23';
+const baseCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const fixed=['package.json','package-lock.json','turbo.json','tsconfig.base.json','docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md','docs/releases/unreleased/README.md'];
+const paths=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8'}).split('\0').filter(path=>path&&(path.startsWith('packages/')||path.startsWith('tooling/')||fixed.includes(path))))].sort();
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const files=paths.map(path=>({path,sha256:sha(readFileSync(path))}));
+const implementationDigest=sha(files.map(file=>`${file.path}\0${file.sha256}\n`).join(''));
+const manifest={schemaVersion:1,recordId,status:'unreleased-working-tree',baseCommit,testGuideVersion:'1.0.0',implementationDigest,digestAlgorithm:'SHA-256 of sorted path + NUL + file SHA-256 + LF entries',identityScope:'Root workspace manifests/configuration, all tracked and nonignored package/tooling files, restructure plan and delivery index. Excludes this record, manifest and evidence to avoid self-reference; unchanged files included. Protected source identified by baseCommit and empty diff/status checks.',evidence:`${recordId}.md`,published:false,deployed:false,limits:['Phase 5 priorities 1–3 only; chrome/workspace UI/remaining layers and tests deferred to phase 5 completion before 5b.','AI and optional preferences/login pages remain separate phase 5b follow-up.','Unpublished source exports; zero executable build tasks; no browser/native/live-service/hosted acceptance.','No consumer migration, shim, original-workspace runtime checks, catalog/example changes, commit, push or deployment.','Existing install audit findings remain: one moderate and two critical; no dependency remediation is claimed.'],files};
+writeFileSync(`docs/releases/unreleased/manifest-${recordId}.json`,JSON.stringify(manifest,null,2)+'\n');
+console.log(`${files.length} files; SHA-256 ${implementationDigest}`);

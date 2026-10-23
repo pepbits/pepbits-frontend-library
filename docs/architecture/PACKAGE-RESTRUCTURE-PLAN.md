@@ -1,6 +1,6 @@
 # Library restructure plan
 
-Status: **phases 0–3, phase 4a priorities 1–2 and phase 4b generic engines implemented; priority 3 patterns and phase 5 onward remain future work.** Revised 23 October 2026 against `main` `227173b`. This plan replaces the 21 October draft. See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status) and [Phase 4b status](#phase-4b-status). Phases 1–4b follow the owner's copy-only decision; consumer migration and publishing remain future work.
+Status: **phases 0–3, phase 4a priorities 1–2 and phase 4b generic engines and phase 5 priorities 1–3 implemented; priority 3 patterns, phase 5 chrome/workspace UI/layers and later phases remain future work.** Revised 23 October 2026 against `main` `aba0e4e`. This plan replaces the 21 October draft. See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status), [Phase 4b](#phase-4b-status) and [Phase 5 status](#phase-5-status). Phases 1–5 follow the owner's copy-only decision; consumer migration and publishing remain future work.
 
 ## Summary
 
@@ -220,7 +220,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-config` preferences, themes, shortcuts, formatting, i18n | `packages/preferences`, `packages/i18n` |
 | `erp-config` lifecycle contracts/guards/model/HTTP/source mapping and DCP v1 runtime | Copied to `patterns` in phase 4a; no authoring catalog or product registry |
 | `erp-config` designer/catalog/rules, product import/classification/label/device/inbox configuration | Priority 3 authoring deferred; product registries excluded. Generic form/export rules are included in 4b below. |
-| `erp-config` generic page/template/schema/filter/form/export contracts and localization helper | Copied to `packages/page-engines` in 4b; classification metadata is host-defined. Product instances/catalogues omitted; navigation types remain shell phase 5. |
+| `erp-config` generic page/template/schema/filter/form/export contracts and localization helper | Copied to `packages/page-engines` in 4b; classification metadata is host-defined. Product instances/catalogues omitted; navigation types are included in shell phase 5 priorities 1–3. |
 | `erp-config` product definitions (clinical, pharmacy, RCM, school…) | the matching `demo-apps/*` |
 | `erp-data` records/editor, shared drafts/center, CSV import, approvals, record panels; `erp-config` draft policy | Copied to `packages/data` in phase 3; host request callbacks, structured failures and additive volatile memory transport |
 | `erp-data` report-data and mock datasets | Not copied: branch metrics and registry-driven product data belong in phase 6 demos |
@@ -234,10 +234,12 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `erp-screens` patient query (`ClinicalPatientWorkspace`) | Healthcare repository, `frontend/packages/healthcare-ui` |
 | `erp-screens` other product screens (clinical, consultation, billing, OP registration, care pages) | `demo-apps/healthcare` |
 | `erp-screens` page library | `demo-apps/showcase` |
-| `erp-shell`, `workspace-core` | `packages/shell` |
+| `workspace-core` | Copied to `packages/shell` `./workspace` in phase 5 priorities 1–3; all seven core suites retained. Workspace UI remains below. |
+| `erp-shell` | Context/ScreenHost, appearance, toasts, session lock, Sentinel and error monitor copied to `packages/shell`; header/sidebar/footer/frame, workspace UI and remaining layers deferred to phase 5 completion before 5b. |
+| `erp-config` generic shell configuration | Navigation/module/page types, product helpers, shortcut mechanics, documentation/tour types copied to shell in phase 5; catalogs, brands, branches/roles/time zones, guides and tours stay host-owned. |
 | `auth` session, recovery, Sentinel | Copied to `packages/platform` in phase 3; host URL/fetch, generic browser namespace, no demo accounts; `RequestFailure` extracted to data |
 | `platform-ports` devices, navigation, windows | Generic ports copied to `packages/platform` in phase 3; patient identity capture and School host routing excluded |
-| `ai-config`, `ai-client`, `ai-ui` | `packages/ai` in phase 5 after shell: client sources use workspace context and assistant UI uses shell |
+| `ai-config`, `ai-client`, `ai-ui` | `packages/ai` in separate phase 5b after shell completion: client sources use workspace context and assistant UI uses shell |
 | `registration-wizard` | generic stepper and wizard → `packages/patterns/wizard`; Orvia screens → `demo-apps/onboarding` |
 | `reference-host` | replaced by demo-app routing; the module contract moves to `packages/shell` |
 | `reference-healthcare-suite`, `lis1`, `lis2`, `ris1`, `diagnostics`, `pharmacy`, `medband`, `medslot`, `rcm`, `surgisuite`, `teleconsult`, `quality` | `demo-apps/healthcare/src/modules/*` |
@@ -260,7 +262,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 2. Port one package at a time, leaves first. After each port the full gate passes and the change merges on its own.
 3. Remove the old layout and compatibility shims only when nothing uses them.
 
-**Phases 1–4b copy code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phases 1–4b.
+**Phases 1–5 copy code into the independent workspace.** The owner explicitly required the original workspace and deployment paths to remain unchanged, with no imports back into them. The foundation implementations temporarily coexist. The proposed later migration uses `git mv` where applicable and updates consumer dependencies in the same change; renamed/split packages can retain deprecated re-export shims until consumers are re-pointed. Those consumer changes are outside phases 1–5.
 
 ## Order of work
 
@@ -272,7 +274,8 @@ Demo apps are never published, so products cannot depend on them. Product source
 | 3. Services | Copy generic `erp-data` plus draft policy → `data`; `auth` and generic `platform-ports` → `platform`. See [Phase 3 status](#phase-3-status). No AI port. | No existing application changes; new host API configuration |
 | 4a. Patterns | Required lifecycle/master-transfer/DCP-field subset copied to `patterns`; other patterns deferred. See [Phase 4a status](#phase-4a-status). | No existing application changes; new provider boundary |
 | 4b. Engines | Complete patterns priority 2; generic record/layout, worklist, forms/records, templates/configuration and registry renderer → `page-engines` | Independent host contracts; existing applications unchanged |
-| 5. Shell and AI | `erp-shell` + `workspace-core` → `shell`; module contract replaces `reference-host`. Then port `ai-config`, `ai-client`, `ai-ui` → `ai`. `ai-client/src/sources.tsx` uses workspace-core and `ai-ui/src/assistant-panel.tsx` uses erp-shell, both becoming shell, so AI must follow it. | None |
+| 5. Shell | `erp-shell` + `workspace-core` + generic shell configuration → `shell`. Priorities 1–3 delivered; chrome, workspace UI and layers remain phase 5 completion. See [Phase 5 status](#phase-5-status). | Independent host API and fail-closed UI action grants; original applications unchanged |
+| 5b. AI and optional shell pages | After shell completion, copy `ai-config`, `ai-client`, `ai-ui` → `ai`; their workspace/shell dependencies use public shell APIs. Preferences page and login deferred here as shell/platform follow-up. | Future work |
 | 6. Demo apps | `showcase` first, then one demo per change: healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Product code leaves `erp-screens`, `erp-config` and `erp-data`. `dummy-api` → `mock-api`. | Yes: routes and hosts change |
 | 7. Publishing and consumers | Changesets and a registry publish job; Healthcare, ERP, School and Platform move from vendored archives to registry versions one at a time, in their own repositories under their own rules. Healthcare also takes `ClinicalPatientWorkspace` into `frontend/packages/healthcare-ui`. | Per consumer |
 | 8. Removal | Delete shims and the empty `desktop-clients/` tree | None |
@@ -389,13 +392,36 @@ Implemented 22–23 October 2026 alongside the protected original workspace, bas
 
 ScreenHost adds only optional `document.subscribeClose` and the `useScreenDraftState` helper over existing transient state. This preserves suspension versus explicit closure without importing shell. Shared test wiring is exported via patterns `./testing`. AI remains the existing opaque extension slots. Shared Pagination adds optional allowed page sizes; icons exports the 39 additional names required by engines. Layer rules are unchanged.
 
-Destinations: preferences → shell phase 5; login → shell/platform phase 5; reference-modules → replaced by demo-app routing phase 6; consultation, op-consultation, op-registration, clinical-*, comprehensive-consultation, clinic-billing and care-pages → Healthcare repository / healthcare demo phase 6. Developer-Library `library/`, `page-library/`, template-library/template-demo/generated example → showcase phase 6. Standalone reports/dashboard/inbox/billing contain product fixtures or registries and go to their matching demos (reports/ERP/healthcare); generic template report/dashboard rendering is included. `specialized-editors.test.tsx` tests excluded billing/consultation screens and stays with them. Product application-config/data-classification suites stay with demos or shell routing, not generic engines.
+Destinations updated by phase 5: preferences → shell phase 5b follow-up; login → shell/platform phase 5b follow-up; reference-modules → replaced by demo-app routing phase 6; consultation, op-consultation, op-registration, clinical-*, comprehensive-consultation, clinic-billing and care-pages → Healthcare repository / healthcare demo phase 6. Developer-Library `library/`, `page-library/`, template-library/template-demo/generated example → showcase phase 6. Standalone reports/dashboard/inbox/billing contain product fixtures or registries and go to their matching demos (reports/ERP/healthcare); generic template report/dashboard rendering is included. `specialized-editors.test.tsx` tests excluded billing/consultation screens and stays with them. Product application-config/data-classification suites stay with demos or shell routing, not generic engines.
 
 Verification and exact totals are recorded in the 4b delivery record. No original workspace, backend, deploy scripts, CI definitions, canonical catalog or generated example is modified. Root build is source-only with zero executable tasks; no live/native/browser acceptance, publication, commit or push is claimed.
 
+### Phase 5 status
+
+Implemented **priorities 1–3 only**, 23 October 2026, alongside the protected original workspace, based on `aba0e4e43052454ecd545867a50016f4097d01f3`. The owner permits a smaller complete increment; **phase 5 is not complete**. Eleven unpublished source packages now exist. [Shell guide](../../packages/shell/README.md); [delivery record and per-file inventory](../releases/unreleased/restructure-phase-5-2026-10-23.md).
+
+| Priority | Outcome and destination |
+| --- | --- |
+| 1. Workspace core | Document identity/manager/policy, split/detach state, transient drafts, dirty guards, restore/security metadata and React bindings copied. All seven suites and 141 cases retained with fictional generic fixtures. No native window is opened by core. |
+| 2. Generic shell configuration | Public navigation/page/module contracts, explicit-catalog product helpers, shortcut registry/mechanics, documentation and tour types. No product or branch/role/time-zone/guide/tour catalog. |
+| 3. Host and services | ShellProvider/useShell, a thin useERP adapter, effective appearance, ScreenHost bridge/document wrapper, toast viewport, session lock, ErrorMonitor and Sentinel bridge/boundary. Existing preference/localization/session providers remain authoritative. |
+| 4. Chrome | Header, sidebar, footer, EnterpriseShell, workspace page, chrome palette, clock and their CSS modules/tests → phase 5 completion before 5b. Physical sidebar RTL/hover/click/pin/focus acceptance is not claimed. |
+| 5. Workspace UI | Tabs, canvas, MDI frames/taskbar/hooks, target-document/navigation and detached-window adapter/tests → phase 5 completion before 5b; native runtime wiring → phase 6 desktop demo. |
+| 6. Layers | Command palette, documentation article/center/drawer/launcher/notices/request cache, non-AI help/tour UI and associated composition tests → phase 5 completion before 5b. Only ToastViewport is delivered. |
+| 7. Optional pages | Preferences → shell phase 5b follow-up; login → shell/platform phase 5b follow-up. No placeholders exported. |
+| AI | `ai-config`, `ai-client`, `ai-ui` → separate phase 5b, after shell completion. Opaque ScreenHost extension slots remain optional. |
+
+ScreenHost maps notifications to toast state, action checks to explicit host grants with session-role/expiry checks, scope to the owning document's module/branch, and document identity/focus/transient state/dirty/close subscriptions to workspace. A nested ShellDocumentProvider binds callbacks to each pane; suspension is distinct from explicit close. Actual page-engine form and patterns lifecycle integration tests prove save/dirty/toast behavior through this composition. No durable store or server authorization is implied.
+
+API differences are enumerated in the shell guide: no second preference store or catalog loader; host navigation/product/branch configuration; no implicit utilities/default product; exact enabled-page selection; absent action grants deny; generic optional subject/interaction/context fields replace domain names; neutral monitoring browser event and injected transport/release/native acknowledgement. Appearance writes effective theme/scales/radius/density/reduced-motion/lang/dir. Icons adds AlertCircle and Info. Existing markup/classes/comments are retained for included UI, with a polite toast live region and effective monitoring formatting.
+
+Verification: **199 shell tests / 14 files**, including **141 original core cases**, the original Sentinel boundary case, adapted context and product helper cases, plus integration/host checks. Root CI passes **1,107 tests / 100 files**, **19 tooling tests**, **11 typechecks**, boundaries for **11 packages / 0 demo apps**, and **0 executable build tasks**. Deferred source suites are listed individually in the record; removed preference-transport/load-race cases belong to phase 6 host integration. Product role-header tests belong to phase 6 product demos. Local jsdom is not browser/native/live-service acceptance.
+
+Isolation: copy-only. All protected workspace/backend/deployment/CI paths remain unchanged, and the exact required source grep has zero matches. No canonical catalog/example regeneration, consumer migration, publication, commit, push or deployment. Phase 4a priority 3 remains independent deferred patterns work.
+
 ## Gate for every port
 
-For the independent phase 1–4b copies, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
+For the independent phase 1–5 copies, the authorized gate is root `npm install`, `npm run ci`, documentation validation (using the existing `jiti` runner if Node cannot load `.ts` imports), and empty diffs/status for protected paths. Existing application, API, native and deployment suites are not repeated because no consumer or protected source changes. The following broader gate remains the proposal for later consumer migrations.
 
 Each port is one reviewable change and passes, from the workspace root:
 
