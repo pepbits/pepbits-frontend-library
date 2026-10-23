@@ -1,3 +1,4 @@
+import {bootstrap as medbandBootstrap} from "../modules/medband/test-utils";
 import surgisuiteFixtures from '../modules/surgisuite/__fixtures__/api.json';
 import {qualityHandler} from '../modules/quality/test-fixtures';
 import {providerHandler,patientHandler,patient,encounter,appointmentView,staff} from '../modules/teleconsult/test-utils';
@@ -13,6 +14,8 @@ const entries=Object.entries({...fixtures,...diagnostics,...pharmacy,...rcm}).fi
 function sorted(value:unknown):unknown {if(Array.isArray(value))return value.map(sorted);if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).sort(([a],[b])=>a.localeCompare(b)).map(([key,value])=>[key,sorted(value)]));return value;}
 function normalized(path:string,body:unknown){const url=new URL(path,'http://localhost');url.searchParams.delete('date');if(url.pathname==='/reference-modules/ris1/api/orders'&&url.searchParams.get('view')==='schedule'){url.searchParams.delete('from');url.searchParams.delete('to');}url.searchParams.sort();return JSON.stringify([url.pathname+url.search,sorted(body??null)]);}
 export function mockHttp(preferences:Partial<UserPreferences>={},policy:PreferencePolicy={revision:1,rules:{}}){const unexpected:string[]=[],calls:string[]=[];const request:Request=async(path,init)=>{calls.push(path);if(path==='/preferences')return Response.json({overrides:preferences,preferences,policy,userRevision:1,canManage:false});if(path.startsWith('/localization')){const language=new URL(path,'http://localhost').searchParams.get('language')??'en';const read=(code:string)=>JSON.parse(readFileSync(process.cwd()+`/../../dummy-api/config/localization/shared/${code}.json`,'utf8')).messages;return Response.json({messages:read(language),fallbackMessages:read('en')});}
+ if(path==='/reference-modules/medband/api/bootstrap')return Response.json(medbandBootstrap());
+ if(path.startsWith('/reference-modules/medband/api/patients?'))return Response.json({patients:medbandBootstrap().data.patients});
  if(path==='/personal-views'&&JSON.parse(String(init?.body)).action==='list')return Response.json({views:[]});
  // Reuse one synthetic API image across the seeded series; browser coverage loads the actual instances.
  if(/^\/reference-modules\/ris1\/api\/dicom\/instances\/\d+$/.test(path)&&(!init?.method||init.method==='GET'))return new Response(new Uint8Array(readFileSync(resolve(process.cwd(),'src','test','fixtures','diagnostic-instance.dcm'))),{headers:{'content-type':'application/dicom'}});

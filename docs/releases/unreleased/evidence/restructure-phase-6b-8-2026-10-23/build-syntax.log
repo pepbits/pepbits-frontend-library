@@ -1,0 +1,43 @@
+
+> @pepbits-demo/healthcare@0.0.0 build
+> next build --webpack
+
+▲ Next.js 16.3.3 (webpack)
+- Environments: .env.local
+✓ Running next.config.ts took 40ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Creating an optimized production build ...
+Failed to compile.
+
+./src/modules/medband/components/shell/CommandPalette.tsx
+Error:   x Expression expected
+    ,-[/home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare/src/modules/medband/components/shell/CommandPalette.tsx:46:1]
+ 43 |       window.removeEventListener("keydown", esc);
+ 44 |       returnTo?.focus?.();
+ 45 |     };
+ 46 |   }, [onClose]);
+    :    ^
+ 47 | 
+ 48 |   return (
+ 49 |     <SourceDialog open onClose={onClose} title="Quick search" className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-[12vh]">{panel=><>
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/modules/medband/components/shell/CommandPalette.tsx
+./src/modules/medband/components/shell/MedbandShell.tsx
+./src/modules/medband/module.tsx
+./src/modules/medband/page.tsx
+./src/renderer.tsx
+./src/app/client.tsx
+
+
+> Build failed because of webpack errors
+npm ERR! Lifecycle script `build` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-23",
+  "base": "041c546a3a7d1f607c973226fc3bdabef0273f46",
+  "branch": "restructure/phase-6b",
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "apiNode": "v24.21.0",
+  "install": {
+    "performed": false,
+    "reason": "Dependencies and lockfile unchanged"
+  },
+  "configuration": {
+    "TURBO_ENV_MODE": "loose",
+    "TURBO_CONCURRENCY": "1",
+    "NEXT_PUBLIC_API_URL": "/api",
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "LD_LIBRARY_PATH": "$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu"
+  },
+  "scope": "Local Linux browser build, mocked tests, fictional HTTP; no deployment/native/clinical/financial acceptance.",
+  "receiptInputs": {
+    "RCM_BROWSER_PARITY_RESULT": "browser-full-diagnostic.json (62 passing RCM checks; MedBand findings in that run were corrected separately)",
+    "MEDBAND_BROWSER_PARITY_RESULT": "browser-pilot-pass.json (passing corrected MedBand run)"
+  },
+  "resourcePolicy": "Turbo concurrency 1 and healthcare Vitest maxWorkers 1. HTTP runs and CI/shell browser checks are sequential; launcher process groups are stopped after each run."
+}

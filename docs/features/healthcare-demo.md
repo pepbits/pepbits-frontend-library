@@ -1,10 +1,10 @@
 # Independent healthcare demo
 
-Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-7 delivery record](../releases/unreleased/restructure-phase-6b-7-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
+Feature ID: HCD. State: implemented subset; local verification and outstanding checks are recorded in the [6b-8 delivery record](../releases/unreleased/restructure-phase-6b-8-2026-10-23.md). Test guide: [1.0.0](../testing/v1.0.0/PRE-COMMIT.md). No deployment or clinical acceptance.
 
 ## User problem and outcome
 
-Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. Phase 6b-4 adds all forty RCM Workspace pages and their query workflows. Phases 6b-5 through 6b-7 add Teleconsult Provider/Patient, AllyVora Quality and SurgiSuite, bringing the app to 174 menu destinations. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
+Healthcare product screens can now run in a separate Next.js app through public library exports, without importing the desktop workspace or another demo. The first subset covers the Healthcare Suite core, patient query/record/360, clinical documents, registration, billing and care-page designs. Phase 6b-2 adds all 55 LIS1/LIS2/RIS1 menu destinations and their detail/viewer/print routes. Phase 6b-3 adds the thirteen Pharmacy-1 destinations and record/query flows. Phase 6b-4 adds all forty RCM Workspace pages and their query workflows. Phases 6b-5 through 6b-7 add Teleconsult Provider/Patient, AllyVora Quality and SurgiSuite. Phase 6b-8 adds MedBand Patient Access, bringing the app to 181 menu destinations. The [app guide](../../demo-apps/healthcare/README.md) lists all routes and setup.
 
 ## User and administrator flows
 
@@ -50,7 +50,7 @@ Route matrices cover default, Arabic RTL, reduced motion and locked density. Jsd
 | HCD-12 | Pharmacy command replay, structured failure/retry, mounted preferences and cache scope |
 | HCD-06 | Public package boundaries, forced root CI, builds, documentation and protected-path/source checks |
 
-Exact case/file counts and failures are in the delivery record. The remaining healthcare run covers MedBand/MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
+Exact case/file counts and failures are in the delivery record. The remaining healthcare run covers MedSlot. The standalone four-layer consultation composer and ambient speech recorder are deferred; no empty destination is exposed. Native windows, a production speech/AI provider, licensed terminology and medical/domain sign-off remain out of scope. The Suite API has no generic versioned master-draft contract; no durable master draft or concurrency guarantee is added.
 
 ## Operations and support
 
@@ -164,3 +164,18 @@ The provider chain stays SessionProvider → PreferenceHost → LocalizationProv
 Applicable presentation follows effective host preferences/tenant locks, including typography/scales/radius, table settings, formatting, direction, motion and shortcut enablement. Daily timelines and bounded source queues are not paginated; page size has no source contract here. USD remains the backend denomination. Preview/export/device settings are inapplicable where the source supplies no corresponding control. Canonical catalogs remain backend-owned and unchanged; local bundles replace the external source font request.
 
 All destinations and original tests are included. Synthetic PINs, signatures, tariffs, inventory and clinical records demonstrate source behavior only. Production clinical authorization, real patient/payer/inventory/devices, native executables, human language/domain and assistive-technology review remain separate. No deployment, commit or push is part of this work.
+
+## MedBand Patient Access — HCD-36
+
+Seven sidebar destinations and two additional route patterns preserve Today, patient search/registration/wristband record, encounters, admission requests/queue and episodes/cases. Tenant Admin is outside this demo. The [app guide](../../demo-apps/healthcare/README.md#medband-patient-access) explains navigation, preferences and recovery; [delivery evidence](../releases/unreleased/restructure-phase-6b-8-2026-10-23.md) separates UI writes, direct HTTP checks and mocked tests.
+
+| Case | Expected result |
+| --- | --- |
+| HCD-36-A | Header/sidebar and deep links resolve all nine patterns; malformed routes show not-found |
+| HCD-36-B | Registration validates, preserves failed values, saves and reloads the wristband record; search and keyboard lookup select actual API records |
+| HCD-36-C | New episode and outpatient encounter preserve patient/case/episode relationships; status progression persists |
+| HCD-36-D | Admission request, clearance, bed allocation, discharge and case/episode closure follow source server guards |
+| HCD-36-E | Same-key replay is stable; changed content, unauthorized commands and cross-branch reads are refused or isolated |
+| HCD-36-F | Mounted edits survive effective preference/language changes; default, Arabic RTL, reduced-motion and locked-density routes pass automated page-content axe |
+
+SessionProvider → PreferenceHost → LocalizationProvider → ShellProvider remains unchanged. The configured adapter maps module-relative requests to `/reference-modules/medband/api/...`; the server establishes identity/role/scope. Public CollectionView and TemplateFields own ordinary table/form rendering; AsyncLookup, Source* controls, SourceDialog and ScreenHost own shared interaction. The demo owns visit, coverage, admission and wristband composition under CMP-04. Errors retain backend status/code/field; ambiguous attempts retain retry identity; unmount aborts pending operations and fences obsolete responses. Counter choice is scoped workstation storage only. No durable clinical draft, live device, payer/bank, native executable, native-language/domain or clinical acceptance is inferred.

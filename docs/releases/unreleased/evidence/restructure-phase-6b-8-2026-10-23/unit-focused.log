@@ -1,0 +1,33 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/medband src/adapters/medband.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/modules/medband/controls-parity.test.tsx (38 tests) 487ms
+ ✓ src/modules/medband/flows.test.tsx (4 tests) 2755ms
+   ✓ every state of the long forms goes through the localization boundary > the new-encounter form for each visit type, on each of its steps  2257ms
+ ✓ src/modules/medband/host.test.tsx (16 tests) 631ms
+   ✓ MedBand independent host > uses the shared asynchronous patient lookup and keyboard selection after loading results  356ms
+ ✓ src/modules/medband/module.test.tsx (28 tests) 3399ms
+   ✓ ReferenceMedbandModule host contract > renders every one of the nine routes from the backend data (record id from the route, not a promise)  446ms
+   ✓ managed table page size > shows the host page size of encounters and steps by it  390ms
+ ✓ src/modules/medband/pages.test.tsx (11 tests) 908ms
+ ✓ src/modules/medband/cx.test.ts (6 tests) 1204ms
+   ✓ cx is the source's twMerge: later utilities override earlier ones of the same group, shorthands override longhands > every utility pair in both orders matches the retained tailwind-merge oracle  1185ms
+ ✓ src/modules/medband/api.test.ts (10 tests) 16ms
+ ✓ src/modules/medband/copy.test.ts (5 tests) 9ms
+ ✓ src/modules/medband/source-boundary.test.ts (5 tests) 33ms
+ ✓ src/adapters/medband.test.ts (10 tests) 20ms
+ ✓ src/modules/medband/styles.test.ts (12 tests) 22ms
+ ✓ src/modules/medband/utils.test.ts (6 tests) 14ms
+ ✓ src/modules/medband/routes.test.ts (5 tests) 9ms
+ ✓ src/modules/medband/master.test.ts (3 tests) 9ms
+ ↓ src/modules/medband/browser-parity.test.ts (2 tests | 2 skipped)
+
+ Test Files  14 passed | 1 skipped (15)
+      Tests  159 passed | 2 skipped (161)
+   Start at  17:39:30
+   Duration  33.10s (transform 2.40s, setup 3.00s, collect 5.52s, tests 9.52s, environment 8.58s, prepare 1.22s)
+

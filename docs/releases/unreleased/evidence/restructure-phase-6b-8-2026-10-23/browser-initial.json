@@ -1,0 +1,57 @@
+{
+  "flows": [],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medband",
+      "failure": "GET /bootstrap: {\"error\":{\"code\":\"medband_unavailable\",\"message\":\"The service is unavailable. Try again.\"}}\n\n503 !== 200\n"
+    },
+    {
+      "route": "/medband",
+      "failure": "GET /bootstrap: {\"error\":{\"code\":\"medband_unavailable\",\"message\":\"The service is unavailable. Try again.\"}}\n\n503 !== 200\n",
+      "rendered": {
+        "path": "/patient-query",
+        "pageId": "patient-query",
+        "headings": [
+          "Find a patient",
+          "Search the patient registry"
+        ],
+        "inputs": [
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "date",
+            "placeholder": ""
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

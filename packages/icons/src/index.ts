@@ -138,3 +138,6 @@ export {ArrowDownRight, Bell, Gauge, LineChart, Timer} from 'lucide-react';
 
 // Surgical presentation primitives.
 export {Droplet, Shield, Scissors} from 'lucide-react';
+
+// Patient access presentation primitives.
+export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from 'lucide-react';

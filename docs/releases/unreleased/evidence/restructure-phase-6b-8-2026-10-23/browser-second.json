@@ -1,0 +1,73 @@
+{
+  "flows": [
+    {
+      "id": "HCD-36-medband-identity",
+      "mode": "HTTP",
+      "result": "Authenticated host actor, masters and patient records; no browser seed"
+    },
+    {
+      "id": "HCD-36-medband-palette",
+      "mode": "UI",
+      "result": "One selected-module search palette finds the real patient"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [
+    {
+      "name": "command palette search and Escape",
+      "failures": []
+    }
+  ],
+  "scope": "Local browser against the unchanged synthetic demo HTTP API",
+  "checks": [
+    {
+      "route": "/medband",
+      "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reference-module=medband]').getByText('Enter the first name', { exact: true }) to be visible\u001b[22m\n"
+    },
+    {
+      "route": "/medband",
+      "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reference-module=medband]').getByText('Enter the first name', { exact: true }) to be visible\u001b[22m\n",
+      "rendered": {
+        "path": "/medband/patients/new",
+        "pageId": "medband-patient-new",
+        "headings": [
+          "Register patient",
+          "Contact"
+        ],
+        "inputs": [
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "checkbox",
+            "placeholder": ""
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

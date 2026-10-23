@@ -1,0 +1,768 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/medband src/adapters/medband.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare
+
+ ✓ src/modules/medband/controls-parity.test.tsx (38 tests) 474ms
+ ✓ src/modules/medband/module.test.tsx (28 tests) 3434ms
+   ✓ ReferenceMedbandModule host contract > renders every one of the nine routes from the backend data (record id from the route, not a promise)  444ms
+   ✓ managed table page size > shows the host page size of encounters and steps by it  395ms
+ ❯ src/modules/medband/host.test.tsx (16 tests | 1 failed) 10469ms
+   ✓ MedBand independent host > '/' round trips with query and dynamic identifiers 3ms
+   ✓ MedBand independent host > '/patients' round trips with query and dynamic identifiers 0ms
+   ✓ MedBand independent host > '/patients/new' round trips with query and dynamic identifiers 0ms
+   ✓ MedBand independent host > '/patients/[id]' round trips with query and dynamic identifiers 0ms
+   ✓ MedBand independent host > '/encounters' round trips with query and dynamic identifiers 0ms
+   ✓ MedBand independent host > '/encounters/new' round trips with query and dynamic identifiers 0ms
+   ✓ MedBand independent host > '/admissions' round trips with query and dynamic identifiers 0ms
+   ✓ MedBand independent host > '/admissions/new' round trips with query and dynamic identifiers 0ms
+   ✓ MedBand independent host > '/episodes' round trips with query and dynamic identifiers 0ms
+   ✓ MedBand independent host > refuses /medband/unknown 0ms
+   ✓ MedBand independent host > refuses /medband/patients/%2f 0ms
+   ✓ MedBand independent host > refuses /medband/%2e%2e 0ms
+   ✓ MedBand independent host > refuses /medband/patients/%00 0ms
+   ✓ MedBand independent host > shows the header only for the API role grants and never adds Tenant Admin 1ms
+   ✓ MedBand independent host > preserves a registration editor through effective preference changes and disables shortcuts while mounted 262ms
+   × MedBand independent host > uses the shared asynchronous patient lookup and keyboard selection after loading results 10198ms
+     → Found multiple elements with the role "option"
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<li[39m
+  [33maria-selected[39m=[32m"true"[39m
+  [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+  [33mid[39m=[32m"_r_d_-0"[39m
+  [33mrole[39m=[32m"option"[39m
+[36m>[39m
+  [36m<b>[39m
+    [0mAsha TesterA[0m
+  [36m</b>[39m
+  [36m<span[39m
+    [33mclass[39m=[32m"block text-sm"[39m
+  [36m>[39m
+    [0mMRN-A-001[0m
+    [0m, [0m
+    [0m36y[0m
+    [0m [0m
+    [0mF[0m
+    [0m, [0m
+    [0m0500000001[0m
+  [36m</span>[39m
+  [36m<span>[39m
+    [0mPayA[0m
+  [36m</span>[39m
+[36m</li>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m""[39m
+[36m>[39m
+  [0mChoose department[0m
+[36m</option>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m"dep-gen"[39m
+[36m>[39m
+  [0mGeneral A[0m
+[36m</option>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m"dep-er"[39m
+[36m>[39m
+  [0mEmergency A[0m
+[36m</option>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m""[39m
+[36m>[39m
+  [0mChoose department first[0m
+[36m</option>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m"doc-1"[39m
+[36m>[39m
+  [0mDr A Tester, Consultant[0m
+[36m</option>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-medband"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-medband-font[39m=[32m"reference"[39m
+      [33mdata-medband-palette[39m=[32m"reference"[39m
+      [33mdata-medband-table[39m=[32m"reference"[39m
+      [33mdata-reference-module[39m=[32m"medband"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-medband-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--medband-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-16 shrink-0 items-center gap-3 border-b border-line bg-paper/80 px-4 backdrop-blur md:px-6"[39m
+          [33mdata-medband-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded bg-band/30 px-2 py-0.5 text-xs text-ink xl:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"flex h-10 min-w-0 flex-1 items-center gap-2.5 rounded-lg bg-canvas px-3 text-left text-sm text-ink-faint transition-colors hover:bg-scrub-50 md:max-w-md"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4 shrink-0"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"truncate"[39m
+            [36m>[39m
+              [0mSearch patient by name, MRN, phone or member ID[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"ml-auto hidden gap-1 sm:flex"[39m
+            [36m>[39m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-5 min-w-5 items-center justify-center rounded border border-line bg-paper px-1 text-[11px] font-semibold text-ink-faint"[39m
+              [36m>[39m
+                [0mCtrl[0m
+              [36m</kbd>[39m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-5 min-w-5 items-center justify-center rounded border border-line bg-paper px-1 text-[11px] font-semibold text-ink-faint"[39m
+              [36m>[39m
+                [0mK[0m
+              [36m</kbd>[39m
+            [36m</span>[39m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-2"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed select-none bg-paper text-ink border border-line hover:border-scrub-400 hover:text-scrub-700 disabled:text-ink-faint h-10 px-4 text-sm gap-2 hidden lg:inline-flex"[39m
+              [33mhref[39m=[32m"/patients/new"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-user-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"9"[39m
+                  [33mcy[39m=[32m"7"[39m
+                  [33mr[39m=[32m"4"[39m
+                [36m/>[39m
+                [36m<line[39m
+                  [33mx1[39m=[32m"19"[39m
+                  [33mx2[39m=[32m"19"[39m
+                  [33my1[39m=[32m"8"[39m
+                  [33my2[39m=[32m"14"[39m
+                [36m/>[39m
+                [36m<line[39m
+                  [33mx1[39m=[32m"22"[39m
+                  [33mx2[39m=[32m"16"[39m
+                  [33my1[39m=[32m"11"[39m
+                  [33my2[39m=[32m"11"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0m [0m
+              [0mRegister[0m
+            [36m</a>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"inline-flex items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed select-none bg-scrub-700 text-white hover:bg-scrub-800 active:bg-scrub-900 disabled:bg-scrub-200 disabled:text-white h-10 px-4 text-sm gap-2"[39m
+              [33mhref[39m=[32m"/encounters/new"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-calendar-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M8 2v4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M16 2v4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M3 10h18"[3...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-medband"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-medband-font[39m=[32m"reference"[39m
+      [33mdata-medband-palette[39m=[32m"reference"[39m
+      [33mdata-medband-table[39m=[32m"reference"[39m
+      [33mdata-reference-module[39m=[32m"medband"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-medband-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--medband-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-16 shrink-0 items-center gap-3 border-b border-line bg-paper/80 px-4 backdrop-blur md:px-6"[39m
+          [33mdata-medband-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded bg-band/30 px-2 py-0.5 text-xs text-ink xl:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"flex h-10 min-w-0 flex-1 items-center gap-2.5 rounded-lg bg-canvas px-3 text-left text-sm text-ink-faint transition-colors hover:bg-scrub-50 md:max-w-md"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4 shrink-0"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"truncate"[39m
+            [36m>[39m
+              [0mSearch patient by name, MRN, phone or member ID[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"ml-auto hidden gap-1 sm:flex"[39m
+            [36m>[39m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-5 min-w-5 items-center justify-center rounded border border-line bg-paper px-1 text-[11px] font-semibold text-ink-faint"[39m
+              [36m>[39m
+                [0mCtrl[0m
+              [36m</kbd>[39m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-5 min-w-5 items-center justify-center rounded border border-line bg-paper px-1 text-[11px] font-semibold text-ink-faint"[39m
+              [36m>[39m
+                [0mK[0m
+              [36m</kbd>[39m
+            [36m</span>[39m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-2"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed select-none bg-paper text-ink border border-line hover:border-scrub-400 hover:text-scrub-700 disabled:text-ink-faint h-10 px-4 text-sm gap-2 hidden lg:inline-flex"[39m
+              [33mhref[39m=[32m"/patients/new"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-user-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"9"[39m
+                  [33mcy[39m=[32m"7"[39m
+                  [33mr[39m=[32m"4"[39m
+                [36m/>[39m
+                [36m<line[39m
+                  [33mx1[39m=[32m"19"[39m
+                  [33mx2[39m=[32m"19"[39m
+                  [33my1[39m=[32m"8"[39m
+                  [33my2[39m=[32m"14"[39m
+                [36m/>[39m
+                [36m<line[39m
+                  [33mx1[39m=[32m"22"[39m
+                  [33mx2[39m=[32m"16"[39m
+                  [33my1[39m=[32m"11"[39m
+                  [33my2[39m=[32m"11"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0m [0m
+              [0mRegister[0m
+            [36m</a>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"inline-flex items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed select-none bg-scrub-700 text-white hover:bg-scrub-800 active:bg-scrub-900 disabled:bg-scrub-200 disabled:text-white h-10 px-4 text-sm gap-2"[39m
+              [33mhref[39m=[32m"/encounters/new"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-calendar-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M8 2v4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M16 2v4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M3 10h18"[3...
+ ✓ src/modules/medband/pages.test.tsx (11 tests) 991ms
+ ✓ src/modules/medband/flows.test.tsx (4 tests) 2558ms
+   ✓ every state of the long forms goes through the localization boundary > the new-encounter form for each visit type, on each of its steps  2123ms
+ ✓ src/modules/medband/cx.test.ts (6 tests) 1974ms
+   ✓ cx is the source's twMerge: later utilities override earlier ones of the same group, shorthands override longhands > every utility pair in both orders matches the retained tailwind-merge oracle  1952ms
+ ✓ src/modules/medband/source-boundary.test.ts (5 tests) 29ms
+ ✓ src/modules/medband/styles.test.ts (12 tests) 24ms
+ ✓ src/adapters/medband.test.ts (10 tests) 19ms
+ ✓ src/modules/medband/routes.test.ts (5 tests) 11ms
+ ✓ src/modules/medband/copy.test.ts (5 tests) 13ms
+ ✓ src/modules/medband/master.test.ts (3 tests) 8ms
+ ✓ src/modules/medband/api.test.ts (10 tests) 16ms
+ ↓ src/modules/medband/browser-parity.test.ts (2 tests | 2 skipped)
+ ✓ src/modules/medband/utils.test.ts (6 tests) 12ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/medband/host.test.tsx > MedBand independent host > uses the shared asynchronous patient lookup and keyboard selection after loading results
+TestingLibraryElementError: Found multiple elements with the role "option"
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<li[39m
+  [33maria-selected[39m=[32m"true"[39m
+  [33mclass[39m=[32m"cursor-pointer rounded-[var(--radius)] px-2 py-1.5 bg-[var(--primary-soft)]"[39m
+  [33mid[39m=[32m"_r_d_-0"[39m
+  [33mrole[39m=[32m"option"[39m
+[36m>[39m
+  [36m<b>[39m
+    [0mAsha TesterA[0m
+  [36m</b>[39m
+  [36m<span[39m
+    [33mclass[39m=[32m"block text-sm"[39m
+  [36m>[39m
+    [0mMRN-A-001[0m
+    [0m, [0m
+    [0m36y[0m
+    [0m [0m
+    [0mF[0m
+    [0m, [0m
+    [0m0500000001[0m
+  [36m</span>[39m
+  [36m<span>[39m
+    [0mPayA[0m
+  [36m</span>[39m
+[36m</li>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m""[39m
+[36m>[39m
+  [0mChoose department[0m
+[36m</option>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m"dep-gen"[39m
+[36m>[39m
+  [0mGeneral A[0m
+[36m</option>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m"dep-er"[39m
+[36m>[39m
+  [0mEmergency A[0m
+[36m</option>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m""[39m
+[36m>[39m
+  [0mChoose department first[0m
+[36m</option>[39m
+
+Ignored nodes: comments, script, style
+[36m<option[39m
+  [33mvalue[39m=[32m"doc-1"[39m
+[36m>[39m
+  [0mDr A Tester, Consultant[0m
+[36m</option>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-medband"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-medband-font[39m=[32m"reference"[39m
+      [33mdata-medband-palette[39m=[32m"reference"[39m
+      [33mdata-medband-table[39m=[32m"reference"[39m
+      [33mdata-reference-module[39m=[32m"medband"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-medband-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--medband-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-16 shrink-0 items-center gap-3 border-b border-line bg-paper/80 px-4 backdrop-blur md:px-6"[39m
+          [33mdata-medband-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded bg-band/30 px-2 py-0.5 text-xs text-ink xl:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"flex h-10 min-w-0 flex-1 items-center gap-2.5 rounded-lg bg-canvas px-3 text-left text-sm text-ink-faint transition-colors hover:bg-scrub-50 md:max-w-md"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4 shrink-0"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"truncate"[39m
+            [36m>[39m
+              [0mSearch patient by name, MRN, phone or member ID[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"ml-auto hidden gap-1 sm:flex"[39m
+            [36m>[39m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-5 min-w-5 items-center justify-center rounded border border-line bg-paper px-1 text-[11px] font-semibold text-ink-faint"[39m
+              [36m>[39m
+                [0mCtrl[0m
+              [36m</kbd>[39m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-5 min-w-5 items-center justify-center rounded border border-line bg-paper px-1 text-[11px] font-semibold text-ink-faint"[39m
+              [36m>[39m
+                [0mK[0m
+              [36m</kbd>[39m
+            [36m</span>[39m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-2"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed select-none bg-paper text-ink border border-line hover:border-scrub-400 hover:text-scrub-700 disabled:text-ink-faint h-10 px-4 text-sm gap-2 hidden lg:inline-flex"[39m
+              [33mhref[39m=[32m"/patients/new"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-user-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"9"[39m
+                  [33mcy[39m=[32m"7"[39m
+                  [33mr[39m=[32m"4"[39m
+                [36m/>[39m
+                [36m<line[39m
+                  [33mx1[39m=[32m"19"[39m
+                  [33mx2[39m=[32m"19"[39m
+                  [33my1[39m=[32m"8"[39m
+                  [33my2[39m=[32m"14"[39m
+                [36m/>[39m
+                [36m<line[39m
+                  [33mx1[39m=[32m"22"[39m
+                  [33mx2[39m=[32m"16"[39m
+                  [33my1[39m=[32m"11"[39m
+                  [33my2[39m=[32m"11"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0m [0m
+              [0mRegister[0m
+            [36m</a>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"inline-flex items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed select-none bg-scrub-700 text-white hover:bg-scrub-800 active:bg-scrub-900 disabled:bg-scrub-200 disabled:text-white h-10 px-4 text-sm gap-2"[39m
+              [33mhref[39m=[32m"/encounters/new"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-calendar-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M8 2v4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M16 2v4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M3 10h18"[3...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"reference-medband"[39m
+      [33mdata-density[39m=[32m"comfortable"[39m
+      [33mdata-medband-font[39m=[32m"reference"[39m
+      [33mdata-medband-palette[39m=[32m"reference"[39m
+      [33mdata-medband-table[39m=[32m"reference"[39m
+      [33mdata-reference-module[39m=[32m"medband"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col"[39m
+        [33mdata-medband-stage[39m=[32m"true"[39m
+        [33mstyle[39m=[32m"height: max(36rem, calc(100dvh - var(--medband-chrome, 7.5rem)));"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"flex h-16 shrink-0 items-center gap-3 border-b border-line bg-paper/80 px-4 backdrop-blur md:px-6"[39m
+          [33mdata-medband-toolbar[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"hidden shrink-0 rounded bg-band/30 px-2 py-0.5 text-xs text-ink xl:inline-block"[39m
+          [36m>[39m
+            [0mDemonstration data[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"flex h-10 min-w-0 flex-1 items-center gap-2.5 rounded-lg bg-canvas px-3 text-left text-sm text-ink-faint transition-colors hover:bg-scrub-50 md:max-w-md"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search size-4 shrink-0"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"truncate"[39m
+            [36m>[39m
+              [0mSearch patient by name, MRN, phone or member ID[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"ml-auto hidden gap-1 sm:flex"[39m
+            [36m>[39m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-5 min-w-5 items-center justify-center rounded border border-line bg-paper px-1 text-[11px] font-semibold text-ink-faint"[39m
+              [36m>[39m
+                [0mCtrl[0m
+              [36m</kbd>[39m
+              [36m<kbd[39m
+                [33mclass[39m=[32m"inline-flex h-5 min-w-5 items-center justify-center rounded border border-line bg-paper px-1 text-[11px] font-semibold text-ink-faint"[39m
+              [36m>[39m
+                [0mK[0m
+              [36m</kbd>[39m
+            [36m</span>[39m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-2"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed select-none bg-paper text-ink border border-line hover:border-scrub-400 hover:text-scrub-700 disabled:text-ink-faint h-10 px-4 text-sm gap-2 hidden lg:inline-flex"[39m
+              [33mhref[39m=[32m"/patients/new"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-user-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"9"[39m
+                  [33mcy[39m=[32m"7"[39m
+                  [33mr[39m=[32m"4"[39m
+                [36m/>[39m
+                [36m<line[39m
+                  [33mx1[39m=[32m"19"[39m
+                  [33mx2[39m=[32m"19"[39m
+                  [33my1[39m=[32m"8"[39m
+                  [33my2[39m=[32m"14"[39m
+                [36m/>[39m
+                [36m<line[39m
+                  [33mx1[39m=[32m"22"[39m
+                  [33mx2[39m=[32m"16"[39m
+                  [33my1[39m=[32m"11"[39m
+                  [33my2[39m=[32m"11"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0m [0m
+              [0mRegister[0m
+            [36m</a>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"inline-flex items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed select-none bg-scrub-700 text-white hover:bg-scrub-800 active:bg-scrub-900 disabled:bg-scrub-200 disabled:text-white h-10 px-4 text-sm gap-2"[39m
+              [33mhref[39m=[32m"/encounters/new"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-calendar-plus size-4"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M8 2v4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M16 2v4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M3 10h18"[3...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/modules/medband/host.test.tsx:30:16
+     28|   const h=makeHost(sessionHandler(),{path:'/encounters/new'});render(<…
+     29|   const input=await screen.findByRole('combobox',{name:'Search patient…
+     30|   await screen.findByRole('option');fireEvent.keyDown(input,{key:'Ente…
+       |                ^
+     31|   await waitFor(()=>expect(screen.getAllByText('Asha TesterA').length)…
+     32|  });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 13 passed | 1 skipped (15)
+      Tests  1 failed | 158 passed | 2 skipped (161)
+   Start at  17:37:32
+   Duration  41.63s (transform 2.12s, setup 2.27s, collect 5.01s, tests 20.03s, environment 7.78s, prepare 1.21s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/healthcare@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6b/demo-apps/healthcare 

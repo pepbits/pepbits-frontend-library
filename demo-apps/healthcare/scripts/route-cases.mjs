@@ -22,3 +22,6 @@ routes.push('/teleconsult-provider','/teleconsult-provider/schedule','/teleconsu
 routes.push(...['','/indicators','/tat','/events','/verification','/validation','/reports','/schedules','/submissions','/authorities','/users','/audit'].map(path=>'/quality'+path));
 
 routes.push(...['','/schedule','/cases','/approvals','/patients','/inventory','/analytics','/masters'].map(path=>'/surgisuite'+path));
+
+routes.push(...['','/patients','/patients/new','/encounters/new','/admissions','/encounters','/episodes'].map(path=>'/medband'+path));
+examples.push('/medband/admissions/new');
