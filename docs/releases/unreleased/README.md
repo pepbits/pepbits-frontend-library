@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Reports phase 6e-1 — Lumen Reports demo app](restructure-phase-6e-1-2026-10-24.md): all 19 source routes over the shared host and fictional demo API; local verification and limits.
 - [Tenant Admin phase 6e-2 — registry-driven configuration demo](restructure-phase-6e-2-2026-10-24.md): Overview, Approvals, Activity and 30 configuration pages on the shared host; public reference-host contract and local verification.
 - [ERP phase 6c-5: report controls and invoice pagination](restructure-phase-6c-5-2026-10-24.md) — source analytical controls and measured A4 documents; local verification, no deployment.
 - [ERP phase 6c-4 — record context and personal views](restructure-phase-6c-4-2026-10-24.md): source panels, account filter/sort/column snapshots, scoped retries and explicit durable-draft boundary; local evidence, no deployment.

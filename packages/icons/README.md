@@ -60,3 +60,5 @@ Patient access adds `BedDouble`, `CircleDollarSign`, `FolderPlus`, `SearchX`, `S
 MedSlot uses the public `Armchair`, `Bed`, `Brush`, `CalendarX`, `Menu`, `Monitor` and `Trash` primitives. Product category mappings remain in the demo.
 
 Phase 6d adds 36 direct Lucide primitives for education and general actions (including GraduationCap, School, BookCopy, BookMarked, BookPlus, BookUp, BookX, CalendarOff, Grid3x3, Highlighter and PenTool), plus the `LucideIcon` type alias. Each runtime export is included in the render regression. There is no school icon registry or new dependency.
+
+The reports demo adds direct `Blocks`, `FileBarChart`, `FolderDown`, and `MailPlus` primitives (it also uses `KeyRound`, `Library`, `ScrollText`, `Settings` and `Zap`, which earlier phases export), each covered by a public render test. Report navigation stays in the demo.

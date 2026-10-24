@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {Card, CardGrid, StatCard, Sparkline, LineChart, DonutChart, BarChart, HorizontalBars, ProgressRing} from "@pepbits/components";
+import {Card, CardGrid, StatCard, Sparkline, LineChart, DonutChart, BarChart, GroupedBarChart, HorizontalBars, ProgressRing} from "@pepbits/components";
 import {useFormatters} from "@pepbits/patterns/screen-host";
 
 export function StatsDemo() {
@@ -16,5 +16,6 @@ export function StatsDemo() {
     <HorizontalBars data={[{label:'Active',value:24},{label:'Pending',value:6}]} formatValue={format.number}/>
     <ProgressRing value={75} formatValue={value=>`${format.number(value)}%`}/>
     <DonutChart label="Status" parts={[{label:'Active',value:24},{label:'Pending',value:6}]} formatValue={format.number}/>
+    <GroupedBarChart label="Status" labels={['Active','Pending']} series={[{id:'total',label:'Total',values:[24,6]}]} formatValue={format.number}/>
   </Card></div>;
 }

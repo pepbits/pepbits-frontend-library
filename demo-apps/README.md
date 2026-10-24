@@ -27,3 +27,7 @@ ERP is in progress below. Remaining app order: reports, tenant-admin, onboarding
 ## Tenant Admin
 
 [Tenant Admin](tenant-admin/README.md) is the independent Next.js demo on port 3360. Phase 6e-2 ports the Allyvora Tenant Admin reference: Overview, Approvals inbox, Activity log and all 30 configuration pages from the API registry, drawn by one resource workspace and record drawer with `?new=1`/`?open=<id>` deep links, on the shared host and the unchanged fictional demo API. Its [source map](tenant-admin/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-2-2026-10-24.md) state verification and limits. Fictional configuration data only, not a deployment.
+
+## Reports
+
+[Reports](reports/README.md) is the independent Next.js demo on port 3350. Phase 6e-1 ports the Lumen Reports reference module: all 19 source page routes (library, viewer, builder, dashboards, background jobs, schedules, email requests, API keys and administration) over the shared host and the unchanged demo API. Data, users, schedules and email are fictional; email is recorded, never sent. See its [source map](reports/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-1-2026-10-24.md). Not a deployment.

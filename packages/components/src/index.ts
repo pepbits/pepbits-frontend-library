@@ -14,6 +14,7 @@ export * from "./reference-data";
 export * from "./form-error-summary";
 export * from "./print-document";
 export * from './charts';
+export * from './grouped-bar-chart';
 export * from "./recovery-notice";
 export * from "./error-mapper";
 
