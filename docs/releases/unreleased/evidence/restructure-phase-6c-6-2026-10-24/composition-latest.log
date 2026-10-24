@@ -1,0 +1,52 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run src/visual-composition.test.tsx --maxWorkers=1 --testTimeout=120000
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c6/demo-apps/erp
+
+ ✓ src/visual-composition.test.tsx (17 tests) 6665ms
+   ✓ 'appointments' drawer: 'default' retains calendar, slot input and effective presentation  832ms
+   ✓ 'room-bookings' drawer: 'default' retains calendar, slot input and effective presentation  466ms
+   ✓ 'appointments' drawer: 'RTL' retains calendar, slot input and effective presentation  434ms
+   ✓ 'room-bookings' drawer: 'RTL' retains calendar, slot input and effective presentation  479ms
+   ✓ 'appointments' drawer: 'reduced motion' retains calendar, slot input and effective presentation  384ms
+   ✓ 'room-bookings' drawer: 'reduced motion' retains calendar, slot input and effective presentation  391ms
+   ✓ 'appointments' drawer: 'managed' retains calendar, slot input and effective presentation  386ms
+   ✓ 'room-bookings' drawer: 'managed' retains calendar, slot input and effective presentation  360ms
+   ✓ erp1 report columns and named snapshots restore filters/order without changing locked page size  1063ms
+   ✓ erp2 report columns and named snapshots restore filters/order without changing locked page size  917ms
+
+ Test Files  1 passed (1)
+      Tests  17 passed (17)
+   Start at  13:38:08
+   Duration  15.95s (transform 4.04s, setup 562ms, collect 6.36s, tests 6.67s, environment 1.44s, prepare 241ms)
+
+
+> @pepbits/patterns@0.0.0 test
+> vitest run src/calendar/calendar.test.tsx --maxWorkers=1 --testTimeout=120000
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c6/packages/patterns
+
+ ✓ src/calendar/calendar.test.tsx (6 tests) 293ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  13:38:26
+   Duration  2.86s (transform 813ms, setup 183ms, collect 1.20s, tests 293ms, environment 603ms, prepare 120ms)
+
+
+> @pepbits/page-engines@0.0.0 test
+> vitest run src/record-page/record-page.test.tsx --maxWorkers=1 --testTimeout=120000
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c6/packages/page-engines
+
+ ✓ src/record-page/record-page.test.tsx (5 tests) 451ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  13:38:30
+   Duration  3.30s (transform 941ms, setup 233ms, collect 1.34s, tests 451ms, environment 658ms, prepare 123ms)
+

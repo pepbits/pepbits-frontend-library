@@ -57,7 +57,7 @@ export async function reportInvoiceWorkflows({page,visit,flows,screenshot}) {
     if(screenshot)await paper.locator('[data-invoice-page]').last().screenshot({path:screenshot.replace('.png','-'+variant+'-long-invoice-last.png')});
     await page.emulateMedia({media:'screen'});
     await page.getByRole('checkbox',{name:'Show terms',exact:true}).uncheck();assert.equal(await preview.locator('.invoice-terms').count(),0);await page.getByRole('button',{name:'Zoom out',exact:true}).click();assert.equal(await preview.locator('[data-print-line]').count(),75);
-    const result={id:variant+'-long-invoice-print',scope:'UI',result:'Measured wrapped rows, repeated headers, carry equality, continuous numbering, one summary, terms/zoom and A4 PDF',pages:count,lines:75,total:saved.total,geometry,pdf:pdf?.split('/').at(-1)};flows.push(result);
+    const result={id:variant+'-long-invoice-print',scope:'UI',result:'Measured wrapped rows, repeated headers, carry equality, continuous numbering, one summary, terms/zoom and A4 layout'+(pdf?' with captured PDF':' (PDF capture not requested)'),pages:count,lines:75,total:saved.total,geometry,pdf:pdf?.split('/').at(-1)};flows.push(result);
     if(screenshot)writeFileSync(screenshot.replace('.png','-'+variant+'-pagination.json'),JSON.stringify(result,null,2)+'\n');
   }
 }

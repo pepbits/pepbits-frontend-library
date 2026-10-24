@@ -68,7 +68,7 @@ test('patterns lifecycle screen reports dirty changes and localized success thro
   render(<ShellTestHost workspace={workspace}><ShellDocumentProvider documentId={a.documentId}><LifecycleConfigurationPage api={api} scopeKey="test" application={{code:'application',label:'Application'}} permissions={{read:true,edit:true,approve:true,publish:true,activate:true,resolve:true}}/></ShellDocumentProvider><ToastViewport/></ShellTestHost>);
   fireEvent.click(await screen.findByRole('button',{name:/Open sample-record version 1/}));fireEvent.change(await screen.findByLabelText(/^Name/),{target:{value:'Changed'}});
   expect(workspace.getDocument(a.documentId)?.dirty).toBe(true);fireEvent.change(screen.getByLabelText(/^Change reason/),{target:{value:'Reviewed'}});fireEvent.click(screen.getByRole('button',{name:'Save draft'}));
-  expect(await within(document.querySelector('[data-shell-toasts]') as HTMLElement).findByText('Saved sample-record version 1.')).toBeVisible();expect(workspace.getDocument(a.documentId)?.dirty).toBe(false);
+  expect(await within(document.querySelector('[data-shell-toasts]') as HTMLElement).findByText('Saved sample-record version 1.')).toBeVisible();await waitFor(()=>expect(workspace.getDocument(a.documentId)?.dirty).toBe(false));
 });
 test('notifications honor toast style, duration, placement, limits and dismiss',()=>{
   vi.useFakeTimers();let host!:ScreenHost;function Probe(){host=useScreenHost();return null;}

@@ -35,7 +35,7 @@ export async function panelWorkflows({page, visit, flows, checks, capture, scree
       await page.locator('[data-case-conversation]').getByText(comment, {exact: true}).waitFor();
       const pending = 'Fictional unsent reply retained across property saves', assignee = 'Fictional panel assignee', assigneeInput = page.getByRole('textbox', {name: slug === 'support-tickets' ? 'Assignee' : 'Technician', exact: true});
       await page.getByRole('textbox', {name: 'Add an update or reply', exact: true}).fill(pending);await assigneeInput.fill(assignee);
-      const priority = page.getByRole('combobox', {name: 'Priority', exact: true});await priority.locator('option').nth(1).waitFor({state: 'attached'});const options = await priority.locator('option').evaluateAll(nodes => nodes.map(node => node.value)), next = options.find(option => option && option !== row.priority);
+      const priority = page.locator('[data-erp-record]').getByRole('combobox', {name: 'Priority', exact: true});await priority.locator('option').nth(1).waitFor({state: 'attached'});const options = await priority.locator('option').evaluateAll(nodes => nodes.map(node => node.value)), next = options.find(option => option && option !== row.priority);
       assert.ok(next);const changed = page.waitForResponse(response => response.url().includes('/entities/' + slug + '/' + id) && response.request().method() === 'PUT');await priority.selectOption(next);const priorityRow = await (await changed).json();assert.equal(priorityRow.priority, next);await acknowledged(priorityRow);assert.equal(await page.getByRole('textbox', {name: 'Add an update or reply', exact: true}).inputValue(), pending);assert.equal(await assigneeInput.inputValue(), assignee);
       const assigned = page.waitForResponse(response => response.url().includes('/entities/' + slug + '/' + id) && response.request().method() === 'PUT');await page.getByRole('button', {name: 'Save assignee', exact: true}).click();const assignedRow = await (await assigned).json();assert.equal(assignedRow.assignee, assignee);await acknowledged(assignedRow);assert.equal(await page.getByRole('textbox', {name: 'Add an update or reply', exact: true}).inputValue(), pending);await page.getByRole('textbox', {name: 'Add an update or reply', exact: true}).fill('');
       await page.reload();
@@ -46,9 +46,9 @@ export async function panelWorkflows({page, visit, flows, checks, capture, scree
     }
 
     await visit('/' + variant + '/transactions/appointments');await page.getByRole('radio', {name: 'List', exact: true}).click();await page.locator('tbody tr').first().locator('td').nth(2).click();
-    await page.getByRole('heading', {name: 'Resource schedule', exact: true}).waitFor();await page.getByRole('button', {name: 'Open schedule', exact: true}).waitFor();
+    if(variant==='erp2'){await page.getByRole('heading', {name: 'Resource schedule', exact: true}).waitFor();await page.getByRole('button', {name: 'Open schedule', exact: true}).waitFor();}else{await page.getByRole('dialog').waitFor();await page.locator('[data-booking-summary]').waitFor();}
     await audit(variant + '-booking-context');await shot(variant + '-booking-context');
-    record(variant + '-booking-context', 'Booking record shows live day/resource context and schedule navigation');
+    record(variant + '-booking-context', variant==='erp2'?'Booking record shows live day/resource context and schedule navigation':'Booking detail drawer retains the calendar and shows time/status summary');
 
     await visit('/' + variant + '/transactions/purchase-orders');await page.locator('tbody tr').first().locator('td').nth(2).click();await page.getByRole('heading', {name: 'Summary', exact: true}).waitFor();await page.getByRole('heading', {name: 'History', exact: true}).waitFor();
     await audit(variant + '-document-context');record(variant + '-document-context', 'Document summary, support history and metadata panels loaded through HTTP');

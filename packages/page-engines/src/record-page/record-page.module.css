@@ -3,7 +3,9 @@
 .composition {display:grid;grid-template-columns:minmax(0,1fr);gap:16px;min-width:0;}
 .composition > *, .aside {min-width:0;}
 .aside {display:flex;flex-direction:column;gap:16px;}
-@container(min-width:900px){.composition {grid-template-columns:minmax(0,1fr) minmax(240px,300px);}}
+@container(min-width:900px){.composition {grid-template-columns:minmax(0,1fr) minmax(240px,var(--record-aside-width,300px));}}
+.header {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-block:12px;border-bottom:1px solid var(--border);}
+.header > div {min-width:0;}
 .page fieldset {min-width:0;}
 .page > :not([data-layout]) {flex-shrink:0;margin-block-end:8px;}
 .actions {display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;}

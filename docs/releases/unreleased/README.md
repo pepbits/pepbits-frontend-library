@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [ERP phase 6c-6 — source composition and visual audit subset](restructure-phase-6c-6-2026-10-24.md): 35-destination composition subset, report layouts and explicit remaining differences for all 114 destinations; forced CI (6,097 tests), shell Chromium (18 tests) and real HTTP (122 workflows, 114 routes, zero axe violations) pass; no deployment.
+
 - [Reports phase 6e-1 — Lumen Reports demo app](restructure-phase-6e-1-2026-10-24.md): all 19 source routes over the shared host and fictional demo API; local verification and limits.
 - [Tenant Admin phase 6e-2 — registry-driven configuration demo](restructure-phase-6e-2-2026-10-24.md): Overview, Approvals, Activity and 30 configuration pages on the shared host; public reference-host contract and local verification.
 - [ERP phase 6c-5: report controls and invoice pagination](restructure-phase-6c-5-2026-10-24.md) — source analytical controls and measured A4 documents; local verification, no deployment.

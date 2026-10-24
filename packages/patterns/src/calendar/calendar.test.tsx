@@ -24,3 +24,10 @@ test('long event accessible names include their visible detail',() => {
   render(<ResourceTimeline label="Schedule" resources={[{id:'one',label:'Room'}]} events={[{id:'long',resource:'one',start:480,duration:60,label:'Planning',detail:'Booked · 60 minutes'}]} start={480} end={570} slotLabel={(_,time)=>time} onSlot={vi.fn()} onOpen={vi.fn()}/>);
   expect(screen.getByRole('button',{name:'Planning Booked · 60 minutes'})).toBeVisible();
 });
+test('host geometry preserves interval positions and responds to effective density',()=>{
+ const props={label:'Rooms',resources:[{id:'one',label:'Room'}],events:[{id:'meeting',resource:'one',start:510,duration:60,label:'Planning'}],geometry:{slotHeight:30,timeWidth:56,resourceWidth:170,headerHeight:49,eventGap:3},onSlot:vi.fn(),onOpen:vi.fn(),slotLabel:()=> 'Book'};
+ const view=render(<TestHost preferences={{density:'comfortable'}}><ResourceTimeline {...props}/></TestHost>);
+ expect(view.container.querySelector('[data-timeline-event]')).toHaveStyle({top:'31px',height:'57px'});
+ view.rerender(<TestHost preferences={{density:'spacious'}} preferencePolicy={{revision:1,rules:{density:{value:'compact',locked:true}}}}><ResourceTimeline {...props}/></TestHost>);
+ expect(view.container.querySelector('[data-timeline-event]')).toHaveStyle({top:'25px',height:'45px'});
+});

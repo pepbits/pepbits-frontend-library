@@ -1,0 +1,105 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=1 src/remaining-views.test.tsx src/record-panels.test.tsx src/report-invoice.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c6/demo-apps/erp
+
+ ✓ src/record-panels.test.tsx (53 tests) 39045ms
+   ✓ erp1 keeps unsent case inputs across other acknowledged property saves  2608ms
+   ✓ erp2 keeps unsent case inputs across other acknowledged property saves  1602ms
+   ✓ erp1 profile shows source groups, statistics, activity/documents and changes  1239ms
+   ✓ erp2 profile shows source groups, statistics, activity/documents and changes  1071ms
+   ✓ support distinguishes failure, retry, empty and version refresh  388ms
+   ✓ profile file selection stays local and can be removed without an HTTP write  568ms
+   ✓ erp1 case retains a failed comment and retries the identical versioned command  794ms
+   ✓ erp2 case retains a failed comment and retries the identical versioned command  861ms
+   ✓ mounted denial and keyboard preferences fence conversation writes  564ms
+   ✓ a conversation conflict requires explicit reload and preserves the unaccepted comment  319ms
+   ✓ ERP2 tree shows ancestor navigation, children, leaf guards and confirmed deletion  576ms
+   ✓ booking context refetches the edited date and prevents leaving an unsaved editor through related rows  375ms
+   ✓ approval decisions include the note and ERP1 related requests stay within the department  404ms
+   ✓ process logs read support events and document summaries preserve deductions and tax  461ms
+   ✓ ERP1 opened record panels: default > customers  1383ms
+   ✓ ERP1 opened record panels: default > sales-orders  1058ms
+   ✓ ERP1 opened record panels: default > leave-requests  650ms
+   ✓ ERP1 opened record panels: default > approvals  610ms
+   ✓ ERP1 opened record panels: default > appointments  430ms
+   ✓ ERP1 opened record panels: default > support-tickets  657ms
+   ✓ ERP1 opened record panels: default > chart-of-accounts  371ms
+   ✓ ERP1 opened record panels: default > payroll-run  585ms
+   ✓ ERP1 opened record panels: default > quality-inspections  668ms
+   ✓ ERP1 opened record panels: Arabic RTL > customers  748ms
+   ✓ ERP1 opened record panels: Arabic RTL > sales-orders  821ms
+   ✓ ERP1 opened record panels: Arabic RTL > leave-requests  461ms
+   ✓ ERP1 opened record panels: Arabic RTL > approvals  499ms
+   ✓ ERP1 opened record panels: Arabic RTL > appointments  546ms
+   ✓ ERP1 opened record panels: Arabic RTL > support-tickets  818ms
+   ✓ ERP1 opened record panels: Arabic RTL > chart-of-accounts  331ms
+   ✓ ERP1 opened record panels: Arabic RTL > payroll-run  387ms
+   ✓ ERP1 opened record panels: Arabic RTL > quality-inspections  720ms
+   ✓ ERP1 opened record panels: reduced motion > customers  803ms
+   ✓ ERP1 opened record panels: reduced motion > sales-orders  886ms
+   ✓ ERP1 opened record panels: reduced motion > leave-requests  469ms
+   ✓ ERP1 opened record panels: reduced motion > approvals  653ms
+   ✓ ERP1 opened record panels: reduced motion > appointments  402ms
+   ✓ ERP1 opened record panels: reduced motion > support-tickets  863ms
+   ✓ ERP1 opened record panels: reduced motion > chart-of-accounts  560ms
+   ✓ ERP1 opened record panels: reduced motion > payroll-run  718ms
+   ✓ ERP1 opened record panels: reduced motion > quality-inspections  1142ms
+   ✓ ERP1 opened record panels: locked density > customers  1424ms
+   ✓ ERP1 opened record panels: locked density > sales-orders  1269ms
+   ✓ ERP1 opened record panels: locked density > leave-requests  803ms
+   ✓ ERP1 opened record panels: locked density > approvals  809ms
+   ✓ ERP1 opened record panels: locked density > appointments  515ms
+   ✓ ERP1 opened record panels: locked density > support-tickets  692ms
+   ✓ ERP1 opened record panels: locked density > chart-of-accounts  479ms
+   ✓ ERP1 opened record panels: locked density > payroll-run  595ms
+   ✓ ERP1 opened record panels: locked density > quality-inspections  670ms
+   ✓ edited forms warn on browser unload, retain failures, and detach after accepted save  1148ms
+   ✓ case assignee editing waits for explicit save and uses the versioned command  554ms
+ ✓ src/remaining-views.test.tsx (20 tests) 21401ms
+   ✓ erp1 booking opens a free slot with resource, date and time defaults  1428ms
+   ✓ erp2 booking opens a free slot with resource, date and time defaults  443ms
+   ✓ booking date navigation and resource visibility keep a complete schedule and list switch  3002ms
+   ✓ a newly detected booking clash preserves input and never sends a mutation  320ms
+   ✓ booking status failures retain their operation and a mounted denial disables actions  903ms
+   ✓ erp1 invoice loads company data and controls the physical document  2580ms
+   ✓ erp2 invoice loads company data and controls the physical document  1303ms
+   ✓ invoice printing stays disabled after a failed company-profile read and retries  1237ms
+   ✓ ledger search leaves balances intact, custom ranges calculate opening, export follows a managed preference  983ms
+   ✓ report groups by source fields, filters the API and opens the owning ERP2 record  551ms
+   ✓ attendance fills only blanks, blocks period changes, and retains failed rows after partial save  961ms
+   ✓ matrix partial saves retry only the unacknowledged row with identical operation identity  1334ms
+   ✓ erp1 dashboard exposes all source panels and module-owned drill-downs  750ms
+   ✓ erp2 dashboard exposes all source panels and module-owned drill-downs  701ms
+   ✓ appointments calendar has no axe violations in Arabic RTL  2463ms
+   ✓ room-bookings calendar has no axe violations in Arabic RTL  2125ms
+ ✓ src/report-invoice.test.tsx (21 tests) 39023ms
+   ✓ 'sales-register' erp1 advanced conditions, sorting and full export  4153ms
+   ✓ 'purchase-register' erp1 advanced conditions, sorting and full export  1899ms
+   ✓ 'stock-summary' erp1 advanced conditions, sorting and full export  1670ms
+   ✓ 'receivables-aging' erp1 advanced conditions, sorting and full export  1903ms
+   ✓ 'sales-register' erp2 advanced conditions, sorting and full export  2007ms
+   ✓ 'purchase-register' erp2 advanced conditions, sorting and full export  2259ms
+   ✓ 'stock-summary' erp2 advanced conditions, sorting and full export  1735ms
+   ✓ 'receivables-aging' erp2 advanced conditions, sorting and full export  1376ms
+   ✓ advanced choices apply multiple statuses and reference values with cancel/reset and invalid-range guards  1318ms
+   ✓ truncated reports hide subtotals and fence exports, including mounted permission denial  624ms
+   ✓ 'sales-register' erp1 expanded filters pass Arabic RTL axe and mounted table policies  1327ms
+   ✓ 'purchase-register' erp1 expanded filters pass Arabic RTL axe and mounted table policies  1185ms
+   ✓ 'stock-summary' erp1 expanded filters pass Arabic RTL axe and mounted table policies  2584ms
+   ✓ 'receivables-aging' erp1 expanded filters pass Arabic RTL axe and mounted table policies  1506ms
+   ✓ 'sales-register' erp2 expanded filters pass Arabic RTL axe and mounted table policies  1236ms
+   ✓ 'purchase-register' erp2 expanded filters pass Arabic RTL axe and mounted table policies  1203ms
+   ✓ 'stock-summary' erp2 expanded filters pass Arabic RTL axe and mounted table policies  1549ms
+   ✓ 'receivables-aging' erp2 expanded filters pass Arabic RTL axe and mounted table policies  1374ms
+   ✓ erp1 long invoice has contiguous pages, carry totals and one final summary  3822ms
+   ✓ erp2 long invoice has contiguous pages, carry totals and one final summary  3076ms
+   ✓ advanced open dates replace an invalid custom period without blocking the report  1208ms
+
+ Test Files  3 passed (3)
+      Tests  94 passed (94)
+   Start at  13:01:06
+   Duration  131.32s (transform 6.67s, setup 2.71s, collect 14.55s, tests 99.47s, environment 7.96s, prepare 1.29s)
+

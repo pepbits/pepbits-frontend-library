@@ -332,3 +332,22 @@
 .surface[data-sizing="container"] {height:auto;min-height:0;flex:1;}
 .surface[data-sizing="container"] .content {padding-block:6px;padding-inline-end:6px;}
 .surface[data-sizing="container"] .footer {min-height:0;padding:8px 12px;gap:8px;justify-content:flex-end;}
+
+/* Optional neutral record chrome; effective form navigation/density are unchanged. */
+.surface[data-appearance="plain"] {min-height:0;height:auto;background:transparent;--record-gap:16px;--record-pad:16px;}
+.surface[data-appearance="plain"][data-density="compact"] {--record-gap:12px;--record-pad:12px;}
+.surface[data-appearance="plain"][data-density="spacious"] {--record-gap:20px;--record-pad:20px;}
+.surface[data-appearance="plain"] .body {gap:16px;}
+.surface[data-appearance="plain"] .rail {width:170px;background:transparent;color:var(--text);padding:0;}
+.surface[data-appearance="plain"] .steps {gap:4px;flex:initial;}
+.surface[data-appearance="plain"] .step {margin:0;min-height:32px;white-space:normal;}
+.surface[data-appearance="plain"] .rail .step {color:var(--text-muted)!important;}
+.surface[data-appearance="plain"] .rail .step[data-active="true"] {background:var(--primary-soft)!important;color:var(--primary-strong)!important;}
+.surface[data-appearance="plain"] .content {padding:0;overflow:visible;}
+.surface[data-appearance="plain"] .section {margin-bottom:16px;}
+.surface[data-appearance="plain"][data-section-count="1"] :is(.rail,.tabs) {display:none;}
+.card[data-appearance="plain"] .cardHead {padding:12px 16px;gap:8px;}
+.card[data-appearance="plain"] .cardHead h3 {font-size:calc(13px * var(--fs-form,1));font-weight:600;}
+.card[data-appearance="plain"] .cardHead p:empty {display:none;}
+
+@media(max-width:640px){.surface[data-appearance="plain"] .rail {width:100%;}}

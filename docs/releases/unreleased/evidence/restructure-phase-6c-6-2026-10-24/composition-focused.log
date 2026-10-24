@@ -1,0 +1,1993 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=1 src/visual-composition.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c6/demo-apps/erp
+
+ ❯ src/visual-composition.test.tsx (13 tests | 9 failed) 34574ms
+   × 'appointments' drawer: 'default' retains calendar, slot input and effective presentation 5539ms
+     → expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+   × 'room-bookings' drawer: 'default' retains calendar, slot input and effective presentation 2161ms
+     → expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+   × 'appointments' drawer: 'RTL' retains calendar, slot input and effective presentation 1877ms
+     → expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+   × 'room-bookings' drawer: 'RTL' retains calendar, slot input and effective presentation 2062ms
+     → expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+   × 'appointments' drawer: 'reduced motion' retains calendar, slot input and effective presentation 1700ms
+     → expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+   × 'room-bookings' drawer: 'reduced motion' retains calendar, slot input and effective presentation 1714ms
+     → expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+   × 'appointments' drawer: 'managed' retains calendar, slot input and effective presentation 1404ms
+     → expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+   × 'room-bookings' drawer: 'managed' retains calendar, slot input and effective presentation 1704ms
+     → expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+   ✓ erp1 report columns and named snapshots restore filters/order without changing locked page size  2813ms
+   ✓ erp2 report columns and named snapshots restore filters/order without changing locked page size  2389ms
+   × report account column failures have retry and use source hidden keys 10240ms
+     → Unable to find an element with the text: Layout unavailable. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mStock summary[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mGroup by[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mNo grouping[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"category"[39m
+                [36m>[39m
+                  [0mCategory[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"warehouse"[39m
+                [36m>[39m
+                  [0mWarehouse[0m
+                [36m</option>[39m
+              [36m</select>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 9 6 6 6-6"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mCategory[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Hardware"[39m
+                [36m>[39m
+                  [0mHardware[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Electrical"[39m
+                [36m>[39m
+                  [0mElectrical[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Safety"[39m
+                [36m>[39m
+                  [0mSafety[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Consumables"[39m
+                [36m>[39m
+                  [0mConsumables[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IT"[39m
+                [36m>[39m
+                  [0mIT[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Medical"[39m
+     ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mStock summary[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mGroup by[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mNo grouping[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"category"[39m
+                [36m>[39m
+                  [0mCategory[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"warehouse"[39m
+                [36m>[39m
+                  [0mWarehouse[0m
+                [36m</option>[39m
+              [36m</select>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 9 6 6 6-6"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mCategory[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Hardware"[39m
+                [36m>[39m
+                  [0mHardware[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Electrical"[39m
+                [36m>[39m
+                  [0mElectrical[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Safety"[39m
+                [36m>[39m
+                  [0mSafety[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Consumables"[39m
+                [36m>[39m
+                  [0mConsumables[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IT"[39m
+                [36m>[39m
+                  [0mIT[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Medical"[39m
+     ...
+   ✓ support-tickets source identity and stage summary match the opened record  518ms
+   ✓ maintenance-requests source identity and stage summary match the opened record  438ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/visual-composition.test.tsx > 'appointments' drawer: 'default' retains calendar, slot input and effective presentation
+ FAIL  src/visual-composition.test.tsx > 'room-bookings' drawer: 'default' retains calendar, slot input and effective presentation
+ FAIL  src/visual-composition.test.tsx > 'appointments' drawer: 'RTL' retains calendar, slot input and effective presentation
+ FAIL  src/visual-composition.test.tsx > 'room-bookings' drawer: 'RTL' retains calendar, slot input and effective presentation
+ FAIL  src/visual-composition.test.tsx > 'appointments' drawer: 'reduced motion' retains calendar, slot input and effective presentation
+ FAIL  src/visual-composition.test.tsx > 'room-bookings' drawer: 'reduced motion' retains calendar, slot input and effective presentation
+ FAIL  src/visual-composition.test.tsx > 'appointments' drawer: 'managed' retains calendar, slot input and effective presentation
+ FAIL  src/visual-composition.test.tsx > 'room-bookings' drawer: 'managed' retains calendar, slot input and effective presentation
+AssertionError: expected <body><div>…(1)</div></body> to be <button type="button" …(3)></button> // Object.is equality
+
+- Expected
++ Received
+
++ <body>
++   <div>
++     <section
++       data-erp-page="erp1-transactions-appointments"
++     >
++       <h1>
++         Appointments
++       </h1>
++       <div
++         aria-busy="false"
++         class="space-y-3"
++         data-erp-booking="true"
++       >
++         <div
++           class="border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-2 p-3"
++         >
++           <button
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Previous day
++           </button>
++           <button
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Today
++           </button>
++           <button
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Next day
++           </button>
++           <div
++             class="block min-w-0"
++           >
++             <label
++               class="block min-w-0"
++             >
++               <span
++                 class="mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"
++               >
++                 Date
++               </span>
++               <div
++                 class="relative"
++               >
++                 <input
++                   class="focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"
++                   type="date"
++                   value="2026-10-24"
++                 />
++               </div>
++             </label>
++           </div>
++           <div
++             aria-label="View"
++             class="inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"
++             role="radiogroup"
++           >
++             <button
++               aria-checked="true"
++               class="focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]"
++               data-value="day"
++               role="radio"
++               tabindex="0"
++               type="button"
++             >
++               <span
++                 class="truncate"
++               >
++                 Schedule
++               </span>
++             </button>
++             <button
++               aria-checked="false"
++               class="focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] text-[var(--text-muted)] hover:text-[var(--text)]"
++               data-value="list"
++               role="radio"
++               tabindex="-1"
++               type="button"
++             >
++               <span
++                 class="truncate"
++               >
++                 List
++               </span>
++             </button>
++           </div>
++           <button
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             New
++           </button>
++           <button
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Reload
++           </button>
++         </div>
++         <div
++           aria-label="Resources"
++           class="flex flex-wrap gap-2"
++         >
++           <button
++             aria-pressed="true"
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Dr. Meera Iyer
++           </button>
++           <button
++             aria-pressed="true"
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Dr. Samuel Okafor
++           </button>
++           <button
++             aria-pressed="true"
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Dr. Hana Tanaka
++           </button>
++           <button
++             aria-pressed="true"
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Dr. Arjun Menon
++           </button>
++           <button
++             aria-pressed="true"
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Dr. Clara Moreau
++           </button>
++           <button
++             aria-pressed="true"
++             class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
++             type="button"
++           >
++             Dr. Omar Haddad
++           </button>
++         </div>
++         <p>
++           2026-10-24
++            · 
++           Booked 0 · Checked in 0 · Completed 0 · Cancelled 0
++         </p>
++         <div
++           class="grid items-start gap-3 xl:grid-cols-[minmax(0,1fr)_256px]"
++         >
++           <section
++             aria-label="Appointments"
++             class="overflow-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)]"
++             data-density="comfortable"
++             data-resource-timeline="true"
++             style="font-size: calc(.85rem * var(--fs-result));"
++           >
++             <h2
++               class="sr-only"
++             >
++               Appointments
++             </h2>
++             <div
++               class="flex"
++               style="min-width: 1076px;"
++             >
++               <div
++                 class="sticky start-0 z-20 shrink-0 bg-[var(--surface)]"
++                 style="width: 56px;"
++               >
++                 <div
++                   class="border-b border-[var(--border)]"
++                   style="height: 49px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   08:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   09:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   10:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   11:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   12:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   13:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   14:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   15:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   16:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   17:00
++                 </div>
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 />
++                 <div
++                   class="border-b border-[var(--border)] px-1 text-end tabular-nums"
++                   style="height: 30px;"
++                 >
++                   18:00
++                 </div>
++               </div>
++               <div
++                 class="flex-1 border-s border-[var(--border)]"
++                 data-timeline-resource="Dr. Meera Iyer"
++                 style="min-width: 170px;"
++               >
++                 <h3
++                   class="sticky top-0 z-10 flex items-center bg-[var(--surface-2)] px-2.5 py-2 font-semibold"
++                   style="height: 49px;"
++                 >
++                   <div
++                     class="erp-calendar-resource"
++                   >
++                     <span
++                       aria-hidden="true"
++                       class="relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-black size-6 text-[length:calc(8.5px*var(--fs-scale))] bg-[color-mix(in_srgb,var(--success)_16%,transparent)] text-[var(--success-ink)]"
++                     >
++                       <span
++                         aria-hidden="true"
++                       >
++                         DI
++                       </span>
++                     </span>
++                     <div>
++                       <span>
++                         Dr. Meera Iyer
++                       </span>
++                       <small>
++                         0
++                          
++                         booked
++                       </small>
++                     </div>
++                   </div>
++                 </h3>
++                 <div
++                   class="relative"
++                   style="height: 630px;"
++                 >
+                    <button
+                      aria-label="Book Dr. Meera Iyer at 08:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 08:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 09:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 09:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 10:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 10:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 11:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 11:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 12:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 12:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 13:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 13:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 14:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 14:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 15:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 15:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 16:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 16:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 17:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 17:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Meera Iyer at 18:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <div
++                     aria-hidden="true"
++                     class="pointer-events-none absolute inset-x-0 border-t-2 border-[var(--primary)]"
++                     style="top: 304px;"
++                   />
++                 </div>
++               </div>
++               <div
++                 class="flex-1 border-s border-[var(--border)]"
++                 data-timeline-resource="Dr. Samuel Okafor"
++                 style="min-width: 170px;"
++               >
++                 <h3
++                   class="sticky top-0 z-10 flex items-center bg-[var(--surface-2)] px-2.5 py-2 font-semibold"
++                   style="height: 49px;"
++                 >
++                   <div
++                     class="erp-calendar-resource"
++                   >
++                     <span
++                       aria-hidden="true"
++                       class="relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-black size-6 text-[length:calc(8.5px*var(--fs-scale))] bg-[color-mix(in_srgb,var(--warning)_18%,transparent)] text-[var(--warning-ink)]"
++                     >
++                       <span
++                         aria-hidden="true"
++                       >
++                         DO
++                       </span>
++                     </span>
++                     <div>
++                       <span>
++                         Dr. Samuel Okafor
++                       </span>
++                       <small>
++                         0
++                          
++                         booked
++                       </small>
++                     </div>
++                   </div>
++                 </h3>
++                 <div
++                   class="relative"
++                   style="height: 630px;"
++                 >
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 08:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 08:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 09:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 09:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 10:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 10:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 11:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 11:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 12:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 12:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 13:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 13:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 14:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 14:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 15:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 15:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 16:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 16:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 17:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 17:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Samuel Okafor at 18:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <div
++                     aria-hidden="true"
++                     class="pointer-events-none absolute inset-x-0 border-t-2 border-[var(--primary)]"
++                     style="top: 304px;"
++                   />
++                 </div>
++               </div>
++               <div
++                 class="flex-1 border-s border-[var(--border)]"
++                 data-timeline-resource="Dr. Hana Tanaka"
++                 style="min-width: 170px;"
++               >
++                 <h3
++                   class="sticky top-0 z-10 flex items-center bg-[var(--surface-2)] px-2.5 py-2 font-semibold"
++                   style="height: 49px;"
++                 >
++                   <div
++                     class="erp-calendar-resource"
++                   >
++                     <span
++                       aria-hidden="true"
++                       class="relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-black size-6 text-[length:calc(8.5px*var(--fs-scale))] bg-[color-mix(in_srgb,var(--primary)_16%,transparent)] text-[var(--primary-strong)]"
++                     >
++                       <span
++                         aria-hidden="true"
++                       >
++                         DT
++                       </span>
++                     </span>
++                     <div>
++                       <span>
++                         Dr. Hana Tanaka
++                       </span>
++                       <small>
++                         0
++                          
++                         booked
++                       </small>
++                     </div>
++                   </div>
++                 </h3>
++                 <div
++                   class="relative"
++                   style="height: 630px;"
++                 >
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 08:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 08:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 09:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 09:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 10:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 10:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 11:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 11:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 12:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 12:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 13:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 13:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 14:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 14:30"
+                      class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
+                      style="height: 30px;"
+                      type="button"
+                    />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 15:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 15:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 16:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 16:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 17:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 17:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Hana Tanaka at 18:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <div
++                     aria-hidden="true"
++                     class="pointer-events-none absolute inset-x-0 border-t-2 border-[var(--primary)]"
++                     style="top: 304px;"
++                   />
++                 </div>
++               </div>
++               <div
++                 class="flex-1 border-s border-[var(--border)]"
++                 data-timeline-resource="Dr. Arjun Menon"
++                 style="min-width: 170px;"
++               >
++                 <h3
++                   class="sticky top-0 z-10 flex items-center bg-[var(--surface-2)] px-2.5 py-2 font-semibold"
++                   style="height: 49px;"
++                 >
++                   <div
++                     class="erp-calendar-resource"
++                   >
++                     <span
++                       aria-hidden="true"
++                       class="relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-black size-6 text-[length:calc(8.5px*var(--fs-scale))] bg-[color-mix(in_srgb,var(--accent)_16%,transparent)] text-[var(--accent)]"
++                     >
++                       <span
++                         aria-hidden="true"
++                       >
++                         DM
++                       </span>
++                     </span>
++                     <div>
++                       <span>
++                         Dr. Arjun Menon
++                       </span>
++                       <small>
++                         0
++                          
++                         booked
++                       </small>
++                     </div>
++                   </div>
++                 </h3>
++                 <div
++                   class="relative"
++                   style="height: 630px;"
++                 >
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 08:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 08:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 09:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 09:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 10:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 10:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 11:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 11:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 12:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 12:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 13:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 13:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 14:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 14:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 15:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 15:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 16:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 16:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 17:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 17:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Arjun Menon at 18:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <div
++                     aria-hidden="true"
++                     class="pointer-events-none absolute inset-x-0 border-t-2 border-[var(--primary)]"
++                     style="top: 304px;"
++                   />
++                 </div>
++               </div>
++               <div
++                 class="flex-1 border-s border-[var(--border)]"
++                 data-timeline-resource="Dr. Clara Moreau"
++                 style="min-width: 170px;"
++               >
++                 <h3
++                   class="sticky top-0 z-10 flex items-center bg-[var(--surface-2)] px-2.5 py-2 font-semibold"
++                   style="height: 49px;"
++                 >
++                   <div
++                     class="erp-calendar-resource"
++                   >
++                     <span
++                       aria-hidden="true"
++                       class="relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-black size-6 text-[length:calc(8.5px*var(--fs-scale))] bg-[color-mix(in_srgb,var(--warning)_18%,transparent)] text-[var(--warning-ink)]"
++                     >
++                       <span
++                         aria-hidden="true"
++                       >
++                         DM
++                       </span>
++                     </span>
++                     <div>
++                       <span>
++                         Dr. Clara Moreau
++                       </span>
++                       <small>
++                         0
++                          
++                         booked
++                       </small>
++                     </div>
++                   </div>
++                 </h3>
++                 <div
++                   class="relative"
++                   style="height: 630px;"
++                 >
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 08:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 08:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 09:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 09:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 10:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 10:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 11:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 11:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 12:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 12:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 13:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 13:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 14:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 14:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 15:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 15:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 16:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 16:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 17:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 17:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Clara Moreau at 18:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <div
++                     aria-hidden="true"
++                     class="pointer-events-none absolute inset-x-0 border-t-2 border-[var(--primary)]"
++                     style="top: 304px;"
++                   />
++                 </div>
++               </div>
++               <div
++                 class="flex-1 border-s border-[var(--border)]"
++                 data-timeline-resource="Dr. Omar Haddad"
++                 style="min-width: 170px;"
++               >
++                 <h3
++                   class="sticky top-0 z-10 flex items-center bg-[var(--surface-2)] px-2.5 py-2 font-semibold"
++                   style="height: 49px;"
++                 >
++                   <div
++                     class="erp-calendar-resource"
++                   >
++                     <span
++                       aria-hidden="true"
++                       class="relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-black size-6 text-[length:calc(8.5px*var(--fs-scale))] bg-[color-mix(in_srgb,var(--warning)_18%,transparent)] text-[var(--warning-ink)]"
++                     >
++                       <span
++                         aria-hidden="true"
++                       >
++                         DH
++                       </span>
++                     </span>
++                     <div>
++                       <span>
++                         Dr. Omar Haddad
++                       </span>
++                       <small>
++                         0
++                          
++                         booked
++                       </small>
++                     </div>
++                   </div>
++                 </h3>
++                 <div
++                   class="relative"
++                   style="height: 630px;"
++                 >
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 08:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 08:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 09:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 09:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 10:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 10:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 11:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 11:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 12:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 12:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 13:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 13:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 14:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 14:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 15:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 15:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 16:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 16:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 17:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 17:30"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <button
++                     aria-label="Book Dr. Omar Haddad at 18:00"
++                     class="block w-full border-b border-[var(--border)] text-start hover:bg-[var(--surface-2)] focus-visible:outline-2 focus-visible:outline-[var(--primary)] disabled:cursor-default"
++                     style="height: 30px;"
++                     type="button"
++                   />
++                   <div
++                     aria-hidden="true"
++                     class="pointer-events-none absolute inset-x-0 border-t-2 border-[var(--primary)]"
++                     style="top: 304px;"
++                   />
++                 </div>
++               </div>
++             </div>
++           </section>
++           <div
++             class="border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] space-y-3 p-3"
++           >
++             <h2>
++               Up next today
++                · 
++               0
++             </h2>
++             <p>
++               Nothing else booked. Click any free slot to add one.
++             </p>
++           </div>
++         </div>
++       </div>
++     </section>
++   </div>
++ </body>
+
+ ❯ src/visual-composition.test.tsx:25:141
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  src/visual-composition.test.tsx > report account column failures have retry and use source hidden keys
+TestingLibraryElementError: Unable to find an element with the text: Layout unavailable. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mStock summary[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mGroup by[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mNo grouping[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"category"[39m
+                [36m>[39m
+                  [0mCategory[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"warehouse"[39m
+                [36m>[39m
+                  [0mWarehouse[0m
+                [36m</option>[39m
+              [36m</select>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 9 6 6 6-6"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mCategory[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Hardware"[39m
+                [36m>[39m
+                  [0mHardware[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Electrical"[39m
+                [36m>[39m
+                  [0mElectrical[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Safety"[39m
+                [36m>[39m
+                  [0mSafety[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Consumables"[39m
+                [36m>[39m
+                  [0mConsumables[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IT"[39m
+                [36m>[39m
+                  [0mIT[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Medical"[39m
+     ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mStock summary[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mGroup by[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mNo grouping[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"category"[39m
+                [36m>[39m
+                  [0mCategory[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"warehouse"[39m
+                [36m>[39m
+                  [0mWarehouse[0m
+                [36m</option>[39m
+              [36m</select>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 9 6 6 6-6"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mCategory[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Hardware"[39m
+                [36m>[39m
+                  [0mHardware[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Electrical"[39m
+                [36m>[39m
+                  [0mElectrical[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Safety"[39m
+                [36m>[39m
+                  [0mSafety[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Consumables"[39m
+                [36m>[39m
+                  [0mConsumables[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IT"[39m
+                [36m>[39m
+                  [0mIT[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Medical"[39m
+     ...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/visual-composition.test.tsx:49:15
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 4 passed (13)
+   Start at  13:03:46
+   Duration  49.88s (transform 6.92s, setup 530ms, collect 11.61s, tests 34.57s, environment 1.34s, prepare 284ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c6/demo-apps/erp 

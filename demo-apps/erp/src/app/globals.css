@@ -91,3 +91,64 @@ button, input, select, textarea { font:inherit; }
   .erp-invoice:last-child { break-after:auto; }
   .invoice-measure { display:none!important; }
 }
+
+/* Source booking/profile/case geometry, expressed with effective host tokens. */
+.erp-record-overlay {padding:16px 20px;--fs-scale:var(--fs-form);}
+.erp-booking-summary {display:flex;align-items:center;gap:20px;padding:20px;font-size:calc(13px * var(--fs-form,1));}
+.erp-booking-summary strong {font-size:calc(26px * var(--fs-form,1));font-weight:600;line-height:32px;font-variant-numeric:tabular-nums;}
+.erp-booking-summary p {color:var(--text-muted);}
+.erp-booking-symbol {display:grid;place-items:center;width:64px;height:64px;flex-shrink:0;background:var(--primary-soft);color:var(--primary-strong);border-radius:var(--radius);}
+.erp-booking-summary[data-compact] {background:var(--surface-2);padding:10px 12px;gap:12px;}
+.erp-booking-summary[data-compact] strong {font-size:calc(20px * var(--fs-form,1));}
+.erp-booking-day {margin:12px -16px -16px;}
+.erp-booking-day li {border-top:1px solid var(--border);}
+.erp-booking-day button {display:flex;width:100%;justify-content:start;gap:12px;padding:8px 16px;font-size:calc(13px * var(--fs-result,1));height:auto;min-height:40px;}
+.erp-booking-day button[aria-current] {background:var(--primary-soft);}
+.erp-booking-day time {min-width:48px;font-weight:600;font-variant-numeric:tabular-nums;}
+.erp-booking-day button>span:nth-child(2) {flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;}
+.erp-calendar-resource {display:flex;align-items:center;gap:8px;min-width:0;font-size:calc(12.5px * var(--fs-result,1));}
+.erp-calendar-resource-copy {min-width:0;}
+.erp-calendar-resource-copy>span,.erp-calendar-resource-copy small {display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.erp-calendar-resource small {font-size:calc(11px * var(--fs-result,1));color:var(--text-muted);font-weight:400;}
+.erp-booking-event {font-size:calc(12px * var(--fs-result,1));padding-inline:8px;}
+.erp-booking-event.erp-booking-booked {background:var(--primary-soft);color:var(--primary-strong);border-color:var(--primary);}
+.erp-booking-event.erp-booking-checked-in {background:color-mix(in srgb,var(--info) 12%,var(--surface));color:var(--info-ink);border-color:var(--info);}
+.erp-booking-event.erp-booking-completed {background:color-mix(in srgb,var(--success) 12%,var(--surface));color:var(--success-ink);border-color:var(--success);}
+.erp-profile-summary {display:flex;align-items:center;flex-wrap:wrap;gap:24px;padding:20px;}
+.erp-profile-identity {display:flex;align-items:center;gap:16px;min-width:0;}
+.erp-profile-avatar {width:48px;height:48px;font-size:calc(17px * var(--fs-form,1));}
+.erp-profile-meta {display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:4px;font-size:calc(12.5px * var(--fs-form,1));color:var(--text-muted);}
+.erp-profile-meta b {font-weight:400;color:var(--text);}
+.erp-profile-stats {display:grid;flex:1;min-width:min(280px,100%);gap:8px;}
+.erp-profile-stats>div {min-width:0;padding:8px 12px;background:var(--surface-2);border-radius:var(--radius);}
+.erp-profile-stats dt {font-size:calc(11.5px * var(--fs-result,1));color:var(--text-muted);}
+.erp-profile-stats dd {font-size:calc(15px * var(--fs-result,1));font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;}
+.erp-profile-summary[data-variant="erp1"] {padding:14px 16px;gap:12px;}
+.erp-profile-summary[data-variant="erp1"] .erp-profile-avatar {font-size:calc(15px * var(--fs-form,1));}
+.erp-profile-summary[data-variant="erp1"] .erp-profile-stats {flex-basis:100%;}
+.erp-case-summary {padding:20px;}
+.erp-case-stages {display:flex;gap:16px;overflow:auto;padding-top:16px;font-size:calc(12px * var(--fs-form,1));}
+.erp-case-stages li {display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--text-muted);}
+.erp-case-stages li>span {display:grid;place-items:center;border:1px solid var(--border);border-radius:50%;width:24px;height:24px;}
+.erp-case-stages li[data-state="done"]>span {background:color-mix(in srgb,var(--success) 12%,var(--surface));color:var(--success-ink);}
+.erp-case-stages li[data-state="current"] {color:var(--primary-strong);font-weight:600;}
+.erp-case-stages li[data-state="current"]>span {border-color:var(--primary);background:var(--primary-soft);}
+.erp-case-conversation {display:flex;flex-direction:column;gap:16px;font-size:calc(13px * var(--fs-form,1));}
+.erp-case-conversation li {display:flex;gap:12px;align-items:start;}
+.erp-case-conversation li>div {flex:1;min-width:0;padding:10px 14px;background:var(--surface-2);border-radius:var(--radius);overflow-wrap:anywhere;}
+.erp-case-byline {display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+.erp-case-byline time {font-size:calc(11.5px * var(--fs-form,1));color:var(--text-muted);}
+.erp-tree-breadcrumbs {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;}
+.erp-tree-breadcrumbs nav {display:flex;align-items:center;flex-wrap:wrap;gap:4px;min-width:0;}
+.erp-tree-breadcrumbs nav>span {display:inline-flex;align-items:center;gap:4px;}
+.erp-tree-breadcrumbs button {padding:0 4px;font-size:calc(13px * var(--fs-form,1));min-height:24px;height:auto;}
+.erp-tree-breadcrumbs button[aria-current] {font-weight:600;}
+.erp-profile-columns {display:grid;gap:12px;min-width:0;}
+@media(min-width:1024px){.erp-profile-columns {grid-template-columns:340px minmax(0,1fr);}}
+@media(min-width:1280px){.erp-profile-columns {grid-template-columns:380px minmax(0,1fr);}}
+.erp-field-grid {grid-template-columns:minmax(0,1fr);gap:14px 16px;--fs-scale:var(--fs-result);}
+.erp-field-grid>div {min-width:0;}
+.erp-field-label {margin-bottom:2px;font-size:calc(12px * var(--fs-result,1));color:var(--text-muted);}
+.erp-field-value {min-height:22px;font-size:calc(13.5px * var(--fs-result,1));color:var(--text);overflow-wrap:anywhere;}
+@media(min-width:640px){.erp-field-grid {grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(min-width:1280px){.erp-field-grid[data-columns="3"] {grid-template-columns:repeat(3,minmax(0,1fr));}}
