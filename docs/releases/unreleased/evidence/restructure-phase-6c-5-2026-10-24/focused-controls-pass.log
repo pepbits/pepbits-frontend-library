@@ -1,0 +1,1059 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --run src/report-invoice.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c5/demo-apps/erp
+
+ ❯ src/report-invoice.test.tsx (20 tests | 2 failed) 29550ms
+   ✓ 'sales-register' erp1 advanced conditions, sorting and full export  740ms
+   ✓ 'purchase-register' erp1 advanced conditions, sorting and full export  468ms
+   ✓ 'stock-summary' erp1 advanced conditions, sorting and full export  451ms
+   ✓ 'receivables-aging' erp1 advanced conditions, sorting and full export  468ms
+   ✓ 'sales-register' erp2 advanced conditions, sorting and full export  403ms
+   ✓ 'purchase-register' erp2 advanced conditions, sorting and full export  460ms
+   ✓ 'stock-summary' erp2 advanced conditions, sorting and full export  439ms
+   ✓ 'receivables-aging' erp2 advanced conditions, sorting and full export  426ms
+   ✓ advanced choices apply multiple statuses and reference values with cancel/reset and invalid-range guards  410ms
+   ✓ truncated reports hide subtotals and fence exports, including mounted permission denial 209ms
+   ✓ 'sales-register' erp1 expanded filters pass Arabic RTL axe and mounted table policies  439ms
+   ✓ 'purchase-register' erp1 expanded filters pass Arabic RTL axe and mounted table policies  392ms
+   ✓ 'stock-summary' erp1 expanded filters pass Arabic RTL axe and mounted table policies  346ms
+   ✓ 'receivables-aging' erp1 expanded filters pass Arabic RTL axe and mounted table policies  314ms
+   ✓ 'sales-register' erp2 expanded filters pass Arabic RTL axe and mounted table policies  302ms
+   ✓ 'purchase-register' erp2 expanded filters pass Arabic RTL axe and mounted table policies  319ms
+   ✓ 'stock-summary' erp2 expanded filters pass Arabic RTL axe and mounted table policies  340ms
+   ✓ 'receivables-aging' erp2 expanded filters pass Arabic RTL axe and mounted table policies  355ms
+   × erp1 long invoice has contiguous pages, carry totals and one final summary 11478ms
+     → Unable to find role="button" and name `/Print or save PDF/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section>[39m
+      [36m<h1>[39m
+        [0mطباعة الفاتورة[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"grid items-start gap-3 xl:grid-cols-[340px_minmax(0,1fr)]"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+            [36m>[39m
+              [0mطباعة الفاتورة[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+            [36m>[39m
+              [0mطُبع بواسطة[0m
+              [0m [0m
+              [0man unidentified user[0m
+              [0m [0m
+              [0m· المستأجر[0m
+              [0m [0m
+              [0munknown[0m
+              [0m · [0m
+              [36m<time[39m
+                [33mdatetime[39m=[32m"2026-10-24T03:23:28.257Z"[39m
+              [36m>[39m
+                [0m2026-10-24 03:23[0m
+              [36m</time>[39m
+              [0m · [0m
+              [0m2[0m
+              [0m [0m
+              [0mسجلات[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [0m      [0m
+          [36m<div[39m
+            [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+              [33mdata-tour[39m=[32m"search"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative w-full"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<input[39m
+                  [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                  [33mplaceholder[39m=[32m"ابحث في طباعة الفاتورة بالمعرف أو الاسم أو أي قيمة ظاهرة…"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mdata-tour[39m=[32m"new"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 12h14"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M12 5v14"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mجديدة[0m
+            [36m</button>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+            [36m/>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+            [36m>[39m
+              [36m<fieldset[39m
+                [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+                [33mdata-tour[39m=[32m"view"[39m
+                [33mdisabled[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-label[39m=[32m"عرض النتائج"[39m
+                  [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                  [33mrole[39m=[32m"radiogroup"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33maria-checked[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"عرض الجدول"[39m
+                    [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]"[39m
+                    [33mdata-value[39m=[32m"table"[39m
+                    [33mrole[39m=[32m"radio"[39m
+                    [33mtabindex[39m=[32m"0"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+            ...
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<section>[39m
+        [36m<h1>[39m
+          [0mطباعة الفاتورة[0m
+        [36m</h1>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid items-start gap-3 xl:grid-cols-[340px_minmax(0,1fr)]"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+              [36m>[39m
+                [0mطباعة الفاتورة[0m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+              [36m>[39m
+                [0mطُبع بواسطة[0m
+                [0m [0m
+                [0man unidentified user[0m
+                [0m [0m
+                [0m· المستأجر[0m
+                [0m [0m
+                [0munknown[0m
+                [0m · [0m
+                [36m<time[39m
+                  [33mdatetime[39m=[32m"2026-10-24T03:23:28.257Z"[39m
+                [36m>[39m
+                  [0m2026-10-24 03:23[0m
+                [36m</time>[39m
+                [0m · [0m
+                [0m2[0m
+                [0m [0m
+                [0mسجلات[0m
+              [36m</div>[39m
+            [36m</div>[39m
+            [0m      [0m
+            [36m<div[39m
+              [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+                [33mdata-tour[39m=[32m"search"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative w-full"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"11"[39m
+                      [33mcy[39m=[32m"11"[39m
+                      [33mr[39m=[32m"8"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                  [36m<input[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                    [33mplaceholder[39m=[32m"ابحث في طباعة الفاتورة بالمعرف أو الاسم أو أي قيمة ظاهرة…"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                [33mdata-tour[39m=[32m"new"[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M5 12h14"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M12 5v14"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [0mجديدة[0m
+              [36m</button>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+              [36m>[39m
+                [36m<fieldset[39m
+                  [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+                  [33mdata-tour[39m=[32m"view"[39m
+                  [33mdisabled[39m=[32m""[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33maria-label[39m=[32m"عرض النتائج"[39m
+                    [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                    [33mrole[39m=[32m"radiogroup"[39m
+                  [36m>[39m
+                    [36m<button[39m
+                      [33maria-checked[39m=[32m"true"[39m
+                      [33maria-label[39m=[32m"عرض الجدول"[39m
+                      [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)]...
+   × erp2 long invoice has contiguous pages, carry totals and one final summary 10787ms
+     → Unable to find role="button" and name `/Print or save PDF/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section>[39m
+      [36m<h1>[39m
+        [0mطباعة الفاتورة[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33maria-busy[39m=[32m"false"[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+        [33mdata-invoice-preview[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-3"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mرجوع[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33maria-label[39m=[32m"نسخ"[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+            [33mrole[39m=[32m"radiogroup"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-checked[39m=[32m"true"[39m
+              [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]"[39m
+              [33mdata-value[39m=[32m"Original"[39m
+              [33mrole[39m=[32m"radio"[39m
+              [33mtabindex[39m=[32m"0"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"truncate"[39m
+              [36m>[39m
+                [0mالأصلي[0m
+              [36m</span>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-checked[39m=[32m"false"[39m
+              [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] text-[var(--text-muted)] hover:text-[var(--text)]"[39m
+              [33mdata-value[39m=[32m"Duplicate"[39m
+              [33mrole[39m=[32m"radio"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"truncate"[39m
+              [36m>[39m
+                [0mتكرار[0m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex cursor-pointer items-start gap-2"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(11px*var(--fs-scale))] font-semibold leading-tight text-[var(--text)]"[39m
+              [36m>[39m
+                [0mعرض الفصول الدراسية[0m
+              [36m</span>[39m
+            [36m</span>[39m
+          [36m</label>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mتصغير[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mتكبير[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mطباعة أو حفظ PDF[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-auto bg-[var(--surface-2)] p-5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"width: 794px; height: 6852px; margin: auto;"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"width: 794px; transform: scale(1); transform-origin: top right;"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"invoice-measure"[39m
+                [33mstyle[39m=[32m"visibility: hidden; height: 0px; overflow: hidden;"[39m
+              [36m>[39m
+                [36m<article[39m
+                  [33maria-label[39m=[32m"فاتورة ضريبية"[39m
+                  [33mclass[39m=[32m"erp-invoice"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mdata-print-heading[39m=[32m"true"[39m
+                  [36m>[39m
+                    [36m<header>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"invoice-brand"[39m
+    ...
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<section>[39m
+        [36m<h1>[39m
+          [0mطباعة الفاتورة[0m
+        [36m</h1>[39m
+        [36m<div[39m
+          [33maria-busy[39m=[32m"false"[39m
+          [33mclass[39m=[32m"space-y-3"[39m
+          [33mdata-invoice-preview[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-3"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mرجوع[0m
+            [36m</button>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"نسخ"[39m
+              [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+              [33mrole[39m=[32m"radiogroup"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-checked[39m=[32m"true"[39m
+                [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]"[39m
+                [33mdata-value[39m=[32m"Original"[39m
+                [33mrole[39m=[32m"radio"[39m
+                [33mtabindex[39m=[32m"0"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"truncate"[39m
+                [36m>[39m
+                  [0mالأصلي[0m
+                [36m</span>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-checked[39m=[32m"false"[39m
+                [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] text-[var(--text-muted)] hover:text-[var(--text)]"[39m
+                [33mdata-value[39m=[32m"Duplicate"[39m
+                [33mrole[39m=[32m"radio"[39m
+                [33mtabindex[39m=[32m"-1"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"truncate"[39m
+                [36m>[39m
+                  [0mتكرار[0m
+                [36m</span>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex cursor-pointer items-start gap-2"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mclass[39m=[32m"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"min-w-0"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"block text-[length:calc(11px*var(--fs-scale))] font-semibold leading-tight text-[var(--text)]"[39m
+                [36m>[39m
+                  [0mعرض الفصول الدراسية[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</label>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mتصغير[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mتكبير[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mطباعة أو حفظ PDF[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"overflow-auto bg-[var(--surface-2)] p-5"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"width: 794px; height: 6852px; margin: auto;"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mstyle[39m=[32m"width: 794px; transform: scale(1); transform-origin: top right;"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"invoice-measure"[39m
+                  [33mstyle[39m=[32m"visibility: hidden; height: 0px; overflow: hidden;"[39m
+                [36m>[39m
+                  [36m<article[39m
+                    [33maria-label[39m=[32m"فاتورة ضريبية"[39m
+                    [33mclass[39m=[32m"erp-invoice"[39m
+                  [36m>[39m
+                   ...
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/report-invoice.test.tsx > erp1 long invoice has contiguous pages, carry totals and one final summary
+TestingLibraryElementError: Unable to find role="button" and name `/Print or save PDF/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section>[39m
+      [36m<h1>[39m
+        [0mطباعة الفاتورة[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"grid items-start gap-3 xl:grid-cols-[340px_minmax(0,1fr)]"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+            [36m>[39m
+              [0mطباعة الفاتورة[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+            [36m>[39m
+              [0mطُبع بواسطة[0m
+              [0m [0m
+              [0man unidentified user[0m
+              [0m [0m
+              [0m· المستأجر[0m
+              [0m [0m
+              [0munknown[0m
+              [0m · [0m
+              [36m<time[39m
+                [33mdatetime[39m=[32m"2026-10-24T03:23:28.257Z"[39m
+              [36m>[39m
+                [0m2026-10-24 03:23[0m
+              [36m</time>[39m
+              [0m · [0m
+              [0m2[0m
+              [0m [0m
+              [0mسجلات[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [0m      [0m
+          [36m<div[39m
+            [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+              [33mdata-tour[39m=[32m"search"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative w-full"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<input[39m
+                  [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                  [33mplaceholder[39m=[32m"ابحث في طباعة الفاتورة بالمعرف أو الاسم أو أي قيمة ظاهرة…"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mdata-tour[39m=[32m"new"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 12h14"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M12 5v14"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mجديدة[0m
+            [36m</button>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+            [36m/>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+            [36m>[39m
+              [36m<fieldset[39m
+                [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+                [33mdata-tour[39m=[32m"view"[39m
+                [33mdisabled[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-label[39m=[32m"عرض النتائج"[39m
+                  [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                  [33mrole[39m=[32m"radiogroup"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33maria-checked[39m=[32m"true"[39m
+                    [33maria-label[39m=[32m"عرض الجدول"[39m
+                    [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]"[39m
+                    [33mdata-value[39m=[32m"table"[39m
+                    [33mrole[39m=[32m"radio"[39m
+                    [33mtabindex[39m=[32m"0"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+            ...
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<section>[39m
+        [36m<h1>[39m
+          [0mطباعة الفاتورة[0m
+        [36m</h1>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid items-start gap-3 xl:grid-cols-[340px_minmax(0,1fr)]"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+              [36m>[39m
+                [0mطباعة الفاتورة[0m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+              [36m>[39m
+                [0mطُبع بواسطة[0m
+                [0m [0m
+                [0man unidentified user[0m
+                [0m [0m
+                [0m· المستأجر[0m
+                [0m [0m
+                [0munknown[0m
+                [0m · [0m
+                [36m<time[39m
+                  [33mdatetime[39m=[32m"2026-10-24T03:23:28.257Z"[39m
+                [36m>[39m
+                  [0m2026-10-24 03:23[0m
+                [36m</time>[39m
+                [0m · [0m
+                [0m2[0m
+                [0m [0m
+                [0mسجلات[0m
+              [36m</div>[39m
+            [36m</div>[39m
+            [0m      [0m
+            [36m<div[39m
+              [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+                [33mdata-tour[39m=[32m"search"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative w-full"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"11"[39m
+                      [33mcy[39m=[32m"11"[39m
+                      [33mr[39m=[32m"8"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                  [36m<input[39m
+                    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                    [33mplaceholder[39m=[32m"ابحث في طباعة الفاتورة بالمعرف أو الاسم أو أي قيمة ظاهرة…"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                [33mdata-tour[39m=[32m"new"[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M5 12h14"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M12 5v14"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [0mجديدة[0m
+              [36m</button>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+              [36m>[39m
+                [36m<fieldset[39m
+                  [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+                  [33mdata-tour[39m=[32m"view"[39m
+                  [33mdisabled[39m=[32m""[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33maria-label[39m=[32m"عرض النتائج"[39m
+                    [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                    [33mrole[39m=[32m"radiogroup"[39m
+                  [36m>[39m
+                    [36m<button[39m
+                      [33maria-checked[39m=[32m"true"[39m
+                      [33maria-label[39m=[32m"عرض الجدول"[39m
+                      [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)]...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ src/report-invoice.test.tsx:62:231
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/report-invoice.test.tsx > erp2 long invoice has contiguous pages, carry totals and one final summary
+TestingLibraryElementError: Unable to find role="button" and name `/Print or save PDF/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section>[39m
+      [36m<h1>[39m
+        [0mطباعة الفاتورة[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33maria-busy[39m=[32m"false"[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+        [33mdata-invoice-preview[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-3"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mرجوع[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33maria-label[39m=[32m"نسخ"[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+            [33mrole[39m=[32m"radiogroup"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-checked[39m=[32m"true"[39m
+              [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]"[39m
+              [33mdata-value[39m=[32m"Original"[39m
+              [33mrole[39m=[32m"radio"[39m
+              [33mtabindex[39m=[32m"0"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"truncate"[39m
+              [36m>[39m
+                [0mالأصلي[0m
+              [36m</span>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-checked[39m=[32m"false"[39m
+              [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] text-[var(--text-muted)] hover:text-[var(--text)]"[39m
+              [33mdata-value[39m=[32m"Duplicate"[39m
+              [33mrole[39m=[32m"radio"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"truncate"[39m
+              [36m>[39m
+                [0mتكرار[0m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex cursor-pointer items-start gap-2"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block text-[length:calc(11px*var(--fs-scale))] font-semibold leading-tight text-[var(--text)]"[39m
+              [36m>[39m
+                [0mعرض الفصول الدراسية[0m
+              [36m</span>[39m
+            [36m</span>[39m
+          [36m</label>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mتصغير[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mتكبير[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mطباعة أو حفظ PDF[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-auto bg-[var(--surface-2)] p-5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"width: 794px; height: 6852px; margin: auto;"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"width: 794px; transform: scale(1); transform-origin: top right;"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"invoice-measure"[39m
+                [33mstyle[39m=[32m"visibility: hidden; height: 0px; overflow: hidden;"[39m
+              [36m>[39m
+                [36m<article[39m
+                  [33maria-label[39m=[32m"فاتورة ضريبية"[39m
+                  [33mclass[39m=[32m"erp-invoice"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mdata-print-heading[39m=[32m"true"[39m
+                  [36m>[39m
+                    [36m<header>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"invoice-brand"[39m
+    ...
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<section>[39m
+        [36m<h1>[39m
+          [0mطباعة الفاتورة[0m
+        [36m</h1>[39m
+        [36m<div[39m
+          [33maria-busy[39m=[32m"false"[39m
+          [33mclass[39m=[32m"space-y-3"[39m
+          [33mdata-invoice-preview[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-3"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mرجوع[0m
+            [36m</button>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"نسخ"[39m
+              [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+              [33mrole[39m=[32m"radiogroup"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-checked[39m=[32m"true"[39m
+                [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]"[39m
+                [33mdata-value[39m=[32m"Original"[39m
+                [33mrole[39m=[32m"radio"[39m
+                [33mtabindex[39m=[32m"0"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"truncate"[39m
+                [36m>[39m
+                  [0mالأصلي[0m
+                [36m</span>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-checked[39m=[32m"false"[39m
+                [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40 h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))] text-[var(--text-muted)] hover:text-[var(--text)]"[39m
+                [33mdata-value[39m=[32m"Duplicate"[39m
+                [33mrole[39m=[32m"radio"[39m
+                [33mtabindex[39m=[32m"-1"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"truncate"[39m
+                [36m>[39m
+                  [0mتكرار[0m
+                [36m</span>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex cursor-pointer items-start gap-2"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mclass[39m=[32m"focus-ring size-3.5 shrink-0 accent-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-50"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"min-w-0"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"block text-[length:calc(11px*var(--fs-scale))] font-semibold leading-tight text-[var(--text)]"[39m
+                [36m>[39m
+                  [0mعرض الفصول الدراسية[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</label>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mتصغير[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mتكبير[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mطباعة أو حفظ PDF[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"overflow-auto bg-[var(--surface-2)] p-5"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"width: 794px; height: 6852px; margin: auto;"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mstyle[39m=[32m"width: 794px; transform: scale(1); transform-origin: top right;"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"invoice-measure"[39m
+                  [33mstyle[39m=[32m"visibility: hidden; height: 0px; overflow: hidden;"[39m
+                [36m>[39m
+                  [36m<article[39m
+                    [33maria-label[39m=[32m"فاتورة ضريبية"[39m
+                    [33mclass[39m=[32m"erp-invoice"[39m
+                  [36m>[39m
+                   ...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ src/report-invoice.test.tsx:62:231
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 18 passed (20)
+   Start at  03:23:15
+   Duration  35.05s (transform 2.60s, setup 244ms, collect 4.07s, tests 29.55s, environment 628ms, prepare 92ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c5/demo-apps/erp 

@@ -1,0 +1,23 @@
+
+> @pepbits-demo/erp@0.0.0 test:integration
+> node scripts/integration.mjs
+
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.waitForResponse: Timeout 30000ms exceeded while waiting for event "response"
+    at reportInvoiceWorkflows (/home/pepadmin/pb/worktrees/frontend-phase6c5/demo-apps/erp/scripts/report-invoice-workflows.mjs:36:73)
+    at async file:///home/pepadmin/pb/worktrees/frontend-phase6c5/demo-apps/erp/scripts/smoke.mjs:52:2 {
+  log: [],
+  name: 'TimeoutError'
+}
+
+Node.js v22.22.1
+Browser exited 1
+{"integrationExit":1,"sourceBase":"5bbb13027d137ac31594ca9a1a3d47aac46653c9","apiPort":43007,"appPort":41539}
+Next exited 143
+npm ERR! Lifecycle script `test:integration` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c5/demo-apps/erp 

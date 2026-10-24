@@ -1,3 +1,5 @@
+- [ERP phase 6c-5: report controls and invoice pagination](restructure-phase-6c-5-2026-10-24.md) — source analytical controls and measured A4 documents; local verification, no deployment.
+
 # Current delivery and release records
 
 - [School phase 6d — Scholaris](restructure-phase-6d-2026-10-24.md): 26 routes, six scoped portals, local build/HTTP verification and explicit parity limits.
