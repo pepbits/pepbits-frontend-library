@@ -1,0 +1,13 @@
+
+> @pepbits/components@0.0.0 typecheck
+> tsc --noEmit -p .
+
+src/charts.tsx(63,182): error TS2532: Object is possibly 'undefined'.
+src/charts.tsx(66,280): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/collection-view.test.tsx(29,166): error TS2322: Type '{ headerClassName: string; } | { headerClassName: string; key: string; header: string; sortable: boolean; render?: undefined; } | { headerClassName: string; key: string; header: string; render: (row: { ...; }) => Element; sortable?: undefined; }' is not assignable to type 'CollectionColumn<{ id: string; name: string; amount: number; }>'.
+  Type '{ headerClassName: string; }' is missing the following properties from type 'CollectionColumn<{ id: string; name: string; amount: number; }>': key, header
+npm ERR! Lifecycle script `typecheck` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/components@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6d2/packages/components 

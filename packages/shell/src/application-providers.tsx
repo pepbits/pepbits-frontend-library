@@ -1,6 +1,6 @@
 'use client';
 import React, {createContext, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
-import {SessionProvider, useSession, type SessionValue} from '@pepbits/platform/auth';
+import {SessionProvider, useSession, type SessionUser, type SessionValue} from '@pepbits/platform/auth';
 import type {NavigationPort} from '@pepbits/platform/navigation';
 import {PreferenceHost, usePreferences} from '@pepbits/preferences/react';
 import {EMPTY_PREFERENCE_POLICY} from '@pepbits/preferences';
@@ -17,7 +17,7 @@ import {ApplicationWorkspaceFrame, type ApplicationWorkspace} from './applicatio
 export {defaultWorkspacePolicy, type ApplicationWorkspace, type ApplicationWorkspacePolicy} from './application-workspace';
 
 
-interface ApplicationConfig {productId:string;brand:{name:string;tagline:string};productForRole:(role:string)=>ProductDefinition;className?:string;notice?:string;
+interface ApplicationConfig {productId:string;brand:{name:string;tagline:string};productForRole:(role:string,user:SessionUser)=>ProductDefinition;className?:string;notice?:string;
   /** Optional document workspace (tabs, split, frames, detached windows); omitted keeps the routed single-page shell. */
   workspace?:ApplicationWorkspace}
 const Configuration = createContext<ApplicationConfig>(null!);
@@ -55,7 +55,7 @@ function LocaleSurface({catalogs, children}: {catalogs: TranslationCatalog; chil
 function Authenticated({request, navigation, children}: {request: Request; navigation: NavigationPort; children: React.ReactNode}) {
   const {user} = useSession();
   const {brand,productForRole,className,workspace}=useContext(Configuration);
-  const product=useMemo(()=>productForRole(user!.role),[user!.role,productForRole]);
+  const product=useMemo(()=>productForRole(user!.role,user!),[user,productForRole]);
   const [snapshot, setSnapshot] = useState<PreferenceSnapshot | null>(null);
   const accepted = useRef<PreferenceSnapshot | null>(null), live = useRef(true), queue = useRef(Promise.resolve());
   const [error, setError] = useState<unknown>(null), [saveError, setSaveError] = useState<string>();

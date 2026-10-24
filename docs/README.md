@@ -1,6 +1,10 @@
 # Enterprise frontend documentation
 
 - [Independent desktop demo](features/desktop-demo.md): web-mode desktop host with tabs/split/floating/detached-window workspace, Tauri window port and copied native host; no native build or deployment.
+- [Independent reports demo](features/reports-demo.md): all 19 Lumen Reports routes, shared host, fictional demo API and local HTTP evidence; no deployment.
+- [Independent Tenant Admin demo](features/tenant-admin-demo.md): Allyvora Tenant Admin with registry-driven configuration pages, governed approvals and audit; local app/API verification, fictional data, no deployment.
+- [Scholaris school demo](features/school-demo.md): 26 routes, six scoped portals and local evidence with explicit parity limits.
+
 - [Independent ERP demo](features/erp-demo.md): ERP1/ERP2 catalogue, calendars, invoices, analytical/dashboard subset, finance grants and local HTTP evidence; full parity remains incomplete.
 
 - [Independent healthcare demo](features/healthcare-demo.md): phases 6b-1 through 6b-9 core, clinical, diagnostics, Pharmacy, RCM, Teleconsult, Quality, SurgiSuite, MedBand and MedSlot app/API verification; no deployment or clinical acceptance.

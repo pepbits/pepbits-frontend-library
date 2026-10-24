@@ -95,3 +95,10 @@ test("record description layout preserves labels and literal business values", (
   expect(screen.getByText("CUS-02401")).toBeVisible();
   expect(screen.getByText("0")).toBeVisible();
 });
+
+
+test("calendar event text participates in the day accessible name",()=>{
+ render(<Calendar label="Events" value="2026-10-24" onChange={()=>{}} renderDay={date=>date==="2026-10-24"?<span>Fictional meeting</span>:null}/>);
+ const day=document.querySelector('[data-date="2026-10-24"]')!;
+ expect(day).toHaveAccessibleName(/24 Fictional meeting.*October 24, 2026/);
+});

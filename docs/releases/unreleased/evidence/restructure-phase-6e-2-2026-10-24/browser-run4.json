@@ -1,0 +1,308 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "TA-01",
+      "scope": "UI",
+      "result": "Fixture sign-in through the shared login and host chain; overview from GET /overview"
+    },
+    {
+      "id": "TA-02",
+      "scope": "UI",
+      "result": "Sidebar derived from GET /meta lists 30 configuration pages",
+      "count": 30
+    },
+    {
+      "id": "TA-03",
+      "scope": "UI",
+      "result": "Accepted host page-size preference drives the configuration list query"
+    },
+    {
+      "id": "TA-04",
+      "scope": "UI",
+      "result": "Registry list search, status filter and sort issue API queries"
+    },
+    {
+      "id": "TA-05",
+      "scope": "UI",
+      "result": "Incomplete draft saved without strict validation",
+      "record": "TAX-0005"
+    },
+    {
+      "id": "TA-06",
+      "scope": "UI",
+      "result": "Strict submission refusal shown on the field; typed values preserved",
+      "status": 422
+    },
+    {
+      "id": "TA-07",
+      "scope": "UI",
+      "result": "Corrected draft saved and submitted with a reason; self-approval disabled",
+      "record": "TAX-0005"
+    },
+    {
+      "id": "TA-08",
+      "scope": "UI",
+      "result": "Approvals inbox separates own submissions from decisions"
+    },
+    {
+      "id": "TA-09",
+      "scope": "direct HTTP",
+      "result": "Server refuses approval by the submitter",
+      "status": 403
+    },
+    {
+      "id": "TA-10",
+      "scope": "direct HTTP",
+      "result": "Viewer role write refused by the server",
+      "status": 403
+    },
+    {
+      "id": "TA-11",
+      "scope": "UI",
+      "result": "Independent approver decides from the inbox through the reason dialog"
+    },
+    {
+      "id": "TA-12",
+      "scope": "UI",
+      "result": "Audit filter, record deep link and history/revisions tab"
+    },
+    {
+      "id": "TA-13",
+      "scope": "UI",
+      "result": "?open= deep link survives reload"
+    },
+    {
+      "id": "TA-14",
+      "scope": "UI",
+      "result": "Approved version stays locked; new revision started then discarded"
+    },
+    {
+      "id": "TA-15",
+      "scope": "direct HTTP",
+      "result": "Write against an approved version or stale row version refused",
+      "status": 409,
+      "code": "STALE_VERSION"
+    },
+    {
+      "id": "TA-16",
+      "scope": "UI",
+      "result": "Simple configuration record created, edited, deactivated and activated"
+    },
+    {
+      "id": "TA-17",
+      "scope": "UI",
+      "result": "Reimbursement route tester runs against approved routes"
+    },
+    {
+      "id": "TA-18",
+      "scope": "UI",
+      "result": "Ctrl+K palette opens a New entry deep link"
+    }
+  ],
+  "checks": [
+    {
+      "path": "/",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/approvals",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/activity",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/preferences",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/billing-grants",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/commercial-grants",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/numbering",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/items",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/categories",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/tax-rules",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/price-books",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/discounts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/modifiers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/commercial-releases",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/commercial-parties",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/networks",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/insurance-plans",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/contracts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/branch-arrangements",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/benefit-pools",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/billing-policies",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/reimbursement-routes",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/stay-models",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/drg-config",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/category-rates",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/em-tables",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/advanced-models",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/exchange-profiles",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/provider-profiles",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/gl-accounts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/gl-mappings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/fiscal-periods",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/workflow-definitions",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/platform-settings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/tax-rules?new=1",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/tax-rules?open=5",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/nope",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "expectedRefusals": [
+    {
+      "method": "POST",
+      "path": "/resources/tax-rules/5/submit",
+      "status": 422,
+      "seen": true
+    },
+    {
+      "method": "PUT",
+      "path": "/resources/tax-rules/5",
+      "status": 409,
+      "seen": true
+    }
+  ],
+  "unseenExpected": []
+}

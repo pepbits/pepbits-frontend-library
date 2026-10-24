@@ -1,0 +1,18 @@
+{
+  "baseCommit": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+  "branch": "restructure/phase-6e-2 (separate worktree)",
+  "node": "v22.22.1 (frontend tools); /home/pepadmin/.local/opt/node24/bin/node v24.21.0 (unchanged demo API)",
+  "installCommand": "npm install --no-audit --no-fund",
+  "ciCommand": "flock /home/pepadmin/.cache/pepbits-heavy.lock env NEXT_PUBLIC_API_URL=/api RCM_BROWSER_PARITY_RESULT=<6b-9 browser-final.json> MEDBAND_BROWSER_PARITY_RESULT=<6b-9 browser-final.json> npm run ci -- --concurrency=1 --env-mode=loose",
+  "receiptInputs": {
+    "RCM_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json",
+    "MEDBAND_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json"
+  },
+  "receiptPathNote": "Receipt paths are passed as absolute paths (worktree root + path below); a first CI attempt with relative paths failed two healthcare wrapper files (retained as ci-diagnostic-relative-receipts.log).",
+  "receiptScope": "Inherited healthcare browser-contract assertions read the historical 6b-9 receipt, as in earlier records; no fresh healthcare HTTP sweep.",
+  "browserCommand": "flock /home/pepadmin/.cache/pepbits-heavy.lock env LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu npm run test:browser -w @pepbits/shell",
+  "integrationCommand": "run-browser.sh (build + npm run test:integration -w @pepbits-demo/tenant-admin under the heavy-check lock)",
+  "documentationCommand": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs",
+  "memory": "Shared 31 GB host with other runs: every heavy step under the shared flock; at most one Next server, one API and one Vitest tree for this run.",
+  "credentials": "Fixture accounts are read from the unchanged API fixture source at run time and are never printed or written to receipts."
+}

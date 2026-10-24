@@ -1,0 +1,306 @@
+
+> @pepbits-demo/school@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school
+
+ ❯ src/modules/school/module.test.tsx (61 tests | 61 failed) 1813ms
+   × ReferenceSchoolModule > renders /dashboard for an administrator through host.request only 100ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /reports for an administrator through host.request only 36ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /students for an administrator through host.request only 24ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /students/new for an administrator through host.request only 35ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /teachers for an administrator through host.request only 30ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /teachers/new for an administrator through host.request only 24ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /admissions for an administrator through host.request only 24ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /classes for an administrator through host.request only 28ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /subjects for an administrator through host.request only 23ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /timetable for an administrator through host.request only 30ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /attendance for an administrator through host.request only 25ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /assignments for an administrator through host.request only 23ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /quizzes for an administrator through host.request only 23ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /quizzes/new for an administrator through host.request only 20ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /quizzes/:id for an administrator through host.request only 36ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /exams for an administrator through host.request only 26ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /marks for an administrator through host.request only 20ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /live for an administrator through host.request only 25ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /live/:id for an administrator through host.request only 23ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /whiteboard for an administrator through host.request only 24ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /library for an administrator through host.request only 23ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /fees for an administrator through host.request only 29ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /calendar for an administrator through host.request only 31ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /notices for an administrator through host.request only 31ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /messages for an administrator through host.request only 25ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > renders /settings for an administrator through host.request only 30ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > a scope without a school role is denied without asking the server for a session 21ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > a session answering with a role the scope does not hold is rejected 28ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > a page outside the portal shows the source's portal notice 35ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > the host ?role= hint only selects portals the scope grants 23ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > switching scope discards the previous scope's session and data 31ms
+     → The URL must be of scheme file
+   × ReferenceSchoolModule > changing the quiz id remounts the player instead of carrying state across quizzes 28ms
+     → The URL must be of scheme file
+   × failure handling > a rejected create keeps the dialog and the entered values and shows the server message 26ms
+     → The URL must be of scheme file
+   × quiz grading > students receive no answer keys and the client sends only answers for server grading 32ms
+     → The URL must be of scheme file
+   × quiz grading > a rejected grade keeps the submitted answers and Retry grade resends the same attempt 30ms
+     → The URL must be of scheme file
+   × quiz grading > staff preview is graded by the server as a preview and not stored 40ms
+     → The URL must be of scheme file
+   × quiz grading > a recorded attempt opens on its server review, from the server, not the browser 35ms
+     → The URL must be of scheme file
+   × server-held activity > a message is shown from the server's returned thread and the draft survives a failure 19ms
+     → The URL must be of scheme file
+   × server-held activity > the live room shows the server's participants and chat and sends actions 27ms
+     → The URL must be of scheme file
+   × server-held activity > a room that cannot be read shows its error and no substitute data 20ms
+     → The URL must be of scheme file
+   × server-held activity > school profile and fee tariff come from the API 27ms
+     → The URL must be of scheme file
+   × server-held activity > a failed first load of school data offers retry instead of a spinner 28ms
+     → The URL must be of scheme file
+   × preferences > editable presentation preferences go through the host callback 24ms
+     → The URL must be of scheme file
+   × preferences > locked preferences are disabled and their handlers refuse changes 30ms
+     → The URL must be of scheme file
+   × preferences > the settings page renders no portal/role chooser 30ms
+     → The URL must be of scheme file
+   × preferences > an XLSX export preference disables CSV export with the reason 24ms
+     → The URL must be of scheme file
+   × preferences > managed table presentation reaches module tables 33ms
+     → The URL must be of scheme file
+   × preferences > an unavailable preference host disables page-size changes 25ms
+     → The URL must be of scheme file
+   × grade retry under StrictMode > after a failed grade, one Retry click sends exactly one more POST with the same answers 32ms
+     → The URL must be of scheme file
+   × record preview follows previewMode > inline renders the record in the matching shared frame 44ms
+     → The URL must be of scheme file
+   × record preview follows previewMode > center-card renders the record in the matching shared frame 32ms
+     → The URL must be of scheme file
+   × record preview follows previewMode > center-modal renders the record in the matching shared frame 49ms
+     → The URL must be of scheme file
+   × record preview follows previewMode > left-drawer renders the record in the matching shared frame 24ms
+     → The URL must be of scheme file
+   × record preview follows previewMode > right-drawer renders the record in the matching shared frame 36ms
+     → The URL must be of scheme file
+   × record preview follows previewMode > changing previewMode while open keeps the record and the grader's unsaved feedback 30ms
+     → The URL must be of scheme file
+   × fees receipts > a payment without a server receipt claims no receipt or email 26ms
+     → The URL must be of scheme file
+   × fees receipts > the receipt shown is the server's, and the email claim only when the server sent it 27ms
+     → The URL must be of scheme file
+   × fees receipts > a rejected collection keeps the dialog and the entered amount 24ms
+     → The URL must be of scheme file
+   × dashboard statistics and bridge presentation > no trend is shown unless the server sends one 41ms
+     → The URL must be of scheme file
+   × dashboard statistics and bridge presentation > server trends are displayed on the compact source KPI tile 31ms
+     → The URL must be of scheme file
+   × dashboard statistics and bridge presentation > avatars keep the source's exact pixel size 29ms
+     → The URL must be of scheme file
+ ❯ src/modules/school/attachments-locale.test.tsx (7 tests | 7 failed) 269ms
+   × attachments > a failed upload keeps the file and the draft, Retry sends the same bytes once, and the assignment saves the returned metadata 96ms
+     → The URL must be of scheme file
+   × attachments > a file over 1 MB is refused before any request and blocks saving until removed 39ms
+     → The URL must be of scheme file
+   × attachments > a message keeps its text and file when sending fails, then sends the attachment and downloads the exact bytes 32ms
+     → The URL must be of scheme file
+   × attachments > a student submission sends its uploaded attachment with the answer 20ms
+     → The URL must be of scheme file
+   × localization and number format > option labels are the source English, translated once, with values unchanged 28ms
+     → The URL must be of scheme file
+   × localization and number format > chart values use the host number locale and chart labels are localized 29ms
+     → The URL must be of scheme file
+   × localization and number format > changing the locale does not clear an open draft 22ms
+     → The URL must be of scheme file
+ ❯ src/modules/school/final-parity.test.tsx (9 tests | 9 failed) 292ms
+   × source option labels > the Select shows the source English labels (static and enum) with unchanged values 77ms
+     → The URL must be of scheme file
+   × source option labels > translation applies once to the English message and never to the value 29ms
+     → The URL must be of scheme file
+   × server-initialized creation fields > a new book sends only authored fields; the card shows the server's record 26ms
+     → The URL must be of scheme file
+   × server-initialized creation fields > a rejected book keeps the dialog and the typed values 24ms
+     → The URL must be of scheme file
+   × server-initialized creation fields > a new class and a new assignment send no counters, and numeric fields stay numbers under ar-EG 32ms
+     → The URL must be of scheme file
+   × server-initialized creation fields > a new quiz sends its questions and options but no attempts or average 23ms
+     → The URL must be of scheme file
+   × numeric presentation > KPI percentages and counts use the host number locale 26ms
+     → The URL must be of scheme file
+   × numeric presentation > host density wins over the source dense flag 28ms
+     → The URL must be of scheme file
+   × numeric presentation > an authored filename is shown exactly, even when it matches a UI message 24ms
+     → The URL must be of scheme file
+ ❯ src/modules/school/toast-locale.test.tsx (4 tests | 4 failed) 165ms
+   × localized toasts > a static success toast is translated at render and follows a language change while shown 81ms
+     → The URL must be of scheme file
+   × localized toasts > a dynamic toast is one translated message that keeps the authored title exactly 29ms
+     → The URL must be of scheme file
+   × localized toasts > server error text stays verbatim, alone or inside a translated message, and the draft is kept 26ms
+     → The URL must be of scheme file
+   × localized toasts > an unknown server error on its own renders verbatim 25ms
+     → The URL must be of scheme file
+ ❯ src/modules/school/library-return.test.tsx (3 tests | 3 failed) 141ms
+   × library return > the server's fine is shown and toasted, not the page's overdue estimate 83ms
+     → The URL must be of scheme file
+   × library return > stock is the canonical server count after a return 31ms
+     → The URL must be of scheme file
+   × library return > an idempotent return (stock unchanged on the server) does not add a copy on the client 24ms
+     → The URL must be of scheme file
+ ✓ src/modules/school/contracts.test.ts (12 tests) 138ms
+ ✓ src/navigation.test.ts (7 tests) 29ms
+ ✓ src/modules/school/bundle-boundary.test.ts (4 tests) 19ms
+ ✓ src/adapters/school.test.ts (2 tests) 16ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/routes.test.tsx [ src/routes.test.tsx ]
+Error: ENOENT: no such file or directory, open '/@fs/home/pepadmin/pb/worktrees/frontend-phase6d/dummy-api/config/localization/shared/en.json'
+ ❯ src/routes.test.tsx:12:82
+
+ ❯ src/routes.test.tsx:12:47
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/85]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 84 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/school/attachments-locale.test.tsx > attachments > a failed upload keeps the file and the draft, Retry sends the same bytes once, and the assignment saves the returned metadata
+ FAIL  src/modules/school/attachments-locale.test.tsx > attachments > a file over 1 MB is refused before any request and blocks saving until removed
+ FAIL  src/modules/school/attachments-locale.test.tsx > attachments > a message keeps its text and file when sending fails, then sends the attachment and downloads the exact bytes
+ FAIL  src/modules/school/attachments-locale.test.tsx > attachments > a student submission sends its uploaded attachment with the answer
+ FAIL  src/modules/school/attachments-locale.test.tsx > localization and number format > option labels are the source English, translated once, with values unchanged
+ FAIL  src/modules/school/attachments-locale.test.tsx > localization and number format > chart values use the host number locale and chart labels are localized
+ FAIL  src/modules/school/attachments-locale.test.tsx > localization and number format > changing the locale does not clear an open draft
+ FAIL  src/modules/school/final-parity.test.tsx > source option labels > the Select shows the source English labels (static and enum) with unchanged values
+ FAIL  src/modules/school/final-parity.test.tsx > source option labels > translation applies once to the English message and never to the value
+ FAIL  src/modules/school/final-parity.test.tsx > server-initialized creation fields > a new book sends only authored fields; the card shows the server's record
+ FAIL  src/modules/school/final-parity.test.tsx > server-initialized creation fields > a rejected book keeps the dialog and the typed values
+ FAIL  src/modules/school/final-parity.test.tsx > server-initialized creation fields > a new class and a new assignment send no counters, and numeric fields stay numbers under ar-EG
+ FAIL  src/modules/school/final-parity.test.tsx > server-initialized creation fields > a new quiz sends its questions and options but no attempts or average
+ FAIL  src/modules/school/final-parity.test.tsx > numeric presentation > KPI percentages and counts use the host number locale
+ FAIL  src/modules/school/final-parity.test.tsx > numeric presentation > host density wins over the source dense flag
+ FAIL  src/modules/school/final-parity.test.tsx > numeric presentation > an authored filename is shown exactly, even when it matches a UI message
+ FAIL  src/modules/school/library-return.test.tsx > library return > the server's fine is shown and toasted, not the page's overdue estimate
+ FAIL  src/modules/school/library-return.test.tsx > library return > stock is the canonical server count after a return
+ FAIL  src/modules/school/library-return.test.tsx > library return > an idempotent return (stock unchanged on the server) does not add a copy on the client
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /dashboard for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /reports for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /students for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /students/new for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /teachers for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /teachers/new for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /admissions for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /classes for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /subjects for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /timetable for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /attendance for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /assignments for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /quizzes for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /quizzes/new for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /quizzes/:id for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /exams for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /marks for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /live for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /live/:id for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /whiteboard for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /library for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /fees for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /calendar for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /notices for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /messages for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > renders /settings for an administrator through host.request only
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > a scope without a school role is denied without asking the server for a session
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > a session answering with a role the scope does not hold is rejected
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > a page outside the portal shows the source's portal notice
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > the host ?role= hint only selects portals the scope grants
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > switching scope discards the previous scope's session and data
+ FAIL  src/modules/school/module.test.tsx > ReferenceSchoolModule > changing the quiz id remounts the player instead of carrying state across quizzes
+ FAIL  src/modules/school/module.test.tsx > failure handling > a rejected create keeps the dialog and the entered values and shows the server message
+ FAIL  src/modules/school/module.test.tsx > quiz grading > students receive no answer keys and the client sends only answers for server grading
+ FAIL  src/modules/school/module.test.tsx > quiz grading > a rejected grade keeps the submitted answers and Retry grade resends the same attempt
+ FAIL  src/modules/school/module.test.tsx > quiz grading > staff preview is graded by the server as a preview and not stored
+ FAIL  src/modules/school/module.test.tsx > quiz grading > a recorded attempt opens on its server review, from the server, not the browser
+ FAIL  src/modules/school/module.test.tsx > server-held activity > a message is shown from the server's returned thread and the draft survives a failure
+ FAIL  src/modules/school/module.test.tsx > server-held activity > the live room shows the server's participants and chat and sends actions
+ FAIL  src/modules/school/module.test.tsx > server-held activity > a room that cannot be read shows its error and no substitute data
+ FAIL  src/modules/school/module.test.tsx > server-held activity > school profile and fee tariff come from the API
+ FAIL  src/modules/school/module.test.tsx > server-held activity > a failed first load of school data offers retry instead of a spinner
+ FAIL  src/modules/school/module.test.tsx > preferences > editable presentation preferences go through the host callback
+ FAIL  src/modules/school/module.test.tsx > preferences > locked preferences are disabled and their handlers refuse changes
+ FAIL  src/modules/school/module.test.tsx > preferences > the settings page renders no portal/role chooser
+ FAIL  src/modules/school/module.test.tsx > preferences > an XLSX export preference disables CSV export with the reason
+ FAIL  src/modules/school/module.test.tsx > preferences > managed table presentation reaches module tables
+ FAIL  src/modules/school/module.test.tsx > preferences > an unavailable preference host disables page-size changes
+ FAIL  src/modules/school/module.test.tsx > grade retry under StrictMode > after a failed grade, one Retry click sends exactly one more POST with the same answers
+ FAIL  src/modules/school/module.test.tsx > record preview follows previewMode > inline renders the record in the matching shared frame
+ FAIL  src/modules/school/module.test.tsx > record preview follows previewMode > center-card renders the record in the matching shared frame
+ FAIL  src/modules/school/module.test.tsx > record preview follows previewMode > center-modal renders the record in the matching shared frame
+ FAIL  src/modules/school/module.test.tsx > record preview follows previewMode > left-drawer renders the record in the matching shared frame
+ FAIL  src/modules/school/module.test.tsx > record preview follows previewMode > right-drawer renders the record in the matching shared frame
+ FAIL  src/modules/school/module.test.tsx > record preview follows previewMode > changing previewMode while open keeps the record and the grader's unsaved feedback
+ FAIL  src/modules/school/module.test.tsx > fees receipts > a payment without a server receipt claims no receipt or email
+ FAIL  src/modules/school/module.test.tsx > fees receipts > the receipt shown is the server's, and the email claim only when the server sent it
+ FAIL  src/modules/school/module.test.tsx > fees receipts > a rejected collection keeps the dialog and the entered amount
+ FAIL  src/modules/school/module.test.tsx > dashboard statistics and bridge presentation > no trend is shown unless the server sends one
+ FAIL  src/modules/school/module.test.tsx > dashboard statistics and bridge presentation > server trends are displayed on the compact source KPI tile
+ FAIL  src/modules/school/module.test.tsx > dashboard statistics and bridge presentation > avatars keep the source's exact pixel size
+ FAIL  src/modules/school/toast-locale.test.tsx > localized toasts > a static success toast is translated at render and follows a language change while shown
+ FAIL  src/modules/school/toast-locale.test.tsx > localized toasts > a dynamic toast is one translated message that keeps the authored title exactly
+ FAIL  src/modules/school/toast-locale.test.tsx > localized toasts > server error text stays verbatim, alone or inside a translated message, and the draft is kept
+ FAIL  src/modules/school/toast-locale.test.tsx > localized toasts > an unknown server error on its own renders verbatim
+TypeError: The URL must be of scheme file
+ ❯ TestProviders src/modules/school/test-support/providers.tsx:9:104
+
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ performUnitOfWork ../../node_modules/react-dom/cjs/react-dom-client.development.js:17641:22
+ ❯ workLoopSync ../../node_modules/react-dom/cjs/react-dom-client.development.js:17469:41
+ ❯ renderRootSync ../../node_modules/react-dom/cjs/react-dom-client.development.js:17450:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/85]⎯
+
+
+ Test Files  6 failed | 4 passed (10)
+      Tests  84 failed | 25 passed (109)
+   Start at  02:54:18
+   Duration  22.35s (transform 3.27s, setup 1.65s, collect 6.58s, tests 2.88s, environment 5.74s, prepare 1.02s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/school@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school 

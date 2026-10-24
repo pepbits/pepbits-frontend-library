@@ -1,0 +1,508 @@
+
+> @pepbits-demo/school@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school
+
+ ✓ src/modules/school/module.test.tsx (61 tests) 15985ms
+   ✓ ReferenceSchoolModule > renders /dashboard for an administrator through host.request only  884ms
+   ✓ ReferenceSchoolModule > renders /reports for an administrator through host.request only  344ms
+   ✓ ReferenceSchoolModule > renders /students for an administrator through host.request only  530ms
+   ✓ ReferenceSchoolModule > renders /teachers for an administrator through host.request only  396ms
+   ✓ ReferenceSchoolModule > renders /admissions for an administrator through host.request only  599ms
+   ✓ ReferenceSchoolModule > renders /attendance for an administrator through host.request only  309ms
+   ✓ ReferenceSchoolModule > renders /quizzes for an administrator through host.request only  446ms
+   ✓ ReferenceSchoolModule > renders /marks for an administrator through host.request only  607ms
+   ✓ ReferenceSchoolModule > renders /library for an administrator through host.request only  320ms
+   ✓ failure handling > a rejected create keeps the dialog and the entered values and shows the server message  898ms
+   ✓ record preview follows previewMode > inline renders the record in the matching shared frame  417ms
+   ✓ record preview follows previewMode > center-card renders the record in the matching shared frame  339ms
+   ✓ record preview follows previewMode > center-modal renders the record in the matching shared frame  329ms
+   ✓ record preview follows previewMode > left-drawer renders the record in the matching shared frame  353ms
+   ✓ record preview follows previewMode > right-drawer renders the record in the matching shared frame  335ms
+   ✓ record preview follows previewMode > changing previewMode while open keeps the record and the grader's unsaved feedback  439ms
+   ✓ fees receipts > a rejected collection keeps the dialog and the entered amount  491ms
+ ❯ src/modules/school/final-parity.test.tsx (9 tests | 1 failed) 3318ms
+   ✓ source option labels > the Select shows the source English labels (static and enum) with unchanged values  504ms
+   ✓ source option labels > translation applies once to the English message and never to the value  329ms
+   ✓ server-initialized creation fields > a new book sends only authored fields; the card shows the server's record  607ms
+   ✓ server-initialized creation fields > a rejected book keeps the dialog and the typed values  656ms
+   ✓ server-initialized creation fields > a new class and a new assignment send no counters, and numeric fields stay numbers under ar-EG  377ms
+   ✓ server-initialized creation fields > a new quiz sends its questions and options but no attempts or average  446ms
+   × numeric presentation > KPI percentages and counts use the host number locale 258ms
+     → expected 'Attendance today100%school-wide' to match /[٠-٩]+.*%/
+   ✓ numeric presentation > host density wins over the source dense flag 69ms
+   ✓ numeric presentation > an authored filename is shown exactly, even when it matches a UI message 68ms
+ ❯ src/modules/school/attachments-locale.test.tsx (7 tests | 1 failed) 3382ms
+   ✓ attachments > a failed upload keeps the file and the draft, Retry sends the same bytes once, and the assignment saves the returned metadata  1050ms
+   ✓ attachments > a file over 1 MB is refused before any request and blocks saving until removed  436ms
+   ✓ attachments > a message keeps its text and file when sending fails, then sends the attachment and downloads the exact bytes  541ms
+   ✓ attachments > a student submission sends its uploaded attachment with the answer 230ms
+   ✓ localization and number format > option labels are the source English, translated once, with values unchanged 286ms
+   × localization and number format > chart values use the host number locale and chart labels are localized 231ms
+     → expected 0 to be greater than 0
+   ✓ localization and number format > changing the locale does not clear an open draft  603ms
+ ✓ src/modules/school/toast-locale.test.tsx (4 tests) 1604ms
+   ✓ localized toasts > a static success toast is translated at render and follows a language change while shown  485ms
+   ✓ localized toasts > a dynamic toast is one translated message that keeps the authored title exactly  720ms
+ ✓ src/modules/school/library-return.test.tsx (3 tests) 1101ms
+   ✓ library return > the server's fine is shown and toasted, not the page's overdue estimate  494ms
+   ✓ library return > stock is the canonical server count after a return  328ms
+stderr | src/routes.test.tsx > default route rendering > '/whiteboard'
+TypeError: Cannot read properties of null (reading 'setTransform')
+    at /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/components/whiteboard/whiteboard.tsx:108:9
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15476:11)
+An error occurred in the <Whiteboard> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+
+stderr | src/routes.test.tsx > Arabic RTL route rendering > '/whiteboard'
+TypeError: Cannot read properties of null (reading 'setTransform')
+    at /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/components/whiteboard/whiteboard.tsx:108:9
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15476:11)
+An error occurred in the <Whiteboard> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+
+stderr | src/routes.test.tsx > reduced motion route rendering > '/whiteboard'
+TypeError: Cannot read properties of null (reading 'setTransform')
+    at /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/components/whiteboard/whiteboard.tsx:108:9
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15476:11)
+An error occurred in the <Whiteboard> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+
+stderr | src/routes.test.tsx > locked density route rendering > '/whiteboard'
+TypeError: Cannot read properties of null (reading 'setTransform')
+    at /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/components/whiteboard/whiteboard.tsx:108:9
+    at Object.react_stack_bottom_frame (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber (/home/pepadmin/pb/worktrees/frontend-phase6d/node_modules/react-dom/cjs/react-dom-client.development.js:15476:11)
+An error occurred in the <Whiteboard> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+
+ ❯ src/routes.test.tsx (124 tests | 10 failed) 71564ms
+   ✓ default route rendering > '/dashboard'  1112ms
+   ✓ default route rendering > '/reports'  439ms
+   ✓ default route rendering > '/students'  993ms
+   ✓ default route rendering > '/students/new'  349ms
+   ✓ default route rendering > '/teachers'  1000ms
+   ✓ default route rendering > '/teachers/new'  307ms
+   ✓ default route rendering > '/admissions'  1191ms
+   ✓ default route rendering > '/classes'  564ms
+   ✓ default route rendering > '/subjects'  775ms
+   ✓ default route rendering > '/timetable'  545ms
+   ✓ default route rendering > '/attendance'  743ms
+   ✓ default route rendering > '/assignments'  839ms
+   ✓ default route rendering > '/quizzes'  1410ms
+   ✓ default route rendering > '/quizzes/new'  401ms
+   ✓ default route rendering > '/quizzes/:id' 184ms
+   ✓ default route rendering > '/exams'  664ms
+   ✓ default route rendering > '/marks'  2145ms
+   ✓ default route rendering > '/live'  343ms
+   ✓ default route rendering > '/live/:id' 151ms
+   ✓ default route rendering > '/whiteboard' 161ms
+   ✓ default route rendering > '/library'  710ms
+   × default route rendering > '/fees' 702ms
+     → expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+   ✓ default route rendering > '/calendar'  503ms
+   ✓ default route rendering > '/notices' 282ms
+   ✓ default route rendering > '/messages' 226ms
+   ✓ default route rendering > '/settings' 231ms
+   ✓ default route rendering > 'teacher dashboard'  461ms
+   ✓ default route rendering > 'student dashboard'  531ms
+   ✓ default route rendering > 'parent dashboard'  504ms
+   × default route rendering > 'librarian dashboard' 410ms
+     → expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+   ✓ default route rendering > 'accountant dashboard'  513ms
+   ✓ Arabic RTL route rendering > '/dashboard'  593ms
+   ✓ Arabic RTL route rendering > '/reports'  318ms
+   ✓ Arabic RTL route rendering > '/students'  803ms
+   ✓ Arabic RTL route rendering > '/students/new' 297ms
+   ✓ Arabic RTL route rendering > '/teachers'  945ms
+   ✓ Arabic RTL route rendering > '/teachers/new' 258ms
+   ✓ Arabic RTL route rendering > '/admissions'  1523ms
+   ✓ Arabic RTL route rendering > '/classes'  669ms
+   ✓ Arabic RTL route rendering > '/subjects'  852ms
+   ✓ Arabic RTL route rendering > '/timetable'  686ms
+   ✓ Arabic RTL route rendering > '/attendance'  769ms
+   ✓ Arabic RTL route rendering > '/assignments'  666ms
+   ✓ Arabic RTL route rendering > '/quizzes'  1545ms
+   ✓ Arabic RTL route rendering > '/quizzes/new'  409ms
+   ✓ Arabic RTL route rendering > '/quizzes/:id' 150ms
+   ✓ Arabic RTL route rendering > '/exams'  604ms
+   ✓ Arabic RTL route rendering > '/marks'  2167ms
+   ✓ Arabic RTL route rendering > '/live'  427ms
+   ✓ Arabic RTL route rendering > '/live/:id' 160ms
+   × Arabic RTL route rendering > '/whiteboard' 124ms
+     → expected null to be truthy
+   ✓ Arabic RTL route rendering > '/library'  831ms
+   × Arabic RTL route rendering > '/fees' 807ms
+     → expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+   ✓ Arabic RTL route rendering > '/calendar'  528ms
+   ✓ Arabic RTL route rendering > '/notices'  316ms
+   ✓ Arabic RTL route rendering > '/messages' 202ms
+   ✓ Arabic RTL route rendering > '/settings' 230ms
+   ✓ Arabic RTL route rendering > 'teacher dashboard'  389ms
+   ✓ Arabic RTL route rendering > 'student dashboard'  485ms
+   ✓ Arabic RTL route rendering > 'parent dashboard'  516ms
+   × Arabic RTL route rendering > 'librarian dashboard' 425ms
+     → expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+   ✓ Arabic RTL route rendering > 'accountant dashboard'  545ms
+   ✓ reduced motion route rendering > '/dashboard'  574ms
+   ✓ reduced motion route rendering > '/reports'  380ms
+   ✓ reduced motion route rendering > '/students'  846ms
+   ✓ reduced motion route rendering > '/students/new'  344ms
+   ✓ reduced motion route rendering > '/teachers'  745ms
+   ✓ reduced motion route rendering > '/teachers/new' 229ms
+   ✓ reduced motion route rendering > '/admissions'  1066ms
+   ✓ reduced motion route rendering > '/classes'  438ms
+   ✓ reduced motion route rendering > '/subjects'  590ms
+   ✓ reduced motion route rendering > '/timetable'  427ms
+   ✓ reduced motion route rendering > '/attendance'  666ms
+   ✓ reduced motion route rendering > '/assignments'  627ms
+   ✓ reduced motion route rendering > '/quizzes'  1245ms
+   ✓ reduced motion route rendering > '/quizzes/new'  362ms
+   ✓ reduced motion route rendering > '/quizzes/:id' 163ms
+   ✓ reduced motion route rendering > '/exams'  571ms
+   ✓ reduced motion route rendering > '/marks'  1844ms
+   ✓ reduced motion route rendering > '/live'  428ms
+   ✓ reduced motion route rendering > '/live/:id' 173ms
+   × reduced motion route rendering > '/whiteboard' 116ms
+     → expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+   ✓ reduced motion route rendering > '/library'  746ms
+   × reduced motion route rendering > '/fees' 676ms
+     → expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+   ✓ reduced motion route rendering > '/calendar'  448ms
+   ✓ reduced motion route rendering > '/notices'  363ms
+   ✓ reduced motion route rendering > '/messages' 205ms
+   ✓ reduced motion route rendering > '/settings' 218ms
+   ✓ reduced motion route rendering > 'teacher dashboard'  393ms
+   ✓ reduced motion route rendering > 'student dashboard'  481ms
+   ✓ reduced motion route rendering > 'parent dashboard'  459ms
+   × reduced motion route rendering > 'librarian dashboard' 384ms
+     → expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+   ✓ reduced motion route rendering > 'accountant dashboard'  434ms
+   ✓ locked density route rendering > '/dashboard'  533ms
+   ✓ locked density route rendering > '/reports'  334ms
+   ✓ locked density route rendering > '/students'  757ms
+   ✓ locked density route rendering > '/students/new' 261ms
+   ✓ locked density route rendering > '/teachers'  757ms
+   ✓ locked density route rendering > '/teachers/new' 224ms
+   ✓ locked density route rendering > '/admissions'  889ms
+   ✓ locked density route rendering > '/classes'  411ms
+   ✓ locked density route rendering > '/subjects'  571ms
+   ✓ locked density route rendering > '/timetable'  466ms
+   ✓ locked density route rendering > '/attendance'  617ms
+   ✓ locked density route rendering > '/assignments'  660ms
+   ✓ locked density route rendering > '/quizzes'  1464ms
+   ✓ locked density route rendering > '/quizzes/new'  329ms
+   ✓ locked density route rendering > '/quizzes/:id' 135ms
+   ✓ locked density route rendering > '/exams'  581ms
+   ✓ locked density route rendering > '/marks'  1725ms
+   ✓ locked density route rendering > '/live'  368ms
+   ✓ locked density route rendering > '/live/:id' 220ms
+   ✓ locked density route rendering > '/whiteboard' 127ms
+   ✓ locked density route rendering > '/library'  715ms
+   × locked density route rendering > '/fees' 632ms
+     → expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+   ✓ locked density route rendering > '/calendar'  562ms
+   ✓ locked density route rendering > '/notices'  302ms
+   ✓ locked density route rendering > '/messages' 207ms
+   ✓ locked density route rendering > '/settings' 188ms
+   ✓ locked density route rendering > 'teacher dashboard'  357ms
+   ✓ locked density route rendering > 'student dashboard'  461ms
+   ✓ locked density route rendering > 'parent dashboard'  514ms
+   × locked density route rendering > 'librarian dashboard' 426ms
+     → expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+   ✓ locked density route rendering > 'accountant dashboard'  492ms
+ ✓ src/modules/school/contracts.test.ts (12 tests) 139ms
+ ✓ src/navigation.test.ts (7 tests) 23ms
+ ✓ src/modules/school/bundle-boundary.test.ts (4 tests) 18ms
+ ✓ src/adapters/school.test.ts (2 tests) 19ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 12 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/routes.test.tsx > default route rendering > '/fees'
+ FAIL  src/routes.test.tsx > default route rendering > 'librarian dashboard'
+ FAIL  src/routes.test.tsx > Arabic RTL route rendering > '/fees'
+ FAIL  src/routes.test.tsx > Arabic RTL route rendering > 'librarian dashboard'
+ FAIL  src/routes.test.tsx > reduced motion route rendering > '/fees'
+ FAIL  src/routes.test.tsx > reduced motion route rendering > 'librarian dashboard'
+ FAIL  src/routes.test.tsx > locked density route rendering > '/fees'
+ FAIL  src/routes.test.tsx > locked density route rendering > 'librarian dashboard'
+AssertionError: expected [ { id: 'empty-table-header', …(6) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "description": "Ensure table headers have discernible text",
++     "help": "Table header text should not be empty",
++     "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/empty-table-header?application=axeAPI",
++     "id": "empty-table-header",
++     "impact": "minor",
++     "nodes": [
++       {
++         "all": [],
++         "any": [
++           CheckResult {
++             "data": null,
++             "id": "has-visible-text",
++             "impact": "minor",
++             "message": "Element does not have text that is visible to screen readers",
++             "relatedNodes": [],
++           },
++         ],
++         "failureSummary": "Fix any of the following:
++   Element does not have text that is visible to screen readers",
++         "html": "<th scope=\"col\"></th>",
++         "impact": "minor",
++         "none": [],
++         "target": [
++           "th:nth-child(10)",
++         ],
++       },
++     ],
++     "tags": [
++       "cat.name-role-value",
++       "best-practice",
++     ],
++   },
++ ]
+
+ ❯ src/routes.test.tsx:27:111
+     25|   if(profile==='reduced motion')expect(container.querySelector('.refer…
+     26|   // The controlled test host projects effective policy exactly as the…
+     27|   await act(async()=>expect((await axe.run(container,{rules:{'color-co…
+       |                                                                                                               ^
+     28|  });
+     29| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+ FAIL  src/routes.test.tsx > Arabic RTL route rendering > '/whiteboard'
+AssertionError: expected null to be truthy
+
+- Expected: 
+true
+
++ Received: 
+null
+
+ ❯ src/routes.test.tsx:24:76
+     22|   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,30…
+     23|   expect(container.querySelector('[role="alert"]')).toBeNull();
+     24|   if(profile==='Arabic RTL')expect(container.querySelector('[dir="rtl"…
+       |                                                                            ^
+     25|   if(profile==='reduced motion')expect(container.querySelector('.refer…
+     26|   // The controlled test host projects effective policy exactly as the…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+ FAIL  src/routes.test.tsx > reduced motion route rendering > '/whiteboard'
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/routes.test.tsx:25:91
+     23|   expect(container.querySelector('[role="alert"]')).toBeNull();
+     24|   if(profile==='Arabic RTL')expect(container.querySelector('[dir="rtl"…
+     25|   if(profile==='reduced motion')expect(container.querySelector('.refer…
+       |                                                                                           ^
+     26|   // The controlled test host projects effective policy exactly as the…
+     27|   await act(async()=>expect((await axe.run(container,{rules:{'color-co…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/12]⎯
+
+ FAIL  src/modules/school/attachments-locale.test.tsx > localization and number format > chart values use the host number locale and chart labels are localized
+AssertionError: expected 0 to be greater than 0
+ ❯ src/modules/school/attachments-locale.test.tsx:152:26
+    150|     // Public chart inspection replaces source-only hover divs; keep l…
+    151|     const chart = document.querySelector('[data-line-chart]')!;
+    152|     const selector = within(chart as HTMLElement).getByRole('combobox'…
+       |                          ^
+    153|     const options = within(selector).getAllByRole('option');
+    154|     expect(options.length).toBeGreaterThan(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/12]⎯
+
+ FAIL  src/modules/school/final-parity.test.tsx > numeric presentation > KPI percentages and counts use the host number locale
+AssertionError: expected 'Attendance today100%school-wide' to match /[٠-٩]+.*%/
+
+- Expected: 
+/[٠-٩]+.*%/
+
++ Received: 
+"Attendance today100%school-wide"
+
+ ❯ src/modules/school/final-parity.test.tsx:121:30
+    119|     await settle(backend);
+    120|     const tile = screen.getByText("Attendance today").closest(".school…
+    121|     expect(tile.textContent).toMatch(/[٠-٩]+.*%/);
+       |                              ^
+    122|     expect(tile.textContent).not.toMatch(/[0-9]/);
+    123|     const students = screen.getByText("Active students").closest(".sch…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/12]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 4 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of null (reading 'setTransform')
+ ❯ src/modules/school/components/whiteboard/whiteboard.tsx:108:9
+    106|     const ctx = c.getContext("2d")!;
+    107|     const dpr = window.devicePixelRatio || 1;
+    108|     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+       |         ^
+    109|     ctx.clearRect(0, 0, size.current.w, size.current.h);
+    110|     const family = getComputedStyle(c).fontFamily || FALLBACK_FONT;
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25989:20
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ commitHookEffectListMount ../../node_modules/react-dom/cjs/react-dom-client.development.js:13249:29
+ ❯ commitHookPassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:13336:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15484:13
+ ❯ recursivelyTraversePassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15718:11
+ ❯ recursivelyTraversePassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15476:11
+
+This error originated in "src/routes.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "'/whiteboard'". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of null (reading 'setTransform')
+ ❯ src/modules/school/components/whiteboard/whiteboard.tsx:108:9
+    106|     const ctx = c.getContext("2d")!;
+    107|     const dpr = window.devicePixelRatio || 1;
+    108|     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+       |         ^
+    109|     ctx.clearRect(0, 0, size.current.w, size.current.h);
+    110|     const family = getComputedStyle(c).fontFamily || FALLBACK_FONT;
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25989:20
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ commitHookEffectListMount ../../node_modules/react-dom/cjs/react-dom-client.development.js:13249:29
+ ❯ commitHookPassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:13336:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15484:13
+ ❯ recursivelyTraversePassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15718:11
+ ❯ recursivelyTraversePassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15476:11
+
+This error originated in "src/routes.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "'/whiteboard'". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of null (reading 'setTransform')
+ ❯ src/modules/school/components/whiteboard/whiteboard.tsx:108:9
+    106|     const ctx = c.getContext("2d")!;
+    107|     const dpr = window.devicePixelRatio || 1;
+    108|     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+       |         ^
+    109|     ctx.clearRect(0, 0, size.current.w, size.current.h);
+    110|     const family = getComputedStyle(c).fontFamily || FALLBACK_FONT;
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25989:20
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ commitHookEffectListMount ../../node_modules/react-dom/cjs/react-dom-client.development.js:13249:29
+ ❯ commitHookPassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:13336:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15484:13
+ ❯ recursivelyTraversePassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15718:11
+ ❯ recursivelyTraversePassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15476:11
+
+This error originated in "src/routes.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "'/whiteboard'". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of null (reading 'setTransform')
+ ❯ src/modules/school/components/whiteboard/whiteboard.tsx:108:9
+    106|     const ctx = c.getContext("2d")!;
+    107|     const dpr = window.devicePixelRatio || 1;
+    108|     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+       |         ^
+    109|     ctx.clearRect(0, 0, size.current.w, size.current.h);
+    110|     const family = getComputedStyle(c).fontFamily || FALLBACK_FONT;
+ ❯ Object.react_stack_bottom_frame ../../node_modules/react-dom/cjs/react-dom-client.development.js:25989:20
+ ❯ runWithFiberInDEV ../../node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ commitHookEffectListMount ../../node_modules/react-dom/cjs/react-dom-client.development.js:13249:29
+ ❯ commitHookPassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:13336:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15484:13
+ ❯ recursivelyTraversePassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15718:11
+ ❯ recursivelyTraversePassiveMountEffects ../../node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+ ❯ commitPassiveMountOnFiber ../../node_modules/react-dom/cjs/react-dom-client.development.js:15476:11
+
+This error originated in "src/routes.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "'/whiteboard'". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  3 failed | 7 passed (10)
+      Tests  12 failed | 221 passed (233)
+     Errors  4 errors
+   Start at  02:54:57
+   Duration  119.71s (transform 4.68s, setup 1.87s, collect 9.18s, tests 97.15s, environment 6.02s, prepare 1.05s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/school@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school 
