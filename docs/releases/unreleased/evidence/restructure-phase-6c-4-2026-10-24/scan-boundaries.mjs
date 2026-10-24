@@ -1,0 +1,15 @@
+import {spawnSync} from 'node:child_process';
+import {writeFileSync,rmSync} from 'node:fs';
+const folder='docs/releases/unreleased/evidence/restructure-phase-6c-4-2026-10-24';
+// Avoid scanning this generated receipt into itself on repeated final checks.
+rmSync(folder+'/boundary-scans.json',{force:true});
+const run=(command,args)=>{const result=spawnSync(command,args,{encoding:'utf8'});return {command:[command,...args],exit:result.status,stdout:result.stdout,stderr:result.stderr};};
+const protectedPaths=['desktop-clients','dummy-api','Jenkinsfile','deploy','run.sh','run_all.sh','.github','demo-apps/school'];
+const parallelPaths=['packages/components','demo-apps/erp/src/modules/keystone/analytics.tsx','demo-apps/erp/src/modules/keystone/analysis-model.ts','demo-apps/erp/src/modules/keystone/matrix.tsx','demo-apps/erp/src/modules/keystone/invoice.tsx','demo-apps/erp/src/remaining-views.test.tsx','demo-apps/erp/scripts/remaining-workflows.mjs'];
+const protectedDiff=run('git',['diff','--name-only','HEAD','--',...protectedPaths]),protectedStatus=run('git',['status','--short','--',...protectedPaths]);
+const forbiddenImports=run('grep',['-rnE','@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/|demo-apps/healthcare','demo-apps/erp/src']);
+const credentialUrlScan=run('grep',['-rnP','https?://(?!localhost|127\\.0\\.0\\.1|www\\.w3\\.org)[a-z0-9.-]+\\.[a-z]{2,}|Bearer [A-Za-z0-9]{10}|password\\s*[:=]\\s*[\'\"][^\'\"]{4,}','demo-apps/erp/src',folder]);
+const matches=credentialUrlScan.stdout.trim()?credentialUrlScan.stdout.trim().split('\n'):[];
+const justifications=matches.map(line=>({line,reason:line.includes('react.dev/link/wrap-tests-with-act')?'React test-runner documentation emitted with an act warning; no application endpoint or credential.':line.includes('dequeuniversity.com/rules/axe/')?'axe diagnostic help URL for the corrected heading-order violation; no application endpoint or credential.':line.includes('nextjs.org/')?'Next.js build output documentation/telemetry information; no application endpoint or credential.':line.includes('turbo.build/')||line.includes('turborepo.com/')?'Turborepo command output documentation; no application endpoint or credential.':'REVIEW REQUIRED'}));
+const result={protectedPaths,protectedDiff:protectedDiff.stdout,protectedStatus:protectedStatus.stdout,parallelPaths,parallelDiff:run('git',['diff','--name-only','HEAD','--',...parallelPaths]).stdout,forbiddenImports,credentialUrlScan:{...credentialUrlScan,matchingLines:matches.length,justifications},whitespace:run('git',['diff','--check'])};
+writeFileSync(folder+'/boundary-scans.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({protectedDiff:result.protectedDiff,protectedStatus:result.protectedStatus,parallelDiff:result.parallelDiff,importsExit:forbiddenImports.exit,urlCredentialExit:credentialUrlScan.exit,matchingLines:result.credentialUrlScan.matchingLines,whitespace:result.whitespace.exit}));

@@ -1,5 +1,8 @@
 # Current delivery and release records
 
+- [ERP phase 6c-4 — record context and personal views](restructure-phase-6c-4-2026-10-24.md): source panels, account filter/sort/column snapshots, scoped retries and explicit durable-draft boundary; local evidence, no deployment.
+
+
 - [ERP phase 6c-3 — calendars, invoices and analytical views](restructure-phase-6c-3-2026-10-24.md): specialized workflow subset, shared calendar/charts and exact verification; remaining parity gaps are explicit.
 
 - [ERP phase 6c-2 — specialized view subset and finance grants](restructure-phase-6c-2-2026-10-23.md): hierarchy, boards, ERP1 profile splits, direct extraction tests and exact remaining scope.

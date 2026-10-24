@@ -25,6 +25,14 @@ body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font
 :focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
 button, input, select, textarea { font:inherit; }
 .erp-page { min-width:0; --fs-scale:var(--fs-form); }
+.erp-record-panel {padding:16px;min-width:0;font-size:calc(13px * var(--fs-form,1));line-height:1.6;}
+.erp-record-panel h3 {font-weight:600;margin-block-end:12px;}
+.erp-record-timeline {border-inline-start:1px solid var(--border);margin-inline-start:8px;padding-inline-start:20px;}
+.erp-record-timeline li {position:relative;padding-block-end:14px;overflow-wrap:anywhere;}
+.erp-record-timeline li:last-child {padding-block-end:0;}
+.erp-record-timeline li::before {content:"";position:absolute;inset-inline-start:-25px;inset-block-start:6px;width:9px;height:9px;border-radius:50%;background:var(--primary);border:2px solid var(--surface);}
+.erp-record-timeline small,.erp-record-documents small {color:var(--text-muted);}
+.erp-record-documents li {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding-block:8px;border-block-end:1px solid var(--border);overflow-wrap:anywhere;}
 /* Fixed A4 document geometry from the source invoice; screen table settings do not alter paper. */
 .erp-invoice { display:flex; flex-direction:column; width:794px; min-height:1123px; padding:48px; background:#fff; color:#1c2422; font-family:var(--font-ui),sans-serif; font-size:calc(12px * var(--fs-result,1)); line-height:1.6; box-shadow:0 3px 16px #0002; }
 .erp-invoice header { display:flex; justify-content:space-between; gap:12px; padding-bottom:20px; border-bottom:2px solid #136f63; }

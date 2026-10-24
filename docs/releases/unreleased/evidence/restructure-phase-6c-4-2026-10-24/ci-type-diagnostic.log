@@ -1,0 +1,466 @@
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && turbo run typecheck test build --force --concurrency=1 --env-mode=loose
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+PASS dependency boundaries: 12 package(s), 3 demo app(s)
+
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+
+TAP version 13
+# Subtest: an empty layout passes
+ok 1 - an empty layout passes
+  ---
+  duration_ms: 4.867376
+  type: 'test'
+  ...
+# Subtest: the real repository passes
+ok 2 - the real repository passes
+  ---
+  duration_ms: 147.61452
+  type: 'test'
+  ...
+# Subtest: a layer may use the layers below it
+ok 3 - a layer may use the layers below it
+  ---
+  duration_ms: 1.380091
+  type: 'test'
+  ...
+# Subtest: a layer may not use a layer above it
+ok 4 - a layer may not use a layer above it
+  ---
+  duration_ms: 1.476642
+  type: 'test'
+  ...
+# Subtest: preferences may import tokens and i18n, but i18n may not import preferences
+ok 5 - preferences may import tokens and i18n, but i18n may not import preferences
+  ---
+  duration_ms: 2.515768
+  type: 'test'
+  ...
+# Subtest: preferences still cannot import other foundations or UI layers
+ok 6 - preferences still cannot import other foundations or UI layers
+  ---
+  duration_ms: 3.382044
+  type: 'test'
+  ...
+# Subtest: library packages may not use demo apps
+ok 7 - library packages may not use demo apps
+  ---
+  duration_ms: 1.167178
+  type: 'test'
+  ...
+# Subtest: platform may use data; data cannot use platform or UI
+ok 8 - platform may use data; data cannot use platform or UI
+  ---
+  duration_ms: 3.241324
+  type: 'test'
+  ...
+# Subtest: AI sits above shell, patterns and engines; no reverse dependency is allowed
+ok 9 - AI sits above shell, patterns and engines; no reverse dependency is allowed
+  ---
+  duration_ms: 13.371557
+  type: 'test'
+  ...
+# Subtest: testing can import every library layer
+ok 10 - testing can import every library layer
+  ---
+  duration_ms: 1.423171
+  type: 'test'
+  ...
+# Subtest: demo apps use any layer but not each other
+ok 11 - demo apps use any layer but not each other
+  ---
+  duration_ms: 1.420981
+  type: 'test'
+  ...
+# Subtest: pre-restructure packages are rejected
+ok 12 - pre-restructure packages are rejected
+  ---
+  duration_ms: 0.749304
+  type: 'test'
+  ...
+# Subtest: relative imports may not leave the package
+ok 13 - relative imports may not leave the package
+  ---
+  duration_ms: 0.711365
+  type: 'test'
+  ...
+# Subtest: deep src imports and undeclared imports are rejected
+ok 14 - deep src imports and undeclared imports are rejected
+  ---
+  duration_ms: 1.31929
+  type: 'test'
+  ...
+# Subtest: folder must be a known layer and names must match the folder
+ok 15 - folder must be a known layer and names must match the folder
+  ---
+  duration_ms: 1.39716
+  type: 'test'
+  ...
+# Subtest: testing is dev-only
+ok 16 - testing is dev-only
+  ---
+  duration_ms: 1.882534
+  type: 'test'
+  ...
+# Subtest: tooling packages are devDependencies only
+ok 17 - tooling packages are devDependencies only
+  ---
+  duration_ms: 0.951927
+  type: 'test'
+  ...
+# Subtest: mock-api imports nothing from the frontend
+ok 18 - mock-api imports nothing from the frontend
+  ---
+  duration_ms: 0.802975
+  type: 'test'
+  ...
+# Subtest: import specifiers cover static, dynamic, side-effect, require and CSS forms
+ok 19 - import specifiers cover static, dynamic, side-effect, require and CSS forms
+  ---
+  duration_ms: 0.238161
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 434.119977
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits-demo/erp, @pepbits-demo/healthcare, @pepbits-demo/showcase, @pepbits/ai, @pepbits/components, @pepbits/data, @pepbits/i18n, @pepbits/icons, @pepbits/page-engines, @pepbits/patterns, @pepbits/platform, @pepbits/preferences, @pepbits/shell, @pepbits/tokens, @pepbits/tsconfig, @pepbits/ui
+   • Running typecheck, test, build in 16 packages
+   • Remote caching disabled, using shared worktree cache
+
+@pepbits/data:typecheck: cache bypass, force executing 9eaae2a012dafa63
+@pepbits/data:typecheck: 
+@pepbits/data:typecheck: > @pepbits/data@0.0.0 typecheck
+@pepbits/data:typecheck: > tsc --noEmit -p .
+@pepbits/data:typecheck: 
+@pepbits/i18n:typecheck: cache bypass, force executing 44d4db02a4a87f70
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/i18n:typecheck: 
+@pepbits/i18n:typecheck: > @pepbits/i18n@0.0.0 typecheck
+@pepbits/i18n:typecheck: > tsc --noEmit -p .
+@pepbits/i18n:typecheck: 
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/icons:typecheck: cache bypass, force executing 22776a3384b62476
+@pepbits/icons:typecheck: 
+@pepbits/icons:typecheck: > @pepbits/icons@0.0.0 typecheck
+@pepbits/icons:typecheck: > tsc --noEmit -p .
+@pepbits/icons:typecheck: 
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/tokens:typecheck: cache bypass, force executing 42ff287e13f57775
+@pepbits/tokens:typecheck: 
+@pepbits/tokens:typecheck: > @pepbits/tokens@0.0.0 typecheck
+@pepbits/tokens:typecheck: > tsc --noEmit -p .
+@pepbits/tokens:typecheck: 
+@pepbits/i18n:test: cache bypass, force executing 54f453e50229bd0b
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/i18n:test: 
+@pepbits/i18n:test: > @pepbits/i18n@0.0.0 test
+@pepbits/i18n:test: > vitest run
+@pepbits/i18n:test: 
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/i18n
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  ✓ src/page-copy-localization.test.tsx (4 tests) 83ms
+@pepbits/i18n:test:  ✓ src/localization.test.tsx (4 tests) 151ms
+@pepbits/i18n:test:  ✓ src/localization-formatting.test.ts (13 tests) 48ms
+@pepbits/i18n:test:  ✓ src/i18n.test.ts (26 tests) 41ms
+@pepbits/i18n:test:  ✓ src/catalogs.test.ts (5 tests) 11ms
+@pepbits/i18n:test:  ✓ src/format.test.ts (13 tests) 53ms
+@pepbits/i18n:test:  ✓ src/number-words.test.ts (6 tests) 7ms
+@pepbits/i18n:test: 
+@pepbits/i18n:test:  Test Files  7 passed (7)
+@pepbits/i18n:test:       Tests  71 passed (71)
+@pepbits/i18n:test:    Start at  03:28:47
+@pepbits/i18n:test:    Duration  5.18s (transform 302ms, setup 1.28s, collect 532ms, tests 393ms, environment 3.78s, prepare 615ms)
+@pepbits/i18n:test: 
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/data:test: cache bypass, force executing a968e068be6271fa
+@pepbits/data:test: 
+@pepbits/data:test: > @pepbits/data@0.0.0 test
+@pepbits/data:test: > vitest run
+@pepbits/data:test: 
+@pepbits/data:test: 
+@pepbits/data:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/data
+@pepbits/data:test: 
+@pepbits/data:test:  ✓ src/memory-records.test.ts (5 tests) 84ms
+@pepbits/data:test:  ✓ src/records.test.ts (11 tests) 741ms
+@pepbits/data:test:  ✓ src/http-adapters.test.ts (11 tests) 38ms
+@pepbits/data:test:  ✓ src/workflow-adapters.test.ts (4 tests) 18ms
+@pepbits/data:test:  ✓ src/dcp-runtime.test.ts (4 tests) 22ms
+@pepbits/data:test:  ✓ src/csv-import.test.ts (4 tests) 14ms
+@pepbits/data:test:  ✓ src/memory-drafts.test.ts (2 tests) 15ms
+@pepbits/data:test:  ✓ src/draft-center.test.ts (2 tests) 16ms
+@pepbits/data:test:  ✓ src/dcp-host.test.ts (2 tests) 17ms
+@pepbits/data:test:  ✓ src/contracts/dcp-repeating.test.ts (4 tests) 14ms
+@pepbits/data:test:  ✓ src/contracts/dcp-designer-metadata.test.ts (2 tests) 7ms
+@pepbits/data:test:  ✓ src/draft-policy.test.ts (2 tests) 7ms
+@pepbits/data:test: 
+@pepbits/data:test:  Test Files  12 passed (12)
+@pepbits/data:test:       Tests  53 passed (53)
+@pepbits/data:test:    Start at  03:28:54
+@pepbits/data:test:    Duration  4.00s (transform 496ms, setup 0ms, collect 898ms, tests 993ms, environment 4ms, prepare 1.21s)
+@pepbits/data:test: 
+@pepbits/tokens:test: cache bypass, force executing e8d3b93cb57eb3d2
+@pepbits/tokens:test: 
+@pepbits/tokens:test: > @pepbits/tokens@0.0.0 test
+@pepbits/tokens:test: > vitest run
+@pepbits/tokens:test: 
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/tokens
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  ✓ src/index.test.ts (3 tests) 9ms
+@pepbits/tokens:test: 
+@pepbits/tokens:test:  Test Files  1 passed (1)
+@pepbits/tokens:test:       Tests  3 passed (3)
+@pepbits/tokens:test:    Start at  03:29:00
+@pepbits/tokens:test:    Duration  598ms (transform 79ms, setup 0ms, collect 73ms, tests 9ms, environment 0ms, prepare 84ms)
+@pepbits/tokens:test: 
+@pepbits/icons:test: cache bypass, force executing 9584e499dd6f5388
+@pepbits/icons:test: 
+@pepbits/icons:test: > @pepbits/icons@0.0.0 test
+@pepbits/icons:test: > vitest run
+@pepbits/icons:test: 
+@pepbits/icons:test: 
+@pepbits/icons:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/icons
+@pepbits/icons:test: 
+@pepbits/icons:test:  ✓ src/icon.test.tsx (100 tests) 327ms
+@pepbits/icons:test: 
+@pepbits/icons:test:  Test Files  1 passed (1)
+@pepbits/icons:test:       Tests  100 passed (100)
+@pepbits/icons:test:    Start at  03:29:03
+@pepbits/icons:test:    Duration  2.00s (transform 114ms, setup 0ms, collect 391ms, tests 327ms, environment 619ms, prepare 113ms)
+@pepbits/icons:test: 
+@pepbits/preferences:typecheck: cache bypass, force executing 77603d3c8c540d17
+@pepbits/preferences:typecheck: 
+@pepbits/preferences:typecheck: > @pepbits/preferences@0.0.0 typecheck
+@pepbits/preferences:typecheck: > tsc --noEmit -p .
+@pepbits/preferences:typecheck: 
+@pepbits/ui:typecheck: cache bypass, force executing be8adde85d25b742
+@pepbits/ui:typecheck: 
+@pepbits/ui:typecheck: > @pepbits/ui@0.0.0 typecheck
+@pepbits/ui:typecheck: > tsc --noEmit -p .
+@pepbits/ui:typecheck: 
+@pepbits/preferences:test: cache bypass, force executing dc1001a5e2ff6b38
+@pepbits/preferences:test: 
+@pepbits/preferences:test: > @pepbits/preferences@0.0.0 test
+@pepbits/preferences:test: > vitest run
+@pepbits/preferences:test: 
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/preferences
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  ✓ src/policy.test.ts (24 tests) 47ms
+@pepbits/preferences:test:  ✓ src/preference-defaults.test.ts (3 tests) 6ms
+@pepbits/preferences:test:  ✓ src/react.test.tsx (6 tests) 187ms
+@pepbits/preferences:test: 
+@pepbits/preferences:test:  Test Files  3 passed (3)
+@pepbits/preferences:test:       Tests  33 passed (33)
+@pepbits/preferences:test:    Start at  03:29:14
+@pepbits/preferences:test:    Duration  1.67s (transform 344ms, setup 0ms, collect 612ms, tests 239ms, environment 637ms, prepare 375ms)
+@pepbits/preferences:test: 
+@pepbits/ui:test: cache bypass, force executing 3c5a1999572a9ba0
+@pepbits/ui:test: 
+@pepbits/ui:test: > @pepbits/ui@0.0.0 test
+@pepbits/ui:test: > vitest run
+@pepbits/ui:test: 
+@pepbits/ui:test: 
+@pepbits/ui:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/ui
+@pepbits/ui:test: 
+@pepbits/ui:test:  ✓ src/form-controls.test.tsx (30 tests) 687ms
+@pepbits/ui:test:  ✓ src/search-select.test.tsx (15 tests) 1002ms
+@pepbits/ui:test:  ✓ src/async-lookup.test.tsx (5 tests) 393ms
+@pepbits/ui:test:  ✓ src/quantity-unit-field.test.tsx (9 tests) 518ms
+@pepbits/ui:test:  ✓ src/segmented.test.tsx (9 tests) 381ms
+@pepbits/ui:test:  ✓ src/localization.test.tsx (3 tests) 235ms
+@pepbits/ui:test:  ✓ src/source-controls.test.tsx (7 tests) 204ms
+@pepbits/ui:test:  ✓ src/avatar.test.tsx (10 tests) 191ms
+@pepbits/ui:test:  ✓ src/button.test.tsx (5 tests) 262ms
+@pepbits/ui:test:  ✓ src/skeleton.test.tsx (4 tests) 162ms
+@pepbits/ui:test:  ✓ src/badge.test.tsx (12 tests) 135ms
+@pepbits/ui:test:  ✓ src/scanner-input.test.tsx (2 tests) 98ms
+@pepbits/ui:test:  ✓ src/option-filter.test.tsx (13 tests) 68ms
+@pepbits/ui:test:  ✓ src/cn.test.ts (9 tests) 39ms
+@pepbits/ui:test:  ✓ src/field-interop.test.tsx (3 tests) 10ms
+@pepbits/ui:test: 
+@pepbits/ui:test:  Test Files  15 passed (15)
+@pepbits/ui:test:       Tests  136 passed (136)
+@pepbits/ui:test:    Start at  03:29:18
+@pepbits/ui:test:    Duration  14.30s (transform 720ms, setup 2.92s, collect 2.44s, tests 4.38s, environment 9.54s, prepare 1.57s)
+@pepbits/ui:test: 
+@pepbits/platform:typecheck: cache bypass, force executing 3e53da93bee21145
+@pepbits/platform:typecheck: 
+@pepbits/platform:typecheck: > @pepbits/platform@0.0.0 typecheck
+@pepbits/platform:typecheck: > tsc --noEmit -p .
+@pepbits/platform:typecheck: 
+@pepbits/components:typecheck: cache bypass, force executing c83c96682393665e
+@pepbits/components:typecheck: 
+@pepbits/components:typecheck: > @pepbits/components@0.0.0 typecheck
+@pepbits/components:typecheck: > tsc --noEmit -p .
+@pepbits/components:typecheck: 
+@pepbits/platform:test: cache bypass, force executing a3816c02cf310a39
+@pepbits/platform:test: 
+@pepbits/platform:test: > @pepbits/platform@0.0.0 test
+@pepbits/platform:test: > vitest run
+@pepbits/platform:test: 
+@pepbits/platform:test: 
+@pepbits/platform:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/platform
+@pepbits/platform:test: 
+@pepbits/platform:test:  ✓ src/ports.test.tsx (17 tests) 106ms
+@pepbits/platform:test:  ✓ src/session.test.tsx (34 tests) 444ms
+@pepbits/platform:test:  ✓ src/http.test.tsx (6 tests) 56ms
+@pepbits/platform:test:  ✓ src/recovery.test.ts (10 tests) 47ms
+@pepbits/platform:test:  ✓ src/device-workflows.test.ts (4 tests) 21ms
+@pepbits/platform:test:  ✓ src/preference-service.test.ts (3 tests) 18ms
+@pepbits/platform:test:  ✓ src/sentinel.test.ts (5 tests) 10ms
+@pepbits/platform:test:  ✓ src/devices.test.ts (1 test) 10ms
+@pepbits/platform:test: 
+@pepbits/platform:test:  Test Files  8 passed (8)
+@pepbits/platform:test:       Tests  80 passed (80)
+@pepbits/platform:test:    Start at  03:29:43
+@pepbits/platform:test:    Duration  6.39s (transform 696ms, setup 1.45s, collect 1.17s, tests 712ms, environment 4.74s, prepare 759ms)
+@pepbits/platform:test: 
+@pepbits/components:test: cache bypass, force executing e0fd8e326d8e1c6b
+@pepbits/components:test: 
+@pepbits/components:test: > @pepbits/components@0.0.0 test
+@pepbits/components:test: > vitest run
+@pepbits/components:test: 
+@pepbits/components:test: 
+@pepbits/components:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/components
+@pepbits/components:test: 
+@pepbits/components:test:  ✓ src/shared-components.test.tsx (11 tests) 792ms
+@pepbits/components:test:    ✓ Calendar > selects leap day, respects bounds and uses date-only values  313ms
+@pepbits/components:test:  ✓ src/dropdown.test.tsx (11 tests) 908ms
+@pepbits/components:test:  ✓ src/inline-edit-typed.test.tsx (19 tests) 981ms
+@pepbits/components:test:  ✓ src/inline-edit.test.tsx (15 tests) 940ms
+@pepbits/components:test:  ✓ src/reference-data.test.tsx (17 tests) 340ms
+@pepbits/components:test:  ✓ src/overlay.test.tsx (23 tests) 911ms
+@pepbits/components:test:  ✓ src/pagination.test.tsx (10 tests) 730ms
+@pepbits/components:test:  ✓ src/recovery-notice.test.tsx (5 tests) 1155ms
+@pepbits/components:test:    ✓ renders all failure categories in en with safe actions  336ms
+@pepbits/components:test:    ✓ renders all failure categories in ml with safe actions  396ms
+@pepbits/components:test:  ✓ src/page-copy-localization.test.tsx (5 tests) 639ms
+@pepbits/components:test:  ✓ src/states.test.tsx (25 tests) 767ms
+@pepbits/components:test:  ✓ src/tabs.test.tsx (3 tests) 329ms
+@pepbits/components:test:  ✓ src/charts.test.tsx (2 tests) 322ms
+@pepbits/components:test:  ✓ src/stat-card.test.tsx (6 tests) 188ms
+@pepbits/components:test:  ✓ src/collection-view.test.tsx (3 tests) 310ms
+@pepbits/components:test:  ✓ src/presentation.test.tsx (3 tests) 259ms
+@pepbits/components:test:  ✓ src/card.test.tsx (6 tests) 368ms
+@pepbits/components:test:  ✓ src/source-dialog.test.tsx (2 tests) 238ms
+@pepbits/components:test:  ✓ src/table-keyboard.test.tsx (2 tests) 232ms
+@pepbits/components:test:  ✓ src/print-document.test.tsx (1 test) 138ms
+@pepbits/components:test:  ✓ src/error-mapper.test.ts (32 tests) 18ms
+@pepbits/components:test: 
+@pepbits/components:test:  Test Files  20 passed (20)
+@pepbits/components:test:       Tests  201 passed (201)
+@pepbits/components:test:    Start at  03:29:51
+@pepbits/components:test:    Duration  28.43s (transform 1.31s, setup 4.69s, collect 5.91s, tests 10.56s, environment 17.40s, prepare 3.93s)
+@pepbits/components:test: 
+@pepbits/patterns:typecheck: cache bypass, force executing 09c2a2cb4099c074
+@pepbits/patterns:typecheck: 
+@pepbits/patterns:typecheck: > @pepbits/patterns@0.0.0 typecheck
+@pepbits/patterns:typecheck: > tsc --noEmit -p .
+@pepbits/patterns:typecheck: 
+@pepbits/patterns:test: cache bypass, force executing f3c88953d81a3c75
+@pepbits/patterns:test: 
+@pepbits/patterns:test: > @pepbits/patterns@0.0.0 test
+@pepbits/patterns:test: > vitest run
+@pepbits/patterns:test: 
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/patterns
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  ✓ src/lifecycle/sources.test.tsx (11 tests) 3134ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged  542ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > creates a pinned mapping from a registered source and saves it through the governed draft  541ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > explains invalid and stale mappings, and re-pins only from the registry  380ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > published mappings are read-only  312ms
+@pepbits/patterns:test:    ✓ Lifecycle source mappings > server validation issues on a mapping navigate to it  333ms
+@pepbits/patterns:test:  ✓ src/lifecycle/lifecycle.test.tsx (18 tests) 3885ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > console summary uses server validation and clears it after editing  480ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > saves a draft with the expected revision and reuses the operation key on retry  460ms
+@pepbits/patterns:test:    ✓ LifecycleConfigurationPage > lifecycle module and domain are editable codes that drive catalogue navigation  363ms
+@pepbits/patterns:test:  ✓ src/drafts/draft-center.test.tsx (3 tests) 1472ms
+@pepbits/patterns:test:    ✓ metadata and policy appear, search/filter use the API and open rechecks access  782ms
+@pepbits/patterns:test:    ✓ inaccessible rows hide details, disable open, and retain discard  318ms
+@pepbits/patterns:test:    ✓ discard retry retains its operation id and does not remove a row until confirmed  370ms
+@pepbits/patterns:test:  ✓ src/drafts/use-shared-draft.test.tsx (4 tests) 1983ms
+@pepbits/patterns:test:    ✓ failed draft write retains the exact payload and operation identity on retry  832ms
+@pepbits/patterns:test:    ✓ completion waits for in-flight autosave before discarding its acknowledged revision  819ms
+@pepbits/patterns:test:  ✓ src/form-designer/workspace.test.tsx (3 tests) 981ms
+@pepbits/patterns:test:    ✓ visual edits reuse stable IDs; failed save retains edits and reuses operation on retry  591ms
+@pepbits/patterns:test:    ✓ preview uses unsaved design, hides authoring, validates and resets test answers without saving  304ms
+@pepbits/patterns:test:  ✓ src/form-designer/dependencies.test.tsx (3 tests) 988ms
+@pepbits/patterns:test:    ✓ parent change clears all descendants and late API responses cannot restore old options  488ms
+@pepbits/patterns:test:  ✓ src/lifecycle/screen-host.test.tsx (2 tests) 754ms
+@pepbits/patterns:test:    ✓ live policy overrides explicit list sizes and updates managed presentation  437ms
+@pepbits/patterns:test:    ✓ lifecycle forwards dirty changes and localized notifications to the screen host  313ms
+@pepbits/patterns:test:  ✓ src/approvals/approval-workspace.test.tsx (7 tests) 1007ms
+@pepbits/patterns:test:    ✓ submission requires a comment and confirmation; unknown outcomes reuse the operation id  375ms
+@pepbits/patterns:test:  ✓ src/form-designer/catalog-manager.test.tsx (4 tests) 623ms
+@pepbits/patterns:test:    ✓ catalog save failure preserves edits and retries the identical revision command  328ms
+@pepbits/patterns:test:  ✓ src/imports/csv-import-dialog.test.tsx (6 tests) 902ms
+@pepbits/patterns:test:    ✓ restored validation requires explicit confirmation before writing  355ms
+@pepbits/patterns:test:  ✓ src/spreadsheet/workspace.test.tsx (2 tests) 527ms
+@pepbits/patterns:test:    ✓ export awaits the host audit, preserves edited values on failure, and uses effective format  372ms
+@pepbits/patterns:test:  ✓ src/device-integrations/workspace.test.tsx (2 tests) 424ms
+@pepbits/patterns:test:  ✓ src/identity-devices/workspace.test.tsx (3 tests) 490ms
+@pepbits/patterns:test:    ✓ biometrics disabled still allows separate manual review and never implies authentication  333ms
+@pepbits/patterns:test:  ✓ src/form-designer/host-runtime.test.tsx (3 tests) 556ms
+@pepbits/patterns:test:    ✓ required false is displayed, edits retain values on 422, successful save uses normalized server values  348ms
+@pepbits/patterns:test:  ✓ src/master-transfer/panel.test.tsx (4 tests) 419ms
+@pepbits/patterns:test:  ✓ src/form-designer/sections.test.tsx (5 tests) 381ms
+@pepbits/patterns:test:  ✓ src/tree/tree.test.tsx (2 tests) 373ms
+@pepbits/patterns:test:    ✓ expand, select, search and collapse report only visible neighbours  363ms
+@pepbits/patterns:test:  ✓ src/label-printing/workspace.test.tsx (2 tests) 335ms
+@pepbits/patterns:test:  ✓ src/dcp-fields/runtime-fields.test.tsx (5 tests) 455ms
+@pepbits/patterns:test:    ✓ host renderer receives only writable unmasked fields and cannot mutate a disabled control  308ms
+@pepbits/patterns:test:  ✓ src/board/board.test.tsx (2 tests) 359ms
+@pepbits/patterns:test:  ✓ src/calendar/calendar.test.tsx (5 tests) 367ms
+@pepbits/patterns:test:  ✓ src/resources/resources.test.tsx (2 tests) 177ms
+@pepbits/patterns:test:  ✓ src/dcp-fields/preferences.test.tsx (1 test) 105ms
+@pepbits/patterns:test:  ✓ src/screen-host.test.tsx (8 tests) 111ms
+@pepbits/patterns:test:  ✓ src/master-transfer/inflation.test.ts (2 tests) 119ms
+@pepbits/patterns:test:  ✓ src/master-transfer/format.test.ts (8 tests) 77ms
+@pepbits/patterns:test:  ✓ src/lifecycle/config/lifecycle.test.ts (19 tests) 56ms
+@pepbits/patterns:test:  ✓ src/lifecycle/config/sources.test.ts (17 tests) 34ms
+@pepbits/patterns:test:  ✓ src/imports/workbook-options.test.ts (2 tests) 19ms
+@pepbits/patterns:test:  ✓ src/spreadsheet/model.test.ts (4 tests) 7ms
+@pepbits/patterns:test:  ✓ src/imports/csv-options.test.ts (3 tests) 9ms
+@pepbits/patterns:test:  ✓ src/drafts/use-unsaved-warning.test.tsx (1 test) 28ms
+@pepbits/patterns:test: 
+@pepbits/patterns:test:  Test Files  32 passed (32)
+@pepbits/patterns:test:       Tests  163 passed (163)
+@pepbits/patterns:test:    Start at  03:30:33
+@pepbits/patterns:test:    Duration  41.82s (transform 2.94s, setup 6.66s, collect 12.54s, tests 21.16s, environment 24.03s, prepare 3.81s)
+@pepbits/patterns:test: 
+@pepbits/page-engines:typecheck: cache bypass, force executing 261f7a8adf43070c
+@pepbits/page-engines:typecheck: 
+@pepbits/page-engines:typecheck: > @pepbits/page-engines@0.0.0 typecheck
+@pepbits/page-engines:typecheck: > tsc --noEmit -p .
+@pepbits/page-engines:typecheck: 
+@pepbits/page-engines:typecheck: src/worklist/preference-compliance.test.tsx(76,40): error TS2741: Property 'locked' is missing in type '{ value: number; allowedValues: number[]; }' but required in type 'PreferenceRule'.
+@pepbits/page-engines:typecheck: npm ERR! Lifecycle script `typecheck` failed with error: 
+@pepbits/page-engines:typecheck: npm ERR! Error: command failed 
+@pepbits/page-engines:typecheck: npm ERR!   in workspace: @pepbits/page-engines@0.0.0 
+@pepbits/page-engines:typecheck: npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c4/packages/page-engines 
+@pepbits/page-engines:test: cache bypass, force executing efc81f9438252b66
+@pepbits/page-engines#typecheck:  ERROR  command (/home/pepadmin/pb/worktrees/frontend-phase6c4/packages/page-engines) /usr/bin/npm run typecheck exited (1)
+
+ Tasks:    18 successful, 20 total
+Cached:    0 cached, 20 total
+  Time:    2m46.869s 
+Failed:    @pepbits/page-engines#typecheck
+
+ ERROR  run failed: command  exited (1)

@@ -6,22 +6,25 @@ import {Button,Input,Select,Segmented} from '@pepbits/ui';
 import {useLocalization} from '@pepbits/i18n/react';
 import {useEntityApi,useFetch,useScopeMemory,rememberIds,listUrl} from './client';
 import {ErpWorklist} from './worklist';
+import {useKeystone} from './context';
+import {localDay} from './dates';
 import type {PageDef,Row,ListResponse} from './types';
 import type {PageDefinition} from '@pepbits/page-engines/types';
 import type {ErpTarget} from '../../navigation';
 
 export function CaseBoard({def,page,onOpen}:{def:PageDef;page:PageDefinition;onOpen:(target:ErpTarget)=>void}) {
+ const {actor}=useKeystone();
  const {t}=useLocalization(),host=useScreenHost(),format=useFormatters(),api=useEntityApi(),memory=useScopeMemory(),fetched=useFetch<ListResponse>(listUrl(def.entity,{size:1000,sort:'created',dir:'desc'}));
  const [mode,setMode]=useState('board'),[query,setQuery]=useState(''),[priority,setPriority]=useState(''),[assignee,setAssignee]=useState(''),[busy,setBusy]=useState(false),[failure,setFailure]=useState<unknown>();
- const pending=useRef<{row:Row;status:string;operationId:string}|undefined>(undefined),live=useRef(true);
+ const pending=useRef<{row:Row;status:string;operationId:string;activity:unknown[]}|undefined>(undefined),live=useRef(true);
  useEffect(()=>{live.current=true;return()=>{live.current=false;};},[]);
  const rows=fetched.data?.rows??[],shown=rows.filter(row=>(!query||Object.values(row).join(' ').toLowerCase().includes(query.toLowerCase()))&&(!priority||row.priority===priority)&&(!assignee||row.assignee===assignee));
  const visibleIds=JSON.stringify(shown.map(row=>row.id));useEffect(()=>{rememberIds(memory,def.slug,JSON.parse(visibleIds));},[memory,def.slug,visibleIds]);
  const move=async(row:Row,status:string)=>{
   if(busy||!host.can('edit')||!def.statusFlow?.includes(status)||row.status===status)return;
-  if(pending.current?.row!==row||pending.current.status!==status)pending.current={row,status,operationId:crypto.randomUUID()};
+  if(pending.current?.row!==row||pending.current.status!==status)pending.current={row,status,operationId:crypto.randomUUID(),activity:[...(row.activity??[]),{at:localDay(),by:actor?.name??t('You'),text:`Moved from ${row.status} to ${status}`}]};
   setBusy(true);setFailure(undefined);
-  try{const saved=await api.update(def.entity,row.id,{status,expectedVersion:row.version??0,operationId:pending.current.operationId});if(!live.current)return;fetched.setData(data=>data?{...data,rows:data.rows.map(item=>item.id===saved.id?saved:item)}:data);pending.current=undefined;host.notify(t('Changes saved'),{tone:'success'});}
+  try{const saved=await api.update(def.entity,row.id,{status,activity:pending.current.activity,expectedVersion:row.version??0,operationId:pending.current.operationId});if(!live.current)return;fetched.setData(data=>data?{...data,rows:data.rows.map(item=>item.id===saved.id?saved:item)}:data);pending.current=undefined;host.notify(t('Changes saved'),{tone:'success'});}
   catch(error){if(live.current)setFailure(error);}finally{if(live.current)setBusy(false);}
  };
  const options=(key:string)=>[...new Set(rows.map(row=>String(row[key]??'')).filter(Boolean))].sort().map(value=>({value,label:value}));
