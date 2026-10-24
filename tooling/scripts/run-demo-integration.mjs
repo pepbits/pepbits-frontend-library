@@ -1,11 +1,11 @@
 import {spawn,execFileSync} from 'node:child_process';
 import {createServer} from 'node:net';
-import {mkdtempSync,readFileSync,writeFileSync,existsSync,readdirSync} from 'node:fs';
+import {mkdtempSync,readFileSync,writeFileSync,existsSync,readdirSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-const demo=process.argv[2];if(!['healthcare','erp','school','tenant-admin','reports','onboarding'].includes(demo))throw new Error('Pass a demo app name');
+const demo=process.argv[2];if(!['healthcare','erp','school','tenant-admin','reports','onboarding','desktop'].includes(demo))throw new Error('Pass a demo app name');
 // Environment prefixes use underscores: tenant-admin reads TENANT_ADMIN_API_NODE, TENANT_ADMIN_RESULT and so on.
 const prefix=demo.toUpperCase().replaceAll('-','_');
 const root=fileURLToPath(new URL('../../',import.meta.url));
@@ -21,7 +21,7 @@ function stopChildren(){return stopping??=(async()=>{for(const child of [...chil
  cleanup.push({label:child.serviceLabel,pid:child.pid,exitCode:child.exitCode,signal:child.signalCode,groupAlive});
 }})();}
 let cancellationStarted=false;
-function cancel(reason){if(cancellationStarted)return;cancellationStarted=true;void stopChildren().finally(()=>{identity.interrupted=reason;identity.cleanup=cleanup;writeFileSync(process.env[prefix+'_IDENTITY']??'/tmp/'+demo+'-integration-identity.json',JSON.stringify(identity,null,2)+'\n');process.exit(1);});}
+function cancel(reason){if(cancellationStarted)return;cancellationStarted=true;void stopChildren().finally(()=>{identity.interrupted=reason;identity.cleanup=cleanup;writeFileSync(process.env[prefix+'_IDENTITY']??'/tmp/'+demo+'-integration-identity.json',JSON.stringify(identity,null,2)+'\n');rmSync(temp,{recursive:true,force:true});process.exit(1);});}
 for(const signal of ['SIGINT','SIGTERM'])process.once(signal,()=>cancel(signal));
 // A shared stop file remains reachable when the execution wrapper has its own PID namespace.
 const stopFile=process.env[prefix+'_STOP_FILE'];
@@ -69,7 +69,9 @@ async function ready(url,process){for(let i=0;i<120;i++){if(process.child.exitCo
 try{
  const api=start(node,[...apiArgs,'dummy-api/server.mjs'],{HOST:'127.0.0.1',PORT:String(apiPort),NEXORA_DATA_DIR:join(temp,'data'),RECORD_DATA_DIR:join(temp,'records')},root,'API');
  await ready(`http://127.0.0.1:${apiPort}/auth/session`,api);
- const next=start(process.execPath,[join(root,'node_modules/next/dist/bin/next'),'start','--hostname','127.0.0.1','--port',String(appPort)],{[prefix+'_API_URL']:`http://127.0.0.1:${apiPort}`},app,'Next');
+ // Vite apps (the desktop demo) serve their production build with `vite preview`, which proxies /api to <PREFIX>_API_URL.
+ const vite=existsSync(join(app,'vite.config.ts'));
+ const next=start(process.execPath,vite?[join(root,'node_modules/vite/bin/vite.js'),'preview','--host','127.0.0.1','--port',String(appPort),'--strictPort']:[join(root,'node_modules/next/dist/bin/next'),'start','--hostname','127.0.0.1','--port',String(appPort)],{[prefix+'_API_URL']:`http://127.0.0.1:${apiPort}`},app,vite?'Vite':'Next');
  await ready(`http://127.0.0.1:${appPort}/`,next);
  const browser=start(process.execPath,[join(app,'scripts/smoke.mjs')],{[prefix+'_BASE']:`http://127.0.0.1:${appPort}`,[prefix+'_EXAMPLES']:'1',[prefix+'_FLOW']:'1'},root,'Browser');
  browser.child.stdout.pipe(process.stdout);browser.child.stderr.pipe(process.stderr);
@@ -77,4 +79,4 @@ try{
  if(identity.runtimeArtifacts){identity.runtimeArtifacts.resolved=existsSync(identity.runtimeArtifacts.artifactLog)?readFileSync(identity.runtimeArtifacts.artifactLog,'utf8').trim().split('\n').filter(Boolean).map(JSON.parse):[];identity.runtimeArtifacts.resolved=[...new Map(identity.runtimeArtifacts.resolved.map(entry=>[entry.path,entry])).values()].sort((a,b)=>a.path.localeCompare(b.path));delete identity.runtimeArtifacts.artifactLog;}
  writeFileSync(process.env[prefix+'_IDENTITY']??'/tmp/'+demo+'-integration-identity.json',JSON.stringify(identity,null,2)+'\n');
  console.log(JSON.stringify({integrationExit:code,sourceBase:identity.sourceBase,apiPort,appPort}));
-}finally{clearTimeout(deadline);if(cancellation)clearInterval(cancellation);await stopChildren();identity.cleanup=cleanup;writeFileSync(process.env[prefix+'_IDENTITY']??'/tmp/'+demo+'-integration-identity.json',JSON.stringify(identity,null,2)+'\n');}
+}finally{clearTimeout(deadline);if(cancellation)clearInterval(cancellation);await stopChildren();identity.cleanup=cleanup;writeFileSync(process.env[prefix+'_IDENTITY']??'/tmp/'+demo+'-integration-identity.json',JSON.stringify(identity,null,2)+'\n');rmSync(temp,{recursive:true,force:true});}

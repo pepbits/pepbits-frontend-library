@@ -1,0 +1,51 @@
+{
+  "name": "@pepbits-demo/desktop",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3410",
+    "build": "vite build",
+    "start": "vite preview --port 3410",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "node scripts/integration.mjs",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@pepbits/ai": "0.0.0",
+    "@pepbits/components": "0.0.0",
+    "@pepbits/data": "0.0.0",
+    "@pepbits/i18n": "0.0.0",
+    "@pepbits/icons": "0.0.0",
+    "@pepbits/page-engines": "0.0.0",
+    "@pepbits/patterns": "0.0.0",
+    "@pepbits/platform": "0.0.0",
+    "@pepbits/preferences": "0.0.0",
+    "@pepbits/shell": "0.0.0",
+    "@pepbits/tokens": "0.0.0",
+    "@pepbits/ui": "0.0.0",
+    "@tauri-apps/api": "^2.2.0",
+    "react": "~19.2.0",
+    "react-dom": "~19.2.0",
+    "@fontsource-variable/inter": "^5.0.0",
+    "@fontsource-variable/manrope": "^5.0.0",
+    "@fontsource-variable/source-sans-3": "^5.0.0",
+    "@fontsource-variable/nunito-sans": "^5.0.0",
+    "@fontsource-variable/noto-sans-arabic": "^5.0.0",
+    "@fontsource-variable/noto-sans-devanagari": "^5.0.0",
+    "@fontsource-variable/noto-sans-malayalam": "^5.0.0",
+    "@fontsource/ibm-plex-sans": "^5.0.0",
+    "@fontsource/ibm-plex-mono": "^5.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "~4.1.0",
+    "@tauri-apps/cli": "^2.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "axe-core": "^4.10.3",
+    "postcss": "^8.5.0",
+    "tailwindcss": "~4.1.0",
+    "vite": "^7.3.7",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  }
+}
