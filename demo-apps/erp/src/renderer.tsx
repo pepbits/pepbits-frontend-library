@@ -13,6 +13,6 @@ import {pages,type ErpTarget,type Variant} from './navigation';
 function Settings(){return <PreferencesPage showTabPreferences={false} services={useSettingsServices()}/>;}
 const Renderer=createPageRenderer({renderers:{keystone:KeystonePage,preferences:Settings}});
 export function ErpPage({target}:{target:ErpTarget}){const page=pages.find(p=>p.id===target.pageId),{user}=useSession(),request=useRequest(),variant=(page?.module==='erp2'?'erp2':'erp1') as Variant;
- const scoped=useMemo(()=>createKeystoneRequest(request,variant,user!.branch),[request,variant,user?.branch]);const scopeKey=JSON.stringify([user?.tenantId,user?.id,user?.role,user?.branch,variant]);
- return page?<KeystoneProvider variant={variant} scopeKey={scopeKey} request={scoped}><Renderer page={page} target={target}/></KeystoneProvider>:<NotFoundState/>;
+ const scoped=useMemo(()=>createKeystoneRequest(request,variant,user!.branch),[request,variant,user?.branch]);const scopeKey=JSON.stringify([user?.tenantId,user?.id,user?.role,user?.branch,variant,user?.permissions]);
+ return page?<KeystoneProvider variant={variant} scopeKey={scopeKey} actor={user??undefined} request={scoped}><Renderer page={page} target={target}/></KeystoneProvider>:<NotFoundState/>;
 }

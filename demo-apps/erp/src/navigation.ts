@@ -11,7 +11,10 @@ export type ErpTarget=NavigationTarget&{query?:string};
 export const pageId=(variant:Variant,def:{section:string;slug:string})=>`${variant}-${def.section}-${def.slug}`;
 export const pages:PageDefinition[]=[...(['erp1','erp2'] as const).flatMap(variant=>PAGES.map(def=>({id:pageId(variant,def),title:def.title,subtitle:def.description,kind:'keystone',module:variant,entity:def.entity,ai:{enabled:false,useCases:[]}}))),{id:'preferences',title:'Preferences',subtitle:'',kind:'preferences',module:'shared'}];
 const navigation:ShellNavigation={defaultModule:'erp1',pages:Object.fromEntries(pages.map(p=>[p.id,p])),modules:Object.fromEntries((['erp1','erp2'] as const).map(variant=>[variant,{id:variant,label:variant.toUpperCase(),shortLabel:variant.toUpperCase(),description:'Keystone fictional ERP workflows',icon:FileQuestion,accent:'var(--primary)',navigation:[...new Set(PAGES.map(p=>p.section))].map(section=>({id:variant+'-'+section,label:SECTIONS.find(s=>s.key===section)!.label,items:PAGES.filter(p=>p.section===section).map(def=>({id:pageId(variant,def),pageId:pageId(variant,def),label:def.title}))}))}]))};
-export const product=defineProduct({id:API_PRODUCT,name:'ERP',tagline:'Fictional financial demonstration',navigation,defaultModule:'erp1',enabledModules:['erp1','erp2'],access:{actions:{create:['admin','enterprise-admin','operations','operations-analyst'],edit:['admin','enterprise-admin','operations','operations-analyst'],export:['admin','enterprise-admin','operations','operations-analyst'],archive:[]}}});
+// The shell gates the session and eligible roles; EntityAccess narrows writes to
+// the current entity's grants without overriding any shell denial.
+const writeRoles=['admin','enterprise-admin','operations','operations-analyst','finance','finance-manager','accountant'];
+export const product=defineProduct({id:API_PRODUCT,name:'ERP',tagline:'Fictional financial demonstration',navigation,defaultModule:'erp1',enabledModules:['erp1','erp2'],access:{actions:{create:writeRoles,edit:writeRoles,delete:writeRoles,export:['admin','enterprise-admin','operations','operations-analyst'],archive:[]}}});
 export const erpProductForRole=(_role:string)=>product;
 export function targetFromPath(pathname:string,query=''):ErpTarget {
  if(pathname==='/preferences')return {pageId:'preferences'};

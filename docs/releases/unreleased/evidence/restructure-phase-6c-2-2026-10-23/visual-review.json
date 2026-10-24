@@ -1,0 +1,30 @@
+{
+  "reviewer": "Codex screenshot inspection",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "sourceCheckpoint": "verification-source.json",
+  "captures": [
+    {
+      "file": "erp-final-tree.png",
+      "sha256": "8c3eb54ce88120a3088b0a7f29718416500372eb060007f662e71e03f3d72494",
+      "observation": "ERP1 Chart of accounts shows the searched child and its ancestor beside the selected record; parent, child and leaf-delete controls are visible."
+    },
+    {
+      "file": "erp-final-board.png",
+      "sha256": "6c0d25826d06f71f44310fad452c8f1a52c86beae463c75fac37cb63aa95fad2",
+      "observation": "ERP1 Support tickets shows five status columns with move selects, filters, list toggle and a success notification."
+    },
+    {
+      "file": "erp-final-profile.png",
+      "sha256": "0c2eb914d837996a74344f3a1814bcd2ba7ccb945cb535ed022fa6dc56224b4e",
+      "observation": "ERP1 Customers shows a stable, readable worklist beside selected record details, with the layout switch above it."
+    }
+  ],
+  "limits": [
+    "Inspection covers these captured desktop states; no pixel comparison against the original source was performed.",
+    "Scrolling canvases and long records extend below the viewport; this is not every responsive layout or workflow state.",
+    "Axe and screenshot inspection do not establish human accessibility, native-speaker or accounting acceptance."
+  ]
+}

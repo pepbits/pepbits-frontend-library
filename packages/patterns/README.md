@@ -194,3 +194,14 @@ No Developer-Library launcher, product page/category/context/subject registry, p
 ## Scoped resources
 
 `@pepbits/patterns/resources` exports `ResourceScope`, `JsonRequest`, `useJsonRequest`, `useFetch`, `useScopedResource`, `useScopeMemory`/`useViewMemory` and `useStoredState`. Supply an authenticated request callback, a verified identity key and an explicit state endpoint. A changed scope/request gets a fresh store. Fetches abort and fence stale responses; shared resource promises deduplicate reads within a scope. Stored state hydrates with GET only, protects user edits from late hydration, serializes PUTs and retains values with retry on failure. Caches are ephemeral; this is not a durable business-draft engine. Package tests cover abort/stale completion and scope deduplication. ERP's ported core cases verify hydration, StrictMode, failures and tenant/module separation.
+
+## Hierarchy and workflow board
+
+| Public export | Contract |
+| --- | --- |
+| `@pepbits/patterns/tree` | `HierarchyView`, `HierarchyViewProps`, `HierarchyNode`, `HierarchyEntry`, `hierarchyEntries`: searchable hierarchy with ancestor retention, expand/collapse, visible-ID callback, controlled selection, optional columns/actions and cycle/orphan handling. |
+| `@pepbits/patterns/board` | `WorkflowBoard`, `WorkflowBoardProps`, `BoardColumn`: controlled status columns, pointer drag and accessible select moves, item slots and read-only gating. |
+
+Supply nodes/items and command callbacks inside the existing PreferenceHost, LocalizationProvider and presentation host. Neither area fetches data, grants permissions, mutates records or persists drafts. Density, result scale, semantic colors/radii, localized labels and number formatting follow the effective host; table columns reuse CollectionView. Hierarchy indentation uses logical padding for RTL. There is no custom motion or shortcut binding. The host acknowledges board moves, handles failures and sets `disabled` while pending or unauthorized; changing it fences an in-progress drag. Direct tests cover search/ancestors, malformed hierarchies, selection, visible neighbours, keyboard/pointer commands and mounted permission revocation. ERP owns all entity/route/field configuration.
+
+Structural hierarchy and status-board layouts do not apply the generic table/card `resultView` or split their groups by `pageSize`; hosts supply the complete nodes/groups they intend to display. A host's optional List view should use its ordinary preference-aware worklist. The canvases have no preference persistence or automatic animation, so reduced motion and shortcut disablement require no extra bindings.

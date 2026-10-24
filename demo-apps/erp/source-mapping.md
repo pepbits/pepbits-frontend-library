@@ -1,6 +1,6 @@
 # ERP source mapping
 
-Phase 6c-1, base `9752ea4afc321db6ea70106d03c1648e5c73262d`. Source packages are read-only references. [App guide](README.md), [feature contract](../../docs/features/erp-demo.md) and [delivery record](../../docs/releases/unreleased/restructure-phase-6c-1-2026-10-23.md) state verification and deferrals.
+Initial phase 6c-1, base `9752ea4afc321db6ea70106d03c1648e5c73262d`. Source packages are read-only references. [App guide](README.md), [feature contract](../../docs/features/erp-demo.md) and [current delivery record](../../docs/releases/unreleased/restructure-phase-6c-2-2026-10-23.md) state verification and deferrals.
 
 | Original responsibility | Destination and treatment |
 | --- | --- |
@@ -22,10 +22,12 @@ The 20 original keys are retained in the catalogue and mapped through the shared
 
 ERP1 keeps its in-page editor. ERP2 permits 46 view, 44 new and 42 edit patterns, preserving query/prefill identity and scoped previous/next memory. Default reset/persistence uses the library column engine and effective browser/account storage preference. Each module has its own header selection, navigation and API scope.
 
-Deferred specialized source views: hierarchy canvas, calendar/resource timeline, grouped/dragged boards, bespoke profile layout, invoice print paper, report period/pivot controls and full dashboard composition. The available alternatives are shared data list/record/report views. Durable drafts and cross-route unsaved recovery require further host/API work; no accounting or native-print acceptance is asserted.
+Booking calendar/resource timelines, invoice print geometry, report period/pivot controls, ledger date-range/opening-balance controls, matrix period navigation/bulk-fill and full source dashboard composition remain deferred. Hierarchy canvas and board/profile main workflows are delivered, but ERP2 tree record breadcrumbs/delete/child-table composition, board discussion/history, source-specific profile statistics/activity layout and exact visual matching remain incomplete. Durable and cross-route unsaved recovery and the richer personal-view protocol also remain deferred.
 
 Tests retain all 38 original assertions/cases (20 core + 9 ERP1 + 9 ERP2), adapting old host providers and primitive/export imports to public library APIs. Login uses the real public LoginScreen's username contract. Frozen API fixtures and canonical catalog reads are test-only; generators under `tooling/scripts` read the unchanged source and never run in the app.
 
-Finance-specific entity-grant presentation remains deferred: the app enables writes for the API's admin/enterprise-admin/operations/operations-analyst roles; finance/accountant sessions currently receive read-only controls. The server still enforces every command. Live write evidence uses the fixture administrator.
+Existing create/edit controls and ERP1 tree leaf deletion are enabled for finance, finance-manager and accountant roles on chart-of-accounts, tax-rates, journal-vouchers, payment-vouchers, petty-cash, depreciation-run, receivables-aging and ledger-entries, plus exact server-issued `erp:write:<entity>` grants. Other entities remain read-only; full admin/operations roles retain existing write access. Every command still goes through server authorization. Direct edit routes and retry handlers apply the same entity checks. Export presentation is unchanged.
 
 The Next root layout owns the ERP client/provider host so navigation between a worklist and its record keeps scoped neighbour memory. Catch-all pages supply route identity without remounting that host. A browser refresh still starts a new in-memory scope.
+
+Phase 6c-2 adds public `@pepbits/patterns/tree` and `@pepbits/patterns/board` configured by `keystone/tree.tsx` and `board.tsx`. ERP1 `profile.tsx` composes the existing public worklist/record engines and resource view-state helper. The three tree entities and two case entities apply to both variants; eight profile entities use the ERP1 split composition. Source templates remain read-only. These are main-workflow ports, not a claim of exact source pixels or all record-panel actions.

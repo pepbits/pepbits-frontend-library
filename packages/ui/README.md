@@ -107,3 +107,5 @@ AsyncLookup also accepts native field `id`, `disabled` and `invalid`. Disabling 
 ## Field interoperability
 
 The root exports `optionsFromChildren` and `splitFieldClasses` for adapting native-style field metadata to shared controls. Options preserve raw service values, including LocalizedText message identity; placeholder options are handled separately. Field class splitting uses the effective form scale. These pure helpers do not add a second select/input renderer. The ERP core port retains their original assertions; Showcase's Select example demonstrates both and its generated snippet is refreshed.
+
+Direct `field-interop.test.tsx` cases cover nested fragments/optgroups, numeric and implicit values, translated labels, empty placeholders, logical padding, effective form-scale conversion and wrapper-class retention. These helpers remain pure metadata adapters.
