@@ -178,7 +178,8 @@ try {
     await page.waitForURL(new RegExp('/bills/' + createdBody.bill.bill_no + '$')); await settled();
     flow('SET-15', 'New bill for an existing patient and visit opens its workspace', {bill: createdBody.bill.bill_no});
     const billNo = createdBody.bill.bill_no;
-    await page.getByRole('radio', {name: 'Advance', exact: true}).click();
+    // An empty Bill Later bill only allows advances; the source hides the kind selector for one option.
+    await page.getByText('Advances sit on this bill and are applied when it’s finalized.', {exact: true}).waitFor();
     await page.getByRole('textbox', {name: 'Payment amount'}).fill('250');
     const advance = response(/\/settle-api\/bills\/[^/]+\/payments$/, 'POST');
     await page.getByRole('button', {name: /^Collect /}).click();

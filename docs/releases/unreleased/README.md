@@ -1,6 +1,6 @@
 # Current delivery and release records
 
-- [Settle phase 6e-4 — patient billing desk demo](restructure-phase-6e-4-2026-10-24.md): Settle billing screens over the unchanged API inside the shared shell; mocked checks pass, full CI/build/browser/HTTP verification blocked by the shared heavy-check lock; fictional data, no deployment.
+- [Settle phase 6e-4 — patient billing desk demo](restructure-phase-6e-4-2026-10-24.md): Settle billing screens over the unchanged API inside the shared shell; local real-HTTP check passes 20 workflows and 29 routes with zero errors/axe violations; build, unit/typecheck and prior CI/browser scopes recorded separately; fictional data, no deployment.
 - [School phase 6d-2 — source comparison and visual gaps](restructure-phase-6d-2-2026-10-24.md): compact chart/table parity subset, per-route handoff and exact local evidence.
 
 - [Reports phase 6e-1 — Lumen Reports demo app](restructure-phase-6e-1-2026-10-24.md): all 19 source routes over the shared host and fictional demo API; local verification and limits.

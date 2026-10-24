@@ -43,9 +43,9 @@ describe('Desk, desk user and counter', () => {
     const patient = await within(dialog).findAllByRole('button', {name: /MR/});
     fireEvent.click(patient[0]!);
     await within(dialog).findAllByText(/Outpatient|Inpatient/);
-    fireEvent.click(within(dialog).getByRole('button', {name: /Bill Later/}));
     const create = within(dialog).getByRole('button', {name: 'Create bill'});
     await waitFor(() => expect(create).toBeEnabled());
+    fireEvent.click(within(dialog).getByRole('button', {name: /Bill Later/}));
     fireEvent.click(create);
     await waitFor(() => expect(settle.calls.find(c => c.method === 'POST' && c.path === '/bills')?.body).toMatchObject({billType: 'C', restrictionType: 'N'}));
     await waitFor(() => expect(navigation.open).toHaveBeenCalledWith({pageId: 'settle-bill', recordId: 'BL002001'}));

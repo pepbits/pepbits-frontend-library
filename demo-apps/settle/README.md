@@ -2,7 +2,7 @@
 
 Private `@pepbits-demo/settle`, using Next.js 16.3.3, React 19.2 and Tailwind 4.1. Phase 6e-4 ports the **Settle patient billing desk** (`source/settle`): every screen of patient billing, receipts, advances and deposits — desk, bills, the bill workspace, patient accounts, receipts, approvals, day close, reports, audit trail, settings and the bill/receipt print layouts. All data is **fictional** and every rule is the unchanged Settle backend's. This is a demonstration built from the library, **not a billing, accounting or clinical acceptance**, and a local build/run, not a deployment.
 
-Verification status: mocked tests and typechecking pass. Full CI, Next build, shell Chromium and Settle real-HTTP verification remain blocked by the shared heavy-check lock; see the [release record](../../docs/releases/unreleased/restructure-phase-6e-4-2026-10-24.md). Phase completion is pending.
+Verification status: local build and real-HTTP verification pass: 20 workflows, 29 route variants, zero runtime/console/HTTP errors and zero axe violations. Mocked tests, typechecking and prior CI/shell Chromium results are recorded separately in the [release record](../../docs/releases/unreleased/restructure-phase-6e-4-2026-10-24.md). No deployment or billing acceptance is claimed.
 
 ## Run locally
 

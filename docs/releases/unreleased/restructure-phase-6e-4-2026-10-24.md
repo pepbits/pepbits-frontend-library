@@ -1,6 +1,6 @@
 # Settle phase 6e-4 — patient billing desk demo — 24 October 2026
 
-Status: **blocked at full verification; phase 6e-4 is not complete**. Implementation is retained in the unreleased working tree on `restructure/phase-6e-4`, base `5bbb13027d137ac31594ca9a1a3d47aac46653c9`. This resume preserves the earlier uncommitted work; no merge, rebase, commit, push, publication or deployment. All data and behaviour are **fictional demonstrations**, not billing, accounting or clinical acceptance.
+Status: **local real-HTTP verification passed** on `restructure/phase-6e-4`, base `333ebc94136cad62d3eeeac2bd418bd29845887d` plus the working-tree test corrections identified below. The 24 October live-check follow-up made no commit, merge, push, publication or deployment. Earlier evidence from base `5bbb13027d137ac31594ca9a1a3d47aac46653c9` remains historical. All data and behaviour are **fictional demonstrations**, not billing, accounting or clinical acceptance.
 
 [Plan](../../architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-6e-4-status), [app guide](../../../demo-apps/settle/README.md), [feature contract](../../features/settle-demo.md), [source map](../../../demo-apps/settle/source-mapping.md), [test guide 1.0.0](../../testing/v1.0.0/PRE-COMMIT.md).
 
@@ -39,7 +39,42 @@ The source `x-user-id` switch is a fictional desk identity, separate from host s
 
 ## Verification
 
-The shared heavy-check lock remained held throughout a **1,800-second wait**, which exited 1 without starting any heavy stage. A subsequent nonblocking probe also exited 1. `ps`, `lslocks` and `/proc/locks` cannot expose the holder from this sandbox's PID namespace, so its live/stale state is unknown. The coordinating session must inspect the holder before the remaining checks can run. No lock was bypassed, removed or forcibly released. See [blocked-verification.json](evidence/restructure-phase-6e-4-2026-10-24/blocked-verification.json).
+### Live-check follow-up — 24 October 2026
+
+The app matches the original `source/settle/frontend/components/bill/MoneyRail.tsx`: an empty active Bill Later bill has only the Advance payment kind, selected automatically; the kind selector is rendered only when more than one kind is available. The smoke test incorrectly clicked a nonexistent Advance radio. It now waits for the visible advance guidance, then keeps the real payment, advance-balance, refund, receipt-classification and deposit assertions. **No application or shared-package implementation changed.**
+
+The exact required worktree commands were run from the repository root, without the heavy lock as explicitly requested:
+
+```sh
+NEXT_PUBLIC_API_URL=/api NEXT_PUBLIC_SETTLE_API_URL=/settle-api npm run build -w @pepbits-demo/settle
+LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu \
+SETTLE_API_NODE=$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node \
+SETTLE_RUNTIME_ARTIFACTS=/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/dummy-api \
+npm run test:integration -w @pepbits-demo/settle
+npm test -w @pepbits-demo/settle
+npm run typecheck -w @pepbits-demo/settle
+```
+
+| Check | Result and retained evidence |
+| --- | --- |
+| Required production Next build | Passed, exit 0, with both public proxy prefixes. [Log](evidence/restructure-phase-6e-4-2026-10-24/live-check/build.log) |
+| Required real-HTTP integration | Passed, exit 0: **20 workflows, 29 route variants; zero runtime/step errors, console errors, HTTP errors or axe violations**. Includes advance collection, partial refund, advance receipt edit and deposit allocation/release. [Log](evidence/restructure-phase-6e-4-2026-10-24/live-check/integration.log), [browser receipt](evidence/restructure-phase-6e-4-2026-10-24/live-check/browser-result.json) |
+| Settle unit suite | Passed, exit 0: **161 tests / nine files**, including 116 mocked route/profile axe cases. [Final log](evidence/restructure-phase-6e-4-2026-10-24/live-check/unit-final.log) |
+| Settle typecheck | Passed, exit 0. [Log](evidence/restructure-phase-6e-4-2026-10-24/live-check/typecheck-final.log) |
+| Documentation check | `$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node docs/tools/check-docs.mjs` passed, exit 0: **207 documentation files**. [Final log](evidence/restructure-phase-6e-4-2026-10-24/live-check/docs-final.log). Default Node 22 could not load the TypeScript registry import; [initial log](evidence/restructure-phase-6e-4-2026-10-24/live-check/docs-node22.log). |
+| Cleanup | All four owned process groups stopped, including the unchanged original Settle backend; all three service ports refused connections and temporary storage was removed. Next exit 143 is the launcher's deliberate shutdown after browser exit 0. [Receipt](evidence/restructure-phase-6e-4-2026-10-24/live-check/cleanup.json) |
+
+Chromium used the built local Next server, unchanged host demo API and unchanged Settle API, without intercepted business responses. Host Node was **v24.21.0**; Next, Settle and the runner used **v22.22.1**. Runtime artifact compatibility compared **483 tracked API files with zero mismatches**; the resolved generated artifact hash is retained in the [integration identity](evidence/restructure-phase-6e-4-2026-10-24/live-check/integration-identity.json). Browser axe included colour contrast; its **59 incomplete rule results across 29 routes** remain manual-review items, not violations or completed human acceptance.
+
+Live build/integration source: base `333ebc94136cad62d3eeeac2bd418bd29845887d`, **1,858 files**, digest `e6e86cb7cecfcd7b451ddd4c1c7f9d42beb044dfcfaffbe43bdb9668f869e35c`. Later changes affect only two unit tests and verification documentation/evidence. Final unit/typecheck and manifest digest: `2abe8058ddcb5631a547695c165726fc2e1cc0920d070cc2887af4dfa9ae7ae2`. The final manifest and [source verification](evidence/restructure-phase-6e-4-2026-10-24/live-check/source-verification.json) distinguish live, final unit/typecheck and final documentation identities. Protected directories have no changes. No shared package changed in this follow-up, so no shared-package rerun was needed.
+
+The first post-live unit run passed 160/161 tests and exposed a debounce race in the existing keyboard-charge test: the unfiltered catalogue already contains the expected echocardiogram, so its presence does not establish that the typed search has completed. The test now waits for the matching search request and selected option before Enter. Its exact charge-payload assertion is retained. A second run passed that case but exposed another existing test race: choosing Bill Later before the visit had loaded let the source visit-default effect reset the bill type. The desk test now waits until Create bill is enabled before selecting the type, preserving its request/navigation assertions. [First-attempt log](evidence/restructure-phase-6e-4-2026-10-24/live-check/unit-first-attempt.log), [second-attempt log](evidence/restructure-phase-6e-4-2026-10-24/live-check/unit-second-attempt.log).
+
+Prior local logs separately show **45/45 CI tasks successful, zero cached**, and **4/4 shell Chromium tests passed**; these were inspected, not rerun here. Four healthcare tests were skipped in that CI run, and its exact source digest is unavailable. Their log hashes and the earlier 16-workflow Advance-selector failure are retained in [prior-results.json](evidence/restructure-phase-6e-4-2026-10-24/live-check/prior-results.json). This does not claim a new full CI or hosted CI run for the test corrections.
+
+### Earlier resume evidence (historical)
+
+In the earlier resume, the shared heavy-check lock remained held throughout a **1,800-second wait**, which exited 1 without starting any heavy stage. A subsequent nonblocking probe also exited 1. `ps`, `lslocks` and `/proc/locks` cannot expose the holder from this sandbox's PID namespace, so its live/stale state is unknown. That resume did not start heavy checks or alter the lock. The live-check follow-up above supersedes this verification limitation. See [blocked-verification.json](evidence/restructure-phase-6e-4-2026-10-24/blocked-verification.json).
 
 | Check | Result and exact scope |
 | --- | --- |
@@ -48,24 +83,24 @@ The shared heavy-check lock remained held throughout a **1,800-second wait**, wh
 | `npm test -w @pepbits/i18n -w @pepbits/icons -- --maxWorkers=2` | Passed sequentially: i18n **79 tests / seven files**; icons **107 tests / two files**. [Final log](evidence/restructure-phase-6e-4-2026-10-24/shared-final-unit.log) |
 | Affected workspace typechecks | Passed: **three** (`@pepbits-demo/settle`, `@pepbits/i18n`, `@pepbits/icons`). [Final log](evidence/restructure-phase-6e-4-2026-10-24/typecheck-final.log) |
 | Integration and evidence script syntax | Passed `node --check` and `bash -n`; this is not runtime verification. |
-| Full root CI and Next production build | **Not run in this resume**: heavy-check lock blocked execution. No per-workspace CI counts, zero-cache result or successful build is claimed. |
-| Shell Chromium | **Not run in this resume**: heavy-check lock blocked execution. |
-| Settle real HTTP and Chromium axe | **Not run in this resume**: heavy-check lock blocked execution. The driver defines 20 workflows and 29 route variants; these are planned coverage, not passing counts. |
+| Full root CI and Next production build | **Not run in the earlier resume**: heavy-check lock blocked execution. No per-workspace CI counts, zero-cache result or successful build is claimed. |
+| Shell Chromium | **Not run in the earlier resume**: heavy-check lock blocked execution. |
+| Settle real HTTP and Chromium axe | **Not run in the earlier resume**: heavy-check lock blocked execution. The driver defines 20 workflows and 29 route variants; these are planned coverage, not passing counts. |
 | `/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs` | Passed: **198 documentation files**. [Final log](evidence/restructure-phase-6e-4-2026-10-24/docs-final.log) |
 | Protected paths, forbidden imports, URL/credential scan and whitespace | Passed: protected status empty, **zero forbidden-import matches**, **zero URL/credential matches**, `git diff --check` clean. [Scans](evidence/restructure-phase-6e-4-2026-10-24/boundary-scans.json) |
 
-The [source verification](evidence/restructure-phase-6e-4-2026-10-24/source-verification.json) checks **1,579 manifest files**, with zero hash mismatches. Final unit tests and the three typechecks use manifest digest `a216703b4596852309f61ffaea324cc531007ce25d352348f54c492cf4984acf`.
+The earlier [source verification](evidence/restructure-phase-6e-4-2026-10-24/source-verification.json) checks **1,579 manifest files**, with zero hash mismatches. That earlier unit run and its three typechecks used manifest digest `a216703b4596852309f61ffaea324cc531007ce25d352348f54c492cf4984acf`.
 
-The resumable [run-verification.sh](evidence/restructure-phase-6e-4-2026-10-24/run-verification.sh) must run under `flock /home/pepadmin/.cache/pepbits-heavy.lock`. It executes forced root CI serially, shell Chromium with the required library path, then Settle integration; it stops on failure. The four inherited healthcare browser-contract assertions use the historical 6b-9 receipt through an absolute path. They do not constitute a new healthcare HTTP sweep. The read-only comparison of the optional host API runtime artifact source covered **483 files with zero mismatches**, without starting that API.
+The historical resumable [run-verification.sh](evidence/restructure-phase-6e-4-2026-10-24/run-verification.sh) must run under `flock /home/pepadmin/.cache/pepbits-heavy.lock`. It executes forced root CI serially, shell Chromium with the required library path, then Settle integration; it stops on failure. The four inherited healthcare browser-contract assertions use the historical 6b-9 receipt through an absolute path. They do not constitute a new healthcare HTTP sweep. The read-only comparison of the optional host API runtime artifact source covered **483 files with zero mismatches**, without starting that API.
 
 ## Diagnostic history
 
-The earlier stopped session retained a failed CI excerpt (relative healthcare receipt path not found) and a browser diagnostic with 16 workflows/29 routes, no runtime errors, and label-content, link-distinction and scroll-focus axe findings. Its label/keyboard-hint/link/scroll corrections were already present in the resumed code. Those stale partial files were removed as requested; their findings remain in [superseded-diagnostics.json](evidence/restructure-phase-6e-4-2026-10-24/superseded-diagnostics.json). They are not counted as passing evidence. Fresh heavy verification remains blocked.
+The earlier stopped session retained a failed CI excerpt (relative healthcare receipt path not found) and a browser diagnostic with 16 workflows/29 routes, no runtime errors, and label-content, link-distinction and scroll-focus axe findings. Its label/keyboard-hint/link/scroll corrections were already present in the resumed code. Those stale partial files were removed as requested; their findings remain in [superseded-diagnostics.json](evidence/restructure-phase-6e-4-2026-10-24/superseded-diagnostics.json). They are not counted as passing evidence. The live-check results above supersede the earlier verification blockage.
 
-The resume's initial Settle precheck passed 155 tests in eight files, including 29 route variants × four profiles = 116 route/axe cases. Six added resource/page-size/keyboard cases subsequently passed with typechecking. The keyboard regression initially expected a dialog from a mocked navigation port; its assertion now checks the actual requested receipt target. No runtime fix was needed for that test correction. The final 161-test Settle suite includes those six additions; focused and diagnostic counts are not counted again. Root CI totals remain unavailable.
+The resume's initial Settle precheck passed 155 tests in eight files, including 29 route variants × four profiles = 116 route/axe cases. Six added resource/page-size/keyboard cases subsequently passed with typechecking. The keyboard regression initially expected a dialog from a mocked navigation port; its assertion now checks the actual requested receipt target. No runtime fix was needed for that test correction. The final 161-test Settle suite includes those six additions; focused and diagnostic counts are not counted again. Root CI totals were unavailable in that earlier resume; later local log totals are reported separately above.
 
 ## Completion boundary and rollback
 
 No source screen is deferred. Deliberate differences remain: library shell chrome and command palette; waiting-work counts in the desk bar instead of sidebar badges; inline receipt-print links instead of toast actions; source-specific untranslated copy until the protected canonical catalogs gain entries; Reports/Audit remain in the sidebar for restricted desk users and show the API refusal. Exact source pixel comparison, exhaustive business-rule/long-print combinations and physical printing have not been accepted. Durable drafts, human accessibility/localization review, billing/accounting/clinical acceptance, native executables and production identity/payment integrations remain outside this port.
 
-Removing this opt-in demo and its additive exports requires no protected-source or database migration. The integration launcher is configured for disposable fictional storage; it has not run in this resume. Nothing is published, committed or pushed. No API, Next server or browser was started in this resume; the timed-out lock waiter and all completed verification commands have exited. The sandbox cannot audit processes left by the original stopped session outside its PID namespace, including any original backend; coordinating-session inspection remains required. [Cleanup evidence](evidence/restructure-phase-6e-4-2026-10-24/cleanup.json) records this limit rather than asserting a host-wide process check.
+Removing this opt-in demo and its additive exports requires no protected-source or database migration. The successful live check used disposable fictional storage and stopped everything it started, including the original Settle backend. No deployment, commit, merge or push was performed. The [earlier cleanup receipt](evidence/restructure-phase-6e-4-2026-10-24/cleanup.json) remains historical; the [live-check cleanup receipt](evidence/restructure-phase-6e-4-2026-10-24/live-check/cleanup.json) records the four stopped process groups, closed ports and removed data. This is cleanup of owned services, not a host-wide audit of unrelated processes.

@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-24T20:18:35.235Z",
+  "services": [
+    {
+      "label": "Browser",
+      "pid": 67,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Next",
+      "pid": 48,
+      "exitCode": 143,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Settle API",
+      "pid": 33,
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "groupAlive": false
+    },
+    {
+      "label": "Host API",
+      "pid": 32,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    }
+  ],
+  "ports": [
+    {
+      "service": "hostPort",
+      "port": 35213,
+      "closed": true,
+      "result": "ECONNREFUSED"
+    },
+    {
+      "service": "settlePort",
+      "port": 45449,
+      "closed": true,
+      "result": "ECONNREFUSED"
+    },
+    {
+      "service": "appPort",
+      "port": 38881,
+      "closed": true,
+      "result": "ECONNREFUSED"
+    }
+  ],
+  "temporaryDataRemoved": true,
+  "scope": "All services started by this check, including the original source/settle/backend API; no host-wide process claim.",
+  "verificationCommandsCompleted": [
+    "production build",
+    "real-HTTP integration",
+    "three unit attempts (final: 161 passed)",
+    "three typechecks (all passed)",
+    "documentation validation (final: Node 24, 207 files passed)"
+  ]
+}

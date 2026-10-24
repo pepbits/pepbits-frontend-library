@@ -33,7 +33,9 @@ describe('Bill workspace', () => {
     const box = screen.getByRole('combobox', {name: 'Add a charge'});
     await waitFor(() => expect(box).toHaveFocus());
     fireEvent.change(box, {target: {value: 'echo'}});
-    await screen.findByRole('option', {name: /2D echocardiogram/});
+    // The unfiltered catalogue also contains this item; wait for the debounced search first.
+    await waitFor(() => expect(settle.calls.some(c => c.path === '/catalogue' && c.search.get('q') === 'echo')).toBe(true));
+    await screen.findByRole('option', {name: /2D echocardiogram/, selected: true});
     fireEvent.keyDown(box, {key: 'Enter'});
     await waitFor(() => expect(settle.calls.find(c => c.method === 'POST' && c.path === '/bills/BN001002/charges')?.body).toEqual({items: [{catalogueId: 20, qty: 1}]}));
   });

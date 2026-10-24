@@ -1,6 +1,6 @@
 # Independent Settle billing demo
 
-Feature ID: STL. State: all Settle patient billing screens ported as an independent app over the unchanged Settle API, with the deliberate differences listed below. Full CI/build/browser/HTTP verification is blocked by the shared heavy-check lock; phase completion is pending. [Delivery record](../releases/unreleased/restructure-phase-6e-4-2026-10-24.md), [test guide 1.0.0](../testing/v1.0.0/PRE-COMMIT.md). Local verification only; fictional billing behaviour is **not billing, accounting or clinical acceptance**.
+Feature ID: STL. State: all Settle patient billing screens ported as an independent app over the unchanged Settle API, with the deliberate differences listed below. Local build and real-HTTP verification pass: 20 workflows and 29 route variants, with zero runtime/console/HTTP errors or axe violations. Unit/typecheck and prior CI/shell Chromium scopes are recorded separately. [Delivery record](../releases/unreleased/restructure-phase-6e-4-2026-10-24.md), [test guide 1.0.0](../testing/v1.0.0/PRE-COMMIT.md). Local verification only; fictional billing behaviour is **not billing, accounting or clinical acceptance**.
 
 ## User problem and outcome
 

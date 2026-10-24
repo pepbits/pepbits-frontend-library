@@ -1,0 +1,446 @@
+
+> @pepbits-demo/settle@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-4/demo-apps/settle
+
+ ❯ src/modules/settle/tests/bill.test.tsx (7 tests | 1 failed) 19365ms
+   ✓ Bill workspace > explains why finalize is blocked on BL002001 and keeps the server reason visible  1336ms
+   ✓ Bill workspace > marks a pending result ready from the charge drawer  1485ms
+   × Bill workspace > adds a charge with the A shortcut, keyboard selection and Enter (BN001002) 11039ms
+     → expected undefined to deeply equal { Object (items) }
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body[39m
+    [33mstyle[39m=[32m""[39m
+  [36m>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mSE[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mc...
+   ✓ Bill workspace > collects the due and closes a Bill Now bill in one action  780ms
+   ✓ Bill workspace > waits for the card terminal before any receipt exists  2783ms
+   ✓ Bill workspace > turning shortcuts off removes the listeners but keeps the buttons  905ms
+   ✓ Bill workspace > reopen asks for a reason code and note before calling the API  1035ms
+ ✓ src/modules/settle/tests/money.test.tsx (7 tests) 8219ms
+   ✓ Patients, deposits, receipts, approvals and day close > collects a patient deposit and keeps the receipt print link  1279ms
+   ✓ Patients, deposits, receipts, approvals and day close > a card deposit is recorded only after the terminal approves it  3116ms
+   ✓ Patients, deposits, receipts, approvals and day close > realizes selected cheques in bulk  668ms
+   ✓ Patients, deposits, receipts, approvals and day close > realize and bounce act on the picked deposits only  907ms
+   ✓ Patients, deposits, receipts, approvals and day close > approves a request with an optional note and requires a note to reject  529ms
+   ✓ Patients, deposits, receipts, approvals and day close > counts notes against expected cash and requires an explanation for a difference  694ms
+   ✓ Patients, deposits, receipts, approvals and day close > a failed write keeps the entered values for an explicit retry  1022ms
+ ✓ src/modules/settle/tests/desk.test.tsx (6 tests) 4476ms
+   ✓ Desk, desk user and counter > shows the work queue, the till and links each item to a filtered list  625ms
+   ✓ Desk, desk user and counter > switching the desk user re-reads every screen as that user  795ms
+   ✓ Desk, desk user and counter > picks a counter through the API and reports it  691ms
+   ✓ Desk, desk user and counter > creates a bill for a patient, visit and bill type and opens it  1435ms
+   ✓ Desk, desk user and counter > quick search finds bills from / and opens the chosen one  608ms
+   ✓ Desk, desk user and counter > the bills summary figures double as filters  319ms
+ ✓ src/modules/settle/tests/admin.test.tsx (7 tests) 3340ms
+   ✓ Settings, reports, audit and print > saves Settle billing preferences through the API, separate from host preferences  746ms
+   ✓ Settings, reports, audit and print > edits a payment mode row and saves only the changed fields  502ms
+   ✓ Settings, reports, audit and print > desk users without the Manage settings right see read-only settings  423ms
+   ✓ Settings, reports, audit and print > exports a report in the effective export format  374ms
+   ✓ Settings, reports, audit and print > exports receipts as CSV by default with formula-safe text  471ms
+   ✓ Settings, reports, audit and print > searches the audit trail on the server  545ms
+ ✓ src/providers.test.tsx (4 tests) 1622ms
+   ✓ one serialized preference path retains adjacent writes and API revisions  492ms
+   ✓ language catalog refresh preserves the mounted editor and switches direction  502ms
+   ✓ runtime tenant locks replace effective values and block writes  337ms
+ ✓ src/modules/settle/tests/resources.test.tsx (6 tests) 1387ms
+   ✓ /bills sends the tenant-locked page size to the API  304ms
+   ✓ receipt row detail is reachable by keyboard  465ms
+ ✓ src/adapters/settle.test.ts (4 tests) 18ms
+ ✓ src/navigation.test.ts (3 tests) 12ms
+ ✓ src/routes.test.tsx (117 tests) 94397ms
+   ✓ default > / renders  2081ms
+   ✓ default > /bills renders  1621ms
+   ✓ default > /bills/BL002001 renders  1471ms
+   ✓ default > /bills/BN001002 renders  913ms
+   ✓ default > /patients renders  1088ms
+   ✓ default > /patients/MR240107 renders  572ms
+   ✓ default > /receipts renders  868ms
+   ✓ default > /receipts?unrealized=1&kind=deposit renders  947ms
+   ✓ default > /approvals renders  410ms
+   ✓ default > /day-close renders  599ms
+   ✓ default > /reports?r=collections renders  654ms
+   ✓ default > /reports?r=payment-consolidated renders  915ms
+   ✓ default > /reports?r=patient-dues renders  625ms
+   ✓ default > /reports?r=sponsor-dues renders  644ms
+   ✓ default > /reports?r=outstanding-deposits renders  604ms
+   ✓ default > /reports?r=reward-points renders  670ms
+   ✓ default > /reports?r=finance-postings renders  1257ms
+   ✓ default > /audit renders  640ms
+   ✓ default > /settings renders  862ms
+   ✓ default > /settings?s=counters renders  674ms
+   ✓ default > /settings?s=number-series renders  1340ms
+   ✓ default > /settings?s=discount-categories renders  689ms
+   ✓ default > /settings?s=rate-plans renders  631ms
+   ✓ default > /settings?s=users renders  868ms
+   ✓ default > /settings?s=preferences renders  580ms
+   ✓ default > /print/bill/BL002001 renders  729ms
+   ✓ default > /print/bill/BL002001?detail=1 renders  768ms
+   ✓ default > /print/receipt/RC000001 renders  663ms
+   ✓ default > /preferences renders  1459ms
+   ✓ Arabic RTL > / renders  823ms
+   ✓ Arabic RTL > /bills renders  1330ms
+   ✓ Arabic RTL > /bills/BL002001 renders  1496ms
+   ✓ Arabic RTL > /bills/BN001002 renders  818ms
+   ✓ Arabic RTL > /patients renders  1189ms
+   ✓ Arabic RTL > /patients/MR240107 renders  603ms
+   ✓ Arabic RTL > /receipts renders  900ms
+   ✓ Arabic RTL > /receipts?unrealized=1&kind=deposit renders  956ms
+   ✓ Arabic RTL > /approvals renders  486ms
+   ✓ Arabic RTL > /day-close renders  587ms
+   ✓ Arabic RTL > /reports?r=collections renders  657ms
+   ✓ Arabic RTL > /reports?r=payment-consolidated renders  913ms
+   ✓ Arabic RTL > /reports?r=patient-dues renders  620ms
+   ✓ Arabic RTL > /reports?r=sponsor-dues renders  639ms
+   ✓ Arabic RTL > /reports?r=outstanding-deposits renders  549ms
+   ✓ Arabic RTL > /reports?r=reward-points renders  761ms
+   ✓ Arabic RTL > /reports?r=finance-postings renders  1196ms
+   ✓ Arabic RTL > /audit renders  728ms
+   ✓ Arabic RTL > /settings renders  677ms
+   ✓ Arabic RTL > /settings?s=counters renders  655ms
+   ✓ Arabic RTL > /settings?s=number-series renders  732ms
+   ✓ Arabic RTL > /settings?s=discount-categories renders  636ms
+   ✓ Arabic RTL > /settings?s=rate-plans renders  542ms
+   ✓ Arabic RTL > /settings?s=users renders  489ms
+   ✓ Arabic RTL > /settings?s=preferences renders  527ms
+   ✓ Arabic RTL > /print/bill/BL002001 renders  647ms
+   ✓ Arabic RTL > /print/bill/BL002001?detail=1 renders  672ms
+   ✓ Arabic RTL > /print/receipt/RC000001 renders  622ms
+   ✓ Arabic RTL > /preferences renders  1461ms
+   ✓ reduced motion > / renders  682ms
+   ✓ reduced motion > /bills renders  1168ms
+   ✓ reduced motion > /bills/BL002001 renders  1287ms
+   ✓ reduced motion > /bills/BN001002 renders  710ms
+   ✓ reduced motion > /patients renders  939ms
+   ✓ reduced motion > /patients/MR240107 renders  466ms
+   ✓ reduced motion > /receipts renders  789ms
+   ✓ reduced motion > /receipts?unrealized=1&kind=deposit renders  825ms
+   ✓ reduced motion > /approvals renders  425ms
+   ✓ reduced motion > /day-close renders  510ms
+   ✓ reduced motion > /reports?r=collections renders  573ms
+   ✓ reduced motion > /reports?r=payment-consolidated renders  748ms
+   ✓ reduced motion > /reports?r=patient-dues renders  520ms
+   ✓ reduced motion > /reports?r=sponsor-dues renders  453ms
+   ✓ reduced motion > /reports?r=outstanding-deposits renders  478ms
+   ✓ reduced motion > /reports?r=reward-points renders  787ms
+   ✓ reduced motion > /reports?r=finance-postings renders  1185ms
+   ✓ reduced motion > /audit renders  691ms
+   ✓ reduced motion > /settings renders  662ms
+   ✓ reduced motion > /settings?s=counters renders  589ms
+   ✓ reduced motion > /settings?s=number-series renders  686ms
+   ✓ reduced motion > /settings?s=discount-categories renders  556ms
+   ✓ reduced motion > /settings?s=rate-plans renders  486ms
+   ✓ reduced motion > /settings?s=users renders  733ms
+   ✓ reduced motion > /settings?s=preferences renders  854ms
+   ✓ reduced motion > /print/bill/BL002001 renders  1162ms
+   ✓ reduced motion > /print/bill/BL002001?detail=1 renders  675ms
+   ✓ reduced motion > /print/receipt/RC000001 renders  490ms
+   ✓ reduced motion > /preferences renders  1383ms
+   ✓ locked density > / renders  656ms
+   ✓ locked density > /bills renders  1206ms
+   ✓ locked density > /bills/BL002001 renders  1136ms
+   ✓ locked density > /bills/BN001002 renders  648ms
+   ✓ locked density > /patients renders  911ms
+   ✓ locked density > /patients/MR240107 renders  467ms
+   ✓ locked density > /receipts renders  800ms
+   ✓ locked density > /receipts?unrealized=1&kind=deposit renders  911ms
+   ✓ locked density > /approvals renders  484ms
+   ✓ locked density > /day-close renders  1020ms
+   ✓ locked density > /reports?r=collections renders  1198ms
+   ✓ locked density > /reports?r=payment-consolidated renders  1541ms
+   ✓ locked density > /reports?r=patient-dues renders  642ms
+   ✓ locked density > /reports?r=sponsor-dues renders  563ms
+   ✓ locked density > /reports?r=outstanding-deposits renders  555ms
+   ✓ locked density > /reports?r=reward-points renders  906ms
+   ✓ locked density > /reports?r=finance-postings renders  1443ms
+   ✓ locked density > /audit renders  931ms
+   ✓ locked density > /settings renders  738ms
+   ✓ locked density > /settings?s=counters renders  1058ms
+   ✓ locked density > /settings?s=number-series renders  715ms
+   ✓ locked density > /settings?s=discount-categories renders  635ms
+   ✓ locked density > /settings?s=rate-plans renders  544ms
+   ✓ locked density > /settings?s=users renders  562ms
+   ✓ locked density > /settings?s=preferences renders  524ms
+   ✓ locked density > /print/bill/BL002001 renders  669ms
+   ✓ locked density > /print/bill/BL002001?detail=1 renders  774ms
+   ✓ locked density > /print/receipt/RC000001 renders  545ms
+   ✓ locked density > /preferences renders  1341ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/settle/tests/bill.test.tsx > Bill workspace > adds a charge with the A shortcut, keyboard selection and Enter (BN001002)
+AssertionError: expected undefined to deeply equal { Object (items) }
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body[39m
+    [33mstyle[39m=[32m""[39m
+  [36m>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mSE[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mc...
+
+- Expected: 
+{
+  "items": [
+    {
+      "catalogueId": 20,
+      "qty": 1,
+    },
+  ],
+}
+
++ Received: 
+undefined
+
+ ❯ src/modules/settle/tests/bill.test.tsx:38:123
+     36|     await screen.findByRole('option', {name: /2D echocardiogram/});
+     37|     fireEvent.keyDown(box, {key: 'Enter'});
+     38|     await waitFor(() => expect(settle.calls.find(c => c.method === 'PO…
+       |                                                                                                                           ^
+     39|   });
+     40| 
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 8 passed (9)
+      Tests  1 failed | 160 passed (161)
+   Start at  20:18:35
+   Duration  102.61s (transform 4.45s, setup 2.09s, collect 15.85s, tests 132.84s, environment 6.28s, prepare 1.23s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/settle@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6e-4/demo-apps/settle 

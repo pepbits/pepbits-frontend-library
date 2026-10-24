@@ -1,0 +1,260 @@
+{
+  "scope": "Local production Next server, unchanged host demo API and unchanged Settle API",
+  "flows": [
+    {
+      "id": "SET-01",
+      "scope": "UI",
+      "result": "Fixture sign-in, shared provider chain and the Settle desk against both APIs"
+    },
+    {
+      "id": "SET-02",
+      "scope": "UI",
+      "result": "Host preference saved through the shared preferences page"
+    },
+    {
+      "id": "SET-03",
+      "scope": "UI",
+      "result": "Desk queue link, bills figure filter, search and row deep link"
+    },
+    {
+      "id": "SET-04",
+      "scope": "UI",
+      "result": "Pending result gate, mark result ready and finalize; overpayment moved to deposit",
+      "deposit": "DR000709"
+    },
+    {
+      "id": "SET-05",
+      "scope": "UI",
+      "result": "Final insured bill print preview"
+    },
+    {
+      "id": "SET-06",
+      "scope": "UI",
+      "result": "Keyboard charge entry and collect-and-close on a Bill Now bill",
+      "receipt": "RC010048"
+    },
+    {
+      "id": "SET-07",
+      "scope": "UI",
+      "result": "Receipt print opens in a new browser context with the same session"
+    },
+    {
+      "id": "SET-08",
+      "scope": "UI",
+      "result": "Card deposit waits for the terminal; approval records the deposit"
+    },
+    {
+      "id": "SET-09",
+      "scope": "UI",
+      "result": "Write-off approved through the approvals queue"
+    },
+    {
+      "id": "SET-10",
+      "scope": "UI",
+      "result": "Cheque realization and receipt detail drawer"
+    },
+    {
+      "id": "SET-11",
+      "scope": "UI",
+      "result": "Cash count matching expected cash closes the counter"
+    },
+    {
+      "id": "SET-12",
+      "scope": "UI",
+      "result": "Finance postings report and export in the effective format"
+    },
+    {
+      "id": "SET-13",
+      "scope": "UI",
+      "result": "Audit trail server search"
+    },
+    {
+      "id": "SET-14",
+      "scope": "UI",
+      "result": "Settle billing setting saved through the Settle API"
+    },
+    {
+      "id": "SET-15",
+      "scope": "UI",
+      "result": "New bill for an existing patient and visit opens its workspace",
+      "bill": "BL002014"
+    },
+    {
+      "id": "SET-17",
+      "scope": "UI",
+      "result": "Collect an advance on the new Bill Later bill",
+      "receipt": "RC010049"
+    },
+    {
+      "id": "SET-18",
+      "scope": "UI",
+      "result": "Refund part of an advance and refresh the bill balance"
+    },
+    {
+      "id": "SET-19",
+      "scope": "UI",
+      "result": "Edit the advance receipt without changing its advance classification"
+    },
+    {
+      "id": "SET-20",
+      "scope": "UI",
+      "result": "Apply a patient deposit to the bill and release the allocation"
+    },
+    {
+      "id": "SET-16",
+      "scope": "direct HTTP",
+      "result": "Cashier desk user is read-only in the UI and the Settle API returns 403 for the same change",
+      "status": 403
+    }
+  ],
+  "checks": [
+    {
+      "path": "/",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/bills",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/bills/BL002001",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/bills/BN001003",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/patients",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/patients/MR240107",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/receipts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/receipts?unrealized=1&kind=deposit",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/approvals",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/day-close",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports?r=collections",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports?r=payment-consolidated",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports?r=patient-dues",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports?r=sponsor-dues",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports?r=outstanding-deposits",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports?r=reward-points",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports?r=finance-postings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/audit",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/settings?s=payment-modes",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/settings?s=counters",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/settings?s=number-series",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/settings?s=discount-categories",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/settings?s=rate-plans",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/settings?s=users",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/settings?s=preferences",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/print/bill/BL002001",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/print/bill/BL002001?detail=1",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/print/receipt/RC010048",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/preferences",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": []
+}

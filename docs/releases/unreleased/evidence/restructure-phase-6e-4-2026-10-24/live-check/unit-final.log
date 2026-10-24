@@ -1,0 +1,172 @@
+
+> @pepbits-demo/settle@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-4/demo-apps/settle
+
+ ✓ src/modules/settle/tests/desk.test.tsx (6 tests) 6542ms
+   ✓ Desk, desk user and counter > shows the work queue, the till and links each item to a filtered list  870ms
+   ✓ Desk, desk user and counter > switching the desk user re-reads every screen as that user  1867ms
+   ✓ Desk, desk user and counter > picks a counter through the API and reports it  1070ms
+   ✓ Desk, desk user and counter > creates a bill for a patient, visit and bill type and opens it  1650ms
+   ✓ Desk, desk user and counter > quick search finds bills from / and opens the chosen one  772ms
+   ✓ Desk, desk user and counter > the bills summary figures double as filters  307ms
+ ✓ src/modules/settle/tests/bill.test.tsx (7 tests) 8086ms
+   ✓ Bill workspace > explains why finalize is blocked on BL002001 and keeps the server reason visible  1014ms
+   ✓ Bill workspace > marks a pending result ready from the charge drawer  1035ms
+   ✓ Bill workspace > adds a charge with the A shortcut, keyboard selection and Enter (BN001002)  797ms
+   ✓ Bill workspace > collects the due and closes a Bill Now bill in one action  1006ms
+   ✓ Bill workspace > waits for the card terminal before any receipt exists  2774ms
+   ✓ Bill workspace > turning shortcuts off removes the listeners but keeps the buttons  660ms
+   ✓ Bill workspace > reopen asks for a reason code and note before calling the API  791ms
+ ✓ src/modules/settle/tests/money.test.tsx (7 tests) 7561ms
+   ✓ Patients, deposits, receipts, approvals and day close > collects a patient deposit and keeps the receipt print link  1059ms
+   ✓ Patients, deposits, receipts, approvals and day close > a card deposit is recorded only after the terminal approves it  2854ms
+   ✓ Patients, deposits, receipts, approvals and day close > realizes selected cheques in bulk  598ms
+   ✓ Patients, deposits, receipts, approvals and day close > realize and bounce act on the picked deposits only  799ms
+   ✓ Patients, deposits, receipts, approvals and day close > approves a request with an optional note and requires a note to reject  671ms
+   ✓ Patients, deposits, receipts, approvals and day close > counts notes against expected cash and requires an explanation for a difference  615ms
+   ✓ Patients, deposits, receipts, approvals and day close > a failed write keeps the entered values for an explicit retry  963ms
+ ✓ src/modules/settle/tests/admin.test.tsx (7 tests) 3973ms
+   ✓ Settings, reports, audit and print > saves Settle billing preferences through the API, separate from host preferences  827ms
+   ✓ Settings, reports, audit and print > edits a payment mode row and saves only the changed fields  577ms
+   ✓ Settings, reports, audit and print > desk users without the Manage settings right see read-only settings  554ms
+   ✓ Settings, reports, audit and print > exports a report in the effective export format  515ms
+   ✓ Settings, reports, audit and print > exports receipts as CSV by default with formula-safe text  447ms
+   ✓ Settings, reports, audit and print > searches the audit trail on the server  664ms
+   ✓ Settings, reports, audit and print > prints a receipt with the effective currency and amount in words  387ms
+ ✓ src/providers.test.tsx (4 tests) 2049ms
+   ✓ one serialized preference path retains adjacent writes and API revisions  676ms
+   ✓ language catalog refresh preserves the mounted editor and switches direction  571ms
+   ✓ runtime tenant locks replace effective values and block writes  429ms
+   ✓ rejected preference writes retain the accepted state  371ms
+ ✓ src/modules/settle/tests/resources.test.tsx (6 tests) 1595ms
+   ✓ /bills sends the tenant-locked page size to the API  395ms
+   ✓ /receipts sends the tenant-locked page size to the API  308ms
+   ✓ receipt row detail is reachable by keyboard  468ms
+ ✓ src/adapters/settle.test.ts (4 tests) 23ms
+ ✓ src/navigation.test.ts (3 tests) 8ms
+ ✓ src/routes.test.tsx (117 tests) 95386ms
+   ✓ default > / renders  2299ms
+   ✓ default > /bills renders  2360ms
+   ✓ default > /bills/BL002001 renders  1642ms
+   ✓ default > /bills/BN001002 renders  930ms
+   ✓ default > /patients renders  1606ms
+   ✓ default > /patients/MR240107 renders  557ms
+   ✓ default > /receipts renders  1068ms
+   ✓ default > /receipts?unrealized=1&kind=deposit renders  1128ms
+   ✓ default > /approvals renders  550ms
+   ✓ default > /day-close renders  753ms
+   ✓ default > /reports?r=collections renders  802ms
+   ✓ default > /reports?r=payment-consolidated renders  966ms
+   ✓ default > /reports?r=patient-dues renders  628ms
+   ✓ default > /reports?r=sponsor-dues renders  791ms
+   ✓ default > /reports?r=outstanding-deposits renders  655ms
+   ✓ default > /reports?r=reward-points renders  792ms
+   ✓ default > /reports?r=finance-postings renders  1446ms
+   ✓ default > /audit renders  731ms
+   ✓ default > /settings renders  654ms
+   ✓ default > /settings?s=counters renders  516ms
+   ✓ default > /settings?s=number-series renders  693ms
+   ✓ default > /settings?s=discount-categories renders  544ms
+   ✓ default > /settings?s=rate-plans renders  450ms
+   ✓ default > /settings?s=users renders  587ms
+   ✓ default > /settings?s=preferences renders  471ms
+   ✓ default > /print/bill/BL002001 renders  686ms
+   ✓ default > /print/bill/BL002001?detail=1 renders  684ms
+   ✓ default > /print/receipt/RC000001 renders  496ms
+   ✓ default > /preferences renders  1468ms
+   ✓ Arabic RTL > / renders  676ms
+   ✓ Arabic RTL > /bills renders  1452ms
+   ✓ Arabic RTL > /bills/BL002001 renders  1121ms
+   ✓ Arabic RTL > /bills/BN001002 renders  817ms
+   ✓ Arabic RTL > /patients renders  1233ms
+   ✓ Arabic RTL > /patients/MR240107 renders  653ms
+   ✓ Arabic RTL > /receipts renders  1086ms
+   ✓ Arabic RTL > /receipts?unrealized=1&kind=deposit renders  1132ms
+   ✓ Arabic RTL > /approvals renders  566ms
+   ✓ Arabic RTL > /day-close renders  685ms
+   ✓ Arabic RTL > /reports?r=collections renders  767ms
+   ✓ Arabic RTL > /reports?r=payment-consolidated renders  1084ms
+   ✓ Arabic RTL > /reports?r=patient-dues renders  722ms
+   ✓ Arabic RTL > /reports?r=sponsor-dues renders  602ms
+   ✓ Arabic RTL > /reports?r=outstanding-deposits renders  592ms
+   ✓ Arabic RTL > /reports?r=reward-points renders  793ms
+   ✓ Arabic RTL > /reports?r=finance-postings renders  1292ms
+   ✓ Arabic RTL > /audit renders  871ms
+   ✓ Arabic RTL > /settings renders  744ms
+   ✓ Arabic RTL > /settings?s=counters renders  525ms
+   ✓ Arabic RTL > /settings?s=number-series renders  795ms
+   ✓ Arabic RTL > /settings?s=discount-categories renders  704ms
+   ✓ Arabic RTL > /settings?s=rate-plans renders  535ms
+   ✓ Arabic RTL > /settings?s=users renders  573ms
+   ✓ Arabic RTL > /settings?s=preferences renders  498ms
+   ✓ Arabic RTL > /print/bill/BL002001 renders  697ms
+   ✓ Arabic RTL > /print/bill/BL002001?detail=1 renders  681ms
+   ✓ Arabic RTL > /print/receipt/RC000001 renders  526ms
+   ✓ Arabic RTL > /preferences renders  1399ms
+   ✓ reduced motion > / renders  943ms
+   ✓ reduced motion > /bills renders  1038ms
+   ✓ reduced motion > /bills/BL002001 renders  1063ms
+   ✓ reduced motion > /bills/BN001002 renders  719ms
+   ✓ reduced motion > /patients renders  849ms
+   ✓ reduced motion > /patients/MR240107 renders  727ms
+   ✓ reduced motion > /receipts renders  768ms
+   ✓ reduced motion > /receipts?unrealized=1&kind=deposit renders  880ms
+   ✓ reduced motion > /approvals renders  459ms
+   ✓ reduced motion > /day-close renders  681ms
+   ✓ reduced motion > /reports?r=collections renders  883ms
+   ✓ reduced motion > /reports?r=payment-consolidated renders  983ms
+   ✓ reduced motion > /reports?r=patient-dues renders  2208ms
+   ✓ reduced motion > /reports?r=sponsor-dues renders  555ms
+   ✓ reduced motion > /reports?r=outstanding-deposits renders  743ms
+   ✓ reduced motion > /reports?r=reward-points renders  736ms
+   ✓ reduced motion > /reports?r=finance-postings renders  1311ms
+   ✓ reduced motion > /audit renders  674ms
+   ✓ reduced motion > /settings renders  819ms
+   ✓ reduced motion > /settings?s=counters renders  597ms
+   ✓ reduced motion > /settings?s=number-series renders  855ms
+   ✓ reduced motion > /settings?s=discount-categories renders  772ms
+   ✓ reduced motion > /settings?s=rate-plans renders  589ms
+   ✓ reduced motion > /settings?s=users renders  478ms
+   ✓ reduced motion > /settings?s=preferences renders  715ms
+   ✓ reduced motion > /print/bill/BL002001 renders  952ms
+   ✓ reduced motion > /print/bill/BL002001?detail=1 renders  773ms
+   ✓ reduced motion > /print/receipt/RC000001 renders  656ms
+   ✓ reduced motion > /preferences renders  1408ms
+   ✓ locked density > / renders  655ms
+   ✓ locked density > /bills renders  913ms
+   ✓ locked density > /bills/BL002001 renders  1048ms
+   ✓ locked density > /bills/BN001002 renders  634ms
+   ✓ locked density > /patients renders  1223ms
+   ✓ locked density > /patients/MR240107 renders  465ms
+   ✓ locked density > /receipts renders  835ms
+   ✓ locked density > /receipts?unrealized=1&kind=deposit renders  923ms
+   ✓ locked density > /approvals renders  467ms
+   ✓ locked density > /day-close renders  566ms
+   ✓ locked density > /reports?r=collections renders  729ms
+   ✓ locked density > /reports?r=payment-consolidated renders  850ms
+   ✓ locked density > /reports?r=patient-dues renders  527ms
+   ✓ locked density > /reports?r=sponsor-dues renders  479ms
+   ✓ locked density > /reports?r=outstanding-deposits renders  491ms
+   ✓ locked density > /reports?r=reward-points renders  647ms
+   ✓ locked density > /reports?r=finance-postings renders  1106ms
+   ✓ locked density > /audit renders  655ms
+   ✓ locked density > /settings renders  584ms
+   ✓ locked density > /settings?s=counters renders  557ms
+   ✓ locked density > /settings?s=number-series renders  592ms
+   ✓ locked density > /settings?s=discount-categories renders  541ms
+   ✓ locked density > /settings?s=rate-plans renders  438ms
+   ✓ locked density > /settings?s=users renders  435ms
+   ✓ locked density > /settings?s=preferences renders  592ms
+   ✓ locked density > /print/bill/BL002001 renders  646ms
+   ✓ locked density > /print/bill/BL002001?detail=1 renders  568ms
+   ✓ locked density > /print/receipt/RC000001 renders  502ms
+   ✓ locked density > /preferences renders  1103ms
+
+ Test Files  9 passed (9)
+      Tests  161 passed (161)
+   Start at  20:22:50
+   Duration  104.54s (transform 4.74s, setup 2.39s, collect 17.77s, tests 125.22s, environment 6.64s, prepare 1.66s)
+
