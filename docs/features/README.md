@@ -1,5 +1,7 @@
 # Feature catalog
 
+- [Independent Settle billing demo](settle-demo.md): patient billing desk screens over the unchanged Settle API inside the shared shell; local checks and explicit differences.
+
 - [Independent ERP demo](erp-demo.md): 114 catalogue destinations, ERP1 in-page and ERP2 routed records; local checks and explicit remaining scope.
 
 - [Independent healthcare demo](healthcare-demo.md): Healthcare Suite core, clinical and LIS/RIS diagnostic workflows against the synthetic demo API; local validation and explicit remaining scope.

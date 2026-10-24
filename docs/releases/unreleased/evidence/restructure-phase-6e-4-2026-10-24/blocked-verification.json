@@ -1,0 +1,75 @@
+{
+  "status": "blocked",
+  "time": "2026-10-24T18:42:42.610137+00:00",
+  "implementationDigest": "a216703b4596852309f61ffaea324cc531007ce25d352348f54c492cf4984acf",
+  "lock": "/home/pepadmin/.cache/pepbits-heavy.lock",
+  "waitSeconds": 1800,
+  "waitExit": 1,
+  "subsequentNonblockingProbeExit": 1,
+  "holderCheck": {
+    "commands": [
+      "ps -eo pid,ppid,etime,comm",
+      "lslocks --notruncate -o PID,COMMAND,TYPE,MODE,PATH",
+      "cat /proc/locks"
+    ],
+    "visibleProcessNames": [
+      "codex",
+      "bash",
+      "ps"
+    ],
+    "visibleLocks": [],
+    "result": "Sandbox PID namespace does not expose the holder. Cannot determine whether another session is active or the holder is stale. Coordinating session must inspect the holder; no lock bypass or holder termination attempted."
+  },
+  "notRun": [
+    "npm run ci -- --concurrency=1 --env-mode=loose (Turbo --force; per-workspace counts unavailable)",
+    "next build (included in CI)",
+    "npm run test:browser -w @pepbits/shell",
+    "npm run test:integration -w @pepbits-demo/settle"
+  ],
+  "noHeavyStageStarted": true,
+  "passed": {
+    "npmInstall": true,
+    "diagnosticSettlePrecheck": {
+      "tests": 155,
+      "files": 8,
+      "scope": "Pre-final source; includes 116 route/profile axe checks without jsdom color contrast."
+    },
+    "focusedRegressions": {
+      "tests": 6,
+      "files": 1
+    },
+    "settleTypecheck": true,
+    "integrationScriptSyntax": true,
+    "apiRuntimeSourceComparison": {
+      "files": 483,
+      "mismatches": 0,
+      "scope": "Read-only comparison, no API run."
+    },
+    "finalSettleUnit": {
+      "tests": 161,
+      "files": 9,
+      "routeProfileAxeCases": 116,
+      "maxWorkers": 2,
+      "scope": "Mocked API in jsdom; color contrast disabled. Final manifest source."
+    },
+    "affectedTypechecks": [
+      "@pepbits-demo/settle",
+      "@pepbits/i18n",
+      "@pepbits/icons"
+    ],
+    "affectedPackageUnits": {
+      "@pepbits/i18n": {
+        "tests": 79,
+        "files": 7
+      },
+      "@pepbits/icons": {
+        "tests": 107,
+        "files": 2
+      }
+    },
+    "documentationFiles": 198
+  },
+  "publication": false,
+  "deployment": false,
+  "lastNonblockingProbeExit": 1
+}

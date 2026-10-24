@@ -19,3 +19,7 @@ ERP is in progress below. Remaining app order: school, reports, tenant-admin, on
 ## ERP
 
 [ERP](erp/README.md) is the independent Next.js demo on port 3320. Phase 6c-1 adds separate ERP1/ERP2 header modules with 57 catalogue destinations each, shared Keystone configuration, ERP1 in-page records and ERP2 record/create/edit URLs. Public engines render the unchanged fictional API data. Specialized source layouts remain explicitly deferred in the [source map](erp/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6c-1-2026-10-23.md). Financial demonstration only, not accounting acceptance or deployment.
+
+## Settle
+
+[Settle](settle/README.md) is the independent Next.js demo on port 3380. Phase 6e-4 ports the Settle patient billing desk: desk, bills, bill workspace, patient accounts, receipts, approvals, day close, reports, audit, settings and bill/receipt print layouts. It uses the shared host (sign-in, preferences, policy, localization) against the demo API and the unchanged Settle Express + SQLite API for all billing data. Its [source map](settle/source-mapping.md) and [record](../docs/releases/unreleased/restructure-phase-6e-4-2026-10-24.md) state verification and deferrals. Fictional data; not billing acceptance or deployment.

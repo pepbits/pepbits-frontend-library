@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Settle phase 6e-4 — patient billing desk demo](restructure-phase-6e-4-2026-10-24.md): Settle billing screens over the unchanged API inside the shared shell; mocked checks pass, full CI/build/browser/HTTP verification blocked by the shared heavy-check lock; fictional data, no deployment.
+
 - [ERP phase 6c-3 — calendars, invoices and analytical views](restructure-phase-6c-3-2026-10-24.md): specialized workflow subset, shared calendar/charts and exact verification; remaining parity gaps are explicit.
 
 - [ERP phase 6c-2 — specialized view subset and finance grants](restructure-phase-6c-2-2026-10-23.md): hierarchy, boards, ERP1 profile splits, direct extraction tests and exact remaining scope.

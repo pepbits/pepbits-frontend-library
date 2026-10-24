@@ -143,3 +143,6 @@ export {Droplet, Shield, Scissors} from 'lucide-react';
 export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from 'lucide-react';
 
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
+
+// Settle patient billing desk presentation primitives (phase 6e-4).
+export {ChartColumnBig, CircleDashed, Gift, Nfc, Tag, User, Vault} from "lucide-react";

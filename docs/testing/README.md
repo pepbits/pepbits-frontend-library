@@ -115,6 +115,10 @@ The [6b-2 diagnostics increment](../releases/unreleased/restructure-phase-6b-2-2
 
 [Healthcare 6b-9 MedSlot](../releases/unreleased/restructure-phase-6b-9-2026-10-23.md) retains both original component test files and browser contracts, adds HTTP/host/recovery tests and fourteen-route four-profile axe coverage, and extends the local HTTP driver with registration and scheduling lifecycle workflows. The record distinguishes UI actions, direct API guards, mocked tests and manual/native/domain boundaries.
 
+## Settle phase 6e-4
+
+The [Settle feature contract](../features/settle-demo.md) defines STL-01 through STL-08. The source frontend has no tests to retain; its [local record](../releases/unreleased/restructure-phase-6e-4-2026-10-24.md) separates mocked transport/provider/workflow tests (frozen fixtures captured from the unchanged Settle API), the four-profile route/axe matrix, real local HTTP workflows against both unchanged APIs with browser axe, and forced workspace checks. None of these is billing, accounting or human accessibility acceptance.
+
 ## ERP phase 6c-1
 
 The [ERP feature contract](../features/erp-demo.md) defines ERD-01 through ERD-07. Its [local record](../releases/unreleased/restructure-phase-6c-1-2026-10-23.md) separates all 38 original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks. Route coverage is not specialized workflow, accounting or human accessibility acceptance.
