@@ -1,0 +1,765 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API; academic demonstration, not institutional acceptance",
+  "flows": [
+    {
+      "id": "sign-in",
+      "scope": "UI",
+      "result": "Authenticated fixture session loads preferences, canonical catalog and school dashboard"
+    },
+    {
+      "id": "teacher-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "teacher-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "student-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "student-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "parent-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "parent-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "librarian-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "librarian-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "accountant-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "accountant-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "admin-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "admin-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "student-record-open",
+      "scope": "UI",
+      "result": "Student drawer opens with the effective preview preference"
+    },
+    {
+      "id": "student-print",
+      "scope": "browser PDF",
+      "result": "Print surface isolates the selected visible record and clears its snapshot; no physical printer tested"
+    },
+    {
+      "id": "student-registration",
+      "scope": "UI",
+      "result": "Four registration steps create a server-owned student record"
+    },
+    {
+      "id": "admissions-create-move",
+      "scope": "UI + HTTP",
+      "result": "Create an applicant, move with the keyboard-operable board control and verify persisted stage"
+    },
+    {
+      "id": "teacher-publish-quiz",
+      "scope": "UI",
+      "result": "Authored question/options are published; counters come from the API"
+    },
+    {
+      "id": "teacher-quiz-preview",
+      "scope": "UI",
+      "result": "Server grades a staff preview without storing a student attempt"
+    },
+    {
+      "id": "student-quiz-grade",
+      "scope": "UI",
+      "result": "Student submits answers and sees the server grade/review"
+    },
+    {
+      "id": "student-attempt-persisted",
+      "scope": "direct HTTP",
+      "result": "Student attempt exists in the unchanged school store"
+    },
+    {
+      "id": "parent-children",
+      "scope": "UI + HTTP",
+      "result": "Child switcher and reads stay within linked children"
+    },
+    {
+      "id": "librarian-create-book",
+      "scope": "UI",
+      "result": "Authored book fields create a server-initialized catalogue record"
+    },
+    {
+      "id": "librarian-return",
+      "scope": "UI",
+      "result": "Return command accepts authoritative fine and refreshes stock"
+    },
+    {
+      "id": "accountant-collect",
+      "scope": "UI",
+      "result": "Invoice collection persists an authored amount through the school API"
+    },
+    {
+      "id": "teacher-attendance",
+      "scope": "UI",
+      "result": "Previous weekday register is saved through the actual school API"
+    },
+    {
+      "id": "teacher-live-room",
+      "scope": "UI + HTTP",
+      "result": "Join with local media disabled, send a message and verify persisted room state"
+    },
+    {
+      "id": "calendar-month-today",
+      "scope": "UI",
+      "result": "Shared month navigation and Today restore the selected current day"
+    },
+    {
+      "id": "restricted-student",
+      "scope": "UI + HTTP",
+      "result": "Role hints cannot grant an administrator portal; student reads and writes are server-restricted"
+    },
+    {
+      "id": "restricted-teacher",
+      "scope": "UI + HTTP",
+      "result": "Registration remains unavailable to teachers in UI and direct HTTP"
+    }
+  ],
+  "checks": [
+    {
+      "path": "/dashboard?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/students?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "tr:nth-child(3) > td:nth-child(1) > .gap-2.flex.items-center > .school-avatar.inline-flex.shrink-0 > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(9) > td:nth-child(1) > .gap-2.flex.items-center > .school-avatar.inline-flex.shrink-0 > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/students/new?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".size-9 > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/teachers?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "tr:nth-child(2) > td:nth-child(1) > .gap-2.flex.items-center > .school-avatar.inline-flex.shrink-0 > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(3) > td:nth-child(1) > .gap-2.flex.items-center > .school-avatar.inline-flex.shrink-0 > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(9) > td:nth-child(3) > .gap-1.flex > .rounded.px-1\\.5.text-\\[10\\.5px\\]"
+            ],
+            [
+              "tr:nth-child(10) > td:nth-child(3) > .gap-1.flex > .rounded.px-1\\.5.text-\\[10\\.5px\\]"
+            ],
+            [
+              "tr:nth-child(11) > td:nth-child(1) > .gap-2.flex.items-center > .school-avatar.inline-flex.shrink-0 > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(11) > td:nth-child(3) > .gap-1.flex > .rounded.px-1\\.5.text-\\[10\\.5px\\]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/teachers/new?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/admissions?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/classes?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "div[aria-label=\"Open Grade 6-A\"] > .border-line\\/70.pt-2.border-t > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 6-B\"] > .border-line\\/70.pt-2.border-t > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 10-B\"] > .border-line\\/70.pt-2.border-t > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 12-B\"] > .border-line\\/70.pt-2.border-t > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "div[aria-label=\"Open Grade 6-A\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 6-B\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 7-A\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 7-B\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 8-A\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 8-B\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 9-A\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 9-B\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 10-A\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 10-B\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 11-A\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 11-B\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 12-A\"]"
+            ],
+            [
+              "div[aria-label=\"Open Grade 12-B\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/subjects?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "span[title=\"Hannah Nakamura\"] > .school-avatar.ring-2.ring-surface > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "span[title=\"Ravi Kim\"] > .school-avatar.ring-2.ring-surface > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(3) > td:nth-child(1) > .px-1\\.5.text-\\[11px\\].py-0\\.5"
+            ],
+            [
+              "span[title=\"Yusuf Bianchi\"] > .school-avatar.ring-2.ring-surface > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(5) > td:nth-child(1) > .px-1\\.5.text-\\[11px\\].py-0\\.5"
+            ],
+            [
+              "span[title=\"Ava Haddad\"] > .school-avatar.ring-2.ring-surface > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(7) > td:nth-child(1) > .px-1\\.5.text-\\[11px\\].py-0\\.5"
+            ],
+            [
+              "span[title=\"Elena Nakamura\"] > .school-avatar.ring-2.ring-surface > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(10) > td:nth-child(1) > .px-1\\.5.text-\\[11px\\].py-0\\.5"
+            ],
+            [
+              "span[title=\"Mateo Dubois\"] > .school-avatar.ring-2.ring-surface > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(11) > td:nth-child(1) > .px-1\\.5.text-\\[11px\\].py-0\\.5"
+            ],
+            [
+              "span[title=\"Yusuf Khan\"] > .school-avatar.ring-2.ring-surface > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "span[title=\"Ava Khan\"] > .school-avatar.ring-2.ring-surface > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/timetable?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "tr:nth-child(3) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(5) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(5) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(2) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(5) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(3) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(5) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(4) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(5) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(6) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(6) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(2) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(6) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(3) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(6) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(5) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(6) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(6) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(8) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(2) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(8) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(3) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(8) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(4) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(8) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(6) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(9) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(4) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(9) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(5) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(9) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(6) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(10) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(3) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ],
+            [
+              "tr:nth-child(10) > .h-\\[52px\\].p-0\\.5.border-l:nth-child(6) > .border-l-\\[3px\\].hover\\:brightness-95.h-full > .gap-1.font-semibold.truncate"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/attendance?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".border-line.rounded-md.py-1\\.5:nth-child(2) > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              ".border-line.rounded-md.py-1\\.5:nth-child(9) > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              ".border-line.rounded-md.py-1\\.5:nth-child(17) > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              ".border-line.rounded-md.py-1\\.5:nth-child(18) > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              ".border-line.rounded-md.py-1\\.5:nth-child(22) > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              ".border-line.rounded-md.py-1\\.5:nth-child(23) > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/assignments?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/quizzes?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(4) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(8) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(11) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(13) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(15) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(17) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(18) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(20) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(22) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(24) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ],
+            [
+              ".p-2\\.5.flex-col.bg-\\[var\\(--surface\\)\\]:nth-child(27) > .items-start.gap-2.flex > .place-items-center.rounded-md.grid"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/quizzes/new?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".text-faint"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 3
+    },
+    {
+      "path": "/quizzes/qz-1?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/exams?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "tr:nth-child(7) > td:nth-child(8) > .gap-1\\.5.flex.items-center > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(8) > td:nth-child(8) > .gap-1\\.5.flex.items-center > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/marks?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/live?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(1) > .items-start.gap-2 > .border-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_25\\%\\,transparent\\)\\].bg-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_10\\%\\,transparent\\)\\].animate-pulse"
+            ],
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(2) > .items-start.gap-2 > .border-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_25\\%\\,transparent\\)\\].bg-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_10\\%\\,transparent\\)\\].animate-pulse"
+            ],
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(3) > .items-start.gap-2 > .border-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_25\\%\\,transparent\\)\\].bg-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_10\\%\\,transparent\\)\\].animate-pulse"
+            ],
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(3) > .border-line\\/70.pt-2.border-t > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].overflow-hidden > span[aria-hidden=\"true\"]"
+            ],
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(4) > .items-start.gap-2 > .border-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_25\\%\\,transparent\\)\\].bg-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_10\\%\\,transparent\\)\\].animate-pulse"
+            ],
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(5) > .items-start.gap-2 > .border-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_25\\%\\,transparent\\)\\].bg-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_10\\%\\,transparent\\)\\].animate-pulse"
+            ],
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(6) > .items-start.gap-2 > .border-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_25\\%\\,transparent\\)\\].bg-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_10\\%\\,transparent\\)\\].animate-pulse"
+            ],
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(6) > .border-line\\/70.pt-2.border-t > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].overflow-hidden > span[aria-hidden=\"true\"]"
+            ],
+            [
+              ".border-bad\\/40.ring-1.ring-bad\\/20:nth-child(7) > .items-start.gap-2 > .border-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_25\\%\\,transparent\\)\\].bg-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_10\\%\\,transparent\\)\\].animate-pulse"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/live/lv-1?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".size-full > .school-avatar.inline-flex.rounded-full > .size-9.bg-\\[color-mix\\(in_srgb\\,var\\(--danger\\)_14\\%\\,transparent\\)\\].text-\\[var\\(--danger-ink\\)\\] > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/whiteboard?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/library?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/fees?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "tr:nth-child(3) > td:nth-child(2) > .gap-1\\.5.flex.items-center > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(4) > td:nth-child(2) > .gap-1\\.5.flex.items-center > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ],
+            [
+              "tr:nth-child(17) > td:nth-child(2) > .gap-1\\.5.flex.items-center > .school-avatar.inline-flex.rounded-full > .bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\].text-\\[var\\(--accent\\)\\].size-9 > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/calendar?role=admin",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".h-6.text-\\[11px\\].px-2:nth-child(3)"
+            ],
+            [
+              ".h-6.text-\\[11px\\].px-2:nth-child(4)"
+            ],
+            [
+              ".h-6.text-\\[11px\\].px-2:nth-child(6)"
+            ],
+            [
+              "button[data-date=\"2026-10-25\"] > .gap-0\\.5.flex-col.flex > .text-white.truncate.text-\\[10\\.5px\\]"
+            ],
+            [
+              "button[data-date=\"2026-10-26\"] > .gap-0\\.5.flex-col.flex > .text-white.truncate.text-\\[10\\.5px\\]"
+            ],
+            [
+              "button[data-date=\"2026-10-28\"] > .gap-0\\.5.flex-col.flex > .text-white.truncate.text-\\[10\\.5px\\]"
+            ],
+            [
+              "button[data-date=\"2026-10-30\"] > .gap-0\\.5.flex-col.flex > .text-white.truncate.text-\\[10\\.5px\\]"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "button[data-date=\"2026-10-19\"]"
+            ],
+            [
+              "button[data-date=\"2026-10-21\"]"
+            ],
+            [
+              "button[data-date=\"2026-10-25\"]"
+            ],
+            [
+              "button[data-date=\"2026-10-26\"]"
+            ],
+            [
+              "button[data-date=\"2026-10-28\"]"
+            ],
+            [
+              "button[data-date=\"2026-10-30\"]"
+            ],
+            [
+              "button[data-date=\"2026-11-02\"]"
+            ],
+            [
+              "button[data-date=\"2026-11-03\"]"
+            ],
+            [
+              "button[data-date=\"2026-11-04\"]"
+            ],
+            [
+              "button[data-date=\"2026-11-05\"]"
+            ],
+            [
+              "button[data-date=\"2026-11-06\"]"
+            ],
+            [
+              "button[data-date=\"2026-11-07\"]"
+            ],
+            [
+              "button[data-date=\"2026-11-08\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/notices?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/messages?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/settings?role=admin",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboard?role=teacher",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboard?role=student",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\] > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboard?role=parent",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".bg-\\[color-mix\\(in_srgb\\,var\\(--accent\\)_16\\%\\,transparent\\)\\] > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboard?role=librarian",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboard?role=accountant",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/preferences",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": []
+}

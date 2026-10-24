@@ -32,7 +32,7 @@ test('gates descendants on session, preferences then catalog; binds every provid
  const view=render(tree(request,{...session,status:'loading',user:null},roles));expect(request).not.toHaveBeenCalled();expect(screen.queryByTestId('wiring')).toBeNull();
  view.rerender(tree(request,session,roles));await waitFor(()=>expect(request).toHaveBeenCalledWith('/preferences'));expect(request).toHaveBeenCalledTimes(1);
  await act(async()=>preferences.resolve(Response.json(api.get())));await waitFor(()=>expect(request).toHaveBeenCalledWith('/localization?productId=example&language=en'));expect(screen.queryByTestId('wiring')).toBeNull();
- await act(async()=>catalog.resolve(Response.json({messages:catalogs,fallbackMessages:catalogs})));await screen.findByTestId('wiring');expect(state()).toMatchObject({user:session.user!.id,language:'en',direction:'ltr',module:'operations',request:true,canManage:true});expect(roles).toHaveBeenCalledWith('editor');
+ await act(async()=>catalog.resolve(Response.json({messages:catalogs,fallbackMessages:catalogs})));await screen.findByTestId('wiring');expect(state()).toMatchObject({user:session.user!.id,language:'en',direction:'ltr',module:'operations',request:true,canManage:true});expect(roles).toHaveBeenCalledWith('editor',session.user);
 });
 test('anonymous session shows sign-in without loading authenticated services',async()=>{
  const request=vi.fn();render(tree(request,{...session,status:'anonymous',user:null}));await screen.findByRole('button',{name:/sign in/i});expect(request).not.toHaveBeenCalled();expect(screen.queryByTestId('wiring')).toBeNull();

@@ -1,0 +1,20 @@
+
+> @pepbits-demo/school@0.0.0 build
+> next build --webpack
+
+▲ Next.js 16.3.3 (webpack)
+✓ Running next.config.ts took 46ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 21.2s
+  Running TypeScript ...
+src/navigation.test.ts(6,13): error TS2352: Conversion of type '{ role: string; referenceSchoolViews: ("parent" | "admin" | "teacher" | "student" | "librarian" | "accountant")[]; }' to type 'SchoolAccount' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ role: string; referenceSchoolViews: ("parent" | "admin" | "teacher" | "student" | "librarian" | "accountant")[]; }' is missing the following properties from type 'SessionUser': id, name, email, initials, and 3 more.
+Failed to type check.
+
+npm ERR! Lifecycle script `build` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/school@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school 

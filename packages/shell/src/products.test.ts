@@ -37,3 +37,10 @@ describe('host product profiles',()=>{
     const detail={...product,pages:{...product.pages,detail:{...product.pages.items!,id:'detail'}}};expect(moduleContainsPage(detail,'operations','detail')).toBe(true);expect(moduleContainsPage(detail,'missing','detail')).toBe(false);expect(moduleContainsPage(detail,'operations','missing')).toBe(false);
   });
 });
+
+test('explicit detail membership shares one registered page across authorized modules',()=>{
+ const detail={id:'detail',title:'Detail',subtitle:'',kind:'record',module:'shared-records'};
+ const navigation={...catalog,pages:{...catalog.pages,detail},modules:{...catalog.modules,operations:{...catalog.modules.operations!,pageIds:['detail']},resources:{...catalog.modules.resources!,pageIds:['detail']}}};
+ const selected=defineProduct({...base,navigation});expect(selected.pages.detail).toBe(detail);expect(moduleContainsPage(selected,'operations','detail')).toBe(true);expect(moduleContainsPage(selected,'resources','detail')).toBe(false);expect(productNavigationTarget(selected,'detail','resources').moduleId).toBe('operations');
+ const denied=productForRole({...selected,access:{pages:{detail:['editor']}}},'viewer');expect(moduleContainsPage(denied,'operations','detail')).toBe(false);
+});
