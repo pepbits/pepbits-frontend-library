@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Onboarding phase 6e-3 — Orvia Health Cloud](restructure-phase-6e-3-2026-10-24.md): source pages and shared wizard/OTP; 353 focused tests pass, required CI/build/browser verification blocked by the shared lock; no deployment.
 - [School phase 6d-2 — source comparison and visual gaps](restructure-phase-6d-2-2026-10-24.md): compact chart/table parity subset, per-route handoff and exact local evidence.
 
 - [Reports phase 6e-1 — Lumen Reports demo app](restructure-phase-6e-1-2026-10-24.md): all 19 source routes over the shared host and fictional demo API; local verification and limits.

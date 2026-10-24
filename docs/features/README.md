@@ -1,5 +1,6 @@
 # Feature catalog
 
+- [Independent onboarding demo](onboarding-demo.md): Orvia landing, workspace finder, sign-in and registration wizard on the shared host; fictional adapters and local checks.
 - [Independent reports demo](reports-demo.md): all 19 Lumen Reports routes in their own app over the shared host and fictional demo API; local checks and limits.
 - [Independent Tenant Admin demo](tenant-admin-demo.md): Overview, Approvals, Activity and 30 registry-driven configuration pages on the shared host; local checks and explicit limits.
 - [Independent Scholaris demo](school-demo.md): 26 routes, six scope-granted dashboards and unchanged fictional HTTP API.

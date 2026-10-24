@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-24T18:43:09.995Z",
+  "protectedPaths": [
+    "source",
+    "demo-pages",
+    "desktop-clients",
+    "dummy-api",
+    "Jenkinsfile",
+    "deploy",
+    "run.sh",
+    "run_all.sh",
+    ".github"
+  ],
+  "protectedStatus": "",
+  "protectedDiff": "",
+  "whitespace": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "forbiddenImports": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "credentialUrlScan": {
+    "exit": 0,
+    "matchingLines": 2,
+    "excludedOutputReceiptOnly": true,
+    "matches": [
+      {
+        "path": "demo-apps/onboarding/src/modules/orvia/auth/SignInFlow.tsx",
+        "line": 59,
+        "sha256": "850ede6e1f6afb48572bce8c0cdf11021fbda84fad92b48c05e9746b1d319dd9",
+        "reason": "Validation message assigned to the password field error, not a credential value."
+      },
+      {
+        "path": "demo-apps/onboarding/src/adapters/onboarding.test.ts",
+        "line": 18,
+        "sha256": "d99c4165d4d754c0745d3666842392b9c406b760b5d82f6de701286b61e68475",
+        "reason": "Fictional workspace-address parser fixture; no request is made to this URL."
+      }
+    ]
+  }
+}

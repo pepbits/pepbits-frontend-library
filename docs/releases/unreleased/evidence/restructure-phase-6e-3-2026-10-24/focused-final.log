@@ -1,0 +1,101 @@
+
+> @pepbits-demo/onboarding@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-3/demo-apps/onboarding
+
+ ✓ src/providers.test.tsx (10 tests) 7185ms
+   ✓ one serialized preference path retains adjacent writes and API revisions  579ms
+   ✓ language catalog refresh preserves the mounted editor  413ms
+   ✓ runtime tenant locks replace effective values and block writes  365ms
+   ✓ the shared preferences route renders with no axe violations: default  1643ms
+   ✓ the shared preferences route renders with no axe violations: Arabic RTL  1308ms
+   ✓ the shared preferences route renders with no axe violations: reduced motion  1212ms
+   ✓ the shared preferences route renders with no axe violations: locked preference  1124ms
+ ✓ src/modules/orvia/workflows.test.tsx (23 tests) 12507ms
+   ✓ landing page > walks the care pathway with arrow keys in reading direction and formats times  446ms
+   ✓ landing page > opens the network profile with the structure deep link and keyboard tabs  309ms
+   ✓ workspace finder > finds a workspace by address and continues to its sign-in, remembering it  532ms
+   ✓ workspace finder > explains unknown and invalid addresses and switches to email lookup  464ms
+   ✓ workspace finder > recovers from a failed lookup without losing the typed address  812ms
+   ✓ organization registration > Save and exit flushes the current values before the autosave delay  358ms
+   ✓ organization registration > validates step 1, focuses the first problem and clears errors as they are fixed  365ms
+   ✓ organization registration > completes a single-hospital registration, submits and makes the workspace discoverable  1854ms
+   ✓ organization registration > adds the facilities step for networks with a pre-filled head office and editable rows  832ms
+   ✓ organization registration > autosaves fields (never the password) and restores the draft on return  1014ms
+   ✓ organization registration > keeps every value after a failed submission and succeeds on retry  1919ms
+   ✓ organization registration > edits a section from review and uses instant scrolling under reduced motion  1825ms
+ ✓ src/modules/orvia/registration.test.ts (7 tests) 21ms
+ ✓ src/adapters/onboarding.test.ts (9 tests) 16ms
+ ✓ src/routes.test.tsx (40 tests) 7172ms
+   ✓ default route rendering > /  792ms
+   ✓ default route rendering > /register  304ms
+   ✓ Arabic RTL route rendering > /  468ms
+   ✓ reduced motion route rendering > /  407ms
+   ✓ locked preference route rendering > /  362ms
+ ✓ src/navigation.test.ts (10 tests) 11ms
+
+ Test Files  6 passed (6)
+      Tests  99 passed (99)
+   Start at  18:38:21
+   Duration  23.27s (transform 4.14s, setup 1.28s, collect 9.82s, tests 26.91s, environment 3.83s, prepare 715ms)
+
+
+> @pepbits/ui@0.0.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-3/packages/ui
+
+ ✓ src/form-controls.test.tsx (30 tests) 840ms
+ ✓ src/search-select.test.tsx (15 tests) 1131ms
+ ✓ src/quantity-unit-field.test.tsx (9 tests) 476ms
+ ✓ src/otp-input.test.tsx (5 tests) 424ms
+ ✓ src/segmented.test.tsx (11 tests) 587ms
+ ✓ src/async-lookup.test.tsx (5 tests) 374ms
+ ✓ src/avatar.test.tsx (10 tests) 225ms
+ ✓ src/skeleton.test.tsx (4 tests) 156ms
+ ✓ src/source-controls.test.tsx (7 tests) 229ms
+ ✓ src/button.test.tsx (5 tests) 267ms
+ ✓ src/badge.test.tsx (12 tests) 117ms
+ ✓ src/localization.test.tsx (3 tests) 208ms
+ ✓ src/option-filter.test.tsx (13 tests) 69ms
+ ✓ src/scanner-input.test.tsx (2 tests) 92ms
+ ✓ src/field-interop.test.tsx (3 tests) 26ms
+ ✓ src/cn.test.ts (9 tests) 51ms
+
+ Test Files  16 passed (16)
+      Tests  143 passed (143)
+   Start at  18:38:46
+   Duration  18.72s (transform 931ms, setup 4.44s, collect 2.57s, tests 5.27s, environment 15.24s, prepare 2.25s)
+
+
+> @pepbits/patterns@0.0.0 test
+> vitest run src/wizard/wizard.test.tsx --maxWorkers=2
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-3/packages/patterns
+
+ ✓ src/wizard/wizard.test.tsx (4 tests) 593ms
+   ✓ validates before moving forward and clears errors as values are fixed  351ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  18:39:07
+   Duration  3.73s (transform 1.14s, setup 336ms, collect 1.29s, tests 593ms, environment 715ms, prepare 294ms)
+
+
+> @pepbits/icons@0.0.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-3/packages/icons
+
+ ✓ src/icon.test.tsx (107 tests) 321ms
+
+ Test Files  1 passed (1)
+      Tests  107 passed (107)
+   Start at  18:39:13
+   Duration  1.85s (transform 107ms, setup 0ms, collect 338ms, tests 321ms, environment 623ms, prepare 101ms)
+
