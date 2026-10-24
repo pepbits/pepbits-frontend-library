@@ -19,6 +19,8 @@ export interface MenuSection {
 }
 
 export interface ModuleDefinition {
+  /** Explicit non-menu/detail membership, supplied by the application catalog. */
+  pageIds?: readonly string[];
   labelKey?: string;
   shortLabelKey?: string;
   id: ModuleKey;

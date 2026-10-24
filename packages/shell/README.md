@@ -212,3 +212,7 @@ Solid notification surfaces use a dark tint of their semantic tone so white titl
 EnterpriseShell keeps its scrollable main region keyboard focusable even when a dashboard has no interactive children; the shell regression and real-browser axe sweep cover this case.
 
 Direct `application-providers.test.tsx` cases now verify session → preference → catalog → shell ordering, shared request/session wiring, anonymous and failed-load paths, serialized writes, rejected-save recovery, policy refresh, language changes preserving editor input and late-response fencing on identity changes. These tests inject fictional HTTP responses; they do not establish live identity or service acceptance.
+
+## Phase 6d host membership
+
+`ApplicationProviders.productForRole(role, user)` also receives the authenticated platform account, allowing host-owned session grants to build navigation; existing one-argument callbacks remain compatible. `ModuleDefinition.pageIds` optionally declares non-menu detail membership. `defineProduct` intersects these IDs with available pages; `moduleContainsPage` still requires both page and module in the filtered product. Regression tests cover shared details and denied modules. No product role or authorization rule is added to shell.

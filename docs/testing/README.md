@@ -120,3 +120,7 @@ The [6b-2 diagnostics increment](../releases/unreleased/restructure-phase-6b-2-2
 The [ERP feature contract](../features/erp-demo.md) defines ERD-01 through ERD-07. Its [local record](../releases/unreleased/restructure-phase-6c-1-2026-10-23.md) separates all 38 original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks. Route coverage is not specialized workflow, accounting or human accessibility acceptance.
 
 ERP phase 6c-2 extends ERD-08 through ERD-12 with hierarchy/board/profile and finance-grant cases, direct extraction tests and the existing four-profile route/page-content axe matrix. The [6c-2 record](../releases/unreleased/restructure-phase-6c-2-2026-10-23.md) separates real local HTTP/UI commands, direct HTTP denials, full-shell browser axe and forced CI. No backend/desktop inventory is modified.
+
+## Independent Scholaris demo — phase 6d
+
+The [school record](../releases/unreleased/restructure-phase-6d-2026-10-24.md) separates the 100 retained source tests, five school configuration cases, added host/transport/policy tests, route/profile/axe matrix and actual local HTTP workflows. Unit fixtures are mocked; integration uses the unchanged fictional API and isolated production Next server. Restricted-role backend gaps and shared-engine visual differences are explicit. This does not establish institutional, deployed, native or human accessibility acceptance.
