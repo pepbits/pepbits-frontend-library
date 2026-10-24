@@ -63,4 +63,8 @@ Phase 6d adds 36 direct Lucide primitives for education and general actions (inc
 
 The reports demo adds direct `Blocks`, `FileBarChart`, `FolderDown`, and `MailPlus` primitives (it also uses `KeyRound`, `Library`, `ScrollText`, `Settings` and `Zap`, which earlier phases export), each covered by a public render test. Report navigation stays in the demo.
 
+## Phase 6e-3 onboarding primitives
+
+Seven direct Lucide exports are added for the Orvia onboarding demo: `Accessibility`, `ArrowBigUpDash`, `FileLock2`, `KeyRound`, `MailCheck`, `TestTube` and `Workflow`. They use the existing dependency and conventions; the export test renders each one. There is no onboarding icon registry in the library.
+
 CareGrid scheduling adds direct `Accessibility`, `Apple`, `Baby`, `Brain`, `CalendarOff`, `CalendarRange`, `Car`, `Clipboard`, `Cpu`, `House`, `Leaf`, `LibraryBig`, `LifeBuoy`, `Lightbulb`, `Repeat`, `Smile`, `TestTube`, `User`, `UserX`, `Wand2` and `Zap` primitives, each covered by a render test. Category and resource-kind mappings stay in the demo.

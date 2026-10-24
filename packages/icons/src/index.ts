@@ -148,7 +148,10 @@ export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from '
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
 
 // Scheduling presentation primitives (CareGrid demonstration); CalendarOff, CalendarRange, Smile, User, UserX, Zap are exported elsewhere in this file.
-export {Accessibility, Apple, Baby, Brain, Car, Clipboard, Cpu, House, Leaf, LibraryBig, LifeBuoy, Lightbulb, Repeat, TestTube, Wand2} from 'lucide-react';
+// Accessibility, TestTube are exported elsewhere in this file.
+export {Apple, Baby, Brain, Car, Clipboard, Cpu, House, Leaf, LibraryBig, LifeBuoy, Lightbulb, Repeat, Wand2} from 'lucide-react';
+// Onboarding (phase 6e-3) presentation primitives (KeyRound and Workflow are exported elsewhere in this file).
+export {Accessibility, ArrowBigUpDash, FileLock2, MailCheck, TestTube} from "lucide-react";
 // Reports demo presentation primitives (KeyRound, Library, ScrollText, Settings and Zap are exported elsewhere in this file).
 export { Blocks, FileBarChart, FolderDown, MailPlus } from "lucide-react";
 // Additional generic icon exports.

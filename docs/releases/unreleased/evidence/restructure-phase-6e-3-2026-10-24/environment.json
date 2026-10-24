@@ -1,0 +1,24 @@
+{
+  "time": "2026-10-24T18:11:51.551870+00:00",
+  "baseCommit": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "apiNode": "v24.21.0",
+  "ciCommand": "flock -w 1800 /home/pepadmin/.cache/pepbits-heavy.lock bash docs/releases/unreleased/evidence/restructure-phase-6e-3-2026-10-24/run-ci.sh",
+  "receiptInputs": {
+    "RCM_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json",
+    "MEDBAND_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json"
+  },
+  "receiptInputSha256": "13bb113b11042d3007630e84acd932ec3d1a15547f280bdc368eae24b6ee87f8",
+  "receiptScope": "Four inherited healthcare browser-contract assertions read the historical 6b-9 receipt, not a fresh healthcare HTTP sweep.",
+  "memory": "The queued wrapper holds the shared lock across forced CI (--concurrency=1), then shell Chromium, then onboarding HTTP integration; no heavy steps overlap.",
+  "install": "npm install --cache /tmp/phase6e3-npm-cache",
+  "browserCommand": "Inside the same flock: LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu npm run test:browser -w @pepbits/shell",
+  "integrationCommand": "Inside the same flock: bash docs/releases/unreleased/evidence/restructure-phase-6e-3-2026-10-24/run-browser.sh",
+  "documentationCommand": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs",
+  "plainNodeDocsAttempt": {
+    "command": "node docs/tools/check-docs.mjs",
+    "exitCode": 1,
+    "reason": "Node 22 invocation cannot load the checker's protected legacy TypeScript imports (ERR_UNKNOWN_FILE_EXTENSION). The user-requested jiti loader is used for the required check."
+  }
+}

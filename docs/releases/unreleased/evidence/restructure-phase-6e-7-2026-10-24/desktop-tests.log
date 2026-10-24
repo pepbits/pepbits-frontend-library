@@ -1,0 +1,79 @@
+
+> @pepbits-demo/desktop@0.0.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-7/demo-apps/desktop
+
+ ✓ src/workflows.test.tsx (20 tests) 18066ms
+   ✓ anonymous sessions see the shared sign-in screen and load no workspace data  447ms
+   ✓ worklist rows come from the classified search API and open records in their own tabs  1657ms
+   ✓ editing a saved record writes the record store through the shared editor and keeps the tab  824ms
+   ✓ a failed save keeps typed values for an explicit retry  852ms
+   ✓ a created record absent from the generated worklist reloads through its saved record key  546ms
+   ✓ a record absent from both worklist and saved store shows not-found  344ms
+   ✓ overview creation shortcut respects account grants  354ms
+   ✓ an unqualified launch uses the effective default module while explicit deep links stay put  1057ms
+   ✓ closing a record with unsaved changes asks first and cancelling keeps the value  1198ms
+   ✓ two records can be compared in split view and returned to one pane  2661ms
+   ✓ separate windows are offered only by an available window port and receive the document key  1340ms
+   ✓ a detached window shows one record without tabs and refuses a key for another tenant  774ms
+   ✓ read-only destinations narrow create and edit without widening the account grants  929ms
+   ✓ an account without write grants cannot create or edit customers  766ms
+   ✓ cross-module navigation from the address replaces the tab set around the module home  641ms
+   ✓ preference changes go through the single host update path with accepted revisions  1200ms
+   ✓ a tenant lock disables the preference control and keeps the managed value  616ms
+   ✓ a policy change while mounted replaces a conflicting preference and disables its control  546ms
+   ✓ AI stays off unless configured, and the configured assistant asks the demo API for policy  1283ms
+ ✓ src/platform/tauri-windows.test.ts (6 tests) 31ms
+ ✓ src/routes.test.tsx (56 tests) 46014ms
+   ✓ default > / renders desktop-overview without axe violations  1333ms
+   ✓ default > /overview renders desktop-overview without axe violations  764ms
+   ✓ default > /finance/customers renders customer-master without axe violations  1547ms
+   ✓ default > /finance/customers/CUS-1 renders customer-master without axe violations  1047ms
+   ✓ default > /finance/customers/CUS-1/edit renders customer-master without axe violations  1287ms
+   ✓ default > /finance/customers/new renders customer-master without axe violations  1082ms
+   ✓ default > /library/components renders component-examples without axe violations  598ms
+   ✓ default > /hr/employees renders employee-worklist without axe violations  1464ms
+   ✓ default > /hr/employees/EMP-1 renders employee-worklist without axe violations  689ms
+   ✓ default > /preferences renders preferences without axe violations  1868ms
+   ✓ default > /finance/unknown-page renders not-found without axe violations  531ms
+   ✓ Arabic RTL > / renders desktop-overview without axe violations  621ms
+   ✓ Arabic RTL > /overview renders desktop-overview without axe violations  549ms
+   ✓ Arabic RTL > /finance/customers renders customer-master without axe violations  1102ms
+   ✓ Arabic RTL > /finance/customers/CUS-1 renders customer-master without axe violations  1038ms
+   ✓ Arabic RTL > /finance/customers/CUS-1/edit renders customer-master without axe violations  1066ms
+   ✓ Arabic RTL > /finance/customers/new renders customer-master without axe violations  831ms
+   ✓ Arabic RTL > /library/components renders component-examples without axe violations  665ms
+   ✓ Arabic RTL > /hr/employees renders employee-worklist without axe violations  1416ms
+   ✓ Arabic RTL > /hr/employees/EMP-1 renders employee-worklist without axe violations  2166ms
+   ✓ Arabic RTL > /preferences renders preferences without axe violations  2652ms
+   ✓ Arabic RTL > /finance/unknown-page renders not-found without axe violations  549ms
+   ✓ reduced motion > / renders desktop-overview without axe violations  620ms
+   ✓ reduced motion > /overview renders desktop-overview without axe violations  672ms
+   ✓ reduced motion > /finance/customers renders customer-master without axe violations  1144ms
+   ✓ reduced motion > /finance/customers/CUS-1 renders customer-master without axe violations  646ms
+   ✓ reduced motion > /finance/customers/CUS-1/edit renders customer-master without axe violations  744ms
+   ✓ reduced motion > /finance/customers/new renders customer-master without axe violations  928ms
+   ✓ reduced motion > /library/components renders component-examples without axe violations  486ms
+   ✓ reduced motion > /hr/employees renders employee-worklist without axe violations  1281ms
+   ✓ reduced motion > /hr/employees/EMP-1 renders employee-worklist without axe violations  1133ms
+   ✓ reduced motion > /preferences renders preferences without axe violations  2348ms
+   ✓ reduced motion > /finance/unknown-page renders not-found without axe violations  878ms
+   ✓ locked density > / renders desktop-overview without axe violations  766ms
+   ✓ locked density > /overview renders desktop-overview without axe violations  575ms
+   ✓ locked density > /finance/customers renders customer-master without axe violations  1680ms
+   ✓ locked density > /finance/customers/CUS-1 renders customer-master without axe violations  804ms
+   ✓ locked density > /finance/customers/CUS-1/edit renders customer-master without axe violations  696ms
+   ✓ locked density > /finance/customers/new renders customer-master without axe violations  677ms
+   ✓ locked density > /library/components renders component-examples without axe violations  563ms
+   ✓ locked density > /hr/employees renders employee-worklist without axe violations  939ms
+   ✓ locked density > /hr/employees/EMP-1 renders employee-worklist without axe violations  832ms
+   ✓ locked density > /preferences renders preferences without axe violations  2162ms
+   ✓ locked density > /finance/unknown-page renders not-found without axe violations  551ms
+
+ Test Files  3 passed (3)
+      Tests  82 passed (82)
+   Start at  18:17:31
+   Duration  55.81s (transform 4.76s, setup 1.07s, collect 14.40s, tests 64.11s, environment 3.52s, prepare 747ms)
+

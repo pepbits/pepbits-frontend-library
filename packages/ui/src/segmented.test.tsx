@@ -1,4 +1,6 @@
-import { render, screen } from "./test/render";
+import { render, screen, waitFor } from "./test/render";
+import {useState} from 'react';
+import {LocalizationProvider} from '@pepbits/i18n/react';
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test, vi } from "vitest";
 import { Segmented } from "./segmented";
@@ -77,4 +79,32 @@ describe("Segmented", () => {
 
 test('an unanswered group remains keyboard reachable without preselecting a value',async()=>{
  render_({value:''});await userEvent.tab();expect(screen.getByRole('radio',{name:'Table'})).toHaveFocus();expect(screen.getAllByRole('radio').every(r=>r.getAttribute('aria-checked')==='false')).toBe(true);
+});
+
+test('custom presentation retains radio names and disabled selection', async () => {
+ const onChange = vi.fn();
+ render_({onChange, options: [views[0]!, {...views[1]!, disabled: true}],
+  classes: {group: 'custom-group', option: 'custom-option', selected: 'custom-selected', idle: 'custom-idle'},
+  decoration: <span aria-hidden="true">Decoration</span>, renderOption: option => <span>{option.label} count</span>});
+ expect(screen.getByRole('radiogroup')).toHaveClass('custom-group');
+ expect(screen.getByRole('radio', {name: 'Table count'})).toHaveAttribute('aria-checked', 'true');
+ expect(screen.getByRole('radio', {name: 'Table count'})).toHaveClass('custom-selected');
+ await userEvent.click(screen.getByRole('radio', {name: 'Cards count'}));
+ expect(onChange).not.toHaveBeenCalled();
+});
+
+test('RTL arrow keys move in reading direction with focus following selection', async () => {
+ function Harness() {
+  const [value, setValue] = useState('table');
+  return <LocalizationProvider value={{language: 'ar', direction: 'rtl', t: text => text, dateTime: String}}>
+   <Segmented label="Views" options={[...views, {value: 'list', label: 'List'}]} value={value} onChange={setValue}/>
+  </LocalizationProvider>;
+ }
+ render(<Harness/>);
+ screen.getByRole('radio', {name: 'Table'}).focus();
+ await userEvent.keyboard('{ArrowLeft}');
+ await waitFor(() => expect(screen.getByRole('radio', {name: 'Cards'})).toHaveFocus());
+ expect(screen.getByRole('radio', {name: 'Cards'})).toHaveAttribute('aria-checked', 'true');
+ await userEvent.keyboard('{ArrowRight}');
+ await waitFor(() => expect(screen.getByRole('radio', {name: 'Table'})).toHaveFocus());
 });
