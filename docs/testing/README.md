@@ -136,3 +136,11 @@ ERP phase 6c-4 adds ERD-19 through ERD-23: record side content, case conversatio
 ## Independent Scholaris demo — phase 6d
 
 The [school record](../releases/unreleased/restructure-phase-6d-2026-10-24.md) separates the 100 retained source tests, five school configuration cases, added host/transport/policy tests, route/profile/axe matrix and actual local HTTP workflows. Unit fixtures are mocked; integration uses the unchanged fictional API and isolated production Next server. Restricted-role backend gaps and shared-engine visual differences are explicit. This does not establish institutional, deployed, native or human accessibility acceptance.
+
+## Onboarding phase 6e-3
+
+The [onboarding feature contract](../features/onboarding-demo.md) defines ONB-01 through ONB-09. Its [local record](../releases/unreleased/restructure-phase-6e-3-2026-10-24.md) separates the four-profile route/axe matrix, mocked workflow/adapter/rule/provider tests, new library tests and the real local HTTP/Chromium run. The source demo has no tests to port. Automated checks are not native-speaker, assistive-technology or backend acceptance.
+
+## Desktop phase 6e-7
+
+The [desktop feature contract](../features/desktop-demo.md) defines DSK-01 through DSK-08. `demo-apps/desktop` keeps the original three Tauri window-port cases (Tauri API mocked), renders all eleven route patterns through the full host under default, Arabic RTL, reduced motion and a locked preference with jsdom axe, and covers record/split/dirty-close/detach/preference/AI workflows with a mocked API. Its integration driver checks the production web build (`vite preview`) against the real local demo API in Chromium. The [6e-7 record](../releases/unreleased/restructure-phase-6e-7-2026-10-24.md) separates these from native execution, which was not performed.

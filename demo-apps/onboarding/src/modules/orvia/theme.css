@@ -1,0 +1,137 @@
+/*
+ * Orvia Health Cloud design vocabulary from demo-pages/orvia-health-onboarding/tailwind.config.ts.
+ * The @theme block registers the source names (scrub, ink, paper, mint, signal, caution and the
+ * animations) so ported markup keeps its utility classes. Its values are the source palette.
+ *
+ * Inside .orvia every name is re-pointed at the effective host theme (PREF-05): neutrals at the
+ * semantic surface/text/border tokens, the scrub brand family at the primary family, the dark brand
+ * rails at the sidebar tokens, radii at --radius and type at --font-ui and --fs-scale. Only the mint
+ * trace accent on the dark rails is fixed brand ink.
+ */
+@theme {
+  --color-paper: #f4f7f6;
+  --color-surface: #ffffff;
+  --color-mint: #7fe0c6;
+  --color-signal: #c93439;
+  --color-caution: #9a6212;
+  --color-caution-soft: #fbf1df;
+  --color-scrub-50: #eef7f5;
+  --color-scrub-100: #d5ece7;
+  --color-scrub-200: #abd8cf;
+  --color-scrub-300: #77bdb1;
+  --color-scrub-400: #3f9c8f;
+  --color-scrub-500: #1a8075;
+  --color-scrub-600: #0d6b63;
+  --color-scrub-700: #0a5751;
+  --color-scrub-800: #08453f;
+  --color-scrub-900: #062f2c;
+  --color-rail: #062f2c;
+  --color-rail-100: #d5ece7;
+  --color-rail-200: #abd8cf;
+  --color-rail-300: #77bdb1;
+  --color-ink-50: #f2f5f7;
+  --color-ink-100: #e3e9ed;
+  --color-ink-200: #c7d2d9;
+  --color-ink-300: #9daeb9;
+  --color-ink-400: #6d8393;
+  --color-ink-500: #4d6475;
+  --color-ink-600: #384d5c;
+  --color-ink-700: #283b48;
+  --color-ink-800: #1a2c38;
+  --color-ink-900: #0f2430;
+  --font-display: var(--font-ui);
+  --animate-fade-in: orvia-fade-in 200ms ease-out both;
+  --animate-fade-up: orvia-fade-up 320ms cubic-bezier(.2,.7,.2,1) both;
+  --animate-step-in: orvia-step-in 380ms cubic-bezier(.2,.7,.2,1) both;
+  --animate-trace: orvia-trace 1.8s cubic-bezier(.65,0,.35,1) both;
+  --animate-shake: orvia-shake 380ms ease-in-out;
+  --animate-pop: orvia-pop 520ms cubic-bezier(.2,.9,.3,1.3) both;
+  --animate-ring: orvia-ring 1s ease-out both;
+}
+
+@keyframes orvia-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes orvia-fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes orvia-step-in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes orvia-trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes orvia-shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+@keyframes orvia-pop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes orvia-ring { from { transform: scale(1); opacity: .8; } to { transform: scale(2.8); opacity: 0; } }
+@keyframes orvia-dot-in { from { opacity: 0; } to { opacity: 1; } }
+
+.orvia {
+  --color-paper: var(--bg);
+  --color-surface: var(--surface);
+  --color-signal: var(--danger-ink);
+  --color-caution: var(--warning-ink);
+  --color-caution-soft: color-mix(in srgb, var(--warning) 14%, var(--surface));
+  --color-scrub-50: var(--primary-soft);
+  --color-scrub-100: color-mix(in srgb, var(--primary) 14%, var(--surface));
+  --color-scrub-200: color-mix(in srgb, var(--primary) 28%, var(--surface));
+  --color-scrub-300: color-mix(in srgb, var(--primary) 45%, var(--surface));
+  --color-scrub-400: color-mix(in srgb, var(--primary) 75%, var(--surface));
+  --color-scrub-500: var(--primary);
+  --color-scrub-600: var(--primary);
+  --color-scrub-700: var(--primary-fill);
+  --color-scrub-800: var(--primary-strong);
+  --color-scrub-900: color-mix(in srgb, var(--primary-strong) 70%, var(--text));
+  --color-rail: var(--sidebar-surface);
+  --color-rail-100: var(--sidebar-text);
+  --color-rail-200: color-mix(in srgb, var(--sidebar-text) 88%, var(--sidebar-surface));
+  --color-rail-300: color-mix(in srgb, var(--sidebar-text) 76%, var(--sidebar-surface));
+  --color-ink-50: var(--surface-2);
+  --color-ink-100: var(--surface-3);
+  --color-ink-200: var(--border);
+  --color-ink-300: var(--border-strong);
+  --color-ink-400: var(--text-subtle);
+  --color-ink-500: var(--text-muted);
+  --color-ink-600: var(--text-muted);
+  --color-ink-700: color-mix(in srgb, var(--text) 78%, var(--text-muted));
+  --color-ink-800: color-mix(in srgb, var(--text) 90%, var(--text-muted));
+  --color-ink-900: var(--text);
+  --radius-md: calc(var(--radius) * 6 / 14);
+  --radius-lg: calc(var(--radius) * 8 / 14);
+  --radius-xl: calc(var(--radius) * 12 / 14);
+  --radius-2xl: calc(var(--radius) * 16 / 14);
+  --radius-3xl: calc(var(--radius) * 28 / 14);
+  --text-xs: calc(.75rem * var(--fs-scale));
+  --text-sm: calc(.875rem * var(--fs-scale));
+  --text-base: calc(1rem * var(--fs-scale));
+  --text-lg: calc(1.125rem * var(--fs-scale));
+  --text-xl: calc(1.25rem * var(--fs-scale));
+  --text-2xl: calc(1.5rem * var(--fs-scale));
+  --text-3xl: calc(1.875rem * var(--fs-scale));
+  --text-4xl: calc(2.25rem * var(--fs-scale));
+  --text-5xl: calc(3rem * var(--fs-scale));
+  --text-6xl: calc(3.75rem * var(--fs-scale));
+  --fs-scale: var(--fs-form);
+  font-family: var(--font-ui), "Noto Sans Arabic Variable", "Noto Sans Devanagari Variable", "Noto Sans Malayalam Variable", sans-serif;
+  font-size: calc(1rem * var(--fs-scale));
+  background: var(--color-paper);
+  color: var(--color-ink-900);
+  min-width: 0;
+}
+.orvia ::selection { background: color-mix(in srgb, var(--primary) 26%, transparent); }
+.orvia input[type="number"]::-webkit-inner-spin-button,
+.orvia input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.orvia [data-orvia-rail] :focus-visible { outline-color: var(--color-mint); }
+
+@utility bg-chart-grid {
+  background-image:
+    linear-gradient(rgba(127, 224, 198, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127, 224, 198, .08) 1px, transparent 1px),
+    linear-gradient(rgba(127, 224, 198, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127, 224, 198, .035) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+  background-position: -1px -1px;
+}
+@utility origin-fill-center { transform-box: fill-box; transform-origin: center; }
+@utility scrollbar-thin { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+@utility scrollbar-none { scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
+
+/* Source honoured the OS setting; the host's effective reduced-motion preference also applies (shell sets data-reduced-motion). */
+.orvia[data-reduced-motion="true"] *, .orvia[data-reduced-motion="true"] *::before, .orvia[data-reduced-motion="true"] *::after {
+  animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .orvia *, .orvia *::before, .orvia *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

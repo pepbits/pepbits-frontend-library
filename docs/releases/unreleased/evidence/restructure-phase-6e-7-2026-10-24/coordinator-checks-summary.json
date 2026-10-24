@@ -1,0 +1,19 @@
+{
+  "scope": "Summary of pre-existing coordinator logs, read during the live HTTP follow-up; these checks were not rerun in this session. The logs do not record source identity, so they are not final working-tree certification.",
+  "logs": [
+    {
+      "path": "/home/pepadmin/.cache/pepbits-phase6e-7/verify/ci2.log",
+      "sha256": "90dd455618da0052d79f9e9725eee4f7caf0b0698978821c8332c332643f9553",
+      "modified": "2026-10-24T19:25:47.906Z",
+      "command": "npm run check:boundaries && npm run test:tooling && turbo run typecheck test build --force --concurrency=3",
+      "result": "Tasks:    45 successful, 45 total\nCached:    0 cached, 45 total\n  Time:    18m2.226s"
+    },
+    {
+      "path": "/home/pepadmin/.cache/pepbits-phase6e-7/verify/browser.log",
+      "sha256": "ceb5adac619299faed75d391b7d9289010f7ab936e7d071013a35a4eb2240f5f",
+      "modified": "2026-10-24T18:46:35.293Z",
+      "command": "vitest run --config vitest.browser.config.ts",
+      "result": "Test Files  1 passed (1)\n      Tests  4 passed (4)\n   Start at  18:46:28\n   Duration  6.44s (transform 117ms, setup 0ms, collect 1.01s, tests 4.84s, environment 1ms, prepare 120ms)"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+
+> @pepbits-demo/desktop@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-7/demo-apps/desktop
+
+ ✓ src/workflows.test.tsx (20 tests) 12989ms
+   ✓ worklist rows come from the classified search API and open records in their own tabs  1163ms
+   ✓ editing a saved record writes the record store through the shared editor and keeps the tab  950ms
+   ✓ a failed save keeps typed values for an explicit retry  1083ms
+   ✓ a created record absent from the generated worklist reloads through its saved record key  407ms
+   ✓ overview creation shortcut respects account grants  311ms
+   ✓ an unqualified launch uses the effective default module while explicit deep links stay put  519ms
+   ✓ closing a record with unsaved changes asks first and cancelling keeps the value  643ms
+   ✓ two records can be compared in split view and returned to one pane  1755ms
+   ✓ separate windows are offered only by an available window port and receive the document key  937ms
+   ✓ a detached window shows one record without tabs and refuses a key for another tenant  361ms
+   ✓ read-only destinations narrow create and edit without widening the account grants  707ms
+   ✓ an account without write grants cannot create or edit customers  588ms
+   ✓ cross-module navigation from the address replaces the tab set around the module home  374ms
+   ✓ preference changes go through the single host update path with accepted revisions  571ms
+   ✓ a tenant lock disables the preference control and keeps the managed value  462ms
+   ✓ a policy change while mounted replaces a conflicting preference and disables its control  517ms
+   ✓ AI stays off unless configured, and the configured assistant asks the demo API for policy  1146ms
+ ✓ src/platform/tauri-windows.test.ts (6 tests) 46ms
+ ✓ src/routes.test.tsx (56 tests) 29914ms
+   ✓ default > / renders desktop-overview without axe violations  971ms
+   ✓ default > /overview renders desktop-overview without axe violations  632ms
+   ✓ default > /finance/customers renders customer-master without axe violations  1801ms
+   ✓ default > /finance/customers/CUS-1 renders customer-master without axe violations  778ms
+   ✓ default > /finance/customers/CUS-1/edit renders customer-master without axe violations  686ms
+   ✓ default > /finance/customers/new renders customer-master without axe violations  674ms
+   ✓ default > /library/components renders component-examples without axe violations  418ms
+   ✓ default > /hr/employees renders employee-worklist without axe violations  837ms
+   ✓ default > /hr/employees/EMP-1 renders employee-worklist without axe violations  547ms
+   ✓ default > /preferences renders preferences without axe violations  1534ms
+   ✓ default > /finance/unknown-page renders not-found without axe violations  338ms
+   ✓ Arabic RTL > / renders desktop-overview without axe violations  425ms
+   ✓ Arabic RTL > /overview renders desktop-overview without axe violations  368ms
+   ✓ Arabic RTL > /finance/customers renders customer-master without axe violations  975ms
+   ✓ Arabic RTL > /finance/customers/CUS-1 renders customer-master without axe violations  667ms
+   ✓ Arabic RTL > /finance/customers/CUS-1/edit renders customer-master without axe violations  688ms
+   ✓ Arabic RTL > /finance/customers/new renders customer-master without axe violations  642ms
+   ✓ Arabic RTL > /library/components renders component-examples without axe violations  398ms
+   ✓ Arabic RTL > /hr/employees renders employee-worklist without axe violations  802ms
+   ✓ Arabic RTL > /hr/employees/EMP-1 renders employee-worklist without axe violations  609ms
+   ✓ Arabic RTL > /preferences renders preferences without axe violations  1508ms
+   ✓ Arabic RTL > /finance/unknown-page renders not-found without axe violations  398ms
+   ✓ reduced motion > / renders desktop-overview without axe violations  353ms
+   ✓ reduced motion > /overview renders desktop-overview without axe violations  328ms
+   ✓ reduced motion > /finance/customers renders customer-master without axe violations  837ms
+   ✓ reduced motion > /finance/customers/CUS-1 renders customer-master without axe violations  502ms
+   ✓ reduced motion > /finance/customers/CUS-1/edit renders customer-master without axe violations  604ms
+   ✓ reduced motion > /finance/customers/new renders customer-master without axe violations  534ms
+   ✓ reduced motion > /library/components renders component-examples without axe violations  333ms
+   ✓ reduced motion > /hr/employees renders employee-worklist without axe violations  754ms
+   ✓ reduced motion > /hr/employees/EMP-1 renders employee-worklist without axe violations  581ms
+   ✓ reduced motion > /preferences renders preferences without axe violations  1440ms
+   ✓ locked density > / renders desktop-overview without axe violations  444ms
+   ✓ locked density > /overview renders desktop-overview without axe violations  359ms
+   ✓ locked density > /finance/customers renders customer-master without axe violations  891ms
+   ✓ locked density > /finance/customers/CUS-1 renders customer-master without axe violations  556ms
+   ✓ locked density > /finance/customers/CUS-1/edit renders customer-master without axe violations  550ms
+   ✓ locked density > /finance/customers/new renders customer-master without axe violations  550ms
+   ✓ locked density > /library/components renders component-examples without axe violations  341ms
+   ✓ locked density > /hr/employees renders employee-worklist without axe violations  779ms
+   ✓ locked density > /hr/employees/EMP-1 renders employee-worklist without axe violations  490ms
+   ✓ locked density > /preferences renders preferences without axe violations  1399ms
+   ✓ locked density > /finance/unknown-page renders not-found without axe violations  300ms
+
+ Test Files  3 passed (3)
+      Tests  82 passed (82)
+   Start at  19:34:07
+   Duration  37.39s (transform 3.67s, setup 892ms, collect 11.02s, tests 42.95s, environment 2.15s, prepare 551ms)
+

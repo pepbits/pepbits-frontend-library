@@ -234,3 +234,11 @@ test('Host module transitions and reopening records retain role identity in MDI 
  act(()=>result.current.port.openInNewContext({pageId:'items',moduleId:'operations-edit',recordId:'/quizzes/qz-1'}));
  expect(result.current.port.current).toMatchObject({moduleId:'operations-edit',recordId:'/quizzes/qz-1'});
 });
+
+test('crossing modules to a record on the destination landing page keeps the record beside the home tab',()=>{
+ const workspace=newWorkspace();
+ const {result}=renderHook(()=>useWorkspaceNavigation(workspace,{product,initialModule:'operations'}));
+ act(()=>result.current.port.open({pageId:'resources-dashboard',mode:'view',recordId:'R-1'}));
+ expect(workspace.getOpenDocuments().map(document=>document.title)).toEqual(['Resources overview','Resources overview • R-1']);
+ expect(result.current.port.current).toEqual({pageId:'resources-dashboard',mode:'view',recordId:'R-1'});
+});

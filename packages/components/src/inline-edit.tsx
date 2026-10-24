@@ -138,14 +138,12 @@ export function InlineEdit({ label, value, display, onCommit, validate, disabled
     return (
       <button
         type="button"
-        /* The value is the content; the label is what it IS. Without both, a
-           screen reader in a wide table reads two hundred numbers and no
-           column names. */
-        aria-label={`${label}: ${typeof display === "string" ? display : value}`}
         onClick={open}
         onKeyDown={(event) => { if (event.key === "F2") { event.preventDefault(); open(); } }}
         className={cn("focus-ring -mx-1 flex w-full min-w-0 items-center gap-1 rounded-md px-1 text-left transition hover:bg-[var(--surface-3)]", className)}
       >
+        {/* Name the column and the rendered value, including rich formatted displays. */}
+        <span className="sr-only">{label}: </span>
         <span className="min-w-0 flex-1 truncate">{display ?? value}</span>
       </button>
     );

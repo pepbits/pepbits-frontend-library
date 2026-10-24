@@ -1,0 +1,50 @@
+{
+  "status": "blocked-required-heavy-verification",
+  "baseCommit": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+  "implementationDigest": "99fb08559c68d697a648441cfc509d77c01867f182a17da897f35fdf089ab72d",
+  "focused": {
+    "scope": "Sequential local workspace checks only; not full CI or browser acceptance. Two Vitest workers maximum.",
+    "exitCode": 0,
+    "runtimeDigest": "9d34fe70b5569e674fb0f4e0415497600cb2816f83a0bceb87dbe55d7694f8ec",
+    "runtimeFiles": 1545,
+    "workspaces": [
+      {
+        "workspace": "@pepbits-demo/onboarding",
+        "tests": 99,
+        "files": 6
+      },
+      {
+        "workspace": "@pepbits/ui",
+        "tests": 143,
+        "files": 16
+      },
+      {
+        "workspace": "@pepbits/patterns (wizard only)",
+        "tests": 4,
+        "files": 1
+      },
+      {
+        "workspace": "@pepbits/icons",
+        "tests": 107,
+        "files": 1
+      }
+    ],
+    "totalTests": 353,
+    "totalFiles": 24,
+    "appTypecheck": "passed; typecheck-final.log",
+    "logSha256": "a61d68d94996162575e22c6afc9555e2ea4572878ed549b417c35085da58023f"
+  },
+  "documentationFiles": 198,
+  "install": "passed",
+  "packageBoundaries": "12 packages, 4 demos passed",
+  "requiredNotRun": [
+    "forced full CI and per-workspace zero-cache totals",
+    "production builds including onboarding next build",
+    "shell Chromium tests",
+    "onboarding 12 HTTP/UI workflows and 44 browser route/profile checks"
+  ],
+  "reason": "Shared lock unavailable for 1800-second wait, 60-second retry and final nonblocking attempt. Host holder is outside sandbox process visibility; coordinating/user inspection requested.",
+  "protectedPathsUnchanged": true,
+  "noServicesStartedByResume": true,
+  "noCommitOrPush": true
+}

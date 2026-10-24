@@ -12,6 +12,10 @@ Applications that demonstrate and test the library. Phase 6a adds the independen
 
 ERP is in progress below. Remaining app order: reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Each is its own app and will be built one at a time.
 
+## Desktop
+
+[Desktop](desktop/README.md) is the Vite + Tauri 2 demo on port 3410 that replaces `desktop-clients/apps/desktop` (phase 6e-7). The full shell runs as a document workspace (tabs, split, floating frames, unsaved-change guards, separate native windows through a Tauri window port) around demo-owned pages over the unchanged demo API. The [source map](desktop/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-7-2026-10-24.md) state scope: resumed-source unit/typecheck/docs checks pass; final build/CI/browser verification is blocked by the shared heavy-check lock. The native executable is not built or tested.
+
 ## Healthcare
 
 [Healthcare](healthcare/README.md) is the separate Next.js demo on port 3310. Phases 6b-1/6b-2 add the Healthcare Suite core, patient workspace, clinical screens and 55 LIS1/LIS2/RIS1 diagnostic destinations against the unchanged synthetic demo HTTP API, using the full shared shell and API-backed preferences. Its [source map](healthcare/source-mapping.md) and [release record](../docs/releases/unreleased/restructure-phase-6b-2-2026-10-23.md) distinguish completed scope, local verification and remaining healthcare runs. This is not clinical acceptance.
@@ -31,6 +35,10 @@ ERP is in progress below. Remaining app order: reports, tenant-admin, onboarding
 ## Reports
 
 [Reports](reports/README.md) is the independent Next.js demo on port 3350. Phase 6e-1 ports the Lumen Reports reference module: all 19 source page routes (library, viewer, builder, dashboards, background jobs, schedules, email requests, API keys and administration) over the shared host and the unchanged demo API. Data, users, schedules and email are fictional; email is recorded, never sent. See its [source map](reports/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-1-2026-10-24.md). Not a deployment.
+
+## Onboarding
+
+[Onboarding](onboarding/README.md) is the separate Next.js demo on port 3370. Phase 6e-3 ports the Orvia Health Cloud onboarding demo: landing page, workspace lookup, workspace sign-in with a 6-digit code and the six/seven-step organization registration, inside the shared shell against the unchanged demo API. Orvia's directory, registrations and sign-in are fictional device-local adapters behind an onboarding port because the API has no equivalent endpoints. Generic step state lives in `@pepbits/patterns/wizard` and code entry in `@pepbits/ui` `OtpInput`. See its [source map](onboarding/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-3-2026-10-24.md). Fictional demonstration only, not a deployment.
 
 ## Settle
 
