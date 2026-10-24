@@ -1,6 +1,6 @@
 'use client';
 import React, {createContext, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
-import {SessionProvider, useSession, type SessionValue} from '@pepbits/platform/auth';
+import {SessionProvider, useSession, type SessionUser, type SessionValue} from '@pepbits/platform/auth';
 import type {NavigationPort} from '@pepbits/platform/navigation';
 import {PreferenceHost, usePreferences} from '@pepbits/preferences/react';
 import {EMPTY_PREFERENCE_POLICY} from '@pepbits/preferences';
@@ -15,7 +15,7 @@ import {createRequest, readJson, RequestContext, type Request} from '@pepbits/pl
 import {loadPreferences, savePreferences, type PreferenceSnapshot} from '@pepbits/platform/preference-service';
 
 
-interface ApplicationConfig {productId:string;brand:{name:string;tagline:string};productForRole:(role:string)=>ProductDefinition;className?:string;notice?:string}
+interface ApplicationConfig {productId:string;brand:{name:string;tagline:string};productForRole:(role:string,user:SessionUser)=>ProductDefinition;className?:string;notice?:string}
 const Configuration = createContext<ApplicationConfig>(null!);
 const SettingsServices = createContext<{request: Request; canManagePreferencePolicy: boolean; saveError?: string; reload: () => Promise<void>} | undefined>(undefined);
 export const useSettingsServices = () => useContext(SettingsServices);
@@ -51,7 +51,7 @@ function LocaleSurface({catalogs, children}: {catalogs: TranslationCatalog; chil
 function Authenticated({request, navigation, children}: {request: Request; navigation: NavigationPort; children: React.ReactNode}) {
   const {user} = useSession();
   const {brand,productForRole,className}=useContext(Configuration);
-  const product=useMemo(()=>productForRole(user!.role),[user!.role,productForRole]);
+  const product=useMemo(()=>productForRole(user!.role,user!),[user,productForRole]);
   const [snapshot, setSnapshot] = useState<PreferenceSnapshot | null>(null);
   const accepted = useRef<PreferenceSnapshot | null>(null), live = useRef(true), queue = useRef(Promise.resolve());
   const [error, setError] = useState<unknown>(null), [saveError, setSaveError] = useState<string>();

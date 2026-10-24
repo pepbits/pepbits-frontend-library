@@ -129,6 +129,12 @@ ColumnManager visibility buttons expose their column names and pressed state for
 
 `./worklist` adds `downloadGrid(headers, rows, format, name)` for an explicitly reviewed grid. It preserves numeric XLSX cells, applies formula-safe CSV escaping, normalizes the extension and releases the object URL. It does not classify raw columns or grant export permission: callers must review their schema and apply effective export preferences and authorization before calling it. Use `exportRows` when column classification is required. A test decodes the workbook and checks formula-safe CSV output.
 
+## Advanced report conditions (phase 6c-5)
+
+`./templates` exports `ReportFilterField`, `ReportFilterDefinition`, `ReportFilterValue`, `ReportFilters`, `activeReportFilter` and `validReportFilters`. The controlled field supports searchable multiple choices, open date/numeric ranges, text and three-state booleans. Empty and zero/false values stay distinct; inverted/nonfinite ranges are invalid. The host supplies reference choices/loading/failure controls and owns draft/apply/reset semantics and requests. Shared UI controls inherit effective typography, theme, radius, language and RTL; native dates/numbers retain machine values. No condition or layout is persisted by this component.
+
+`TemplateReport` adds optional `sort`/`onSort` and `groupTotals`. Sortable column headers expose `aria-sort` and native buttons. The host performs ordering and supplies full-result group subtotals, which remain visible in both table and card layouts. No subtotal is inferred from a paginated subset. Existing callers retain their prior behavior when these props are omitted. ERP provides complete filtered totals only below its API response bound. Export helpers remain unchanged. Direct field tests and the ERP report matrix cover conditions, invalid ranges, sorting, full-result totals, permissions, effective export/page-size policies, Arabic RTL and axe.
+
 ## Record context (phase 6c-4)
 
 `RecordPage` accepts optional `summary` and `aside` React slots for host-owned statistics and related information. A container query places the aside beside wide forms and below narrow forms; context remains mounted across section navigation and preference changes. The existing layout is unchanged when no aside is supplied. Fetching, authority, draft retention and domain calculations remain with the host. The record-page tests cover context input retention and effective density changes.

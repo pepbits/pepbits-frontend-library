@@ -1,0 +1,137 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API; academic demonstration, not institutional acceptance",
+  "flows": [
+    {
+      "id": "sign-in",
+      "scope": "UI",
+      "result": "Authenticated fixture session loads preferences, canonical catalog and school dashboard"
+    },
+    {
+      "id": "teacher-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "teacher-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "student-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "student-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "parent-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "parent-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "librarian-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    }
+  ],
+  "checks": [],
+  "errors": [
+    {
+      "route": "/settings?role=librarian",
+      "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Full name', exact: true }) to be visible\u001b[22m\n"
+    }
+  ],
+  "consoleErrors": [
+    {
+      "route": "/settings?role=parent",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    },
+    {
+      "route": "/settings?role=parent",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    },
+    {
+      "route": "/settings?role=parent",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    },
+    {
+      "route": "/settings?role=parent",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    },
+    {
+      "route": "/settings?role=parent",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    },
+    {
+      "route": "/settings?role=parent",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    },
+    {
+      "route": "/settings?role=librarian",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    },
+    {
+      "route": "/settings?role=librarian",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    },
+    {
+      "route": "/settings?role=librarian",
+      "message": "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    }
+  ],
+  "httpErrors": [
+    {
+      "route": "/settings?role=parent",
+      "path": "/api/reference-modules/school/api/classes",
+      "status": 403
+    },
+    {
+      "route": "/settings?role=parent",
+      "path": "/api/reference-modules/school/api/subjects",
+      "status": 403
+    },
+    {
+      "route": "/settings?role=parent",
+      "path": "/api/reference-modules/school/api/teachers",
+      "status": 403
+    },
+    {
+      "route": "/settings?role=parent",
+      "path": "/api/reference-modules/school/api/classes",
+      "status": 403
+    },
+    {
+      "route": "/settings?role=parent",
+      "path": "/api/reference-modules/school/api/subjects",
+      "status": 403
+    },
+    {
+      "route": "/settings?role=parent",
+      "path": "/api/reference-modules/school/api/teachers",
+      "status": 403
+    },
+    {
+      "route": "/settings?role=librarian",
+      "path": "/api/reference-modules/school/api/classes",
+      "status": 403
+    },
+    {
+      "route": "/settings?role=librarian",
+      "path": "/api/reference-modules/school/api/subjects",
+      "status": 403
+    },
+    {
+      "route": "/settings?role=librarian",
+      "path": "/api/reference-modules/school/api/teachers",
+      "status": 403
+    }
+  ]
+}

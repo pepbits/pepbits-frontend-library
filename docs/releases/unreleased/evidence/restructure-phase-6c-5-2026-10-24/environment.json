@@ -1,0 +1,17 @@
+{
+  "time": "2026-10-24T03:29:56.573960+00:00",
+  "baseCommit": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "ciCommand": "NEXT_PUBLIC_API_URL=/api npm run ci -- --concurrency=1 --env-mode=loose",
+  "receiptInputs": {
+    "RCM_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json",
+    "MEDBAND_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json"
+  },
+  "receiptInputSha256": "13bb113b11042d3007630e84acd932ec3d1a15547f280bdc368eae24b6ee87f8",
+  "receiptScope": "Four inherited healthcare browser-contract assertions read the historical 6b-9 receipt; no fresh healthcare HTTP sweep.",
+  "memory": "One Vitest tree, one Next server and one API maximum. Forced CI uses concurrency=1. Final ERP HTTP may overlap remaining non-ERP CI tasks after its build completes; shell Chromium follows CI.",
+  "dependencies": "Dependency versions and graph unchanged; added public subpath only. No npm install required.",
+  "browserCommand": "LD_LIBRARY_PATH=\"$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu\" npm run test:browser -w @pepbits/shell",
+  "documentationCommand": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs"
+}

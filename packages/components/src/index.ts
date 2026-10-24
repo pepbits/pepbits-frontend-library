@@ -18,3 +18,4 @@ export * from "./recovery-notice";
 export * from "./error-mapper";
 
 export * from "./source-dialog";
+export * from './metric-charts';

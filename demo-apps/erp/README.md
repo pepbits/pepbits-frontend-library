@@ -31,7 +31,7 @@ npm run test:integration -w @pepbits-demo/erp
 
 Build before integration. The shared launcher starts one API, one production Next server and Chromium on free loopback ports with temporary API storage, and cleans up on success, failure, cancellation or deadline. Set `ERP_API_NODE` to a Node 24 executable. If generated runtimes are absent, `ERP_RUNTIME_ARTIFACTS` can name a source-identical existing API checkout; all tracked sources are compared before reuse and runtime hashes are recorded. This does not rebuild the API. Chromium on this machine needs `LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu`.
 
-Optional receipts: `ERP_RESULT`, `ERP_IDENTITY`, `ERP_SCREENSHOT`; cancellation/deadline: `ERP_STOP_FILE`, `ERP_TIMEOUT_MS` (30-minute default); build output: `ERP_BUILD_DIR`. Keep at most one Next server, one API and one Vitest tree running. The [delivery record](../../docs/releases/unreleased/restructure-phase-6c-4-2026-10-24.md) identifies exact checks and limits.
+Optional receipts: `ERP_RESULT`, `ERP_IDENTITY`, `ERP_SCREENSHOT`; cancellation/deadline: `ERP_STOP_FILE`, `ERP_TIMEOUT_MS` (30-minute default); build output: `ERP_BUILD_DIR`. Keep at most one Next server, one API and one Vitest tree running. The delivery records for [6c-4](../../docs/releases/unreleased/restructure-phase-6c-4-2026-10-24.md) and [6c-5](../../docs/releases/unreleased/restructure-phase-6c-5-2026-10-24.md) identifies exact checks and limits.
 
 ## Structure and routes
 
@@ -70,6 +70,26 @@ All 38 original source cases are retained with public-provider adaptations. Adde
 Existing create/edit controls and ERP1 tree leaf deletion are enabled for finance, finance-manager and accountant roles on chart-of-accounts, tax-rates, journal-vouchers, payment-vouchers, petty-cash, depreciation-run, receivables-aging and ledger-entries, plus exact server-issued `erp:write:<entity>` grants. Other entities remain read-only; full admin/operations roles retain existing write access. Every command still goes through server authorization. Direct edit routes and retry handlers apply the same entity checks. Entity grants also require the shell capability, so an expired session or mounted host denial keeps writes disabled. Export presentation is unchanged.
 
 The Next root layout owns the ERP client/provider host so navigation between a worklist and its record keeps scoped neighbour memory. Catch-all pages supply route identity without remounting that host. A browser refresh still starts a new in-memory scope.
+
+
+## Phase 6c-5: report controls and long invoices
+
+Open Advanced filter on a report, enter conditions, then Apply filters. Choice/reference fields accept several values; numeric/date ranges accept either bound; people use text matching. Invalid ranges cannot be applied. Cancel retains accepted filters, Reset clears the draft, and Clear filters resets the report. Main date presets and advanced invoice-date conditions replace one another explicitly. Column headings cycle ascending, descending and unsorted. Group by keeps each group together and shows complete filtered subtotals even when a group spans screen pages. Exports contain every filtered row in the selected order plus one grand total; group header/subtotal display rows are omitted. Effective CSV/XLSX, table/card, density, page-size and formatting policies remain authoritative. Lookup failures have retry, and incomplete responses suppress totals/export.
+
+| Destinations (both ERP1 and ERP2) | Source analytical controls now covered |
+| --- | --- |
+| Sales register | Customer multiple choices, invoice/due dates, salesperson text, total range, multiple statuses; grouping by customer/salesperson/status, sorting, subtotal/grand totals, CSV/XLSX |
+| Purchase register | Supplier choices, PO date, buyer text, warehouse/status choices and total range; supplier/buyer/warehouse/status grouping, sorting, subtotal/grand totals, CSV/XLSX |
+| Stock summary | Category/warehouse choices, opening/inward/outward/closing/value ranges; category/warehouse grouping, sorting, subtotal/grand totals, CSV/XLSX; source has no period dimension |
+| Receivables aging | Customer/bucket choices, invoice date, every age-bucket amount and outstanding ranges; customer/bucket grouping, sorting, subtotal/grand totals, CSV/XLSX |
+| Customer ledger | Customer, month/90-day/365-day/all/custom period, search and full-statement export; opening/running/closing balances remain independent of search |
+| Attendance | Month navigation, search, fill blanks today, row/column summaries and save/discard |
+| Timesheets | Monday-normalized week navigation, search, total/overtime summaries and save/discard |
+| Marks entry | Term 1/Term 2/Final, search, score/grade/average summaries and save/discard |
+
+No source report, ledger or matrix offers a pivot designer or comparison-period control. Matrices have no source export control. No options are fabricated for these absent capabilities. Source column persistence and saved views are outside this increment and remain in the parallel 6c-4 scope at all eight report destinations.
+
+Long Invoice print documents now measure actual row heights and reserve A4 space for repeating company/customer/invoice identity and item headers, carried/brought totals including tax, and Page n / total. Item numbers remain continuous. Payment details, tax/grand totals, English amount words and optional terms appear once on the final page; the summary may occupy a separate page. Font/format/terms changes trigger measurement again, and zoom changes only screen scale. Printing waits for a valid layout. An individual item or final summary too tall for one page produces an explicit error and disables printing; splitting a single oversized block is outside this delivery. Fixed A4 geometry and ink colors remain intentional physical-document values. Physical printer and accounting acceptance remain separate from local Chromium PDF checks.
 
 Compatibility: older 6c-1..6c-3 demo builds wrote visible columns into the source hidden-column key. An existing layout saved by those builds may appear inverted after this correction; use Columns → Reset once. There is no reliable schema marker to distinguish those arrays from original-source hidden-key layouts, so no heuristic migration is applied.
 

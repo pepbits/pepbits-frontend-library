@@ -1,6 +1,6 @@
 # Independent ERP demo
 
-Feature ID: ERD. State: detailed record context and worklist personal views; full source parity remains incomplete. [Delivery record](../releases/unreleased/restructure-phase-6c-4-2026-10-24.md), [test guide 1.0.0](../testing/v1.0.0/PRE-COMMIT.md). Local verification only; fictional financial behaviour is **not accounting acceptance**.
+Feature ID: ERD. State: detailed record context, worklist personal views, source analytical controls and multipage A4 invoices, with calendars and dashboards; full source parity remains incomplete. Delivery records: [6c-4](../releases/unreleased/restructure-phase-6c-4-2026-10-24.md), [6c-5](../releases/unreleased/restructure-phase-6c-5-2026-10-24.md); [test guide 1.0.0](../testing/v1.0.0/PRE-COMMIT.md). Local verification only; fictional financial behaviour is **not accounting acceptance**.
 
 ## User problem and outcome
 
@@ -58,15 +58,17 @@ Canonical localization comes from the protected API catalogs at runtime. Literal
 | ERD-14 | Company-backed A4 invoice, copy/terms/zoom and isolated Chromium PDF printing |
 | ERD-15 | Reports, ledgers and matrices: periods, grouping, balances, totals, export, bounded/bulk edits and partial retry |
 | ERD-16 | Dashboard source panels, keyboard chart inspection and module-owned drill-downs |
-| ERD-17 | Record summaries/side content: profile, booking, ERP2 tree, document/request/approval/process and inspection context; shared RecordPage slots |
-| ERD-18 | Case conversations and board history: versioned retry, comment retention, mounted permission/shortcut guards; approval notes |
-| ERD-20 | Named personal views, column-only sets, typed filter conditions, legacy source views, scoped account/session persistence, failure/retry, locks, RTL/axe and real HTTP reload/apply/delete |
-| ERD-21 | Source browser unload warning: dirty/clean/unmounted and failure/save coverage; explicitly no durable or SPA-route recovery |
-| ERD-19 | Support loading/error/retry/empty/version refresh; screen-local profile file selection; ERP1 opened-record four-profile axe matrix and live panel-state checks |
+| ERD-17 | All eight report destinations: typed filters, sorting, complete group subtotals, effective CSV/XLSX exports and expanded Arabic axe |
+| ERD-18 | Both invoice destinations: measured wrapped rows, repeating headers, carry totals, page/item numbering, final summary and long-invoice A4 PDFs |
+| ERD-19 | Record summaries/side content: profile, booking, ERP2 tree, document/request/approval/process and inspection context; shared RecordPage slots |
+| ERD-20 | Case conversations and board history: versioned retry, comment retention, mounted permission/shortcut guards; approval notes |
+| ERD-21 | Support loading/error/retry/empty/version refresh; screen-local profile file selection; ERP1 opened-record four-profile axe matrix and live panel-state checks |
+| ERD-22 | Named personal views, column-only sets, typed filter conditions, legacy source views, scoped account/session persistence, failure/retry, locks, RTL/axe and real HTTP reload/apply/delete |
+| ERD-23 | Source browser unload warning: dirty/clean/unmounted and failure/save coverage; explicitly no durable or SPA-route recovery |
 
 [The per-destination handoff](../../demo-apps/erp/parity-status.md) records all 114 destinations and the remaining source composition/lifecycle and visual work. Named views are delivered on 84 worklist destinations through `keystone.views.<slug>` with source-compatible base fields and additive snapshot metadata; source-only old views still apply. The limits are 30 views and 20,000 serialized characters. Column keys at `keystone.cols.<slug>` are hidden keys; account order and sort are retained in named snapshots, not the hidden-column array. Shared WorklistPage exposes typed filter/view control slots; all normal result/column/paging behavior stays in the engine. Snapshot page size respects mounted policy.
 
-Report/ledger/matrix controls and invoice pagination remain owned by parallel 6c-5. Original-source visual comparison remains a later session. No source ERP form has durable draft persistence: source ERP2 only installs a browser unload warning, now provided by `@pepbits/patterns/drafts`. Durable cross-route recovery remains unimplemented; the protected draft service needs an ERP form contract. No business drafts enter browser storage or view-state. Physical printing, accounting acceptance, native executables and human accessibility/localization review remain outside verification.
+Report/ledger/matrix controls and invoice pagination were delivered by 6c-5. Original-source visual comparison remains a later session. No source ERP form has durable draft persistence: source ERP2 only installs a browser unload warning, now provided by `@pepbits/patterns/drafts`. Durable cross-route recovery remains unimplemented; the protected draft service needs an ERP form contract. No business drafts enter browser storage or view-state. Physical printing, accounting acceptance, native executables and human accessibility/localization review remain outside verification.
 
 
 ## Operations and support
@@ -74,6 +76,26 @@ Report/ledger/matrix controls and invoice pagination remain owned by parallel 6c
 Use Node 24 and the existing API runtime environment. Integration checks compare API sources before reusing existing runtime artifacts and record their hashes. The launcher owns temporary storage, services and browser cleanup, including failures and cancellation. Keep credentials and headers out of receipts. Runtime errors and rejected writes should be diagnosed from the source-scoped response evidence. Removing the new app from use does not change the original desktop consumers or backend.
 
 Existing create/edit controls and ERP1 tree leaf deletion are enabled for finance, finance-manager and accountant roles on chart-of-accounts, tax-rates, journal-vouchers, payment-vouchers, petty-cash, depreciation-run, receivables-aging and ledger-entries, plus exact server-issued `erp:write:<entity>` grants. Other entities remain read-only; full admin/operations roles retain existing write access. Every command still goes through server authorization. Direct edit routes and retry handlers apply the same entity checks. Entity grants also require the shell capability, so an expired session or mounted host denial keeps writes disabled. Export presentation is unchanged.
+
+
+## Phase 6c-5: report controls and long invoices
+
+Open Advanced filter on a report, enter conditions, then Apply filters. Choice/reference fields accept several values; numeric/date ranges accept either bound; people use text matching. Invalid ranges cannot be applied. Cancel retains accepted filters, Reset clears the draft, and Clear filters resets the report. Main date presets and advanced invoice-date conditions replace one another explicitly. Column headings cycle ascending, descending and unsorted. Group by keeps each group together and shows complete filtered subtotals even when a group spans screen pages. Exports contain every filtered row in the selected order plus one grand total; group header/subtotal display rows are omitted. Effective CSV/XLSX, table/card, density, page-size and formatting policies remain authoritative. Lookup failures have retry, and incomplete responses suppress totals/export.
+
+| Destinations (both ERP1 and ERP2) | Source analytical controls now covered |
+| --- | --- |
+| Sales register | Customer multiple choices, invoice/due dates, salesperson text, total range, multiple statuses; grouping by customer/salesperson/status, sorting, subtotal/grand totals, CSV/XLSX |
+| Purchase register | Supplier choices, PO date, buyer text, warehouse/status choices and total range; supplier/buyer/warehouse/status grouping, sorting, subtotal/grand totals, CSV/XLSX |
+| Stock summary | Category/warehouse choices, opening/inward/outward/closing/value ranges; category/warehouse grouping, sorting, subtotal/grand totals, CSV/XLSX; source has no period dimension |
+| Receivables aging | Customer/bucket choices, invoice date, every age-bucket amount and outstanding ranges; customer/bucket grouping, sorting, subtotal/grand totals, CSV/XLSX |
+| Customer ledger | Customer, month/90-day/365-day/all/custom period, search and full-statement export; opening/running/closing balances remain independent of search |
+| Attendance | Month navigation, search, fill blanks today, row/column summaries and save/discard |
+| Timesheets | Monday-normalized week navigation, search, total/overtime summaries and save/discard |
+| Marks entry | Term 1/Term 2/Final, search, score/grade/average summaries and save/discard |
+
+No source report, ledger or matrix offers a pivot designer or comparison-period control. Matrices have no source export control. No options are fabricated for these absent capabilities. Source column persistence and saved views are outside this increment and remain in the parallel 6c-4 scope at all eight report destinations.
+
+Long Invoice print documents now measure actual row heights and reserve A4 space for repeating company/customer/invoice identity and item headers, carried/brought totals including tax, and Page n / total. Item numbers remain continuous. Payment details, tax/grand totals, English amount words and optional terms appear once on the final page; the summary may occupy a separate page. Font/format/terms changes trigger measurement again, and zoom changes only screen scale. Printing waits for a valid layout. An individual item or final summary too tall for one page produces an explicit error and disables printing; splitting a single oversized block is outside this delivery. Fixed A4 geometry and ink colors remain intentional physical-document values. Physical printer and accounting acceptance remain separate from local Chromium PDF checks.
 
 Compatibility: older 6c-1..6c-3 demo builds wrote visible columns into the source hidden-column key. An existing layout saved by those builds may appear inverted after this correction; use Columns → Reset once. There is no reliable schema marker to distinguish those arrays from original-source hidden-key layouts, so no heuristic migration is applied.
 

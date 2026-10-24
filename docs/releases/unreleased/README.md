@@ -1,7 +1,8 @@
 # Current delivery and release records
 
+- [ERP phase 6c-5: report controls and invoice pagination](restructure-phase-6c-5-2026-10-24.md) — source analytical controls and measured A4 documents; local verification, no deployment.
 - [ERP phase 6c-4 — record context and personal views](restructure-phase-6c-4-2026-10-24.md): source panels, account filter/sort/column snapshots, scoped retries and explicit durable-draft boundary; local evidence, no deployment.
-
+- [School phase 6d — Scholaris](restructure-phase-6d-2026-10-24.md): 26 routes, six scoped portals, local build/HTTP verification and explicit parity limits.
 
 - [ERP phase 6c-3 — calendars, invoices and analytical views](restructure-phase-6c-3-2026-10-24.md): specialized workflow subset, shared calendar/charts and exact verification; remaining parity gaps are explicit.
 
