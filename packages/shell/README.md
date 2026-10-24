@@ -14,6 +14,7 @@ Generic shell, workspace UI, help layers and optional preferences/login pages, u
 | `./documentation` | `GuideSection`, `DocumentationGuide`, `DocumentationRelease`, `DocumentationChange`, `DocumentationIndex`; `DocumentationArticle`, `DocumentationCenter`, `DocumentationLauncher`, `PageDocumentationNotice`, `useDocumentationRequest` |
 | `./tours` | `TourStep`, `ShellTours`; types only |
 | `./layers` | `ShellLayers`, `ToastViewport`, `CommandPalette`, `DocumentationDrawer`, `HelpAssistant`, `TOUR_REVEAL_EVENT` |
+| `./reference-host` | `ReferenceHost`, `ReferenceScope`, `ReferencePreferenceHost`, `ReferenceModuleProps`, `ReferenceRoute`, `ReferenceHostProvider`, `useReferenceHost`, `referenceScopeKey`, `useReferenceFormat`, `useReferencePathname`, `useReferenceSearchParams`, `useReferenceRouter`, `ReferenceLink` |
 
 The workspace has pure state implementations but its public barrel includes React bindings. This source package requires React/React DOM 19, a TypeScript-aware bundler, and the public lower-layer packages. There is no prebuilt application, registry publication, default product or default API URL.
 
@@ -212,3 +213,9 @@ Solid notification surfaces use a dark tint of their semantic tone so white titl
 EnterpriseShell keeps its scrollable main region keyboard focusable even when a dashboard has no interactive children; the shell regression and real-browser axe sweep cover this case.
 
 Direct `application-providers.test.tsx` cases now verify session → preference → catalog → shell ordering, shared request/session wiring, anonymous and failed-load paths, serialized writes, rejected-save recovery, policy refresh, language changes preserving editor input and late-response fencing on identity changes. These tests inject fictional HTTP responses; they do not establish live identity or service acceptance.
+
+## Reference module host
+
+`@pepbits/shell/reference-host` is the generic contract between an application host and an imported product module (phase 6e-2). The application builds a `ReferenceHost` from its own session, effective preferences, configured JSON transport and navigation port; the module receives only that product context. `ReferenceHostProvider` also supplies the effective presentation preferences. `referenceScopeKey` keys module state by tenant, application, branch, module, user and sorted roles, so a scope change remounts it. `ReferenceLink` renders a real href (`hrefFor`) and routes plain left clicks through `navigate`; modified clicks stay native. `useReferenceFormat` combines the effective formatters with the host translator. Scope fields are routing/isolation metadata, never authorization: the API authorizes every request.
+
+The Tenant Admin demo consumes it directly; the healthcare MedSlot, MedBand, SurgiSuite and Quality modules, which carried identical copies, now re-export it. Healthcare modules whose host differs (RCM, Pharmacy, Teleconsult, Diagnostics, Suite) keep their own variants. `reference-host.test.tsx` covers the missing-host error, scope-key identity, path/query stability, presentation, link routing, router mapping and formatting.

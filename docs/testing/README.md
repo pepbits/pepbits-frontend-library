@@ -117,6 +117,8 @@ The [6b-2 diagnostics increment](../releases/unreleased/restructure-phase-6b-2-2
 
 ## ERP phase 6c-1
 
+The [Tenant Admin feature contract](../features/tenant-admin-demo.md) defines TAD-01 through TAD-10. Its [local record](../releases/unreleased/restructure-phase-6e-2-2026-10-24.md) separates the original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks.
+
 The [ERP feature contract](../features/erp-demo.md) defines ERD-01 through ERD-07. Its [local record](../releases/unreleased/restructure-phase-6c-1-2026-10-23.md) separates all 38 original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks. Route coverage is not specialized workflow, accounting or human accessibility acceptance.
 
 ERP phase 6c-2 extends ERD-08 through ERD-12 with hierarchy/board/profile and finance-grant cases, direct extraction tests and the existing four-profile route/page-content axe matrix. The [6c-2 record](../releases/unreleased/restructure-phase-6c-2-2026-10-23.md) separates real local HTTP/UI commands, direct HTTP denials, full-shell browser axe and forced CI. No backend/desktop inventory is modified.

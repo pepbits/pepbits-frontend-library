@@ -119,6 +119,8 @@ export {
 } from "lucide-react";
 /* Calendar and Clock are also used by the phase 4c form controls; they are exported once, below. */
 export {Type, AlignLeft, Hash, CheckSquare, Mail, WandSparkles} from "lucide-react";
+// Tenant configuration presentation primitives.
+export {BookOpenCheck, BookText, CalendarRange, CircleDashed, CircleSlash, CopyPlus, FolderTree, GitBranch, Grid3x3, KeyRound, ListTree, PackageSearch, Percent, Rocket, ScrollText, TicketPercent, Waypoints, Workflow} from "lucide-react";
 export {Icon} from "./icon";
 export type {IconComponent, IconProps} from "./icon";
 

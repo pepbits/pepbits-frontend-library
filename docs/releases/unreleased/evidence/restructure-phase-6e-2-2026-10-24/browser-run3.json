@@ -1,0 +1,931 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "TA-01",
+      "scope": "UI",
+      "result": "Fixture sign-in through the shared login and host chain; overview from GET /overview"
+    },
+    {
+      "id": "TA-02",
+      "scope": "UI",
+      "result": "Sidebar derived from GET /meta lists 30 configuration pages",
+      "count": 30
+    },
+    {
+      "id": "TA-03",
+      "scope": "UI",
+      "result": "Accepted host page-size preference drives the configuration list query"
+    },
+    {
+      "id": "TA-04",
+      "scope": "UI",
+      "result": "Registry list search, status filter and sort issue API queries"
+    },
+    {
+      "id": "TA-05",
+      "scope": "UI",
+      "result": "Incomplete draft saved without strict validation",
+      "record": "TAX-0005"
+    },
+    {
+      "id": "TA-06",
+      "scope": "UI",
+      "result": "Strict submission refusal shown on the field; typed values preserved",
+      "status": 422
+    },
+    {
+      "id": "TA-07",
+      "scope": "UI",
+      "result": "Corrected draft saved and submitted with a reason; self-approval disabled",
+      "record": "TAX-0005"
+    },
+    {
+      "id": "TA-08",
+      "scope": "UI",
+      "result": "Approvals inbox separates own submissions from decisions"
+    },
+    {
+      "id": "TA-09",
+      "scope": "direct HTTP",
+      "result": "Server refuses approval by the submitter",
+      "status": 403
+    },
+    {
+      "id": "TA-10",
+      "scope": "direct HTTP",
+      "result": "Viewer role write refused by the server",
+      "status": 403
+    },
+    {
+      "id": "TA-11",
+      "scope": "UI",
+      "result": "Independent approver decides from the inbox through the reason dialog"
+    },
+    {
+      "id": "TA-12",
+      "scope": "UI",
+      "result": "Audit filter, record deep link and history/revisions tab"
+    },
+    {
+      "id": "TA-13",
+      "scope": "UI",
+      "result": "?open= deep link survives reload"
+    },
+    {
+      "id": "TA-14",
+      "scope": "UI",
+      "result": "Approved version stays locked; new revision started then discarded"
+    },
+    {
+      "id": "TA-15",
+      "scope": "direct HTTP",
+      "result": "Write against an approved version or stale row version refused",
+      "status": 409,
+      "code": "STALE_VERSION"
+    },
+    {
+      "id": "TA-16",
+      "scope": "UI",
+      "result": "Simple configuration record created, edited, deactivated and activated"
+    },
+    {
+      "id": "TA-17",
+      "scope": "UI",
+      "result": "Reimbursement route tester runs against approved routes"
+    },
+    {
+      "id": "TA-18",
+      "scope": "UI",
+      "result": "Ctrl+K palette opens a New entry deep link"
+    }
+  ],
+  "checks": [
+    {
+      "path": "/",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "a[href=\"/config/tax-rules?open=4\"] > .items-end.gap-1.flex-col > .bg-saffron-100.text-saffron-700.h-5"
+            ],
+            [
+              "a[href=\"/config/drg-config?open=1\"] > .items-end.gap-1.flex-col > .bg-saffron-100.text-saffron-700.h-5"
+            ],
+            [
+              ".hover\\:bg-mist.py-2.gap-3:nth-child(5) > .items-end.gap-1.flex-col > .bg-saffron-100.text-saffron-700.h-5"
+            ],
+            [
+              ".py-2.gap-3.px-2:nth-child(1) > .bg-saffron-100.text-saffron-700.h-5"
+            ],
+            [
+              ".py-2.gap-3.px-2:nth-child(4) > .bg-saffron-100.text-saffron-700.h-5"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              ".text-spruce-900"
+            ]
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "targets": [
+            [
+              ".min-h-\\[220px\\].panel.rounded-\\[var\\(--radius\\)\\]:nth-child(3) > .overflow-y-auto.p-2.min-h-0"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/approvals",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              "li:nth-child(1) > .w-\\[200px\\].gap-2 > .bg-saffron-100.w-8.inline-flex"
+            ],
+            [
+              "li:nth-child(3) > .w-\\[200px\\].gap-2 > .bg-saffron-100.w-8.inline-flex"
+            ],
+            [
+              "li:nth-child(5) > .w-\\[200px\\].gap-2 > .bg-saffron-100.w-8.inline-flex"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              ".text-spruce-900"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/activity",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".hover\\:bg-spruce-50\\/50:nth-child(1) > .px-3:nth-child(2) > .gap-2.flex.items-center > .bg-saffron-100.text-saffron-700.h-5"
+            ],
+            [
+              ".hover\\:bg-spruce-50\\/50:nth-child(4) > .px-3:nth-child(2) > .gap-2.flex.items-center > .bg-saffron-100.text-saffron-700.h-5"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              ".text-spruce-900"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/preferences",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/billing-grants",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/commercial-grants",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".bg-saffron-100"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/numbering",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(1) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".text-\\[\\#A6B3B0\\]"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(3) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(4) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(5) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/items",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/categories",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/tax-rules",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].h-5"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(3) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].h-5"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(4) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].h-5"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(5) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].h-5"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/price-books",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/discounts",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/modifiers",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/commercial-releases",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/commercial-parties",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/networks",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/insurance-plans",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".text-spruce-900:nth-child(6) > .text-\\[\\#A6B3B0\\]"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/contracts",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/branch-arrangements",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/benefit-pools",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/billing-policies",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/reimbursement-routes",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".text-\\[\\#A6B3B0\\]"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(1) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(3) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(4) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(5) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/stay-models",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(1) > .pr-5 > .gap-2 > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2 > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/drg-config",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".text-\\[9\\.5px\\]"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/category-rates",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".bg-saffron-100"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/em-tables",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".bg-saffron-100"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/advanced-models",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".text-\\[\\#A6B3B0\\]"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(1) > .pr-5 > .gap-2 > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2 > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/exchange-profiles",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".text-\\[\\#A6B3B0\\]"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/provider-profiles",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(1) > .pr-5 > .gap-2 > .text-\\[9\\.5px\\].bg-saffron-100.h-5"
+            ],
+            [
+              ".text-\\[\\#A6B3B0\\]"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2 > .text-\\[9\\.5px\\].bg-saffron-100.h-5"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/gl-accounts",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(1) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(3) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(4) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(5) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(6) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(7) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(8) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(9) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(10) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/gl-mappings",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".bg-saffron-100"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/fiscal-periods",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(1) > .pr-5 > .gap-2 > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".outline-none.hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2 > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/workflow-definitions",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".text-\\[\\#A6B3B0\\]"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/platform-settings",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/tax-rules?new=1",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(3) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(4) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(5) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/config/tax-rules?open=5",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "targets": [
+            [
+              ".hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(2) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(3) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(4) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ],
+            [
+              ".hover\\:bg-spruce-50\\/60.focus-visible\\:bg-spruce-50:nth-child(5) > .pr-5 > .gap-2.items-center.flex > .bg-saffron-100.text-\\[9\\.5px\\].text-saffron-700"
+            ]
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              "a[aria-label=\"7 changes awaiting approval\"]"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "path": "/nope",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "targets": [
+            [
+              ".text-spruce-900"
+            ]
+          ]
+        }
+      ],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "expectedRefusals": [
+    {
+      "method": "POST",
+      "path": "/resources/tax-rules/5/submit",
+      "status": 422,
+      "seen": true
+    },
+    {
+      "method": "PUT",
+      "path": "/resources/tax-rules/5",
+      "status": 409,
+      "seen": true
+    }
+  ],
+  "unseenExpected": []
+}

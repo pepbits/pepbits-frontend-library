@@ -19,3 +19,7 @@ ERP is in progress below. Remaining app order: school, reports, tenant-admin, on
 ## ERP
 
 [ERP](erp/README.md) is the independent Next.js demo on port 3320. Phase 6c-1 adds separate ERP1/ERP2 header modules with 57 catalogue destinations each, shared Keystone configuration, ERP1 in-page records and ERP2 record/create/edit URLs. Public engines render the unchanged fictional API data. Specialized source layouts remain explicitly deferred in the [source map](erp/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6c-1-2026-10-23.md). Financial demonstration only, not accounting acceptance or deployment.
+
+## Tenant Admin
+
+[Tenant Admin](tenant-admin/README.md) is the independent Next.js demo on port 3360. Phase 6e-2 ports the Allyvora Tenant Admin reference: Overview, Approvals inbox, Activity log and all 30 configuration pages from the API registry, drawn by one resource workspace and record drawer with `?new=1`/`?open=<id>` deep links, on the shared host and the unchanged fictional demo API. Its [source map](tenant-admin/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-2-2026-10-24.md) state verification and limits. Fictional configuration data only, not a deployment.

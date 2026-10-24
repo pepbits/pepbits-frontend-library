@@ -1,0 +1,50 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "TA-01",
+      "scope": "UI",
+      "result": "Fixture sign-in through the shared login and host chain; overview from GET /overview"
+    },
+    {
+      "id": "TA-02",
+      "scope": "UI",
+      "result": "Sidebar derived from GET /meta lists 30 configuration pages",
+      "count": 30
+    },
+    {
+      "id": "TA-03",
+      "scope": "UI",
+      "result": "Accepted host page-size preference drives the configuration list query"
+    },
+    {
+      "id": "TA-04",
+      "scope": "UI",
+      "result": "Registry list search, status filter and sort issue API queries"
+    }
+  ],
+  "checks": [],
+  "errors": [
+    {
+      "route": "/config/tax-rules",
+      "message": "Server accepted a non-taxable rate"
+    }
+  ],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "expectedRefusals": [
+    {
+      "method": "POST",
+      "path": "/resources/tax-rules",
+      "status": 422,
+      "seen": false
+    }
+  ],
+  "unseenExpected": [
+    {
+      "method": "POST",
+      "path": "/resources/tax-rules",
+      "status": 422
+    }
+  ]
+}
