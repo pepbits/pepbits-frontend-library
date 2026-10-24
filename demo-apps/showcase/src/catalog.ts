@@ -76,7 +76,7 @@ export const examples:Example[]=[
 {"id":"text","area":"ui","title":"Text","exports":["Highlight", "Input", "QuantityUnitField", "ScannerInput", "SearchInput", "Textarea"],"description":"catalog.example.TextDemo",render:TextDemo},
 {"id":"validation","area":"ui","title":"Validation","exports":["FieldShell", "FormErrorSummary", "Input", "useLocalization"],"description":"catalog.example.ValidationDemo",render:ValidationDemo},
 {"id":"select","area":"ui","title":"Select","exports":["MultiSelect", "SearchSelect", "Select"],"description":"catalog.example.SelectDemo",render:SelectDemo},
-{"id":"choice","area":"ui","title":"Choice","exports":["Checkbox", "Radio", "RadioGroup", "RangeField", "RangeInput", "Select", "Toggle", "useLocalization"],"description":"catalog.example.ChoiceDemo",render:ChoiceDemo},
+{"id":"choice","area":"ui","title":"Choice","exports":["Checkbox", "Radio", "RadioGroup", "RangeField", "RangeInput", "Select", "SignaturePad", "Toggle", "useLocalization"],"description":"catalog.example.ChoiceDemo",render:ChoiceDemo},
 {"id":"file","area":"ui","title":"File","exports":["DataValue", "FilePicker", "LocalizedText"],"description":"catalog.example.FileDemo",render:FileDemo},
 {"id":"reference","area":"components","title":"Reference","exports":["Button", "LocalizedText", "ReferenceDataWarning", "ReferenceField"],"description":"catalog.example.ReferenceDemo",render:ReferenceDemo},
 {"id":"date","area":"ui","title":"Date","exports":["DateInput", "DateTimeInput", "MonthInput", "TimeInput", "WeekInput"],"description":"catalog.example.DateDemo",render:DateDemo},

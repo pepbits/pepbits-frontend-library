@@ -10,7 +10,7 @@ Applications that demonstrate and test the library. Phase 6a adds the independen
 
 [Showcase](showcase/README.md) is the first standalone Next.js demo. Run `npm run dev -w @pepbits-demo/showcase` from the repository root (port 3300); build/start/typecheck/test scripts are in its guide. Eight routes cover foundations, primitives, components, patterns, page engines, policy, Shell and AI inside the full library workspace frame. The 55 source-backed examples include tabs/split/MDI, fictional detached windows, shell layers, preferences/login and browser-only AI simulation. AI starts off and is enabled in the policy playground; no provider or server endpoint is configured.
 
-ERP is in progress below. Remaining app order: school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Each is its own app and will be built one at a time.
+ERP is in progress below. Remaining app order: school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Each is its own app; AllyVora patients is below.
 
 ## Healthcare
 
@@ -19,3 +19,7 @@ ERP is in progress below. Remaining app order: school, reports, tenant-admin, on
 ## ERP
 
 [ERP](erp/README.md) is the independent Next.js demo on port 3320. Phase 6c-1 adds separate ERP1/ERP2 header modules with 57 catalogue destinations each, shared Keystone configuration, ERP1 in-page records and ERP2 record/create/edit URLs. Public engines render the unchanged fictional API data. Specialized source layouts remain explicitly deferred in the [source map](erp/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6c-1-2026-10-23.md). Financial demonstration only, not accounting acceptance or deployment.
+
+## AllyVora patients
+
+[AllyVora patients](allyvora-patients/README.md) is the separate Next.js demo on port 3400 (phase 6e-6). It ports AllyVora patient registration: the register, record view, registration and editing in five organisation layouts, and the administrator's form-layout designer. Patient data comes from AllyVora's own unchanged Express + SQLite API; sign-in, preferences and catalogs come from the shared demo API. The read-only source form package is consumed unchanged. Its [source map](allyvora-patients/source-mapping.md) and [release record](../docs/releases/unreleased/restructure-phase-6e-6-2026-10-24.md) list adaptations and local verification. Fictional data only; not clinical acceptance or deployment.

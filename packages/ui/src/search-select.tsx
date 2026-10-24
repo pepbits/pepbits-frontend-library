@@ -21,7 +21,7 @@ export interface SearchSelectOption extends FilterableOption { icon?: React.Reac
  * wired up with aria-labelledby instead, which announces identically and
  * forwards nothing.
  */
-export function SearchSelect({ label, hint, error, required, className, options, value, onChange, placeholder = "Select…", searchPlaceholder, emptyMessage, disabled, name }: {
+export function SearchSelect({ label, hint, error, required, className, options, value, onChange, placeholder = "Select…", searchPlaceholder, emptyMessage, disabled, name, quickPick = false }: {
   label?: string;
   hint?: string;
   error?: string;
@@ -35,6 +35,10 @@ export function SearchSelect({ label, hint, error, required, className, options,
   emptyMessage?: string;
   disabled?: boolean;
   name?: string;
+  /** Fast keyboard entry: typing on the closed field opens the list with that
+      text, and Tab after typing commits the highlighted match before moving on.
+      Off by default, so Tab keeps its plain "leave without choosing" meaning. */
+  quickPick?: boolean;
 }) {
   const {t} = useLocalization();
   const [open, setOpen] = useState(false);
@@ -106,7 +110,14 @@ export function SearchSelect({ label, hint, error, required, className, options,
     /* stopPropagation, or an open menu inside a Modal closes the modal too --
        one Escape, two things dismissed, and the user's half-filled form gone. */
     if (event.key === "Escape") { event.stopPropagation(); setOpen(false); triggerRef.current?.focus(); return; }
-    if (event.key === "Tab") setOpen(false);
+    if (event.key === "Tab") {
+      const option = matches[activeIndex];
+      if (quickPick && query.trim() && option && !option.disabled) onChange(option.value);
+      // The search input unmounts when the menu closes. Anchor native Tab
+      // traversal at the persistent trigger so focus reaches the next field.
+      if (quickPick) triggerRef.current?.focus();
+      setOpen(false);
+    }
   };
 
   return (
@@ -126,7 +137,10 @@ export function SearchSelect({ label, hint, error, required, className, options,
           aria-expanded={open}
           aria-invalid={error ? true : undefined}
           onClick={() => setOpen((previous) => !previous)}
-          onKeyDown={(event) => { if (event.key === "ArrowDown" && !open) { event.preventDefault(); setOpen(true); } }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowDown" && !open) { event.preventDefault(); setOpen(true); return; }
+            if (quickPick && !open && event.key.length === 1 && event.key.trim() && !event.ctrlKey && !event.metaKey && !event.altKey) { event.preventDefault(); setQuery(event.key); setOpen(true); }
+          }}
           className={cn("focus-ring flex h-9 w-full items-center gap-2 rounded-[10px] border bg-[var(--surface)] px-3 text-left shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] transition hover:border-[var(--border-strong)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]", error ? "border-[var(--danger)]" : "border-[var(--border)]", open && "border-[var(--primary)]")}
         >
           {selected?.icon ? <span className="shrink-0 text-[var(--text-muted)]">{selected.icon}</span> : null}

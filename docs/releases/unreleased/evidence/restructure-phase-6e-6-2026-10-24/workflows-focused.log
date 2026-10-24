@@ -1,0 +1,33 @@
+
+> @pepbits-demo/allyvora-patients@0.0.0 test
+> vitest run src/modules/registration/workflows.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-6/demo-apps/allyvora-patients
+
+ ✓ src/modules/registration/workflows.test.tsx (21 tests) 34088ms
+   ✓ patient register > lists API patients and keeps search, views and filters in the URL  2779ms
+   ✓ patient register > browser history updates search text without overwriting the URL  825ms
+   ✓ patient register > late results from an obsolete search cannot replace the current register  335ms
+   ✓ patient register > empty results offer registration, and failures offer a retry that reloads  306ms
+   ✓ patient register > roles without registration rights cannot create from the register or open the editor  572ms
+   ✓ patient record > shows the band, sections, masked identity, gaps and activity; status changes are confirmed  599ms
+   ✓ registration form > saving an empty registration reveals problems and sends nothing; a complete one is created and opened  7568ms
+   ✓ registration form > server field errors return to the form; conflicts keep the edit and explain why  1448ms
+   ✓ registration form > 422 field errors from the API are shown on the matching field  1126ms
+   ✓ registration form > possible duplicates are offered while typing, with links to existing records  3495ms
+   ✓ registration form > a manual display name is kept while name parts change, and dependent consultant choices are cleared  2794ms
+   ✓ registration form > guided steps check each step before moving on  362ms
+   ✓ registration form > each organisation layout renders the same sections, and deep-linked sections open first  586ms
+   ✓ registration form > form rules list every rule and jump to the field  1522ms
+   ✓ registration form > unsaved registrations are offered back within the signed-in session only  4818ms
+   ✓ registration form > keyboard shortcuts follow the effective preference  1041ms
+   ✓ registration form > administrators switch the organisation layout from the form; others cannot  550ms
+   ✓ form layout designer > previews choices, saves for everyone and can reuse history  1960ms
+   ✓ form layout designer > non-administrators can explore the preview but not change the organisation layout  1113ms
+
+ Test Files  1 passed (1)
+      Tests  21 passed (21)
+   Start at  18:08:51
+   Duration  47.74s (transform 7.13s, setup 553ms, collect 11.32s, tests 34.09s, environment 758ms, prepare 206ms)
+

@@ -1,5 +1,6 @@
 # Enterprise frontend documentation
 
+- [AllyVora patient registration demo](features/allyvora-patients-demo.md): register, record, registration form in five organisation layouts and the layout designer over the unchanged AllyVora API; local HTTP evidence, named adaptations.
 - [Independent ERP demo](features/erp-demo.md): ERP1/ERP2 catalogue, calendars, invoices, analytical/dashboard subset, finance grants and local HTTP evidence; full parity remains incomplete.
 
 - [Independent healthcare demo](features/healthcare-demo.md): phases 6b-1 through 6b-9 core, clinical, diagnostics, Pharmacy, RCM, Teleconsult, Quality, SurgiSuite, MedBand and MedSlot app/API verification; no deployment or clinical acceptance.

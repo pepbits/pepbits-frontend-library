@@ -18,6 +18,7 @@ Reusable React primitives: controls, selection, status and navigation. Unpublish
 | Remote lookup | `AsyncLookup` (host-loaded combobox, cancellation/stale-response fencing and custom record slots) |
 | Search selection | `SearchSelectOption`, `SearchSelect` |
 | Segmented choices | `SegmentedOption`, `Segmented` |
+| Signature capture | `SignaturePad` (controlled PNG data URL, phase 6e-6) |
 | Badges |  |
 | Avatars | `initialsOf`, `washFor`, `Avatar` |
 | Skeletons | `Skeleton`, `TableSkeleton`, `DashboardSkeleton`, `FormSkeleton` |
@@ -109,3 +110,9 @@ AsyncLookup also accepts native field `id`, `disabled` and `invalid`. Disabling 
 The root exports `optionsFromChildren` and `splitFieldClasses` for adapting native-style field metadata to shared controls. Options preserve raw service values, including LocalizedText message identity; placeholder options are handled separately. Field class splitting uses the effective form scale. These pure helpers do not add a second select/input renderer. The ERP core port retains their original assertions; Showcase's Select example demonstrates both and its generated snippet is refreshed.
 
 Direct `field-interop.test.tsx` cases cover nested fragments/optgroups, numeric and implicit values, translated labels, empty placeholders, logical padding, effective form-scale conversion and wrapper-class retention. These helpers remain pure metadata adapters.
+
+## Signature capture and quick pick (phase 6e-6)
+
+`SignaturePad` draws pointer/pen/touch strokes on a white paper surface and reports a controlled PNG data URL (`value`/`onChange`, optional `onBlur`). `label`, `hint`, `error`, `required` and `disabled` follow the other fields; the clear action resets the value to `null`. The canvas is an `img`-role region named by `areaLabel` (plus "(required)") and described by the hint or error. Image roles allow no state attributes, so the invalid state is a visible error and a `data-invalid` marker. Ink stays dark on white in every theme because the image is archived and printed. Host value changes redraw restored signatures or clear the bitmap; obsolete image loads are ignored. Without a 2D canvas context the surface renders but cannot draw or report a signature. Drawing is pointer-only: hosts that require a keyboard path must offer an alternative capture, such as AllyVora's paper-form reference. The host owns storage, validation and any retention policy.
+
+`SearchSelect` adds optional `quickPick`. Typing a printable character on the focused, closed trigger opens the list with that text; Tab after typing commits the highlighted match and advances focus from the persistent trigger to the next field. Without `quickPick`, Tab still closes without choosing and typing on the trigger does nothing. Tests cover typing-to-open, Tab commit, unchanged default behaviour, empty-query Tab, signature draw/clear, error description, disabled input and missing canvas support. The AllyVora demo uses both; the showcase Choice example demonstrates `SignaturePad`.

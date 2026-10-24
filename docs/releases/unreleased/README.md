@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [AllyVora patients phase 6e-6 — patient registration demo](restructure-phase-6e-6-2026-10-24.md): new private app over the unchanged AllyVora API and shared demo host, `SignaturePad` and `SearchSelect` quick pick, exact local verification and named adaptations.
 - [ERP phase 6c-3 — calendars, invoices and analytical views](restructure-phase-6c-3-2026-10-24.md): specialized workflow subset, shared calendar/charts and exact verification; remaining parity gaps are explicit.
 
 - [ERP phase 6c-2 — specialized view subset and finance grants](restructure-phase-6c-2-2026-10-23.md): hierarchy, boards, ERP1 profile splits, direct extraction tests and exact remaining scope.
