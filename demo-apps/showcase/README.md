@@ -66,3 +66,5 @@ Phase 6b-9 extends that example with public SourceTimeInput and SourceDateTimeIn
 The phase 6c-1 Select example also exercises public `optionsFromChildren` and `splitFieldClasses` interoperability helpers. The generated source snippet is refreshed; no new showcase route is added.
 
 Phase 6c-3 extends Stats with public Sparkline, LineChart and DonutChart examples. The fictional series use effective number formatting; the line select and donut buttons support keyboard inspection. Snippets and canonical catalog subsets are regenerated. No new route or external data source is added. See the [ERP specialized-view record](../../docs/releases/unreleased/restructure-phase-6c-3-2026-10-24.md) for the shared chart delivery and verification.
+
+Phase 6d extends the same Stats example with public BarChart, HorizontalBars and ProgressRing. Fictional nonnegative metrics use the host formatter, keyboard inspection and finite/clamped geometry. The 61-example inventory and route count are unchanged; source-identical snippets and the canonical catalog subset are regenerated. See the [Scholaris record](../../docs/releases/unreleased/restructure-phase-6d-2026-10-24.md).

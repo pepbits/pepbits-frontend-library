@@ -1,0 +1,71 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --run src/report-invoice.test.tsx src/remaining-views.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c5/demo-apps/erp
+
+ ❯ src/report-invoice.test.tsx (20 tests | 2 failed) 8991ms
+   ✓ 'sales-register' erp1 advanced conditions, sorting and full export  749ms
+   ✓ 'purchase-register' erp1 advanced conditions, sorting and full export  503ms
+   ✓ 'stock-summary' erp1 advanced conditions, sorting and full export  465ms
+   ✓ 'receivables-aging' erp1 advanced conditions, sorting and full export  494ms
+   ✓ 'sales-register' erp2 advanced conditions, sorting and full export  424ms
+   ✓ 'purchase-register' erp2 advanced conditions, sorting and full export  399ms
+   ✓ 'stock-summary' erp2 advanced conditions, sorting and full export  428ms
+   ✓ 'receivables-aging' erp2 advanced conditions, sorting and full export  409ms
+   ✓ advanced choices apply multiple statuses and reference values with cancel/reset and invalid-range guards  398ms
+   ✓ truncated reports hide subtotals and fence exports, including mounted permission denial 215ms
+   ✓ 'sales-register' erp1 expanded filters pass Arabic RTL axe and mounted table policies  466ms
+   ✓ 'purchase-register' erp1 expanded filters pass Arabic RTL axe and mounted table policies  393ms
+   ✓ 'stock-summary' erp1 expanded filters pass Arabic RTL axe and mounted table policies  351ms
+   ✓ 'receivables-aging' erp1 expanded filters pass Arabic RTL axe and mounted table policies  337ms
+   ✓ 'sales-register' erp2 expanded filters pass Arabic RTL axe and mounted table policies  328ms
+   ✓ 'purchase-register' erp2 expanded filters pass Arabic RTL axe and mounted table policies  304ms
+   ✓ 'stock-summary' erp2 expanded filters pass Arabic RTL axe and mounted table policies  382ms
+   ✓ 'receivables-aging' erp2 expanded filters pass Arabic RTL axe and mounted table policies  405ms
+   × erp1 long invoice has contiguous pages, carry totals and one final summary 1018ms
+     → expect(element).toHaveTextContent()
+
+Expected element to have text content:
+  AED 767
+Received:
+  Fictional CompanyDemo streetTax reg. DEMO-TAX, office@example.testTax invoiceOriginal copyBill toJuniper Retail PLCInvoice no.INV-1110Invoice date2026-10-22Due date2026-12-31SalespersonOmar CostaTermsNet 30Brought forward (Including tax) · AED 767#DescriptionQtyRateTaxAmountAmount in words (English)Seven Hundred Sixty Six AED and Fifty Cents onlyPay toDemo bank, DEMO-ACCOUNTIFSC DEMO, SWIFT DEMOSubtotalAED 730TaxAED 37Total dueAED 767TermsFictional payment termsThis is a computer-generated invoice.Page 6 / 6For Fictional Company, authorised signatory
+   × erp2 long invoice has contiguous pages, carry totals and one final summary 520ms
+     → expect(element).toHaveTextContent()
+
+Expected element to have text content:
+  AED 767
+Received:
+  Fictional CompanyDemo streetTax reg. DEMO-TAX, office@example.testTax invoiceOriginal copyBill toJuniper Retail PLCInvoice no.INV-1110Invoice date2026-10-22Due date2026-12-31SalespersonOmar CostaTermsNet 30Brought forward (Including tax) · AED 767#DescriptionQtyRateTaxAmountAmount in words (English)Seven Hundred Sixty Six AED and Fifty Cents onlyPay toDemo bank, DEMO-ACCOUNTIFSC DEMO, SWIFT DEMOSubtotalAED 730TaxAED 37Total dueAED 767TermsFictional payment termsThis is a computer-generated invoice.Page 6 / 6For Fictional Company, authorised signatory
+ ✓ src/remaining-views.test.tsx (20 tests) 4786ms
+   ✓ booking date navigation and resource visibility keep a complete schedule and list switch  836ms
+   ✓ erp1 invoice loads company data and controls the physical document  655ms
+   ✓ appointments calendar has no axe violations in Arabic RTL  469ms
+   ✓ room-bookings calendar has no axe violations in Arabic RTL  357ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/report-invoice.test.tsx > erp1 long invoice has contiguous pages, carry totals and one final summary
+ FAIL  src/report-invoice.test.tsx > erp2 long invoice has contiguous pages, carry totals and one final summary
+Error: expect(element).toHaveTextContent()
+
+Expected element to have text content:
+  AED 767
+Received:
+  Fictional CompanyDemo streetTax reg. DEMO-TAX, office@example.testTax invoiceOriginal copyBill toJuniper Retail PLCInvoice no.INV-1110Invoice date2026-10-22Due date2026-12-31SalespersonOmar CostaTermsNet 30Brought forward (Including tax) · AED 767#DescriptionQtyRateTaxAmountAmount in words (English)Seven Hundred Sixty Six AED and Fifty Cents onlyPay toDemo bank, DEMO-ACCOUNTIFSC DEMO, SWIFT DEMOSubtotalAED 730TaxAED 37Total dueAED 767TermsFictional payment termsThis is a computer-generated invoice.Page 6 / 6For Fictional Company, authorised signatory
+ ❯ src/report-invoice.test.tsx:61:24
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 failed | 38 passed (40)
+   Start at  03:20:22
+   Duration  21.33s (transform 2.59s, setup 386ms, collect 4.74s, tests 13.78s, environment 1.22s, prepare 216ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c5/demo-apps/erp 

@@ -1,0 +1,94 @@
+
+> @pepbits-demo/school@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school
+
+ ❯ src/modules/school/contracts.test.ts (12 tests | 1 failed) 164ms
+   ✓ routes > cover exactly the 26 source pages, one route each 5ms
+   × routes > static segments win over dynamic ones and parameters are decoded 13ms
+     → expected undefined to deeply equal { id: 'lv/1' }
+   ✓ routes > root is the dashboard, query strings are kept and unknown paths do not match 1ms
+   ✓ role trust > maps only known school roles and explicit aliases 1ms
+   ✓ role trust > orders granted portals by fixed priority, ignoring unknown roles 1ms
+   ✓ export capability > CSV preference exports 0ms
+   ✓ export capability > an XLSX preference is refused, never silently written as CSV 0ms
+   ✓ export capability > a policy lock to XLSX and a policy that disallows the chosen format both disable 0ms
+   ✓ export capability > default preferences export CSV 0ms
+   ✓ CSV > quotes cells and neutralises formula text but not numbers 0ms
+   ✓ fixtures > seedSchoolFixture is deterministic for a day and never reads the clock 102ms
+   ✓ fixtures > live sessions materialize against the supplied clock and submissions are reproducible 37ms
+ ✓ src/modules/school/bundle-boundary.test.ts (4 tests) 20ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/school/attachments-locale.test.tsx [ src/modules/school/attachments-locale.test.tsx ]
+ FAIL  src/modules/school/final-parity.test.tsx [ src/modules/school/final-parity.test.tsx ]
+ FAIL  src/modules/school/library-return.test.tsx [ src/modules/school/library-return.test.tsx ]
+ FAIL  src/modules/school/module.test.tsx [ src/modules/school/module.test.tsx ]
+ FAIL  src/modules/school/toast-locale.test.tsx [ src/modules/school/toast-locale.test.tsx ]
+Error: Transform failed with 2 errors:
+/home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/pages/calendar.tsx:65:439: ERROR: Unexpected closing "Calendar" tag does not match opening "span" tag
+/home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/pages/calendar.tsx:66:15: ERROR: Unterminated regular expression
+  Plugin: vite:esbuild
+  File: /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/pages/calendar.tsx:65:439
+  
+  Unexpected closing "Calendar" tag does not match opening "span" tag
+  63 |          {error && <div className="p-2"><ErrorNote message={error} onRetry={reload} /></div>}
+  64 |          {!data?<Skeleton className="m-2 flex-1"/>:<div className="school-month-calendar" onDoubleClick={event=>{const...
+  65 |  ...ite" style={{background:COLOR[e.type]}}>{e.title}</span>)}</Calendar>
+     |                                                                 ^
+  66 |          </div>}
+  67 |  
+  
+  Unterminated regular expression
+  64 |          {!data?<Skeleton className="m-2 flex-1"/>:<div className="school-month-calendar" onDoubleClick={event=>{const...
+  65 |            <Calendar label="School calendar" value={day} onChange={value=>{setDay(value);setMonth(new Date(toDate(valu...
+  66 |          </div>}
+     |                 ^
+  67 |  
+  68 |        </Card>
+  
+ ❯ failureErrorWithLog ../../node_modules/esbuild/lib/main.js:1752:15
+ ❯ ../../node_modules/esbuild/lib/main.js:1019:50
+ ❯ responseCallbacks.<computed> ../../node_modules/esbuild/lib/main.js:886:9
+ ❯ handleIncomingPacket ../../node_modules/esbuild/lib/main.js:941:12
+ ❯ Socket.readFromStdout ../../node_modules/esbuild/lib/main.js:864:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/school/contracts.test.ts > routes > static segments win over dynamic ones and parameters are decoded
+AssertionError: expected undefined to deeply equal { id: 'lv/1' }
+
+- Expected: 
+{
+  "id": "lv/1",
+}
+
++ Received: 
+undefined
+
+ ❯ src/modules/school/contracts.test.ts:27:54
+     25|     expect(matchSchoolRoute("/quizzes/new")?.route.id).toBe("quiz-buil…
+     26|     expect(matchSchoolRoute("/quizzes/qz-7")).toMatchObject({ route: {…
+     27|     expect(matchSchoolRoute("/live/lv%2F1")?.params).toEqual({ id: "lv…
+       |                                                      ^
+     28|     expect(matchSchoolRoute("/students/new")?.route.id).toBe("student-…
+     29|     expect(matchSchoolRoute("/students")?.params).toEqual({});
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+
+ Test Files  6 failed | 1 passed (7)
+      Tests  1 failed | 15 passed (16)
+   Start at  02:52:05
+   Duration  12.49s (transform 1.41s, setup 1.32s, collect 481ms, tests 184ms, environment 4.10s, prepare 725ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/school@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school 

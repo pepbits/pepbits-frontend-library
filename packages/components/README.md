@@ -154,3 +154,13 @@ Root exports add `LineChart`, `ChartSeries`, `DonutChart` and `Sparkline`. Hosts
 `PrintDocument` adds optional `className` and `style` for host-owned paper geometry. It still portals only the print surface and removes it on unmount. The ERP invoice explicitly disables screen table presentation inside its physical document and supplies A4 print CSS; the surrounding controls continue using managed preferences. A component test covers geometry/style forwarding and portal cleanup. A browser PDF is not physical-printer acceptance.
 
 DonutChart uses a generic `Total` caption by default; hosts may supply `totalLabel` for domain wording. The showcase Stats example exercises all three chart exports with effective formatting.
+
+## Phase 6d print snapshot
+
+`PrintDocument` optionally accepts `sourceRef`, an element reference (including a host-controlled getter). It snapshots that visible region at `beforeprint`, preserves current input/textarea/select values, and clears the clone at `afterprint` or unmount. Without `sourceRef`, children render as before. Hosts own selection, permission, presentation and print CSS; the component fetches no data. Tests cover current form values and cleanup. Donut labels use a separate text span so accessible inspection can distinguish the label from its formatted value.
+
+When Calendar receives `renderDay`, its day button name includes the visible marker text followed by the localized full date. This keeps event labels available to voice and screen-reader navigation; the default date-only name is unchanged. A regression covers marker/date naming.
+
+## Nonnegative metric charts
+
+Root exports `BarChart`, `HorizontalBars`, `ProgressRing` and `MetricPoint`. Hosts supply labels, colors/units, optional scale/geometry and a preference-bound `formatValue`. Bars provide focusable formatted-value/comparison inspection; horizontal bars show values in text. Invalid/negative metrics become zero, maxima have a positive floor, and geometry clamps to its plot/percentage range. These views are for nonnegative metrics, not signed financial series. Fonts use effective result scale and colors use semantic tokens; no animation, data transport or product vocabulary is owned here. Tests cover keyboard inspection, empty/degenerate data and ring bounds/labels. Scholaris consumes these engines through thin domain adapters.

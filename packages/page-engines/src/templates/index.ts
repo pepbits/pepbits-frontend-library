@@ -8,3 +8,4 @@ export * from "./template-state";
 
 export {FieldRows,type FieldRow} from './field-rows';
 export {EditableMatrix} from './editable-matrix';
+export * from './report-filters';

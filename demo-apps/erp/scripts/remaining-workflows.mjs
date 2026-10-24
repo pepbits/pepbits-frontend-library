@@ -30,7 +30,7 @@ export async function remainingWorkflows({page,visit,flows,capture,screenshot}) 
     }
     await visit('/'+variant+'/reports/invoice-print');
     if(variant==='erp2'){await page.locator('tbody tr').first().locator('td').nth(2).click();}
-    await page.locator('[data-invoice-preview] .erp-invoice').waitFor();
+    await page.locator('[data-invoice-pages] .erp-invoice').waitFor();
     await page.getByRole('radio',{name:'Duplicate',exact:true}).click();await page.getByRole('checkbox',{name:'Show terms',exact:true}).uncheck();assert.equal(await page.locator('[data-invoice-preview] .invoice-terms').count(),0);await page.getByRole('checkbox',{name:'Show terms',exact:true}).check();await page.getByRole('button',{name:'Zoom in',exact:true}).click();
     if(variant==='erp1')await shot('invoice');
     const downloadName=screenshot?.replace('.png','-'+variant+'-invoice.pdf');

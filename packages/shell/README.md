@@ -214,6 +214,10 @@ EnterpriseShell keeps its scrollable main region keyboard focusable even when a 
 
 Direct `application-providers.test.tsx` cases now verify session → preference → catalog → shell ordering, shared request/session wiring, anonymous and failed-load paths, serialized writes, rejected-save recovery, policy refresh, language changes preserving editor input and late-response fencing on identity changes. These tests inject fictional HTTP responses; they do not establish live identity or service acceptance.
 
+## Phase 6d host membership
+
+`ApplicationProviders.productForRole(role, user)` also receives the authenticated platform account, allowing host-owned session grants to build navigation; existing one-argument callbacks remain compatible. `ModuleDefinition.pageIds` optionally declares non-menu detail membership. `defineProduct` intersects these IDs with available pages; `moduleContainsPage` still requires both page and module in the filtered product. Regression tests cover shared details and denied modules. No product role or authorization rule is added to shell.
+
 ## Reference module host
 
 `@pepbits/shell/reference-host` is the generic contract between an application host and an imported product module (phase 6e-2). The application builds a `ReferenceHost` from its own session, effective preferences, configured JSON transport and navigation port; the module receives only that product context. `ReferenceHostProvider` also supplies the effective presentation preferences. `referenceScopeKey` keys module state by tenant, application, branch, module, user and sorted roles, so a scope change remounts it. `ReferenceLink` renders a real href (`hrefFor`) and routes plain left clicks through `navigate`; modified clicks stay native. `useReferenceFormat` combines the effective formatters with the host translator. Scope fields are routing/isolation metadata, never authorization: the API authorizes every request.

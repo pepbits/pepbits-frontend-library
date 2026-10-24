@@ -145,3 +145,7 @@ export {Droplet, Shield, Scissors} from 'lucide-react';
 export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from 'lucide-react';
 
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
+
+// Additional generic icon exports.
+export {ArrowDownWideNarrow, Award, BookCopy, BookMarked, BookPlus, BookUp, BookX, Briefcase, CalendarOff, Coffee, DollarSign, Eraser, FileSpreadsheet, Film, Flag, GraduationCap, Grid3x3, Highlighter, Kanban, KeyRound, Laptop, Library, Palette, Paperclip, PenTool, Percent, Redo2, School, Settings, Smile, Target, User, UserCog, UserX, VideoOff, Zap} from "lucide-react";
+export type {LucideIcon} from "lucide-react";

@@ -20,13 +20,16 @@ export function RecordNotice({children,variant='banner',role}:{children:React.Re
  return <div className={styles.notice} data-variant={variant} role={role}>{children}</div>;
 }
 /** Shared record presentation; no domain contracts, API traffic, persisted drafts or permission inference. */
-export function RecordPage<T extends RecordPageSection>({sections,active,onActive,isDone,identity,actions,renderSection,isReading,onRead,feedback,showCompletion=true}:{
+export function RecordPage<T extends RecordPageSection>({sections,active,onActive,isDone,identity,actions,renderSection,isReading,onRead,feedback,summary,aside,showCompletion=true}:{
  sections:T[];active:string;onActive:(id:string)=>void;isDone:(id:string)=>boolean;
  identity:React.ReactNode;actions:RecordPageAction[];renderSection:(section:T)=>React.ReactNode;
  isReading?:(id:string)=>boolean;onRead?:(id:string)=>void;feedback?:React.ReactNode;showCompletion?:boolean;
+ /** Host-owned record statistics/context. Side content stays available below the form on narrow containers. */
+ summary?:React.ReactNode;aside?:React.ReactNode;
 }){
- return <div className={styles.page} data-record-page>{feedback}
-  <RecordSectionLayout sections={sections} active={active} onActive={onActive} keepMounted sizing="container" showCompletion={showCompletion} isDone={isDone} railHeader={identity} footer={<RecordActionBar actions={actions}/>}
-   renderSection={s=><RecordSectionCard id={s.id} index={sections.indexOf(s)} title={s.heading} subtitle={s.subtitle??''} icon={s.icon} reading={isReading?.(s.id)} onRead={onRead?()=>onRead(s.id):undefined}>{renderSection(s)}</RecordSectionCard>}/>
+ const layout=<RecordSectionLayout sections={sections} active={active} onActive={onActive} keepMounted sizing="container" showCompletion={showCompletion} isDone={isDone} railHeader={identity} footer={<RecordActionBar actions={actions}/>}
+   renderSection={s=><RecordSectionCard id={s.id} index={sections.indexOf(s)} title={s.heading} subtitle={s.subtitle??''} icon={s.icon} reading={isReading?.(s.id)} onRead={onRead?()=>onRead(s.id):undefined}>{renderSection(s)}</RecordSectionCard>}/>;
+ return <div className={styles.page} data-record-page data-record-context={aside?'true':undefined}>{feedback}{summary}
+  {aside?<div className={styles.composition} data-record-composition="aside">{layout}<div className={styles.aside} data-record-aside>{aside}</div></div>:layout}
  </div>;
 }
