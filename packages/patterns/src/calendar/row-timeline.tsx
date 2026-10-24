@@ -109,11 +109,12 @@ export function ResourceRowTimeline<T extends RowEvent>({label, rows, bands = []
               {layout.map(({event, start: from, end: to, lane: index}) => {
                 const original = events.find(item => item.id === event.id)!, held = to - from || 1;
                 const lead = Math.max(0, Math.min(to, original.start) - from), trail = Math.max(0, to - Math.max(from, original.end));
+                // Dim inactive fills without fading the white labels and losing text contrast.
                 return <button key={event.id} type="button" data-row-event={event.id} onClick={clicked => {clicked.stopPropagation(); onOpen(original);}} title={[original.label, original.detail].filter(Boolean).join('\n')} aria-label={[original.label, original.detail].filter(Boolean).join(', ')}
                   className="absolute z-[5] flex overflow-hidden rounded-md text-start font-medium text-white shadow-sm ring-1 ring-white/60 hover:z-10 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)]"
-                  style={{top: `${0.25 + index * lane}rem`, height: `${lane - 0.25}rem`, insetInlineStart: `${pos(from)}%`, width: `${Math.max(0.15, pos(to) - pos(from))}%`, opacity: original.inactive ? 0.6 : undefined, outline: original.emphasis === 'warning' ? '2px solid var(--warning)' : undefined}}>
+                  style={{top: `${0.25 + index * lane}rem`, height: `${lane - 0.25}rem`, insetInlineStart: `${pos(from)}%`, width: `${Math.max(0.15, pos(to) - pos(from))}%`, outline: original.emphasis === 'warning' ? '2px solid var(--warning)' : undefined}}>
                   {lead ? <span aria-hidden className="h-full shrink-0 bg-black/30" style={{width: `${lead / held * 100}%`}}/> : null}
-                  <span className="flex min-w-0 flex-1 items-center gap-1 px-1.5" style={{background: original.color ?? 'var(--primary-fill)'}}>{original.marker}<span className="truncate">{original.label}</span></span>
+                  <span className="flex min-w-0 flex-1 items-center gap-1 px-1.5" style={{background: original.inactive ? `color-mix(in srgb, ${original.color ?? 'var(--primary-fill)'} 60%, black)` : original.color ?? 'var(--primary-fill)'}}>{original.marker}<span className="truncate">{original.label}</span></span>
                   {trail ? <span aria-hidden className="h-full shrink-0 bg-black/30" style={{width: `${trail / held * 100}%`}}/> : null}
                 </button>;
               })}

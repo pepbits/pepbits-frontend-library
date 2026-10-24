@@ -1,6 +1,6 @@
 # CareGrid phase 6e-5 — scheduling and resource planning demo — 24 October 2026
 
-Status: implemented; final heavy verification blocked by the occupied shared lock. Unreleased working tree on `restructure/phase-6e-5`, base `5bbb13027d137ac31594ca9a1a3d47aac46653c9`. No commit, push, publication or deployment. Fictional demonstration data, **not clinical acceptance or a production integration**.
+Status: implemented; local production build and complete real-HTTP/browser check passed. Unreleased working tree on `restructure/phase-6e-5`, current base `747add92ae757293510c9cd31bec8e5a3b9cddae`. Earlier port receipts identify base `5bbb13027d137ac31594ca9a1a3d47aac46653c9` and remain historical evidence. No commit, push, publication or deployment in this follow-up. Fictional demonstration data, **not clinical acceptance or a production integration**.
 
 [Plan](../../architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-6e-5-status), [app guide](../../../demo-apps/caregrid/README.md), [feature contract](../../features/caregrid-demo.md), [source map](../../../demo-apps/caregrid/source-mapping.md), [test guide 1.0.0](../../testing/v1.0.0/PRE-COMMIT.md).
 
@@ -35,17 +35,47 @@ New exports and host inputs are additive; the Avatar correction changes its acce
 - `@pepbits/platform/event-stream` (new export): Server-Sent Events subscription and hook with readiness event, JSON parsing, bounded reconnection and stale-source fencing. 4 tests.
 - `@pepbits/patterns/calendar`: `ResourceRowTimeline`, a horizontal resource-row day canvas with availability bands, overlap lanes, held lead/trail minutes, now line, collapsible groups, snapping pointer creation, per-row keyboard creation, RTL mirroring and density-bound lanes. 6 tests.
 - `@pepbits/shell`: optional `commandSearch` on ShellProvider (debounced, aborting, grouped host results in the command palette) and optional `chrome` on `ApplicationProviders` (quick pages, tours, command search, header inbox, frame wrapper). 3 tests.
-- `@pepbits/ui` Avatar: the accent wash's foreground is mixed with the theme text colour; the inherited correction is retained and unit-tested; final Chromium contrast acceptance remains pending. 1 test.
+- `@pepbits/ui` Avatar: the accent wash's foreground is mixed with the theme text colour; the inherited correction is retained and unit-tested. The live CareGrid sweep below includes Chromium contrast checks. 1 test.
 - `@pepbits/icons`: 21 Lucide primitives for scheduling categories and resource kinds. 21 render cases.
 - `tooling/scripts/run-demo-integration.mjs`: accepts `caregrid` (one-word allowlist change); the CareGrid wrapper starts the scheduling API first.
 
-Existing workspace dependency versions are unchanged; `npm install` adds CareGrid and its dependency entries to the lockfile. Healthcare and ERP have no demo-level source changes; the pending forced CI will check their shared-package consumers.
+Existing workspace dependency versions are unchanged; `npm install` adds CareGrid and its dependency entries to the lockfile. Healthcare and ERP have no demo-level source changes. CI was reported green at the start of this follow-up; full CI and the separate shell browser suite were not rerun here.
 
 ## Preferences, localization and accessibility
 
 Effective theme, font/scales, density, radius, result view, page size, date/time/number formatting, reduced motion, shortcuts and helper switches come from the host. The service catalog and slot-length advice use CollectionView with the effective result view and managed page size; timelines, the flow board and day strips show complete days by design. Kind colours are semantic tokens; API department colours are darkened for white labels. Canonical catalogs have no CareGrid keys and were not changed, so CareGrid copy is English inside a translated, mirrored shell; this is not native-speaker review.
 
 ## Verification
+
+### Live-check follow-up — 24 October 2026
+
+The complete local check passed on base `747add92ae757293510c9cd31bec8e5a3b9cddae` plus the two runtime/driver changes identified in [source.json](evidence/restructure-phase-6e-5-2026-10-24/live-check/source.json), with diff SHA-256 `01daf13736ea59760de0410ae5357950b626a007f22b4fdbac14909f0445980f`. The [verification receipt](evidence/restructure-phase-6e-5-2026-10-24/live-check/verification.json) records commands, exit codes, artifact hashes and final source/manifest checks. The final build includes the timeline fix; later changes are documentation and evidence only. No heavy lock was used.
+
+Three corrections were necessary:
+
+- The first schedule event was completed. Its appointment details loaded, but its empty actions container had zero height, so waiting for visible actions timed out. The original app also offers no lifecycle actions for completed appointments. The smoke check now waits for loaded reserved-resource details and verifies drawer dismissal.
+- Today's hardcoded CT resource had no future bookings to put in the reschedule queue. The check now selects a resource with at least two future booked/confirmed appointments from real scheduling HTTP data, sets the block dates, and requires a nonempty impact preview before exercising the manual and automatic queue moves.
+- Chromium axe found insufficient contrast on completed timeline events because the shared row timeline faded the entire button to 60% opacity. Inactive events now darken their fill while keeping labels opaque. The shared component contract is documented in its README.
+
+The exact required commands both exited **0**:
+
+```sh
+NEXT_PUBLIC_API_URL=/api NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api npm run build -w @pepbits-demo/caregrid
+LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu \
+CAREGRID_API_NODE=$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node \
+CAREGRID_RUNTIME_ARTIFACTS=/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/dummy-api \
+npm run test:integration -w @pepbits-demo/caregrid
+```
+
+[Build log](evidence/restructure-phase-6e-5-2026-10-24/live-check/build.log), [integration log](evidence/restructure-phase-6e-5-2026-10-24/live-check/integration.log), and [browser receipt](evidence/restructure-phase-6e-5-2026-10-24/live-check/browser.json): **25 workflows, 18 full-document Chromium axe routes, 0 page errors, 0 console errors, 0 HTTP errors and 0 axe violations**, including colour contrast. Axe also returned two incomplete rule results per route; these are retained, not treated as verified passes. This is a local production Next server and actual HTTP to both unchanged APIs, with a freshly seeded temporary scheduling database and fictional data; no business-response interception. The [three failed diagnostic attempts](evidence/restructure-phase-6e-5-2026-10-24/live-check/attempts.json) remain recorded separately.
+
+[Runtime identity and cleanup](evidence/restructure-phase-6e-5-2026-10-24/live-check/identity.json) records Node **24.21.0** for the host API, **483 source files compared with zero mismatches**, and hashes of reused generated runtimes. The build, browser driver and [original scheduling backend](evidence/restructure-phase-6e-5-2026-10-24/live-check/scheduling-identity.json) used Node **22.22.1**. Browser, Next and host API process groups all report `groupAlive: false`; the scheduling backend reports `groupAlive: false` and `portOpen: false`, and its temporary database was removed. `Next exited 143` is the launcher's successful SIGTERM cleanup, not a failed integration. Every diagnostic attempt also stopped its services. Protected paths remain unchanged; no commit, merge or push.
+
+After the passing live run, `npm test -w @pepbits-demo/caregrid` passed **140 tests / 5 files** ([log](evidence/restructure-phase-6e-5-2026-10-24/live-check/caregrid-tests.log)) and `npm run typecheck -w @pepbits-demo/caregrid` passed ([log](evidence/restructure-phase-6e-5-2026-10-24/live-check/caregrid-typecheck.log)). The changed shared package passed `npm test -w @pepbits/patterns`: **173 tests / 34 files** ([log](evidence/restructure-phase-6e-5-2026-10-24/live-check/patterns-tests.log)), plus `npm run typecheck -w @pepbits/patterns` ([log](evidence/restructure-phase-6e-5-2026-10-24/live-check/patterns-typecheck.log)). All four commands exited **0**. These reruns supersede the corresponding earlier package results without adding overlapping counts.
+
+With `PATH=$HOME/.local/opt/node-v24.21.0-linux-x64/bin:$PATH`, `node docs/tools/check-docs.mjs` passed **207 documentation files** ([log](evidence/restructure-phase-6e-5-2026-10-24/live-check/docs.log)) and `node --test docs/tools/check-docs.test.mjs` passed **3 tests** ([log](evidence/restructure-phase-6e-5-2026-10-24/live-check/docs-tests.log)), both exit **0**. The first attempts under the default Node 22 failed to load the existing `.ts` inventory import; [checker diagnostic](evidence/restructure-phase-6e-5-2026-10-24/live-check/docs-node22.log) and [test diagnostic](evidence/restructure-phase-6e-5-2026-10-24/live-check/docs-tests-node22.log) are preserved. Selecting the documented Node 24 environment resolved that tooling prerequisite without source changes.
+
+### Earlier focused verification
 
 Dependency installation passed using a writable temporary npm cache: [install log](evidence/restructure-phase-6e-5-2026-10-24/install.log). Final focused verification passed **1,066 tests / 101 files**, **6 typechecks**, **19 tooling tests** and the boundary check (**12 packages / 4 demos**). Each workspace ran sequentially with at most two Vitest workers. A final app-only typecheck and 140-test rerun covers the later Panel-to-shared-Card composition; it supersedes the app portion without adding overlapping counts ([final app log](evidence/restructure-phase-6e-5-2026-10-24/caregrid-final.log), [checkpoint](evidence/restructure-phase-6e-5-2026-10-24/caregrid-final-source.json)). These are package-level checks, **not a successful full CI or production build**. [Counts](evidence/restructure-phase-6e-5-2026-10-24/focused-summary.json), [log extract](evidence/restructure-phase-6e-5-2026-10-24/focused-summary.log), [source checkpoint](evidence/restructure-phase-6e-5-2026-10-24/focused-source.json), [commands/environment](evidence/restructure-phase-6e-5-2026-10-24/environment.json).
 
@@ -60,19 +90,19 @@ Dependency installation passed using a writable temporary npm cache: [install lo
 
 CareGrid's **140 cases** comprise **80 route/profile cases** (11 destinations and 9 deep-link variants × default, Arabic RTL, reduced motion and locked density), **21 workflow cases**, **11 host cases** (including **4 preferences-route/profile/axe cases**), **20 navigation/help cases** and **8 adapter cases**. Every profile/route assertion includes jsdom axe with colour contrast disabled. The source package has no automated tests to port. The [139-case precheck](evidence/restructure-phase-6e-5-2026-10-24/caregrid-precheck.log) predates the queue-retry case and is superseded by the focused result; overlapping counts are not added.
 
-### Heavy checks blocked
+### Earlier lock-limited attempt (superseded)
 
 The requested `npm run ci -- --concurrency=1 --env-mode=loose` (root script includes Turbo `--force`) waited **1,800 seconds** for `/home/pepadmin/.cache/pepbits-heavy.lock` and exited **75 before CI started**. No CI task count or cached-task count exists for this attempt. Subsequent nonblocking probes still returned 75. `ps`, `lslocks` and `/proc/locks` expose only the command PID namespace, so the external holder and its session liveness could not be identified. The lock was not removed or bypassed; the coordinating session was asked to identify it. [Lock inspection](evidence/restructure-phase-6e-5-2026-10-24/lock-status.json).
 
-**Not run on final source:** forced full CI, all production Next builds (including CareGrid), shell Chromium with the requested library path, and CareGrid real-HTTP/browser workflows. The prior session's unfinished claims are not retained as passing evidence. The production build must use `NEXT_PUBLIC_API_URL=/api NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api`; [run-browser.sh](evidence/restructure-phase-6e-5-2026-10-24/run-browser.sh) then starts the unchanged scheduling API, shared host API, one Next server and Chromium under the same lock. Its driver is prepared for 25 workflow receipts and 18 full-document axe URLs, but **these are planned checks, not observed passes**. A read-only preflight compared **483 tracked API files with zero mismatches** against the original repository's runtime checkout; no runtime or backend build acceptance is claimed.
+That earlier attempt did not run forced full CI, production Next builds, shell Chromium or CareGrid real-HTTP/browser workflows. Its [run-browser.sh](evidence/restructure-phase-6e-5-2026-10-24/run-browser.sh) remains historical preparation, not the command used for the live follow-up. The passing CareGrid build and 25-workflow/18-route live results above supersede those pending CareGrid checks. Full CI and the separate shell browser suite were not rerun in this follow-up. The earlier read-only preflight compared **483 tracked API files with zero mismatches**; the new runtime identity records actual execution using those source-matched artifacts.
 
 ### Documentation, source and cleanup
 
 The requested absolute `jiti docs/tools/check-docs.mjs` command passed **198 documentation files**: [final documentation log](evidence/restructure-phase-6e-5-2026-10-24/docs-final.log). [Boundary scans](evidence/restructure-phase-6e-5-2026-10-24/boundary-scans.json) record unchanged protected paths, zero forbidden imports, the URL/credential scan and clean whitespace. Every match, if any, is individually classified there.
 
-[Source verification](evidence/restructure-phase-6e-5-2026-10-24/source-verification.json) compares the final manifest to the focused-test checkpoint. The only later runtime change is the app Panel wrapper composing public Card; the final app-only rerun covers it. Shared-package runtime, tests and drivers remain identical, and later Markdown status corrections are enumerated. The [original source identity](evidence/restructure-phase-6e-5-2026-10-24/source-reference.json) hashes the unchanged CareGrid reference.
+The earlier [source verification](evidence/restructure-phase-6e-5-2026-10-24/source-verification.json) compares that session's manifest to its focused-test checkpoint. At that point the only later runtime change was the app Panel wrapper composing public Card, covered by its app-only rerun; shared-package runtime, tests and drivers were identical to that checkpoint. Those receipts retain their original scope. The live follow-up above identifies the subsequent driver and timeline changes. The [original source identity](evidence/restructure-phase-6e-5-2026-10-24/source-reference.json) hashes the unchanged CareGrid reference.
 
-No Next server, host API, original CareGrid backend or browser was started during this resumed session. All install/test/typecheck/documentation commands and the expired lock waiter completed. [Cleanup receipt](evidence/restructure-phase-6e-5-2026-10-24/cleanup.json) records this boundary; the unrelated external lock holder is not claimed stopped. No commit, push, merge or rebase.
+No Next server, host API, original CareGrid backend or browser was started during the earlier lock-limited session. Its install/test/typecheck/documentation commands and expired lock waiter completed. The historical [cleanup receipt](evidence/restructure-phase-6e-5-2026-10-24/cleanup.json) records that boundary; current service cleanup is recorded in the live follow-up above. The unrelated external lock holder is not claimed stopped. No commit, push, merge or rebase in either verification follow-up.
 
 ## Resume corrections and verification history
 

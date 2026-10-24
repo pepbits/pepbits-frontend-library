@@ -1,0 +1,112 @@
+
+> @pepbits-demo/caregrid@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-5/demo-apps/caregrid
+
+ ✓ src/modules/caregrid/workflows.test.tsx (21 tests) 12504ms
+   ✓ booking > patient, service and slot book through the API with the selected assignments and source  1610ms
+   ✓ booking > a taken slot reports the server alternatives and keeps the chosen time for retry  888ms
+   ✓ booking > repeat books a course and the waitlist records a date window  846ms
+   ✓ booking > a read-only role can search but not book or register  515ms
+   ✓ appointment drawer and schedule board > opening a board event loads the appointment; check-in, cancellation reason and move are acknowledged commands  681ms
+   ✓ appointment drawer and schedule board > a failed status command keeps the drawer state and reports the server message  391ms
+   ✓ appointment drawer and schedule board > the move panel reschedules to a chosen slot with its assignments  519ms
+   ✓ front desk > card commands and accessible board moves map to lifecycle actions; invalid moves are refused locally  720ms
+   ✓ availability, blocks and queue > impact preview, block save, queue suggestion move, fix-all and holiday commands  1256ms
+   ✓ resources, catalog and insights > working hours copy Monday, block invalid windows and save through PUT  1313ms
+   ✓ resources, catalog and insights > service rules validate locally and PATCH accepted values  355ms
+   ✓ resources, catalog and insights > slot length advice applies the suggested duration  316ms
+   ✓ resources, catalog and insights > pharmacy desk marks arrival and routes one-click booking  454ms
+   ✓ live updates > reconnecting refreshes missed changes without discarding an unsaved working-hours edit  1128ms
+   ✓ live updates > schedule-changed events re-read live queries; notifications reach the host toast path  464ms
+ ✓ src/providers.test.tsx (11 tests) 15449ms
+   ✓ one serialized preference path retains adjacent writes and API revisions  667ms
+   ✓ language catalog refresh preserves the mounted editor  664ms
+   ✓ runtime tenant locks replace effective values and block writes  610ms
+   ✓ rejected preference writes retain accepted state  396ms
+   ✓ the header inbox shows live state, unread notices and opens notice links through navigation  511ms
+   ✓ the command palette searches scheduling records and the B shortcut respects preferences  1124ms
+   ✓ the routed page renders through the shell with its quick Book action; read-only roles see disabled writes  1886ms
+   ✓ preferences route renders under default with no axe violations  3037ms
+   ✓ preferences route renders under Arabic RTL with no axe violations  2472ms
+   ✓ preferences route renders under reduced motion with no axe violations  2036ms
+   ✓ preferences route renders under locked density with no axe violations  2042ms
+ ✓ src/navigation.test.tsx (20 tests) 2332ms
+   ✓ contextual help > caregrid-dashboard renders every tour anchor  392ms
+ ✓ src/adapters/caregrid.test.ts (8 tests) 21ms
+ ✓ src/routes.test.tsx (80 tests) 57791ms
+   ✓ default > command center renders API data, round-trips its route and has no axe violations  1553ms
+   ✓ default > book renders API data, round-trips its route and has no axe violations  1549ms
+   ✓ default > book deep link renders API data, round-trips its route and has no axe violations  995ms
+   ✓ default > schedule renders API data, round-trips its route and has no axe violations  1468ms
+   ✓ default > schedule with appointment renders API data, round-trips its route and has no axe violations  1293ms
+   ✓ default > front desk flow renders API data, round-trips its route and has no axe violations  2068ms
+   ✓ default > availability and blocks renders API data, round-trips its route and has no axe violations  453ms
+   ✓ default > blocks preset resource renders API data, round-trips its route and has no axe violations  679ms
+   ✓ default > resources renders API data, round-trips its route and has no axe violations  1386ms
+   ✓ default > resource deep link renders API data, round-trips its route and has no axe violations  1241ms
+   ✓ default > service catalog renders API data, round-trips its route and has no axe violations  905ms
+   ✓ default > service deep link renders API data, round-trips its route and has no axe violations  958ms
+   ✓ default > patients renders API data, round-trips its route and has no axe violations  369ms
+   ✓ default > patient deep link renders API data, round-trips its route and has no axe violations  380ms
+   ✓ default > pharmacy desk renders API data, round-trips its route and has no axe violations  531ms
+   ✓ default > insights durations renders API data, round-trips its route and has no axe violations  825ms
+   ✓ default > insights utilization renders API data, round-trips its route and has no axe violations  369ms
+   ✓ default > help center renders API data, round-trips its route and has no axe violations  445ms
+   ✓ Arabic RTL > command center renders API data, round-trips its route and has no axe violations  547ms
+   ✓ Arabic RTL > book renders API data, round-trips its route and has no axe violations  779ms
+   ✓ Arabic RTL > book deep link renders API data, round-trips its route and has no axe violations  784ms
+   ✓ Arabic RTL > schedule renders API data, round-trips its route and has no axe violations  1696ms
+   ✓ Arabic RTL > schedule with appointment renders API data, round-trips its route and has no axe violations  1657ms
+   ✓ Arabic RTL > front desk flow renders API data, round-trips its route and has no axe violations  2257ms
+   ✓ Arabic RTL > front desk waitlist renders API data, round-trips its route and has no axe violations  329ms
+   ✓ Arabic RTL > front desk reminders renders API data, round-trips its route and has no axe violations  319ms
+   ✓ Arabic RTL > availability and blocks renders API data, round-trips its route and has no axe violations  605ms
+   ✓ Arabic RTL > blocks preset resource renders API data, round-trips its route and has no axe violations  723ms
+   ✓ Arabic RTL > resources renders API data, round-trips its route and has no axe violations  1214ms
+   ✓ Arabic RTL > resource deep link renders API data, round-trips its route and has no axe violations  1398ms
+   ✓ Arabic RTL > service catalog renders API data, round-trips its route and has no axe violations  950ms
+   ✓ Arabic RTL > service deep link renders API data, round-trips its route and has no axe violations  1079ms
+   ✓ Arabic RTL > patients renders API data, round-trips its route and has no axe violations  340ms
+   ✓ Arabic RTL > patient deep link renders API data, round-trips its route and has no axe violations  308ms
+   ✓ Arabic RTL > pharmacy desk renders API data, round-trips its route and has no axe violations  608ms
+   ✓ Arabic RTL > insights durations renders API data, round-trips its route and has no axe violations  827ms
+   ✓ Arabic RTL > insights utilization renders API data, round-trips its route and has no axe violations  403ms
+   ✓ Arabic RTL > help center renders API data, round-trips its route and has no axe violations  433ms
+   ✓ reduced motion > command center renders API data, round-trips its route and has no axe violations  442ms
+   ✓ reduced motion > book renders API data, round-trips its route and has no axe violations  633ms
+   ✓ reduced motion > book deep link renders API data, round-trips its route and has no axe violations  405ms
+   ✓ reduced motion > schedule renders API data, round-trips its route and has no axe violations  682ms
+   ✓ reduced motion > schedule with appointment renders API data, round-trips its route and has no axe violations  750ms
+   ✓ reduced motion > front desk flow renders API data, round-trips its route and has no axe violations  1345ms
+   ✓ reduced motion > availability and blocks renders API data, round-trips its route and has no axe violations  337ms
+   ✓ reduced motion > blocks preset resource renders API data, round-trips its route and has no axe violations  648ms
+   ✓ reduced motion > resources renders API data, round-trips its route and has no axe violations  1178ms
+   ✓ reduced motion > resource deep link renders API data, round-trips its route and has no axe violations  1135ms
+   ✓ reduced motion > service catalog renders API data, round-trips its route and has no axe violations  700ms
+   ✓ reduced motion > service deep link renders API data, round-trips its route and has no axe violations  866ms
+   ✓ reduced motion > patient deep link renders API data, round-trips its route and has no axe violations  302ms
+   ✓ reduced motion > pharmacy desk renders API data, round-trips its route and has no axe violations  564ms
+   ✓ reduced motion > insights durations renders API data, round-trips its route and has no axe violations  606ms
+   ✓ reduced motion > help center renders API data, round-trips its route and has no axe violations  305ms
+   ✓ locked density > command center renders API data, round-trips its route and has no axe violations  406ms
+   ✓ locked density > book renders API data, round-trips its route and has no axe violations  677ms
+   ✓ locked density > book deep link renders API data, round-trips its route and has no axe violations  384ms
+   ✓ locked density > schedule renders API data, round-trips its route and has no axe violations  669ms
+   ✓ locked density > schedule with appointment renders API data, round-trips its route and has no axe violations  673ms
+   ✓ locked density > front desk flow renders API data, round-trips its route and has no axe violations  1319ms
+   ✓ locked density > blocks preset resource renders API data, round-trips its route and has no axe violations  582ms
+   ✓ locked density > resources renders API data, round-trips its route and has no axe violations  983ms
+   ✓ locked density > resource deep link renders API data, round-trips its route and has no axe violations  970ms
+   ✓ locked density > service catalog renders API data, round-trips its route and has no axe violations  649ms
+   ✓ locked density > service deep link renders API data, round-trips its route and has no axe violations  767ms
+   ✓ locked density > pharmacy desk renders API data, round-trips its route and has no axe violations  533ms
+   ✓ locked density > insights durations renders API data, round-trips its route and has no axe violations  719ms
+
+ Test Files  5 passed (5)
+      Tests  140 passed (140)
+   Start at  20:25:34
+   Duration  65.29s (transform 4.49s, setup 1.51s, collect 13.49s, tests 88.10s, environment 4.04s, prepare 841ms)
+

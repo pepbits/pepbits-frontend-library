@@ -1,6 +1,6 @@
 # Current delivery and release records
 
-- [CareGrid phase 6e-5 — scheduling and resource planning demo](restructure-phase-6e-5-2026-10-24.md): all eleven CareGrid screens on public packages, live updates and library additions; focused verification recorded, full CI/build/browser acceptance blocked by the shared lock; fictional data, no deployment.
+- [CareGrid phase 6e-5 — scheduling and resource planning demo](restructure-phase-6e-5-2026-10-24.md): all eleven CareGrid screens on public packages, live updates and library additions; local production build, 25 real-HTTP workflows and 18 Chromium axe routes passed; fictional data, no deployment.
 - [School phase 6d-2 — source comparison and visual gaps](restructure-phase-6d-2-2026-10-24.md): compact chart/table parity subset, per-route handoff and exact local evidence.
 
 - [Reports phase 6e-1 — Lumen Reports demo app](restructure-phase-6e-1-2026-10-24.md): all 19 source routes over the shared host and fictional demo API; local verification and limits.

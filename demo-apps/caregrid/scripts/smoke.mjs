@@ -32,10 +32,10 @@ try{
  await page.locator('[data-booking-done]').filter({hasText:appointment.ref}).waitFor();await page.getByText(serviceName+' booked',{exact:false}).first().waitFor();flows.push({id:'CG-book',result:'Patient, service and free slot booked; live notification toast received',reference:'fictional'});
  await page.getByRole('button',{name:'View on schedule board'}).click();await page.locator('[data-row-timeline] [data-row-event]').first().waitFor();flows.push({id:'CG-book-board',result:'Confirmation opens the schedule board on the booked date'});
 
- // Schedule board: open an event, confirm through the drawer, keyboard quick booking.
- await visit('/schedule','[data-row-timeline]');if(!await page.locator('[data-row-event]').count())await visit('/schedule?department=','[data-row-event]');await page.locator('[data-row-event]').first().click();const actions=page.locator('[data-appointment-actions]');await actions.waitFor();
- flows.push({id:'CG-board-drawer',result:'Board event opens the appointment drawer with lifecycle actions'});
- await page.keyboard.press('Escape');await page.locator('[data-appointment-actions]').waitFor({state:'detached'});
+ // Schedule board: open an event (completed appointments have no lifecycle actions), keyboard quick booking.
+ await visit('/schedule','[data-row-timeline]');if(!await page.locator('[data-row-event]').count())await visit('/schedule?department=','[data-row-event]');await page.locator('[data-row-event]').first().click();await page.locator('[data-appointment-drawer]').getByRole('heading',{name:'Reserved resources'}).waitFor();
+ flows.push({id:'CG-board-drawer',result:'Board event opens loaded appointment details, including completed appointments'});
+ await page.keyboard.press('Escape');await page.locator('[data-appointment-drawer]').waitFor({state:'detached'});
  await page.locator('[data-row-timeline] button[aria-label^="Book on "]:not([disabled])').first().click();await page.locator('[data-quick-book]').waitFor();await page.getByRole('combobox',{name:/Service using this resource/}).waitFor();await page.keyboard.press('Escape');flows.push({id:'CG-board-quickbook',result:'Keyboard row command opens resource-scoped quick booking'});
  await page.getByRole('button',{name:'Next day'}).click();await page.waitForURL(/\/schedule\?date=/);await page.locator('[data-row-timeline]').waitFor();flows.push({id:'CG-board-day',result:'Day navigation updates the deep link'});
  await capture(process.env.CAREGRID_SCREENSHOT);
@@ -48,8 +48,12 @@ try{
  await visit('/frontdesk?tab=waitlist','[data-waitlist] li');await page.locator('[data-waitlist] li').first().getByRole('button',{name:'Find a slot'}).click();await page.waitForURL(/\/book\?.*waitlist=/);await page.locator('[data-selected-patient]').waitFor();await page.locator('[data-selected-service]').waitFor();flows.push({id:'CG-waitlist',result:'Waitlist entry opens booking with patient, service and waitlist preselected'});
  await visit('/frontdesk?tab=reminders');await page.locator('[data-reminders]').waitFor();flows.push({id:'CG-reminders',result:'Reminder outbox reads the API'});
 
- // Availability: impact preview, block, queue suggestions, automatic fixes and holidays.
- await visit('/exceptions?resource=265','[data-impact]');await page.locator('[data-impact]:not([data-impact=""])').waitFor();
+ // Availability: use future booked work, since today's seeded appointments may already be completed.
+ const blockDate=appointment.start_at.slice(0,10),schedule=await ok(page.request.get(base+'/caregrid-api/schedule?date='+blockDate),'Queue fixture schedule');
+ const blockResource=schedule.resources.find(r=>new Set(r.holds.filter(h=>['booked','confirmed'].includes(h.status)&&h.start_at>=appointment.start_at).map(h=>h.appointment_id)).size>=2);
+ if(!blockResource)throw new Error('No resource with two future bookings for the queue workflows');
+ await visit('/exceptions?resource='+blockResource.id,'[data-impact]');await page.getByLabel('Until',{exact:true}).fill(blockDate);await page.getByLabel('From',{exact:true}).fill(blockDate);
+ await page.waitForFunction(()=>Number(document.querySelector('[data-impact]')?.getAttribute('data-impact'))>=2);
  const blocked=command('POST','/caregrid-api/exceptions');await page.getByRole('button',{name:/^(Save block|Block and queue)/}).click();await ok(blocked,'Block');flows.push({id:'CG-block',result:'Impact preview and block creation acknowledged'});
  const queued=page.locator('[data-queue-item]').first();await queued.waitFor();await queued.getByRole('button',{name:/New times/}).click();const suggestion=queued.locator('[data-suggestion]').first();
  await suggestion.waitFor();await Promise.all([ok(command('POST','/reschedule'),'Queue move'),suggestion.click()]);flows.push({id:'CG-queue-move',result:'Reschedule queue suggestion moved through the API'});

@@ -579,4 +579,4 @@ Generic additions are small and additive: `@pepbits/platform/event-stream` (Serv
 
 Boundaries: fictional data only; write controls are presentation gating because the unchanged scheduling API has no authorization (PREF-08); CareGrid copy is English inside the translated shell until canonical catalog keys are authored; no source pixel comparison, durable drafts, publication, commit, push or deployment.
 
-Phase 6e-5 final acceptance remains incomplete: the resumed run waited 30 minutes for the shared heavy-check lock without starting CI. Focused package checks and the exact pending CI/build/browser gates are recorded in its delivery record.
+Phase 6e-5 local production build and real-HTTP acceptance passed: 25 workflows and 18 Chromium axe routes, with zero page/console/HTTP errors or axe violations. The delivery record preserves the earlier lock-limited attempt and identifies the current source, regression checks, incomplete axe results and service cleanup. Full CI was reported green before this follow-up and was not rerun for its fixes.
