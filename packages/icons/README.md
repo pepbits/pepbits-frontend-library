@@ -56,3 +56,5 @@ Phase 6b-7 adds direct `Droplet`, `Shield` and `Scissors` primitives for the Sur
 Patient access adds `BedDouble`, `CircleDollarSign`, `FolderPlus`, `SearchX`, `Sunrise` and `Crown` as direct primitives, covered by public render tests.
 
 MedSlot uses the public `Armchair`, `Bed`, `Brush`, `CalendarX`, `Menu`, `Monitor` and `Trash` primitives. Product category mappings remain in the demo.
+
+Phase 6d adds 36 direct Lucide primitives for education and general actions (including GraduationCap, School, BookCopy, BookMarked, BookPlus, BookUp, BookX, CalendarOff, Grid3x3, Highlighter and PenTool), plus the `LucideIcon` type alias. Each runtime export is included in the render regression. There is no school icon registry or new dependency.
