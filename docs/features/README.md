@@ -1,5 +1,7 @@
 # Feature catalog
 
+- [Independent CareGrid demo](caregrid-demo.md): eleven scheduling destinations against the unchanged CareGrid API with Server-Sent Events; local checks and explicit limits.
+
 - [Independent ERP demo](erp-demo.md): 114 catalogue destinations, ERP1 in-page and ERP2 routed records; local checks and explicit remaining scope.
 
 - [Independent healthcare demo](healthcare-demo.md): Healthcare Suite core, clinical and LIS/RIS diagnostic workflows against the synthetic demo API; local validation and explicit remaining scope.

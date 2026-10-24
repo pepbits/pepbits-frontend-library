@@ -212,3 +212,9 @@ Solid notification surfaces use a dark tint of their semantic tone so white titl
 EnterpriseShell keeps its scrollable main region keyboard focusable even when a dashboard has no interactive children; the shell regression and real-browser axe sweep cover this case.
 
 Direct `application-providers.test.tsx` cases now verify session → preference → catalog → shell ordering, shared request/session wiring, anonymous and failed-load paths, serialized writes, rejected-save recovery, policy refresh, language changes preserving editor input and late-response fencing on identity changes. These tests inject fictional HTTP responses; they do not establish live identity or service acceptance.
+
+## Host command search and application chrome (phase 6e-5)
+
+`ShellProviderProps.commandSearch` is an optional `CommandSearch` (`(query, signal) => Promise<CommandSearchResult[]>`). The command palette debounces non-empty queries by 150 ms, aborts superseded or closed queries, shows the host's already-localized results in named groups above the page matches and opens a chosen result's `NavigationTarget` through the navigation port. Failures leave the page matches available. Results are host data; the shell grants nothing.
+
+`ApplicationProviders` accepts an optional `chrome`: `quickPages`, `tours` and `commandSearch` (passed to ShellProvider), `inbox` (rendered in the header inbox slot) and `surface(frame)`, which wraps the authenticated frame inside ShellProvider so host live state can serve both the header and the page. Omitting `chrome` keeps the previous shell exactly. Three tests cover the plain/default frame, a shared surface state above header and page, grouped/debounced search navigation and failed searches. CareGrid is the first consumer; see the [phase 6e-5 record](../../docs/releases/unreleased/restructure-phase-6e-5-2026-10-24.md).

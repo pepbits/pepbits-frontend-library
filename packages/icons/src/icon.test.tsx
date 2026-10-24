@@ -38,3 +38,9 @@ test("blank labels stay decorative and an explicit external name can opt out", (
 
 import {Armchair,Bed,Brush,CalendarX,Menu,Monitor,Trash} from './index';
 test.each([Armchair,Bed,Brush,CalendarX,Menu,Monitor,Trash])('renders MedSlot primitive %s',Icon=>{const {container}=render(<Icon aria-label="Scheduling icon"/>);expect(container.querySelector('svg')).toBeTruthy();});
+
+const schedulingNames = ["Accessibility","Apple","Baby","Brain","CalendarOff","CalendarRange","Car","Clipboard","Cpu","House","Leaf","LibraryBig","LifeBuoy","Lightbulb","Repeat","Smile","TestTube","User","UserX","Wand2","Zap"] as const;
+test.each(schedulingNames)("scheduling primitive %s is exported and renders", name => {
+  const Component: icons.IconComponent = icons[name];
+  expect(render(<Component />).container.querySelector("svg")).not.toBeNull();
+});

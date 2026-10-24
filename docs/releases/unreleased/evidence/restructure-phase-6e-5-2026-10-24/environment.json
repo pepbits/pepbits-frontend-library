@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-24T18:09:08.385682+00:00",
+  "baseCommit": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "apiNode": "v24.21.0",
+  "install": "npm_config_cache=/tmp/caregrid-npm-cache npm install",
+  "ci": "flock -w 1800 -E 75 /home/pepadmin/.cache/pepbits-heavy.lock env npm_config_cache=/tmp/caregrid-npm-cache NEXT_PUBLIC_API_URL=/api NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api TURBO_TELEMETRY_DISABLED=1 npm run ci -- --concurrency=1 --env-mode=loose",
+  "shellBrowser": "LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu flock -w 1800 -E 75 /home/pepadmin/.cache/pepbits-heavy.lock npm run test:browser -w @pepbits/shell",
+  "integration": "bash docs/releases/unreleased/evidence/restructure-phase-6e-5-2026-10-24/run-browser.sh",
+  "docs": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs",
+  "limits": "One Vitest tree and one Next server at a time. Integration requires one shared host API plus the separate unchanged CareGrid scheduling API. All heavy steps use the shared lock. Source runtimes are reused read-only from the original repository, not another demo worktree.",
+  "focusedCommands": [
+    "npm run typecheck -w @pepbits-demo/caregrid; npm test -w @pepbits-demo/caregrid -- --maxWorkers=2",
+    "npm run typecheck -w @pepbits/patterns; npm test -w @pepbits/patterns -- --maxWorkers=2",
+    "npm run typecheck -w @pepbits/platform; npm test -w @pepbits/platform -- --maxWorkers=2",
+    "npm run typecheck -w @pepbits/shell; npm test -w @pepbits/shell -- --maxWorkers=2",
+    "npm run typecheck -w @pepbits/icons; npm test -w @pepbits/icons -- --maxWorkers=2",
+    "npm run typecheck -w @pepbits/ui; npm test -w @pepbits/ui -- --maxWorkers=2",
+    "npm run check:boundaries",
+    "npm run test:tooling"
+  ]
+}

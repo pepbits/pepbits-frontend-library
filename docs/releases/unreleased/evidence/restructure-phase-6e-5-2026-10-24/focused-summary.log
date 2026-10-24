@@ -1,0 +1,63 @@
+> @pepbits-demo/caregrid@0.0.0 typecheck
+> tsc --noEmit
+> @pepbits-demo/caregrid@0.0.0 test
+> vitest run --maxWorkers=2
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-5/demo-apps/caregrid
+ Test Files  5 passed (5)
+      Tests  140 passed (140)
+   Start at  18:38:42
+   Duration  54.81s (transform 3.25s, setup 1.03s, collect 8.07s, tests 76.11s, environment 3.09s, prepare 529ms)
+> @pepbits/patterns@0.0.0 typecheck
+> tsc --noEmit -p .
+> @pepbits/patterns@0.0.0 test
+> vitest run --maxWorkers=2
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-5/packages/patterns
+ Test Files  32 passed (32)
+      Tests  168 passed (168)
+   Start at  18:39:47
+   Duration  40.94s (transform 3.30s, setup 5.58s, collect 12.87s, tests 22.01s, environment 20.60s, prepare 3.73s)
+> @pepbits/platform@0.0.0 typecheck
+> tsc --noEmit -p .
+> @pepbits/platform@0.0.0 test
+> vitest run --maxWorkers=2
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-5/packages/platform
+ Test Files  9 passed (9)
+      Tests  84 passed (84)
+   Start at  18:40:33
+   Duration  7.27s (transform 738ms, setup 1.69s, collect 1.16s, tests 790ms, environment 5.57s, prepare 1.04s)
+> @pepbits/shell@0.0.0 typecheck
+> tsc --noEmit -p .
+> @pepbits/shell@0.0.0 test
+> vitest run --maxWorkers=2
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-5/packages/shell
+ Test Files  39 passed (39)
+      Tests  416 passed (416)
+   Start at  18:40:53
+   Duration  44.61s (transform 3.02s, setup 6.85s, collect 14.92s, tests 24.14s, environment 23.11s, prepare 3.72s)
+> @pepbits/icons@0.0.0 typecheck
+> tsc --noEmit -p .
+> @pepbits/icons@0.0.0 test
+> vitest run --maxWorkers=2
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-5/packages/icons
+ Test Files  1 passed (1)
+      Tests  121 passed (121)
+   Start at  18:41:42
+   Duration  1.82s (transform 108ms, setup 0ms, collect 362ms, tests 324ms, environment 569ms, prepare 91ms)
+> @pepbits/ui@0.0.0 typecheck
+> tsc --noEmit -p .
+> @pepbits/ui@0.0.0 test
+> vitest run --maxWorkers=2
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-5/packages/ui
+ Test Files  15 passed (15)
+      Tests  137 passed (137)
+   Start at  18:41:51
+   Duration  16.04s (transform 813ms, setup 3.30s, collect 2.52s, tests 4.18s, environment 11.48s, prepare 1.75s)
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+> pepbits-frontend-library@0.0.0 test:tooling
+> node --test tooling/scripts/*.test.mjs
+# tests 19
+# pass 19
+# fail 0
+# skipped 0
+# duration_ms 521.721794

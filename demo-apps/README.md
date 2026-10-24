@@ -19,3 +19,7 @@ ERP is in progress below. Remaining app order: school, reports, tenant-admin, on
 ## ERP
 
 [ERP](erp/README.md) is the independent Next.js demo on port 3320. Phase 6c-1 adds separate ERP1/ERP2 header modules with 57 catalogue destinations each, shared Keystone configuration, ERP1 in-page records and ERP2 record/create/edit URLs. Public engines render the unchanged fictional API data. Specialized source layouts remain explicitly deferred in the [source map](erp/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6c-1-2026-10-23.md). Financial demonstration only, not accounting acceptance or deployment.
+
+## CareGrid
+
+[CareGrid](caregrid/README.md) is the independent Next.js demo on port 3390. Phase 6e-5 ports all eleven source screens of network-wide appointment scheduling and resource planning: command center, booking, schedule board, front desk, availability and blocks, resources, service catalog, patients, pharmacy desk, insights and help. Scheduling data comes from the unchanged CareGrid Express + SQLite API, live updates from its Server-Sent Events stream; sign-in, preferences and localization come from the shared demo host API. See the [source map](caregrid/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-5-2026-10-24.md). Fictional demonstration only, not clinical acceptance or deployment.

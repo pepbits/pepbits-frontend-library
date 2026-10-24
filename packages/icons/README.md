@@ -56,3 +56,5 @@ Phase 6b-7 adds direct `Droplet`, `Shield` and `Scissors` primitives for the Sur
 Patient access adds `BedDouble`, `CircleDollarSign`, `FolderPlus`, `SearchX`, `Sunrise` and `Crown` as direct primitives, covered by public render tests.
 
 MedSlot uses the public `Armchair`, `Bed`, `Brush`, `CalendarX`, `Menu`, `Monitor` and `Trash` primitives. Product category mappings remain in the demo.
+
+CareGrid scheduling adds direct `Accessibility`, `Apple`, `Baby`, `Brain`, `CalendarOff`, `CalendarRange`, `Car`, `Clipboard`, `Cpu`, `House`, `Leaf`, `LibraryBig`, `LifeBuoy`, `Lightbulb`, `Repeat`, `Smile`, `TestTube`, `User`, `UserX`, `Wand2` and `Zap` primitives, each covered by a render test. Category and resource-kind mappings stay in the demo.

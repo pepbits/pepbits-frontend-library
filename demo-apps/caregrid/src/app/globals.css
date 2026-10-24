@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "@pepbits/tokens/tokens.css";
+@import "@pepbits/tokens/reference-fonts.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/manrope/index.css";
+@import "@fontsource-variable/source-sans-3/index.css";
+@import "@fontsource-variable/nunito-sans/index.css";
+@import "@fontsource-variable/noto-sans-arabic/index.css";
+@import "@fontsource-variable/noto-sans-devanagari/index.css";
+@import "@fontsource-variable/noto-sans-malayalam/index.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+@import "@fontsource/ibm-plex-mono/700.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/components/src";
+@source "../../../../packages/patterns/src";
+@source "../../../../packages/page-engines/src";
+@source "../../../../packages/shell/src";
+@source "../../../../packages/icons/src";
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font-ui), "Noto Sans Arabic Variable", "Noto Sans Devanagari Variable", "Noto Sans Malayalam Variable", sans-serif; }
+:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+.caregrid-page { min-width:0; --fs-scale:var(--fs-form); }
+/* Soft semantic washes; tokens keep every theme and contrast mode in charge of the colours. */
+.cg-wash-warning { background:color-mix(in srgb, var(--warning) 12%, var(--surface)); color:var(--warning-ink); }
+.cg-wash-danger { background:color-mix(in srgb, var(--danger) 10%, var(--surface)); color:var(--danger-ink); }
+.cg-wash-success { background:color-mix(in srgb, var(--success) 10%, var(--surface)); color:var(--success-ink); }
+.cg-wash-info { background:color-mix(in srgb, var(--info) 10%, var(--surface)); color:var(--info-ink); }
+.cg-panel { border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow-sm); }
+.cg-chip { display:inline-flex; align-items:center; gap:.3rem; min-height:1.75rem; border:1px solid var(--border); border-radius:999px; background:var(--surface); padding:0 .6rem; font-size:calc(.75rem * var(--fs-form)); color:var(--text); }
+.cg-chip[aria-pressed="true"] { border-color:var(--primary-fill); background:var(--primary-fill); color:#fff; }
+.cg-chip:disabled { opacity:.5; }
+.cg-kbd { border:1px solid var(--border); border-radius:4px; background:var(--surface-2); padding:0 .3rem; font-size:.7rem; }

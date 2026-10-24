@@ -109,3 +109,7 @@ AsyncLookup also accepts native field `id`, `disabled` and `invalid`. Disabling 
 The root exports `optionsFromChildren` and `splitFieldClasses` for adapting native-style field metadata to shared controls. Options preserve raw service values, including LocalizedText message identity; placeholder options are handled separately. Field class splitting uses the effective form scale. These pure helpers do not add a second select/input renderer. The ERP core port retains their original assertions; Showcase's Select example demonstrates both and its generated snippet is refreshed.
 
 Direct `field-interop.test.tsx` cases cover nested fragments/optgroups, numeric and implicit values, translated labels, empty placeholders, logical padding, effective form-scale conversion and wrapper-class retention. These helpers remain pure metadata adapters.
+
+## Avatar accent contrast (phase 6e-5)
+
+The accent Avatar wash previously used the raw `--accent` hue for its initials. Its foreground is now `--accent` mixed 60/40 with the theme's `--text`, darker on light themes and lighter on dark ones; the other four washes already used ink tokens. Names, seeds, sizes and accessibility attributes are unchanged. An avatar test asserts that no wash uses a raw accent foreground. Final Chromium contrast verification remains pending the shared heavy-check lock. See the [phase 6e-5 record](../../docs/releases/unreleased/restructure-phase-6e-5-2026-10-24.md).
