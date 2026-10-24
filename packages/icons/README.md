@@ -56,3 +56,7 @@ Phase 6b-7 adds direct `Droplet`, `Shield` and `Scissors` primitives for the Sur
 Patient access adds `BedDouble`, `CircleDollarSign`, `FolderPlus`, `SearchX`, `Sunrise` and `Crown` as direct primitives, covered by public render tests.
 
 MedSlot uses the public `Armchair`, `Bed`, `Brush`, `CalendarX`, `Menu`, `Monitor` and `Trash` primitives. Product category mappings remain in the demo.
+
+## Phase 6e-3 onboarding primitives
+
+Seven direct Lucide exports are added for the Orvia onboarding demo: `Accessibility`, `ArrowBigUpDash`, `FileLock2`, `KeyRound`, `MailCheck`, `TestTube` and `Workflow`. They use the existing dependency and conventions; the export test renders each one. There is no onboarding icon registry in the library.

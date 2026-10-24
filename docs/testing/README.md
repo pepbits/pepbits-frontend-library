@@ -120,3 +120,7 @@ The [6b-2 diagnostics increment](../releases/unreleased/restructure-phase-6b-2-2
 The [ERP feature contract](../features/erp-demo.md) defines ERD-01 through ERD-07. Its [local record](../releases/unreleased/restructure-phase-6c-1-2026-10-23.md) separates all 38 original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks. Route coverage is not specialized workflow, accounting or human accessibility acceptance.
 
 ERP phase 6c-2 extends ERD-08 through ERD-12 with hierarchy/board/profile and finance-grant cases, direct extraction tests and the existing four-profile route/page-content axe matrix. The [6c-2 record](../releases/unreleased/restructure-phase-6c-2-2026-10-23.md) separates real local HTTP/UI commands, direct HTTP denials, full-shell browser axe and forced CI. No backend/desktop inventory is modified.
+
+## Onboarding phase 6e-3
+
+The [onboarding feature contract](../features/onboarding-demo.md) defines ONB-01 through ONB-09. Its [local record](../releases/unreleased/restructure-phase-6e-3-2026-10-24.md) separates the four-profile route/axe matrix, mocked workflow/adapter/rule/provider tests, new library tests and the real local HTTP/Chromium run. The source demo has no tests to port. Automated checks are not native-speaker, assistive-technology or backend acceptance.

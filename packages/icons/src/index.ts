@@ -143,3 +143,6 @@ export {Droplet, Shield, Scissors} from 'lucide-react';
 export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from 'lucide-react';
 
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
+
+// Onboarding (phase 6e-3) presentation primitives.
+export {Accessibility, ArrowBigUpDash, FileLock2, KeyRound, MailCheck, TestTube, Workflow} from "lucide-react";
