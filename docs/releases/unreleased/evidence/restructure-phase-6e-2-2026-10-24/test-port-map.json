@@ -1,0 +1,23 @@
+{
+  "source": "desktop-clients/packages/reference-tenant-admin/src (read-only, last changed in 22a994c14523aa8ff2c0dc2f214257f2157a1c24)",
+  "destination": "demo-apps/tenant-admin/src/modules/tenant-admin",
+  "originalCases": 55,
+  "files": [
+    {"original": "src/routes.test.ts", "ported": "routes.test.ts", "originalCases": 6, "portedCases": 6, "adaptation": "None beyond the module location."},
+    {"original": "src/api.test.ts", "ported": "api.test.ts", "originalCases": 14, "portedCases": 14, "adaptation": "Tuple typing for strict index checks; assertions unchanged."},
+    {"original": "src/module.test.tsx", "ported": "module.test.tsx", "originalCases": 23, "portedCases": 23, "adaptation": "Fake host transport retained; rendering wraps the canonical English catalog so the shared drawer's Close control resolves its catalog ID; DEFAULT_PREFERENCES from @pepbits/preferences."},
+    {"original": "src/styles.test.ts", "ported": "styles.test.ts", "originalCases": 8, "portedCases": 8, "adaptation": "The desktop generator comparison becomes a SHA-256 provenance check of the byte-identical copy; seven content assertions unchanged."},
+    {"original": "src/copy.test.ts", "ported": "copy.test.ts", "originalCases": 4, "portedCases": 5, "adaptation": "The desktop generator check becomes SHA-256 provenance of both alias maps; one added case resolves every alias in the unchanged en/ar/hi/ml catalogs."}
+  ],
+  "newAppTests": [
+    {"file": "src/adapters/tenant-admin.test.ts", "cases": 10, "scope": "Namespace, routing headers, write identity, path rejection, error shape, ambiguous success"},
+    {"file": "src/navigation.test.ts", "cases": 17, "scope": "Address/target round trips, deep-link queries, not-found, registry navigation, product"},
+    {"file": "src/providers.test.tsx", "cases": 6, "scope": "Serialized preference path, mounted language change, runtime locks, rejected writes, registry sidebar, identity change"},
+    {"file": "src/routes.test.tsx", "cases": 144, "scope": "36 route patterns x default/Arabic RTL/reduced motion/locked density with jsdom axe over captured API fixtures"},
+    {"file": "src/settings-routes.test.tsx", "cases": 4, "scope": "Preferences route through the full host under four profiles with axe"}
+  ],
+  "sharedPackageTests": [
+    {"file": "packages/shell/src/reference-host.test.tsx", "cases": 5},
+    {"file": "packages/icons/src/tenant-admin-icons.test.tsx", "cases": 18}
+  ]
+}

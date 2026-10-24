@@ -119,6 +119,9 @@ export {
 } from "lucide-react";
 /* Calendar and Clock are also used by the phase 4c form controls; they are exported once, below. */
 export {Type, AlignLeft, Hash, CheckSquare, Mail, WandSparkles} from "lucide-react";
+// Tenant configuration presentation primitives.
+// Grid3x3, KeyRound and Percent are also generic primitives; they are exported once, below.
+export {BookOpenCheck, BookText, CalendarRange, CircleDashed, CircleSlash, CopyPlus, FolderTree, GitBranch, ListTree, PackageSearch, Rocket, ScrollText, TicketPercent, Waypoints, Workflow} from "lucide-react";
 export {Icon} from "./icon";
 export type {IconComponent, IconProps} from "./icon";
 

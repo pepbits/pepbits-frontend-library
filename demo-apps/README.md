@@ -23,3 +23,7 @@ ERP is in progress below. Remaining app order: reports, tenant-admin, onboarding
 ## School
 
 [Scholaris](school/README.md) is the private Next.js demo on port 3340. Phase 6d ports 26 school routes, six scope-granted role dashboards and preferences through the public shared host and unchanged fictional HTTP API. The [source map](school/source-mapping.md), [feature guide](../docs/features/school-demo.md) and [local record](../docs/releases/unreleased/restructure-phase-6d-2026-10-24.md) distinguish route coverage from restricted-role/backend and visual parity limits. Academic demonstration only, not institutional acceptance or deployment.
+
+## Tenant Admin
+
+[Tenant Admin](tenant-admin/README.md) is the independent Next.js demo on port 3360. Phase 6e-2 ports the Allyvora Tenant Admin reference: Overview, Approvals inbox, Activity log and all 30 configuration pages from the API registry, drawn by one resource workspace and record drawer with `?new=1`/`?open=<id>` deep links, on the shared host and the unchanged fictional demo API. Its [source map](tenant-admin/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-2-2026-10-24.md) state verification and limits. Fictional configuration data only, not a deployment.

@@ -1,0 +1,35 @@
+
+> @pepbits-demo/tenant-admin@0.0.0 build
+> next build --webpack
+
+▲ Next.js 16.3.3 (webpack)
+✓ Running next.config.ts took 337ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 6.9s
+  Running TypeScript ...
+  Finished TypeScript in 4.0s ...
+  Collecting page data using 2 workers ...
+  Generating static pages using 2 workers (0/2) ...
+✓ Generating static pages using 2 workers (2/2) in 1195ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[[...path]]
+└ ƒ /api/[...segments]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+> @pepbits-demo/tenant-admin@0.0.0 test:integration
+> node scripts/integration.mjs
+
+{"workflows":18,"routes":37,"errors":0,"consoleErrors":0,"httpErrors":0,"violations":0}
+{"integrationExit":0,"sourceBase":"5bbb13027d137ac31594ca9a1a3d47aac46653c9","apiPort":33953,"appPort":39107}
+Next exited 143
