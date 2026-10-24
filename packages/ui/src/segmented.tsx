@@ -26,7 +26,7 @@ export interface SegmentedOption {
  * the honest control — every option here is on screen at once, which is the
  * whole advantage and the whole limit.
  */
-export function Segmented({ label, options, value, onChange, size = "md", className }: {
+export function Segmented({ label, options, value, onChange, size = "md", className, id, style, classes, decoration, renderOption }: {
   /** Names the group. Required — "Table / Cards" says nothing about what is being chosen. */
   label: string;
   options: SegmentedOption[];
@@ -34,8 +34,16 @@ export function Segmented({ label, options, value, onChange, size = "md", classN
   onChange: (value: string) => void;
   size?: "sm" | "md";
   className?: string;
+  id?: string;
+  style?: React.CSSProperties;
+  /** Optional presentation slots replace defaults; behavior and semantics remain shared. */
+  classes?: Partial<Record<'group' | 'option' | 'selected' | 'idle', string>>;
+  /** Decorative background (for example a controlled sliding indicator). */
+  decoration?: React.ReactNode;
+  /** Custom visible option content; the host owns its localization. */
+  renderOption?: (option: SegmentedOption) => React.ReactNode;
 }) {
-  const {t} = useLocalization();
+  const {t, direction} = useLocalization();
   const groupRef = useRef<HTMLDivElement>(null);
 
   /* Arrow keys move the choice and wrap, which is the radio-group pattern —
@@ -57,10 +65,13 @@ export function Segmented({ label, options, value, onChange, size = "md", classN
   return (
     <div
       ref={groupRef}
+      id={id}
+      style={style}
       role="radiogroup"
       aria-label={t(label)}
-      className={cn("inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5", className)}
+      className={cn(classes?.group ?? "inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5", className)}
     >
+      {decoration}
       {options.map((option) => {
         const chosen = option.value === value;
         return (
@@ -78,17 +89,16 @@ export function Segmented({ label, options, value, onChange, size = "md", classN
             tabIndex={chosen || (!options.some(o => o.value === value && !o.disabled) && options.find(o => !o.disabled)?.value === option.value) ? 0 : -1}
             onClick={() => { if (!chosen && !option.disabled) onChange(option.value); }}
             onKeyDown={(event) => {
-              if (event.key === "ArrowRight" || event.key === "ArrowDown") { event.preventDefault(); step(1); }
-              else if (event.key === "ArrowLeft" || event.key === "ArrowUp") { event.preventDefault(); step(-1); }
+              if (event.key === (direction === 'rtl' ? "ArrowLeft" : "ArrowRight") || event.key === "ArrowDown") { event.preventDefault(); step(1); }
+              else if (event.key === (direction === 'rtl' ? "ArrowRight" : "ArrowLeft") || event.key === "ArrowUp") { event.preventDefault(); step(-1); }
             }}
             className={cn(
-              "focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40",
-              size === "sm" ? "h-6 px-2 text-[length:calc(9.5px*var(--fs-scale))]" : "h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))]",
-              chosen ? "bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]" : "text-[var(--text-muted)] hover:text-[var(--text)]",
+              classes?.option ?? cn("focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-40",
+                size === "sm" ? "h-6 px-2 text-[length:calc(9.5px*var(--fs-scale))]" : "h-7 px-2.5 text-[length:calc(10.5px*var(--fs-scale))]"),
+              chosen ? classes?.selected ?? "bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-sm)]" : classes?.idle ?? "text-[var(--text-muted)] hover:text-[var(--text)]",
             )}
           >
-            {option.icon}
-            {option.iconOnly ? null : <span className="truncate">{t(option.label)}</span>}
+            {renderOption ? renderOption(option) : <>{option.icon}{option.iconOnly ? null : <span className="truncate">{t(option.label)}</span>}</>}
           </button>
         );
       })}
