@@ -8,6 +8,8 @@ The root export provides `LanguageKey` (`en | ar | hi | ml`), `LANGUAGE_OPTIONS`
 
 Presentation exports are `localizeApiMessage`, `localizeFieldError`, `localizeImportError`, `localizeApprovalNotice`, `createFormatters`, `Formatters`, `FormatOptions` and `FormatColumn {type?: string}`. These imports use `@pepbits/i18n`; React bindings use `@pepbits/i18n/react`.
 
+`englishNumberWords(integer)` spells safe integers in English, including zero and negatives, and rejects fractional/non-finite/unsafe inputs. It is explicitly not a multilingual currency formatter. Hosts label its language and choose their currency/rounding contract; ERP uses it for the source invoice's English amount-in-words block, with the effective currency code. Six cases cover spelling and validation. No canonical catalog changes or native-speaker acceptance are implied.
+
 ## Host flow and integration
 
 ```ts

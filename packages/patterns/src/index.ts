@@ -12,3 +12,4 @@ export * from "./identity-devices";
 export * from "./device-integrations";
 export * from './tree';
 export * from './board';
+export * from './calendar';

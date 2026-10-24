@@ -120,3 +120,11 @@ Worklist print provenance omits the timestamp during server/initial client rende
 WorklistPage adds `personalViews={false}` for adapters without that service contract, and `rowClick="open"` for row/keyboard record navigation; defaults preserve existing behaviour. Column layout/reset and preview continue through the shared engine. A component case covers hidden personal views and keyboard opening. `./worklist` exports `csvOf`, `xlsxOf` and `exportFileName`, retaining formula-safe string cells and numeric workbook types; the existing export path uses the same workbook encoder. ERP's original core cases exercise these exports.
 
 ColumnManager visibility buttons expose their column names and pressed state for assistive technology. The ERP browser driver exercises visibility and reset.
+
+## Analytical controls (phase 6c-3)
+
+`TemplateReport` accepts optional `groupBy`, `totals`, `footerLabel` and `onRowClick`. Grouping operates on supplied rows; the host supplies authoritative totals for the full filtered result. Keyboard-operable row drill-downs use TableRow. Effective `resultView` chooses table/cards; table presentation continues through the shared provider. The host owns period/filter semantics, pagination and authorization. This is grouped reporting, not a pivot designer.
+
+`EditableMatrix` adds optional `max`, `step`, `dimensionLabel` and trailing `summaryColumns`. Numeric edits clamp to zero/max; empty stays null and zero stays numeric. A mounted `disabled` value fences callbacks. The host owns summaries, bulk fill, partial saves, operation identity and explicit discard/reload. Unit tests cover bounds, denial, grouping/totals and keyboard drill-down.
+
+`./worklist` adds `downloadGrid(headers, rows, format, name)` for an explicitly reviewed grid. It preserves numeric XLSX cells, applies formula-safe CSV escaping, normalizes the extension and releases the object URL. It does not classify raw columns or grant export permission: callers must review their schema and apply effective export preferences and authorization before calling it. Use `exportRows` when column classification is required. A test decodes the workbook and checks formula-safe CSV output.

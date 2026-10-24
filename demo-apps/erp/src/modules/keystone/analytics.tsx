@@ -1,0 +1,62 @@
+import {useEffect, useState} from 'react';
+import {TemplateReport} from '@pepbits/page-engines/templates';
+import {downloadGrid} from '@pepbits/page-engines/worklist';
+import type {PageDefinition, PageTemplateDefinition, TemplateDocument} from '@pepbits/page-engines/types';
+import {Button, Input, Select} from '@pepbits/ui';
+import {Card, CardGrid, StatCard, LoadingState, Pagination, RecoveryNotice, failureFromError} from '@pepbits/components';
+import {useLocalization} from '@pepbits/i18n/react';
+import {usePreferences} from '@pepbits/preferences/react';
+import {useFormatters, useScreenHost} from '@pepbits/patterns/screen-host';
+import {useNavigation} from '@pepbits/platform/navigation';
+import {useFetch, listUrl} from './client';
+import {useValueFormat} from './fields';
+import {useKeystone} from './context';
+import {PAGES} from './catalog';
+import {pageId} from '../../navigation';
+import {PERIODS, periodRange, ledgerStatement} from './analysis-model';
+import type {PageDef, ListResponse, Row, Filters} from './types';
+export function AnalyticsPage({def}: {def: PageDef; page: PageDefinition}) {
+  const {t} = useLocalization(), {preferences,isLocked,allowedValues,update} = usePreferences(), format = useFormatters(), valueFormat = useValueFormat(), host = useScreenHost(), navigation = useNavigation(), {variant} = useKeystone();
+  const ledger = def.template === 'ledger', partyField = ledger ? def.fields.find(field => field.type === 'ref') : undefined, partyResult = useFetch<ListResponse>(partyField?.ref ? listUrl(partyField.ref,{size:1000}) : null), parties = partyResult.data?.rows.map(row => String(row.name ?? row.code ?? row.id)) ?? [];
+  const [party,setParty] = useState(''), [preset,setPreset] = useState(ledger ? 'year' : 'all'), [range,setRange] = useState<[string,string]>(() => periodRange(ledger ? 'year' : 'all')), [query,setQuery] = useState(''), [group,setGroup] = useState(''), [filters,setFilters] = useState<Record<string,string>>({}), [page,setPage] = useState(1), [exportError,setExportError] = useState<unknown>();
+  useEffect(() => {if (ledger && !party && parties[0]) setParty(parties[0]);},[ledger,party,parties]);
+  const hasDates = def.fields.some(field => field.key === 'date'), validRange = !hasDates || !!range[0] && !!range[1] && range[0] <= range[1];
+  const requested: Filters = ledger ? {[partyField!.key]:[party]} : {...Object.fromEntries(Object.entries(filters).filter(([,value]) => value).map(([key,value]) => [key,[value]])),...(hasDates && preset !== 'all' ? {date:{from:range[0],to:range[1]}} : {})};
+  const result = useFetch<ListResponse>(!validRange || ledger && !party ? null : listUrl(def.entity,{size:5000,filters:requested,sort:'date',dir:'asc',...(!ledger ? {q:query} : {})}));
+  const readError = partyResult.error ?? result.error;
+  const rows = result.data?.rows ?? [], complete = !!result.data && result.data.total <= rows.length;
+  const statement = ledgerStatement(rows,range[0],range[1]);
+  const shown = ledger ? statement.lines.filter(row => !query || `${row.code} ${row.type} ${row.narration}`.toLowerCase().includes(query.toLowerCase())) : rows;
+  const numbers = def.fields.filter(field => field.type === 'currency' || field.type === 'number'), totals = ledger ? {debit:statement.debit,credit:statement.credit,balance:statement.closing} : result.data?.totals ?? {};
+  const fields = def.fields.filter(field => field.list !== false), groupFields = def.fields.filter(field => ['select','status','ref','person'].includes(field.type));
+  const maxPage = Math.max(1,Math.ceil(shown.length / preferences.pageSize)), currentPage = Math.min(page,maxPage), visible = shown.slice((currentPage - 1) * preferences.pageSize,currentPage * preferences.pageSize);
+  const definition: PageTemplateDefinition = {id:def.slug,group:def.group,engine:'report',title:def.title,description:def.description,layout:'rail',view:'table',sections:[],stages:[],tags:[],editable:false,columns:[...fields.map(field => ({key:field.key,label:field.label,type:(field.type === 'currency' ? 'money' : ['number','date','status'].includes(field.type) ? field.type : 'text') as 'money'|'number'|'date'|'status'|'text'})),...(ledger ? [{key:'balance',label:'Balance',type:'money' as const}] : [])],configuration:{reportDateKey:null,reportAmountKey:null}};
+  const owner = variant === 'erp2' && def.view ? PAGES.find(page => page.entity === def.entity && !page.view) : undefined;
+  const exportRows = () => {
+    if (!host.can('export') || !complete || !validRange || result.loading || readError) return;
+    try {setExportError(undefined);
+      const toGrid = (row: Row) => [...fields.map(field => ['currency','number','percent'].includes(field.type) ? Number(row[field.key] || 0) : valueFormat(field,row[field.key])),...(ledger ? [Number(row.balance)] : [])];
+      // A ledger export is the complete statement; text search never changes its balances.
+      const data = (ledger ? statement.lines : shown).map(toGrid);
+      if (ledger) {data.unshift(toGrid({id:'opening',code:t('Opening balance'),date:range[0],balance:statement.opening} as Row));data.push(toGrid({id:'closing',code:t('Closing balance'),date:range[1],debit:statement.debit,credit:statement.credit,balance:statement.closing} as Row));}
+      else data.push(fields.map((field,index) => index === 0 ? t('Total') : totals[field.key] ?? ''));
+      downloadGrid(definition.columns.map(column => t(column.label)),data,preferences.exportFormat,def.slug);
+    } catch (error) {setExportError(error);}
+  };
+  const drcr = (value:number) => `${format.money(Math.abs(value))} ${t(value >= 0 ? 'Dr' : 'Cr')}`;
+  return <section className="space-y-3" aria-busy={result.loading || partyResult.loading}><h1>{t(def.title)}</h1><Card className="flex flex-wrap items-end gap-3 p-3">
+    {ledger ? <Select label={partyField!.label} value={party} options={parties.map(value => ({value,label:value}))} onChange={event => {setParty(event.target.value);setPage(1);}}/> : null}
+    {hasDates ? <><Select label="Period" value={preset} options={PERIODS} onChange={event => {setPreset(event.target.value);if (event.target.value !== 'custom') setRange(periodRange(event.target.value));setPage(1);}}/>{preset === 'custom' ? <><Input label="From" type="date" value={range[0]} max={range[1]} onChange={event => {setRange([event.target.value,range[1]]);setPage(1);}}/><Input label="To" type="date" value={range[1]} min={range[0]} onChange={event => {setRange([range[0],event.target.value]);setPage(1);}}/></> : null}</> : null}
+    <Input label="Search" value={query} onChange={event => {setQuery(event.target.value);setPage(1);}}/>
+    {!ledger ? <><Select label="Group by" value={group} options={[{value:'',label:'No grouping'},...groupFields.map(field => ({value:field.key,label:field.label}))]} onChange={event => {setGroup(event.target.value);setPage(1);}}/>{def.fields.filter(field => field.filter && ['select','status'].includes(field.type)).map(field => <Select key={field.key} label={field.label} value={filters[field.key] ?? ''} options={[{value:'',label:'All'},...(field.options ?? []).map(value => ({value,label:value}))]} onChange={event => {setFilters(values => ({...values,[field.key]:event.target.value}));setPage(1);}}/>)}</> : null}
+    <Button onClick={exportRows} disabled={!host.can('export') || !complete || !validRange || result.loading || !!readError}>{t('Export')} {preferences.exportFormat.toUpperCase()}</Button>
+  </Card>
+  {!validRange ? <p role="alert">{t('Choose a valid date range')}</p> : readError ? <RecoveryNotice failure={failureFromError(new Error(readError))} onRetry={() => partyResult.error ? partyResult.reload() : result.reload()}/> : result.loading ? <LoadingState/> : <>
+    {ledger && !partyResult.loading && !parties.length ? <p role="status">{t('No customers available')}</p> : null}
+    {result.data && !complete ? <p role="alert">{t('Too many rows. Narrow the filters before using totals or export.')}</p> : null}
+    {complete ? <CardGrid columns={4}>{ledger ? <><StatCard label="Opening balance" value={drcr(statement.opening)}/><StatCard label="Debits in period" value={format.money(statement.debit)}/><StatCard label="Credits in period" value={format.money(statement.credit)}/><StatCard label="Closing balance" value={drcr(statement.closing)}/></> : <><StatCard label="Records in view" value={format.number(result.data!.total)}/>{numbers.slice(0,3).map(field => <StatCard key={field.key} label={t('Total {field}',{field:t(field.label)})} value={valueFormat(field,totals[field.key] ?? 0)}/>)}</>}</CardGrid> : null}
+    {ledger && complete ? <p>{t('Opening balance')} · {format.date(range[0])} · {drcr(statement.opening)}</p> : null}
+    <TemplateReport preferences={preferences} definition={definition} document={{id:def.slug,version:0,values:{},lines:[],rows:visible} as TemplateDocument} update={() => {}} disabled errors={{}} format={format} density={preferences.density} precision={preferences.decimalPlaces} pageSize={preferences.pageSize} resultView={preferences.resultView} groupBy={group || undefined} totals={complete ? totals : undefined} footerLabel={ledger ? 'Closing balance' : 'Total'} onRowClick={owner ? row => navigation.open({pageId:pageId(variant,owner),recordId:String(row.id),mode:'view'}) : undefined}/>
+    <Pagination page={currentPage} pageSize={preferences.pageSize} total={shown.length} onPageChange={setPage} onPageSizeChange={pageSize => {if (!isLocked('pageSize')) {void update({pageSize});setPage(1);}}} pageSizeDisabled={isLocked('pageSize')} allowedPageSizes={allowedValues('pageSize')}/>
+  </>}{exportError ? <RecoveryNotice failure={failureFromError(exportError)} onRetry={exportRows}/> : null}</section>;
+}

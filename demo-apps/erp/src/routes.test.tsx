@@ -14,9 +14,11 @@ describe.each(profiles)('%s route rendering',(profile,preferences,rules)=>{it.ea
  const target={pageId:id,...(mode?{mode,recordId:mode==='new'?undefined:row!.id}:{})};const host={scope:{tenantId:'fictional',applicationId:'nexora',branchId:'head-office',userId:'fixture',roles:['admin'],moduleId:variant},preferences:{...DEFAULT_PREFERENCES,...preferences},preferenceHost:{preferences:{...DEFAULT_PREFERENCES,...preferences},preferencePolicy:{revision:1,rules},onPreferenceChange:vi.fn()},request:api.request,navigate:vi.fn()};
  const {container}=render(<TestHostProvider host={host}><main dir={profile==='Arabic RTL'?'rtl':'ltr'}><KeystonePage page={page} target={target}/></main></TestHostProvider>);
  await waitFor(()=>expect(container.querySelector('h1')).toBeTruthy());await waitFor(()=>expect(container.querySelector('[aria-busy="true"],[data-recovery-kind]')).toBeNull());
- if(!mode&&!['dashboard','settings','tree','case'].includes(def.template))await waitFor(()=>expect(container.querySelectorAll('tbody tr').length).toBeGreaterThan(0));
+ if(!mode&&!['dashboard','settings','tree','case','booking','ledger'].includes(def.template))await waitFor(()=>expect(container.querySelectorAll('tbody tr').length).toBeGreaterThan(0));
  if(!mode&&def.template==='case')await waitFor(()=>expect(container.querySelector('[data-workflow-board]')).toBeTruthy());
  if(!mode&&def.template==='tree')await waitFor(()=>expect(container.querySelector('[data-hierarchy]')).toBeTruthy());
- if(mode||def.template==='settings'||variant==='erp1'&&['profile','tree'].includes(def.template))await waitFor(()=>expect(container.querySelector('[data-record-page]')).toBeTruthy());
+ if(def.template==='print'&&(mode==='view'||variant==='erp1'))await waitFor(()=>expect(container.querySelector('[data-invoice-preview] .erp-invoice')).toBeTruthy());
+ if(!mode&&def.template==='booking')await waitFor(()=>expect(container.querySelector('[data-resource-timeline]')).toBeTruthy());
+ if(mode&&def.template!=='print'||def.template==='settings'||variant==='erp1'&&['profile','tree'].includes(def.template))await waitFor(()=>expect(container.querySelector('[data-record-page]')).toBeTruthy());
  expect(targetFromPath(hrefFor(target))).toMatchObject(target);await act(async()=>{expect((await axe.run(container,{rules:{'color-contrast':{enabled:false}}})).violations).toEqual([]);});
  });});

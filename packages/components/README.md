@@ -146,3 +146,11 @@ StatePanel titles use paragraphs inside their status/alert containers instead of
 `SourceDialog` supplies dialog semantics, localized naming, focus entry/restore, Tab containment and topmost Escape handling through a panel-ref render function. The consumer supplies its frame and busy-close guard. Use Modal/Drawer for standard overlays; SourceDialog supports existing specialized frames without duplicating focus behavior. Nested dialog and focus tests cover its lifecycle.
 
 TableRow makes an `onClick` row focusable and activates it with Enter/Space, while respecting a supplied keyboard handler and leaving nested controls to handle their own keys. TableContainer makes scrollable tables keyboard reachable; `overflow="hidden"` has no default tab stop and callers may override `tabIndex`. These behaviors are covered by keyboard/scroll-container tests.
+
+## Charts and print surfaces (phase 6c-3)
+
+Root exports add `LineChart`, `ChartSeries`, `DonutChart` and `Sparkline`. Hosts supply labels, values and a preference-bound number formatter. Line inspection supports pointer movement and a native select; donut inspection supports focus and pointer entry. Empty/zero/single-point data produce finite geometry. SVG marks use semantic colors and have no animation; hidden sparklines supplement textual KPI values. Tests cover keyboard inspection and degenerate series. These are presentation components, with no product data, filters, drill-down routes or transport.
+
+`PrintDocument` adds optional `className` and `style` for host-owned paper geometry. It still portals only the print surface and removes it on unmount. The ERP invoice explicitly disables screen table presentation inside its physical document and supplies A4 print CSS; the surrounding controls continue using managed preferences. A component test covers geometry/style forwarding and portal cleanup. A browser PDF is not physical-printer acceptance.
+
+DonutChart uses a generic `Total` caption by default; hosts may supply `totalLabel` for domain wording. The showcase Stats example exercises all three chart exports with effective formatting.

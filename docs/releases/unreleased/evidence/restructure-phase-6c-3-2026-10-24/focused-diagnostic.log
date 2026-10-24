@@ -1,0 +1,1163 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --run src/remaining-views.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c/demo-apps/erp
+
+ ❯ src/remaining-views.test.tsx (19 tests | 4 failed) 23594ms
+   ✓ ledger opening and closing include prior entries and preserve order 4ms
+   ✓ matrix periods cross years, normalize Mondays and preserve source summary semantics 2ms
+   ✓ invoice tax includes deductions and rounds the completed totals 1ms
+   ✓ erp1 booking opens a free slot with resource, date and time defaults 223ms
+   ✓ erp2 booking opens a free slot with resource, date and time defaults 99ms
+   ✓ booking date navigation and resource visibility keep a complete schedule and list switch  703ms
+   × a newly detected booking clash preserves input and never sends a mutation 10105ms
+     → Unable to find an element with the text: This resource is already booked at this time. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp2-transactions-appointments"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mAppointments[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mdata-erp-record[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<h2>[39m
+          [0mNew record[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_page_be2eb3"[39m
+          [33mdata-record-page[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"w-full space-y-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 text-sm"[39m
+              [33mdata-recovery-kind[39m=[32m"error"[39m
+              [33mrole[39m=[32m"alert"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"font-semibold"[39m
+              [36m>[39m
+                [0mCould not reach the service[0m
+              [36m</p>[39m
+              [36m<p>[39m
+                [0mCheck your connection. The result is not confirmed; check the record before starting a new operation.[0m
+              [36m</p>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-wrap gap-2"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mRetry[0m
+                [36m</button>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_surface_017147"[39m
+            [33mdata-density[39m=[32m"comfortable"[39m
+            [33mdata-layout[39m=[32m"rail"[39m
+            [33mdata-motion[39m=[32m"full"[39m
+            [33mdata-rail-alignment[39m=[32m"spread"[39m
+            [33mdata-sizing[39m=[32m"container"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_body_017147"[39m
+            [36m>[39m
+              [36m<nav[39m
+                [33maria-label[39m=[32m"Sections"[39m
+                [33mclass[39m=[32m"_rail_017147"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_railHead_017147"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"_identityLabel_be2eb3"[39m
+                  [36m>[39m
+                    [0mAppointments[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"_identityName_be2eb3"[39m
+                  [36m>[39m
+                    [0mNew[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-orientation[39m=[32m"vertical"[39m
+                  [33mclass[39m=[32m"_steps_017147"[39m
+                  [33mrole[39m=[32m"tablist"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33maria-controls[39m=[32m"_r_i_-section-details"[39m
+                    [33maria-label[39m=[32m"01 Details"[39m
+                    [33maria-selected[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                    [33mdata-active[39m=[32m"true"[39m
+                    [33mid[39m=[32m"_r_i_-tab-details"[39m
+                    [33mrole[39m=[32m"tab"[39m
+                    [33mtabindex[39m=[32m"0"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"_number_017147"[39m
+                      [33mdata-done[39m=[32m"false"[39m
+                    [36m>[39m
+                      [0m01[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [36m<span>[39m
+                      [0mDetails[0m
+                    [36m</span>[39m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</nav>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_main_017147"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_content_017147"[39m
+                [36m>[39m
+                  [36m<section[39m
+                    [33maria-labelledby[39m=[32m"_r_i_-tab-details"[39m
+                    [33mclass[39m=[32m"_section_017147"[39m
+                    [33mdata-record-section[39m=[32m"details"[39m
+                    [33mid[39m=[32m"_r_i_-section-details"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] _card_017147"[39m
+                      [33mdata-clinical-section[39m=[32m"details"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"_cardHead_017147"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33mclass[39m=[32m"_cardIcon_017147"[39m
+                        [36m/>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                        [36m>[39m
+                          [36m<h3>[39m
+                            [0mDetails[0m
+                          [36m</h3>[39m
+                          [36m<p />[39m
+                        [36m</div>[39m
+                        [36m<span[39m
+                          [33mclass[39m=[32m"text-xs font-mono text-[var(--text-muted)]"[39m
+                        [36m>[39m
+                          [0mSEC 01[0m
+                        [36m</span>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+           ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp2-transactions-appointments"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mAppointments[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mdata-erp-record[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<h2>[39m
+          [0mNew record[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_page_be2eb3"[39m
+          [33mdata-record-page[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"w-full space-y-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 text-sm"[39m
+              [33mdata-recovery-kind[39m=[32m"error"[39m
+              [33mrole[39m=[32m"alert"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"font-semibold"[39m
+              [36m>[39m
+                [0mCould not reach the service[0m
+              [36m</p>[39m
+              [36m<p>[39m
+                [0mCheck your connection. The result is not confirmed; check the record before starting a new operation.[0m
+              [36m</p>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-wrap gap-2"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mRetry[0m
+                [36m</button>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_surface_017147"[39m
+            [33mdata-density[39m=[32m"comfortable"[39m
+            [33mdata-layout[39m=[32m"rail"[39m
+            [33mdata-motion[39m=[32m"full"[39m
+            [33mdata-rail-alignment[39m=[32m"spread"[39m
+            [33mdata-sizing[39m=[32m"container"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_body_017147"[39m
+            [36m>[39m
+              [36m<nav[39m
+                [33maria-label[39m=[32m"Sections"[39m
+                [33mclass[39m=[32m"_rail_017147"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_railHead_017147"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"_identityLabel_be2eb3"[39m
+                  [36m>[39m
+                    [0mAppointments[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"_identityName_be2eb3"[39m
+                  [36m>[39m
+                    [0mNew[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-orientation[39m=[32m"vertical"[39m
+                  [33mclass[39m=[32m"_steps_017147"[39m
+                  [33mrole[39m=[32m"tablist"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33maria-controls[39m=[32m"_r_i_-section-details"[39m
+                    [33maria-label[39m=[32m"01 Details"[39m
+                    [33maria-selected[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                    [33mdata-active[39m=[32m"true"[39m
+                    [33mid[39m=[32m"_r_i_-tab-details"[39m
+                    [33mrole[39m=[32m"tab"[39m
+                    [33mtabindex[39m=[32m"0"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"_number_017147"[39m
+                      [33mdata-done[39m=[32m"false"[39m
+                    [36m>[39m
+                      [0m01[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [36m<span>[39m
+                      [0mDetails[0m
+                    [36m</span>[39m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</nav>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_main_017147"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_content_017147"[39m
+                [36m>[39m
+                  [36m<section[39m
+                    [33maria-labelledby[39m=[32m"_r_i_-tab-details"[39m
+                    [33mclass[39m=[32m"_section_017147"[39m
+                    [33mdata-record-section[39m=[32m"details"[39m
+                    [33mid[39m=[32m"_r_i_-section-details"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] _card_017147"[39m
+                      [33mdata-clinical-section[39m=[32m"details"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"_cardHead_017147"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33mclass[39m=[32m"_cardIcon_017147"[39m
+                        [36m/>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                        [36m>[39m
+                          [36m<h3>[39m
+                            [0mDetails[0m
+                          [36m</h3>[39m
+                          [36m<p />[39m
+                        [36m</div>[39m
+                        [36m<span[39m
+                          [33mclass[39m=[32m"text-xs font-mono text-[var(--text-muted)]"[39m
+                        [36m>[39m
+                          [0mSEC 01[0m
+                        [36m</span>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+           ...
+   ✓ booking status failures retain their operation and a mounted denial disables actions 190ms
+   ✓ erp1 invoice loads company data and controls the physical document  460ms
+   ✓ erp2 invoice loads company data and controls the physical document 121ms
+   ✓ invoice printing stays disabled after a failed company-profile read and retries 133ms
+   ✓ ledger search leaves balances intact, custom ranges calculate opening, export follows a managed preference 167ms
+   ✓ report groups by source fields, filters the API and opens the owning ERP2 record 99ms
+   ✓ attendance fills only blanks, blocks period changes, and retains failed rows after partial save 138ms
+   × matrix partial saves retry only the unacknowledged row with identical operation identity 10138ms
+     → Unable to find role="button" and name "Retry"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+      [33mdata-erp-matrix[39m=[32m"true"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTimesheets[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mPrevious period[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mPeriod[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mtype[39m=[32m"date"[39m
+                [33mvalue[39m=[32m"2026-10-19"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mNext period[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mSave[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mDiscard[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-w-0"[39m
+        [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nex-scrollbar overflow-auto"[39m
+          [33mtabindex[39m=[32m"0"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"[&_th]:px-4 [&_th]:py-3 [&_td]:px-4 [&_td]:py-3 [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-[var(--surface-2)]"[39m
+            [33mdata-density[39m=[32m"comfortable"[39m
+            [33mdata-managed-table[39m=[32m"true"[39m
+            [33mdata-sticky[39m=[32m"true"[39m
+            [33mdata-striped[39m=[32m"false"[39m
+            [33mdata-wrap[39m=[32m"false"[39m
+            [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mEmp ID[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mEmployee[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mProject[0m
+                [36m</th>[39m
+       ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+      [33mdata-erp-matrix[39m=[32m"true"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTimesheets[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mPrevious period[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mPeriod[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mtype[39m=[32m"date"[39m
+                [33mvalue[39m=[32m"2026-10-19"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mNext period[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mSave[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mDiscard[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-w-0"[39m
+        [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nex-scrollbar overflow-auto"[39m
+          [33mtabindex[39m=[32m"0"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"[&_th]:px-4 [&_th]:py-3 [&_td]:px-4 [&_td]:py-3 [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-[var(--surface-2)]"[39m
+            [33mdata-density[39m=[32m"comfortable"[39m
+            [33mdata-managed-table[39m=[32m"true"[39m
+            [33mdata-sticky[39m=[32m"true"[39m
+            [33mdata-striped[39m=[32m"false"[39m
+            [33mdata-wrap[39m=[32m"false"[39m
+            [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mEmp ID[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mEmployee[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mProject[0m
+                [36m</th>[39m
+       ...
+   ✓ erp1 dashboard exposes all source panels and module-owned drill-downs 119ms
+   ✓ erp2 dashboard exposes all source panels and module-owned drill-downs 127ms
+   × appointments calendar has no axe violations in Arabic RTL 431ms
+     → expected [ { id: 'heading-order', …(6) } ] to deeply equal []
+   × room-bookings calendar has no axe violations in Arabic RTL 330ms
+     → expected [ { id: 'heading-order', …(6) } ] to deeply equal []
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/remaining-views.test.tsx > a newly detected booking clash preserves input and never sends a mutation
+TestingLibraryElementError: Unable to find an element with the text: This resource is already booked at this time. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp2-transactions-appointments"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mAppointments[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mdata-erp-record[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<h2>[39m
+          [0mNew record[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_page_be2eb3"[39m
+          [33mdata-record-page[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"w-full space-y-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 text-sm"[39m
+              [33mdata-recovery-kind[39m=[32m"error"[39m
+              [33mrole[39m=[32m"alert"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"font-semibold"[39m
+              [36m>[39m
+                [0mCould not reach the service[0m
+              [36m</p>[39m
+              [36m<p>[39m
+                [0mCheck your connection. The result is not confirmed; check the record before starting a new operation.[0m
+              [36m</p>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-wrap gap-2"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mRetry[0m
+                [36m</button>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_surface_017147"[39m
+            [33mdata-density[39m=[32m"comfortable"[39m
+            [33mdata-layout[39m=[32m"rail"[39m
+            [33mdata-motion[39m=[32m"full"[39m
+            [33mdata-rail-alignment[39m=[32m"spread"[39m
+            [33mdata-sizing[39m=[32m"container"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_body_017147"[39m
+            [36m>[39m
+              [36m<nav[39m
+                [33maria-label[39m=[32m"Sections"[39m
+                [33mclass[39m=[32m"_rail_017147"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_railHead_017147"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"_identityLabel_be2eb3"[39m
+                  [36m>[39m
+                    [0mAppointments[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"_identityName_be2eb3"[39m
+                  [36m>[39m
+                    [0mNew[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-orientation[39m=[32m"vertical"[39m
+                  [33mclass[39m=[32m"_steps_017147"[39m
+                  [33mrole[39m=[32m"tablist"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33maria-controls[39m=[32m"_r_i_-section-details"[39m
+                    [33maria-label[39m=[32m"01 Details"[39m
+                    [33maria-selected[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                    [33mdata-active[39m=[32m"true"[39m
+                    [33mid[39m=[32m"_r_i_-tab-details"[39m
+                    [33mrole[39m=[32m"tab"[39m
+                    [33mtabindex[39m=[32m"0"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"_number_017147"[39m
+                      [33mdata-done[39m=[32m"false"[39m
+                    [36m>[39m
+                      [0m01[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [36m<span>[39m
+                      [0mDetails[0m
+                    [36m</span>[39m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</nav>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_main_017147"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_content_017147"[39m
+                [36m>[39m
+                  [36m<section[39m
+                    [33maria-labelledby[39m=[32m"_r_i_-tab-details"[39m
+                    [33mclass[39m=[32m"_section_017147"[39m
+                    [33mdata-record-section[39m=[32m"details"[39m
+                    [33mid[39m=[32m"_r_i_-section-details"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] _card_017147"[39m
+                      [33mdata-clinical-section[39m=[32m"details"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"_cardHead_017147"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33mclass[39m=[32m"_cardIcon_017147"[39m
+                        [36m/>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                        [36m>[39m
+                          [36m<h3>[39m
+                            [0mDetails[0m
+                          [36m</h3>[39m
+                          [36m<p />[39m
+                        [36m</div>[39m
+                        [36m<span[39m
+                          [33mclass[39m=[32m"text-xs font-mono text-[var(--text-muted)]"[39m
+                        [36m>[39m
+                          [0mSEC 01[0m
+                        [36m</span>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+           ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp2-transactions-appointments"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mAppointments[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mdata-erp-record[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<h2>[39m
+          [0mNew record[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_page_be2eb3"[39m
+          [33mdata-record-page[39m=[32m"true"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"w-full space-y-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 text-sm"[39m
+              [33mdata-recovery-kind[39m=[32m"error"[39m
+              [33mrole[39m=[32m"alert"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"font-semibold"[39m
+              [36m>[39m
+                [0mCould not reach the service[0m
+              [36m</p>[39m
+              [36m<p>[39m
+                [0mCheck your connection. The result is not confirmed; check the record before starting a new operation.[0m
+              [36m</p>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-wrap gap-2"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mRetry[0m
+                [36m</button>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_surface_017147"[39m
+            [33mdata-density[39m=[32m"comfortable"[39m
+            [33mdata-layout[39m=[32m"rail"[39m
+            [33mdata-motion[39m=[32m"full"[39m
+            [33mdata-rail-alignment[39m=[32m"spread"[39m
+            [33mdata-sizing[39m=[32m"container"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_body_017147"[39m
+            [36m>[39m
+              [36m<nav[39m
+                [33maria-label[39m=[32m"Sections"[39m
+                [33mclass[39m=[32m"_rail_017147"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_railHead_017147"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"_identityLabel_be2eb3"[39m
+                  [36m>[39m
+                    [0mAppointments[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"_identityName_be2eb3"[39m
+                  [36m>[39m
+                    [0mNew[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33maria-orientation[39m=[32m"vertical"[39m
+                  [33mclass[39m=[32m"_steps_017147"[39m
+                  [33mrole[39m=[32m"tablist"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33maria-controls[39m=[32m"_r_i_-section-details"[39m
+                    [33maria-label[39m=[32m"01 Details"[39m
+                    [33maria-selected[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                    [33mdata-active[39m=[32m"true"[39m
+                    [33mid[39m=[32m"_r_i_-tab-details"[39m
+                    [33mrole[39m=[32m"tab"[39m
+                    [33mtabindex[39m=[32m"0"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"_number_017147"[39m
+                      [33mdata-done[39m=[32m"false"[39m
+                    [36m>[39m
+                      [0m01[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [36m<span>[39m
+                      [0mDetails[0m
+                    [36m</span>[39m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</nav>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_main_017147"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_content_017147"[39m
+                [36m>[39m
+                  [36m<section[39m
+                    [33maria-labelledby[39m=[32m"_r_i_-tab-details"[39m
+                    [33mclass[39m=[32m"_section_017147"[39m
+                    [33mdata-record-section[39m=[32m"details"[39m
+                    [33mid[39m=[32m"_r_i_-section-details"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] _card_017147"[39m
+                      [33mdata-clinical-section[39m=[32m"details"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"_cardHead_017147"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33mclass[39m=[32m"_cardIcon_017147"[39m
+                        [36m/>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                        [36m>[39m
+                          [36m<h3>[39m
+                            [0mDetails[0m
+                          [36m</h3>[39m
+                          [36m<p />[39m
+                        [36m</div>[39m
+                        [36m<span[39m
+                          [33mclass[39m=[32m"text-xs font-mono text-[var(--text-muted)]"[39m
+                        [36m>[39m
+                          [0mSEC 01[0m
+                        [36m</span>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+           ...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/remaining-views.test.tsx:35:83
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/remaining-views.test.tsx > matrix partial saves retry only the unacknowledged row with identical operation identity
+TestingLibraryElementError: Unable to find role="button" and name "Retry"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+      [33mdata-erp-matrix[39m=[32m"true"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTimesheets[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mPrevious period[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mPeriod[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mtype[39m=[32m"date"[39m
+                [33mvalue[39m=[32m"2026-10-19"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mNext period[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mSave[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mDiscard[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-w-0"[39m
+        [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nex-scrollbar overflow-auto"[39m
+          [33mtabindex[39m=[32m"0"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"[&_th]:px-4 [&_th]:py-3 [&_td]:px-4 [&_td]:py-3 [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-[var(--surface-2)]"[39m
+            [33mdata-density[39m=[32m"comfortable"[39m
+            [33mdata-managed-table[39m=[32m"true"[39m
+            [33mdata-sticky[39m=[32m"true"[39m
+            [33mdata-striped[39m=[32m"false"[39m
+            [33mdata-wrap[39m=[32m"false"[39m
+            [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mEmp ID[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mEmployee[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mProject[0m
+                [36m</th>[39m
+       ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+      [33mdata-erp-matrix[39m=[32m"true"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTimesheets[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mPrevious period[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mPeriod[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mtype[39m=[32m"date"[39m
+                [33mvalue[39m=[32m"2026-10-19"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mNext period[0m
+        [36m</button>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mSave[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mDiscard[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"min-w-0"[39m
+        [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nex-scrollbar overflow-auto"[39m
+          [33mtabindex[39m=[32m"0"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"[&_th]:px-4 [&_th]:py-3 [&_td]:px-4 [&_td]:py-3 [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-[var(--surface-2)]"[39m
+            [33mdata-density[39m=[32m"comfortable"[39m
+            [33mdata-managed-table[39m=[32m"true"[39m
+            [33mdata-sticky[39m=[32m"true"[39m
+            [33mdata-striped[39m=[32m"false"[39m
+            [33mdata-wrap[39m=[32m"false"[39m
+            [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mEmp ID[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mEmployee[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mscope[39m=[32m"col"[39m
+                [36m>[39m
+                  [0mProject[0m
+                [36m</th>[39m
+       ...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/remaining-views.test.tsx:64:248
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/remaining-views.test.tsx > appointments calendar has no axe violations in Arabic RTL
+ FAIL  src/remaining-views.test.tsx > room-bookings calendar has no axe violations in Arabic RTL
+AssertionError: expected [ { id: 'heading-order', …(6) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "description": "Ensure the order of headings is semantically correct",
++     "help": "Heading levels should only increase by one",
++     "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/heading-order?application=axeAPI",
++     "id": "heading-order",
++     "impact": "moderate",
++     "nodes": [
++       {
++         "all": [],
++         "any": [
++           CheckResult {
++             "data": null,
++             "id": "heading-order",
++             "impact": "moderate",
++             "message": "Heading order invalid",
++             "relatedNodes": [],
++           },
++         ],
++         "failureSummary": "Fix any of the following:
++   Heading order invalid",
++         "html": "<h3 class=\"sticky top-0 z-10 flex h-16 items-center bg-[var(--surface)] p-2 font-semibold\">Dr. Meera Iyer</h3>",
++         "impact": "moderate",
++         "none": [],
++         "target": [
++           "div[data-timeline-resource=\"Dr. Meera Iyer\"] > h3",
++         ],
++       },
++     ],
++     "tags": [
++       "cat.semantics",
++       "best-practice",
++     ],
++   },
++ ]
+
+ ❯ src/remaining-views.test.tsx:71:412
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 15 passed (19)
+   Start at  00:22:51
+   Duration  27.88s (transform 2.01s, setup 174ms, collect 3.13s, tests 23.59s, environment 518ms, prepare 77ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c/demo-apps/erp 

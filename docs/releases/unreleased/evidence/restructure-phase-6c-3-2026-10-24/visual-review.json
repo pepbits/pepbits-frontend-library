@@ -1,0 +1,51 @@
+{
+  "reviewer": "Codex screenshot inspection",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "sourceCheckpoint": "verification-source.json",
+  "captures": [
+    {
+      "file": "erp-final-calendar.png",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "4d32249264420c4f0b5f438edb42281d5d9d2a3f5f4b94b4b4967e91647f918e",
+      "observation": "ERP1 Appointments shows the selected future day, resource visibility controls, completed booking, Schedule/List controls and the upcoming list. The wide resource canvas scrolls; success notifications are visible."
+    },
+    {
+      "file": "erp-final-dashboard.png",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "83bdf9eec453eea83f6ce910534efa793d9d33787f360c657cbd7f86d4a5abda",
+      "observation": "All four KPI sparklines are contained within their cards. The combined trend, keyboard select, invoice donut, recent orders, approvals and receivables panels are composed below; longer lists continue below the viewport."
+    },
+    {
+      "file": "erp-final-invoice.png",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "d295fd456b98760cae3e9b15f19f7f7fd133f879bd072bc2f2750b9691323d98",
+      "observation": "ERP1 displays the selected invoice beside its worklist, with Duplicate, terms, zoom and print controls. The zoomed paper shows identity, line items, totals, English amount words and bank details. Remaining worklist columns require horizontal scrolling."
+    },
+    {
+      "file": "erp-final-invoice-paper.png",
+      "width": 1440,
+      "height": 1123,
+      "sha256": "284d0887a07696656b6edf250fabb201582f6375388121bcbb96ea698a595f66",
+      "observation": "Print-media capture hides the shell and controls. The complete sampled invoice shows the document header, recipient, items, totals, bank details, terms and signature region on the white paper."
+    },
+    {
+      "file": "erp-final-ledger.png",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "a2d73ad68b39c851b0f180f853d0db599f425e69531f5909d8386a55bfbdc271",
+      "observation": "The searched voucher is the only visible body row, while the closing-balance footer and period statistic cards still show the full statement totals. CSV export and period/customer controls are visible."
+    }
+  ],
+  "limits": [
+    "Only these captured desktop states were inspected; no original-source pixel comparison was performed.",
+    "Wide worklists/calendars scroll and longer records extend below the viewport.",
+    "PDF page geometry is separate from physical printing and exhaustive long-document pagination.",
+    "Automated axe and screenshot inspection do not establish human accessibility, native-speaker or accounting acceptance."
+  ]
+}

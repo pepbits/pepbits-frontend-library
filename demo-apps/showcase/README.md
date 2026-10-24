@@ -64,3 +64,5 @@ Phase 6b-3 adds Native controls on UI primitives: five public native-layout cont
 Phase 6b-9 extends that example with public SourceTimeInput and SourceDateTimeInput. Both retain native machine values and share the effective control presentation. See the [MedSlot record](../../docs/releases/unreleased/restructure-phase-6b-9-2026-10-23.md).
 
 The phase 6c-1 Select example also exercises public `optionsFromChildren` and `splitFieldClasses` interoperability helpers. The generated source snippet is refreshed; no new showcase route is added.
+
+Phase 6c-3 extends Stats with public Sparkline, LineChart and DonutChart examples. The fictional series use effective number formatting; the line select and donut buttons support keyboard inspection. Snippets and canonical catalog subsets are regenerated. No new route or external data source is added. See the [ERP specialized-view record](../../docs/releases/unreleased/restructure-phase-6c-3-2026-10-24.md) for the shared chart delivery and verification.

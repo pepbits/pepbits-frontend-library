@@ -1,6 +1,6 @@
 # Independent ERP demo
 
-Feature ID: ERD. State: verified subset with hierarchy canvases, case boards, ERP1 profile splits and finance entity grants; full source parity remains incomplete. [Delivery record](../releases/unreleased/restructure-phase-6c-2-2026-10-23.md), [test guide 1.0.0](../testing/v1.0.0/PRE-COMMIT.md). Local verification only; fictional financial behaviour is **not accounting acceptance**.
+Feature ID: ERD. State: specialized workflow subset through calendars, A4 invoices, analytical controls and dashboards; full source parity remains incomplete. [Delivery record](../releases/unreleased/restructure-phase-6c-3-2026-10-24.md), [test guide 1.0.0](../testing/v1.0.0/PRE-COMMIT.md). Local verification only; fictional financial behaviour is **not accounting acceptance**.
 
 ## User problem and outcome
 
@@ -15,7 +15,12 @@ ERP1 and ERP2 now run in a separate Next.js app using public library engines and
 5. On Organisation structure, Chart of accounts or Product categories, expand branches or search a nested name. Search keeps ancestors visible. ERP1 shows the selected editor beside the tree and permits child creation and confirmed leaf deletion; ERP2 opens record URLs. A save adopts the acknowledged record before the hierarchy reloads.
 6. On Support tickets or Maintenance requests, filter by text, priority or assignee. Drag a card into another status column, or use its Move to select with the keyboard. The card stays in its old column until HTTP accepts the change; retry retains the operation identity and version. Reload explicitly after a conflict. List switches to the shared worklist.
 7. ERP1 profile masters open a selected record beside the worklist. Choose Full table or List and details side by side; the existing account view-state API saves the choice only when effective `rememberFilters` is enabled. ERP2 keeps its source full worklist and record URLs.
-8. Open Preferences. Language, presentation, formatting, motion and shortcuts follow one accepted update path. Tenant locks and allowed values disable conflicting changes. Failed preference saves retain accepted settings until reload; policy refresh can replace effective values.
+8. On Appointments or Meeting rooms, choose a day, hide/show resources, and select a free slot. Create with the selected date/resource/time, then check in, complete or cancel through the record actions. Client overlap checks preserve input; they are not an atomic server reservation guarantee. Schedule/List switches retain the shared worklist workflow.
+9. On Invoice print, select an invoice and wait for the server company profile. Choose Original/Duplicate, terms and zoom, then Print or save PDF. The print surface uses the source A4 document structure; the shell is hidden. The English amount-in-words block is labeled explicitly.
+10. Reports provide period/date filters, status/select filters, grouping, totals and preference-selected CSV/XLSX export; ERP2 rows open the owning record. Customer ledger shows opening, debits, credits and closing balance. Searching entries preserves the full statement balance and export. Truncated responses disable totals/export rather than misrepresenting them.
+11. Attendance, Timesheets and Marks entry provide period navigation, row/column summaries and bounded entry. Mark all present today fills only blanks. Save removes each acknowledged row from the batch; retry keeps failed rows and operation IDs. Save or Discard before changing period; conflicts require explicit discard/reload.
+12. Dashboard includes all source data panels. Inspect chart values with the native select or focusable status controls; open registers, orders, approvals and ticket/purchase shortcuts within the selected module. Source dashboards have no global filter API or pivot designer.
+13. Open Preferences. Language, presentation, formatting, motion and shortcuts follow one accepted update path. Tenant locks and allowed values disable conflicting changes. Failed preference saves retain accepted settings until reload; policy refresh can replace effective values.
 
 ## Integration and failure behaviour
 
@@ -25,7 +30,7 @@ The adapter receives the configured authenticated transport and maps to `/refere
 
 ## Compatibility, localization and accessibility
 
-Canonical localization comes from the protected API catalogs at runtime. Literal aliases are generated from those catalogs; missing terminology stays in source English and needs backend authoring/human review. Four-profile tests cover default, Arabic RTL, reduced motion and locked density. Structural hierarchy/board canvases retain complete source-loaded groups (up to 2,000 tree nodes or 1,000 cases); generic resultView/pageSize apply to the shared worklist, not to splitting those canvases. Effective density, result scale, semantic colors/radius and formatting still apply. Profile/worklist tables retain all applicable managed table settings. Jsdom axe does not measure contrast; browser axe is separate and includes the full shell. Automated checks do not establish assistive-technology, language or accounting acceptance. Original source packages and API/deployment files remain unchanged.
+Canonical localization comes from the protected API catalogs at runtime. Literal aliases are generated from those catalogs; missing terminology stays in source English and needs backend authoring/human review. Four-profile tests cover default, Arabic RTL, reduced motion and locked density. Structural calendar/hierarchy/board canvases retain complete source-loaded groups (up to 2,000 tree nodes or 1,000 cases/day bookings); generic resultView/pageSize apply to the shared worklist, not to splitting those canvases. Effective density, result scale, semantic colors/radius and formatting still apply. Profile/worklist tables retain all applicable managed table settings. Jsdom axe does not measure contrast; browser axe is separate and includes the full shell. Automated checks do not establish assistive-technology, language or accounting acceptance. Original source packages and API/deployment files remain unchanged.
 
 ## Acceptance and limitations
 
@@ -43,8 +48,12 @@ Canonical localization comes from the protected API catalogs at runtime. Literal
 | ERD-10 | Eight ERP1 profile splits: selection, accepted record saves, account layout persistence and managed rememberFilters |
 | ERD-11 | Finance entity-grant presentation, explicit grants, mounted shell denial, direct-edit denial and actual HTTP command denial |
 | ERD-12 | Direct public-library HTTP, preference adapter, application provider and field-interoperability tests |
+| ERD-13 | Four day/resource calendars: slots, overlap preflight, date/resource controls, commands and list switching |
+| ERD-14 | Company-backed A4 invoice, copy/terms/zoom and isolated Chromium PDF printing |
+| ERD-15 | Reports, ledgers and matrices: periods, grouping, balances, totals, export, bounded/bulk edits and partial retry |
+| ERD-16 | Dashboard source panels, keyboard chart inspection and module-owned drill-downs |
 
-Booking calendar/resource timelines, invoice print geometry, report period/pivot controls, ledger date-range/opening-balance controls, matrix period navigation/bulk-fill and full source dashboard composition remain deferred. Hierarchy canvas and board/profile main workflows are delivered, but ERP2 tree record breadcrumbs/delete/child-table composition, board discussion/history, source-specific profile statistics/activity layout and exact visual matching remain incomplete. Durable and cross-route unsaved recovery and the richer personal-view protocol also remain deferred. These limits prevent a claim of full source visual/workflow parity. No physical printing, accounting certification, deployment or native executable is tested. The protected draft API accepts only import/approval/DCP kinds and original catalog page IDs; ERP form drafts need a backend contract before durable recovery can be enabled. No form values enter browser storage.
+Remaining: ERP1 booking drawer/detail geometry and specialized ERP2 booking detail composition; exact source chart/widget geometry and source pixel comparison; exhaustive multi-page invoice pagination; full report advanced filters/sorting/column and saved-view parity; ERP2 tree record breadcrumbs/delete/child tables; board discussion/history; source-specific profile statistics/activity layout; richer personal views; durable cross-route record-form recovery. The protected `/drafts` API accepts only import/approval/DCP kinds and original navigation IDs, so ERP record drafts require a backend contract. No form values enter browser storage. Physical printing, accounting acceptance, native executables and human accessibility/localization review remain outside verification.
 
 
 ## Operations and support

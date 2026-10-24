@@ -85,3 +85,13 @@ export function exportRows(rows: Row[], columns: DataColumn[], format: Formatter
 
 export function xlsxOf(headers:string[],rows:(string|number)[][],sheetName:string):ArrayBuffer{const sheet=XLSX.utils.aoa_to_sheet([headers,...rows]),book=XLSX.utils.book_new();XLSX.utils.book_append_sheet(book,sheet,sheetName.replace(/[\\/?*[\]:]/g,' ').slice(0,31)||'Export');return XLSX.write(book,{bookType:'xlsx',type:'array'}) as ArrayBuffer;}
 export function exportFileName(sourceName:string,format:ExportFormat){return sourceName.replace(/\.(csv|xlsx)$/i,'')+'.'+format;}
+
+/** Explicit, already-reviewed grid. Numeric spreadsheet cells retain their type. */
+export function downloadGrid(headers: string[], rows: (string|number)[][], kind: ExportFormat, name: string) {
+  const filename = exportFileName(name, kind);
+  const blob = kind === 'xlsx'
+    ? new Blob([xlsxOf(headers, rows, name)], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+    : new Blob(['\uFEFF' + csvOf([headers, ...rows])], {type: 'text/csv;charset=utf-8'});
+  save(blob, filename);
+  return filename;
+}

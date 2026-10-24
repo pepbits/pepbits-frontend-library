@@ -1,30 +1,13 @@
-import React,{useEffect,useState} from 'react';
-import {TemplateChart,TemplateReport,EditableMatrix} from '@pepbits/page-engines/templates';
-import {Card,CardGrid,StatCard,LoadingState,RecoveryNotice,failureFromError,Pagination} from '@pepbits/components';
-import {CollectionView} from '@pepbits/components/collection-view';
-import {Button,Input,Select} from '@pepbits/ui';
-import {usePreferences} from '@pepbits/preferences/react';
-import {useFormatters,useScreenHost} from '@pepbits/patterns/screen-host';
 import {useLocalization} from '@pepbits/i18n/react';
-import type {PageDefinition,PageTemplateDefinition,TemplateDocument} from '@pepbits/page-engines/types';
-import {useFetch,useEntityApi,useRefOptions,listUrl} from './client';
+import type {PageDefinition} from '@pepbits/page-engines/types';
+import {AnalyticsPage} from './analytics';
+import {MatrixPage} from './matrix';
+import {Dashboard} from './dashboard';
 import {RecordEditor} from './record';
-import {useValueFormat} from './fields';
-import type {PageDef,Row,ListResponse} from './types';
-export function SpecialPage({def,page}:{def:PageDef;page:PageDefinition}){const {t}=useLocalization();if(def.template==='dashboard')return <Dashboard/>;if(def.template==='settings')return <section><h1>{t(def.title)}</h1><RecordEditor def={def} target={{pageId:page.id,recordId:'1',mode:'edit'}} onClose={()=>{}} onOpen={()=>{}} onSaved={()=>{}}/></section>;return <DataSheet key={page.id} def={def}/>;}
-function Dashboard(){const result=useFetch<{kpis:{key:string;label:string;value:number;format:string}[];months:string[];sales:number[];purchases:number[];topCustomers:{name:string;value:number}[]}>('/api/dashboard'),format=useFormatters(),{t}=useLocalization();if(!result.data)return result.error?<RecoveryNotice failure={failureFromError(new Error(result.error))} onRetry={result.reload}/>:<LoadingState/>;const data=result.data;return <section className="space-y-4"><h1>{t('Dashboard')}</h1><CardGrid columns={4}>{data.kpis.map(k=><StatCard key={k.key} label={k.label} value={k.format==='currency'?format.money(k.value):format.number(k.value)}/>)}</CardGrid><h2>{t('Sales')}</h2><TemplateChart rows={data.months.map((name,i)=>({code:String(i),name,amount:data.sales[i]??0}))} format={format}/><h2>{t('Purchases')}</h2><TemplateChart rows={data.months.map((name,i)=>({code:String(i),name,amount:data.purchases[i]??0}))} format={format}/><h2>{t('Top customers')}</h2><TemplateChart rows={data.topCustomers.map((row,i)=>({code:String(i),name:row.name,amount:row.value}))} format={format}/></section>;}
-function DataSheet({def}:{def:PageDef}){
- const matrix=def.template==='matrix',ledger=def.template==='ledger',api=useEntityApi(),format=useValueFormat(),money=useFormatters(),host=useScreenHost(),{t}=useLocalization(),{preferences,isLocked,allowedValues,update}=usePreferences();
- const [period,setPeriod]=useState(()=>def.matrix?.kind==='marks'?'Term 1':new Date().toISOString().slice(0,def.matrix?.kind==='attendance'?7:10)),[query,setQuery]=useState(''),[page,setPage]=useState(1),[drafts,setDrafts]=useState<Record<string,Row>>({}),[failure,setFailure]=useState<unknown>(),[busy,setBusy]=useState(false);
- const partyField=ledger?def.fields.find(f=>f.type==='ref'):undefined,parties=useRefOptions(partyField?.ref),[party,setParty]=useState('');
- useEffect(()=>{if(ledger&&!party&&parties[0])setParty(parties[0]);},[ledger,party,parties]);
- const fetched=useFetch<ListResponse>(ledger&&!party?null:listUrl(def.entity,{size:5000,...(matrix?{period}:{}),...(ledger?{sort:'date',dir:'asc',filters:{[partyField!.key]:[party]}}:{})}));
- const rows=(fetched.data?.rows??[]).filter(r=>!query||Object.values(r).join(' ').toLowerCase().includes(query.toLowerCase()));let balance=0;const presented=rows.map(row=>{balance+=Number(row.debit??0)-Number(row.credit??0);return ledger?{...row,balance}:drafts[row.id]??row;});
- const save=async()=>{if(busy||!host.can('edit'))return;setBusy(true);setFailure(undefined);try{for(const row of Object.values(drafts)){const saved=await api.update(def.entity,row.id,{cells:row.cells,expectedVersion:row.version},period);setDrafts(d=>{const next={...d};delete next[row.id];return next;});fetched.setData(data=>data?{...data,rows:data.rows.map(r=>r.id===row.id?saved:r)}:data);}host.notify(t('Changes saved'),{tone:'success'});}catch(error){setFailure(error);}finally{setBusy(false);}};
- const columns=def.fields.filter(f=>f.list!==false).map(f=>({key:f.key,header:f.label,render:(row:Row)=>format(f,row[f.key])}));
- if(ledger)columns.push({key:'balance',header:'Balance',render:row=>money.money(Number(row.balance))});
- const cells:string[]=fetched.data?.rows[0]?.columns??[];
- const visible=presented.slice((page-1)*preferences.pageSize,page*preferences.pageSize);
- const reportDefinition:PageTemplateDefinition={id:def.slug,group:def.group,engine:'report',title:def.title,description:def.description,layout:'rail',view:'table',sections:[],stages:[],tags:[],editable:false,columns:[...def.fields.filter(f=>f.list!==false).map(f=>({key:f.key,label:f.label,type:(f.type==='currency'?'money':['number','date','status'].includes(f.type)?f.type:'text') as 'money'|'number'|'date'|'status'|'text'})),...(ledger?[{key:'balance',label:'Balance',type:'money' as const}]:[])],configuration:{reportDateKey:null,reportAmountKey:null}};
- return <section aria-busy={fetched.loading||(ledger&&!party)} className="space-y-3"><h1>{t(def.title)}</h1><Card className="flex flex-wrap items-end gap-3 p-3"><>{ledger?<Select label={partyField!.label} value={party} options={parties.map(value=>({value,label:value}))} onChange={event=>{setParty(event.target.value);setPage(1);}}/>:null}</><Input label="Search" value={query} onChange={event=>{setQuery(event.target.value);setPage(1);}}/>{matrix?<><Input label="Period" value={period} disabled={!!Object.keys(drafts).length} onChange={event=>{setPeriod(event.target.value);setPage(1);}}/><Button disabled={busy||!host.can('edit')||!Object.keys(drafts).length} onClick={()=>void save()}>{t('Save')}</Button><Button disabled={busy} onClick={()=>setDrafts({})}>{t('Reset')}</Button></>:null}</Card>{failure||fetched.error?<RecoveryNotice failure={failureFromError(failure??new Error(fetched.error!))} onRetry={()=>failure?void save():fetched.reload()}/>:null}<h2>{t('Results')}</h2>{matrix?<EditableMatrix columns={columns} dimensions={cells} rows={visible} rowKey={r=>r.id} rowLabel={r=>String(r.name??r.code)} values={r=>r.cells} disabled={busy||!host.can('edit')} loading={fetched.loading} options={def.matrix?.kind==='attendance'?[{value:'',label:'—'},...(def.matrix.values??[]).map(value=>({value,label:value}))]:undefined} onChange={(row,index,value)=>setDrafts(d=>({...d,[row.id]:{...row,cells:row.cells.map((v:unknown,i:number)=>i===index?value:v)}}))}/>:fetched.loading?<LoadingState/>:<TemplateReport preferences={preferences} definition={reportDefinition} document={{id:def.slug,version:0,values:{},lines:[],rows:visible} as TemplateDocument} update={()=>{}} disabled errors={{}} format={money} density={preferences.density} precision={preferences.decimalPlaces} pageSize={preferences.pageSize} resultView={preferences.resultView}/>}<Pagination page={page} pageSize={preferences.pageSize} total={rows.length} onPageChange={setPage} onPageSizeChange={pageSize=>{update({pageSize});setPage(1);}} pageSizeDisabled={isLocked('pageSize')} allowedPageSizes={allowedValues('pageSize')}/></section>;
+import type {PageDef} from './types';
+export function SpecialPage({def,page}:{def:PageDef;page:PageDefinition}) {
+ const {t}=useLocalization();
+ if(def.template==='dashboard')return <Dashboard/>;
+ if(def.template==='settings')return <section><h1>{t(def.title)}</h1><RecordEditor def={def} target={{pageId:page.id,recordId:'1',mode:'edit'}} onClose={()=>{}} onOpen={()=>{}} onSaved={()=>{}}/></section>;
+ return def.template==='matrix'?<MatrixPage key={page.id} def={def}/>:<AnalyticsPage key={page.id} def={def} page={page}/>;
 }

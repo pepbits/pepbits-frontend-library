@@ -13,6 +13,7 @@ export * from "./inline-edit";
 export * from "./reference-data";
 export * from "./form-error-summary";
 export * from "./print-document";
+export * from './charts';
 export * from "./recovery-notice";
 export * from "./error-mapper";
 

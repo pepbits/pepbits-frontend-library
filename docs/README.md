@@ -1,6 +1,6 @@
 # Enterprise frontend documentation
 
-- [Independent ERP demo](features/erp-demo.md): ERP1/ERP2 catalogue, hierarchy/board/profile subset, finance grants and local HTTP evidence; full parity remains incomplete.
+- [Independent ERP demo](features/erp-demo.md): ERP1/ERP2 catalogue, calendars, invoices, analytical/dashboard subset, finance grants and local HTTP evidence; full parity remains incomplete.
 
 - [Independent healthcare demo](features/healthcare-demo.md): phases 6b-1 through 6b-9 core, clinical, diagnostics, Pharmacy, RCM, Teleconsult, Quality, SurgiSuite, MedBand and MedSlot app/API verification; no deployment or clinical acceptance.
 

@@ -1,0 +1,123 @@
+{
+  "catalogueDestinations": 114,
+  "changedSpecializedDestinations": 24,
+  "delivered": [
+    {
+      "route": "/erp1/workspace/dashboard",
+      "template": "dashboard"
+    },
+    {
+      "route": "/erp2/workspace/dashboard",
+      "template": "dashboard"
+    },
+    {
+      "route": "/erp1/transactions/attendance",
+      "template": "matrix"
+    },
+    {
+      "route": "/erp2/transactions/attendance",
+      "template": "matrix"
+    },
+    {
+      "route": "/erp1/transactions/timesheets",
+      "template": "matrix"
+    },
+    {
+      "route": "/erp2/transactions/timesheets",
+      "template": "matrix"
+    },
+    {
+      "route": "/erp1/transactions/appointments",
+      "template": "booking"
+    },
+    {
+      "route": "/erp2/transactions/appointments",
+      "template": "booking"
+    },
+    {
+      "route": "/erp1/transactions/room-bookings",
+      "template": "booking"
+    },
+    {
+      "route": "/erp2/transactions/room-bookings",
+      "template": "booking"
+    },
+    {
+      "route": "/erp1/transactions/marks-entry",
+      "template": "matrix"
+    },
+    {
+      "route": "/erp2/transactions/marks-entry",
+      "template": "matrix"
+    },
+    {
+      "route": "/erp1/reports/sales-register",
+      "template": "report"
+    },
+    {
+      "route": "/erp2/reports/sales-register",
+      "template": "report"
+    },
+    {
+      "route": "/erp1/reports/purchase-register",
+      "template": "report"
+    },
+    {
+      "route": "/erp2/reports/purchase-register",
+      "template": "report"
+    },
+    {
+      "route": "/erp1/reports/stock-summary",
+      "template": "report"
+    },
+    {
+      "route": "/erp2/reports/stock-summary",
+      "template": "report"
+    },
+    {
+      "route": "/erp1/reports/receivables-aging",
+      "template": "report"
+    },
+    {
+      "route": "/erp2/reports/receivables-aging",
+      "template": "report"
+    },
+    {
+      "route": "/erp1/reports/customer-ledger",
+      "template": "ledger"
+    },
+    {
+      "route": "/erp2/reports/customer-ledger",
+      "template": "ledger"
+    },
+    {
+      "route": "/erp1/reports/invoice-print",
+      "template": "print"
+    },
+    {
+      "route": "/erp2/reports/invoice-print",
+      "template": "print"
+    }
+  ],
+  "remaining": [
+    "ERP1 booking drawer/detail geometry and specialized ERP2 booking detail panels.",
+    "Exact source chart/widget geometry, source pixel comparison and exhaustive multi-page invoice pagination.",
+    "Complete report advanced filters, sorting, source column layouts and saved-view parity.",
+    "ERP2 tree record breadcrumbs, delete and child tables; board discussion/history; profile statistics/activity layout.",
+    "Richer personal views across lists and reports.",
+    "Durable cross-route ERP record drafts: protected backend supports only import/approval/DCP draft kinds and original page IDs. No draft values stored in browser."
+  ],
+  "sourceFindings": [
+    "Reports source exposes grouping, date filters and totals, not an independent pivot designer.",
+    "Dashboard source has no global data filter API; chart selectors inspect supplied data.",
+    "Booking overlap preflight is not an atomic backend reservation guarantee."
+  ],
+  "exclusions": [
+    "Accounting acceptance",
+    "Physical printers",
+    "Native executables",
+    "Human language/accessibility acceptance",
+    "Production services",
+    "Deployment or publication"
+  ]
+}
