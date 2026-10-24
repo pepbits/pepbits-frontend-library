@@ -5,8 +5,9 @@ import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-const demo=process.argv[2];if(!['healthcare','erp','caregrid'].includes(demo))throw new Error('Pass a demo app name');
-const prefix=demo.toUpperCase();
+const demo=process.argv[2];if(!['healthcare','erp','school','tenant-admin','reports','caregrid'].includes(demo))throw new Error('Pass a demo app name');
+// Environment prefixes use underscores: tenant-admin reads TENANT_ADMIN_API_NODE, TENANT_ADMIN_RESULT and so on.
+const prefix=demo.toUpperCase().replaceAll('-','_');
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const app=join(root,'demo-apps',demo),temp=mkdtempSync(join(tmpdir(),demo+'-integration-'));
 const children=[],cleanup=[];

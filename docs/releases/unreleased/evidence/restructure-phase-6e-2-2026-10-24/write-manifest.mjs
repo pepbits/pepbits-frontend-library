@@ -1,0 +1,13 @@
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const recordId='restructure-phase-6e-2-2026-10-24';
+const baseCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const fixed=['package.json','package-lock.json','turbo.json','tsconfig.base.json','docs/README.md','docs/features/README.md','docs/features/tenant-admin-demo.md','demo-apps/README.md','docs/testing/README.md','docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md','docs/releases/unreleased/README.md'];
+const paths=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8'}).split('\0').filter(path=>path&&(path.startsWith('packages/')||path.startsWith('tooling/')||path.startsWith('demo-apps/')||fixed.includes(path))))].sort();
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const files=paths.map(path=>({path,sha256:sha(readFileSync(path))}));
+const implementationDigest=sha(files.map(file=>`${file.path}\0${file.sha256}\n`).join(''));
+const manifest={schemaVersion:1,recordId,status:'unreleased-working-tree',baseCommit,testGuideVersion:'1.0.0',implementationDigest,digestAlgorithm:'SHA-256 of sorted path + NUL + file SHA-256 + LF entries',identityScope:'Root workspace configuration, all tracked/nonignored packages/tooling/demo-apps files, plan and affected documentation/indexes. Excludes this release record, manifest and evidence to avoid self-reference. Protected source is identified by base commit and empty diff/status checks.',evidence:`${recordId}.md`,published:false,deployed:false,limits:['Tenant Admin Overview, Approvals, Activity and all 30 registry-driven configuration pages; exact source pixel parity, mirrored RTL layout and durable drafts are not claimed.','Local Next builds, mocked tests and real local fictional HTTP; not deployed, native, production identity or financial/regulatory acceptance.','API runtimes reused from a source-matched checkout with hashes, not rebuilt.','Scoped stylesheet and alias maps are frozen copies verified by SHA-256; their generators stay in the protected desktop workspace.','Human language/accessibility review remains.','Protected desktop/backend/deployment/CI paths unchanged; no commit or push.'],files};
+writeFileSync(`docs/releases/unreleased/manifest-${recordId}.json`,JSON.stringify(manifest,null,2)+'\n');
+console.log(`${files.length} files; SHA-256 ${implementationDigest}`);

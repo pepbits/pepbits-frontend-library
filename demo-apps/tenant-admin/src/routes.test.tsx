@@ -1,0 +1,30 @@
+import React from 'react';
+import {act,render,waitFor} from '@testing-library/react';
+import {describe,expect,it} from 'vitest';
+import axe from 'axe-core';
+import {TenantAdminRenderer} from './renderer';
+import {buildNavigation,hrefFor,pageFor,targetFromPath} from './navigation';
+import {AppHost} from './test/host';
+import {fixtureList,fixtureMeta,mockApi} from './test/mock-api';
+const profiles=[['default',{},{}],['Arabic RTL',{language:'ar'},{}],['reduced motion',{reducedMotion:true},{}],['locked density',{density:'spacious'},{density:{value:'compact',locked:true}}]] as const;
+const navigation=buildNavigation(fixtureMeta);
+const withRows=fixtureMeta.resources.filter(r=>fixtureList(r.key)?.rows.length);
+const routes=['/','/approvals','/activity',...fixtureMeta.resources.map(r=>'/config/'+r.key),'/config/tax-rules?new=1','/config/'+withRows[0]!.key+'?open='+fixtureList(withRows[0]!.key).rows[0]!.id,'/nope'];
+describe.each(profiles)('%s route rendering',(profile,preferences,rules)=>{
+ it.each(routes)('%s',async path=>{
+  const [pathname,query]=path.split('?'),target=targetFromPath(pathname!,query??''),page=pageFor(target,navigation),api=mockApi();
+  const {container}=render(<AppHost request={api.request} preferences={preferences} rules={rules} current={target}><TenantAdminRenderer page={page} target={target}/></AppHost>);
+  await waitFor(()=>expect(container.querySelector('[data-tenant-admin-toolbar] h1')).toBeTruthy());
+  const scope=container.querySelector('.reference-tenant-admin')!;
+  if(pathname==='/')await waitFor(()=>expect(container.querySelectorAll('[data-tenant-admin-body] section ol > li').length).toBeGreaterThan(0));
+  if(pathname==='/activity')await waitFor(()=>expect(container.querySelectorAll('tbody tr').length).toBeGreaterThan(0));
+  if(pathname!.startsWith('/config/'))await waitFor(()=>expect(container.querySelectorAll('[data-tenant-admin-body] tbody tr').length).toBeGreaterThan(0));
+  if(pathname!.startsWith('/config/')&&!query)await waitFor(()=>expect(container.querySelector('[data-tenant-admin-body] tbody .animate-pulse')).toBeNull());
+  if(query)await waitFor(()=>expect(document.querySelector('[data-overlay="true"] [id="f-name"]')).toBeTruthy());
+  if(pathname==='/nope')await waitFor(()=>expect(container.querySelector('[data-tenant-admin-body] a[href="/"]')).toBeTruthy());
+  expect(scope.getAttribute('data-density')).toBe(profile==='locked density'?'compact':'comfortable');
+  expect(api.calls.every(c=>c.path.startsWith('/reference-modules/tenant-admin/'))).toBe(true);
+  if(!['/nope'].includes(path))expect(hrefFor(target)).toBe(path);
+  await act(async()=>{expect((await axe.run(document.body,{rules:{'color-contrast':{enabled:false},region:{enabled:false}}})).violations).toEqual([]);});
+ });
+});

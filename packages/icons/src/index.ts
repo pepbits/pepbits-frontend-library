@@ -119,6 +119,9 @@ export {
 } from "lucide-react";
 /* Calendar and Clock are also used by the phase 4c form controls; they are exported once, below. */
 export {Type, AlignLeft, Hash, CheckSquare, Mail, WandSparkles} from "lucide-react";
+// Tenant configuration presentation primitives.
+// Grid3x3, KeyRound and Percent are also generic primitives; they are exported once, below.
+export {BookOpenCheck, BookText, CalendarRange, CircleDashed, CircleSlash, CopyPlus, FolderTree, GitBranch, ListTree, PackageSearch, Rocket, ScrollText, TicketPercent, Waypoints, Workflow} from "lucide-react";
 export {Icon} from "./icon";
 export type {IconComponent, IconProps} from "./icon";
 
@@ -144,5 +147,10 @@ export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from '
 
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
 
-// Scheduling presentation primitives (CareGrid demonstration).
-export {Accessibility, Apple, Baby, Brain, CalendarOff, CalendarRange, Car, Clipboard, Cpu, House, Leaf, LibraryBig, LifeBuoy, Lightbulb, Repeat, Smile, TestTube, User, UserX, Wand2, Zap} from 'lucide-react';
+// Scheduling presentation primitives (CareGrid demonstration); CalendarOff, CalendarRange, Smile, User, UserX, Zap are exported elsewhere in this file.
+export {Accessibility, Apple, Baby, Brain, Car, Clipboard, Cpu, House, Leaf, LibraryBig, LifeBuoy, Lightbulb, Repeat, TestTube, Wand2} from 'lucide-react';
+// Reports demo presentation primitives (KeyRound, Library, ScrollText, Settings and Zap are exported elsewhere in this file).
+export { Blocks, FileBarChart, FolderDown, MailPlus } from "lucide-react";
+// Additional generic icon exports.
+export {ArrowDownWideNarrow, Award, BookCopy, BookMarked, BookPlus, BookUp, BookX, Briefcase, CalendarOff, Coffee, DollarSign, Eraser, FileSpreadsheet, Film, Flag, GraduationCap, Grid3x3, Highlighter, Kanban, KeyRound, Laptop, Library, Palette, Paperclip, PenTool, Percent, Redo2, School, Settings, Smile, Target, User, UserCog, UserX, VideoOff, Zap} from "lucide-react";
+export type {LucideIcon} from "lucide-react";

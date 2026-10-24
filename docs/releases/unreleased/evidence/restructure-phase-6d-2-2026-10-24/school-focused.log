@@ -1,0 +1,21 @@
+
+> @pepbits-demo/school@0.0.0 test
+> vitest run src/modules/school/attachments-locale.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6d2/demo-apps/school
+
+ ✓ src/modules/school/attachments-locale.test.tsx (7 tests) 7492ms
+   ✓ attachments > a failed upload keeps the file and the draft, Retry sends the same bytes once, and the assignment saves the returned metadata  2230ms
+   ✓ attachments > a file over 1 MB is refused before any request and blocks saving until removed  1071ms
+   ✓ attachments > a message keeps its text and file when sending fails, then sends the attachment and downloads the exact bytes  1193ms
+   ✓ attachments > a student submission sends its uploaded attachment with the answer  589ms
+   ✓ localization and number format > option labels are the source English, translated once, with values unchanged  489ms
+   ✓ localization and number format > chart values use the host number locale and chart labels are localized  554ms
+   ✓ localization and number format > changing the locale does not clear an open draft  1352ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  12:58:16
+   Duration  16.66s (transform 3.97s, setup 562ms, collect 5.51s, tests 7.49s, environment 1.56s, prepare 324ms)
+

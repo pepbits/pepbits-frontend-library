@@ -1,4 +1,9 @@
 .page {display:flex;flex-direction:column;flex:1;min-height:0;min-width:0;}
+.page[data-record-context] {container-type:inline-size;}
+.composition {display:grid;grid-template-columns:minmax(0,1fr);gap:16px;min-width:0;}
+.composition > *, .aside {min-width:0;}
+.aside {display:flex;flex-direction:column;gap:16px;}
+@container(min-width:900px){.composition {grid-template-columns:minmax(0,1fr) minmax(240px,300px);}}
 .page fieldset {min-width:0;}
 .page > :not([data-layout]) {flex-shrink:0;margin-block-end:8px;}
 .actions {display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;}

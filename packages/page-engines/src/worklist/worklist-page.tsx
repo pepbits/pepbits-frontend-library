@@ -131,7 +131,7 @@ export function WorklistPage(props:WorklistPageProps) {
  const {preferences}=usePreferences();
  return <PresentationProvider value={preferences}><WorklistContent key={JSON.stringify([props.adapter.identity,props.page.id])} {...props}/></PresentationProvider>;
 }
-function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPreferences,personalViews=true,rowClick='preview'}:WorklistPageProps) {
+function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPreferences,personalViews=true,renderViewControls,renderFilters,rowClick='preview'}:WorklistPageProps) {
  const {t}=useLocalization(),{preferences,isLocked,allowedValues,update}=usePreferences(),format=useFormatters();
  const [printedAt,setPrintedAt]=useState<Date|null>(null);
  useEffect(()=>{
@@ -475,7 +475,7 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
     setSearch(query); setFilters(rest); persist(query, rest); setVisibleKeys(columns.length ? columns : defaults);
     setSort(layout.sort && config.columns.some(column => column.key === layout.sort?.key) ? layout.sort : null);
     const size = ([10, 20, 50, 100] as const).find(size => size === layout.pageSize) ?? 20;
-    update({pageSize:size}); setPageNumber(1); setSelected([]);
+    if (!isLocked("pageSize") && (!allowedValues("pageSize") || allowedValues("pageSize")!.includes(size))) update({pageSize:size}); setPageNumber(1); setSelected([]);
   };
   const view = (row: Record<string, string | number | boolean>) => { setPreviewRow(null); openRecord({ pageId: page.id, mode: "view", recordId: String(row[config.primaryKey]), title: `${String(row[config.displayKey])} • View` }); };
   const edit = (row: Record<string, string | number | boolean>) => { if (!canEdit) return; setPreviewRow(null); openRecord({ pageId: page.id, mode: "edit", recordId: String(row[config.primaryKey]), title: `${String(row[config.displayKey])} • Edit` }); };
@@ -500,10 +500,10 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
           </div>
         ) : null}
       </div>      <Card className="flex flex-wrap items-center gap-2 p-2.5">
-        <div data-tour="search" className="min-w-[240px] flex-1 lg:max-w-xl"><SearchInput value={search} onChange={(value) => { setSearch(value); persist(value, filters); setPageNumber(1); }} className="w-full" placeholder={t("Search {page} by ID, name or any visible value…",{page:t(page.title)})} /></div>
+        <div data-tour="search" className="min-w-[240px] flex-1 lg:max-w-xl"><SearchInput aria-label="Search" value={search} onChange={(value) => { setSearch(value); persist(value, filters); setPageNumber(1); }} className="w-full" placeholder={t("Search {page} by ID, name or any visible value…",{page:t(page.title)})} /></div>
         <Button disabled={!host.can("create",page)} data-tour="new" variant="primary" leftIcon={<Plus className="size-3.5" />} onClick={() => openRecord({ pageId: page.id, mode: "new", title: `New ${page.title.replace(/ (Master|Worklist)$/i, "")}` })}><LocalizedText message="ui.new.18fdd549" /></Button>
         <div className="hidden h-7 w-px bg-[var(--border)] md:block" />
-        {personalViews && <PersonalViews request={authedFetch} key={`${product.id}:${page.id}`} productId={product.id} pageId={page.id}
+        {renderViewControls ? renderViewControls({layout:{filters:{...filters,...(search ? {query:search} : {})},columns:visibleKeys,sort,pageSize},onApply:applyPersonalView}) : personalViews && <PersonalViews request={authedFetch} key={`${product.id}:${page.id}`} productId={product.id} pageId={page.id}
           layout={{ filters: {...filters,...(search ? {query:search} : {})},columns:visibleKeys,sort,pageSize }}
           onApply={applyPersonalView} allowDefault={() => !explicitView.current} onShare={createSavedView} />}
         <div className="ml-auto flex items-center gap-1">
@@ -534,7 +534,7 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
             panel that rendered the same controls with no idea what any of them
             held — which is how a personal name reached localStorage. */}
         <div data-tour="filters">
-          <FilterBar
+          {renderFilters ? renderFilters({values:filters,onChange:changeFilter,onReset:reset}) : <FilterBar
             reference={reference ?? undefined}
             referenceKeys={adapter.referenceKeys}
             onRetryReference={loadReference}
@@ -547,7 +547,7 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
             onReset={reset}
             onCopyLink={() => { void navigator.clipboard?.writeText(window.location.href); toast({ title: "Link copied", message: "It carries only the filters that may travel in a URL.", type: "success" }); }}
             onSaveView={() => void createSavedView()}
-          />
+          />}
         </div>
 
       {selected.length ? <div className="animate-slide-up flex flex-wrap items-center gap-2 rounded-[var(--radius)] border border-[color-mix(in_srgb,var(--primary)_25%,var(--border))] bg-[var(--primary-soft)] px-3 py-2"><Badge tone="brand">{selected.length}{" "}<LocalizedText message="ui.selected.d7cbbb68" /></Badge><span className="text-[length:calc(9.5px*var(--fs-scale))] font-semibold text-[var(--text-muted)]"><LocalizedText message="ui.selection.applies.to.this.page.only.failed.records.stay.6c13991d" /></span><div className="ml-auto flex gap-1.5"><Button size="xs" variant="secondary" leftIcon={<Archive className="size-3" />} disabled={!canArchive || bulkBusy || loading} onClick={() => preferences.confirmBulkActions ? setConfirmArchive(true) : archive()}><LocalizedText message="ui.archive.66f4804e" /></Button><Button size="xs" variant="secondary" leftIcon={<Download className="size-3" />} disabled={!canExport} onClick={() => doExport(selectedRows, "selected records")}><LocalizedText message="ui.export.36648955" /></Button>{host.renderInlineAction?.({useCaseId:"worklist.summarise-selection",label:t("Summarise")})}<Button size="xs" variant="ghost" leftIcon={<FilterX className="size-3" />} onClick={() => setSelected([])}><LocalizedText message="ui.clear.83b12c22" /></Button></div></div> : null}

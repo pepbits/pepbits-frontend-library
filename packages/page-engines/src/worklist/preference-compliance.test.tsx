@@ -62,3 +62,17 @@ test('hosts can disable unsupported personal views while rows remain keyboard-op
  await screen.findByText('Record A');expect(request.mock.calls.some(([path])=>path==='/personal-views')).toBe(false);
  expect(container.querySelector('tbody tr')).toHaveAttribute('tabindex','0');fireEvent.keyDown(container.querySelector('tbody tr')!,{key:'Enter'});expect(open).toHaveBeenCalledWith(expect.objectContaining({recordId:'A',mode:'view'}));expect(screen.queryByRole('button',{name:'Saved views'})).toBeNull();
 });
+
+test('host filter/view slots use engine search and layout while saved page sizes obey mounted policy',async()=>{
+ const {request,adapter}=setup(),update=vi.fn();
+ const tree=(policy:PreferencePolicy)=><TestHost update={update} preferencePolicy={policy}><WorklistPage page={page} config={config} adapter={adapter} personalViews={false}
+  renderFilters={({values,onChange,onReset})=><><button onClick={()=>onChange('status','active')}>Host filter</button><output>{values.status}</output><button onClick={onReset}>Host reset</button></>}
+  renderViewControls={({layout,onApply})=><button onClick={()=>onApply({...layout,filters:{query:'Private term',status:'active'},columns:['name'],sort:{key:'name',direction:'desc'},pageSize:100})}>Host snapshot</button>}/></TestHost>;
+ const view=render(tree({revision:1,rules:{pageSize:{value:10,locked:true}}}));
+ await screen.findByText('Record A');fireEvent.click(screen.getByRole('button',{name:'Host filter'}));
+ await waitFor(()=>expect(JSON.parse(request.mock.calls.filter(([path])=>path==='/worklists/search').at(-1)![1]!.body as string).safeFilters.status).toBe('active'));
+ fireEvent.click(screen.getByRole('button',{name:'Host snapshot'}));
+ await waitFor(()=>expect(JSON.parse(request.mock.calls.filter(([path])=>path==='/worklists/search').at(-1)![1]!.body as string)).toMatchObject({pageSize:10,sort:{key:'name',direction:'desc'},sensitiveFilters:{query:'Private term'}}));expect(update).not.toHaveBeenCalled();
+ view.rerender(tree({revision:2,rules:{pageSize:{value:20,locked:false,allowedValues:[20,50]}}}));fireEvent.click(screen.getByRole('button',{name:'Host snapshot'}));expect(update).not.toHaveBeenCalled();
+ expect(request.mock.calls.some(([path])=>path==='/personal-views')).toBe(false);
+});

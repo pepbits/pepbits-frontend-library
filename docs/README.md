@@ -1,6 +1,9 @@
 # Enterprise frontend documentation
 
 - [Independent CareGrid demo](features/caregrid-demo.md): phase 6e-5 scheduling and resource planning app with live updates, all eleven source screens and an HTTP verification driver; fictional data, no deployment.
+- [Independent reports demo](features/reports-demo.md): all 19 Lumen Reports routes, shared host, fictional demo API and local HTTP evidence; no deployment.
+- [Independent Tenant Admin demo](features/tenant-admin-demo.md): Allyvora Tenant Admin with registry-driven configuration pages, governed approvals and audit; local app/API verification, fictional data, no deployment.
+- [Scholaris school demo](features/school-demo.md): 26 routes, six scoped portals and local evidence with explicit parity limits.
 
 - [Independent ERP demo](features/erp-demo.md): ERP1/ERP2 catalogue, calendars, invoices, analytical/dashboard subset, finance grants and local HTTP evidence; full parity remains incomplete.
 

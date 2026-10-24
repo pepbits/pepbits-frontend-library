@@ -1,0 +1,13 @@
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const recordId='restructure-phase-6d-2-2026-10-24';
+const baseCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const fixed=['package.json','package-lock.json','turbo.json','tsconfig.base.json','docs/features/school-demo.md','docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md','docs/releases/unreleased/README.md'];
+const paths=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8'}).split('\0').filter(path=>path&&(path.startsWith('packages/')||path.startsWith('tooling/')||path.startsWith('demo-apps/')||fixed.includes(path))))].sort();
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const files=paths.map(path=>({path,sha256:sha(readFileSync(path))}));
+const manifest={schemaVersion:1,recordId,status:'unreleased-working-tree',baseCommit,testGuideVersion:'1.0.0',implementationDigest:sha(files.map(file=>`${file.path}\0${file.sha256}\n`).join('')),digestAlgorithm:'SHA-256 of sorted path + NUL + file SHA-256 + LF entries',identityScope:'Root workspace configuration, all tracked/nonignored public packages/tooling/demos, school feature guide, plan and unreleased index. Excludes this record, manifest and evidence to avoid self-reference. Initial package-lock.json modification is preserved, not authored by this increment.',evidence:`${recordId}.md`,published:false,deployed:false,limits:['Coherent chart/table visual subset; see every route and role dashboard in school/parity-status.md for exact remaining states.','Original source comparison uses identical fictional in-memory fixtures and isolated content; it does not certify full-shell pixels or real HTTP.','The separate live suite uses local production-mode Next and unchanged fictional HTTP, not deployment or academic/accounting acceptance.','API-imposed restricted collections, borrower/class lookups and durable drafts remain deferred.','Human language/accessibility/domain acceptance, physical printers and native executables are unperformed.'],files};
+writeFileSync(`docs/releases/unreleased/manifest-${recordId}.json`,JSON.stringify(manifest,null,2)+'\n');
+if(process.argv[2])writeFileSync(process.argv[2],JSON.stringify(manifest,null,2)+'\n');
+console.log(`${files.length} files; SHA-256 ${manifest.implementationDigest}`);

@@ -1,0 +1,356 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "RPT-01",
+      "scope": "UI",
+      "result": "Fixture administrator sign-in through the shared shell and API-backed provider chain"
+    },
+    {
+      "id": "RPT-routes",
+      "scope": "UI",
+      "result": "48 destinations rendered API data and were scanned with axe"
+    },
+    {
+      "id": "RPT-preferences",
+      "scope": "UI",
+      "result": "Density preference saved through the host update path"
+    },
+    {
+      "id": "RPT-library",
+      "scope": "UI",
+      "result": "Catalogue search and favourite toggle through HTTP"
+    },
+    {
+      "id": "RPT-viewer-table",
+      "scope": "UI",
+      "result": "Sort, paging and column picker re-run the report with totals"
+    },
+    {
+      "id": "RPT-saved-views",
+      "scope": "UI",
+      "result": "Personal view saved and deleted"
+    },
+    {
+      "id": "RPT-export",
+      "scope": "UI",
+      "result": "Authenticated CSV export downloaded as revenue-transactions-####-##-##-to-####-##-##.csv"
+    },
+    {
+      "id": "RPT-background",
+      "scope": "UI",
+      "result": "Background run queued from the viewer"
+    },
+    {
+      "id": "RPT-schedule-create",
+      "scope": "UI",
+      "result": "Schedule created from the viewer"
+    },
+    {
+      "id": "RPT-email",
+      "scope": "UI",
+      "result": "Email delivery queued as a background job"
+    },
+    {
+      "id": "RPT-print",
+      "scope": "UI",
+      "result": "Print renders the isolated shared print document"
+    },
+    {
+      "id": "RPT-range-guard",
+      "scope": "UI",
+      "result": "On-screen range guard offers the background path (expected 4xx ASYNC_REQUIRED)"
+    },
+    {
+      "id": "RPT-job-result",
+      "scope": "UI",
+      "result": "Background job completed, stored result page shown and file downloaded"
+    },
+    {
+      "id": "RPT-builder",
+      "scope": "UI",
+      "result": "Custom report previewed, saved, opened and deleted"
+    },
+    {
+      "id": "RPT-dashboards",
+      "scope": "UI",
+      "result": "Dashboard created, saved and deleted"
+    },
+    {
+      "id": "RPT-schedules",
+      "scope": "UI",
+      "result": "Run now, pause, due processing and delete through HTTP"
+    },
+    {
+      "id": "RPT-email-in",
+      "scope": "UI",
+      "result": "Inbound email request simulated"
+    },
+    {
+      "id": "RPT-api-keys",
+      "scope": "UI + direct HTTP",
+      "result": "Key created, BI catalogue pulled (200), revoked and rejected (401)"
+    }
+  ],
+  "checks": [
+    {
+      "path": "/",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/builder",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboards",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/jobs",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/schedules",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/email-in",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/api-keys",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/admin/access",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/admin/users",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/admin/settings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/admin/sources",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/admin/audit",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/admin/outbox",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/login",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/revenue-by-service",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/daily-revenue",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/monthly-revenue-trend",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/revenue-transactions",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/payer-mix",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/claims-denials",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/denial-reasons",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/receivables-aging",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/trial-balance",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/general-ledger",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/income-expense-summary",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/cost-center-expense",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/appointment-attendance",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/no-show-trend",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/waiting-time",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/activity-by-department",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/bed-occupancy-trend",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/admissions-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/los-by-department",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/diagnostics-tat",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/diagnostics-volume-trend",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/stock-position",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/expiry-risk",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/readmissions",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/discharge-outcomes",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/budget-vs-actual",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/forecast-scenarios",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/reports/service-line-growth",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/builder/new",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboards/executive-overview",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboards/finance-daily",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/dashboards/clinical-ops",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/preferences",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [
+    {
+      "route": "/admin/users",
+      "message": "locator.click: Error: strict mode violation: getByRole('dialog').getByRole('button', { name: 'Analyst' }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] flex min-h-9 h-auto items-center justify-betwee…>…</button> aka getByRole('button', { name: 'Roles Administrator Executive' })\n    2) <button type=\"button\" class=\"flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-start text-[length:calc(11px*var(--fs-scale))] font-medium hover:bg-[var(--surface-2)]\">…</button> aka getByRole('button', { name: 'Analyst', exact: true })\n\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('button', { name: 'Analyst' })\u001b[22m\n"
+    }
+  ],
+  "consoleErrors": [
+    {
+      "route": "/schedules",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "httpErrors": [
+    {
+      "route": "/schedules",
+      "path": "/api/reference-modules/reports/api/page/dashboards/fictional-integration-dashboard-8c5cc3",
+      "status": 404
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "baseCommit": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+  "sources": [
+    {
+      "path": "desktop-clients/packages/reference-erp1/src/components/templates/index.ts",
+      "sha256": "5291a2748db1f62305188dec66f1d888c4549100f542d5f666d50e59218390da"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp2/src/components/templates/index.ts",
+      "sha256": "5291a2748db1f62305188dec66f1d888c4549100f542d5f666d50e59218390da"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/templates/ReportTemplate.tsx",
+      "sha256": "603789217b176396858d272d9403147d59381b410248811f697119301650e04b"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/templates/LedgerTemplate.tsx",
+      "sha256": "74de257cfca95d103d1bb24f69bf573dc9f746cd4cd072f227a671edf04a87a5"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/templates/MatrixTemplate.tsx",
+      "sha256": "0f420862809234cce5b25d887f303e050b6adc1f8c7bc61dfc9b4cf77730f22d"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/worklist/WorkList.tsx",
+      "sha256": "5ee9706b9673b0a530fb80edf9e5cd3bbd5c04313db2e9e783bc2b14cd7408fb"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/print/Invoice.tsx",
+      "sha256": "35c5946582b2e926085e9b0b564d97256b6a318e9fd3d61822d4797002b37ffc"
+    }
+  ],
+  "variants": [
+    "erp1",
+    "erp2"
+  ],
+  "reports": {
+    "destinations": [
+      "sales-register",
+      "purchase-register",
+      "stock-summary",
+      "receivables-aging"
+    ],
+    "controls": [
+      "typed advanced filters",
+      "three-state sorting",
+      "grouping",
+      "automatic first-currency group subtotal",
+      "grand totals",
+      "preference-selected CSV/XLSX"
+    ],
+    "pivotDesigner": false,
+    "periodComparison": false,
+    "subtotalModeSelector": false,
+    "parallelScope": [
+      "column persistence",
+      "saved views"
+    ]
+  },
+  "ledger": {
+    "destinations": [
+      "customer-ledger"
+    ],
+    "controls": [
+      "customer",
+      "month/90-day/365-day/all/custom period",
+      "search",
+      "complete-statement CSV/XLSX",
+      "opening/running/closing balances"
+    ],
+    "pivotDesigner": false,
+    "periodComparison": false,
+    "grouping": false
+  },
+  "matrices": {
+    "destinations": [
+      "attendance",
+      "timesheets",
+      "marks-entry"
+    ],
+    "controls": [
+      "month/week/term navigation",
+      "search",
+      "row and column summaries",
+      "attendance fill blanks",
+      "save/discard"
+    ],
+    "pivotDesigner": false,
+    "periodComparison": false,
+    "grouping": false,
+    "export": false
+  },
+  "invoice": {
+    "destinations": [
+      "invoice-print"
+    ],
+    "increment": "Measured multi-page A4 beyond source single-document layout; repeat identity/item headers, carried totals, continuous item/page numbers and final summary."
+  }
+}
