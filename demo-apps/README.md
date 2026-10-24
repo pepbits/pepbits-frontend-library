@@ -10,7 +10,11 @@ Applications that demonstrate and test the library. Phase 6a adds the independen
 
 [Showcase](showcase/README.md) is the first standalone Next.js demo. Run `npm run dev -w @pepbits-demo/showcase` from the repository root (port 3300); build/start/typecheck/test scripts are in its guide. Eight routes cover foundations, primitives, components, patterns, page engines, policy, Shell and AI inside the full library workspace frame. The 55 source-backed examples include tabs/split/MDI, fictional detached windows, shell layers, preferences/login and browser-only AI simulation. AI starts off and is enabled in the policy playground; no provider or server endpoint is configured.
 
-ERP is in progress below. Remaining app order: school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Each is its own app and will be built one at a time.
+ERP and desktop are described below. Other demo ports are coordinated in separate worktrees; this branch does not incorporate their later merges.
+
+## Desktop
+
+[Desktop](desktop/README.md) is the Vite + Tauri 2 demo on port 3410 that replaces `desktop-clients/apps/desktop` (phase 6e-7). The full shell runs as a document workspace (tabs, split, floating frames, unsaved-change guards, separate native windows through a Tauri window port) around demo-owned pages over the unchanged demo API. The [source map](desktop/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-7-2026-10-24.md) state scope: resumed-source unit/typecheck/docs checks pass; final build/CI/browser verification is blocked by the shared heavy-check lock. The native executable is not built or tested.
 
 ## Healthcare
 

@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Desktop phase 6e-7 — Tauri-hosted desktop demo](restructure-phase-6e-7-2026-10-24.md): document workspace, Tauri window port and copied native host; unit/typecheck/docs pass, required heavy checks blocked by the shared lock; no native build.
+
 - [ERP phase 6c-3 — calendars, invoices and analytical views](restructure-phase-6c-3-2026-10-24.md): specialized workflow subset, shared calendar/charts and exact verification; remaining parity gaps are explicit.
 
 - [ERP phase 6c-2 — specialized view subset and finance grants](restructure-phase-6c-2-2026-10-23.md): hierarchy, boards, ERP1 profile splits, direct extraction tests and exact remaining scope.

@@ -1,5 +1,7 @@
 # Feature catalog
 
+- [Independent desktop demo](desktop-demo.md): Vite web host with the copied Tauri 2 host, full shell document workspace and demo-owned pages over the demo API; native executable not built or tested.
+
 - [Independent ERP demo](erp-demo.md): 114 catalogue destinations, ERP1 in-page and ERP2 routed records; local checks and explicit remaining scope.
 
 - [Independent healthcare demo](healthcare-demo.md): Healthcare Suite core, clinical and LIS/RIS diagnostic workflows against the synthetic demo API; local validation and explicit remaining scope.

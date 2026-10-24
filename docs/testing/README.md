@@ -120,3 +120,7 @@ The [6b-2 diagnostics increment](../releases/unreleased/restructure-phase-6b-2-2
 The [ERP feature contract](../features/erp-demo.md) defines ERD-01 through ERD-07. Its [local record](../releases/unreleased/restructure-phase-6c-1-2026-10-23.md) separates all 38 original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks. Route coverage is not specialized workflow, accounting or human accessibility acceptance.
 
 ERP phase 6c-2 extends ERD-08 through ERD-12 with hierarchy/board/profile and finance-grant cases, direct extraction tests and the existing four-profile route/page-content axe matrix. The [6c-2 record](../releases/unreleased/restructure-phase-6c-2-2026-10-23.md) separates real local HTTP/UI commands, direct HTTP denials, full-shell browser axe and forced CI. No backend/desktop inventory is modified.
+
+## Desktop phase 6e-7
+
+The [desktop feature contract](../features/desktop-demo.md) defines DSK-01 through DSK-08. `demo-apps/desktop` keeps the original three Tauri window-port cases (Tauri API mocked), renders all eleven route patterns through the full host under default, Arabic RTL, reduced motion and a locked preference with jsdom axe, and covers record/split/dirty-close/detach/preference/AI workflows with a mocked API. Its integration driver checks the production web build (`vite preview`) against the real local demo API in Chromium. The [6e-7 record](../releases/unreleased/restructure-phase-6e-7-2026-10-24.md) separates these from native execution, which was not performed.

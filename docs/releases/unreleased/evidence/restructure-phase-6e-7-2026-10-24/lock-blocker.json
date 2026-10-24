@@ -1,0 +1,33 @@
+{
+  "time": "2026-10-24T18:40:00.539Z",
+  "lock": "/home/pepadmin/.cache/pepbits-heavy.lock",
+  "waitStarted": "2026-10-24T18:09:50.775Z",
+  "waitSeconds": 1800,
+  "waitExit": 1,
+  "heavyCommandStarted": false,
+  "probe": {
+    "command": "flock -n -E 75 /home/pepadmin/.cache/pepbits-heavy.lock true",
+    "exit": 75,
+    "stdout": "",
+    "stderr": ""
+  },
+  "processes": {
+    "command": "ps -eo pid,ppid,comm",
+    "exit": 0,
+    "stdout": "PID    PPID COMMAND\n      1       0 codex\n      2       1 bash\n      3       2 node\n     11       3 ps",
+    "stderr": ""
+  },
+  "visibleLocks": {
+    "command": "lslocks --json",
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "fileUsers": {
+    "command": "fuser -v /home/pepadmin/.cache/pepbits-heavy.lock",
+    "exit": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "limitation": "Each execution uses an isolated PID namespace. ps/lslocks/fuser cannot identify a lock holder in another session; no claim is made that it is orphaned. The coordinating host session must identify the holder. The lock was not removed, replaced or bypassed."
+}

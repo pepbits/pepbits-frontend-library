@@ -212,3 +212,19 @@ Solid notification surfaces use a dark tint of their semantic tone so white titl
 EnterpriseShell keeps its scrollable main region keyboard focusable even when a dashboard has no interactive children; the shell regression and real-browser axe sweep cover this case.
 
 Direct `application-providers.test.tsx` cases now verify session → preference → catalog → shell ordering, shared request/session wiring, anonymous and failed-load paths, serialized writes, rejected-save recovery, policy refresh, language changes preserving editor input and late-response fencing on identity changes. These tests inject fictional HTTP responses; they do not establish live identity or service acceptance.
+
+## Application workspace (phase 6e-7)
+
+`ApplicationProviders` accepts an optional `workspace: ApplicationWorkspace`; omitting it keeps the routed single-page shell exactly as before, and `children` is now optional. With it, the authenticated frame becomes a document workspace inside the same session, preference and catalog hosts:
+
+| Option | Meaning |
+| --- | --- |
+| `render(target)` | Renders one document's `NavigationTarget`; serves tabs, split panes, MDI frames and detached windows |
+| `policy?(preferences)` | Workspace policy from effective preferences. Default `defaultWorkspacePolicy`: every mode, detach allowed, three warm documents; `openRecordsInTabs` chooses tabs or one document at a time, while split and windows remain |
+| `detachedDocumentKey?` | In a native child window, the one document to show. No tab strip; navigation replaces the document; a key for another tenant shows AccessDenied and an unparsable key ErrorState |
+| `wrapShell?(shell)` | Wraps ShellProvider, for example with `AiShellExtension` |
+| `allowFloatingWindows?` | Floating MDI frames when the `floatingWindows` preference is on (default true) |
+
+The frame creates one store per account, opens the host navigation's current target beside the module home and keeps both directions in sync: a changed address opens or focuses its document; a changed active document calls the host `navigation.open`. Cancelling a guarded address change restores the active document's address. Each side reacts only to its own change, so there is no loop. `hrefFor` stays the host's, so sidebar links remain real addresses. The host supplies the `WindowPort` through `WindowPortProvider`; detach is offered only when it is available. Dirty-close/module confirmations, split and MDI behaviour are the existing `WorkspaceShell` contracts. `application-workspace.test.tsx` (eight cases) covers address → document, document → address, cancelled address changes retaining edits, the one-document policy, dirty-close confirmation and policy input, detach through an available port with a sanitized title, detached single-document/foreign-tenant/malformed keys and `wrapShell` with the unchanged routed mode.
+
+Fix: `useWorkspaceNavigation` crossing into another module with a record whose page is that module's landing page (for example a deep link to a worklist record) now opens the record beside the home tab instead of dropping it. A regression case is added to `use-workspace-navigation.test.tsx`. The desktop demo is the first consumer.
