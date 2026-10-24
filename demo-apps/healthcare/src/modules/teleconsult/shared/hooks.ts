@@ -40,7 +40,9 @@ export function useApiResource<T>(client: TeleconsultClient, path: string | null
   }, [client, path]);
 
   // A different client means a different scope, role or beneficiary: drop what the previous one returned.
-  useEffect(() => { setData(undefined); setError(undefined); }, [client]);
+  // Done during render, so no screen ever mounts with the previous client's data and then remounts.
+  const [owner, setOwner] = useState(client);
+  if (owner !== client) { setOwner(client); setData(undefined); setError(undefined); }
 
   useEffect(() => {
     void load();
