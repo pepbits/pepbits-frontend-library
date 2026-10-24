@@ -2,14 +2,14 @@
 import {CollectionView} from "@pepbits/components/collection-view";
 
 
-import {Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableHeader, TableRow} from "@pepbits/components";
+import {Pagination} from "@pepbits/components";
 import {SearchInput} from "@pepbits/ui";
 import { ArrowDown, ArrowUp, Download } from "@pepbits/icons";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useFormat, useSchoolExport } from "../lib/format";
 import { usePreferenceControl } from "../lib/preferences";
 import { cn } from "../lib/utils";
-import { Button, Empty, Skeleton } from "./primitives";
+import { Button, Empty } from "./primitives";
 import {LocalizedText as ReferenceText, useLocalization as useReferenceLocalization} from "@pepbits/i18n/react";
 
 
@@ -47,8 +47,6 @@ export function DataTable<T extends { id: string }>({
 }) {
  const referenceT = useReferenceLocalization().t;
   const { fmtNum } = useFormat();
-  /* String headers are source English and are localized here; element headers render as given. */
-  const headerLabel = (h: ReactNode) => (typeof h === "string" ? <ReferenceText message={h} /> : h);
   /* A plain numeric cell uses the host number format; other plain values render as text. */
   const plain = (v: string | number | null | undefined) => (typeof v === "number" ? fmtNum(v) : String(v ?? "—"));
 
@@ -81,11 +79,11 @@ export function DataTable<T extends { id: string }>({
   const visible = filtered.slice((current - 1) * size.size, current * size.size);
 
   return (
-    <div className={cn("flex min-h-0 flex-col rounded-lg border border-line bg-surface", className)}>
+    <div className={cn("school-data-table flex min-h-0 flex-col rounded-lg border border-line bg-surface", className)}>
       <div className="flex flex-wrap items-center gap-2 border-b border-line p-2">
         <SearchInput value={q} onChange={(v) => { setQ(v); setPage(1); }} placeholder={searchPlaceholder} aria-label={referenceT("Search table")} className="w-full sm:w-60" />
         {toolbar}
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ms-auto flex items-center gap-2">
           <span className="text-[11px] text-muted tabular">{fmtNum(filtered.length)} <ReferenceText message="records" /></span>
           {exportName && (
             <Button size="sm" icon={Download} disabled={exporter.disabled} title={exporter.reason}
@@ -94,7 +92,8 @@ export function DataTable<T extends { id: string }>({
         </div>
       </div>
       <CollectionView<T> rows={visible} rowKey={row=>row.id} loading={loading&&!rows} onRowClick={onRowClick} selectedKey={selectedId}
-        columns={columns.map(column=>({key:column.key,header:column.header || referenceT("Actions"),sortable:column.sortable!==false,className:column.className,render:row=>column.cell?column.cell(row):plain(val(column,row))}))}
+        rowClassName={row=>cn("group border-b border-line/60 transition-colors last:border-0",onRowClick&&"cursor-pointer hover:bg-brand/[0.04]",selectedId===row.id&&"bg-brand/[0.07]")}
+        columns={columns.map(column=>({key:column.key,header:<>{typeof column.header==="string"?<ReferenceText message={column.header||"Actions"}/>:column.header||<ReferenceText message="Actions"/>}{sort?.key===column.key&&(sort.dir===1?<ArrowUp className="size-3" aria-hidden/>:<ArrowDown className="size-3" aria-hidden/>)}</>,sortable:column.sortable!==false,className:column.className,headerClassName:column.headerClassName,render:row=>column.cell?column.cell(row):plain(val(column,row))}))}
         sort={sort?{key:sort.key,dir:sort.dir===1?'asc':'desc'}:undefined} onSort={key=>setSort(s=>s?.key===key?(s.dir===1?{key,dir:-1}:null):{key,dir:1})}
         empty={empty??<Empty title={referenceT("No matching records")} text="Change the filters or clear the search to see more."/>}/>
       {size.fixed ? pages > 1 && (

@@ -21,7 +21,7 @@ const covers = (e: CalendarEvent, d: string) => d >= e.date && d <= (e.endDate ?
 export function CalendarPage() {
  const referenceT = useReferenceLocalization().t;
 
-  const { fmtDate, locale } = useFormat();
+  const { fmtDate, fmtNum, locale } = useFormat();
   const exporter = useSchoolExport();
   const { role } = useSession();
   const toast = useToast();
@@ -54,7 +54,7 @@ export function CalendarPage() {
         </div>
         {error && <div className="p-2"><ErrorNote message={error} onRetry={reload} /></div>}
         {!data?<Skeleton className="m-2 flex-1"/>:<div className="school-month-calendar" onDoubleClick={event=>{const iso=(event.target as Element).closest('[data-date]')?.getAttribute('data-date');if(iso&&role==='admin')setAdding(iso);}}>
-          <Calendar key={calendarEpoch} label="School calendar" value={day} onChange={setDay} locale={locale} className="w-full" renderDay={iso=><span className="flex flex-col gap-0.5">{events.filter(e=>covers(e,iso)).slice(0,3).map(e=><span key={e.id} className="truncate rounded px-1 text-[10.5px] text-white" style={{background:COLOR[e.type]}}>{e.title}</span>)}</span>}/>
+          <Calendar key={calendarEpoch} label="School calendar" value={day} onChange={setDay} locale={locale} className="w-full" renderDay={iso=>{const daily=events.filter(e=>covers(e,iso));return <span className="flex flex-col gap-0.5">{daily.slice(0,3).map(e=><span key={e.id} title={e.title} className="truncate rounded px-1 text-[10.5px] leading-4 font-medium text-white" style={{background:COLOR[e.type]}}>{e.title}</span>)}{daily.length>3&&<span className="px-1 text-[10px]">+{fmtNum(daily.length-3)} <ReferenceText message="more"/></span>}</span>;}}/>
         </div>}
 
       </Card>

@@ -1,6 +1,6 @@
 # Feature: independent Scholaris school demo
 
-Feature ID: SCD. State: implemented, locally verified subset with the parity limits below. Affected application: private `@pepbits-demo/school`, 26 authenticated pages, six portals and preferences. [Release](../releases/unreleased/restructure-phase-6d-2026-10-24.md), [testing guide 1.0.0](../testing/v1.0.0/PRE-COMMIT.md).
+Feature ID: SCD. State: implemented, locally verified subset with the parity limits below. Affected application: private `@pepbits-demo/school`, 26 authenticated pages, six portals and preferences. [Initial release](../releases/unreleased/restructure-phase-6d-2026-10-24.md), [visual increment](../releases/unreleased/restructure-phase-6d-2-2026-10-24.md), [testing guide 1.0.0](../testing/v1.0.0/PRE-COMMIT.md).
 
 ## User problem and outcome
 
@@ -49,6 +49,10 @@ Shared engines provide keyboard-operable tables/board/calendar/chart controls. S
 | SCD-06 | Assignment attachments, failed upload retry, grading and retained input |
 | SCD-07 | Parent child scoping, library canonical stock/fines and fee receipts |
 | SCD-08 | Configured real HTTP workflows, rejected role claims and isolated process cleanup |
+| SCD-09 | Authored chart dimensions, bounds, fills and palette; finite geometry and keyboard inspection under default, Arabic RTL, reduced motion and independent result scale |
+| SCD-10 | Source table headers and three-state sorting preserve locked density and page size |
+| SCD-11 | Calendar overflow counts retain full titles and the complete selected-day agenda |
+| SCD-12 | Paired source-content measurements cover 26 routes and six dashboards in four profiles; remaining differences and unvisited states are recorded per route |
 
 All original 100 cases and five school catalog tests are ported with provider/renderer adaptations. Added host, adapter, route/profile/axe and real HTTP checks are reported separately in the release record. All 26 administrator routes are present; restricted-role exceptions are listed below. Exact pixel parity, exhaustive canvas/media interaction, physical printing, native execution, production services and human/domain acceptance remain outside the automated evidence.
 
@@ -59,3 +63,13 @@ Missing API configuration produces an actionable message. Authentication failure
 ## Existing API restrictions
 
 The unchanged API grants Librarian books/issues/message threads and Accountant invoices/message threads, plus shared metadata, profile, statistics and settings. Their academic lookups are skipped. Librarian Students/Calendar/Notices and Accountant Students/Notices are therefore withheld; those pages remain available to authorized academic roles. Librarian issue creation offers borrowers already present in allowed circulation records; unrestricted new-borrower lookup is deferred. Accountant invoice class labels and class filtering remain unavailable because its class lookup is not granted. These are explicit source workflow parity limits, not backend changes.
+
+## Phase 6d-2 visual parity increment
+
+The [route handoff](../../demo-apps/school/parity-status.md) and [6d-2 record](../releases/unreleased/restructure-phase-6d-2-2026-10-24.md) supersede the initial visual deferral for the measured subset. Dashboard/report line plots keep authored height, bounds and area fill. Donuts keep diameter, stroke, centre caption and semantic/source segment colours. Tab to a line chart to reveal its native inspection selector; choose a date with the keyboard to read localized values. Legend buttons inspect donut values. Effective result scale, theme and number formatting remain authoritative.
+
+School tables keep source heading metadata, result typography, row separators/hover/selection and ascending/descending/unsorted indicators through CollectionView. Managed density, striping, wrapping, sticky headers and page-size policy still come from the shared presentation host. No API contract, record command, durable draft service or source role grant changes. Existing retry behavior remains.
+
+Verification distinguishes the read-only source fixture comparison from real-HTTP browser workflows. Source content is rendered at the same width and frozen fixture clock; computed element comparisons do not certify full-page pixels, shell chrome, all dialogs or printed geometry. The route handoff lists those remaining states explicitly. API-imposed Librarian/Accountant collections, unrestricted new-borrower lookup, accountant class labels/filtering and durable drafts remain deferred.
+
+Calendar days with more than three events now show the source `+N more` count and retain complete event titles; select that day to read every event in its agenda. This closes a frontend composition gap without changing the API.

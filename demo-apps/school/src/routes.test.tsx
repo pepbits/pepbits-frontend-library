@@ -23,6 +23,8 @@ describe.each(profiles)('%s route rendering',(profile,preferences,rules)=>{
   expect(container.querySelector('[role="alert"]')).toBeNull();
   if(profile==='Arabic RTL')expect(container.querySelector('[dir="rtl"]')).toBeTruthy();
   if(profile==='reduced motion')expect(container.querySelector('.reference-school-root')).toHaveAttribute('data-reduced-motion','true');
+  for(const table of container.querySelectorAll('table[data-managed-table]')){expect(table).toHaveAttribute('data-density',host.preferences.density);expect(table).toHaveAttribute('data-wrap',String(host.preferences.wrapCellText));}
+  for(const chart of container.querySelectorAll('[data-line-chart],[data-donut-chart]'))expect(chart).toHaveAttribute('data-chart-layout','compact');
   // The controlled test host projects effective policy exactly as the application host does.
   await act(async()=>expect((await axe.run(container,{rules:{'color-contrast':{enabled:false}}})).violations).toEqual([]));
  });

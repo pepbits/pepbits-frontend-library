@@ -155,7 +155,7 @@ describe("localization and number format", () => {
     fireEvent.change(selector,{target:{value:options[options.length-1]!.getAttribute('value')}});
     const tip = chart.querySelector('dt')!.parentElement!;
     expect(chart.querySelector('dt')).toHaveTextContent('Anwesend');
-    expect(tip.textContent).toMatch(/^Anwesend\d+(,\d)?%$/);
+    expect(tip.textContent).toMatch(/^Anwesend:\d+(,\d)?%$/);
     expect(tip.textContent).not.toMatch(/\d\.\d/);
   });
 
