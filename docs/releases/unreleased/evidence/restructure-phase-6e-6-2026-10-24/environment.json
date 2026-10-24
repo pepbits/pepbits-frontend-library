@@ -1,0 +1,15 @@
+{
+  "time": "2026-10-24T18:09:53.128228+00:00",
+  "baseCommit": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "hostApiNode": "/home/pepadmin/.local/opt/node24/bin/node",
+  "ciCommand": "NEXT_PUBLIC_API_URL=/api NEXT_PUBLIC_ALLYVORA_API_URL=/allyvora-api npm run ci -- --concurrency=1 --env-mode=loose",
+  "receiptInputs": "Four inherited healthcare browser-contract assertions read the historical 6b-9 receipt (RCM_/MEDBAND_BROWSER_PARITY_RESULT); no fresh healthcare HTTP sweep.",
+  "browserCommand": "LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu npm run test:browser -w @pepbits/shell",
+  "documentationCommand": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs",
+  "memory": "Forced CI with --concurrency=1; one Vitest tree and one Next server at a time; integration necessarily uses both unchanged APIs (shared host and AllyVora data), with one instance of each. All heavy steps use the shared flock.",
+  "sourceDependencies": "source/allyvora-patients: npm ci -w backend (node_modules ignored); backend/dist built by its own scripts/build.mjs (ignored).",
+  "dependencies": "Root lockfile adds the private demo workspace and the @allyvora/shared file dependency; no other version change.",
+  "install": "npm install passed with npm_config_cache=/tmp/allyvora-npm-cache after the default ~/.npm cache was read-only; four existing audit findings (1 moderate, 3 critical), no dependency-wide audit remediation."
+}

@@ -1,0 +1,58 @@
+{
+  "time": "2026-10-24T18:38:33.477Z",
+  "lock": "/home/pepadmin/.cache/pepbits-heavy.lock",
+  "nonblockingProbe": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "processes": {
+    "exit": 0,
+    "stdout": "    PID    PPID     ELAPSED COMMAND\n      1       0       00:00 codex\n      2       1       00:00 bash\n      3       2       00:00 node\n     11       3       00:00 ps\n",
+    "stderr": ""
+  },
+  "locks": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "fuser": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "procLocks": "",
+  "pidNamespace": "pid:[4026532538]",
+  "scope": "Read-only owner check after over 30 minutes of observed contention; this sandbox process namespace may hide the external holder. No lock file or external process changed.",
+  "followup": {
+    "time": "2026-10-24T19:07:06.826Z",
+    "nonblockingProbe": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "processes": {
+      "exit": 0,
+      "stdout": "    PID    PPID     ELAPSED COMMAND\n      1       0       00:00 codex\n      2       1       00:00 bash\n      3       2       00:00 node\n     11       3       00:00 ps\n",
+      "stderr": ""
+    },
+    "locks": {
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "fuser": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "procLocks": "",
+    "pidNamespace": "pid:[4026532457]"
+  },
+  "resolution": {
+    "acquiredAt": "2026-10-24T19:18:17Z",
+    "queuedSinceApprox": "2026-10-24T18:10:00Z",
+    "ownerIdentified": false,
+    "action": "Waited without bypass or changing the lock or external processes; full sequential verification started on acquisition."
+  }
+}
