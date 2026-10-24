@@ -1,0 +1,154 @@
+{
+  "scope": "Local vite preview of the desktop web build (browser web mode, no Tauri runtime) and the unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "DSK-01",
+      "result": "Fixture sign-in, API preferences/catalog and deep link to Customer Master"
+    },
+    {
+      "id": "DSK-02",
+      "result": "Worklist search posts the classified query and shows API rows"
+    },
+    {
+      "id": "DSK-03",
+      "result": "Row opens the record in a third tab and the address follows the active document",
+      "recordId": "CUS-02401"
+    },
+    {
+      "id": "DSK-04",
+      "result": "Edit and save to the demo API record store; server validation accepted the completed required fields"
+    },
+    {
+      "id": "DSK-05",
+      "result": "Reloaded edit deep link restores the saved value with a fresh workspace"
+    },
+    {
+      "id": "DSK-15",
+      "result": "Cancel address-driven module navigation restores the active record URL and keeps typed values"
+    },
+    {
+      "id": "DSK-06",
+      "result": "Dirty-close confirmation keeps work on Cancel and discards only after confirmation"
+    },
+    {
+      "id": "DSK-07",
+      "result": "Split two customer records, swap panes and return to one pane"
+    },
+    {
+      "id": "DSK-08",
+      "result": "Browser web mode uses the unavailable window port: separate windows are not offered"
+    },
+    {
+      "id": "DSK-09",
+      "result": "Floating windows preference saved over HTTP switches to MDI frames and back to tabs"
+    },
+    {
+      "id": "DSK-10",
+      "result": "HR module replaces the tab set, employee worklist and read-only record from API rows"
+    },
+    {
+      "id": "DSK-11",
+      "result": "Library examples render shared values, chart and calendar inside the desktop frame"
+    },
+    {
+      "id": "DSK-12",
+      "result": "Detached-window address renders one record; a foreign-tenant key is refused"
+    },
+    {
+      "id": "DSK-13",
+      "result": "AI off by default: no assistant control and no /ai request"
+    },
+    {
+      "id": "DSK-16",
+      "result": "Create a customer through the UI and reload its generated record URL from the saved store"
+    },
+    {
+      "id": "DSK-14",
+      "result": "Language preference to Arabic applies RTL after the API catalog loads, then restores English"
+    }
+  ],
+  "checks": [
+    {
+      "path": "/overview",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/finance/customers",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/finance/customers/CUS-02401",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/finance/customers/CUS-02401/edit",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/finance/customers/new",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/library/components",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/hr/employees",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/hr/employees/EMP-01001",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/preferences",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/finance/unknown",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "ar /overview",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "ar /finance/customers",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "ar /finance/customers/CUS-02401",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "aiRequests": []
+}

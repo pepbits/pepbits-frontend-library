@@ -1,6 +1,6 @@
 # Desktop phase 6e-7 — Tauri-hosted desktop demo — 24 October 2026
 
-Status: implementation ready; required heavy verification blocked by the shared lock. **Phase 6e-7 is not fully verified or finished.** Unreleased working tree on `restructure/phase-6e-7`, base `5bbb13027d137ac31594ca9a1a3d47aac46653c9`. Continued the earlier agent's uncommitted work. No merge, rebase, commit, push, tag, publication or deployment. Fictional demonstration data only. **No native Rust/Tauri executable was built, run or tested.**
+Status: **local desktop web build and complete real-HTTP verification passed** in the 24 October follow-up. Unreleased working tree on `restructure/phase-6e-7`, base `4428b4009ee0174a38224e6480744b91f09ba7ef`. The earlier lock blocker is historical; the coordinator explicitly requested this focused run without the heavy lock. No merge, rebase, commit, push, tag, publication or deployment in this follow-up. Fictional demonstration data only. **No native Rust/Tauri executable was built, run or tested.**
 
 [Plan](../../architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-6e-7-status), [app guide](../../../demo-apps/desktop/README.md), [source map](../../../demo-apps/desktop/source-mapping.md), [feature contract DSK-01–08](../../features/desktop-demo.md), [testing guide 1.0.0](../../testing/v1.0.0/PRE-COMMIT.md).
 
@@ -42,11 +42,42 @@ One accepted preference update path applies effective typography/scales, theme, 
 
 ## Verification
 
-The required heavy checks remain **pending**. `flock -w 1800 /home/pepadmin/.cache/pepbits-heavy.lock bash docs/releases/unreleased/evidence/restructure-phase-6e-7-2026-10-24/run-checks.sh resume` waited from **18:09:50 to 18:39:50 UTC** and exited **1** without starting the launcher. A nonblocking probe at 18:40 returned **75**, confirming the lock remained held. `ps`, `lslocks` and `fuser` could not see its holder because execution is in an isolated PID namespace. The holder cannot be classified as live-session or orphaned from here. The lock was not removed, replaced or bypassed. [Blocker receipt](evidence/restructure-phase-6e-7-2026-10-24/lock-blocker.json).
+### Live HTTP follow-up — 24 October 2026
 
-Still required on this source: **Vite web build; the complete real-HTTP workflow and full-document axe sweep; shell Chromium; forced root CI with per-workspace counts and `Cached: 0 cached`**. No current-source build/CI/browser success is claimed. The coordinating session must identify the holder from the host and release the lock only if appropriate. Once available, run the [launcher](evidence/restructure-phase-6e-7-2026-10-24/run-checks.sh) through the shared lock, then [summarize CI](evidence/restructure-phase-6e-7-2026-10-24/summarize-ci.mjs), inspect the browser receipts/screenshots and complete this record. Turbo is configured with `--force`, workspace concurrency one and loose environment forwarding. Each Vitest workspace uses at most two workers.
+The original timeout reproduced at the Arabic preference step. Preferences opens on Behaviour and keeps other sections mounted but hidden; the smoke script selected the hidden Language control without opening Language & help, so no PUT occurred. The [diagnostic](evidence/restructure-phase-6e-7-2026-10-24/live-http-diagnostic.json) confirms that opening the tab makes the enabled control visible. The script now opens that tab in both locales and awaits the action and HTTP response together, so failures reach its receipt/cleanup path. The API URL and proxy needed no changes.
 
-Already completed on the resumed implementation:
+That correction completed all workflows and exposed **two axe violations** (`label-content-name-mismatch`, eight credit-limit buttons on each of the English and Arabic customer lists). [Intermediate browser receipt](evidence/restructure-phase-6e-7-2026-10-24/browser-live-http-before-label-fix.json), [log](evidence/restructure-phase-6e-7-2026-10-24/integration-live-http-before-label-fix.log). The shared `InlineEdit` used the raw value for its accessible name when its formatted display was a React element. It now derives the name from the column label and rendered display; editing still uses the raw value. A regression test covers that distinction. No axe rules or HTTP expectations were weakened.
+
+The final check ran exactly these commands, without the heavy lock or a native build:
+
+```sh
+VITE_API_URL=/api npm run build -w @pepbits-demo/desktop
+LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu \
+DESKTOP_API_NODE=$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node \
+DESKTOP_RUNTIME_ARTIFACTS=/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/dummy-api \
+node tooling/scripts/run-demo-integration.mjs desktop
+```
+
+**Passed, exit 0: 16 workflows; 13 full-document axe route checks; 0 script/page errors, 0 console errors, 0 non-auth API HTTP errors, 0 axe violations and 0 AI requests.** The route checks comprise ten English cases and three Arabic RTL repeats: overview, customer worklist and customer view. Arabic preference persistence and restoration to English completed over HTTP. Axe retained two incomplete review items per route (26 total), separate from violations; human accessibility/language acceptance remains outside this run. [Browser results](evidence/restructure-phase-6e-7-2026-10-24/browser-live-http.json), [integration log](evidence/restructure-phase-6e-7-2026-10-24/integration-live-http.log), [API/runtime/cleanup identity](evidence/restructure-phase-6e-7-2026-10-24/identity-live-http.json), [build log](evidence/restructure-phase-6e-7-2026-10-24/build-live-http.log).
+
+The [tested source checkpoint](evidence/restructure-phase-6e-7-2026-10-24/source-live-http.json) identifies base `4428b4009ee0174a38224e6480744b91f09ba7ef` plus working-tree digest `a0451fefa4575e2a21c5fa0a07290982aae9f4b6cf1a6e4473feb6f3cb84c510` (1,845 files). Only guide/status documentation and evidence changed after this checkpoint; executable source remained unchanged. The [follow-up verification receipt](evidence/restructure-phase-6e-7-2026-10-24/live-http-verification.json) records the final manifest, build identity, command exits and cleanup.
+
+| Follow-up check | Result | Evidence |
+| --- | --- | --- |
+| `npm test -w @pepbits/components -- src/inline-edit.test.tsx src/inline-edit-typed.test.tsx` | 35 tests / 2 files passed | [Log](evidence/restructure-phase-6e-7-2026-10-24/inline-edit-live-http.log) |
+| `npm test -w @pepbits-demo/desktop` (after live success) | 82 tests / 3 files passed | [Log](evidence/restructure-phase-6e-7-2026-10-24/desktop-tests-live-http.log) |
+| `npm run typecheck -w @pepbits-demo/desktop` (after live success) | Passed | [Log](evidence/restructure-phase-6e-7-2026-10-24/desktop-typecheck-live-http.log) |
+| `$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node docs/tools/check-docs.mjs` | 207 documentation files passed | [Log](evidence/restructure-phase-6e-7-2026-10-24/docs-live-http.log) |
+
+The initial documentation command with the default Node 22 runtime failed to import the existing `.ts` inventory; rerunning with the project's Node 24 runtime passed. [Node 22 failure](evidence/restructure-phase-6e-7-2026-10-24/docs-live-http-node22.log). No documentation tooling changed.
+
+The coordinator's pre-existing logs report **45/45 local CI tasks, 0 cached**, and **4 shell Chromium tests / 1 file passed**. Their [retained summary and log hashes](evidence/restructure-phase-6e-7-2026-10-24/coordinator-checks-summary.json) preserve that evidence without treating it as a rerun against the final working tree: those logs do not contain source identity. Root CI and shell Chromium were not repeated in this focused follow-up.
+
+### Earlier resumed verification (historical)
+
+The original resume used base `5bbb13027d137ac31594ca9a1a3d47aac46653c9`. Its lock wait from **18:09:50 to 18:39:50 UTC** exited **1** without starting the launcher; the 18:40 probe returned **75**. That earlier session did not remove, replace or bypass the lock. The [blocker receipt](evidence/restructure-phase-6e-7-2026-10-24/lock-blocker.json) is retained as history, not a current verification blocker.
+
+Completed during that earlier resume:
 
 - `npm_config_cache=/tmp/desktop-6e7-npm-cache npm install`: passed, 354 packages audited; the existing four audit findings remain (one moderate, three critical). The default cache was read-only; no dependency remediation was attempted. [Install log](evidence/restructure-phase-6e-7-2026-10-24/install.log).
 - Desktop typecheck and **82 tests / 3 files** passed: **44 full-host route/profile/axe cases**, **12 route mapping cases**, **20 workflow cases**, **6 mocked Tauri cases**, retaining all **3 original source cases**. Jsdom axe excludes contrast. [Typecheck](evidence/restructure-phase-6e-7-2026-10-24/desktop-typecheck.log), [tests](evidence/restructure-phase-6e-7-2026-10-24/desktop-tests.log).
@@ -54,11 +85,13 @@ Already completed on the resumed implementation:
 - Requested absolute `jiti docs/tools/check-docs.mjs`: **198 documentation files passed**. [Log](evidence/restructure-phase-6e-7-2026-10-24/docs-final.log).
 - Protected diff/status, forbidden-import and URL/credential-pattern scans are empty; whitespace and final scope checks pass. [Scan receipt](evidence/restructure-phase-6e-7-2026-10-24/boundary-scans.json), [reproducible scanner](evidence/restructure-phase-6e-7-2026-10-24/check-scope.mjs).
 
-The [environment](evidence/restructure-phase-6e-7-2026-10-24/environment.json) records Node 22.22.1, npm 9.2.0 and the available Node 24 API runtime. The [unit-source checkpoint](evidence/restructure-phase-6e-7-2026-10-24/source-desktop-tests.json) identifies the passing desktop suite. Only three README status updates followed those tests; [source verification](evidence/restructure-phase-6e-7-2026-10-24/source-verification.json) identifies that documentation-only delta and verifies the final manifest. The executable source is unchanged.
+The historical [environment](evidence/restructure-phase-6e-7-2026-10-24/environment.json), [unit-source checkpoint](evidence/restructure-phase-6e-7-2026-10-24/source-desktop-tests.json) and [source verification](evidence/restructure-phase-6e-7-2026-10-24/source-verification.json) describe that earlier resume and its documentation-only delta. They do not certify the regenerated follow-up manifest.
 
 ## Cleanup
 
-Every unit/typecheck/docs command and the waiting `flock` command has exited. **This resumed session started no server, API, browser or original backend under `source/`.** Earlier integration receipts report their three owned service groups stopped; all **eight** predecessor API/app ports are now closed. [Predecessor-port probe](evidence/restructure-phase-6e-7-2026-10-24/predecessor-ports.json), [cleanup receipt](evidence/restructure-phase-6e-7-2026-10-24/cleanup.json). No process started by this resumed session is left running. Other sessions' processes are outside the sandbox's visibility and were not stopped.
+The follow-up stopped every API, Vite and browser process group it started, including both failed diagnostic runs; the separate language-control probe closed its browser in `finally`. The final launcher identity reports `groupAlive: false` for all three services; Vite's exit 143 is its expected SIGTERM teardown after the passing browser exit 0. The follow-up verification receipt records closed API/app ports and completed commands. Temporary API storage/loaders were removed by the launcher. No original backend under `source/` was started, and other sessions' services were not stopped.
+
+The earlier resume's no-server cleanup and eight predecessor-port checks remain historical evidence: [predecessor-port probe](evidence/restructure-phase-6e-7-2026-10-24/predecessor-ports.json), [cleanup receipt](evidence/restructure-phase-6e-7-2026-10-24/cleanup.json).
 
 ## Resume history
 

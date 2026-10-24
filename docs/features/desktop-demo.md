@@ -43,6 +43,8 @@ const ProductPage = createPageRenderer({renderers: productRenderers});
 
 Effective preferences (theme, typography, density, radius, table settings, formatting, motion, shortcuts, tabs and floating windows) come from the host. The canonical API catalog localizes shared UI; desktop-owned wording falls back to English. The route matrix renders every route under default, Arabic RTL, reduced motion and a locked preference with jsdom axe (contrast excluded); the browser check runs full-document axe including contrast. Automated checks do not establish assistive-technology or language acceptance.
 
+Inline edit buttons announce the column label and the displayed, preference-formatted value, including rich cell content; opening the editor still uses the raw value. To change language, open Preferences → Language & help, then select the language.
+
 ## Acceptance and limitations
 
 | ID | Contract and verification |

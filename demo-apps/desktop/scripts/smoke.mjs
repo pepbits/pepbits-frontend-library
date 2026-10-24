@@ -20,7 +20,13 @@ const tabs=()=>page.getByRole('tablist',{name:'Open documents'}).getByRole('tab'
 async function tabOption(name){const strip=page.getByRole('navigation',{name:'Open documents'});await strip.getByRole('button',{name:'Tab options'}).click();await strip.getByRole('button',{name}).click();}
 async function capture(suffix){if(process.env.DESKTOP_SCREENSHOT){await settle();await page.screenshot({path:process.env.DESKTOP_SCREENSHOT.replace('.png',`-${suffix}.png`)});}}
 async function axeRoute(path,ready,label=path){await visit(path,ready);await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});const result=await page.evaluate(()=>window.axe.run(document));checks.push({path:label,dir:await page.evaluate(()=>document.documentElement.dir),violations:result.violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})),incomplete:result.incomplete.length});}
-async function savePreference(change){const saved=page.waitForResponse(r=>r.url().endsWith('/api/preferences')&&r.request().method()==='PUT');await change();const response=await saved;if(!response.ok())throw new Error('Preference save failed '+response.status());await settle();}
+async function savePreference(change){const [response]=await Promise.all([page.waitForResponse(r=>r.url().endsWith('/api/preferences')&&r.request().method()==='PUT'),change()]);if(!response.ok())throw new Error('Preference save failed '+response.status());await settle();}
+async function saveLanguage(language){
+ await visit('/preferences','[data-page-id="preferences"] select');
+ // Sections stay mounted while hidden; open the language tab before selecting in either locale.
+ await page.getByRole('tab',{name:/^(Language & help|اللغة والمساعدة)$/}).click();
+ await savePreference(()=>page.locator('[data-tour="prefs-lang"] select').selectOption(language));
+}
 try{
  // Sign-in through the shared login screen; the session, preferences and catalog then load over HTTP.
  await page.goto(base+'/finance/customers');await page.locator('input[autocomplete=username]').fill('admin');await page.locator('input[type=password]').fill(credential);await page.getByRole('button',{name:/sign in/i}).click();
@@ -105,9 +111,9 @@ try{
  // Full-document axe on every route pattern, then Arabic RTL on three representative routes.
  const routeChecks=[['/overview','[data-desktop-overview]'],['/finance/customers','tbody tr'],['/finance/customers/'+encodeURIComponent(recordId),'[data-page-id="customer-master"] input[disabled]'],['/finance/customers/'+encodeURIComponent(recordId)+'/edit','[data-page-id="customer-master"] input:not([disabled])'],['/finance/customers/new','[data-page-id="customer-master"] input:not([disabled])'],['/library/components','[data-library-examples] dl'],['/hr/employees','tbody tr'],['/hr/employees/EMP-01001','[data-record-page] dl'],['/preferences','[data-page-id="preferences"] select'],['/finance/unknown','[data-page-id="not-found"]']];
  for(const [path,ready] of routeChecks)await axeRoute(path,ready);
- await visit('/preferences','[data-page-id="preferences"] select');await savePreference(()=>page.getByLabel('Language').first().selectOption('ar'));await page.waitForFunction(()=>document.documentElement.dir==='rtl');
+ await saveLanguage('ar');await page.waitForFunction(()=>document.documentElement.dir==='rtl');
  for(const [path,ready] of routeChecks.slice(0,3))await axeRoute(path,ready,'ar '+path);await capture('arabic');
- await visit('/preferences','[data-page-id="preferences"] select');await savePreference(()=>page.locator('select').filter({has:page.locator('option[value="en"]')}).first().selectOption('en'));await page.waitForFunction(()=>document.documentElement.dir==='ltr');
+ await saveLanguage('en');await page.waitForFunction(()=>document.documentElement.dir==='ltr');
  flows.push({id:'DSK-14',result:'Language preference to Arabic applies RTL after the API catalog loads, then restores English'});
  await visit('/overview','[data-desktop-overview]');await capture('overview');
 }catch(error){errors.push({route:current,message:error.message});process.exitCode=1;}

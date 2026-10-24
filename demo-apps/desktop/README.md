@@ -4,7 +4,7 @@ Private `@pepbits-demo/desktop`: the replacement for `desktop-clients/apps/deskt
 
 **Native status:** the Rust/Tauri host is copied with only names and the dev URL adapted. In phase 6e-7 it was **not built, run or tested as a native executable**. Verification covers the web build (`vite build`), typecheck, unit tests (including the Tauri window port with the Tauri API mocked) and a real-HTTP Chromium check of the web build. See the [delivery record](../../docs/releases/unreleased/restructure-phase-6e-7-2026-10-24.md).
 
-**Current verification:** 82 desktop tests, typecheck and documentation validation pass on the resumed implementation. The shared heavy-check lock remained occupied for the full thirty-minute wait, so the current web build, forced CI and browser/HTTP checks remain pending. Earlier partial runs are not current-source acceptance.
+**Current verification:** the local web build and real-HTTP Chromium check pass: 16 workflows, 13 route/axe checks, zero script/page, console or non-auth API HTTP errors and zero axe violations. The follow-up also passes 82 desktop tests, typecheck and 35 focused inline-editor tests. The coordinator's earlier local CI reports 45/45 tasks with no cache; it was not rerun in this focused follow-up. Exact source, documentation validation and historical attempts are in the delivery record.
 
 ## Run locally
 
