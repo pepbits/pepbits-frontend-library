@@ -1,0 +1,154 @@
+{
+  "status": "verified-subset",
+  "sourceDigest": "fec6277f6351fc95a548d5abd8e6978c1b20009961f04af6c4c8b20c767eb0da",
+  "ci": {
+    "command": "NEXT_PUBLIC_API_URL=/api npm run ci -- --concurrency=1 --env-mode=loose",
+    "exitCode": 0,
+    "tasks": 33,
+    "cached": 0,
+    "tests": 5316,
+    "files": 286,
+    "toolingTests": 19,
+    "typechecks": 15,
+    "productionBuilds": 3,
+    "perTestTimeoutMs": 120000,
+    "timeoutMechanism": "ci-vitest-timeout.mjs through NODE_OPTIONS; every configured file/assertion retained",
+    "workspaces": [
+      {
+        "workspace": "@pepbits-demo/erp",
+        "tests": 1150,
+        "files": 12
+      },
+      {
+        "workspace": "@pepbits-demo/healthcare",
+        "tests": 1791,
+        "files": 89
+      },
+      {
+        "workspace": "@pepbits-demo/showcase",
+        "tests": 95,
+        "files": 5
+      },
+      {
+        "workspace": "@pepbits/ai",
+        "tests": 587,
+        "files": 22
+      },
+      {
+        "workspace": "@pepbits/components",
+        "tests": 201,
+        "files": 20
+      },
+      {
+        "workspace": "@pepbits/data",
+        "tests": 53,
+        "files": 12
+      },
+      {
+        "workspace": "@pepbits/i18n",
+        "tests": 71,
+        "files": 7
+      },
+      {
+        "workspace": "@pepbits/icons",
+        "tests": 100,
+        "files": 1
+      },
+      {
+        "workspace": "@pepbits/page-engines",
+        "tests": 440,
+        "files": 21
+      },
+      {
+        "workspace": "@pepbits/patterns",
+        "tests": 163,
+        "files": 32
+      },
+      {
+        "workspace": "@pepbits/platform",
+        "tests": 80,
+        "files": 8
+      },
+      {
+        "workspace": "@pepbits/preferences",
+        "tests": 33,
+        "files": 3
+      },
+      {
+        "workspace": "@pepbits/shell",
+        "tests": 413,
+        "files": 38
+      },
+      {
+        "workspace": "@pepbits/tokens",
+        "tests": 3,
+        "files": 1
+      },
+      {
+        "workspace": "@pepbits/ui",
+        "tests": 136,
+        "files": 15
+      }
+    ],
+    "sourceCheckpoint": "ci-source.json"
+  },
+  "shellChromium": {
+    "tests": 4,
+    "files": 1
+  },
+  "documentation": {
+    "files": 197
+  },
+  "live": {
+    "workflows": 70,
+    "ui": 68,
+    "directHttp": 2,
+    "routes": 114,
+    "panelStates": 15,
+    "panelViolations": 0,
+    "violations": 0,
+    "incompleteRuleResults": 234,
+    "panelIncompleteRuleResults": 31,
+    "javascriptErrors": 0,
+    "consoleErrors": 0,
+    "unexpectedHttpErrors": 0
+  },
+  "print": [
+    {
+      "file": "erp-final-erp1-invoice.pdf",
+      "bytes": 120611,
+      "sha256": "ba80d32ea087f4cc71c2f9f62944f4baa7f5a4a1c0f8624836ba043a876ff66c",
+      "pages": 1,
+      "mediaBoxes": [
+        [
+          0,
+          0,
+          594.95996,
+          841.91998
+        ]
+      ]
+    },
+    {
+      "file": "erp-final-erp2-invoice.pdf",
+      "bytes": 120611,
+      "sha256": "c44d075f59d0b8dd26913adb77bed9f7c75267c71ab2a6cf13fab993ef55e00d",
+      "pages": 1,
+      "mediaBoxes": [
+        [
+          0,
+          0,
+          594.95996,
+          841.91998
+        ]
+      ]
+    }
+  ],
+  "boundaries": {
+    "protectedPathsUnchanged": true,
+    "forbiddenImportsEmpty": true,
+    "justifiedMatchingLines": 21
+  },
+  "cleanup": "All owned service groups stopped; all allocated integration ports closed.",
+  "scope": "destination-status.json",
+  "limitations": "See release record and destination-status.json; not full source parity, deployment, native or accounting acceptance."
+}

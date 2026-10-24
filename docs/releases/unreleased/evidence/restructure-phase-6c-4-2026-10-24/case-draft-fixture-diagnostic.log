@@ -1,0 +1,618 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run src/record-panels.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c4/demo-apps/erp
+
+ ❯ src/record-panels.test.tsx (53 tests | 2 failed) 40981ms
+   × erp1 keeps unsent case inputs across other acknowledged property saves 11224ms
+     → expect(element).toHaveAttribute("data-erp-record-version", "4") // element.getAttribute("data-erp-record-version") === "4"
+
+Expected the element to have attribute:
+  data-erp-record-version="4"
+Received:
+  data-erp-record-version="3"
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<main[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mdata-erp-record[39m=[32m"true"[39m
+          [33mdata-erp-record-version[39m=[32m"3"[39m
+        [36m>[39m
+          [36m<h2>[39m
+            [0mRecord details[0m
+          [36m</h2>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_page_be2eb3"[39m
+            [33mdata-record-context[39m=[32m"true"[39m
+            [33mdata-record-page[39m=[32m"true"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_composition_be2eb3"[39m
+              [33mdata-record-composition[39m=[32m"aside"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_surface_017147"[39m
+                [33mdata-density[39m=[32m"comfortable"[39m
+                [33mdata-layout[39m=[32m"rail"[39m
+                [33mdata-motion[39m=[32m"full"[39m
+                [33mdata-rail-alignment[39m=[32m"spread"[39m
+                [33mdata-sizing[39m=[32m"container"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_body_017147"[39m
+                [36m>[39m
+                  [36m<nav[39m
+                    [33maria-label[39m=[32m"Sections"[39m
+                    [33mclass[39m=[32m"_rail_017147"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"_railHead_017147"[39m
+                    [36m>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityLabel_be2eb3"[39m
+                      [36m>[39m
+                        [0mSupport tickets[0m
+                      [36m</p>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityName_be2eb3"[39m
+                      [36m>[39m
+                        [0mTKT-1064[0m
+                      [36m</p>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityReference_be2eb3"[39m
+                      [36m>[39m
+                        [0mTKT-1064[0m
+                      [36m</p>[39m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33maria-orientation[39m=[32m"vertical"[39m
+                      [33mclass[39m=[32m"_steps_017147"[39m
+                      [33mrole[39m=[32m"tablist"[39m
+                    [36m>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_0_-section-conversation"[39m
+                        [33maria-label[39m=[32m"01 Conversation"[39m
+                        [33maria-selected[39m=[32m"true"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"true"[39m
+                        [33mid[39m=[32m"_r_0_-tab-conversation"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"0"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"_number_017147"[39m
+                          [33mdata-done[39m=[32m"false"[39m
+                        [36m>[39m
+                          [0m01[0m
+                        [36m</span>[39m
+                        [0m [0m
+                        [36m<span>[39m
+                          [0mConversation[0m
+                        [36m</span>[39m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_0_-section-details"[39m
+                        [33maria-label[39m=[32m"02 Details"[39m
+                        [33maria-selected[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"false"[39m
+                        [33mid[39m=[32m"_r_0_-tab-details"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"-1"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"_number_017147"[39m
+                          [33mdata-done[39m=[32m"false"[39m
+                        [36m>[39m
+                          [0m02[0m
+                        [36m</span>[39m
+                        [0m [0m
+                        [36m<span>[39m
+                          [0mDetails[0m
+                        [36m</span>[39m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_0_-section-activity"[39m
+                        [33maria-label[39m=[32m"03 Activity"[39m
+                        [33maria-selected[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"false"[39m
+                        [33mid[39m=[32m"_r_0_-tab-activity"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"-1"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+           ...
+   × erp2 keeps unsent case inputs across other acknowledged property saves 10724ms
+     → expect(element).toHaveAttribute("data-erp-record-version", "4") // element.getAttribute("data-erp-record-version") === "4"
+
+Expected the element to have attribute:
+  data-erp-record-version="4"
+Received:
+  data-erp-record-version="3"
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<main[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mdata-erp-record[39m=[32m"true"[39m
+          [33mdata-erp-record-version[39m=[32m"3"[39m
+        [36m>[39m
+          [36m<h2>[39m
+            [0mRecord details[0m
+          [36m</h2>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_page_be2eb3"[39m
+            [33mdata-record-context[39m=[32m"true"[39m
+            [33mdata-record-page[39m=[32m"true"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_composition_be2eb3"[39m
+              [33mdata-record-composition[39m=[32m"aside"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_surface_017147"[39m
+                [33mdata-density[39m=[32m"comfortable"[39m
+                [33mdata-layout[39m=[32m"rail"[39m
+                [33mdata-motion[39m=[32m"full"[39m
+                [33mdata-rail-alignment[39m=[32m"spread"[39m
+                [33mdata-sizing[39m=[32m"container"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_body_017147"[39m
+                [36m>[39m
+                  [36m<nav[39m
+                    [33maria-label[39m=[32m"Sections"[39m
+                    [33mclass[39m=[32m"_rail_017147"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"_railHead_017147"[39m
+                    [36m>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityLabel_be2eb3"[39m
+                      [36m>[39m
+                        [0mSupport tickets[0m
+                      [36m</p>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityName_be2eb3"[39m
+                      [36m>[39m
+                        [0mTKT-1064[0m
+                      [36m</p>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityReference_be2eb3"[39m
+                      [36m>[39m
+                        [0mTKT-1064[0m
+                      [36m</p>[39m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33maria-orientation[39m=[32m"vertical"[39m
+                      [33mclass[39m=[32m"_steps_017147"[39m
+                      [33mrole[39m=[32m"tablist"[39m
+                    [36m>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_8_-section-conversation"[39m
+                        [33maria-label[39m=[32m"01 Conversation"[39m
+                        [33maria-selected[39m=[32m"true"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"true"[39m
+                        [33mid[39m=[32m"_r_8_-tab-conversation"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"0"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"_number_017147"[39m
+                          [33mdata-done[39m=[32m"false"[39m
+                        [36m>[39m
+                          [0m01[0m
+                        [36m</span>[39m
+                        [0m [0m
+                        [36m<span>[39m
+                          [0mConversation[0m
+                        [36m</span>[39m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_8_-section-details"[39m
+                        [33maria-label[39m=[32m"02 Details"[39m
+                        [33maria-selected[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"false"[39m
+                        [33mid[39m=[32m"_r_8_-tab-details"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"-1"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"_number_017147"[39m
+                          [33mdata-done[39m=[32m"false"[39m
+                        [36m>[39m
+                          [0m02[0m
+                        [36m</span>[39m
+                        [0m [0m
+                        [36m<span>[39m
+                          [0mDetails[0m
+                        [36m</span>[39m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_8_-section-activity"[39m
+                        [33maria-label[39m=[32m"03 Activity"[39m
+                        [33maria-selected[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"false"[39m
+                        [33mid[39m=[32m"_r_8_-tab-activity"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"-1"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+           ...
+   ✓ erp1 profile shows source groups, statistics, activity/documents and changes  598ms
+   ✓ erp2 profile shows source groups, statistics, activity/documents and changes  463ms
+   ✓ support distinguishes failure, retry, empty and version refresh 147ms
+   ✓ profile file selection stays local and can be removed without an HTTP write 264ms
+   ✓ erp1 case retains a failed comment and retries the identical versioned command  536ms
+   ✓ erp2 case retains a failed comment and retries the identical versioned command  591ms
+   ✓ mounted denial and keyboard preferences fence conversation writes 218ms
+   ✓ a conversation conflict requires explicit reload and preserves the unaccepted comment  428ms
+   ✓ ERP2 tree shows ancestor navigation, children, leaf guards and confirmed deletion  395ms
+   ✓ hierarchy traversal stops at cycles and missing parents 1ms
+   ✓ booking context refetches the edited date and prevents leaving an unsaved editor through related rows 178ms
+   ✓ approval decisions include the note and ERP1 related requests stay within the department  416ms
+   ✓ process logs read support events and document summaries preserve deductions and tax  339ms
+   ✓ ERP1 opened record panels: default > customers  1275ms
+   ✓ ERP1 opened record panels: default > sales-orders  710ms
+   ✓ ERP1 opened record panels: default > leave-requests  455ms
+   ✓ ERP1 opened record panels: default > approvals  305ms
+   ✓ ERP1 opened record panels: default > appointments  314ms
+   ✓ ERP1 opened record panels: default > support-tickets  407ms
+   ✓ ERP1 opened record panels: default > chart-of-accounts 195ms
+   ✓ ERP1 opened record panels: default > payroll-run 298ms
+   ✓ ERP1 opened record panels: default > quality-inspections  321ms
+   ✓ ERP1 opened record panels: Arabic RTL > customers  335ms
+   ✓ ERP1 opened record panels: Arabic RTL > sales-orders  363ms
+   ✓ ERP1 opened record panels: Arabic RTL > leave-requests 287ms
+   ✓ ERP1 opened record panels: Arabic RTL > approvals  375ms
+   ✓ ERP1 opened record panels: Arabic RTL > appointments  312ms
+   ✓ ERP1 opened record panels: Arabic RTL > support-tickets  483ms
+   ✓ ERP1 opened record panels: Arabic RTL > chart-of-accounts 258ms
+   ✓ ERP1 opened record panels: Arabic RTL > payroll-run 204ms
+   ✓ ERP1 opened record panels: Arabic RTL > quality-inspections  326ms
+   ✓ ERP1 opened record panels: reduced motion > customers  352ms
+   ✓ ERP1 opened record panels: reduced motion > sales-orders  352ms
+   ✓ ERP1 opened record panels: reduced motion > leave-requests  319ms
+   ✓ ERP1 opened record panels: reduced motion > approvals  388ms
+   ✓ ERP1 opened record panels: reduced motion > appointments 291ms
+   ✓ ERP1 opened record panels: reduced motion > support-tickets  345ms
+   ✓ ERP1 opened record panels: reduced motion > chart-of-accounts 191ms
+   ✓ ERP1 opened record panels: reduced motion > payroll-run 261ms
+   ✓ ERP1 opened record panels: reduced motion > quality-inspections  466ms
+   ✓ ERP1 opened record panels: locked density > customers 276ms
+   ✓ ERP1 opened record panels: locked density > sales-orders  371ms
+   ✓ ERP1 opened record panels: locked density > leave-requests  305ms
+   ✓ ERP1 opened record panels: locked density > approvals  442ms
+   ✓ ERP1 opened record panels: locked density > appointments  431ms
+   ✓ ERP1 opened record panels: locked density > support-tickets  549ms
+   ✓ ERP1 opened record panels: locked density > chart-of-accounts 215ms
+   ✓ ERP1 opened record panels: locked density > payroll-run  333ms
+   ✓ ERP1 opened record panels: locked density > quality-inspections 251ms
+   ✓ edited forms warn on browser unload, retain failures, and detach after accepted save  680ms
+   ✓ case assignee editing waits for explicit save and uses the versioned command  415ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/record-panels.test.tsx > erp1 keeps unsent case inputs across other acknowledged property saves
+Error: expect(element).toHaveAttribute("data-erp-record-version", "4") // element.getAttribute("data-erp-record-version") === "4"
+
+Expected the element to have attribute:
+  data-erp-record-version="4"
+Received:
+  data-erp-record-version="3"
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<main[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mdata-erp-record[39m=[32m"true"[39m
+          [33mdata-erp-record-version[39m=[32m"3"[39m
+        [36m>[39m
+          [36m<h2>[39m
+            [0mRecord details[0m
+          [36m</h2>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_page_be2eb3"[39m
+            [33mdata-record-context[39m=[32m"true"[39m
+            [33mdata-record-page[39m=[32m"true"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_composition_be2eb3"[39m
+              [33mdata-record-composition[39m=[32m"aside"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_surface_017147"[39m
+                [33mdata-density[39m=[32m"comfortable"[39m
+                [33mdata-layout[39m=[32m"rail"[39m
+                [33mdata-motion[39m=[32m"full"[39m
+                [33mdata-rail-alignment[39m=[32m"spread"[39m
+                [33mdata-sizing[39m=[32m"container"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_body_017147"[39m
+                [36m>[39m
+                  [36m<nav[39m
+                    [33maria-label[39m=[32m"Sections"[39m
+                    [33mclass[39m=[32m"_rail_017147"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"_railHead_017147"[39m
+                    [36m>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityLabel_be2eb3"[39m
+                      [36m>[39m
+                        [0mSupport tickets[0m
+                      [36m</p>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityName_be2eb3"[39m
+                      [36m>[39m
+                        [0mTKT-1064[0m
+                      [36m</p>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityReference_be2eb3"[39m
+                      [36m>[39m
+                        [0mTKT-1064[0m
+                      [36m</p>[39m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33maria-orientation[39m=[32m"vertical"[39m
+                      [33mclass[39m=[32m"_steps_017147"[39m
+                      [33mrole[39m=[32m"tablist"[39m
+                    [36m>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_0_-section-conversation"[39m
+                        [33maria-label[39m=[32m"01 Conversation"[39m
+                        [33maria-selected[39m=[32m"true"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"true"[39m
+                        [33mid[39m=[32m"_r_0_-tab-conversation"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"0"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"_number_017147"[39m
+                          [33mdata-done[39m=[32m"false"[39m
+                        [36m>[39m
+                          [0m01[0m
+                        [36m</span>[39m
+                        [0m [0m
+                        [36m<span>[39m
+                          [0mConversation[0m
+                        [36m</span>[39m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_0_-section-details"[39m
+                        [33maria-label[39m=[32m"02 Details"[39m
+                        [33maria-selected[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"false"[39m
+                        [33mid[39m=[32m"_r_0_-tab-details"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"-1"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"_number_017147"[39m
+                          [33mdata-done[39m=[32m"false"[39m
+                        [36m>[39m
+                          [0m02[0m
+                        [36m</span>[39m
+                        [0m [0m
+                        [36m<span>[39m
+                          [0mDetails[0m
+                        [36m</span>[39m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_0_-section-activity"[39m
+                        [33maria-label[39m=[32m"03 Activity"[39m
+                        [33maria-selected[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"false"[39m
+                        [33mid[39m=[32m"_r_0_-tab-activity"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"-1"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+           ...
+ ❯ src/record-panels.test.tsx:51:76
+     49|   expect(screen.getByRole('textbox', {name: 'Assignee'})).toHaveValue(…
+     50|   fireEvent.click(screen.getByRole('button', {name: 'Save assignee'}));
+     51|   await waitFor(() => expect(container.querySelector('[data-erp-record…
+       |                                                                            ^
+     52|   await waitFor(() => expect(request.mock.calls.filter(([, init]) => i…
+     53|   expect(api.rows.get(slug)!.find(item => item.id === row.id)!.assigne…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/record-panels.test.tsx > erp2 keeps unsent case inputs across other acknowledged property saves
+Error: expect(element).toHaveAttribute("data-erp-record-version", "4") // element.getAttribute("data-erp-record-version") === "4"
+
+Expected the element to have attribute:
+  data-erp-record-version="4"
+Received:
+  data-erp-record-version="3"
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<main[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mdata-erp-record[39m=[32m"true"[39m
+          [33mdata-erp-record-version[39m=[32m"3"[39m
+        [36m>[39m
+          [36m<h2>[39m
+            [0mRecord details[0m
+          [36m</h2>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_page_be2eb3"[39m
+            [33mdata-record-context[39m=[32m"true"[39m
+            [33mdata-record-page[39m=[32m"true"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_composition_be2eb3"[39m
+              [33mdata-record-composition[39m=[32m"aside"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_surface_017147"[39m
+                [33mdata-density[39m=[32m"comfortable"[39m
+                [33mdata-layout[39m=[32m"rail"[39m
+                [33mdata-motion[39m=[32m"full"[39m
+                [33mdata-rail-alignment[39m=[32m"spread"[39m
+                [33mdata-sizing[39m=[32m"container"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_body_017147"[39m
+                [36m>[39m
+                  [36m<nav[39m
+                    [33maria-label[39m=[32m"Sections"[39m
+                    [33mclass[39m=[32m"_rail_017147"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"_railHead_017147"[39m
+                    [36m>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityLabel_be2eb3"[39m
+                      [36m>[39m
+                        [0mSupport tickets[0m
+                      [36m</p>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityName_be2eb3"[39m
+                      [36m>[39m
+                        [0mTKT-1064[0m
+                      [36m</p>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"_identityReference_be2eb3"[39m
+                      [36m>[39m
+                        [0mTKT-1064[0m
+                      [36m</p>[39m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33maria-orientation[39m=[32m"vertical"[39m
+                      [33mclass[39m=[32m"_steps_017147"[39m
+                      [33mrole[39m=[32m"tablist"[39m
+                    [36m>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_8_-section-conversation"[39m
+                        [33maria-label[39m=[32m"01 Conversation"[39m
+                        [33maria-selected[39m=[32m"true"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"true"[39m
+                        [33mid[39m=[32m"_r_8_-tab-conversation"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"0"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"_number_017147"[39m
+                          [33mdata-done[39m=[32m"false"[39m
+                        [36m>[39m
+                          [0m01[0m
+                        [36m</span>[39m
+                        [0m [0m
+                        [36m<span>[39m
+                          [0mConversation[0m
+                        [36m</span>[39m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_8_-section-details"[39m
+                        [33maria-label[39m=[32m"02 Details"[39m
+                        [33maria-selected[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"false"[39m
+                        [33mid[39m=[32m"_r_8_-tab-details"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"-1"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"_number_017147"[39m
+                          [33mdata-done[39m=[32m"false"[39m
+                        [36m>[39m
+                          [0m02[0m
+                        [36m</span>[39m
+                        [0m [0m
+                        [36m<span>[39m
+                          [0mDetails[0m
+                        [36m</span>[39m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"_r_8_-section-activity"[39m
+                        [33maria-label[39m=[32m"03 Activity"[39m
+                        [33maria-selected[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] _step_017147"[39m
+                        [33mdata-active[39m=[32m"false"[39m
+                        [33mid[39m=[32m"_r_8_-tab-activity"[39m
+                        [33mrole[39m=[32m"tab"[39m
+                        [33mtabindex[39m=[32m"-1"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [36m<span[39m
+           ...
+ ❯ src/record-panels.test.tsx:51:76
+     49|   expect(screen.getByRole('textbox', {name: 'Assignee'})).toHaveValue(…
+     50|   fireEvent.click(screen.getByRole('button', {name: 'Save assignee'}));
+     51|   await waitFor(() => expect(container.querySelector('[data-erp-record…
+       |                                                                            ^
+     52|   await waitFor(() => expect(request.mock.calls.filter(([, init]) => i…
+     53|   expect(api.rows.get(slug)!.find(item => item.id === row.id)!.assigne…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 51 passed (53)
+   Start at  05:55:25
+   Duration  50.06s (transform 4.53s, setup 359ms, collect 6.88s, tests 40.98s, environment 911ms, prepare 199ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c4/demo-apps/erp 
