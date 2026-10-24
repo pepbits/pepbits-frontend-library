@@ -8,6 +8,7 @@ export * from "./scanner-input";
 export * from "./option-filter";
 export * from "./search-select";
 export * from "./segmented";
+export * from "./otp-input";
 export * from "./signature-pad";
 export * from "./badge";
 export * from "./avatar";

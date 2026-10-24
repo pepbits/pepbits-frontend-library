@@ -1,0 +1,191 @@
+{
+  "scope": "Superseded, uncommitted evidence from the interrupted earlier session; not final verification. Raw diagnostic artifacts removed at the resume request to keep evidence small.",
+  "files": [
+    {
+      "name": "browser-diagnostic-2.json",
+      "bytes": 1860,
+      "sha256": "5ccbeab33ac699dda90937eabc4fda95e14bc04f6180373ef3ab0e82e0925d60"
+    },
+    {
+      "name": "browser-diagnostic-3.json",
+      "bytes": 2594,
+      "sha256": "54549bdcd94e60460886997e3c068c2f7fb0d1724033f09a78916a28864d5304"
+    },
+    {
+      "name": "browser-diagnostic.json",
+      "bytes": 849,
+      "sha256": "0c1dc9c98333a261a3091e7d5fb65588ee6e3fbb43dd4fd905fb1335a64d9efe"
+    },
+    {
+      "name": "ci-diagnostic.log",
+      "bytes": 356301,
+      "sha256": "6493a620a28256a579987a14ba5d72e813823c04ad06de0aa01959beab078b3e"
+    },
+    {
+      "name": "identity-diagnostic-2.json",
+      "bytes": 37668,
+      "sha256": "91ae0e07ed2aa8842760a248823dd810500ca98b6c39d2f2355b604ee65c8c78"
+    },
+    {
+      "name": "identity-diagnostic-3.json",
+      "bytes": 37674,
+      "sha256": "88d3c88f303f8760e6e8f91c7620c89c787bb46206b22242cdcae81872391c58"
+    },
+    {
+      "name": "identity-diagnostic.json",
+      "bytes": 37680,
+      "sha256": "4ed085de2321f49e7136636ea8f0de6b613a52b02ec513e02a3d156e46bfa54b"
+    },
+    {
+      "name": "integration-diagnostic-2.log",
+      "bytes": 559,
+      "sha256": "df6c2bfbbd089f92f564eb641491bbd2f8567a4be8300e5d612e3cfb3f44c2ae"
+    },
+    {
+      "name": "integration-diagnostic-3.log",
+      "bytes": 560,
+      "sha256": "47f8edb02341bf078e2e3a915aedc8ab4cf423d89572e3e17336c2126dc4ada4"
+    },
+    {
+      "name": "integration-diagnostic.log",
+      "bytes": 559,
+      "sha256": "7c818f7c1b1137ff70e1f2dac58af01c5e9bd1ad4036fca8b2d02ccc967f529d"
+    },
+    {
+      "name": "shell-browser-precheck.log",
+      "bytes": 772,
+      "sha256": "7706a6aa0e549345e399167ab8dddc026d678cfe2eb7dddfb28d154abcb664c9"
+    }
+  ],
+  "browserRuns": [
+    {
+      "name": "browser-diagnostic-2.json",
+      "workflows": 9,
+      "routeChecks": 0,
+      "errors": [
+        {
+          "route": "/preferences",
+          "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Language' }) to be visible\u001b[22m\n"
+        }
+      ],
+      "violations": 0,
+      "ports": [
+        37993,
+        43175
+      ],
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 31103,
+          "exitCode": 1,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 31084,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 31073,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ]
+    },
+    {
+      "name": "browser-diagnostic-3.json",
+      "workflows": 10,
+      "routeChecks": 5,
+      "errors": [
+        {
+          "route": "/legal/terms",
+          "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-page-id]') to be visible\u001b[22m\n"
+        }
+      ],
+      "violations": 0,
+      "ports": [
+        42071,
+        36461
+      ],
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 649956,
+          "exitCode": 1,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 649694,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 649358,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ]
+    },
+    {
+      "name": "browser-diagnostic.json",
+      "workflows": 2,
+      "routeChecks": 0,
+      "errors": [
+        {
+          "route": "login",
+          "message": "page.waitForURL: Timeout 60000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"http://127.0.0.1:41611/workspace\" until \"load\"\n============================================================"
+        }
+      ],
+      "violations": 0,
+      "ports": [
+        37677,
+        41611
+      ],
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 4020896,
+          "exitCode": 1,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 4020699,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 4020314,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ]
+    }
+  ],
+  "ci": {
+    "passedTasks": 35,
+    "totalTasks": 36,
+    "cached": 0,
+    "healthcareFailed": 2,
+    "healthcarePassed": 1785,
+    "healthcareSkipped": 4,
+    "failures": [
+      "MedSlot removes the global accelerator when shortcuts are disabled",
+      "RCM non-createable page ignores ?new=1 (async request count was zero)"
+    ]
+  }
+}

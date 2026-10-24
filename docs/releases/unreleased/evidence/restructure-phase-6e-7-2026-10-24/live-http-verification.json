@@ -1,0 +1,164 @@
+{
+  "capturedAt": "2026-10-24T19:36:02.430Z",
+  "scope": "Local vite preview of the desktop web build (browser web mode, no Tauri runtime) and the unchanged fictional HTTP API",
+  "source": {
+    "baseCommit": "4428b4009ee0174a38224e6480744b91f09ba7ef",
+    "testedDigest": "a0451fefa4575e2a21c5fa0a07290982aae9f4b6cf1a6e4473feb6f3cb84c510",
+    "finalManifestDigest": "3bcbb3468e630592c683895c9825ba32939c73836a5a79ed57431876e7983efd",
+    "documentationChangedAfterCheckpoint": [
+      "demo-apps/desktop/README.md",
+      "docs/features/desktop-demo.md"
+    ],
+    "executableSourceUnchangedAfterCheckpoint": true,
+    "implementationFiles": [
+      {
+        "path": "demo-apps/desktop/scripts/smoke.mjs",
+        "sha256": "b634935f56d37419fdc1aab4dc156f4490fec901cc8245ee5defc308550e9880"
+      },
+      {
+        "path": "packages/components/src/inline-edit.tsx",
+        "sha256": "aed26c4fe39c287abb4a34a90704448e6e44975f75229cbc92c1d51d67cd0deb"
+      },
+      {
+        "path": "packages/components/src/inline-edit.test.tsx",
+        "sha256": "ecf80fcb8856365dfc426717d37d18ead5af0f9dd9d99c31aa76915c59fc8363"
+      }
+    ],
+    "protectedStatus": ""
+  },
+  "build": {
+    "scope": "Local Vite production web build; browser mode, no native runtime",
+    "apiBase": "/api",
+    "fileCount": 111,
+    "digest": "bbb532c553c82071f5ee10e124adfa95920665fa6725600dfa37cd5e6c4cdf43",
+    "entryFiles": [
+      {
+        "path": "assets/index-BTF9CA-x.js",
+        "sha256": "8666c73ac32d73d290f7b74cd147a83da465aae6ade1d2a4889e9a06bdf026fb"
+      },
+      {
+        "path": "assets/index-C3hHjwyb.css",
+        "sha256": "82c011dd24fd3cf4776d68cb7b5d6d61ca87b58ff528a52a888ffcb45398b7cf"
+      },
+      {
+        "path": "assets/react-runtime-DuLk5rBn.js",
+        "sha256": "d31b9f17c7de5503c200e636601d8a7a038c7de438129e9d9d8cf9efbbaa2da3"
+      },
+      {
+        "path": "assets/workbook-options.worker-B47Vz9Ey.js",
+        "sha256": "436c01f2e95888299d46e45746993b1225549a189b3fe86efcb80939f841f574"
+      },
+      {
+        "path": "index.html",
+        "sha256": "ae276b20e182d7ea535e30478fdb74405dce9b1b81c5619e4dc9be98b5d94f98"
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": "VITE_API_URL=/api npm run build -w @pepbits-demo/desktop",
+      "exit": 0,
+      "log": "build-live-http.log",
+      "logSha256": "eb808ee381ed836b8ab7e340025785c00238b315b5ba1ae862f3edf0edc611d5"
+    },
+    {
+      "command": "LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu DESKTOP_API_NODE=$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node DESKTOP_RUNTIME_ARTIFACTS=/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/dummy-api node tooling/scripts/run-demo-integration.mjs desktop",
+      "exit": 0,
+      "log": "integration-live-http.log",
+      "logSha256": "06a252f27276866aa6cec517465e57adae51417b20960c28ced4ecaf1838ef7c"
+    },
+    {
+      "command": "npm test -w @pepbits/components -- src/inline-edit.test.tsx src/inline-edit-typed.test.tsx",
+      "exit": 0,
+      "tests": 35,
+      "files": 2,
+      "log": "inline-edit-live-http.log",
+      "logSha256": "7a414236afc0dbbd2dd945ad75abb7ffaaec214a8018bb791a90fbc8657d376b"
+    },
+    {
+      "command": "npm test -w @pepbits-demo/desktop",
+      "exit": 0,
+      "tests": 82,
+      "files": 3,
+      "log": "desktop-tests-live-http.log",
+      "logSha256": "23c09b137d052397047a6cabf424d9f10aa81ca674d7010ecca8dc38c48be591"
+    },
+    {
+      "command": "npm run typecheck -w @pepbits-demo/desktop",
+      "exit": 0,
+      "log": "desktop-typecheck-live-http.log",
+      "logSha256": "805dab52a7bbc2c8da5031b3cb64f1129676953496b268d16ed2257cb1199859"
+    },
+    {
+      "command": "node docs/tools/check-docs.mjs",
+      "runtime": "v22.22.1",
+      "exit": 1,
+      "reason": "ERR_UNKNOWN_FILE_EXTENSION importing the existing TypeScript inventory",
+      "log": "docs-live-http-node22.log",
+      "logSha256": "1b78e85cca0cbc84d5fb6dbf24aca9ffee4ab865948ff0fb3f018dbb72677b64"
+    },
+    {
+      "command": "$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node docs/tools/check-docs.mjs",
+      "runtime": "v24.21.0",
+      "exit": 0,
+      "documents": 207,
+      "log": "docs-live-http.log",
+      "logSha256": "5baf5d105e875380fc376bb884a536a065b2f2e91627f01f251ce8802bd77f24"
+    }
+  ],
+  "live": {
+    "workflows": 16,
+    "routes": 13,
+    "errors": 0,
+    "consoleErrors": 0,
+    "httpErrors": 0,
+    "httpErrorScope": "Non-auth /api responses with status >= 400, as recorded by the existing smoke listener",
+    "axeViolations": 0,
+    "axeIncomplete": 26,
+    "aiRequests": 0
+  },
+  "environment": {
+    "node": "v22.22.1",
+    "npm": "9.2.0",
+    "apiNode": "v24.21.0",
+    "playwright": "1.64.0",
+    "axe": "4.14.0",
+    "runtimeSourceFilesCompared": 483,
+    "runtimeSourceMismatches": 0
+  },
+  "cleanup": {
+    "allAttemptGroupsStopped": true,
+    "ports": [
+      {
+        "port": 42165,
+        "state": "closed"
+      },
+      {
+        "port": 35231,
+        "state": "closed"
+      },
+      {
+        "port": 38515,
+        "state": "closed"
+      },
+      {
+        "port": 41353,
+        "state": "closed"
+      },
+      {
+        "port": 43343,
+        "state": "closed"
+      },
+      {
+        "port": 40265,
+        "state": "closed"
+      }
+    ],
+    "diagnosticBrowserClosed": true,
+    "note": "Launcher removes each temporary storage/loader directory in finally. Separate diagnostic browser closed in finally."
+  },
+  "heavyLockUsed": false,
+  "nativeBuildRun": false,
+  "committed": false,
+  "pushed": false
+}

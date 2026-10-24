@@ -1,0 +1,23 @@
+{
+  "fixes": [
+    "Scope split-menu selector to its navigation landmark",
+    "Retain created-record deep links when the generated worklist lacks the ID",
+    "Restore active address after cancelling guarded history navigation",
+    "Guard overview creation shortcut with account grants",
+    "Remove integration-owned temporary data after service teardown"
+  ],
+  "diagnosticTests": {
+    "passed": 79,
+    "failed": 2,
+    "reason": "New assertions used incorrect shared-component labels (Try again and Record not found). Corrected to Retry and Not found; existing runtime behavior unchanged by this correction."
+  },
+  "focusedShell": {
+    "files": 2,
+    "passed": 27
+  },
+  "focusedDesktopWorkflows": {
+    "files": 1,
+    "passed": 19
+  },
+  "installRetry": "Default npm cache is read-only in the sandbox; npm_config_cache=/tmp/desktop-6e7-npm-cache npm install passed."
+}

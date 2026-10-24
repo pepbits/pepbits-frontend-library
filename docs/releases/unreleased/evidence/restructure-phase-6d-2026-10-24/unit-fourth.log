@@ -1,0 +1,157 @@
+
+> @pepbits-demo/school@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school
+
+ ✓ src/modules/school/attachments-locale.test.tsx (7 tests) 3083ms
+   ✓ attachments > a failed upload keeps the file and the draft, Retry sends the same bytes once, and the assignment saves the returned metadata  905ms
+   ✓ attachments > a file over 1 MB is refused before any request and blocks saving until removed  435ms
+   ✓ attachments > a message keeps its text and file when sending fails, then sends the attachment and downloads the exact bytes  428ms
+   ✓ localization and number format > changing the locale does not clear an open draft  518ms
+ ✓ src/routes.test.tsx (124 tests) 71457ms
+   ✓ default route rendering > '/dashboard'  1164ms
+   ✓ default route rendering > '/reports'  389ms
+   ✓ default route rendering > '/students'  1097ms
+   ✓ default route rendering > '/students/new'  351ms
+   ✓ default route rendering > '/teachers'  925ms
+   ✓ default route rendering > '/teachers/new'  304ms
+   ✓ default route rendering > '/admissions'  1124ms
+   ✓ default route rendering > '/classes'  472ms
+   ✓ default route rendering > '/subjects'  673ms
+   ✓ default route rendering > '/timetable'  486ms
+   ✓ default route rendering > '/attendance'  676ms
+   ✓ default route rendering > '/assignments'  716ms
+   ✓ default route rendering > '/quizzes'  1269ms
+   ✓ default route rendering > '/quizzes/new'  377ms
+   ✓ default route rendering > '/exams'  742ms
+   ✓ default route rendering > '/marks'  1871ms
+   ✓ default route rendering > '/live'  381ms
+   ✓ default route rendering > '/library'  788ms
+   ✓ default route rendering > '/fees'  823ms
+   ✓ default route rendering > '/calendar'  516ms
+   ✓ default route rendering > 'teacher dashboard'  475ms
+   ✓ default route rendering > 'student dashboard'  562ms
+   ✓ default route rendering > 'parent dashboard'  494ms
+   ✓ default route rendering > 'librarian dashboard'  397ms
+   ✓ default route rendering > 'accountant dashboard'  443ms
+   ✓ Arabic RTL route rendering > '/dashboard'  576ms
+   ✓ Arabic RTL route rendering > '/reports'  301ms
+   ✓ Arabic RTL route rendering > '/students'  709ms
+   ✓ Arabic RTL route rendering > '/teachers'  740ms
+   ✓ Arabic RTL route rendering > '/admissions'  979ms
+   ✓ Arabic RTL route rendering > '/classes'  428ms
+   ✓ Arabic RTL route rendering > '/subjects'  521ms
+   ✓ Arabic RTL route rendering > '/timetable'  491ms
+   ✓ Arabic RTL route rendering > '/attendance'  700ms
+   ✓ Arabic RTL route rendering > '/assignments'  529ms
+   ✓ Arabic RTL route rendering > '/quizzes'  1172ms
+   ✓ Arabic RTL route rendering > '/quizzes/new'  352ms
+   ✓ Arabic RTL route rendering > '/exams'  661ms
+   ✓ Arabic RTL route rendering > '/marks'  1877ms
+   ✓ Arabic RTL route rendering > '/live'  356ms
+   ✓ Arabic RTL route rendering > '/library'  858ms
+   ✓ Arabic RTL route rendering > '/fees'  697ms
+   ✓ Arabic RTL route rendering > '/calendar'  536ms
+   ✓ Arabic RTL route rendering > 'teacher dashboard'  414ms
+   ✓ Arabic RTL route rendering > 'student dashboard'  535ms
+   ✓ Arabic RTL route rendering > 'parent dashboard'  493ms
+   ✓ Arabic RTL route rendering > 'librarian dashboard'  468ms
+   ✓ Arabic RTL route rendering > 'accountant dashboard'  510ms
+   ✓ reduced motion route rendering > '/dashboard'  608ms
+   ✓ reduced motion route rendering > '/reports'  323ms
+   ✓ reduced motion route rendering > '/students'  752ms
+   ✓ reduced motion route rendering > '/teachers'  827ms
+   ✓ reduced motion route rendering > '/admissions'  1008ms
+   ✓ reduced motion route rendering > '/classes'  413ms
+   ✓ reduced motion route rendering > '/subjects'  554ms
+   ✓ reduced motion route rendering > '/timetable'  401ms
+   ✓ reduced motion route rendering > '/attendance'  593ms
+   ✓ reduced motion route rendering > '/assignments'  561ms
+   ✓ reduced motion route rendering > '/quizzes'  1136ms
+   ✓ reduced motion route rendering > '/quizzes/new'  347ms
+   ✓ reduced motion route rendering > '/exams'  571ms
+   ✓ reduced motion route rendering > '/marks'  3376ms
+   ✓ reduced motion route rendering > '/live'  548ms
+   ✓ reduced motion route rendering > '/live/:id'  585ms
+   ✓ reduced motion route rendering > '/whiteboard'  326ms
+   ✓ reduced motion route rendering > '/library'  863ms
+   ✓ reduced motion route rendering > '/fees'  896ms
+   ✓ reduced motion route rendering > '/calendar'  568ms
+   ✓ reduced motion route rendering > '/notices'  317ms
+   ✓ reduced motion route rendering > 'teacher dashboard'  454ms
+   ✓ reduced motion route rendering > 'student dashboard'  488ms
+   ✓ reduced motion route rendering > 'parent dashboard'  471ms
+   ✓ reduced motion route rendering > 'librarian dashboard'  353ms
+   ✓ reduced motion route rendering > 'accountant dashboard'  485ms
+   ✓ locked density route rendering > '/dashboard'  523ms
+   ✓ locked density route rendering > '/reports'  378ms
+   ✓ locked density route rendering > '/students'  862ms
+   ✓ locked density route rendering > '/teachers'  881ms
+   ✓ locked density route rendering > '/teachers/new'  360ms
+   ✓ locked density route rendering > '/admissions'  1128ms
+   ✓ locked density route rendering > '/classes'  443ms
+   ✓ locked density route rendering > '/subjects'  639ms
+   ✓ locked density route rendering > '/timetable'  470ms
+   ✓ locked density route rendering > '/attendance'  669ms
+   ✓ locked density route rendering > '/assignments'  621ms
+   ✓ locked density route rendering > '/quizzes'  1326ms
+   ✓ locked density route rendering > '/quizzes/new'  338ms
+   ✓ locked density route rendering > '/exams'  611ms
+   ✓ locked density route rendering > '/marks'  1831ms
+   ✓ locked density route rendering > '/live'  392ms
+   ✓ locked density route rendering > '/library'  694ms
+   ✓ locked density route rendering > '/fees'  647ms
+   ✓ locked density route rendering > '/calendar'  438ms
+   ✓ locked density route rendering > 'teacher dashboard'  427ms
+   ✓ locked density route rendering > 'student dashboard'  509ms
+   ✓ locked density route rendering > 'parent dashboard'  509ms
+   ✓ locked density route rendering > 'librarian dashboard'  379ms
+   ✓ locked density route rendering > 'accountant dashboard'  427ms
+ ✓ src/modules/school/module.test.tsx (61 tests) 12770ms
+   ✓ ReferenceSchoolModule > renders /dashboard for an administrator through host.request only  456ms
+   ✓ ReferenceSchoolModule > renders /students for an administrator through host.request only  351ms
+   ✓ ReferenceSchoolModule > renders /teachers for an administrator through host.request only  306ms
+   ✓ ReferenceSchoolModule > renders /admissions for an administrator through host.request only  346ms
+   ✓ ReferenceSchoolModule > renders /quizzes for an administrator through host.request only  411ms
+   ✓ ReferenceSchoolModule > renders /marks for an administrator through host.request only  463ms
+   ✓ failure handling > a rejected create keeps the dialog and the entered values and shows the server message  634ms
+   ✓ record preview follows previewMode > inline renders the record in the matching shared frame  333ms
+   ✓ record preview follows previewMode > left-drawer renders the record in the matching shared frame  305ms
+   ✓ record preview follows previewMode > changing previewMode while open keeps the record and the grader's unsaved feedback  354ms
+   ✓ fees receipts > a rejected collection keeps the dialog and the entered amount  364ms
+ ✓ src/preferences.test.tsx (4 tests) 6758ms
+   ✓ preferences route: default  2011ms
+   ✓ preferences route: Arabic RTL  1783ms
+   ✓ preferences route: reduced motion  1543ms
+   ✓ preferences route: locked preference  1419ms
+ ✓ src/modules/school/final-parity.test.tsx (9 tests) 3034ms
+   ✓ source option labels > the Select shows the source English labels (static and enum) with unchanged values  470ms
+   ✓ server-initialized creation fields > a new book sends only authored fields; the card shows the server's record  633ms
+   ✓ server-initialized creation fields > a rejected book keeps the dialog and the typed values  578ms
+   ✓ server-initialized creation fields > a new class and a new assignment send no counters, and numeric fields stay numbers under ar-EG  329ms
+   ✓ server-initialized creation fields > a new quiz sends its questions and options but no attempts or average  417ms
+ ✓ src/modules/school/toast-locale.test.tsx (4 tests) 1514ms
+   ✓ localized toasts > a static success toast is translated at render and follows a language change while shown  394ms
+   ✓ localized toasts > a dynamic toast is one translated message that keeps the authored title exactly  679ms
+ ✓ src/providers.test.tsx (4 tests) 2140ms
+   ✓ one serialized preference path retains adjacent writes and API revisions  565ms
+   ✓ language catalog refresh preserves the mounted editor  490ms
+   ✓ runtime tenant locks replace effective values and block writes  617ms
+   ✓ rejected preference writes retain accepted state and allow explicit recovery  464ms
+ ✓ src/modules/school/library-return.test.tsx (3 tests) 1153ms
+   ✓ library return > the server's fine is shown and toasted, not the page's overdue estimate  588ms
+   ✓ library return > stock is the canonical server count after a return  317ms
+ ✓ src/modules/school/contracts.test.ts (12 tests) 149ms
+ ✓ src/navigation.test.ts (7 tests) 25ms
+ ✓ src/modules/school/bundle-boundary.test.ts (4 tests) 19ms
+ ✓ src/adapters/school.test.ts (2 tests) 18ms
+ ✓ src/modules/school/policy.test.tsx (3 tests) 518ms
+   ✓ librarian settings do not read forbidden academic collections  354ms
+
+ Test Files  13 passed (13)
+      Tests  244 passed (244)
+   Start at  03:04:05
+   Duration  133.10s (transform 4.49s, setup 2.86s, collect 11.51s, tests 102.64s, environment 8.96s, prepare 1.34s)
+

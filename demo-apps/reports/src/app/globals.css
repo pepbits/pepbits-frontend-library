@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@import "@pepbits/tokens/tokens.css";
+@import "@pepbits/tokens/reference-fonts.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/manrope/index.css";
+@import "@fontsource-variable/source-sans-3/index.css";
+@import "@fontsource-variable/nunito-sans/index.css";
+@import "@fontsource-variable/noto-sans-arabic/index.css";
+@import "@fontsource-variable/noto-sans-devanagari/index.css";
+@import "@fontsource-variable/noto-sans-malayalam/index.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+@import "@fontsource/ibm-plex-mono/700.css";
+@import "../modules/reports/reports.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/components/src";
+@source "../../../../packages/patterns/src";
+@source "../../../../packages/page-engines/src";
+@source "../../../../packages/shell/src";
+@source "../../../../packages/icons/src";
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font-ui), "Noto Sans Arabic Variable", "Noto Sans Devanagari Variable", "Noto Sans Malayalam Variable", sans-serif; }
+:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+button, input, select, textarea { font:inherit; }
+.reports-page { min-width:0; --fs-scale:var(--fs-form); }
+@font-face {font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Manrope";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Source Sans 3";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Nunito Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/nunito-sans/files/nunito-sans-latin-wght-normal.woff2") format("woff2");}
+/* Report print copy (rendered by the shared PrintDocument outside the screen layout). */
+.lr-print-document h1 { font-size:16pt; margin:0 0 4mm; }
+.lr-print-document table { width:100%; border-collapse:collapse; font-size:9pt; }
+.lr-print-document th, .lr-print-document td { border-bottom:1px solid #999; padding:1.5mm 2mm; text-align:start; }
+.lr-print-document thead { display:table-header-group; }
+.lr-print-document tr { break-inside:avoid; }

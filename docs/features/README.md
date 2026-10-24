@@ -1,6 +1,12 @@
 # Feature catalog
 
 - [AllyVora patient registration demo](allyvora-patients-demo.md): all source pages and modes over the unchanged AllyVora API and shared demo host; local checks and named adaptations.
+- [Independent desktop demo](desktop-demo.md): Vite web host with the copied Tauri 2 host, full shell document workspace and demo-owned pages over the demo API; native executable not built or tested.
+- [Independent onboarding demo](onboarding-demo.md): Orvia landing, workspace finder, sign-in and registration wizard on the shared host; fictional adapters and local checks.
+- [Independent reports demo](reports-demo.md): all 19 Lumen Reports routes in their own app over the shared host and fictional demo API; local checks and limits.
+- [Independent Tenant Admin demo](tenant-admin-demo.md): Overview, Approvals, Activity and 30 registry-driven configuration pages on the shared host; local checks and explicit limits.
+- [Independent Scholaris demo](school-demo.md): 26 routes, six scope-granted dashboards and unchanged fictional HTTP API.
+
 - [Independent ERP demo](erp-demo.md): 114 catalogue destinations, ERP1 in-page and ERP2 routed records; local checks and explicit remaining scope.
 
 - [Independent healthcare demo](healthcare-demo.md): Healthcare Suite core, clinical and LIS/RIS diagnostic workflows against the synthetic demo API; local validation and explicit remaining scope.

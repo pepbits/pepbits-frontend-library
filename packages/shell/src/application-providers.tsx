@@ -1,6 +1,6 @@
 'use client';
 import React, {createContext, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
-import {SessionProvider, useSession, type SessionValue} from '@pepbits/platform/auth';
+import {SessionProvider, useSession, type SessionUser, type SessionValue} from '@pepbits/platform/auth';
 import type {NavigationPort} from '@pepbits/platform/navigation';
 import {PreferenceHost, usePreferences} from '@pepbits/preferences/react';
 import {EMPTY_PREFERENCE_POLICY} from '@pepbits/preferences';
@@ -13,14 +13,18 @@ import type {ProductDefinition} from './products';
 import {LoginScreen} from './login';
 import {createRequest, readJson, RequestContext, type Request} from '@pepbits/platform/http';
 import {loadPreferences, savePreferences, type PreferenceSnapshot} from '@pepbits/platform/preference-service';
+import {ApplicationWorkspaceFrame, type ApplicationWorkspace} from './application-workspace';
+export {defaultWorkspacePolicy, type ApplicationWorkspace, type ApplicationWorkspacePolicy} from './application-workspace';
 
 
-interface ApplicationConfig {productId:string;brand:{name:string;tagline:string};productForRole:(role:string)=>ProductDefinition;className?:string;notice?:string}
+interface ApplicationConfig {productId:string;brand:{name:string;tagline:string};productForRole:(role:string,user:SessionUser)=>ProductDefinition;className?:string;notice?:string;
+  /** Optional document workspace (tabs, split, frames, detached windows); omitted keeps the routed single-page shell. */
+  workspace?:ApplicationWorkspace}
 const Configuration = createContext<ApplicationConfig>(null!);
 const SettingsServices = createContext<{request: Request; canManagePreferencePolicy: boolean; saveError?: string; reload: () => Promise<void>} | undefined>(undefined);
 export const useSettingsServices = () => useContext(SettingsServices);
 export function ApplicationProviders({apiBaseUrl, navigation, children, request: suppliedRequest, session, ...config}: ApplicationConfig & {
-  apiBaseUrl: string; navigation: NavigationPort; children: React.ReactNode; request?: Request; session?: SessionValue;
+  apiBaseUrl: string; navigation: NavigationPort; children?: React.ReactNode; request?: Request; session?: SessionValue;
 }) {
   const request = useMemo(() => suppliedRequest ?? createRequest(apiBaseUrl, config.productId), [apiBaseUrl, suppliedRequest, config.productId]);
   return <Configuration.Provider value={config}><SessionProvider {...(session ? {value: session} : {apiBaseUrl})}><SessionContent request={request} navigation={navigation}>{children}</SessionContent></SessionProvider></Configuration.Provider>;
@@ -50,8 +54,8 @@ function LocaleSurface({catalogs, children}: {catalogs: TranslationCatalog; chil
 }
 function Authenticated({request, navigation, children}: {request: Request; navigation: NavigationPort; children: React.ReactNode}) {
   const {user} = useSession();
-  const {brand,productForRole,className}=useContext(Configuration);
-  const product=useMemo(()=>productForRole(user!.role),[user!.role,productForRole]);
+  const {brand,productForRole,className,workspace}=useContext(Configuration);
+  const product=useMemo(()=>productForRole(user!.role,user!),[user,productForRole]);
   const [snapshot, setSnapshot] = useState<PreferenceSnapshot | null>(null);
   const accepted = useRef<PreferenceSnapshot | null>(null), live = useRef(true), queue = useRef(Promise.resolve());
   const [error, setError] = useState<unknown>(null), [saveError, setSaveError] = useState<string>();
@@ -80,10 +84,12 @@ function Authenticated({request, navigation, children}: {request: Request; navig
   if (!snapshot) return error ? <RecoveryNotice failure={failureFromError(error)} onRetry={() => void reload()}/> : <LoadingState/>;
   return <RequestContext.Provider value={request}><PreferenceHost preferences={snapshot.overrides} preferencePolicy={snapshot.policy} preferencesAvailable={!error && !saveError} update={update}>
     <SettingsServices.Provider value={{request, canManagePreferencePolicy: snapshot.canManage, saveError, reload}}>
-      <CatalogHost request={request}><ShellProvider navigation={navigation} product={product} preferencesPageId="preferences" brand={brand}
+      <CatalogHost request={request}>{workspace ? <ApplicationWorkspaceFrame options={{...workspace, render: target => <div className={className}>{workspace.render(target)}</div>}} navigation={navigation} user={user!}
+        shell={{product, preferencesPageId: 'preferences', brand, branches: [{value: user!.branch, label: user!.branch}], roles: [{value: user!.role, label: user!.title}]}}
+        banner={<>{!!error && <RecoveryNotice failure={failureFromError(error)} onRetry={() => void reload()}/>}{children}</>}/> : <ShellProvider navigation={navigation} product={product} preferencesPageId="preferences" brand={brand}
         branches={[{value: user!.branch, label: user!.branch}]} roles={[{value: user!.role, label: user!.title}]}>
         <EnterpriseShell><div className={className}>{!!error && <RecoveryNotice failure={failureFromError(error)} onRetry={() => void reload()}/>} {children}</div></EnterpriseShell>
-      </ShellProvider></CatalogHost>
+      </ShellProvider>}</CatalogHost>
     </SettingsServices.Provider>
   </PreferenceHost></RequestContext.Provider>;
 }

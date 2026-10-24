@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {Card, CardGrid, StatCard, Sparkline, LineChart, DonutChart} from "@pepbits/components";
+import {Card, CardGrid, StatCard, Sparkline, LineChart, DonutChart, BarChart, GroupedBarChart, HorizontalBars, ProgressRing} from "@pepbits/components";
 import {useFormatters} from "@pepbits/patterns/screen-host";
 
 export function StatsDemo() {
@@ -12,6 +12,10 @@ export function StatsDemo() {
   </CardGrid><Card className="space-y-3 p-3">
     <Sparkline values={values}/>
     <LineChart label="Total" labels={values.map((_,index) => format.number(index + 1))} series={[{id:'total',label:'Total',values}]} formatValue={format.number}/>
+    <BarChart data={[{label:'Active',value:24,compare:20},{label:'Pending',value:6,compare:8}]} compareLabel="Average" formatValue={format.number}/>
+    <HorizontalBars data={[{label:'Active',value:24},{label:'Pending',value:6}]} formatValue={format.number}/>
+    <ProgressRing value={75} formatValue={value=>`${format.number(value)}%`}/>
     <DonutChart label="Status" parts={[{label:'Active',value:24},{label:'Pending',value:6}]} formatValue={format.number}/>
+    <GroupedBarChart label="Status" labels={['Active','Pending']} series={[{id:'total',label:'Total',values:[24,6]}]} formatValue={format.number}/>
   </Card></div>;
 }

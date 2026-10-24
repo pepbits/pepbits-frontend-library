@@ -1,0 +1,26 @@
+import {execFileSync,spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {writeFileSync} from 'node:fs';
+const folder='docs/releases/unreleased/evidence/restructure-phase-6d-2026-10-24';
+const protectedPaths=['desktop-clients','dummy-api','demo-apps/erp','Jenkinsfile','deploy','run.sh','run_all.sh','.github'];
+const diff=execFileSync('git',['diff','HEAD','--name-only','--',...protectedPaths],{encoding:'utf8'}).trim();
+const status=execFileSync('git',['status','--porcelain','--',...protectedPaths],{encoding:'utf8'}).trim();
+const imports=spawnSync('grep',['-rnE',String.raw`@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/|demo-apps/(healthcare|erp)`,'demo-apps/school/src'],{encoding:'utf8'});
+const content=spawnSync('grep',['-rnP',String.raw`https?://(?!localhost|127\.0\.0\.1|www\.w3\.org)[a-z0-9.-]+\.[a-z]{2,}|Bearer [A-Za-z0-9]{10}|password\s*[:=]\s*['"][^'"]{4,}`,'demo-apps/school/src',folder],{encoding:'utf8'});
+if(imports.status>1||content.status>1)throw new Error('grep failed');
+const matches=content.stdout.trim().split('\n').filter(Boolean).map(line=>{
+ const match=line.match(/^(.+?):(\d+):(.*)$/);if(!match)throw new Error('Unexpected grep output');
+ const [,path,number,value]=match;
+ if(/Bearer [A-Za-z0-9]{10}|password\s*[:=]\s*['"][^'"]{4,}/.test(value))throw new Error(`Potential credential requires review at ${path}:${number}`);
+ let reason;
+ if(path.endsWith('fake-host.test-support.ts')&&value.includes('school.test'))reason='Reserved fictional test origin used only to parse mock-client paths; no network call.';
+ else if(value.includes('react.dev/link/'))reason='React test diagnostic documentation link; no service endpoint or credential.';
+ else if(value.includes('dequeuniversity.com/rules/axe/'))reason='Public axe rule help link in retained failed accessibility diagnostics.';
+ else if(value.includes('nextjs.org/'))reason='Next build diagnostic/documentation link; no service endpoint or credential.';
+ else if(value.includes('turbo.build/')||value.includes('turborepo.com/'))reason='Turbo diagnostic/documentation link; no service endpoint or credential.';
+ return {path,line:Number(number),lineSha256:createHash('sha256').update(value).digest('hex'),reason:reason??'UNJUSTIFIED'};
+});
+const result={protectedPaths,protectedDiff:diff?diff.split('\n'):[],protectedStatus:status?status.split('\n'):[],forbiddenImports:imports.stdout.trim()?imports.stdout.trim().split('\n'):[],importGrepExit:imports.status,contentGrepExit:content.status,credentialMatches:0,matches,unjustified:matches.filter(row=>row.reason==='UNJUSTIFIED').length};
+writeFileSync(folder+'/boundaries.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({protectedChanges:result.protectedDiff.length+result.protectedStatus.length,forbiddenImports:result.forbiddenImports.length,contentMatches:matches.length,unjustified:result.unjustified}));
+if(diff||status||result.forbiddenImports.length||result.unjustified)process.exitCode=1;

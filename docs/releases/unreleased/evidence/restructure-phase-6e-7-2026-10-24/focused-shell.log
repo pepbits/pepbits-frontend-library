@@ -1,0 +1,23 @@
+
+> @pepbits/shell@0.0.0 test
+> vitest run src/application-workspace.test.tsx src/workspace/use-workspace-navigation.test.tsx --maxWorkers=2
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-7/packages/shell
+
+ ✓ src/workspace/use-workspace-navigation.test.tsx (19 tests) 3464ms
+   ✓ useWorkspaceNavigation > confirming goes through with it  325ms
+   ✓ useWorkspaceNavigation > cancelling leaves the work exactly where it was  381ms
+ ✓ src/application-workspace.test.tsx (8 tests) 4601ms
+   ✓ opens the address target as a document beside the module home and follows later addresses  847ms
+   ✓ focusing another document writes its target back through the host navigation port  311ms
+   ✓ cancelling an address-driven module change restores the active address and retains edits  836ms
+   ✓ dirty documents ask before closing and the host policy callback receives effective preferences  716ms
+   ✓ detach is offered only with an available window port and sends a sanitized title  907ms
+   ✓ wrapShell surrounds the shell and the plain routed mode is unchanged without a workspace  421ms
+
+ Test Files  2 passed (2)
+      Tests  27 passed (27)
+   Start at  18:10:00
+   Duration  13.43s (transform 4.62s, setup 970ms, collect 9.65s, tests 8.06s, environment 3.84s, prepare 766ms)
+

@@ -1,6 +1,16 @@
 # Current delivery and release records
 
 - [AllyVora patients phase 6e-6 — patient registration demo](restructure-phase-6e-6-2026-10-24.md): new private app over the unchanged AllyVora API and shared demo host, `SignaturePad` and `SearchSelect` quick pick, exact local verification and named adaptations.
+- [Desktop phase 6e-7 — Tauri-hosted desktop demo](restructure-phase-6e-7-2026-10-24.md): document workspace, Tauri window port and copied native host; unit/typecheck/docs pass, required heavy checks blocked by the shared lock; no native build.
+- [Onboarding phase 6e-3 — Orvia Health Cloud](restructure-phase-6e-3-2026-10-24.md): source pages and shared wizard/OTP; 353 focused tests pass, required CI/build/browser verification blocked by the shared lock; no deployment.
+- [School phase 6d-2 — source comparison and visual gaps](restructure-phase-6d-2-2026-10-24.md): compact chart/table parity subset, per-route handoff and exact local evidence.
+
+- [Reports phase 6e-1 — Lumen Reports demo app](restructure-phase-6e-1-2026-10-24.md): all 19 source routes over the shared host and fictional demo API; local verification and limits.
+- [Tenant Admin phase 6e-2 — registry-driven configuration demo](restructure-phase-6e-2-2026-10-24.md): Overview, Approvals, Activity and 30 configuration pages on the shared host; public reference-host contract and local verification.
+- [ERP phase 6c-5: report controls and invoice pagination](restructure-phase-6c-5-2026-10-24.md) — source analytical controls and measured A4 documents; local verification, no deployment.
+- [ERP phase 6c-4 — record context and personal views](restructure-phase-6c-4-2026-10-24.md): source panels, account filter/sort/column snapshots, scoped retries and explicit durable-draft boundary; local evidence, no deployment.
+- [School phase 6d — Scholaris](restructure-phase-6d-2026-10-24.md): 26 routes, six scoped portals, local build/HTTP verification and explicit parity limits.
+
 - [ERP phase 6c-3 — calendars, invoices and analytical views](restructure-phase-6c-3-2026-10-24.md): specialized workflow subset, shared calendar/charts and exact verification; remaining parity gaps are explicit.
 
 - [ERP phase 6c-2 — specialized view subset and finance grants](restructure-phase-6c-2-2026-10-23.md): hierarchy, boards, ERP1 profile splits, direct extraction tests and exact remaining scope.

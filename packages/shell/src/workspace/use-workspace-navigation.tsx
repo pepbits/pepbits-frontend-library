@@ -134,7 +134,8 @@ export function useWorkspaceNavigation(workspace: Workspace, options: { product:
       const cross = () => {
         workspace.closeAll({ discardChanges: true, includeUnclosable: true });
         openHome(next);
-        if (target.pageId !== moduleLandingPage(product,next)) workspace.openDocument(documentFromTarget(target, product.pages));
+        /* A record on the landing page (a deep link to /module-home/record) is still a second document. */
+        if (target.pageId !== moduleLandingPage(product,next) || target.mode || target.recordId) workspace.openDocument(documentFromTarget(target, product.pages));
       };
       const dirty = workspace.getOpenDocuments().filter((doc) => doc.dirty);
       if (dirty.length > 0) {

@@ -117,8 +117,28 @@ The [6b-2 diagnostics increment](../releases/unreleased/restructure-phase-6b-2-2
 
 ## ERP phase 6c-1
 
+The [Tenant Admin feature contract](../features/tenant-admin-demo.md) defines TAD-01 through TAD-10. Its [local record](../releases/unreleased/restructure-phase-6e-2-2026-10-24.md) separates the original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks.
+
 The [ERP feature contract](../features/erp-demo.md) defines ERD-01 through ERD-07. Its [local record](../releases/unreleased/restructure-phase-6c-1-2026-10-23.md) separates all 38 original source cases, mocked route/profile/axe coverage, real HTTP workflows and forced workspace checks. Route coverage is not specialized workflow, accounting or human accessibility acceptance.
 
+The [reports feature contract](../features/reports-demo.md) defines RPD-01 through RPD-08. `demo-apps/reports` retains all 22 original Lumen Reports source cases (in-process demo store as the mocked API), adds adapter/navigation/provider/host cases, a four-profile route/axe matrix, every system report destination and page-group workflows. Its [local record](../releases/unreleased/restructure-phase-6e-1-2026-10-24.md) reports real local HTTP workflows and Chromium axe separately; this is not domain or human accessibility acceptance.
+
 ERP phase 6c-2 extends ERD-08 through ERD-12 with hierarchy/board/profile and finance-grant cases, direct extraction tests and the existing four-profile route/page-content axe matrix. The [6c-2 record](../releases/unreleased/restructure-phase-6c-2-2026-10-23.md) separates real local HTTP/UI commands, direct HTTP denials, full-shell browser axe and forced CI. No backend/desktop inventory is modified.
+
+ERP phase 6c-5 adds ERD-17/18 for all eight reports and both long-invoice views. The [delivery record](../releases/unreleased/restructure-phase-6c-5-2026-10-24.md) separates deterministic jsdom measurement and Arabic filter checks from real HTTP downloads, browser geometry and generated A4 PDFs. Existing ledger/matrix period workflows remain in the full integration sweep. Source has no pivot/comparison-period control and matrices have no export.
+
+ERP phase 6c-4 adds ERD-19 through ERD-23: record side content, case conversation writes and failure/permission guards, version-aware support metadata, personal views/typed filters/column sets and scoped persistence/retry, browser unload-warning boundaries, 36 ERP1 opened-record profile/RTL/axe cases and local HTTP panel-state checks. The [6c-4 record](../releases/unreleased/restructure-phase-6c-4-2026-10-24.md) separates these from the existing catalogue sweep, shared-engine tests, shell Chromium and forced CI. All original-source visual comparisons remain pending in the [destination handoff](../../demo-apps/erp/parity-status.md).
+
+## Independent Scholaris demo — phase 6d
+
+The [school record](../releases/unreleased/restructure-phase-6d-2026-10-24.md) separates the 100 retained source tests, five school configuration cases, added host/transport/policy tests, route/profile/axe matrix and actual local HTTP workflows. Unit fixtures are mocked; integration uses the unchanged fictional API and isolated production Next server. Restricted-role backend gaps and shared-engine visual differences are explicit. This does not establish institutional, deployed, native or human accessibility acceptance.
+
+## Onboarding phase 6e-3
+
+The [onboarding feature contract](../features/onboarding-demo.md) defines ONB-01 through ONB-09. Its [local record](../releases/unreleased/restructure-phase-6e-3-2026-10-24.md) separates the four-profile route/axe matrix, mocked workflow/adapter/rule/provider tests, new library tests and the real local HTTP/Chromium run. The source demo has no tests to port. Automated checks are not native-speaker, assistive-technology or backend acceptance.
+
+## Desktop phase 6e-7
+
+The [desktop feature contract](../features/desktop-demo.md) defines DSK-01 through DSK-08. `demo-apps/desktop` keeps the original three Tauri window-port cases (Tauri API mocked), renders all eleven route patterns through the full host under default, Arabic RTL, reduced motion and a locked preference with jsdom axe, and covers record/split/dirty-close/detach/preference/AI workflows with a mocked API. Its integration driver checks the production web build (`vite preview`) against the real local demo API in Chromium. The [6e-7 record](../releases/unreleased/restructure-phase-6e-7-2026-10-24.md) separates these from native execution, which was not performed.
 
 The [AllyVora feature contract](../features/allyvora-patients-demo.md) defines AVP-01 through AVP-10. Its [local record](../releases/unreleased/restructure-phase-6e-6-2026-10-24.md) separates mocked module/route/profile/axe cases, real local HTTP workflows against both unchanged APIs, Chromium axe in English and Arabic, and forced workspace checks. The source has no test files to port. These are not clinical or human accessibility acceptance.

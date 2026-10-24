@@ -1,0 +1,60 @@
+{
+  "time": "2026-10-24T11:29:37.990Z",
+  "protectedPaths": {
+    "paths": [
+      "desktop-clients",
+      "dummy-api",
+      "Jenkinsfile",
+      "deploy",
+      "run.sh",
+      "run_all.sh",
+      ".github"
+    ],
+    "changedEntries": 0
+  },
+  "forbiddenImports": {
+    "command": "grep -rnE \"@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/|demo-apps/(healthcare|erp|school)\" demo-apps/reports/src",
+    "matches": 0
+  },
+  "urlCredentialScan": {
+    "command": "grep -rnP <brief pattern> demo-apps/reports/src docs/releases/unreleased/evidence/restructure-phase-6e-1-*",
+    "matches": [
+      {
+        "line": "demo-apps/reports/src/adapters/reports.test.ts:15:  it.each(['https://example.com/api', '//example.com/api', '/api/../auth', '/api/%2e%2e/auth', '/api/\\\\auth', ",
+        "justification": "Test input proving the transport rejects an absolute external URL (example.com, reserved domain); no request is made."
+      },
+      {
+        "line": "docs/releases/unreleased/evidence/restructure-phase-6e-1-2026-10-24/ci-final.log:638:@pepbits-demo/reports:test: This ensures that you're testing the behavior t",
+        "justification": "Public React documentation link (react.dev wrap-tests-with-act) inside a retained jsdom act warning; not an application endpoint or credential."
+      },
+      {
+        "line": "docs/releases/unreleased/evidence/restructure-phase-6e-1-2026-10-24/ci-final.log:650:@pepbits-demo/reports:test: This ensures that you're testing the behavior t",
+        "justification": "Public React documentation link (react.dev wrap-tests-with-act) inside a retained jsdom act warning; not an application endpoint or credential."
+      },
+      {
+        "line": "docs/releases/unreleased/evidence/restructure-phase-6e-1-2026-10-24/ci-final.log:662:@pepbits-demo/reports:test: This ensures that you're testing the behavior t",
+        "justification": "Public React documentation link (react.dev wrap-tests-with-act) inside a retained jsdom act warning; not an application endpoint or credential."
+      },
+      {
+        "line": "docs/releases/unreleased/evidence/restructure-phase-6e-1-2026-10-24/ci-final.log:674:@pepbits-demo/reports:test: This ensures that you're testing the behavior t",
+        "justification": "Public React documentation link (react.dev wrap-tests-with-act) inside a retained jsdom act warning; not an application endpoint or credential."
+      },
+      {
+        "line": "docs/releases/unreleased/evidence/restructure-phase-6e-1-2026-10-24/ci-final.log:3224:@pepbits-demo/erp:test: This ensures that you're testing the behavior the ",
+        "justification": "Public React documentation link (react.dev wrap-tests-with-act) inside a retained jsdom act warning; not an application endpoint or credential."
+      },
+      {
+        "line": "docs/releases/unreleased/evidence/restructure-phase-6e-1-2026-10-24/ci-final.log:3236:@pepbits-demo/erp:test: This ensures that you're testing the behavior the ",
+        "justification": "Public React documentation link (react.dev wrap-tests-with-act) inside a retained jsdom act warning; not an application endpoint or credential."
+      },
+      {
+        "line": "docs/releases/unreleased/evidence/restructure-phase-6e-1-2026-10-24/ci-final.log:3248:@pepbits-demo/erp:test: This ensures that you're testing the behavior the ",
+        "justification": "Public React documentation link (react.dev wrap-tests-with-act) inside a retained jsdom act warning; not an application endpoint or credential."
+      },
+      {
+        "line": "docs/releases/unreleased/evidence/restructure-phase-6e-1-2026-10-24/ci-final.log:3260:@pepbits-demo/erp:test: This ensures that you're testing the behavior the ",
+        "justification": "Public React documentation link (react.dev wrap-tests-with-act) inside a retained jsdom act warning; not an application endpoint or credential."
+      }
+    ]
+  }
+}

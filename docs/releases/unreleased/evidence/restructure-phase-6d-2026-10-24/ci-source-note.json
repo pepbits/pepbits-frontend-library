@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-24T03:59:57.856721+00:00",
+  "initial": "ci-source.json",
+  "portalKeyCorrection": "ci-school-source.json",
+  "finalSchoolAndMetricEngine": "ci-school-final-source.json",
+  "changedSinceCiStart": [
+    "demo-apps/school/README.md",
+    "demo-apps/school/scripts/smoke.mjs",
+    "demo-apps/school/source-mapping.md",
+    "demo-apps/school/src/modules/school/ui/charts.tsx",
+    "demo-apps/school/src/navigation.test.ts",
+    "demo-apps/school/src/navigation.ts",
+    "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
+    "packages/components/README.md",
+    "packages/components/src/index.ts",
+    "packages/components/src/metric-charts.test.tsx",
+    "packages/components/src/metric-charts.tsx"
+  ],
+  "scope": [
+    "CI shared components tests ran before the additive metric-chart engine: 203 cases in 20 files. A supplemental full components suite must cover the final package and its three new cases.",
+    "The canonical portal-key correction and metric extraction both preceded the school CI test/build tasks; those ran on final school runtime source.",
+    "The final school and components standalone typechecks passed after both changes; logs are retained.",
+    "Other workspace behavior was not changed by the new named metric exports. Four healthcare cases validate retained browser receipts rather than starting new HTTP acceptance."
+  ],
+  "runtimeChangedSinceFinalSchoolCheckpoint": []
+}

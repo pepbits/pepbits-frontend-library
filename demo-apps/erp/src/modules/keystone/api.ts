@@ -62,8 +62,8 @@ export interface SupportActivity { when: string; who: string; text: string }
 export interface SupportDocument { name: string; size: string; when?: string }
 export interface EntitySupport { activities: SupportActivity[]; documents: SupportDocument[]; processEvents?: ProcessEvent[] }
 /** Activity and documents for one record. */
-export function useEntitySupport(entity: string, id: string | undefined) {
-  return useScopedResource<EntitySupport>(id ? `/api/entities/${encodeURIComponent(entity)}/${encodeURIComponent(id)}/support` : null);
+export function useEntitySupport(entity: string, id: string | undefined, revision?: number) {
+  return useScopedResource<EntitySupport>(id ? `/api/entities/${encodeURIComponent(entity)}/${encodeURIComponent(id)}/support${revision === undefined ? '' : '?revision=' + revision}` : null);
 }
 
 export interface CompanyProfile {

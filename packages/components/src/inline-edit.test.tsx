@@ -17,7 +17,14 @@ describe("InlineEdit — reading", () => {
   test("shows the formatted value and is reachable by keyboard", () => {
     render_();
     expect(cell()).toHaveTextContent(format.money(50000));
-    expect(cell()).toHaveAccessibleName(/Credit limit/);
+    expect(cell()).toHaveAccessibleName(`Credit limit: ${format.money(50000)}`);
+  });
+
+  test("names a rich formatted display while editing the raw value", async () => {
+    render_({display: <strong>{format.money(50000)}</strong>});
+    expect(cell()).toHaveAccessibleName(`Credit limit: ${format.money(50000)}`);
+    await userEvent.click(cell());
+    expect(field()).toHaveValue("50000");
   });
 
   test("a read-only cell offers no editing at all", () => {
