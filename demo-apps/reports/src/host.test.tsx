@@ -18,7 +18,8 @@ function mount(path: string, session = fixtureSession, mock = mockHttp({}, undef
 test('module requests carry the configured namespace and routing headers from the session', async () => {
   const {mock} = mount('/reports');
   await screen.findByRole('heading', {name: 'Report library', level: 1}, {timeout: 15000});
-  const call = mock.calls.find(c => c.path === '/reference-modules/reports/api/page/reports')!;
+  // The page title can render before its data request is recorded under load.
+  const call = await waitFor(() => { const found = mock.calls.find(c => c.path === '/reference-modules/reports/api/page/reports'); expect(found).toBeDefined(); return found!; });
   expect(call.headers.get('X-Reference-Module')).toBe('reference-reports');
   expect(call.headers.get('X-Reference-Branch')).toBe(fixtureSession.user!.branch);
   expect(call.headers.get('X-Product-Id')).toBe('nexora');
