@@ -1,0 +1,754 @@
+
+> @pepbits-demo/school@0.0.0 test
+> vitest run src/visual-contracts.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6d2/demo-apps/school
+
+ ❯ src/visual-contracts.test.tsx (5 tests | 1 failed) 3748ms
+   ✓ source chart options survive the shared adapter: default  1223ms
+   ✓ source chart options survive the shared adapter: Arabic RTL  830ms
+   ✓ source chart options survive the shared adapter: reduced motion  478ms
+   ✓ source chart options survive the shared adapter: independent result scale  458ms
+   × source table headers, search and three-state sorting retain locked result presentation 743ms
+     → Unable to find an accessible element with the role "searchbox"
+
+Here are the accessible roles:
+
+  textbox:
+
+  Name "Search table":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search table"[39m
+    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+    [33mplaceholder[39m=[32m"Search"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  table:
+
+  Name "":
+  [36m<table[39m
+    [33mclass[39m=[32m"[&_th]:px-3 [&_th]:py-1 [&_td]:px-3 [&_td]:py-1 [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-[var(--surface-2)]"[39m
+    [33mdata-density[39m=[32m"compact"[39m
+    [33mdata-managed-table[39m=[32m"true"[39m
+    [33mdata-sticky[39m=[32m"true"[39m
+    [33mdata-striped[39m=[32m"false"[39m
+    [33mdata-wrap[39m=[32m"false"[39m
+    [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  [36m<thead />[39m
+
+  Name "":
+  [36m<tbody />[39m
+
+  --------------------------------------------------
+  row:
+
+  Name "Name":
+  [36m<tr />[39m
+
+  Name "Fictional 12":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 11":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 10":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 09":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 08":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 07":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 06":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 05":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 04":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 03":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Name":
+  [36m<th[39m
+    [33mclass[39m=[32m"school-person-heading"[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Name":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-8 gap-1.5 rounded-lg px-3 text-xs"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Previous page":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Previous page"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Previous page"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "1":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-7 gap-1.5 rounded-lg px-2.5 text-[length:calc(11px*var(--fs-scale))] min-w-7 px-2"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "2":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-7 gap-1.5 rounded-lg px-2.5 text-[length:calc(11px*var(--fs-scale))] min-w-7 px-2"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Next page":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Next page"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mtitle[39m=[32m"Next page"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  cell:
+
+  Name "Fictional 12":
+  [36m<td />[39m
+
+  Name "Fictional 11":
+  [36m<td />[39m
+
+  Name "Fictional 10":
+  [36m<td />[39m
+
+  Name "Fictional 09":
+  [36m<td />[39m
+
+  Name "Fictional 08":
+  [36m<td />[39m
+
+  Name "Fictional 07":
+  [36m<td />[39m
+
+  Name "Fictional 06":
+  [36m<td />[39m
+
+  Name "Fictional 05":
+  [36m<td />[39m
+
+  Name "Fictional 04":
+  [36m<td />[39m
+
+  Name "Fictional 03":
+  [36m<td />[39m
+
+  --------------------------------------------------
+  combobox:
+
+  Name "Rows per page":
+  [36m<select[39m
+    [33maria-label[39m=[32m"Rows per page"[39m
+    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+    [33mdisabled[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "10 / page":
+  [36m<option[39m
+    [33mvalue[39m=[32m"10"[39m
+  [36m/>[39m
+
+  Name "20 / page":
+  [36m<option[39m
+    [33mvalue[39m=[32m"20"[39m
+  [36m/>[39m
+
+  Name "50 / page":
+  [36m<option[39m
+    [33mvalue[39m=[32m"50"[39m
+  [36m/>[39m
+
+  Name "100 / page":
+  [36m<option[39m
+    [33mvalue[39m=[32m"100"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pepbits-reference-module library-preferences"[39m
+      [33mdata-density[39m=[32m"compact"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+      [33mdir[39m=[32m"ltr"[39m
+      [33mlang[39m=[32m"en"[39m
+      [33mstyle[39m=[32m"--reference-page-size: 10; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px;"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"school-data-table flex min-h-0 flex-col rounded-lg border border-line bg-surface"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-2 border-b border-line p-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"relative w-full sm:w-60"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search table"[39m
+              [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+              [33mplaceholder[39m=[32m"Search"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ms-auto flex items-center gap-2"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-[11px] text-muted tabular"[39m
+            [36m>[39m
+              [0m12[0m
+              [0m [0m
+              [0mrecords[0m
+            [36m</span>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-w-0"[39m
+          [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar overflow-auto"[39m
+            [33mtabindex[39m=[32m"0"[39m
+          [36m>[39m
+            [36m<table[39m
+              [33mclass[39m=[32m"[&_th]:px-3 [&_th]:py-1 [&_td]:px-3 [&_td]:py-1 [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-[var(--surface-2)]"[39m
+              [33mdata-density[39m=[32m"compact"[39m
+              [33mdata-managed-table[39m=[32m"true"[39m
+              [33mdata-sticky[39m=[32m"true"[39m
+              [33mdata-striped[39m=[32m"false"[39m
+              [33mdata-wrap[39m=[32m"false"[39m
+              [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+            [36m>[39m
+              [36m<thead>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mclass[39m=[32m"school-person-heading"[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-8 gap-1.5 rounded-lg px-3 text-xs"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mName[0m
+                    [36m</button>[39m
+                  [36m</th>[39m
+                [36m</tr>[39m
+              [36m</thead>[39m
+              [36m<tbody>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 12[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 11[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 10[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 09[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 08[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0m...
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/visual-contracts.test.tsx > source table headers, search and three-state sorting retain locked result presentation
+TestingLibraryElementError: Unable to find an accessible element with the role "searchbox"
+
+Here are the accessible roles:
+
+  textbox:
+
+  Name "Search table":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search table"[39m
+    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+    [33mplaceholder[39m=[32m"Search"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  table:
+
+  Name "":
+  [36m<table[39m
+    [33mclass[39m=[32m"[&_th]:px-3 [&_th]:py-1 [&_td]:px-3 [&_td]:py-1 [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-[var(--surface-2)]"[39m
+    [33mdata-density[39m=[32m"compact"[39m
+    [33mdata-managed-table[39m=[32m"true"[39m
+    [33mdata-sticky[39m=[32m"true"[39m
+    [33mdata-striped[39m=[32m"false"[39m
+    [33mdata-wrap[39m=[32m"false"[39m
+    [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  [36m<thead />[39m
+
+  Name "":
+  [36m<tbody />[39m
+
+  --------------------------------------------------
+  row:
+
+  Name "Name":
+  [36m<tr />[39m
+
+  Name "Fictional 12":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 11":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 10":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 09":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 08":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 07":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 06":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 05":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 04":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Fictional 03":
+  [36m<tr[39m
+    [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Name":
+  [36m<th[39m
+    [33mclass[39m=[32m"school-person-heading"[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Name":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-8 gap-1.5 rounded-lg px-3 text-xs"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Previous page":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Previous page"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Previous page"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "1":
+  [36m<button[39m
+    [33maria-current[39m=[32m"page"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-7 gap-1.5 rounded-lg px-2.5 text-[length:calc(11px*var(--fs-scale))] min-w-7 px-2"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "2":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-7 gap-1.5 rounded-lg px-2.5 text-[length:calc(11px*var(--fs-scale))] min-w-7 px-2"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Next page":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Next page"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mtitle[39m=[32m"Next page"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  cell:
+
+  Name "Fictional 12":
+  [36m<td />[39m
+
+  Name "Fictional 11":
+  [36m<td />[39m
+
+  Name "Fictional 10":
+  [36m<td />[39m
+
+  Name "Fictional 09":
+  [36m<td />[39m
+
+  Name "Fictional 08":
+  [36m<td />[39m
+
+  Name "Fictional 07":
+  [36m<td />[39m
+
+  Name "Fictional 06":
+  [36m<td />[39m
+
+  Name "Fictional 05":
+  [36m<td />[39m
+
+  Name "Fictional 04":
+  [36m<td />[39m
+
+  Name "Fictional 03":
+  [36m<td />[39m
+
+  --------------------------------------------------
+  combobox:
+
+  Name "Rows per page":
+  [36m<select[39m
+    [33maria-label[39m=[32m"Rows per page"[39m
+    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+    [33mdisabled[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "10 / page":
+  [36m<option[39m
+    [33mvalue[39m=[32m"10"[39m
+  [36m/>[39m
+
+  Name "20 / page":
+  [36m<option[39m
+    [33mvalue[39m=[32m"20"[39m
+  [36m/>[39m
+
+  Name "50 / page":
+  [36m<option[39m
+    [33mvalue[39m=[32m"50"[39m
+  [36m/>[39m
+
+  Name "100 / page":
+  [36m<option[39m
+    [33mvalue[39m=[32m"100"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pepbits-reference-module library-preferences"[39m
+      [33mdata-density[39m=[32m"compact"[39m
+      [33mdata-reduced-motion[39m=[32m"false"[39m
+      [33mdata-theme[39m=[32m"nexora"[39m
+      [33mdir[39m=[32m"ltr"[39m
+      [33mlang[39m=[32m"en"[39m
+      [33mstyle[39m=[32m"--reference-page-size: 10; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px;"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"school-data-table flex min-h-0 flex-col rounded-lg border border-line bg-surface"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-2 border-b border-line p-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"relative w-full sm:w-60"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"11"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mr[39m=[32m"8"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m21 21-4.3-4.3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search table"[39m
+              [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+              [33mplaceholder[39m=[32m"Search"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ms-auto flex items-center gap-2"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-[11px] text-muted tabular"[39m
+            [36m>[39m
+              [0m12[0m
+              [0m [0m
+              [0mrecords[0m
+            [36m</span>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"min-w-0"[39m
+          [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nex-scrollbar overflow-auto"[39m
+            [33mtabindex[39m=[32m"0"[39m
+          [36m>[39m
+            [36m<table[39m
+              [33mclass[39m=[32m"[&_th]:px-3 [&_th]:py-1 [&_td]:px-3 [&_td]:py-1 [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-[var(--surface-2)]"[39m
+              [33mdata-density[39m=[32m"compact"[39m
+              [33mdata-managed-table[39m=[32m"true"[39m
+              [33mdata-sticky[39m=[32m"true"[39m
+              [33mdata-striped[39m=[32m"false"[39m
+              [33mdata-wrap[39m=[32m"false"[39m
+              [33mstyle[39m=[32m"--fs-scale: var(--fs-result);"[39m
+            [36m>[39m
+              [36m<thead>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mclass[39m=[32m"school-person-heading"[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-8 gap-1.5 rounded-lg px-3 text-xs"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mName[0m
+                    [36m</button>[39m
+                  [36m</th>[39m
+                [36m</tr>[39m
+              [36m</thead>[39m
+              [36m<tbody>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 12[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 11[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 10[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 09[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0mFictional 08[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr[39m
+                  [33mclass[39m=[32m"group border-b border-line/60 transition-colors last:border-0"[39m
+                  [33mtabindex[39m=[32m"0"[39m
+                [36m>[39m
+                  [36m<td>[39m
+                    [0m...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/visual-contracts.test.tsx:30:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  12:59:34
+   Duration  13.85s (transform 2.46s, setup 963ms, collect 4.44s, tests 3.75s, environment 2.14s, prepare 474ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/school@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6d2/demo-apps/school 

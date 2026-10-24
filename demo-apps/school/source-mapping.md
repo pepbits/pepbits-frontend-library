@@ -65,7 +65,7 @@ All seven source files are retained: contracts, module, bundle-boundary, attachm
 
 Mounted drafts, retry behavior, scope reset, question/answer authority, receipt/fine authority, attachments and translations keep their source assertions. Tests using an explicit unsupported formatter locale retain that fixture-only formatter input; real hosted preferences are validated by PreferenceHost. Shared chart event selectors replace source DOM selectors while preserving translated label and number assertions.
 
-Generic geometry changes are intentional library reuse, not a claim of pixel identity. All 26 administrator destinations are present; restricted-role exceptions are listed below; exact source screenshots, exhaustive media, physical printing and institutional/human acceptance remain separate.
+The phase 6d-2 adapters restore source line/donut geometry and table header/result presentation on the public renderers. The [per-route handoff](parity-status.md) records the paired standalone source comparison and remaining differences; it is not a claim of full pixel identity. All 26 administrator destinations are present; restricted-role exceptions are listed below; exact source screenshots, exhaustive media, physical printing and institutional/human acceptance remain separate.
 
 ## Existing API restrictions
 

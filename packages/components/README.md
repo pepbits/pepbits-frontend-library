@@ -168,3 +168,9 @@ Root exports `BarChart`, `HorizontalBars`, `ProgressRing` and `MetricPoint`. Hos
 ## Grouped bar chart (phase 6e-1)
 
 Root export `GroupedBarChart` draws grouped bars from the same `ChartSeries` contract as `LineChart`: `label`, `labels`, `series`, `formatValue` and optional `height`. Negative values extend below the zero line; long label sets are thinned and rotated. Every bar carries a `<title>` with label, series and formatted value, several series add a legend, and a native select inspects one label's values from the keyboard. Colors are semantic tokens and there is no animation, data fetching or own formatting. Two tests cover titles/legend/keyboard inspection and negative, NaN and empty data. The reports demo uses it for report and dashboard charts; the showcase Stats example executes it.
+
+## Compact chart presentation and collection headers (phase 6d-2)
+
+`LineChart` accepts optional `layout="compact"`, plot `height`, `min`/`max` and per-series `fill` (compact areas default on). This presentation uses HTML axis labels and a stretched SVG plot; pointer inspection and a focus-revealed native select share the formatted tooltip. Empty/invalid values remain finite. `DonutChart` accepts compact `size`, `thickness`, `center` and per-part `color`; its named legend buttons remain keyboard inspectable. Hosts supply effective result scale, semantic theme tokens and number formatting. Existing standard layouts and callers keep their defaults. No new exports or dependencies.
+
+`CollectionColumn.headerClassName` passes optional presentation metadata to the semantic column header. Table still controls managed density, wrapping, striping and sticky headers. Regression tests cover authored geometry, keyboard inspection, invalid/empty values and effective table preferences.

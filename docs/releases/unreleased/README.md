@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [School phase 6d-2 — source comparison and visual gaps](restructure-phase-6d-2-2026-10-24.md): compact chart/table parity subset, per-route handoff and exact local evidence.
+
 - [Reports phase 6e-1 — Lumen Reports demo app](restructure-phase-6e-1-2026-10-24.md): all 19 source routes over the shared host and fictional demo API; local verification and limits.
 - [Tenant Admin phase 6e-2 — registry-driven configuration demo](restructure-phase-6e-2-2026-10-24.md): Overview, Approvals, Activity and 30 configuration pages on the shared host; public reference-host contract and local verification.
 - [ERP phase 6c-5: report controls and invoice pagination](restructure-phase-6c-5-2026-10-24.md) — source analytical controls and measured A4 documents; local verification, no deployment.
