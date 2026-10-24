@@ -65,3 +65,21 @@ button, input, select, textarea { font:inherit; }
 @font-face {font-family:"Source Sans 3";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2") format("woff2");}
 @font-face {font-family:"Nunito Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/nunito-sans/files/nunito-sans-latin-wght-normal.woff2") format("woff2");}
 
+
+/* Identical fixed paper geometry for measurement, preview and PDF. */
+.invoice-pages { display:flex; flex-direction:column; gap:24px; }
+.invoice-measure { position:absolute; width:794px; visibility:hidden; pointer-events:none; inset-inline-start:0; top:0; }
+.invoice-measure .erp-invoice { height:auto; min-height:0; }
+.erp-invoice { width:210mm; height:1122px; min-height:1122px; box-sizing:border-box; flex-shrink:0; overflow-wrap:anywhere; }
+.erp-invoice > * { flex-shrink:0; }
+.erp-invoice .invoice-spacer { flex:1; }
+.invoice-lines { table-layout:fixed; margin-top:0; }
+.invoice-carry { padding:8px; text-align:end; font-weight:600; background:#eef4f2; }
+[data-print-heading] { padding-bottom:24px; }
+[data-print-final] { display:flow-root; }
+.erp-invoice footer { margin-top:40px; }
+@media print {
+  .erp-invoice { height:297mm; min-height:297mm; break-after:page; break-inside:avoid; }
+  .erp-invoice:last-child { break-after:auto; }
+  .invoice-measure { display:none!important; }
+}

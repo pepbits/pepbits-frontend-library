@@ -1,3 +1,5 @@
+- [ERP phase 6c-5: report controls and invoice pagination](restructure-phase-6c-5-2026-10-24.md) — source analytical controls and measured A4 documents; local verification, no deployment.
+
 # Current delivery and release records
 
 - [ERP phase 6c-3 — calendars, invoices and analytical views](restructure-phase-6c-3-2026-10-24.md): specialized workflow subset, shared calendar/charts and exact verification; remaining parity gaps are explicit.
