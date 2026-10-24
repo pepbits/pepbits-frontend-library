@@ -1,0 +1,139 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API; academic demonstration, not institutional acceptance",
+  "flows": [
+    {
+      "id": "sign-in",
+      "scope": "UI",
+      "result": "Authenticated fixture session loads preferences, canonical catalog and school dashboard"
+    },
+    {
+      "id": "teacher-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "teacher-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "student-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "student-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "parent-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "parent-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "librarian-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "librarian-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "accountant-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "accountant-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "admin-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "admin-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "student-record-open",
+      "scope": "UI",
+      "result": "Student drawer opens with the effective preview preference"
+    },
+    {
+      "id": "student-print",
+      "scope": "browser PDF",
+      "result": "Print surface isolates the selected visible record and clears its snapshot; no physical printer tested"
+    },
+    {
+      "id": "student-registration",
+      "scope": "UI",
+      "result": "Four registration steps create a server-owned student record"
+    },
+    {
+      "id": "admissions-create-move",
+      "scope": "UI + HTTP",
+      "result": "Create an applicant, move with the keyboard-operable board control and verify persisted stage"
+    },
+    {
+      "id": "teacher-publish-quiz",
+      "scope": "UI",
+      "result": "Authored question/options are published; counters come from the API"
+    },
+    {
+      "id": "teacher-quiz-preview",
+      "scope": "UI",
+      "result": "Server grades a staff preview without storing a student attempt"
+    },
+    {
+      "id": "student-quiz-grade",
+      "scope": "UI",
+      "result": "Student submits answers and sees the server grade/review"
+    },
+    {
+      "id": "student-attempt-persisted",
+      "scope": "direct HTTP",
+      "result": "Student attempt exists in the unchanged school store"
+    },
+    {
+      "id": "parent-children",
+      "scope": "UI + HTTP",
+      "result": "Child switcher and reads stay within linked children"
+    },
+    {
+      "id": "librarian-create-book",
+      "scope": "UI",
+      "result": "Authored book fields create a server-initialized catalogue record"
+    },
+    {
+      "id": "librarian-return",
+      "scope": "UI",
+      "result": "Return command accepts authoritative fine and refreshes stock"
+    },
+    {
+      "id": "accountant-collect",
+      "scope": "UI",
+      "result": "Invoice collection persists an authored amount through the school API"
+    }
+  ],
+  "checks": [],
+  "errors": [
+    {
+      "route": "/attendance?role=teacher",
+      "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('tbody tr').first() to be visible\u001b[22m\n"
+    }
+  ],
+  "consoleErrors": [],
+  "httpErrors": []
+}

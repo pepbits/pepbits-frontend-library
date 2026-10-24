@@ -82,7 +82,7 @@ export const examples:Example[]=[
 {"id":"date","area":"ui","title":"Date","exports":["DateInput", "DateTimeInput", "MonthInput", "TimeInput", "WeekInput"],"description":"catalog.example.DateDemo",render:DateDemo},
 {"id":"calendar","area":"components","title":"Calendar","exports":["Calendar", "DateRangeInput", "useLocalization"],"description":"catalog.example.CalendarDemo",render:CalendarDemo},
 {"id":"cards","area":"components","title":"Cards","exports":["Avatar", "Badge", "Card", "CardContent", "CardFooter", "CardGrid", "CardHeader", "CardTitle", "DataValue", "DescriptionList", "LocalizedText", "StatusBadge", "useFormatters"],"description":"catalog.example.CardsDemo",render:CardsDemo},
-{"id":"stats","area":"components","title":"Stats","exports":["Card", "CardGrid", "StatCard", "Sparkline", "LineChart", "DonutChart", "useFormatters"],"description":"catalog.example.StatsDemo",render:StatsDemo},
+{"id":"stats","area":"components","title":"Stats","exports":["Card", "CardGrid", "StatCard", "Sparkline", "LineChart", "DonutChart", "BarChart", "GroupedBarChart", "HorizontalBars", "ProgressRing", "useFormatters"],"description":"catalog.example.StatsDemo",render:StatsDemo},
 {"id":"values","area":"components","title":"Values","exports":["DataValue", "DescriptionList", "StatusBadge", "useFormatters"],"description":"catalog.example.ValuesDemo",render:ValuesDemo},
 {"id":"buttons","area":"ui","title":"Buttons","exports":["Button", "IconButton", "Plus", "useLocalization"],"description":"catalog.example.ButtonsDemo",render:ButtonsDemo},
 {"id":"menus","area":"components","title":"Menus","exports":["ActionMenu", "Button", "DropdownSelect", "MenuButton", "NavLink", "useLocalization"],"description":"catalog.example.MenusDemo",render:MenusDemo},

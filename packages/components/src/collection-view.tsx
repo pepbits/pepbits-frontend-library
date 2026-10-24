@@ -8,7 +8,7 @@ import {LoadingState} from './empty-state';
 
 export interface CollectionColumn<T> {
   key: string; header: ReactNode; width?: string; align?: 'left' | 'right' | 'center'; sortable?: boolean;
-  render?: (row: T) => ReactNode; className?: string;
+  render?: (row: T) => ReactNode; className?: string; headerClassName?: string;
 }
 export interface CollectionViewProps<T> {
   columns: CollectionColumn<T>[]; rows: T[]; rowKey: (row: T) => string; loading?: boolean;
@@ -30,7 +30,7 @@ export function CollectionView<T>({columns, rows, rowKey, loading, onRowClick, s
       <dl>{columns.map(column => <div key={column.key}><dt className="text-[var(--text-muted)]">{heading(column)}</dt><dd>{cell(row, column)}</dd></div>)}</dl>
       {rowActions && <div onClick={event => event.stopPropagation()}>{rowActions(row)}</div>}
     </Card>)}</CardGrid> : <TableContainer><Table>
-      <TableHeader><TableRow>{columns.map(column => <TableHead key={column.key} scope="col" style={{width: column.width, textAlign: column.align}}
+      <TableHeader><TableRow>{columns.map(column => <TableHead key={column.key} scope="col" className={column.headerClassName} style={{width: column.width, textAlign: column.align}}
         aria-sort={sort?.key === column.key ? sort.dir === 'asc' ? 'ascending' : 'descending' : undefined}>
         {column.sortable && onSort ? <Button variant="ghost" size="sm" onClick={() => onSort(column.key)}>{heading(column)}</Button> : heading(column)}
       </TableHead>)}{rowActions && <TableHead scope="col">{t('Actions')}</TableHead>}</TableRow></TableHeader>

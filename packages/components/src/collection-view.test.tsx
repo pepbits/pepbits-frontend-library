@@ -25,3 +25,8 @@ test('collection distinguishes a pending request from an empty result', () => {
   const {rerender} = render(<CollectionView {...props} loading/>); expect(screen.queryByText('No matching records')).toBeNull();
   rerender(<CollectionView {...props}/>); expect(screen.getByText('No matching records')).toBeInTheDocument();
 });
+test('collection carries column header presentation without changing managed table preferences',()=>{
+  render(<PresentationProvider value={{...DEFAULT_PREFERENCES,density:'spacious',stickyTableHeader:true}}><CollectionView rows={rows} rowKey={row=>row.id} columns={[{...columns[0]!,headerClassName:'school-code-heading'}]}/></PresentationProvider>);
+  expect(screen.getByRole('columnheader',{name:'Name'})).toHaveClass('school-code-heading');
+  expect(screen.getByRole('table')).toHaveAttribute('data-density','spacious');expect(screen.getByRole('table')).toHaveAttribute('data-sticky','true');
+});

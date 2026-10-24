@@ -1,0 +1,25 @@
+{
+  "time": "2026-10-24T03:26:02.525070+00:00",
+  "baseCommit": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+  "branch": "restructure/phase-6c-4",
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "ciCommand": "NEXT_PUBLIC_API_URL=/api npm run ci -- --concurrency=1 --env-mode=loose",
+  "receiptInputs": {
+    "RCM_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json",
+    "MEDBAND_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json"
+  },
+  "receiptInputSha256": "13bb113b11042d3007630e84acd932ec3d1a15547f280bdc368eae24b6ee87f8",
+  "receiptScope": "Four inherited healthcare browser-contract assertions use historical 6b-9 evidence; no fresh healthcare HTTP sweep.",
+  "dependencies": "Unchanged; npm install not required.",
+  "limits": "At most one Vitest tree, one API and one Next server for this run. Final ERP focused tests, build and HTTP integration completed sequentially; final forced CI completed alone. A failed CI run was stopped after three healthcare timeouts; its tree exited before focused diagnostics and the full rerun. All owned HTTP groups stopped; shell Chromium completed on unchanged shared source.",
+  "browserCommand": "LD_LIBRARY_PATH=\"$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu\" npm run test:browser -w @pepbits/shell",
+  "documentationCommand": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs",
+  "vitestTimeout": {
+    "milliseconds": 120000,
+    "mechanism": "NODE_OPTIONS --import ci-vitest-timeout.mjs appends --testTimeout=120000 only to Vitest run commands.",
+    "reason": "Three unchanged healthcare surgisuite-cases route tests exceeded 30 seconds under host contention. All four focused preference profiles subsequently passed; final full run retains every file/assertion.",
+    "diagnostic": "ci-host-timeout-diagnostic.log",
+    "focusedRegression": "healthcare-timeout-regression.log"
+  }
+}

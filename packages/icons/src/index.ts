@@ -119,6 +119,9 @@ export {
 } from "lucide-react";
 /* Calendar and Clock are also used by the phase 4c form controls; they are exported once, below. */
 export {Type, AlignLeft, Hash, CheckSquare, Mail, WandSparkles} from "lucide-react";
+// Tenant configuration presentation primitives.
+// Grid3x3, KeyRound and Percent are also generic primitives; they are exported once, below.
+export {BookOpenCheck, BookText, CalendarRange, CircleDashed, CircleSlash, CopyPlus, FolderTree, GitBranch, ListTree, PackageSearch, Rocket, ScrollText, TicketPercent, Waypoints, Workflow} from "lucide-react";
 export {Icon} from "./icon";
 export type {IconComponent, IconProps} from "./icon";
 
@@ -145,4 +148,10 @@ export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from '
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
 
 // Settle patient billing desk presentation primitives (phase 6e-4).
-export {ChartColumnBig, CircleDashed, Gift, Nfc, Tag, User, Vault} from "lucide-react";
+// CircleDashed, User are exported elsewhere in this file.
+export {ChartColumnBig, Gift, Nfc, Tag, Vault} from "lucide-react";
+// Reports demo presentation primitives (KeyRound, Library, ScrollText, Settings and Zap are exported elsewhere in this file).
+export { Blocks, FileBarChart, FolderDown, MailPlus } from "lucide-react";
+// Additional generic icon exports.
+export {ArrowDownWideNarrow, Award, BookCopy, BookMarked, BookPlus, BookUp, BookX, Briefcase, CalendarOff, Coffee, DollarSign, Eraser, FileSpreadsheet, Film, Flag, GraduationCap, Grid3x3, Highlighter, Kanban, KeyRound, Laptop, Library, Palette, Paperclip, PenTool, Percent, Redo2, School, Settings, Smile, Target, User, UserCog, UserX, VideoOff, Zap} from "lucide-react";
+export type {LucideIcon} from "lucide-react";

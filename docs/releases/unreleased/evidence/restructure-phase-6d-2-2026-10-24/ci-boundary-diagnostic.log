@@ -1,0 +1,13 @@
+1785 files; SHA-256 02e9ff44d02235b0bcd86b385ccb6eee14fb5fd40197af7197e814205b5dd01c
+
+> pepbits-frontend-library@0.0.0 ci
+> npm run check:boundaries && npm run test:tooling && turbo run typecheck test build --force --concurrency=1 --env-mode=loose --continue=always
+
+
+> pepbits-frontend-library@0.0.0 check:boundaries
+> node tooling/scripts/check-boundaries.mjs
+
+FAIL 3 boundary violation(s):
+  - demo-apps/school/scripts/visual-harness.tsx: relative import "../../../desktop-clients/packages/reference-school/src/module" leaves demo-apps/school; import the other package by name
+  - demo-apps/school/scripts/visual-harness.tsx: relative import "../../../desktop-clients/packages/reference-school/src/test-support/fake-host.test-support" leaves demo-apps/school; import the other package by name
+  - demo-apps/school/scripts/visual-harness.tsx: relative import "../../../desktop-clients/packages/ops-ui/src/localization" leaves demo-apps/school; import the other package by name

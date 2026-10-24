@@ -45,6 +45,8 @@ The public barrel adds 38 direct Lucide exports for laboratory/radiology workflo
 
 Pharmacy adds direct `Banknote`, `Bike`, `CirclePause`, `CornerDownLeft`, `Gavel`, `HandCoins`, `Landmark`, `MessageCircle`, `Moon`, `PackageCheck`, `PackageX`, `Radio`, `ShoppingBag`, `ShoppingBasket`, `Snowflake`, `Store` and `Sun` primitives. Each export is covered by a render test; product navigation stays in the demo.
 
+Tenant Admin (phase 6e-2) adds direct `BookOpenCheck`, `BookText`, `CalendarRange`, `CircleDashed`, `CircleSlash`, `CopyPlus`, `FolderTree`, `GitBranch`, `Grid3x3`, `KeyRound`, `ListTree`, `PackageSearch`, `Percent`, `Rocket`, `ScrollText`, `TicketPercent`, `Waypoints` and `Workflow` primitives for registry-driven configuration pages. A dedicated render test covers each export; the registry icon-name map stays in the demo.
+
 RCM adds direct primitives: AlarmClock, BarChart3, Calculator, Code2, ConciergeBell, FileMinus2, FileOutput, FileSearch, FileStack, GitCompare, Home, Hourglass, KanbanSquare, ListChecks, ListTodo, Megaphone, MessageSquareText, MousePointerClick, Package, PieChart, PiggyBank, RadioTower, Scale and Sigma. These are presentation exports, with no product registry.
 
 Phase 6b-5 adds direct Lucide presentation exports: ArrowRightCircle, CalendarCheck, Camera, CameraOff, Circle, ClipboardPlus, CloudOff, FlaskConical, FolderHeart, MonitorSmartphone, MonitorUp, PhoneOff, PlusCircle, ScanFace, Signal, Smartphone, Video, Wifi, WifiOff. Each is covered by the public-export render test; no Teleconsult logic is included.
@@ -56,5 +58,9 @@ Phase 6b-7 adds direct `Droplet`, `Shield` and `Scissors` primitives for the Sur
 Patient access adds `BedDouble`, `CircleDollarSign`, `FolderPlus`, `SearchX`, `Sunrise` and `Crown` as direct primitives, covered by public render tests.
 
 MedSlot uses the public `Armchair`, `Bed`, `Brush`, `CalendarX`, `Menu`, `Monitor` and `Trash` primitives. Product category mappings remain in the demo.
+
+Phase 6d adds 36 direct Lucide primitives for education and general actions (including GraduationCap, School, BookCopy, BookMarked, BookPlus, BookUp, BookX, CalendarOff, Grid3x3, Highlighter and PenTool), plus the `LucideIcon` type alias. Each runtime export is included in the render regression. There is no school icon registry or new dependency.
+
+The reports demo adds direct `Blocks`, `FileBarChart`, `FolderDown`, and `MailPlus` primitives (it also uses `KeyRound`, `Library`, `ScrollText`, `Settings` and `Zap`, which earlier phases export), each covered by a public render test. Report navigation stays in the demo.
 
 Phase 6e-4 adds direct `ChartColumnBig`, `CircleDashed`, `Gift`, `Nfc`, `Tag`, `User` and `Vault` primitives for the Settle billing demo (reports, pending discounts, reward points, card terminal, discounts, patients and day close). Each is covered by the separate `settle-icons.test.tsx` render cases; no billing logic is included.

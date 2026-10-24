@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@pepbits/icons";
 import { cn } from "@pepbits/ui";
 import { useLocalization } from "@pepbits/i18n/react";
@@ -34,6 +34,7 @@ export interface CalendarProps {
  * appointments and persistence remain application concerns. */
 export function Calendar({ value, onChange, defaultMonth, min, max, disabled, weekStartsOn = 1, locale, label, className, renderDay }: CalendarProps) {
   const { language, direction, t } = useLocalization();
+  const calendarId=useId();
   const [month, setMonth] = useState(() => monthStart(parse(value) ?? parse(defaultMonth) ?? new Date()));
   const [focusDate, setFocusDate] = useState<string | null>(null);
   const root = useRef<HTMLDivElement>(null);
@@ -69,7 +70,7 @@ export function Calendar({ value, onChange, defaultMonth, min, max, disabled, we
       <TableHeader><TableRow>{days.slice(0, 7).map(date => <TableHead key={iso(date)} scope="col" aria-label={weekdayName.format(date)} title={weekdayName.format(date)} className="py-2 text-xs text-[var(--text-muted)]">{weekday.format(date)}</TableHead>)}</TableRow></TableHeader>
       <TableBody>{Array.from({ length: 6 }, (_, week) => <TableRow key={week}>{days.slice(week * 7, week * 7 + 7).map(date => {
         const key = iso(date);
-        return <TableCell key={key}><button type="button" data-date={key} aria-label={fullDate.format(date)} aria-pressed={value === key} tabIndex={key === (focusDate ?? (active && iso(active))) ? 0 : -1} disabled={unavailable(key)} onKeyDown={event => navigate(event, date)} onClick={() => onChange(key)} className={cn("focus-ring min-h-9 w-full rounded text-sm disabled:opacity-30", date.getUTCMonth() !== month.getUTCMonth() && "text-[var(--text-subtle)]", value === key ? "bg-[var(--primary)] text-white" : "hover:bg-[var(--surface-2)]")}><span>{number.format(date.getUTCDate())}</span>{renderDay?.(key)}</button></TableCell>;
+        return <TableCell key={key}><button type="button" data-date={key} aria-label={renderDay?undefined:fullDate.format(date)} aria-labelledby={renderDay?`${calendarId}-${key}-content ${calendarId}-${key}-date`:undefined} aria-pressed={value === key} tabIndex={key === (focusDate ?? (active && iso(active))) ? 0 : -1} disabled={unavailable(key)} onKeyDown={event => navigate(event, date)} onClick={() => onChange(key)} className={cn("focus-ring min-h-9 w-full rounded text-sm disabled:opacity-30", date.getUTCMonth() !== month.getUTCMonth() && "text-[var(--text-subtle)]", value === key ? "bg-[var(--primary)] text-white" : "hover:bg-[var(--surface-2)]")}><span id={`${calendarId}-${key}-content`}><span>{number.format(date.getUTCDate())}</span>{renderDay?.(key)}</span>{renderDay&&<span id={`${calendarId}-${key}-date`} className="sr-only">{fullDate.format(date)}</span>}</button></TableCell>;
       })}</TableRow>)}</TableBody>
     </Table>
   </div>;

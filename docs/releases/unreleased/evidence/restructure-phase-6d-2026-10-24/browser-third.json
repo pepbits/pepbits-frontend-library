@@ -1,0 +1,99 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API; academic demonstration, not institutional acceptance",
+  "flows": [
+    {
+      "id": "sign-in",
+      "scope": "UI",
+      "result": "Authenticated fixture session loads preferences, canonical catalog and school dashboard"
+    },
+    {
+      "id": "teacher-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "teacher-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "student-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "student-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "parent-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "parent-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "librarian-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "librarian-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "accountant-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "accountant-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "admin-dashboard",
+      "scope": "UI + HTTP",
+      "result": "Header selection and session persona match the granted role"
+    },
+    {
+      "id": "admin-profile-save",
+      "scope": "UI",
+      "result": "Open, edit, save and reload a profile record"
+    },
+    {
+      "id": "student-record-open",
+      "scope": "UI",
+      "result": "Student drawer opens with the effective preview preference"
+    },
+    {
+      "id": "student-registration",
+      "scope": "UI",
+      "result": "Four registration steps create a server-owned student record"
+    },
+    {
+      "id": "admissions-create-move",
+      "scope": "UI + HTTP",
+      "result": "Create an applicant, move with the keyboard-operable board control and verify persisted stage"
+    },
+    {
+      "id": "teacher-publish-quiz",
+      "scope": "UI",
+      "result": "Authored question/options are published; counters come from the API"
+    }
+  ],
+  "checks": [],
+  "errors": [
+    {
+      "route": "/quizzes/qu-mvlto10u-a2hu?role=teacher",
+      "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^A Two$/ })\u001b[22m\n"
+    }
+  ],
+  "consoleErrors": [],
+  "httpErrors": []
+}
