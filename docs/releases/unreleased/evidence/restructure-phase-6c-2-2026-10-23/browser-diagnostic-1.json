@@ -1,0 +1,99 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "ERP-01",
+      "scope": "UI",
+      "result": "Fixture sign-in and shared provider chain"
+    },
+    {
+      "id": "ERP-preferences",
+      "scope": "UI",
+      "result": "Accepted host preference selects account column storage"
+    },
+    {
+      "id": "erp1-columns",
+      "scope": "UI",
+      "result": "Column visibility and reset"
+    },
+    {
+      "id": "erp1-search",
+      "scope": "UI",
+      "result": "Worklist search returned API rows"
+    },
+    {
+      "id": "erp1-edit",
+      "scope": "UI",
+      "result": "Record open, edit and HTTP save"
+    },
+    {
+      "id": "erp1-create",
+      "scope": "UI",
+      "result": "New record created through API"
+    },
+    {
+      "id": "erp1-approval",
+      "scope": "UI",
+      "result": "Pending approval updated through API"
+    },
+    {
+      "id": "erp2-columns",
+      "scope": "UI",
+      "result": "Column visibility and reset"
+    },
+    {
+      "id": "erp2-neighbours",
+      "scope": "UI",
+      "result": "Next and previous preserve worklist order"
+    },
+    {
+      "id": "erp2-search",
+      "scope": "UI",
+      "result": "Worklist search returned API rows"
+    },
+    {
+      "id": "erp2-edit",
+      "scope": "UI",
+      "result": "Record open, edit and HTTP save"
+    },
+    {
+      "id": "erp2-refresh",
+      "scope": "UI",
+      "result": "Record deep-link reload persisted edit"
+    },
+    {
+      "id": "erp2-create",
+      "scope": "UI",
+      "result": "New record created through API"
+    },
+    {
+      "id": "erp2-approval",
+      "scope": "UI",
+      "result": "Pending approval updated through API"
+    },
+    {
+      "id": "erp1-tree-create",
+      "scope": "UI",
+      "result": "Expand hierarchy and create a child under a selected parent"
+    },
+    {
+      "id": "erp1-tree-search",
+      "scope": "UI",
+      "result": "Edit, reload and search nested child with its ancestors"
+    },
+    {
+      "id": "erp1-tree-delete",
+      "scope": "UI",
+      "result": "Explicitly confirmed leaf deletion acknowledged by HTTP"
+    }
+  ],
+  "checks": [],
+  "errors": [
+    {
+      "route": "/erp1/transactions/support-tickets",
+      "message": "page.waitForResponse: Timeout 30000ms exceeded while waiting for event \"response\""
+    }
+  ],
+  "consoleErrors": [],
+  "httpErrors": []
+}

@@ -53,3 +53,5 @@ test("cell dispatch handles empty, numeric, untyped dates and unknown values", (
   expect(f.compact(1200)).toBe("1.2K");
   expect(f.money(NaN)).toBe(f.money(0));
 });
+
+test('compact currency and short calendar dates retain effective display options',async()=>{const {formatCompactMoney,formatShortDate}=await import('./format');expect(formatCompactMoney({...FORMAT_OPTIONS,currencyCode:'USD',currencyDisplay:'code',negativeStyle:'parentheses',numberLocale:'en-US'},-1500000)).toMatch(/^\(USD\s?1\.5M\)$/);expect(formatShortDate({...FORMAT_OPTIONS,dateFormat:'dmy'},'2026-10-23')).toBe('23/10');});

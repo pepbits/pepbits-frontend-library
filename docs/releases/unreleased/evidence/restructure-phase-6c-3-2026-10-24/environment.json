@@ -1,0 +1,17 @@
+{
+  "time": "2026-10-24T00:31:56.925952+00:00",
+  "baseCommit": "3ab8d9bf5ac49953402456b54f33626046bc18b5",
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "ciCommand": "NEXT_PUBLIC_API_URL=/api npm run ci -- --concurrency=1 --env-mode=loose",
+  "receiptInputs": {
+    "RCM_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json",
+    "MEDBAND_BROWSER_PARITY_RESULT": "docs/releases/unreleased/evidence/restructure-phase-6b-9-2026-10-23/browser-final.json"
+  },
+  "receiptInputSha256": "13bb113b11042d3007630e84acd932ec3d1a15547f280bdc368eae24b6ee87f8",
+  "receiptScope": "Four inherited healthcare browser-contract assertions read the historical 6b-9 receipt; no fresh healthcare HTTP sweep.",
+  "memory": "One Vitest tree, one Next server and one API at a time. CI, shell browser and ERP integration run sequentially.",
+  "dependencies": "Dependency graph and versions unchanged. New subpath only; npm install not required.",
+  "browserCommand": "LD_LIBRARY_PATH=\"$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu\" npm run test:browser -w @pepbits/shell",
+  "documentationCommand": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs"
+}

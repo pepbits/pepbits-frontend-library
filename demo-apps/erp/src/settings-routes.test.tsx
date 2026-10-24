@@ -1,0 +1,14 @@
+import React from 'react';
+import {render,waitFor} from '@testing-library/react';
+import {test,expect,vi} from 'vitest';
+import axe from 'axe-core';
+import {ErpProviders} from './providers';
+import {ErpPage} from './renderer';
+import {fixtureSession} from './test/session';
+import {sharedMessages} from './test/host';
+import {hrefFor} from './navigation';
+import type {Request} from './adapters/http';
+const target={pageId:'preferences'},navigation={current:target,hrefFor,open:vi.fn(),openInNewContext:vi.fn()};
+test.each(['default','ar','motion','lock'])('preferences route uses the full host under %s',async profile=>{const request:Request=async(path)=>Response.json(path.startsWith('/localization')?{messages:sharedMessages,fallbackMessages:sharedMessages}:{overrides:{language:profile==='ar'?'ar':'en',reducedMotion:profile==='motion'},preferences:{},policy:{revision:1,rules:profile==='lock'?{density:{value:'compact',locked:true}}:{}},userRevision:1,canManage:false});
+ const {container}=render(<ErpProviders apiBaseUrl="/api" navigation={navigation} request={request} session={fixtureSession}><ErpPage target={target}/></ErpProviders>);await waitFor(()=>expect(container.querySelector('[data-page-id="preferences"]')).toBeTruthy());expect((await axe.run(container,{rules:{'color-contrast':{enabled:false}}})).violations).toEqual([]);
+});

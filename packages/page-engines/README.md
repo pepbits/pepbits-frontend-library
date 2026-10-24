@@ -112,3 +112,19 @@ Run root `npm install`, `npm run ci`, and the requested jiti documentation check
 RecordSectionLayout tab names include the visible step number followed by the localized section title (for example, `01 Details`). Checkmark decoration remains hidden. Consumers querying exact names should include the index or match the title suffix. Regressions cover names and keyboard/navigation behavior.
 
 Worklist print provenance omits the timestamp during server/initial client rendering, sets it after mount, and refreshes synchronously for native `beforeprint`. This avoids build-time/client-time hydration differences and stale print timestamps. A regression checks stable server markup and the actual print event. The existing 84-template/two-density preference matrix runs as 168 individual cases to isolate timeouts during concurrent app builds.
+
+## ERP configuration additions (phase 6c-1)
+
+`./templates` adds controlled `FieldRows` (stable row IDs, TemplateFields, host-owned defaults/calculation) and `EditableMatrix` (CollectionView, host-supplied dimensions/options/cell updates). Both consume public controls and effective presentation; neither knows an ERP endpoint. Tests cover controlled edits/additions, disabled rows and empty matrix values. TemplateReport accepts `configuration.reportDateKey` and `reportAmountKey`; `null` omits that concept, while omission preserves existing date/amount defaults. Reports use row identity with a positional fallback and format numeric cells through the host.
+
+WorklistPage adds `personalViews={false}` for adapters without that service contract, and `rowClick="open"` for row/keyboard record navigation; defaults preserve existing behaviour. Column layout/reset and preview continue through the shared engine. A component case covers hidden personal views and keyboard opening. `./worklist` exports `csvOf`, `xlsxOf` and `exportFileName`, retaining formula-safe string cells and numeric workbook types; the existing export path uses the same workbook encoder. ERP's original core cases exercise these exports.
+
+ColumnManager visibility buttons expose their column names and pressed state for assistive technology. The ERP browser driver exercises visibility and reset.
+
+## Analytical controls (phase 6c-3)
+
+`TemplateReport` accepts optional `groupBy`, `totals`, `footerLabel` and `onRowClick`. Grouping operates on supplied rows; the host supplies authoritative totals for the full filtered result. Keyboard-operable row drill-downs use TableRow. Effective `resultView` chooses table/cards; table presentation continues through the shared provider. The host owns period/filter semantics, pagination and authorization. This is grouped reporting, not a pivot designer.
+
+`EditableMatrix` adds optional `max`, `step`, `dimensionLabel` and trailing `summaryColumns`. Numeric edits clamp to zero/max; empty stays null and zero stays numeric. A mounted `disabled` value fences callbacks. The host owns summaries, bulk fill, partial saves, operation identity and explicit discard/reload. Unit tests cover bounds, denial, grouping/totals and keyboard drill-down.
+
+`./worklist` adds `downloadGrid(headers, rows, format, name)` for an explicitly reviewed grid. It preserves numeric XLSX cells, applies formula-safe CSV escaping, normalizes the extension and releases the object URL. It does not classify raw columns or grant export permission: callers must review their schema and apply effective export preferences and authorization before calling it. Use `exportRows` when column classification is required. A test decodes the workbook and checks formula-safe CSV output.

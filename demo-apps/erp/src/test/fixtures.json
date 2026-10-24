@@ -1,0 +1,5724 @@
+{
+  "pages": {
+    "workspace/dashboard": {
+      "lookups": {
+        "fields": {},
+        "lines": {}
+      },
+      "list": null
+    },
+    "workspace/approvals": {
+      "lookups": {
+        "fields": {
+          "type": [
+            "Leave",
+            "Expense claim",
+            "Purchase order",
+            "Payment voucher",
+            "Credit note"
+          ],
+          "department": [
+            "Finance",
+            "Sales",
+            "Operations",
+            "Human Resources",
+            "Procurement",
+            "IT",
+            "Quality",
+            "Production",
+            "Warehouse",
+            "Customer Success",
+            "Legal",
+            "Marketing"
+          ],
+          "priority": [
+            "Normal",
+            "High",
+            "Urgent"
+          ],
+          "status": [
+            "Pending",
+            "Approved",
+            "Rejected"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "type": "Expense claim",
+            "requester": "Jonah Sharma",
+            "department": "Finance",
+            "amount": 33979.26,
+            "submitted": "2026-10-23",
+            "due": "2026-12-08",
+            "priority": "Urgent",
+            "status": "Pending",
+            "summary": "Expense claim from Jonah Sharma (Finance). Follow-up scheduled with the vendor on Monday.",
+            "code": "REQ-1046"
+          },
+          {
+            "id": "2",
+            "type": "Leave",
+            "requester": "Omar Das",
+            "department": "Sales",
+            "amount": 0,
+            "submitted": "2026-10-23",
+            "due": "2026-12-03",
+            "priority": "Normal",
+            "status": "Approved",
+            "summary": "Omar Das (Sales) is asking for 6 days of annual leave. Cover has been arranged within the team.",
+            "days": 6,
+            "code": "REQ-1045"
+          }
+        ],
+        "total": 46,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Expense claim": 18,
+          "Leave": 19,
+          "Purchase order": 4,
+          "Payment voucher": 4,
+          "Credit note": 1
+        },
+        "totals": {
+          "amount": 686413.73
+        }
+      }
+    },
+    "masters/countries": {
+      "lookups": {
+        "fields": {
+          "region": [
+            "Asia",
+            "Middle East",
+            "Europe",
+            "Americas",
+            "Africa",
+            "Oceania"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "code": "IN",
+            "name": "India",
+            "dialCode": "+91",
+            "currency": "INR",
+            "region": "Asia",
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "code": "AE",
+            "name": "United Arab Emirates",
+            "dialCode": "+971",
+            "currency": "AED",
+            "region": "Middle East",
+            "status": "Active"
+          }
+        ],
+        "total": 24,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Asia": 6,
+          "Middle East": 4,
+          "Europe": 5,
+          "Americas": 4,
+          "Oceania": 2,
+          "Africa": 3
+        },
+        "totals": {}
+      }
+    },
+    "masters/states": {
+      "lookups": {
+        "fields": {
+          "type": [
+            "State",
+            "Union territory",
+            "Province",
+            "Emirate",
+            "County",
+            "Territory"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "code": "MH",
+            "name": "Maharashtra",
+            "country": "India",
+            "type": "State",
+            "gstCode": "27",
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "code": "KA",
+            "name": "Karnataka",
+            "country": "India",
+            "type": "State",
+            "gstCode": "26",
+            "status": "Active"
+          }
+        ],
+        "total": 38,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "State": 22,
+          "Union territory": 2,
+          "Emirate": 7,
+          "Province": 4,
+          "County": 3
+        },
+        "totals": {}
+      }
+    },
+    "masters/currencies": {
+      "lookups": {
+        "fields": {
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "code": "USD",
+            "name": "US Dollar",
+            "symbol": "$",
+            "decimals": 2,
+            "rate": 1,
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "code": "INR",
+            "name": "Indian Rupee",
+            "symbol": "₹",
+            "decimals": 2,
+            "rate": 83.2,
+            "status": "Active"
+          }
+        ],
+        "total": 12,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 12
+        },
+        "totals": {
+          "decimals": 22,
+          "rate": 379.33
+        }
+      }
+    },
+    "masters/units": {
+      "lookups": {
+        "fields": {
+          "category": [
+            "Count",
+            "Weight",
+            "Volume",
+            "Length",
+            "Time"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "code": "NOS",
+            "name": "Numbers",
+            "category": "Count",
+            "decimals": 0,
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "code": "BOX",
+            "name": "Box",
+            "category": "Count",
+            "decimals": 0,
+            "status": "Active"
+          }
+        ],
+        "total": 14,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Count": 4,
+          "Weight": 3,
+          "Volume": 2,
+          "Length": 3,
+          "Time": 2
+        },
+        "totals": {
+          "decimals": 18
+        }
+      }
+    },
+    "masters/holidays": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "New Year",
+            "Republic Day",
+            "Holi",
+            "Good Friday",
+            "Eid al-Fitr",
+            "Labour Day",
+            "Independence Day",
+            "Ganesh Chaturthi",
+            "Gandhi Jayanti",
+            "Dussehra",
+            "Diwali",
+            "Guru Nanak Jayanti",
+            "Christmas",
+            "Company Foundation Day",
+            "Annual Offsite"
+          ],
+          "type": [
+            "Public",
+            "Optional",
+            "Company"
+          ],
+          "location": [
+            "All locations",
+            "India",
+            "UAE",
+            "Head office"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Christmas",
+            "date": "2026-10-29",
+            "type": "Company",
+            "location": "Head office",
+            "status": "Inactive"
+          },
+          {
+            "id": "2",
+            "name": "Eid al-Fitr",
+            "date": "2026-12-16",
+            "type": "Company",
+            "location": "UAE",
+            "status": "Active"
+          }
+        ],
+        "total": 15,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Company": 4,
+          "Optional": 6,
+          "Public": 5
+        },
+        "totals": {}
+      }
+    },
+    "masters/org-structure": {
+      "lookups": {
+        "fields": {
+          "type": [
+            "Company",
+            "Division",
+            "Department",
+            "Team"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Northwind Industries",
+            "parentId": null,
+            "level": 0,
+            "code": "1000",
+            "type": "Company",
+            "head": "Dev Das",
+            "headcount": 99,
+            "costCenter": "standard 822",
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "name": "Commercial",
+            "parentId": "1",
+            "level": 1,
+            "code": "1000.1",
+            "type": "Division",
+            "head": "Clara Costa",
+            "headcount": 96,
+            "costCenter": "urgent 652",
+            "status": "Active"
+          }
+        ],
+        "total": 27,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 27
+        },
+        "totals": {
+          "headcount": 1751
+        }
+      }
+    },
+    "masters/departments": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "Finance",
+            "Sales",
+            "Operations",
+            "Human Resources",
+            "Procurement",
+            "IT",
+            "Quality",
+            "Production",
+            "Warehouse",
+            "Customer Success",
+            "Legal",
+            "Marketing"
+          ],
+          "costCenter": [
+            "CC-100",
+            "CC-200",
+            "CC-300",
+            "CC-400"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "IT",
+            "head": "Elena Das",
+            "costCenter": "CC-200",
+            "headcount": 13,
+            "status": "Active",
+            "code": "DEP-1001"
+          },
+          {
+            "id": "2",
+            "name": "Sales",
+            "head": "Kabir Qureshi",
+            "costCenter": "CC-100",
+            "headcount": 17,
+            "status": "Active",
+            "code": "DEP-1002"
+          }
+        ],
+        "total": 12,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 9,
+          "Inactive": 3
+        },
+        "totals": {
+          "headcount": 655
+        }
+      }
+    },
+    "masters/chart-of-accounts": {
+      "lookups": {
+        "fields": {
+          "type": [
+            "Group",
+            "Ledger"
+          ],
+          "nature": [
+            "Asset",
+            "Liability",
+            "Income",
+            "Expense",
+            "Equity"
+          ],
+          "currency": [
+            "USD",
+            "INR",
+            "AED",
+            "EUR"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Assets",
+            "parentId": null,
+            "level": 0,
+            "code": "1000",
+            "type": "Group",
+            "nature": "Asset",
+            "balance": 112870.07,
+            "currency": "USD",
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "name": "Current Assets",
+            "parentId": "1",
+            "level": 1,
+            "code": "1000.1",
+            "type": "Group",
+            "nature": "Asset",
+            "balance": 249439.41,
+            "currency": "USD",
+            "status": "Active"
+          }
+        ],
+        "total": 39,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 35,
+          "Inactive": 4
+        },
+        "totals": {
+          "balance": 4943628.03
+        }
+      }
+    },
+    "masters/tax-rates": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "GST 0%",
+            "GST 5%",
+            "GST 12%",
+            "GST 18%",
+            "GST 28%",
+            "VAT 5%",
+            "VAT 15%",
+            "VAT 20%",
+            "Sales Tax 7%",
+            "Sales Tax 8.25%",
+            "TDS 1%",
+            "TDS 2%",
+            "TDS 10%",
+            "Withholding 5%",
+            "Customs Duty 7.5%",
+            "Cess 1%",
+            "Service Tax 15%",
+            "Excise 12%",
+            "Import VAT 5%",
+            "Green Levy 2%",
+            "Tourism Tax 3%",
+            "Digital Services 2%"
+          ],
+          "category": [
+            "GST",
+            "VAT",
+            "Sales tax",
+            "Withholding"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Tourism Tax 3%",
+            "rate": 3,
+            "category": "Sales tax",
+            "effectiveFrom": "2026-07-21",
+            "effectiveTo": "2027-03-03",
+            "code": "TX-1001"
+          },
+          {
+            "id": "2",
+            "name": "Excise 12%",
+            "rate": 12,
+            "category": "Sales tax",
+            "effectiveFrom": "2025-11-17",
+            "effectiveTo": "2026-09-01",
+            "code": "TX-1002"
+          }
+        ],
+        "total": 22,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Sales tax": 9,
+          "VAT": 4,
+          "Withholding": 4,
+          "GST": 5
+        },
+        "totals": {}
+      }
+    },
+    "masters/customers": {
+      "lookups": {
+        "fields": {
+          "group": [
+            "Wholesale",
+            "Retail",
+            "Distributor",
+            "Government",
+            "Export"
+          ],
+          "paymentTerms": [
+            "Immediate",
+            "Net 15",
+            "Net 30",
+            "Net 45",
+            "Net 60"
+          ],
+          "status": [
+            "Active",
+            "On hold",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Tidewater Distribution PLC",
+            "group": "Distributor",
+            "salesperson": "Isla Kim",
+            "since": "2025-03-30",
+            "contact": "Dev Castillo",
+            "email": "tidewater.distribution@mail.example",
+            "phone": "+44 99941 10302",
+            "city": "London",
+            "country": "United Kingdom",
+            "address": "275 Industrial Avenue, Floor 6",
+            "creditLimit": 35074.12,
+            "outstanding": 46509.61,
+            "paymentTerms": "Immediate",
+            "taxId": "14AAQC7423Y1Z4",
+            "status": "Active",
+            "code": "CUS-1001"
+          },
+          {
+            "id": "2",
+            "name": "Kestrel Textiles Inc",
+            "group": "Export",
+            "salesperson": "Zoe Silva",
+            "since": "2026-04-17",
+            "contact": "Aarav Patel",
+            "email": "kestrel.textiles@corp.example",
+            "phone": "+1 91647 84429",
+            "city": "Chicago",
+            "country": "United States",
+            "address": "247 Station Boulevard, Block 9",
+            "creditLimit": 104174.97,
+            "outstanding": 74984.99,
+            "paymentTerms": "Immediate",
+            "taxId": "20AAZC2086Z1Z7",
+            "status": "Active",
+            "code": "CUS-1002"
+          }
+        ],
+        "total": 64,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 33,
+          "On hold": 23,
+          "Inactive": 8
+        },
+        "totals": {
+          "creditLimit": 6962524.4,
+          "outstanding": 2780407.06
+        }
+      }
+    },
+    "masters/suppliers": {
+      "lookups": {
+        "fields": {
+          "category": [
+            "Raw material",
+            "Packaging",
+            "Services",
+            "Logistics",
+            "Capital goods"
+          ],
+          "paymentTerms": [
+            "Immediate",
+            "Net 15",
+            "Net 30",
+            "Net 45",
+            "Net 60"
+          ],
+          "bank": [
+            "HDFC Bank",
+            "Citibank",
+            "HSBC",
+            "Emirates NBD",
+            "Barclays"
+          ],
+          "status": [
+            "Active",
+            "Blocked",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Vantage Holdings LLC",
+            "category": "Packaging",
+            "rating": 4,
+            "leadTime": 13,
+            "contact": "Amara Kim",
+            "email": "vantage.holdings@northwind.example",
+            "phone": "+1 74407 74964",
+            "city": "Chicago",
+            "country": "United States",
+            "payable": 37627.26,
+            "paymentTerms": "Net 30",
+            "bank": "Citibank",
+            "iban": "GB64 NWBK 9805 1395 3879",
+            "status": "Inactive",
+            "code": "SUP-1001"
+          },
+          {
+            "id": "2",
+            "name": "Apex Engineering PLC",
+            "category": "Capital goods",
+            "rating": 2,
+            "leadTime": 23,
+            "contact": "Fatima Dubois",
+            "email": "apex.engineering@northwind.example",
+            "phone": "+1 71535 28482",
+            "city": "Berlin",
+            "country": "Germany",
+            "payable": 40566.04,
+            "paymentTerms": "Net 30",
+            "bank": "Emirates NBD",
+            "iban": "GB50 NWBK 9500 5118 1418",
+            "status": "Active",
+            "code": "SUP-1002"
+          }
+        ],
+        "total": 42,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Inactive": 7,
+          "Active": 18,
+          "Blocked": 17
+        },
+        "totals": {
+          "rating": 152,
+          "leadTime": 983,
+          "payable": 1153439.35
+        }
+      }
+    },
+    "masters/items": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "Steel Hex Bolt M8",
+            "Copper Wire 2.5mm",
+            "LED Panel 40W",
+            "Hydraulic Pump HP-200",
+            "Safety Helmet Class E",
+            "Nitrile Gloves (Box 100)",
+            "Industrial Adhesive 1L",
+            "PVC Pipe 50mm",
+            "Ball Bearing 6204",
+            "Circuit Breaker 32A",
+            "Thermal Printer Roll",
+            "Stainless Sheet 2mm",
+            "Lithium Battery Pack 48V",
+            "Air Filter AF-310",
+            "Conveyor Belt 5m",
+            "Pressure Gauge 0-10bar",
+            "Solar Inverter 5kW",
+            "Welding Rod E6013",
+            "Laptop 14\" Business",
+            "Office Chair Ergo",
+            "Printer Toner 26A",
+            "Barcode Scanner 2D",
+            "Paracetamol 500mg",
+            "Surgical Mask 3-ply",
+            "Hand Sanitizer 500ml",
+            "Glucose Monitor Kit",
+            "Packaging Carton L",
+            "Stretch Film 23mic",
+            "Pallet Wooden 1200",
+            "Drill Bit Set HSS",
+            "Cable Tray 300mm",
+            "Water Pump 1HP",
+            "Epoxy Floor Coat 4L",
+            "Fire Extinguisher 6kg",
+            "Label Roll 100x50",
+            "Aluminium Profile 40x40",
+            "Gear Motor 0.5HP",
+            "Temperature Sensor PT100",
+            "Switch Gear Panel",
+            "Router Dual Band"
+          ],
+          "category": [
+            "Hardware",
+            "Electrical",
+            "Safety",
+            "Consumables",
+            "IT",
+            "Medical"
+          ],
+          "brand": [
+            "Apex",
+            "Voltra",
+            "SafeCo",
+            "Northwind",
+            "MediPlus"
+          ],
+          "uom": [
+            "Nos",
+            "Kg",
+            "Litre",
+            "Metre",
+            "Box",
+            "Set",
+            "Roll",
+            "Pair"
+          ],
+          "warehouse": [
+            "Main Warehouse",
+            "North Depot",
+            "Port Store",
+            "Plant 2 Stores",
+            "Returns Bay"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Hydraulic Pump HP-200",
+            "category": "Safety",
+            "brand": "Northwind",
+            "uom": "Litre",
+            "hsn": "79583963",
+            "purchasePrice": 556.92,
+            "salePrice": 114.57,
+            "stock": 417,
+            "reorder": 37,
+            "warehouse": "North Depot",
+            "batchTracked": true,
+            "status": "Inactive",
+            "code": "ITM-1001"
+          },
+          {
+            "id": "2",
+            "name": "Printer Toner 26A",
+            "category": "Safety",
+            "brand": "Voltra",
+            "uom": "Nos",
+            "hsn": "72865065",
+            "purchasePrice": 245.08,
+            "salePrice": 849.22,
+            "stock": 3,
+            "reorder": 97,
+            "warehouse": "Main Warehouse",
+            "batchTracked": false,
+            "status": "Inactive",
+            "code": "ITM-1002"
+          }
+        ],
+        "total": 40,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Safety": 9,
+          "Hardware": 11,
+          "Electrical": 13,
+          "Medical": 2,
+          "IT": 2,
+          "Consumables": 3
+        },
+        "totals": {
+          "purchasePrice": 12383.56,
+          "salePrice": 18546.17,
+          "stock": 17780,
+          "reorder": 2945
+        }
+      }
+    },
+    "masters/product-categories": {
+      "lookups": {
+        "fields": {
+          "taxCode": [
+            "GST 5%",
+            "GST 12%",
+            "GST 18%",
+            "VAT 5%"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Hardware",
+            "parentId": null,
+            "level": 0,
+            "code": "1000",
+            "items": 9,
+            "margin": 21,
+            "taxCode": "GST 12%",
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "name": "Fasteners",
+            "parentId": "1",
+            "level": 1,
+            "code": "1000.1",
+            "items": 18,
+            "margin": 29,
+            "taxCode": "GST 18%",
+            "status": "Active"
+          }
+        ],
+        "total": 28,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 27,
+          "Inactive": 1
+        },
+        "totals": {
+          "items": 755
+        }
+      }
+    },
+    "masters/price-lists": {
+      "lookups": {
+        "fields": {
+          "item": [
+            "Steel Hex Bolt M8",
+            "Copper Wire 2.5mm",
+            "LED Panel 40W",
+            "Hydraulic Pump HP-200",
+            "Safety Helmet Class E",
+            "Nitrile Gloves (Box 100)",
+            "Industrial Adhesive 1L",
+            "PVC Pipe 50mm",
+            "Ball Bearing 6204",
+            "Circuit Breaker 32A",
+            "Thermal Printer Roll",
+            "Stainless Sheet 2mm",
+            "Lithium Battery Pack 48V",
+            "Air Filter AF-310",
+            "Conveyor Belt 5m",
+            "Pressure Gauge 0-10bar",
+            "Solar Inverter 5kW",
+            "Welding Rod E6013",
+            "Laptop 14\" Business",
+            "Office Chair Ergo",
+            "Printer Toner 26A",
+            "Barcode Scanner 2D",
+            "Paracetamol 500mg",
+            "Surgical Mask 3-ply",
+            "Hand Sanitizer 500ml",
+            "Glucose Monitor Kit",
+            "Packaging Carton L",
+            "Stretch Film 23mic",
+            "Pallet Wooden 1200",
+            "Drill Bit Set HSS",
+            "Cable Tray 300mm",
+            "Water Pump 1HP",
+            "Epoxy Floor Coat 4L",
+            "Fire Extinguisher 6kg",
+            "Label Roll 100x50",
+            "Aluminium Profile 40x40",
+            "Gear Motor 0.5HP",
+            "Temperature Sensor PT100",
+            "Switch Gear Panel",
+            "Router Dual Band"
+          ],
+          "list": [
+            "Retail",
+            "Wholesale",
+            "Distributor",
+            "Export"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "item": "PVC Pipe 50mm",
+            "list": "Retail",
+            "price": 333.31,
+            "minQty": 5,
+            "effectiveFrom": "2026-11-18",
+            "effectiveTo": "2027-11-04",
+            "code": "PL-1001"
+          },
+          {
+            "id": "2",
+            "item": "Copper Wire 2.5mm",
+            "list": "Retail",
+            "price": 581.53,
+            "minQty": 78,
+            "effectiveFrom": "2026-06-17",
+            "effectiveTo": "2027-01-12",
+            "code": "PL-1002"
+          }
+        ],
+        "total": 60,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Retail": 27,
+          "Wholesale": 11,
+          "Export": 6,
+          "Distributor": 16
+        },
+        "totals": {
+          "price": 27260.24,
+          "minQty": 3104
+        }
+      }
+    },
+    "masters/bill-of-materials": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "Hydraulic Pump HP-200",
+            "Solar Inverter 5kW",
+            "Control Panel CP-9",
+            "Water Pump 1HP",
+            "Air Compressor 50L",
+            "LED Panel 40W",
+            "Battery Pack 48V",
+            "Conveyor Module CM-5",
+            "Industrial Fan 24\"",
+            "Gear Motor 0.5HP",
+            "Switch Gear Panel",
+            "Welding Machine 200A"
+          ],
+          "version": [
+            "v1",
+            "v2",
+            "v3"
+          ],
+          "status": [
+            "Active",
+            "Draft",
+            "Obsolete"
+          ]
+        },
+        "lines": {
+          "item": [
+            "Mild Steel Rod",
+            "Aluminium Ingot",
+            "Copper Cathode",
+            "Polypropylene Granules",
+            "Rubber Gasket",
+            "Fastener Kit",
+            "Paint Primer",
+            "PCB Assembly",
+            "Wiring Harness",
+            "Plastic Housing",
+            "Glass Panel",
+            "Foam Insert",
+            "Corrugated Box",
+            "Label Set",
+            "Lubricant Oil"
+          ],
+          "uom": [
+            "Nos",
+            "Kg",
+            "Litre",
+            "Metre",
+            "Box",
+            "Set",
+            "Roll",
+            "Pair"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Industrial Fan 24\"",
+            "version": "v2",
+            "outputQty": 10,
+            "owner": "Ines Iyer",
+            "status": "Active",
+            "lines": [
+              {
+                "item": "Lubricant Oil",
+                "qty": 7,
+                "uom": "Kg",
+                "rate": 119.4,
+                "amount": 835.8
+              },
+              {
+                "item": "Plastic Housing",
+                "qty": 10,
+                "uom": "Kg",
+                "rate": 132.63,
+                "amount": 1326.3
+              },
+              {
+                "item": "Wiring Harness",
+                "qty": 2,
+                "uom": "Metre",
+                "rate": 131.92,
+                "amount": 263.84
+              },
+              {
+                "item": "Fastener Kit",
+                "qty": 3,
+                "uom": "Box",
+                "rate": 49.23,
+                "amount": 147.69
+              },
+              {
+                "item": "Wiring Harness",
+                "qty": 4,
+                "uom": "Litre",
+                "rate": 24.88,
+                "amount": 99.52
+              }
+            ],
+            "total": 2673.15,
+            "code": "BOM-1001"
+          },
+          {
+            "id": "2",
+            "name": "Water Pump 1HP",
+            "version": "v2",
+            "outputQty": 5,
+            "owner": "Leila Qureshi",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Glass Panel",
+                "qty": 1,
+                "uom": "Kg",
+                "rate": 96.78,
+                "amount": 96.78
+              },
+              {
+                "item": "Mild Steel Rod",
+                "qty": 12,
+                "uom": "Kg",
+                "rate": 82.16,
+                "amount": 985.92
+              },
+              {
+                "item": "Paint Primer",
+                "qty": 3,
+                "uom": "Set",
+                "rate": 9.32,
+                "amount": 27.96
+              },
+              {
+                "item": "PCB Assembly",
+                "qty": 8,
+                "uom": "Nos",
+                "rate": 104.82,
+                "amount": 838.56
+              },
+              {
+                "item": "Label Set",
+                "qty": 6,
+                "uom": "Nos",
+                "rate": 3.51,
+                "amount": 21.06
+              }
+            ],
+            "total": 1970.28,
+            "code": "BOM-1002"
+          }
+        ],
+        "total": 12,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 6,
+          "Draft": 3,
+          "Obsolete": 3
+        },
+        "totals": {
+          "outputQty": 76,
+          "total": 31910.33
+        }
+      }
+    },
+    "masters/employees": {
+      "lookups": {
+        "fields": {
+          "designation": [
+            "Executive",
+            "Senior Executive",
+            "Team Lead",
+            "Manager",
+            "Senior Manager",
+            "Analyst",
+            "Engineer",
+            "Associate",
+            "Director",
+            "Specialist"
+          ],
+          "department": [
+            "Finance",
+            "Sales",
+            "Operations",
+            "Human Resources",
+            "Procurement",
+            "IT",
+            "Quality",
+            "Production",
+            "Warehouse",
+            "Customer Success",
+            "Legal",
+            "Marketing"
+          ],
+          "type": [
+            "Full-time",
+            "Contract",
+            "Intern"
+          ],
+          "bank": [
+            "HDFC Bank",
+            "Citibank",
+            "HSBC"
+          ],
+          "status": [
+            "Active",
+            "On leave",
+            "Probation",
+            "Exited"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Amara Adeyemi",
+            "designation": "Associate",
+            "department": "Human Resources",
+            "manager": "Kabir Novak",
+            "joined": "2025-03-14",
+            "type": "Contract",
+            "email": "amara.adeyemi@mail.example",
+            "phone": "+1 92975 59382",
+            "location": "London",
+            "salary": 6319.77,
+            "bank": "HDFC Bank",
+            "account": "50200049143478",
+            "status": "On leave",
+            "code": "EMP-1001"
+          },
+          {
+            "id": "2",
+            "name": "Meera Kim",
+            "designation": "Team Lead",
+            "department": "Sales",
+            "manager": "Lucas Kowalski",
+            "joined": "2023-03-03",
+            "type": "Intern",
+            "email": "meera.kim@corp.example",
+            "phone": "+44 98188 64334",
+            "location": "Rotterdam",
+            "salary": 5343.57,
+            "bank": "Citibank",
+            "account": "50200253960125",
+            "status": "On leave",
+            "code": "EMP-1002"
+          }
+        ],
+        "total": 72,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Human Resources": 12,
+          "Sales": 15,
+          "Warehouse": 6,
+          "Operations": 9,
+          "Finance": 10,
+          "Quality": 5,
+          "Procurement": 6,
+          "Customer Success": 2,
+          "IT": 4,
+          "Production": 2,
+          "Legal": 1
+        },
+        "totals": {
+          "salary": 601976.9
+        }
+      }
+    },
+    "masters/leave-types": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "Annual leave",
+            "Sick leave",
+            "Casual leave",
+            "Maternity leave",
+            "Paternity leave",
+            "Bereavement leave",
+            "Comp off",
+            "Loss of pay",
+            "Study leave"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Sick leave",
+            "days": 20,
+            "carryForward": false,
+            "paid": false,
+            "status": "Inactive",
+            "code": "LT-1001"
+          },
+          {
+            "id": "2",
+            "name": "Comp off",
+            "days": 17,
+            "carryForward": true,
+            "paid": true,
+            "status": "Active",
+            "code": "LT-1002"
+          }
+        ],
+        "total": 9,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Inactive": 5,
+          "Active": 4
+        },
+        "totals": {
+          "days": 170
+        }
+      }
+    },
+    "masters/shifts": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "General",
+            "Morning",
+            "Evening",
+            "Night",
+            "Weekend",
+            "Split"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Split",
+            "start": "07:00",
+            "end": "14:00",
+            "grace": 7,
+            "status": "Inactive",
+            "code": "SH-1001"
+          },
+          {
+            "id": "2",
+            "name": "General",
+            "start": "16:30",
+            "end": "12:30",
+            "grace": 6,
+            "status": "Active",
+            "code": "SH-1002"
+          }
+        ],
+        "total": 6,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Inactive": 2,
+          "Active": 4
+        },
+        "totals": {
+          "grace": 70
+        }
+      }
+    },
+    "masters/salary-structures": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "Staff grade A",
+            "Staff grade B",
+            "Management M1",
+            "Management M2",
+            "Sales incentive plan",
+            "Plant workforce",
+            "Contract staff",
+            "Interns"
+          ],
+          "grade": [
+            "A",
+            "B",
+            "M1",
+            "M2",
+            "S",
+            "P",
+            "C",
+            "I"
+          ],
+          "currency": [
+            "USD",
+            "INR",
+            "AED"
+          ],
+          "status": [
+            "Active",
+            "Draft"
+          ]
+        },
+        "lines": {
+          "item": [
+            "Basic",
+            "House rent allowance",
+            "Special allowance",
+            "Conveyance",
+            "Medical allowance",
+            "Performance bonus",
+            "Provident fund",
+            "Professional tax"
+          ],
+          "kind": [
+            "Earning",
+            "Deduction"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Staff grade A",
+            "grade": "P",
+            "currency": "USD",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Provident fund",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 1016.75,
+                "amount": 1016.75
+              },
+              {
+                "item": "Conveyance",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 1286.53,
+                "amount": 1286.53
+              },
+              {
+                "item": "House rent allowance",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 1108.26,
+                "amount": 1108.26
+              },
+              {
+                "item": "Conveyance",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 1667,
+                "amount": 1667
+              },
+              {
+                "item": "Basic",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 1567.36,
+                "amount": 1567.36
+              }
+            ],
+            "total": 6645.9,
+            "code": "SS-1001"
+          },
+          {
+            "id": "2",
+            "name": "Interns",
+            "grade": "I",
+            "currency": "INR",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Conveyance",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 2098.12,
+                "amount": 2098.12
+              },
+              {
+                "item": "House rent allowance",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 1290.22,
+                "amount": 1290.22
+              },
+              {
+                "item": "Conveyance",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 482.29,
+                "amount": 482.29
+              },
+              {
+                "item": "House rent allowance",
+                "kind": "Deduction",
+                "qty": 1,
+                "rate": 2191.01,
+                "amount": 2191.01
+              },
+              {
+                "item": "Conveyance",
+                "kind": "Earning",
+                "qty": 1,
+                "rate": 1106.3,
+                "amount": 1106.3
+              },
+              {
+                "item": "House rent allowance",
+                "kind": "Deduction",
+                "qty": 1,
+                "rate": 1612,
+                "amount": 1612
+              }
+            ],
+            "total": 1173.92,
+            "code": "SS-1002"
+          }
+        ],
+        "total": 8,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Draft": 6,
+          "Active": 2
+        },
+        "totals": {
+          "total": 8484.1
+        }
+      }
+    },
+    "masters/patients": {
+      "lookups": {
+        "fields": {
+          "gender": [
+            "Female",
+            "Male",
+            "Other"
+          ],
+          "bloodGroup": [
+            "A+",
+            "A−",
+            "B+",
+            "B−",
+            "O+",
+            "O−",
+            "AB+",
+            "AB−"
+          ],
+          "doctor": [
+            "Dr. Meera Iyer",
+            "Dr. Samuel Okafor",
+            "Dr. Hana Tanaka",
+            "Dr. Arjun Menon",
+            "Dr. Clara Moreau",
+            "Dr. Omar Haddad"
+          ],
+          "insurer": [
+            "Self pay",
+            "Aetna",
+            "Allianz Care",
+            "Star Health",
+            "Daman",
+            "Bupa"
+          ],
+          "status": [
+            "Active",
+            "Admitted",
+            "Discharged",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Leila Das",
+            "gender": "Female",
+            "age": 22,
+            "bloodGroup": "B−",
+            "doctor": "Dr. Hana Tanaka",
+            "lastVisit": "2026-08-20",
+            "phone": "+971 75796 69388",
+            "email": "leila.das@mail.example",
+            "city": "Dubai",
+            "emergencyContact": "Arjun Brennan",
+            "insurer": "Daman",
+            "policyNo": "POL-6950712",
+            "balance": 2409.02,
+            "allergies": "Penicillin",
+            "status": "Admitted",
+            "code": "MRN-1001"
+          },
+          {
+            "id": "2",
+            "name": "Isla Adeyemi",
+            "gender": "Male",
+            "age": 3,
+            "bloodGroup": "A−",
+            "doctor": "Dr. Meera Iyer",
+            "lastVisit": "2026-06-30",
+            "phone": "+1 89656 39998",
+            "email": "isla.adeyemi@mail.example",
+            "city": "Rotterdam",
+            "emergencyContact": "Priya Andersen",
+            "insurer": "Self pay",
+            "policyNo": "POL-9853551",
+            "balance": 2379.5,
+            "allergies": "No known allergies",
+            "status": "Active",
+            "code": "MRN-1002"
+          }
+        ],
+        "total": 80,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Admitted": 20,
+          "Active": 28,
+          "Inactive": 11,
+          "Discharged": 21
+        },
+        "totals": {
+          "age": 3595,
+          "balance": 167377.87
+        }
+      }
+    },
+    "masters/doctors": {
+      "lookups": {
+        "fields": {
+          "speciality": [
+            "Cardiology",
+            "Orthopaedics",
+            "Paediatrics",
+            "General Medicine",
+            "Dermatology",
+            "ENT"
+          ],
+          "qualification": [
+            "MBBS, MD",
+            "MBBS, MS",
+            "MBBS, DNB",
+            "MBBS, DM"
+          ],
+          "days": [
+            "Mon–Fri",
+            "Mon, Wed, Fri",
+            "Tue, Thu, Sat",
+            "Weekends"
+          ],
+          "status": [
+            "Active",
+            "On leave",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Mateo Rao",
+            "speciality": "Orthopaedics",
+            "qualification": "MBBS, MD",
+            "experience": 25,
+            "phone": "+91 95829 94205",
+            "email": "mateo.rao@corp.example",
+            "fee": 148.97,
+            "days": "Weekends",
+            "status": "Active",
+            "code": "DR-1001"
+          },
+          {
+            "id": "2",
+            "name": "Aarav Sharma",
+            "speciality": "Paediatrics",
+            "qualification": "MBBS, DNB",
+            "experience": 18,
+            "phone": "+44 74617 81611",
+            "email": "aarav.sharma@northwind.example",
+            "fee": 105.5,
+            "days": "Mon, Wed, Fri",
+            "status": "On leave",
+            "code": "DR-1002"
+          }
+        ],
+        "total": 24,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Orthopaedics": 7,
+          "Paediatrics": 4,
+          "Cardiology": 4,
+          "General Medicine": 6,
+          "Dermatology": 1,
+          "ENT": 2
+        },
+        "totals": {
+          "experience": 480,
+          "fee": 2868.33
+        }
+      }
+    },
+    "masters/lab-tests": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "Complete Blood Count",
+            "Lipid Profile",
+            "HbA1c",
+            "Liver Function Test",
+            "Kidney Function Test",
+            "Thyroid Profile",
+            "Vitamin D",
+            "Urine Routine",
+            "Blood Culture",
+            "CRP",
+            "Dengue NS1",
+            "Serum Electrolytes",
+            "Fasting Blood Sugar",
+            "ECG",
+            "Chest X-Ray",
+            "Ultrasound Abdomen",
+            "MRI Brain",
+            "CT Chest",
+            "Vitamin B12",
+            "Iron Studies"
+          ],
+          "sample": [
+            "Blood",
+            "Urine",
+            "Imaging",
+            "Swab"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Iron Studies",
+            "sample": "Blood",
+            "tat": 39,
+            "price": 183.45,
+            "status": "Active",
+            "code": "LAB-1001"
+          },
+          {
+            "id": "2",
+            "name": "CRP",
+            "sample": "Blood",
+            "tat": 72,
+            "price": 240.66,
+            "status": "Active",
+            "code": "LAB-1002"
+          }
+        ],
+        "total": 20,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Blood": 9,
+          "Imaging": 7,
+          "Urine": 3,
+          "Swab": 1
+        },
+        "totals": {
+          "tat": 722,
+          "price": 4061.33
+        }
+      }
+    },
+    "masters/consultation-fees": {
+      "lookups": {
+        "fields": {
+          "doctor": [
+            "Dr. Meera Iyer",
+            "Dr. Samuel Okafor",
+            "Dr. Hana Tanaka",
+            "Dr. Arjun Menon",
+            "Dr. Clara Moreau",
+            "Dr. Omar Haddad"
+          ],
+          "visitType": [
+            "New",
+            "Follow-up",
+            "Teleconsult",
+            "Emergency"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "doctor": "Dr. Arjun Menon",
+            "visitType": "New",
+            "fee": 134.9,
+            "effectiveFrom": "2026-04-30",
+            "effectiveTo": "2026-12-31",
+            "code": "FEE-1001"
+          },
+          {
+            "id": "2",
+            "doctor": "Dr. Omar Haddad",
+            "visitType": "New",
+            "fee": 180.05,
+            "effectiveFrom": "2026-07-02",
+            "effectiveTo": "2027-09-15",
+            "code": "FEE-1002"
+          }
+        ],
+        "total": 30,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "New": 14,
+          "Follow-up": 9,
+          "Emergency": 2,
+          "Teleconsult": 5
+        },
+        "totals": {
+          "fee": 3344.36
+        }
+      }
+    },
+    "masters/students": {
+      "lookups": {
+        "fields": {
+          "program": [
+            "Science",
+            "Commerce",
+            "Humanities",
+            "Computer Science",
+            "Engineering Foundation"
+          ],
+          "grade": [
+            "Grade 9",
+            "Grade 10",
+            "Grade 11",
+            "Grade 12"
+          ],
+          "section": [
+            "A",
+            "B",
+            "C"
+          ],
+          "status": [
+            "Active",
+            "On leave",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Kenji Mensah",
+            "program": "Commerce",
+            "grade": "Grade 9",
+            "section": "A",
+            "guardian": "Amara Andersen",
+            "phone": "+1 90452 74904",
+            "email": "kenji.mensah@mail.example",
+            "feeDue": 2040.11,
+            "attendance": 73,
+            "status": "Inactive",
+            "code": "ADM-1001"
+          },
+          {
+            "id": "2",
+            "name": "Clara Nguyen",
+            "program": "Commerce",
+            "grade": "Grade 9",
+            "section": "C",
+            "guardian": "Dev Rao",
+            "phone": "+91 71193 70427",
+            "email": "clara.nguyen@mail.example",
+            "feeDue": 1149.25,
+            "attendance": 82,
+            "status": "Active",
+            "code": "ADM-1002"
+          }
+        ],
+        "total": 60,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Grade 9": 24,
+          "Grade 10": 20,
+          "Grade 12": 5,
+          "Grade 11": 11
+        },
+        "totals": {
+          "feeDue": 80139.85
+        }
+      }
+    },
+    "masters/fee-structures": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "Grade 9 Science",
+            "Grade 10 Science",
+            "Grade 11 Commerce",
+            "Grade 12 Commerce",
+            "Grade 11 Humanities",
+            "Grade 12 Computer Science",
+            "Grade 9 General",
+            "Grade 10 General",
+            "Hostel boarders",
+            "Day scholars"
+          ],
+          "term": [
+            "Term 1",
+            "Term 2",
+            "Annual"
+          ],
+          "status": [
+            "Active",
+            "Draft"
+          ]
+        },
+        "lines": {
+          "item": [
+            "Tuition",
+            "Laboratory",
+            "Library",
+            "Transport",
+            "Examination",
+            "Sports",
+            "Technology",
+            "Activity"
+          ],
+          "frequency": [
+            "Monthly",
+            "Termly",
+            "Annual"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Grade 10 General",
+            "term": "Term 2",
+            "status": "Active",
+            "lines": [
+              {
+                "item": "Sports",
+                "frequency": "Monthly",
+                "qty": 1,
+                "rate": 627.83,
+                "amount": 627.83
+              },
+              {
+                "item": "Library",
+                "frequency": "Termly",
+                "qty": 1,
+                "rate": 170.7,
+                "amount": 170.7
+              },
+              {
+                "item": "Tuition",
+                "frequency": "Annual",
+                "qty": 1,
+                "rate": 609.28,
+                "amount": 609.28
+              },
+              {
+                "item": "Sports",
+                "frequency": "Monthly",
+                "qty": 2,
+                "rate": 707.48,
+                "amount": 1414.96
+              },
+              {
+                "item": "Activity",
+                "frequency": "Monthly",
+                "qty": 3,
+                "rate": 670.8,
+                "amount": 2012.4
+              },
+              {
+                "item": "Tuition",
+                "frequency": "Monthly",
+                "qty": 2,
+                "rate": 146.59,
+                "amount": 293.18
+              }
+            ],
+            "total": 5128.35,
+            "code": "FS-1001"
+          },
+          {
+            "id": "2",
+            "name": "Grade 12 Commerce",
+            "term": "Term 2",
+            "status": "Active",
+            "lines": [
+              {
+                "item": "Laboratory",
+                "frequency": "Monthly",
+                "qty": 1,
+                "rate": 832.34,
+                "amount": 832.34
+              },
+              {
+                "item": "Activity",
+                "frequency": "Termly",
+                "qty": 3,
+                "rate": 555.96,
+                "amount": 1667.88
+              },
+              {
+                "item": "Tuition",
+                "frequency": "Monthly",
+                "qty": 2,
+                "rate": 370.55,
+                "amount": 741.1
+              },
+              {
+                "item": "Library",
+                "frequency": "Termly",
+                "qty": 1,
+                "rate": 779.12,
+                "amount": 779.12
+              },
+              {
+                "item": "Activity",
+                "frequency": "Annual",
+                "qty": 3,
+                "rate": 171.23,
+                "amount": 513.69
+              }
+            ],
+            "total": 4534.13,
+            "code": "FS-1002"
+          }
+        ],
+        "total": 10,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 7,
+          "Draft": 3
+        },
+        "totals": {
+          "total": 57917.31
+        }
+      }
+    },
+    "masters/vehicles": {
+      "lookups": {
+        "fields": {
+          "name": [
+            "Tata Ace Gold",
+            "Ashok Leyland Dost",
+            "Mahindra Bolero Pik-Up",
+            "Isuzu D-Max",
+            "Eicher Pro 2049",
+            "Toyota Hilux",
+            "Ford Transit",
+            "Mercedes Sprinter",
+            "Volvo FM 420",
+            "Hino 300",
+            "BharatBenz 1617",
+            "Force Traveller"
+          ],
+          "type": [
+            "Light truck",
+            "Pickup",
+            "Van",
+            "Heavy truck",
+            "Bus"
+          ],
+          "fuel": [
+            "Diesel",
+            "Petrol",
+            "CNG",
+            "Electric"
+          ],
+          "status": [
+            "Active",
+            "In service",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Mahindra Bolero Pik-Up",
+            "type": "Light truck",
+            "regNo": "DXB 48 RG 2035",
+            "fuel": "CNG",
+            "driver": "Mateo Kowalski",
+            "capacity": 9797,
+            "odometer": 130987,
+            "insuranceExpiry": "2026-11-03",
+            "permitExpiry": "2026-11-07",
+            "status": "In service",
+            "code": "VEH-1001"
+          },
+          {
+            "id": "2",
+            "name": "Isuzu D-Max",
+            "type": "Pickup",
+            "regNo": "DL 84 HT 2548",
+            "fuel": "Petrol",
+            "driver": "Ines Das",
+            "capacity": 5560,
+            "odometer": 226741,
+            "insuranceExpiry": "2026-12-27",
+            "permitExpiry": "2026-12-07",
+            "status": "Active",
+            "code": "VEH-1002"
+          }
+        ],
+        "total": 12,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Light truck": 3,
+          "Pickup": 6,
+          "Van": 1,
+          "Heavy truck": 1,
+          "Bus": 1
+        },
+        "totals": {
+          "capacity": 84197,
+          "odometer": 1427069
+        }
+      }
+    },
+    "transactions/sales-orders": {
+      "lookups": {
+        "fields": {
+          "warehouse": [
+            "Main Warehouse",
+            "North Depot",
+            "Port Store",
+            "Plant 2 Stores",
+            "Returns Bay"
+          ],
+          "paymentTerms": [
+            "Immediate",
+            "Net 15",
+            "Net 30",
+            "Net 45",
+            "Net 60"
+          ],
+          "status": [
+            "Draft",
+            "Submitted",
+            "Approved",
+            "Delivered",
+            "Cancelled"
+          ]
+        },
+        "lines": {
+          "item": [
+            "Steel Hex Bolt M8",
+            "Copper Wire 2.5mm",
+            "LED Panel 40W",
+            "Hydraulic Pump HP-200",
+            "Safety Helmet Class E",
+            "Nitrile Gloves (Box 100)",
+            "Industrial Adhesive 1L",
+            "PVC Pipe 50mm",
+            "Ball Bearing 6204",
+            "Circuit Breaker 32A",
+            "Thermal Printer Roll",
+            "Stainless Sheet 2mm",
+            "Lithium Battery Pack 48V",
+            "Air Filter AF-310",
+            "Conveyor Belt 5m",
+            "Pressure Gauge 0-10bar",
+            "Solar Inverter 5kW",
+            "Welding Rod E6013",
+            "Laptop 14\" Business",
+            "Office Chair Ergo",
+            "Printer Toner 26A",
+            "Barcode Scanner 2D",
+            "Paracetamol 500mg",
+            "Surgical Mask 3-ply",
+            "Hand Sanitizer 500ml",
+            "Glucose Monitor Kit",
+            "Packaging Carton L",
+            "Stretch Film 23mic",
+            "Pallet Wooden 1200",
+            "Drill Bit Set HSS",
+            "Cable Tray 300mm",
+            "Water Pump 1HP",
+            "Epoxy Floor Coat 4L",
+            "Fire Extinguisher 6kg",
+            "Label Roll 100x50",
+            "Aluminium Profile 40x40",
+            "Gear Motor 0.5HP",
+            "Temperature Sensor PT100",
+            "Switch Gear Panel",
+            "Router Dual Band"
+          ],
+          "tax": [
+            "0",
+            "5",
+            "12",
+            "18"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "customer": "Quarry Healthcare GmbH",
+            "date": "2026-10-23",
+            "deliveryDate": "2026-11-14",
+            "salesperson": "Kabir Nguyen",
+            "warehouse": "Main Warehouse",
+            "paymentTerms": "Immediate",
+            "status": "Approved",
+            "lines": [
+              {
+                "item": "Epoxy Floor Coat 4L",
+                "qty": 25,
+                "rate": 89.81,
+                "tax": 12,
+                "amount": 2245.25
+              },
+              {
+                "item": "Conveyor Belt 5m",
+                "qty": 33,
+                "rate": 719.87,
+                "tax": 18,
+                "amount": 23755.71
+              }
+            ],
+            "total": 30546.42,
+            "code": "SO-1086"
+          },
+          {
+            "id": "2",
+            "customer": "Unity Holdings LLC",
+            "date": "2026-10-20",
+            "deliveryDate": "2027-01-02",
+            "salesperson": "Tomás Haddad",
+            "warehouse": "North Depot",
+            "paymentTerms": "Net 15",
+            "status": "Cancelled",
+            "lines": [
+              {
+                "item": "Packaging Carton L",
+                "qty": 25,
+                "rate": 775.4,
+                "tax": 18,
+                "amount": 19385
+              },
+              {
+                "item": "Printer Toner 26A",
+                "qty": 9,
+                "rate": 398.93,
+                "tax": 18,
+                "amount": 3590.37
+              },
+              {
+                "item": "Safety Helmet Class E",
+                "qty": 4,
+                "rate": 323.76,
+                "tax": 0,
+                "amount": 1295.04
+              }
+            ],
+            "total": 28405.98,
+            "code": "SO-1085"
+          }
+        ],
+        "total": 86,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Approved": 18,
+          "Cancelled": 10,
+          "Submitted": 19,
+          "Draft": 19,
+          "Delivered": 20
+        },
+        "totals": {
+          "total": 2921022.6
+        }
+      }
+    },
+    "transactions/sales-invoices": {
+      "lookups": {
+        "fields": {
+          "status": [
+            "Draft",
+            "Unpaid",
+            "Partially paid",
+            "Paid",
+            "Overdue"
+          ]
+        },
+        "lines": {
+          "item": [
+            "Steel Hex Bolt M8",
+            "Copper Wire 2.5mm",
+            "LED Panel 40W",
+            "Hydraulic Pump HP-200",
+            "Safety Helmet Class E",
+            "Nitrile Gloves (Box 100)",
+            "Industrial Adhesive 1L",
+            "PVC Pipe 50mm",
+            "Ball Bearing 6204",
+            "Circuit Breaker 32A",
+            "Thermal Printer Roll",
+            "Stainless Sheet 2mm",
+            "Lithium Battery Pack 48V",
+            "Air Filter AF-310",
+            "Conveyor Belt 5m",
+            "Pressure Gauge 0-10bar",
+            "Solar Inverter 5kW",
+            "Welding Rod E6013",
+            "Laptop 14\" Business",
+            "Office Chair Ergo",
+            "Printer Toner 26A",
+            "Barcode Scanner 2D",
+            "Paracetamol 500mg",
+            "Surgical Mask 3-ply",
+            "Hand Sanitizer 500ml",
+            "Glucose Monitor Kit",
+            "Packaging Carton L",
+            "Stretch Film 23mic",
+            "Pallet Wooden 1200",
+            "Drill Bit Set HSS",
+            "Cable Tray 300mm",
+            "Water Pump 1HP",
+            "Epoxy Floor Coat 4L",
+            "Fire Extinguisher 6kg",
+            "Label Roll 100x50",
+            "Aluminium Profile 40x40",
+            "Gear Motor 0.5HP",
+            "Temperature Sensor PT100",
+            "Switch Gear Panel",
+            "Router Dual Band"
+          ],
+          "tax": [
+            "0",
+            "5",
+            "12",
+            "18"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "customer": "Juniper Retail PLC",
+            "date": "2026-10-22",
+            "dueDate": "2026-12-31",
+            "orderRef": "SO-1014",
+            "salesperson": "Omar Costa",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Printer Toner 26A",
+                "qty": 28,
+                "rate": 883.58,
+                "tax": 18,
+                "amount": 24740.24
+              },
+              {
+                "item": "Air Filter AF-310",
+                "qty": 28,
+                "rate": 676.52,
+                "tax": 0,
+                "amount": 18942.56
+              },
+              {
+                "item": "Thermal Printer Roll",
+                "qty": 15,
+                "rate": 244.25,
+                "tax": 0,
+                "amount": 3663.75
+              },
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 2,
+                "rate": 505.12,
+                "tax": 12,
+                "amount": 1010.24
+              }
+            ],
+            "total": 52931.26,
+            "code": "INV-1110"
+          },
+          {
+            "id": "2",
+            "customer": "Silverline Wholesale Pvt Ltd",
+            "date": "2026-10-20",
+            "dueDate": "2026-12-28",
+            "orderRef": "SO-1057",
+            "salesperson": "Meera Silva",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Packaging Carton L",
+                "qty": 14,
+                "rate": 372.61,
+                "tax": 5,
+                "amount": 5216.54
+              },
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 23,
+                "rate": 78.89,
+                "tax": 0,
+                "amount": 1814.47
+              },
+              {
+                "item": "Aluminium Profile 40x40",
+                "qty": 19,
+                "rate": 284.38,
+                "tax": 5,
+                "amount": 5403.22
+              }
+            ],
+            "total": 12965.22,
+            "code": "INV-1109"
+          }
+        ],
+        "total": 110,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Draft": 42,
+          "Partially paid": 19,
+          "Unpaid": 32,
+          "Paid": 11,
+          "Overdue": 6
+        },
+        "totals": {
+          "total": 4165269.71
+        }
+      }
+    },
+    "transactions/purchase-orders": {
+      "lookups": {
+        "fields": {
+          "warehouse": [
+            "Main Warehouse",
+            "North Depot",
+            "Port Store",
+            "Plant 2 Stores",
+            "Returns Bay"
+          ],
+          "status": [
+            "Draft",
+            "Submitted",
+            "Approved",
+            "Received",
+            "Cancelled"
+          ]
+        },
+        "lines": {
+          "item": [
+            "Steel Hex Bolt M8",
+            "Copper Wire 2.5mm",
+            "LED Panel 40W",
+            "Hydraulic Pump HP-200",
+            "Safety Helmet Class E",
+            "Nitrile Gloves (Box 100)",
+            "Industrial Adhesive 1L",
+            "PVC Pipe 50mm",
+            "Ball Bearing 6204",
+            "Circuit Breaker 32A",
+            "Thermal Printer Roll",
+            "Stainless Sheet 2mm",
+            "Lithium Battery Pack 48V",
+            "Air Filter AF-310",
+            "Conveyor Belt 5m",
+            "Pressure Gauge 0-10bar",
+            "Solar Inverter 5kW",
+            "Welding Rod E6013",
+            "Laptop 14\" Business",
+            "Office Chair Ergo",
+            "Printer Toner 26A",
+            "Barcode Scanner 2D",
+            "Paracetamol 500mg",
+            "Surgical Mask 3-ply",
+            "Hand Sanitizer 500ml",
+            "Glucose Monitor Kit",
+            "Packaging Carton L",
+            "Stretch Film 23mic",
+            "Pallet Wooden 1200",
+            "Drill Bit Set HSS",
+            "Cable Tray 300mm",
+            "Water Pump 1HP",
+            "Epoxy Floor Coat 4L",
+            "Fire Extinguisher 6kg",
+            "Label Roll 100x50",
+            "Aluminium Profile 40x40",
+            "Gear Motor 0.5HP",
+            "Temperature Sensor PT100",
+            "Switch Gear Panel",
+            "Router Dual Band"
+          ],
+          "tax": [
+            "0",
+            "5",
+            "12",
+            "18"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "supplier": "Trident Systems PLC",
+            "date": "2026-10-21",
+            "expected": "2026-11-29",
+            "buyer": "Meera Rao",
+            "warehouse": "Main Warehouse",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 27,
+                "rate": 598.3,
+                "tax": 18,
+                "amount": 16154.1
+              },
+              {
+                "item": "Laptop 14\" Business",
+                "qty": 10,
+                "rate": 677.84,
+                "tax": 0,
+                "amount": 6778.4
+              },
+              {
+                "item": "Office Chair Ergo",
+                "qty": 35,
+                "rate": 596.15,
+                "tax": 0,
+                "amount": 20865.25
+              },
+              {
+                "item": "Office Chair Ergo",
+                "qty": 30,
+                "rate": 789.49,
+                "tax": 12,
+                "amount": 23684.7
+              },
+              {
+                "item": "Industrial Adhesive 1L",
+                "qty": 2,
+                "rate": 358.52,
+                "tax": 5,
+                "amount": 717.04
+              },
+              {
+                "item": "Surgical Mask 3-ply",
+                "qty": 18,
+                "rate": 209.32,
+                "tax": 18,
+                "amount": 3767.76
+              }
+            ],
+            "total": 78431.2,
+            "code": "PO-1070"
+          },
+          {
+            "id": "2",
+            "supplier": "Quarry Distribution Ltd",
+            "date": "2026-10-19",
+            "expected": "2026-11-06",
+            "buyer": "Zoe Hughes",
+            "warehouse": "North Depot",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Water Pump 1HP",
+                "qty": 39,
+                "rate": 550.93,
+                "tax": 5,
+                "amount": 21486.27
+              },
+              {
+                "item": "Industrial Adhesive 1L",
+                "qty": 14,
+                "rate": 631.32,
+                "tax": 12,
+                "amount": 8838.48
+              },
+              {
+                "item": "Printer Toner 26A",
+                "qty": 2,
+                "rate": 605.09,
+                "tax": 0,
+                "amount": 1210.18
+              },
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 1,
+                "rate": 191.03,
+                "tax": 12,
+                "amount": 191.03
+              },
+              {
+                "item": "Safety Helmet Class E",
+                "qty": 20,
+                "rate": 460,
+                "tax": 5,
+                "amount": 9200
+              },
+              {
+                "item": "Printer Toner 26A",
+                "qty": 27,
+                "rate": 552.51,
+                "tax": 0,
+                "amount": 14917.77
+              }
+            ],
+            "total": 58461.58,
+            "code": "PO-1069"
+          }
+        ],
+        "total": 70,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Draft": 22,
+          "Approved": 14,
+          "Submitted": 24,
+          "Received": 4,
+          "Cancelled": 6
+        },
+        "totals": {
+          "total": 2880522.77
+        }
+      }
+    },
+    "transactions/goods-receipts": {
+      "lookups": {
+        "fields": {
+          "warehouse": [
+            "Main Warehouse",
+            "North Depot",
+            "Port Store",
+            "Plant 2 Stores",
+            "Returns Bay"
+          ],
+          "status": [
+            "Draft",
+            "Inspected",
+            "Received",
+            "Rejected"
+          ]
+        },
+        "lines": {
+          "item": [
+            "Steel Hex Bolt M8",
+            "Copper Wire 2.5mm",
+            "LED Panel 40W",
+            "Hydraulic Pump HP-200",
+            "Safety Helmet Class E",
+            "Nitrile Gloves (Box 100)",
+            "Industrial Adhesive 1L",
+            "PVC Pipe 50mm",
+            "Ball Bearing 6204",
+            "Circuit Breaker 32A",
+            "Thermal Printer Roll",
+            "Stainless Sheet 2mm",
+            "Lithium Battery Pack 48V",
+            "Air Filter AF-310",
+            "Conveyor Belt 5m",
+            "Pressure Gauge 0-10bar",
+            "Solar Inverter 5kW",
+            "Welding Rod E6013",
+            "Laptop 14\" Business",
+            "Office Chair Ergo",
+            "Printer Toner 26A",
+            "Barcode Scanner 2D",
+            "Paracetamol 500mg",
+            "Surgical Mask 3-ply",
+            "Hand Sanitizer 500ml",
+            "Glucose Monitor Kit",
+            "Packaging Carton L",
+            "Stretch Film 23mic",
+            "Pallet Wooden 1200",
+            "Drill Bit Set HSS",
+            "Cable Tray 300mm",
+            "Water Pump 1HP",
+            "Epoxy Floor Coat 4L",
+            "Fire Extinguisher 6kg",
+            "Label Roll 100x50",
+            "Aluminium Profile 40x40",
+            "Gear Motor 0.5HP",
+            "Temperature Sensor PT100",
+            "Switch Gear Panel",
+            "Router Dual Band"
+          ],
+          "tax": [
+            "0",
+            "5",
+            "12",
+            "18"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "supplier": "Harbor Components GmbH",
+            "date": "2026-10-22",
+            "poRef": "PO-1033",
+            "warehouse": "North Depot",
+            "receivedBy": "Isla Andersen",
+            "status": "Rejected",
+            "lines": [
+              {
+                "item": "Cable Tray 300mm",
+                "qty": 16,
+                "rate": 405.85,
+                "tax": 0,
+                "amount": 6493.6
+              },
+              {
+                "item": "Epoxy Floor Coat 4L",
+                "qty": 35,
+                "rate": 286.3,
+                "tax": 0,
+                "amount": 10020.5
+              },
+              {
+                "item": "Office Chair Ergo",
+                "qty": 26,
+                "rate": 83.96,
+                "tax": 12,
+                "amount": 2182.96
+              },
+              {
+                "item": "Lithium Battery Pack 48V",
+                "qty": 3,
+                "rate": 579.83,
+                "tax": 5,
+                "amount": 1739.49
+              }
+            ],
+            "total": 20785.48,
+            "code": "GRN-1058"
+          },
+          {
+            "id": "2",
+            "supplier": "Vantage Holdings LLC",
+            "date": "2026-10-22",
+            "poRef": "PO-1004",
+            "warehouse": "Plant 2 Stores",
+            "receivedBy": "Lucas Patel",
+            "status": "Received",
+            "lines": [
+              {
+                "item": "Welding Rod E6013",
+                "qty": 5,
+                "rate": 623.89,
+                "tax": 5,
+                "amount": 3119.45
+              },
+              {
+                "item": "Barcode Scanner 2D",
+                "qty": 29,
+                "rate": 375.26,
+                "tax": 12,
+                "amount": 10882.54
+              },
+              {
+                "item": "Safety Helmet Class E",
+                "qty": 17,
+                "rate": 406.96,
+                "tax": 0,
+                "amount": 6918.32
+              },
+              {
+                "item": "Pressure Gauge 0-10bar",
+                "qty": 5,
+                "rate": 727.72,
+                "tax": 18,
+                "amount": 3638.6
+              }
+            ],
+            "total": 26675.74,
+            "code": "GRN-1057"
+          }
+        ],
+        "total": 58,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Rejected": 6,
+          "Received": 12,
+          "Inspected": 20,
+          "Draft": 20
+        },
+        "totals": {
+          "total": 1820041.29
+        }
+      }
+    },
+    "transactions/journal-vouchers": {
+      "lookups": {
+        "fields": {
+          "reference": [
+            "Month-end accrual",
+            "Depreciation entry",
+            "Salary provision",
+            "Rent prepaid",
+            "Bank charges",
+            "Inter-branch transfer",
+            "Opening adjustment",
+            "Tax reclassification",
+            "Bad debt write-off",
+            "Insurance amortisation"
+          ],
+          "branch": [
+            "Head office",
+            "Mumbai",
+            "Dubai"
+          ],
+          "status": [
+            "Draft",
+            "Posted",
+            "Reversed"
+          ]
+        },
+        "lines": {
+          "account": [
+            "Cash in Hand",
+            "HDFC Current A/c",
+            "Citi Operating A/c",
+            "Accounts Receivable",
+            "Accounts Payable",
+            "Sales Revenue",
+            "Purchase Account",
+            "Office Rent",
+            "Salaries & Wages",
+            "Electricity",
+            "Travel Expense",
+            "Printing & Stationery",
+            "Repairs & Maintenance",
+            "Input Tax Credit",
+            "Output Tax Payable",
+            "Freight Inward",
+            "Advertising",
+            "Bank Charges",
+            "Petty Cash",
+            "Staff Welfare",
+            "Telephone & Internet",
+            "Depreciation",
+            "Professional Fees",
+            "Insurance Expense"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "reference": "Inter-branch transfer",
+            "date": "2026-10-23",
+            "branch": "Mumbai",
+            "preparedBy": "Dev Mensah",
+            "narration": "Please prioritise, the site team is waiting on this.",
+            "status": "Draft",
+            "lines": [
+              {
+                "account": "Printing & Stationery",
+                "debit": 1706.68,
+                "credit": 0,
+                "note": "one-time"
+              },
+              {
+                "account": "Electricity",
+                "debit": 0,
+                "credit": 1706.68,
+                "note": "Contra"
+              }
+            ],
+            "total": 1706.68,
+            "code": "JV-1064"
+          },
+          {
+            "id": "2",
+            "reference": "Depreciation entry",
+            "date": "2026-10-23",
+            "branch": "Head office",
+            "preparedBy": "Hana Qureshi",
+            "narration": "Adjusted for the credit note issued last week.",
+            "status": "Reversed",
+            "lines": [
+              {
+                "account": "Advertising",
+                "debit": 3899.37,
+                "credit": 0,
+                "note": "revised terms"
+              },
+              {
+                "account": "Depreciation",
+                "debit": 0,
+                "credit": 3899.37,
+                "note": "Contra"
+              }
+            ],
+            "total": 3899.37,
+            "code": "JV-1063"
+          }
+        ],
+        "total": 64,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Draft": 29,
+          "Reversed": 14,
+          "Posted": 21
+        },
+        "totals": {
+          "total": 287800.85
+        }
+      }
+    },
+    "transactions/payment-vouchers": {
+      "lookups": {
+        "fields": {
+          "mode": [
+            "Bank transfer",
+            "Cheque",
+            "Cash",
+            "Card"
+          ],
+          "bank": [
+            "HDFC Current A/c",
+            "Citi Operating A/c",
+            "Cash in Hand"
+          ],
+          "status": [
+            "Draft",
+            "Approved",
+            "Posted",
+            "Reversed"
+          ]
+        },
+        "lines": {
+          "account": [
+            "Cash in Hand",
+            "HDFC Current A/c",
+            "Citi Operating A/c",
+            "Accounts Receivable",
+            "Accounts Payable",
+            "Sales Revenue",
+            "Purchase Account",
+            "Office Rent",
+            "Salaries & Wages",
+            "Electricity",
+            "Travel Expense",
+            "Printing & Stationery",
+            "Repairs & Maintenance",
+            "Input Tax Credit",
+            "Output Tax Payable",
+            "Freight Inward",
+            "Advertising",
+            "Bank Charges",
+            "Petty Cash",
+            "Staff Welfare",
+            "Telephone & Internet",
+            "Depreciation",
+            "Professional Fees",
+            "Insurance Expense"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "date": "2026-10-20",
+            "payee": "Kestrel Pharma GmbH",
+            "mode": "Bank transfer",
+            "bank": "HDFC Current A/c",
+            "narration": "Pricing as per the annual rate contract.",
+            "status": "Approved",
+            "lines": [
+              {
+                "account": "Accounts Payable",
+                "debit": 2697.94,
+                "credit": 0,
+                "note": "recurring"
+              },
+              {
+                "account": "Depreciation",
+                "debit": 153.72,
+                "credit": 0,
+                "note": "as per agreement"
+              },
+              {
+                "account": "Accounts Receivable",
+                "debit": 0,
+                "credit": 2851.66,
+                "note": "Contra"
+              }
+            ],
+            "total": 2851.66,
+            "code": "PV-1054"
+          },
+          {
+            "id": "2",
+            "date": "2026-10-16",
+            "payee": "Westbrook Logistics Ltd",
+            "mode": "Cash",
+            "bank": "HDFC Current A/c",
+            "narration": "Pricing as per the annual rate contract.",
+            "status": "Posted",
+            "lines": [
+              {
+                "account": "Petty Cash",
+                "debit": 3087.36,
+                "credit": 0,
+                "note": "adjusted"
+              },
+              {
+                "account": "Advertising",
+                "debit": 1140.93,
+                "credit": 0,
+                "note": "as per agreement"
+              },
+              {
+                "account": "Citi Operating A/c",
+                "debit": 3956.88,
+                "credit": 0,
+                "note": "revised terms"
+              },
+              {
+                "account": "Input Tax Credit",
+                "debit": 0,
+                "credit": 8185.17,
+                "note": "Contra"
+              }
+            ],
+            "total": 8185.17,
+            "code": "PV-1053"
+          }
+        ],
+        "total": 54,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Approved": 19,
+          "Posted": 11,
+          "Draft": 20,
+          "Reversed": 4
+        },
+        "totals": {
+          "total": 245912.27
+        }
+      }
+    },
+    "transactions/petty-cash": {
+      "lookups": {
+        "fields": {
+          "branch": [
+            "Head office",
+            "Mumbai",
+            "Dubai"
+          ],
+          "status": [
+            "Draft",
+            "Posted"
+          ]
+        },
+        "lines": {
+          "account": [
+            "Printing & Stationery",
+            "Staff Welfare",
+            "Travel Expense",
+            "Repairs & Maintenance",
+            "Telephone & Internet",
+            "Petty Cash"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "date": "2026-10-22",
+            "custodian": "Tomás Lindqvist",
+            "branch": "Head office",
+            "narration": "Covers travel and accommodation for the client visit.",
+            "status": "Draft",
+            "lines": [
+              {
+                "account": "Petty Cash",
+                "debit": 2675.16,
+                "credit": 0,
+                "note": "reconciled"
+              },
+              {
+                "account": "Repairs & Maintenance",
+                "debit": 0,
+                "credit": 2675.16,
+                "note": "Contra"
+              }
+            ],
+            "total": 2675.16,
+            "code": "PC-1048"
+          },
+          {
+            "id": "2",
+            "date": "2026-10-22",
+            "custodian": "Rohan Qureshi",
+            "branch": "Dubai",
+            "narration": "Adjusted for the credit note issued last week.",
+            "status": "Draft",
+            "lines": [
+              {
+                "account": "Printing & Stationery",
+                "debit": 1735.39,
+                "credit": 0,
+                "note": "follow up"
+              },
+              {
+                "account": "Staff Welfare",
+                "debit": 2672.24,
+                "credit": 0,
+                "note": "recurring"
+              },
+              {
+                "account": "Petty Cash",
+                "debit": 66.05,
+                "credit": 0,
+                "note": "Quarterly"
+              },
+              {
+                "account": "Travel Expense",
+                "debit": 0,
+                "credit": 4473.68,
+                "note": "Contra"
+              }
+            ],
+            "total": 4473.68,
+            "code": "PC-1047"
+          }
+        ],
+        "total": 48,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Draft": 27,
+          "Posted": 21
+        },
+        "totals": {
+          "total": 206328.95
+        }
+      }
+    },
+    "transactions/leave-requests": {
+      "lookups": {
+        "fields": {
+          "leaveType": [
+            "Annual leave",
+            "Sick leave",
+            "Casual leave",
+            "Comp off"
+          ],
+          "status": [
+            "Pending",
+            "Approved",
+            "Rejected",
+            "Withdrawn"
+          ]
+        },
+        "lines": {},
+        "balances": [
+          {
+            "label": "Annual leave",
+            "total": 21,
+            "used": 9
+          },
+          {
+            "label": "Sick leave",
+            "total": 10,
+            "used": 3
+          },
+          {
+            "label": "Casual leave",
+            "total": 7,
+            "used": 5
+          },
+          {
+            "label": "Comp off",
+            "total": 3,
+            "used": 1
+          }
+        ],
+        "approvers": [
+          "Meera Kim",
+          "Victor Qureshi",
+          "Ethan Costa",
+          "Victor Fischer",
+          "Lucas Hughes"
+        ]
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "employee": "Dev Dubois",
+            "leaveType": "Casual leave",
+            "from": "2027-01-01",
+            "to": "2027-01-03",
+            "reason": "Revised after discussion with the department head.",
+            "status": "Rejected",
+            "days": 3,
+            "code": "LV-1052"
+          },
+          {
+            "id": "2",
+            "employee": "Aarav Varga",
+            "leaveType": "Annual leave",
+            "from": "2026-12-27",
+            "to": "2026-12-28",
+            "reason": "Follow-up scheduled with the vendor on Monday.",
+            "status": "Withdrawn",
+            "days": 2,
+            "code": "LV-1051"
+          }
+        ],
+        "total": 52,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Rejected": 11,
+          "Withdrawn": 5,
+          "Pending": 19,
+          "Approved": 17
+        },
+        "totals": {
+          "days": 169
+        }
+      }
+    },
+    "transactions/expense-claims": {
+      "lookups": {
+        "fields": {
+          "category": [
+            "Travel",
+            "Meals",
+            "Accommodation",
+            "Training",
+            "Office supplies"
+          ],
+          "project": [
+            "Internal",
+            "Client onboarding",
+            "Plant expansion",
+            "ERP rollout"
+          ],
+          "status": [
+            "Pending",
+            "Approved",
+            "Rejected",
+            "Paid"
+          ]
+        },
+        "lines": {},
+        "balances": [
+          {
+            "label": "Travel budget",
+            "total": 3000,
+            "used": 1840
+          },
+          {
+            "label": "Meals budget",
+            "total": 600,
+            "used": 212
+          },
+          {
+            "label": "Training budget",
+            "total": 1500,
+            "used": 450
+          }
+        ],
+        "approvers": [
+          "Meera Kim",
+          "Victor Qureshi",
+          "Ethan Costa",
+          "Victor Fischer",
+          "Lucas Hughes"
+        ]
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "employee": "Amara Iyer",
+            "category": "Office supplies",
+            "date": "2026-10-21",
+            "amount": 643.82,
+            "project": "Internal",
+            "reason": "Pricing as per the annual rate contract.",
+            "status": "Pending",
+            "code": "EXP-1058"
+          },
+          {
+            "id": "2",
+            "employee": "Ravi Castillo",
+            "category": "Training",
+            "date": "2026-10-21",
+            "amount": 515.57,
+            "project": "Plant expansion",
+            "reason": "Covers travel and accommodation for the client visit.",
+            "status": "Rejected",
+            "code": "EXP-1057"
+          }
+        ],
+        "total": 58,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Pending": 28,
+          "Rejected": 11,
+          "Approved": 14,
+          "Paid": 5
+        },
+        "totals": {
+          "amount": 42705.88
+        }
+      }
+    },
+    "transactions/attendance": {
+      "lookups": {
+        "fields": {
+          "department": [
+            "Finance",
+            "Sales",
+            "Operations",
+            "Human Resources",
+            "Procurement",
+            "IT",
+            "Quality",
+            "Production",
+            "Warehouse",
+            "Customer Success",
+            "Legal",
+            "Marketing"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Grace Dubois",
+            "department": "IT",
+            "columns": [
+              "2026-10-01",
+              "2026-10-02",
+              "2026-10-03",
+              "2026-10-04",
+              "2026-10-05",
+              "2026-10-06",
+              "2026-10-07",
+              "2026-10-08",
+              "2026-10-09",
+              "2026-10-10",
+              "2026-10-11",
+              "2026-10-12",
+              "2026-10-13",
+              "2026-10-14",
+              "2026-10-15",
+              "2026-10-16",
+              "2026-10-17",
+              "2026-10-18",
+              "2026-10-19",
+              "2026-10-20",
+              "2026-10-21",
+              "2026-10-22",
+              "2026-10-23",
+              "2026-10-24",
+              "2026-10-25",
+              "2026-10-26",
+              "2026-10-27",
+              "2026-10-28",
+              "2026-10-29",
+              "2026-10-30",
+              "2026-10-31"
+            ],
+            "cells": [
+              "P",
+              "P",
+              "WO",
+              "WO",
+              "P",
+              "P",
+              "P",
+              "P",
+              "P",
+              "WO",
+              "WO",
+              "P",
+              "P",
+              "P",
+              "L",
+              "P",
+              "WO",
+              "WO",
+              "P",
+              "P",
+              "P",
+              "P",
+              "P",
+              "WO",
+              "WO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "WO"
+            ],
+            "code": "EMP-1001"
+          },
+          {
+            "id": "2",
+            "name": "Yusuf Fischer",
+            "department": "Production",
+            "columns": [
+              "2026-10-01",
+              "2026-10-02",
+              "2026-10-03",
+              "2026-10-04",
+              "2026-10-05",
+              "2026-10-06",
+              "2026-10-07",
+              "2026-10-08",
+              "2026-10-09",
+              "2026-10-10",
+              "2026-10-11",
+              "2026-10-12",
+              "2026-10-13",
+              "2026-10-14",
+              "2026-10-15",
+              "2026-10-16",
+              "2026-10-17",
+              "2026-10-18",
+              "2026-10-19",
+              "2026-10-20",
+              "2026-10-21",
+              "2026-10-22",
+              "2026-10-23",
+              "2026-10-24",
+              "2026-10-25",
+              "2026-10-26",
+              "2026-10-27",
+              "2026-10-28",
+              "2026-10-29",
+              "2026-10-30",
+              "2026-10-31"
+            ],
+            "cells": [
+              "L",
+              "P",
+              "WO",
+              "WO",
+              "P",
+              "A",
+              "P",
+              "L",
+              "P",
+              "WO",
+              "WO",
+              "P",
+              "P",
+              "P",
+              "P",
+              "P",
+              "WO",
+              "WO",
+              "P",
+              "H",
+              "P",
+              "P",
+              "P",
+              "WO",
+              "WO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "WO"
+            ],
+            "code": "EMP-1002"
+          }
+        ],
+        "total": 28,
+        "page": 1,
+        "size": 2,
+        "facets": {},
+        "totals": {}
+      }
+    },
+    "transactions/timesheets": {
+      "lookups": {
+        "fields": {
+          "project": [
+            "Internal",
+            "Client onboarding",
+            "Plant expansion",
+            "ERP rollout"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Yusuf Qureshi",
+            "project": "Client onboarding",
+            "columns": [
+              "2026-10-19",
+              "2026-10-20",
+              "2026-10-21",
+              "2026-10-22",
+              "2026-10-23",
+              "2026-10-24",
+              "2026-10-25"
+            ],
+            "cells": [
+              8,
+              8,
+              6,
+              8,
+              8,
+              null,
+              null
+            ],
+            "code": "EMP-1001"
+          },
+          {
+            "id": "2",
+            "name": "Julia Okafor",
+            "project": "Internal",
+            "columns": [
+              "2026-10-19",
+              "2026-10-20",
+              "2026-10-21",
+              "2026-10-22",
+              "2026-10-23",
+              "2026-10-24",
+              "2026-10-25"
+            ],
+            "cells": [
+              7,
+              8.5,
+              6,
+              8.5,
+              7,
+              null,
+              null
+            ],
+            "code": "EMP-1002"
+          }
+        ],
+        "total": 22,
+        "page": 1,
+        "size": 2,
+        "facets": {},
+        "totals": {}
+      }
+    },
+    "transactions/payroll-run": {
+      "lookups": {
+        "fields": {
+          "period": [
+            "August 2026",
+            "July 2026",
+            "June 2026",
+            "May 2026",
+            "April 2026",
+            "March 2026"
+          ],
+          "branch": [
+            "All branches",
+            "Head office",
+            "Mumbai",
+            "Dubai"
+          ],
+          "status": [
+            "Completed",
+            "Failed"
+          ]
+        },
+        "lines": {},
+        "params": {
+          "period": [
+            "September 2026",
+            "August 2026",
+            "July 2026"
+          ],
+          "branch": [
+            "All branches",
+            "Head office",
+            "Mumbai",
+            "Dubai"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "period": "September 2026",
+            "branch": "Head office",
+            "employees": 186,
+            "gross": 385889.79,
+            "net": 321703.95,
+            "runAt": "2026-10-01",
+            "runBy": "Noah Romano",
+            "status": "Completed",
+            "processEvents": [
+              {
+                "time": "09:00:00",
+                "text": "Validate attendance — done.",
+                "tone": "info",
+                "step": 0,
+                "progress": 100
+              },
+              {
+                "time": "09:03:00",
+                "text": "Calculate earnings — done.",
+                "tone": "info",
+                "step": 1,
+                "progress": 100
+              },
+              {
+                "time": "09:06:00",
+                "text": "Apply deductions — done.",
+                "tone": "info",
+                "step": 2,
+                "progress": 100
+              },
+              {
+                "time": "09:09:00",
+                "text": "Generate payslips — done.",
+                "tone": "info",
+                "step": 3,
+                "progress": 100
+              },
+              {
+                "time": "09:12:00",
+                "text": "Post to accounts — done.",
+                "tone": "info",
+                "step": 4,
+                "progress": 100
+              },
+              {
+                "time": "09:15:00",
+                "text": "Payroll run completed successfully.",
+                "tone": "ok"
+              }
+            ],
+            "code": "PR-1014"
+          },
+          {
+            "id": "2",
+            "period": "August 2026",
+            "branch": "All branches",
+            "employees": 90,
+            "gross": 341290.97,
+            "net": 289556.71,
+            "runAt": "2026-09-02",
+            "runBy": "Grace Adeyemi",
+            "status": "Completed",
+            "processEvents": [
+              {
+                "time": "09:00:00",
+                "text": "Validate attendance — done.",
+                "tone": "info",
+                "step": 0,
+                "progress": 100
+              },
+              {
+                "time": "09:03:00",
+                "text": "Calculate earnings — done.",
+                "tone": "info",
+                "step": 1,
+                "progress": 100
+              },
+              {
+                "time": "09:06:00",
+                "text": "Apply deductions — done.",
+                "tone": "info",
+                "step": 2,
+                "progress": 100
+              },
+              {
+                "time": "09:09:00",
+                "text": "Generate payslips — done.",
+                "tone": "info",
+                "step": 3,
+                "progress": 100
+              },
+              {
+                "time": "09:12:00",
+                "text": "Post to accounts — done.",
+                "tone": "info",
+                "step": 4,
+                "progress": 100
+              },
+              {
+                "time": "09:15:00",
+                "text": "Payroll run completed successfully.",
+                "tone": "ok"
+              }
+            ],
+            "code": "PR-1013"
+          }
+        ],
+        "total": 14,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Completed": 14
+        },
+        "totals": {
+          "employees": 1955,
+          "gross": 5405270.8,
+          "net": 4464052.05
+        }
+      }
+    },
+    "transactions/depreciation-run": {
+      "lookups": {
+        "fields": {
+          "period": [
+            "August 2026",
+            "July 2026",
+            "June 2026",
+            "May 2026"
+          ],
+          "assetClass": [
+            "All classes",
+            "Plant & Machinery",
+            "Vehicles",
+            "Computers"
+          ],
+          "status": [
+            "Completed",
+            "Failed"
+          ]
+        },
+        "lines": {},
+        "params": {
+          "period": [
+            "September 2026",
+            "August 2026"
+          ],
+          "method": [
+            "Straight line",
+            "Written down value"
+          ],
+          "assetClass": [
+            "All classes",
+            "Plant & Machinery",
+            "Vehicles",
+            "Computers"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "period": "September 2026",
+            "assetClass": "Plant & Machinery",
+            "employees": 375,
+            "gross": 40909.29,
+            "runAt": "2026-10-02",
+            "runBy": "Omar Adeyemi",
+            "status": "Completed",
+            "net": 33124.69,
+            "processEvents": [
+              {
+                "time": "09:00:00",
+                "text": "Load asset register — done.",
+                "tone": "info",
+                "step": 0,
+                "progress": 100
+              },
+              {
+                "time": "09:03:00",
+                "text": "Compute depreciation — done.",
+                "tone": "info",
+                "step": 1,
+                "progress": 100
+              },
+              {
+                "time": "09:06:00",
+                "text": "Review exceptions — done.",
+                "tone": "info",
+                "step": 2,
+                "progress": 100
+              },
+              {
+                "time": "09:09:00",
+                "text": "Post journal — done.",
+                "tone": "info",
+                "step": 3,
+                "progress": 100
+              },
+              {
+                "time": "09:12:00",
+                "text": "Depreciation run completed successfully.",
+                "tone": "ok"
+              }
+            ],
+            "code": "DEP-1010"
+          },
+          {
+            "id": "2",
+            "period": "August 2026",
+            "assetClass": "All classes",
+            "employees": 105,
+            "gross": 20426.96,
+            "runAt": "2026-09-03",
+            "runBy": "Arjun Novak",
+            "status": "Completed",
+            "net": 16444.23,
+            "processEvents": [
+              {
+                "time": "09:00:00",
+                "text": "Load asset register — done.",
+                "tone": "info",
+                "step": 0,
+                "progress": 100
+              },
+              {
+                "time": "09:03:00",
+                "text": "Compute depreciation — done.",
+                "tone": "info",
+                "step": 1,
+                "progress": 100
+              },
+              {
+                "time": "09:06:00",
+                "text": "Review exceptions — done.",
+                "tone": "info",
+                "step": 2,
+                "progress": 100
+              },
+              {
+                "time": "09:09:00",
+                "text": "Post journal — done.",
+                "tone": "info",
+                "step": 3,
+                "progress": 100
+              },
+              {
+                "time": "09:12:00",
+                "text": "Depreciation run completed successfully.",
+                "tone": "ok"
+              }
+            ],
+            "code": "DEP-1009"
+          }
+        ],
+        "total": 10,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Completed": 9,
+          "Failed": 1
+        },
+        "totals": {
+          "employees": 2510,
+          "gross": 360926.11
+        }
+      }
+    },
+    "transactions/appointments": {
+      "lookups": {
+        "fields": {
+          "resource": [
+            "Dr. Meera Iyer",
+            "Dr. Samuel Okafor",
+            "Dr. Hana Tanaka",
+            "Dr. Arjun Menon",
+            "Dr. Clara Moreau",
+            "Dr. Omar Haddad"
+          ],
+          "duration": [
+            "30",
+            "60"
+          ],
+          "type": [
+            "New",
+            "Follow-up",
+            "Teleconsult",
+            "Procedure"
+          ],
+          "status": [
+            "Booked",
+            "Checked in",
+            "Completed",
+            "No show",
+            "Cancelled"
+          ]
+        },
+        "lines": {},
+        "resources": [
+          "Dr. Meera Iyer",
+          "Dr. Samuel Okafor",
+          "Dr. Hana Tanaka",
+          "Dr. Arjun Menon",
+          "Dr. Clara Moreau",
+          "Dr. Omar Haddad"
+        ]
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "person": "Isla Brennan",
+            "resource": "Dr. Samuel Okafor",
+            "date": "2026-11-01",
+            "start": "17:00",
+            "duration": 30,
+            "type": "Follow-up",
+            "phone": "+971 94863 28345",
+            "status": "Booked",
+            "code": "TKN-1001"
+          },
+          {
+            "id": "2",
+            "person": "Aarav Andersen",
+            "resource": "Dr. Samuel Okafor",
+            "date": "2026-10-27",
+            "start": "13:00",
+            "duration": 60,
+            "type": "Follow-up",
+            "phone": "+44 75155 73328",
+            "status": "Cancelled",
+            "code": "TKN-1002"
+          }
+        ],
+        "total": 140,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Booked": 86,
+          "Cancelled": 9,
+          "Completed": 34,
+          "Checked in": 6,
+          "No show": 5
+        },
+        "totals": {
+          "duration": 6360
+        }
+      }
+    },
+    "transactions/room-bookings": {
+      "lookups": {
+        "fields": {
+          "resource": [
+            "Boardroom",
+            "Cedar Room",
+            "Maple Room",
+            "Training Hall",
+            "Huddle 1",
+            "Huddle 2"
+          ],
+          "type": [
+            "Internal meeting",
+            "Client call",
+            "Interview",
+            "Training"
+          ],
+          "status": [
+            "Booked",
+            "Checked in",
+            "Completed",
+            "Cancelled"
+          ]
+        },
+        "lines": {},
+        "resources": [
+          "Boardroom",
+          "Cedar Room",
+          "Maple Room",
+          "Training Hall",
+          "Huddle 1",
+          "Huddle 2"
+        ]
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "person": "Elena Rao",
+            "resource": "Maple Room",
+            "date": "2026-11-01",
+            "start": "16:30",
+            "type": "Interview",
+            "phone": "+44 87197 98268",
+            "status": "Booked",
+            "duration": 30,
+            "code": "BK-1001"
+          },
+          {
+            "id": "2",
+            "person": "Isla Rahman",
+            "resource": "Training Hall",
+            "date": "2026-10-26",
+            "start": "10:00",
+            "type": "Client call",
+            "phone": "+1 97442 21476",
+            "status": "Booked",
+            "duration": 30,
+            "code": "BK-1002"
+          }
+        ],
+        "total": 90,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Booked": 48,
+          "Completed": 28,
+          "No show": 3,
+          "Cancelled": 10,
+          "Checked in": 1
+        },
+        "totals": {
+          "duration": 3570
+        }
+      }
+    },
+    "transactions/quality-inspections": {
+      "lookups": {
+        "fields": {
+          "item": [
+            "Steel Hex Bolt M8",
+            "Copper Wire 2.5mm",
+            "LED Panel 40W",
+            "Hydraulic Pump HP-200",
+            "Safety Helmet Class E",
+            "Nitrile Gloves (Box 100)",
+            "Industrial Adhesive 1L",
+            "PVC Pipe 50mm",
+            "Ball Bearing 6204",
+            "Circuit Breaker 32A",
+            "Thermal Printer Roll",
+            "Stainless Sheet 2mm",
+            "Lithium Battery Pack 48V",
+            "Air Filter AF-310",
+            "Conveyor Belt 5m",
+            "Pressure Gauge 0-10bar",
+            "Solar Inverter 5kW",
+            "Welding Rod E6013",
+            "Laptop 14\" Business",
+            "Office Chair Ergo",
+            "Printer Toner 26A",
+            "Barcode Scanner 2D",
+            "Paracetamol 500mg",
+            "Surgical Mask 3-ply",
+            "Hand Sanitizer 500ml",
+            "Glucose Monitor Kit",
+            "Packaging Carton L",
+            "Stretch Film 23mic",
+            "Pallet Wooden 1200",
+            "Drill Bit Set HSS",
+            "Cable Tray 300mm",
+            "Water Pump 1HP",
+            "Epoxy Floor Coat 4L",
+            "Fire Extinguisher 6kg",
+            "Label Roll 100x50",
+            "Aluminium Profile 40x40",
+            "Gear Motor 0.5HP",
+            "Temperature Sensor PT100",
+            "Switch Gear Panel",
+            "Router Dual Band"
+          ],
+          "stage": [
+            "Incoming",
+            "In-process",
+            "Final"
+          ],
+          "status": [
+            "Pending",
+            "Passed",
+            "Failed",
+            "On hold"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "item": "Fire Extinguisher 6kg",
+            "batch": "B25340",
+            "stage": "In-process",
+            "date": "2026-10-23",
+            "inspector": "Rohan Fischer",
+            "status": "Failed",
+            "checks": [
+              {
+                "parameter": "Visual appearance",
+                "spec": "No dents, scratches or rust",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Dimensions",
+                "spec": "Within ±0.5 mm of drawing",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Weight",
+                "spec": "Nominal ±2%",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Surface finish",
+                "spec": "Ra ≤ 3.2 µm",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Packaging integrity",
+                "spec": "Seals intact, labels legible",
+                "observed": "",
+                "result": "NA",
+                "remarks": ""
+              },
+              {
+                "parameter": "Functional test",
+                "spec": "Runs 10 min without fault",
+                "observed": "Out of spec",
+                "result": "Fail",
+                "remarks": ""
+              },
+              {
+                "parameter": "Documentation",
+                "spec": "CoC and batch report attached",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              }
+            ],
+            "code": "QC-1048"
+          },
+          {
+            "id": "2",
+            "item": "Router Dual Band",
+            "batch": "B24531",
+            "stage": "Final",
+            "date": "2026-10-23",
+            "inspector": "Isla Iyer",
+            "status": "Passed",
+            "checks": [
+              {
+                "parameter": "Visual appearance",
+                "spec": "No dents, scratches or rust",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Dimensions",
+                "spec": "Within ±0.5 mm of drawing",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Weight",
+                "spec": "Nominal ±2%",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Surface finish",
+                "spec": "Ra ≤ 3.2 µm",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Packaging integrity",
+                "spec": "Seals intact, labels legible",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Functional test",
+                "spec": "Runs 10 min without fault",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              },
+              {
+                "parameter": "Documentation",
+                "spec": "CoC and batch report attached",
+                "observed": "Within spec",
+                "result": "Pass",
+                "remarks": ""
+              }
+            ],
+            "code": "QC-1047"
+          }
+        ],
+        "total": 48,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Failed": 9,
+          "Passed": 15,
+          "Pending": 19,
+          "On hold": 5
+        },
+        "totals": {}
+      }
+    },
+    "transactions/support-tickets": {
+      "lookups": {
+        "fields": {
+          "subject": [
+            "Invoice amount mismatch",
+            "Delivery delayed beyond ETA",
+            "Unable to log in to portal",
+            "Damaged goods received",
+            "Request for credit note",
+            "Wrong item shipped",
+            "Warranty claim for pump",
+            "Update billing address",
+            "Payment not reflected",
+            "Bulk order pricing query",
+            "Installation support needed",
+            "Return pickup not scheduled",
+            "Tax invoice required",
+            "Spare part availability",
+            "Account statement request"
+          ],
+          "category": [
+            "Billing",
+            "Delivery",
+            "Product",
+            "Account"
+          ],
+          "priority": [
+            "Normal",
+            "High",
+            "Low",
+            "Urgent"
+          ],
+          "status": [
+            "New",
+            "Open",
+            "In progress",
+            "Waiting",
+            "Resolved"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "subject": "Spare part availability",
+            "customer": "Summit Logistics GmbH",
+            "category": "Product",
+            "priority": "Normal",
+            "assignee": "Meera Sharma",
+            "created": "2026-10-23",
+            "status": "New",
+            "activity": [
+              {
+                "at": "2026-10-23",
+                "by": "Rohan Rao",
+                "text": "Parts ordered, ETA 2 days."
+              },
+              {
+                "at": "2026-10-19",
+                "by": "Clara Novak",
+                "text": "Customer confirmed the fix."
+              }
+            ],
+            "code": "TKT-1064"
+          },
+          {
+            "id": "2",
+            "subject": "Update billing address",
+            "customer": "Tidewater Components PLC",
+            "category": "Billing",
+            "priority": "Normal",
+            "assignee": "Amara Bauer",
+            "created": "2026-10-23",
+            "status": "New",
+            "activity": [
+              {
+                "at": "2026-10-19",
+                "by": "Noah Castillo",
+                "text": "Logged via customer portal."
+              },
+              {
+                "at": "2026-10-22",
+                "by": "Rohan Das",
+                "text": "Logged via customer portal."
+              }
+            ],
+            "code": "TKT-1063"
+          }
+        ],
+        "total": 64,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "New": 21,
+          "Open": 21,
+          "Resolved": 5,
+          "In progress": 10,
+          "Waiting": 7
+        },
+        "totals": {}
+      }
+    },
+    "transactions/maintenance-requests": {
+      "lookups": {
+        "fields": {
+          "subject": [
+            "Conveyor belt misalignment",
+            "HVAC not cooling in Bay 3",
+            "Forklift battery replacement",
+            "Leaking hydraulic line",
+            "Generator service due",
+            "Loading dock door stuck",
+            "CNC spindle vibration",
+            "Compressor pressure drop",
+            "Lighting failure in aisle 7",
+            "Boiler inspection"
+          ],
+          "location": [
+            "Plant 1",
+            "Plant 2",
+            "Main Warehouse",
+            "Head office"
+          ],
+          "category": [
+            "Electrical",
+            "Mechanical",
+            "Civil",
+            "HVAC"
+          ],
+          "priority": [
+            "Normal",
+            "High",
+            "Low",
+            "Urgent"
+          ],
+          "status": [
+            "New",
+            "Scheduled",
+            "In progress",
+            "Done"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "subject": "Lighting failure in aisle 7",
+            "location": "Plant 2",
+            "category": "Mechanical",
+            "priority": "Normal",
+            "assignee": "Ines Rahman",
+            "created": "2026-10-23",
+            "status": "New",
+            "activity": [
+              {
+                "at": "2026-10-22",
+                "by": "Ines Bauer",
+                "text": "Customer confirmed the fix."
+              },
+              {
+                "at": "2026-10-24",
+                "by": "Julia Lindqvist",
+                "text": "Logged via customer portal."
+              }
+            ],
+            "code": "MR-1040"
+          },
+          {
+            "id": "2",
+            "subject": "CNC spindle vibration",
+            "location": "Plant 1",
+            "category": "Mechanical",
+            "priority": "Normal",
+            "assignee": "Yusuf Rahman",
+            "created": "2026-10-23",
+            "status": "New",
+            "activity": [
+              {
+                "at": "2026-10-16",
+                "by": "Priya Lindqvist",
+                "text": "Parts ordered, ETA 2 days."
+              },
+              {
+                "at": "2026-10-14",
+                "by": "Chloe Andersen",
+                "text": "Assigned to field team."
+              },
+              {
+                "at": "2026-10-17",
+                "by": "Julia Brennan",
+                "text": "Assigned to field team."
+              }
+            ],
+            "code": "MR-1039"
+          }
+        ],
+        "total": 40,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "New": 15,
+          "Scheduled": 15,
+          "In progress": 7,
+          "Done": 3
+        },
+        "totals": {}
+      }
+    },
+    "transactions/marks-entry": {
+      "lookups": {
+        "fields": {
+          "section": [
+            "A",
+            "B"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Isla Novak",
+            "section": "B",
+            "columns": [
+              "English",
+              "Mathematics",
+              "Physics",
+              "Chemistry",
+              "Biology",
+              "Computer Sc."
+            ],
+            "cells": [
+              77,
+              41,
+              89,
+              39,
+              82,
+              95
+            ],
+            "code": "R-1001"
+          },
+          {
+            "id": "2",
+            "name": "Amara Haddad",
+            "section": "B",
+            "columns": [
+              "English",
+              "Mathematics",
+              "Physics",
+              "Chemistry",
+              "Biology",
+              "Computer Sc."
+            ],
+            "cells": [
+              68,
+              80,
+              63,
+              45,
+              50,
+              75
+            ],
+            "code": "R-1002"
+          }
+        ],
+        "total": 26,
+        "page": 1,
+        "size": 2,
+        "facets": {},
+        "totals": {}
+      }
+    },
+    "reports/sales-register": {
+      "lookups": {
+        "fields": {
+          "status": [
+            "Draft",
+            "Unpaid",
+            "Partially paid",
+            "Paid",
+            "Overdue"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "customer": "Juniper Retail PLC",
+            "date": "2026-10-22",
+            "dueDate": "2026-12-31",
+            "orderRef": "SO-1014",
+            "salesperson": "Omar Costa",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Printer Toner 26A",
+                "qty": 28,
+                "rate": 883.58,
+                "tax": 18,
+                "amount": 24740.24
+              },
+              {
+                "item": "Air Filter AF-310",
+                "qty": 28,
+                "rate": 676.52,
+                "tax": 0,
+                "amount": 18942.56
+              },
+              {
+                "item": "Thermal Printer Roll",
+                "qty": 15,
+                "rate": 244.25,
+                "tax": 0,
+                "amount": 3663.75
+              },
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 2,
+                "rate": 505.12,
+                "tax": 12,
+                "amount": 1010.24
+              }
+            ],
+            "total": 52931.26,
+            "code": "INV-1110"
+          },
+          {
+            "id": "2",
+            "customer": "Silverline Wholesale Pvt Ltd",
+            "date": "2026-10-20",
+            "dueDate": "2026-12-28",
+            "orderRef": "SO-1057",
+            "salesperson": "Meera Silva",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Packaging Carton L",
+                "qty": 14,
+                "rate": 372.61,
+                "tax": 5,
+                "amount": 5216.54
+              },
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 23,
+                "rate": 78.89,
+                "tax": 0,
+                "amount": 1814.47
+              },
+              {
+                "item": "Aluminium Profile 40x40",
+                "qty": 19,
+                "rate": 284.38,
+                "tax": 5,
+                "amount": 5403.22
+              }
+            ],
+            "total": 12965.22,
+            "code": "INV-1109"
+          }
+        ],
+        "total": 110,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Draft": 42,
+          "Partially paid": 19,
+          "Unpaid": 32,
+          "Paid": 11,
+          "Overdue": 6
+        },
+        "totals": {
+          "total": 4165269.71
+        }
+      }
+    },
+    "reports/purchase-register": {
+      "lookups": {
+        "fields": {
+          "warehouse": [
+            "Main Warehouse",
+            "North Depot",
+            "Port Store",
+            "Plant 2 Stores",
+            "Returns Bay"
+          ],
+          "status": [
+            "Draft",
+            "Submitted",
+            "Approved",
+            "Received",
+            "Cancelled"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "supplier": "Trident Systems PLC",
+            "date": "2026-10-21",
+            "expected": "2026-11-29",
+            "buyer": "Meera Rao",
+            "warehouse": "Main Warehouse",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 27,
+                "rate": 598.3,
+                "tax": 18,
+                "amount": 16154.1
+              },
+              {
+                "item": "Laptop 14\" Business",
+                "qty": 10,
+                "rate": 677.84,
+                "tax": 0,
+                "amount": 6778.4
+              },
+              {
+                "item": "Office Chair Ergo",
+                "qty": 35,
+                "rate": 596.15,
+                "tax": 0,
+                "amount": 20865.25
+              },
+              {
+                "item": "Office Chair Ergo",
+                "qty": 30,
+                "rate": 789.49,
+                "tax": 12,
+                "amount": 23684.7
+              },
+              {
+                "item": "Industrial Adhesive 1L",
+                "qty": 2,
+                "rate": 358.52,
+                "tax": 5,
+                "amount": 717.04
+              },
+              {
+                "item": "Surgical Mask 3-ply",
+                "qty": 18,
+                "rate": 209.32,
+                "tax": 18,
+                "amount": 3767.76
+              }
+            ],
+            "total": 78431.2,
+            "code": "PO-1070"
+          },
+          {
+            "id": "2",
+            "supplier": "Quarry Distribution Ltd",
+            "date": "2026-10-19",
+            "expected": "2026-11-06",
+            "buyer": "Zoe Hughes",
+            "warehouse": "North Depot",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Water Pump 1HP",
+                "qty": 39,
+                "rate": 550.93,
+                "tax": 5,
+                "amount": 21486.27
+              },
+              {
+                "item": "Industrial Adhesive 1L",
+                "qty": 14,
+                "rate": 631.32,
+                "tax": 12,
+                "amount": 8838.48
+              },
+              {
+                "item": "Printer Toner 26A",
+                "qty": 2,
+                "rate": 605.09,
+                "tax": 0,
+                "amount": 1210.18
+              },
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 1,
+                "rate": 191.03,
+                "tax": 12,
+                "amount": 191.03
+              },
+              {
+                "item": "Safety Helmet Class E",
+                "qty": 20,
+                "rate": 460,
+                "tax": 5,
+                "amount": 9200
+              },
+              {
+                "item": "Printer Toner 26A",
+                "qty": 27,
+                "rate": 552.51,
+                "tax": 0,
+                "amount": 14917.77
+              }
+            ],
+            "total": 58461.58,
+            "code": "PO-1069"
+          }
+        ],
+        "total": 70,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Draft": 22,
+          "Approved": 14,
+          "Submitted": 24,
+          "Received": 4,
+          "Cancelled": 6
+        },
+        "totals": {
+          "total": 2880522.77
+        }
+      }
+    },
+    "reports/stock-summary": {
+      "lookups": {
+        "fields": {
+          "item": [
+            "Steel Hex Bolt M8",
+            "Copper Wire 2.5mm",
+            "LED Panel 40W",
+            "Hydraulic Pump HP-200",
+            "Safety Helmet Class E",
+            "Nitrile Gloves (Box 100)",
+            "Industrial Adhesive 1L",
+            "PVC Pipe 50mm",
+            "Ball Bearing 6204",
+            "Circuit Breaker 32A",
+            "Thermal Printer Roll",
+            "Stainless Sheet 2mm",
+            "Lithium Battery Pack 48V",
+            "Air Filter AF-310",
+            "Conveyor Belt 5m",
+            "Pressure Gauge 0-10bar",
+            "Solar Inverter 5kW",
+            "Welding Rod E6013",
+            "Laptop 14\" Business",
+            "Office Chair Ergo",
+            "Printer Toner 26A",
+            "Barcode Scanner 2D",
+            "Paracetamol 500mg",
+            "Surgical Mask 3-ply",
+            "Hand Sanitizer 500ml",
+            "Glucose Monitor Kit",
+            "Packaging Carton L",
+            "Stretch Film 23mic",
+            "Pallet Wooden 1200",
+            "Drill Bit Set HSS",
+            "Cable Tray 300mm",
+            "Water Pump 1HP",
+            "Epoxy Floor Coat 4L",
+            "Fire Extinguisher 6kg",
+            "Label Roll 100x50",
+            "Aluminium Profile 40x40",
+            "Gear Motor 0.5HP",
+            "Temperature Sensor PT100",
+            "Switch Gear Panel",
+            "Router Dual Band"
+          ],
+          "category": [
+            "Hardware",
+            "Electrical",
+            "Safety",
+            "Consumables",
+            "IT",
+            "Medical"
+          ],
+          "warehouse": [
+            "Main Warehouse",
+            "North Depot",
+            "Port Store",
+            "Plant 2 Stores",
+            "Returns Bay"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "item": "Packaging Carton L",
+            "category": "Medical",
+            "warehouse": "North Depot",
+            "opening": 451,
+            "inward": 6,
+            "outward": 111,
+            "value": 13334.94,
+            "closing": 346
+          },
+          {
+            "id": "2",
+            "item": "Ball Bearing 6204",
+            "category": "Hardware",
+            "warehouse": "North Depot",
+            "opening": 190,
+            "inward": 82,
+            "outward": 35,
+            "value": 23281.74,
+            "closing": 237
+          }
+        ],
+        "total": 48,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "North Depot": 16,
+          "Port Store": 9,
+          "Plant 2 Stores": 9,
+          "Main Warehouse": 10,
+          "Returns Bay": 4
+        },
+        "totals": {
+          "opening": 12065,
+          "inward": 6986,
+          "outward": 6569,
+          "closing": 13102,
+          "value": 817471.38
+        }
+      }
+    },
+    "reports/receivables-aging": {
+      "lookups": {
+        "fields": {
+          "bucket": [
+            "0–30",
+            "31–60",
+            "61–90",
+            "90+"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "customer": "Cedar Retail Ltd",
+            "date": "2026-10-21",
+            "bucket": "0–30",
+            "current": 10301.09,
+            "d60": 0,
+            "d90": 0,
+            "d90p": 0,
+            "total": 10301.09,
+            "code": "INV-1070"
+          },
+          {
+            "id": "2",
+            "customer": "Delta Motors Inc",
+            "date": "2026-10-20",
+            "bucket": "0–30",
+            "current": 10332.07,
+            "d60": 0,
+            "d90": 0,
+            "d90p": 0,
+            "total": 10332.07,
+            "code": "INV-1069"
+          }
+        ],
+        "total": 70,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "0–30": 32,
+          "31–60": 22,
+          "61–90": 10,
+          "90+": 6
+        },
+        "totals": {
+          "current": 224539.16,
+          "d60": 180549.09,
+          "d90": 74681.22,
+          "d90p": 60134.26,
+          "total": 539903.73
+        }
+      }
+    },
+    "reports/customer-ledger": {
+      "lookups": {
+        "fields": {
+          "type": [
+            "Invoice",
+            "Receipt",
+            "Credit note"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "date": "2026-10-23",
+            "party": "Westbrook Retail PLC",
+            "type": "Credit note",
+            "narration": "Credit note for returns",
+            "debit": 0,
+            "credit": 1473.56,
+            "code": "VCH-2100"
+          },
+          {
+            "id": "2",
+            "date": "2026-10-22",
+            "party": "Silverline Logistics LLC",
+            "type": "Credit note",
+            "narration": "Credit note for returns",
+            "debit": 0,
+            "credit": 466.9,
+            "code": "VCH-2099"
+          }
+        ],
+        "total": 1100,
+        "page": 1,
+        "size": 2,
+        "facets": {},
+        "totals": {
+          "debit": 3010782.6,
+          "credit": 1839966.51
+        }
+      }
+    },
+    "reports/invoice-print": {
+      "lookups": {
+        "fields": {
+          "status": [
+            "Draft",
+            "Unpaid",
+            "Partially paid",
+            "Paid",
+            "Overdue"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "customer": "Juniper Retail PLC",
+            "date": "2026-10-22",
+            "dueDate": "2026-12-31",
+            "orderRef": "SO-1014",
+            "salesperson": "Omar Costa",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Printer Toner 26A",
+                "qty": 28,
+                "rate": 883.58,
+                "tax": 18,
+                "amount": 24740.24
+              },
+              {
+                "item": "Air Filter AF-310",
+                "qty": 28,
+                "rate": 676.52,
+                "tax": 0,
+                "amount": 18942.56
+              },
+              {
+                "item": "Thermal Printer Roll",
+                "qty": 15,
+                "rate": 244.25,
+                "tax": 0,
+                "amount": 3663.75
+              },
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 2,
+                "rate": 505.12,
+                "tax": 12,
+                "amount": 1010.24
+              }
+            ],
+            "total": 52931.26,
+            "code": "INV-1110"
+          },
+          {
+            "id": "2",
+            "customer": "Silverline Wholesale Pvt Ltd",
+            "date": "2026-10-20",
+            "dueDate": "2026-12-28",
+            "orderRef": "SO-1057",
+            "salesperson": "Meera Silva",
+            "status": "Draft",
+            "lines": [
+              {
+                "item": "Packaging Carton L",
+                "qty": 14,
+                "rate": 372.61,
+                "tax": 5,
+                "amount": 5216.54
+              },
+              {
+                "item": "Fire Extinguisher 6kg",
+                "qty": 23,
+                "rate": 78.89,
+                "tax": 0,
+                "amount": 1814.47
+              },
+              {
+                "item": "Aluminium Profile 40x40",
+                "qty": 19,
+                "rate": 284.38,
+                "tax": 5,
+                "amount": 5403.22
+              }
+            ],
+            "total": 12965.22,
+            "code": "INV-1109"
+          }
+        ],
+        "total": 110,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Draft": 42,
+          "Partially paid": 19,
+          "Unpaid": 32,
+          "Paid": 11,
+          "Overdue": 6
+        },
+        "totals": {
+          "total": 4165269.71
+        }
+      }
+    },
+    "setup/company-settings": {
+      "lookups": {
+        "fields": {},
+        "lines": {},
+        "sections": {
+          "legalName": [
+            "Northwind Industries Pvt Ltd"
+          ],
+          "tradeName": [
+            "Northwind"
+          ],
+          "taxId": [
+            "27AABCN1234F1Z5"
+          ],
+          "website": [
+            "northwind.example"
+          ],
+          "address": [
+            "4th Floor, Harbor Point, Marine Drive"
+          ],
+          "postcode": [
+            "400020"
+          ],
+          "currency": [
+            "USD",
+            "INR",
+            "AED",
+            "EUR"
+          ],
+          "timezone": [
+            "Asia/Kolkata",
+            "Asia/Dubai",
+            "Europe/London",
+            "America/New_York"
+          ],
+          "dateFormat": [
+            "DD MMM YYYY",
+            "MM/DD/YYYY",
+            "YYYY-MM-DD"
+          ],
+          "fiscalStart": [
+            "January",
+            "April",
+            "July"
+          ],
+          "paymentTerms": [
+            "Immediate",
+            "Net 15",
+            "Net 30",
+            "Net 45",
+            "Net 60"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "legalName": "Northwind Industries Pvt Ltd",
+            "tradeName": "Northwind",
+            "taxId": "27AABCN1234F1Z5",
+            "email": "northwind.industries@northwind.example",
+            "phone": "+1 95457 62071",
+            "website": "northwind.example",
+            "address": "4th Floor, Harbor Point, Marine Drive",
+            "city": "Mumbai",
+            "country": "India",
+            "postcode": "400020",
+            "currency": "USD",
+            "timezone": "Asia/Dubai",
+            "dateFormat": "DD MMM YYYY",
+            "fiscalStart": "January",
+            "paymentTerms": "Net 30",
+            "roundOff": true,
+            "allowNegativeStock": true,
+            "requireApproval": 5000
+          }
+        ],
+        "total": 1,
+        "page": 1,
+        "size": 2,
+        "facets": {},
+        "totals": {}
+      }
+    },
+    "setup/users": {
+      "lookups": {
+        "fields": {
+          "role": [
+            "Administrator",
+            "Accountant",
+            "Sales",
+            "Purchase",
+            "HR",
+            "Viewer"
+          ],
+          "branch": [
+            "Head office",
+            "Mumbai",
+            "Dubai"
+          ],
+          "status": [
+            "Active",
+            "Disabled"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "name": "Victor Brennan",
+            "email": "victor.brennan@corp.example",
+            "role": "Accountant",
+            "branch": "Head office",
+            "lastLogin": "2026-10-23",
+            "mfa": false,
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "name": "Ethan Adeyemi",
+            "email": "ethan.adeyemi@mail.example",
+            "role": "HR",
+            "branch": "Head office",
+            "lastLogin": "2026-10-13",
+            "mfa": false,
+            "status": "Disabled"
+          }
+        ],
+        "total": 36,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Accountant": 9,
+          "HR": 3,
+          "Administrator": 7,
+          "Sales": 7,
+          "Viewer": 2,
+          "Purchase": 8
+        },
+        "totals": {}
+      }
+    },
+    "setup/number-series": {
+      "lookups": {
+        "fields": {
+          "reset": [
+            "Never",
+            "Yearly",
+            "Monthly"
+          ],
+          "status": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        "lines": {}
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "document": "Sales order",
+            "prefix": "SO-",
+            "next": 1111,
+            "padding": 4,
+            "reset": "Yearly",
+            "status": "Active"
+          },
+          {
+            "id": "2",
+            "document": "Sales invoice",
+            "prefix": "INV-",
+            "next": 1148,
+            "padding": 4,
+            "reset": "Never",
+            "status": "Active"
+          }
+        ],
+        "total": 10,
+        "page": 1,
+        "size": 2,
+        "facets": {
+          "Active": 10
+        },
+        "totals": {
+          "next": 12775,
+          "padding": 40
+        }
+      }
+    },
+    "setup/notifications": {
+      "lookups": {
+        "fields": {},
+        "lines": {},
+        "sections": {
+          "escalateTo": [
+            "Department head",
+            "Finance controller",
+            "Nobody"
+          ],
+          "stockDigest": [
+            "Monday",
+            "Friday",
+            "Off"
+          ]
+        }
+      },
+      "list": {
+        "rows": [
+          {
+            "id": "1",
+            "approvalEmail": true,
+            "approvalReminder": 24,
+            "escalateTo": "Nobody",
+            "overdueDigest": false,
+            "paymentReceived": false,
+            "largePayment": 10000,
+            "reorderAlert": false,
+            "expiryDays": 30,
+            "stockDigest": "Friday"
+          }
+        ],
+        "total": 1,
+        "page": 1,
+        "size": 2,
+        "facets": {},
+        "totals": {}
+      }
+    }
+  },
+  "dashboard": {
+    "kpis": [
+      {
+        "key": "revenue",
+        "label": "Invoiced, last 150 days",
+        "value": 4165270,
+        "format": "currency",
+        "delta": 8.4,
+        "spark": [
+          28.817949770065027,
+          26.900508623676682,
+          29.42866479470858,
+          31.008237364152006,
+          34.18331349342934,
+          31.770118427414797,
+          29.28499372393318,
+          26.373080888172492,
+          25.135648420464435,
+          27.856381341673647,
+          29.105857493008898,
+          28.07172419733737,
+          27.954928532698357,
+          28.691175826023724
+        ]
+      },
+      {
+        "key": "receivable",
+        "label": "Receivables open",
+        "value": 2328701,
+        "format": "currency",
+        "delta": -3.1,
+        "spark": [
+          18.040404565166682,
+          16.52665008549465,
+          15.197706428008027,
+          15.316795826163437,
+          14.334312235324665,
+          15.090051882140731,
+          14.370110916017412,
+          15.943882716574283,
+          15.956284249563453,
+          16.605926226957898,
+          17.85639934526825,
+          16.16302972014671,
+          15.43424561990396,
+          16.19988726854308
+        ],
+        "note": "6 overdue"
+      },
+      {
+        "key": "orders",
+        "label": "Orders in progress",
+        "value": 37,
+        "format": "number",
+        "delta": 12,
+        "spark": [
+          10.821745248697699,
+          10.459720145341379,
+          9.788165481723542,
+          8.871052942333296,
+          8.415732052209762,
+          8.45862871837132,
+          8.23886930627584,
+          8.15509670834612,
+          8.781462108433416,
+          9.430272502995953,
+          8.822187995119483,
+          8.742428085378318,
+          9.558775877811517,
+          9.499149866595943
+        ]
+      },
+      {
+        "key": "headcount",
+        "label": "Active employees",
+        "value": 67,
+        "format": "number",
+        "delta": 1.6,
+        "spark": [
+          42.9237278457731,
+          40.301144249897256,
+          39.08315818453265,
+          36.17803273417381,
+          33.66569989780697,
+          32.45546208324924,
+          29.54925758664678,
+          31.65381452870876,
+          32.20605290740618,
+          32.86130623934933,
+          30.603068563484694,
+          31.46155098569714,
+          29.991354050569313,
+          29.52950158338526
+        ]
+      }
+    ],
+    "months": [
+      "Nov",
+      "Dec",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct"
+    ],
+    "sales": [
+      201723,
+      191835,
+      204530,
+      221249,
+      239808,
+      236318,
+      239374,
+      238647,
+      248189,
+      261591,
+      266723,
+      254031
+    ],
+    "purchases": [
+      140301,
+      110782,
+      135531,
+      143276,
+      167367,
+      164788,
+      154587,
+      134098,
+      136843,
+      179633,
+      155135,
+      176028
+    ],
+    "statusSplit": [
+      {
+        "label": "Draft",
+        "value": 1356162
+      },
+      {
+        "label": "Partially paid",
+        "value": 758968
+      },
+      {
+        "label": "Unpaid",
+        "value": 1226173
+      },
+      {
+        "label": "Paid",
+        "value": 480407
+      },
+      {
+        "label": "Overdue",
+        "value": 343560
+      }
+    ],
+    "topCustomers": [
+      {
+        "name": "Pinnacle Foods Pvt Ltd",
+        "value": 88216.61,
+        "group": "Distributor"
+      },
+      {
+        "name": "Zenith Industries PLC",
+        "value": 85126.83,
+        "group": "Wholesale"
+      },
+      {
+        "name": "Unity Holdings LLC",
+        "value": 83444.31,
+        "group": "Distributor"
+      },
+      {
+        "name": "Evergreen Pharma GmbH",
+        "value": 81641.64,
+        "group": "Wholesale"
+      },
+      {
+        "name": "Quarry Healthcare GmbH",
+        "value": 78826.3,
+        "group": "Export"
+      },
+      {
+        "name": "Juniper Holdings LLC",
+        "value": 76438.12,
+        "group": "Distributor"
+      }
+    ],
+    "recentOrders": [
+      {
+        "id": "1",
+        "code": "SO-1086",
+        "customer": "Quarry Healthcare GmbH",
+        "date": "2026-10-23",
+        "total": 30546.42,
+        "status": "Approved"
+      },
+      {
+        "id": "2",
+        "code": "SO-1085",
+        "customer": "Unity Holdings LLC",
+        "date": "2026-10-20",
+        "total": 28405.98,
+        "status": "Cancelled"
+      },
+      {
+        "id": "3",
+        "code": "SO-1084",
+        "customer": "Horizon Supplies PLC",
+        "date": "2026-10-17",
+        "total": 4833.93,
+        "status": "Submitted"
+      },
+      {
+        "id": "4",
+        "code": "SO-1083",
+        "customer": "Delta Motors Inc",
+        "date": "2026-10-16",
+        "total": 28431.06,
+        "status": "Approved"
+      },
+      {
+        "id": "5",
+        "code": "SO-1082",
+        "customer": "Horizon Systems PLC",
+        "date": "2026-10-16",
+        "total": 6963.18,
+        "status": "Cancelled"
+      },
+      {
+        "id": "6",
+        "code": "SO-1081",
+        "customer": "Zenith Industries PLC",
+        "date": "2026-10-16",
+        "total": 4992.39,
+        "status": "Draft"
+      },
+      {
+        "id": "7",
+        "code": "SO-1080",
+        "customer": "Blue Harbor Components Inc",
+        "date": "2026-10-14",
+        "total": 37063.8,
+        "status": "Delivered"
+      }
+    ],
+    "approvals": [
+      {
+        "id": "1",
+        "code": "REQ-1046",
+        "type": "Expense claim",
+        "requester": "Jonah Sharma",
+        "amount": 33979.26,
+        "priority": "Urgent",
+        "submitted": "2026-10-23"
+      },
+      {
+        "id": "3",
+        "code": "REQ-1044",
+        "type": "Expense claim",
+        "requester": "Kabir Rahman",
+        "amount": 39048.16,
+        "priority": "High",
+        "submitted": "2026-10-22"
+      },
+      {
+        "id": "5",
+        "code": "REQ-1042",
+        "type": "Leave",
+        "requester": "Leila Sharma",
+        "amount": 0,
+        "days": 6,
+        "priority": "Normal",
+        "submitted": "2026-10-22"
+      },
+      {
+        "id": "6",
+        "code": "REQ-1041",
+        "type": "Leave",
+        "requester": "Lucas Haddad",
+        "amount": 0,
+        "days": 2,
+        "priority": "High",
+        "submitted": "2026-10-22"
+      },
+      {
+        "id": "7",
+        "code": "REQ-1040",
+        "type": "Leave",
+        "requester": "Daniel Patel",
+        "amount": 0,
+        "days": 4,
+        "priority": "High",
+        "submitted": "2026-10-22"
+      },
+      {
+        "id": "8",
+        "code": "REQ-1039",
+        "type": "Payment voucher",
+        "requester": "Liam Menon",
+        "amount": 32482.79,
+        "priority": "Normal",
+        "submitted": "2026-10-21"
+      }
+    ],
+    "pendingApprovals": 40,
+    "openTickets": 59,
+    "purchaseValue": 2880523
+  }
+}

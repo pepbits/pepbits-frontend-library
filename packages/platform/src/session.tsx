@@ -12,6 +12,8 @@ export interface SessionUser {
   /** A host role value. The shell shows the matching label;
       it is not selectable -- the role is whatever the account carries. */
   role: string;
+  /** Optional server-issued grants. UI presentation is never server authority. */
+  permissions?: readonly string[];
   /** A host branch value. */
   branch: string;
   /** The account's tenant. Derived server-side and returned with the session;

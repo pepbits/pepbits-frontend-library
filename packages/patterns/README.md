@@ -190,3 +190,24 @@ Designer users add/reorder sections and fields using drag handles or the existin
 Install adds the original DnD specifications (`@dnd-kit/core` 6.3.1, sortable 10.0.0, utilities 3.2.2). XLSX remains the exact 0.20.3 CDN tarball. Hosts must scan pattern source and load tokens/CSS modules as above. Canonical catalogs remain unchanged; showcase regenerates its read-only subset. Missing translations are a host integration responsibility.
 
 No Developer-Library launcher, product page/category/context/subject registry, product row seed or DCP demo endpoint wrapper is included. The showcase supplies five independent in-memory examples. Native output, real identity verification, live backends, durable storage, deployment and native-speaker review remain host acceptance, not results of these local package tests. Rollback removes this independent increment without changing protected applications or stored data.
+
+## Scoped resources
+
+`@pepbits/patterns/resources` exports `ResourceScope`, `JsonRequest`, `useJsonRequest`, `useFetch`, `useScopedResource`, `useScopeMemory`/`useViewMemory` and `useStoredState`. Supply an authenticated request callback, a verified identity key and an explicit state endpoint. A changed scope/request gets a fresh store. Fetches abort and fence stale responses; shared resource promises deduplicate reads within a scope. Stored state hydrates with GET only, protects user edits from late hydration, serializes PUTs and retains values with retry on failure. Caches are ephemeral; this is not a durable business-draft engine. Package tests cover abort/stale completion and scope deduplication. ERP's ported core cases verify hydration, StrictMode, failures and tenant/module separation.
+
+## Hierarchy and workflow board
+
+| Public export | Contract |
+| --- | --- |
+| `@pepbits/patterns/tree` | `HierarchyView`, `HierarchyViewProps`, `HierarchyNode`, `HierarchyEntry`, `hierarchyEntries`: searchable hierarchy with ancestor retention, expand/collapse, visible-ID callback, controlled selection, optional columns/actions and cycle/orphan handling. |
+| `@pepbits/patterns/board` | `WorkflowBoard`, `WorkflowBoardProps`, `BoardColumn`: controlled status columns, pointer drag and accessible select moves, item slots and read-only gating. |
+
+Supply nodes/items and command callbacks inside the existing PreferenceHost, LocalizationProvider and presentation host. Neither area fetches data, grants permissions, mutates records or persists drafts. Density, result scale, semantic colors/radii, localized labels and number formatting follow the effective host; table columns reuse CollectionView. Hierarchy indentation uses logical padding for RTL. There is no custom motion or shortcut binding. The host acknowledges board moves, handles failures and sets `disabled` while pending or unauthorized; changing it fences an in-progress drag. Direct tests cover search/ancestors, malformed hierarchies, selection, visible neighbours, keyboard/pointer commands and mounted permission revocation. ERP owns all entity/route/field configuration.
+
+Structural hierarchy and status-board layouts do not apply the generic table/card `resultView` or split their groups by `pageSize`; hosts supply the complete nodes/groups they intend to display. A host's optional List view should use its ordinary preference-aware worklist. The canvases have no preference persistence or automatic animation, so reduced motion and shortcut disablement require no extra bindings.
+
+## Resource calendar (phase 6c-3)
+
+`@pepbits/patterns/calendar` (also root) exports `ResourceTimeline`, `ResourceTimelineProps`, `TimelineResource`, `ResourceEvent`, `TimelineInterval`, `timelineLayout`, `timeMinutes`, `minuteTime` and `overlaps`. Supply minute intervals, resource IDs, slot labels and open/create callbacks. The default window is 08:00–18:30 at 30-minute intervals; hosts may configure it. Clipped intervals retain identity and overlapping events receive separate lanes. Active events disable intersecting free-slot buttons; cancelled/inactive events remain openable. The host must revalidate availability before writing; this canvas is not concurrency control.
+
+Density controls slot height, time labels use effective formatting, and geometry uses logical inset/start placement for RTL. Result font scale and semantic colors/radius follow the host. The complete time/resource canvas is independent of table page size/resultView; offer a preference-aware List mode when applicable. Native buttons provide keyboard access; there are no custom shortcuts, animations, data fetches or persistence. `disabled` fences slot callbacks after mounted permission changes while preserving read access. Four tests cover half-open intervals, overlap lanes/clipping, occupancy/cancellation and mounted policy/RTL behavior. ERP owns day navigation, resource selection, commands and source-specific details.

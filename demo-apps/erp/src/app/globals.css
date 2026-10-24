@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import "@pepbits/tokens/tokens.css";
+@import "@pepbits/tokens/reference-fonts.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/manrope/index.css";
+@import "@fontsource-variable/source-sans-3/index.css";
+@import "@fontsource-variable/nunito-sans/index.css";
+@import "@fontsource-variable/noto-sans-arabic/index.css";
+@import "@fontsource-variable/noto-sans-devanagari/index.css";
+@import "@fontsource-variable/noto-sans-malayalam/index.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+@import "@fontsource/ibm-plex-mono/700.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/components/src";
+@source "../../../../packages/patterns/src";
+@source "../../../../packages/page-engines/src";
+@source "../../../../packages/shell/src";
+@source "../../../../packages/icons/src";
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font-ui), "Noto Sans Arabic Variable", "Noto Sans Devanagari Variable", "Noto Sans Malayalam Variable", sans-serif; }
+:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+button, input, select, textarea { font:inherit; }
+.erp-page { min-width:0; --fs-scale:var(--fs-form); }
+/* Fixed A4 document geometry from the source invoice; screen table settings do not alter paper. */
+.erp-invoice { display:flex; flex-direction:column; width:794px; min-height:1123px; padding:48px; background:#fff; color:#1c2422; font-family:var(--font-ui),sans-serif; font-size:calc(12px * var(--fs-result,1)); line-height:1.6; box-shadow:0 3px 16px #0002; }
+.erp-invoice header { display:flex; justify-content:space-between; gap:12px; padding-bottom:20px; border-bottom:2px solid #136f63; }
+.erp-invoice h2 { color:#136f63; font-size:calc(22px * var(--fs-result,1)); font-weight:600; margin:0; }
+.erp-invoice h3 { font-size:calc(14px * var(--fs-result,1)); font-weight:600; }
+.erp-invoice p { margin:4px 0 16px; }
+.invoice-brand { display:flex; align-items:start; gap:12px; }
+.invoice-brand svg { flex-shrink:0; }
+.invoice-company { font-size:calc(18px * var(--fs-result,1)); }
+.invoice-end { text-align:end; }
+.invoice-parties { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:24px; }
+.erp-invoice table { border-collapse:collapse; width:100%; align-self:start; font-size:inherit; }
+.erp-invoice th { font-weight:600; text-align:start; }
+.invoice-parties th,.invoice-parties td { padding:0 8px; text-align:end; }
+.invoice-lines { margin-top:32px; }
+.invoice-lines thead { background:#eef4f2; color:#3e4d4a; }
+.invoice-lines th,.invoice-lines td { padding:8px; }
+.invoice-lines tbody tr { border-bottom:1px solid #e1e8e6; }
+.invoice-lines th:nth-child(n+3),.invoice-lines td:nth-child(n+3) { text-align:end; }
+.invoice-totals { display:grid; grid-template-columns:1fr 256px; gap:32px; margin-top:16px; }
+.invoice-totals td { text-align:end; }
+.invoice-totals tr:last-child { border-top:2px solid #136f63; font-weight:600; font-size:calc(14px * var(--fs-result,1)); }
+.invoice-totals th,.invoice-totals td { padding:4px 0; }
+.invoice-spacer { flex:1; }
+.invoice-terms { margin-top:32px; border-top:1px solid #e1e8e6; padding-top:12px; color:#5d6b68; font-size:calc(10.5px * var(--fs-result,1)); }
+.erp-invoice footer { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-top:40px; font-size:calc(10.5px * var(--fs-result,1)); }
+.invoice-signature { border-top:1px solid #3e4d4a; padding:4px 24px 0; margin-top:40px; text-align:center; }
+@media print {
+  @page { size:A4; margin:0; }
+  body>.ops-print-document.erp-invoice-print { padding:0!important; font:inherit; }
+  .erp-invoice { width:210mm; min-height:297mm; padding:12.7mm; box-shadow:none; }
+  .erp-invoice h2 { margin-top:0!important; }
+  .erp-invoice tr,.invoice-totals,.invoice-parties,.erp-invoice footer { break-inside:avoid; }
+  .invoice-lines thead { display:table-header-group; }
+}
+@font-face {font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Manrope";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Source Sans 3";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Nunito Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/nunito-sans/files/nunito-sans-latin-wght-normal.woff2") format("woff2");}
+

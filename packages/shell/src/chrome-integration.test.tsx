@@ -62,6 +62,7 @@ test.each([true,false])('tour scroll obeys reducedMotion=%s and opening help nev
 
 test('profile action name includes the visible initials and user identity',()=>{
  const view=render(<ShellTestHost><EnterpriseShell>Screen</EnterpriseShell></ShellTestHost>);
+ expect(screen.getByRole('main')).toHaveAttribute('tabindex','0');
  expect(screen.getByRole('button',{name:'Open profile menu — Alex Example — AE'})).toHaveTextContent('AE');
  view.rerender(<ShellTestHost session={{status:'anonymous',user:null,login:async()=>null,logout:async()=>{}}}><EnterpriseShell>Screen</EnterpriseShell></ShellTestHost>);
  expect(screen.getByRole('button',{name:'Open profile menu — --'})).toHaveTextContent('--');

@@ -33,12 +33,13 @@ function toGrid(rows: Row[], columns: DataColumn[], format: Formatters): string[
  * The xlsx path needs none of this — aoa_to_sheet writes a string as a typed
  * string cell, so a leading `=` there is data rather than an expression.
  */
-function formulaSafe(value: string): string {
+export function formulaSafe(value: string): string {
   return /^[=+\-@\t\r]/.test(value) && !Number.isFinite(Number(value)) ? `'${value}` : value;
 }
 
-function csvOf(grid: string[][]): string {
-  const cell = (raw: string) => {
+export function csvOf(grid: (string|number)[][]): string {
+  const cell = (raw: string|number) => {
+    if(typeof raw==="number")return Number.isFinite(raw)?String(raw):"";
     const value = formulaSafe(raw);
     return /[",\n\r]/.test(value) ? `"${value.replace(/"/g, '""')}"` : value;
   };
@@ -71,10 +72,7 @@ export function exportRows(rows: Row[], columns: DataColumn[], format: Formatter
   const stamp = new Date().toISOString().slice(0, 10);
   const safe = baseName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   if (kind === "xlsx") {
-    const sheet = XLSX.utils.aoa_to_sheet(grid);
-    const book = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(book, sheet, baseName.slice(0, 31)); // Excel caps sheet names at 31
-    const out = XLSX.write(book, { bookType: "xlsx", type: "array" }) as ArrayBuffer;
+    const out = xlsxOf(grid[0]!, grid.slice(1), baseName);
     const name = `${safe}-${stamp}.xlsx`;
     save(new Blob([out], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }), name);
     return { filename: name, review };
@@ -83,4 +81,17 @@ export function exportRows(rows: Row[], columns: DataColumn[], format: Formatter
   // BOM so Excel reads UTF-8 (Arabic names, the dirham sign) instead of Latin-1.
   save(new Blob(["﻿" + csvOf(grid)], { type: "text/csv;charset=utf-8" }), name);
   return { filename: name, review };
+}
+
+export function xlsxOf(headers:string[],rows:(string|number)[][],sheetName:string):ArrayBuffer{const sheet=XLSX.utils.aoa_to_sheet([headers,...rows]),book=XLSX.utils.book_new();XLSX.utils.book_append_sheet(book,sheet,sheetName.replace(/[\\/?*[\]:]/g,' ').slice(0,31)||'Export');return XLSX.write(book,{bookType:'xlsx',type:'array'}) as ArrayBuffer;}
+export function exportFileName(sourceName:string,format:ExportFormat){return sourceName.replace(/\.(csv|xlsx)$/i,'')+'.'+format;}
+
+/** Explicit, already-reviewed grid. Numeric spreadsheet cells retain their type. */
+export function downloadGrid(headers: string[], rows: (string|number)[][], kind: ExportFormat, name: string) {
+  const filename = exportFileName(name, kind);
+  const blob = kind === 'xlsx'
+    ? new Blob([xlsxOf(headers, rows, name)], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+    : new Blob(['\uFEFF' + csvOf([headers, ...rows])], {type: 'text/csv;charset=utf-8'});
+  save(blob, filename);
+  return filename;
 }

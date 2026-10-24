@@ -1,0 +1,25 @@
+{
+  "referencePath": "dummy-api/reference-erp-store.mjs",
+  "referenceSha256": "410c2b4b2ba40c671baa496e58e8ef92bad2be2e799437ef944c22b20eb5264f",
+  "clientPath": "demo-apps/erp/src/modules/keystone/access.tsx",
+  "clientSha256": "905b9ebfd5d152268a31ff9d4c23d48d5c36b8788ecc329a2762cb1c3b1de6c8",
+  "financeRoles": [
+    "finance",
+    "finance-manager",
+    "accountant"
+  ],
+  "financeEntities": [
+    "chart-of-accounts",
+    "tax-rates",
+    "journal-vouchers",
+    "payment-vouchers",
+    "petty-cash",
+    "depreciation-run",
+    "receivables-aging",
+    "ledger-entries"
+  ],
+  "matchingEntities": 8,
+  "explicitAdditionalGrant": "erp:write:<entity>",
+  "authority": "Actual authenticated server checks every request; the frontend helper presents controls only.",
+  "verification": "Pure role/grant tests and component allow/deny tests; live finance-manager commands and direct 403 checks recorded separately. Mounted shell denial overrides entity grants."
+}

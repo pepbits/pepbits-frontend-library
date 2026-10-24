@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import {DEFAULT_PREFERENCES} from "@pepbits/preferences";
 import {createFormatters} from "@pepbits/i18n";
 import type {DataColumn} from "../types";
-import { exportRows } from "./export-rows.ts";
+import { exportRows, downloadGrid } from "./export-rows.ts";
 
 /**
  * Export is an egress path.
@@ -242,4 +242,8 @@ describe("the workbook", () => {
     expect(() => exportRows([], columns, format, "xlsx", "A very long worklist name that Excel will not accept as a sheet")).not.toThrow();
     expect(written).toHaveLength(1);
   });
+});
+test('reviewed grid downloads escape formulas and preserve numeric workbook cells',async()=>{
+ const XLSX=await import('xlsx');downloadGrid(['Name','Balance'],[['=1+2',-25]],'csv','statement.xlsx');expect(await blobText(written[0]!)).toContain("'=1+2,-25");
+ expect(downloadGrid(['Name','Balance'],[['=1+2',-25]],'xlsx','statement.csv')).toBe('statement.xlsx');const book=XLSX.read(await blobBytes(written[1]!)),sheet=book.Sheets[book.SheetNames[0]!]!;expect(sheet.A2).toMatchObject({t:'s',v:'=1+2'});expect(sheet.B2).toMatchObject({t:'n',v:-25});
 });

@@ -15,5 +15,9 @@ export interface WorklistPageProps {
  page:PageDefinition;config:WorklistConfig;adapter:WorklistAdapter;
  imports?:{definition:ImportDefinition;adapter:ImportAdapter};
  approvals?:{adapter:ApprovalAdapter;roleOptions:readonly string[]};
+ /** Disable when the host service does not implement the personal-view protocol. */
+ personalViews?:boolean;
+ /** Use record navigation for row activation while retaining the preview action. */
+ rowClick?:'preview'|'open';
  onReturn?:()=>void;onPreferences?:()=>void;
 }

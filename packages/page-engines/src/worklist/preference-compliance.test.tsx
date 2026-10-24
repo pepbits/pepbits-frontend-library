@@ -4,6 +4,7 @@ import {screen,fireEvent,waitFor} from '@testing-library/react';
 import {test,expect,vi} from 'vitest';
 import {render,TestHost} from '../test/render';
 import {WorklistPage} from './worklist-page';
+import {NavigationProvider} from '@pepbits/platform/navigation';
 import type {WorklistConfig,PageDefinition} from '../types';
 import type {PreferencePolicy} from '@pepbits/preferences';
 const page:PageDefinition={id:'items',title:'Items',subtitle:'',kind:'worklist',module:'records'};
@@ -55,4 +56,9 @@ test('filter memory retains only declared operational values and unavailable cho
  fireEvent.change(screen.getByLabelText('Private filter'),{target:{value:'PRIVATE-FILTER'}});
  fireEvent.change(screen.getByLabelText('Status'),{target:{value:'active'}});
  const stored=localStorage.getItem('pepbits-filters:items');expect(stored).not.toContain('PRIVATE-FILTER');expect(JSON.parse(stored!)).toEqual({search:'',filters:{status:'active'}});
+});
+test('hosts can disable unsupported personal views while rows remain keyboard-openable',async()=>{
+ const {request,adapter}=setup(),open=vi.fn();const {container}=render(<NavigationProvider value={{current:{pageId:page.id},open,openInNewContext:open,hrefFor:()=>'/items'}}><WorklistPage page={page} config={config} adapter={adapter} personalViews={false} rowClick="open"/></NavigationProvider>);
+ await screen.findByText('Record A');expect(request.mock.calls.some(([path])=>path==='/personal-views')).toBe(false);
+ expect(container.querySelector('tbody tr')).toHaveAttribute('tabindex','0');fireEvent.keyDown(container.querySelector('tbody tr')!,{key:'Enter'});expect(open).toHaveBeenCalledWith(expect.objectContaining({recordId:'A',mode:'view'}));expect(screen.queryByRole('button',{name:'Saved views'})).toBeNull();
 });

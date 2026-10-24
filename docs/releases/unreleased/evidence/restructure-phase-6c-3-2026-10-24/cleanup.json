@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-24T01:53:16.581Z",
+  "integrationRuns": [
+    {
+      "receipt": "identity-diagnostic.json",
+      "integrationExit": 1,
+      "services": [
+        {
+          "label": "Browser",
+          "pid": 78,
+          "exitCode": 1,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 59,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 50,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "ports": [
+        {
+          "port": 40997,
+          "open": false
+        },
+        {
+          "port": 39067,
+          "open": false
+        }
+      ]
+    },
+    {
+      "receipt": "identity-final.json",
+      "integrationExit": 0,
+      "services": [
+        {
+          "label": "Browser",
+          "pid": 67,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 48,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 39,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "ports": [
+        {
+          "port": 40589,
+          "open": false
+        },
+        {
+          "port": 42759,
+          "open": false
+        }
+      ]
+    }
+  ],
+  "shellBrowser": "Completed with awaited fixture/browser teardown before integration. CI commands completed; documentation/source checks start no services.",
+  "allStartedIntegrationGroupsStopped": true
+}
