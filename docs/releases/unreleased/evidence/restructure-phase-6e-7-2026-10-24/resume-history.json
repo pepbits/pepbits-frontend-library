@@ -1,0 +1,145 @@
+{
+  "note": "Earlier incomplete attempts, summarized during the authorized resume. Superseded logs/screenshots removed to keep evidence small; these are not final-source results.",
+  "runs": [
+    {
+      "label": "diagnostic",
+      "sourceBase": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+      "apiPort": 39901,
+      "appPort": 44663,
+      "exit": 1,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 4028168,
+          "exitCode": 1,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Vite",
+          "pid": 4028083,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 4027534,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "workflows": 3,
+      "routes": 0,
+      "errors": [
+        "locator.click: Error: strict mode violation: locator('[data-tour=form-nav] button').filter({ hasText: 'Contacts' }) resolved to 2 elements:"
+      ]
+    },
+    {
+      "label": "final",
+      "sourceBase": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+      "apiPort": 33755,
+      "appPort": 41851,
+      "exit": 1,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 46201,
+          "exitCode": 1,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Vite",
+          "pid": 46183,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 46174,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "workflows": 3,
+      "routes": 0,
+      "errors": [
+        "locator.waitFor: Timeout 30000ms exceeded."
+      ]
+    },
+    {
+      "label": "http3",
+      "sourceBase": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+      "apiPort": 46837,
+      "appPort": 39501,
+      "exit": 1,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 711893,
+          "exitCode": 1,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Vite",
+          "pid": 711839,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 711565,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "workflows": 3,
+      "routes": 0,
+      "errors": [
+        "locator.waitFor: Timeout 30000ms exceeded."
+      ]
+    },
+    {
+      "label": "http4",
+      "sourceBase": "5bbb13027d137ac31594ca9a1a3d47aac46653c9",
+      "apiPort": 39091,
+      "appPort": 37809,
+      "exit": 1,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 826689,
+          "exitCode": 1,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Vite",
+          "pid": 826631,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 826453,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "workflows": 6,
+      "routes": 0,
+      "errors": [
+        "locator.click: Timeout 30000ms exceeded."
+      ]
+    }
+  ]
+}

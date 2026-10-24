@@ -1,6 +1,10 @@
 # Current delivery and release records
 
 - [ERP phase 6c-6 — source composition and visual audit subset](restructure-phase-6c-6-2026-10-24.md): 35-destination composition subset, report layouts and explicit remaining differences for all 114 destinations; forced CI (6,097 tests), shell Chromium (18 tests) and real HTTP (122 workflows, 114 routes, zero axe violations) pass; no deployment.
+- [AllyVora patients phase 6e-6 — patient registration demo](restructure-phase-6e-6-2026-10-24.md): new private app over the unchanged AllyVora API and shared demo host, `SignaturePad` and `SearchSelect` quick pick, exact local verification and named adaptations.
+- [Desktop phase 6e-7 — Tauri-hosted desktop demo](restructure-phase-6e-7-2026-10-24.md): document workspace, Tauri window port and copied native host; unit/typecheck/docs pass, required heavy checks blocked by the shared lock; no native build.
+- [Onboarding phase 6e-3 — Orvia Health Cloud](restructure-phase-6e-3-2026-10-24.md): source pages and shared wizard/OTP; 353 focused tests pass, required CI/build/browser verification blocked by the shared lock; no deployment.
+- [School phase 6d-2 — source comparison and visual gaps](restructure-phase-6d-2-2026-10-24.md): compact chart/table parity subset, per-route handoff and exact local evidence.
 
 - [Reports phase 6e-1 — Lumen Reports demo app](restructure-phase-6e-1-2026-10-24.md): all 19 source routes over the shared host and fictional demo API; local verification and limits.
 - [Tenant Admin phase 6e-2 — registry-driven configuration demo](restructure-phase-6e-2-2026-10-24.md): Overview, Approvals, Activity and 30 configuration pages on the shared host; public reference-host contract and local verification.

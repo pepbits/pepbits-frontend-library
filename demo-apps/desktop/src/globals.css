@@ -1,0 +1,16 @@
+@import "tailwindcss";
+/* Every @import must precede other statements; a late token import is silently dropped. */
+@import "@pepbits/tokens/tokens.css";
+/* Utility classes live in the public package sources, outside this app's root. */
+@source "../../../packages/ui/src";
+@source "../../../packages/components/src";
+@source "../../../packages/patterns/src";
+@source "../../../packages/page-engines/src";
+@source "../../../packages/shell/src";
+@source "../../../packages/ai/src";
+@source "../../../packages/icons/src";
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font-ui), "Noto Sans Arabic Variable", "Noto Sans Devanagari Variable", "Noto Sans Malayalam Variable", sans-serif; }
+:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+button, input, select, textarea { font:inherit; }
+.desktop-page { min-width:0; --fs-scale:var(--fs-form); }

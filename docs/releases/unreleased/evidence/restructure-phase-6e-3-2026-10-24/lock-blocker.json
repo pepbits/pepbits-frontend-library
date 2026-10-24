@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-10-24T18:38:19.186009+00:00",
+  "waitStarted": "2026-10-24T18:07:59Z",
+  "waitSeconds": 1800,
+  "waitExitCode": 1,
+  "ciStarted": false,
+  "ciLogBytes": 0,
+  "lockProbe": {
+    "command": [
+      "flock",
+      "-n",
+      "/home/pepadmin/.cache/pepbits-heavy.lock",
+      "true"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "processes": {
+    "command": [
+      "ps",
+      "-eo",
+      "pid,ppid,etime,comm"
+    ],
+    "exitCode": 0,
+    "stdout": "PID    PPID     ELAPSED COMMAND\n      1       0       00:00 codex\n      2       1       00:00 bash\n      3       2       00:00 python3\n      5       3       00:00 ps",
+    "stderr": ""
+  },
+  "locks": {
+    "command": [
+      "lslocks",
+      "-o",
+      "PID,COMMAND,PATH"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "procLocks": "",
+  "conclusion": "The shared lock remained unavailable for the 30-minute wait. This PID-isolated sandbox sees only its own invocation; the host holder cannot be identified or classified as orphaned. No heavy check started. Host/coordinating-session inspection requested; lock was not bypassed, removed or replaced.",
+  "retry": {
+    "waitSeconds": 60,
+    "exitCode": 1,
+    "ciStarted": false,
+    "checkedAt": "2026-10-24T18:42:04.253232+00:00"
+  },
+  "finalNonblockingAttempt": {
+    "exitCode": 1,
+    "ciStarted": false,
+    "checkedAt": "2026-10-24T18:43:09.652Z"
+  }
+}

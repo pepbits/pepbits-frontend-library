@@ -58,6 +58,7 @@ test('page engine saves reach shell toasts and edits survive suspension until ex
   fireEvent.change(screen.getByRole('textbox',{name:/Name/}),{target:{value:'Retained edit'}});expect(workspace.getDocument(a.documentId)?.dirty).toBe(true);
   expect(workspace.closeDocument(a.documentId).ok).toBe(false);view.rerender(tree(false));view.rerender(tree(true));
   await waitFor(()=>expect(screen.getByRole('textbox',{name:/Name/})).toHaveValue('Retained edit'));
+  await waitFor(()=>expect(screen.getByRole('button',{name:'Save'})).toBeEnabled());
   fireEvent.click(screen.getByRole('button',{name:'Save'}));await waitFor(()=>expect(save).toHaveBeenCalledOnce());
   expect(await screen.findByText(/Changes saved/)).toBeVisible();expect(workspace.getDocument(a.documentId)?.dirty).toBe(false);
   act(()=>{workspace.closeDocument(a.documentId);});expect(workspace.getOpenDocuments()).toHaveLength(0);

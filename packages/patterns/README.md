@@ -17,7 +17,7 @@ The root barrel re-exports the following areas. Prefer subpaths to avoid loading
 | `./imports` | `CsvImportDialog`, structural `ImportDefinition`/`ImportPage`/`ImportField`, `CsvOptionsEditor`, `mapCsvOptions`, `readOptionsWorkbook`, workbook sheet type and isolated worker. |
 | `./testing` | Shared `TestHost`, render wrapper and `createTestDocument` for tests only; not exported by the runtime root. |
 
-Phase 4c adds `./form-designer`, `./spreadsheet`, `./label-printing`, `./identity-devices` and `./device-integrations`; see the complete API and differences below.
+Phase 4c adds `./form-designer`, `./spreadsheet`, `./label-printing`, `./identity-devices` and `./device-integrations`; see the complete API and differences below. Phase 6e-3 adds [`./wizard`](#multi-step-wizard-phase-6e-3).
 
 ## User and administrator flows
 
@@ -217,5 +217,18 @@ Density controls slot height, time labels use effective formatting, and geometry
 `@pepbits/patterns/print-pagination` exports `paginatePrintRows` and `PrintPageRange`. Supply row heights and a page capacity after repeated header/footer space, plus brought-forward, carried-forward and final-summary heights in the same units. It returns ordered, exclusive-end row ranges with one final page, including a summary-only page when necessary. Empty documents retain one final page. Invalid measurements and content taller than a page fail explicitly rather than clipping. The host measures rendered content after fonts load, recalculates on presentation/content changes, supplies repeated headers/page numbers and financial calculations, and gates print until ready. Four pure tests cover exact boundaries, variable rows, carry reservations, summary-only pages and oversized content. This helper owns no currency, paper size, data, styling, persistence or print command.
 
 `@pepbits/patterns/drafts` also exports `useUnsavedWarning(dirty)`: a mounted browser close/refresh warning, detached when clean or unmounted. It does not retain values, guard client-side routes, or imply durable draft storage. `drafts/use-unsaved-warning.test.tsx` verifies attachment and cleanup.
+
+## Multi-step wizard (phase 6e-3)
+
+`@pepbits/patterns/wizard` (also root) is the generic stepper/wizard the plan assigns from `registration-wizard`; product screens stay in their demo. It exports:
+
+| Export | Contract |
+| --- | --- |
+| `useWizard`, `UseWizardOptions`, `WizardController`, `WizardStep`, `WizardErrors`, `WizardSnapshot` | Controlled step state over host-visible steps: current/completed/reached sets, per-step `validate(id, data)`, `next`/`back`/`goTo`, stepper `jump` (backward free, forward validates the current step, unreached refused), `firstInvalid` for a final submit check, `fail`, `completeAll`, `restore`/`snapshot`, `progress`, and `failures`/`moves` counters for host focus and announcements. Errors are cleared as their values become valid; new errors appear only on an explicit attempt. Steps may appear or disappear with the data. |
+| `WizardStepper`, `WizardStepperProps`, `WizardStepperClassNames` | Vertical `nav` of step buttons with `aria-current="step"`, a hidden "(completed)" suffix and reachable-only jumping. Defaults use semantic tokens; hosts replace class slots (state slots are mutually exclusive) to keep a brand presentation. |
+| `WizardProgress`, `WizardProgressProps` | Determinate progressbar (0–1) with logical width for RTL. |
+| `focusFirstInvalid(container, reducedMotion)` | Focuses the first `aria-invalid="true"`/`data-invalid="true"` element; scrolling is instant under reduced motion. |
+
+The hook renders nothing, fetches nothing and stores nothing: data, drafts, submission and server validation stay with the host. Labels are translated through the host localization; motion follows the effective reduced-motion preference. There are no custom keyboard shortcuts. Four direct tests cover validation/clearing/focus, jump rules and `onEnter`, data-dependent steps and restoration, and read-only/RTL/reduced-motion rendering. The onboarding demo's Orvia registration composes it with its own steps, rules and device draft.
 
 ResourceTimeline accepts optional baseline `geometry`, `labelEvery`, `renderResource` and `eventClassName` for host composition. Slot height still scales with effective density (compact ×0.8, comfortable ×1, spacious ×1.2 for configured geometry); the default layout is unchanged. Dates/resources/status semantics remain host-owned. Calendar tests cover dimensions, overlap lanes and managed density.

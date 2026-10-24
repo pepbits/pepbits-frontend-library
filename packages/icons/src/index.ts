@@ -147,6 +147,8 @@ export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from '
 
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
 
+// Onboarding (phase 6e-3) presentation primitives (KeyRound and Workflow are exported elsewhere in this file).
+export {Accessibility, ArrowBigUpDash, FileLock2, MailCheck, TestTube} from "lucide-react";
 // Reports demo presentation primitives (KeyRound, Library, ScrollText, Settings and Zap are exported elsewhere in this file).
 export { Blocks, FileBarChart, FolderDown, MailPlus } from "lucide-react";
 // Additional generic icon exports.

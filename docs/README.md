@@ -1,5 +1,8 @@
 # Enterprise frontend documentation
 
+- [AllyVora patient registration demo](features/allyvora-patients-demo.md): register, record, registration form in five organisation layouts and the layout designer over the unchanged AllyVora API; local HTTP evidence, named adaptations.
+- [Independent desktop demo](features/desktop-demo.md): web-mode desktop host with tabs/split/floating/detached-window workspace, Tauri window port and copied native host; no native build or deployment.
+- [Independent onboarding demo](features/onboarding-demo.md): Orvia Health Cloud landing, workspace lookup, sign-in with a code and organization registration; fictional data, local verification only.
 - [Independent reports demo](features/reports-demo.md): all 19 Lumen Reports routes, shared host, fictional demo API and local HTTP evidence; no deployment.
 - [Independent Tenant Admin demo](features/tenant-admin-demo.md): Allyvora Tenant Admin with registry-driven configuration pages, governed approvals and audit; local app/API verification, fictional data, no deployment.
 - [Scholaris school demo](features/school-demo.md): 26 routes, six scoped portals and local evidence with explicit parity limits.

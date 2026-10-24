@@ -146,3 +146,33 @@ test('trigger name includes the visible selected value for speech input',()=>{
  render(<SearchSelect label="Currency" value="usd" options={[{value:'usd',label:'USD'}]} onChange={()=>{}}/>);
  expect(screen.getByRole('button',{name:'Currency USD'})).toBeVisible();
 });
+
+describe('SearchSelect quick pick (phase 6e-6)',()=>{
+ test('typing on the closed field opens it with that text and Tab commits the best match',async()=>{
+  const onChange=vi.fn();
+  render(<><SearchSelect label="Currency" options={currencies} value="" onChange={onChange} quickPick/><input aria-label="Next field"/></>);
+  screen.getByRole('button',{name:/currency/i}).focus();
+  await userEvent.keyboard('e');
+  expect(screen.getByRole('combobox',{name:/search currency/i})).toHaveValue('e');
+  await userEvent.keyboard('ur');
+  await userEvent.keyboard('{Tab}');
+  expect(onChange).toHaveBeenCalledWith('eur');
+  expect(screen.queryByRole('listbox')).toBeNull();
+  expect(screen.getByRole('textbox',{name:'Next field'})).toHaveFocus();
+ });
+ test('without quick pick, Tab leaves without choosing and typing does not open',async()=>{
+  const onChange=vi.fn();
+  render(<SearchSelect label="Currency" options={currencies} value="" onChange={onChange}/>);
+  screen.getByRole('button',{name:/currency/i}).focus();
+  await userEvent.keyboard('e');
+  expect(screen.queryByRole('listbox')).toBeNull();
+  await open();await userEvent.keyboard('eur{Tab}');
+  expect(onChange).not.toHaveBeenCalled();
+ });
+ test('Tab with an empty query keeps the current value',async()=>{
+  const onChange=vi.fn();
+  render(<SearchSelect label="Currency" options={currencies} value="usd" onChange={onChange} quickPick/>);
+  await open();await userEvent.keyboard('{Tab}');
+  expect(onChange).not.toHaveBeenCalled();
+ });
+});
