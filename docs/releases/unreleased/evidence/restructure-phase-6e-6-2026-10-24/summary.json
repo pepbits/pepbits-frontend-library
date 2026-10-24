@@ -1,0 +1,179 @@
+{
+  "time": "2026-10-24T19:59:22.311Z",
+  "ci": {
+    "tasks": 36,
+    "cached": 0,
+    "tests": 5334,
+    "files": 289,
+    "tooling": 19,
+    "typechecks": 16,
+    "builds": [
+      "@pepbits-demo/erp",
+      "@pepbits-demo/allyvora-patients",
+      "@pepbits-demo/healthcare",
+      "@pepbits-demo/showcase"
+    ],
+    "workspaces": [
+      {
+        "workspace": "@pepbits-demo/allyvora-patients",
+        "tests": 84,
+        "files": 5
+      },
+      {
+        "workspace": "@pepbits-demo/erp",
+        "tests": 1080,
+        "files": 10
+      },
+      {
+        "workspace": "@pepbits-demo/healthcare",
+        "tests": 1791,
+        "files": 89
+      },
+      {
+        "workspace": "@pepbits-demo/showcase",
+        "tests": 95,
+        "files": 5
+      },
+      {
+        "workspace": "@pepbits/ai",
+        "tests": 587,
+        "files": 22
+      },
+      {
+        "workspace": "@pepbits/components",
+        "tests": 201,
+        "files": 20
+      },
+      {
+        "workspace": "@pepbits/data",
+        "tests": 53,
+        "files": 12
+      },
+      {
+        "workspace": "@pepbits/i18n",
+        "tests": 71,
+        "files": 7
+      },
+      {
+        "workspace": "@pepbits/icons",
+        "tests": 100,
+        "files": 1
+      },
+      {
+        "workspace": "@pepbits/page-engines",
+        "tests": 438,
+        "files": 21
+      },
+      {
+        "workspace": "@pepbits/patterns",
+        "tests": 162,
+        "files": 31
+      },
+      {
+        "workspace": "@pepbits/platform",
+        "tests": 80,
+        "files": 8
+      },
+      {
+        "workspace": "@pepbits/preferences",
+        "tests": 33,
+        "files": 3
+      },
+      {
+        "workspace": "@pepbits/shell",
+        "tests": 413,
+        "files": 38
+      },
+      {
+        "workspace": "@pepbits/tokens",
+        "tests": 3,
+        "files": 1
+      },
+      {
+        "workspace": "@pepbits/ui",
+        "tests": 143,
+        "files": 16
+      }
+    ]
+  },
+  "shellBrowserTests": 4,
+  "documentationFiles": 198,
+  "http": {
+    "workflows": 11,
+    "scopes": [
+      {
+        "id": "AV-01",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-02",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-03",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-04",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-05",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-06",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-07",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-08",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-09",
+        "scope": "UI"
+      },
+      {
+        "id": "AV-10",
+        "scope": "HTTP setup + UI"
+      },
+      {
+        "id": "AV-11",
+        "scope": "UI"
+      }
+    ],
+    "routeChecks": 15,
+    "violations": 0,
+    "incomplete": 30,
+    "errors": 0,
+    "consoleErrors": 0,
+    "httpErrors": 0,
+    "expectedStatuses": [
+      {
+        "route": "/patients?mode=edit&id=28",
+        "path": "/allyvora-api/patients/28",
+        "status": 409
+      }
+    ],
+    "diagnostics": [
+      {
+        "href": "/patients",
+        "url": "http://127.0.0.1:43545/patients?mode=new",
+        "candidates": 1
+      },
+      {
+        "href": "/patients?mode=new",
+        "url": "http://127.0.0.1:43545/patients",
+        "candidates": 1
+      }
+    ]
+  },
+  "protectedPathsUnchanged": true,
+  "cleanupPassed": true,
+  "manifestFiles": 1555,
+  "implementationDigest": "c4c17e8d126449f96123fda2655a6ad891a014d22531678881d9901cda8e58cb"
+}
