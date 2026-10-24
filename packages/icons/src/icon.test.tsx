@@ -38,3 +38,6 @@ test("blank labels stay decorative and an explicit external name can opt out", (
 
 import {Armchair,Bed,Brush,CalendarX,Menu,Monitor,Trash} from './index';
 test.each([Armchair,Bed,Brush,CalendarX,Menu,Monitor,Trash])('renders MedSlot primitive %s',Icon=>{const {container}=render(<Icon aria-label="Scheduling icon"/>);expect(container.querySelector('svg')).toBeTruthy();});
+
+import {Blocks,FileBarChart,FolderDown,KeyRound,Library,MailPlus,ScrollText,Settings,Zap} from './index';
+test.each([Blocks,FileBarChart,FolderDown,KeyRound,Library,MailPlus,ScrollText,Settings,Zap])('renders reports demo primitive %s',Icon=>{const {container}=render(<Icon aria-label="Reports icon"/>);expect(container.querySelector('svg')).toBeTruthy();});

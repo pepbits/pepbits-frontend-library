@@ -1,5 +1,7 @@
 # Feature catalog
 
+- [Independent reports demo](reports-demo.md): all 19 Lumen Reports routes in their own app over the shared host and fictional demo API; local checks and limits.
+
 - [Independent ERP demo](erp-demo.md): 114 catalogue destinations, ERP1 in-page and ERP2 routed records; local checks and explicit remaining scope.
 
 - [Independent healthcare demo](healthcare-demo.md): Healthcare Suite core, clinical and LIS/RIS diagnostic workflows against the synthetic demo API; local validation and explicit remaining scope.

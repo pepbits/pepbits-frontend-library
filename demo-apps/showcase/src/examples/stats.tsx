@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {Card, CardGrid, StatCard, Sparkline, LineChart, DonutChart} from "@pepbits/components";
+import {Card, CardGrid, StatCard, Sparkline, LineChart, DonutChart, BarChart} from "@pepbits/components";
 import {useFormatters} from "@pepbits/patterns/screen-host";
 
 export function StatsDemo() {
@@ -13,5 +13,6 @@ export function StatsDemo() {
     <Sparkline values={values}/>
     <LineChart label="Total" labels={values.map((_,index) => format.number(index + 1))} series={[{id:'total',label:'Total',values}]} formatValue={format.number}/>
     <DonutChart label="Status" parts={[{label:'Active',value:24},{label:'Pending',value:6}]} formatValue={format.number}/>
+    <BarChart label="Status" labels={['Active','Pending']} series={[{id:'total',label:'Total',values:[24,6]}]} formatValue={format.number}/>
   </Card></div>;
 }

@@ -143,3 +143,6 @@ export {Droplet, Shield, Scissors} from 'lucide-react';
 export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from 'lucide-react';
 
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
+
+// Reports demo presentation primitives.
+export { Blocks, FileBarChart, FolderDown, KeyRound, Library, MailPlus, ScrollText, Settings, Zap } from "lucide-react";

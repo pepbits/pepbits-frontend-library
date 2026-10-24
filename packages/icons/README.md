@@ -56,3 +56,5 @@ Phase 6b-7 adds direct `Droplet`, `Shield` and `Scissors` primitives for the Sur
 Patient access adds `BedDouble`, `CircleDollarSign`, `FolderPlus`, `SearchX`, `Sunrise` and `Crown` as direct primitives, covered by public render tests.
 
 MedSlot uses the public `Armchair`, `Bed`, `Brush`, `CalendarX`, `Menu`, `Monitor` and `Trash` primitives. Product category mappings remain in the demo.
+
+The reports demo adds direct `Blocks`, `FileBarChart`, `FolderDown`, `KeyRound`, `Library`, `MailPlus`, `ScrollText`, `Settings` and `Zap` primitives, each covered by a public render test. Report navigation stays in the demo.

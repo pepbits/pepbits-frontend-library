@@ -19,3 +19,7 @@ ERP is in progress below. Remaining app order: school, reports, tenant-admin, on
 ## ERP
 
 [ERP](erp/README.md) is the independent Next.js demo on port 3320. Phase 6c-1 adds separate ERP1/ERP2 header modules with 57 catalogue destinations each, shared Keystone configuration, ERP1 in-page records and ERP2 record/create/edit URLs. Public engines render the unchanged fictional API data. Specialized source layouts remain explicitly deferred in the [source map](erp/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6c-1-2026-10-23.md). Financial demonstration only, not accounting acceptance or deployment.
+
+## Reports
+
+[Reports](reports/README.md) is the independent Next.js demo on port 3350. Phase 6e-1 ports the Lumen Reports reference module: all 19 source page routes (library, viewer, builder, dashboards, background jobs, schedules, email requests, API keys and administration) over the shared host and the unchanged demo API. Data, users, schedules and email are fictional; email is recorded, never sent. See its [source map](reports/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-1-2026-10-24.md). Not a deployment.

@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-const demo=process.argv[2];if(!['healthcare','erp'].includes(demo))throw new Error('Pass a demo app name');
+const demo=process.argv[2];if(!['healthcare','erp','reports'].includes(demo))throw new Error('Pass a demo app name');
 const prefix=demo.toUpperCase();
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const app=join(root,'demo-apps',demo),temp=mkdtempSync(join(tmpdir(),demo+'-integration-'));

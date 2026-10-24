@@ -154,3 +154,7 @@ Root exports add `LineChart`, `ChartSeries`, `DonutChart` and `Sparkline`. Hosts
 `PrintDocument` adds optional `className` and `style` for host-owned paper geometry. It still portals only the print surface and removes it on unmount. The ERP invoice explicitly disables screen table presentation inside its physical document and supplies A4 print CSS; the surrounding controls continue using managed preferences. A component test covers geometry/style forwarding and portal cleanup. A browser PDF is not physical-printer acceptance.
 
 DonutChart uses a generic `Total` caption by default; hosts may supply `totalLabel` for domain wording. The showcase Stats example exercises all three chart exports with effective formatting.
+
+## Bar chart (phase 6e-1)
+
+Root export `BarChart` draws grouped bars from the same `ChartSeries` contract as `LineChart`: `label`, `labels`, `series`, `formatValue` and optional `height`. Negative values extend below the zero line; long label sets are thinned and rotated. Every bar carries a `<title>` with label, series and formatted value, several series add a legend, and a native select inspects one label's values from the keyboard. Colors are semantic tokens and there is no animation, data fetching or own formatting. Two tests cover titles/legend/keyboard inspection and negative, NaN and empty data. The reports demo uses it for report and dashboard charts; the showcase Stats example executes it.
