@@ -44,3 +44,9 @@ Phase 6c-2 adds public `@pepbits/patterns/tree` and `@pepbits/patterns/board` co
 | DashboardTemplate | `dashboard.tsx` configures shared KPI/chart/collection components with every source response panel and module-owned links. Source-specific pixel geometry remains; no unsupported global filter API is invented. |
 
 Detailed hierarchy/board/profile panels, richer personal-view protocol and durable cross-route drafts remain as listed in the current guide. Original source tests stay intact; route assertions now identify calendar and invoice surfaces instead of generic list/record placeholders.
+
+## Phase 6c-5 control audit
+
+The source ERP1/ERP2 template registries both select the core ReportTemplate, LedgerTemplate and MatrixTemplate. Their WorkList provides typed filters, a three-state column sort, grouping, first-currency group sums, grand totals and preference-selected CSV/XLSX. Neither source has a pivot designer, comparison-period selector or selectable subtotal mode. Ledger has customer, month/90-day/365-day/all/custom dates, search and complete-statement export. Matrix has month/week/term navigation, search, summaries and attendance fill; it has no export, grouping, pivot or comparison control. These absences are not deferred implementations.
+
+Both variants now cover all of those analytical controls. `analytics.tsx` uses the additive public ReportFilterField, sort and host groupTotals contracts; all numeric subtotals come from the complete filtered response. Saved views and source column persistence remain owned by the parallel 6c-4 scope. Invoice pagination uses public measured row partitioning, repeated identity/item headers, carried totals including tax, continuous item numbers, page numbers and one final summary. Exact visual matching remains separate. Source catalogs/backend files are unchanged; new uncatalogued labels retain readable English.
