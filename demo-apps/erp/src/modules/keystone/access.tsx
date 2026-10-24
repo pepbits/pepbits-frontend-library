@@ -2,7 +2,7 @@ import {useMemo,type ReactNode} from 'react';
 import {ScreenHostProvider,useScreenHost} from '@pepbits/patterns/screen-host';
 import {useKeystone} from './context';
 
-export interface ErpActor {role:string;permissions?:readonly string[]}
+export interface ErpActor {role:string;name?:string;permissions?:readonly string[]}
 const fullRoles=new Set(['admin','enterprise-admin','operations','operations-analyst']);
 const financeRoles=new Set(['finance','finance-manager','accountant']);
 // Mirrors the unchanged ERP API's explicit entity grants. Presentation only;

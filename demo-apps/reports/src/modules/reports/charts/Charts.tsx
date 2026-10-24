@@ -1,12 +1,12 @@
 "use client";
 /*
  * Port of lumen-reports src/components/charts/Charts.tsx onto the shared @pepbits/components charts.
- * The source drew bar, line and donut SVG itself; the library BarChart, LineChart and DonutChart now carry the
+ * The source drew bar, line and donut SVG itself; the library GroupedBarChart, LineChart and DonutChart now carry the
  * geometry, semantic colours, accessible names and keyboard inspection. This module only maps the API chart
  * payload and formats values with the effective preference formatter (column type of the first series).
  */
 import React, { useMemo } from 'react';
-import { BarChart, DonutChart, LineChart } from '@pepbits/components';
+import { DonutChart, GroupedBarChart, LineChart } from '@pepbits/components';
 import { useLocalization } from '@pepbits/i18n/react';
 import type { ChartData, ColumnType } from '../types';
 import { useReportFormat } from '../ui/preferences';
@@ -32,5 +32,5 @@ export function ChartRenderer({ data, types, height }: Props) {
     if (!first) return null;
     return <div data-report-chart="donut"><DonutChart label={t('Donut chart of {series}', { series: t(first.label) })} totalLabel={t('Total')} parts={data.labels.map((label, i) => ({ label, value: first.values[i] ?? 0 }))} formatValue={full} /></div>;
   }
-  return <div data-report-chart="bar"><BarChart label={t('Bar chart of {series}', { series: names })} labels={data.labels} series={series} formatValue={compact} height={height} /></div>;
+  return <div data-report-chart="bar"><GroupedBarChart label={t('Bar chart of {series}', { series: names })} labels={data.labels} series={series} formatValue={compact} height={height} /></div>;
 }

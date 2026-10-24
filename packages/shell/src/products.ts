@@ -57,7 +57,7 @@ export function defineProduct(input: {
   const modules = Object.fromEntries(input.enabledModules.map((key) => [key, MODULES[key]]));
   // Hosts explicitly catalogue utility and shared pages; no product registry is inferred.
   const itemPageIds=(items:readonly MenuItem[]):string[]=>items.flatMap(item=>[...(item.pageId?[item.pageId]:[]),...itemPageIds(item.children??[])]);
-  const enabledPageIds = new Set(input.enabledModules.flatMap(key => MODULES[key]!.navigation.flatMap(section=>itemPageIds(section.items))));
+  const enabledPageIds = new Set(input.enabledModules.flatMap(key => [...MODULES[key]!.navigation.flatMap(section=>itemPageIds(section.items)),...(MODULES[key]!.pageIds??[])]));
   const pages = Object.fromEntries(Object.entries(PAGE_REGISTRY)
     .filter(([id, page]) => page.module === "shared" || input.enabledModules.includes(page.module) || enabledPageIds.has(id)));
   if (input.enabledPages) {
@@ -108,7 +108,7 @@ export function productForRole(product: ProductDefinition, role?: string): Produ
 export function moduleContainsPage(product:ProductDefinition,moduleId:string,pageId:string):boolean{
  const visit=(items:readonly MenuItem[]):boolean=>items.some(item=>item.pageId===pageId||visit(item.children??[]));
  if(!product.pages[pageId]||!product.modules[moduleId])return false;
- return product.modules[moduleId]!.navigation.some(section=>visit(section.items)) || product.pages[pageId]!.module===moduleId;
+ return product.modules[moduleId]!.pageIds?.includes(pageId) === true || product.modules[moduleId]!.navigation.some(section=>visit(section.items)) || product.pages[pageId]!.module===moduleId;
 }
 export function productModuleForPage(product:ProductDefinition,pageId:string,preferred?:string):ModuleKey|undefined{
  if(preferred && moduleContainsPage(product,preferred,pageId))return preferred;

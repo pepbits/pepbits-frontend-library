@@ -1,6 +1,8 @@
 # Feature catalog
 
 - [Independent reports demo](reports-demo.md): all 19 Lumen Reports routes in their own app over the shared host and fictional demo API; local checks and limits.
+- [Independent Tenant Admin demo](tenant-admin-demo.md): Overview, Approvals, Activity and 30 registry-driven configuration pages on the shared host; local checks and explicit limits.
+- [Independent Scholaris demo](school-demo.md): 26 routes, six scope-granted dashboards and unchanged fictional HTTP API.
 
 - [Independent ERP demo](erp-demo.md): 114 catalogue destinations, ERP1 in-page and ERP2 routed records; local checks and explicit remaining scope.
 

@@ -1,6 +1,6 @@
 # ERP source mapping
 
-Initial phase 6c-1, base `9752ea4afc321db6ea70106d03c1648e5c73262d`. Source packages are read-only references. [App guide](README.md), [feature contract](../../docs/features/erp-demo.md) and [current delivery record](../../docs/releases/unreleased/restructure-phase-6c-3-2026-10-24.md) state verification and deferrals.
+Initial phase 6c-1, base `9752ea4afc321db6ea70106d03c1648e5c73262d`. Source packages are read-only references. [App guide](README.md), [feature contract](../../docs/features/erp-demo.md) and [current delivery record](../../docs/releases/unreleased/restructure-phase-6c-4-2026-10-24.md) state verification and deferrals.
 
 | Original responsibility | Destination and treatment |
 | --- | --- |
@@ -44,3 +44,15 @@ Phase 6c-2 adds public `@pepbits/patterns/tree` and `@pepbits/patterns/board` co
 | DashboardTemplate | `dashboard.tsx` configures shared KPI/chart/collection components with every source response panel and module-owned links. Source-specific pixel geometry remains; no unsupported global filter API is invented. |
 
 Detailed hierarchy/board/profile panels, richer personal-view protocol and durable cross-route drafts remain as listed in the current guide. Original source tests stay intact; route assertions now identify calendar and invoice surfaces instead of generic list/record placeholders.
+
+## Phase 6c-5 control audit
+
+The source ERP1/ERP2 template registries both select the core ReportTemplate, LedgerTemplate and MatrixTemplate. Their WorkList provides typed filters, a three-state column sort, grouping, first-currency group sums, grand totals and preference-selected CSV/XLSX. Neither source has a pivot designer, comparison-period selector or selectable subtotal mode. Ledger has customer, month/90-day/365-day/all/custom dates, search and complete-statement export. Matrix has month/week/term navigation, search, summaries and attendance fill; it has no export, grouping, pivot or comparison control. These absences are not deferred implementations.
+
+Both variants now cover all of those analytical controls. `analytics.tsx` uses the additive public ReportFilterField, sort and host groupTotals contracts; all numeric subtotals come from the complete filtered response. Saved views and source column persistence remain owned by the parallel 6c-4 scope. Invoice pagination uses public measured row partitioning, repeated identity/item headers, carried totals including tax, continuous item numbers, page numbers and one final summary. Exact visual matching remains separate. Source catalogs/backend files are unchanged; new uncatalogued labels retain readable English.
+
+## Phase 6c-4 source treatment
+
+`record-panels.tsx` configures profile groups/statistics/change guidance, support metadata, booking-day related records, ERP2 hierarchy context, case conversations, request/approval trails and notes, document summaries, process steps and inspection counts over existing shared components. `RecordPage` adds optional summary/aside slots; it keeps its existing form layout when absent. API support is keyed by accepted record version. Board moves append source-compatible conversation entries. Original source files remain read-only.
+
+[The destination handoff](parity-status.md) supersedes the earlier remaining-work paragraphs for current status and lists all 114 routes. Panel content and personal views are delivered; remaining source composition/actions, durable recovery, parallel report/invoice work and later visual comparison remain explicit. `personal-views.tsx` adapts source saved views and hidden-column keys, extends named snapshots with typed filters/sort/columns, and composes typed WorklistPage slots. States adds parent context/counts and defaults. The public patterns unload warning ports source behavior without claiming persistence.

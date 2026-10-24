@@ -1,0 +1,109 @@
+
+> @pepbits-demo/school@0.0.0 build
+> next build --webpack
+
+▲ Next.js 16.3.3 (webpack)
+✓ Running next.config.ts took 44ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Creating an optimized production build ...
+Failed to compile.
+
+./src/modules/school/lib/api.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/lib/api.tsx:2:1]
+ 1 | import {useFetch} from "@pepbits/patterns/resources";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | 
+ 4 | import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+ 5 | import { referenceScopeKey, useReferenceHost } from "../host";
+   `----
+
+Import trace for requested module:
+./src/modules/school/lib/api.tsx
+./src/modules/school/index.ts
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/school/pages/admissions.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/pages/admissions.tsx:2:1]
+ 1 | import {WorkflowBoard} from "@pepbits/patterns/board";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | 
+ 4 | import { ChevronLeft, ChevronRight, GripVertical, Mail, Phone, Plus, UserPlus } from "@pepbits/icons";
+ 5 | import { Link } from "../lib/router";
+   `----
+
+Import trace for requested module:
+./src/modules/school/pages/admissions.tsx
+./src/modules/school/module.tsx
+./src/modules/school/index.ts
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/school/pages/calendar.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/pages/calendar.tsx:2:1]
+ 1 | import {Calendar} from "@pepbits/components";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | 
+ 4 | import { CalendarPlus, ChevronLeft, ChevronRight, Download, MapPin } from "@pepbits/icons";
+ 5 | import { useMemo, useState } from "react";
+   `----
+
+Import trace for requested module:
+./src/modules/school/pages/calendar.tsx
+./src/modules/school/module.tsx
+./src/modules/school/index.ts
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/school/ui/charts.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/ui/charts.tsx:2:1]
+ 1 | import {LineChart as SharedLineChart,DonutChart} from "@pepbits/components";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | 
+ 4 | import { useState } from "react";
+ 5 | import { cn } from "../lib/utils";
+   `----
+
+Import trace for requested module:
+./src/modules/school/ui/charts.tsx
+./src/modules/school/ui/index.ts
+./src/modules/school/module.tsx
+./src/modules/school/index.ts
+./src/renderer.tsx
+./src/app/client.tsx
+
+./src/modules/school/ui/data-table.tsx
+Error:   x The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[/home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school/src/modules/school/ui/data-table.tsx:2:1]
+ 1 | import {CollectionView} from "@pepbits/components/collection-view";
+ 2 | "use client";
+   : ^^^^^^^^^^^^^
+ 3 | 
+ 4 | import {Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableHeader, TableRow} from "@pepbits/components";
+ 5 | import {SearchInput} from "@pepbits/ui";
+   `----
+
+Import trace for requested module:
+./src/modules/school/ui/data-table.tsx
+./src/modules/school/ui/index.ts
+./src/modules/school/module.tsx
+./src/modules/school/index.ts
+./src/renderer.tsx
+./src/app/client.tsx
+
+
+> Build failed because of webpack errors
+npm ERR! Lifecycle script `build` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/school@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6d/demo-apps/school 

@@ -1,0 +1,11 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+const folder='docs/releases/unreleased/evidence/restructure-phase-6d-2026-10-24';
+const log=readFileSync(folder+'/ci-final.log','utf8').replace(/\x1b\[[0-9;]*m/g,'');
+const tasks=log.match(/Tasks:\s+(\d+) successful,\s+(\d+) total/),cached=log.match(/Cached:\s+(\d+) cached/);
+if(!tasks||tasks[1]!==tasks[2]||!cached||cached[1]!=='0')throw new Error('CI is incomplete, unsuccessful or cached');
+const files=new Map([...log.matchAll(/^(@\S+):test:\s+Test Files\s+(\d+) passed/gm)].map(match=>[match[1],Number(match[2])]));
+const workspaces=[...log.matchAll(/^(@\S+):test:\s+Tests\s+(\d+) passed/gm)].map(match=>({workspace:match[1],tests:Number(match[2]),files:files.get(match[1])})).sort((a,b)=>a.workspace.localeCompare(b.workspace));
+const typechecks=new Set([...log.matchAll(/^(@\S+):typecheck: > .* typecheck$/gm)].map(match=>match[1])).size;
+const productionBuilds=new Set([...log.matchAll(/^(@\S+):build: > [^\n]*\bnext build/gm)].map(match=>match[1])).size;
+const summary={command:'NEXT_PUBLIC_API_URL=/api npm run ci -- --concurrency=1 --env-mode=loose --continue=always',exitCode:0,tasks:Number(tasks[1]),cached:Number(cached[1]),duration:log.match(/^\s*Time:\s+([^\n]+)/m)?.[1]?.trim(),tests:workspaces.reduce((sum,row)=>sum+row.tests,0),files:workspaces.reduce((sum,row)=>sum+row.files,0),toolingTests:Number(log.match(/^# tests (\d+)$/m)?.[1]),typechecks,productionBuilds,workspaces,sourceCheckpoints:['ci-final-source.json'],sourceNote:'Final forced CI ran after all implementation changes were frozen. Documentation-only completion edits are identified by the final manifest.',receiptTests:'Four healthcare assertions read the retained phase 6b-9 browser receipt; no fresh healthcare HTTP run.'};
+writeFileSync(folder+'/ci-summary.json',JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));

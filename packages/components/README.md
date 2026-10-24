@@ -155,6 +155,16 @@ Root exports add `LineChart`, `ChartSeries`, `DonutChart` and `Sparkline`. Hosts
 
 DonutChart uses a generic `Total` caption by default; hosts may supply `totalLabel` for domain wording. The showcase Stats example exercises all three chart exports with effective formatting.
 
-## Bar chart (phase 6e-1)
+## Phase 6d print snapshot
 
-Root export `BarChart` draws grouped bars from the same `ChartSeries` contract as `LineChart`: `label`, `labels`, `series`, `formatValue` and optional `height`. Negative values extend below the zero line; long label sets are thinned and rotated. Every bar carries a `<title>` with label, series and formatted value, several series add a legend, and a native select inspects one label's values from the keyboard. Colors are semantic tokens and there is no animation, data fetching or own formatting. Two tests cover titles/legend/keyboard inspection and negative, NaN and empty data. The reports demo uses it for report and dashboard charts; the showcase Stats example executes it.
+`PrintDocument` optionally accepts `sourceRef`, an element reference (including a host-controlled getter). It snapshots that visible region at `beforeprint`, preserves current input/textarea/select values, and clears the clone at `afterprint` or unmount. Without `sourceRef`, children render as before. Hosts own selection, permission, presentation and print CSS; the component fetches no data. Tests cover current form values and cleanup. Donut labels use a separate text span so accessible inspection can distinguish the label from its formatted value.
+
+When Calendar receives `renderDay`, its day button name includes the visible marker text followed by the localized full date. This keeps event labels available to voice and screen-reader navigation; the default date-only name is unchanged. A regression covers marker/date naming.
+
+## Nonnegative metric charts
+
+Root exports `BarChart`, `HorizontalBars`, `ProgressRing` and `MetricPoint`. Hosts supply labels, colors/units, optional scale/geometry and a preference-bound `formatValue`. Bars provide focusable formatted-value/comparison inspection; horizontal bars show values in text. Invalid/negative metrics become zero, maxima have a positive floor, and geometry clamps to its plot/percentage range. These views are for nonnegative metrics, not signed financial series. Fonts use effective result scale and colors use semantic tokens; no animation, data transport or product vocabulary is owned here. Tests cover keyboard inspection, empty/degenerate data and ring bounds/labels. Scholaris consumes these engines through thin domain adapters.
+
+## Grouped bar chart (phase 6e-1)
+
+Root export `GroupedBarChart` draws grouped bars from the same `ChartSeries` contract as `LineChart`: `label`, `labels`, `series`, `formatValue` and optional `height`. Negative values extend below the zero line; long label sets are thinned and rotated. Every bar carries a `<title>` with label, series and formatted value, several series add a legend, and a native select inspects one label's values from the keyboard. Colors are semantic tokens and there is no animation, data fetching or own formatting. Two tests cover titles/legend/keyboard inspection and negative, NaN and empty data. The reports demo uses it for report and dashboard charts; the showcase Stats example executes it.
