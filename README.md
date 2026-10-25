@@ -2,7 +2,7 @@
 
 A desktop-first frontend framework for building ERP, healthcare, school, POS and other SaaS applications from reusable TypeScript components and configurable page templates. Applications share a consistent workspace, design system, preferences, localization and integration contracts while supplying their own business rules and backend services.
 
-The repository includes a Next.js web shell, a Vite desktop shell with Tauri support, shared workspace packages and a demo API. It is a frontend foundation and working demonstration environment—not a complete production ERP or hospital system.
+The root npm workspace contains twelve published `@pepbits/*` libraries and eleven independent demos. `mock-api/` owns its server contracts and fictional data. Products install versioned packages from GitHub Packages; demo apps are private.
 
 ## What you can build
 
@@ -73,30 +73,17 @@ Application shell and authenticated context
 
 | Location | Responsibility |
 | --- | --- |
-| `desktop-clients/apps/web` | Next.js web application |
-| `desktop-clients/apps/desktop` | Vite desktop-browser shell and Tauri integration |
-| `desktop-clients/packages/ops-ui` | Reusable UI primitives and presentation foundations |
-| `desktop-clients/packages/erp-config` | Typed definitions, navigation, preferences and localization contracts |
-| `desktop-clients/packages/erp-data` | Data adapters and API integration |
-| `desktop-clients/packages/erp-screens` | Shared screens, feature workspaces and page engines |
-| `desktop-clients/packages/erp-shell` | Application shell and shared shell behavior |
-| `desktop-clients/packages/workspace-core` | Workspace state and navigation foundations |
-| `desktop-clients/packages/platform-ports` | Platform and device connector abstractions |
-| `mock-api` | Demo authentication, configuration, synthetic data and feature endpoints |
-| `demo-pages` | Original design references; application pages are implemented through shared components |
-| `docs` | Feature guides, architecture, development rules, testing and release evidence |
+| `packages/` | Reusable public UI, engines, shell, preferences, data and platform contracts |
+| `demo-apps/` | Eleven independently built applications using public package exports |
+| `mock-api/` | Self-contained fake backend, contracts, catalogs and synthetic data |
+| `tooling/` | Build, boundary, integration and immutable test-site packaging tools |
+| `source/`, `demo-pages/` | Preserved original sources/design references |
+| `docs/` | Guides, current contracts and historical release evidence |
 
-### Restructure in progress
-
-The [library restructure plan](docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md) is moving the library to a layered `packages/` folder with `demo-apps/` built from it. Phase 0 added an independent npm workspace at the repository root for `packages/*`, `demo-apps/*` and `tooling/*`; it is empty apart from shared tooling. `desktop-clients/` remains its own project and is still where all current code builds and runs.
-
-From the repository root: `npm install`, then `npm run ci` (boundary check, tooling tests, typecheck, tests and build of the new workspace).
-
-Canonical language catalogs live in `mock-api/config/localization/shared/`; generated client fallbacks support the frontend. Navigation labels use stable menu/message identifiers. Many demo feature endpoints read CSV/JSON fixtures and persist scoped changes; storage behavior is feature-specific.
-
-The isolated [frontend test site](https://frontend.test.pepbits.com) runs release `20261001-rcm-01`: the new 40-page RCM Workspace and corrected MedBand controls are available from the header. All eight public module regression suites passed. See the [delivery record](docs/releases/unreleased/rcm-reference-2026-10-01.md) for frozen source identity, separate test scopes, retained fixture failures and synthetic integration limits.
-
-The `@pepbits/*` packages are private workspace packages. They are not automatically available from a public package registry.
+All twelve libraries were published at 0.1.0 in phase 7b. See [publishing](docs/development/PUBLISHING.md),
+[phase 8 status](docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-8-status) and
+[service/deployment migration](docs/development/TEST-SITE.md). Root installs link local workspace
+packages without a GitHub Packages token. Product registry installs require read access.
 
 ## Integrating another application
 
@@ -116,29 +103,20 @@ Use **Node.js 24 or newer**. Native Tauri development also requires the platform
 From the repository root:
 
 ```bash
-cd desktop-clients
 npm ci
-npm run dev:stack       # demo API and web shell
-# Alternatively:
-# npm run dev:all       # demo API and both frontend shells
+bash tooling/scripts/install-api.sh
+npm run build:api
+NEXT_PUBLIC_API_URL=/api VITE_API_URL=/api npm run ci
+./run.sh start api reports
+./run.sh status
+./run.sh stop reports api
+npm run docs:check
 ```
 
-Default development ports are web `3100`, desktop browser `3101` and demo API `3200`. Use the fictional accounts shown on the demo login screen. Configure API URLs and deployment settings according to the [workspace README](desktop-clients/README.md) and [deployment guide](desktop-clients/docs/deployment.md).
-
-Common verification commands:
-
-```bash
-# From desktop-clients:
-npm run typecheck
-npm test
-npm run test:api
-npm run ci             # full local pipeline; browser journeys are separate
-
-# From the repository root:
-node docs/tools/check-docs.mjs
-```
-
-Follow the [testing guide](docs/testing/README.md) for the appropriate scope and isolated API/browser setup. A browser-rendered desktop shell is not evidence of a tested native executable.
+The API uses port 3200; Reports uses 3350. See the [service table](docs/development/TEST-SITE.md#local-services)
+for all ports, aliases and overrides. Builds and run scripts use the root npm workspace.
+Follow the [testing guide](docs/testing/README.md) for browser, API and native scopes.
+A browser-rendered desktop shell is not a native executable test.
 
 ## Demo sites and delivery status
 
@@ -163,7 +141,7 @@ Start with the **[documentation index](docs/README.md)**.
 - [Testing and acceptance](docs/testing/README.md)
 - [Documentation lifecycle](docs/documentation/README.md)
 - [Release and delivery evidence](docs/releases/unreleased/README.md)
-- [Illustrated handbook and PDF](desktop-clients/docs/handbook/README.md)
+- [Illustrated handbook and PDF](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/handbook/README.md)
 
 Changes should reuse established package boundaries, honor effective preferences and tenant locks, update canonical translations and keep page help, examples, tests and release evidence aligned with the behavior delivered.
 

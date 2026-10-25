@@ -9,3 +9,7 @@ For code, design, feature or integration changes, read [development rules](docs/
 - Validate documentation with `node docs/tools/check-docs.mjs`. Run implementation checks appropriate to the actual change; a documentation-only edit does not require repeating the full runtime suite.
 - Record exact test scope and source identity. Do not describe a local build, mocked test or browser-rendered desktop shell as a deployed release, production integration or native executable test.
 - Respect the user's task scope and existing authorization. These rules do not add a separate approval requirement. Do not discard unrelated working-tree changes or publish merely to complete a documentation record.
+
+- The root npm workspace owns build/run/CI/deployment tooling. `mock-api/` must import no frontend modules, including relative paths.
+- `source/` and `demo-pages/` remain protected original inputs. The phase 8 owner authorization retires the former shell tree; no additional protected-path approval is introduced for root tooling.
+- Test-site packaging is local verification. Deployment, publication, commits and pushes require the task’s explicit scope. See [service and receiver contracts](docs/development/TEST-SITE.md).

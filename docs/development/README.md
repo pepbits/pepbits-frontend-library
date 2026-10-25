@@ -33,4 +33,4 @@ The [latest form structure and backend expectations](DCP-LATEST-FORM-BACKEND-HAN
 
 ## Library packaging
 
-See [Publishing](PUBLISHING.md) for compiled package contracts, workspace source development, Changesets, local pack verification and the manual GitHub Packages procedure. Phase 7a prepares unpublished 0.1.0 candidates only.
+See [Publishing](PUBLISHING.md) for compiled package contracts, workspace source development, Changesets, local pack verification and the manual GitHub Packages procedure. Phase 7b published 0.1.0. Phase 8 root services and receiver migration are described in [test-site operations](TEST-SITE.md).

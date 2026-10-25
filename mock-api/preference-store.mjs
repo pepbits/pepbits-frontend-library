@@ -1,7 +1,7 @@
 import {DatabaseSync} from 'node:sqlite';
 import {mkdirSync,chmodSync} from 'node:fs';
 import {dirname} from 'node:path';
-import {parsePreferencePolicy,validPreference,effectivePreferences,EMPTY_PREFERENCE_POLICY} from '../desktop-clients/packages/erp-config/src/preference-policy.ts';
+import {parsePreferencePolicy,validPreference,effectivePreferences,EMPTY_PREFERENCE_POLICY} from './contracts/erp-config/preference-policy.ts';
 
 export const canManagePreferences=user=>Array.isArray(user?.permissions)&&user.permissions.includes('preferences:manage');
 export function createPreferenceStore(file,{legacy=()=>({}),audit=()=>{},modules=()=>[]}={}) {

@@ -1,0 +1,187 @@
+{
+  "base": "3558a131f0fd443693eae0dfc678e3b258b480c1",
+  "adaptations": [
+    "Navigation exports serialized with JSON.stringify: retains backend JSON shape, drops functions and React symbols.",
+    "Sentinel retains only the event sanitizer and its types/constants.",
+    "Imports point to backend-owned contracts. Icon type replaced by unknown.",
+    "Page template file retains only the serializable type contracts required by server validators; unused frontend catalog instances removed.",
+    "Documentation file retains only the backend help release pointer required by documentation validation."
+  ],
+  "files": [
+    {
+      "source": "desktop-clients/packages/erp-config/src/navigation.ts",
+      "sha256": "9345590e32b69eaea00db2c59c6bfbd193ac987071ed0790c7e8b31717d3d89b",
+      "target": "mock-api/contracts/erp-config/navigation.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/library-pages.ts",
+      "sha256": "da62bda428b1736e6cbcb01d0b10f8e78944a12f0798896027e9e85f5e77d5e3",
+      "target": "mock-api/contracts/erp-config/library-pages.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/documentation.ts",
+      "sha256": "62c65eb5723cc0a8d2bdfd4b69d00a9367c65803b24add7c8ce41447b84b5ebc",
+      "target": "mock-api/contracts/erp-config/documentation.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/data-classification.ts",
+      "sha256": "c8689a55f9c2ddab40d80b871359ef6436ad2091485c3cfa3f891fc8535d8cc8",
+      "target": "mock-api/contracts/erp-config/data-classification.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/report-data.ts",
+      "sha256": "ad59e0920cc065392103835d56953beafed940bca0d962bfe29d2097b64ef169",
+      "target": "mock-api/contracts/erp-data/report-data.ts"
+    },
+    {
+      "source": "desktop-clients/packages/ai-config/src/use-cases.ts",
+      "sha256": "96cc095b21de9a73502ee2e9f3c860aebf8bdaa33f9545674021de88be174b3b",
+      "target": "mock-api/contracts/ai-config/use-cases.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/school-role-views.ts",
+      "sha256": "7290eec45741013008ed0e70922c75c609ef2ea98c245c309ea507cca1dd6bfe",
+      "target": "mock-api/contracts/erp-config/school-role-views.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/clinic-billing.ts",
+      "sha256": "910d6d4efbb5db259b6d9b3a88224d4c2678f5b4f104ca1e3c07fa57a5143ffa",
+      "target": "mock-api/contracts/erp-config/clinic-billing.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/clinical-templates.ts",
+      "sha256": "9aaa967200cb3f0aa7ed62d1acdfc190188694b2ededfb7923a1563eec6aed1d",
+      "target": "mock-api/contracts/erp-config/clinical-templates.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/clinical-consultation.ts",
+      "sha256": "e4d0664123b75e48c19562c6ecb3fca65cc7c09b6c1744354bf43735481fc359",
+      "target": "mock-api/contracts/erp-config/clinical-consultation.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/clinical-document.ts",
+      "sha256": "6280103e24c2ac7d92db9f51bf146620d1d2785bf7074126d4c34565e5c5c5b1",
+      "target": "mock-api/contracts/erp-config/clinical-document.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/clinical-triage.ts",
+      "sha256": "99f1dbd59f5191028507504a633788ef18c46b9cf59b77eaf1026c85aaaf34f0",
+      "target": "mock-api/contracts/erp-config/clinical-triage.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/comprehensive-consultation.ts",
+      "sha256": "51aa0da7a36077ad9fd6232777b4a831f2a54bff17875dba37d1f008209b418e",
+      "target": "mock-api/contracts/erp-config/comprehensive-consultation.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-catalog.ts",
+      "sha256": "1733e2b6dbf6edaedef36c12009cb87a0c6ac1fcbce268b596cf1b76a33f49a2",
+      "target": "mock-api/contracts/erp-config/dcp-catalog.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-designer.ts",
+      "sha256": "56ef6e7838fc2e33b2e2db9f26fb50bf149a0409fb0f399693b2a7740248a03d",
+      "target": "mock-api/contracts/erp-config/dcp-designer.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-rules.ts",
+      "sha256": "f156a0a7057692ef9d1eaa935ad891c65430213996b840c73f0483f51712c17d",
+      "target": "mock-api/contracts/erp-config/dcp-rules.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-runtime.ts",
+      "sha256": "943a5528be24ee0f926406c9a513e7b90d097910113a1c4ceda1b12f51275b91",
+      "target": "mock-api/contracts/erp-config/dcp-runtime.ts"
+    },
+    {
+      "source": "desktop-clients/packages/reference-diagnostics/src/routes.ts",
+      "sha256": "7f12831763b9dc1c0cc97f854fe03ab01de696e340d4fd7575114a20754b6eff",
+      "target": "mock-api/contracts/reference-diagnostics/routes.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/draft-policy.ts",
+      "sha256": "168ead6d7a776b03cff9c2d280261a3f13d59a284ac80203c4df73fad797511e",
+      "target": "mock-api/contracts/erp-config/draft-policy.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/imports.ts",
+      "sha256": "9f2c268af21cf17644e171facba88c731a0197866ea95e6f8e913d26e24ed27e",
+      "target": "mock-api/contracts/erp-config/imports.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/label-printing.ts",
+      "sha256": "6d2389a791a04242575ab33a4c32eb3a4cdc1471fd11a68c5c5f36e7489697ec",
+      "target": "mock-api/contracts/erp-config/label-printing.ts"
+    },
+    {
+      "source": "desktop-clients/packages/auth/src/sentinel.ts",
+      "sha256": "c55d922f887b990ed75312f51beff807f620c4c8991200f341682d07442dabde",
+      "target": "mock-api/contracts/auth/sentinel.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/op-registration.ts",
+      "sha256": "a838bc3d7f00e85cc802bab05b24bb5f23550c8ceedc919f1c66b62e6ee08870",
+      "target": "mock-api/contracts/erp-config/op-registration.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/preference-policy.ts",
+      "sha256": "04665c4b89a1f33f4f93eecae6a503c805fc1ed77dcf8e9f200a162ba9ef9b74",
+      "target": "mock-api/contracts/erp-config/preference-policy.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/medslot-reference.ts",
+      "sha256": "0502e3c6582b420b16e76fe017143560d8ddfd688470935ddd75527485692cc8",
+      "target": "mock-api/contracts/erp-config/medslot-reference.ts"
+    },
+    {
+      "source": "desktop-clients/packages/ai-config/src/gates.ts",
+      "sha256": "e1f171d848d6e94eb147f1d8a595e5e77722e9e136704ac3c0653b8ed29762b7",
+      "target": "mock-api/contracts/ai-config/gates.ts"
+    },
+    {
+      "source": "desktop-clients/packages/ai-config/src/policy.ts",
+      "sha256": "4475f003305594be07531ef0f7c3e88a559fa718c194ab144ab76eca2b1062aa",
+      "target": "mock-api/contracts/ai-config/policy.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/entity-schemas.ts",
+      "sha256": "db91d84438c73cdd196fd2d81a66613d9d1298a39f7c894994a5348a0a19a69c",
+      "target": "mock-api/contracts/erp-config/entity-schemas.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/form-rules.ts",
+      "sha256": "2b099305858ce52ce12f44af7e3835d93983ce18e176709d7c9d7c1da9fb084c",
+      "target": "mock-api/contracts/erp-config/form-rules.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-data/src/mock.ts",
+      "sha256": "a3593ead408944273f7d72db41c40727301ec47e606eebf2ea1c639e5b214690",
+      "target": "mock-api/contracts/erp-data/mock.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/filter-policy.ts",
+      "sha256": "cb3a0e204cdb183c48dc9a8a72b3069bbb981ba0fe4f7f49e66762c3251e0216",
+      "target": "mock-api/contracts/erp-config/filter-policy.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/types.ts",
+      "sha256": "4d56877c30b7ba17a3fb2d241ce79b4912a89e1f79077aa56a32c9f4e4a3ee9d",
+      "target": "mock-api/contracts/erp-config/types.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/dcp-lifecycle.ts",
+      "sha256": "9c213eb4031f7d737d3724bc7b8dedad5ad23b7a74757baa73e75bc4a434093a",
+      "target": "mock-api/contracts/erp-config/dcp-lifecycle.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/page-templates.ts",
+      "sha256": "1ab6ec44bf8cd4f7bdecc73084ea6c50bab4a5f115e04009ade85a60a7a2485f",
+      "target": "mock-api/contracts/erp-config/page-templates.ts"
+    },
+    {
+      "source": "desktop-clients/packages/erp-config/src/preference-defaults.ts",
+      "sha256": "176ad8a37e69fb72a39967b7b11166939895d26c9ba9948b389fcaa93edae02b",
+      "target": "mock-api/contracts/erp-config/preference-defaults.ts"
+    }
+  ]
+}

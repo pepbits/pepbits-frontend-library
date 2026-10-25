@@ -76,10 +76,11 @@ technical terms may intentionally remain equal.
 All seeded navigation labels and page titles currently have translations in
 Arabic, Hindi, and Malayalam. These translations still need native-speaker review.
 The page-body catalog pass also covers schema hints, placeholders, controls,
-dialogs and shared screen copy. Run `npm --prefix desktop-clients run
-verify:localization` for the catalog and static JSX check, including documented
-data/code exceptions. See `desktop-clients/docs/page-body-localization.md` for
-coverage, integration instructions and the distinction between UI copy and data.
+dialogs and shared screen copy. The old combined-shell static JSX scanner is retired.
+Update the owning demo fallback generator and run its current localization/profile tests
+when canonical catalogs change; see the root testing guide. Historical page-body catalog
+coverage remains evidence with its original source identity.
+
 
 The API returns translation data, not page components. New screen implementations
 still require frontend code. The initial catalogs are prefetched for four languages;

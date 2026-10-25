@@ -7,7 +7,7 @@ import { createClinicalTriageStore } from "./clinical-triage-store.ts";
 import type {
   TriageView,
   TriageAssessment,
-} from "../desktop-clients/packages/erp-config/src/clinical-triage.ts";
+} from "./contracts/erp-config/clinical-triage.ts";
 const user = { id: "nurse-demo", tenantId: "tenant", name: "Demo User" };
 function setup() {
   const dir = mkdtempSync(join(tmpdir(), "triage-")),

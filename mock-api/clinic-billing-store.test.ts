@@ -4,7 +4,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createClinicBillingStore } from "./clinic-billing-store.ts";
-import type { ClinicBillingView } from "../desktop-clients/packages/erp-config/src/clinic-billing.ts";
+import type { ClinicBillingView } from "./contracts/erp-config/clinic-billing.ts";
 const user = { id: "u", tenantId: "t", name: "Demo" };
 function setup() {
   const dir = mkdtempSync(join(tmpdir(), "clinic-ledger-")),

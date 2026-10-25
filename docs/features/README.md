@@ -1,5 +1,7 @@
 # Feature catalog
 
+Phase 8: links to the original combined-shell sources below are immutable historical references. Current public packages and demo ownership are described in the [migration map](../architecture/CONSUMER-MIGRATION-MAP.md); current commands are in [root operations](../development/TEST-SITE.md).
+
 - [Independent CareGrid demo](caregrid-demo.md): eleven scheduling destinations against the unchanged CareGrid API with Server-Sent Events; local checks and explicit limits.
 - [Independent Settle billing demo](settle-demo.md): patient billing desk screens over the unchanged Settle API inside the shared shell; local checks and explicit differences.
 - [AllyVora patient registration demo](allyvora-patients-demo.md): all source pages and modes over the unchanged AllyVora API and shared demo host; local checks and named adaptations.
@@ -40,15 +42,15 @@ This frontend is a reusable design and application framework. “Implemented” 
 | Clinical Triage | [User and integration guide](clinical-triage.md) | API drafts, manual triage and handoff; clinical acceptance remains separate |
 | Billing Clinic | [User and integration guide](billing-clinic.md) | CSV-backed demo billing; real payer, gateway and accounting integration remain separate |
 | Library preferences and component compliance | [Current detailed guide](library-preferences.md) | Implemented and deployed; historical checks and platform limits remain in the delivery records |
-| Component examples and copyable code | [Component Library](../../desktop-clients/docs/component-library.md) | Shared demos; new preference behavior is described in the current guide |
-| 97 configurable page templates | [Page Template Library](../../desktop-clients/docs/page-template-library.md) | Reusable engines and sample adapters; real domain services belong to applications |
-| Patient Query, Record and 360 | [Clinical templates](../../desktop-clients/docs/clinical-page-templates.md) | Fictional demo data; not clinical validation or insurer integration |
-| Tenant defaults and locks | [Preference policies](../../desktop-clients/docs/tenant-preference-policies.md) | Existing scoped API contract; real identity/authorization must be integrated |
-| Localization and backend messages | [Localization](../../desktop-clients/docs/localization.md), [backend messages](../../desktop-clients/docs/backend-message-localization.md) | Catalog checks are distinct from native-speaker approval |
-| Record editing | [Record editing](../../desktop-clients/docs/record-editing.md) | Adapter, validation, conflict and retry responsibilities are documented |
-| Shared drafts | [Draft service](../../desktop-clients/docs/shared-draft-recovery.md), [recovery center](../../desktop-clients/docs/draft-recovery-center.md) | Tenant storage, retention and sensitive-field rules apply |
-| Sentinel and user-facing errors | [Sentinel](../../desktop-clients/docs/sentinel-monitoring.md) | Demo collection contract; production monitoring integration remains explicit |
-| Imports, approvals and related record panels | [Illustrated platform guide](../../desktop-clients/docs/handbook/frontend-platform-guide.md) | See the guide's feature-specific scope and API boundaries |
+| Component examples and copyable code | [Component Library](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/component-library.md) | Shared demos; new preference behavior is described in the current guide |
+| 97 configurable page templates | [Page Template Library](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/page-template-library.md) | Reusable engines and sample adapters; real domain services belong to applications |
+| Patient Query, Record and 360 | [Clinical templates](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/clinical-page-templates.md) | Fictional demo data; not clinical validation or insurer integration |
+| Tenant defaults and locks | [Preference policies](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/tenant-preference-policies.md) | Existing scoped API contract; real identity/authorization must be integrated |
+| Localization and backend messages | [Localization](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/localization.md), [backend messages](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/backend-message-localization.md) | Catalog checks are distinct from native-speaker approval |
+| Record editing | [Record editing](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/record-editing.md) | Adapter, validation, conflict and retry responsibilities are documented |
+| Shared drafts | [Draft service](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/shared-draft-recovery.md), [recovery center](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/draft-recovery-center.md) | Tenant storage, retention and sensitive-field rules apply |
+| Sentinel and user-facing errors | [Sentinel](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/sentinel-monitoring.md) | Demo collection contract; production monitoring integration remains explicit |
+| Imports, approvals and related record panels | [Illustrated platform guide](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/handbook/frontend-platform-guide.md) | See the guide's feature-specific scope and API boundaries |
 | Page help, releases and documentation alerts | [Implemented documentation lifecycle](../documentation/README.md) | Shared API articles, impact checks and review metadata; inherited authoring/native-review backlog remains explicit |
 
 ## For future features

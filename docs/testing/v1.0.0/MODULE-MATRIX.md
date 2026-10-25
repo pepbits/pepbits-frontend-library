@@ -13,8 +13,8 @@
 | Device integrations | 3 | DeviceIntegrationWorkspace, ScannerInput, DeviceJobList | API scan lookup, workstation scope, queued/printed-requested/simulated states, event deduplication and tenant device policy |
 | Identity devices | 3 | IdentityDeviceWorkspace, IdentityResultPanel, IdentityHistory | Synthetic capture, no authentication claim, consent, tenant policy, challenge expiry, manual review and isolation |
 
-Total: 154 unique destinations. The [inventory](inventory.json) names each page and engine; the [original audit inventory](../../../desktop-clients/docs/library-preference-audit.md) preserves the pre-correction findings.
+Total: 154 unique destinations. The [inventory](inventory.json) names each page and engine; the [original audit inventory](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/library-preference-audit.md) preserves the pre-correction findings.
 
 The 102 named templates use master, list, order, booking, case, result, finance, reconcile, report, dashboard, entity and admin engines. A test of one shared renderer provides relevant coverage to its consumers, but does not prove every application's domain rules.
 
-Shared implementation test sources are listed in the inventory. Static coverage is enforced by `desktop-clients/scripts/verify-library-preferences.mjs`. Browser registration is in `desktop-clients/e2e/suites.mjs`; it is distinct from proof that a particular hosted run passed.
+The inventory preserves the historical API catalog. Current shared implementation tests live in the root packages, with demo profile/workflow checks in each app. The root boundary gate and explicit production integration selection replace the removed combined-shell static and suite-registry scripts; configured coverage is distinct from a hosted passing run.

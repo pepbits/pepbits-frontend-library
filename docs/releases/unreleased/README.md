@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Library phase 8 retirement — 25 October 2026](restructure-phase-8-2026-10-25.md): backend independence, root services/CI and local test-site packaging; no deployment.
+
 - [Library restructure phase 7b — first publication](restructure-phase-7b-2026-10-25.md): all 12 `@pepbits/*` packages published at 0.1.0 to GitHub Packages; registry versions and a clean install verified.
 - [Phase 7a — publishable @pepbits packages](restructure-phase-7a-2026-10-25.md): twelve 0.1.0 ESM/declaration candidates, Changesets and manual GitHub Packages tooling; local tarball/consumer evidence, no publication.
 

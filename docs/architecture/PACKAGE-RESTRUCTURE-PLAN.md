@@ -1,6 +1,7 @@
 # Library restructure plan
 
-Status: **phases 0–3, phase 4a priorities 1–3, phase 4b generic engines, phase 5 priorities 1–6 and phase 5b AI/preferences/login implemented; phase 6a showcase implemented inside the full shell, including Shell and AI simulation pages; healthcare phases 6b-1 through 6b-9 implemented (Suite/clinical, LIS1/LIS2/RIS1, Pharmacy, RCM, Teleconsult, Quality, SurgiSuite, MedBand and MedSlot). Phase 4c completes priority 3 patterns; phases 6c-1 through 6c-3 implement the ERP catalogue and specialized workflow subsets with remaining parity limits; phase 6d implements 26 Scholaris routes and six granted portals with explicit backend/visual parity limits; phase 6e-1 implements the reports demo (all 19 Lumen Reports routes); phase 6e-2 implements the Tenant Admin demo (Overview, Approvals, Activity and all 30 registry-driven configuration pages); phase 6e-3 implements the Orvia onboarding demo (landing, workspace lookup, sign-in with MFA, registration wizard); phase 6e-7 implements the desktop demo (web build and live check verified; the native Tauri executable is not built or tested); phase 6e-6 implements the AllyVora patient registration demo against its unchanged backend; phase 6e-4 implements the Settle patient billing demo against its unchanged backend; phase 6e-5 implements the CareGrid demo against its unchanged backend; later demos remain future work.** Revised 24 October 2026 for phases 6d, 6e-1 and 6e-2. See [Phase 0](#phase-0-status), [Phase 1](#phase-1-status), [Phase 2](#phase-2-status), [Phase 3](#phase-3-status), [Phase 4a](#phase-4a-status), [Phase 4b](#phase-4b-status), [Phase 5](#phase-5-status) and [Phase 5b](#phase-5b-status). Phases 1–5b follow the owner's copy-only decision; consumer migration and publishing remain future work.
+Status: **phases 0–7b implemented; phase 8 removal implemented locally, verification recorded separately below.** All twelve packages are published at 0.1.0. Platform, Healthcare and ERP consumer adoption is owner-reported; School adoption is proceeding in parallel and remains a coordinated merge prerequisite. The historical phase status sections below describe their original increments. See [Phase 8 status](#phase-8-status).
+
 
 ## Summary
 
@@ -294,7 +295,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | 5b. AI and optional shell pages | Copied AI config/client/UI → `ai`, shell preferences/login, gate tests and Arabic physical-sidebar regression. See [Phase 5b](#phase-5b-status). | Independent host APIs; existing applications unchanged |
 | 6. Demo apps | `showcase` first, then one demo per change: healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Product code leaves `erp-screens`, `erp-config` and `erp-data`. `dummy-api` → `mock-api`. | Yes: routes and hosts change |
 | 7. Publishing and consumers | Phase 7a prepares Changesets, compiled packages and manual GitHub Packages tooling without publication; Healthcare, ERP, School and Platform move from vendored archives to registry versions one at a time, in their own repositories under their own rules. Healthcare also takes `ClinicalPatientWorkspace` into `frontend/packages/healthcare-ui`. | Per consumer |
-| 8. Removal | Delete shims and the empty `desktop-clients/` tree | None |
+| 8. Removal | Retire the old workspace and compatibility link; backend-owned contracts, root services/CI and demo test-site artifacts | Breaking run/deploy entry points; see Phase 8 status |
 
 Phase 0 comes first because the new top-level folders need a workspace root of their own before any package can live there.
 
@@ -491,10 +492,10 @@ Paths that ports must update, counted on `main` `01b6578`:
 
 ## Done when
 
-- `packages/` contains only reusable code, and the boundary test enforces the dependency rules.
-- Every demo app builds from public `@pepbits/*` exports only.
-- Packages publish with versions and changelogs, and every consumer installs them from the registry instead of vendoring archives.
-- Shims and `desktop-clients/` are gone, and the release record lists every rename as a breaking change with its replacement.
+- [x] `packages/` contains only reusable code, and the boundary test enforces dependency rules, including relative backend imports.
+- [x] Every demo app uses public `@pepbits/*` exports only; production build results are recorded in the phase 8 evidence.
+- [ ] All consumers install published packages. Twelve 0.1.0 packages are published; Platform, Healthcare and ERP migrations are owner-reported complete. School’s parallel acceptance remains to be confirmed before the coordinated merge.
+- [x] Shims and `desktop-clients/` are gone. No old-name package facades existed; the `dummy-api` compatibility link is removed. Breaking entry-point replacements are documented in the phase 8 record.
 
 ## Out of scope
 
@@ -617,7 +618,8 @@ Phase 6e-5 local production build and real-HTTP acceptance passed: 25 workflows 
 
 ### Mock API rename status
 
-The demo API folder `dummy-api/` moved to `mock-api/` on 25 October 2026 (owner decision: rename with a compatibility link). A committed symbolic link `dummy-api → mock-api` keeps `desktop-clients/`, `.github/workflows/ci.yml`, `Jenkinsfile` and `run.sh`, which still use the old path, working without changes; it is removed with `desktop-clients/` in phase 8. Every reference in `demo-apps/`, `tooling/`, `packages/` and current documentation now uses `mock-api`; historical release records and their evidence keep the original path. See the [rename record](../releases/unreleased/mock-api-rename-2026-10-25.md).
+The demo API folder was renamed to `mock-api/` on 25 October 2026. Phase 8 removes the temporary compatibility link after migrating every executable caller. The backend now owns its required contracts and uses its own TypeScript/dependency installation. Historical source names remain in provenance and earlier release evidence. See the [rename record](../releases/unreleased/mock-api-rename-2026-10-25.md).
+
 
 ## Phase 7a status
 
@@ -634,3 +636,13 @@ All 12 library packages were published at **0.1.0** to GitHub Packages (`@pepbit
 ### Phase 7c-0 status
 
 Analysis completed 25 October 2026 on `restructure/phase-7c-map`, based on `9198266`. The [consumer migration map](CONSUMER-MIGRATION-MAP.md) and four linked CSVs inventory 439 imported-symbol/style rows across Healthcare, ERP, School and Platform: 291 direct, 0 rename-only, 75 requiring API/provider adaptations and 73 absent from the twelve published packages. Missing rows comprise product registries/fixtures, Healthcare clinical code and separately owned Platform packages; AI config/client/UI are published with host API adaptations. Recommended order is Platform → Healthcare → ERP → School, including School’s enforced Healthcare source-sync dependency; estimated implementation is 27–42 person-days. The map also records legacy CI, deployment, archive-production, mock API and documentation-tool blockers for phase 8. Product repositories were read-only; no consumer migration, build, test, commit, push or deployment occurred.
+
+### Phase 8 status
+
+Owner-authorized removal implemented 25 October 2026 from `3558a131f0fd443693eae0dfc678e3b258b480c1` on `restructure/phase-8`. The old workspace (1,961 tracked files, 39,392 KiB allocated) and compatibility symlink are removed. No phase 7c old-name package shims existed. Original `source/` and `demo-pages/` inputs remain unchanged.
+
+The fake backend owns 35 required contract/catalog/data files with recorded source hashes; navigation has its serializable backend form and no React/icon runtime. Runtime builders and API test support live inside `mock-api`. Root services preserve CLI actions and map web→showcase, nexora/vantage→erp, desktop→desktop demo. Root CI covers public packages, eleven production demos, docs, backend and deployment contracts. ERP/School original-source visual generators are explicitly retired with their evidence preserved.
+
+The test-site payload keeps the transport, pinned simulators, release identity and hash contract; schema 2 contains self-contained demo outputs and backend dependencies. External receiver/Compose start paths and rollback selection require owner rollout before the first deployment. Jenkins deployment is main-only and opt-in. No deployment, commit, push, merge or publication is performed here.
+
+Owner-supplied consumer identities: Platform Enterprise `33e4424`; Healthcare `c0530df9`, `58cffbeb`, `c92b8a0b`; ERP `6f332b6`. School is migrating in parallel; its completion/provenance acceptance remains outside this worktree. The owner explicitly authorized deletion now. See [operations and gate mapping](../development/TEST-SITE.md) and the [phase 8 release record](../releases/unreleased/restructure-phase-8-2026-10-25.md) for exact results and limitations. This does not convert local checks into hosted/native/deployed evidence.

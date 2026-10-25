@@ -7,7 +7,7 @@
 //   - demo-apps/<name> is @pepbits-demo/<name>, private, and may use any layer's
 //     public exports, never another demo app.
 //   - Nothing reaches into another package's src/, out of its own folder with a
-//     relative path, or into the pre-restructure code (desktop-clients, mock-api,
+//     relative path, or into the backend (mock-api,
 //     and package names that are not a layer, such as @pepbits/erp-screens).
 //   - mock-api imports nothing from the frontend.
 //
@@ -194,7 +194,8 @@ export function checkBoundaries(root) {
   if (existsSync(join(mockApi, 'package.json'))) {
     for (const file of walkSources(mockApi)) {
       for (const specifier of importSpecifiers(readFileSync(file, 'utf8'))) {
-        if (parseScoped(specifier)) report(toPosix(relative(root, file)), `"${specifier}": mock-api must not import frontend packages`);
+        if (specifier.startsWith('.') && !resolve(dirname(file),specifier).startsWith(mockApi+sep)) report(toPosix(relative(root,file)), `"${specifier}": mock-api imports must stay within its backend`);
+        if (parseScoped(specifier) || ['react','react-dom','lucide-react'].some(name=>specifier===name||specifier.startsWith(name+'/'))) report(toPosix(relative(root, file)), `"${specifier}": mock-api must not import frontend packages`);
       }
     }
   }

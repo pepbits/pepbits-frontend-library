@@ -1,5 +1,5 @@
 import {DatabaseSync} from 'node:sqlite';import {mkdirSync,chmodSync} from 'node:fs';import {dirname} from 'node:path';import {createHash,randomUUID} from 'node:crypto';
-import {sanitizeSentinelEvent} from '../desktop-clients/packages/auth/src/sentinel.ts';
+import {sanitizeSentinelEvent} from './contracts/auth/sentinel.ts';
 export const canMonitor=user=>user?.permissions?.includes('monitoring:manage')===true;
 export function createMonitoringStore(file,{now=()=>Date.now()}={}){
  mkdirSync(dirname(file),{recursive:true,mode:0o700});const db=new DatabaseSync(file);chmodSync(file,0o600);

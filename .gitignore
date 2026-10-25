@@ -10,13 +10,16 @@ dist
 .DS_Store
 .idea
 tsconfig.tsbuildinfo
-desktop-clients/apps/desktop/src-tauri/target
-desktop-clients/apps/desktop/src-tauri/gen
+demo-apps/desktop/src-tauri/target
+demo-apps/desktop/src-tauri/gen
 
 # run.sh state
 .run/
 .deploy/
-desktop-clients/deploy.config.json
+release/
 
 # Reviewed release evidence is part of the documentation contract.
 !docs/releases/**/evidence/**/*.log
+
+# Pinned CI-only simulator checkout
+test-dependencies/

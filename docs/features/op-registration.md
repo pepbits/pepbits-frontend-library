@@ -1,5 +1,7 @@
 # OP Registration
 
+Phase 8: links to the original combined-shell sources below are immutable historical references. Current public packages and demo ownership are described in the [migration map](../architecture/CONSUMER-MIGRATION-MAP.md); current commands are in [root operations](../development/TEST-SITE.md).
+
 Feature ID: **OPREG**. State: implemented; local verification recorded in the [delivery record](../releases/unreleased/op-registration-2026-09-10.md). Page: `/library/op-registration`, under Page Library and List of pages.
 
 ## User problem and outcome
@@ -17,7 +19,7 @@ Registration staff can select a patient, verify identity, configure a visit, rev
 
 ## Technical contract and integration
 
-Public entry points are `RegistrationWorkspace` from `@pepbits/erp-screens`, `RegistrationAdapter` and `createRegistrationAdapter` from `@pepbits/erp-data`, and registration contracts from `@pepbits/erp-config`. The [catalog example](../../desktop-clients/packages/erp-screens/src/page-library/resources.ts) demonstrates authenticated request injection, memoized adapters, scope and PreferenceHost properties.
+Public entry points are `RegistrationWorkspace` from `@pepbits/erp-screens`, `RegistrationAdapter` and `createRegistrationAdapter` from `@pepbits/erp-data`, and registration contracts from `@pepbits/erp-config`. The [catalog example](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/page-library/resources.ts) demonstrates authenticated request injection, memoized adapters, scope and PreferenceHost properties.
 
 The host supplies `adapter`, `patients`, `scopeKey`, effective preferences, policy, availability and update callback. Scope is authenticated tenant/application/user; server authorization does not trust the scope string. The workspace composes shared step navigation, patient search/summary, schema-driven fields, contextual cards, care tabs and confirmation dialogs. All controls use ops-ui or the existing patient field renderer. Specialized CSS defines the five-step geometry and the scroll area between progress and actions.
 

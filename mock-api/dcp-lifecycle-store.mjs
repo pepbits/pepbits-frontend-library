@@ -1,8 +1,8 @@
 import {randomUUID} from 'node:crypto';
 import {readFileSync} from 'node:fs';
-import {isDesignerDefinition,previewErrors,validDesignerPayload} from '../desktop-clients/packages/erp-config/src/dcp-designer.ts';
-import {resolveDesignerCatalog} from '../desktop-clients/packages/erp-config/src/dcp-catalog.ts';
-import {resolveDesignerValues} from '../desktop-clients/packages/erp-config/src/dcp-rules.ts';
+import {isDesignerDefinition,previewErrors,validDesignerPayload} from './contracts/erp-config/dcp-designer.ts';
+import {resolveDesignerCatalog} from './contracts/erp-config/dcp-catalog.ts';
+import {resolveDesignerValues} from './contracts/erp-config/dcp-rules.ts';
 export const designerEntities=JSON.parse(readFileSync(new URL('./config/dcp-designer/entities.json',import.meta.url),'utf8'));
 export function validBinding(binding){return !binding||designerEntities.some(e=>e.entityType===binding.entityType&&e.triggers.includes(binding.trigger));}
 export const lifecycleActions=['review','approve','reject','publish','retire','revise','runtime-load','answer-save','answer-submit'];

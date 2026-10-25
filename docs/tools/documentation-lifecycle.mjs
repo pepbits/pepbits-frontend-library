@@ -4,8 +4,8 @@ import {readFileSync,writeFileSync,readdirSync,existsSync} from 'node:fs';
 import {resolve,relative} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-import {PAGE_REGISTRY} from '../../desktop-clients/packages/erp-config/src/navigation.ts';
-import {DOCUMENTATION_RELEASE} from '../../desktop-clients/packages/erp-config/src/documentation.ts';
+import {PAGE_REGISTRY} from '../../mock-api/contracts/erp-config/navigation.ts';
+import {DOCUMENTATION_RELEASE} from '../../mock-api/contracts/erp-config/documentation.ts';
 import {assessReceipt} from './documentation-contracts.mjs';
 import {digest,guideText,translationRevision} from '../../mock-api/documentation-revisions.mjs';
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url))), config=resolve(root,'mock-api/config/documentation');
@@ -17,7 +17,7 @@ const translations=read(resolve(config,'translations.json'));
 const reverse=new Map(Object.entries(locales.en).map(([k,v])=>[v,k]));
 const translate=l=>text=>l==='en'?text:translations[l]?.[text]??locales[l][text]??locales[l][reverse.get(text)]??text;
 const revisionsPath=resolve(config,'translation-revisions.json');
-const walk=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(resolve(dir,e.name)):[resolve(dir,e.name)]);
+const walk=dir=>readdirSync(dir,{withFileTypes:true}).filter(e=>!['node_modules','dist','.next','.turbo','.data','data','target','gen'].includes(e.name)).flatMap(e=>e.isDirectory()?walk(resolve(dir,e.name)):[resolve(dir,e.name)]);
 const families={
  'label-printing':['barcode-labels', 'specimen-labels', 'patient-wristbands', 'qr-library', 'payment-qr', 'batch-label-printing', 'printer-profiles'],
  'op-registration':['op-registration'],
@@ -28,8 +28,8 @@ const families={
 };
 const all=Object.keys(PAGE_REGISTRY).sort();
 function affected(path){
- const referencePackage=path.match(/^desktop-clients\/packages\/reference-(host|reports|erp1|erp2|school|healthcare-suite|keystone-core|diagnostics|lis1|lis2|ris1|teleconsult|quality|pharmacy|tenant-admin|medband|rcm|surgisuite|medslot)\//)?.[1];
- if(referencePackage)return Object.values(PAGE_REGISTRY).filter(page=>referencePackage==='host'?String(page.module).startsWith('reference-'):referencePackage==='diagnostics'?['reference-lis1','reference-lis2','reference-ris1'].includes(String(page.module)):referencePackage==='teleconsult'?['reference-teleconsult-provider','reference-teleconsult-patient'].includes(String(page.module)):referencePackage==='keystone-core'?['reference-erp1','reference-erp2'].includes(String(page.module)):page.module==='reference-'+referencePackage).map(page=>page.id).sort();
+ const demo=path.match(/^demo-apps\/(healthcare|erp|school|reports|tenant-admin)\//)?.[1];
+ if(demo)return Object.values(PAGE_REGISTRY).filter(page=>demo==='healthcare'?/healthcare|lis|ris|pharmacy|rcm|teleconsult|quality|surgisuite|medband|medslot/.test(page.module):demo==='erp'?/erp[12]|keystone/.test(page.module):page.module==='reference-'+demo).map(page=>page.id).sort();
  if(path.includes('dcp-designer')||path.includes('dcp-catalog')||path.includes('dcp-rules')||path.includes('dcp-lifecycle')||path.includes('dcp-host')||path.includes('dcp-runtime')||path.includes('/imports/workbook-options')||path.includes('/imports/csv-options'))return ['dcp-designer'];
  if(path.includes('identity-devices')||path.includes('identity-device-store'))return ['identity-card-readers', 'passport-scanner', 'patient-biometric-verification'];
 
@@ -37,11 +37,11 @@ function affected(path){
 
  if(path.includes('label-printing'))return ['barcode-labels', 'specimen-labels', 'patient-wristbands', 'qr-library', 'payment-qr', 'batch-label-printing', 'printer-profiles'];
  if(path==='mock-api/op-registration-store.ts'||path.includes('/op-registration/')||path.endsWith('/op-registration.ts'))return ['op-registration'];
- for(const [family,pages] of Object.entries(families))if(path.includes(`/erp-screens/src/${family}/`))return pages;
+ for(const [family,pages] of Object.entries(families))if(path.includes(`/modules/${family}/`))return pages;
  // Shared UI, adapters, configuration and unmapped renderers conservatively affect every page.
  return ["*"];
 }
-function sources(){return [...walk(resolve(root,'mock-api/config/dcp-designer')).map(p=>relative(root,p)),...walk(resolve(root,'mock-api/config/identity-devices')).map(p=>relative(root,p)),...walk(resolve(root,'mock-api/config/device-integrations')).map(p=>relative(root,p)),...walk(resolve(root,'mock-api/config/label-printing')).map(p=>relative(root,p)),'mock-api/op-registration-store.ts',...walk(resolve(root,'mock-api/config/op-registration')).map(p=>relative(root,p)),...['tokens','erp-screens','erp-shell','erp-config','erp-data','ops-ui','platform-ports','reference-host','reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite','reference-keystone-core','reference-diagnostics','reference-lis1','reference-lis2','reference-ris1','reference-teleconsult','reference-quality','reference-pharmacy','reference-tenant-admin','reference-medband','reference-rcm','reference-surgisuite','reference-medslot'].flatMap(pkg=>walk(resolve(root,`desktop-clients/packages/${pkg}/src`))).filter(p=>/\.(tsx?|css)$/.test(p)&&!/(\.test\.|\/locales\/|messages.en.ts)/.test(p)).map(p=>relative(root,p)), ...['web','desktop'].flatMap(app=>walk(resolve(root,`desktop-clients/apps/${app}/src`))).filter(p=>/\.(tsx?|css)$/.test(p)&&!p.includes('.test.')).map(p=>relative(root,p)), ...readdirSync(resolve(root,'mock-api')).filter(p=>p.endsWith('.mjs')&&!p.includes('.test.')).map(p=>'mock-api/'+p), ...['en','ar','hi','ml'].map(l=>`mock-api/config/localization/shared/${l}.json`), ...walk(resolve(root,'mock-api/config/navigation')).map(p=>relative(root,p))];}
+function sources(){return ['packages','demo-apps','mock-api'].flatMap(folder=>walk(resolve(root,folder))).filter(p=>/\.(tsx?|mjs|css|json)$/.test(p)&&!/(\.test\.|\/locales\/|\/scripts\/|messages.en.ts|package(-lock)?\.json|tsconfig|provenance\.json)/.test(p)).map(p=>relative(root,p));}
 const hashFile=p=>createHash('sha256').update(readFileSync(resolve(root,p))).digest('hex');
 const command=process.argv[2]??'check';
 if(command==='snapshot'){
@@ -84,7 +84,7 @@ if(command==='snapshot'){
  const next={...structuredClone(release),id:nextId,parentId:release.id,type:'patch',version:nextId,date:new Date().toISOString().slice(0,10),title:page.title,summary:'New page documentation draft',pageIds:[id],knownIssues:['Page guide authoring and translation review pending.']};next.guides[id]=guide;content.releases.push(next);
  write(resolve(config,'releases.json'),content);
  const availability=read(resolve(config,'availability.json'));availability.defaultReleaseId=nextId;write(resolve(config,'availability.json'),availability);
- const pointer=resolve(root,'desktop-clients/packages/erp-config/src/documentation.ts');writeFileSync(pointer,readFileSync(pointer,'utf8').replace(DOCUMENTATION_RELEASE,nextId));
+ const pointer=resolve(root,'mock-api/contracts/erp-config/documentation.ts');writeFileSync(pointer,readFileSync(pointer,'utf8').replace(DOCUMENTATION_RELEASE,nextId));
  console.log('Draft registered in new snapshot '+nextId+'. Complete the sections and translations, then mark authored after workflow review. CI rejects an unfinished new page.');
 }else if(command==='check'||command==='report'){
  const manifest=read(manifestPath), errors=[];

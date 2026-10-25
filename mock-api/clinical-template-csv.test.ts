@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {readClinicalCsv,writeClinicalCsv,parseCsv,decodeClinicalCsv} from './clinical-template-csv.ts';
 import {createClinicalTemplateStore} from './clinical-template-store.ts';
-import type {PatientRecord,PatientOverview,PatientSearchResult} from '../desktop-clients/packages/erp-config/src/clinical-templates.ts';
+import type {PatientRecord,PatientOverview,PatientSearchResult} from './contracts/erp-config/clinical-templates.ts';
 const user={id:'csv-user',tenantId:'csv-tenant',name:'CSV demo'};
 const scope=JSON.stringify([user.tenantId,'nexora']);
 function setup(){const dir=mkdtempSync(join(tmpdir(),'clinical-csv-')),file=join(dir,'clinical-templates.csv');return {dir,file,store:createClinicalTemplateStore(file),close:()=>rmSync(dir,{recursive:true,force:true})};}

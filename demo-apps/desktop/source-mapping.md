@@ -1,5 +1,7 @@
 # Desktop source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Phase 6e-7, base `5bbb130`. The source `desktop-clients/apps/desktop` (about 620 lines of TypeScript plus `src-tauri/`) is a read-only reference and is unchanged. [App guide](README.md), [feature contract](../../docs/features/desktop-demo.md), [delivery record](../../docs/releases/unreleased/restructure-phase-6e-7-2026-10-24.md).
 
 | Original responsibility | Destination and treatment |

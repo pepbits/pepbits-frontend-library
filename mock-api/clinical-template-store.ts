@@ -10,7 +10,7 @@ import type {
   PatientMetadata,
   PatientCareRow,
   PatientSavedSearch,
-} from "../desktop-clients/packages/erp-config/src/clinical-templates.ts";
+} from "./contracts/erp-config/clinical-templates.ts";
 type User = { id: string; tenantId: string; name: string };
 type Result = { status: number; body: unknown };
 const metadata = JSON.parse(

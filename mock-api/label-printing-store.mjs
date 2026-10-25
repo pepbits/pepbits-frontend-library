@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {randomUUID,createHash} from 'node:crypto';
 import bwipjs from 'bwip-js';
-import {labelFitsProfile} from '../desktop-clients/packages/erp-config/src/label-printing.ts';
+import {labelFitsProfile} from './contracts/erp-config/label-printing.ts';
 import {parseCsv,writeCsvSnapshot} from './clinical-template-csv.ts';
 const base=JSON.parse(readFileSync(new URL('./config/label-printing/templates.json',import.meta.url),'utf8'));
 const [headers,...rows]=parseCsv(readFileSync(new URL('./config/label-printing/records.csv',import.meta.url),'utf8'));

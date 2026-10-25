@@ -5,7 +5,7 @@ Help, the documentation drawer, Documentation Center and Page Library guides use
 ## Adding a page
 
 1. Register the page in the normal typed registry and backend navigation.
-2. Run `node docs/tools/documentation-lifecycle.mjs register PAGE_ID NEW_RELEASE_ID` under Node 24. This copies the current release into a new patch snapshot, adds the [guide template](page-guide.template.json), and updates the client/API release pointers. Existing snapshots are preserved.
+2. Run `node docs/tools/documentation-lifecycle.mjs register PAGE_ID NEW_RELEASE_ID` under Node 24. This copies the current release into a new patch snapshot, adds the [guide template](page-guide.template.json), and updates the backend documentation release pointer (hosts must adopt it explicitly). Existing snapshots are preserved.
 3. Replace every placeholder with verified instructions, validations, permission/preference behavior, recovery and integration details. Add field metadata and stable `data-tour` targets where relevant. Set `status: authored` only after workflow review. An unfinished new reference guide fails the lifecycle check; existing reference-only guides are listed as historical backlog.
 4. Translate the article’s titles, paragraphs, fields and tour steps in canonical backend catalogs. Register revision records with `translations`; complete translations before `translation-sync PAGE_ID LANGUAGE`.
 5. Review source impact receipts, run the checks below and have the PR reviewed. Registering a draft does not certify its accuracy.
@@ -41,7 +41,7 @@ node docs/tools/documentation-lifecycle.mjs report
 node docs/tools/documentation-lifecycle.mjs check --strict
 ```
 
-Normal checks protect new-page registration, source-impact receipts, translation drift and history. They run in CI and `npm run verify:documentation`. Strict release acceptance additionally rejects every outstanding authoring/translation-review item. It currently fails intentionally: see the [explicit backlog](backlog.json). It is not wired as a universal merge blocker because that would prevent all work until the inherited backlog is reviewed. Publishing a fully authored/native-reviewed release requires clearing that backlog and passing strict acceptance.
+Normal checks protect new-page registration, source-impact receipts, translation drift and history. They run in CI through root `npm run ci:gates`. Strict release acceptance additionally rejects every outstanding authoring/translation-review item. It currently fails intentionally: see the [explicit backlog](backlog.json). It is not wired as a universal merge blocker because that would prevent all work until the inherited backlog is reviewed. Publishing a fully authored/native-reviewed release requires clearing that backlog and passing strict acceptance.
 
 The existing guide validator checks guide structure and change links; browser tests verify contextual and catalog articles in four languages. Tour targets need page-specific browser acceptance, especially when fields are conditional; a static target string cannot prove the element is visible or that the instructions are correct. Links and repository release evidence are checked with `node docs/tools/check-docs.mjs`.
 

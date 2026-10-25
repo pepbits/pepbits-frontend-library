@@ -23,7 +23,7 @@ Run `npm install` and `npm run ci` from the repository root. Each package builds
 - The folder name is the package name: `packages/ui` is `@pepbits/ui`.
 - A package depends only on the layers below it. `npm run check:boundaries` enforces this.
 - No product data, product rules or demo code. Code that only one product needs belongs in that product's repository.
-- Packages here never import from `desktop-clients/`, `mock-api/` or the pre-restructure package names (`ops-ui`, `erp-*`, `reference-*`).
+- Packages here never import from `mock-api/` or the pre-restructure package names (`ops-ui`, `erp-*`, `reference-*`).
 
 ## Versioning and manual releases
 

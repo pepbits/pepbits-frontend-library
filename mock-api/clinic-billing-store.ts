@@ -4,14 +4,14 @@ import { parseCsv, writeCsvSnapshot } from "./clinical-template-csv.ts";
 import {
   clinicInvoiceLines,
   clinicBalance,
-} from "../desktop-clients/packages/erp-config/src/clinic-billing.ts";
+} from "./contracts/erp-config/clinic-billing.ts";
 import type {
   ClinicBillingState,
   ClinicService,
   ClinicBillingView,
   ClinicBillingMutation,
-} from "../desktop-clients/packages/erp-config/src/clinic-billing.ts";
-import type { PatientOverview } from "../desktop-clients/packages/erp-config/src/clinical-templates.ts";
+} from "./contracts/erp-config/clinic-billing.ts";
+import type { PatientOverview } from "./contracts/erp-config/clinical-templates.ts";
 type User = { id: string; tenantId?: string; name?: string };
 type Result = { status: number; body: unknown };
 type Bucket = {

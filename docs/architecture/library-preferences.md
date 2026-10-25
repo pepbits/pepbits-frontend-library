@@ -1,21 +1,21 @@
 # Library architecture and preference flows
 
-Current architecture review: 11 September 2026. Delivery and verification status are recorded separately in the [current delivery index](../releases/unreleased/README.md).
+Original flow review: 11 September 2026; package locations updated for phase 8. Delivery and verification status are recorded separately in the [current delivery index](../releases/unreleased/README.md).
 
 ## Package responsibilities
 
 | Layer | Location | Responsibility |
 | --- | --- | --- |
-| Application shells | `desktop-clients/apps/web`, `apps/desktop` | Browser routes or desktop navigation, session/provider composition and rendering |
-| Configuration | `packages/erp-config` | Page definitions, template definitions, Library route manifest, preference types/defaults and policy resolution |
-| Application state | `packages/erp-shell` | Effective preferences, central updates, application context, theme/font/language tokens and policy refresh |
-| Data adapters | `packages/erp-data` | Typed API boundary; clinical requests, structured responses and failures |
-| Reusable screens | `packages/erp-screens` | Template engines, clinical workspaces, catalog examples, dedicated reference pages and record interactions |
-| UI primitives | `packages/ops-ui` | Controls, cards, tables, overlays, localization helpers and the generic presentation context |
+| Application shells | `demo-apps/*`, `packages/shell` | App-owned navigation/session composition; reusable shell and workspace |
+| Configuration | `packages/preferences`, `packages/page-engines`, `packages/patterns` | Generic typed definitions and preferences; product metadata stays with demos/products |
+| Data adapters | `packages/data`, `demo-apps/*/src/adapters` | Generic transport contracts and app-owned API integration |
+| Reusable screens | `packages/page-engines`, `packages/patterns` | Typed reusable page/workflow engines; domain screens stay app-owned |
+| UI primitives | `packages/ui`, `packages/components`, `packages/i18n` | Controls, tables, overlays and localization |
 | Style tokens | `packages/tokens` | Semantic colors, fonts, radius and managed-table CSS |
-| Demo backend | `mock-api` | Authenticated demo configuration/data contracts, preference storage and policy enforcement |
+| Demo backend | `mock-api` | Backend-owned configuration/data contracts, preference storage and policy enforcement |
 
-Paths under `packages/` are relative to `desktop-clients/`. ops-ui does not import ERP or API clients. Consumers compose shared primitives and supply application behavior.
+All paths are relative to the repository root. UI primitives import no ERP context or API
+clients. Consumers compose public exports and supply application behavior.
 
 ## Navigation flow
 

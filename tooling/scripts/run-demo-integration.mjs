@@ -35,7 +35,7 @@ if(major<24)throw new Error('The unchanged demo API requires Node 24. Set the de
 const artifactRoot=process.env[prefix+'_RUNTIME_ARTIFACTS'];
 const apiArgs=[];const identity={sourceBase:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),apiPort,appPort,nodeVersion:execFileSync(node,['--version'],{encoding:'utf8'}).trim(),runtimeArtifacts:null};
 if(artifactRoot){
- const built=resolve(artifactRoot),files=execFileSync('git',['ls-files','mock-api','-z'],{cwd:root,encoding:'utf8'}).split('\0').filter(Boolean);
+ const built=resolve(artifactRoot),files=execFileSync('git',['ls-files','--cached','--others','--exclude-standard','mock-api','-z'],{cwd:root,encoding:'utf8'}).split('\0').filter(Boolean);
  const sha=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
  const mismatches=files.filter(p=>!existsSync(join(built,p.slice('mock-api/'.length)))||sha(join(root,p))!==sha(join(built,p.slice('mock-api/'.length))));
  if(mismatches.length)throw new Error(`Runtime artifact source differs in ${mismatches.length} tracked API files`);

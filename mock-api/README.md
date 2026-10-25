@@ -24,15 +24,15 @@ The frontend workspace also requires its own lockfile installation. Follow the [
 | --- | --- | --- |
 | Session and health | `/auth/login`, `/auth/me`, `/auth/logout`, `/health` | Demo bearer sessions; health is not production readiness |
 | Application configuration | `/navigation`, `/localization` | [Canonical configuration](config/README.md) |
-| Preferences and presentation | `/preferences`, `/preference-policy`, `/layouts`, `/personal-views` | [Preference policies](../desktop-clients/docs/tenant-preference-policies.md) |
-| Records and worklists | `/records`, `/worklists/search`, `/worklists/archive`, `/views`, `/reference` | [Record integration](../desktop-clients/docs/record-editing.md) |
-| Related records, imports and approvals | `/record-panels`, `/imports`, `/approvals` | [Platform handbook](../desktop-clients/docs/handbook/frontend-platform-guide.md) |
-| Draft recovery | `/drafts`, `/draft-policy`, `/draft-center` | [Shared draft service](../desktop-clients/docs/shared-draft-recovery.md) |
+| Preferences and presentation | `/preferences`, `/preference-policy`, `/layouts`, `/personal-views` | [Preference policies](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/tenant-preference-policies.md) |
+| Records and worklists | `/records`, `/worklists/search`, `/worklists/archive`, `/views`, `/reference` | [Record integration](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/record-editing.md) |
+| Related records, imports and approvals | `/record-panels`, `/imports`, `/approvals` | [Platform handbook](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/handbook/frontend-platform-guide.md) |
+| Draft recovery | `/drafts`, `/draft-policy`, `/draft-center` | [Shared draft service](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/shared-draft-recovery.md) |
 | DCP authoring and runtime demo | `/dcp-designer` | [Designer/runtime guide](../docs/features/dcp-designer.md), [backend handoff](../docs/development/DCP-LATEST-FORM-BACKEND-HANDOFF-2026-09-11.md) |
 | Patient and care templates | `/clinical-templates`, `/clinic-billing`, `/clinical-triage`, `/clinical-consultation`, `/comprehensive-consultation`, `/op-registration`, `/care-pages` | [Feature catalog](../docs/features/README.md) identifies each synthetic workflow |
 | Labels and workstation devices | `/label-printing`, `/device-integrations`, `/identity-devices` | [Labels](../docs/features/barcode-qr-printing.md), [devices](../docs/features/device-integrations.md), [identity](../docs/features/identity-devices.md) |
-| Help and monitoring | `/documentation`, `/documentation/state`, `/monitoring/events`, `/monitoring/incidents` | [Documentation lifecycle](../docs/documentation/README.md), [Sentinel](../desktop-clients/docs/sentinel-monitoring.md) |
-| Reporting and AI | `/exports`, `/report-schedules`, `/audit`, `/ai/policy`, `/ai/config`, `/ai/dispatch`, `/ai/usage` and related subroutes | [Workspace README](../desktop-clients/README.md); integration-specific readiness remains separate |
+| Help and monitoring | `/documentation`, `/documentation/state`, `/monitoring/events`, `/monitoring/incidents` | [Documentation lifecycle](../docs/documentation/README.md), [Sentinel](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/sentinel-monitoring.md) |
+| Reporting and AI | `/exports`, `/report-schedules`, `/audit`, `/ai/policy`, `/ai/config`, `/ai/dispatch`, `/ai/usage` and related subroutes | [Workspace README](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/README.md); integration-specific readiness remains separate |
 
 Feature command routes such as `/dcp-designer` accept POST commands and validate navigation access, authenticated scope and operation-specific permissions. Never infer a production endpoint from the demo command URL. Production DCP uses the frontend adapter's explicitly supplied host paths and backend v1 contract.
 
@@ -50,4 +50,6 @@ Origins are checked against `NEXORA_ALLOWED_ORIGINS` or the server's configured 
 
 ## Validation and operations
 
-Run `npm run test:api` from `desktop-clients` for the repository API suites. Consult the [current testing guide](../docs/testing/README.md) and [release evidence](../docs/releases/unreleased/README.md) for exact tested source and unresolved hosted failures. Deploying frontend shells does not restart this API automatically; see [deployment operations](../desktop-clients/docs/deployment.md).
+Run `npm run build:api` and `npm run test:api` from the root workspace for the repository API suites. Consult the [current testing guide](../docs/testing/README.md) and [release evidence](../docs/releases/unreleased/README.md) for exact tested source and unresolved hosted failures. Deploying frontend shells does not restart this API automatically; see [deployment operations](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/deployment.md).
+
+Phase 8 makes all runtime contracts backend-owned in [contracts](contracts/README.md). Install dependencies using `bash tooling/scripts/install-api.sh` from the root and use Node 24.21+. No frontend packages or source-tree imports are needed. Root service and receiver instructions are in [test-site operations](../docs/development/TEST-SITE.md).

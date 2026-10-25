@@ -4,7 +4,7 @@ import {mkdtempSync,cpSync,readFileSync,writeFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createApplicationConfig,validateNavigation} from './application-config.mjs';
-import {PAGE_REGISTRY} from '../desktop-clients/packages/erp-config/src/navigation.ts';
+import {PAGE_REGISTRY} from './contracts/erp-config/navigation.ts';
 const root=new URL('./config/',import.meta.url).pathname,known=new Set(Object.keys(PAGE_REGISTRY));
 const admin={role:'enterprise-admin'},user={role:'operations-analyst'};
 test('navigation filters restricted pages, returns stable identity and handles authorization',()=>{

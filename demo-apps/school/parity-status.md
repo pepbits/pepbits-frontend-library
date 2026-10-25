@@ -2,7 +2,7 @@
 
 This increment keeps the existing app and closes a coherent **chart and table presentation subset**. It does not claim exact parity for every route/state. [Source map](source-mapping.md), [feature guide](../../docs/features/school-demo.md), [release record](../../docs/releases/unreleased/restructure-phase-6d-2-2026-10-24.md).
 
-The read-only baseline is `desktop-clients/packages/reference-school` at base `632ba8bf96ca4a9a9e9dd705aa7cdea5b3ed090a`. The test-only comparison bundles that original markup/CSS with its original UI packages and the current demo; both receive identical fictional in-memory fixtures, a frozen clock and a 1280px content area. The retained computed-style report pairs semantic controls/headings/table cells, recording geometry, typography, colours, radius and padding. Unpaired elements and unvisited states remain gaps. This is separate from the real-HTTP production-build integration; neither check is a deployed or native executable test.
+The read-only baseline is `desktop-clients/packages/reference-school` at base `632ba8bf96ca4a9a9e9dd705aa7cdea5b3ed090a`. The historical test-only comparison bundled that original markup/CSS with its original UI packages and the current demo; both receive identical fictional in-memory fixtures, a frozen clock and a 1280px content area. The retained computed-style report pairs semantic controls/headings/table cells, recording geometry, typography, colours, radius and padding. Unpaired elements and unvisited states remain gaps. This is separate from the real-HTTP production-build integration; neither check is a deployed or native executable test.
 
 ## Measured landing-content evidence
 
@@ -80,3 +80,5 @@ Every row is a **remaining** status until its full states have an exact source c
 The unchanged API denies Librarian Students/Calendar/Notices and Accountant Students/Notices. Librarian issue creation can select only borrowers already in permitted circulation records; unrestricted new-borrower lookup remains unavailable. Accountant class labels and class filtering remain unavailable. Durable drafts remain deferred; mounted retry/input retention is not durable recovery. No alternate persistence store or invented backend contract is introduced.
 
 The protected Library `student-master`/`school-fees` templates are separate from these 26 Scholaris pages and remain outside this increment. Physical printing, native executables, production identity/providers, native-speaker review and human accessibility/academic/accounting acceptance remain unperformed. No commit or push.
+
+Phase 8 retires the original-source comparison generator. The recorded baseline, geometry results and images remain immutable; current demo integration checks do not claim a new source pixel comparison.

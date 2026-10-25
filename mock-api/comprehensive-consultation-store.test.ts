@@ -10,11 +10,11 @@ import {
   validateComprehensive,
   type ComprehensiveValues,
   type ComprehensiveConfiguration,
-} from "../desktop-clients/packages/erp-config/src/comprehensive-consultation.ts";
+} from "./contracts/erp-config/comprehensive-consultation.ts";
 import type {
   ClinicalDocumentView,
   ClinicalDocument,
-} from "../desktop-clients/packages/erp-config/src/clinical-document.ts";
+} from "./contracts/erp-config/clinical-document.ts";
 const user = { id: "doctor", tenantId: "tenant", name: "Demo Author" };
 function fixture() {
   const dir = mkdtempSync(join(tmpdir(), "comprehensive-"));

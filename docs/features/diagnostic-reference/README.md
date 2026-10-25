@@ -34,18 +34,23 @@ Original analyzer listeners and automatic dispatch timers are disabled in embedd
 
 ## Installation and verification
 
-Use Node 24+ and npm on a host with registry access:
+Use Node 24.21+ from the root workspace:
 
 ```sh
-cd /home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients
-npm run prepare:diagnostics
+npm ci
+bash tooling/scripts/install-api.sh
+npm run build:api
+node --test mock-api/diagnostics-policy.test.mjs mock-api/diagnostics-runtime/integration.test.mjs
+npm run build -w @pepbits-demo/healthcare
+node tooling/scripts/run-demo-integration.mjs healthcare
 ```
 
-This installs frontend workspace and backend dependencies, compiles the source backends, checks all three frontend packages, runs real service persistence/isolation tests and focused UI tests, then builds the library. It does not deploy. Reviewed lockfiles are included. npm 11 requires the committed better-sqlite3 install-script allowance to build the native backend dependency.
-
-`diagnostics-runtime/integration.test.mjs` intentionally fails if dependencies are missing. It must not be counted as passed or skipped acceptance. The backend transpiler reports `typeChecked:false`; separate TypeScript checks for LIS1, LIS2 and RIS1 passed. The actual runtime suite passed eight policy/service tests, including restart persistence and branch isolation.
-
-For style regeneration, install the dedicated tool manifest under `desktop-clients/scripts/diagnostics/style-tools` and run `node scripts/diagnostics/styles.mjs` from desktop-clients. Set `DIAGNOSTIC_REFERENCE_ROOT` if source references live elsewhere. Generated styles are checked in; the host does not adopt Tailwind 3 globally. Import/adaptation scripts are one-time provenance tools, not safe refresh commands over reviewed edits.
+These commands do not deploy. The backend transpiler reports `typeChecked:false`; the
+historical import's separate LIS1/LIS2/RIS1 checks remain historical evidence. Runtime
+integration intentionally fails on missing dependencies. The pinned better-sqlite3
+install-script allowance remains explicit. Original one-time style/import tools are
+retired; reviewed scoped styles live in the Healthcare demo. Do not regenerate over
+reviewed edits from the original references without a new adaptation review.
 
 ## Verification and remaining review
 

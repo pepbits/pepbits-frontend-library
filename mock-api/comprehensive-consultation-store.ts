@@ -6,7 +6,7 @@ import {
   validateComprehensive,
   type ComprehensiveConfiguration,
   type ComprehensiveValues,
-} from "../desktop-clients/packages/erp-config/src/comprehensive-consultation.ts";
+} from "./contracts/erp-config/comprehensive-consultation.ts";
 const directory = new URL(
   "./config/comprehensive-consultation/",
   import.meta.url,

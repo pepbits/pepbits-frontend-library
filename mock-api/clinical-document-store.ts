@@ -5,8 +5,8 @@ import type {
   ClinicalDocument,
   ClinicalDocumentView,
   ClinicalDocumentSave,
-} from "../desktop-clients/packages/erp-config/src/clinical-document.ts";
-import type { PatientOverview } from "../desktop-clients/packages/erp-config/src/clinical-templates.ts";
+} from "./contracts/erp-config/clinical-document.ts";
+import type { PatientOverview } from "./contracts/erp-config/clinical-templates.ts";
 type User = { id: string; tenantId?: string; name?: string };
 type Result = { status: number; body: unknown };
 type Bucket<V> = {

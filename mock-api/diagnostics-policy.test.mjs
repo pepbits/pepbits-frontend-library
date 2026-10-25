@@ -1,6 +1,6 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';
 import {diagnosticScope,diagnosticPolicy} from './diagnostics-policy.mjs';
-import {matchDiagnosticRoute} from '../desktop-clients/packages/reference-diagnostics/src/routes.ts';
+import {matchDiagnosticRoute} from './contracts/reference-diagnostics/routes.ts';
 const user={id:'user',tenantId:'tenant-a',role:'operations-analyst'},scope={applicationId:'nexora',branchId:'branch-a'};
 test('diagnostic persistence separates module, tenant, application and branch',()=>{const values=[diagnosticScope('lis1',user,scope),diagnosticScope('lis2',user,scope),diagnosticScope('lis1',{...user,tenantId:'tenant-b'},scope),diagnosticScope('lis1',user,{...scope,branchId:'branch-b'}),diagnosticScope('lis1',user,{...scope,applicationId:'other'})];assert.equal(new Set(values).size,5);assert.equal(diagnosticScope('lis1',{...user,id:'other-user'},scope),values[0]);assert.throws(()=>diagnosticScope('lis1',{},scope));});
 test('source login and identity switching cannot bypass the authenticated host',()=>{for(const role of ['enterprise-admin','finance-manager','operations-analyst']){assert.equal(diagnosticPolicy({role},'POST','/api/auth/login'),403);assert.equal(diagnosticPolicy({role},'POST','/api/session'),403);}assert.equal(diagnosticPolicy(user,'GET','/api/session'),200);});

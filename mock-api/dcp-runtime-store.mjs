@@ -1,6 +1,6 @@
 import {readFileSync} from 'node:fs';
 import {randomUUID} from 'node:crypto';
-import {isDcpRevision,isDcpValues,isDcpNumber,dcpWritablePatch} from '../desktop-clients/packages/erp-config/src/dcp-runtime.ts';
+import {isDcpRevision,isDcpValues,isDcpNumber,dcpWritablePatch} from './contracts/erp-config/dcp-runtime.ts';
 const seed=JSON.parse(readFileSync(new URL('./config/dcp-designer/runtime-v1.json',import.meta.url),'utf8'));
 export const runtimeActions=['backend-load','backend-preview','backend-save'];
 /** Synthetic adapter only. Server expressions and product permissions require the real host engine. */

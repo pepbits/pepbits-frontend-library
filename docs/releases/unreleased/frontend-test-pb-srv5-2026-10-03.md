@@ -21,7 +21,7 @@ such as `/api` (`b8b5cad`). No runtime behavior changed.
 
 Stack source: `pepbits-shared-document` `common/deployment/config/stacks/pb-srv5/frontend-test/` (commit `f130192`),
 deployed with the fleet `bin/deploy-stack.sh`. Operation, release layout and rollback are in the
-[test site runbook](../../../desktop-clients/docs/frontend-test-deployment.md). The browser uses same-origin `/api`;
+[test site runbook](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/frontend-test-deployment.md). The browser uses same-origin `/api`;
 the API accepts browser origins only from `https://frontend.test.pepbits.com`.
 
 ## Data, errors and security

@@ -1,12 +1,14 @@
 # Library user and integration guide
 
+Phase 8: links to the original combined-shell sources below are immutable historical references. Current public packages and demo ownership are described in the [migration map](../architecture/CONSUMER-MIGRATION-MAP.md); current commands are in [root operations](../development/TEST-SITE.md).
+
 Feature ID: `LIB`. Status: implemented and deployed to the demo sites; see the [delivery record](../releases/unreleased/README.md) for exact evidence and outstanding acceptance. Desktop use is the primary design target.
 
 ## What the Library is for
 
 The Library lets application developers inspect reusable components and page designs, try their behavior and read copyable TypeScript examples. An ERP customer form and a healthcare patient form may have different fields, but they should share input controls, tables, overlays, preference handling and recovery patterns.
 
-The original Library preference correction addressed seven audit findings. They make managed settings consistent through shared renderers, replace fixed demo formatting, improve clinical font/radius behavior, and replace six generic reference pages with dedicated content. The [original audit](../../desktop-clients/docs/library-preference-audit.md) is retained as historical evidence.
+The original Library preference correction addressed seven audit findings. They make managed settings consistent through shared renderers, replace fixed demo formatting, improve clinical font/radius behavior, and replace six generic reference pages with dedicated content. The [original audit](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/library-preference-audit.md) is retained as historical evidence.
 
 ## Find the right page
 
@@ -62,7 +64,7 @@ An account must have the backend-granted `preferences:manage` capability. Open P
 
 For example, a tenant can lock the form layout to rail and the page size to ten while allowing personal currency formatting. Library layout and page-size controls cannot use local state to bypass those locks. Updating a policy while a page is open must replace conflicting local display choices.
 
-See the [policy API/storage guide](../../desktop-clients/docs/tenant-preference-policies.md) for revisions, scope, retained personal overrides and authorization. Display policy is not permission to view, edit, approve or export business data.
+See the [policy API/storage guide](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/tenant-preference-policies.md) for revisions, scope, retained personal overrides and authorization. Display policy is not permission to view, edit, approve or export business data.
 
 ## User flow: try and reuse a template
 

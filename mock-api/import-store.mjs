@@ -1,7 +1,7 @@
 import {mkdirSync,readFileSync,writeFileSync,renameSync} from 'node:fs';
 import {dirname} from 'node:path';
 import {createHash} from 'node:crypto';
-import {validateImportRow,importIdentity} from '../desktop-clients/packages/erp-config/src/imports.ts';
+import {validateImportRow,importIdentity} from './contracts/erp-config/imports.ts';
 /** Each record has a deterministic job/row identity, making job receipt recovery safe. */
 export function createImportStore(file,{definition,existing,alreadySaved,save}) {
  let jobs={};try{jobs=JSON.parse(readFileSync(file,'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}

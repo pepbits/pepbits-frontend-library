@@ -2,7 +2,7 @@ import {readFileSync,readdirSync} from 'node:fs';
 import {join,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createApplicationConfig} from './application-config.mjs';
-import {PAGE_REGISTRY} from '../desktop-clients/packages/erp-config/src/navigation.ts';
+import {PAGE_REGISTRY} from './contracts/erp-config/navigation.ts';
 const root=process.env.NEXORA_CONFIG_DIR??join(dirname(fileURLToPath(import.meta.url)),'config');
 const store=createApplicationConfig(root,new Set(Object.keys(PAGE_REGISTRY)));
 const report={};let navigationMissing=0;

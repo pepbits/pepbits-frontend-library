@@ -1,11 +1,11 @@
 import {runtimeActions,applyRuntimeDemo} from './dcp-runtime-store.mjs';
 import {applyDesignerLifecycle,lifecycleActions,designerEntities,validBinding} from './dcp-lifecycle-store.mjs';
-import {resolveDesignerCatalog} from '../desktop-clients/packages/erp-config/src/dcp-catalog.ts';
+import {resolveDesignerCatalog} from './contracts/erp-config/dcp-catalog.ts';
 import {writeCatalogVersion} from './dcp-catalog-store.mjs';
 import {readFileSync} from 'node:fs';
 import {randomUUID,createHash} from 'node:crypto';
 import {parseCsv,writeCsvSnapshot} from './clinical-template-csv.ts';
-import {DESIGNER_TYPES,isDesignerDefinition,designerOptions,previewErrors,validDesignerPayload} from '../desktop-clients/packages/erp-config/src/dcp-designer.ts';
+import {DESIGNER_TYPES,isDesignerDefinition,designerOptions,previewErrors,validDesignerPayload} from './contracts/erp-config/dcp-designer.ts';
 const initial=JSON.parse(readFileSync(new URL('./config/dcp-designer/initial.json',import.meta.url),'utf8'));
 const examples=JSON.parse(readFileSync(new URL('./config/dcp-designer/examples.json',import.meta.url),'utf8'));
 const seedCatalog=JSON.parse(readFileSync(new URL('./config/dcp-designer/catalog.json',import.meta.url),'utf8'));

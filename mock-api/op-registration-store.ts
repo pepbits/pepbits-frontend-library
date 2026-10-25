@@ -2,7 +2,7 @@ import {
   DEFAULT_DRAFT_POLICY,
   filterDraftValues,
   type DraftPolicy,
-} from "../desktop-clients/packages/erp-config/src/draft-policy.ts";
+} from "./contracts/erp-config/draft-policy.ts";
 import { readFileSync } from "node:fs";
 import { randomUUID, createHash } from "node:crypto";
 import { parseCsv, writeCsvSnapshot } from "./clinical-template-csv.ts";
@@ -14,8 +14,8 @@ import {
   type RegistrationRecord,
   type RegistrationAppointment,
   type RegistrationValues,
-} from "../desktop-clients/packages/erp-config/src/op-registration.ts";
-import type { PatientOverview } from "../desktop-clients/packages/erp-config/src/clinical-templates.ts";
+} from "./contracts/erp-config/op-registration.ts";
+import type { PatientOverview } from "./contracts/erp-config/clinical-templates.ts";
 type User = { id: string; tenantId?: string; name?: string };
 type Result = { status: number; body: unknown };
 type Bucket = {

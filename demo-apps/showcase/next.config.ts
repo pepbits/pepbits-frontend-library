@@ -1,5 +1,5 @@
 import type {NextConfig} from "next";
-const config: NextConfig = {agentRules:false, transpilePackages: ["@pepbits/ai", "@pepbits/i18n", "@pepbits/components", "@pepbits/icons", "@pepbits/ui", "@pepbits/preferences", "@pepbits/tokens", "@pepbits/patterns", "@pepbits/data", "@pepbits/page-engines", "@pepbits/shell", "@pepbits/platform"], experimental: {cpus: 2}};
+const config: NextConfig = {agentRules:false, output:"standalone", transpilePackages: ["@pepbits/ai", "@pepbits/i18n", "@pepbits/components", "@pepbits/icons", "@pepbits/ui", "@pepbits/preferences", "@pepbits/tokens", "@pepbits/patterns", "@pepbits/data", "@pepbits/page-engines", "@pepbits/shell", "@pepbits/platform"], experimental: {cpus: 2}};
 config.webpack = (webpackConfig) => {
   webpackConfig.resolve.conditionNames = ['pepbits-source', ...webpackConfig.resolve.conditionNames];
   return webpackConfig;

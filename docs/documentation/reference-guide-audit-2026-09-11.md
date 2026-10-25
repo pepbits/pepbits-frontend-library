@@ -10,17 +10,17 @@ The current backlog contains **168 authoring issues, 516 incomplete translation 
 
 ## How the source was traced
 
-- [Navigation registry](../../desktop-clients/packages/erp-config/src/navigation.ts): explicit page types/entities, fallback kind and entity-name derivation.
-- [Page renderer](../../desktop-clients/packages/erp-screens/src/page-renderer.tsx): dispatches dashboards, lists, forms, billing, reports and specialized screens; new/edit/view worklist targets use DynamicRecordForm.
-- [Worklist configuration](../../desktop-clients/packages/erp-data/src/mock.ts): selects drug, prescription, consultation, patient, customer, invoice, employee, user, product, supplier or order fixture families, otherwise genericRows.
-- [Entity schemas](../../desktop-clients/packages/erp-config/src/entity-schemas.ts): specialized user, customer and consultation schemas; other entities receive general identification, assignment, detail and audit sections.
+- [Navigation registry](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-config/src/navigation.ts): explicit page types/entities, fallback kind and entity-name derivation.
+- [Page renderer](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/page-renderer.tsx): dispatches dashboards, lists, forms, billing, reports and specialized screens; new/edit/view worklist targets use DynamicRecordForm.
+- [Worklist configuration](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-data/src/mock.ts): selects drug, prescription, consultation, patient, customer, invoice, employee, user, product, supplier or order fixture families, otherwise genericRows.
+- [Entity schemas](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-config/src/entity-schemas.ts): specialized user, customer and consultation schemas; other entities receive general identification, assignment, detail and audit sections.
 - [Lifecycle rules](README.md): authored status requires reviewed instructions; translation completeness and native-review evidence are separate requirements.
 
 ## What can be documented from implementation
 
 ### Shared worklists — 123 pages
 
-Source: [WorklistPage](../../desktop-clients/packages/erp-screens/src/worklist/worklist-page.tsx), [DynamicRecordForm](../../desktop-clients/packages/erp-screens/src/forms/dynamic-record-form.tsx) and the configuration/schema sources above.
+Source: [WorklistPage](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/worklist/worklist-page.tsx), [DynamicRecordForm](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/forms/dynamic-record-form.tsx) and the configuration/schema sources above.
 
 The actual reusable workflow includes searching, filtering, paging, column layout, table/card presentation, record navigation and configurable actions. New/edit/view record targets use the shared form; the form uses the record editor, validation, explicit draft/save, recovery and conflicts. Worklist inline edits remain client state: the source explicitly states there is no server copy of those generated rows. A successful form save must not be described as updating the fixture-backed worklist or executing a specialized business transaction.
 
@@ -68,13 +68,13 @@ Author each guide against its exact fields and enabled controls. Explain fixture
 
 ### Dashboards — 8 pages
 
-Source: [ModuleDashboard](../../desktop-clients/packages/erp-screens/src/dashboard/module-dashboard.tsx). The renderer imports dashboardData from erp-data. Document navigation, metric/chart presentation and available page links as a demonstration. Do not describe the fixtures as live operational totals or assert module-specific calculations.
+Source: [ModuleDashboard](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/dashboard/module-dashboard.tsx). The renderer imports dashboardData from erp-data. Document navigation, metric/chart presentation and available page links as a demonstration. Do not describe the fixtures as live operational totals or assert module-specific calculations.
 
 `hr-dashboard`, `finance-dashboard`, `payroll-dashboard`, `sales-dashboard`, `supply-dashboard`, `healthcare-dashboard`, `pharmacy-dashboard`, `library-dashboard`.
 
 ### Reports — 22 pages
 
-Source: [ReportsPage](../../desktop-clients/packages/erp-screens/src/reports/reports-page.tsx). The renderer imports the shared reportRows fixture. Document the visible filters, chart/table presentation, export controls and separately implemented scheduled-report configuration. Do not claim that a named balance sheet, tax return, occupancy report or statutory return is computed from operational records. Production report definitions, calculations and data providers require domain implementation and acceptance.
+Source: [ReportsPage](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/reports/reports-page.tsx). The renderer imports the shared reportRows fixture. Document the visible filters, chart/table presentation, export controls and separately implemented scheduled-report configuration. Do not claim that a named balance sheet, tax return, occupancy report or statutory return is computed from operational records. Production report definitions, calculations and data providers require domain implementation and acceptance.
 
 `workforce-report`, `attendance-report`, `compliance-report`, `profit-loss-report`, `balance-sheet-report`, `ar-aging-report`, `tax-return-report`, `pay-register-report`, `payslip-report`, `statutory-report`, `pipeline-report`, `revenue-report`, `margin-report`, `inventory-valuation-report`, `supplier-performance-report`, `stock-aging-report`, `occupancy-report`, `los-report`, `denial-rate-report`, `consumption-report`, `expiry-risk-report`, `stock-turn-report`.
 
@@ -82,14 +82,14 @@ Source: [ReportsPage](../../desktop-clients/packages/erp-screens/src/reports/rep
 
 | Pages | Renderer/source | Evidence-based guide scope |
 | --- | --- | --- |
-| `user-master` | [DynamicRecordForm](../../desktop-clients/packages/erp-screens/src/forms/dynamic-record-form.tsx), user entity schema | Identity, access assignment, security and default-setting fields; validation and record/draft recovery. A field storing a role or MFA choice does not itself provision an identity provider. |
-| `billing-entry`, `sales-invoice` | [BillingPage](../../desktop-clients/packages/erp-screens/src/billing/billing-page.tsx) | Shared invoice editing/calculation, line controls and record save; distinguish demo calculations from accounting posting or real payment collection. |
-| `consultation-entry` | [ConsultationPage](../../desktop-clients/packages/erp-screens/src/consultation/consultation-page.tsx) | Existing configured consultation builder and record editor, with selections, prompts, documentation, coding and orders. This is distinct from the new consultation-entry-design/v2 pages. Clinical/code correctness requires qualified validation. |
-| `spreadsheet-studio` | [SpreadsheetPage](../../desktop-clients/packages/erp-screens/src/spreadsheet/index.tsx) | Actual cell editing, range paste, Excel/CSV import, export and cost recalculation; explain local scratchpad lifetime. |
-| `theme-studio`, `accessibility`, `page-catalog`, `component-contracts`, `keyboard-shortcuts`, `integration-guide` | [LibraryReferencePage](../../desktop-clients/packages/erp-screens/src/library/reference-pages.tsx) | Real theme/radius and accessibility preference controls; searchable accessible page catalog; component contract links; shortcut preference/list; provider/preference/adapter integration explanation. Preview inputs are demonstrations, not business records. |
-| `notifications`, `messages` | [InboxPage](../../desktop-clients/packages/erp-screens/src/inbox/inbox-page.tsx) | Inbox reading/actions and record navigation according to actual backing service; do not imply external email/chat delivery merely from page names. |
-| `ai-administration` | [Page renderer](../../desktop-clients/packages/erp-screens/src/page-renderer.tsx), AiAdministration from ai-ui | Provider/policy/credential configuration, access restrictions and configured provider limitations. This page explicitly disables its own assistant. |
-| `error-monitor` | [ErrorMonitor](../../desktop-clients/packages/erp-shell/src/error-monitor.tsx) | Sanitized incident listing/details and implemented monitor actions; distinguish demo incident storage from production observability. |
+| `user-master` | [DynamicRecordForm](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/forms/dynamic-record-form.tsx), user entity schema | Identity, access assignment, security and default-setting fields; validation and record/draft recovery. A field storing a role or MFA choice does not itself provision an identity provider. |
+| `billing-entry`, `sales-invoice` | [BillingPage](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/billing/billing-page.tsx) | Shared invoice editing/calculation, line controls and record save; distinguish demo calculations from accounting posting or real payment collection. |
+| `consultation-entry` | [ConsultationPage](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/consultation/consultation-page.tsx) | Existing configured consultation builder and record editor, with selections, prompts, documentation, coding and orders. This is distinct from the new consultation-entry-design/v2 pages. Clinical/code correctness requires qualified validation. |
+| `spreadsheet-studio` | [SpreadsheetPage](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/spreadsheet/index.tsx) | Actual cell editing, range paste, Excel/CSV import, export and cost recalculation; explain local scratchpad lifetime. |
+| `theme-studio`, `accessibility`, `page-catalog`, `component-contracts`, `keyboard-shortcuts`, `integration-guide` | [LibraryReferencePage](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/library/reference-pages.tsx) | Real theme/radius and accessibility preference controls; searchable accessible page catalog; component contract links; shortcut preference/list; provider/preference/adapter integration explanation. Preview inputs are demonstrations, not business records. |
+| `notifications`, `messages` | [InboxPage](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/inbox/inbox-page.tsx) | Inbox reading/actions and record navigation according to actual backing service; do not imply external email/chat delivery merely from page names. |
+| `ai-administration` | [Page renderer](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-screens/src/page-renderer.tsx), AiAdministration from ai-ui | Provider/policy/credential configuration, access restrictions and configured provider limitations. This page explicitly disables its own assistant. |
+| `error-monitor` | [ErrorMonitor](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/packages/erp-shell/src/error-monitor.tsx) | Sanitized incident listing/details and implemented monitor actions; distinguish demo incident storage from production observability. |
 
 ## Misleading page names that need special care
 

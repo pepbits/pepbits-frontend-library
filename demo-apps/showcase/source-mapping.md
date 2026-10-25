@@ -1,5 +1,7 @@
 # Developer Library source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 This is a recreation against the public library APIs, with the original workspace left intact. All paths below describe read-only reference sources.
 
 | Original source under `desktop-clients/` | Showcase destination / boundary |

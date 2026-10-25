@@ -1,306 +1,91 @@
 name: CI
-
-# Every push and every pull request. The point is that nobody has to remember to
-# run anything: 422 tests, six property checks and thirteen typecheck targets
-# existed for weeks and were all opt-in, which means they held right up until
-# the first person who did not know to run them.
 on:
   push:
   pull_request:
-
-# A second push to the same branch cancels the first. Waiting on a run for a
-# commit that has already been replaced tells you nothing.
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
-
 env:
+  NEXT_TELEMETRY_DISABLED: '1'
+  NEXT_PUBLIC_API_URL: /api
+  VITE_API_URL: /api
+  NEXT_PUBLIC_SETTLE_API_URL: /settle-api
+  NEXT_PUBLIC_CAREGRID_API_URL: /caregrid-api
   HC_RCM_MOCK_REPO: ${{ github.workspace }}/test-dependencies/mock-services
-
 jobs:
   check:
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
-
-    defaults:
-      run:
-        working-directory: desktop-clients
-
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      # 24, because the packages ship raw TypeScript and Node's type stripping
-      # is what lets the verify scripts import the REAL modules with no build
-      # step. On an older Node they would not parse.
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: desktop-clients/package-lock.json
-
-      # ci, not install: it installs exactly the lockfile and fails if
-      # package.json and the lock have drifted, which is a real failure and not
-      # something to paper over on a build machine.
-      - name: Install
-        run: npm ci && npm ci --prefix ../dummy-api && npm ci --prefix ../dummy-api/access-runtime && npm ci --prefix ../dummy-api/diagnostics-runtime && npm ci --prefix ../dummy-api/quality-source && npm ci --prefix ../dummy-api/quality-runtime && npm ci --prefix ../dummy-api/pharmacy-runtime && npm ci --prefix scripts/diagnostics/style-tools --ignore-scripts
-
-      - name: Documentation contracts
-        env:
-          DOCS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
-        run: |
-          node ../docs/tools/check-docs.mjs
-          node --test ../docs/tools/check-docs.test.mjs ../docs/tools/documentation-contracts.test.mjs
-          node ../docs/tools/documentation-lifecycle.mjs check
-
-      # Before the tests, because it is the fastest check and the one most
-      # likely to be red — vitest transpiles and does not typecheck, so a green
-      # suite says nothing about this.
-      - name: Typecheck
-        run: npm run typecheck
-
-      - name: Test
-        run: npm test
-
-      - name: Checkout pinned synthetic payment simulators
-        uses: actions/checkout@v4
+          cache-dependency-path: package-lock.json
+      - uses: actions/checkout@v4
         with:
           repository: pepbits/pepbits-mocking-app
           ref: 5ced4f8b021aa317859e6999d7c96ef14af63ee1
           path: test-dependencies/mock-services
           token: ${{ secrets.MOCK_SERVICES_READ_TOKEN || github.token }}
           persist-credentials: false
-
-      - name: API and suite-registry tests
-        run: npm run test:api && npm run test:e2e-registry
-
-      - name: Deployment lifecycle tests
-        run: npm run test:deployment
-
-      # No .env.local on a build machine. Both shells fall back to "/api", which
-      # is right here: this step asks whether it compiles, not who it talks to.
-      - name: Build
-        run: npm run build
-
-      # After the build on purpose. verify:parity reads the EMITTED css to prove
-      # a package's classes survived Tailwind's content scan, and it skips
-      # silently when there is nothing built — which would make it look like it
-      # passed.
-      - name: Property checks
-        run: npm run verify
-
-      # Only when something failed, and only for as long as it takes to read.
-      - name: Upload build logs
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-logs
-          path: |
-            desktop-clients/apps/web/.next/build-manifest.json
-            desktop-clients/**/*.log
-          retention-days: 7
-          if-no-files-found: ignore
-
-  # A separate job, so "the unit suite is fine but the browser disagrees" is a
-  # distinguishable answer rather than one red tick covering both. It needs the
-  # whole stack up and a real browser, which is why it is not folded into the
-  # step above.
-  browser:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    # Only after the fast checks pass. Burning a browser download on a build
-    # that does not typecheck tells you nothing you did not already know.
-    needs: check
-
-    defaults:
-      run:
-        working-directory: desktop-clients
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-          cache-dependency-path: desktop-clients/package-lock.json
-
-      - name: Install
-        run: npm ci && npm ci --prefix ../dummy-api && npm ci --prefix ../dummy-api/access-runtime && npm ci --prefix ../dummy-api/diagnostics-runtime && npm ci --prefix ../dummy-api/quality-source && npm ci --prefix ../dummy-api/quality-runtime && npm ci --prefix ../dummy-api/pharmacy-runtime && npm ci --prefix scripts/diagnostics/style-tools --ignore-scripts
-
-      # --with-deps because a GitHub runner has none of the shared libraries a
-      # headless Chromium links against, and the failure without it is a bare
-      # "error while loading shared libraries" a long way from its cause.
-      - name: Install Chromium
-        run: |
-          npm install --no-save --package-lock=false playwright@1.49.1
-          npx playwright install --with-deps chromium
-
-      # The BUILT shells, not dev servers. Two reasons, and the second was
-      # learned the hard way: a production build is what actually ships, so a
-      # browser check against `next dev` proves something nobody deploys — and
-      # `next dev`'s HMR websocket is fragile against anything else on the box.
-      # On the machine this was written on, a speech-gateway upgrade handler was
-      # answering /_next/hmr, and the shell never hydrated at all.
-      - name: Build the shells
+      - name: Install root workspace and backend
+        run: npm ci --no-audit --no-fund && bash tooling/scripts/install-api.sh
+      - name: Packages, demos, documentation, backend and deployment contracts
         env:
-          NEXT_PUBLIC_API_URL: http://127.0.0.1:3200
-          VITE_API_URL: http://127.0.0.1:3200
-        run: npx turbo run build --filter=web --filter=desktop
-
-      - name: Start the stack
+          DOCS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: bash tooling/scripts/ci-gates.sh
+      - name: Chromium runtime
+        run: npx playwright install --with-deps chromium
+      - name: Shell browser regressions
+        run: npm run test:browser -w @pepbits/shell
+      - name: Sequential production demo workflows and axe
         run: |
-          node ../dummy-api/server.mjs > /tmp/api.log 2>&1 &
-          # Each from its own directory: both resolve their root relative to
-          # cwd, and `vite preview` invoked from the workspace root serves the
-          # wrong tree and answers 404 to everything.
-          (cd apps/web && npx next start --port 3100 > /tmp/web.log 2>&1 &)
-          (cd apps/desktop && npx vite preview --port 3101 --strictPort > /tmp/desktop.log 2>&1 &)
-          # Each service is asked for an endpoint it actually serves. The API
-          # 404s on "/" by design — it has no index — so waiting for a 200 there
-          # waits for ever against a service that came up in a second.
-          wait_for() {
-            for attempt in $(seq 1 90); do
-              code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 2 "$1" || true)
-              case "$code" in
-                200|307) echo "  $1 up after ${attempt}s"; return 0 ;;
-              esac
-              sleep 1
-            done
-            echo "  $1 never came up"; tail -40 /tmp/api.log /tmp/web.log /tmp/desktop.log; return 1
-          }
-          wait_for http://127.0.0.1:3200/health
-          wait_for http://127.0.0.1:3100/
-          wait_for http://127.0.0.1:3101/
-
-      - name: Browser checks
-        run: npm run e2e
-
-      # The stack log is where a failure explains itself when the suite only
-      # says a selector timed out.
-      - name: Upload the stack log
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: stack-logs
-          path: |
-            /tmp/api.log
-            /tmp/web.log
-            /tmp/desktop.log
-          retention-days: 7
-          if-no-files-found: ignore
-
-
-  feature-browser:
-    runs-on: ubuntu-24.04
-    needs: check
-    # navigation includes the 184-page reference sweep (up to 15 minutes on its own).
-    timeout-minutes: 60
-    strategy:
-      fail-fast: false
-      matrix:
-        group: [features, navigation, product]
-    defaults:
-      run:
-        working-directory: desktop-clients
-    env:
-      E2E_MANAGED_API: "1"
-      E2E_API: http://127.0.0.1:3330
-      # Most navigation suites drive the web shell (real links and URLs); the desktop shell is checked separately.
-      E2E_BASE: http://127.0.0.1:3100
-      E2E_DESKTOP: http://127.0.0.1:3109
-      VITE_API_URL: http://127.0.0.1:3330
-      NEXT_PUBLIC_API_URL: http://127.0.0.1:3330
-      E2E_FIXTURE_DIR: /tmp/nexora-ci-fixture
-      NEXORA_CONFIG_DIR: /tmp/nexora-ci-fixture/config
-      NEXORA_DATA_DIR: /tmp/nexora-ci-fixture/data
-      RECORD_DATA_DIR: /tmp/nexora-ci-fixture/data
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-          cache-dependency-path: desktop-clients/package-lock.json
-      - run: npm ci && npm ci --prefix ../dummy-api && npm ci --prefix ../dummy-api/access-runtime && npm ci --prefix ../dummy-api/diagnostics-runtime && npm ci --prefix ../dummy-api/quality-source && npm ci --prefix ../dummy-api/quality-runtime && npm ci --prefix ../dummy-api/pharmacy-runtime && npm ci --prefix scripts/diagnostics/style-tools --ignore-scripts
-      - name: Browser runtime
-        run: |
-          npm install --no-save --package-lock=false playwright@1.49.1
-          npx playwright install --with-deps chromium
-      - name: Prepare fixtures
-        run: node scripts/prepare-e2e.mjs ${{ matrix.group }}
-      # The managed API loads the compiled reference workers (access, quality, pharmacy, diagnostics).
-      - name: Prepare API workers
-        run: npm run pretest:api
-      - name: Build tested web and desktop browser shells
-        run: npx turbo run build --filter=web --filter=desktop
-      - name: Start isolated stack
-        run: |
-          (cd apps/web && npx next start --hostname 127.0.0.1 --port 3100 > /tmp/feature-web.log 2>&1 &)
-          (cd apps/desktop && npm run preview -- --host 127.0.0.1 --port 3109 > /tmp/feature-desktop.log 2>&1 &)
-          for url in http://127.0.0.1:3100/ http://127.0.0.1:3109/; do
-            for attempt in $(seq 1 90); do
-              if curl -fsS "$url" > /dev/null; then break; fi
-              [ "$attempt" = 90 ] && { echo "$url never came up"; exit 1; }
-              sleep 1
-            done
+          for demo in reports school tenant-admin healthcare erp desktop; do
+            node tooling/scripts/run-demo-integration.mjs "$demo"
           done
-      - name: Run registered suites
-        run: node e2e/run.mjs ${{ matrix.group }}
+      - name: Build and validate test-site archive locally
+        run: npm run package:test-site && npm run verify:test-site
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: feature-logs-${{ matrix.group }}
+          name: root-check-diagnostics
           path: |
-            /tmp/feature-*.log
-            /tmp/*artifacts/
-
+            demo-apps/*/.next/build-manifest.json
+            /tmp/*-integration-identity.json
+            /tmp/*-browser.json
+            /tmp/*-result.json
+          retention-days: 7
+          if-no-files-found: ignore
   native-linux:
     runs-on: ubuntu-24.04
     needs: check
     timeout-minutes: 45
-    defaults:
-      run:
-        working-directory: desktop-clients
-    env:
-      E2E_API: http://127.0.0.1:3330
-      VITE_API_URL: http://127.0.0.1:3330
-      NEXORA_DATA_DIR: /tmp/nexora-native-ci/data
-      RECORD_DATA_DIR: /tmp/nexora-native-ci/data
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: desktop-clients/package-lock.json
       - uses: dtolnay/rust-toolchain@stable
-      - name: Native runtime
+      - name: Native prerequisites
         run: |
           sudo apt-get update
           sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libsoup-3.0-dev libayatana-appindicator3-dev librsvg2-dev patchelf webkit2gtk-driver xvfb
           cargo install tauri-driver --locked
-      - run: npm ci && npm ci --prefix ../dummy-api && npm ci --prefix ../dummy-api/access-runtime && npm ci --prefix ../dummy-api/diagnostics-runtime && npm ci --prefix ../dummy-api/quality-source && npm ci --prefix ../dummy-api/quality-runtime && npm ci --prefix ../dummy-api/pharmacy-runtime && npm ci --prefix scripts/diagnostics/style-tools --ignore-scripts
-      - name: Build native debug application
-        working-directory: desktop-clients/apps/desktop
-        run: npm exec -- tauri build --debug --no-bundle
-      - name: Native lifecycle and localization
-        run: |
-          PORT=3330 node ../dummy-api/server.mjs > /tmp/native-api.log 2>&1 &
-          for attempt in $(seq 1 90); do
-            if curl -fsS http://127.0.0.1:3330/health; then break; fi
-            sleep 1
-          done
-          curl -fsS http://127.0.0.1:3330/health
-          mkdir -p /tmp/nexora-native-ci/config /tmp/nexora-native-ci/cache /tmp/nexora-native-ci/runtime
-          chmod 700 /tmp/nexora-native-ci/runtime
-          export XDG_CONFIG_HOME=/tmp/nexora-native-ci/config XDG_CACHE_HOME=/tmp/nexora-native-ci/cache XDG_DATA_HOME=/tmp/nexora-native-ci/app-data XDG_RUNTIME_DIR=/tmp/nexora-native-ci/runtime
-          xvfb-run -a bash -c 'tauri-driver --native-driver /usr/bin/WebKitWebDriver > /tmp/native-driver.log 2>&1 & driver_pid=$!; trap "kill $driver_pid" EXIT; sleep 2; node e2e/run.mjs native'
+      - run: npm ci --no-audit --no-fund && bash tooling/scripts/install-api.sh && npm run build:api
+      - name: Build desktop native executable
+        env:
+          VITE_API_URL: http://127.0.0.1:3330
+        run: npm exec -w @pepbits-demo/desktop -- tauri build --debug --no-bundle
+      - name: Native host lifecycle and localization
+        run: bash tooling/scripts/check-native.sh
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: native-logs
-          path: |
-            /tmp/native-*.log
-            /tmp/localization-native-artifacts/
+          name: native-diagnostics
+          path: /tmp/pepbits-native-*/
+          retention-days: 7

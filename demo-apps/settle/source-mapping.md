@@ -1,5 +1,7 @@
 # Settle source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Phase 6e-4, base `5bbb130` on `main`. `source/settle` is a read-only reference and its backend runs unchanged. [App guide](README.md), [feature contract](../../docs/features/settle-demo.md) and [delivery record](../../docs/releases/unreleased/restructure-phase-6e-4-2026-10-24.md) state verification and deferrals.
 
 | Original responsibility | Destination and treatment |

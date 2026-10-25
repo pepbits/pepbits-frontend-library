@@ -14,9 +14,9 @@ import {createHealthcareSuiteRcmStore} from './healthcare-suite-rcm-store.mjs';
 import {createReferenceHealthcareSuiteStore} from './reference-healthcare-suite-store.mjs';
 import {createReferenceSchoolStore} from './reference-school-store.mjs';
 import {resolveSchoolView} from './school-view-policy.mjs';
-import {schoolPathAllowed} from '../desktop-clients/packages/erp-config/src/school-role-views.ts';
+import {schoolPathAllowed} from './contracts/erp-config/school-role-views.ts';
 import {createReferenceErpStore} from './reference-erp-store.mjs';
-import {isDcpValues,isDcpRevision} from '../desktop-clients/packages/erp-config/src/dcp-runtime.ts';
+import {isDcpValues,isDcpRevision} from './contracts/erp-config/dcp-runtime.ts';
 import {createDesignerStore} from './dcp-designer-store.mjs';
 import {createCarePageStore} from './care-page-store.mjs';
 import {createIdentityStore} from './identity-device-store.mjs';
@@ -34,12 +34,12 @@ import {createMonitoringStore} from "./monitoring-store.mjs";
 import {createDocumentationStore} from "./documentation-store.mjs";
 import {createPreferenceStore,canManagePreferences} from "./preference-store.mjs";
 import {createReportScheduler} from "./report-scheduler.mjs";
-import {reportRows} from "../desktop-clients/packages/erp-data/src/report-data.ts";
+import {reportRows} from "./contracts/erp-data/report-data.ts";
 import {createAuditStore} from "./audit-store.mjs";
 import {createCredentialStore} from "./credential-store.mjs";
 import {providerAllowed, credentialExpired, redactProviderContext, createUserLimiter} from "./ai-security.mjs";
-import {resolveAi} from "../desktop-clients/packages/ai-config/src/gates.ts";
-import {gatesForPage} from "../desktop-clients/packages/ai-config/src/policy.ts";
+import {resolveAi} from "./contracts/ai-config/gates.ts";
+import {gatesForPage} from "./contracts/ai-config/policy.ts";
 import {homedir} from "node:os";
 import { allowedMethods } from "./route-methods.mjs";
 import {withMessageMetadata} from "./message-descriptors.mjs";
@@ -60,12 +60,12 @@ import {withMessageMetadata} from "./message-descriptors.mjs";
  *   PORT=4100 node server.mjs
  */
 import { createApplicationConfig } from "./application-config.mjs";
-import { BRANCHES, PAGE_REGISTRY } from "../desktop-clients/packages/erp-config/src/navigation.ts";
-import { getEntitySchema } from "../desktop-clients/packages/erp-config/src/entity-schemas.ts";
-import { validateForm } from "../desktop-clients/packages/erp-config/src/form-rules.ts";
+import { BRANCHES, PAGE_REGISTRY } from "./contracts/erp-config/navigation.ts";
+import { getEntitySchema } from "./contracts/erp-config/entity-schemas.ts";
+import { validateForm } from "./contracts/erp-config/form-rules.ts";
 import { createApprovalStore } from "./approval-store.mjs";
 import { createImportStore } from "./import-store.mjs";
-import { getImportDefinition } from "../desktop-clients/packages/erp-config/src/imports.ts";
+import { getImportDefinition } from "./contracts/erp-config/imports.ts";
 import { createRecordPanelsStore } from "./record-panels-store.mjs";
 import { createWorkspaceStore } from "./workspace-store.mjs";
 import { createRecordStore } from "./record-store.mjs";
@@ -355,8 +355,8 @@ function savePrefs() {
  * renders, and a search that disagrees with the table it filters is worse than
  * no search.
  * ------------------------------------------------------------------------- */
-import { getWorklistConfig } from "../desktop-clients/packages/erp-data/src/mock.ts";
-import { DATA_CLASSIFICATIONS } from "../desktop-clients/packages/erp-config/src/data-classification.ts";
+import { getWorklistConfig } from "./contracts/erp-data/mock.ts";
+import { DATA_CLASSIFICATIONS } from "./contracts/erp-config/data-classification.ts";
 
 /* The redaction table, as a function. A value never reaches a log; a key does,
    because "someone searched by MRN" is what an audit needs and "AV204581" is

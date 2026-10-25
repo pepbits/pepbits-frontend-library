@@ -67,4 +67,4 @@ native-language review.
 ## Upgrade, rollback and publication
 
 Push to `main` triggers the Jenkins pipeline, which deploys the test site through the pb-srv5 receiver; rollback is a
-redeploy of the previous release folder (see the [test site runbook](../../../desktop-clients/docs/frontend-test-deployment.md)).
+redeploy of the previous release folder (see the [test site runbook](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/frontend-test-deployment.md)).

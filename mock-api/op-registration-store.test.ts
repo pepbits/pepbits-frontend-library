@@ -8,7 +8,7 @@ import { createRegistrationStore } from "./op-registration-store.ts";
 import type {
   RegistrationView,
   RegistrationCommand,
-} from "../desktop-clients/packages/erp-config/src/op-registration.ts";
+} from "./contracts/erp-config/op-registration.ts";
 function setup() {
   const dir = mkdtempSync(join(tmpdir(), "registration-")),
     file = join(dir, "records.csv"),

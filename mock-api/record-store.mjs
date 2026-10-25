@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createHash } from 'node:crypto';
-import {filterDraftValues} from '../desktop-clients/packages/erp-config/src/draft-policy.ts';
+import {filterDraftValues} from './contracts/erp-config/draft-policy.ts';
 
 /** Demo JSON store. A production adapter must use transactions and authorization. */
 export function createRecordStore(file, {draftPolicy, now=()=>Date.now()}={}) {

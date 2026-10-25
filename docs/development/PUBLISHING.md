@@ -1,9 +1,10 @@
 # Publishing the PepBits library
 
-Phase 7a prepares twelve **unpublished 0.1.0 candidates** for the `@pepbits` scope
-on **GitHub Packages**, `https://npm.pkg.github.com`. The repository is
-`git@github.com:pepbits/pepbits-frontend-library.git`. This is a manual server
-workflow; no CI publication or deployment is configured.
+All twelve **0.1.0 packages were published in phase 7b** to the `@pepbits` scope on
+GitHub Packages (`https://npm.pkg.github.com`) from repository
+`git@github.com:pepbits/pepbits-frontend-library.git`. The preparation and publication
+records retain their original scope. Future publication remains a manual owner operation;
+root test-site delivery is separate and opt-in.
 
 ## Build and installation contract
 
@@ -162,9 +163,8 @@ then installs the published versions, for example:
 npm install @pepbits/tokens@0.1.0 @pepbits/ui@0.1.0 @pepbits/components@0.1.0
 ```
 
-Pin the reviewed set in the product lockfile. This example becomes usable only
-once the owner publishes. Tarballs used by this phase are local proof, not a
-registry release or a migration of Healthcare, ERP, School or Platform.
+Pin the reviewed set in the product lockfile. These 0.1.0 versions are now published for authorized consumers. Phase 7a tarballs
+were local proof; phase 7b publication and each product migration have their own records.
 
 For a faulty later release, restore the consumer's last known-good dependency
 versions and lockfile, reinstall and rebuild. Publish a corrected version through
@@ -175,10 +175,15 @@ clear replacement message (repeat for affected packages):
 npm deprecate @pepbits/ui@0.1.0 "Use the reviewed replacement version" --registry=https://npm.pkg.github.com
 ```
 
-Do not run that illustrative command against this unpublished candidate.
+That deprecation command is illustrative; do not deprecate the published 0.1.0 version
+without an actual defect, replacement and owner authorization.
 Deprecation warns future installers; it does not remove installed code. Package
 access, any deletion/restoration and org policies remain owner operations. There
 are no data migrations or preference resets to roll back in phase 7a. Failed
 builds/packs stop before publication; existing component error/retry/draft
 semantics are unchanged. Exact local results and limits are in the
 [phase 7a release record](../releases/unreleased/restructure-phase-7a-2026-10-25.md).
+
+## Phase 8 registry-only consumers
+
+The twelve 0.1.0 packages are published (phase 7b). Root `npm ci` links local workspaces and does not fetch GitHub Packages, so it requires no `NPM_TOKEN`. The root `release:pack` remains a library publication rehearsal; it does not recreate old product source archives. Former source snapshot packers live in the product repositories and are retired by their registry migrations. Their historical hashes remain evidence. Platform-owned packages retain their separate release pipeline. School’s parallel migration acceptance must be confirmed before merging the coordinated removal. See [phase 8 operations](TEST-SITE.md).

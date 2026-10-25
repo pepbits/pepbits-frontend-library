@@ -1,5 +1,7 @@
 # Healthcare source map
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Sources remain untouched in the original desktop workspace. Destinations below are in this demo unless a public package is named. See the [current 6b-7 record](../../docs/releases/unreleased/restructure-phase-6b-7-2026-10-23.md) and the increment records below for source-scoped validation and deferrals.
 
 | Original source | Destination / treatment |

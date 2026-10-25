@@ -5,7 +5,7 @@ import {
   validateTriage,
   type TriageValues,
   type TriageConfiguration,
-} from "../desktop-clients/packages/erp-config/src/clinical-triage.ts";
+} from "./contracts/erp-config/clinical-triage.ts";
 const config = JSON.parse(
   readFileSync(
     new URL("./config/clinical-triage/form.json", import.meta.url),
