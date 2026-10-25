@@ -1,0 +1,451 @@
+
+> @pepbits-demo/settle@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-4/demo-apps/settle
+
+ ✓ src/modules/settle/tests/bill.test.tsx (7 tests) 7954ms
+   ✓ Bill workspace > explains why finalize is blocked on BL002001 and keeps the server reason visible  1188ms
+   ✓ Bill workspace > marks a pending result ready from the charge drawer  1123ms
+   ✓ Bill workspace > adds a charge with the A shortcut, keyboard selection and Enter (BN001002)  816ms
+   ✓ Bill workspace > collects the due and closes a Bill Now bill in one action  960ms
+   ✓ Bill workspace > waits for the card terminal before any receipt exists  2699ms
+   ✓ Bill workspace > turning shortcuts off removes the listeners but keeps the buttons  495ms
+   ✓ Bill workspace > reopen asks for a reason code and note before calling the API  670ms
+ ✓ src/modules/settle/tests/money.test.tsx (7 tests) 7741ms
+   ✓ Patients, deposits, receipts, approvals and day close > collects a patient deposit and keeps the receipt print link  1161ms
+   ✓ Patients, deposits, receipts, approvals and day close > a card deposit is recorded only after the terminal approves it  3038ms
+   ✓ Patients, deposits, receipts, approvals and day close > realizes selected cheques in bulk  621ms
+   ✓ Patients, deposits, receipts, approvals and day close > realize and bounce act on the picked deposits only  997ms
+   ✓ Patients, deposits, receipts, approvals and day close > approves a request with an optional note and requires a note to reject  478ms
+   ✓ Patients, deposits, receipts, approvals and day close > counts notes against expected cash and requires an explanation for a difference  608ms
+   ✓ Patients, deposits, receipts, approvals and day close > a failed write keeps the entered values for an explicit retry  835ms
+ ❯ src/modules/settle/tests/desk.test.tsx (6 tests | 1 failed) 15343ms
+   ✓ Desk, desk user and counter > shows the work queue, the till and links each item to a filtered list  658ms
+   ✓ Desk, desk user and counter > switching the desk user re-reads every screen as that user  821ms
+   ✓ Desk, desk user and counter > picks a counter through the API and reports it  995ms
+   × Desk, desk user and counter > creates a bill for a patient, visit and bill type and opens it 11567ms
+     → expected { visitId: 'OP050023', …(2) } to match object { billType: 'C', restrictionType: 'N' }
+(1 matching property omitted from actual)
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body[39m
+    [33mstyle[39m=[32m""[39m
+  [36m>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mSE[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mc...
+   ✓ Desk, desk user and counter > quick search finds bills from / and opens the chosen one  756ms
+   ✓ Desk, desk user and counter > the bills summary figures double as filters  544ms
+ ✓ src/modules/settle/tests/admin.test.tsx (7 tests) 4336ms
+   ✓ Settings, reports, audit and print > saves Settle billing preferences through the API, separate from host preferences  946ms
+   ✓ Settings, reports, audit and print > edits a payment mode row and saves only the changed fields  652ms
+   ✓ Settings, reports, audit and print > desk users without the Manage settings right see read-only settings  629ms
+   ✓ Settings, reports, audit and print > exports a report in the effective export format  430ms
+   ✓ Settings, reports, audit and print > exports receipts as CSV by default with formula-safe text  479ms
+   ✓ Settings, reports, audit and print > searches the audit trail on the server  886ms
+   ✓ Settings, reports, audit and print > prints a receipt with the effective currency and amount in words  309ms
+ ✓ src/providers.test.tsx (4 tests) 2063ms
+   ✓ one serialized preference path retains adjacent writes and API revisions  751ms
+   ✓ language catalog refresh preserves the mounted editor and switches direction  610ms
+   ✓ runtime tenant locks replace effective values and block writes  387ms
+   ✓ rejected preference writes retain the accepted state  313ms
+ ✓ src/modules/settle/tests/resources.test.tsx (6 tests) 1957ms
+   ✓ /bills sends the tenant-locked page size to the API  466ms
+   ✓ /receipts sends the tenant-locked page size to the API  403ms
+   ✓ /audit sends the tenant-locked page size to the API  354ms
+   ✓ receipt row detail is reachable by keyboard  587ms
+ ✓ src/adapters/settle.test.ts (4 tests) 22ms
+ ✓ src/navigation.test.ts (3 tests) 9ms
+ ✓ src/routes.test.tsx (117 tests) 93470ms
+   ✓ default > / renders  1668ms
+   ✓ default > /bills renders  1768ms
+   ✓ default > /bills/BL002001 renders  1579ms
+   ✓ default > /bills/BN001002 renders  825ms
+   ✓ default > /patients renders  1211ms
+   ✓ default > /patients/MR240107 renders  592ms
+   ✓ default > /receipts renders  1003ms
+   ✓ default > /receipts?unrealized=1&kind=deposit renders  1086ms
+   ✓ default > /approvals renders  564ms
+   ✓ default > /day-close renders  724ms
+   ✓ default > /reports?r=collections renders  788ms
+   ✓ default > /reports?r=payment-consolidated renders  1132ms
+   ✓ default > /reports?r=patient-dues renders  673ms
+   ✓ default > /reports?r=sponsor-dues renders  541ms
+   ✓ default > /reports?r=outstanding-deposits renders  814ms
+   ✓ default > /reports?r=reward-points renders  914ms
+   ✓ default > /reports?r=finance-postings renders  1398ms
+   ✓ default > /audit renders  706ms
+   ✓ default > /settings renders  727ms
+   ✓ default > /settings?s=counters renders  618ms
+   ✓ default > /settings?s=number-series renders  672ms
+   ✓ default > /settings?s=discount-categories renders  566ms
+   ✓ default > /settings?s=rate-plans renders  543ms
+   ✓ default > /settings?s=users renders  603ms
+   ✓ default > /settings?s=preferences renders  646ms
+   ✓ default > /print/bill/BL002001 renders  724ms
+   ✓ default > /print/bill/BL002001?detail=1 renders  789ms
+   ✓ default > /print/receipt/RC000001 renders  553ms
+   ✓ default > /preferences renders  1475ms
+   ✓ Arabic RTL > / renders  771ms
+   ✓ Arabic RTL > /bills renders  1516ms
+   ✓ Arabic RTL > /bills/BL002001 renders  1767ms
+   ✓ Arabic RTL > /bills/BN001002 renders  1089ms
+   ✓ Arabic RTL > /patients renders  1150ms
+   ✓ Arabic RTL > /patients/MR240107 renders  563ms
+   ✓ Arabic RTL > /receipts renders  1452ms
+   ✓ Arabic RTL > /receipts?unrealized=1&kind=deposit renders  1334ms
+   ✓ Arabic RTL > /approvals renders  731ms
+   ✓ Arabic RTL > /day-close renders  596ms
+   ✓ Arabic RTL > /reports?r=collections renders  798ms
+   ✓ Arabic RTL > /reports?r=payment-consolidated renders  1249ms
+   ✓ Arabic RTL > /reports?r=patient-dues renders  809ms
+   ✓ Arabic RTL > /reports?r=sponsor-dues renders  620ms
+   ✓ Arabic RTL > /reports?r=outstanding-deposits renders  575ms
+   ✓ Arabic RTL > /reports?r=reward-points renders  925ms
+   ✓ Arabic RTL > /reports?r=finance-postings renders  1207ms
+   ✓ Arabic RTL > /audit renders  770ms
+   ✓ Arabic RTL > /settings renders  841ms
+   ✓ Arabic RTL > /settings?s=counters renders  636ms
+   ✓ Arabic RTL > /settings?s=number-series renders  799ms
+   ✓ Arabic RTL > /settings?s=discount-categories renders  606ms
+   ✓ Arabic RTL > /settings?s=rate-plans renders  558ms
+   ✓ Arabic RTL > /settings?s=users renders  872ms
+   ✓ Arabic RTL > /settings?s=preferences renders  635ms
+   ✓ Arabic RTL > /print/bill/BL002001 renders  752ms
+   ✓ Arabic RTL > /print/bill/BL002001?detail=1 renders  733ms
+   ✓ Arabic RTL > /print/receipt/RC000001 renders  578ms
+   ✓ Arabic RTL > /preferences renders  1587ms
+   ✓ reduced motion > / renders  703ms
+   ✓ reduced motion > /bills renders  1220ms
+   ✓ reduced motion > /bills/BL002001 renders  1219ms
+   ✓ reduced motion > /bills/BN001002 renders  922ms
+   ✓ reduced motion > /patients renders  927ms
+   ✓ reduced motion > /patients/MR240107 renders  545ms
+   ✓ reduced motion > /receipts renders  743ms
+   ✓ reduced motion > /receipts?unrealized=1&kind=deposit renders  851ms
+   ✓ reduced motion > /approvals renders  414ms
+   ✓ reduced motion > /day-close renders  496ms
+   ✓ reduced motion > /reports?r=collections renders  554ms
+   ✓ reduced motion > /reports?r=payment-consolidated renders  728ms
+   ✓ reduced motion > /reports?r=patient-dues renders  530ms
+   ✓ reduced motion > /reports?r=sponsor-dues renders  420ms
+   ✓ reduced motion > /reports?r=outstanding-deposits renders  455ms
+   ✓ reduced motion > /reports?r=reward-points renders  600ms
+   ✓ reduced motion > /reports?r=finance-postings renders  1038ms
+   ✓ reduced motion > /audit renders  611ms
+   ✓ reduced motion > /settings renders  607ms
+   ✓ reduced motion > /settings?s=counters renders  500ms
+   ✓ reduced motion > /settings?s=number-series renders  548ms
+   ✓ reduced motion > /settings?s=discount-categories renders  509ms
+   ✓ reduced motion > /settings?s=rate-plans renders  455ms
+   ✓ reduced motion > /settings?s=users renders  456ms
+   ✓ reduced motion > /settings?s=preferences renders  466ms
+   ✓ reduced motion > /print/bill/BL002001 renders  531ms
+   ✓ reduced motion > /print/bill/BL002001?detail=1 renders  803ms
+   ✓ reduced motion > /print/receipt/RC000001 renders  448ms
+   ✓ reduced motion > /preferences renders  1224ms
+   ✓ locked density > / renders  643ms
+   ✓ locked density > /bills renders  976ms
+   ✓ locked density > /bills/BL002001 renders  989ms
+   ✓ locked density > /bills/BN001002 renders  700ms
+   ✓ locked density > /patients renders  959ms
+   ✓ locked density > /patients/MR240107 renders  563ms
+   ✓ locked density > /receipts renders  816ms
+   ✓ locked density > /receipts?unrealized=1&kind=deposit renders  856ms
+   ✓ locked density > /approvals renders  411ms
+   ✓ locked density > /day-close renders  529ms
+   ✓ locked density > /reports?r=collections renders  613ms
+   ✓ locked density > /reports?r=payment-consolidated renders  736ms
+   ✓ locked density > /reports?r=patient-dues renders  538ms
+   ✓ locked density > /reports?r=sponsor-dues renders  452ms
+   ✓ locked density > /reports?r=outstanding-deposits renders  485ms
+   ✓ locked density > /reports?r=reward-points renders  587ms
+   ✓ locked density > /reports?r=finance-postings renders  1059ms
+   ✓ locked density > /audit renders  618ms
+   ✓ locked density > /settings renders  551ms
+   ✓ locked density > /settings?s=counters renders  456ms
+   ✓ locked density > /settings?s=number-series renders  943ms
+   ✓ locked density > /settings?s=discount-categories renders  834ms
+   ✓ locked density > /settings?s=rate-plans renders  1225ms
+   ✓ locked density > /settings?s=users renders  1127ms
+   ✓ locked density > /settings?s=preferences renders  630ms
+   ✓ locked density > /print/bill/BL002001 renders  711ms
+   ✓ locked density > /print/bill/BL002001?detail=1 renders  703ms
+   ✓ locked density > /print/receipt/RC000001 renders  501ms
+   ✓ locked density > /preferences renders  1308ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/modules/settle/tests/desk.test.tsx > Desk, desk user and counter > creates a bill for a patient, visit and bill type and opens it
+AssertionError: expected { visitId: 'OP050023', …(2) } to match object { billType: 'C', restrictionType: 'N' }
+(1 matching property omitted from actual)
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-reduced-motion[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"nexora"[39m
+  [33mdir[39m=[32m"ltr"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--font-ui: Inter, ui-sans-serif, system-ui, sans-serif; --fs-shell: 1; --fs-form: 1; --fs-result: 1; --radius: 14px; --row-py: 10px;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body[39m
+    [33mstyle[39m=[32m""[39m
+  [36m>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mdir[39m=[32m"ltr"[39m
+      [36m>[39m
+        [0m [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative flex h-dvh w-full overflow-hidden flex-row"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"no-print shrink-0 transition-[width] duration-200 w-[var(--sidebar-collapsed)]"[39m
+          [36m/>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Primary navigation"[39m
+            [33mclass[39m=[32m"no-print absolute inset-y-0 flex flex-col bg-[var(--surface)] transition-[width] duration-200 z-30 left-0 border-r border-[var(--border)] w-[var(--sidebar-collapsed)] shadow-[var(--shadow-sm)]"[39m
+            [33mdata-tour[39m=[32m"sidebar"[39m
+            [33mstyle[39m=[32m"--surface: var(--sidebar-surface); --surface-translucent: color-mix(in srgb, var(--sidebar-surface) 88%, transparent); --surface-2: color-mix(in srgb, var(--sidebar-text) 10%, var(--sidebar-surface)); --surface-3: color-mix(in srgb, var(--sidebar-text) 18%, var(--sidebar-surface)); --text: var(--sidebar-text); --text-muted: color-mix(in srgb, var(--sidebar-text) 85%, var(--sidebar-surface)); --text-subtle: color-mix(in srgb, var(--sidebar-text) 70%, var(--sidebar-surface)); --border: color-mix(in srgb, var(--sidebar-text) 16%, var(--sidebar-surface)); --border-strong: color-mix(in srgb, var(--sidebar-text) 30%, var(--sidebar-surface)); --primary-soft: color-mix(in srgb, var(--primary) 30%, var(--sidebar-surface)); --primary-strong: color-mix(in srgb, var(--primary) 35%, var(--sidebar-text));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex h-[var(--header-height)] shrink-0 items-center gap-3 border-b border-[var(--border)] px-3"[39m
+              [33mstyle[39m=[32m"width: var(--sidebar-collapsed); margin-right: auto;"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand navigation"[39m
+                [33mclass[39m=[32m"focus-ring relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-[var(--primary-fill)] text-white shadow-md"[39m
+                [33mtitle[39m=[32m"Expand navigation"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.38),transparent_42%)]"[39m
+                [36m/>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-command relative size-4"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-3 py-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface-2)] justify-center p-1.5"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex size-7 shrink-0 items-center justify-center rounded-lg text-[length:calc(10px*var(--fs-scale))] font-black text-white"[39m
+                  [33mstyle[39m=[32m"background: var(--primary);"[39m
+                [36m>[39m
+                  [0mSE[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shrink-0 border-b border-[var(--border)] px-2 py-2"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Search menu"[39m
+                [33mclass[39m=[32m"focus-ring mx-auto flex size-8 items-center justify-center rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-subtle)] transition hover:border-[var(--primary)] hover:text-[var(--text)]"[39m
+                [33mtitle[39m=[32m"Search menu"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-search size-3.5"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"nex-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 px-2"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mx-auto mb-1.5 h-px w-7 bg-[var(--border)]"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mc...
+
+- Expected
++ Received
+
+  {
+-   "billType": "C",
++   "billType": "P",
+    "restrictionType": "N",
+  }
+
+ ❯ src/modules/settle/tests/desk.test.tsx:50:106
+     48|     await waitFor(() => expect(create).toBeEnabled());
+     49|     fireEvent.click(create);
+     50|     await waitFor(() => expect(settle.calls.find(c => c.method === 'PO…
+       |                                                                                                          ^
+     51|     await waitFor(() => expect(navigation.open).toHaveBeenCalledWith({…
+     52|   });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ MutationObserver.checkRealTimersCallback ../../node_modules/@testing-library/dom/dist/wait-for.js:118:16
+ ❯ MutationObserver.invokeTheCallbackFunction ../../node_modules/jsdom/lib/jsdom/living/generated/MutationCallback.js:19:26
+ ❯ notifyMutationObservers ../../node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:160:22
+ ❯ ../../node_modules/jsdom/lib/jsdom/living/helpers/mutation-observers.js:133:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 8 passed (9)
+      Tests  1 failed | 160 passed (161)
+   Start at  20:20:25
+   Duration  102.09s (transform 4.53s, setup 2.28s, collect 16.95s, tests 132.90s, environment 6.75s, prepare 1.43s)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/settle@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6e-4/demo-apps/settle 

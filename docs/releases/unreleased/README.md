@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Settle phase 6e-4 — patient billing desk demo](restructure-phase-6e-4-2026-10-24.md): Settle billing screens over the unchanged API inside the shared shell; local real-HTTP check passes 20 workflows and 29 routes with zero errors/axe violations; build, unit/typecheck and prior CI/browser scopes recorded separately; fictional data, no deployment.
 - [AllyVora patients phase 6e-6 — patient registration demo](restructure-phase-6e-6-2026-10-24.md): new private app over the unchanged AllyVora API and shared demo host, `SignaturePad` and `SearchSelect` quick pick, exact local verification and named adaptations.
 - [Desktop phase 6e-7 — Tauri-hosted desktop demo](restructure-phase-6e-7-2026-10-24.md): document workspace, Tauri window port and copied native host; unit/typecheck/docs pass, required heavy checks blocked by the shared lock; no native build.
 - [Onboarding phase 6e-3 — Orvia Health Cloud](restructure-phase-6e-3-2026-10-24.md): source pages and shared wizard/OTP; 353 focused tests pass, required CI/build/browser verification blocked by the shared lock; no deployment.

@@ -43,3 +43,7 @@ ERP is in progress below. Remaining app order: reports, tenant-admin, onboarding
 ## AllyVora patients
 
 [AllyVora patients](allyvora-patients/README.md) is the separate Next.js demo on port 3400 (phase 6e-6). It ports AllyVora patient registration: the register, record view, registration and editing in five organisation layouts, and the administrator's form-layout designer. Patient data comes from AllyVora's own unchanged Express + SQLite API; sign-in, preferences and catalogs come from the shared demo API. The read-only source form package is consumed unchanged. Its [source map](allyvora-patients/source-mapping.md) and [release record](../docs/releases/unreleased/restructure-phase-6e-6-2026-10-24.md) list adaptations and local verification. Fictional data only; not clinical acceptance or deployment.
+
+## Settle
+
+[Settle](settle/README.md) is the independent Next.js demo on port 3380. Phase 6e-4 ports the Settle patient billing desk: desk, bills, bill workspace, patient accounts, receipts, approvals, day close, reports, audit, settings and bill/receipt print layouts. It uses the shared host (sign-in, preferences, policy, localization) against the demo API and the unchanged Settle Express + SQLite API for all billing data. Its [source map](settle/source-mapping.md) and [record](../docs/releases/unreleased/restructure-phase-6e-4-2026-10-24.md) state verification and deferrals. Fictional data; not billing acceptance or deployment.

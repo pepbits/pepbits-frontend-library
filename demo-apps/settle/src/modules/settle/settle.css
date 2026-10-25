@@ -1,0 +1,59 @@
+/* Settle source component classes (panel, label, input, tbl, chip) scoped to the Settle surface.
+   Colors, radius, font family/scale and table presentation come from host preferences. */
+.settle-app { --header-h: calc(var(--header-height, 56px) + 54px); --footer-h: calc(var(--footer-height, 32px) + 34px); color: var(--text); font-feature-settings: 'tnum' 1; font-variant-numeric: tabular-nums; }
+.settle-app :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+/* Preference-controlled corner radius (PREF-05); pills and dots stay round. */
+.settle-app :is([class*="rounded-"]):not(.rounded-full) { border-radius: var(--radius); }
+.settle-app .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.settle-app .label { font-size: calc(12px * var(--fs-scale, 1)); font-weight: 500; color: var(--text-muted); }
+.settle-app .input {
+  height: calc(36px * var(--fs-scale, 1)); width: 100%; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface);
+  padding-inline: 12px; font-size: calc(14px * var(--fs-scale, 1)); color: var(--text); transition: border-color .15s, box-shadow .15s;
+}
+.settle-app .input::placeholder { color: var(--text-subtle); }
+.settle-app .input:hover { border-color: var(--border-strong); }
+.settle-app .input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent); }
+.settle-app .input:disabled { background: var(--surface-2); color: var(--text-subtle); }
+.settle-app textarea.input { height: auto; padding-block: 8px; line-height: 1.6; }
+.settle-app .settle-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237B8E8B' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); }
+.settle-app [dir="rtl"] .settle-select, [dir="rtl"] .settle-app .settle-select { background-position: left 10px center; }
+.settle-app .chip { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px !important; padding: 2px 8px; font-size: calc(12px * var(--fs-scale, 1)); font-weight: 500; line-height: 20px; white-space: nowrap; }
+.settle-app .scroll-area { overflow: auto; overscroll-behavior: contain; }
+.settle-app .h-viewport { height: calc(100dvh - var(--header-height, 60px) - var(--footer-height, 34px)); }
+.settle-app .min-h-viewport { min-height: calc(100dvh - var(--header-height, 60px) - var(--footer-height, 34px)); }
+
+/* Source ledger table. Density, stripes, sticky header and wrapping follow the effective table
+   presentation preferences through data attributes set by SettleTable (PREF-04). */
+.settle-app .tbl { width: 100%; font-size: calc(13.5px * var(--fs-result, var(--fs-scale, 1))); border-collapse: separate; border-spacing: 0; }
+.settle-app .tbl thead th {
+  background: var(--surface); text-align: start; font-size: calc(12px * var(--fs-result, var(--fs-scale, 1))); font-weight: 500; color: var(--text-subtle);
+  padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.settle-app .tbl tbody td { padding: 10px 12px; border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent); vertical-align: middle; }
+.settle-app .tbl tbody tr { transition: background-color .15s; }
+.settle-app .tbl tbody tr.row-link { cursor: pointer; }
+.settle-app .tbl tbody tr.row-link:hover { background: color-mix(in srgb, var(--primary-soft) 60%, transparent); }
+.settle-app .tbl tbody tr.row-link:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+.settle-app .tbl .num { text-align: end; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.settle-app .tbl[data-sticky="true"] thead th { position: sticky; top: 0; z-index: 1; }
+.settle-app .tbl[data-density="compact"] :is(tbody td, thead th) { padding-block: 5px; }
+.settle-app .tbl[data-density="spacious"] :is(tbody td, thead th) { padding-block: 15px; }
+.settle-app .tbl[data-striped="true"] tbody tr:nth-child(even):not(.row-active) { background: var(--surface-2); }
+.settle-app .tbl[data-wrap="false"] tbody td { white-space: nowrap; }
+
+/* Source motion; the host reduced-motion attribute removes it. */
+@keyframes settle-fill-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes settle-pop-in { from { opacity: 0; transform: translateY(6px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes settle-slide-in { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes settle-pulse2 { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.settle-app .animate-fill-in { animation: settle-fill-in .7s cubic-bezier(.2,.8,.2,1) both; }
+.settle-app .animate-pop-in { animation: settle-pop-in .18s ease-out both; }
+.settle-app .animate-slide-in { animation: settle-slide-in .22s ease-out both; }
+.settle-app .animate-pulse2 { animation: settle-pulse2 1.4s ease-in-out infinite; }
+.settle-app[data-reduced-motion="true"] *, [data-reduced-motion="true"] .settle-app * { animation: none !important; transition: none !important; }
+
+/* Print previews: on paper only the document prints, in black on white. */
+.settle-print-sheet { background: #fff; color: #111; --text: #111; --text-muted: #444; --text-subtle: #555; --border: #ccc; --border-strong: #999; --surface: #fff; --surface-2: #f5f5f5; --surface-3: #ececec; --danger: #b42318; --danger-fill: #b42318; --danger-ink: #8a1c13; }
+@media print {
+  .no-print { display: none !important; }
+}
