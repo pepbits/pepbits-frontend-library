@@ -1,0 +1,468 @@
+[
+  {
+    "attempt": 1,
+    "result": "failed",
+    "cause": "Original smoke assumption reproduced with temporary drawer diagnostics: completed appointment loaded, actions container height 0.",
+    "browser": {
+      "scope": "Local production Next server, unchanged demo host API and unchanged CareGrid scheduling API with fictional data",
+      "flows": [
+        {
+          "id": "CG-signin",
+          "result": "Fixture sign-in, shared provider chain and command center summary over HTTP"
+        },
+        {
+          "id": "CG-live",
+          "result": "Server-Sent Events stream connected through the same-origin proxy"
+        },
+        {
+          "id": "CG-preferences",
+          "result": "Accepted host preference written through the shared update path"
+        },
+        {
+          "id": "CG-book",
+          "result": "Patient, service and free slot booked; live notification toast received",
+          "reference": "fictional"
+        },
+        {
+          "id": "CG-book-board",
+          "result": "Confirmation opens the schedule board on the booked date"
+        }
+      ],
+      "checks": [],
+      "errors": [
+        {
+          "route": "/schedule",
+          "message": "locator.waitFor: Timeout 30000ms exceeded.",
+          "state": {
+            "url": "/schedule",
+            "timeline": true,
+            "rows": 36,
+            "events": 25,
+            "alert": null
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "httpErrors": []
+    },
+    "cleanup": [
+      {
+        "label": "Browser",
+        "pid": 108,
+        "exitCode": 1,
+        "signal": null,
+        "groupAlive": false
+      },
+      {
+        "label": "Next",
+        "pid": 89,
+        "exitCode": 143,
+        "signal": null,
+        "groupAlive": false
+      },
+      {
+        "label": "API",
+        "pid": 80,
+        "exitCode": 0,
+        "signal": null,
+        "groupAlive": false
+      }
+    ],
+    "scheduling": {
+      "sourceBase": "747add92ae757293510c9cd31bec8e5a3b9cddae",
+      "sourceStatus": "",
+      "schedulingPort": 44151,
+      "schedulingNode": "v22.22.1",
+      "database": "temporary, seeded by the unchanged backend",
+      "schedulingPid": 40,
+      "seedAndStartMs": 14159,
+      "runnerExit": 1,
+      "cleanup": {
+        "pid": 40,
+        "groupAlive": false,
+        "portOpen": false
+      }
+    }
+  },
+  {
+    "attempt": 2,
+    "result": "failed",
+    "cause": "Drawer assertion fixed; hardcoded resource 265 on today had no future bookings, so the queue stayed empty.",
+    "browser": {
+      "scope": "Local production Next server, unchanged demo host API and unchanged CareGrid scheduling API with fictional data",
+      "flows": [
+        {
+          "id": "CG-signin",
+          "result": "Fixture sign-in, shared provider chain and command center summary over HTTP"
+        },
+        {
+          "id": "CG-live",
+          "result": "Server-Sent Events stream connected through the same-origin proxy"
+        },
+        {
+          "id": "CG-preferences",
+          "result": "Accepted host preference written through the shared update path"
+        },
+        {
+          "id": "CG-book",
+          "result": "Patient, service and free slot booked; live notification toast received",
+          "reference": "fictional"
+        },
+        {
+          "id": "CG-book-board",
+          "result": "Confirmation opens the schedule board on the booked date"
+        },
+        {
+          "id": "CG-board-drawer",
+          "result": "Board event opens loaded appointment details, including completed appointments"
+        },
+        {
+          "id": "CG-board-quickbook",
+          "result": "Keyboard row command opens resource-scoped quick booking"
+        },
+        {
+          "id": "CG-board-day",
+          "result": "Day navigation updates the deep link"
+        },
+        {
+          "id": "CG-frontdesk-flow",
+          "result": "Check in, start and complete acknowledged by the API"
+        },
+        {
+          "id": "CG-waitlist",
+          "result": "Waitlist entry opens booking with patient, service and waitlist preselected"
+        },
+        {
+          "id": "CG-reminders",
+          "result": "Reminder outbox reads the API"
+        },
+        {
+          "id": "CG-block",
+          "result": "Impact preview and block creation acknowledged"
+        }
+      ],
+      "checks": [],
+      "errors": [
+        {
+          "route": "/exceptions?resource=265",
+          "message": "locator.waitFor: Timeout 30000ms exceeded.",
+          "state": {
+            "url": "/exceptions?resource=265",
+            "timeline": false,
+            "rows": 0,
+            "events": 0,
+            "alert": null
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "httpErrors": []
+    },
+    "cleanup": [
+      {
+        "label": "Browser",
+        "pid": 115,
+        "exitCode": 1,
+        "signal": null,
+        "groupAlive": false
+      },
+      {
+        "label": "Next",
+        "pid": 92,
+        "exitCode": 143,
+        "signal": null,
+        "groupAlive": false
+      },
+      {
+        "label": "API",
+        "pid": 83,
+        "exitCode": 0,
+        "signal": null,
+        "groupAlive": false
+      }
+    ],
+    "scheduling": {
+      "sourceBase": "747add92ae757293510c9cd31bec8e5a3b9cddae",
+      "sourceStatus": "",
+      "schedulingPort": 37809,
+      "schedulingNode": "v22.22.1",
+      "database": "temporary, seeded by the unchanged backend",
+      "schedulingPid": 43,
+      "seedAndStartMs": 15697,
+      "runnerExit": 1,
+      "cleanup": {
+        "pid": 43,
+        "groupAlive": false,
+        "portOpen": false
+      }
+    }
+  },
+  {
+    "attempt": 3,
+    "result": "failed",
+    "cause": "Both smoke assumptions fixed; all 25 workflows passed, but completed timeline labels failed color contrast on /schedule.",
+    "browser": {
+      "scope": "Local production Next server, unchanged demo host API and unchanged CareGrid scheduling API with fictional data",
+      "flows": [
+        {
+          "id": "CG-signin",
+          "result": "Fixture sign-in, shared provider chain and command center summary over HTTP"
+        },
+        {
+          "id": "CG-live",
+          "result": "Server-Sent Events stream connected through the same-origin proxy"
+        },
+        {
+          "id": "CG-preferences",
+          "result": "Accepted host preference written through the shared update path"
+        },
+        {
+          "id": "CG-book",
+          "result": "Patient, service and free slot booked; live notification toast received",
+          "reference": "fictional"
+        },
+        {
+          "id": "CG-book-board",
+          "result": "Confirmation opens the schedule board on the booked date"
+        },
+        {
+          "id": "CG-board-drawer",
+          "result": "Board event opens loaded appointment details, including completed appointments"
+        },
+        {
+          "id": "CG-board-quickbook",
+          "result": "Keyboard row command opens resource-scoped quick booking"
+        },
+        {
+          "id": "CG-board-day",
+          "result": "Day navigation updates the deep link"
+        },
+        {
+          "id": "CG-frontdesk-flow",
+          "result": "Check in, start and complete acknowledged by the API"
+        },
+        {
+          "id": "CG-waitlist",
+          "result": "Waitlist entry opens booking with patient, service and waitlist preselected"
+        },
+        {
+          "id": "CG-reminders",
+          "result": "Reminder outbox reads the API"
+        },
+        {
+          "id": "CG-block",
+          "result": "Impact preview and block creation acknowledged"
+        },
+        {
+          "id": "CG-queue-move",
+          "result": "Reschedule queue suggestion moved through the API"
+        },
+        {
+          "id": "CG-queue-auto",
+          "result": "Fix all automatically acknowledged"
+        },
+        {
+          "id": "CG-holiday",
+          "result": "Facility holiday added and removed"
+        },
+        {
+          "id": "CG-hours",
+          "result": "Weekly working hours edited and saved"
+        },
+        {
+          "id": "CG-catalog-rules",
+          "result": "Service rules validated and saved"
+        },
+        {
+          "id": "CG-insights-apply",
+          "result": "Slot-length advice applied"
+        },
+        {
+          "id": "CG-utilization",
+          "result": "Utilization by resource read for the day"
+        },
+        {
+          "id": "CG-patients",
+          "result": "Patient search, profile and book-from-profile"
+        },
+        {
+          "id": "CG-pharmacy",
+          "result": "Pharmacy arrival acknowledged; queue and counter load read"
+        },
+        {
+          "id": "CG-help",
+          "result": "Help center search"
+        },
+        {
+          "id": "CG-palette",
+          "result": "Command palette searches API records and opens a preselected booking"
+        },
+        {
+          "id": "CG-page-help",
+          "result": "Contextual page helper opens with CareGrid guidance"
+        },
+        {
+          "id": "CG-readonly",
+          "result": "Finance role sees booking disabled (presentation gating only)"
+        }
+      ],
+      "checks": [
+        {
+          "path": "/",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/book",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/schedule",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "targets": [
+                [
+                  "button[data-row-event=\"265-9295\"] > .px-1\\.5.gap-1.flex-1 > .truncate"
+                ],
+                [
+                  "button[data-row-event=\"266-9297\"] > .px-1\\.5.gap-1.flex-1 > .truncate"
+                ],
+                [
+                  "button[data-row-event=\"251-9300\"] > .px-1\\.5.gap-1.flex-1 > .truncate"
+                ],
+                [
+                  "button[data-row-event=\"270-9310\"] > .px-1\\.5.gap-1.flex-1 > .truncate"
+                ],
+                [
+                  "button[data-row-event=\"267-9306\"] > .px-1\\.5.gap-1.flex-1 > .truncate"
+                ],
+                [
+                  "button[data-row-event=\"55-9307\"] > .px-1\\.5.gap-1.flex-1 > .truncate"
+                ]
+              ]
+            }
+          ],
+          "incomplete": 2
+        },
+        {
+          "path": "/frontdesk",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/frontdesk?tab=waitlist",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/frontdesk?tab=reminders",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/exceptions",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/resources",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/resources?id=1",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/catalog",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/catalog?type=1",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/patients",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/pharmacy",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/insights",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/insights?tab=util",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/help",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/preferences",
+          "violations": [],
+          "incomplete": 2
+        },
+        {
+          "path": "/book?patient=1&type=1",
+          "violations": [],
+          "incomplete": 2
+        }
+      ],
+      "errors": [],
+      "consoleErrors": [],
+      "httpErrors": []
+    },
+    "cleanup": [
+      {
+        "label": "Browser",
+        "pid": 111,
+        "exitCode": 1,
+        "signal": null,
+        "groupAlive": false
+      },
+      {
+        "label": "Next",
+        "pid": 92,
+        "exitCode": 143,
+        "signal": null,
+        "groupAlive": false
+      },
+      {
+        "label": "API",
+        "pid": 83,
+        "exitCode": 0,
+        "signal": null,
+        "groupAlive": false
+      }
+    ],
+    "scheduling": {
+      "sourceBase": "747add92ae757293510c9cd31bec8e5a3b9cddae",
+      "sourceStatus": "",
+      "schedulingPort": 40131,
+      "schedulingNode": "v22.22.1",
+      "database": "temporary, seeded by the unchanged backend",
+      "schedulingPid": 43,
+      "seedAndStartMs": 16260,
+      "runnerExit": 1,
+      "cleanup": {
+        "pid": 43,
+        "groupAlive": false,
+        "portOpen": false
+      }
+    }
+  }
+]

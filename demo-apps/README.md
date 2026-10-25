@@ -47,3 +47,7 @@ ERP is in progress below. Remaining app order: reports, tenant-admin, onboarding
 ## Settle
 
 [Settle](settle/README.md) is the independent Next.js demo on port 3380. Phase 6e-4 ports the Settle patient billing desk: desk, bills, bill workspace, patient accounts, receipts, approvals, day close, reports, audit, settings and bill/receipt print layouts. It uses the shared host (sign-in, preferences, policy, localization) against the demo API and the unchanged Settle Express + SQLite API for all billing data. Its [source map](settle/source-mapping.md) and [record](../docs/releases/unreleased/restructure-phase-6e-4-2026-10-24.md) state verification and deferrals. Fictional data; not billing acceptance or deployment.
+
+## CareGrid
+
+[CareGrid](caregrid/README.md) is the independent Next.js demo on port 3390. Phase 6e-5 ports all eleven source screens of network-wide appointment scheduling and resource planning: command center, booking, schedule board, front desk, availability and blocks, resources, service catalog, patients, pharmacy desk, insights and help. Scheduling data comes from the unchanged CareGrid Express + SQLite API, live updates from its Server-Sent Events stream; sign-in, preferences and localization come from the shared demo host API. See the [source map](caregrid/source-mapping.md) and [local record](../docs/releases/unreleased/restructure-phase-6e-5-2026-10-24.md). Fictional demonstration only, not clinical acceptance or deployment.

@@ -1,0 +1,171 @@
+{
+  "date": "2026-10-24T20:28:54.315Z",
+  "baseCommit": "747add92ae757293510c9cd31bec8e5a3b9cddae",
+  "branch": "restructure/phase-6e-5",
+  "runtimeAndDriverDiffSha256": "01daf13736ea59760de0410ae5357950b626a007f22b4fdbac14909f0445980f",
+  "manifestImplementationDigest": "601f16bc65088bf49293d8e04115adfb55adef6455886c4d8a1c94b01156ffa0",
+  "manifestFilesChecked": 1845,
+  "sourceUnchangedSinceLiveRun": true,
+  "protectedStatus": "",
+  "heavyLockUsed": false,
+  "scope": "Local production Next app, real HTTP to unchanged host and original scheduling APIs, fictional seeded data; no deployment/native/clinical acceptance. Full CI was not rerun.",
+  "commands": [
+    {
+      "command": "NEXT_PUBLIC_API_URL=/api NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api npm run build -w @pepbits-demo/caregrid",
+      "exitCode": 0,
+      "artifact": "build.log"
+    },
+    {
+      "command": "LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu CAREGRID_API_NODE=$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node CAREGRID_RUNTIME_ARTIFACTS=/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/dummy-api npm run test:integration -w @pepbits-demo/caregrid",
+      "exitCode": 0,
+      "optionalReceiptEnvironment": {
+        "CAREGRID_SCREENSHOT": "/tmp/caregrid-live.png"
+      },
+      "artifact": "integration.log",
+      "workflows": 25,
+      "routes": 18,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "axeViolations": 0,
+      "axeIncompleteRuleResults": 36
+    },
+    {
+      "command": "npm test -w @pepbits-demo/caregrid",
+      "exitCode": 0,
+      "tests": 140,
+      "files": 5,
+      "artifact": "caregrid-tests.log"
+    },
+    {
+      "command": "npm run typecheck -w @pepbits-demo/caregrid",
+      "exitCode": 0,
+      "artifact": "caregrid-typecheck.log"
+    },
+    {
+      "command": "npm test -w @pepbits/patterns",
+      "exitCode": 0,
+      "tests": 173,
+      "files": 34,
+      "artifact": "patterns-tests.log"
+    },
+    {
+      "command": "npm run typecheck -w @pepbits/patterns",
+      "exitCode": 0,
+      "artifact": "patterns-typecheck.log"
+    },
+    {
+      "command": "PATH=$HOME/.local/opt/node-v24.21.0-linux-x64/bin:$PATH node docs/tools/check-docs.mjs",
+      "exitCode": 0,
+      "documents": 207,
+      "artifact": "docs.log"
+    },
+    {
+      "command": "PATH=$HOME/.local/opt/node-v24.21.0-linux-x64/bin:$PATH node --test docs/tools/check-docs.test.mjs",
+      "exitCode": 0,
+      "tests": 3,
+      "artifact": "docs-tests.log"
+    },
+    {
+      "command": "node docs/releases/unreleased/evidence/restructure-phase-6e-5-2026-10-24/write-manifest.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "cleanup": {
+    "services": [
+      {
+        "label": "Browser",
+        "pid": 108,
+        "exitCode": 0,
+        "signal": null,
+        "groupAlive": false
+      },
+      {
+        "label": "Next",
+        "pid": 89,
+        "exitCode": 143,
+        "signal": null,
+        "groupAlive": false
+      },
+      {
+        "label": "API",
+        "pid": 80,
+        "exitCode": 0,
+        "signal": null,
+        "groupAlive": false
+      }
+    ],
+    "scheduling": {
+      "pid": 40,
+      "groupAlive": false,
+      "portOpen": false
+    },
+    "allOwnedCommandsCompleted": true
+  },
+  "artifacts": [
+    {
+      "path": "attempts.json",
+      "sha256": "aee93ddcfcf0b0f7eab9698920e12118b76fdfc8c574d8f5ff601e2bcf89bc6e"
+    },
+    {
+      "path": "browser.json",
+      "sha256": "047a4b5fd028f2ef571d37a33c438e9975374f299ff16cc01d3e2e6a7bea06c9"
+    },
+    {
+      "path": "build.log",
+      "sha256": "820a029f9a99efbeb9579ee02b1487043d97d706d6df298ad5c26f1a18882194"
+    },
+    {
+      "path": "caregrid-tests.log",
+      "sha256": "5f2a197ae2007b3eff6b811570b0683561d22743d979c1bbc0173e0ef4c3d9dd"
+    },
+    {
+      "path": "caregrid-typecheck.log",
+      "sha256": "39b3e025dd9a0e5acc3a0949687925c397aa641ec79a693f0ec8268d9a3cbda6"
+    },
+    {
+      "path": "docs-node22.log",
+      "sha256": "27ced5e6bf3897cef809fb6fe552e4ac797575e00e1aa5e83540fa75e10df3a0"
+    },
+    {
+      "path": "docs-tests-node22.log",
+      "sha256": "12e5a8945060fb1fa2b18f8b3e2337325fbff5e9d48dfa81f94fe28a94cdfd08"
+    },
+    {
+      "path": "docs-tests.log",
+      "sha256": "5f7ab01b16ea3d100ab09e38df2c7060a6a1dd0b10f9b8388f39e4c41177946e"
+    },
+    {
+      "path": "docs.log",
+      "sha256": "5baf5d105e875380fc376bb884a536a065b2f2e91627f01f251ce8802bd77f24"
+    },
+    {
+      "path": "identity.json",
+      "sha256": "7ad20d5b75a073ac1a9dc8a1fbd9e570add0b0581d5102e3cea163868ce6a029"
+    },
+    {
+      "path": "integration.log",
+      "sha256": "82d5e6da7d88c053a6edc1d5d8bb0f0bddd0d8907e2156989b44dc132d64e5cf"
+    },
+    {
+      "path": "patterns-tests.log",
+      "sha256": "740c0767d9eead249c315c7bdb02b2f79afd2a50a6e36ce106cca600093e2ee2"
+    },
+    {
+      "path": "patterns-typecheck.log",
+      "sha256": "9e1959cb14ab9439e4ba3663701f0edb0397d9082df3982caafc404547803db0"
+    },
+    {
+      "path": "scheduling-identity.json",
+      "sha256": "d223cfb87a6cb11988b29162f061e95407a6e30a0e3b0ab1f92ab305c74fc4df"
+    },
+    {
+      "path": "source.json",
+      "sha256": "eb922e7a59ce5c680134af16f37308b864e673de5c673b2db76c3871a5600751"
+    }
+  ]
+}

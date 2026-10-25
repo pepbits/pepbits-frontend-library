@@ -42,3 +42,8 @@ test.each([Armchair,Bed,Brush,CalendarX,Menu,Monitor,Trash])('renders MedSlot pr
 
 import {Blocks,FileBarChart,FolderDown,KeyRound,Library,MailPlus,ScrollText,Settings,Zap} from './index';
 test.each([Blocks,FileBarChart,FolderDown,KeyRound,Library,MailPlus,ScrollText,Settings,Zap])('renders reports demo primitive %s',Icon=>{const {container}=render(<Icon aria-label="Reports icon"/>);expect(container.querySelector('svg')).toBeTruthy();});
+const schedulingNames = ["Accessibility","Apple","Baby","Brain","CalendarOff","CalendarRange","Car","Clipboard","Cpu","House","Leaf","LibraryBig","LifeBuoy","Lightbulb","Repeat","Smile","TestTube","User","UserX","Wand2","Zap"] as const;
+test.each(schedulingNames)("scheduling primitive %s is exported and renders", name => {
+  const Component: icons.IconComponent = icons[name];
+  expect(render(<Component />).container.querySelector("svg")).not.toBeNull();
+});

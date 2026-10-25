@@ -4,7 +4,7 @@ import React, {createContext, useCallback, useContext, useEffect, useMemo, useRe
 import {useLocalization} from "@pepbits/i18n/react";
 import {usePreferences} from "@pepbits/preferences/react";
 import type {UserPreferences} from "@pepbits/preferences";
-import {NavigationProvider, type NavigationPort} from "@pepbits/platform/navigation";
+import {NavigationProvider, type NavigationPort, type NavigationTarget} from "@pepbits/platform/navigation";
 import {useSession} from "@pepbits/platform";
 import {PresentationProvider, presentationFromPreferences} from "@pepbits/components";
 import {useFormatters} from "@pepbits/patterns/screen-host";
@@ -28,6 +28,10 @@ export interface ShellMonitoring extends ShellService {
   /** Native adapters may acknowledge a delivered allowlisted failure. */
   acknowledgeNativeFailure?: () => Promise<void>;
 }
+/** One host search result. The target is resolved through the platform navigation port. */
+export interface CommandSearchResult {id: string; group: string; label: string; hint?: string; target: NavigationTarget}
+/** Optional host search for the command palette. Results are already localized; the signal aborts superseded queries. */
+export type CommandSearch = (query: string, signal: AbortSignal) => Promise<readonly CommandSearchResult[]>;
 export interface ShellProviderProps {
   navigation: NavigationPort;
   product: ProductDefinition;
@@ -43,6 +47,8 @@ export interface ShellProviderProps {
   timezoneForBranch?: (branch: string) => string | undefined;
   documentation?: ShellDocumentation;
   tours?: ShellTours;
+  /** Optional host record search shown in the command palette above page matches. */
+  commandSearch?: CommandSearch;
   monitoring?: ShellMonitoring;
   workspace?: Workspace;
   children?: ReactNode;

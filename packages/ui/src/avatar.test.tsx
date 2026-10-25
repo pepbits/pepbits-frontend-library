@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "./test/render";
 import { describe, expect, test } from "vitest";
-import { Avatar, initialsOf } from "./avatar";
+import { Avatar, initialsOf, washFor } from "./avatar";
 
 describe("initialsOf", () => {
   test("takes the first letter of the first and last word", () => {
@@ -77,4 +77,8 @@ describe("Avatar", () => {
     expect(screen.queryByLabelText("Aisha Rahman")).toBeNull();
     expect(screen.getByRole("button", { name: "Open profile menu" })).toBeVisible();
   });
+});
+
+test("every wash uses an ink or text-mixed foreground, never a raw accent hue", () => {
+  for (const name of ["Ana", "Ben", "Cy", "Dee", "Eve", "Fay", "Gus", "Hal", "Ivy", "Jo"]) expect(washFor(name)).not.toMatch(/text-\[var\(--accent\)\]/);
 });

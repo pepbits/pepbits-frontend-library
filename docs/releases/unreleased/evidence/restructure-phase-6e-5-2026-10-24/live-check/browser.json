@@ -1,0 +1,201 @@
+{
+  "scope": "Local production Next server, unchanged demo host API and unchanged CareGrid scheduling API with fictional data",
+  "flows": [
+    {
+      "id": "CG-signin",
+      "result": "Fixture sign-in, shared provider chain and command center summary over HTTP"
+    },
+    {
+      "id": "CG-live",
+      "result": "Server-Sent Events stream connected through the same-origin proxy"
+    },
+    {
+      "id": "CG-preferences",
+      "result": "Accepted host preference written through the shared update path"
+    },
+    {
+      "id": "CG-book",
+      "result": "Patient, service and free slot booked; live notification toast received",
+      "reference": "fictional"
+    },
+    {
+      "id": "CG-book-board",
+      "result": "Confirmation opens the schedule board on the booked date"
+    },
+    {
+      "id": "CG-board-drawer",
+      "result": "Board event opens loaded appointment details, including completed appointments"
+    },
+    {
+      "id": "CG-board-quickbook",
+      "result": "Keyboard row command opens resource-scoped quick booking"
+    },
+    {
+      "id": "CG-board-day",
+      "result": "Day navigation updates the deep link"
+    },
+    {
+      "id": "CG-frontdesk-flow",
+      "result": "Check in, start and complete acknowledged by the API"
+    },
+    {
+      "id": "CG-waitlist",
+      "result": "Waitlist entry opens booking with patient, service and waitlist preselected"
+    },
+    {
+      "id": "CG-reminders",
+      "result": "Reminder outbox reads the API"
+    },
+    {
+      "id": "CG-block",
+      "result": "Impact preview and block creation acknowledged"
+    },
+    {
+      "id": "CG-queue-move",
+      "result": "Reschedule queue suggestion moved through the API"
+    },
+    {
+      "id": "CG-queue-auto",
+      "result": "Fix all automatically acknowledged"
+    },
+    {
+      "id": "CG-holiday",
+      "result": "Facility holiday added and removed"
+    },
+    {
+      "id": "CG-hours",
+      "result": "Weekly working hours edited and saved"
+    },
+    {
+      "id": "CG-catalog-rules",
+      "result": "Service rules validated and saved"
+    },
+    {
+      "id": "CG-insights-apply",
+      "result": "Slot-length advice applied"
+    },
+    {
+      "id": "CG-utilization",
+      "result": "Utilization by resource read for the day"
+    },
+    {
+      "id": "CG-patients",
+      "result": "Patient search, profile and book-from-profile"
+    },
+    {
+      "id": "CG-pharmacy",
+      "result": "Pharmacy arrival acknowledged; queue and counter load read"
+    },
+    {
+      "id": "CG-help",
+      "result": "Help center search"
+    },
+    {
+      "id": "CG-palette",
+      "result": "Command palette searches API records and opens a preselected booking"
+    },
+    {
+      "id": "CG-page-help",
+      "result": "Contextual page helper opens with CareGrid guidance"
+    },
+    {
+      "id": "CG-readonly",
+      "result": "Finance role sees booking disabled (presentation gating only)"
+    }
+  ],
+  "checks": [
+    {
+      "path": "/",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/book",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/schedule",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/frontdesk",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/frontdesk?tab=waitlist",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/frontdesk?tab=reminders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/exceptions",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/resources",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/resources?id=1",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/catalog",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/catalog?type=1",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/patients",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/pharmacy",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/insights",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/insights?tab=util",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/help",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/preferences",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/book?patient=1&type=1",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": []
+}

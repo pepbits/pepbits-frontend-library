@@ -147,6 +147,9 @@ export {BedDouble, CircleDollarSign, FolderPlus, SearchX, Sunrise, Crown} from '
 
 export { Armchair, Bed, Brush, CalendarX, Menu, Monitor, Trash } from "lucide-react";
 
+// Scheduling presentation primitives (CareGrid demonstration); CalendarOff, CalendarRange, Smile, User, UserX, Zap are exported elsewhere in this file.
+// Accessibility, TestTube are exported elsewhere in this file.
+export {Apple, Baby, Brain, Car, Clipboard, Cpu, House, Leaf, LibraryBig, LifeBuoy, Lightbulb, Repeat, Wand2} from 'lucide-react';
 // Settle patient billing desk presentation primitives (phase 6e-4).
 // CircleDashed, User are exported elsewhere in this file.
 export {ChartColumnBig, Gift, Nfc, Tag, Vault} from "lucide-react";
