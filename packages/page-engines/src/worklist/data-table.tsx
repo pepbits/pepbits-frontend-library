@@ -124,7 +124,7 @@ export function DataTable({ composition, rows, columns, primaryKey, displayKey, 
                           onCommit={(next) => onCellCommit(row, column, next)}
                         />
                       </span>
-                      : formatValue(column, row[column.key], format, wrap)}</TableCell>)}
+                      : composition?.renderCell?.(row,column) ?? formatValue(column, row[column.key], format, wrap)}</TableCell>)}
                 <TableCell className={cn("sticky right-0 bg-[var(--surface)] px-2 text-right transition group-hover:bg-[var(--surface-2)]", checked && "bg-[var(--primary-soft)]", padding)}>
                   {composition?.renderActions ? composition.renderActions(row) : <div className="flex justify-end gap-0.5">
                     <IconButton label={t("Preview {item}",{item:id})} className="size-7" onClick={() => onPreview(row)}><Eye className="size-3.5" /></IconButton>

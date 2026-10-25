@@ -1,9 +1,11 @@
 import {masterVisualWorkflows} from './masters-visual-workflows.mjs';
+import {deferredMastersVisual} from './deferred-masters-visual.mjs';
 import assert from 'node:assert/strict';
 import {join} from 'node:path';
 
 /** Source dimensions are from the read-only JSX/CSS audit; this does not render the original app. */
 export async function visualWorkflows({page,visit,flows,visualChecks,capture}) {
+ await deferredMastersVisual({page,visit,flows,visualChecks,capture});
  await masterVisualWorkflows({page,visit,flows,visualChecks,capture});
  const measure=async(selector)=>page.locator(selector).first().evaluate(element=>{const css=getComputedStyle(element),rect=element.getBoundingClientRect();return {width:rect.width,height:rect.height,fontSize:parseFloat(css.fontSize),padding:css.padding,gap:css.gap,gridTemplateColumns:css.gridTemplateColumns,density:element.closest('[data-density]')?.getAttribute('data-density'),formScale:parseFloat(css.getPropertyValue('--fs-form'))||1,resultScale:parseFloat(css.getPropertyValue('--fs-result'))||1};});
  const close=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1,`geometry ${actual} differs from source ${expected}`);

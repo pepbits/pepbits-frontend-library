@@ -1,0 +1,64 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=2 src/rate-masters.test.tsx src/tree-masters.test.tsx src/specialized.test.tsx src/masters-composition.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a2/demo-apps/erp
+
+ ✓ src/specialized.test.tsx (19 tests) 4186ms
+   ✓ erp1 finance creation follows entity grants  939ms
+   ✓ erp2 finance creation follows entity grants  702ms
+   ✓ ERP1 tree searches ancestors, adds a child, and adopts the acknowledged record  379ms
+   ✓ ERP1 profile keeps the worklist beside selection and persists the accepted layout choice  872ms
+   ✓ effective rememberFilters policy prevents profile layout persistence  484ms
+ ✓ src/tree-masters.test.tsx (9 tests) 4273ms
+   ✓ org-structure edits beside the tree and adopts versioned saves without losing search  804ms
+   ✓ chart-of-accounts edits beside the tree and adopts versioned saves without losing search  532ms
+   ✓ product-categories edits beside the tree and adopts versioned saves without losing search  504ms
+   ✓ tree failed saves preserve fields and operation identity; conflicts require explicit reload  617ms
+   ✓ tree child defaults, required name, leaf guard and acknowledged deletion  448ms
+   ✓ incomplete trees fence destructive commands and mounted permission loss disables saves  317ms
+   ✓ ar tree keeps labelled fields and effective density/table locks  348ms
+   ✓ hi tree keeps labelled fields and effective density/table locks  343ms
+   ✓ ml tree keeps labelled fields and effective density/table locks  357ms
+ ✓ src/masters-composition.test.tsx (27 tests) 22439ms
+   ✓ 'erp1' 'countries' edits in the source composition, saves with version and retains search  1193ms
+   ✓ 'erp1' 'states' edits in the source composition, saves with version and retains search  989ms
+   ✓ 'erp1' 'currencies' edits in the source composition, saves with version and retains search  877ms
+   ✓ 'erp1' 'units' edits in the source composition, saves with version and retains search  818ms
+   ✓ 'erp1' 'holidays' edits in the source composition, saves with version and retains search  861ms
+   ✓ 'erp1' 'departments' edits in the source composition, saves with version and retains search  860ms
+   ✓ 'erp1' 'leave-types' edits in the source composition, saves with version and retains search  798ms
+   ✓ 'erp1' 'shifts' edits in the source composition, saves with version and retains search  803ms
+   ✓ 'erp1' 'lab-tests' edits in the source composition, saves with version and retains search  849ms
+   ✓ 'erp2' 'countries' edits in the source composition, saves with version and retains search  1024ms
+   ✓ 'erp2' 'states' edits in the source composition, saves with version and retains search  912ms
+   ✓ 'erp2' 'currencies' edits in the source composition, saves with version and retains search  897ms
+   ✓ 'erp2' 'units' edits in the source composition, saves with version and retains search  890ms
+   ✓ 'erp2' 'holidays' edits in the source composition, saves with version and retains search  905ms
+   ✓ 'erp2' 'departments' edits in the source composition, saves with version and retains search  985ms
+   ✓ 'erp2' 'leave-types' edits in the source composition, saves with version and retains search  973ms
+   ✓ 'erp2' 'shifts' edits in the source composition, saves with version and retains search  1019ms
+   ✓ 'erp2' 'lab-tests' edits in the source composition, saves with version and retains search  1160ms
+   ✓ erp1 creation works with an empty list and enforces required fields  556ms
+   ✓ erp2 creation works with an empty list and enforces required fields  334ms
+   ✓ ERP2 save another resets only after acknowledgement and confirmed delete retries without losing fields  1097ms
+   ✓ inline version conflict retains the draft and requires explicit reload  966ms
+   ✓ mounted locks and write permission changes apply to an open inline draft  620ms
+   ✓ states parent selection supplies the inline creation default  407ms
+   ✓ ar master dialog preserves accessible labels and effective scales  483ms
+   ✓ hi master dialog preserves accessible labels and effective scales  515ms
+   ✓ ml master dialog preserves accessible labels and effective scales  642ms
+ ✓ src/rate-masters.test.tsx (7 tests) 10309ms
+   ✓ 'erp1' 'tax-rates' sends asOf, keeps inclusive returned rows and edits in place  2230ms
+   ✓ 'erp1' 'price-lists' sends asOf, keeps inclusive returned rows and edits in place  1866ms
+   ✓ 'erp1' 'consultation-fees' sends asOf, keeps inclusive returned rows and edits in place  1706ms
+   ✓ 'erp2' 'tax-rates' sends asOf, keeps inclusive returned rows and edits in place  1553ms
+   ✓ 'erp2' 'price-lists' sends asOf, keeps inclusive returned rows and edits in place  1412ms
+   ✓ 'erp2' 'consultation-fees' sends asOf, keeps inclusive returned rows and edits in place  1537ms
+
+ Test Files  4 passed (4)
+      Tests  62 passed (62)
+   Start at  05:12:27
+   Duration  30.39s (transform 3.88s, setup 945ms, collect 12.35s, tests 41.21s, environment 2.58s, prepare 489ms)
+

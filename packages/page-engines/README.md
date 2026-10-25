@@ -156,3 +156,7 @@ same guarded filter controls for parent context, and `newLabel` supplies creatio
 wording. Existing callers retain the standard table, selection, actions and label.
 Effective result-view, density, column and page-size policies remain engine-owned.
 See `table-composition.test.tsx` and the ERP master composition tests.
+
+### Optional worklist cell presentation
+
+`WorklistTableComposition.renderCell(row, column)` supplies read-only cell content, for example an effective-date validity bar. Returning `undefined` retains managed formatting. It does not replace column selection, row actions, keyboard opening, inline commit validation or table preferences. Card presentation remains the existing engine composition. A direct test covers custom cells, fallback formatting and selection; ERP rate checks cover the live consumer.

@@ -116,9 +116,9 @@ test('ERP2 tree shows ancestor navigation, children, leaf guards and confirmed d
   const request = vi.fn<JsonRequest>(async (path, init) => {if (init?.method === 'DELETE') return {deleted: kid.id} as never;return api.request(path, init);});
   render(<Record slug="chart-of-accounts" id={root.id} host={hostFor(request as JsonRequest)} close={close}/>);
   expect(await screen.findByRole('navigation', {name: 'Position in hierarchy'})).toHaveTextContent(root.name);expect(screen.getByRole('button', {name: 'Delete'})).toBeDisabled();
-  // Select a leaf through the actual children table (some first children have their own descendants).
-  let leaf = kid;while (rows.some(row => row.parentId === leaf.id)) {const child = rows.find(row => row.parentId === leaf.id)!;fireEvent.click(await screen.findByRole('cell', {name: leaf.name}));leaf = child;}
-  fireEvent.click(await screen.findByRole('cell', {name: leaf.name}));
+  // Select a leaf through the actual children list (some first children have their own descendants).
+  let leaf = kid;while (rows.some(row => row.parentId === leaf.id)) {const child = rows.find(row => row.parentId === leaf.id)!;fireEvent.click(await screen.findByRole('button', {name: leaf.name+' '+leaf.code}));leaf = child;}
+  fireEvent.click(await screen.findByRole('button', {name: leaf.name+' '+leaf.code}));
   await waitFor(() => expect(screen.getByRole('button', {name: 'Delete'})).toBeEnabled());fireEvent.click(screen.getByRole('button', {name: 'Delete'}));expect(request.mock.calls.some(([, init]) => init?.method === 'DELETE')).toBe(false);fireEvent.click(screen.getByRole('button', {name: 'Confirm delete'}));await waitFor(() => expect(close).toHaveBeenCalledOnce());
 });
 

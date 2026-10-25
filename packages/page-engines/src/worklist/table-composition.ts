@@ -11,4 +11,6 @@ export interface WorklistTableComposition {
   renderRow?: (row: Record<string, string | number | boolean>, columns: DataColumn[]) => ReactNode;
   /** Replace the normal row actions without changing keyboard row activation. */
   renderActions?: (row: Record<string, string | number | boolean>) => ReactNode;
+  /** Optional read-only cell presentation. Undefined retains the managed formatter. */
+  renderCell?: (row: Record<string, string | number | boolean>, column: DataColumn) => ReactNode;
 }

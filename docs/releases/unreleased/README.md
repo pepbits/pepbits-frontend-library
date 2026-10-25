@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [ERP phase 6c-7a2 — tree/rate masters](restructure-phase-6c-7a2-2026-10-25.md): twelve verified destination compositions; 6,813 CI tests, 152 live workflows and 57 geometry checks pass; exact remaining differences retained.
+
 - [ERP phase 6c-7a — masters editor and geometry subset](restructure-phase-6c-7a-2026-10-25.md): eighteen simple/dependent master destinations; inline rows, quick dialogs and parent rail; forced CI (6,787 tests, zero cache), shell Chromium (18 tests) and real HTTP (140 workflows, 114 routes, 45 geometry checks, zero axe violations) pass; exact remaining differences retained, no whole-destination match or deployment.
 
 - [ERP phase 6c-6 — source composition and visual audit subset](restructure-phase-6c-6-2026-10-24.md): 35-destination composition subset, report layouts and explicit remaining differences for all 114 destinations; forced CI (6,097 tests), shell Chromium (18 tests) and real HTTP (122 workflows, 114 routes, zero axe violations) pass; no deployment.
