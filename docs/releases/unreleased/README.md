@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Phase 7a — publishable @pepbits packages](restructure-phase-7a-2026-10-25.md): twelve 0.1.0 ESM/declaration candidates, Changesets and manual GitHub Packages tooling; local tarball/consumer evidence, no publication.
+
 - [Demo API rename — dummy-api → mock-api](mock-api-rename-2026-10-25.md): folder moved with a compatibility link for `desktop-clients/`, CI, Jenkins and `run.sh`; 101 current references updated; CI, API tests (same as main), three live checks and docs pass.
 - [ERP phase 6c-6 — source composition and visual audit subset](restructure-phase-6c-6-2026-10-24.md): 35-destination composition subset, report layouts and explicit remaining differences for all 114 destinations; forced CI (6,097 tests), shell Chromium (18 tests) and real HTTP (122 workflows, 114 routes, zero axe violations) pass; no deployment.
 - [CareGrid phase 6e-5 — scheduling and resource planning demo](restructure-phase-6e-5-2026-10-24.md): all eleven CareGrid screens on public packages, live updates and library additions; local production build, 25 real-HTTP workflows and 18 Chromium axe routes passed; fictional data, no deployment.

@@ -1,23 +1,76 @@
 {
   "name": "@pepbits/platform",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
-    ".": "./src/index.ts",
-    "./auth": "./src/auth.ts",
-    "./devices": "./src/devices.ts",
-    "./windows": "./src/windows.tsx",
-    "./navigation": "./src/navigation.tsx",
-    "./monitoring": "./src/monitoring.ts",
-    "./device-workflows": "./src/device-workflows.ts",
-    "./http": "./src/http.ts",
-    "./preference-service": "./src/preference-service.ts",
-    "./event-stream": "./src/event-stream.ts"
+    ".": {
+      "pepbits-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./auth": {
+      "pepbits-source": "./src/auth.ts",
+      "types": "./dist/auth.d.ts",
+      "import": "./dist/auth.js",
+      "default": "./dist/auth.js"
+    },
+    "./devices": {
+      "pepbits-source": "./src/devices.ts",
+      "types": "./dist/devices.d.ts",
+      "import": "./dist/devices.js",
+      "default": "./dist/devices.js"
+    },
+    "./windows": {
+      "pepbits-source": "./src/windows.tsx",
+      "types": "./dist/windows.d.ts",
+      "import": "./dist/windows.js",
+      "default": "./dist/windows.js"
+    },
+    "./navigation": {
+      "pepbits-source": "./src/navigation.tsx",
+      "types": "./dist/navigation.d.ts",
+      "import": "./dist/navigation.js",
+      "default": "./dist/navigation.js"
+    },
+    "./monitoring": {
+      "pepbits-source": "./src/monitoring.ts",
+      "types": "./dist/monitoring.d.ts",
+      "import": "./dist/monitoring.js",
+      "default": "./dist/monitoring.js"
+    },
+    "./device-workflows": {
+      "pepbits-source": "./src/device-workflows.ts",
+      "types": "./dist/device-workflows.d.ts",
+      "import": "./dist/device-workflows.js",
+      "default": "./dist/device-workflows.js"
+    },
+    "./http": {
+      "pepbits-source": "./src/http.ts",
+      "types": "./dist/http.d.ts",
+      "import": "./dist/http.js",
+      "default": "./dist/http.js"
+    },
+    "./preference-service": {
+      "pepbits-source": "./src/preference-service.ts",
+      "types": "./dist/preference-service.d.ts",
+      "import": "./dist/preference-service.js",
+      "default": "./dist/preference-service.js"
+    },
+    "./event-stream": {
+      "pepbits-source": "./src/event-stream.ts",
+      "types": "./dist/event-stream.d.ts",
+      "import": "./dist/event-stream.js",
+      "default": "./dist/event-stream.js"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "node ../../tooling/scripts/build-package.mjs"
   },
   "devDependencies": {
     "@pepbits/tsconfig": "0.0.0"
@@ -26,7 +79,21 @@
     "react": ">=19"
   },
   "dependencies": {
-    "@pepbits/data": "0.0.0",
-    "@pepbits/preferences": "0.0.0"
-  }
+    "@pepbits/data": "^0.1.0",
+    "@pepbits/preferences": "^0.1.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
+    "directory": "packages/platform"
+  },
+  "license": "UNLICENSED"
 }

@@ -1,23 +1,80 @@
 {
   "name": "@pepbits/data",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
-    ".": "./src/index.ts",
-    "./dcp-designer": "./src/dcp-designer.ts",
-    "./dcp-host": "./src/dcp-host.ts",
-    "./dcp-runtime": "./src/dcp-runtime.ts",
-    "./label-printing": "./src/label-printing.ts",
-    "./identity-devices": "./src/identity-devices.ts",
-    "./device-integrations": "./src/device-integrations.ts",
-    "./workflow-failure": "./src/workflow-failure.ts"
+    ".": {
+      "pepbits-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./dcp-designer": {
+      "pepbits-source": "./src/dcp-designer.ts",
+      "types": "./dist/dcp-designer.d.ts",
+      "import": "./dist/dcp-designer.js",
+      "default": "./dist/dcp-designer.js"
+    },
+    "./dcp-host": {
+      "pepbits-source": "./src/dcp-host.ts",
+      "types": "./dist/dcp-host.d.ts",
+      "import": "./dist/dcp-host.js",
+      "default": "./dist/dcp-host.js"
+    },
+    "./dcp-runtime": {
+      "pepbits-source": "./src/dcp-runtime.ts",
+      "types": "./dist/dcp-runtime.d.ts",
+      "import": "./dist/dcp-runtime.js",
+      "default": "./dist/dcp-runtime.js"
+    },
+    "./label-printing": {
+      "pepbits-source": "./src/label-printing.ts",
+      "types": "./dist/label-printing.d.ts",
+      "import": "./dist/label-printing.js",
+      "default": "./dist/label-printing.js"
+    },
+    "./identity-devices": {
+      "pepbits-source": "./src/identity-devices.ts",
+      "types": "./dist/identity-devices.d.ts",
+      "import": "./dist/identity-devices.js",
+      "default": "./dist/identity-devices.js"
+    },
+    "./device-integrations": {
+      "pepbits-source": "./src/device-integrations.ts",
+      "types": "./dist/device-integrations.d.ts",
+      "import": "./dist/device-integrations.js",
+      "default": "./dist/device-integrations.js"
+    },
+    "./workflow-failure": {
+      "pepbits-source": "./src/workflow-failure.ts",
+      "types": "./dist/workflow-failure.d.ts",
+      "import": "./dist/workflow-failure.js",
+      "default": "./dist/workflow-failure.js"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "node ../../tooling/scripts/build-package.mjs"
   },
   "devDependencies": {
     "@pepbits/tsconfig": "0.0.0"
-  }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
+    "directory": "packages/data"
+  },
+  "license": "UNLICENSED"
 }

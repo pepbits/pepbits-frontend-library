@@ -1,6 +1,8 @@
 # @pepbits/page-engines
 
-Generic record, worklist, form and template engines composed from typed definitions and injected adapters. Version `0.0.0` is an unpublished React 19 TypeScript source package. It contains no application catalogue, entity instances, module registry, navigation tree, default API endpoint or runtime sample data.
+Generic record, worklist, form and template engines composed from typed definitions and injected adapters. Version `0.1.0` is an unpublished React 19 ESM release candidate. It contains no application catalogue, entity instances, module registry, navigation tree, default API endpoint or runtime sample data.
+
+Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
 
 ## Public API by area
 
@@ -65,17 +67,17 @@ Record hooks additionally require `RecordAdapterProvider` with `{adapter, identi
 
 Import/approval workflows are optional worklist props and come from `@pepbits/patterns/imports` and `@pepbits/patterns/approvals`. When enabled, supply the patterns `DraftHost` with an authenticated data-layer draft adapter and verified session identity. Patterns owns the CSV dialog, approval workspace and draft recovery UI; engines do not duplicate them.
 
-Import tokens once and scan all source packages for Tailwind utilities (paths relative to the host stylesheet):
+Import tokens once and scan the installed `dist` directories for Tailwind utilities (paths relative to the host stylesheet):
 
 ```css
 @import "@pepbits/tokens/tokens.css";
-@source "../node_modules/@pepbits/ui/src";
-@source "../node_modules/@pepbits/components/src";
-@source "../node_modules/@pepbits/patterns/src";
-@source "../node_modules/@pepbits/page-engines/src";
+@source "../node_modules/@pepbits/ui/dist";
+@source "../node_modules/@pepbits/components/dist";
+@source "../node_modules/@pepbits/patterns/dist";
+@source "../node_modules/@pepbits/page-engines/dist";
 ```
 
-The host must support CSS modules and transpile source. Record-page, record-layout and registry-template CSS/declarations are copied byte-for-byte and remain CSS side effects. Existing class names, ARIA and keyboard behavior are retained. Legacy `data-clinical-section` and `template.clinical.*` localization keys are compatibility identifiers for generic section/read/discard labels, not domain implementations. Hosts provide canonical messages for the unchanged `ui.*`, `recovery.*`, `draft.*`, `template.*` keys and literal labels. Private test messages are not a runtime fallback. No original catalog or example is regenerated.
+The host must support CSS modules; dependencies are already compiled JavaScript. Record-page, record-layout and registry-template CSS/declarations are copied byte-for-byte and remain CSS side effects. Existing class names, ARIA and keyboard behavior are retained. Legacy `data-clinical-section` and `template.clinical.*` localization keys are compatibility identifiers for generic section/read/discard labels, not domain implementations. Hosts provide canonical messages for the unchanged `ui.*`, `recovery.*`, `draft.*`, `template.*` keys and literal labels. Private test messages are not a runtime fallback. No original catalog or example is regenerated.
 
 ## Editing, templates, recovery and extension slots
 

@@ -1,6 +1,8 @@
 # @pepbits/tokens
 
-Hand-written CSS tokens and opt-in reference fonts for shared UI. Version `0.0.0` is an unpublished source workspace package; consumers need TypeScript and CSS-aware tooling. The original CSS, all eight font assets, two OFL licenses and provenance are copied unchanged.
+Hand-written CSS tokens and opt-in reference fonts for shared UI. Version `0.1.0` is an unpublished release candidate; consumers need CSS-aware tooling. The original CSS, all eight font assets, two OFL licenses and provenance are copied unchanged.
+
+Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
 
 ## Public API and use
 

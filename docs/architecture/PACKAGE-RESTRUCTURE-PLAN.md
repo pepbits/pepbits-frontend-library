@@ -149,7 +149,7 @@ Placement rule: **if two products need it, it belongs in `packages/`; if only on
 
 ## How products consume the library
 
-Packages are published from this repository to a private registry (GitHub Packages under the `pepbits` organization is the default; see open questions) with semantic versions managed by Changesets. Each product repository installs them like any npm dependency:
+Packages are published from this repository to GitHub Packages at `https://npm.pkg.github.com` under the `pepbits` organization (owner decision, 25 October 2026) with semantic versions managed by Changesets. Each product repository installs them like any npm dependency:
 
 ```
 pepbits-healthcare-enterprise/frontend/
@@ -293,7 +293,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | 5. Shell | `erp-shell` + `workspace-core` + generic shell configuration → `shell`. Priorities 1–6 delivered in two parts; preferences/login and AI delivered in phase 5b. See [Phase 5 status](#phase-5-status). | Independent host API and fail-closed UI action grants; original applications unchanged |
 | 5b. AI and optional shell pages | Copied AI config/client/UI → `ai`, shell preferences/login, gate tests and Arabic physical-sidebar regression. See [Phase 5b](#phase-5b-status). | Independent host APIs; existing applications unchanged |
 | 6. Demo apps | `showcase` first, then one demo per change: healthcare, erp, school, reports, tenant-admin, onboarding, settle, caregrid, allyvora-patients, desktop. Product code leaves `erp-screens`, `erp-config` and `erp-data`. `dummy-api` → `mock-api`. | Yes: routes and hosts change |
-| 7. Publishing and consumers | Changesets and a registry publish job; Healthcare, ERP, School and Platform move from vendored archives to registry versions one at a time, in their own repositories under their own rules. Healthcare also takes `ClinicalPatientWorkspace` into `frontend/packages/healthcare-ui`. | Per consumer |
+| 7. Publishing and consumers | Phase 7a prepares Changesets, compiled packages and manual GitHub Packages tooling without publication; Healthcare, ERP, School and Platform move from vendored archives to registry versions one at a time, in their own repositories under their own rules. Healthcare also takes `ClinicalPatientWorkspace` into `frontend/packages/healthcare-ui`. | Per consumer |
 | 8. Removal | Delete shims and the empty `desktop-clients/` tree | None |
 
 Phase 0 comes first because the new top-level folders need a workspace root of their own before any package can live there.
@@ -510,7 +510,7 @@ Paths that ports must update, counted on `main` `01b6578`:
 ## Open questions for the owner
 
 1. **Demo hosting — decided.** One Next.js app per demo, built one at a time, starting with showcase.
-2. **Registry.** GitHub Packages under `pepbits`, or another private npm registry.
+2. **Registry — decided 25 October 2026.** GitHub Packages (`https://npm.pkg.github.com`), scope/org `@pepbits` / `pepbits`, repository `pepbits/pepbits-frontend-library`. First library versions are 0.1.0; manual owner-token publication from this server, after phase 7a preparation. No publish job is added in 7a.
 3. **Package names.** Confirm `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `patterns`, `page-engines`, `shell`, `data`, `platform`, `ai`, `testing`.
 4. **Component docs — decided for phase 6a.** Standalone custom gallery with snippets generated from executable example files.
 5. **Shim lifetime.** One library release after the last consumer moves, or a fixed date.
@@ -618,3 +618,11 @@ Phase 6e-5 local production build and real-HTTP acceptance passed: 25 workflows 
 ### Mock API rename status
 
 The demo API folder `dummy-api/` moved to `mock-api/` on 25 October 2026 (owner decision: rename with a compatibility link). A committed symbolic link `dummy-api → mock-api` keeps `desktop-clients/`, `.github/workflows/ci.yml`, `Jenkinsfile` and `run.sh`, which still use the old path, working without changes; it is removed with `desktop-clients/` in phase 8. Every reference in `demo-apps/`, `tooling/`, `packages/` and current documentation now uses `mock-api`; historical release records and their evidence keep the original path. See the [rename record](../releases/unreleased/mock-api-rename-2026-10-25.md).
+
+## Phase 7a status
+
+Prepared 25 October 2026 on `restructure/phase-7a`, based on `1d3336d`. All twelve libraries have **0.1.0** versions and applied Changesets changelogs, ESM JavaScript/declarations in `dist`, preserved public subpaths, CSS modules/fonts and client directives. Manifests restrict shipped files, mark CSS side effects, declare host peers, use `^0.1.0` internal ranges and identify the GitHub Packages repository/registry. Private demos/tooling remain private; `@pepbits/testing` is not present.
+
+Workspace Next webpack, Vite/Vitest and TypeScript select the explicit `pepbits-source` condition. Installed consumers use compiled exports without `transpilePackages` or TypeScript paths and scan `dist` for Tailwind utilities. The existing TypeScript compiler performs the build; Changesets is the only new dev dependency. Root scripts cover versioning, build, local tarballs and a token-required manual publication operation.
+
+See the [publishing guide](../development/PUBLISHING.md) and [release record](../releases/unreleased/restructure-phase-7a-2026-10-25.md) for exact verification, tarball sizes, isolated consumer proofs and remaining owner steps. The sandbox uses `/tmp/pepbits-phase7a/consumers` because the requested home cache is read-only. No commit, push, token creation, registry publication, product migration or deployment is part of phase 7a. Phase 7 consumer migrations and phase 8 removal remain separate work; the overall “Done when” criteria above are not yet fulfilled.

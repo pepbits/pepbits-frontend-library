@@ -13,6 +13,7 @@ const proxy = target ? {'/api': {target, changeOrigin: true, rewrite: (path: str
 export default defineConfig({
   plugins: [react()],
   resolve: {
+    conditions: ['pepbits-source', 'module', 'browser', 'development|production'],
     /* Workspace packages resolve through symlinks; one React copy keeps hooks working. */
     dedupe: ['react', 'react-dom'],
   },

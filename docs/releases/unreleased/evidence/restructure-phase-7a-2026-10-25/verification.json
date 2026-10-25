@@ -1,0 +1,509 @@
+{
+  "status": "all required checks passed; unpublished",
+  "artifactChecks": {
+    "publicPackages": 12,
+    "preservedExports": 76,
+    "demoImportsCovered": 61,
+    "preservedClientDirectives": 163,
+    "byteIdenticalAssets": 21
+  },
+  "earlierAttempts": [
+    {
+      "check": "forced CI initial attempt",
+      "outcome": "failed",
+      "reason": "Node-environment Vitest resolver lacked pepbits-source SSR condition while own dist was rebuilding; explicit SSR conditions added; focused tokens test passed 3/3.",
+      "followUp": "Resolved; see the final check receipts."
+    },
+    {
+      "check": "initial consumer proof",
+      "outcome": "Next build/render passed; Vite build passed but font render failed",
+      "reason": "Font CSS imported through Tailwind left relative URLs unprocessed in Vite. Fixture and publishing guide now import fonts directly from the JavaScript entry; final consumer rerun pending.",
+      "followUp": "Resolved; see the final check receipts."
+    },
+    {
+      "check": "expanded tarball path scan",
+      "outcome": "failed on shell after ten successful packages",
+      "reason": "An unanchored /workspace/ path pattern incorrectly matched a relative ./workspace/ module import. The pattern now distinguishes a preceding dot/word character; the final full pack/consumer/dry-run sequence passed.",
+      "followUp": "Resolved; see the final check receipts."
+    },
+    {
+      "check": "consumer tarball integrity audit",
+      "outcome": "failed after successful builds/renders",
+      "reason": "Reused generated consumer lockfiles retained prior tarball integrities under identical filenames. Driver now removes that lockfile and verifies all 12 installed integrity hashes before any build; final fresh-install proof passed.",
+      "followUp": "Resolved; see the final check receipts."
+    },
+    {
+      "check": "final consumer replay environment",
+      "outcome": "Next built; Chromium launch failed",
+      "reason": "Temporary XDG_CACHE_HOME redirected Playwright away from the preinstalled browser. No package changes; final rerun explicitly set PLAYWRIGHT_BROWSERS_PATH to the existing home cache and passed both apps.",
+      "followUp": "Resolved; see the final check receipts."
+    }
+  ],
+  "ci": {
+    "exit": 0,
+    "command": "npm run ci -- --concurrency=3",
+    "workspaces": [
+      {
+        "name": "@pepbits/icons",
+        "passed": 198,
+        "skipped": 0,
+        "filesPassed": 3,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/data",
+        "passed": 53,
+        "skipped": 0,
+        "filesPassed": 12,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/tokens",
+        "passed": 3,
+        "skipped": 0,
+        "filesPassed": 1,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/i18n",
+        "passed": 79,
+        "skipped": 0,
+        "filesPassed": 7,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/preferences",
+        "passed": 33,
+        "skipped": 0,
+        "filesPassed": 3,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/platform",
+        "passed": 84,
+        "skipped": 0,
+        "filesPassed": 9,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/ui",
+        "passed": 151,
+        "skipped": 0,
+        "filesPassed": 17,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/components",
+        "passed": 212,
+        "skipped": 0,
+        "filesPassed": 22,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/patterns",
+        "passed": 178,
+        "skipped": 0,
+        "filesPassed": 35,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/page-engines",
+        "passed": 450,
+        "skipped": 0,
+        "filesPassed": 23,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/shell",
+        "passed": 431,
+        "skipped": 0,
+        "filesPassed": 41,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/allyvora-patients",
+        "passed": 84,
+        "skipped": 0,
+        "filesPassed": 5,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/onboarding",
+        "passed": 99,
+        "skipped": 0,
+        "filesPassed": 6,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/tenant-admin",
+        "passed": 237,
+        "skipped": 0,
+        "filesPassed": 10,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/settle",
+        "passed": 161,
+        "skipped": 0,
+        "filesPassed": 9,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/caregrid",
+        "passed": 140,
+        "skipped": 0,
+        "filesPassed": 5,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits/ai",
+        "passed": 587,
+        "skipped": 0,
+        "filesPassed": 22,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/erp",
+        "passed": 1190,
+        "skipped": 0,
+        "filesPassed": 14,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/reports",
+        "passed": 168,
+        "skipped": 0,
+        "filesPassed": 9,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/school",
+        "passed": 251,
+        "skipped": 0,
+        "filesPassed": 14,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/desktop",
+        "passed": 82,
+        "skipped": 0,
+        "filesPassed": 3,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/showcase",
+        "passed": 95,
+        "skipped": 0,
+        "filesPassed": 5,
+        "filesSkipped": 0
+      },
+      {
+        "name": "@pepbits-demo/healthcare",
+        "passed": 1787,
+        "skipped": 4,
+        "filesPassed": 87,
+        "filesSkipped": 2
+      }
+    ],
+    "tooling": {
+      "passed": 20,
+      "failed": 0
+    },
+    "tasks": 69,
+    "cached": 0,
+    "duration": "16m51.415s",
+    "totals": {
+      "passed": 6753,
+      "skipped": 4,
+      "filesPassed": 362,
+      "filesSkipped": 2
+    }
+  },
+  "notes": [
+    "CI contains 4 existing skipped healthcare browser-parity tests in 2 files (MedBand and RCM); no new skips.",
+    "After CI started, only the standalone shell browser-server resolver, consumer fixture/driver, release-pack validation, README/docs/evidence changed; separate shell typecheck/browser and final artifact/consumer checks cover those changes. Component source and public API names are unchanged.",
+    "The sandbox refused shared Turbo cache writes; the forced run executed all 69 tasks with 0 cached. Timings are observations on a shared host, not a controlled before/after benchmark."
+  ],
+  "environment": {
+    "node": "24.21.0",
+    "npm": "11.19.0",
+    "typescript": "5.9.3",
+    "turbo": "2.11.10",
+    "changesets": "2.31.1",
+    "vitest": "3.2.7",
+    "heavyLock": "/home/pepadmin/.cache/pepbits-heavy.lock",
+    "consumerDirectory": "/tmp/pepbits-phase7a/consumers",
+    "consumerDirectoryDeviation": "Requested home cache is read-only in the sandbox",
+    "chromiumLibraryPath": "/home/pepadmin/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu"
+  },
+  "install": {
+    "command": "npm install",
+    "exit": 0,
+    "audit": {
+      "moderate": 1,
+      "critical": 3
+    },
+    "logSha256": "7d79b3c20c464d8ee1c170ffd6b081659b675d81ac9d8a1d908fc58285e2dec7"
+  },
+  "publishDryRun": {
+    "command": "npm publish --dry-run --ignore-scripts (each public package)",
+    "exit": 0,
+    "packages": [
+      {
+        "name": "@pepbits/tokens",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/tokens@0.1.0"
+      },
+      {
+        "name": "@pepbits/icons",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/icons@0.1.0"
+      },
+      {
+        "name": "@pepbits/i18n",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/i18n@0.1.0"
+      },
+      {
+        "name": "@pepbits/preferences",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/preferences@0.1.0"
+      },
+      {
+        "name": "@pepbits/ui",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/ui@0.1.0"
+      },
+      {
+        "name": "@pepbits/components",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/components@0.1.0"
+      },
+      {
+        "name": "@pepbits/data",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/data@0.1.0"
+      },
+      {
+        "name": "@pepbits/platform",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/platform@0.1.0"
+      },
+      {
+        "name": "@pepbits/patterns",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/patterns@0.1.0"
+      },
+      {
+        "name": "@pepbits/page-engines",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/page-engines@0.1.0"
+      },
+      {
+        "name": "@pepbits/shell",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/shell@0.1.0"
+      },
+      {
+        "name": "@pepbits/ai",
+        "version": "0.1.0",
+        "exit": 0,
+        "registryNotice": "Publishing to https://npm.pkg.github.com with tag latest and default access (dry-run)",
+        "stdout": "+ @pepbits/ai@0.1.0"
+      }
+    ]
+  },
+  "source": {
+    "base": "1d3336df09a7e3287dde5d5648143217fb51730c",
+    "branch": "restructure/phase-7a",
+    "algorithm": "SHA256 of sorted lines: file SHA256, two spaces, repository-relative path, newline. All tracked/untracked nonignored files under listed scope; documentation excluded.",
+    "scope": [
+      "package.json",
+      "package-lock.json",
+      "turbo.json",
+      "tsconfig.base.json",
+      ".npmrc",
+      ".changeset",
+      "packages",
+      "demo-apps",
+      "tooling"
+    ],
+    "sourceFiles": 2108,
+    "digest": "865c739678a3254f838ddcef19f244e16f8b0c64a8b04c4567782a11bfb9c8c0"
+  },
+  "shell": {
+    "command": "npm run test:browser -w @pepbits/shell",
+    "exit": 0,
+    "passed": 18,
+    "files": 1,
+    "durationSeconds": 11.75,
+    "followupTypecheck": {
+      "command": "npm run typecheck -w @pepbits/shell",
+      "exit": 0
+    }
+  },
+  "pack": {
+    "command": "npm run release:pack",
+    "exit": 0,
+    "tarballs": 12,
+    "files": 679,
+    "bytes": 965416,
+    "listingCheck": "tar -tzf for each archive, grep -En for source trees, node_modules, .env and .test/.spec files: zero matches",
+    "contentCheck": "release-pack.mjs scans each textual member for absolute home/temp/workspace paths and known credential/private-key patterns; zero findings. Not a general security audit.",
+    "manifest": "tarballs.json"
+  },
+  "consumers": {
+    "command": "node tooling/scripts/verify-package-consumers.mjs",
+    "exit": 0,
+    "results": [
+      {
+        "kind": "next",
+        "packages": 12,
+        "build": "passed",
+        "buildAndRenderSeconds": 19,
+        "checks": 11,
+        "css": {
+          "labelDisplay": "flex",
+          "labelDirection": "column",
+          "buttonDisplay": "inline-flex",
+          "buttonHeight": "36px",
+          "token": "#fff",
+          "fontLoaded": true
+        },
+        "fontResponses": [
+          {
+            "url": "/_next/static/media/public-sans-latin-wght-normal.035c7fe4.woff2",
+            "status": 200
+          }
+        ],
+        "pageErrors": [],
+        "failedRequests": [],
+        "worker": "passed",
+        "nodeModulesRemoved": true,
+        "tarballIntegrityMatches": 12,
+        "noWorkspaceLinks": true,
+        "noTypeScriptPaths": true,
+        "noTranspilePackages": true,
+        "checksCovered": [
+          "page mount",
+          "translated interactive Button",
+          "editable Input/FieldShell",
+          "page template",
+          "CSS module geometry",
+          "compiled Tailwind Button geometry",
+          "token value",
+          "successful font loading",
+          "XLSX module worker",
+          "no page/console errors",
+          "no failed requests"
+        ]
+      },
+      {
+        "kind": "vite",
+        "packages": 12,
+        "build": "passed",
+        "buildAndRenderSeconds": 9,
+        "checks": 11,
+        "css": {
+          "labelDisplay": "flex",
+          "labelDirection": "column",
+          "buttonDisplay": "inline-flex",
+          "buttonHeight": "36px",
+          "token": "#fff",
+          "fontLoaded": true
+        },
+        "fontResponses": [
+          {
+            "url": "/assets/public-sans-latin-wght-normal-DdeTHZLK.woff2",
+            "status": 200
+          }
+        ],
+        "pageErrors": [],
+        "failedRequests": [],
+        "worker": "passed",
+        "nodeModulesRemoved": true,
+        "tarballIntegrityMatches": 12,
+        "noWorkspaceLinks": true,
+        "noTypeScriptPaths": true,
+        "noTranspilePackages": true,
+        "checksCovered": [
+          "page mount",
+          "translated interactive Button",
+          "editable Input/FieldShell",
+          "page template",
+          "CSS module geometry",
+          "compiled Tailwind Button geometry",
+          "token value",
+          "successful font loading",
+          "XLSX module worker",
+          "no page/console errors",
+          "no failed requests"
+        ]
+      }
+    ]
+  },
+  "reports": {
+    "build": {
+      "command": "NEXT_PUBLIC_API_URL=/api npm run build -w @pepbits-demo/reports",
+      "exit": 0
+    },
+    "integration": {
+      "command": "REPORTS_API_NODE=$HOME/.local/opt/node-v24.21.0-linux-x64/bin/node REPORTS_RUNTIME_ARTIFACTS=/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/mock-api LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu node tooling/scripts/run-demo-integration.mjs reports",
+      "exit": 0,
+      "workflows": 22,
+      "routes": 49,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "axeViolations": 0,
+      "comparedBackendSourceFiles": 483,
+      "mismatches": 0,
+      "allProcessGroupsStopped": true,
+      "identity": "reports-identity.json"
+    }
+  },
+  "publication": {
+    "performed": false,
+    "tokenCreatedOrSupplied": false,
+    "commit": false,
+    "push": false,
+    "deploy": false
+  },
+  "build": {
+    "command": "npm run release:build",
+    "packages": 12,
+    "initialSeconds": 25.778
+  },
+  "protectedPaths": {
+    "command": "git status --short -- desktop-clients mock-api dummy-api source demo-pages deploy .github Jenkinsfile run.sh run_all.sh",
+    "output": ""
+  },
+  "documentation": {
+    "command": "/home/pepadmin/pb/repos/saas/lib/pepbits-frontend-library/desktop-clients/node_modules/.bin/jiti docs/tools/check-docs.mjs",
+    "exit": 0,
+    "documentationFiles": 220,
+    "alsoRun": "node docs/tools/check-docs.mjs"
+  }
+}

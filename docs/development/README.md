@@ -30,3 +30,7 @@ If the documentation gate or CI configuration changes, test the gate and check w
 ## Latest DCP form/backend handoff
 
 The [latest form structure and backend expectations](DCP-LATEST-FORM-BACKEND-HANDOFF-2026-09-11.md) and [validated authoring JSON example](examples/dcp-latest-form-structure.json) describe the deployed designer separately from the backend v1 runtime contract. Both files are attached to [PLIBRYBEND-206, latest frontend handoff](https://pepbits.atlassian.net/browse/PLIBRYBEND-206?focusedCommentId=10096). The contract-owner follow-up is on [PLIBRYBEND-194](https://pepbits.atlassian.net/browse/PLIBRYBEND-194?focusedCommentId=10097). Comments were read back after posting; no issue statuses were changed.
+
+## Library packaging
+
+See [Publishing](PUBLISHING.md) for compiled package contracts, workspace source development, Changesets, local pack verification and the manual GitHub Packages procedure. Phase 7a prepares unpublished 0.1.0 candidates only.

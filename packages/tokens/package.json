@@ -1,18 +1,50 @@
 {
   "name": "@pepbits/tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./tokens.css": "./src/tokens.css",
-    "./reference-fonts.css": "./src/reference-fonts.css",
-    "./fonts/*.woff2": "./src/fonts/*.woff2"
+    ".": {
+      "pepbits-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./tokens.css": {
+      "pepbits-source": "./src/tokens.css",
+      "default": "./dist/tokens.css"
+    },
+    "./reference-fonts.css": {
+      "pepbits-source": "./src/reference-fonts.css",
+      "default": "./dist/reference-fonts.css"
+    },
+    "./fonts/*.woff2": {
+      "pepbits-source": "./src/fonts/*.woff2",
+      "default": "./dist/fonts/*.woff2"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "node ../../tooling/scripts/build-package.mjs"
   },
   "devDependencies": {
     "@pepbits/tsconfig": "0.0.0"
-  }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
+    "directory": "packages/tokens"
+  },
+  "license": "UNLICENSED",
+  "sideEffects": [
+    "**/*.css"
+  ]
 }

@@ -1,6 +1,8 @@
 # @pepbits/ui
 
-Reusable React primitives: controls, selection, status and navigation. Unpublished version `0.0.0`, copied into the independent root workspace. The single `.` export exposes TypeScript source through `src/index.ts`; no build artifact or application migration is included. React 19 or later is required.
+Reusable React primitives: controls, selection, status and navigation. Unpublished version `0.1.0`, copied into the independent root workspace. The public exports resolve to ESM JavaScript and declarations in `dist`; no application migration is included. React 19 or later is required.
+
+Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
 
 ## Public API
 
@@ -56,12 +58,12 @@ function Surface({catalogs, children}: {catalogs: TranslationCatalog; children: 
 
 The host supplies accepted preference snapshots, tenant policy, availability and its central `update` callback to `Host`. `usePreferences()` resolves effective values, including live locks. The host applies effective theme, font, scale, radius and reduced-motion settings to its surfaces; these components do not persist preferences. Authorization remains a server responsibility. Hosts supply their catalogs, load failures/retries and selected formatters for values; native temporal inputs keep ISO machine values.
 
-Hosts must add **both packages' `src` directories** to Tailwind's `content` (v3) or `@source` (v4), and import **`@pepbits/tokens/tokens.css`** once. Paths are relative to the host stylesheet/config; for example:
+Hosts must add **both packages' `dist` directories** to Tailwind's `content` (v3) or `@source` (v4), and import **`@pepbits/tokens/tokens.css`** once. Paths are relative to the host stylesheet/config; for example:
 
 ```css
 @import "@pepbits/tokens/tokens.css";
-@source "../node_modules/@pepbits/ui/src";
-@source "../node_modules/@pepbits/components/src";
+@source "../node_modules/@pepbits/ui/dist";
+@source "../node_modules/@pepbits/components/dist";
 ```
 
 The utility classes, semantic tokens and existing `nex-scrollbar` compatibility class are preserved. No precompiled CSS is emitted. The host owns its Tailwind setup and global utilities. Components retain their existing keyboard, focus, ARIA, RTL and reduced-motion behavior; jsdom tests do not establish visual, screen-reader or native-speaker acceptance.
