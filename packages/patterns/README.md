@@ -1,6 +1,8 @@
 # @pepbits/patterns
 
-Generic lifecycle administration, master-file transfer and server-authorized DCP fields. Phase 4a delivers the product-consumed subset; phase 4b adds approvals, drafts and imports. Phase 4c completes priority 3. Version `0.0.0` is an unpublished ESM TypeScript source package, requiring React/React DOM 19 or later. Existing applications keep using their original workspace.
+Generic lifecycle administration, master-file transfer and server-authorized DCP fields. Phase 4a delivers the product-consumed subset; phase 4b adds approvals, drafts and imports. Phase 4c completes priority 3. Version `0.1.0` is an unpublished ESM release candidate, requiring React/React DOM 19 or later. Existing applications keep using their original workspace.
+
+Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
 
 ## Public API by area
 
@@ -74,12 +76,12 @@ Hosts must support **CSS modules**: the lifecycle `.module.css` and its declarat
 
 ```css
 @import "@pepbits/tokens/tokens.css";
-@source "../node_modules/@pepbits/ui/src";
-@source "../node_modules/@pepbits/components/src";
-@source "../node_modules/@pepbits/patterns/src";
+@source "../node_modules/@pepbits/ui/dist";
+@source "../node_modules/@pepbits/components/dist";
+@source "../node_modules/@pepbits/patterns/dist";
 ```
 
-No precompiled CSS or library bundle is emitted. Hosts transpile source and provide the existing global utilities. Markup, classes, labels, ARIA, keyboard controls and CSS-module names are preserved. Localization uses `@pepbits/i18n/react`; hosts supply canonical `lifecycle.*`, `designer.v1.*`, `designer.invalidValues`, shared `ui.*`/`recovery.*` keys and literal transfer labels. Missing non-core translations display their key/literal. The private test catalog is not a runtime fallback. Canonical catalogs and generated application examples remain unchanged.
+CSS modules ship beside compiled ESM; hosts provide the existing global utilities. No TypeScript transpilation of dependencies is required. Markup, classes, labels, ARIA, keyboard controls and CSS-module names are preserved. Localization uses `@pepbits/i18n/react`; hosts supply canonical `lifecycle.*`, `designer.v1.*`, `designer.invalidValues`, shared `ui.*`/`recovery.*` keys and literal transfer labels. Missing non-core translations display their key/literal. The private test catalog is not a runtime fallback. Canonical catalogs and generated application examples remain unchanged.
 
 ## ScreenHost contract
 
@@ -187,7 +189,7 @@ Designer users add/reorder sections and fields using drag handles or the existin
 - `SpreadsheetPage` accepts `initialRows`, required `audit(entry)`, optional `pageId` and `filename`. Empty rows replace product seeds. ScreenHost controls `can('export', {pageId})`, notifications and transient document rows. There is no product request or export endpoint default. The audit must resolve before download; failures retain edited rows. Explicit operational schema classifications replace product lookup; unknown classifications still require review. Effective `exportFormat` selects CSV/XLSX and replaces the filename extension (default `pepbits-costing-workbook.xlsx`); sticky header and radius follow host presentation. Eight-column math, import limits, header validation, markup and ARIA remain.
 - Embedded informational integration panels retain their structure but refer to the new provider/adapter boundary; complete executable snippets belong to showcase. CSS modules and declarations are byte-identical. Strict indexed-access assertions are type-only; tests use neutral local fixtures and shared providers. Icons are routed through `@pepbits/icons`.
 
-Install adds the original DnD specifications (`@dnd-kit/core` 6.3.1, sortable 10.0.0, utilities 3.2.2). XLSX remains the exact 0.20.3 CDN tarball. Hosts must scan pattern source and load tokens/CSS modules as above. Canonical catalogs remain unchanged; showcase regenerates its read-only subset. Missing translations are a host integration responsibility.
+Install adds the original DnD specifications (`@dnd-kit/core` 6.3.1, sortable 10.0.0, utilities 3.2.2). XLSX remains the exact 0.20.3 CDN tarball. Hosts must scan pattern `dist` files and load tokens/CSS modules as above. Canonical catalogs remain unchanged; showcase regenerates its read-only subset. Missing translations are a host integration responsibility.
 
 No Developer-Library launcher, product page/category/context/subject registry, product row seed or DCP demo endpoint wrapper is included. The showcase supplies five independent in-memory examples. Native output, real identity verification, live backends, durable storage, deployment and native-speaker review remain host acceptance, not results of these local package tests. Rollback removes this independent increment without changing protected applications or stored data.
 

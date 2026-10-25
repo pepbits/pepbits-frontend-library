@@ -1,6 +1,6 @@
 # Library packages
 
-The reusable `@pepbits/*` packages. Phases 1–5b of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-5b-status) add twelve unpublished source packages alongside the existing workspace:
+The reusable `@pepbits/*` packages. Phase 7a of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-7a-status) prepares twelve packages at **0.1.0** for GitHub Packages. They are not published yet:
 
 | Package | Purpose |
 | --- | --- |
@@ -17,10 +17,16 @@ The reusable `@pepbits/*` packages. Phases 1–5b of the [library restructure pl
 | [@pepbits/ai](ai/README.md) | Host-supplied AI configuration, redaction/transport, assistant modes and optional shell extension |
 | [@pepbits/shell](shell/README.md) | Generic host/ScreenHost provider, full chrome, workspace tabs/split/MDI/window adapter, documentation/help layers, session lock and monitoring |
 
-Run `npm install` and `npm run ci` from the repository root. Packages expose TypeScript source and have typecheck/test scripts; there is no library build or publication step yet. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI is implemented above shell in phase 5b.
+Run `npm install` and `npm run ci` from the repository root. Each package builds ESM JavaScript and declarations to `dist`, with CSS modules and font assets preserved. Workspace TypeScript, Next webpack, Vite and Vitest opt into `pepbits-source`; installed consumers use `types`/`import`/`default` exports and need no `transpilePackages`. Scan installed `dist` directories for Tailwind utilities, or workspace `src` during development. The root boundary check permits data to import i18n/preferences, platform to import i18n/preferences/data, and AI to import through shell. AI is implemented above shell in phase 5b.
 
 - One folder per layer: `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `data`, `platform`, `patterns`, `page-engines`, `shell`, `ai`, `testing`.
 - The folder name is the package name: `packages/ui` is `@pepbits/ui`.
 - A package depends only on the layers below it. `npm run check:boundaries` enforces this.
 - No product data, product rules or demo code. Code that only one product needs belongs in that product's repository.
 - Packages here never import from `desktop-clients/`, `mock-api/` or the pre-restructure package names (`ops-ui`, `erp-*`, `reference-*`).
+
+## Versioning and manual releases
+
+See [Publishing](../docs/development/PUBLISHING.md) for Changesets, `release:version`, `release:build`, `release:pack`, token configuration and the manual-only `release:publish`. Pack creates twelve local tarballs and checks their file lists; it never writes to a registry. Private demos and `@pepbits/tsconfig` remain unpublished; `@pepbits/testing` is reserved and absent. The existing `@pepbits/patterns/testing` subpath remains available, with an optional `@testing-library/react` peer for test consumers.
+
+CSS is marked as a side effect. No CommonJS build is provided. Relative JavaScript/declaration imports and worker URLs use `.js`; client directives survive. Internal package ranges are `^0.1.0`, React/React DOM stay host peers, and the package license is `UNLICENSED` (bundled fonts retain their OFL licenses). No component API, rendering behavior, preference policy or canonical catalog changes are part of this increment.

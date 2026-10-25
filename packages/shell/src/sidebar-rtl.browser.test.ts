@@ -7,7 +7,7 @@ import {THEME_OPTIONS} from '@pepbits/preferences';
 let server:ViteDevServer,browser:Browser,base:string;
 beforeAll(async()=>{
   server=await createServer({configFile:false,root:process.cwd(),logLevel:'error',server:{host:'127.0.0.1',port:0},
-    css:{postcss:{plugins:[tailwind()]}},resolve:{dedupe:['react','react-dom']}});
+    css:{postcss:{plugins:[tailwind()]}},resolve:{conditions:['pepbits-source','module','browser','development|production'],dedupe:['react','react-dom']}});
   await server.listen();base=server.resolvedUrls!.local[0]!;
   browser=await chromium.launch({headless:true});
 },60000);

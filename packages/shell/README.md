@@ -1,6 +1,8 @@
 # @pepbits/shell
 
-Generic shell, workspace UI, help layers and optional preferences/login pages, unpublished source version `0.0.0`. **Phase 5 priorities 1–6 and phase 5b are implemented.** AI plugs in from the separate higher-layer package. See the [phase 5 record](../../docs/releases/unreleased/restructure-phase-5-2026-10-23.md) and [phase 5b record](../../docs/releases/unreleased/restructure-phase-5b-2026-10-23.md) for verification and deferred work.
+Generic shell, workspace UI, help layers and optional preferences/login pages, unpublished release candidate version `0.1.0`. **Phase 5 priorities 1–6 and phase 5b are implemented.** AI plugs in from the separate higher-layer package. See the [phase 5 record](../../docs/releases/unreleased/restructure-phase-5-2026-10-23.md) and [phase 5b record](../../docs/releases/unreleased/restructure-phase-5b-2026-10-23.md) for verification and deferred work.
+
+Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
 
 ## Public API by area
 
@@ -16,7 +18,7 @@ Generic shell, workspace UI, help layers and optional preferences/login pages, u
 | `./layers` | `ShellLayers`, `ToastViewport`, `CommandPalette`, `DocumentationDrawer`, `HelpAssistant`, `TOUR_REVEAL_EVENT` |
 | `./reference-host` | `ReferenceHost`, `ReferenceScope`, `ReferencePreferenceHost`, `ReferenceModuleProps`, `ReferenceRoute`, `ReferenceHostProvider`, `useReferenceHost`, `referenceScopeKey`, `useReferenceFormat`, `useReferencePathname`, `useReferenceSearchParams`, `useReferenceRouter`, `ReferenceLink` |
 
-The workspace has pure state implementations but its public barrel includes React bindings. This source package requires React/React DOM 19, a TypeScript-aware bundler, and the public lower-layer packages. There is no prebuilt application, registry publication, default product or default API URL.
+The workspace has pure state implementations but its public barrel includes React bindings. This package requires React/React DOM 19, a CSS-module-aware bundler, and the public lower-layer packages. There is no prebuilt application, registry publication, default product or default API URL.
 
 Workspace tabs and the MDI taskbar own named navigation landmarks, including their commands. The profile trigger’s accessible name includes the localized action, user name and visible initials; consumers should match the action prefix when the identity can change. These corrections were found by the full-shell showcase Chromium axe sweep.
 
@@ -124,15 +126,15 @@ Shortcuts use physical codes and the original registry, typing rules and repeat 
 
 ## Styling, localization and accessibility
 
-Import tokens once and scan source for all used layers. For Tailwind v4, paths relative to the application's stylesheet might be:
+Import tokens once and scan installed `dist` directories for all used layers. For Tailwind v4, paths relative to the application's stylesheet might be:
 
 ```css
 @import "@pepbits/tokens/tokens.css";
-@source "../node_modules/@pepbits/ui/src";
-@source "../node_modules/@pepbits/components/src";
-@source "../node_modules/@pepbits/patterns/src";
-@source "../node_modules/@pepbits/page-engines/src";
-@source "../node_modules/@pepbits/shell/src";
+@source "../node_modules/@pepbits/ui/dist";
+@source "../node_modules/@pepbits/components/dist";
+@source "../node_modules/@pepbits/patterns/dist";
+@source "../node_modules/@pepbits/page-engines/dist";
+@source "../node_modules/@pepbits/shell/dist";
 ```
 
 Use equivalent `content` paths with Tailwind v3. Hosts load their selected font assets. `ShellAppearance` applies effective theme, radius, row padding, independent shell/form/result scales, reduced motion, language and direction to `<html>`; the original token CSS suppresses animation. Toast/session-lock/error-monitor markup and utility classes are copied; toasts additionally have a polite live region. The host bundler must support CSS modules used by patterns/page-engines and the two byte-identical shell frame/workspace-page CSS modules. There is no compiled CSS artifact.

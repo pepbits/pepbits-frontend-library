@@ -1,31 +1,92 @@
 {
   "name": "@pepbits/shell",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "sideEffects": [
     "**/*.css"
   ],
   "exports": {
-    ".": "./src/index.ts",
-    "./workspace": "./src/workspace/index.ts",
-    "./navigation": "./src/navigation.ts",
-    "./products": "./src/products.ts",
-    "./shortcuts": "./src/shortcuts.ts",
-    "./documentation": "./src/documentation.tsx",
-    "./tours": "./src/tours.ts",
-    "./layers": "./src/layers/index.ts",
-    "./preferences-page": "./src/preferences-page/index.tsx",
-    "./login": "./src/login/index.tsx",
-    "./application-providers": "./src/application-providers.tsx",
-    "./reference-host": "./src/reference-host.tsx"
+    ".": {
+      "pepbits-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./workspace": {
+      "pepbits-source": "./src/workspace/index.ts",
+      "types": "./dist/workspace/index.d.ts",
+      "import": "./dist/workspace/index.js",
+      "default": "./dist/workspace/index.js"
+    },
+    "./navigation": {
+      "pepbits-source": "./src/navigation.ts",
+      "types": "./dist/navigation.d.ts",
+      "import": "./dist/navigation.js",
+      "default": "./dist/navigation.js"
+    },
+    "./products": {
+      "pepbits-source": "./src/products.ts",
+      "types": "./dist/products.d.ts",
+      "import": "./dist/products.js",
+      "default": "./dist/products.js"
+    },
+    "./shortcuts": {
+      "pepbits-source": "./src/shortcuts.ts",
+      "types": "./dist/shortcuts.d.ts",
+      "import": "./dist/shortcuts.js",
+      "default": "./dist/shortcuts.js"
+    },
+    "./documentation": {
+      "pepbits-source": "./src/documentation.tsx",
+      "types": "./dist/documentation.d.ts",
+      "import": "./dist/documentation.js",
+      "default": "./dist/documentation.js"
+    },
+    "./tours": {
+      "pepbits-source": "./src/tours.ts",
+      "types": "./dist/tours.d.ts",
+      "import": "./dist/tours.js",
+      "default": "./dist/tours.js"
+    },
+    "./layers": {
+      "pepbits-source": "./src/layers/index.ts",
+      "types": "./dist/layers/index.d.ts",
+      "import": "./dist/layers/index.js",
+      "default": "./dist/layers/index.js"
+    },
+    "./preferences-page": {
+      "pepbits-source": "./src/preferences-page/index.tsx",
+      "types": "./dist/preferences-page/index.d.ts",
+      "import": "./dist/preferences-page/index.js",
+      "default": "./dist/preferences-page/index.js"
+    },
+    "./login": {
+      "pepbits-source": "./src/login/index.tsx",
+      "types": "./dist/login/index.d.ts",
+      "import": "./dist/login/index.js",
+      "default": "./dist/login/index.js"
+    },
+    "./application-providers": {
+      "pepbits-source": "./src/application-providers.tsx",
+      "types": "./dist/application-providers.d.ts",
+      "import": "./dist/application-providers.js",
+      "default": "./dist/application-providers.js"
+    },
+    "./reference-host": {
+      "pepbits-source": "./src/reference-host.tsx",
+      "types": "./dist/reference-host.d.ts",
+      "import": "./dist/reference-host.js",
+      "default": "./dist/reference-host.js"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
     "test": "vitest run",
-    "test:browser": "vitest run --config vitest.browser.config.ts"
+    "test:browser": "vitest run --config vitest.browser.config.ts",
+    "build": "node ../../tooling/scripts/build-package.mjs"
   },
   "devDependencies": {
-    "@pepbits/tokens": "0.0.0",
+    "@pepbits/tokens": "^0.1.0",
     "@pepbits/tsconfig": "0.0.0",
     "@tailwindcss/postcss": "^4.3.3",
     "playwright": "^1.64.0",
@@ -38,14 +99,28 @@
     "react-dom": ">=19"
   },
   "dependencies": {
-    "@pepbits/components": "0.0.0",
-    "@pepbits/data": "0.0.0",
-    "@pepbits/i18n": "0.0.0",
-    "@pepbits/icons": "0.0.0",
-    "@pepbits/page-engines": "0.0.0",
-    "@pepbits/patterns": "0.0.0",
-    "@pepbits/platform": "0.0.0",
-    "@pepbits/preferences": "0.0.0",
-    "@pepbits/ui": "0.0.0"
-  }
+    "@pepbits/components": "^0.1.0",
+    "@pepbits/data": "^0.1.0",
+    "@pepbits/i18n": "^0.1.0",
+    "@pepbits/icons": "^0.1.0",
+    "@pepbits/page-engines": "^0.1.0",
+    "@pepbits/patterns": "^0.1.0",
+    "@pepbits/platform": "^0.1.0",
+    "@pepbits/preferences": "^0.1.0",
+    "@pepbits/ui": "^0.1.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
+    "directory": "packages/shell"
+  },
+  "license": "UNLICENSED"
 }

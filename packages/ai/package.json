@@ -1,17 +1,40 @@
 {
   "name": "@pepbits/ai",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
-    ".": "./src/index.ts",
-    "./config": "./src/config/index.ts",
-    "./client": "./src/client/index.ts",
-    "./ui": "./src/ui/index.ts"
+    ".": {
+      "pepbits-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./config": {
+      "pepbits-source": "./src/config/index.ts",
+      "types": "./dist/config/index.d.ts",
+      "import": "./dist/config/index.js",
+      "default": "./dist/config/index.js"
+    },
+    "./client": {
+      "pepbits-source": "./src/client/index.ts",
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js",
+      "default": "./dist/client/index.js"
+    },
+    "./ui": {
+      "pepbits-source": "./src/ui/index.ts",
+      "types": "./dist/ui/index.d.ts",
+      "import": "./dist/ui/index.js",
+      "default": "./dist/ui/index.js"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "node ../../tooling/scripts/build-package.mjs"
   },
   "devDependencies": {
     "@pepbits/tsconfig": "0.0.0"
@@ -21,15 +44,29 @@
     "react-dom": ">=19"
   },
   "dependencies": {
-    "@pepbits/icons": "0.0.0",
-    "@pepbits/i18n": "0.0.0",
-    "@pepbits/preferences": "0.0.0",
-    "@pepbits/ui": "0.0.0",
-    "@pepbits/components": "0.0.0",
-    "@pepbits/data": "0.0.0",
-    "@pepbits/platform": "0.0.0",
-    "@pepbits/patterns": "0.0.0",
-    "@pepbits/page-engines": "0.0.0",
-    "@pepbits/shell": "0.0.0"
-  }
+    "@pepbits/icons": "^0.1.0",
+    "@pepbits/i18n": "^0.1.0",
+    "@pepbits/preferences": "^0.1.0",
+    "@pepbits/ui": "^0.1.0",
+    "@pepbits/components": "^0.1.0",
+    "@pepbits/data": "^0.1.0",
+    "@pepbits/platform": "^0.1.0",
+    "@pepbits/patterns": "^0.1.0",
+    "@pepbits/page-engines": "^0.1.0",
+    "@pepbits/shell": "^0.1.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
+    "directory": "packages/ai"
+  },
+  "license": "UNLICENSED"
 }

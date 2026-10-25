@@ -1,6 +1,8 @@
 # @pepbits/data
 
-Generic record editing, draft policy/storage contracts, CSV imports, approvals and record panels. This unpublished `0.0.0` ESM package exposes TypeScript source through one root barrel. It has no React, product registry, environment configuration or default API host.
+Generic record editing, draft policy/storage contracts, CSV imports, approvals and record panels. This unpublished `0.1.0` ESM package exposes ESM JavaScript and declarations through its public export map. It has no React, product registry, environment configuration or default API host.
+
+Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
 
 ## Public API
 

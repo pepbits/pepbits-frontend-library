@@ -1,19 +1,52 @@
 {
   "name": "@pepbits/i18n",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./react": "./src/react.tsx"
+    ".": {
+      "pepbits-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./react": {
+      "pepbits-source": "./src/react.tsx",
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "default": "./dist/react.js"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "node ../../tooling/scripts/build-package.mjs"
   },
   "devDependencies": {
     "@pepbits/tsconfig": "0.0.0"
   },
   "peerDependencies": {
     "react": ">=19"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
+    "directory": "packages/i18n"
+  },
+  "license": "UNLICENSED",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   }
 }

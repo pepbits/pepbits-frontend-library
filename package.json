@@ -15,7 +15,11 @@
     "test": "turbo run test",
     "check:boundaries": "node tooling/scripts/check-boundaries.mjs",
     "test:tooling": "node --test tooling/scripts/*.test.mjs",
-    "ci": "npm run check:boundaries && npm run test:tooling && turbo run typecheck test build --force"
+    "ci": "npm run check:boundaries && npm run test:tooling && turbo run typecheck test build --force",
+    "release:version": "changeset version",
+    "release:build": "turbo run build --filter='./packages/*' --concurrency=3",
+    "release:pack": "npm run release:build && node tooling/scripts/release-pack.mjs",
+    "release:publish": "node tooling/scripts/release-publish.mjs"
   },
   "devDependencies": {
     "turbo": "^2.5.0",
@@ -29,7 +33,8 @@
     "jsdom": "^25.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.7"
+    "@testing-library/user-event": "^14.6.7",
+    "@changesets/cli": "^2.30.0"
   },
   "engines": {
     "node": ">=22"

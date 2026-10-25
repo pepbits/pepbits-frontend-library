@@ -1,54 +1,175 @@
 {
   "name": "@pepbits/patterns",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "sideEffects": [
     "**/*.css"
   ],
   "exports": {
-    ".": "./src/index.ts",
-    "./lifecycle": "./src/lifecycle/index.tsx",
-    "./master-transfer": "./src/master-transfer/index.ts",
-    "./dcp-fields": "./src/dcp-fields/index.ts",
-    "./screen-host": "./src/screen-host.tsx",
-    "./approvals": "./src/approvals/index.ts",
-    "./drafts": "./src/drafts/index.ts",
-    "./imports": "./src/imports/index.ts",
-    "./testing": "./src/test/index.ts",
-    "./spreadsheet": "./src/spreadsheet/index.tsx",
-    "./form-designer": "./src/form-designer/index.ts",
-    "./label-printing": "./src/label-printing/index.ts",
-    "./identity-devices": "./src/identity-devices/index.ts",
-    "./device-integrations": "./src/device-integrations/index.ts",
-    "./resources": "./src/resources/index.ts",
-    "./tree": "./src/tree/index.tsx",
-    "./board": "./src/board/index.tsx",
-    "./calendar": "./src/calendar/index.tsx",
-    "./print-pagination": "./src/print-pagination/index.ts",
-    "./wizard": "./src/wizard/index.tsx"
+    ".": {
+      "pepbits-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./lifecycle": {
+      "pepbits-source": "./src/lifecycle/index.tsx",
+      "types": "./dist/lifecycle/index.d.ts",
+      "import": "./dist/lifecycle/index.js",
+      "default": "./dist/lifecycle/index.js"
+    },
+    "./master-transfer": {
+      "pepbits-source": "./src/master-transfer/index.ts",
+      "types": "./dist/master-transfer/index.d.ts",
+      "import": "./dist/master-transfer/index.js",
+      "default": "./dist/master-transfer/index.js"
+    },
+    "./dcp-fields": {
+      "pepbits-source": "./src/dcp-fields/index.ts",
+      "types": "./dist/dcp-fields/index.d.ts",
+      "import": "./dist/dcp-fields/index.js",
+      "default": "./dist/dcp-fields/index.js"
+    },
+    "./screen-host": {
+      "pepbits-source": "./src/screen-host.tsx",
+      "types": "./dist/screen-host.d.ts",
+      "import": "./dist/screen-host.js",
+      "default": "./dist/screen-host.js"
+    },
+    "./approvals": {
+      "pepbits-source": "./src/approvals/index.ts",
+      "types": "./dist/approvals/index.d.ts",
+      "import": "./dist/approvals/index.js",
+      "default": "./dist/approvals/index.js"
+    },
+    "./drafts": {
+      "pepbits-source": "./src/drafts/index.ts",
+      "types": "./dist/drafts/index.d.ts",
+      "import": "./dist/drafts/index.js",
+      "default": "./dist/drafts/index.js"
+    },
+    "./imports": {
+      "pepbits-source": "./src/imports/index.ts",
+      "types": "./dist/imports/index.d.ts",
+      "import": "./dist/imports/index.js",
+      "default": "./dist/imports/index.js"
+    },
+    "./testing": {
+      "pepbits-source": "./src/test/index.ts",
+      "types": "./dist/test/index.d.ts",
+      "import": "./dist/test/index.js",
+      "default": "./dist/test/index.js"
+    },
+    "./spreadsheet": {
+      "pepbits-source": "./src/spreadsheet/index.tsx",
+      "types": "./dist/spreadsheet/index.d.ts",
+      "import": "./dist/spreadsheet/index.js",
+      "default": "./dist/spreadsheet/index.js"
+    },
+    "./form-designer": {
+      "pepbits-source": "./src/form-designer/index.ts",
+      "types": "./dist/form-designer/index.d.ts",
+      "import": "./dist/form-designer/index.js",
+      "default": "./dist/form-designer/index.js"
+    },
+    "./label-printing": {
+      "pepbits-source": "./src/label-printing/index.ts",
+      "types": "./dist/label-printing/index.d.ts",
+      "import": "./dist/label-printing/index.js",
+      "default": "./dist/label-printing/index.js"
+    },
+    "./identity-devices": {
+      "pepbits-source": "./src/identity-devices/index.ts",
+      "types": "./dist/identity-devices/index.d.ts",
+      "import": "./dist/identity-devices/index.js",
+      "default": "./dist/identity-devices/index.js"
+    },
+    "./device-integrations": {
+      "pepbits-source": "./src/device-integrations/index.ts",
+      "types": "./dist/device-integrations/index.d.ts",
+      "import": "./dist/device-integrations/index.js",
+      "default": "./dist/device-integrations/index.js"
+    },
+    "./resources": {
+      "pepbits-source": "./src/resources/index.ts",
+      "types": "./dist/resources/index.d.ts",
+      "import": "./dist/resources/index.js",
+      "default": "./dist/resources/index.js"
+    },
+    "./tree": {
+      "pepbits-source": "./src/tree/index.tsx",
+      "types": "./dist/tree/index.d.ts",
+      "import": "./dist/tree/index.js",
+      "default": "./dist/tree/index.js"
+    },
+    "./board": {
+      "pepbits-source": "./src/board/index.tsx",
+      "types": "./dist/board/index.d.ts",
+      "import": "./dist/board/index.js",
+      "default": "./dist/board/index.js"
+    },
+    "./calendar": {
+      "pepbits-source": "./src/calendar/index.tsx",
+      "types": "./dist/calendar/index.d.ts",
+      "import": "./dist/calendar/index.js",
+      "default": "./dist/calendar/index.js"
+    },
+    "./print-pagination": {
+      "pepbits-source": "./src/print-pagination/index.ts",
+      "types": "./dist/print-pagination/index.d.ts",
+      "import": "./dist/print-pagination/index.js",
+      "default": "./dist/print-pagination/index.js"
+    },
+    "./wizard": {
+      "pepbits-source": "./src/wizard/index.tsx",
+      "types": "./dist/wizard/index.d.ts",
+      "import": "./dist/wizard/index.js",
+      "default": "./dist/wizard/index.js"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "node ../../tooling/scripts/build-package.mjs"
   },
   "devDependencies": {
     "@pepbits/tsconfig": "0.0.0"
   },
   "peerDependencies": {
     "react": ">=19",
-    "react-dom": ">=19"
+    "react-dom": ">=19",
+    "@testing-library/react": "^16.3.3"
   },
   "dependencies": {
-    "@pepbits/i18n": "0.0.0",
-    "@pepbits/preferences": "0.0.0",
-    "@pepbits/ui": "0.0.0",
-    "@pepbits/components": "0.0.0",
-    "@pepbits/data": "0.0.0",
+    "@pepbits/i18n": "^0.1.0",
+    "@pepbits/preferences": "^0.1.0",
+    "@pepbits/ui": "^0.1.0",
+    "@pepbits/components": "^0.1.0",
+    "@pepbits/data": "^0.1.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
-    "@pepbits/platform": "0.0.0",
-    "@pepbits/icons": "0.0.0",
+    "@pepbits/platform": "^0.1.0",
+    "@pepbits/icons": "^0.1.0",
     "@dnd-kit/core": "6.3.1",
     "@dnd-kit/sortable": "10.0.0",
     "@dnd-kit/utilities": "3.2.2"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
+    "directory": "packages/patterns"
+  },
+  "license": "UNLICENSED",
+  "peerDependenciesMeta": {
+    "@testing-library/react": {
+      "optional": true
+    }
   }
 }

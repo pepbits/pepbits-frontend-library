@@ -1,6 +1,8 @@
 # @pepbits/ai
 
-Generic contextual AI configuration, client and UI. Unpublished source package `0.0.0`, copied alongside the original workspace. AI sits above shell; shell never imports AI. No product catalogue, page grants, prompts, endpoint, provider credential or backend implementation is bundled.
+Generic contextual AI configuration, client and UI. Unpublished release candidate `0.1.0`, copied alongside the original workspace. AI sits above shell; shell never imports AI. No product catalogue, page grants, prompts, endpoint, provider credential or backend implementation is bundled.
+
+Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
 
 ## Public API
 
@@ -61,7 +63,7 @@ HTTP refusals, including 429, preserve the server's error/detail and do not beco
 
 ## Preferences, localization and styling
 
-Use the existing host providers; AI creates no preference store or localization context. Supply the unchanged `ui.*` messages used by these files from your canonical host catalog. Literal labels also pass through the existing localization provider where the original did so. No production product fallback catalog was copied. Private test messages are canonical English subsets only. Add `packages/ai/src` (or its installed equivalent), shell, patterns, components and UI to the host's Tailwind source list; import token CSS and shell CSS-module support as described in the [shell guide](../shell/README.md). Existing markup, classes, ARIA, keyboard and confirmation behavior are retained; RTL layout/translation review of every AI surface is not claimed.
+Use the existing host providers; AI creates no preference store or localization context. Supply the unchanged `ui.*` messages used by these files from your canonical host catalog. Literal labels also pass through the existing localization provider where the original did so. No production product fallback catalog was copied. Private test messages are canonical English subsets only. Add `packages/ai/src` in this workspace (or installed `node_modules/@pepbits/ai/dist`), shell, patterns, components and UI to the host's Tailwind source list; import token CSS and shell CSS-module support as described in the [shell guide](../shell/README.md). Existing markup, classes, ARIA, keyboard and confirmation behavior are retained; RTL layout/translation review of every AI surface is not claimed.
 
 ## Differences from the original
 
