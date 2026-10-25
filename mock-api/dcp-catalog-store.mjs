@@ -1,5 +1,5 @@
 import {randomUUID} from 'node:crypto';
-import {validCatalogSet,validCatalogRelationship} from '../desktop-clients/packages/erp-config/src/dcp-catalog.ts';
+import {validCatalogSet,validCatalogRelationship} from './contracts/erp-config/dcp-catalog.ts';
 export function writeCatalogVersion(catalog,user,input){
  const isSet=input.action==='save-value-set',collection=isSet?catalog.sets:catalog.relationships,value=isSet?input.catalogSet:input.catalogRelationship;
  if(!(isSet?validCatalogSet(value):validCatalogRelationship(value,catalog.sets)))return {status:400,error:'designer.invalid'};

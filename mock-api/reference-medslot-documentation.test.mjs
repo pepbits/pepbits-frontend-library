@@ -6,8 +6,8 @@ import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createApplicationConfig} from './application-config.mjs';
 import {createDocumentationStore} from './documentation-store.mjs';
-import {PAGE_REGISTRY} from '../desktop-clients/packages/erp-config/src/navigation.ts';
-import {MEDSLOT_REFERENCE} from '../desktop-clients/packages/erp-config/src/medslot-reference.ts';
+import {PAGE_REGISTRY} from './contracts/erp-config/navigation.ts';
+import {MEDSLOT_REFERENCE} from './contracts/erp-config/medslot-reference.ts';
 
 test('actual MedSlot navigation and all fourteen English guides obey host role grants', () => {
  const root=fileURLToPath(new URL('./config',import.meta.url));

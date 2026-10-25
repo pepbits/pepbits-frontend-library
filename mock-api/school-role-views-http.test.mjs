@@ -6,10 +6,10 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createServer} from 'node:net';
 import {fileURLToPath} from 'node:url';
-import {SCHOOL_ROLE_VIEWS} from '../desktop-clients/packages/erp-config/src/school-role-views.ts';
+import {SCHOOL_ROLE_VIEWS} from './contracts/erp-config/school-role-views.ts';
 import {createApplicationConfig} from './application-config.mjs';
 import {resolveSchoolView} from './school-view-policy.mjs';
-import {PAGE_REGISTRY} from '../desktop-clients/packages/erp-config/src/navigation.ts';
+import {PAGE_REGISTRY} from './contracts/erp-config/navigation.ts';
 
 test('additional School views require an explicit authenticated server grant',()=>{
  const config=createApplicationConfig(fileURLToPath(new URL('./config/',import.meta.url)),new Set(Object.keys(PAGE_REGISTRY)));

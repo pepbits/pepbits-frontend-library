@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createApplicationConfig} from './application-config.mjs';
 import {createDocumentationStore} from './documentation-store.mjs';
-import {PAGE_REGISTRY} from '../desktop-clients/packages/erp-config/src/navigation.ts';
+import {PAGE_REGISTRY} from './contracts/erp-config/navigation.ts';
 
 test('actual SurgiSuite help configuration serves all nine guides in four languages and denies unrelated roles',()=>{
  const configRoot=fileURLToPath(new URL('./config',import.meta.url));

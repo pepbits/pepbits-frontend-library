@@ -1,5 +1,9 @@
 # Testing documentation
 
+Current phase 8 commands: root `npm ci`, `npm run ci` (forced, concurrency 1), `npm run test:browser -w @pepbits/shell`, `npm run docs:check`, `bash tooling/scripts/install-api.sh`, `npm run build:api`, `npm run test:api`, `npm run test:clinical-api`, and `npm run test:deployment`. Use Node 24.21+. CI supplies the pinned mockpay checkout; an unconfigured local run has seven known simulator failures.
+
+Run production live checks sequentially with `node tooling/scripts/run-demo-integration.mjs <demo>` for reports, school, tenant-admin, healthcare, erp and desktop. Each driver uses free loopback ports, temporary API data and cleanup. Build first with `/api`. On the shared development machine hold `flock /home/pepadmin/.cache/pepbits-heavy.lock` and use its documented Chromium library path. See [gate mapping and archive validation](../development/TEST-SITE.md). Historical counts below belong to earlier sources; removed shell paths in dated paragraphs identify their original scope.
+
 Current testing-document version: **[1.0.0](v1.0.0/PRE-COMMIT.md)**. This is the first versioned documentation baseline here; it does not replace the frontend's package version or invent a product release.
 
 - [Pre-commit/change verification](v1.0.0/PRE-COMMIT.md)
@@ -28,14 +32,14 @@ The [12 September style deployment](../releases/unreleased/dcp-style-deployment-
 
 The [record component delivery](../releases/unreleased/record-components-2026-09-17.md) covers an independent customer adapter, retained section drafts, disabled/hidden actions, and DCP projection without row-permission fallback. Healthcare verifies the packed consumer with synthetic browser fixtures.
 
-Patient Query host capability/cursor tests are in `desktop-clients/packages/erp-screens/src/clinical-templates/query.test.tsx`.
+Patient Query host capability/cursor tests are in `demo-apps/healthcare/src/modules/clinical-templates/query.test.tsx`.
 See [the local host increment](../releases/unreleased/patient-query-host-2026-09-17.md); healthcare integration
 checks live in the independent consumer repository and use synthetic data.
 
 ## Shared lifecycle configuration
 
-Lifecycle contract, adapter and model tests are in `desktop-clients/packages/erp-config/src/lifecycle/lifecycle.test.ts`.
-Page tests are in `desktop-clients/packages/erp-screens/src/lifecycle/lifecycle.test.tsx`. Both use in-memory ports and
+Lifecycle contract, adapter and model tests are in `packages/patterns/src/lifecycle/config/lifecycle.test.ts`.
+Page tests are in `packages/patterns/src/lifecycle/lifecycle.test.tsx`. Both use in-memory ports and
 fictional fixtures. See [the lifecycle increment](../releases/unreleased/lifecycle-configuration-2026-09-18.md);
 host API and browser acceptance belong to the consuming application.
 Source registry and mapping tests are in `erp-config/src/lifecycle/sources.test.ts` and `erp-screens/src/lifecycle/sources.test.tsx`

@@ -1,4 +1,4 @@
-import {test} from 'node:test';import assert from 'node:assert/strict';import {createServer} from 'node:net';import {once} from 'node:events';import {randomUUID} from 'node:crypto';import {startApi} from '../desktop-clients/e2e/managed-api.mjs';
+import {test} from 'node:test';import assert from 'node:assert/strict';import {createServer} from 'node:net';import {once} from 'node:events';import {randomUUID} from 'node:crypto';import {startApi} from './test-support/managed-api.mjs';
 test('monitoring HTTP permits collection but restricts management and rejects tenant spoofing',async()=>{
  const probe=createServer();probe.listen(0,'127.0.0.1');await once(probe,'listening');const api=`http://127.0.0.1:${probe.address().port}`;await new Promise(resolve=>probe.close(resolve));const stop=await startApi(api,'monitoring-http');
  try{const login=async username=>(await(await fetch(api+'/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password:username})})).json()).token;

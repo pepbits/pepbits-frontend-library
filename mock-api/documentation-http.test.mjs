@@ -1,5 +1,5 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import {createServer} from 'node:net';import {once} from 'node:events';
-import {startApi} from '../desktop-clients/e2e/managed-api.mjs';
+import {startApi} from './test-support/managed-api.mjs';
 test('documentation HTTP authorizes every view and persists scoped read state',async()=>{
  const probe=createServer();probe.listen(0,'127.0.0.1');await once(probe,'listening');const api=`http://127.0.0.1:${probe.address().port}`;await new Promise(resolve=>probe.close(resolve));const stop=await startApi(api,'documentation-http');
  try{

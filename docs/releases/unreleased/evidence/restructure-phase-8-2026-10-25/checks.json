@@ -1,0 +1,122 @@
+{
+  "rootInstall": {
+    "command": "npm ci --no-audit --no-fund",
+    "status": "passed",
+    "packagesAdded": 500,
+    "registryTokenUsed": false,
+    "preexistingLockfile": "Repaired missing local @allyvora/shared link; retained unrelated dev/peer metadata."
+  },
+  "backendInstall": {
+    "command": "bash tooling/scripts/install-api.sh",
+    "status": "passed",
+    "runtimes": [
+      "mock-api",
+      "access-runtime",
+      "diagnostics-runtime",
+      "quality-source",
+      "quality-runtime",
+      "pharmacy-runtime"
+    ]
+  },
+  "tooling": {
+    "command": "npm run test:tooling",
+    "tests": 23,
+    "passed": 23,
+    "failed": 0
+  },
+  "boundaries": {
+    "command": "npm run check:boundaries",
+    "packages": 12,
+    "demos": 11,
+    "status": "passed"
+  },
+  "configuredBuilds": {
+    "demos": [
+      "settle",
+      "caregrid"
+    ],
+    "status": "passed",
+    "reason": "Explicit /settle-api and /caregrid-api public paths; full root CI had already passed on unchanged app source."
+  },
+  "buildStamps": {
+    "command": "npm run stamp:builds",
+    "demos": 11,
+    "status": "passed"
+  },
+  "backendBuild": {
+    "command": "npm run build:api",
+    "diagnosticsFiles": 98,
+    "qualityFiles": 16,
+    "pharmacyFiles": 21,
+    "accessServices": 5,
+    "status": "passed"
+  },
+  "backendTypecheck": {
+    "command": "npm run typecheck --prefix mock-api",
+    "scope": "clinical, Quality source and Pharmacy source",
+    "status": "passed"
+  },
+  "configuredApi": {
+    "command": "HC_RCM_MOCK_REPO=/tmp/phase8/mock-services npm run test:api",
+    "simulatorCommit": "5ced4f8b021aa317859e6999d7c96ef14af63ee1",
+    "tests": 336,
+    "passed": 336,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 100115.733779,
+    "note": "Five more test cases load when the two previously failing test files can start their simulators."
+  },
+  "clinical": {
+    "command": "npm run test:clinical-api",
+    "tests": 34,
+    "passed": 34,
+    "failed": 0
+  },
+  "deploymentContracts": {
+    "command": "npm run test:deployment",
+    "tests": 14,
+    "passed": 14,
+    "failed": 0
+  },
+  "shellBrowser": {
+    "command": "npm run test:browser -w @pepbits/shell",
+    "tests": 18,
+    "passed": 18,
+    "failed": 0,
+    "scope": "Chromium browser tests; supplied local LD_LIBRARY_PATH and installed browser runtime"
+  },
+  "documentation": {
+    "command": "npm run docs:check",
+    "status": "passed",
+    "files": 224,
+    "toolTests": 6,
+    "lifecycleRegistrations": 700,
+    "existingReviewBacklog": 2268
+  },
+  "jenkinsSyntax": {
+    "jenkins": "No Groovy/Jenkins linter installed; manual declarative review and balanced delimiters only",
+    "shellBlocks": 5,
+    "shellSyntax": "passed",
+    "stages": [
+      "Checkout",
+      "Pinned simulators",
+      "Install",
+      "Gates",
+      "Package test site",
+      "Deploy test site"
+    ],
+    "deploymentExecuted": false
+  },
+  "hostedNativeAndRemote": {
+    "jenkins": "not-run",
+    "githubActions": "not-run",
+    "tauriNative": "not-run",
+    "deployment": "not-run"
+  },
+  "failedAttempts": [
+    "Initial backend install used a read-only default npm cache; retried successfully with /tmp/phase8/npm-cache.",
+    "First post-CI stamp rejected missing explicit Settle/CareGrid public proxy variables; corrected builds/stamps passed.",
+    "npm ci rejected the preexisting missing local @allyvora/shared link; minimal lock repair and clean install passed.",
+    "ERP first live run failed on a transient zero table-header count during personal-view refetch; corrected the driver wait without changing expected columns or application/API behavior. Full rerun recorded separately."
+  ]
+}

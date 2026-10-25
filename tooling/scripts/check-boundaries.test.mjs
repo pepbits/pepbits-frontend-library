@@ -154,7 +154,7 @@ test('pre-restructure packages are rejected', () => {
 test('relative imports may not leave the package', () => {
   const errors = errorsFor({
     'packages/ui/package.json': pkg('@pepbits/ui'),
-    'packages/ui/src/a.ts': "import '../../../desktop-clients/packages/ops-ui/src/button';",
+    'packages/ui/src/a.ts': "import '../../../outside-workspace/button';",
   });
   assert.match(errors.join('\n'), /leaves packages\/ui/);
 });
@@ -222,4 +222,16 @@ test('import specifiers cover static, dynamic, side-effect, require and CSS form
     "const f = require('six');",
     "@import '@pepbits/tokens/tokens.css';",
   ].join('\n')).sort(), ['@pepbits/tokens/tokens.css', 'five', 'four', 'one', 'six', 'three', 'two']);
+});
+
+test('backend relative imports cannot escape into frontend source', () => {
+  const root = mkdtempSync(join(tmpdir(), 'backend-boundary-'));
+  try {
+    mkdirSync(join(root,'mock-api'),{recursive:true});
+    writeFileSync(join(root,'mock-api/package.json'),'{}');
+    writeFileSync(join(root,'mock-api/server.mjs'),"import '../packages/data/src/index.ts';\nimport 'react';");
+    const result=checkBoundaries(root);
+    assert.equal(result.errors.length,2);
+    assert.ok(result.errors.some(e=>e.includes('stay within its backend')));
+  } finally { rmSync(root,{recursive:true,force:true}); }
 });

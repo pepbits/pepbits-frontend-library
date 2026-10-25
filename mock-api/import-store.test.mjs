@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {randomUUID} from 'node:crypto';
 import {createImportStore} from './import-store.mjs';
-import {getImportDefinition} from '../desktop-clients/packages/erp-config/src/imports.ts';
+import {getImportDefinition} from './contracts/erp-config/imports.ts';
 const user={id:'one',tenantId:'tenant',role:'finance-manager'};
 const good=code=>({customerCode:code,legalName:'Company',customerType:'Corporate',contactName:'Person',email:'person@example.test',address1:'Street',city:'Dubai'});
 function setup(t){

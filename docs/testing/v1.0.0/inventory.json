@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "documentVersion": "1.0.0",
-  "scope": "Library sidebar destinations; source and navigation coverage are distinct from complete workflow acceptance",
+  "scope": "Historical Library API catalog; current demo acceptance is maintained by the root workspace and each demo integration suite.",
   "routes": [
     {
       "id": "library-dashboard",
@@ -988,7 +988,7 @@
       "title": "OP Registration",
       "kind": "library",
       "engine": null,
-      "coverage": "OPREG-01–OPREG-06; op-registration.mjs and API tests"
+      "coverage": "OPREG-01\u2013OPREG-06; op-registration.mjs and API tests"
     },
     {
       "id": "barcode-labels",
@@ -1118,22 +1118,9 @@
     }
   ],
   "tests": [
-    "desktop-clients/packages/erp-screens/src/templates/preference-compliance.test.tsx",
-    "desktop-clients/packages/erp-screens/src/library/preference-compliance.test.tsx",
-    "desktop-clients/packages/erp-screens/src/clinical-templates/query.test.tsx",
-    "desktop-clients/e2e/library-preferences.ts",
-    "desktop-clients/packages/erp-screens/src/templates/registry-template.test.tsx",
-    "desktop-clients/packages/erp-screens/src/page-library/catalog.test.tsx",
-    "desktop-clients/e2e/page-library.mjs",
-    "desktop-clients/packages/erp-screens/src/op-registration/workspace.test.tsx",
-    "mock-api/op-registration-store.test.ts",
-    "desktop-clients/e2e/op-registration.mjs",
-    "mock-api/label-printing-store.test.mjs",
-    "desktop-clients/e2e/label-printing.mjs",
-    "mock-api/device-integration-store.test.mjs",
-    "desktop-clients/e2e/device-integrations.mjs",
-    "mock-api/identity-device-store.test.mjs",
-    "desktop-clients/e2e/identity-devices.mjs"
+    "tooling/scripts/check-boundaries.test.mjs",
+    "docs/tools/check-docs.test.mjs",
+    "mock-api/application-config.test.mjs"
   ],
-  "staticGate": "desktop-clients/scripts/verify-library-preferences.mjs"
+  "staticGate": "tooling/scripts/check-boundaries.mjs"
 }

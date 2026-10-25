@@ -1,5 +1,7 @@
 # ERP source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Initial phase 6c-1, base `9752ea4afc321db6ea70106d03c1648e5c73262d`. Source packages are read-only references. [App guide](README.md), [feature contract](../../docs/features/erp-demo.md) and [current delivery record](../../docs/releases/unreleased/restructure-phase-6c-6-2026-10-24.md) state verification and deferrals.
 
 | Original responsibility | Destination and treatment |

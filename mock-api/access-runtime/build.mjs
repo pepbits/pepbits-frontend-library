@@ -1,7 +1,7 @@
 import {createRequire} from 'node:module';
 import {readdirSync,readFileSync,writeFileSync,mkdirSync,statSync} from 'node:fs';
 import {dirname,join,relative,resolve} from 'node:path';
-const require=createRequire(new URL('../../desktop-clients/package.json',import.meta.url)),ts=require('typescript');
+const require=createRequire(new URL('../package.json',import.meta.url)),ts=require('typescript');
 const base=resolve(import.meta.dirname,'..');
 for(const name of ['tenant-admin','medband','rcm','surgisuite','medslot']){
  const root=join(base,name+'-source/src'),target=join(import.meta.dirname,'dist',name);

@@ -1,5 +1,7 @@
 # AllyVora patients source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Phase 6e-6, base `5bbb13027d137ac31594ca9a1a3d47aac46653c9`; the read-only source `source/allyvora-patients` was last changed in `aa90bbe891ae5b29f2748e5d1c1c09117eb8f59b`. [App guide](README.md), [feature contract](../../docs/features/allyvora-patients-demo.md) and [delivery record](../../docs/releases/unreleased/restructure-phase-6e-6-2026-10-24.md) state verification and deferrals. The source contains no test files, so there are no original cases to port.
 
 | Original responsibility | Destination and treatment |

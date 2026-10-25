@@ -1,5 +1,7 @@
 # Scholaris source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Read-only source: `desktop-clients/packages/reference-school`, plus school metadata from `desktop-clients/packages/erp-config`. Base identity and hashes are in the [release evidence](../../docs/releases/unreleased/restructure-phase-6d-2026-10-24.md). Source files are copied/adapted; protected originals remain in place.
 
 ## Pages

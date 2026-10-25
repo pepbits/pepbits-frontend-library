@@ -1,7 +1,7 @@
 import type {
   PatientFilters,
   PatientRecord,
-} from "../desktop-clients/packages/erp-config/src/clinical-templates.ts";
+} from "./contracts/erp-config/clinical-templates.ts";
 const text = (v: unknown) =>
   typeof v === "string" ? v.trim().toLocaleLowerCase() : "";
 const words = (v: string) => v.match(/[\p{L}\p{N}]+/gu) ?? [];

@@ -1,5 +1,7 @@
 # CareGrid source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Phase 6e-5, base `5bbb13027d137ac31594ca9a1a3d47aac46653c9` (see the [delivery record](../../docs/releases/unreleased/restructure-phase-6e-5-2026-10-24.md) for the verified identity). `source/caregrid` is a read-only reference: its frontend was not edited, moved or reformatted, and its backend runs unchanged. [App guide](README.md), [feature contract](../../docs/features/caregrid-demo.md).
 
 | Source file | Destination and treatment |

@@ -1,0 +1,23 @@
+{
+  "node": "24.21.0",
+  "command": "node --test --test-concurrency=1 *.test.mjs",
+  "directory": "mock-api",
+  "tests": 331,
+  "passed": 324,
+  "failed": 7,
+  "failures": [
+    "healthcare-suite-rcm-exchange.test.mjs",
+    "healthcare-suite-rcm-money-lifecycle.test.mjs",
+    "capture and refund: successful, refused and pending outcomes against the real payment simulator",
+    "refund timeout_after_accept surfaces an unknown outcome that reconciles via refundStatus",
+    "collection intents: successful, refused, pending, partial and timeout/reconcile outcomes",
+    "tenant/merchant scope isolation: another scope cannot read or act on a payment, refund or collection intent",
+    "client-side validation rejects unsafe/nonpositive amounts, bad currency and bad idempotency keys before any network call"
+  ],
+  "cause": "Unconfigured default external mockpay checkout is absent; provider spawn fails ENOENT with that missing cwd. python3 itself is installed. Same seven baseline failures; configured simulator run reported separately.",
+  "clinical": {
+    "command": "npm run test:clinical --prefix mock-api",
+    "passed": 34,
+    "failed": 0
+  }
+}

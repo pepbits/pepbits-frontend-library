@@ -2,7 +2,7 @@ import {readFileSync,readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {createHash} from 'node:crypto';
 import {schoolViewRoles} from './school-view-policy.mjs';
-import {schoolRoleView} from '../desktop-clients/packages/erp-config/src/school-role-views.ts';
+import {schoolRoleView} from './contracts/erp-config/school-role-views.ts';
 const LANGUAGES={en:'ltr',ar:'rtl',hi:'ltr',ml:'ltr'};
 const slug=/^[a-z][a-z0-9.-]*$/;
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex').slice(0,24);

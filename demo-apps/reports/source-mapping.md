@@ -1,5 +1,7 @@
 # Reports source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Phase 6e-1, base `5bbb130` (healthcare and ERP merged). The source package `desktop-clients/packages/reference-reports` and the demo API files (`reference-reports-store.mjs`, `reference-reports-engine.mjs`, `reference-reports-data.mjs`, `report-scheduler.mjs`, fixtures) are read-only references and remain unchanged. [App guide](README.md), [feature contract](../../docs/features/reports-demo.md) and [delivery record](../../docs/releases/unreleased/restructure-phase-6e-1-2026-10-24.md) state verification and limits.
 
 | Original responsibility | Destination and treatment |

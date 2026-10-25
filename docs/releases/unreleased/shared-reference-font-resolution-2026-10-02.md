@@ -16,7 +16,7 @@ This regression test supplies Next's required tracing/PostCSS context to the act
 
 ## Verify and complete
 
-From `/home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients`, run `npm run test:reference-fonts`, then the unchanged normal-terminal Next build command. Use [the exact terminal procedure](../../../desktop-clients/docs/surgisuite-terminal-validation.md) to build matching API URLs, start isolated synthetic services and run authenticated SurgiSuite browser acceptance. Any additional application failure must be reviewed from that terminal's actual output.
+From `/home/pepadmin/pb/saas/lib/pepbits-frontend-library/desktop-clients`, run `npm run test:reference-fonts`, then the unchanged normal-terminal Next build command. Use [the exact terminal procedure](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/surgisuite-terminal-validation.md) to build matching API URLs, start isolated synthetic services and run authenticated SurgiSuite browser acceptance. Any additional application failure must be reviewed from that terminal's actual output.
 
 No server DNS, live data or deployment services were changed. Previous verification records retain their own source identities. No successful complete Next build, public deployment, native/domain review or real-care/provider integration is claimed by this correction.
 

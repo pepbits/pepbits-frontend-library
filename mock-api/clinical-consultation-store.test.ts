@@ -7,7 +7,7 @@ import { createClinicalConsultationStore } from "./clinical-consultation-store.t
 import type {
   ConsultationView,
   ConsultationRecord,
-} from "../desktop-clients/packages/erp-config/src/clinical-consultation.ts";
+} from "./contracts/erp-config/clinical-consultation.ts";
 test("consultation drafts persist, retry once, validate explicit entries, finalize immutably and isolate scope", () => {
   const dir = mkdtempSync(join(tmpdir(), "consultation-")),
     file = join(dir, "notes.csv");

@@ -1,5 +1,7 @@
 # Onboarding source mapping
 
+Phase 8 note: original-tree paths below describe the historical import source at the recorded base. That tree is now retired; current runtime uses this demo and public root packages.
+
 Phase 6e-3, base `5bbb130` (`main`, healthcare and ERP merged). The source `demo-pages/orvia-health-onboarding` is a read-only reference and is unchanged. [App guide](README.md), [feature contract](../../docs/features/onboarding-demo.md) and [delivery record](../../docs/releases/unreleased/restructure-phase-6e-3-2026-10-24.md) state verification and limits.
 
 | Source | Destination and treatment |

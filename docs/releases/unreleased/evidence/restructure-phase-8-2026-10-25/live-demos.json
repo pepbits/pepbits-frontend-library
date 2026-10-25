@@ -1,0 +1,300 @@
+{
+  "scope": "Sequential local production demos + own mock-api + Chromium/axe; fictional data; desktop is Vite web mode, not native",
+  "demos": [
+    {
+      "demo": "reports",
+      "scope": "Local production Next server and unchanged fictional HTTP API",
+      "productionBuild": true,
+      "node": "v24.21.0",
+      "integrationExit": 0,
+      "workflows": 22,
+      "routeChecks": 49,
+      "panelStates": 0,
+      "visualChecks": 0,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "unexpectedHttpErrors": 0,
+      "violations": 0,
+      "checkFailures": 0,
+      "presentationFailures": 0,
+      "axeIncompleteResults": 98,
+      "expectedRefusals": [],
+      "apiSourceFilesCompared": 524,
+      "apiSourceMismatches": 0,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 2206,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 2186,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 2176,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "rawResultSha256": "99e552908349277cac9a499baf5c05d19240e791b1607f487a75170d83c59757",
+      "identitySha256": "5d1668f8cd910bf41a2d3a696622671f0a7190a1b7d779d4e5aac4ab74fb8bcc",
+      "driverSha256": "d582d3508add6a8986c6dbbc480aa599bd6e27f2bae6d5ac6151f15df21663ac"
+    },
+    {
+      "demo": "school",
+      "scope": "Local production Next server and unchanged fictional HTTP API; academic demonstration, not institutional acceptance",
+      "productionBuild": true,
+      "node": "v24.21.0",
+      "integrationExit": 0,
+      "workflows": 36,
+      "routeChecks": 33,
+      "panelStates": 0,
+      "visualChecks": 0,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "unexpectedHttpErrors": 0,
+      "violations": 0,
+      "checkFailures": 0,
+      "presentationFailures": 0,
+      "axeIncompleteResults": 67,
+      "expectedRefusals": [],
+      "apiSourceFilesCompared": 524,
+      "apiSourceMismatches": 0,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 2353,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 2333,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 2323,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "rawResultSha256": "a7e38a22ae9961ff51bb92b9a9fe679a23e5c6b2e95191bca46090af3ba4a8b3",
+      "identitySha256": "0d3e8df02d1cbf17c56df7a6b383e73d3944942379e0e22321350d09d64d97fd",
+      "driverSha256": "4898f805966fd6a2773b5c3d34f63651eade05d0d83cf01bee4a43da487d4065"
+    },
+    {
+      "demo": "tenant-admin",
+      "scope": "Local production Next server and unchanged fictional HTTP API",
+      "productionBuild": true,
+      "node": "v24.21.0",
+      "integrationExit": 0,
+      "workflows": 18,
+      "routeChecks": 37,
+      "panelStates": 0,
+      "visualChecks": 0,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "unexpectedHttpErrors": 0,
+      "violations": 0,
+      "checkFailures": 0,
+      "presentationFailures": 0,
+      "axeIncompleteResults": 74,
+      "expectedRefusals": [
+        {
+          "method": "POST",
+          "path": "/resources/tax-rules/5/submit",
+          "status": 422,
+          "seen": true
+        },
+        {
+          "method": "PUT",
+          "path": "/resources/tax-rules/5",
+          "status": 409,
+          "seen": true
+        }
+      ],
+      "apiSourceFilesCompared": 524,
+      "apiSourceMismatches": 0,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 2516,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 2496,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 2486,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "rawResultSha256": "9ff564844f8bf5d5269ac34258302db0c6cc0aad742d2ebe77e19aa417415716",
+      "identitySha256": "ff7ede8da92cd64d3d048ada79cb84228eb2a36e511c8508f4e8e10e52917cd9",
+      "driverSha256": "6360ebbf5ae45be9f44096e8943c97013827b88f007e3951cd089ad8e9096cc7"
+    },
+    {
+      "demo": "healthcare",
+      "scope": "Local browser against the unchanged synthetic demo HTTP API",
+      "productionBuild": true,
+      "node": "v24.21.0",
+      "integrationExit": 0,
+      "workflows": 86,
+      "routeChecks": 264,
+      "panelStates": 0,
+      "visualChecks": 0,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "unexpectedHttpErrors": 0,
+      "violations": 0,
+      "checkFailures": 0,
+      "presentationFailures": 0,
+      "axeIncompleteResults": 541,
+      "expectedRefusals": [],
+      "apiSourceFilesCompared": 524,
+      "apiSourceMismatches": 0,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 2663,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 2643,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 2633,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "rawResultSha256": "ef26e877b1f6c285804f9f33055c4be811f5505a2973e554e0a44df3992f2fb7",
+      "identitySha256": "8b8fd100db58ef050c9b8161d414d9730bd1015889f586cd0a932569b648e24e",
+      "driverSha256": "36f5777788e7ec37d37b0d35ca622bcc55cf11b68eeaf436195a7da304de29c6"
+    },
+    {
+      "demo": "erp",
+      "scope": "Local production Next server and unchanged fictional HTTP API",
+      "productionBuild": true,
+      "node": "v24.21.0",
+      "integrationExit": 0,
+      "workflows": 122,
+      "routeChecks": 114,
+      "panelStates": 15,
+      "visualChecks": 27,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "unexpectedHttpErrors": 0,
+      "violations": 0,
+      "checkFailures": 0,
+      "presentationFailures": 0,
+      "axeIncompleteResults": 266,
+      "expectedRefusals": [],
+      "apiSourceFilesCompared": 524,
+      "apiSourceMismatches": 0,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 58,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Next",
+          "pid": 38,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 28,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "rawResultSha256": "87ca4e36907622a7021326772487e845352b37e300f51a2c8268222b5a81211d",
+      "identitySha256": "591dcecb8042c7cffbbb17df66fd6c16f40b4e5c87f8e163e4e07a44ffa01a5d",
+      "driverSha256": "561b688bd07917d3b63f80fe4768ffc86551c5db6ef71650c02014f5420025e2"
+    },
+    {
+      "demo": "desktop",
+      "scope": "Local vite preview of the desktop web build (browser web mode, no Tauri runtime) and the unchanged fictional HTTP API",
+      "productionBuild": true,
+      "node": "v24.21.0",
+      "integrationExit": 0,
+      "workflows": 16,
+      "routeChecks": 13,
+      "panelStates": 0,
+      "visualChecks": 0,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "unexpectedHttpErrors": 0,
+      "violations": 0,
+      "checkFailures": 0,
+      "presentationFailures": 0,
+      "axeIncompleteResults": 26,
+      "expectedRefusals": [],
+      "apiSourceFilesCompared": 524,
+      "apiSourceMismatches": 0,
+      "cleanup": [
+        {
+          "label": "Browser",
+          "pid": 214,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "Vite",
+          "pid": 195,
+          "exitCode": 143,
+          "signal": null,
+          "groupAlive": false
+        },
+        {
+          "label": "API",
+          "pid": 185,
+          "exitCode": 0,
+          "signal": null,
+          "groupAlive": false
+        }
+      ],
+      "rawResultSha256": "69cd149dce28aaab104ce3b03696ab2064ceef82b01b7757a53e68ff92b9ca34",
+      "identitySha256": "b828d269b172c4cac77ec774d2953056d13c9ddbdeecae34a7c7b56079cc98d2",
+      "driverSha256": "b9783673ddfd92d98364492d0949d99896a9222a6efa952371b2f76b4a93ab01"
+    }
+  ]
+}

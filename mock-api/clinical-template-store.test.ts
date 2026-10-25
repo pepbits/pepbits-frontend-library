@@ -8,7 +8,7 @@ import type {
   PatientRecord,
   PatientSearchResult,
   PatientOverview,
-} from "../desktop-clients/packages/erp-config/src/clinical-templates.ts";
+} from "./contracts/erp-config/clinical-templates.ts";
 const user = { id: "u1", name: "Test Admin", tenantId: "t1" };
 function setup() {
   const dir = mkdtempSync(join(tmpdir(), "clinical-template-test-")),

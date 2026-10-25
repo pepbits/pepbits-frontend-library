@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync,mkdirSync,renameSync,openSync,fsyncSync,closeSync,unlinkSync} from 'node:fs';
 import {dirname} from 'node:path';
 import {randomUUID} from 'node:crypto';
-import type {PatientRecord,PatientCareRow,PatientSavedSearch} from '../desktop-clients/packages/erp-config/src/clinical-templates.ts';
+import type {PatientRecord,PatientCareRow,PatientSavedSearch} from './contracts/erp-config/clinical-templates.ts';
 export type ClinicalBucket={records:PatientRecord[];care:Record<string,PatientCareRow[]>;searches:Record<string,PatientSavedSearch[]>;receipts:Record<string,{hash:string;result:{status:number;body:unknown}}> ;exports:Array<{userId:string;at:string;count:number}>};
 export type ClinicalData=Record<string,ClinicalBucket>;
 /** RFC 4180 quoting, including commas, embedded quotes and multiline cells. */

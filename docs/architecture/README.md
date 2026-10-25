@@ -4,10 +4,10 @@ Reviewed 13 September 2026. These links describe implemented contracts; historic
 
 - [Library restructure plan](PACKAGE-RESTRUCTURE-PLAN.md): **proposal, not approved**. Layered `packages/` library, `demo-apps/` built from public exports, registry publishing for product repositories and the port-one-by-one order.
 - [Library, preference policy and component flows](library-preferences.md): current package boundaries, setting resolution, APIs, rendering and failure behavior.
-- [Existing workspace architecture](../../desktop-clients/docs/enterprise-workspace-framework-readme.md): records, tabs, split views and optional windows.
-- [Page-template engine](../../desktop-clients/docs/page-template-library.md): configurations, adapters and reusable engines.
-- [Backend navigation and localization plan](../../desktop-clients/docs/backend-navigation-localization-plan.md): menu IDs, message keys and backend configuration. This is a plan; use implementation guides and evidence for completion status.
-- [Tenant policy contract](../../desktop-clients/docs/tenant-preference-policies.md): stored preferences, policy endpoints and scope.
+- [Archived combined-shell architecture](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/enterprise-workspace-framework-readme.md): records, tabs, split views and optional windows.
+- [Page-template engine](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/page-template-library.md): configurations, adapters and reusable engines.
+- [Backend navigation and localization plan](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/backend-navigation-localization-plan.md): menu IDs, message keys and backend configuration. This is a plan; use implementation guides and evidence for completion status.
+- [Tenant policy contract](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/tenant-preference-policies.md): stored preferences, policy endpoints and scope.
 
 - [API-backed page families](library-preferences.md#api-backed-page-families): patient, billing, registration, care and device store boundaries.
 - [Documentation lifecycle](../documentation/README.md): page help resolution, source-change receipts, version snapshots and translation review.

@@ -6,7 +6,7 @@ import {
   validateConsultation,
   type ConsultationValues,
   type ConsultationConfiguration,
-} from "../desktop-clients/packages/erp-config/src/clinical-consultation.ts";
+} from "./contracts/erp-config/clinical-consultation.ts";
 const config = JSON.parse(
   readFileSync(
     new URL("./config/clinical-consultation/form.json", import.meta.url),
@@ -35,7 +35,7 @@ export function createClinicalConsultationStore(
       const result = store.handle(...args);
       if (result.status !== 200) return result;
       const body =
-        result.body as import("../desktop-clients/packages/erp-config/src/clinical-consultation.ts").ConsultationView;
+        result.body as import("./contracts/erp-config/clinical-consultation.ts").ConsultationView;
       if (Array.isArray(body.assessments))
         return {
           ...result,
@@ -48,7 +48,7 @@ export function createClinicalConsultationStore(
           },
         };
       const record =
-        result.body as import("../desktop-clients/packages/erp-config/src/clinical-consultation.ts").ConsultationRecord;
+        result.body as import("./contracts/erp-config/clinical-consultation.ts").ConsultationRecord;
       return {
         ...result,
         body: { ...record, values: normalizeConsultation(record.values) },

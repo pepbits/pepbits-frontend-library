@@ -34,4 +34,4 @@ The pinned TypeScript compiler and runtime dependencies were packaged before mai
 
 ## Remaining external acceptance
 
-Live payer/bank credentials, certified DRG grouping, real accounting integrations, native executable acceptance and clinical/financial/native-language review are outside this reference import. API-owned simulations are available for demonstration and automated checks. See [the deployment runbook](../../../desktop-clients/docs/frontend-test-deployment.md) for isolated operations and recovery.
+Live payer/bank credentials, certified DRG grouping, real accounting integrations, native executable acceptance and clinical/financial/native-language review are outside this reference import. API-owned simulations are available for demonstration and automated checks. See [the deployment runbook](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/frontend-test-deployment.md) for isolated operations and recovery.

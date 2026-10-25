@@ -3,7 +3,7 @@
  *
  * Ports the Scholaris source (src/app/api/**, src/lib/mock/{db,seed,bank}.ts, src/lib/types.ts,
  * src/lib/quiz-attempts.ts) to plain JS, following the already-agreed consumer contract in
- * desktop-clients/packages/reference-school/API-CONTRACT.md and src/lib/contract.ts (the reference-school
+ * the original School API contract (see the School demo source mapping) (the reference-school
  * package that calls this store). Adds /session, /quiz-attempts and /settings*, which the source did not have,
  * exactly as that contract specifies.
  *
@@ -320,7 +320,7 @@ function seedSchoolFixture({ today }) {
   return { ...seed, today: isoDay(day), identities: structuredClone(SCHOOL_IDENTITIES), parentChildren: structuredClone(PARENT_CHILDREN), school: SCHOOL_PROFILE };
 }
 
-/* ───────────────────────── role mapping (desktop-clients/packages/reference-school/src/lib/session.tsx) ───────────────────────── */
+/* ───────────────────────── role mapping (original School session role mapping) ───────────────────────── */
 const ALIASES = { 'enterprise-admin': 'admin', 'finance-manager': 'accountant', 'operations-analyst': 'teacher' };
 function schoolRoleFor(hostRole) {
   const value = String(hostRole ?? '').trim().toLowerCase();

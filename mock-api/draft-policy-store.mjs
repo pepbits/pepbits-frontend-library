@@ -1,7 +1,7 @@
 import {DatabaseSync} from 'node:sqlite';
 import {mkdirSync,chmodSync} from 'node:fs';
 import {dirname} from 'node:path';
-import {DEFAULT_DRAFT_POLICY,parseDraftPolicy} from '../desktop-clients/packages/erp-config/src/draft-policy.ts';
+import {DEFAULT_DRAFT_POLICY,parseDraftPolicy} from './contracts/erp-config/draft-policy.ts';
 import {canManagePreferences} from './preference-store.mjs';
 export function createDraftPolicyStore(file,{scrub=()=>{},audit=()=>{}}={}) {
  mkdirSync(dirname(file),{recursive:true,mode:0o700});const db=new DatabaseSync(file);chmodSync(file,0o600);

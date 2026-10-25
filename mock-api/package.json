@@ -8,7 +8,11 @@
   "scripts": {
     "start": "node server.mjs",
     "dev": "node --watch server.mjs",
-    "test:labels": "node --test label-printing-store.test.mjs"
+    "test:labels": "node --test label-printing-store.test.mjs",
+    "build": "node scripts/build-diagnostics.mjs && node scripts/build-quality.mjs && node scripts/build-pharmacy.mjs && node access-runtime/build.mjs",
+    "test": "node --test --test-concurrency=1 *.test.mjs",
+    "test:clinical": "tsc -p tsconfig.clinical.json && node --test *.test.ts",
+    "typecheck": "tsc -p tsconfig.clinical.json && tsc -p quality-source/tsconfig.json && tsc --noEmit -p pharmacy-source/tsconfig.json"
   },
   "dependencies": {
     "bwip-js": "4.11.4",
@@ -25,6 +29,10 @@
     "@types/cors": "2.8.19",
     "@types/express": "5.0.6",
     "@types/morgan": "1.9.10",
-    "@types/node": "26.6.3"
+    "@types/node": "26.6.3",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=24.21.0"
   }
 }

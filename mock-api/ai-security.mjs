@@ -1,6 +1,6 @@
-import {DATA_CLASSIFICATIONS} from '../desktop-clients/packages/erp-config/src/data-classification.ts';
-import {reportRows} from '../desktop-clients/packages/erp-data/src/report-data.ts';
-import {USE_CASES} from '../desktop-clients/packages/ai-config/src/use-cases.ts';
+import {DATA_CLASSIFICATIONS} from './contracts/erp-config/data-classification.ts';
+import {reportRows} from './contracts/erp-data/report-data.ts';
+import {USE_CASES} from './contracts/ai-config/use-cases.ts';
 
 export const APPROVED_PROVIDERS = new Set(['https://api.openai.com/v1', 'https://api.deepseek.com']);
 export function providerAllowed(endpoint) {

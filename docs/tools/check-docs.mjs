@@ -48,7 +48,7 @@ export function checkRelease(manifest){
 }
 export async function validateDocumentation(repository=root){
  const errors=[],docs=resolve(repository,'docs'),files=walk(docs).filter(p=>extname(p)==='.md');
- files.push(...['AGENTS.md','README.md','desktop-clients/docs/README.md'].map(path=>resolve(repository,path)));
+ files.push(...['AGENTS.md','README.md'].map(path=>resolve(repository,path)));
  errors.push(...checkLinks(repository,files));
  const current=readJson(resolve(docs,'testing/current.json'),errors);
  if(current){
@@ -59,7 +59,7 @@ export async function validateDocumentation(repository=root){
   if(current.inventory){
    const inventory=readJson(resolve(docs,'testing',current.inventory),errors);
    if(inventory){
-    const {LIBRARY_PAGE_IDS}=await import(pathToFileURL(resolve(repository,'desktop-clients/packages/erp-config/src/library-pages.ts')));
+    const {LIBRARY_PAGE_IDS}=await import(pathToFileURL(resolve(repository,'mock-api/contracts/erp-config/library-pages.ts')));
     const actual=inventory.routes?.map(route=>route.id)??[];
     if(inventory.schemaVersion!==1||inventory.documentVersion!==current.documentVersion)errors.push('inventory version differs from current guide');
     if(new Set(actual).size!==actual.length||JSON.stringify([...actual].sort())!==JSON.stringify([...LIBRARY_PAGE_IDS].sort()))errors.push('Library route inventory differs from current registered destinations');

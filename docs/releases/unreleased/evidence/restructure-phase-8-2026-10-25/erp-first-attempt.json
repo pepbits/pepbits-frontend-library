@@ -1,0 +1,42 @@
+{
+  "status": "failed",
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "workflows": 99,
+  "routes": 0,
+  "panelStates": 13,
+  "visualChecks": 27,
+  "errors": [
+    {
+      "route": "/erp2/masters/customers",
+      "message": "Expected values to be strictly equal:\n\n0 !== 10\n"
+    }
+  ],
+  "consoleErrors": 0,
+  "httpErrors": 0,
+  "cleanup": [
+    {
+      "label": "Browser",
+      "pid": 2892,
+      "exitCode": 1,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Next",
+      "pid": 2872,
+      "exitCode": 143,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "API",
+      "pid": 2862,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    }
+  ],
+  "cause": "The personal-view driver sampled the table header count during an asynchronous refetch (actual 0, expected 10).",
+  "correction": "Await the same expected header count, a row, and the end of aria-busy loading. No application/backend or expected-value changes. Full ERP rerun required.",
+  "rawResultSha256": "a8b0ada523838c3dc481b0a511f00b398739eef2e8c434ed92456460187c713b"
+}
