@@ -1,0 +1,43 @@
+TAP version 13
+# Subtest: broken destinations, headings and repository escapes fail; valid local links pass
+ok 1 - broken destinations, headings and repository escapes fail; valid local links pass
+  ---
+  duration_ms: 9.701151
+  type: 'test'
+  ...
+# Subtest: release records cannot claim publication without identity or mutate recorded hashes
+ok 2 - release records cannot claim publication without identity or mutate recorded hashes
+  ---
+  duration_ms: 4.478813
+  type: 'test'
+  ...
+# Subtest: the repository documentation satisfies the current contract
+not ok 3 - the repository documentation satisfies the current contract
+  ---
+  duration_ms: 138.204867
+  type: 'test'
+  location: '/home/pepadmin/pb/worktrees/frontend-phase6e-5/docs/tools/check-docs.test.mjs:24:1'
+  failureType: 'testCodeFailure'
+  error: 'Unknown file extension ".ts" for /home/pepadmin/pb/worktrees/frontend-phase6e-5/desktop-clients/packages/erp-config/src/library-pages.ts'
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+  name: 'TypeError'
+  stack: |-
+    Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    defaultLoad (node:internal/modules/esm/load:98:16)
+    ModuleLoader.load (node:internal/modules/esm/loader:815:12)
+    ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:594:31)
+    #createModuleJob (node:internal/modules/esm/loader:624:36)
+    #getJobFromResolveResult (node:internal/modules/esm/loader:343:34)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:311:41)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:664:25)
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 2
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 424.272895

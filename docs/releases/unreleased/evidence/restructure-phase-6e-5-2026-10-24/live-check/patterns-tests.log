@@ -1,0 +1,87 @@
+
+> @pepbits/patterns@0.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6e-5/packages/patterns
+
+ ✓ src/lifecycle/sources.test.tsx (11 tests) 4724ms
+   ✓ Lifecycle source mappings > hosts without a source port keep the page and the saved wire shape unchanged  889ms
+   ✓ Lifecycle source mappings > creates a pinned mapping from a registered source and saves it through the governed draft  876ms
+   ✓ Lifecycle source mappings > explains invalid and stale mappings, and re-pins only from the registry  498ms
+   ✓ Lifecycle source mappings > published mappings are read-only  518ms
+   ✓ Lifecycle source mappings > server validation issues on a mapping navigate to it  443ms
+   ✓ Lifecycle source mappings > a failed registry read keeps editor values and can be retried  316ms
+ ✓ src/lifecycle/lifecycle.test.tsx (18 tests) 5828ms
+   ✓ LifecycleConfigurationPage > console summary uses server validation and clears it after editing  630ms
+   ✓ LifecycleConfigurationPage > persistent worklist protects edits before opening another version  412ms
+   ✓ LifecycleConfigurationPage > saves a draft with the expected revision and reuses the operation key on retry  561ms
+   ✓ LifecycleConfigurationPage > keeps edits and explains a stale-revision conflict  357ms
+   ✓ LifecycleConfigurationPage > unsaved changes are protected when leaving the definition  327ms
+   ✓ LifecycleConfigurationPage > activation requires a reason, confirmation, expected revision and a stable idempotency key  385ms
+   ✓ LifecycleConfigurationPage > validation shows server issues and navigates to the affected item  441ms
+   ✓ LifecycleConfigurationPage > resolution preview is read-only and shows outcomes with missing context  502ms
+   ✓ LifecycleConfigurationPage > visual editor renames a stage key and updates binding references  365ms
+   ✓ LifecycleConfigurationPage > lifecycle module and domain are editable codes that drive catalogue navigation  492ms
+   ✓ LifecycleConfigurationPage > preview policy limits context to one verified organisation selector and no subject reference  351ms
+ ✓ src/drafts/use-shared-draft.test.tsx (4 tests) 2094ms
+   ✓ failed draft write retains the exact payload and operation identity on retry  875ms
+   ✓ completion waits for in-flight autosave before discarding its acknowledged revision  833ms
+ ✓ src/form-designer/workspace.test.tsx (3 tests) 1314ms
+   ✓ visual edits reuse stable IDs; failed save retains edits and reuses operation on retry  627ms
+   ✓ preview uses unsaved design, hides authoring, validates and resets test answers without saving  509ms
+ ✓ src/form-designer/dependencies.test.tsx (3 tests) 1057ms
+   ✓ parent change clears all descendants and late API responses cannot restore old options  478ms
+   ✓ inserting an API example remaps every dependency to fresh IDs  316ms
+ ✓ src/drafts/draft-center.test.tsx (3 tests) 1853ms
+   ✓ metadata and policy appear, search/filter use the API and open rechecks access  1045ms
+   ✓ inaccessible rows hide details, disable open, and retain discard  350ms
+   ✓ discard retry retains its operation id and does not remove a row until confirmed  454ms
+ ✓ src/form-designer/catalog-manager.test.tsx (4 tests) 876ms
+   ✓ catalog save failure preserves edits and retries the identical revision command  495ms
+ ✓ src/approvals/approval-workspace.test.tsx (7 tests) 1099ms
+   ✓ submission requires a comment and confirmation; unknown outcomes reuse the operation id  465ms
+ ✓ src/lifecycle/screen-host.test.tsx (2 tests) 758ms
+   ✓ live policy overrides explicit list sizes and updates managed presentation  399ms
+   ✓ lifecycle forwards dirty changes and localized notifications to the screen host  354ms
+ ✓ src/imports/csv-import-dialog.test.tsx (6 tests) 925ms
+   ✓ restored validation requires explicit confirmation before writing  356ms
+ ✓ src/form-designer/sections.test.tsx (5 tests) 525ms
+ ✓ src/form-designer/host-runtime.test.tsx (3 tests) 880ms
+   ✓ required false is displayed, edits retain values on 422, successful save uses normalized server values  489ms
+ ✓ src/spreadsheet/workspace.test.tsx (2 tests) 777ms
+   ✓ export awaits the host audit, preserves edited values on failure, and uses effective format  501ms
+ ✓ src/calendar/row-timeline.test.tsx (6 tests) 729ms
+   ✓ overlapping holds receive lanes, include turnover and open their own event  328ms
+ ✓ src/master-transfer/panel.test.tsx (4 tests) 725ms
+   ✓ master transfer commands > requires server validation and invalidates it on changed reason  408ms
+ ✓ src/identity-devices/workspace.test.tsx (3 tests) 662ms
+   ✓ biometrics disabled still allows separate manual review and never implies authentication  470ms
+ ✓ src/device-integrations/workspace.test.tsx (2 tests) 689ms
+   ✓ effective tenant lock disables device preference and unsupported output is filtered  341ms
+   ✓ recoverable queue failure retries exactly the same operation and selected source  347ms
+ ✓ src/label-printing/workspace.test.tsx (2 tests) 573ms
+   ✓ incompatible personal default resolves to compatible paper without persisting a preference  365ms
+ ✓ src/dcp-fields/runtime-fields.test.tsx (5 tests) 352ms
+ ✓ src/tree/tree.test.tsx (2 tests) 380ms
+   ✓ expand, select, search and collapse report only visible neighbours  372ms
+ ✓ src/board/board.test.tsx (2 tests) 330ms
+ ✓ src/calendar/calendar.test.tsx (5 tests) 297ms
+ ✓ src/resources/resources.test.tsx (2 tests) 139ms
+ ✓ src/dcp-fields/preferences.test.tsx (1 test) 147ms
+ ✓ src/screen-host.test.tsx (8 tests) 129ms
+ ✓ src/master-transfer/inflation.test.ts (2 tests) 150ms
+ ✓ src/master-transfer/format.test.ts (8 tests) 93ms
+ ✓ src/lifecycle/config/lifecycle.test.ts (19 tests) 61ms
+ ✓ src/lifecycle/config/sources.test.ts (17 tests) 44ms
+ ✓ src/drafts/use-unsaved-warning.test.tsx (1 test) 28ms
+ ✓ src/imports/workbook-options.test.ts (2 tests) 20ms
+ ✓ src/spreadsheet/model.test.ts (4 tests) 13ms
+ ✓ src/print-pagination/print-pagination.test.ts (4 tests) 8ms
+ ✓ src/imports/csv-options.test.ts (3 tests) 7ms
+
+ Test Files  34 passed (34)
+      Tests  173 passed (173)
+   Start at  20:25:34
+   Duration  53.07s (transform 3.35s, setup 9.47s, collect 13.58s, tests 28.28s, environment 27.08s, prepare 5.71s)
+

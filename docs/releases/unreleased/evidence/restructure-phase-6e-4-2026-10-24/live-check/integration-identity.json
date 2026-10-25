@@ -1,0 +1,67 @@
+{
+  "sourceBase": "333ebc94136cad62d3eeeac2bd418bd29845887d",
+  "hostPort": 35213,
+  "settlePort": 45449,
+  "appPort": 38881,
+  "hostNode": "v24.21.0",
+  "settleNode": "v22.22.1",
+  "runtimeArtifacts": {
+    "sourceFilesCompared": 483,
+    "mismatches": 0,
+    "resolved": [
+      {
+        "path": "access-runtime/dist/rcm/registry.js",
+        "sha256": "640752b4073cd123ef9fc8ab64473c82d593fd21034e7dafba0757d684af9338"
+      }
+    ]
+  },
+  "startedServices": [
+    {
+      "label": "Host API",
+      "pid": 32
+    },
+    {
+      "label": "Settle API",
+      "pid": 33
+    },
+    {
+      "label": "Next",
+      "pid": 48
+    },
+    {
+      "label": "Browser",
+      "pid": 67
+    }
+  ],
+  "integrationExit": 0,
+  "cleanup": [
+    {
+      "label": "Browser",
+      "pid": 67,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Next",
+      "pid": 48,
+      "exitCode": 143,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Settle API",
+      "pid": 33,
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "groupAlive": false
+    },
+    {
+      "label": "Host API",
+      "pid": 32,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    }
+  ]
+}

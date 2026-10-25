@@ -65,3 +65,7 @@ React tests cover core/literal defaults, placeholders, provider updates, default
 ## Compact financial and short-date display
 
 `formatCompactMoney(preferences, value)` and `formatShortDate(preferences, value)` are public host-preference formatters used by ERP adapters. Compact money respects currency display and negative style; dates follow accepted locale/format preferences. Regression coverage includes hidden currency and parenthesized compact negatives. These are presentation functions, not accounting calculations.
+
+## Indian numbering spelling (phase 6e-4)
+
+`indianNumberWords(integer)` spells safe integers in English using the Indian numbering system (crore, lakh, thousand, hundred), including zero and negatives, and rejects fractional/non-finite/unsafe inputs exactly like `englishNumberWords`. It is not a localized or currency formatter: hosts label the language and choose currency wording and rounding. The Settle demo uses it for the source receipt's rupee amount in words when the effective currency is INR, and falls back to `englishNumberWords` with the currency code otherwise. Eight cases cover spelling and validation. No canonical catalog changes or native-speaker acceptance are implied.

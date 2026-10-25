@@ -20,7 +20,7 @@ Report visibility uses source hidden-key arrays; browser layouts and named snaps
 
 - Page engines: opt-in `appearance="plain"` on RecordPage/RecordSectionLayout/RecordSectionCard, top record identity/actions, unnumbered neutral section chrome and configurable aside width. Existing callers retain defaults; effective navigation/density and mounted drafts remain supported. WorklistPage adds `refreshKey` to requery acknowledged external writes while retaining criteria/layout; direct and ERP case-list regressions cover it.
 - Patterns: ResourceTimeline optional baseline geometry, time-label cadence, resource-header and event-class slots. Density still scales configured slot height; original default behavior is retained.
-- UI: Avatar accent-wash initials use the effective text token. Shell Chromium adds 14 theme cases covering four shared surfaces each; the complete HTTP axe sweep exposed the original contrast failure.
+- UI: Avatar accent-wash initials use the effective text token. Shell Chromium adds 14 theme cases covering four shared surfaces each; the complete HTTP axe sweep exposed the original contrast failure. When main was merged on 25 October 2026, the phase 6e-5 foreground (`--accent` mixed 60/40 with `--text`) replaced this one; the evidence below was recorded with the text-token version.
 
 Affected package READMEs and direct/browser tests are updated. No dependency installation is needed.
 

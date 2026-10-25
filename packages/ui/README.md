@@ -123,4 +123,8 @@ The root exports `OtpInput` and `OtpInputProps`: separate digit boxes that behav
 
 `SearchSelect` adds optional `quickPick`. Typing a printable character on the focused, closed trigger opens the list with that text; Tab after typing commits the highlighted match and advances focus from the persistent trigger to the next field. Without `quickPick`, Tab still closes without choosing and typing on the trigger does nothing. Tests cover typing-to-open, Tab commit, unchanged default behaviour, empty-query Tab, signature draw/clear, error description, disabled input and missing canvas support. The AllyVora demo uses both; the showcase Choice example demonstrates `SignaturePad`.
 
-Avatar's accent wash uses the effective text token for initials: the accent token is a decorative color and can fail small-text contrast on its own wash. The shell Chromium fixture checks this combination on four shared surfaces in all 14 themes. Name-based wash selection, photographs and accessible names are unchanged.
+## Avatar accent contrast (phase 6e-5)
+
+The accent Avatar wash previously used the raw `--accent` hue for its initials. Its foreground is now `--accent` mixed 60/40 with the theme's `--text`, darker on light themes and lighter on dark ones; the other four washes already used ink tokens. Names, seeds, sizes and accessibility attributes are unchanged. An avatar test asserts that no wash uses a raw accent foreground. Chromium contrast was verified in the final live check (25 workflows, 18 routes, no axe violations). See the [phase 6e-5 record](../../docs/releases/unreleased/restructure-phase-6e-5-2026-10-24.md).
+
+Phase 6c-6 fixed the same accent-wash contrast failure independently. On merge the phase 6e-5 foreground above was kept (`--accent` mixed 60/40 with `--text`); the 6c-6 shell Chromium fixture checks it on four shared surfaces in all 14 themes. Name-based wash selection, photographs and accessible names are unchanged.

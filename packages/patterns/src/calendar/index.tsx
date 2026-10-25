@@ -5,6 +5,7 @@ import {useLocalization} from '@pepbits/i18n/react';
 import {useFormatters} from '../screen-host';
 import {minuteTime, overlaps, timelineLayout, type TimelineInterval} from './model';
 export * from './model';
+export * from './row-timeline';
 export interface TimelineResource {id: string; label: string}
 export interface ResourceEvent extends TimelineInterval {resource: string; label: string; detail?: ReactNode; inactive?: boolean}
 export interface ResourceTimelineProps<T extends ResourceEvent> {

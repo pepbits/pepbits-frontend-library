@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "@pepbits/tokens/tokens.css";
+@import "@pepbits/tokens/reference-fonts.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/manrope/index.css";
+@import "@fontsource-variable/source-sans-3/index.css";
+@import "@fontsource-variable/nunito-sans/index.css";
+@import "@fontsource-variable/noto-sans-arabic/index.css";
+@import "@fontsource-variable/noto-sans-devanagari/index.css";
+@import "@fontsource-variable/noto-sans-malayalam/index.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+@import "@fontsource/ibm-plex-mono/700.css";
+@import "../modules/settle/settle.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/components/src";
+@source "../../../../packages/patterns/src";
+@source "../../../../packages/page-engines/src";
+@source "../../../../packages/shell/src";
+@source "../../../../packages/icons/src";
+@source "../modules";
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font-ui), "Noto Sans Arabic Variable", "Noto Sans Devanagari Variable", "Noto Sans Malayalam Variable", sans-serif; }
+:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+button, input, select, textarea { font:inherit; }
+.settle-page { min-width:0; --fs-scale:var(--fs-form); }
+
+/* Settle source palette names resolve to the host's semantic theme tokens, so every theme, the
+   high-contrast palette and dark themes apply. Only rose/indigo/sky share Tailwind default names;
+   no shared package uses them. */
+@theme inline {
+  --color-ink: var(--text);
+  --color-ink-2: var(--text);
+  --color-ink-soft: var(--text-muted);
+  --color-ink-mute: var(--text-subtle);
+  --color-panel: var(--surface);
+  --color-mist: var(--surface-2);
+  --color-mist-2: var(--surface-3);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-pine-50: var(--primary-soft);
+  --color-pine-100: color-mix(in srgb, var(--primary) 18%, var(--surface));
+  --color-pine-200: color-mix(in srgb, var(--primary) 32%, var(--surface));
+  --color-pine-300: color-mix(in srgb, var(--primary) 55%, var(--surface));
+  --color-pine-500: var(--primary);
+  --color-pine-600: var(--primary-fill);
+  --color-pine-700: var(--primary-strong);
+  --color-pine-800: color-mix(in srgb, var(--primary-strong) 80%, var(--text));
+  --color-pine-900: var(--text);
+  --color-marigold-50: color-mix(in srgb, var(--warning) 12%, var(--surface));
+  --color-marigold-100: color-mix(in srgb, var(--warning) 25%, var(--surface));
+  --color-marigold-300: color-mix(in srgb, var(--warning) 60%, var(--surface));
+  --color-marigold-500: var(--warning);
+  --color-marigold-700: var(--warning-ink);
+  --color-marigold-800: var(--warning-ink);
+  --color-rose-50: color-mix(in srgb, var(--danger) 9%, var(--surface));
+  --color-rose-100: color-mix(in srgb, var(--danger) 18%, var(--surface));
+  --color-rose-200: color-mix(in srgb, var(--danger) 32%, var(--surface));
+  --color-rose-500: var(--danger-fill);
+  --color-rose-600: var(--danger-fill);
+  --color-rose-700: var(--danger-ink);
+  --color-indigo-50: color-mix(in srgb, var(--info) 9%, var(--surface));
+  --color-indigo-100: color-mix(in srgb, var(--info) 18%, var(--surface));
+  --color-indigo-500: var(--info);
+  --color-indigo-600: var(--info-ink);
+  --color-indigo-700: var(--info-ink);
+  --color-sky-50: var(--accent-soft);
+  --color-sky-100: color-mix(in srgb, var(--accent) 22%, var(--surface));
+  --color-sky-500: var(--accent);
+  --color-sky-700: color-mix(in srgb, var(--accent) 55%, var(--text));
+  --shadow-pop: var(--shadow-lg);
+  --shadow-rail: var(--shadow-md);
+  --shadow-hair: var(--shadow-sm);
+  --radius-panel: var(--radius);
+}
+@font-face {font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Manrope";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Source Sans 3";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2") format("woff2");}
+@font-face {font-family:"Nunito Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url("~@fontsource-variable/nunito-sans/files/nunito-sans-latin-wght-normal.woff2") format("woff2");}
