@@ -1,0 +1,45 @@
+/* Source WorkList/Form geometry; all overrides are confined to simple masters. */
+.erp-master-worklist { min-width:0; --master-row-py:12px; --master-row-px:16px; }
+.erp-master-worklist[data-density=compact] { --master-row-py:4px; --master-row-px:12px; }
+.erp-master-worklist[data-density=spacious] { --master-row-py:16px; }
+.erp-master-worklist table { min-width:720px; border-collapse:separate; border-spacing:0; text-align:start; }
+.erp-master-worklist thead th { padding:var(--master-row-py) var(--master-row-px); font-size:calc(12px * var(--fs-result)); font-weight:500; text-transform:none; letter-spacing:normal; color:var(--text-muted); border-block-end:1px solid var(--border); }
+.erp-master-worklist tbody td { padding:var(--master-row-py) var(--master-row-px); font-size:calc(13px * var(--fs-result)); font-weight:400; border-block-end:1px solid var(--border); }
+.erp-master-worklist tbody td:first-child { font-weight:500; }
+.erp-master-worklist tbody td:last-child, .erp-master-worklist thead th:last-child { right:auto; inset-inline-end:0; width:112px; }
+.erp-master-worklist [data-master-inline] { background:var(--primary-soft); }
+.erp-master-worklist [data-master-inline] td { padding:var(--master-row-py) var(--master-row-px); --fs-scale:var(--fs-form); }
+.erp-master-worklist [data-master-inline] input, .erp-master-worklist [data-master-inline] select { height:28px; min-width:80px; border-radius:var(--radius); }
+.erp-master-worklist[data-density=spacious] [data-master-inline] input, .erp-master-worklist[data-density=spacious] [data-master-inline] select { height:36px; }
+.erp-master-row-actions { display:flex; gap:4px; justify-content:flex-end; }
+.erp-master-form { padding:16px; font-size:calc(12px * var(--fs-form)); --fs-scale:var(--fs-form); }
+.erp-master-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:16px; row-gap:14px; }
+.erp-master-fields [data-wide=true] { grid-column:1/-1; }
+.erp-master-fields label > span:first-child { font-size:calc(12px * var(--fs-form)); font-weight:500; margin-block-end:4px; }
+.erp-master-form > p { margin-block-start:16px; color:var(--text-muted); }
+.erp-master-dialog { border-radius:var(--radius); }
+.erp-master-parent { border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); min-width:0; }
+.erp-master-parent header { padding:10px; border-block-end:1px solid var(--border); }
+.erp-master-parent header > div:first-child { display:flex; justify-content:space-between; margin-block-end:8px; font-size:calc(13px * var(--fs-form)); }
+.erp-master-parent h2 { font-weight:600; }
+.erp-master-parent ul { padding:6px; max-height:65vh; overflow:auto; }
+.erp-master-parent li button { width:100%; display:flex; gap:8px; justify-content:space-between; height:auto; padding:6px 10px; font-size:calc(13px * var(--fs-result)); font-weight:400; text-align:start; border-radius:var(--radius); }
+.erp-master-parent li button[aria-pressed=true] { background:var(--primary-soft); color:var(--text); font-weight:500; }
+.erp-parent-code { width:28px; flex-shrink:0; font-size:calc(11.5px * var(--fs-result)); color:var(--text-muted); }
+.erp-parent-name { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; }
+.erp-master-parent-mobile { display:none; }
+@media(min-width:768px) {
+ .erp-master-worklist[data-master-dependent=true][data-master-variant=erp1] > div:last-of-type { display:grid; grid-template-columns:256px minmax(0,1fr); align-items:start; }
+ .erp-master-worklist[data-master-dependent=true][data-master-variant=erp1] > div:last-of-type > * { grid-column:2; }
+ .erp-master-worklist[data-master-dependent=true][data-master-variant=erp1] > div:last-of-type > .erp-master-parent { grid-column:1; grid-row:1/7; align-self:stretch; }
+}
+@media(min-width:1280px) {
+ .erp-master-worklist[data-master-dependent=true][data-master-variant=erp1] > div:last-of-type { grid-template-columns:288px minmax(0,1fr); }
+}
+@media(max-width:767px) {
+ .erp-master-parent-desktop { display:none; }
+ .erp-master-parent-mobile { display:block; padding:10px; }
+ .erp-master-fields { grid-template-columns:1fr; }
+}
+
+.erp-master-worklist :is(input,select,textarea), .erp-master-dialog :is(input,select,textarea,button) { border-radius:var(--radius); }

@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [ERP phase 6c-7a — masters editor and geometry subset](restructure-phase-6c-7a-2026-10-25.md): eighteen simple/dependent master destinations; inline rows, quick dialogs and parent rail; forced CI (6,787 tests, zero cache), shell Chromium (18 tests) and real HTTP (140 workflows, 114 routes, 45 geometry checks, zero axe violations) pass; exact remaining differences retained, no whole-destination match or deployment.
+
 - [ERP phase 6c-6 — source composition and visual audit subset](restructure-phase-6c-6-2026-10-24.md): 35-destination composition subset, report layouts and explicit remaining differences for all 114 destinations; forced CI (6,097 tests), shell Chromium (18 tests) and real HTTP (122 workflows, 114 routes, zero axe violations) pass; no deployment.
 - [CareGrid phase 6e-5 — scheduling and resource planning demo](restructure-phase-6e-5-2026-10-24.md): all eleven CareGrid screens on public packages, live updates and library additions; local production build, 25 real-HTTP workflows and 18 Chromium axe routes passed; fictional data, no deployment.
 - [Settle phase 6e-4 — patient billing desk demo](restructure-phase-6e-4-2026-10-24.md): Settle billing screens over the unchanged API inside the shared shell; local real-HTTP check passes 20 workflows and 29 routes with zero errors/axe violations; build, unit/typecheck and prior CI/browser scopes recorded separately; fictional data, no deployment.

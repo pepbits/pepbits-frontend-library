@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-25T03:10:23.635905+00:00",
+  "failedReceipt": "attempt-2-browser-final.json",
+  "completed": {
+    "workflows": 117,
+    "geometry": 45,
+    "newMasterEditorGeometry": 18,
+    "consoleErrors": 0,
+    "httpErrors": 0,
+    "axeViolations": 0
+  },
+  "failure": "ERP2 customers personal-view column header count was read during a table refresh: 0 instead of 10.",
+  "fix": "Replace immediate count assertion with page.waitForFunction waiting for the same expected header count. No runtime behavior or expected result changed.",
+  "cleanup": "Browser, Next and API groups all stopped, as recorded in attempt-2-identity-final.json.",
+  "verification": "Repeat forced CI, shell Chromium, docs, ERP build and complete live integration on corrected tree."
+}

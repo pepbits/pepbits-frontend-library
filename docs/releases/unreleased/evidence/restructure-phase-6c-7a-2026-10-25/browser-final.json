@@ -1,0 +1,5686 @@
+{
+  "scope": "Local production Next server and unchanged fictional HTTP API",
+  "flows": [
+    {
+      "id": "ERP-01",
+      "scope": "UI",
+      "result": "Fixture sign-in and shared provider chain"
+    },
+    {
+      "id": "ERP-preferences",
+      "scope": "UI",
+      "result": "Accepted host preference selects account column storage"
+    },
+    {
+      "id": "erp1-columns",
+      "scope": "UI",
+      "result": "Column visibility and reset"
+    },
+    {
+      "id": "erp1-search",
+      "scope": "UI",
+      "result": "Worklist search returned API rows"
+    },
+    {
+      "id": "erp1-edit",
+      "scope": "UI",
+      "result": "Record open, edit and HTTP save"
+    },
+    {
+      "id": "erp1-create",
+      "scope": "UI",
+      "result": "Master created through API with the source inline/dialog editor; list retained"
+    },
+    {
+      "id": "erp1-approval",
+      "scope": "UI",
+      "result": "Pending approval updated through API"
+    },
+    {
+      "id": "erp2-columns",
+      "scope": "UI",
+      "result": "Column visibility and reset"
+    },
+    {
+      "id": "erp2-neighbours",
+      "scope": "UI",
+      "result": "Next and previous preserve worklist order"
+    },
+    {
+      "id": "erp2-search",
+      "scope": "UI",
+      "result": "Worklist search returned API rows"
+    },
+    {
+      "id": "erp2-edit",
+      "scope": "UI",
+      "result": "Record open, edit and HTTP save"
+    },
+    {
+      "id": "erp2-refresh",
+      "scope": "UI",
+      "result": "Record deep-link reload persisted edit"
+    },
+    {
+      "id": "erp2-create",
+      "scope": "UI",
+      "result": "Master created through API with the source inline/dialog editor; list retained"
+    },
+    {
+      "id": "erp2-approval",
+      "scope": "UI",
+      "result": "Pending approval updated through API"
+    },
+    {
+      "id": "erp1-tree-create",
+      "scope": "UI",
+      "result": "Expand hierarchy and create a child under a selected parent"
+    },
+    {
+      "id": "erp1-tree-search",
+      "scope": "UI",
+      "result": "Edit, reload and search nested child with its ancestors"
+    },
+    {
+      "id": "erp1-tree-delete",
+      "scope": "UI",
+      "result": "Explicitly confirmed leaf deletion acknowledged by HTTP"
+    },
+    {
+      "id": "erp1-board",
+      "scope": "UI",
+      "result": "Pointer drag, reload persistence and accessible select move through HTTP"
+    },
+    {
+      "id": "erp1-board-filter",
+      "scope": "UI",
+      "result": "Board search restricts cards to the selected subject"
+    },
+    {
+      "id": "erp1-board-views",
+      "scope": "UI",
+      "result": "Board and shared worklist switch"
+    },
+    {
+      "id": "erp2-tree-create",
+      "scope": "UI",
+      "result": "Expand hierarchy and create a child under a selected parent"
+    },
+    {
+      "id": "erp2-tree-search",
+      "scope": "UI",
+      "result": "Edit, reload and search nested child with its ancestors"
+    },
+    {
+      "id": "erp2-board",
+      "scope": "UI",
+      "result": "Pointer drag, reload persistence and accessible select move through HTTP"
+    },
+    {
+      "id": "erp2-board-filter",
+      "scope": "UI",
+      "result": "Board search restricts cards to the selected subject"
+    },
+    {
+      "id": "erp2-board-views",
+      "scope": "UI",
+      "result": "Board and shared worklist switch"
+    },
+    {
+      "id": "erp1-profile-layout",
+      "scope": "UI",
+      "result": "Split profile and account-saved layout survive reload"
+    },
+    {
+      "id": "erp1-appointments-schedule",
+      "scope": "UI",
+      "result": "Date and resource visibility, free-slot creation, check-in and completion and schedule reload through real HTTP"
+    },
+    {
+      "id": "erp1-appointments-views",
+      "scope": "UI",
+      "result": "Resource timeline and shared worklist switch"
+    },
+    {
+      "id": "erp1-room-bookings-schedule",
+      "scope": "UI",
+      "result": "Date and resource visibility, free-slot creation, cancellation and schedule reload through real HTTP"
+    },
+    {
+      "id": "erp1-room-bookings-views",
+      "scope": "UI",
+      "result": "Resource timeline and shared worklist switch"
+    },
+    {
+      "id": "erp1-invoice-print",
+      "scope": "UI",
+      "result": "Server company profile, copy/terms/zoom, A4 print CSS hides shell; Chromium PDF generated (no physical printer)"
+    },
+    {
+      "id": "erp1-report-controls",
+      "scope": "UI",
+      "result": "Custom date range, status grouping, totals and preference-selected export download"
+    },
+    {
+      "id": "erp1-ledger",
+      "scope": "UI",
+      "result": "All-time statement, opening/closing totals, search preserves closing balance and complete-statement export"
+    },
+    {
+      "id": "erp1-matrix-attendance",
+      "scope": "UI",
+      "result": "Period navigation, mark clearing, bulk-fill blanks, save and reload persistence"
+    },
+    {
+      "id": "erp1-matrix-hours",
+      "scope": "UI",
+      "result": "Week-normalized hours, fractional edit, summary and period-scoped HTTP save"
+    },
+    {
+      "id": "erp1-matrix-marks",
+      "scope": "UI",
+      "result": "Term selection, score edit, grade summary and period-scoped HTTP save"
+    },
+    {
+      "id": "erp1-dashboard",
+      "scope": "UI",
+      "result": "All source dashboard panels, keyboard trend inspection and module-owned orders drill-down"
+    },
+    {
+      "id": "erp2-appointments-schedule",
+      "scope": "UI",
+      "result": "Date and resource visibility, free-slot creation, check-in and completion and schedule reload through real HTTP"
+    },
+    {
+      "id": "erp2-appointments-views",
+      "scope": "UI",
+      "result": "Resource timeline and shared worklist switch"
+    },
+    {
+      "id": "erp2-room-bookings-schedule",
+      "scope": "UI",
+      "result": "Date and resource visibility, free-slot creation, cancellation and schedule reload through real HTTP"
+    },
+    {
+      "id": "erp2-room-bookings-views",
+      "scope": "UI",
+      "result": "Resource timeline and shared worklist switch"
+    },
+    {
+      "id": "erp2-invoice-print",
+      "scope": "UI",
+      "result": "Server company profile, copy/terms/zoom, A4 print CSS hides shell; Chromium PDF generated (no physical printer)"
+    },
+    {
+      "id": "erp2-report-controls",
+      "scope": "UI",
+      "result": "Custom date range, status grouping, totals and preference-selected export download"
+    },
+    {
+      "id": "erp2-report-record",
+      "scope": "UI",
+      "result": "Report drill-down opens the owning invoice route"
+    },
+    {
+      "id": "erp2-ledger",
+      "scope": "UI",
+      "result": "All-time statement, opening/closing totals, search preserves closing balance and complete-statement export"
+    },
+    {
+      "id": "erp2-matrix-attendance",
+      "scope": "UI",
+      "result": "Period navigation, mark clearing, bulk-fill blanks, save and reload persistence"
+    },
+    {
+      "id": "erp2-matrix-hours",
+      "scope": "UI",
+      "result": "Week-normalized hours, fractional edit, summary and period-scoped HTTP save"
+    },
+    {
+      "id": "erp2-matrix-marks",
+      "scope": "UI",
+      "result": "Term selection, score edit, grade summary and period-scoped HTTP save"
+    },
+    {
+      "id": "erp2-dashboard",
+      "scope": "UI",
+      "result": "All source dashboard panels, keyboard trend inspection and module-owned orders drill-down"
+    },
+    {
+      "id": "erp2-dashboard-record",
+      "scope": "UI",
+      "result": "Recent-order drill-down opens its record route"
+    },
+    {
+      "id": "erp1-profile-panels",
+      "scope": "UI",
+      "result": "Source field groups, statistics, HTTP support metadata and explicitly local file selection/removal"
+    },
+    {
+      "id": "erp1-support-tickets-conversation",
+      "scope": "UI",
+      "result": "Post update, change priority and save assignee while preserving other unsent panel inputs, then reload conversation through real HTTP"
+    },
+    {
+      "id": "erp1-maintenance-requests-conversation",
+      "scope": "UI",
+      "result": "Post update, change priority and save assignee while preserving other unsent panel inputs, then reload conversation through real HTTP"
+    },
+    {
+      "id": "erp1-booking-context",
+      "scope": "UI",
+      "result": "Booking detail drawer retains the calendar and shows time/status summary"
+    },
+    {
+      "id": "erp1-document-context",
+      "scope": "UI",
+      "result": "Document summary, support history and metadata panels loaded through HTTP"
+    },
+    {
+      "id": "erp2-profile-panels",
+      "scope": "UI",
+      "result": "Source field groups, statistics, HTTP support metadata and explicitly local file selection/removal"
+    },
+    {
+      "id": "erp2-support-tickets-conversation",
+      "scope": "UI",
+      "result": "Post update, change priority and save assignee while preserving other unsent panel inputs, then reload conversation through real HTTP"
+    },
+    {
+      "id": "erp2-maintenance-requests-conversation",
+      "scope": "UI",
+      "result": "Post update, change priority and save assignee while preserving other unsent panel inputs, then reload conversation through real HTTP"
+    },
+    {
+      "id": "erp2-booking-context",
+      "scope": "UI",
+      "result": "Booking record shows live day/resource context and schedule navigation"
+    },
+    {
+      "id": "erp2-document-context",
+      "scope": "UI",
+      "result": "Document summary, support history and metadata panels loaded through HTTP"
+    },
+    {
+      "id": "erp2-tree-record",
+      "scope": "UI",
+      "result": "Record breadcrumbs and child context, followed by explicitly confirmed leaf deletion through HTTP"
+    },
+    {
+      "id": "erp1-countries-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp1-states-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp1-currencies-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp1-units-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp1-holidays-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp1-departments-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp1-leave-types-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp1-shifts-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp1-lab-tests-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-countries-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-states-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-currencies-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-units-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-holidays-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-departments-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-leave-types-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-shifts-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "erp2-lab-tests-master-editor",
+      "scope": "UI",
+      "result": "Source inline/dialog edit, measured table geometry, real versioned save, retained worklist and editor axe"
+    },
+    {
+      "id": "/erp1/transactions/appointments-booking-composition",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: booking-composition"
+    },
+    {
+      "id": "/erp1/transactions/room-bookings-booking-composition",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: booking-composition"
+    },
+    {
+      "id": "/erp1/masters/customers-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp1/masters/suppliers-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp1/masters/items-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp1/masters/employees-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp1/masters/patients-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp1/masters/doctors-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp1/masters/students-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp1/masters/vehicles-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp1/transactions/support-tickets-case-context",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: case-context"
+    },
+    {
+      "id": "erp1-support-tickets-list-save",
+      "scope": "UI",
+      "result": "Drawer stage save refreshes the retained list through HTTP and preserves search"
+    },
+    {
+      "id": "/erp1/transactions/maintenance-requests-case-context",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: case-context"
+    },
+    {
+      "id": "erp1-maintenance-requests-list-save",
+      "scope": "UI",
+      "result": "Drawer stage save refreshes the retained list through HTTP and preserves search"
+    },
+    {
+      "id": "erp1-sales-register-column-layout",
+      "scope": "UI",
+      "result": "Hide Status, reload persisted layout; save/apply/delete column snapshot and reset through real HTTP"
+    },
+    {
+      "id": "erp1-purchase-register-column-layout",
+      "scope": "UI",
+      "result": "Hide Status, reload persisted layout; save/apply/delete column snapshot and reset through real HTTP"
+    },
+    {
+      "id": "erp1-stock-summary-column-layout",
+      "scope": "UI",
+      "result": "Hide Stock value, reload persisted layout; save/apply/delete column snapshot and reset through real HTTP"
+    },
+    {
+      "id": "erp1-receivables-aging-column-layout",
+      "scope": "UI",
+      "result": "Hide Outstanding, reload persisted layout; save/apply/delete column snapshot and reset through real HTTP"
+    },
+    {
+      "id": "/erp2/transactions/appointments-booking-composition",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: booking-composition"
+    },
+    {
+      "id": "/erp2/transactions/room-bookings-booking-composition",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: booking-composition"
+    },
+    {
+      "id": "/erp2/masters/customers-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp2/masters/suppliers-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp2/masters/items-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp2/masters/employees-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp2/masters/patients-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp2/masters/doctors-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp2/masters/students-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp2/masters/vehicles-profile-statistics",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: profile-statistics"
+    },
+    {
+      "id": "/erp2/transactions/support-tickets-case-context",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: case-context"
+    },
+    {
+      "id": "/erp2/transactions/maintenance-requests-case-context",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: case-context"
+    },
+    {
+      "id": "/erp2/masters/org-structure-hierarchy-record",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: hierarchy-record"
+    },
+    {
+      "id": "/erp2/masters/chart-of-accounts-hierarchy-record",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: hierarchy-record"
+    },
+    {
+      "id": "/erp2/masters/product-categories-hierarchy-record",
+      "scope": "UI",
+      "result": "Computed-style comparison against original source CSS: hierarchy-record"
+    },
+    {
+      "id": "erp2-sales-register-column-layout",
+      "scope": "UI",
+      "result": "Hide Status, reload persisted layout; save/apply/delete column snapshot and reset through real HTTP"
+    },
+    {
+      "id": "erp2-purchase-register-column-layout",
+      "scope": "UI",
+      "result": "Hide Status, reload persisted layout; save/apply/delete column snapshot and reset through real HTTP"
+    },
+    {
+      "id": "erp2-stock-summary-column-layout",
+      "scope": "UI",
+      "result": "Hide Stock value, reload persisted layout; save/apply/delete column snapshot and reset through real HTTP"
+    },
+    {
+      "id": "erp2-receivables-aging-column-layout",
+      "scope": "UI",
+      "result": "Hide Outstanding, reload persisted layout; save/apply/delete column snapshot and reset through real HTTP"
+    },
+    {
+      "id": "erp1-personal-views",
+      "scope": "UI",
+      "result": "Save account status/numeric-range/search/sort/columns, reload and apply, save/apply a column-only set without changing search, delete both snapshots; real HTTP accepted every write"
+    },
+    {
+      "id": "erp2-personal-views",
+      "scope": "UI",
+      "result": "Save account status/numeric-range/search/sort/columns, reload and apply, save/apply a column-only set without changing search, delete both snapshots; real HTTP accepted every write"
+    },
+    {
+      "id": "erp1-export-preference",
+      "scope": "UI",
+      "result": "Accepted preference selects CSV for report downloads"
+    },
+    {
+      "id": "erp1-sales-register-advanced",
+      "scope": "UI",
+      "result": "Typed range, multiple statuses, server sorting, complete group subtotals and parsed full-result spreadsheet export",
+      "rows": 43,
+      "format": "csv"
+    },
+    {
+      "id": "erp1-purchase-register-advanced",
+      "scope": "UI",
+      "result": "Typed range, person text, server sorting, complete group subtotals and parsed full-result spreadsheet export",
+      "rows": 3,
+      "format": "csv"
+    },
+    {
+      "id": "erp1-stock-summary-advanced",
+      "scope": "UI",
+      "result": "Typed range, server sorting, complete group subtotals and parsed full-result spreadsheet export",
+      "rows": 48,
+      "format": "csv"
+    },
+    {
+      "id": "erp1-receivables-aging-advanced",
+      "scope": "UI",
+      "result": "Typed range, server sorting, complete group subtotals and parsed full-result spreadsheet export",
+      "rows": 70,
+      "format": "csv"
+    },
+    {
+      "id": "erp1-long-invoice-fixture",
+      "scope": "direct HTTP",
+      "result": "75 fictional invoice lines persisted through versioned API for browser/PDF checks"
+    },
+    {
+      "id": "erp1-long-invoice-print",
+      "scope": "UI",
+      "result": "Measured wrapped rows, repeated headers, carry equality, continuous numbering, one summary, terms/zoom and A4 layout (PDF capture not requested)",
+      "pages": 8,
+      "lines": 75,
+      "total": 785.66,
+      "geometry": [
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        }
+      ]
+    },
+    {
+      "id": "erp2-export-preference",
+      "scope": "UI",
+      "result": "Accepted preference selects XLSX for report downloads"
+    },
+    {
+      "id": "erp2-sales-register-advanced",
+      "scope": "UI",
+      "result": "Typed range, multiple statuses, server sorting, complete group subtotals and parsed full-result spreadsheet export",
+      "rows": 43,
+      "format": "xlsx"
+    },
+    {
+      "id": "erp2-purchase-register-advanced",
+      "scope": "UI",
+      "result": "Typed range, person text, server sorting, complete group subtotals and parsed full-result spreadsheet export",
+      "rows": 3,
+      "format": "xlsx"
+    },
+    {
+      "id": "erp2-stock-summary-advanced",
+      "scope": "UI",
+      "result": "Typed range, server sorting, complete group subtotals and parsed full-result spreadsheet export",
+      "rows": 48,
+      "format": "xlsx"
+    },
+    {
+      "id": "erp2-receivables-aging-advanced",
+      "scope": "UI",
+      "result": "Typed range, server sorting, complete group subtotals and parsed full-result spreadsheet export",
+      "rows": 70,
+      "format": "xlsx"
+    },
+    {
+      "id": "erp2-long-invoice-fixture",
+      "scope": "direct HTTP",
+      "result": "75 fictional invoice lines persisted through versioned API for browser/PDF checks"
+    },
+    {
+      "id": "erp2-long-invoice-print",
+      "scope": "UI",
+      "result": "Measured wrapped rows, repeated headers, carry equality, continuous numbering, one summary, terms/zoom and A4 layout (PDF capture not requested)",
+      "pages": 12,
+      "lines": 75,
+      "total": 785.66,
+      "geometry": [
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        },
+        {
+          "width": 793.6875,
+          "height": 1122.515625,
+          "footerBottom": 1074.515625,
+          "scrollHeight": 1123,
+          "clientHeight": 1123
+        }
+      ]
+    },
+    {
+      "id": "ERP-default-result-scale",
+      "scope": "UI",
+      "result": "Restored result scale to 13 before the 114-route computed-style/axe sweep"
+    },
+    {
+      "id": "ERP-module",
+      "scope": "UI",
+      "result": "Header switches to module-owned navigation"
+    },
+    {
+      "id": "erp1-finance-write",
+      "scope": "UI",
+      "result": "Finance session creates a permitted tax-rate entity"
+    },
+    {
+      "id": "erp1-finance-denied-ui",
+      "scope": "UI",
+      "result": "Non-granted department creation/edit controls denied"
+    },
+    {
+      "id": "erp1-finance-denied-http",
+      "scope": "direct HTTP",
+      "result": "Server returns 403 for a non-granted department command",
+      "status": 403
+    },
+    {
+      "id": "erp2-finance-write",
+      "scope": "UI",
+      "result": "Finance session creates a permitted tax-rate entity"
+    },
+    {
+      "id": "erp2-finance-denied-ui",
+      "scope": "UI",
+      "result": "Non-granted department creation/edit controls denied"
+    },
+    {
+      "id": "erp2-finance-denied-http",
+      "scope": "direct HTTP",
+      "result": "Server returns 403 for a non-granted department command",
+      "status": 403
+    }
+  ],
+  "checks": [
+    {
+      "path": "/erp1/workspace/dashboard",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/workspace/approvals",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/countries",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/states",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/currencies",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/units",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/holidays",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/org-structure",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/erp1/masters/departments",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/chart-of-accounts",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/erp1/masters/tax-rates",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/customers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/suppliers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/items",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/product-categories",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/erp1/masters/price-lists",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/bill-of-materials",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/employees",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/leave-types",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/shifts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/salary-structures",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/patients",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/doctors",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/lab-tests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/consultation-fees",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/students",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/fee-structures",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/vehicles",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/sales-orders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/sales-invoices",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/purchase-orders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/goods-receipts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/journal-vouchers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/payment-vouchers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/petty-cash",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/leave-requests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/expense-claims",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/attendance",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/timesheets",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/payroll-run",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/depreciation-run",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/appointments",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/room-bookings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/quality-inspections",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/support-tickets",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/maintenance-requests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/marks-entry",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/sales-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/purchase-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/stock-summary",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/receivables-aging",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/customer-ledger",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/reports/invoice-print",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/erp1/setup/company-settings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/setup/users",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/setup/number-series",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/setup/notifications",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/workspace/dashboard",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/workspace/approvals",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/countries",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/states",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/currencies",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/units",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/holidays",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/org-structure",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/erp2/masters/departments",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/chart-of-accounts",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/erp2/masters/tax-rates",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/customers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/suppliers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/items",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/product-categories",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/erp2/masters/price-lists",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/bill-of-materials",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/employees",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/leave-types",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/shifts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/salary-structures",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/patients",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/doctors",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/lab-tests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/consultation-fees",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/students",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/fee-structures",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/vehicles",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/sales-orders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/sales-invoices",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/purchase-orders",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/goods-receipts",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/journal-vouchers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/payment-vouchers",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/petty-cash",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/leave-requests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/expense-claims",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/attendance",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/timesheets",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/payroll-run",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/depreciation-run",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/appointments",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/room-bookings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/quality-inspections",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/support-tickets",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/maintenance-requests",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/marks-entry",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/sales-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/purchase-register",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/stock-summary",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/receivables-aging",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/customer-ledger",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/reports/invoice-print",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/setup/company-settings",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/setup/users",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/setup/number-series",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/setup/notifications",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "panelChecks": [
+    {
+      "path": "/erp1/masters/customers",
+      "state": "erp1-profile-details",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/support-tickets",
+      "state": "erp1-support-tickets-conversation",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/maintenance-requests",
+      "state": "erp1-maintenance-requests-conversation",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/appointments",
+      "state": "erp1-booking-context",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/transactions/purchase-orders",
+      "state": "erp1-document-context",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/customers/1",
+      "state": "erp2-profile-details",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/support-tickets/1",
+      "state": "erp2-support-tickets-conversation",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/maintenance-requests/1",
+      "state": "erp2-maintenance-requests-conversation",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/appointments/141",
+      "state": "erp2-booking-context",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/transactions/purchase-orders/1",
+      "state": "erp2-document-context",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/chart-of-accounts/40",
+      "state": "erp2-tree-record",
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "path": "/erp1/masters/customers",
+      "state": "erp1-advanced-filters",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp1/masters/customers",
+      "state": "erp1-personal-views",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/customers",
+      "state": "erp2-advanced-filters",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "path": "/erp2/masters/customers",
+      "state": "erp2-personal-views",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "visualChecks": [
+    {
+      "path": "/erp1/masters/countries",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 183.609375,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 183.609375,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "editCell": {
+          "width": 227.578125,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 195.578125,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/states",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 98.671875,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 98.671875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "parent": {
+          "width": 288,
+          "height": 1681.875,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "parentMedium": {
+          "width": 256,
+          "height": 1681.875,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "editCell": {
+          "width": 140.875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 108.875,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/currencies",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 156,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 156,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "editCell": {
+          "width": 212.1875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 180.1875,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/units",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 202.171875,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 202.171875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "editCell": {
+          "width": 293.71875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 261.71875,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/holidays",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 394.875,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 394.875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "editCell": {
+          "width": 345.953125,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 313.953125,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/departments",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 163.578125,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 163.578125,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "editCell": {
+          "width": 101.5,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 236.484375,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/leave-types",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 146.25,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 146.25,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "editCell": {
+          "width": 94.8125,
+          "height": 65,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 255.953125,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/shifts",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 192.046875,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 192.046875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "editCell": {
+          "width": 101.734375,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 259.015625,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/lab-tests",
+      "state": "master-table-editor",
+      "source": "WorkList.tsx / DependentTemplate.tsx",
+      "metrics": {
+        "header": {
+          "width": 165.953125,
+          "height": 43,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 165.953125,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "editCell": {
+          "width": 101.59375,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "input": {
+          "width": 236.71875,
+          "height": 28,
+          "fontSize": 13,
+          "paddingInline": 12,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/countries",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 176.71875,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 176.71875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 396.0000305175781,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 202,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/states",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 125.734375,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 125.734375,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 396.0000305175781,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 202,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/currencies",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 150.140625,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 150.140625,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 396,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 202,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/units",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 194.578125,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 194.578125,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 396,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 202,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/holidays",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 380.0625,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 380.0625,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 395.9999694824219,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 201.99996948242188,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/departments",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 154.5,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 154.5,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 396,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 202.00003051757812,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/leave-types",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 139.21875,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 139.21875,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 396,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 202,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/shifts",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 183.015625,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 183.015625,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 395.9999694824219,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 202,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/lab-tests",
+      "state": "master-table-editor",
+      "source": "QuickDialog.tsx / WorkList.tsx",
+      "metrics": {
+        "header": {
+          "width": 158.25,
+          "height": 44,
+          "fontSize": 12,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "cell": {
+          "width": 158.25,
+          "height": 61,
+          "fontSize": 13,
+          "paddingInline": 16,
+          "paddingBlock": 12,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "density": "comfortable",
+        "dialog": {
+          "width": 672,
+          "height": 396,
+          "fontSize": 14,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": null,
+          "rowGap": null,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "fields": {
+          "width": 638,
+          "height": 202,
+          "fontSize": 12,
+          "paddingInline": 0,
+          "paddingBlock": 0,
+          "columnGap": 16,
+          "rowGap": 14,
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "axe": {
+          "violations": 0,
+          "incomplete": 0
+        }
+      },
+      "result": "Source table/editor dimensions and save composition matched; toolbar/filter arrangement remains in parity-status.md."
+    },
+    {
+      "path": "/erp1/transactions/appointments",
+      "state": "booking-composition",
+      "source": "BookingTemplate.tsx / MoreRecords.tsx",
+      "metrics": {
+        "slot": {
+          "width": 169,
+          "height": 30,
+          "fontSize": 13.6,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "gutter": {
+          "width": 56,
+          "height": 679,
+          "fontSize": 13.6,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "summary": {
+          "width": 319,
+          "height": 73.5,
+          "fontSize": 13,
+          "padding": "10px 12px",
+          "gap": "12px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "time": {
+          "width": 57,
+          "height": 23.99999237060547,
+          "fontSize": 20,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "drawer": {
+          "width": 360,
+          "height": 1000,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/transactions/room-bookings",
+      "state": "booking-composition",
+      "source": "BookingTemplate.tsx / MoreRecords.tsx",
+      "metrics": {
+        "slot": {
+          "width": 169,
+          "height": 30,
+          "fontSize": 13.6,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "gutter": {
+          "width": 56,
+          "height": 679,
+          "fontSize": 13.6,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "summary": {
+          "width": 319,
+          "height": 73.5,
+          "fontSize": 13,
+          "padding": "10px 12px",
+          "gap": "12px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "time": {
+          "width": 57,
+          "height": 24,
+          "fontSize": 20,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "drawer": {
+          "width": 360,
+          "height": 1000,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/customers",
+      "state": "profile-statistics",
+      "source": "ProfileTemplate.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 15,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 888,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "440px 440px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 118,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 118,
+          "height": 40.5,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/suppliers",
+      "state": "profile-statistics",
+      "source": "ProfileTemplate.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 15,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 888,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "290.656px 290.672px 290.656px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 118,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 118,
+          "height": 40.5,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/items",
+      "state": "profile-statistics",
+      "source": "ProfileTemplate.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 15,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 888,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "216px 216px 216px 216px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 118,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 118,
+          "height": 40.5,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/employees",
+      "state": "profile-statistics",
+      "source": "ProfileTemplate.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 15,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 888,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "888px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 118,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 118,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/patients",
+      "state": "profile-statistics",
+      "source": "ProfileTemplate.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 15,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 888,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "440px 440px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 118,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 118,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/doctors",
+      "state": "profile-statistics",
+      "source": "ProfileTemplate.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 15,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 888,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "440px 440px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 118,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 118,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/students",
+      "state": "profile-statistics",
+      "source": "ProfileTemplate.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 15,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 888,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "440px 440px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 118,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 118,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/masters/vehicles",
+      "state": "profile-statistics",
+      "source": "ProfileTemplate.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 15,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 888,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "440px 440px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 118,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 118,
+          "height": 40.5,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/transactions/support-tickets",
+      "state": "case-context",
+      "source": "CaseTemplate.tsx",
+      "metrics": {
+        "context": {
+          "width": 460,
+          "height": 1000,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp1/transactions/maintenance-requests",
+      "state": "case-context",
+      "source": "CaseTemplate.tsx",
+      "metrics": {
+        "context": {
+          "width": 460,
+          "height": 1000,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/transactions/appointments",
+      "state": "booking-composition",
+      "source": "BookingTemplate.tsx / MoreRecords.tsx",
+      "metrics": {
+        "slot": {
+          "width": 169,
+          "height": 30,
+          "fontSize": 13.6,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "gutter": {
+          "width": 56,
+          "height": 679,
+          "fontSize": 13.6,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "summary": {
+          "width": 1340,
+          "height": 106,
+          "fontSize": 13,
+          "padding": "20px",
+          "gap": "20px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "time": {
+          "width": 75,
+          "height": 31,
+          "fontSize": 26,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "aside": {
+          "width": 340,
+          "height": 192.5,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "16px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/transactions/room-bookings",
+      "state": "booking-composition",
+      "source": "BookingTemplate.tsx / MoreRecords.tsx",
+      "metrics": {
+        "slot": {
+          "width": 169,
+          "height": 30,
+          "fontSize": 13.6,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "gutter": {
+          "width": 56,
+          "height": 679,
+          "fontSize": 13.6,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "summary": {
+          "width": 1340,
+          "height": 106,
+          "fontSize": 13,
+          "padding": "20px",
+          "gap": "20px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "time": {
+          "width": 75,
+          "height": 31,
+          "fontSize": 26,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "aside": {
+          "width": 340,
+          "height": 192.5,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "16px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/customers",
+      "state": "profile-statistics",
+      "source": "ProfileRecord.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 17,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 504,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "248px 248px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 257.328125,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 257.328125,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/suppliers",
+      "state": "profile-statistics",
+      "source": "ProfileRecord.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 17,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 671,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "218.328px 218.328px 218.328px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 257.328125,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 257.328125,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/items",
+      "state": "profile-statistics",
+      "source": "ProfileRecord.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 17,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 724,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "175px 175px 175px 175px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 257.328125,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 257.328125,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/employees",
+      "state": "profile-statistics",
+      "source": "ProfileRecord.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 17,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 545,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "545px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 257.328125,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 257.328125,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/patients",
+      "state": "profile-statistics",
+      "source": "ProfileRecord.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 17,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 654,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "323px 323px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 257.328125,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 257.328125,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/doctors",
+      "state": "profile-statistics",
+      "source": "ProfileRecord.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 17,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 770,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "381px 381px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 257.328125,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 257.328125,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/students",
+      "state": "profile-statistics",
+      "source": "ProfileRecord.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 17,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 739,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "365.5px 365.5px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 257.328125,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 257.328125,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/vehicles",
+      "state": "profile-statistics",
+      "source": "ProfileRecord.tsx",
+      "metrics": {
+        "avatar": {
+          "width": 48,
+          "height": 48,
+          "fontSize": 17,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "stats": {
+          "width": 647,
+          "height": 55.75,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "8px",
+          "gridTemplateColumns": "319.5px 319.5px",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "label": {
+          "width": 257.328125,
+          "height": 18,
+          "fontSize": 12,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "value": {
+          "width": 257.328125,
+          "height": 22,
+          "fontSize": 13.5,
+          "padding": "0px",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "density": "comfortable",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/transactions/support-tickets",
+      "state": "case-context",
+      "source": "MoreRecords.tsx",
+      "metrics": {
+        "context": {
+          "width": 340,
+          "height": 637.5,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "16px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/transactions/maintenance-requests",
+      "state": "case-context",
+      "source": "MoreRecords.tsx",
+      "metrics": {
+        "context": {
+          "width": 340,
+          "height": 489.5625,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "16px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/org-structure",
+      "state": "hierarchy-record",
+      "source": "MoreRecords.tsx",
+      "metrics": {
+        "context": {
+          "width": 380,
+          "height": 256,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "16px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "breadcrumbs": {
+          "width": 1340,
+          "height": 50,
+          "fontSize": 14,
+          "padding": "12px 16px",
+          "gap": "12px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/chart-of-accounts",
+      "state": "hierarchy-record",
+      "source": "MoreRecords.tsx",
+      "metrics": {
+        "context": {
+          "width": 380,
+          "height": 263.765625,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "16px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "breadcrumbs": {
+          "width": 1340,
+          "height": 50,
+          "fontSize": 14,
+          "padding": "12px 16px",
+          "gap": "12px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    },
+    {
+      "path": "/erp2/masters/product-categories",
+      "state": "hierarchy-record",
+      "source": "MoreRecords.tsx",
+      "metrics": {
+        "context": {
+          "width": 380,
+          "height": 310.953125,
+          "fontSize": 14,
+          "padding": "0px",
+          "gap": "16px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        },
+        "breadcrumbs": {
+          "width": 1340,
+          "height": 50,
+          "fontSize": 14,
+          "padding": "12px 16px",
+          "gap": "12px",
+          "gridTemplateColumns": "none",
+          "formScale": 1,
+          "resultScale": 1
+        }
+      },
+      "result": "Selected source dimensions match; whole-destination differences remain in parity-status.md."
+    }
+  ],
+  "catalogueStyles": [
+    {
+      "path": "/erp1/workspace/dashboard",
+      "page": {
+        "width": 1340,
+        "height": 1213.53125,
+        "padding": "0px",
+        "fontSize": "16px"
+      },
+      "firstCell": {
+        "width": 98,
+        "height": 48,
+        "padding": "12px 16px",
+        "fontSize": "16px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/workspace/approvals",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/countries",
+      "page": {
+        "width": 1340,
+        "height": 1609.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 183.609375,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/states",
+      "page": {
+        "width": 1340,
+        "height": 1702.875,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 98.671875,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/currencies",
+      "page": {
+        "width": 1340,
+        "height": 1121.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 156,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/units",
+      "page": {
+        "width": 1340,
+        "height": 1243.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 202.171875,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/holidays",
+      "page": {
+        "width": 1340,
+        "height": 1304.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 394.875,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/org-structure",
+      "page": {
+        "width": 1340,
+        "height": 646,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 109,
+        "height": 45,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/departments",
+      "page": {
+        "width": 1340,
+        "height": 1121.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 163.578125,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/chart-of-accounts",
+      "page": {
+        "width": 1340,
+        "height": 601,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 129,
+        "height": 45,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/tax-rates",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/customers",
+      "page": {
+        "width": 1340,
+        "height": 1730,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/suppliers",
+      "page": {
+        "width": 1340,
+        "height": 1751.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/items",
+      "page": {
+        "width": 1340,
+        "height": 1751.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/product-categories",
+      "page": {
+        "width": 1340,
+        "height": 590,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 96,
+        "height": 45,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/price-lists",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/bill-of-materials",
+      "page": {
+        "width": 1340,
+        "height": 1123.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/employees",
+      "page": {
+        "width": 1340,
+        "height": 1751.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/leave-types",
+      "page": {
+        "width": 1340,
+        "height": 938.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 146.25,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/shifts",
+      "page": {
+        "width": 1340,
+        "height": 755.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 192.046875,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/salary-structures",
+      "page": {
+        "width": 1340,
+        "height": 879.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/patients",
+      "page": {
+        "width": 1340,
+        "height": 1822,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/doctors",
+      "page": {
+        "width": 1340,
+        "height": 1751.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/lab-tests",
+      "page": {
+        "width": 1340,
+        "height": 1609.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 165.953125,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/consultation-fees",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/students",
+      "page": {
+        "width": 1340,
+        "height": 1751.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/fee-structures",
+      "page": {
+        "width": 1340,
+        "height": 1001.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/masters/vehicles",
+      "page": {
+        "width": 1340,
+        "height": 1215.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/sales-orders",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/sales-invoices",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/purchase-orders",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/goods-receipts",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/journal-vouchers",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/payment-vouchers",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/petty-cash",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/leave-requests",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/expense-claims",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/attendance",
+      "page": {
+        "width": 1340,
+        "height": 1541.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 100,
+        "height": 60,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/timesheets",
+      "page": {
+        "width": 1340,
+        "height": 1541.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 100,
+        "height": 60,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/payroll-run",
+      "page": {
+        "width": 1340,
+        "height": 1245.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/depreciation-run",
+      "page": {
+        "width": 1340,
+        "height": 1001.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/appointments",
+      "page": {
+        "width": 1340,
+        "height": 879.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": {
+        "width": 1072,
+        "height": 681,
+        "padding": "0px",
+        "fontSize": "13.6px"
+      },
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/room-bookings",
+      "page": {
+        "width": 1340,
+        "height": 879.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": {
+        "width": 1072,
+        "height": 681,
+        "padding": "0px",
+        "fontSize": "13.6px"
+      },
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/quality-inspections",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/support-tickets",
+      "page": {
+        "width": 1340,
+        "height": 4176.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/maintenance-requests",
+      "page": {
+        "width": 1340,
+        "height": 3015.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/transactions/marks-entry",
+      "page": {
+        "width": 1340,
+        "height": 1541.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 84,
+        "height": 60,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/reports/sales-register",
+      "page": {
+        "width": 1340,
+        "height": 1409.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 176.625,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/reports/purchase-register",
+      "page": {
+        "width": 1340,
+        "height": 1457.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 149.71875,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/reports/stock-summary",
+      "page": {
+        "width": 1340,
+        "height": 1409.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 242.1875,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/reports/receivables-aging",
+      "page": {
+        "width": 1340,
+        "height": 1409.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 144.765625,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/reports/customer-ledger",
+      "page": {
+        "width": 1340,
+        "height": 1197.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 177.78125,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/reports/invoice-print",
+      "page": {
+        "width": 1340,
+        "height": 9279,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/setup/company-settings",
+      "page": {
+        "width": 1340,
+        "height": 2039,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/setup/users",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/setup/number-series",
+      "page": {
+        "width": 1340,
+        "height": 1001.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp1/setup/notifications",
+      "page": {
+        "width": 1340,
+        "height": 1593,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/workspace/dashboard",
+      "page": {
+        "width": 1340,
+        "height": 1213.53125,
+        "padding": "0px",
+        "fontSize": "16px"
+      },
+      "firstCell": {
+        "width": 98,
+        "height": 48,
+        "padding": "12px 16px",
+        "fontSize": "16px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/workspace/approvals",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/countries",
+      "page": {
+        "width": 1340,
+        "height": 1610.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/states",
+      "page": {
+        "width": 1340,
+        "height": 1681,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/currencies",
+      "page": {
+        "width": 1340,
+        "height": 1122.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/units",
+      "page": {
+        "width": 1340,
+        "height": 1244.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/holidays",
+      "page": {
+        "width": 1340,
+        "height": 1305.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/org-structure",
+      "page": {
+        "width": 1340,
+        "height": 265.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 254,
+        "height": 56,
+        "padding": "12px 16px",
+        "fontSize": "16px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/departments",
+      "page": {
+        "width": 1340,
+        "height": 1122.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/chart-of-accounts",
+      "page": {
+        "width": 1340,
+        "height": 489.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 171,
+        "height": 56,
+        "padding": "12px 16px",
+        "fontSize": "16px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/tax-rates",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/customers",
+      "page": {
+        "width": 1340,
+        "height": 1682,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/suppliers",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/items",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/product-categories",
+      "page": {
+        "width": 1340,
+        "height": 489.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 201,
+        "height": 56,
+        "padding": "12px 16px",
+        "fontSize": "16px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/price-lists",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/bill-of-materials",
+      "page": {
+        "width": 1340,
+        "height": 1123.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/employees",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/leave-types",
+      "page": {
+        "width": 1340,
+        "height": 939.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/shifts",
+      "page": {
+        "width": 1340,
+        "height": 756.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/salary-structures",
+      "page": {
+        "width": 1340,
+        "height": 879.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/patients",
+      "page": {
+        "width": 1340,
+        "height": 1682,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/doctors",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/lab-tests",
+      "page": {
+        "width": 1340,
+        "height": 1610.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 61,
+        "padding": "12px 16px",
+        "fontSize": "13px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/consultation-fees",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/students",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/fee-structures",
+      "page": {
+        "width": 1340,
+        "height": 1001.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/masters/vehicles",
+      "page": {
+        "width": 1340,
+        "height": 1123.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/sales-orders",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/sales-invoices",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/purchase-orders",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/goods-receipts",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/journal-vouchers",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/payment-vouchers",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/petty-cash",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/leave-requests",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/expense-claims",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/attendance",
+      "page": {
+        "width": 1340,
+        "height": 1541.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 100,
+        "height": 60,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/timesheets",
+      "page": {
+        "width": 1340,
+        "height": 1541.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 100,
+        "height": 60,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/payroll-run",
+      "page": {
+        "width": 1340,
+        "height": 1245.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/depreciation-run",
+      "page": {
+        "width": 1340,
+        "height": 1001.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/appointments",
+      "page": {
+        "width": 1340,
+        "height": 879.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": {
+        "width": 1072,
+        "height": 681,
+        "padding": "0px",
+        "fontSize": "13.6px"
+      },
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/room-bookings",
+      "page": {
+        "width": 1340,
+        "height": 879.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": {
+        "width": 1072,
+        "height": 681,
+        "padding": "0px",
+        "fontSize": "13.6px"
+      },
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/quality-inspections",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/support-tickets",
+      "page": {
+        "width": 1340,
+        "height": 4060,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/maintenance-requests",
+      "page": {
+        "width": 1340,
+        "height": 2839,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/transactions/marks-entry",
+      "page": {
+        "width": 1340,
+        "height": 1541.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 84,
+        "height": 60,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/reports/sales-register",
+      "page": {
+        "width": 1340,
+        "height": 1409.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 176.625,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/reports/purchase-register",
+      "page": {
+        "width": 1340,
+        "height": 1457.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 149.71875,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/reports/stock-summary",
+      "page": {
+        "width": 1340,
+        "height": 1409.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 242.1875,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/reports/receivables-aging",
+      "page": {
+        "width": 1340,
+        "height": 1409.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 144.765625,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/reports/customer-ledger",
+      "page": {
+        "width": 1340,
+        "height": 1197.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 177.28125,
+        "height": 46,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/reports/invoice-print",
+      "page": {
+        "width": 1340,
+        "height": 1618,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/setup/company-settings",
+      "page": {
+        "width": 1340,
+        "height": 2039,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/setup/users",
+      "page": {
+        "width": 1340,
+        "height": 1611.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/setup/number-series",
+      "page": {
+        "width": 1340,
+        "height": 1001.5,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": {
+        "width": 46,
+        "height": 60.5,
+        "padding": "12px 16px",
+        "fontSize": "14px"
+      },
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    },
+    {
+      "path": "/erp2/setup/notifications",
+      "page": {
+        "width": 1340,
+        "height": 1593,
+        "padding": "0px",
+        "fontSize": "14px"
+      },
+      "firstCell": null,
+      "timeline": null,
+      "scope": "Demo computed styles; see source-visual-audit.json and parity-status.md for source comparisons and remaining differences."
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": []
+}

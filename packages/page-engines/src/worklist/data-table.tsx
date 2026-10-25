@@ -4,6 +4,7 @@ import {DataValue, Table, TableHeader, TableBody, TableRow, TableHead, TableCell
 import {LocalizedText, useLocalization} from "@pepbits/i18n/react";
 
 import React from "react";
+import type {WorklistTableComposition} from "./table-composition";
 import { ArrowDown, ArrowUp, ArrowUpDown, Eye, MoreHorizontal, Pencil, SquareArrowOutUpRight } from "@pepbits/icons";
 import {Checkbox, cn} from "@pepbits/ui";
 import {InlineEdit} from "@pepbits/components";
@@ -49,7 +50,8 @@ function formatValue(column: DataColumn, value: unknown, format: Formatters, wra
   return <DataValue value={text} className="block max-w-[260px]" />;
 }
 
-export function DataTable({ rows, columns, primaryKey, displayKey, selected, onToggle, onToggleAll, sort, onSort, onPreview, onView, onEdit, onRowOpen, canEdit = true, onCellCommit, density, format, stickyHeader = true, zebra = false, wrap = false }: {
+export function DataTable({ composition, rows, columns, primaryKey, displayKey, selected, onToggle, onToggleAll, sort, onSort, onPreview, onView, onEdit, onRowOpen, canEdit = true, onCellCommit, density, format, stickyHeader = true, zebra = false, wrap = false }: {
+  composition?: WorklistTableComposition;
   rows: Array<Record<string, string | number | boolean>>;
   columns: DataColumn[];
   primaryKey: string;
@@ -87,7 +89,7 @@ export function DataTable({ rows, columns, primaryKey, displayKey, selected, onT
       <Table className="w-full min-w-[920px] border-collapse text-left">
         <TableHeader className={cn("z-10 bg-[var(--surface-2)] shadow-[0_1px_0_var(--border)]", stickyHeader && "sticky top-0")}>
           <TableRow>
-            <TableHead className="w-10 px-3 py-2"><Checkbox aria-label="ui.select.all.visible.records.e15adf6c" checked={allSelected} indeterminate={selected.length > 0 && !allSelected} onChange={onToggleAll} /></TableHead>
+            {composition?.selectable !== false && <TableHead className="w-10 px-3 py-2"><Checkbox aria-label="ui.select.all.visible.records.e15adf6c" checked={allSelected} indeterminate={selected.length > 0 && !allSelected} onChange={onToggleAll} /></TableHead>}
             {columns.map((column) => {
               const active = sort?.key === column.key;
               return <TableHead key={column.key} data-classification={column.classification ?? "unclassified"} style={{ minWidth: column.width }} className="px-3 py-2 text-[length:calc(8.5px*var(--fs-scale))] font-black uppercase tracking-[.08em] text-[var(--text-subtle)]"><button type="button" disabled={!column.sortable} onClick={() => onSort(column)} className="focus-ring inline-flex items-center gap-1 rounded-md transition hover:text-[var(--text)] disabled:cursor-default">{<LocalizedText message={column.labelKey ?? column.label} />}{column.sortable ? active ? sort?.direction === "asc" ? <ArrowUp className="size-3" /> : <ArrowDown className="size-3" /> : <ArrowUpDown className="size-3 opacity-45" /> : null}</button></TableHead>;
@@ -96,7 +98,10 @@ export function DataTable({ rows, columns, primaryKey, displayKey, selected, onT
           </TableRow>
         </TableHeader>
         <TableBody>
+          {composition?.beforeRows?.(columns)}
           {rows.map((row, rowIndex) => {
+            const custom = composition?.renderRow?.(row, columns);
+            if (custom !== undefined) return custom;
             const id = String(row[primaryKey]);
             const checked = selected.includes(id);
             /* Zebra on odd rows, but selection wins: a selected row must read as
@@ -104,7 +109,7 @@ export function DataTable({ rows, columns, primaryKey, displayKey, selected, onT
             const stripe = zebra && rowIndex % 2 === 1 && !checked ? "bg-[color-mix(in_srgb,var(--surface-2)_60%,transparent)]" : undefined;
             return (
               <TableRow key={id} data-selected={checked ? "true" : undefined} tabIndex={onRowOpen?0:undefined} onKeyDown={event=>{if(event.key==='Enter'&&event.target===event.currentTarget)onRowOpen?.(row);}} onDoubleClick={() => onView(row)} className={cn("group border-b border-[var(--border)] transition hover:bg-[var(--surface-2)]", stripe, checked && "bg-[var(--primary-soft)]")}>
-                <TableCell className={cn("px-3", padding)} onClick={(event) => event.stopPropagation()}><Checkbox aria-label={t("Select {item}",{item:id})} checked={checked} onChange={() => onToggle(id)} /></TableCell>
+                {composition?.selectable !== false && <TableCell className={cn("px-3", padding)} onClick={(event) => event.stopPropagation()}><Checkbox aria-label={t("Select {item}",{item:id})} checked={checked} onChange={() => onToggle(id)} /></TableCell>}
                 {columns.map((column, index) => <TableCell key={column.key} data-classification={column.classification ?? "unclassified"} onClick={() => (onRowOpen??onPreview)(row)} className={cn("cursor-pointer px-3 text-[length:calc(10.5px*var(--fs-scale))] font-medium text-[var(--text-muted)]", padding, index === 0 && "font-extrabold text-[var(--primary)]", column.key === displayKey && "font-extrabold text-[var(--text)]")}>{onCellCommit && column.editable
                     /* stopPropagation: the cell opens the record preview, and
                        clicking into an editor must not also open a drawer over
@@ -121,13 +126,13 @@ export function DataTable({ rows, columns, primaryKey, displayKey, selected, onT
                       </span>
                       : formatValue(column, row[column.key], format, wrap)}</TableCell>)}
                 <TableCell className={cn("sticky right-0 bg-[var(--surface)] px-2 text-right transition group-hover:bg-[var(--surface-2)]", checked && "bg-[var(--primary-soft)]", padding)}>
-                  <div className="flex justify-end gap-0.5">
+                  {composition?.renderActions ? composition.renderActions(row) : <div className="flex justify-end gap-0.5">
                     <IconButton label={t("Preview {item}",{item:id})} className="size-7" onClick={() => onPreview(row)}><Eye className="size-3.5" /></IconButton>
                     <IconButton label={t("Edit {item}",{item:id})} disabled={!canEdit} className="size-7" onClick={() => onEdit(row)}><Pencil className="size-3.5" /></IconButton>
                     <ActionMenu trigger={<IconButton label={t("More actions for {item}",{item:id})} className="size-7"><MoreHorizontal className="size-3.5" /></IconButton>}>
                       {(close) => <><MenuButton icon={<SquareArrowOutUpRight className="size-3.5" />} label="Open full record" onClick={() => { onView(row); close(); }} />{canEdit ? <MenuButton icon={<Pencil className="size-3.5" />} label="Edit record" onClick={() => { onEdit(row); close(); }} /> : null}<MenuButton label="Duplicate record" onClick={close} /><MenuButton label="View audit history" onClick={close} /></>}
                     </ActionMenu>
-                  </div>
+                  </div>}
                 </TableCell>
               </TableRow>
             );

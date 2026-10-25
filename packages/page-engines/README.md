@@ -144,3 +144,15 @@ WorklistPage adds optional `renderViewControls` and `renderFilters` slots with p
 RecordPage and RecordSectionLayout accept optional `appearance="plain"`: neutral unnumbered sections, top identity/actions and a 170px section rail. `asideWidth` sets the wide-container context width (default 300px). Effective formNavigation, density, reduced motion, mounted section drafts and narrow-container side content remain supported; existing callers retain their presentation. Direct coverage: `src/record-page/record-page.test.tsx`.
 
 WorklistPage accepts optional `refreshKey` for host-owned external writes. A changed key requeries current results while preserving search, filters, sort, columns and page state. Existing request cancellation and stale-response guards still apply. `worklist/preference-compliance.test.tsx` verifies refreshed rows with retained criteria/layout; ERP case-list regressions cover acknowledged drawer writes without remounting the list.
+
+### Worklist row composition
+
+`WorklistPage.tableComposition` optionally supplies a creation row (`beforeRows`),
+per-record row replacement (`renderRow`), actions and `selectable: false` for an
+inline editor. Callbacks receive the current visible columns; creation rows also
+render for empty results. The host owns drafts, validation and acknowledged writes;
+use `refreshKey` to refresh without losing criteria. `renderLeading` receives the
+same guarded filter controls for parent context, and `newLabel` supplies creation
+wording. Existing callers retain the standard table, selection, actions and label.
+Effective result-view, density, column and page-size policies remain engine-owned.
+See `table-composition.test.tsx` and the ERP master composition tests.

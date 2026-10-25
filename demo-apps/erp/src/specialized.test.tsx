@@ -17,8 +17,8 @@ test.each(['admin','enterprise-admin','operations','operations-analyst'])('%s re
 test('unknown and absent roles never inherit finance grants',()=>{expect(canWriteEntity(undefined,'tax-rates')).toBe(false);expect(canWriteEntity({role:'viewer',permissions:['erp:write:tax-rates']},'tax-rates')).toBe(false);});
 test.each(['erp1','erp2'] as const)('%s finance creation follows entity grants',async variant=>{
  const api=mockApi(),host=fixture(api.request,'finance');const view=render(<Module variant={variant} path="/masters/tax-rates" host={host}/>);expect(await screen.findByRole('button',{name:'New'})).toBeEnabled();
- view.rerender(<Module variant={variant} path="/masters/departments" host={host}/>);await screen.findByRole('heading',{name:'Department master',level:1});await waitFor(()=>expect(view.container.querySelector('tbody tr')).toBeTruthy());expect(screen.getByRole('button',{name:'New'})).toBeDisabled();
- view.rerender(<Module variant={variant} path="/masters/departments" host={fixture(api.request,'finance',['erp:write:departments'])}/>);expect(await screen.findByRole('button',{name:'New'})).toBeEnabled();
+ view.rerender(<Module variant={variant} path="/masters/departments" host={host}/>);await screen.findByRole('heading',{name:'Department master',level:1});await waitFor(()=>expect(view.container.querySelector('tbody tr')).toBeTruthy());expect(screen.getByRole('button',{name:variant==='erp1'?'Add row':'New department'})).toBeDisabled();
+ view.rerender(<Module variant={variant} path="/masters/departments" host={fixture(api.request,'finance',['erp:write:departments'])}/>);expect(await screen.findByRole('button',{name:variant==='erp1'?'Add row':'New department'})).toBeEnabled();
 });
 test('ERP2 direct edit for a non-granted entity has no save or editable fields',async()=>{
  const api=mockApi(),row=api.rows.get('departments')![0]!;render(<Module variant="erp2" path={'/masters/departments/'+row.id+'/edit'} host={fixture(api.request,'accountant')}/>);await screen.findByRole('heading',{name:'Record details'});expect(screen.queryByRole('button',{name:'Save'})).toBeNull();expect(screen.queryByRole('textbox',{name:'Department'})).toBeNull();

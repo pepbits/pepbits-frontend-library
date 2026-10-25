@@ -1,5 +1,6 @@
 import React,{useMemo,useRef,useState} from 'react';
 import {RecoveryNotice,failureFromError} from '@pepbits/components';
+import type {WorklistTableComposition,WorklistPageProps} from '@pepbits/page-engines/worklist';
 import {WorklistPage} from '@pepbits/page-engines/worklist';
 import type {WorklistConfig,PageDefinition} from '@pepbits/page-engines/types';
 import {NavigationProvider,useNavigation} from '@pepbits/platform/navigation';
@@ -10,7 +11,7 @@ import {listFields,defaultHidden,primaryField} from './registry';
 import {ErpFilters,ErpPersonalViews,filterFields,sourceFilters,decodeCondition} from './personal-views';
 import {recordAllowed,type ErpTarget} from '../../navigation';
 import type {PageDef,ListResponse} from './types';
-export function ErpWorklist({def,page,onOpen,onLoaded,refreshKey}:{def:PageDef;page:PageDefinition;onOpen:(target:ErpTarget)=>void;onLoaded?:(result:ListResponse)=>void;refreshKey?:string|number}){
+export function ErpWorklist({def,page,onOpen,onLoaded,refreshKey,tableComposition,newLabel,renderLeading}:{renderLeading?:WorklistPageProps['renderLeading'];tableComposition?:WorklistTableComposition;newLabel?:string;def:PageDef;page:PageDefinition;onOpen:(target:ErpTarget)=>void;onLoaded?:(result:ListResponse)=>void;refreshKey?:string|number}){
  const parentDefault=useRef('');
  const [layoutFailure,setLayoutFailure]=useState<unknown>(),[layoutRevision,setLayoutRevision]=useState(0),failedLayout=useRef<RequestInit|undefined>(undefined);
  const loaded=useRef(onLoaded);loaded.current=onLoaded;
@@ -27,5 +28,5 @@ export function ErpWorklist({def,page,onOpen,onLoaded,refreshKey}:{def:PageDef;p
  }}),[scopeKey,page.id,page.module,def,request,memory,layoutRevision]);
  const local=useMemo(()=>{const open=(target:ErpTarget)=>onOpen(target.mode==='new'&&def.parent&&parentDefault.current?{...target,query:new URLSearchParams({[def.parent.key]:parentDefault.current}).toString()}:target);return {...navigation,open,openInNewContext:open};},[navigation,onOpen,def]);
  const access=useMemo(()=>({...host,can:(action:string,context?:unknown)=>action==='archive'?false:action==='create'?recordAllowed(def.template,'new')&&host.can(action,context):action==='edit'?recordAllowed(def.template,'edit')&&host.can(action,context):host.can(action,context)}),[host,def.template]);
- return <NavigationProvider value={local}><ScreenHostProvider value={access}><>{!!layoutFailure&&<RecoveryNotice failure={failureFromError(layoutFailure)} onRetry={()=>{if(failedLayout.current)void adapter.request('/layouts',failedLayout.current);else{setLayoutFailure(undefined);setLayoutRevision(value=>value+1);}}}/>}<WorklistPage refreshKey={refreshKey} key={layoutRevision} page={page} config={config} adapter={adapter} personalViews={false} renderViewControls={def.template==='print'?undefined:controls=><ErpPersonalViews def={def} {...controls}/>} renderFilters={def.template==='print'?undefined:controls=>{const value=def.parent?decodeCondition(controls.values[def.parent.key]??''):'';parentDefault.current=Array.isArray(value)?value.length===1?String(value[0]):'':typeof value==='string'?value:'';return <ErpFilters def={def} {...controls}/>;}} rowClick="open"/></></ScreenHostProvider></NavigationProvider>;
+ return <NavigationProvider value={local}><ScreenHostProvider value={access}><>{!!layoutFailure&&<RecoveryNotice failure={failureFromError(layoutFailure)} onRetry={()=>{if(failedLayout.current)void adapter.request('/layouts',failedLayout.current);else{setLayoutFailure(undefined);setLayoutRevision(value=>value+1);}}}/>}<WorklistPage renderLeading={renderLeading} tableComposition={tableComposition} newLabel={newLabel} refreshKey={refreshKey} key={layoutRevision} page={page} config={config} adapter={adapter} personalViews={false} renderViewControls={def.template==='print'?undefined:controls=><ErpPersonalViews def={def} {...controls}/>} renderFilters={def.template==='print'?undefined:controls=>{const value=def.parent?decodeCondition(controls.values[def.parent.key]??''):'';parentDefault.current=Array.isArray(value)?value.length===1?String(value[0]):'':typeof value==='string'?value:'';return <ErpFilters hideParent={!!renderLeading} def={def} {...controls}/>;}} rowClick="open"/></></ScreenHostProvider></NavigationProvider>;
 }
