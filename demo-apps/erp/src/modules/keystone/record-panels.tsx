@@ -1,7 +1,8 @@
 import {useEffect, useRef, useState, type ReactNode} from 'react';
 import {Card, DescriptionList, LoadingState, RecoveryNotice, StatCard, failureFromError} from '@pepbits/components';
+import {CalendarClock, ChevronRight, FileText, FolderTree} from '@pepbits/icons';
 import {CollectionView} from '@pepbits/components/collection-view';
-import {Button, FilePicker, Select, Textarea} from '@pepbits/ui';
+import {Avatar, Badge, StatusBadge, Button, FilePicker, Select, Textarea} from '@pepbits/ui';
 import {useLocalization} from '@pepbits/i18n/react';
 import {usePreferences} from '@pepbits/preferences/react';
 import {useFormatters, useScreenHost} from '@pepbits/patterns/screen-host';
@@ -36,10 +37,28 @@ export function RecordDocumentSelection() {
 }
 
 export function ProfileSummary({def, row}: {def: PageDef; row: Row}) {
-  const format = useValueFormat();
+  const format = useValueFormat(), {t} = useLocalization(), {variant} = useKeystone();
   const stats = def.fields.filter(field => ['number', 'currency', 'percent'].includes(field.type) && field.group).slice(0, 4);
-  const meta = def.fields.filter(field => ['select', 'city', 'date', 'person', 'status'].includes(field.type) && !field.primary).slice(0, 4);
-  return <div data-profile-summary className="space-y-3"><DescriptionList items={meta.map(field => ({id: field.key, label: field.label, value: format(field, row[field.key])}))}/><div className="grid gap-2 sm:grid-cols-2">{stats.map(field => <StatCard key={field.key} label={field.label} value={format(field, row[field.key])}/>)}</div></div>;
+  const meta = def.fields.filter(field => ['select', 'city', 'date', 'person'].includes(field.type) && !field.primary).slice(0, 4);
+  return <Card data-profile-summary data-variant={variant} className="erp-profile-summary">
+    <div className="erp-profile-identity"><Avatar name={String(row.name ?? row.code ?? '')} decorative className="erp-profile-avatar"/><div><div className="flex flex-wrap items-center gap-2"><strong>{row.code}</strong>{row.status && <StatusBadge value={row.status}/>}</div><div className="erp-profile-meta">{meta.filter(field => row[field.key]).map(field => <span key={field.key}>{t(field.label)} <b>{format(field, row[field.key])}</b></span>)}</div></div></div>
+    <dl className="erp-profile-stats" style={{gridTemplateColumns: `repeat(${Math.max(1, stats.length)},minmax(0,1fr))`}}>{stats.map(field => <div key={field.key}><dt>{t(field.label)}</dt><dd>{format(field, row[field.key])}</dd></div>)}</dl>
+  </Card>;
+}
+
+export function BookingSummary({row, compact}: {row: Row; compact?: boolean}) {
+  const format = useFormatters(), {t} = useLocalization();
+  return <Card data-booking-summary data-compact={compact || undefined} className="erp-booking-summary">
+    {!compact && <span className="erp-booking-symbol" aria-hidden><CalendarClock size={26}/></span>}
+    <div className="min-w-0 flex-1"><strong>{format.time(row.start)}</strong><p>{format.date(row.date)} · {format.number(Number(row.duration || 30))} {t('min')}{!compact && <> · {row.resource}</>}</p></div><StatusBadge value={row.status}/>
+  </Card>;
+}
+
+export function CaseSummary({def, row}: {def: PageDef; row: Row}) {
+  const {t} = useLocalization(), format = useFormatters(), flow = def.statusFlow ?? [], current = flow.indexOf(row.status);
+  return <Card className="erp-case-summary" data-case-summary><div className="flex flex-wrap items-center gap-2"><strong>{row.code}</strong><StatusBadge value={row.status}/>{row.priority && <Badge tone={row.priority === 'Urgent' ? 'danger' : row.priority === 'High' ? 'warning' : 'neutral'}>{t(row.priority)}</Badge>}{row.created && <time dateTime={row.created}>{format.date(row.created)}</time>}</div>
+    <ol aria-label={t('Stage')} className="erp-case-stages">{flow.map((stage, index) => <li key={stage} data-state={index < current || current === flow.length - 1 ? 'done' : index === current ? 'current' : 'pending'} aria-current={index === current ? 'step' : undefined}><span>{format.number(index + 1)}</span>{t(stage)}</li>)}</ol>
+  </Card>;
 }
 
 export function ProfileChanges({def, initial, row, creating}: {def: PageDef; initial: Row; row: Row; creating: boolean}) {
@@ -53,7 +72,7 @@ export function BookingContext({def, row, target, onOpen, onClose, editing}: {de
   const rows = result.data?.rows.filter(item => item.resource === row.resource && (!editing || item.status !== 'Cancelled')) ?? [];
   return <Panel title="Resource schedule"><p>{String(row.resource ?? '')} · {row.date ? format.date(row.date) : t('Choose a date')}</p><Button disabled={editing} onClick={onClose}>{t('Open schedule')}</Button>{result.error ? <RecoveryNotice failure={failureFromError(new Error(result.error))} onRetry={result.reload}/> : row.date && !result.data ? <div aria-busy="true"><LoadingState/></div> : <>
     {result.data && result.data.total > result.data.rows.length && <p role="alert">{t('The schedule is incomplete. Reload before booking.')}</p>}
-    <ul className="erp-record-documents">{rows.map(item => <li key={item.id}><Button variant="ghost" disabled={editing} aria-current={item.id === row.id ? 'true' : undefined} onClick={() => onOpen({...target, recordId: item.id, mode: 'view'})}>{format.time(item.start)} · {item.person} · {t(item.status)}</Button></li>)}</ul>
+    <ul className="erp-booking-day">{rows.map(item => <li key={item.id}><Button variant="ghost" disabled={editing} aria-current={item.id === row.id ? 'true' : undefined} onClick={() => onOpen({...target, recordId: item.id, mode: 'view'})}><time>{format.time(item.start)}</time><span>{item.person}</span><StatusBadge value={item.status}/></Button></li>)}</ul>
     {!rows.length && <p>{t('Nothing else booked. Every slot is free.')}</p>}
   </>}</Panel>;
 }
@@ -65,8 +84,15 @@ export function hierarchyPath(rows: Row[], id?: string): Row[] {
   return path;
 }
 
+export function TreeBreadcrumbs({def, row, target, onOpen, onClose, editing}: {def: PageDef; row: Row; target: ErpTarget; onOpen: (target: ErpTarget) => void; onClose: () => void; editing: boolean}) {
+  const result = useFetch<ListResponse>(listUrl(def.entity, {size: 2000})), {t} = useLocalization();
+  if (result.error) return <RecoveryNotice failure={failureFromError(new Error(result.error))} onRetry={result.reload}/>;
+  if (!result.data) return <LoadingState/>;
+  return <Card className="erp-tree-breadcrumbs"><nav aria-label={t('Position in hierarchy')}><Button variant="ghost" disabled={editing} onClick={onClose}>{t('Top')}</Button>{hierarchyPath(result.data.rows, row.id || String(row.parentId ?? '')).map(item => <span key={item.id}><ChevronRight size={13} aria-hidden className="rtl:rotate-180"/><Button variant="ghost" disabled={editing} aria-current={item.id === row.id ? 'page' : undefined} onClick={() => onOpen({...target, mode:'view', recordId:item.id})}>{item.name}</Button></span>)}{!row.id && <span><ChevronRight size={13} aria-hidden/>{row.name || t('New')}</span>}</nav>{row.status && <StatusBadge value={row.status}/>}</Card>;
+}
+
 export function TreeContext({def, row, target, onOpen, onClose, editing}: {def: PageDef; row: Row; target: ErpTarget; onOpen: (target: ErpTarget) => void; onClose: () => void; editing: boolean}) {
-  const result = useFetch<ListResponse>(listUrl(def.entity, {size: 2000})), api = useEntityApi(), host = useScreenHost(), {t} = useLocalization();
+  const result = useFetch<ListResponse>(listUrl(def.entity, {size: 2000})), api = useEntityApi(), host = useScreenHost(), {t} = useLocalization(), {preferences} = usePreferences();
   const [confirm, setConfirm] = useState(false), [busy, setBusy] = useState(false), [failure, setFailure] = useState<unknown>();
   const alive = useRef(true), locked = useRef(false);
   useEffect(() => {alive.current = true; return () => {alive.current = false;};}, []);
@@ -82,9 +108,9 @@ export function TreeContext({def, row, target, onOpen, onClose, editing}: {def: 
   };
   if (result.error) return <RecoveryNotice failure={failureFromError(new Error(result.error))} onRetry={result.reload}/>;
   if (!result.data) return <div aria-busy="true"><LoadingState/></div>;
-  return <Panel title="Position in hierarchy"><nav aria-label={t('Position in hierarchy')} className="flex flex-wrap gap-2"><Button variant="ghost" disabled={editing || busy} onClick={onClose}>{t('Top')}</Button>{hierarchyPath(rows, row.id || String(row.parentId ?? '')).map(item => <Button key={item.id} variant="ghost" disabled={editing || busy} aria-current={item.id === row.id ? 'page' : undefined} onClick={() => open(item)}>{item.name}</Button>)}</nav>
+  return <Panel title="Directly under">
     {partial && <p role="alert">{t('Hierarchy is incomplete. Reload before changing it.')}</p>}
-    {!!row.id && <><h4>{t('Directly under')} {row.name}</h4><CollectionView columns={[{key: 'name', header: 'Name'}, {key: 'code', header: 'Code'}]} rows={kids} rowKey={item => item.id} onRowClick={editing || busy ? undefined : open}/>{!kids.length && <p>{t('Nothing sits under this item yet.')}</p>}
+    {!!row.id && <><h4>{t('Directly under')} {row.name}</h4><CollectionView view={preferences.resultView} columns={[{key: 'name', header: 'Name', render: (item: Row) => <span className="inline-flex items-center gap-2">{rows.some(child=>child.parentId===item.id)?<FolderTree size={15} aria-hidden/>:<FileText size={14} aria-hidden/>}{item.name}</span>}, {key: 'code', header: 'Code'}]} rows={kids} rowKey={item => item.id} onRowClick={editing || busy ? undefined : open}/>{!kids.length && <p>{t('Nothing sits under this item yet.')}</p>}
       <div className="flex flex-wrap gap-2"><Button disabled={editing || busy || partial || !host.can('create')} onClick={create}>{t('Add child')}</Button><Button disabled={editing || busy || partial || !!kids.length || !host.can('delete')} onClick={() => setConfirm(true)}>{t('Delete')}</Button></div>
       {confirm && <div role="group" aria-label={t('Delete')}><Button disabled={busy || !host.can('delete')} onClick={() => void remove()}>{t('Confirm delete')}</Button><Button disabled={busy} onClick={() => setConfirm(false)}>{t('Cancel')}</Button></div>}
       {!!failure && <RecoveryNotice failure={failureFromError(failure)} onRetry={() => void remove()}/>}
@@ -99,7 +125,7 @@ export function CaseConversation({def, row, busy, save}: {def: PageDef; row: Row
   if (variant === 'erp1') activities.reverse(); else activities.sort((a, b) => a.at.localeCompare(b.at));
   const disabled = busy || !host.can('edit');
   const post = async () => {if (disabled || !comment.trim()) return; const accepted = await save({activity: [...(row.activity ?? []), {at: localDay(), by: actor?.name ?? t('You'), text: comment.trim()}]}); if (accepted) setComment('');};
-  return <div data-case-conversation className="space-y-3"><ol className="erp-record-timeline">{activities.map((item, index) => <li key={index}><strong>{item.by}</strong> · <time dateTime={item.at}>{format.date(item.at)}</time><p>{item.text}</p></li>)}</ol>{!activities.length && <p>{t('No activity recorded for this record yet.')}</p>}
+  return <div data-case-conversation className="space-y-3"><ol className="erp-case-conversation">{activities.map((item, index) => <li key={index}><Avatar name={item.by} decorative size="sm"/><div><div className="erp-case-byline"><strong>{item.by}</strong><time dateTime={item.at}>{format.date(item.at)}</time></div><p>{item.text}</p></div></li>)}</ol>{!activities.length && <p>{t('No activity recorded for this record yet.')}</p>}
     <Textarea label="Add an update or reply" value={comment} disabled={disabled} onChange={event => setComment(event.target.value)} onKeyDown={event => {if (preferences.keyboardShortcuts && event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {event.preventDefault(); void post();}}}/><Button disabled={disabled || !comment.trim()} onClick={() => void post()}>{t('Post update')}</Button>
   </div>;
 }

@@ -7,16 +7,17 @@ import {usePreferences} from "@pepbits/preferences/react";
 import styles from "./record-layout.module.css";
 
 /** The same numbered card used by the record reference, with host-owned fields. */
-export function RecordSectionCard({id, title, subtitle, index, icon, reading, onRead, children}: {
+export function RecordSectionCard({id, title, subtitle, index, icon, reading, onRead, children, appearance = 'default'}: {
   id: string; title: string; subtitle: string; index: number; icon: ReactNode;
   reading?: boolean; onRead?: () => void; children: ReactNode;
+  appearance?: 'default' | 'plain';
 }) {
   const {t} = useLocalization();
-  return <Card className={styles.card} data-clinical-section={id}>
+  return <Card className={styles.card} data-clinical-section={id} data-appearance={appearance}>
     <div className={styles.cardHead}>
-      <span className={styles.cardIcon}>{icon}</span>
+      {(appearance !== 'plain' || icon) && <span className={styles.cardIcon}>{icon}</span>}
       <div className="min-w-0 flex-1"><h3>{t(title)}</h3><p>{t(subtitle)}</p></div>
-      <span className="text-xs font-mono text-[var(--text-muted)]">{t('template.clinical.sectionNumber', {number: String(index + 1).padStart(2, '0')})}</span>
+      {appearance !== 'plain' && <span className="text-xs font-mono text-[var(--text-muted)]">{t('template.clinical.sectionNumber', {number: String(index + 1).padStart(2, '0')})}</span>}
       {onRead && <Button size="sm" variant="ghost" onClick={onRead}>{t(reading ? 'template.clinical.reading' : 'template.clinical.read')}</Button>}
     </div>
     <div className={styles.cardBody}>{children}</div>
@@ -31,6 +32,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
   showCompletion = true,
   railAlignment = "spread",
   sizing = "viewport",
+  appearance = 'default',
   active,
   onActive,
   isDone,
@@ -50,6 +52,8 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
   railAlignment?: "spread" | "start";
   /** Container mode is used by hosted full-height record pages; legacy consumers retain viewport sizing. */
   sizing?: "viewport" | "container";
+  /** Neutral, unnumbered sections with a compact rail; effective navigation still wins. */
+  appearance?: 'default' | 'plain';
   active: string;
   onActive: (id: string) => void;
   isDone: (id: string) => boolean;
@@ -162,14 +166,14 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
       data-active={active === s.id}
       onClick={() => go(s.id)}
     >
-      <span aria-hidden="true" className={styles.number} data-done={isDone(s.id)}>
+      {appearance !== 'plain' && <span aria-hidden="true" className={styles.number} data-done={isDone(s.id)}>
         {isDone(s.id) && (layout !== "wizard" || active !== s.id)
           ? "✓"
           : layout === "wizard"
             ? i + 1
             : String(i + 1).padStart(2, "0")}
-      </span>{" "}
-      {layout !== "wizard" || active === s.id ? (
+      </span>}{" "}
+      {appearance === 'plain' || layout !== "wizard" || active === s.id ? (
         <span>{t(s.title)}</span>
       ) : null}
     </Button>
@@ -179,6 +183,8 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
       ref={surface}
       className={styles.surface}
       data-layout={layout}
+      data-appearance={appearance}
+      data-section-count={sections.length}
       data-sizing={sizing}
       data-rail-alignment={railAlignment}
       data-density={preferences.density}
@@ -191,7 +197,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
             className={styles.rail}
             aria-label={t("template.clinical.sections")}
           >
-            <div className={styles.railHead}>{railHeader}</div>
+            {(appearance === 'default' || railHeader) && <div className={styles.railHead}>{railHeader}</div>}
             <div
               role="tablist"
               aria-orientation="vertical"
@@ -268,7 +274,7 @@ export function RecordSectionLayout<T extends { id: string; title: string }>({
           </div>
         </div>
       </div>
-      <footer className={styles.footer}>{footer}</footer>
+      {(appearance === 'default' || footer) && <footer className={styles.footer}>{footer}</footer>}
     </div>
   );
 }

@@ -15,6 +15,19 @@ function setup(){
  const request=vi.fn(async(path:string,_init?:RequestInit)=>new Response(JSON.stringify(path==='/personal-views'?{views:[]}:{rows:[{id:'A',name:'Record A'}],total:1,page:1})));
  return {request,adapter:{request,identity:'tenant:app:user',applicationId:'app'}};
 }
+test('external refresh reads acknowledged rows and preserves current criteria and layout',async()=>{
+ let name='Before save';
+ const request=vi.fn(async(path:string,_init?:RequestInit)=>Response.json(path==='/layouts'?{layouts:{}}:{rows:[{id:'A',name}],total:1,page:1}));
+ const adapter={request,identity:'refresh-fixture',applicationId:'app'};
+ const tree=(refreshKey:number)=><WorklistPage page={page} config={config} adapter={adapter} personalViews={false} refreshKey={refreshKey}
+  renderViewControls={({layout,onApply})=><button onClick={()=>onApply({...layout,filters:{query:'Retained search',status:'active'},columns:['name'],sort:{key:'name',direction:'desc'}})}>Apply criteria</button>}/>;
+ const view=render(tree(0));await screen.findByText('Before save');fireEvent.click(screen.getByRole('button',{name:'Apply criteria'}));
+ const latest=()=>JSON.parse(request.mock.calls.filter(([path])=>path==='/worklists/search').at(-1)![1]!.body as string);
+ await waitFor(()=>expect(latest()).toMatchObject({safeFilters:{status:'active'},sensitiveFilters:{query:'Retained search'},sort:{key:'name',direction:'desc'}}));
+ name='After save';view.rerender(tree(1));expect(await screen.findByText('After save')).toBeVisible();
+ expect(latest()).toMatchObject({safeFilters:{status:'active'},sensitiveFilters:{query:'Retained search'},sort:{key:'name',direction:'desc'}});
+ expect(screen.queryByRole('columnheader',{name:'ID'})).toBeNull();
+});
 test('print provenance has stable server markup and refreshes immediately before native print',async()=>{
  vi.useFakeTimers({toFake:['Date']});
  try {

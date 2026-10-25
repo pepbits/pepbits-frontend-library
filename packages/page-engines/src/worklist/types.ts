@@ -35,5 +35,7 @@ export interface WorklistPageProps {
  renderFilters?:(controls:WorklistFilterControls)=>ReactNode;
  /** Use record navigation for row activation while retaining the preview action. */
  rowClick?:'preview'|'open';
+ /** Requery after an external write while preserving filters, sort and paging. */
+ refreshKey?:string|number;
  onReturn?:()=>void;onPreferences?:()=>void;
 }

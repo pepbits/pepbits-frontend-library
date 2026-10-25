@@ -16,14 +16,14 @@ export async function remainingWorkflows({page,visit,flows,capture,screenshot}) 
       await page.locator('[data-timeline-resource]').first().locator('button:not([data-timeline-event]):enabled').first().click();
       await page.locator('[data-record-page]').waitFor();
       await page.getByRole('textbox',{name:slug==='appointments'?'Patient':'Booked by',exact:true}).fill('Fictional '+variant+' scheduled visitor');
-      assert.equal(await page.getByLabel('Date',{exact:true}).inputValue(),day);
-      const created=page.waitForResponse(response=>response.url().endsWith('/entities/'+slug)&&response.request().method()==='POST');await page.getByRole('button',{name:'Create',exact:true}).click();const response=await created;assert.ok(response.ok());const row=await response.json();assert.equal(row.resource,resource);assert.equal(row.date,day);assert.equal(row.status,'Booked');
-      const checked=page.waitForResponse(response=>response.url().includes('/entities/'+slug+'/'+row.id)&&response.request().method()==='PUT');await page.getByRole('button',{name:'Check in',exact:true}).click();assert.equal((await (await checked).json()).status,'Checked in');
+      assert.equal(await page.locator('[data-record-page]').getByLabel('Date',{exact:true}).inputValue(),day);
+      const created=page.waitForResponse(response=>response.url().endsWith('/entities/'+slug)&&response.request().method()==='POST');await page.getByRole('button',{name:'Confirm booking',exact:true}).click();const response=await created;assert.ok(response.ok());const row=await response.json();assert.equal(row.resource,resource);assert.equal(row.date,day);assert.equal(row.status,'Booked');
+      if(slug==='appointments'){const checked=page.waitForResponse(response=>response.url().includes('/entities/'+slug+'/'+row.id)&&response.request().method()==='PUT');await page.getByRole('button',{name:'Check in',exact:true}).click();assert.equal((await (await checked).json()).status,'Checked in');}
       const closed=page.waitForResponse(response=>response.url().includes('/entities/'+slug+'/'+row.id)&&response.request().method()==='PUT');await page.getByRole('button',{name:slug==='appointments'?'Complete':'Cancel booking',exact:true}).click();assert.equal((await (await closed).json()).status,slug==='appointments'?'Completed':'Cancelled');
       await page.getByRole('button',{name:'Back',exact:true}).click();await page.locator('[data-resource-timeline]').waitFor();
       if(await page.getByLabel('Date',{exact:true}).inputValue()!==day)await page.getByLabel('Date',{exact:true}).fill(day);
       await page.locator('[data-timeline-event="'+row.id+'"]').waitFor();
-      record(variant+'-'+slug+'-schedule','Date and resource visibility, free-slot creation, check-in, '+(slug==='appointments'?'completion':'cancellation')+' and schedule reload through real HTTP');
+      record(variant+'-'+slug+'-schedule','Date and resource visibility, free-slot creation, '+(slug==='appointments'?'check-in and completion':'cancellation')+' and schedule reload through real HTTP');
       if(variant==='erp1'&&slug==='appointments')await shot('calendar');
       await page.getByRole('radio',{name:'List',exact:true}).click();await page.locator('tbody tr').first().waitFor();await page.getByRole('radio',{name:'Schedule',exact:true}).click();await page.locator('[data-resource-timeline]').waitFor();
       record(variant+'-'+slug+'-views','Resource timeline and shared worklist switch');

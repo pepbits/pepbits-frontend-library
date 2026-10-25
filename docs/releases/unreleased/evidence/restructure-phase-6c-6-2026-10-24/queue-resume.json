@@ -1,0 +1,26 @@
+{
+  "lock": "/home/pepadmin/.cache/pepbits-heavy.lock",
+  "queuedAt": "2026-10-24T18:05:19.270545+00:00",
+  "initialLogBytes": 0,
+  "note": "Blocking flock acquired the unchanged shared lock before 30 minutes. Full forced CI, shell Chromium and ERP HTTP integration are serialized under that lock; no lock holder was interrupted.",
+  "ciSourceCapturedAt": "2026-10-24T18:26:04.671561+00:00",
+  "waitUpperBoundSeconds": 1245.4,
+  "thirtyMinuteHolderCheckRequired": false,
+  "httpRetry": {
+    "queuedAt": "2026-10-24T19:19:16.302738+00:00",
+    "logBytes": 0,
+    "reason": "Disambiguate repeated case subjects using unique codes; rerun complete HTTP suite.",
+    "thirtyMinuteHolderCheck": "http-retry-lock-check.json",
+    "holderPidVisible": false,
+    "holderLiveness": "Unverified: kernel lock held, holder outside command PID namespace. Host-side details requested; verification remains queued.",
+    "sourceCapturedAt": "2026-10-24T19:56:56.022866+00:00",
+    "waitUpperBoundSeconds": 2259.72,
+    "status": "Lock acquired; full retry started without interrupting another process.",
+    "resolution": "Lock acquired naturally; later full HTTP detected Avatar contrast violations, fixed and reverified by contrastVerification."
+  },
+  "contrastVerification": {
+    "lockAcquiredAt": "2026-10-24T20:12:32Z",
+    "status": "Complete: shell preflight, forced CI, final shell Chromium and full HTTP all pass; outer command exit 0; all service groups stopped.",
+    "reason": "Complete HTTP attempt 3 found three accent Avatar contrast violations; shared runtime fix requires a fresh full CI/build."
+  }
+}

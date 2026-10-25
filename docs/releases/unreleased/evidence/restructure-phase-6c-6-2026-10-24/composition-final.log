@@ -1,0 +1,632 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=1 src/visual-composition.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c6/demo-apps/erp
+
+ ❯ src/visual-composition.test.tsx (13 tests | 1 failed) 28507ms
+   ✓ 'appointments' drawer: 'default' retains calendar, slot input and effective presentation  2503ms
+   ✓ 'room-bookings' drawer: 'default' retains calendar, slot input and effective presentation  1726ms
+   ✓ 'appointments' drawer: 'RTL' retains calendar, slot input and effective presentation  2164ms
+   ✓ 'room-bookings' drawer: 'RTL' retains calendar, slot input and effective presentation  1197ms
+   ✓ 'appointments' drawer: 'reduced motion' retains calendar, slot input and effective presentation  688ms
+   ✓ 'room-bookings' drawer: 'reduced motion' retains calendar, slot input and effective presentation  1583ms
+   ✓ 'appointments' drawer: 'managed' retains calendar, slot input and effective presentation  1717ms
+   ✓ 'room-bookings' drawer: 'managed' retains calendar, slot input and effective presentation  1252ms
+   ✓ erp1 report columns and named snapshots restore filters/order without changing locked page size  2254ms
+   ✓ erp2 report columns and named snapshots restore filters/order without changing locked page size  2611ms
+   × report account column failures have retry and use source hidden keys 10261ms
+     → Unable to find an element with the text: Layout unavailable. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mStock summary[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mGroup by[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mNo grouping[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"category"[39m
+                [36m>[39m
+                  [0mCategory[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"warehouse"[39m
+                [36m>[39m
+                  [0mWarehouse[0m
+                [36m</option>[39m
+              [36m</select>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 9 6 6 6-6"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mCategory[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Hardware"[39m
+                [36m>[39m
+                  [0mHardware[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Electrical"[39m
+                [36m>[39m
+                  [0mElectrical[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Safety"[39m
+                [36m>[39m
+                  [0mSafety[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Consumables"[39m
+                [36m>[39m
+                  [0mConsumables[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IT"[39m
+                [36m>[39m
+                  [0mIT[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Medical"[39m
+     ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mStock summary[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mGroup by[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mNo grouping[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"category"[39m
+                [36m>[39m
+                  [0mCategory[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"warehouse"[39m
+                [36m>[39m
+                  [0mWarehouse[0m
+                [36m</option>[39m
+              [36m</select>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 9 6 6 6-6"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mCategory[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Hardware"[39m
+                [36m>[39m
+                  [0mHardware[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Electrical"[39m
+                [36m>[39m
+                  [0mElectrical[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Safety"[39m
+                [36m>[39m
+                  [0mSafety[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Consumables"[39m
+                [36m>[39m
+                  [0mConsumables[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IT"[39m
+                [36m>[39m
+                  [0mIT[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Medical"[39m
+     ...
+   ✓ support-tickets source identity and stage summary match the opened record 206ms
+   ✓ maintenance-requests source identity and stage summary match the opened record  314ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/visual-composition.test.tsx > report account column failures have retry and use source hidden keys
+TestingLibraryElementError: Unable to find an element with the text: Layout unavailable. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mStock summary[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mGroup by[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mNo grouping[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"category"[39m
+                [36m>[39m
+                  [0mCategory[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"warehouse"[39m
+                [36m>[39m
+                  [0mWarehouse[0m
+                [36m</option>[39m
+              [36m</select>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 9 6 6 6-6"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mCategory[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Hardware"[39m
+                [36m>[39m
+                  [0mHardware[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Electrical"[39m
+                [36m>[39m
+                  [0mElectrical[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Safety"[39m
+                [36m>[39m
+                  [0mSafety[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Consumables"[39m
+                [36m>[39m
+                  [0mConsumables[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IT"[39m
+                [36m>[39m
+                  [0mIT[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Medical"[39m
+     ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-busy[39m=[32m"false"[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mStock summary[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-end gap-3 p-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mGroup by[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mNo grouping[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"category"[39m
+                [36m>[39m
+                  [0mCategory[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"warehouse"[39m
+                [36m>[39m
+                  [0mWarehouse[0m
+                [36m</option>[39m
+              [36m</select>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m6 9 6 6 6-6"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</div>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"block min-w-0"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"block min-w-0"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+            [36m>[39m
+              [0mCategory[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mSelect…[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Hardware"[39m
+                [36m>[39m
+                  [0mHardware[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Electrical"[39m
+                [36m>[39m
+                  [0mElectrical[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Safety"[39m
+                [36m>[39m
+                  [0mSafety[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Consumables"[39m
+                [36m>[39m
+                  [0mConsumables[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IT"[39m
+                [36m>[39m
+                  [0mIT[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"Medical"[39m
+     ...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/visual-composition.test.tsx:49:15
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+   Start at  13:05:51
+   Duration  44.75s (transform 7.03s, setup 808ms, collect 11.61s, tests 28.51s, environment 1.90s, prepare 265ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c6/demo-apps/erp 

@@ -1,0 +1,694 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=1 --testTimeout=120000
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c6/demo-apps/erp
+
+ ✓ src/modules/keystone/core.test.tsx (20 tests) 1776ms
+ ✓ src/record-panels.test.tsx (53 tests) 18184ms
+   ✓ erp1 keeps unsent case inputs across other acknowledged property saves  907ms
+   ✓ erp2 keeps unsent case inputs across other acknowledged property saves  518ms
+   ✓ erp1 profile shows source groups, statistics, activity/documents and changes  506ms
+   ✓ erp2 profile shows source groups, statistics, activity/documents and changes  412ms
+   ✓ erp2 case retains a failed comment and retries the identical versioned command  301ms
+   ✓ ERP1 opened record panels: default > customers  493ms
+   ✓ ERP1 opened record panels: default > sales-orders  432ms
+   ✓ ERP1 opened record panels: default > leave-requests  349ms
+   ✓ ERP1 opened record panels: default > approvals  366ms
+   ✓ ERP1 opened record panels: default > support-tickets  404ms
+   ✓ ERP1 opened record panels: default > chart-of-accounts  308ms
+   ✓ ERP1 opened record panels: default > payroll-run  363ms
+   ✓ ERP1 opened record panels: default > quality-inspections  488ms
+   ✓ ERP1 opened record panels: Arabic RTL > customers  390ms
+   ✓ ERP1 opened record panels: Arabic RTL > sales-orders  590ms
+   ✓ ERP1 opened record panels: Arabic RTL > leave-requests  310ms
+   ✓ ERP1 opened record panels: Arabic RTL > approvals  357ms
+   ✓ ERP1 opened record panels: Arabic RTL > support-tickets  398ms
+   ✓ ERP1 opened record panels: Arabic RTL > payroll-run  315ms
+   ✓ ERP1 opened record panels: Arabic RTL > quality-inspections  379ms
+   ✓ ERP1 opened record panels: reduced motion > customers  400ms
+   ✓ ERP1 opened record panels: reduced motion > sales-orders  334ms
+   ✓ ERP1 opened record panels: reduced motion > leave-requests  333ms
+   ✓ ERP1 opened record panels: reduced motion > approvals  460ms
+   ✓ ERP1 opened record panels: reduced motion > support-tickets  385ms
+   ✓ ERP1 opened record panels: reduced motion > chart-of-accounts  349ms
+   ✓ ERP1 opened record panels: reduced motion > payroll-run  377ms
+   ✓ ERP1 opened record panels: reduced motion > quality-inspections  470ms
+   ✓ ERP1 opened record panels: locked density > customers  356ms
+   ✓ ERP1 opened record panels: locked density > payroll-run  443ms
+   ✓ ERP1 opened record panels: locked density > quality-inspections  450ms
+   ✓ edited forms warn on browser unload, retain failures, and detach after accepted save  565ms
+ ✓ src/remaining-views.test.tsx (20 tests) 7058ms
+   ✓ erp1 booking opens a free slot with resource, date and time defaults  643ms
+   ✓ booking date navigation and resource visibility keep a complete schedule and list switch  1131ms
+   ✓ booking status failures retain their operation and a mounted denial disables actions  474ms
+   ✓ erp1 invoice loads company data and controls the physical document  792ms
+   ✓ erp2 invoice loads company data and controls the physical document  374ms
+   ✓ appointments calendar has no axe violations in Arabic RTL  923ms
+   ✓ room-bookings calendar has no axe violations in Arabic RTL  667ms
+ ✓ src/personal-views.test.tsx (17 tests) 12278ms
+   ✓ erp1 saves and restores account search, typed filters, sort and columns after remount  1517ms
+   ✓ erp2 saves and restores account search, typed filters, sort and columns after remount  1281ms
+   ✓ source hidden-column contract is used for account load and writes  749ms
+   ✓ ERP1 parent panel filters the dependent list through HTTP and retries failed parent data  570ms
+   ✓ erp1 personal-view/filter dialogs: default  1020ms
+   ✓ erp1 personal-view/filter dialogs: Arabic RTL  927ms
+   ✓ erp1 personal-view/filter dialogs: reduced motion  838ms
+   ✓ erp1 personal-view/filter dialogs: locked density  896ms
+   ✓ erp2 personal-view/filter dialogs: default  504ms
+   ✓ erp2 personal-view/filter dialogs: Arabic RTL  711ms
+   ✓ erp2 personal-view/filter dialogs: reduced motion  716ms
+   ✓ erp2 personal-view/filter dialogs: locked density  667ms
+   ✓ column account failure stays visible and explicit retry sends the same layout  1217ms
+ ✓ src/report-invoice.test.tsx (21 tests) 11539ms
+   ✓ 'sales-register' erp1 advanced conditions, sorting and full export  980ms
+   ✓ 'purchase-register' erp1 advanced conditions, sorting and full export  613ms
+   ✓ 'stock-summary' erp1 advanced conditions, sorting and full export  553ms
+   ✓ 'receivables-aging' erp1 advanced conditions, sorting and full export  592ms
+   ✓ 'sales-register' erp2 advanced conditions, sorting and full export  545ms
+   ✓ 'purchase-register' erp2 advanced conditions, sorting and full export  482ms
+   ✓ 'stock-summary' erp2 advanced conditions, sorting and full export  546ms
+   ✓ 'receivables-aging' erp2 advanced conditions, sorting and full export  558ms
+   ✓ advanced choices apply multiple statuses and reference values with cancel/reset and invalid-range guards  496ms
+   ✓ 'sales-register' erp1 expanded filters pass Arabic RTL axe and mounted table policies  470ms
+   ✓ 'purchase-register' erp1 expanded filters pass Arabic RTL axe and mounted table policies  462ms
+   ✓ 'stock-summary' erp1 expanded filters pass Arabic RTL axe and mounted table policies  395ms
+   ✓ 'receivables-aging' erp1 expanded filters pass Arabic RTL axe and mounted table policies  434ms
+   ✓ 'sales-register' erp2 expanded filters pass Arabic RTL axe and mounted table policies  386ms
+   ✓ 'purchase-register' erp2 expanded filters pass Arabic RTL axe and mounted table policies  392ms
+   ✓ 'stock-summary' erp2 expanded filters pass Arabic RTL axe and mounted table policies  373ms
+   ✓ 'receivables-aging' erp2 expanded filters pass Arabic RTL axe and mounted table policies  363ms
+   ✓ erp1 long invoice has contiguous pages, carry totals and one final summary  1491ms
+   ✓ erp2 long invoice has contiguous pages, carry totals and one final summary  768ms
+   ✓ advanced open dates replace an invalid custom period without blocking the report  378ms
+ ✓ src/specialized.test.tsx (19 tests) 3854ms
+   ✓ erp1 finance creation follows entity grants  804ms
+   ✓ erp2 finance creation follows entity grants  611ms
+   ✓ ERP1 profile keeps the worklist beside selection and persists the accepted layout choice  862ms
+   ✓ effective rememberFilters policy prevents profile layout persistence  453ms
+ ✓ src/visual-composition.test.tsx (17 tests) 6171ms
+   ✓ 'appointments' drawer: 'default' retains calendar, slot input and effective presentation  698ms
+   ✓ 'room-bookings' drawer: 'default' retains calendar, slot input and effective presentation  393ms
+   ✓ 'appointments' drawer: 'RTL' retains calendar, slot input and effective presentation  375ms
+   ✓ 'room-bookings' drawer: 'RTL' retains calendar, slot input and effective presentation  356ms
+   ✓ 'appointments' drawer: 'reduced motion' retains calendar, slot input and effective presentation  374ms
+   ✓ 'room-bookings' drawer: 'reduced motion' retains calendar, slot input and effective presentation  328ms
+   ✓ 'appointments' drawer: 'managed' retains calendar, slot input and effective presentation  341ms
+   ✓ 'room-bookings' drawer: 'managed' retains calendar, slot input and effective presentation  373ms
+   ✓ erp1 report columns and named snapshots restore filters/order without changing locked page size  991ms
+   ✓ erp2 report columns and named snapshots restore filters/order without changing locked page size  924ms
+ ✓ src/modules/erp1/module.test.tsx (9 tests) 1133ms
+   ✓ reference-erp1 module > requests page lookups before rendering the page  536ms
+   ✓ reference-erp1 module > switching host scope drops drafts and ignores the old tenant's pending response  494ms
+ ✓ src/modules/erp2/module.test.tsx (9 tests) 1127ms
+   ✓ reference-erp2 module > requests page lookups before rendering the page  511ms
+   ✓ reference-erp2 module > switching host scope drops drafts and ignores the old tenant's pending response  503ms
+ ✓ src/workflows.test.tsx (3 tests) 1958ms
+   ✓ ERP1 keeps the API-acknowledged record when saving back to the in-page view  843ms
+   ✓ failed record save retains typed values and retries the same operation identity  552ms
+   ✓ a failed approval retries its intended status and operation identity  560ms
+ ✓ src/providers.test.tsx (4 tests) 1908ms
+   ✓ one serialized preference path retains adjacent writes and API revisions  602ms
+   ✓ language catalog refresh preserves the mounted editor  490ms
+   ✓ runtime tenant locks replace effective values and block writes  415ms
+   ✓ rejected preference writes retain accepted state and allow explicit recovery  397ms
+ ✓ src/routes.test.tsx (984 tests) 390641ms
+   ✓ default route rendering > erp1/workspace/dashboard  961ms
+   ✓ default route rendering > erp1/workspace/approvals  767ms
+   ✓ default route rendering > erp1/masters/countries  697ms
+   ✓ default route rendering > erp1/masters/states  790ms
+   ✓ default route rendering > erp1/masters/currencies  653ms
+   ✓ default route rendering > erp1/masters/units  672ms
+   ✓ default route rendering > erp1/masters/holidays  637ms
+   ✓ default route rendering > erp1/masters/departments  670ms
+   ✓ default route rendering > erp1/masters/tax-rates  611ms
+   ✓ default route rendering > erp1/masters/customers  1020ms
+   ✓ default route rendering > erp1/masters/suppliers  977ms
+   ✓ default route rendering > erp1/masters/items  844ms
+   ✓ default route rendering > erp1/masters/price-lists  561ms
+   ✓ default route rendering > erp1/masters/bill-of-materials  556ms
+   ✓ default route rendering > erp1/masters/employees  900ms
+   ✓ default route rendering > erp1/masters/leave-types  577ms
+   ✓ default route rendering > erp1/masters/shifts  579ms
+   ✓ default route rendering > erp1/masters/salary-structures  549ms
+   ✓ default route rendering > erp1/masters/patients  856ms
+   ✓ default route rendering > erp1/masters/doctors  701ms
+   ✓ default route rendering > erp1/masters/lab-tests  576ms
+   ✓ default route rendering > erp1/masters/consultation-fees  610ms
+   ✓ default route rendering > erp1/masters/students  779ms
+   ✓ default route rendering > erp1/masters/fee-structures  565ms
+   ✓ default route rendering > erp1/masters/vehicles  871ms
+   ✓ default route rendering > erp1/transactions/sales-orders  581ms
+   ✓ default route rendering > erp1/transactions/sales-invoices  587ms
+   ✓ default route rendering > erp1/transactions/purchase-orders  540ms
+   ✓ default route rendering > erp1/transactions/goods-receipts  605ms
+   ✓ default route rendering > erp1/transactions/journal-vouchers  571ms
+   ✓ default route rendering > erp1/transactions/payment-vouchers  597ms
+   ✓ default route rendering > erp1/transactions/petty-cash  649ms
+   ✓ default route rendering > erp1/transactions/leave-requests  664ms
+   ✓ default route rendering > erp1/transactions/expense-claims  905ms
+   ✓ default route rendering > erp1/transactions/attendance  1435ms
+   ✓ default route rendering > erp1/transactions/timesheets  351ms
+   ✓ default route rendering > erp1/transactions/payroll-run  581ms
+   ✓ default route rendering > erp1/transactions/depreciation-run  535ms
+   ✓ default route rendering > erp1/transactions/appointments  468ms
+   ✓ default route rendering > erp1/transactions/room-bookings  412ms
+   ✓ default route rendering > erp1/transactions/quality-inspections  568ms
+   ✓ default route rendering > erp1/transactions/marks-entry  316ms
+   ✓ default route rendering > erp1/reports/stock-summary  315ms
+   ✓ default route rendering > erp1/reports/invoice-print  917ms
+   ✓ default route rendering > erp1/setup/company-settings  442ms
+   ✓ default route rendering > erp1/setup/users  555ms
+   ✓ default route rendering > erp1/setup/number-series  548ms
+   ✓ default route rendering > erp2/workspace/dashboard  332ms
+   ✓ default route rendering > erp2/workspace/approvals  594ms
+   ✓ default route rendering > erp2/workspace/approvals/view  331ms
+   ✓ default route rendering > erp2/masters/countries  565ms
+   ✓ default route rendering > erp2/masters/states  513ms
+   ✓ default route rendering > erp2/masters/currencies  515ms
+   ✓ default route rendering > erp2/masters/units  564ms
+   ✓ default route rendering > erp2/masters/holidays  591ms
+   ✓ default route rendering > erp2/masters/holidays/edit  326ms
+   ✓ default route rendering > erp2/masters/departments  541ms
+   ✓ default route rendering > erp2/masters/tax-rates  522ms
+   ✓ default route rendering > erp2/masters/customers  577ms
+   ✓ default route rendering > erp2/masters/customers/new  385ms
+   ✓ default route rendering > erp2/masters/customers/edit  451ms
+   ✓ default route rendering > erp2/masters/suppliers  575ms
+   ✓ default route rendering > erp2/masters/suppliers/new  346ms
+   ✓ default route rendering > erp2/masters/suppliers/edit  448ms
+   ✓ default route rendering > erp2/masters/items  580ms
+   ✓ default route rendering > erp2/masters/items/new  385ms
+   ✓ default route rendering > erp2/masters/items/edit  481ms
+   ✓ default route rendering > erp2/masters/price-lists  567ms
+   ✓ default route rendering > erp2/masters/bill-of-materials  537ms
+   ✓ default route rendering > erp2/masters/bill-of-materials/view  525ms
+   ✓ default route rendering > erp2/masters/bill-of-materials/edit  524ms
+   ✓ default route rendering > erp2/masters/employees  590ms
+   ✓ default route rendering > erp2/masters/employees/new  361ms
+   ✓ default route rendering > erp2/masters/employees/edit  429ms
+   ✓ default route rendering > erp2/masters/leave-types  780ms
+   ✓ default route rendering > erp2/masters/leave-types/new  316ms
+   ✓ default route rendering > erp2/masters/leave-types/edit  605ms
+   ✓ default route rendering > erp2/masters/shifts  1657ms
+   ✓ default route rendering > erp2/masters/shifts/view  312ms
+   ✓ default route rendering > erp2/masters/shifts/new  385ms
+   ✓ default route rendering > erp2/masters/shifts/edit  774ms
+   ✓ default route rendering > erp2/masters/salary-structures  1276ms
+   ✓ default route rendering > erp2/masters/salary-structures/view  640ms
+   ✓ default route rendering > erp2/masters/salary-structures/new  450ms
+   ✓ default route rendering > erp2/masters/salary-structures/edit  551ms
+   ✓ default route rendering > erp2/masters/patients  834ms
+   ✓ default route rendering > erp2/masters/patients/view  376ms
+   ✓ default route rendering > erp2/masters/patients/new  645ms
+   ✓ default route rendering > erp2/masters/patients/edit  904ms
+   ✓ default route rendering > erp2/masters/doctors  687ms
+   ✓ default route rendering > erp2/masters/doctors/new  429ms
+   ✓ default route rendering > erp2/masters/doctors/edit  395ms
+   ✓ default route rendering > erp2/masters/lab-tests  867ms
+   ✓ default route rendering > erp2/masters/lab-tests/view  460ms
+   ✓ default route rendering > erp2/masters/lab-tests/edit  342ms
+   ✓ default route rendering > erp2/masters/consultation-fees  848ms
+   ✓ default route rendering > erp2/masters/consultation-fees/edit  341ms
+   ✓ default route rendering > erp2/masters/students  662ms
+   ✓ default route rendering > erp2/masters/students/new  326ms
+   ✓ default route rendering > erp2/masters/students/edit  427ms
+   ✓ default route rendering > erp2/masters/fee-structures  729ms
+   ✓ default route rendering > erp2/masters/fee-structures/view  512ms
+   ✓ default route rendering > erp2/masters/fee-structures/edit  641ms
+   ✓ default route rendering > erp2/masters/vehicles  564ms
+   ✓ default route rendering > erp2/masters/vehicles/new  302ms
+   ✓ default route rendering > erp2/masters/vehicles/edit  356ms
+   ✓ default route rendering > erp2/transactions/sales-orders  617ms
+   ✓ default route rendering > erp2/transactions/sales-orders/edit  399ms
+   ✓ default route rendering > erp2/transactions/sales-invoices  603ms
+   ✓ default route rendering > erp2/transactions/sales-invoices/view  396ms
+   ✓ default route rendering > erp2/transactions/sales-invoices/edit  478ms
+   ✓ default route rendering > erp2/transactions/purchase-orders  566ms
+   ✓ default route rendering > erp2/transactions/purchase-orders/view  544ms
+   ✓ default route rendering > erp2/transactions/purchase-orders/edit  538ms
+   ✓ default route rendering > erp2/transactions/goods-receipts  605ms
+   ✓ default route rendering > erp2/transactions/goods-receipts/view  379ms
+   ✓ default route rendering > erp2/transactions/goods-receipts/edit  449ms
+   ✓ default route rendering > erp2/transactions/journal-vouchers  534ms
+   ✓ default route rendering > erp2/transactions/journal-vouchers/edit  325ms
+   ✓ default route rendering > erp2/transactions/payment-vouchers  588ms
+   ✓ default route rendering > erp2/transactions/payment-vouchers/view  328ms
+   ✓ default route rendering > erp2/transactions/payment-vouchers/edit  548ms
+   ✓ default route rendering > erp2/transactions/petty-cash  616ms
+   ✓ default route rendering > erp2/transactions/petty-cash/view  303ms
+   ✓ default route rendering > erp2/transactions/petty-cash/edit  400ms
+   ✓ default route rendering > erp2/transactions/leave-requests  662ms
+   ✓ default route rendering > erp2/transactions/leave-requests/view  303ms
+   ✓ default route rendering > erp2/transactions/leave-requests/new  488ms
+   ✓ default route rendering > erp2/transactions/leave-requests/edit  309ms
+   ✓ default route rendering > erp2/transactions/expense-claims  626ms
+   ✓ default route rendering > erp2/transactions/expense-claims/new  400ms
+   ✓ default route rendering > erp2/transactions/expense-claims/edit  361ms
+   ✓ default route rendering > erp2/transactions/attendance  1509ms
+   ✓ default route rendering > erp2/transactions/payroll-run  532ms
+   ✓ default route rendering > erp2/transactions/depreciation-run  612ms
+   ✓ default route rendering > erp2/transactions/depreciation-run/view  309ms
+   ✓ default route rendering > erp2/transactions/appointments  457ms
+   ✓ default route rendering > erp2/transactions/room-bookings  443ms
+   ✓ default route rendering > erp2/transactions/quality-inspections  523ms
+   ✓ default route rendering > erp2/transactions/quality-inspections/view  328ms
+   ✓ default route rendering > erp2/transactions/quality-inspections/new  561ms
+   ✓ default route rendering > erp2/transactions/quality-inspections/edit  644ms
+   ✓ default route rendering > erp2/transactions/support-tickets/new  375ms
+   ✓ default route rendering > erp2/transactions/maintenance-requests/view  439ms
+   ✓ default route rendering > erp2/reports/purchase-register  304ms
+   ✓ default route rendering > erp2/reports/stock-summary  355ms
+   ✓ default route rendering > erp2/reports/receivables-aging  313ms
+   ✓ default route rendering > erp2/reports/invoice-print  527ms
+   ✓ default route rendering > erp2/reports/invoice-print/view  383ms
+   ✓ default route rendering > erp2/setup/company-settings  472ms
+   ✓ default route rendering > erp2/setup/users  582ms
+   ✓ default route rendering > erp2/setup/users/view  303ms
+   ✓ default route rendering > erp2/setup/number-series  602ms
+   ✓ default route rendering > erp2/setup/notifications  324ms
+   ✓ Arabic RTL route rendering > erp1/workspace/dashboard  427ms
+   ✓ Arabic RTL route rendering > erp1/workspace/approvals  579ms
+   ✓ Arabic RTL route rendering > erp1/masters/countries  613ms
+   ✓ Arabic RTL route rendering > erp1/masters/states  602ms
+   ✓ Arabic RTL route rendering > erp1/masters/currencies  599ms
+   ✓ Arabic RTL route rendering > erp1/masters/units  565ms
+   ✓ Arabic RTL route rendering > erp1/masters/holidays  655ms
+   ✓ Arabic RTL route rendering > erp1/masters/departments  546ms
+   ✓ Arabic RTL route rendering > erp1/masters/tax-rates  708ms
+   ✓ Arabic RTL route rendering > erp1/masters/customers  895ms
+   ✓ Arabic RTL route rendering > erp1/masters/suppliers  1019ms
+   ✓ Arabic RTL route rendering > erp1/masters/items  1827ms
+   ✓ Arabic RTL route rendering > erp1/masters/product-categories  387ms
+   ✓ Arabic RTL route rendering > erp1/masters/price-lists  972ms
+   ✓ Arabic RTL route rendering > erp1/masters/bill-of-materials  610ms
+   ✓ Arabic RTL route rendering > erp1/masters/employees  911ms
+   ✓ Arabic RTL route rendering > erp1/masters/leave-types  567ms
+   ✓ Arabic RTL route rendering > erp1/masters/shifts  621ms
+   ✓ Arabic RTL route rendering > erp1/masters/salary-structures  746ms
+   ✓ Arabic RTL route rendering > erp1/masters/patients  990ms
+   ✓ Arabic RTL route rendering > erp1/masters/doctors  847ms
+   ✓ Arabic RTL route rendering > erp1/masters/lab-tests  583ms
+   ✓ Arabic RTL route rendering > erp1/masters/consultation-fees  548ms
+   ✓ Arabic RTL route rendering > erp1/masters/students  863ms
+   ✓ Arabic RTL route rendering > erp1/masters/fee-structures  661ms
+   ✓ Arabic RTL route rendering > erp1/masters/vehicles  816ms
+   ✓ Arabic RTL route rendering > erp1/transactions/sales-orders  660ms
+   ✓ Arabic RTL route rendering > erp1/transactions/sales-invoices  611ms
+   ✓ Arabic RTL route rendering > erp1/transactions/purchase-orders  594ms
+   ✓ Arabic RTL route rendering > erp1/transactions/goods-receipts  607ms
+   ✓ Arabic RTL route rendering > erp1/transactions/journal-vouchers  639ms
+   ✓ Arabic RTL route rendering > erp1/transactions/payment-vouchers  590ms
+   ✓ Arabic RTL route rendering > erp1/transactions/petty-cash  541ms
+   ✓ Arabic RTL route rendering > erp1/transactions/leave-requests  652ms
+   ✓ Arabic RTL route rendering > erp1/transactions/expense-claims  688ms
+   ✓ Arabic RTL route rendering > erp1/transactions/attendance  1354ms
+   ✓ Arabic RTL route rendering > erp1/transactions/payroll-run  585ms
+   ✓ Arabic RTL route rendering > erp1/transactions/depreciation-run  532ms
+   ✓ Arabic RTL route rendering > erp1/transactions/appointments  465ms
+   ✓ Arabic RTL route rendering > erp1/transactions/room-bookings  534ms
+   ✓ Arabic RTL route rendering > erp1/transactions/quality-inspections  658ms
+   ✓ Arabic RTL route rendering > erp1/reports/invoice-print  876ms
+   ✓ Arabic RTL route rendering > erp1/setup/company-settings  378ms
+   ✓ Arabic RTL route rendering > erp1/setup/users  590ms
+   ✓ Arabic RTL route rendering > erp1/setup/number-series  766ms
+   ✓ Arabic RTL route rendering > erp1/setup/notifications  322ms
+   ✓ Arabic RTL route rendering > erp2/workspace/dashboard  400ms
+   ✓ Arabic RTL route rendering > erp2/workspace/approvals  651ms
+   ✓ Arabic RTL route rendering > erp2/masters/countries  560ms
+   ✓ Arabic RTL route rendering > erp2/masters/states  579ms
+   ✓ Arabic RTL route rendering > erp2/masters/currencies  556ms
+   ✓ Arabic RTL route rendering > erp2/masters/units  528ms
+   ✓ Arabic RTL route rendering > erp2/masters/holidays  538ms
+   ✓ Arabic RTL route rendering > erp2/masters/departments  547ms
+   ✓ Arabic RTL route rendering > erp2/masters/tax-rates  570ms
+   ✓ Arabic RTL route rendering > erp2/masters/customers  711ms
+   ✓ Arabic RTL route rendering > erp2/masters/customers/view  313ms
+   ✓ Arabic RTL route rendering > erp2/masters/customers/new  397ms
+   ✓ Arabic RTL route rendering > erp2/masters/customers/edit  416ms
+   ✓ Arabic RTL route rendering > erp2/masters/suppliers  522ms
+   ✓ Arabic RTL route rendering > erp2/masters/suppliers/new  351ms
+   ✓ Arabic RTL route rendering > erp2/masters/suppliers/edit  443ms
+   ✓ Arabic RTL route rendering > erp2/masters/items  593ms
+   ✓ Arabic RTL route rendering > erp2/masters/items/new  348ms
+   ✓ Arabic RTL route rendering > erp2/masters/items/edit  394ms
+   ✓ Arabic RTL route rendering > erp2/masters/price-lists  519ms
+   ✓ Arabic RTL route rendering > erp2/masters/bill-of-materials  542ms
+   ✓ Arabic RTL route rendering > erp2/masters/bill-of-materials/view  475ms
+   ✓ Arabic RTL route rendering > erp2/masters/bill-of-materials/edit  573ms
+   ✓ Arabic RTL route rendering > erp2/masters/employees  585ms
+   ✓ Arabic RTL route rendering > erp2/masters/employees/new  345ms
+   ✓ Arabic RTL route rendering > erp2/masters/employees/edit  423ms
+   ✓ Arabic RTL route rendering > erp2/masters/leave-types  538ms
+   ✓ Arabic RTL route rendering > erp2/masters/shifts  538ms
+   ✓ Arabic RTL route rendering > erp2/masters/salary-structures  534ms
+   ✓ Arabic RTL route rendering > erp2/masters/salary-structures/view  455ms
+   ✓ Arabic RTL route rendering > erp2/masters/salary-structures/edit  530ms
+   ✓ Arabic RTL route rendering > erp2/masters/patients  718ms
+   ✓ Arabic RTL route rendering > erp2/masters/patients/view  321ms
+   ✓ Arabic RTL route rendering > erp2/masters/patients/new  446ms
+   ✓ Arabic RTL route rendering > erp2/masters/patients/edit  606ms
+   ✓ Arabic RTL route rendering > erp2/masters/doctors  550ms
+   ✓ Arabic RTL route rendering > erp2/masters/doctors/edit  386ms
+   ✓ Arabic RTL route rendering > erp2/masters/lab-tests  548ms
+   ✓ Arabic RTL route rendering > erp2/masters/consultation-fees  608ms
+   ✓ Arabic RTL route rendering > erp2/masters/students  631ms
+   ✓ Arabic RTL route rendering > erp2/masters/students/new  597ms
+   ✓ Arabic RTL route rendering > erp2/masters/students/edit  510ms
+   ✓ Arabic RTL route rendering > erp2/masters/fee-structures  812ms
+   ✓ Arabic RTL route rendering > erp2/masters/fee-structures/view  1525ms
+   ✓ Arabic RTL route rendering > erp2/masters/fee-structures/new  437ms
+   ✓ Arabic RTL route rendering > erp2/masters/fee-structures/edit  1001ms
+   ✓ Arabic RTL route rendering > erp2/masters/vehicles  550ms
+   ✓ Arabic RTL route rendering > erp2/masters/vehicles/new  324ms
+   ✓ Arabic RTL route rendering > erp2/masters/vehicles/edit  483ms
+   ✓ Arabic RTL route rendering > erp2/transactions/sales-orders  606ms
+   ✓ Arabic RTL route rendering > erp2/transactions/sales-orders/view  327ms
+   ✓ Arabic RTL route rendering > erp2/transactions/sales-orders/new  320ms
+   ✓ Arabic RTL route rendering > erp2/transactions/sales-orders/edit  354ms
+   ✓ Arabic RTL route rendering > erp2/transactions/sales-invoices  549ms
+   ✓ Arabic RTL route rendering > erp2/transactions/sales-invoices/view  425ms
+   ✓ Arabic RTL route rendering > erp2/transactions/sales-invoices/edit  414ms
+   ✓ Arabic RTL route rendering > erp2/transactions/purchase-orders  561ms
+   ✓ Arabic RTL route rendering > erp2/transactions/purchase-orders/view  473ms
+   ✓ Arabic RTL route rendering > erp2/transactions/purchase-orders/edit  575ms
+   ✓ Arabic RTL route rendering > erp2/transactions/goods-receipts  603ms
+   ✓ Arabic RTL route rendering > erp2/transactions/goods-receipts/view  404ms
+   ✓ Arabic RTL route rendering > erp2/transactions/goods-receipts/edit  461ms
+   ✓ Arabic RTL route rendering > erp2/transactions/journal-vouchers  552ms
+   ✓ Arabic RTL route rendering > erp2/transactions/journal-vouchers/edit  411ms
+   ✓ Arabic RTL route rendering > erp2/transactions/payment-vouchers  556ms
+   ✓ Arabic RTL route rendering > erp2/transactions/payment-vouchers/view  328ms
+   ✓ Arabic RTL route rendering > erp2/transactions/payment-vouchers/edit  543ms
+   ✓ Arabic RTL route rendering > erp2/transactions/petty-cash  537ms
+   ✓ Arabic RTL route rendering > erp2/transactions/petty-cash/edit  358ms
+   ✓ Arabic RTL route rendering > erp2/transactions/leave-requests  638ms
+   ✓ Arabic RTL route rendering > erp2/transactions/expense-claims  545ms
+   ✓ Arabic RTL route rendering > erp2/transactions/attendance  1206ms
+   ✓ Arabic RTL route rendering > erp2/transactions/payroll-run  560ms
+   ✓ Arabic RTL route rendering > erp2/transactions/depreciation-run  545ms
+   ✓ Arabic RTL route rendering > erp2/transactions/appointments  374ms
+   ✓ Arabic RTL route rendering > erp2/transactions/room-bookings  384ms
+   ✓ Arabic RTL route rendering > erp2/transactions/quality-inspections  566ms
+   ✓ Arabic RTL route rendering > erp2/transactions/quality-inspections/view  331ms
+   ✓ Arabic RTL route rendering > erp2/transactions/quality-inspections/new  437ms
+   ✓ Arabic RTL route rendering > erp2/transactions/quality-inspections/edit  519ms
+   ✓ Arabic RTL route rendering > erp2/reports/invoice-print  512ms
+   ✓ Arabic RTL route rendering > erp2/setup/company-settings  410ms
+   ✓ Arabic RTL route rendering > erp2/setup/users  679ms
+   ✓ Arabic RTL route rendering > erp2/setup/number-series  522ms
+   ✓ reduced motion route rendering > erp1/workspace/dashboard  320ms
+   ✓ reduced motion route rendering > erp1/workspace/approvals  573ms
+   ✓ reduced motion route rendering > erp1/masters/countries  498ms
+   ✓ reduced motion route rendering > erp1/masters/states  542ms
+   ✓ reduced motion route rendering > erp1/masters/currencies  508ms
+   ✓ reduced motion route rendering > erp1/masters/units  542ms
+   ✓ reduced motion route rendering > erp1/masters/holidays  522ms
+   ✓ reduced motion route rendering > erp1/masters/departments  491ms
+   ✓ reduced motion route rendering > erp1/masters/tax-rates  504ms
+   ✓ reduced motion route rendering > erp1/masters/customers  805ms
+   ✓ reduced motion route rendering > erp1/masters/suppliers  776ms
+   ✓ reduced motion route rendering > erp1/masters/items  734ms
+   ✓ reduced motion route rendering > erp1/masters/price-lists  523ms
+   ✓ reduced motion route rendering > erp1/masters/bill-of-materials  551ms
+   ✓ reduced motion route rendering > erp1/masters/employees  758ms
+   ✓ reduced motion route rendering > erp1/masters/leave-types  507ms
+   ✓ reduced motion route rendering > erp1/masters/shifts  500ms
+   ✓ reduced motion route rendering > erp1/masters/salary-structures  492ms
+   ✓ reduced motion route rendering > erp1/masters/patients  797ms
+   ✓ reduced motion route rendering > erp1/masters/doctors  705ms
+   ✓ reduced motion route rendering > erp1/masters/lab-tests  496ms
+   ✓ reduced motion route rendering > erp1/masters/consultation-fees  533ms
+   ✓ reduced motion route rendering > erp1/masters/students  732ms
+   ✓ reduced motion route rendering > erp1/masters/fee-structures  493ms
+   ✓ reduced motion route rendering > erp1/masters/vehicles  743ms
+   ✓ reduced motion route rendering > erp1/transactions/sales-orders  515ms
+   ✓ reduced motion route rendering > erp1/transactions/sales-invoices  497ms
+   ✓ reduced motion route rendering > erp1/transactions/purchase-orders  534ms
+   ✓ reduced motion route rendering > erp1/transactions/goods-receipts  509ms
+   ✓ reduced motion route rendering > erp1/transactions/journal-vouchers  520ms
+   ✓ reduced motion route rendering > erp1/transactions/payment-vouchers  514ms
+   ✓ reduced motion route rendering > erp1/transactions/petty-cash  530ms
+   ✓ reduced motion route rendering > erp1/transactions/leave-requests  561ms
+   ✓ reduced motion route rendering > erp1/transactions/expense-claims  548ms
+   ✓ reduced motion route rendering > erp1/transactions/attendance  1204ms
+   ✓ reduced motion route rendering > erp1/transactions/payroll-run  530ms
+   ✓ reduced motion route rendering > erp1/transactions/depreciation-run  544ms
+   ✓ reduced motion route rendering > erp1/transactions/appointments  412ms
+   ✓ reduced motion route rendering > erp1/transactions/room-bookings  424ms
+   ✓ reduced motion route rendering > erp1/transactions/quality-inspections  562ms
+   ✓ reduced motion route rendering > erp1/reports/invoice-print  946ms
+   ✓ reduced motion route rendering > erp1/setup/company-settings  420ms
+   ✓ reduced motion route rendering > erp1/setup/users  987ms
+   ✓ reduced motion route rendering > erp1/setup/number-series  1210ms
+   ✓ reduced motion route rendering > erp1/setup/notifications  686ms
+   ✓ reduced motion route rendering > erp2/workspace/dashboard  336ms
+   ✓ reduced motion route rendering > erp2/workspace/approvals  620ms
+   ✓ reduced motion route rendering > erp2/masters/countries  570ms
+   ✓ reduced motion route rendering > erp2/masters/states  654ms
+   ✓ reduced motion route rendering > erp2/masters/states/edit  385ms
+   ✓ reduced motion route rendering > erp2/masters/currencies  810ms
+   ✓ reduced motion route rendering > erp2/masters/units  517ms
+   ✓ reduced motion route rendering > erp2/masters/holidays  541ms
+   ✓ reduced motion route rendering > erp2/masters/departments  541ms
+   ✓ reduced motion route rendering > erp2/masters/tax-rates  493ms
+   ✓ reduced motion route rendering > erp2/masters/customers  577ms
+   ✓ reduced motion route rendering > erp2/masters/customers/new  314ms
+   ✓ reduced motion route rendering > erp2/masters/customers/edit  405ms
+   ✓ reduced motion route rendering > erp2/masters/suppliers  545ms
+   ✓ reduced motion route rendering > erp2/masters/suppliers/new  320ms
+   ✓ reduced motion route rendering > erp2/masters/suppliers/edit  416ms
+   ✓ reduced motion route rendering > erp2/masters/items  519ms
+   ✓ reduced motion route rendering > erp2/masters/items/new  307ms
+   ✓ reduced motion route rendering > erp2/masters/items/edit  330ms
+   ✓ reduced motion route rendering > erp2/masters/price-lists  529ms
+   ✓ reduced motion route rendering > erp2/masters/bill-of-materials  487ms
+   ✓ reduced motion route rendering > erp2/masters/bill-of-materials/view  435ms
+   ✓ reduced motion route rendering > erp2/masters/bill-of-materials/edit  469ms
+   ✓ reduced motion route rendering > erp2/masters/employees  546ms
+   ✓ reduced motion route rendering > erp2/masters/employees/edit  392ms
+   ✓ reduced motion route rendering > erp2/masters/leave-types  522ms
+   ✓ reduced motion route rendering > erp2/masters/shifts  489ms
+   ✓ reduced motion route rendering > erp2/masters/salary-structures  479ms
+   ✓ reduced motion route rendering > erp2/masters/salary-structures/view  378ms
+   ✓ reduced motion route rendering > erp2/masters/salary-structures/edit  425ms
+   ✓ reduced motion route rendering > erp2/masters/patients  541ms
+   ✓ reduced motion route rendering > erp2/masters/patients/new  341ms
+   ✓ reduced motion route rendering > erp2/masters/patients/edit  383ms
+   ✓ reduced motion route rendering > erp2/masters/doctors  494ms
+   ✓ reduced motion route rendering > erp2/masters/doctors/edit  311ms
+   ✓ reduced motion route rendering > erp2/masters/lab-tests  507ms
+   ✓ reduced motion route rendering > erp2/masters/consultation-fees  465ms
+   ✓ reduced motion route rendering > erp2/masters/students  488ms
+   ✓ reduced motion route rendering > erp2/masters/students/edit  353ms
+   ✓ reduced motion route rendering > erp2/masters/fee-structures  474ms
+   ✓ reduced motion route rendering > erp2/masters/fee-structures/view  433ms
+   ✓ reduced motion route rendering > erp2/masters/fee-structures/edit  467ms
+   ✓ reduced motion route rendering > erp2/masters/vehicles  496ms
+   ✓ reduced motion route rendering > erp2/masters/vehicles/new  319ms
+   ✓ reduced motion route rendering > erp2/masters/vehicles/edit  479ms
+   ✓ reduced motion route rendering > erp2/transactions/sales-orders  532ms
+   ✓ reduced motion route rendering > erp2/transactions/sales-orders/edit  336ms
+   ✓ reduced motion route rendering > erp2/transactions/sales-invoices  529ms
+   ✓ reduced motion route rendering > erp2/transactions/sales-invoices/view  336ms
+   ✓ reduced motion route rendering > erp2/transactions/sales-invoices/edit  389ms
+   ✓ reduced motion route rendering > erp2/transactions/purchase-orders  543ms
+   ✓ reduced motion route rendering > erp2/transactions/purchase-orders/view  413ms
+   ✓ reduced motion route rendering > erp2/transactions/purchase-orders/edit  482ms
+   ✓ reduced motion route rendering > erp2/transactions/goods-receipts  516ms
+   ✓ reduced motion route rendering > erp2/transactions/goods-receipts/view  334ms
+   ✓ reduced motion route rendering > erp2/transactions/goods-receipts/edit  366ms
+   ✓ reduced motion route rendering > erp2/transactions/journal-vouchers  493ms
+   ✓ reduced motion route rendering > erp2/transactions/payment-vouchers  507ms
+   ✓ reduced motion route rendering > erp2/transactions/payment-vouchers/edit  329ms
+   ✓ reduced motion route rendering > erp2/transactions/petty-cash  527ms
+   ✓ reduced motion route rendering > erp2/transactions/leave-requests  548ms
+   ✓ reduced motion route rendering > erp2/transactions/expense-claims  560ms
+   ✓ reduced motion route rendering > erp2/transactions/attendance  1195ms
+   ✓ reduced motion route rendering > erp2/transactions/payroll-run  522ms
+   ✓ reduced motion route rendering > erp2/transactions/depreciation-run  521ms
+   ✓ reduced motion route rendering > erp2/transactions/appointments  366ms
+   ✓ reduced motion route rendering > erp2/transactions/room-bookings  392ms
+   ✓ reduced motion route rendering > erp2/transactions/quality-inspections  515ms
+   ✓ reduced motion route rendering > erp2/transactions/quality-inspections/new  454ms
+   ✓ reduced motion route rendering > erp2/transactions/quality-inspections/edit  513ms
+   ✓ reduced motion route rendering > erp2/reports/invoice-print  487ms
+   ✓ reduced motion route rendering > erp2/reports/invoice-print/view  632ms
+   ✓ reduced motion route rendering > erp2/setup/company-settings  478ms
+   ✓ reduced motion route rendering > erp2/setup/users  590ms
+   ✓ reduced motion route rendering > erp2/setup/users/new  886ms
+   ✓ reduced motion route rendering > erp2/setup/users/edit  384ms
+   ✓ reduced motion route rendering > erp2/setup/number-series  680ms
+   ✓ reduced motion route rendering > erp2/setup/notifications  347ms
+   ✓ locked density route rendering > erp1/workspace/dashboard  348ms
+   ✓ locked density route rendering > erp1/workspace/approvals  581ms
+   ✓ locked density route rendering > erp1/masters/countries  561ms
+   ✓ locked density route rendering > erp1/masters/states  601ms
+   ✓ locked density route rendering > erp1/masters/currencies  628ms
+   ✓ locked density route rendering > erp1/masters/units  526ms
+   ✓ locked density route rendering > erp1/masters/holidays  528ms
+   ✓ locked density route rendering > erp1/masters/departments  499ms
+   ✓ locked density route rendering > erp1/masters/tax-rates  514ms
+   ✓ locked density route rendering > erp1/masters/customers  858ms
+   ✓ locked density route rendering > erp1/masters/suppliers  825ms
+   ✓ locked density route rendering > erp1/masters/items  803ms
+   ✓ locked density route rendering > erp1/masters/price-lists  527ms
+   ✓ locked density route rendering > erp1/masters/bill-of-materials  512ms
+   ✓ locked density route rendering > erp1/masters/employees  752ms
+   ✓ locked density route rendering > erp1/masters/leave-types  496ms
+   ✓ locked density route rendering > erp1/masters/shifts  483ms
+   ✓ locked density route rendering > erp1/masters/salary-structures  487ms
+   ✓ locked density route rendering > erp1/masters/patients  805ms
+   ✓ locked density route rendering > erp1/masters/doctors  698ms
+   ✓ locked density route rendering > erp1/masters/lab-tests  510ms
+   ✓ locked density route rendering > erp1/masters/consultation-fees  489ms
+   ✓ locked density route rendering > erp1/masters/students  720ms
+   ✓ locked density route rendering > erp1/masters/fee-structures  506ms
+   ✓ locked density route rendering > erp1/masters/vehicles  720ms
+   ✓ locked density route rendering > erp1/transactions/sales-orders  515ms
+   ✓ locked density route rendering > erp1/transactions/sales-invoices  496ms
+   ✓ locked density route rendering > erp1/transactions/purchase-orders  530ms
+   ✓ locked density route rendering > erp1/transactions/goods-receipts  523ms
+   ✓ locked density route rendering > erp1/transactions/journal-vouchers  504ms
+   ✓ locked density route rendering > erp1/transactions/payment-vouchers  552ms
+   ✓ locked density route rendering > erp1/transactions/petty-cash  492ms
+   ✓ locked density route rendering > erp1/transactions/leave-requests  527ms
+   ✓ locked density route rendering > erp1/transactions/expense-claims  587ms
+   ✓ locked density route rendering > erp1/transactions/attendance  1167ms
+   ✓ locked density route rendering > erp1/transactions/payroll-run  557ms
+   ✓ locked density route rendering > erp1/transactions/depreciation-run  523ms
+   ✓ locked density route rendering > erp1/transactions/appointments  361ms
+   ✓ locked density route rendering > erp1/transactions/room-bookings  347ms
+   ✓ locked density route rendering > erp1/transactions/quality-inspections  548ms
+   ✓ locked density route rendering > erp1/reports/invoice-print  758ms
+   ✓ locked density route rendering > erp1/setup/company-settings  394ms
+   ✓ locked density route rendering > erp1/setup/users  522ms
+   ✓ locked density route rendering > erp1/setup/number-series  463ms
+   ✓ locked density route rendering > erp2/workspace/dashboard  320ms
+   ✓ locked density route rendering > erp2/workspace/approvals  528ms
+   ✓ locked density route rendering > erp2/masters/countries  506ms
+   ✓ locked density route rendering > erp2/masters/states  549ms
+   ✓ locked density route rendering > erp2/masters/currencies  483ms
+   ✓ locked density route rendering > erp2/masters/units  495ms
+   ✓ locked density route rendering > erp2/masters/holidays  478ms
+   ✓ locked density route rendering > erp2/masters/departments  511ms
+   ✓ locked density route rendering > erp2/masters/tax-rates  481ms
+   ✓ locked density route rendering > erp2/masters/customers  509ms
+   ✓ locked density route rendering > erp2/masters/customers/new  337ms
+   ✓ locked density route rendering > erp2/masters/customers/edit  361ms
+   ✓ locked density route rendering > erp2/masters/suppliers  501ms
+   ✓ locked density route rendering > erp2/masters/suppliers/new  333ms
+   ✓ locked density route rendering > erp2/masters/suppliers/edit  369ms
+   ✓ locked density route rendering > erp2/masters/items  533ms
+   ✓ locked density route rendering > erp2/masters/items/new  321ms
+   ✓ locked density route rendering > erp2/masters/items/edit  402ms
+   ✓ locked density route rendering > erp2/masters/price-lists  547ms
+   ✓ locked density route rendering > erp2/masters/bill-of-materials  493ms
+   ✓ locked density route rendering > erp2/masters/bill-of-materials/view  418ms
+   ✓ locked density route rendering > erp2/masters/bill-of-materials/edit  505ms
+   ✓ locked density route rendering > erp2/masters/employees  553ms
+   ✓ locked density route rendering > erp2/masters/employees/new  319ms
+   ✓ locked density route rendering > erp2/masters/employees/edit  368ms
+   ✓ locked density route rendering > erp2/masters/leave-types  496ms
+   ✓ locked density route rendering > erp2/masters/shifts  508ms
+   ✓ locked density route rendering > erp2/masters/salary-structures  473ms
+   ✓ locked density route rendering > erp2/masters/salary-structures/view  396ms
+   ✓ locked density route rendering > erp2/masters/salary-structures/edit  436ms
+   ✓ locked density route rendering > erp2/masters/patients  595ms
+   ✓ locked density route rendering > erp2/masters/patients/new  316ms
+   ✓ locked density route rendering > erp2/masters/patients/edit  383ms
+   ✓ locked density route rendering > erp2/masters/doctors  509ms
+   ✓ locked density route rendering > erp2/masters/doctors/edit  338ms
+   ✓ locked density route rendering > erp2/masters/lab-tests  470ms
+   ✓ locked density route rendering > erp2/masters/consultation-fees  662ms
+   ✓ locked density route rendering > erp2/masters/consultation-fees/view  368ms
+   ✓ locked density route rendering > erp2/masters/students  1208ms
+   ✓ locked density route rendering > erp2/masters/students/view  752ms
+   ✓ locked density route rendering > erp2/masters/students/new  925ms
+   ✓ locked density route rendering > erp2/masters/students/edit  1060ms
+   ✓ locked density route rendering > erp2/masters/fee-structures  598ms
+   ✓ locked density route rendering > erp2/masters/fee-structures/view  497ms
+   ✓ locked density route rendering > erp2/masters/fee-structures/edit  636ms
+   ✓ locked density route rendering > erp2/masters/vehicles  588ms
+   ✓ locked density route rendering > erp2/masters/vehicles/new  332ms
+   ✓ locked density route rendering > erp2/masters/vehicles/edit  366ms
+   ✓ locked density route rendering > erp2/transactions/sales-orders  532ms
+   ✓ locked density route rendering > erp2/transactions/sales-orders/edit  348ms
+   ✓ locked density route rendering > erp2/transactions/sales-invoices  520ms
+   ✓ locked density route rendering > erp2/transactions/sales-invoices/view  384ms
+   ✓ locked density route rendering > erp2/transactions/sales-invoices/edit  411ms
+   ✓ locked density route rendering > erp2/transactions/purchase-orders  609ms
+   ✓ locked density route rendering > erp2/transactions/purchase-orders/view  624ms
+   ✓ locked density route rendering > erp2/transactions/purchase-orders/edit  554ms
+   ✓ locked density route rendering > erp2/transactions/goods-receipts  553ms
+   ✓ locked density route rendering > erp2/transactions/goods-receipts/view  353ms
+   ✓ locked density route rendering > erp2/transactions/goods-receipts/edit  633ms
+   ✓ locked density route rendering > erp2/transactions/journal-vouchers  543ms
+   ✓ locked density route rendering > erp2/transactions/journal-vouchers/edit  321ms
+   ✓ locked density route rendering > erp2/transactions/payment-vouchers  563ms
+   ✓ locked density route rendering > erp2/transactions/payment-vouchers/edit  343ms
+   ✓ locked density route rendering > erp2/transactions/petty-cash  509ms
+   ✓ locked density route rendering > erp2/transactions/leave-requests  546ms
+   ✓ locked density route rendering > erp2/transactions/expense-claims  538ms
+   ✓ locked density route rendering > erp2/transactions/attendance  1238ms
+   ✓ locked density route rendering > erp2/transactions/payroll-run  511ms
+   ✓ locked density route rendering > erp2/transactions/depreciation-run  518ms
+   ✓ locked density route rendering > erp2/transactions/appointments  416ms
+   ✓ locked density route rendering > erp2/transactions/room-bookings  357ms
+   ✓ locked density route rendering > erp2/transactions/quality-inspections  488ms
+   ✓ locked density route rendering > erp2/transactions/quality-inspections/new  447ms
+   ✓ locked density route rendering > erp2/transactions/quality-inspections/edit  502ms
+   ✓ locked density route rendering > erp2/reports/invoice-print  513ms
+   ✓ locked density route rendering > erp2/reports/invoice-print/view  318ms
+   ✓ locked density route rendering > erp2/setup/company-settings  324ms
+   ✓ locked density route rendering > erp2/setup/users  548ms
+   ✓ locked density route rendering > erp2/setup/number-series  521ms
+ ✓ src/adapters/keystone.test.ts (8 tests) 34ms
+stderr | src/settings-routes.test.tsx > preferences route uses the full host under default
+An update to HeaderClock inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/settings-routes.test.tsx > preferences route uses the full host under ar
+An update to HeaderClock inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/settings-routes.test.tsx > preferences route uses the full host under motion
+An update to HeaderClock inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/settings-routes.test.tsx (4 tests) 6556ms
+   ✓ preferences route uses the full host under default  2132ms
+   ✓ preferences route uses the full host under ar  1606ms
+   ✓ preferences route uses the full host under motion  1483ms
+   ✓ preferences route uses the full host under lock  1333ms
+
+ Test Files  14 passed (14)
+      Tests  1188 passed (1188)
+   Start at  13:42:21
+   Duration  504.14s (transform 4.72s, setup 3.01s, collect 16.85s, tests 464.22s, environment 10.40s, prepare 1.75s)
+

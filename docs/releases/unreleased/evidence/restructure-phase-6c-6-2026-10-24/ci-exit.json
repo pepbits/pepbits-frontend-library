@@ -1,0 +1,7 @@
+{
+  "command": "flock /home/pepadmin/.cache/pepbits-heavy.lock bash docs/releases/unreleased/evidence/restructure-phase-6c-6-2026-10-24/run-contrast-verification.sh",
+  "exitCode": 0,
+  "ciRunner": "run-ci.sh",
+  "ciCommand": "npm run ci -- --concurrency=1 --env-mode=loose",
+  "note": "Outer lock command runs the contrast preflight, then the CI runner, shell Chromium and full HTTP in sequence."
+}

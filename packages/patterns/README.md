@@ -238,3 +238,5 @@ The hook renders nothing, fetches nothing and stores nothing: data, drafts, subm
 Inactive ResourceRowTimeline events darken their fill while keeping labels opaque for readable contrast; they remain openable.
 
 ResourceRowTimeline keyboard creation skips blocked minutes to find the next working window, including when the current minute falls inside a block. Server-side availability remains authoritative.
+
+ResourceTimeline accepts optional baseline `geometry`, `labelEvery`, `renderResource` and `eventClassName` for host composition. Slot height still scales with effective density (compact ×0.8, comfortable ×1, spacious ×1.2 for configured geometry); the default layout is unchanged. Dates/resources/status semantics remain host-owned. Calendar tests cover dimensions, overlap lanes and managed density.

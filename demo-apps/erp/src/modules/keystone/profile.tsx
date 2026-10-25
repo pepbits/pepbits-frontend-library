@@ -19,7 +19,7 @@ export function ProfilePage({def,page}:{def:PageDef;page:PageDefinition}) {
  const record=target&&<RecordEditor def={def} target={target} onOpen={setTarget} onClose={()=>setTarget(undefined)} onSaved={saved}/>;
  return <div data-erp-profile className="space-y-3"><Segmented label="Profile layout" value={mode} onChange={value=>{setMode(value as 'split'|'table');if(value==='split'&&first.current)setTarget(current=>current??{pageId:page.id,recordId:first.current!.id,mode:'view'});}} options={[{value:'split',label:'List and details side by side'},{value:'table',label:'Full table'}]}/>
   {state.error&&<RecoveryNotice failure={failureFromError(new Error(state.error))} onRetry={state.retry}/>}
-  <div className={mode==='split'?'grid gap-3 xl:grid-cols-[minmax(320px,1fr)_minmax(0,2fr)]':''}>
+  <div className={mode==='split'?'erp-profile-columns':''}>
    {(mode==='split'||!target)&&<Card className="min-w-0"><ErpWorklist key={revision} def={def} page={page} onOpen={setTarget} onLoaded={loaded}/></Card>}
    {record&&<Card className="min-w-0 p-3">{record}</Card>}
   </div>

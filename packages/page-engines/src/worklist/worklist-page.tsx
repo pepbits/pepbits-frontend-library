@@ -131,7 +131,7 @@ export function WorklistPage(props:WorklistPageProps) {
  const {preferences}=usePreferences();
  return <PresentationProvider value={preferences}><WorklistContent key={JSON.stringify([props.adapter.identity,props.page.id])} {...props}/></PresentationProvider>;
 }
-function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPreferences,personalViews=true,renderViewControls,renderFilters,rowClick='preview'}:WorklistPageProps) {
+function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPreferences,personalViews=true,renderViewControls,renderFilters,rowClick='preview',refreshKey}:WorklistPageProps) {
  const {t}=useLocalization(),{preferences,isLocked,allowedValues,update}=usePreferences(),format=useFormatters();
  const [printedAt,setPrintedAt]=useState<Date|null>(null);
  useEffect(()=>{
@@ -331,7 +331,7 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
     setLoading(true); setRemote(null); setSearchFailure(null);
     const timer = setTimeout(() => void runSearch(), 200);
     return () => { clearTimeout(timer); searchGeneration.current++; requestAbort.current?.abort(); };
-  }, [runSearch, refresh]);
+  }, [runSearch, refresh, refreshKey]);
   useEffect(() => { setSelected([]); }, [page.id, filters, search, sort, pageNumber, pageSize]);
   const results = remote?.rows ?? [];
   const total = remote?.total ?? 0;

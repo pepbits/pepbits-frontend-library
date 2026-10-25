@@ -1,0 +1,21 @@
+import {execFileSync,spawnSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const folder='docs/releases/unreleased/evidence/restructure-phase-6c-6-2026-10-24';
+const run=(program,args)=>{const result=spawnSync(program,args,{encoding:'utf8'});return {exitCode:result.status,stdout:result.stdout,stderr:result.stderr};};
+const protectedPaths=['desktop-clients','dummy-api','Jenkinsfile','deploy','run.sh','run_all.sh','.github'];
+const protectedDiff=run('git',['diff','--name-only','HEAD','--',...protectedPaths]);
+const protectedUntracked=run('git',['ls-files','--others','--exclude-standard','--',...protectedPaths]);
+const imports=run('grep',['-rnE','@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/|demo-apps/healthcare','demo-apps/erp/src']);
+const urls=run('grep',['-rnP','https?://(?!localhost|127\\.0\\.0\\.1|www\\.w3\\.org)[a-z0-9.-]+\\.[a-z]{2,}|Bearer [A-Za-z0-9]{10}|password\\s*[:=]\\s*[\'\"][^\'\"]{4,}','demo-apps/erp/src',folder]);
+const matches=urls.stdout.trim().split('\n').filter(Boolean).map(line=>{
+ const [path,number,...parts]=line.split(':');const content=parts.join(':');
+ const reason=path.endsWith('check-boundaries.mjs')?'Scanner classification literal; no application endpoint or credential.':content.includes('react.dev')?'Public React diagnostic documentation emitted by tests.':content.includes('turbo.build')?'Public Turbo documentation/telemetry notice from local tooling.':null;
+ return {path,line:Number(number),sha256:createHash('sha256').update(content).digest('hex'),reason};
+});
+const whitespace=run('git',['diff','--check']);
+const sourceChanges=execFileSync('git',['diff','--name-only','HEAD'],{encoding:'utf8'}).trim().split('\n').filter(Boolean);
+const receipt={protectedPaths,protectedDiff,protectedUntracked,forbiddenImports:imports,whitespace,urlCredentialScan:{exitCode:urls.exitCode,stderr:urls.stderr,matches},sourceChanges,preExisting:['package-lock.json: reports workspace name; preserved from initial status']};
+writeFileSync(folder+'/boundary-scans.json',JSON.stringify(receipt,null,2)+'\n');
+if(protectedDiff.exitCode!==0||protectedUntracked.exitCode!==0||protectedDiff.stdout||protectedUntracked.stdout||imports.exitCode!==1||whitespace.exitCode!==0||![0,1].includes(urls.exitCode)||urls.stderr||matches.some(match=>!match.reason))process.exitCode=1;
+console.log(JSON.stringify({protectedChanges:protectedDiff.stdout.trim().split('\n').filter(Boolean).length,forbiddenImportMatches:imports.stdout.trim().split('\n').filter(Boolean).length,scanMatches:matches.length,unjustified:matches.filter(match=>!match.reason).length,whitespace:whitespace.exitCode}));

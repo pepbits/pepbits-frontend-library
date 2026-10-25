@@ -23,7 +23,7 @@ test('invoice tax includes deductions and rounds the completed totals',() => {ex
 test.each(['erp1','erp2'] as const)('%s booking opens a free slot with resource, date and time defaults',async variant => {
   const api=mockApi();api.rows.set('room-bookings',[]);const host=fixture(api.request),view=render(<Module variant={variant} path="/transactions/room-bookings" host={host}/>);
   await waitFor(()=>expect(view.container.querySelector('[data-resource-timeline]')).toBeTruthy());fireEvent.click(view.container.querySelector('[data-timeline-resource] button')!);
-  if(variant==='erp1'){expect(await screen.findByLabelText('Date')).toHaveValue(localDay());expect(screen.getByLabelText('Time')).toHaveValue('08:00');expect(screen.getByLabelText('Minutes')).toHaveValue(30);}
+  if(variant==='erp1'){expect(await within(await screen.findByRole('dialog')).findByLabelText('Date')).toHaveValue(localDay());expect(screen.getByLabelText('Time')).toHaveValue('08:00');expect(screen.getByLabelText('Minutes')).toHaveValue(30);}
   else await waitFor(()=>expect(host.navigate).toHaveBeenCalledWith(expect.stringContaining('/erp2/transactions/room-bookings/new?resource=')));
 });
 test('booking date navigation and resource visibility keep a complete schedule and list switch',async () => {
@@ -32,10 +32,10 @@ test('booking date navigation and resource visibility keep a complete schedule a
 });
 test('a newly detected booking clash preserves input and never sends a mutation',async () => {
   const api=mockApi(),row=api.rows.get('appointments')![0]!;row.status='Booked';const request=vi.fn(api.request);render(<Module variant="erp2" path={'/transactions/appointments/new?'+new URLSearchParams({person:'Fictional visitor',resource:row.resource,date:row.date,start:row.start,duration:'30',status:'Booked'})} host={fixture(request as JsonRequest)}/>);
-  fireEvent.click(await screen.findByRole('button',{name:'Create'}));await screen.findByText('This resource is already booked at this time');expect(screen.getByLabelText('Patient')).toHaveValue('Fictional visitor');expect(request.mock.calls.filter(([,init])=>init?.method==='POST')).toHaveLength(0);
+  fireEvent.click(await screen.findByRole('button',{name:'Confirm booking'}));await screen.findByText('This resource is already booked at this time');expect(screen.getByLabelText('Patient')).toHaveValue('Fictional visitor');expect(request.mock.calls.filter(([,init])=>init?.method==='POST')).toHaveLength(0);
 });
 test('booking status failures retain their operation and a mounted denial disables actions',async () => {
-  const api=mockApi(),row=api.rows.get('room-bookings')![0]!;row.status='Booked';let fail=true;const request=vi.fn<JsonRequest>(async<T,>(path:string,init?:RequestInit)=>{if(init?.method==='PUT'&&fail)throw new Error('Offline');return api.request<T>(path,init);}),host=fixture(request as JsonRequest),view=render(<Module variant="erp2" path={'/transactions/room-bookings/'+row.id} host={host}/>);
+  const api=mockApi(),row=api.rows.get('room-bookings')![0]!;row.status='Checked in';let fail=true;const request=vi.fn<JsonRequest>(async<T,>(path:string,init?:RequestInit)=>{if(init?.method==='PUT'&&fail)throw new Error('Offline');return api.request<T>(path,init);}),host=fixture(request as JsonRequest),view=render(<Module variant="erp2" path={'/transactions/room-bookings/'+row.id} host={host}/>);
   fireEvent.click(await screen.findByRole('button',{name:'Complete'}));await screen.findByRole('button',{name:'Retry'});fail=false;fireEvent.click(screen.getByRole('button',{name:'Retry'}));await waitFor(()=>expect(request.mock.calls.filter(([,init])=>init?.method==='PUT')).toHaveLength(2));const writes=request.mock.calls.filter(([,init])=>init?.method==='PUT');expect(writes[0]![1]!.body).toBe(writes[1]![1]!.body);
   view.rerender(<Module variant="erp2" path={'/transactions/room-bookings/'+row.id} host={{...host,can:()=>false}}/>);expect(await screen.findByRole('button',{name:'Complete'})).toBeDisabled();
 });

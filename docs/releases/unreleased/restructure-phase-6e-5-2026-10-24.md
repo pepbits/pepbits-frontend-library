@@ -35,7 +35,7 @@ New exports and host inputs are additive; the Avatar correction changes its acce
 - `@pepbits/platform/event-stream` (new export): Server-Sent Events subscription and hook with readiness event, JSON parsing, bounded reconnection and stale-source fencing. 4 tests.
 - `@pepbits/patterns/calendar`: `ResourceRowTimeline`, a horizontal resource-row day canvas with availability bands, overlap lanes, held lead/trail minutes, now line, collapsible groups, snapping pointer creation, per-row keyboard creation, RTL mirroring and density-bound lanes. 6 tests.
 - `@pepbits/shell`: optional `commandSearch` on ShellProvider (debounced, aborting, grouped host results in the command palette) and optional `chrome` on `ApplicationProviders` (quick pages, tours, command search, header inbox, frame wrapper). 3 tests.
-- `@pepbits/ui` Avatar: the accent wash's foreground is mixed with the theme text colour; the inherited correction is retained and unit-tested. The live CareGrid sweep below includes Chromium contrast checks. 1 test.
+- `@pepbits/ui` Avatar: the accent wash's foreground is mixed with the theme text colour; the inherited correction is retained and unit-tested. The live CareGrid sweep below includes Chromium contrast checks. 1 test. Later note (25 October 2026): the phase 6c-6 merge replaced this mix with the plain `--text` token after the mix failed four of 14 themes in the shell Chromium fixture; CareGrid's default-theme evidence below is unchanged.
 - `@pepbits/icons`: 21 Lucide primitives for scheduling categories and resource kinds. 21 render cases.
 - `tooling/scripts/run-demo-integration.mjs`: accepts `caregrid` (one-word allowlist change); the CareGrid wrapper starts the scheduling API first.
 

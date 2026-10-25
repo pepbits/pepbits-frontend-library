@@ -19,7 +19,7 @@ const WASHES = [
   "bg-[color-mix(in_srgb,var(--primary)_16%,transparent)] text-[var(--primary-strong)]",
   "bg-[color-mix(in_srgb,var(--success)_16%,transparent)] text-[var(--success-ink)]",
   "bg-[color-mix(in_srgb,var(--warning)_18%,transparent)] text-[var(--warning-ink)]",
-  "bg-[color-mix(in_srgb,var(--accent)_16%,transparent)] text-[color-mix(in_srgb,var(--accent)_60%,var(--text))]",
+  "bg-[color-mix(in_srgb,var(--accent)_16%,transparent)] text-[var(--text)]",
   "bg-[color-mix(in_srgb,var(--danger)_14%,transparent)] text-[var(--danger-ink)]",
 ];
 

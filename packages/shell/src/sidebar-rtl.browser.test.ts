@@ -3,6 +3,7 @@ import {afterAll,beforeAll,expect,test} from 'vitest';
 import {chromium,type Browser} from 'playwright';
 import {createServer,type ViteDevServer} from 'vite';
 import tailwind from '@tailwindcss/postcss';
+import {THEME_OPTIONS} from '@pepbits/preferences';
 let server:ViteDevServer,browser:Browser,base:string;
 beforeAll(async()=>{
   server=await createServer({configFile:false,root:process.cwd(),logLevel:'error',server:{host:'127.0.0.1',port:0},
@@ -35,6 +36,22 @@ test.each(['left','right'] as const)('Chromium Arabic RTL places the rail physic
     await page.locator('[data-outside]').focus();await page.keyboard.press('Escape');
     expect(errors).toEqual([]);
   } finally {await page.close();}
+},30000);
+
+test.each(THEME_OPTIONS.map(theme=>theme.id))('accent avatar initials retain readable contrast on shared surfaces in %s',async theme=>{
+ const page=await browser.newPage({viewport:{width:1280,height:800}});
+ try{
+  // D deterministically selects the accent wash that failed the ERP route axe sweep.
+  await page.goto(`${base}src/test/browser/index.html?avatars=1&theme=${theme}`);
+  await page.getByRole('img',{name:'D',exact:true}).first().waitFor();
+  const contrasts=await page.locator('[data-avatar-surface] [role=img]').evaluateAll(nodes=>{
+   const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const context=canvas.getContext('2d')!;
+   const pixel=(color:string,background:string)=>{context.clearRect(0,0,1,1);context.fillStyle=background;context.fillRect(0,0,1,1);context.fillStyle=color;context.fillRect(0,0,1,1);return [...context.getImageData(0,0,1,1).data].slice(0,3);};
+   const luminance=(rgb:number[])=>rgb.map(c=>{const n=c/255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4;}).reduce((total,v,i)=>total+v*[.2126,.7152,.0722][i]!,0);
+   return nodes.map(node=>{const css=getComputedStyle(node),surface=getComputedStyle(node.parentElement!).backgroundColor,b=luminance(pixel(css.backgroundColor,surface)),f=luminance(pixel(css.color,surface));return {surface:node.parentElement!.getAttribute('data-avatar-surface'),ratio:(Math.max(f,b)+.05)/(Math.min(f,b)+.05)};});
+  });
+  expect(contrasts).toHaveLength(4);expect(contrasts.filter(item=>item.ratio<4.5)).toEqual([]);
+ }finally{await page.close();}
 },30000);
 
 test.each(['nexora','midnight'])('solid notifications retain readable copy for every tone in %s',async theme=>{
