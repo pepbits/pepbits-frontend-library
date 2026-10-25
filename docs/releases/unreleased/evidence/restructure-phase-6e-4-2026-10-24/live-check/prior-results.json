@@ -1,0 +1,31 @@
+{
+  "scope": "Read-only inspection of earlier local logs, not reruns; exact earlier source digest not available. Not evidence for later test edits.",
+  "logs": [
+    {
+      "path": "/home/pepadmin/.cache/pepbits-phase6e-4/verify/ci.log",
+      "sha256": "221e6980f0dd2b29de0390b77daa9edca2917dcf3e74ef44392165529d532714",
+      "summary": "45/45 tasks successful; 0 cached; 4 healthcare tests skipped"
+    },
+    {
+      "path": "/home/pepadmin/.cache/pepbits-phase6e-4/verify/browser.log",
+      "sha256": "4e155c234442c1c16cfb582e423ab265833be0583b0043b07f705cc4671fd76a",
+      "summary": "4/4 shell Chromium tests passed"
+    },
+    {
+      "path": "/home/pepadmin/.cache/pepbits-phase6e-4/verify/integration3.log",
+      "sha256": "a39fb13f83a365186c3106398ab9ac709b6a2b96ad9bb2425a9d889fc5a992f9",
+      "summary": "16 workflows, 29 routes; 1 newbill Advance locator error; zero console/HTTP errors or axe violations"
+    },
+    {
+      "path": "/home/pepadmin/.cache/pepbits-phase6e-4/verify/browser-result.json",
+      "sha256": "ff4cf16f66d5f0533d6c6865a9268eca7b63db8b73edc3e95be7239820cd8b78",
+      "summary": [
+        {
+          "route": "/patients",
+          "step": "newbill",
+          "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('radio', { name: 'Advance', exact: true })\u001b[22m\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "baseCommit": "333ebc94136cad62d3eeeac2bd418bd29845887d",
+  "recordedAt": "2026-10-24T20:23:47.815Z",
+  "live": {
+    "implementationDigest": "e6e86cb7cecfcd7b451ddd4c1c7f9d42beb044dfcfaffbe43bdb9668f869e35c",
+    "files": 1858,
+    "sourceChangesFromBase": [
+      {
+        "path": "demo-apps/settle/scripts/smoke.mjs",
+        "sha256": "e348307743724f67e105e74b4f41584997a8b42539af4ae4bd49487fc6d0af10"
+      }
+    ],
+    "patch": "diff --git a/demo-apps/settle/scripts/smoke.mjs b/demo-apps/settle/scripts/smoke.mjs\nindex 7502ed0..207f39a 100644\n--- a/demo-apps/settle/scripts/smoke.mjs\n+++ b/demo-apps/settle/scripts/smoke.mjs\n@@ -178,7 +178,8 @@ try {\n     await page.waitForURL(new RegExp('/bills/' + createdBody.bill.bill_no + '$')); await settled();\n     flow('SET-15', 'New bill for an existing patient and visit opens its workspace', {bill: createdBody.bill.bill_no});\n     const billNo = createdBody.bill.bill_no;\n-    await page.getByRole('radio', {name: 'Advance', exact: true}).click();\n+    // An empty Bill Later bill only allows advances; the source hides the kind selector for one option.\n+    await page.getByText('Advances sit on this bill and are applied when it’s finalized.', {exact: true}).waitFor();\n     await page.getByRole('textbox', {name: 'Payment amount'}).fill('250');\n     const advance = response(/\\/settle-api\\/bills\\/[^/]+\\/payments$/, 'POST');\n     await page.getByRole('button', {name: /^Collect /}).click();\n",
+    "buildExit": 0,
+    "integrationExit": 0
+  },
+  "unitFirstAttempt": {
+    "implementationDigest": "e6e86cb7cecfcd7b451ddd4c1c7f9d42beb044dfcfaffbe43bdb9668f869e35c",
+    "exit": 1,
+    "passed": 160,
+    "failed": 1,
+    "identityNote": "Digest at unit run start; only documentation changed while this attempt ran."
+  },
+  "unitSecondAttempt": {
+    "implementationDigest": "c368cd36c2c55b212c8c40e1afc257246004a5821b0bdf67b444d70472b15d70",
+    "exit": 1,
+    "passed": 160,
+    "failed": 1,
+    "changesSinceLive": [
+      {
+        "path": "demo-apps/settle/README.md",
+        "sha256": "db93e596992b6ec26312bc6294938408ec5ad393c0ea2b5563fd64d39bb4bbda"
+      },
+      {
+        "path": "demo-apps/settle/src/modules/settle/tests/bill.test.tsx",
+        "sha256": "ff97b3fd36d130383e2e00de413df4f91fb040f231efdcb4331f164d85bcb16f"
+      },
+      {
+        "path": "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
+        "sha256": "09ec9a6722626649bb180125cf2ff78c1f310a2e5c918eb208a52cf5888302e7"
+      },
+      {
+        "path": "docs/features/settle-demo.md",
+        "sha256": "e2325b255135c0c3c10380b45505a3362d3257b73e17e51e9dd9a7a00320fe72"
+      },
+      {
+        "path": "docs/releases/unreleased/README.md",
+        "sha256": "db28ddfdbb7fbc884945006c449006faa4d49a46648829f257cd37d2aa752c2f"
+      }
+    ]
+  },
+  "finalUnitAndTypecheck": {
+    "implementationDigest": "2abe8058ddcb5631a547695c165726fc2e1cc0920d070cc2887af4dfa9ae7ae2",
+    "changesSinceLive": [
+      {
+        "path": "demo-apps/settle/README.md",
+        "sha256": "db93e596992b6ec26312bc6294938408ec5ad393c0ea2b5563fd64d39bb4bbda"
+      },
+      {
+        "path": "demo-apps/settle/src/modules/settle/tests/bill.test.tsx",
+        "sha256": "fca00c506401a717f04db3a3fed1dc1a67b80ec93c48f429168dd1cb3dd299ea"
+      },
+      {
+        "path": "demo-apps/settle/src/modules/settle/tests/desk.test.tsx",
+        "sha256": "3b2376e98fe2f1b4ff904e8780d2908ff93f1d79c4265d11c664e50bcf5c2132"
+      },
+      {
+        "path": "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
+        "sha256": "09ec9a6722626649bb180125cf2ff78c1f310a2e5c918eb208a52cf5888302e7"
+      },
+      {
+        "path": "docs/features/settle-demo.md",
+        "sha256": "e2325b255135c0c3c10380b45505a3362d3257b73e17e51e9dd9a7a00320fe72"
+      },
+      {
+        "path": "docs/releases/unreleased/README.md",
+        "sha256": "db28ddfdbb7fbc884945006c449006faa4d49a46648829f257cd37d2aa752c2f"
+      }
+    ],
+    "testPatch": "diff --git a/demo-apps/settle/src/modules/settle/tests/bill.test.tsx b/demo-apps/settle/src/modules/settle/tests/bill.test.tsx\nindex 7933e52..4827731 100644\n--- a/demo-apps/settle/src/modules/settle/tests/bill.test.tsx\n+++ b/demo-apps/settle/src/modules/settle/tests/bill.test.tsx\n@@ -33,7 +33,9 @@ describe('Bill workspace', () => {\n     const box = screen.getByRole('combobox', {name: 'Add a charge'});\n     await waitFor(() => expect(box).toHaveFocus());\n     fireEvent.change(box, {target: {value: 'echo'}});\n-    await screen.findByRole('option', {name: /2D echocardiogram/});\n+    // The unfiltered catalogue also contains this item; wait for the debounced search first.\n+    await waitFor(() => expect(settle.calls.some(c => c.path === '/catalogue' && c.search.get('q') === 'echo')).toBe(true));\n+    await screen.findByRole('option', {name: /2D echocardiogram/, selected: true});\n     fireEvent.keyDown(box, {key: 'Enter'});\n     await waitFor(() => expect(settle.calls.find(c => c.method === 'POST' && c.path === '/bills/BN001002/charges')?.body).toEqual({items: [{catalogueId: 20, qty: 1}]}));\n   });\ndiff --git a/demo-apps/settle/src/modules/settle/tests/desk.test.tsx b/demo-apps/settle/src/modules/settle/tests/desk.test.tsx\nindex c3ba11d..662f849 100644\n--- a/demo-apps/settle/src/modules/settle/tests/desk.test.tsx\n+++ b/demo-apps/settle/src/modules/settle/tests/desk.test.tsx\n@@ -43,9 +43,9 @@ describe('Desk, desk user and counter', () => {\n     const patient = await within(dialog).findAllByRole('button', {name: /MR/});\n     fireEvent.click(patient[0]!);\n     await within(dialog).findAllByText(/Outpatient|Inpatient/);\n-    fireEvent.click(within(dialog).getByRole('button', {name: /Bill Later/}));\n     const create = within(dialog).getByRole('button', {name: 'Create bill'});\n     await waitFor(() => expect(create).toBeEnabled());\n+    fireEvent.click(within(dialog).getByRole('button', {name: /Bill Later/}));\n     fireEvent.click(create);\n     await waitFor(() => expect(settle.calls.find(c => c.method === 'POST' && c.path === '/bills')?.body).toMatchObject({billType: 'C', restrictionType: 'N'}));\n     await waitFor(() => expect(navigation.open).toHaveBeenCalledWith({pageId: 'settle-bill', recordId: 'BL002001'}));\n",
+    "unitExit": 0,
+    "passed": 161,
+    "failed": 0,
+    "files": 9,
+    "typecheckExit": 0
+  },
+  "finalManifest": {
+    "implementationDigest": "2abe8058ddcb5631a547695c165726fc2e1cc0920d070cc2887af4dfa9ae7ae2",
+    "files": 1858
+  },
+  "changesAfterLive": [
+    {
+      "path": "demo-apps/settle/README.md",
+      "sha256": "db93e596992b6ec26312bc6294938408ec5ad393c0ea2b5563fd64d39bb4bbda"
+    },
+    {
+      "path": "demo-apps/settle/src/modules/settle/tests/bill.test.tsx",
+      "sha256": "fca00c506401a717f04db3a3fed1dc1a67b80ec93c48f429168dd1cb3dd299ea"
+    },
+    {
+      "path": "demo-apps/settle/src/modules/settle/tests/desk.test.tsx",
+      "sha256": "3b2376e98fe2f1b4ff904e8780d2908ff93f1d79c4265d11c664e50bcf5c2132"
+    },
+    {
+      "path": "docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md",
+      "sha256": "09ec9a6722626649bb180125cf2ff78c1f310a2e5c918eb208a52cf5888302e7"
+    },
+    {
+      "path": "docs/features/settle-demo.md",
+      "sha256": "e2325b255135c0c3c10380b45505a3362d3257b73e17e51e9dd9a7a00320fe72"
+    },
+    {
+      "path": "docs/releases/unreleased/README.md",
+      "sha256": "db28ddfdbb7fbc884945006c449006faa4d49a46648829f257cd37d2aa752c2f"
+    }
+  ],
+  "changesAfterFinalUnitSource": [],
+  "runtimeChangesAfterLive": [],
+  "protectedStatus": "",
+  "scope": "Local production Next app and real HTTP over unchanged fictional APIs. Later unit tests use mocked transports. Release record, manifest and evidence are excluded from the digest as specified by write-manifest.mjs.",
+  "finalVerification": {
+    "checkedAt": "2026-10-24T20:25:32.855Z",
+    "manifestFiles": 1858,
+    "manifestMismatches": [],
+    "documentationExit": 0,
+    "documentationFiles": 207,
+    "diffCheckExit": 0
+  },
+  "artifactHashes": [
+    {
+      "path": "browser-result.json",
+      "sha256": "f8cdc4d808cfa836d6551dc83c71cbe0e5e7cf816439cfe4c9889e240794ecda"
+    },
+    {
+      "path": "build.log",
+      "sha256": "9bed8c58595b107b2b3a801b35722e0a422467b621c774d92e437c8a734eb552"
+    },
+    {
+      "path": "docs-final.log",
+      "sha256": "5baf5d105e875380fc376bb884a536a065b2f2e91627f01f251ce8802bd77f24"
+    },
+    {
+      "path": "docs-node22.log",
+      "sha256": "147107e59e786d1b7c40a85f3c8d965aa12cf45f4f0be36d7acd9563de3d07f7"
+    },
+    {
+      "path": "integration-identity.json",
+      "sha256": "a7f79604f968c4d3d8c5ed13e46d63bc48a5152281c831cc260c4a18c2ef3cab"
+    },
+    {
+      "path": "integration.log",
+      "sha256": "40f6ec1c9e68c0524fd4fd51a34b536d2ddd961d7b93061d80d6e1bd644b230a"
+    },
+    {
+      "path": "prior-results.json",
+      "sha256": "fbf39df6110abba997189d83244308a8fe60e70e4220d6415df2e105876302bc"
+    },
+    {
+      "path": "typecheck-final.log",
+      "sha256": "3632e7cbd9c7cff5239508805690aac81ff69dcc3ef6b27daed0bf63af33a28f"
+    },
+    {
+      "path": "unit-final.log",
+      "sha256": "a600873824678d1f3d80dfe5144672c334855c9bf623d4dd94cdf10509b3da93"
+    },
+    {
+      "path": "unit-first-attempt.log",
+      "sha256": "63b112878e76d108063bd16e95efff2f71fdc8990eb9bc98c0ac25d9b4d2c5dc"
+    },
+    {
+      "path": "unit-second-attempt.log",
+      "sha256": "b7970148325f852a17b490a2ee5ae447a1a985332fc040a86c1b59a32ecdba21"
+    }
+  ]
+}

@@ -11,3 +11,15 @@ export function englishNumberWords(value: number): string {
   }
   return '';
 }
+
+/** Explicit English spelling in the Indian numbering system (crore, lakh, thousand, hundred), as used
+ * on Indian receipts. Like englishNumberWords, it is not a localized formatter; hosts label the language. */
+export function indianNumberWords(value: number): string {
+  if (!Number.isSafeInteger(value)) throw new RangeError('A safe integer is required');
+  if (value < 0) return 'Minus ' + indianNumberWords(-value);
+  if (value < 1000) return englishNumberWords(value);
+  for (const [scale, name] of [[1e7, 'Crore'], [1e5, 'Lakh'], [1e3, 'Thousand']] as const) {
+    if (value >= scale) return indianNumberWords(Math.floor(value / scale)) + ' ' + name + (value % scale ? ' ' + indianNumberWords(value % scale) : '');
+  }
+  return '';
+}

@@ -1,6 +1,7 @@
 # Feature catalog
 
 - [Independent CareGrid demo](caregrid-demo.md): eleven scheduling destinations against the unchanged CareGrid API with Server-Sent Events; local checks and explicit limits.
+- [Independent Settle billing demo](settle-demo.md): patient billing desk screens over the unchanged Settle API inside the shared shell; local checks and explicit differences.
 - [AllyVora patient registration demo](allyvora-patients-demo.md): all source pages and modes over the unchanged AllyVora API and shared demo host; local checks and named adaptations.
 - [Independent desktop demo](desktop-demo.md): Vite web host with the copied Tauri 2 host, full shell document workspace and demo-owned pages over the demo API; native executable not built or tested.
 - [Independent onboarding demo](onboarding-demo.md): Orvia landing, workspace finder, sign-in and registration wizard on the shared host; fictional adapters and local checks.
