@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Library restructure phase 7b — first publication](restructure-phase-7b-2026-10-25.md): all 12 `@pepbits/*` packages published at 0.1.0 to GitHub Packages; registry versions and a clean install verified.
 - [Phase 7a — publishable @pepbits packages](restructure-phase-7a-2026-10-25.md): twelve 0.1.0 ESM/declaration candidates, Changesets and manual GitHub Packages tooling; local tarball/consumer evidence, no publication.
 
 - [Demo API rename — dummy-api → mock-api](mock-api-rename-2026-10-25.md): folder moved with a compatibility link for `desktop-clients/`, CI, Jenkins and `run.sh`; 101 current references updated; CI, API tests (same as main), three live checks and docs pass.
