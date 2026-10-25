@@ -12,7 +12,7 @@ import { RegistrationWorkspace } from "./workspace";
 const config = {
   ...JSON.parse(
     readFileSync(
-      process.cwd() + "/../../dummy-api/config/op-registration/form.json",
+      process.cwd() + "/../../mock-api/config/op-registration/form.json",
       "utf8",
     ),
   ),

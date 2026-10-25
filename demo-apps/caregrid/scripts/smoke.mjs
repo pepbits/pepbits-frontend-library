@@ -5,7 +5,7 @@ import {createRequire} from 'node:module';
 /** Browser workflows against the production build, the unchanged demo host API and the unchanged CareGrid API. */
 const require=createRequire(import.meta.url),base=process.env.CAREGRID_BASE??'http://localhost:3390';
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw new Error('Local demo checks only');
-const fixtureSource=readFileSync(new URL('../../../dummy-api/server.mjs',import.meta.url),'utf8');
+const fixtureSource=readFileSync(new URL('../../../mock-api/server.mjs',import.meta.url),'utf8');
 const secret=user=>fixtureSource.match(new RegExp(`username:\\s*"${user}",\\s*password:\\s*"([^"]+)"`))[1];
 const browser=await chromium.launch({headless:true}),page=await browser.newPage({viewport:{width:1440,height:1000}});
 const flows=[],checks=[],errors=[],consoleErrors=[],httpErrors=[],expected=new Set();let current='login';

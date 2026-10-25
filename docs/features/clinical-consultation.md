@@ -67,7 +67,7 @@ The server derives tenant/user from authentication, checks page access and write
 
 ## Data and localization
 
-`dummy-api/config/clinical-consultation/form.json` supplies fictional clinicians and visit types. Notes are stored in `RECORD_DATA_DIR/clinical-consultation.csv`, separately from triage, patient and billing data. Each tenant/application/patient bucket has quoted JSON snapshots within the CSV data column. The shared store uses atomic CSV snapshot writes and persists operation receipts and record history. It is a single-process demo store, not a multi-worker transactional database.
+`mock-api/config/clinical-consultation/form.json` supplies fictional clinicians and visit types. Notes are stored in `RECORD_DATA_DIR/clinical-consultation.csv`, separately from triage, patient and billing data. Each tenant/application/patient bucket has quoted JSON snapshots within the CSV data column. The shared store uses atomic CSV snapshot writes and persists operation receipts and record history. It is a single-process demo store, not a multi-worker transactional database.
 
 Canonical text is under `template.consultation.*` in the shared English, Arabic, Hindi and Malayalam API catalogs. Regenerate fallbacks after editing the catalogs. User-entered clinical text is not automatically translated. Documentation release `2026-09-09-clinical-consultation` includes the page guide, tour target and feature alert.
 

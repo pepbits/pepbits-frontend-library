@@ -6,7 +6,7 @@ import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url),base=process.env.DESKTOP_BASE??'http://localhost:3410';
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw new Error('Local demo checks only');
 // The fixture credential is read from the unchanged API fixture at runtime and never written to receipts.
-const fixtureSource=readFileSync(new URL('../../../dummy-api/server.mjs',import.meta.url),'utf8');
+const fixtureSource=readFileSync(new URL('../../../mock-api/server.mjs',import.meta.url),'utf8');
 const credential=fixtureSource.match(/username:\s*"admin",\s*password:\s*"([^"]+)"/)[1];
 const browser=await chromium.launch({headless:true}),context=await browser.newContext({viewport:{width:1440,height:900}}),page=await context.newPage();
 const flows=[],checks=[],errors=[],httpErrors=[],consoleErrors=[],aiRequests=[];let current='login';

@@ -5,7 +5,7 @@ import {readFileSync, writeFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 const require = createRequire(import.meta.url), base = process.env.ALLYVORA_BASE ?? 'http://localhost:3400';
 if (!['localhost', '127.0.0.1'].includes(new URL(base).hostname)) throw new Error('Local demo checks only');
-const fixtureSource = readFileSync(new URL('../../../dummy-api/server.mjs', import.meta.url), 'utf8');
+const fixtureSource = readFileSync(new URL('../../../mock-api/server.mjs', import.meta.url), 'utf8');
 const credential = name => fixtureSource.match(new RegExp(`username:\\s*"${name}",\\s*password:\\s*"([^"]+)"`))[1];
 const browser = await chromium.launch({headless: true}), context = await browser.newContext({viewport: {width: 1440, height: 1000}}), page = await context.newPage();
 const diagnostics = [], flows = [], checks = [], errors = [], httpErrors = [], consoleErrors = [], expectedStatuses = [];

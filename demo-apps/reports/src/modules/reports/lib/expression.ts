@@ -1,5 +1,5 @@
 // Source copy of lumen-reports src/lib/engine/expression.ts. Pure parser used for builder validation in the browser;
-// the server re-validates every formula (dummy-api/reference-reports-engine.mjs).
+// the server re-validates every formula (mock-api/reference-reports-engine.mjs).
 /*
  * Safe arithmetic expressions for computed columns, e.g. "(actual - target) / target * 100".
  * Supports numbers, column identifiers, + - * /, parentheses and round(x[, digits]), abs, min, max, coalesce.

@@ -10,7 +10,7 @@ export async function surgisuiteFlows({page,base,flows,createdRoutes}){
  const visit=async(path='')=>{await page.goto(base+'/surgisuite'+path);const root=page.locator('[data-reference-module=surgisuite]');await root.locator('[data-tour=surgisuite-workspace] h1').waitFor();return root;};
  const record=(id,mode,result)=>flows.push({id:'HCD-35-surgisuite-'+id,mode,result});
  const write=async(action,path,method)=>{const saved=page.waitForResponse(r=>new URL(r.url()).pathname==='/api/reference-modules/surgisuite/api'+path&&r.request().method()===method);await action();const response=await saved;assert.ok(response.ok(),`${method} ${path}: ${response.status()}`);return response.json();};
- const pin=readFileSync(new URL('../../../dummy-api/surgisuite-source/src/seed.ts',import.meta.url),'utf8').match(/const pin = hashPin\("([^"]+)"\)/)[1];
+ const pin=readFileSync(new URL('../../../mock-api/surgisuite-source/src/seed.ts',import.meta.url),'utf8').match(/const pin = hashPin\("([^"]+)"\)/)[1];
  const section=async(name)=>{await page.getByRole('navigation',{name:'Case sections'}).getByRole('button',{name:new RegExp('^'+name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();};
  try{
   const actor=await request('/auth/me');assert.equal(actor.role,'ADMIN');assert.equal(actor.pin_hash,undefined);

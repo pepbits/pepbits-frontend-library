@@ -3,7 +3,7 @@
 The synthetic API supports both frontend shells: authentication, scoped preferences, navigation/localization, records, recovery, DCP forms, healthcare examples and device/printing demonstrations. It is not a production Spring Boot backend. Use Node.js 24+; the server imports TypeScript contracts and uses Node SQLite. Barcode rendering uses the dependency recorded in [package.json](package.json), so the old zero-dependency description no longer applies.
 
 ```bash
-# From dummy-api, using Node 24:
+# From mock-api, using Node 24:
 npm ci
 node server.mjs                  # default port 3200
 # For a separate isolated instance:

@@ -38,7 +38,7 @@ A specialized skeleton or calendar demo demonstrates that component. This is not
 
 ## Localization and generated code
 
-- Edit canonical messages in `dummy-api/config/localization/shared/{en,ar,hi,ml}.json`; preserve placeholder meaning across languages.
+- Edit canonical messages in `mock-api/config/localization/shared/{en,ar,hi,ml}.json`; preserve placeholder meaning across languages.
 - Regenerate offline fallbacks with `npm run localization:sync` from `desktop-clients`. Do not hand-edit generated fallback files.
 - Keep IDs, API values and source identifiers stable when labels are translated.
 - Regenerate component/template examples with `library:sync` or `templates:sync` after source changes. Copyable code must import public package exports and show preference/adapter integration honestly.

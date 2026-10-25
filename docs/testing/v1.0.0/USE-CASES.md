@@ -154,7 +154,7 @@ LABEL-07: Save wristband stock as a personal default, then open Payment QR. A4 i
 
 ## CARE-01 — Healthcare reference page templates
 
-Verify four additive Library pages and retained OP registration. Test API-backed create/save/reload, same-operation retry, stale version rejection, user/tenant/application isolation, compatible/conflicting bed reservation, order detail retention and cancellation. Verify signed read-only fields, addenda, effective locked density and multilingual desktop layouts. Source: `care-pages/workspace.test.tsx`, `dummy-api/care-page-store.test.mjs`, `e2e/care-pages.mjs`. Real clinical integrations and native-speaker approval remain separate acceptance.
+Verify four additive Library pages and retained OP registration. Test API-backed create/save/reload, same-operation retry, stale version rejection, user/tenant/application isolation, compatible/conflicting bed reservation, order detail retention and cancellation. Verify signed read-only fields, addenda, effective locked density and multilingual desktop layouts. Source: `care-pages/workspace.test.tsx`, `mock-api/care-page-store.test.mjs`, `e2e/care-pages.mjs`. Real clinical integrations and native-speaker approval remain separate acceptance.
 
 ## DCP-01 — Visual template designer
 

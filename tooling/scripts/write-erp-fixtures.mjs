@@ -1,4 +1,4 @@
-import {createReferenceErpStore} from '../../dummy-api/reference-erp-store.mjs';
+import {createReferenceErpStore} from '../../mock-api/reference-erp-store.mjs';
 import {writeFileSync} from 'node:fs';
 const store=createReferenceErpStore({variant:'erp1'}),user={id:'fixture-admin',tenantId:'fictional-tenant',role:'enterprise-admin',branch:'head-office'},scope={tenantId:user.tenantId,applicationId:'nexora',branchId:user.branch};
 const values={};function get(path,query={}){const result=store.handle(user,scope,{path,method:'GET',query:new URLSearchParams(query)});if(result.status!==200)throw new Error(JSON.stringify(result));return result.body;}

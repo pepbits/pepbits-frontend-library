@@ -43,17 +43,17 @@ identity.hostApiNode = execFileSync(hostNode, ['--version'], {encoding: 'utf8'})
 identity.dataApiNode = process.version;
 
 // Generated shared-API runtimes may be absent from a fresh worktree. Reuse them only from a checkout whose
-// tracked dummy-api sources are byte-identical, and record what was resolved.
+// tracked mock-api sources are byte-identical, and record what was resolved.
 const hostArgs = [], artifacts = process.env.ALLYVORA_RUNTIME_ARTIFACTS;
 if (artifacts) {
-  const built = resolve(artifacts), files = execFileSync('git', ['ls-files', 'dummy-api', '-z'], {cwd: root, encoding: 'utf8'}).split('\0').filter(Boolean);
+  const built = resolve(artifacts), files = execFileSync('git', ['ls-files', 'mock-api', '-z'], {cwd: root, encoding: 'utf8'}).split('\0').filter(Boolean);
   const sha = path => createHash('sha256').update(readFileSync(path)).digest('hex');
-  const mismatches = files.filter(path => !existsSync(join(built, path.slice('dummy-api/'.length))) || sha(join(root, path)) !== sha(join(built, path.slice('dummy-api/'.length))));
+  const mismatches = files.filter(path => !existsSync(join(built, path.slice('mock-api/'.length))) || sha(join(root, path)) !== sha(join(built, path.slice('mock-api/'.length))));
   if (mismatches.length) throw new Error(`Runtime artifact source differs in ${mismatches.length} tracked API files`);
-  const loader = join(temp, 'runtime-loader.mjs'), artifactLog = join(temp, 'runtime-artifacts.ndjson'), source = join(root, 'dummy-api/');
+  const loader = join(temp, 'runtime-loader.mjs'), artifactLog = join(temp, 'runtime-artifacts.ndjson'), source = join(root, 'mock-api/');
   writeFileSync(loader, `import {existsSync,readFileSync,appendFileSync} from 'node:fs';import {fileURLToPath,pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';const source=${JSON.stringify(source)},built=${JSON.stringify(built + '/')};const seen=new Set();function record(result){if(result.url?.startsWith('file:')){const path=fileURLToPath(result.url);if(path.startsWith(built)&&/^[\\w-]+\\/dist\\//.test(path.slice(built.length))&&!seen.has(path)){seen.add(path);appendFileSync(${JSON.stringify(artifactLog)},JSON.stringify({path:path.slice(built.length),sha256:createHash('sha256').update(readFileSync(path)).digest('hex')})+'\\n');}}return result;}export async function resolve(specifier,context,next){const entry=new URL(specifier,context.parentURL??'file://'+source).href;if(entry==='file://'+source+'access-runtime/medband-worker.mjs')return next('file://'+built+'access-runtime/medband-worker.mjs',context);try{return record(await next(specifier,context));}catch(error){if(!specifier.startsWith('.')&&!specifier.startsWith('/')&&context.parentURL?.startsWith('file://'+source)){return record(await next(specifier,{...context,parentURL:context.parentURL.replace('file://'+source,'file://'+built)}));}if(['pharmacy-runtime/','access-runtime/','quality-runtime/'].some(dir=>context.parentURL?.startsWith(new URL(dir,'file://'+source).href))){return record(await next(specifier,{...context,parentURL:context.parentURL.replace('file://'+source,'file://'+built)}));}const url=new URL(specifier,context.parentURL);if(url.protocol==='file:'){const path=fileURLToPath(url),rel=path.slice(source.length);if(path.startsWith(source)&&/^[\\w-]+\\/dist\\//.test(rel)&&existsSync(built+rel)){appendFileSync(${JSON.stringify(artifactLog)},JSON.stringify({path:rel,sha256:createHash('sha256').update(readFileSync(built+rel)).digest('hex')})+'\\n');return record(await next(pathToFileURL(built+rel).href,context));}}throw error;}}`);
   const common = join(temp, 'diagnostic-runtime.cjs');
-  writeFileSync(common, `const Module=require('node:module');const resolve=Module._resolveFilename;const source=${JSON.stringify(join(root, 'dummy-api/diagnostics-runtime/'))},built=${JSON.stringify(join(built, 'diagnostics-runtime/'))};Module._resolveFilename=function(specifier,parent,...rest){try{return resolve.call(this,specifier,parent,...rest);}catch(error){if(parent?.filename?.startsWith(source)){return resolve.call(this,specifier,{...parent,filename:built+parent.filename.slice(source.length),paths:Module._nodeModulePaths(built)},...rest);}throw error;}};`);
+  writeFileSync(common, `const Module=require('node:module');const resolve=Module._resolveFilename;const source=${JSON.stringify(join(root, 'mock-api/diagnostics-runtime/'))},built=${JSON.stringify(join(built, 'diagnostics-runtime/'))};Module._resolveFilename=function(specifier,parent,...rest){try{return resolve.call(this,specifier,parent,...rest);}catch(error){if(parent?.filename?.startsWith(source)){return resolve.call(this,specifier,{...parent,filename:built+parent.filename.slice(source.length),paths:Module._nodeModulePaths(built)},...rest);}throw error;}};`);
   hostArgs.push('--loader', loader, '--require', common);
   identity.runtimeArtifacts = {sourceFilesCompared: files.length, mismatches: 0, artifactLog};
 }
@@ -75,7 +75,7 @@ async function ready(url, service) {
   throw new Error('Local service readiness timed out');
 }
 try {
-  const hostApi = start(hostNode, [...hostArgs, 'dummy-api/server.mjs'], {HOST: '127.0.0.1', PORT: String(hostApiPort), NEXORA_DATA_DIR: join(temp, 'host-data'), RECORD_DATA_DIR: join(temp, 'host-records')}, root, 'Host API');
+  const hostApi = start(hostNode, [...hostArgs, 'mock-api/server.mjs'], {HOST: '127.0.0.1', PORT: String(hostApiPort), NEXORA_DATA_DIR: join(temp, 'host-data'), RECORD_DATA_DIR: join(temp, 'host-records')}, root, 'Host API');
   await ready(`http://127.0.0.1:${hostApiPort}/auth/session`, hostApi);
   // The unchanged AllyVora API, built and started with its documented production scripts and a temporary database.
   execFileSync(process.execPath, ['scripts/build.mjs'], {cwd: backend, stdio: 'ignore'});

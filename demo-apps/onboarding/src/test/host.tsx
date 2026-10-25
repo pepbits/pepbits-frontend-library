@@ -13,7 +13,7 @@ import {createDemoOnboarding, memoryStore, type DemoOnboardingOptions, type Devi
 import {hrefFor, type OnboardingTarget} from '../navigation';
 import {OnboardingServices} from '../modules/orvia/services';
 
-const catalog = (language: string) => JSON.parse(readFileSync(`${process.cwd()}/../../dummy-api/config/localization/shared/${language}.json`, 'utf8')).messages as Record<string, string>;
+const catalog = (language: string) => JSON.parse(readFileSync(`${process.cwd()}/../../mock-api/config/localization/shared/${language}.json`, 'utf8')).messages as Record<string, string>;
 /** Canonical protected API catalogs, read-only, so tests see the same keys as the runtime catalog. */
 export const sharedMessages = catalog('en');
 export const arabicMessages = catalog('ar');

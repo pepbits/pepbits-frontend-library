@@ -6,7 +6,7 @@ import type {LanguageKey} from '@pepbits/i18n';
 import {readFileSync} from 'node:fs';
 import {surgisuiteRoutes} from './routes';
 import {targetFromPath} from '../../navigation';
-const catalogs=Object.fromEntries(['en','ar','hi','ml'].map(language=>[language,JSON.parse(readFileSync(new URL('../../../../../dummy-api/config/localization/shared/'+language+'.json',import.meta.url),'utf8')).messages]));
+const catalogs=Object.fromEntries(['en','ar','hi','ml'].map(language=>[language,JSON.parse(readFileSync(new URL('../../../../../mock-api/config/localization/shared/'+language+'.json',import.meta.url),'utf8')).messages]));
 const translate=(language:LanguageKey,key:string)=>catalogs[language][key]??key;
 import {LocalizationProvider} from "@pepbits/i18n/react";
 import copy from './surgisuite-copy.json';

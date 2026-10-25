@@ -22,7 +22,7 @@ CI also compares historical release snapshots against the PR base/push-before SH
 
 ## Translation revisions and native review
 
-`dummy-api/config/documentation/translation-revisions.json` records source and translated-content hashes per product/release/page/language. The API returns `sourceHash`, `translationHash`, `translationStatus` and `reviewStatus`. Source or translated-text drift makes an existing translation outdated and resets its effective review status to pending. Missing text is explicitly incomplete; the UI warns about fallback/mixed content and outdated translations.
+`mock-api/config/documentation/translation-revisions.json` records source and translated-content hashes per product/release/page/language. The API returns `sourceHash`, `translationHash`, `translationStatus` and `reviewStatus`. Source or translated-text drift makes an existing translation outdated and resets its effective review status to pending. Missing text is explicitly incomplete; the UI warns about fallback/mixed content and outdated translations.
 
 `translations` only initializes missing records as pending and never overwrites existing stale/approved records. `translation-sync PAGE_ID LANGUAGE` requires complete translated content, refreshes hashes and clears review evidence. To prepare a native review packet:
 

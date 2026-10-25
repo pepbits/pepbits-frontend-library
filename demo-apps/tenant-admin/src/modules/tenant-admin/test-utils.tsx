@@ -9,7 +9,7 @@ import { DEFAULT_PREFERENCES } from "@pepbits/preferences";
 import type { ReferenceHost } from "@pepbits/shell/reference-host";
 
 /** The unchanged canonical English catalog of the demo API (the app loads it at runtime through `/localization`). */
-export const catalog = (language: string) => JSON.parse(readFileSync(resolve(process.cwd(), "../../dummy-api/config/localization/shared/" + language + ".json"), "utf8")).messages as Record<string, string>;
+export const catalog = (language: string) => JSON.parse(readFileSync(resolve(process.cwd(), "../../mock-api/config/localization/shared/" + language + ".json"), "utf8")).messages as Record<string, string>;
 const english = catalog("en");
 const t = createTranslator({ language: "en", catalogs: { en: english } });
 /** The host localization the app supplies: shared controls (the drawer's Close button) resolve their catalog IDs. */

@@ -36,7 +36,7 @@ These workflows were exercised against the local integrated candidate. The [evid
 
 The public module exports receive typed host navigation, request, effective-preference and authenticated-context contracts. Client transports use that contract; they do not import source filesystem stores or server-only packages. A consuming application can connect an authorized backend without editing the page renderer.
 
-The local `dummy-api` stores provide fictional Reports, ERP and School data and simulate operations such as report generation, record updates, quiz grading and live-room actions. They do not deliver real email or replace production business services. Client scope metadata routes requests but does not authorize them. A production backend must enforce identity, branch, role and operation authority on every read and write.
+The local `mock-api` stores provide fictional Reports, ERP and School data and simulate operations such as report generation, record updates, quiz grading and live-room actions. They do not deliver real email or replace production business services. Client scope metadata routes requests but does not authorize them. A production backend must enforce identity, branch, role and operation authority on every read and write.
 
 Generic controls and common page primitives use the shared UI packages. Specialized report charts, editors and template layouts remain module-owned where the shared components do not express the required interaction. The imports also use host preferences and tenant locks: the recorded checks covered RTL, compact density, a dark theme, larger host font settings and read-only page-size enforcement. Date, number, currency and pagination behavior must follow the host's effective preferences.
 

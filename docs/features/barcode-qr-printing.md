@@ -16,7 +16,7 @@ Use the wristband profile for patient bands. A4 uses two columns; a wide band do
 
 The backend uses the pinned `bwip-js` dependency for Code 128, EAN-13, Data Matrix, QR, GS1-128 and GS1 DataMatrix. The GS1 examples use synthetic GTIN/lot data in GS1 element syntax. Generic Data Matrix and GS1 DataMatrix remain distinct templates. These examples do not certify a label for a clinical standard, scanner or printer.
 
-Templates are read from `dummy-api/config/label-printing/templates.json`; source records from `records.csv`. Generated artwork is returned as an SVG image data URL and rendered through an image element, never injected as HTML. No encoder is shipped in the frontend bundle.
+Templates are read from `mock-api/config/label-printing/templates.json`; source records from `records.csv`. Generated artwork is returned as an SVG image data URL and rendered through an image element, never injected as HTML. No encoder is shipped in the frontend bundle.
 
 The original reference implementation and API for the encoder are documented by [bwip-js](https://github.com/metafloor/bwip-js). See [GS1 DataMatrix guidance](https://www.gs1.org/standards/gs1-datamatrix-guideline/25) for production GS1 data and symbol requirements.
 
@@ -42,7 +42,7 @@ POST commands: `library`, `create`, `job`, `print`, `simulate`, `preference`, `p
 
 Job snapshots, per-user profile defaults, retry receipts and tenant policies are written atomically to `label-printing.csv` in RECORD_DATA_DIR (or the normal demo data directory). Tenant/application buckets and owner checks prevent cross-scope reads. Administrators can inspect jobs inside their own tenant/application. Policy updates require the current policy version and administrator authority. The CSV store is single-process demo persistence, not a production database or tamper-proof audit service.
 
-Install the backend dependency with `npm ci --prefix dummy-api`. `run.sh install api` now recognizes that the API has dependencies. Both frontend deployment packages remain independent of the encoder; deploy/install the demo API separately when required.
+Install the backend dependency with `npm ci --prefix mock-api`. `run.sh install api` now recognizes that the API has dependencies. Both frontend deployment packages remain independent of the encoder; deploy/install the demo API separately when required.
 
 ## Preferences and tenant locks
 
@@ -54,7 +54,7 @@ Printer profiles define paper dimensions, columns, margins and gaps. Users may s
 
 Recoverable errors retain selections and the pending operation ID. Validation and permission failures unlock the form so users can correct their request. No local browser patient/job persistence is added. Browser printing does not identify or silently select a physical printer; a profile describes stock, not an OS printer connection.
 
-Automated coverage is in `dummy-api/label-printing-store.test.mjs` and `desktop-clients/e2e/label-printing.mjs`. Backend tests cover all advertised encoders, persistence, idempotency, isolation, limits, profile fit, reprint rules and payment states. Browser tests cover batch layout, print-media isolation, requested-only history, wristbands, payment simulation and administrator profile locking.
+Automated coverage is in `mock-api/label-printing-store.test.mjs` and `desktop-clients/e2e/label-printing.mjs`. Backend tests cover all advertised encoders, persistence, idempotency, isolation, limits, profile fit, reprint rules and payment states. Browser tests cover batch layout, print-media isolation, requested-only history, wristbands, payment simulation and administrator profile locking.
 
 Pending external work: actual thermal/native printer adapters, printer acknowledgments, physical scanner/readability testing, provider-specific real payments, clinical identification acceptance, native-speaker review, production retention/audit storage and mappings to real patient/sample/inventory services. Direct downloadable server PDFs are not generated; PDF output uses the browser print dialog. Deployment status and exact live verification are recorded in the delivery record; commits and pushes are separate actions.
 

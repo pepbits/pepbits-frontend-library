@@ -6,7 +6,7 @@ import { test, expect, vi, afterEach } from "vitest";
 import {blankConsultation, type ConsultationView} from '../../domain/clinical-consultation';
 import {DEFAULT_PREFERENCES} from '@pepbits/preferences';
 import { OPConsultationWorkspace } from "./workspace";
-const config = JSON.parse(readFileSync(process.cwd() + "/../../dummy-api/config/clinical-consultation/form.json", "utf8"));
+const config = JSON.parse(readFileSync(process.cwd() + "/../../mock-api/config/clinical-consultation/form.json", "utf8"));
 import type {ClinicalTemplateAdapter} from '../../adapters/clinical-templates';
 import type {ClinicalTriageAdapter} from '../../adapters/clinical-triage';
 afterEach(cleanup);

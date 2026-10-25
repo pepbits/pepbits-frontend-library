@@ -7,7 +7,7 @@ import {createRequire} from 'node:module';
 const require = createRequire(import.meta.url), base = process.env.SETTLE_BASE ?? 'http://localhost:3380', directApi = process.env.SETTLE_DIRECT_API;
 if (!['localhost', '127.0.0.1'].includes(new URL(base).hostname)) throw new Error('Local demo checks only');
 // The fixture sign-in is read from the unchanged API source and never printed or stored.
-const fixtureSource = readFileSync(new URL('../../../dummy-api/server.mjs', import.meta.url), 'utf8');
+const fixtureSource = readFileSync(new URL('../../../mock-api/server.mjs', import.meta.url), 'utf8');
 const credential = fixtureSource.match(/username:\s*"admin",\s*password:\s*"([^"]+)"/)[1];
 const browser = await chromium.launch({headless: true});
 const context = await browser.newContext({viewport: {width: 1440, height: 1000}});

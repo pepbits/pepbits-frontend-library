@@ -7,7 +7,7 @@
 //   - demo-apps/<name> is @pepbits-demo/<name>, private, and may use any layer's
 //     public exports, never another demo app.
 //   - Nothing reaches into another package's src/, out of its own folder with a
-//     relative path, or into the pre-restructure code (desktop-clients, dummy-api,
+//     relative path, or into the pre-restructure code (desktop-clients, mock-api,
 //     and package names that are not a layer, such as @pepbits/erp-screens).
 //   - mock-api imports nothing from the frontend.
 //

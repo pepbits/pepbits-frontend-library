@@ -13,7 +13,7 @@ Current architecture review: 11 September 2026. Delivery and verification status
 | Reusable screens | `packages/erp-screens` | Template engines, clinical workspaces, catalog examples, dedicated reference pages and record interactions |
 | UI primitives | `packages/ops-ui` | Controls, cards, tables, overlays, localization helpers and the generic presentation context |
 | Style tokens | `packages/tokens` | Semantic colors, fonts, radius and managed-table CSS |
-| Demo backend | `dummy-api` | Authenticated demo configuration/data contracts, preference storage and policy enforcement |
+| Demo backend | `mock-api` | Authenticated demo configuration/data contracts, preference storage and policy enforcement |
 
 Paths under `packages/` are relative to `desktop-clients/`. ops-ui does not import ERP or API clients. Consumers compose shared primitives and supply application behavior.
 

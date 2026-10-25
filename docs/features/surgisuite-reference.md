@@ -2,7 +2,7 @@
 
 Select **SurgiSuite** in the shared header. The sidebar loads the eight original destinations: Theatre board, Schedule, Cases, Approvals, Patients, Inventory, Analytics and Masters & coding. Opening a case loads its original twelve-section workspace, preserving the actual case identifier across navigation and refresh.
 
-The imported source is `reference/frontend/surgisuite/surgisuite`. The frontend is `desktop-clients/packages/reference-surgisuite`; original Express services are under `dummy-api/surgisuite-source`. This is a separate Library demonstration module. Healthcare Enterprise application source, its patient registry and its inventory ledger are not replaced by this import.
+The imported source is `reference/frontend/surgisuite/surgisuite`. The frontend is `desktop-clients/packages/reference-surgisuite`; original Express services are under `mock-api/surgisuite-source`. This is a separate Library demonstration module. Healthcare Enterprise application source, its patient registry and its inventory ledger are not replaced by this import.
 
 ## User flow
 

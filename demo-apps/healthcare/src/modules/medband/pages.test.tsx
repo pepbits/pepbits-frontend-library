@@ -1,6 +1,6 @@
 import {readFileSync} from "node:fs";
 import {resolve} from "node:path";
-const canonicalEnglish=new Set(Object.values(JSON.parse(readFileSync(resolve(process.cwd(),"../../dummy-api/config/localization/shared/en.json"),"utf8")).messages));
+const canonicalEnglish=new Set(Object.values(JSON.parse(readFileSync(resolve(process.cwd(),"../../mock-api/config/localization/shared/en.json"),"utf8")).messages));
 import {CORE_CATALOG} from "@pepbits/i18n";
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import React from "react";

@@ -9,8 +9,8 @@ import {type TriageView, type TriageAssessment} from '../../domain/clinical-tria
 import { ClinicalTriageEditor } from "./editor";
 import { ClinicalTriageWorkspace } from "./workspace";
 import type {ClinicalTemplateAdapter} from '../../adapters/clinical-templates';
-const config = JSON.parse(readFileSync(process.cwd() + "/../../dummy-api/config/clinical-triage/form.json", "utf8"));
-const fixtures = JSON.parse(readFileSync(process.cwd() + "/../../dummy-api/config/clinical-templates/patients.json", "utf8"));
+const config = JSON.parse(readFileSync(process.cwd() + "/../../mock-api/config/clinical-triage/form.json", "utf8"));
+const fixtures = JSON.parse(readFileSync(process.cwd() + "/../../mock-api/config/clinical-templates/patients.json", "utf8"));
 afterEach(cleanup);
 const record: TriageAssessment = {
   id: "new",

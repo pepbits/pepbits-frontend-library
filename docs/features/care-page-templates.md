@@ -24,7 +24,7 @@ The host resolves effective preferences and tenant locks. PresentationProvider a
 
 ## API and storage
 
-`createCareAdapter(request, productId)` calls authenticated `POST /care-pages`. Inject that adapter, `pageId`, authenticated `scopeKey` and `PreferenceHost` into the exported `CareWorkspace`. The page configuration lives in `dummy-api/config/care-pages/pages.json`; initial patient and bed records are CSV files in the same directory. Mutations write atomic CSV snapshots under the configured record-data directory.
+`createCareAdapter(request, productId)` calls authenticated `POST /care-pages`. Inject that adapter, `pageId`, authenticated `scopeKey` and `PreferenceHost` into the exported `CareWorkspace`. The page configuration lives in `mock-api/config/care-pages/pages.json`; initial patient and bed records are CSV files in the same directory. Mutations write atomic CSV snapshots under the configured record-data directory.
 
 Commands: load, create, save, step, open, reserve, order, removeOrder, admit, sign, complete and addendum. Server authorization checks page navigation access. Saved records are scoped by tenant, application, owner and page; bed reservations are shared within the tenant/application. Operation IDs deduplicate retries; record versions reject stale writes. This is an isolated synthetic template store, not an enterprise patient master or interoperability service.
 

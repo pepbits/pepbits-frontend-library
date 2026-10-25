@@ -1,7 +1,7 @@
 /**
  * Speech gateway: a minimal WebSocket server and a provider router.
  *
- * WHY THIS FILE EXISTS AT ALL. dummy-api is zero-dependency by design and Node
+ * WHY THIS FILE EXISTS AT ALL. mock-api is zero-dependency by design and Node
  * has no WebSocket *server* — only a client. Rather than take a dependency for a
  * demo, the ~130 lines below implement the handshake and framing this protocol
  * needs: text, binary, close and ping. It is not a general WebSocket library and

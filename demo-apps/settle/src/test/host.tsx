@@ -9,7 +9,7 @@ import {SettleAppPage} from '../renderer';
 import {hrefFor, targetFromPath, type SettleTarget} from '../navigation';
 import {mockSettle} from './mock-settle';
 
-const catalog = (language: string) => JSON.parse(readFileSync(process.cwd() + '/../../dummy-api/config/localization/shared/' + language + '.json', 'utf8')).messages as Record<string, string>;
+const catalog = (language: string) => JSON.parse(readFileSync(process.cwd() + '/../../mock-api/config/localization/shared/' + language + '.json', 'utf8')).messages as Record<string, string>;
 export const sharedMessages = catalog('en');
 
 export const fixtureSession: SessionValue = {status: 'authenticated', user: {id: 'fixture-admin', name: 'Fictional Administrator', email: 'fixture@example.test', initials: 'FA', title: 'Administrator', role: 'admin', branch: 'head-office', tenantId: 'fictional-tenant'}, login: async () => null, logout: async () => {}};

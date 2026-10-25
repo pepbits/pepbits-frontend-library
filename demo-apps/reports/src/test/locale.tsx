@@ -4,7 +4,7 @@ import {createTranslator, directionOf, type LanguageKey} from '@pepbits/i18n';
 import {LocalizationProvider} from '@pepbits/i18n/react';
 
 /** Canonical demo API catalogs (read-only). Tests use the same messages the running app loads from /localization. */
-export const catalog = (language: string) => JSON.parse(readFileSync(process.cwd() + `/../../dummy-api/config/localization/shared/${language}.json`, 'utf8')).messages as Record<string, string>;
+export const catalog = (language: string) => JSON.parse(readFileSync(process.cwd() + `/../../mock-api/config/localization/shared/${language}.json`, 'utf8')).messages as Record<string, string>;
 export const sharedMessages = catalog('en');
 export function LocaleWrapper({children, language = 'en'}: {children: ReactNode; language?: LanguageKey}) {
   const t = createTranslator({language, catalogs: {en: sharedMessages, [language]: catalog(language)}});

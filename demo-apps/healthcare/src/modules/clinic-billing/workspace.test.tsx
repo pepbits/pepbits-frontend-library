@@ -8,7 +8,7 @@ import {type ClinicBillingView} from '../../domain/clinic-billing';
 import type {ClinicBillingAdapter} from '../../adapters/clinic-billing';
 import type {ClinicalTemplateAdapter} from '../../adapters/clinical-templates';
 import { BillingClinicWorkspace } from "./workspace";
-const fixtures = JSON.parse(readFileSync(process.cwd() + "/../../dummy-api/config/clinical-templates/patients.json", "utf8"));
+const fixtures = JSON.parse(readFileSync(process.cwd() + "/../../mock-api/config/clinical-templates/patients.json", "utf8"));
 afterEach(cleanup);
 const view: ClinicBillingView = {
   patient: fixtures[0],

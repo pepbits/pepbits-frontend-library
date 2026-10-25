@@ -8,7 +8,7 @@ import {type CareView, type CareRecord} from '../../domain/care-pages';
 import { CareWorkspace } from "./workspace";
 const definitions = JSON.parse(
   readFileSync(
-    process.cwd() + "/../../dummy-api/config/care-pages/pages.json",
+    process.cwd() + "/../../mock-api/config/care-pages/pages.json",
     "utf8",
   ),
 );

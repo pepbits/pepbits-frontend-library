@@ -18,8 +18,8 @@ Responses support gzip and private ETag revalidation.
 Run with the repository-supported Node version:
 
 ```sh
-node dummy-api/check-application-config.mjs --strict-navigation
-node --test dummy-api/application-config.test.mjs dummy-api/application-config-http.test.mjs
+node mock-api/check-application-config.mjs --strict-navigation
+node --test mock-api/application-config.test.mjs mock-api/application-config-http.test.mjs
 ```
 
 `NEXORA_CONFIG_DIR` can point to an isolated copy of this entire configuration tree.

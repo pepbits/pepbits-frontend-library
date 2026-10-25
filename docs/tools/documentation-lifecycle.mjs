@@ -7,12 +7,12 @@ import {createHash} from 'node:crypto';
 import {PAGE_REGISTRY} from '../../desktop-clients/packages/erp-config/src/navigation.ts';
 import {DOCUMENTATION_RELEASE} from '../../desktop-clients/packages/erp-config/src/documentation.ts';
 import {assessReceipt} from './documentation-contracts.mjs';
-import {digest,guideText,translationRevision} from '../../dummy-api/documentation-revisions.mjs';
-const root=resolve(fileURLToPath(new URL('../..',import.meta.url))), config=resolve(root,'dummy-api/config/documentation');
+import {digest,guideText,translationRevision} from '../../mock-api/documentation-revisions.mjs';
+const root=resolve(fileURLToPath(new URL('../..',import.meta.url))), config=resolve(root,'mock-api/config/documentation');
 const read=p=>JSON.parse(readFileSync(p,'utf8')), write=(p,v)=>writeFileSync(p,JSON.stringify(v,null,2)+'\n');
 const manifestPath=resolve(root,'docs/documentation/impact.json');
 const content=read(resolve(config,'releases.json')), release=content.releases.find(r=>r.id===DOCUMENTATION_RELEASE);
-const locales=Object.fromEntries(['en','ar','hi','ml'].map(l=>[l,read(resolve(root,`dummy-api/config/localization/shared/${l}.json`)).messages]));
+const locales=Object.fromEntries(['en','ar','hi','ml'].map(l=>[l,read(resolve(root,`mock-api/config/localization/shared/${l}.json`)).messages]));
 const translations=read(resolve(config,'translations.json'));
 const reverse=new Map(Object.entries(locales.en).map(([k,v])=>[v,k]));
 const translate=l=>text=>l==='en'?text:translations[l]?.[text]??locales[l][text]??locales[l][reverse.get(text)]??text;
@@ -36,12 +36,12 @@ function affected(path){
  if(path.includes('device-integrations')||path.includes('device-integration-store')||path.includes('scanner-input'))return ['device-integrations', 'scanner-workbench', 'device-automation'];
 
  if(path.includes('label-printing'))return ['barcode-labels', 'specimen-labels', 'patient-wristbands', 'qr-library', 'payment-qr', 'batch-label-printing', 'printer-profiles'];
- if(path==='dummy-api/op-registration-store.ts'||path.includes('/op-registration/')||path.endsWith('/op-registration.ts'))return ['op-registration'];
+ if(path==='mock-api/op-registration-store.ts'||path.includes('/op-registration/')||path.endsWith('/op-registration.ts'))return ['op-registration'];
  for(const [family,pages] of Object.entries(families))if(path.includes(`/erp-screens/src/${family}/`))return pages;
  // Shared UI, adapters, configuration and unmapped renderers conservatively affect every page.
  return ["*"];
 }
-function sources(){return [...walk(resolve(root,'dummy-api/config/dcp-designer')).map(p=>relative(root,p)),...walk(resolve(root,'dummy-api/config/identity-devices')).map(p=>relative(root,p)),...walk(resolve(root,'dummy-api/config/device-integrations')).map(p=>relative(root,p)),...walk(resolve(root,'dummy-api/config/label-printing')).map(p=>relative(root,p)),'dummy-api/op-registration-store.ts',...walk(resolve(root,'dummy-api/config/op-registration')).map(p=>relative(root,p)),...['tokens','erp-screens','erp-shell','erp-config','erp-data','ops-ui','platform-ports','reference-host','reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite','reference-keystone-core','reference-diagnostics','reference-lis1','reference-lis2','reference-ris1','reference-teleconsult','reference-quality','reference-pharmacy','reference-tenant-admin','reference-medband','reference-rcm','reference-surgisuite','reference-medslot'].flatMap(pkg=>walk(resolve(root,`desktop-clients/packages/${pkg}/src`))).filter(p=>/\.(tsx?|css)$/.test(p)&&!/(\.test\.|\/locales\/|messages.en.ts)/.test(p)).map(p=>relative(root,p)), ...['web','desktop'].flatMap(app=>walk(resolve(root,`desktop-clients/apps/${app}/src`))).filter(p=>/\.(tsx?|css)$/.test(p)&&!p.includes('.test.')).map(p=>relative(root,p)), ...readdirSync(resolve(root,'dummy-api')).filter(p=>p.endsWith('.mjs')&&!p.includes('.test.')).map(p=>'dummy-api/'+p), ...['en','ar','hi','ml'].map(l=>`dummy-api/config/localization/shared/${l}.json`), ...walk(resolve(root,'dummy-api/config/navigation')).map(p=>relative(root,p))];}
+function sources(){return [...walk(resolve(root,'mock-api/config/dcp-designer')).map(p=>relative(root,p)),...walk(resolve(root,'mock-api/config/identity-devices')).map(p=>relative(root,p)),...walk(resolve(root,'mock-api/config/device-integrations')).map(p=>relative(root,p)),...walk(resolve(root,'mock-api/config/label-printing')).map(p=>relative(root,p)),'mock-api/op-registration-store.ts',...walk(resolve(root,'mock-api/config/op-registration')).map(p=>relative(root,p)),...['tokens','erp-screens','erp-shell','erp-config','erp-data','ops-ui','platform-ports','reference-host','reference-reports','reference-erp1','reference-erp2','reference-school','reference-healthcare-suite','reference-keystone-core','reference-diagnostics','reference-lis1','reference-lis2','reference-ris1','reference-teleconsult','reference-quality','reference-pharmacy','reference-tenant-admin','reference-medband','reference-rcm','reference-surgisuite','reference-medslot'].flatMap(pkg=>walk(resolve(root,`desktop-clients/packages/${pkg}/src`))).filter(p=>/\.(tsx?|css)$/.test(p)&&!/(\.test\.|\/locales\/|messages.en.ts)/.test(p)).map(p=>relative(root,p)), ...['web','desktop'].flatMap(app=>walk(resolve(root,`desktop-clients/apps/${app}/src`))).filter(p=>/\.(tsx?|css)$/.test(p)&&!p.includes('.test.')).map(p=>relative(root,p)), ...readdirSync(resolve(root,'mock-api')).filter(p=>p.endsWith('.mjs')&&!p.includes('.test.')).map(p=>'mock-api/'+p), ...['en','ar','hi','ml'].map(l=>`mock-api/config/localization/shared/${l}.json`), ...walk(resolve(root,'mock-api/config/navigation')).map(p=>relative(root,p))];}
 const hashFile=p=>createHash('sha256').update(readFileSync(resolve(root,p))).digest('hex');
 const command=process.argv[2]??'check';
 if(command==='snapshot'){
@@ -102,7 +102,7 @@ if(command==='snapshot'){
  for(const p of Object.keys(manifest.receipts))if(!existsSync(resolve(root,p))&&(!manifest.receipts[p].removed||!manifest.receipts[p].reason?.trim()))errors.push(`${p}: removed source requires impact review`);
  const base=process.env.DOCS_BASE_SHA||'HEAD';
  if(!/^0+$/.test(base)){
-  const prior=JSON.parse(execFileSync('git',['show',`${base}:dummy-api/config/documentation/releases.json`],{cwd:root,encoding:'utf8',maxBuffer:128*1024*1024}));
+  const prior=JSON.parse(execFileSync('git',['show',`${base}:mock-api/config/documentation/releases.json`],{cwd:root,encoding:'utf8',maxBuffer:128*1024*1024}));
   for(const old of prior.releases)if(digest(old)!==digest(content.releases.find(r=>r.id===old.id)))errors.push(`${old.id}: historical release changed; create a new snapshot`);
  }
  const revisions=existsSync(revisionsPath)?read(revisionsPath):{};

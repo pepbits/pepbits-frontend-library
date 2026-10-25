@@ -9,11 +9,11 @@ From the repository root:
 ```sh
 npm install
 # In another terminal, with Node 24 and the API runtime dependencies available:
-node dummy-api/server.mjs
+node mock-api/server.mjs
 NEXT_PUBLIC_API_URL=http://localhost:3330 npm run dev -w @pepbits-demo/tenant-admin
 ```
 
-Use the actual API port/origin from the [API guide](../../dummy-api/README.md). Dev/start use port **3360**. Sign in with a Tenant Admin role account from the local API fixtures (`tenant-config-admin`, `-editor`, `-approver`, `-viewer` or an enterprise administrator); credentials are deliberately absent from this guide and from evidence. The optional same-origin proxy accepts these settings in an ignored app `.env.local`:
+Use the actual API port/origin from the [API guide](../../mock-api/README.md). Dev/start use port **3360**. Sign in with a Tenant Admin role account from the local API fixtures (`tenant-config-admin`, `-editor`, `-approver`, `-viewer` or an enterprise administrator); credentials are deliberately absent from this guide and from evidence. The optional same-origin proxy accepts these settings in an ignored app `.env.local`:
 
 ```dotenv
 NEXT_PUBLIC_API_URL=/api
@@ -29,7 +29,7 @@ npm test -w @pepbits-demo/tenant-admin
 npm run test:integration -w @pepbits-demo/tenant-admin
 ```
 
-Build before integration. The shared launcher (`tooling/scripts/run-demo-integration.mjs`) starts one demo API, one production Next server and Chromium on free loopback ports with temporary API storage, and stops its own process groups on success, failure, cancellation or deadline. Set `TENANT_ADMIN_API_NODE` to a Node 24 executable. If generated API runtimes are missing, `TENANT_ADMIN_RUNTIME_ARTIFACTS` may name a source-identical existing `dummy-api` checkout: every tracked API source is compared before reuse and runtime hashes are recorded. This is not an API rebuild. Optional receipts: `TENANT_ADMIN_RESULT`, `TENANT_ADMIN_IDENTITY`, `TENANT_ADMIN_SCREENSHOTS_DIR`; cancellation/deadline: `TENANT_ADMIN_STOP_FILE`, `TENANT_ADMIN_TIMEOUT_MS`; build output: `TENANT_ADMIN_BUILD_DIR`. `TENANT_ADMIN_CAPTURE=<file>` additionally writes the API responses used as frozen fixtures by the mocked component tests (`src/test/api.json`), before any workflow changes data. On this machine Chromium needs `LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu`. Keep at most one Next server, one API and one Vitest tree running.
+Build before integration. The shared launcher (`tooling/scripts/run-demo-integration.mjs`) starts one demo API, one production Next server and Chromium on free loopback ports with temporary API storage, and stops its own process groups on success, failure, cancellation or deadline. Set `TENANT_ADMIN_API_NODE` to a Node 24 executable. If generated API runtimes are missing, `TENANT_ADMIN_RUNTIME_ARTIFACTS` may name a source-identical existing `mock-api` checkout: every tracked API source is compared before reuse and runtime hashes are recorded. This is not an API rebuild. Optional receipts: `TENANT_ADMIN_RESULT`, `TENANT_ADMIN_IDENTITY`, `TENANT_ADMIN_SCREENSHOTS_DIR`; cancellation/deadline: `TENANT_ADMIN_STOP_FILE`, `TENANT_ADMIN_TIMEOUT_MS`; build output: `TENANT_ADMIN_BUILD_DIR`. `TENANT_ADMIN_CAPTURE=<file>` additionally writes the API responses used as frozen fixtures by the mocked component tests (`src/test/api.json`), before any workflow changes data. On this machine Chromium needs `LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu`. Keep at most one Next server, one API and one Vitest tree running.
 
 ## Structure and routes
 

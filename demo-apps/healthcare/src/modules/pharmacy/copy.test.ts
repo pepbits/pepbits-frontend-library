@@ -28,7 +28,7 @@ describe("pharmacy-copy.json", () => {
 
   it("preserves canonical placeholders and explicitly records inherited catalog gaps", () => {
     for(const language of ['en','ar','hi','ml']) {
-      const catalog=JSON.parse(readFileSync(resolve(process.cwd(), '../../dummy-api/config/localization/shared/'+language+'.json'),'utf8')).messages;
+      const catalog=JSON.parse(readFileSync(resolve(process.cwd(), '../../mock-api/config/localization/shared/'+language+'.json'),'utf8')).messages;
       expect(Object.entries(copy).filter(([,key])=>!catalog[key]).map(([literal])=>literal)).toEqual(['Configuration', 'Pharmacy, people, appearance']);
       for(const [literal,key] of Object.entries(copy)) {
         if(!catalog[key])continue;

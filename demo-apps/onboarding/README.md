@@ -9,11 +9,11 @@ From the repository root (on this shared machine, wrap builds and the whole API/
 ```sh
 npm install
 # Start the unchanged API using its documented Node 24/runtime environment.
-node dummy-api/server.mjs
+node mock-api/server.mjs
 NEXT_PUBLIC_API_URL=http://localhost:3330 npm run dev -w @pepbits-demo/onboarding
 ```
 
-Use the actual API port/origin from the [API guide](../../dummy-api/README.md). Dev/start use port **3370**. Sign in through the shared login screen with a local fixture account from the API fixtures (credentials are not repeated here). The optional same-origin proxy accepts these settings in an ignored app `.env.local`:
+Use the actual API port/origin from the [API guide](../../mock-api/README.md). Dev/start use port **3370**. Sign in through the shared login screen with a local fixture account from the API fixtures (credentials are not repeated here). The optional same-origin proxy accepts these settings in an ignored app `.env.local`:
 
 ```dotenv
 NEXT_PUBLIC_API_URL=/api
@@ -54,7 +54,7 @@ The public `ApplicationProviders` chain is SessionProvider â†’ PreferenceHost â†
 
 **Preferences.** The Orvia design vocabulary (`src/modules/orvia/theme.css`) keeps the source utility names but maps them to the effective host theme: neutrals to the semantic surface/text/border tokens, the scrub brand family to the primary family, the dark brand rails to the sidebar tokens, radii to `--radius`, type to `--font-ui` and the form scale. Only the mint trace accent on the dark rails is fixed brand ink. The selected language and direction apply (logical spacing, mirrored arrow keys and icons; addresses, dial codes and standard names stay left-to-right), times and counts use the effective formatters, and the effective reduced-motion preference disables animations and smooth scrolling (the OS setting is honoured too). There are no custom keyboard shortcuts; arrow keys in radio groups/tabs and Escape on the mobile menu are standard widget behaviour. Table, page-size, export and record-navigation preferences do not apply to these pages.
 
-**Localization.** Copy is wrapped for the runtime catalog. The protected canonical catalogs (`dummy-api/config/localization`) contain no Orvia copy, so only generic strings that already exist there (for example Sign in, Back, Continue, Email) are translated; the rest stays readable English in every language until the backend catalog is extended. Automated Arabic checks are not native-speaker review.
+**Localization.** Copy is wrapped for the runtime catalog. The protected canonical catalogs (`mock-api/config/localization`) contain no Orvia copy, so only generic strings that already exist there (for example Sign in, Back, Continue, Email) are translated; the rest stays readable English in every language until the backend catalog is extended. Automated Arabic checks are not native-speaker review.
 
 ## Completion boundary
 

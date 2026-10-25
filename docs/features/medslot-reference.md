@@ -2,7 +2,7 @@
 
 Select **MedSlot** in the Library header. Its original twelve sidebar destinations are Dashboard, Book appointment, Calendar, Appointments, Patients, Resources & schedules, Services, Departments, Holidays, Notifications, Users & settings and Audit log. Patient and resource details retain their own route identity and survive refresh.
 
-The read-only source is `reference/frontend/sheduler/medslot`. The imported frontend lives in `desktop-clients/packages/reference-medslot`, and its adapted original backend in `dummy-api/medslot-source`. Healthcare Enterprise and its production records are separate consumers and are not replaced by this import.
+The read-only source is `reference/frontend/sheduler/medslot`. The imported frontend lives in `desktop-clients/packages/reference-medslot`, and its adapted original backend in `mock-api/medslot-source`. Healthcare Enterprise and its production records are separate consumers and are not replaced by this import.
 
 ## User flow
 

@@ -9,11 +9,11 @@ From the repository root:
 ```sh
 npm install
 # Start the unchanged API using its documented Node 24/runtime environment.
-node dummy-api/server.mjs
+node mock-api/server.mjs
 NEXT_PUBLIC_API_URL=http://localhost:3330 npm run dev -w @pepbits-demo/reports
 ```
 
-Use the actual API port/origin from the [API guide](../../dummy-api/README.md). Dev/start use port **3350**. Sign in with a local fixture account from the API fixtures (credentials are not repeated here); the administrator, finance-manager and operations-analyst fixtures can open Reports. The optional same-origin proxy accepts these settings in an ignored app `.env.local`:
+Use the actual API port/origin from the [API guide](../../mock-api/README.md). Dev/start use port **3350**. Sign in with a local fixture account from the API fixtures (credentials are not repeated here); the administrator, finance-manager and operations-analyst fixtures can open Reports. The optional same-origin proxy accepts these settings in an ignored app `.env.local`:
 
 ```dotenv
 NEXT_PUBLIC_API_URL=/api

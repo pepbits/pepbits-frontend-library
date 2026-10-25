@@ -22,7 +22,7 @@ describe("rcm-copy.json", () => {
   });
 
   it("carries the API registry display labels (pages, statuses, fields, actions, branches) from the generated backend registry, and no record data", async () => {
-    const source=readFileSync(resolve(process.cwd(), '../../dummy-api/rcm-source', 'src', 'registry.ts'),'utf8');
+    const source=readFileSync(resolve(process.cwd(), '../../mock-api/rcm-source', 'src', 'registry.ts'),'utf8');
     const output=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
     const context={exports:{} as {RESOURCES:unknown[];CATEGORIES:unknown[]}};runInNewContext(output,context);
     const {RESOURCES,CATEGORIES}=context.exports;
@@ -41,6 +41,6 @@ describe("rcm-copy.json", () => {
   });
 
   it("is current with the sources", () => {
-    for(const language of ['en','ar','hi','ml']) {const catalog=JSON.parse(readFileSync(resolve(process.cwd(), '../../dummy-api/config/localization/shared/'+language+'.json'),'utf8')).messages;for(const [literal,key] of Object.entries(copy)){expect(catalog[key],literal).toBeTruthy();expect([...catalog[key].matchAll(/\{value\d+\}/g)].map(m=>m[0]!).sort()).toEqual([...literal.matchAll(/\{value\d+\}/g)].map(m=>m[0]!).sort());}}
+    for(const language of ['en','ar','hi','ml']) {const catalog=JSON.parse(readFileSync(resolve(process.cwd(), '../../mock-api/config/localization/shared/'+language+'.json'),'utf8')).messages;for(const [literal,key] of Object.entries(copy)){expect(catalog[key],literal).toBeTruthy();expect([...catalog[key].matchAll(/\{value\d+\}/g)].map(m=>m[0]!).sort()).toEqual([...literal.matchAll(/\{value\d+\}/g)].map(m=>m[0]!).sort());}}
   }, 60_000);
 });

@@ -260,7 +260,7 @@ Demo apps are never published, so products cannot depend on them. Product source
 | `desktop-clients/apps/desktop` | `demo-apps/desktop` (phase 6e-7: Vite web host on ApplicationProviders' opt-in workspace, ported Tauri window port and copied `src-tauri/`; [source map](../../demo-apps/desktop/source-mapping.md)) |
 | `desktop-clients/scripts` | `tooling/scripts` (`stamp-api.mjs` not carried by the desktop demo: it records a deployment's API) |
 | `desktop-clients/e2e` | `e2e/` |
-| `dummy-api` | `mock-api` |
+| `dummy-api` | `mock-api` (moved 25 October 2026; see [Mock API rename status](#mock-api-rename-status)) |
 | `demo-pages/*.html` and previews | `docs/design-references/` |
 | `demo-pages/orvia-health-onboarding` | `demo-apps/onboarding` (phase 6e-3: all four pages and not-found ported; [source map](../../demo-apps/onboarding/source-mapping.md); source unchanged) |
 | `source/settle`, `source/caregrid`, `source/allyvora-patients` | `demo-apps/settle`, `demo-apps/caregrid`, `demo-apps/allyvora-patients` |
@@ -614,3 +614,7 @@ Generic additions are small and additive: `@pepbits/platform/event-stream` (Serv
 Boundaries: fictional data only; write controls are presentation gating because the unchanged scheduling API has no authorization (PREF-08); CareGrid copy is English inside the translated shell until canonical catalog keys are authored; no source pixel comparison, durable drafts, publication, commit, push or deployment.
 
 Phase 6e-5 local production build and real-HTTP acceptance passed: 25 workflows and 18 Chromium axe routes, with zero page/console/HTTP errors or axe violations. The delivery record preserves the earlier lock-limited attempt and identifies the current source, regression checks, incomplete axe results and service cleanup. Full CI was reported green before this follow-up and was not rerun for its fixes.
+
+### Mock API rename status
+
+The demo API folder `dummy-api/` moved to `mock-api/` on 25 October 2026 (owner decision: rename with a compatibility link). A committed symbolic link `dummy-api → mock-api` keeps `desktop-clients/`, `.github/workflows/ci.yml`, `Jenkinsfile` and `run.sh`, which still use the old path, working without changes; it is removed with `desktop-clients/` in phase 8. Every reference in `demo-apps/`, `tooling/`, `packages/` and current documentation now uses `mock-api`; historical release records and their evidence keep the original path. See the [rename record](../releases/unreleased/mock-api-rename-2026-10-25.md).

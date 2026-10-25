@@ -1,6 +1,6 @@
 # Tenant Admin source mapping
 
-Phase 6e-2, base `5bbb13027d137ac31594ca9a1a3d47aac46653c9`. The original `desktop-clients/packages/reference-tenant-admin` (last changed in `22a994c14523aa8ff2c0dc2f214257f2157a1c24`) is a read-only reference; nothing under `desktop-clients/` or `dummy-api/` is edited or imported. [App guide](README.md), [feature contract](../../docs/features/tenant-admin-demo.md) and [delivery record](../../docs/releases/unreleased/restructure-phase-6e-2-2026-10-24.md) state verification and limits.
+Phase 6e-2, base `5bbb13027d137ac31594ca9a1a3d47aac46653c9`. The original `desktop-clients/packages/reference-tenant-admin` (last changed in `22a994c14523aa8ff2c0dc2f214257f2157a1c24`) is a read-only reference; nothing under `desktop-clients/` or `mock-api/` is edited or imported. [App guide](README.md), [feature contract](../../docs/features/tenant-admin-demo.md) and [delivery record](../../docs/releases/unreleased/restructure-phase-6e-2-2026-10-24.md) state verification and limits.
 
 | Original | Destination and treatment |
 | --- | --- |

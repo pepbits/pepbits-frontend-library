@@ -8,7 +8,7 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url),base=process.env.ERP_BASE??'http://localhost:3320';
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw new Error('Local demo checks only');
-const fixtureSource=readFileSync(new URL('../../../dummy-api/server.mjs',import.meta.url),'utf8');
+const fixtureSource=readFileSync(new URL('../../../mock-api/server.mjs',import.meta.url),'utf8');
 const credential=fixtureSource.match(/username:\s*"admin",\s*password:\s*"([^"]+)"/)[1];
 const browser=await chromium.launch({headless:true}),page=await browser.newPage({viewport:{width:1440,height:1000}}),flows=[],checks=[],panelChecks=[],visualChecks=[],catalogueStyles=[],errors=[],httpErrors=[],consoleErrors=[];
 page.setDefaultTimeout(30000);page.setDefaultNavigationTimeout(60000);let current='login';

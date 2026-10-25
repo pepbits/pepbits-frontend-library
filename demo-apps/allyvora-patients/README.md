@@ -6,14 +6,14 @@ Private `@pepbits-demo/allyvora-patients`, using Next.js 16.3.3, React 19.2 and 
 
 Two unchanged APIs are involved:
 
-- the shared demo API (`dummy-api`, Node 24) for sign-in, preferences/tenant policy and runtime localization catalogs, as in the healthcare and ERP demos;
+- the shared demo API (`mock-api`, Node 24) for sign-in, preferences/tenant policy and runtime localization catalogs, as in the healthcare and ERP demos;
 - AllyVora's own Express + SQLite API (`source/allyvora-patients/backend`) for patients, reference lists, MRN numbering and the organisation form layout.
 
 ```sh
 npm install                                    # repository root
 (cd source/allyvora-patients && npm ci -w backend && cd backend && node scripts/build.mjs)
 PORT=4000 DB_PATH=/tmp/allyvora-demo.db node source/allyvora-patients/backend/dist/server.js
-node dummy-api/server.mjs                      # Node 24; see dummy-api/README.md
+node mock-api/server.mjs                      # Node 24; see mock-api/README.md
 ```
 
 Then create an ignored `demo-apps/allyvora-patients/.env.local`:
@@ -36,7 +36,7 @@ npm test -w @pepbits-demo/allyvora-patients
 npm run test:integration -w @pepbits-demo/allyvora-patients
 ```
 
-On this shared machine, run builds, CI, browser checks and the entire integration script through `flock /home/pepadmin/.cache/pepbits-heavy.lock <command>`. For manual development, hold the lock around one shell that owns both APIs and Next, and stop all three before releasing it; do not acquire the same lock separately for each server. The integration script automates this lifecycle. Build before integration. `scripts/integration.mjs` starts the shared demo API, builds and starts the unchanged AllyVora API with a temporary database, starts the production Next server and runs Chromium (`scripts/smoke.mjs`) on free loopback ports. It stops every service on success, failure, signal, stop file or deadline. Set `ALLYVORA_HOST_API_NODE` to a Node 24 executable; `ALLYVORA_RUNTIME_ARTIFACTS` may name a source-identical shared API checkout whose generated runtimes are reused after comparing every tracked `dummy-api` file. Optional receipts: `ALLYVORA_RESULT`, `ALLYVORA_IDENTITY`, `ALLYVORA_SCREENSHOT`; cancellation: `ALLYVORA_STOP_FILE`, `ALLYVORA_TIMEOUT_MS` (30-minute default); build output: `ALLYVORA_BUILD_DIR`. Chromium on this machine needs `LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu`.
+On this shared machine, run builds, CI, browser checks and the entire integration script through `flock /home/pepadmin/.cache/pepbits-heavy.lock <command>`. For manual development, hold the lock around one shell that owns both APIs and Next, and stop all three before releasing it; do not acquire the same lock separately for each server. The integration script automates this lifecycle. Build before integration. `scripts/integration.mjs` starts the shared demo API, builds and starts the unchanged AllyVora API with a temporary database, starts the production Next server and runs Chromium (`scripts/smoke.mjs`) on free loopback ports. It stops every service on success, failure, signal, stop file or deadline. Set `ALLYVORA_HOST_API_NODE` to a Node 24 executable; `ALLYVORA_RUNTIME_ARTIFACTS` may name a source-identical shared API checkout whose generated runtimes are reused after comparing every tracked `mock-api` file. Optional receipts: `ALLYVORA_RESULT`, `ALLYVORA_IDENTITY`, `ALLYVORA_SCREENSHOT`; cancellation: `ALLYVORA_STOP_FILE`, `ALLYVORA_TIMEOUT_MS` (30-minute default); build output: `ALLYVORA_BUILD_DIR`. Chromium on this machine needs `LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu`.
 
 ## Structure and routes
 
