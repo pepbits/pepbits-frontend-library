@@ -17,6 +17,8 @@ import {Panel,RecordSupport,RecordDocumentSelection,ProfileSummary,ProfileChange
 import {Textarea} from '@pepbits/ui';
 import type {Field,PageDef,Row} from './types';
 import type {ErpTarget} from '../../navigation';
+import {TransactionDocument} from './transaction-document';
+import {isTransactionDocument} from './transaction-document-model';
 export const defaultsFor=(fields:Field[])=>Object.fromEntries(fields.flatMap<[string,unknown]>(f=>f.type==='status'&&f.options?.length?[[f.key,f.options[0]]]:f.type==='boolean'?[[f.key,false]]:[]));
 export function RecordEditor({def,target,onClose,onOpen,onSaved}:{def:PageDef;target:ErpTarget;onClose:()=>void;onOpen:(target:ErpTarget)=>void;onSaved:(row:Row)=>void}){
  const creating=target.mode==='new',params=new URLSearchParams(target.query),copy=creating?params.get('copy'):null;
@@ -25,7 +27,8 @@ export function RecordEditor({def,target,onClose,onOpen,onSaved}:{def:PageDef;ta
  const initial=creating?{...defaultsFor(def.fields),...(def.template==='booking'?{date:localDay(),resource:def.resources?.[0]??'',start:'09:00',duration:30,type:def.fields.find(field=>field.key==='type')?.options?.[0]}:{}),...Object.fromEntries([...params].filter(([k])=>def.fields.some(f=>f.key===k))),...(def.template==='tree'?{parentId:params.get('parentId')||null,level:Number(params.get('level')||0)}:{}),...(copy?{...fetched.data,id:undefined,code:undefined,version:undefined}:{}),id:''} as Row:fetched.data!;
  // Case property acknowledgements update draft in place; keep other unsent panel inputs mounted.
  const recordVersionKey=def.template==='case'&&target.mode==='view'?null:initial.version;
- return <LoadedRecord key={JSON.stringify([target.pageId,target.recordId,target.mode,copy,recordVersionKey])} def={def} target={target} initial={initial} onClose={onClose} onOpen={onOpen} onSaved={row=>{fetched.setData(row);onSaved(row);}} onReload={()=>{fetched.setData(null);fetched.reload();}}/>;
+ const Editor=isTransactionDocument(def)?TransactionDocument:LoadedRecord;
+ return <Editor key={JSON.stringify([target.pageId,target.recordId,target.mode,copy,recordVersionKey])} def={def} target={target} initial={initial} onClose={onClose} onOpen={onOpen} onSaved={row=>{fetched.setData(row);onSaved(row);}} onReload={()=>{fetched.setData(null);fetched.reload();}}/>;
 }
 function LoadedRecord({def,target,initial,onClose,onOpen,onSaved,onReload}:{def:PageDef;target:ErpTarget;initial:Row;onClose:()=>void;onOpen:(target:ErpTarget)=>void;onSaved:(row:Row)=>void;onReload:()=>void}){
  const {variant}=useKeystone();

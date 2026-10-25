@@ -1,0 +1,60 @@
+/* Transaction-only composition from ERP1 DocumentTemplate and ERP2 DocRecord. */
+.erp-transaction-document {--fs-scale:var(--fs-form);--document-gap:12px;--document-pad:14px;--document-control:28px;min-width:0;}
+.erp-transaction-document[data-transaction-document="erp2"] {--document-gap:16px;--document-pad:16px;--document-control:32px;}
+.erp-transaction-document[data-density="compact"] {--document-pad:10px;--document-control:24px;}
+.erp-transaction-document[data-density="spacious"] {--document-pad:20px;--document-control:38px;}
+.erp-transaction-document [data-record-composition],.erp-transaction-document [data-record-aside] {gap:var(--document-gap);}
+.erp-transaction-document [data-record-page]>header {padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);gap:8px;}
+.erp-document-identity {display:flex;flex-direction:column;}
+.erp-document-identity strong {font-size:calc(16px * var(--fs-form,1));font-weight:600;letter-spacing:-.025em;}
+.erp-document-identity small {font-size:calc(12px * var(--fs-result,1));color:var(--text-muted);}
+.erp-document-status {display:flex;align-items:center;gap:20px;padding:14px 20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);}
+.erp-document-status ol {display:flex;align-items:center;flex:1;gap:8px;overflow:auto;font-size:calc(12px * var(--fs-form,1));}
+.erp-document-status li {display:flex;align-items:center;gap:6px;white-space:nowrap;color:var(--text-muted);}
+.erp-document-status li+li::before {content:"";width:20px;height:1px;background:var(--border);margin-inline:4px;}
+.erp-document-status li>span {display:grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--border);font-size:calc(11px * var(--fs-form,1));}
+.erp-document-status li[aria-current],.erp-document-status li[data-complete] {color:var(--primary-strong);}
+.erp-document-status li[aria-current]>span {border-color:var(--primary);background:var(--primary-soft);}
+.erp-document-status li[data-complete]>span {background:var(--primary-fill);color:var(--primary-contrast,#fff);border-color:var(--primary-fill);}
+.erp-document-status li[data-failed] {color:var(--danger-ink);}
+.erp-document-status>div {text-align:end;}
+.erp-document-status small,.erp-document-status strong {display:block;}
+.erp-document-status small {font-size:calc(11.5px * var(--fs-result,1));color:var(--text-muted);}
+.erp-document-status strong {font-size:calc(20px * var(--fs-result,1));font-weight:600;}
+.erp-transaction-document [data-clinical-section="document"] {border:0;background:transparent;box-shadow:none!important;overflow:visible;}
+.erp-transaction-document [data-clinical-section="document"]>div:first-child {display:none;}
+.erp-transaction-document [data-clinical-section="document"]>div:last-child {padding:0;}
+.erp-document-main {display:flex;flex-direction:column;min-width:0;gap:var(--document-gap);}
+.erp-document-main>[data-tabular-field-rows] {min-height:260px;}
+.erp-document-main [data-template-section]>div:first-child {display:none;}
+.erp-document-main [data-template-section]>div:last-child {padding:var(--document-pad);}
+.erp-document-main [data-template-section] label>span {font-size:calc(12px * var(--fs-form,1));font-weight:500;margin-bottom:4px;}
+.erp-document-main [data-template-section] input,.erp-document-main [data-template-section] select {height:var(--document-control);border-radius:var(--radius);font-size:calc(12.5px * var(--fs-form,1));font-weight:400;}
+.erp-document-main [data-template-section] .grid,.erp-document-field-grid {gap:10px 16px;grid-template-columns:minmax(0,1fr)!important;}
+.erp-document-header-values>h3 {padding:12px 20px;border-bottom:1px solid var(--border);font-size:calc(13px * var(--fs-form,1));font-weight:600;}
+.erp-document-field-grid {padding:var(--document-pad);}
+.erp-document-panel {font-size:calc(13px * var(--fs-result,1));min-width:0;}
+.erp-document-panel>h3 {font-size:calc(13px * var(--fs-form,1));font-weight:600;padding:var(--document-pad) var(--document-pad) 8px;}
+.erp-document-panel>div {padding:0 var(--document-pad) var(--document-pad);}
+.erp-document-panel textarea {border-radius:var(--radius);}
+.erp-document-totals {display:flex;flex-direction:column;gap:6px;}
+.erp-document-totals>div {display:flex;justify-content:space-between;gap:8px;}
+.erp-document-totals dt {color:var(--text-muted);}
+.erp-document-totals dd {font-variant-numeric:tabular-nums;}
+.erp-document-totals [data-total] {border-top:1px solid var(--border);padding-top:8px;align-items:baseline;}
+.erp-document-totals [data-total] dd {font-size:calc(20px * var(--fs-result,1));font-weight:600;letter-spacing:-.025em;}
+.erp-document-words {margin-top:8px;font-size:calc(12px * var(--fs-result,1));line-height:1.375;color:var(--text-muted);}
+.erp-document-balance {margin-top:12px;padding:8px 10px;border-radius:var(--radius);font-size:calc(12.5px * var(--fs-result,1));background:color-mix(in srgb,var(--danger) 10%,var(--surface));color:var(--danger-ink);}
+.erp-document-balance[data-balanced="true"] {background:color-mix(in srgb,var(--success) 10%,var(--surface));color:var(--success-ink);}
+.erp-document-files {font-size:calc(12px * var(--fs-result,1));}
+.erp-document-files summary {cursor:pointer;padding:8px;}
+@media(min-width:640px){.erp-document-main [data-template-section] .grid,.erp-document-field-grid {grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
+@media(min-width:1024px){.erp-document-main [data-template-section] .grid {grid-template-columns:repeat(3,minmax(0,1fr))!important;}}
+@media(min-width:1280px){.erp-document-main [data-template-section] .grid,.erp-document-field-grid {grid-template-columns:repeat(4,minmax(0,1fr))!important;}}
+
+.erp-transaction-document[data-document-kind="voucher"] .erp-document-totals [data-total] dd {font-size:calc(13px * var(--fs-result,1));}
+
+.erp-document-header-start,.erp-document-identity>div {display:flex;align-items:center;gap:8px;}
+.erp-document-header-start {gap:20px;flex-wrap:wrap;}
+.erp-transaction-document[data-transaction-document="erp1"] [data-record-page]>header>div:first-child {flex:1;}
+.erp-transaction-document[data-transaction-document="erp1"] .erp-document-status {border:0;padding:0;min-width:0;margin-inline:auto;}

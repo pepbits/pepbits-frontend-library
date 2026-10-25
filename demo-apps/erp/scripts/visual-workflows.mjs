@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
 import {join} from 'node:path';
+import {transactionVisualWorkflows} from './transaction-visual-workflows.mjs';
 
 /** Source dimensions are from the read-only JSX/CSS audit; this does not render the original app. */
-export async function visualWorkflows({page,visit,flows,visualChecks,capture}) {
+export async function visualWorkflows({page,visit,flows,visualChecks,capture,checks=[]}) {
+ await transactionVisualWorkflows({page,visit,flows,visualChecks,capture,checks});
  const measure=async(selector)=>page.locator(selector).first().evaluate(element=>{const css=getComputedStyle(element),rect=element.getBoundingClientRect();return {width:rect.width,height:rect.height,fontSize:parseFloat(css.fontSize),padding:css.padding,gap:css.gap,gridTemplateColumns:css.gridTemplateColumns,density:element.closest('[data-density]')?.getAttribute('data-density'),formScale:parseFloat(css.getPropertyValue('--fs-form'))||1,resultScale:parseFloat(css.getPropertyValue('--fs-result'))||1};});
  const close=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1,`geometry ${actual} differs from source ${expected}`);
  const receipt=(path,state,source,metrics)=>{visualChecks.push({path,state,source,metrics,result:'Selected source dimensions match; whole-destination differences remain in parity-status.md.'});flows.push({id:path+'-'+state,scope:'UI',result:'Computed-style comparison against original source CSS: '+state});};

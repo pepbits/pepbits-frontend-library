@@ -24,7 +24,7 @@ export async function personalWorkflows({page, visit, flows, checks, capture, sc
     await page.reload();if (variant === 'erp1') {await page.waitForFunction(() => document.querySelector('[data-erp-profile] [data-value=table]')?.getAttribute('aria-checked') === 'true');const back = page.getByRole('button', {name: 'Back', exact: true});if (await back.isVisible()) await back.click();}await page.locator('[data-erp-saved-views]').click();dialog = page.getByRole('dialog');
     await dialog.getByRole('button', {name: 'Apply Fictional personal customers', exact: true}).click();
     assert.equal(await page.getByRole('textbox', {name: 'Search', exact: true}).inputValue(), 'Fictional');
-    await page.locator('tbody tr').first().waitFor();assert.equal(await page.locator('thead th').count(), original - 1);
+    await page.locator('tbody tr').first().waitFor();await page.waitForFunction(expected => document.querySelectorAll('thead th').length === expected, original - 1);assert.equal(await page.locator('thead th').count(), original - 1);
     await page.locator('[data-erp-saved-views]').click();dialog = page.getByRole('dialog');
     await dialog.getByRole('textbox', {name: 'View name'}).fill('Fictional column set');saved = write('keystone.views.customers');await dialog.getByRole('button', {name: 'Save column set', exact: true}).click();response = await saved;assert.ok(response.ok());assert.equal((await response.json()).value.find(view => view.name === 'Fictional column set').snapshot.kind, 'columns');
     await dialog.getByRole('button', {name: 'Apply Fictional column set', exact: true}).click();await page.getByRole('button', {name: 'Reset filters', exact: true}).click();
