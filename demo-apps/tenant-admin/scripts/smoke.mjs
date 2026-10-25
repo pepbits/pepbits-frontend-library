@@ -8,8 +8,8 @@ import {join} from 'node:path';
  */
 const require=createRequire(import.meta.url),base=process.env.TENANT_ADMIN_BASE??'http://localhost:3360';
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw new Error('Local demo checks only');
-const fixtureSource=readFileSync(new URL('../../../dummy-api/server.mjs',import.meta.url),'utf8');
-// Access-reference fixture accounts use the role name as both username and password (see dummy-api/server.mjs).
+const fixtureSource=readFileSync(new URL('../../../mock-api/server.mjs',import.meta.url),'utf8');
+// Access-reference fixture accounts use the role name as both username and password (see mock-api/server.mjs).
 if(!/ACCOUNTS\.push\(\{username:role,password:role,/.test(fixtureSource))throw new Error('Access fixture account convention changed');
 const secretFor=role=>fixtureSource.includes("'"+role+"'")?role:null;
 const ADMIN='tenant-config-admin',APPROVER='tenant-config-approver',VIEWER='tenant-config-viewer';

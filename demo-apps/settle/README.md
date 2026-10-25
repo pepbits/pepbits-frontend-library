@@ -10,8 +10,8 @@ The app needs two unchanged APIs: the shared demo host API (sign-in, preferences
 
 ```sh
 npm install
-# Host API (see dummy-api/README.md), on a free port:
-PORT=3330 NEXORA_DATA_DIR=/tmp/settle-host-data node dummy-api/server.mjs
+# Host API (see mock-api/README.md), on a free port:
+PORT=3330 NEXORA_DATA_DIR=/tmp/settle-host-data node mock-api/server.mjs
 # Settle billing API, unchanged, per source/settle/README.md:
 (cd source/settle/backend && npm ci && PORT=4100 SETTLE_DATA_DIR=/tmp/settle-data npm start)
 ```

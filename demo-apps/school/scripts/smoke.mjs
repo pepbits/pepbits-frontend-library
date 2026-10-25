@@ -4,7 +4,7 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url),base=process.env.SCHOOL_BASE??'http://localhost:3340';
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw new Error('Local demo checks only');
-const fixtureSource=readFileSync(new URL('../../../dummy-api/server.mjs',import.meta.url),'utf8');
+const fixtureSource=readFileSync(new URL('../../../mock-api/server.mjs',import.meta.url),'utf8');
 const credential=fixtureSource.match(/username:\s*"admin",\s*password:\s*"([^"]+)"/)[1];
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1520,height:1100}}),flows=[],checks=[],errors=[],consoleErrors=[],httpErrors=[];
@@ -82,7 +82,7 @@ await page.locator('tbody tr').first().locator('td').nth(1).click();await page.l
  for(const role of ['teacher','student','parent','librarian','accountant']){await visit('/dashboard',role);await audit('/dashboard?role='+role);}
  current='/preferences';await page.goto(base+'/preferences');await page.getByRole('combobox',{name:'Column layout is saved'}).waitFor();await audit('/preferences');
  // Runtime catalogs and the serialized preference path are exercised through actual controls.
- const arabic=JSON.parse(readFileSync(new URL('../../../dummy-api/config/localization/shared/ar.json',import.meta.url),'utf8')).messages;
+ const arabic=JSON.parse(readFileSync(new URL('../../../mock-api/config/localization/shared/ar.json',import.meta.url),'utf8')).messages;
  await page.getByRole('tab',{name:'Language & help',exact:true}).click();await page.locator('select:has(option[value="ar"])').selectOption('ar');await page.waitForFunction(()=>document.documentElement.dir==='rtl');await visit('/dashboard','admin');await page.locator('header [data-tour=module]').getByText(arabic['reference-school.title'],{exact:true}).waitFor();await audit('/dashboard?role=admin&profile=ar');
  await page.goto(base+'/preferences');await page.getByRole('tab',{name:arabic['Language & help'],exact:true}).click();await page.locator('select:has(option[value="ar"])').selectOption('en');await page.waitForFunction(()=>document.documentElement.dir==='ltr');record('arabic-preferences','UI','Persist Arabic, reload the administrator dashboard with its canonical translated portal name and RTL shell, then restore English');
  // A restricted account cannot gain grants by changing role hints or module headers.

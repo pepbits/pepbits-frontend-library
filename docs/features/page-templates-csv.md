@@ -12,10 +12,10 @@ These pages use `createClinicalTemplateAdapter` and the authenticated `/clinical
 
 | File | Purpose |
 | --- | --- |
-| `dummy-api/config/clinical-templates/seed.csv` | Initial fictional records and all nine kinds of related 360 entries |
-| `dummy-api/data/clinical-templates.csv` | Default writable data file; created automatically |
-| `dummy-api/config/clinical-templates/metadata.json` | Form schema, lookup choices and provider configuration returned by the API |
-| `dummy-api/config/clinical-templates/patients.json` | Retained test fixture; the running store no longer reads it |
+| `mock-api/config/clinical-templates/seed.csv` | Initial fictional records and all nine kinds of related 360 entries |
+| `mock-api/data/clinical-templates.csv` | Default writable data file; created automatically |
+| `mock-api/config/clinical-templates/metadata.json` | Form schema, lookup choices and provider configuration returned by the API |
+| `mock-api/config/clinical-templates/patients.json` | Retained test fixture; the running store no longer reads it |
 
 `RECORD_DATA_DIR` overrides the writable directory; otherwise the API uses `NEXORA_DATA_DIR` or its default data directory. A new tenant/application receives a copy of the CSV seed once. Seed changes do not replace already saved data.
 

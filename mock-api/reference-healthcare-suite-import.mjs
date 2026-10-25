@@ -1,5 +1,5 @@
 // Reproduce the dependency-free source service port with Node 24. No source checkout is modified.
-// Usage: node dummy-api/reference-healthcare-suite-import.mjs /path/to/healthcare-suite/backend
+// Usage: node mock-api/reference-healthcare-suite-import.mjs /path/to/healthcare-suite/backend
 import {stripTypeScriptTypes} from 'node:module';
 import {readFileSync,writeFileSync,readdirSync,mkdirSync,copyFileSync} from 'node:fs';
 import {join,dirname} from 'node:path';

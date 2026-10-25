@@ -4,7 +4,7 @@ import type {SessionValue} from '@pepbits/platform/auth';
 import type {Request} from '../adapters/http';
 
 /* An in-memory stand-in for the unchanged demo API routes this app uses. Every value is fictional. */
-const catalog = (language: string) => JSON.parse(readFileSync(`${process.cwd()}/../../dummy-api/config/localization/shared/${language}.json`, 'utf8')).messages as Record<string, string>;
+const catalog = (language: string) => JSON.parse(readFileSync(`${process.cwd()}/../../mock-api/config/localization/shared/${language}.json`, 'utf8')).messages as Record<string, string>;
 export const englishMessages = catalog('en');
 const catalogs: Record<string, Record<string, string>> = {en: englishMessages};
 const messagesFor = (language: string) => catalogs[language] ??= catalog(language);

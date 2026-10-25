@@ -40,7 +40,7 @@ try{
  const cases=[...routes.map(path=>({path,role:'admin'})),...['teacher','student','parent','librarian','accountant'].map(role=>({path:'/dashboard',role}))];
  const profiles=(process.env.SCHOOL_VISUAL_PROFILES??'all')==='all'?[['default',{}],['Arabic RTL',{language:'ar'}],['result-scale',{fontSizeResult:16}],['reduced-motion',{reducedMotion:true}]]:[['default',{}]];
  for(const [profile,preferences] of profiles){
-  const catalog=JSON.parse(readFileSync(join(root,'dummy-api/config/localization/shared',preferences.language==='ar'?'ar.json':'en.json'),'utf8')).messages;
+  const catalog=JSON.parse(readFileSync(join(root,'mock-api/config/localization/shared',preferences.language==='ar'?'ar.json':'en.json'),'utf8')).messages;
   for(const {path,role} of cases){
    for(const side of ['source','demo']){
     await page.evaluate(async args=>window.renderParity(...args),[side,path,role,preferences,catalog]);

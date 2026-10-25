@@ -4,7 +4,7 @@ import {createRequire} from 'node:module';
 const require = createRequire(import.meta.url), base = process.env.REPORTS_BASE ?? 'http://localhost:3350';
 if (!['localhost', '127.0.0.1'].includes(new URL(base).hostname)) throw new Error('Local demo checks only');
 // Fixture credentials stay in memory: they are read from the unchanged demo API source and never logged or written.
-const fixtureSource = readFileSync(new URL('../../../dummy-api/server.mjs', import.meta.url), 'utf8');
+const fixtureSource = readFileSync(new URL('../../../mock-api/server.mjs', import.meta.url), 'utf8');
 const credential = username => fixtureSource.match(new RegExp(`username:\\s*"${username}",\\s*password:\\s*"([^"]+)"`))[1];
 const routesSource = readFileSync(new URL('../src/modules/reports/routes.ts', import.meta.url), 'utf8');
 const systemBlock = routesSource.slice(routesSource.indexOf('SYSTEM_REPORT_DESTINATIONS'), routesSource.indexOf('SEEDED_DASHBOARDS'));

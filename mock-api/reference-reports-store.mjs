@@ -4,7 +4,7 @@
  * Implements the Lumen Reports source API contract (src/app/api/**) plus page-loader endpoints that
  * replace the source's Next server components, for the @pepbits/reference-reports module.
  *
- * Trust model: `user` is the authenticated identity supplied by the dummy-api router; `scope` carries
+ * Trust model: `user` is the authenticated identity supplied by the mock-api router; `scope` carries
  * the router-validated application and branch. Tenant and user identity come only from `user`. State is
  * partitioned per tenant/application/branch; personal records (favorites, personal views, API keys, jobs)
  * are additionally keyed by user inside that partition. Every read and write checks the source's role,

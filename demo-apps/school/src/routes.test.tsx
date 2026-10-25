@@ -9,7 +9,7 @@ import {ReferenceSchoolModule} from './modules/school/test-support/module';
 import {SCHOOL_ROUTES} from './modules/school/routes';
 import {SCHOOL_ROLE_VIEWS} from './modules/school/role-views';
 import {createFakeBackend,fakeHost} from './modules/school/test-support/fake-host.test-support';
-const catalogs=Object.fromEntries(['en','ar'].map(language=>[language,JSON.parse(readFileSync(process.cwd()+`/../../dummy-api/config/localization/shared/${language}.json`,'utf8')).messages]));
+const catalogs=Object.fromEntries(['en','ar'].map(language=>[language,JSON.parse(readFileSync(process.cwd()+`/../../mock-api/config/localization/shared/${language}.json`,'utf8')).messages]));
 const profiles=[['default',{},{}],['Arabic RTL',{language:'ar'},{}],['reduced motion',{reducedMotion:true},{}],['locked density',{density:'spacious'},{density:{value:'compact',locked:true}}]] as const;
 const cases=[...SCHOOL_ROUTES.map(route=>({name:route.path,path:route.path.replace(':id',route.id==='quiz-player'?'qz-1':'lv-1'),role:'admin'})),...SCHOOL_ROLE_VIEWS.filter(view=>view.role!=='admin').map(view=>({name:view.role+' dashboard',path:'/dashboard',role:view.role}))];
 describe.each(profiles)('%s route rendering',(profile,preferences,rules)=>{

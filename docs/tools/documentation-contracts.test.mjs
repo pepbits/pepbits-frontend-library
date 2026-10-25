@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {assessReceipt} from './documentation-contracts.mjs';
-import {translationRevision} from '../../dummy-api/documentation-revisions.mjs';
+import {translationRevision} from '../../mock-api/documentation-revisions.mjs';
 const guide={pageId:'billing',title:'Billing',sections:[{id:'flow',title:'Flow',paragraphs:['Choose a patient']}],fields:[],tour:[]};
 test('source edits and mapping changes require fresh impact review; explanations are mandatory',()=>{
  const receipt={sha256:'old',pages:['billing'],disposition:'no-content-impact',reason:'Layout spacing only; workflow unchanged'};

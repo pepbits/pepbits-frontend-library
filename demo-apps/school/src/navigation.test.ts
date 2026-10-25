@@ -37,7 +37,7 @@ it('uses explicit account grants rather than granting every portal to an adminis
 it('round trips every destination and refuses malformed app routes',()=>{for(const route of SCHOOL_ROUTES){const target={pageId:pageId(route.id),moduleId:'reference-school',...(route.path.includes(':')?{recordId:'fixture-id'}:{})};expect(targetFromPath(hrefFor(target).split('?')[0]!,hrefFor(target).split('?')[1])).toMatchObject(target);}for(const path of ['/missing','/live/%','/live/a%2Fb','/live/%2e%2e'])expect(targetFromPath(path).pageId).toBe('not-found');});
 
 it('translates the administrator portal through the canonical catalog rather than its missing prose alias',()=>{
- const messages=JSON.parse(readFileSync('../../dummy-api/config/localization/shared/ar.json','utf8')).messages;
+ const messages=JSON.parse(readFileSync('../../mock-api/config/localization/shared/ar.json','utf8')).messages;
  const t=createTranslator({language:'ar',catalogs:{ar:messages}});const view=product.modules['reference-school']!;
  expect(t(view.labelKey??view.label)).toBe('مدير المدرسة');
  expect(t(view.shortLabelKey??view.shortLabel)).toBe('مدير المدرسة');

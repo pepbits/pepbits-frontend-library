@@ -11,7 +11,7 @@ import {AllyVoraProvider} from '../modules/registration/context';
 import {hrefFor, LAYOUT_ROLES, REGISTRATION_ROLES, type AllyVoraTarget} from '../navigation';
 import type {AllyVoraClient} from '../adapters/allyvora';
 
-const read = (language: string) => JSON.parse(readFileSync(process.cwd() + '/../../dummy-api/config/localization/shared/' + language + '.json', 'utf8')).messages;
+const read = (language: string) => JSON.parse(readFileSync(process.cwd() + '/../../mock-api/config/localization/shared/' + language + '.json', 'utf8')).messages;
 export const sharedMessages = read('en');
 const arabicMessages = read('ar');
 

@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { meta } from "./test-utils";
 import { resolveRcmRoute, rcmDynamicRoutes, rcmNavigation, rcmPaths, rcmRoutes, safeRcmHref } from "./routes";
 
-const SOURCE_REGISTRY = resolve(process.cwd(), "../../dummy-api/rcm-source", "src", "registry.ts");
+const SOURCE_REGISTRY = resolve(process.cwd(), "../../mock-api/rcm-source", "src", "registry.ts");
 
 describe("RCM routes", () => {
   it("exposes the four source dashboard routes and the one dynamic worklist route", () => {

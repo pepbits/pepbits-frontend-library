@@ -17,7 +17,7 @@ const fixtureCapture=process.env.HEALTHCARE_CAPTURE;
 const routeFilter=process.env.HEALTHCARE_ROUTE_FILTER;
 
 const flows=[],createdRoutes=[],rcmPresentation=[],medbandPresentation=[];
-const fixtureSource=readFileSync(new URL('../../../dummy-api/server.mjs',import.meta.url),'utf8');
+const fixtureSource=readFileSync(new URL('../../../mock-api/server.mjs',import.meta.url),'utf8');
 const secret=fixtureSource.match(/username:\s*"admin",\s*password:\s*"([^\"]+)"/)[1];
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1000}}),checks=[],errors=[],consoleErrors=[],responses=[],captures=fixtureCapture&&existsSync(fixtureCapture)?JSON.parse(readFileSync(fixtureCapture,'utf8')):{},pending=[];

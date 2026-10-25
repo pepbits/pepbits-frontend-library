@@ -24,7 +24,7 @@ The style update of 12 September 2026 uses a compact component palette, a centra
 5. Open Live preview. State is disabled until Country is selected. India offers Kerala/Karnataka; UAE offers Abu Dhabi/Dubai. Changing Country clears State and all deeper descendants. Loading, no matches, missing parent and failed lookup are separate states. Retry retains the parent selection; late responses cannot overwrite newer selections.
 6. Save design draft preserves the mapping in the scoped demo API CSV. Validate preview performs local feedback followed by server validation for locally valid answers; direct API validation also rejects forged parent/child pairs.
 
-**Add Country → State example** inserts a complete configuration supplied by `dummy-api/config/dcp-designer/examples.json`, with fresh field IDs and remapped links. Company → Branch, Category → Item and other dropdown pairs use the same configuration. User-authored names remain literal; stable IDs and option values are not translated. Leading-zero option IDs are preserved.
+**Add Country → State example** inserts a complete configuration supplied by `mock-api/config/dcp-designer/examples.json`, with fresh field IDs and remapped links. Company → Branch, Category → Item and other dropdown pairs use the same configuration. User-authored names remain literal; stable IDs and option values are not translated. Leading-zero option IDs are preserved.
 
 Inline and uploaded CSV/XLSX sources use bounded option metadata: 1,000 options per dropdown, one parent per field, and five dependency links. Multi-parent conditions and server-paged production catalogs remain pending. CSV/XLSX staging and explicit immutable catalog revisions are supported. No third-party ERP equivalence is claimed without an agreed comparison specification.
 
@@ -56,7 +56,7 @@ Failed saves retain edits. Retry uses the same operation ID; edits produce a new
 - `erp-screens`: DcpDesignerWorkspace composes palette, sortable canvas, property panels and existing TemplateFields preview.
 - `ops-ui`: shared controls remain the visual foundation. Button now accepts a React 19 ref so drag handles can restore keyboard focus.
 - `dnd-kit`: pinned core/sortable/utilities dependencies provide drag mechanics. No alternate form framework is installed.
-- `dummy-api`: `/dcp-designer` supplies the initial configuration and capability types, reads/writes scoped CSV snapshots, authorizes saves and checks revisions/operation IDs. It is synthetic demonstration storage only.
+- `mock-api`: `/dcp-designer` supplies the initial configuration and capability types, reads/writes scoped CSV snapshots, authorizes saves and checks revisions/operation IDs. It is synthetic demonstration storage only.
 
 Inject DesignerAdapter, authenticated scopeKey and the existing PreferenceHost into DcpDesignerWorkspace. A public TypeScript example is available in List of pages. The frontend never connects to PostgreSQL or imports Java libraries.
 
@@ -86,7 +86,7 @@ The existing authenticated `/dcp-designer` endpoint adds `options` and `validate
 
 `save-value-set` and `save-relationship` commands use the existing authenticated designer adapter, expected head revision and idempotency operation ID. Saved timestamps and actor IDs come from the demo server. Catalog mutations update only the shared catalog scope in the existing CSV snapshot store. They do not overwrite user-owned form drafts. `options`, `validate` and form saves re-resolve references against the authorized catalog and reject unknown or mismatched revisions. Public helpers and types are exported from erp-config. Production hosts must map these frontend references onto the existing backend DCP catalog/definition contracts; no production table, migration or Java service is introduced here.
 
-The catalog seed lives in `dummy-api/config/dcp-designer/catalog.json`. Existing inline examples and saved designs remain supported. Version pinning applies to catalog metadata and does not establish production form publication, legal attestation or historical business-answer storage.
+The catalog seed lives in `mock-api/config/dcp-designer/catalog.json`. Existing inline examples and saved designs remain supported. Version pinning applies to catalog metadata and does not establish production form publication, legal attestation or historical business-answer storage.
 
 ## Import CSV options into a value set
 
@@ -108,7 +108,7 @@ In the release panel, choose stacked sections, tabs or steps and one to three co
 
 ## Review, publication and entity answers
 
-1. Choose an API-registered answer owner type and trigger. Synthetic patient, encounter, lab order-item, employee and item records are supplied by `dummy-api/config/dcp-designer/entities.json`; they are not references into a production clinical database.
+1. Choose an API-registered answer owner type and trigger. Synthetic patient, encounter, lab order-item, employee and item records are supplied by `mock-api/config/dcp-designer/entities.json`; they are not references into a production clinical database.
 2. Save the design, submit for review, approve, then publish. Request changes returns a reviewed design to draft and requires a reason. The demo administrator can preview all roles; independent reviewer/publisher grants require the production authorization adapter.
 3. Published content is immutable. Create next draft unlocks the working design without rewriting the published snapshot. New publication creates another release. Retirement requires a reason and prevents further writes to releases of that form; existing answers can still be read. This is a demo lifecycle, not the existing production Workflow bridge or legal attestation.
 4. Open Published forms, select a release and compatible owner, then load its answer form. Save answer draft stores a recoverable API draft; Submit answers validates the pinned schema, selection membership and rules before submission. Submitted answers are read-only in this increment. Amendment/signature workflows remain pending.

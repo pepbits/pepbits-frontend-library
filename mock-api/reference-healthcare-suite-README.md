@@ -2,7 +2,7 @@
 
 `server.mjs` exposes the original CarePoint contracts under `/reference-modules/healthcare-suite/api`. The caller signs in through the existing host. The response shape stays unwrapped, including `400 {statusCode,message,fields}` for source form validation. The frontend stores no fictional business data.
 
-The source services are reproducibly ported from the original Nest TypeScript to dependency-free JavaScript with Node 24. The source hash manifest identifies every imported service, registry and CSV. Run `node dummy-api/reference-healthcare-suite-import.mjs /path/to/healthcare-suite/backend` to regenerate those files. The original source checkout is never modified. The small runtime and CSV adapter are hand-authored and retained separately from generated services.
+The source services are reproducibly ported from the original Nest TypeScript to dependency-free JavaScript with Node 24. The source hash manifest identifies every imported service, registry and CSV. Run `node mock-api/reference-healthcare-suite-import.mjs /path/to/healthcare-suite/backend` to regenerate those files. The original source checkout is never modified. The small runtime and CSV adapter are hand-authored and retained separately from generated services.
 
 Every source endpoint is implemented: session, dashboard and health; master worklists, records, create/update/status and lookups; patient search/detail/create/update with policies; resource slots and appointment book/reschedule/status/register; eligibility; encounter create/detail/status; catalog pricing, orders/add/update/cancel/sign and approvals; contract grids; billing queue/preview, invoice creation/search/detail, collection and cancellation. Original CSV headers supply text/number/boolean/JSON types and source key prefixes. Source business rules determine simulated eligibility, approvals, eRx, price-list defaults, consultation charges, deductible and copay cap, holds, split payments and invoice stock consumption/return.
 
@@ -19,8 +19,8 @@ The API is a fictional, process-lifetime demo, with deterministic simulated paye
 Verify with the project Node 24:
 
 ```sh
-node --test dummy-api/reference-healthcare-suite-store.test.mjs
-node --test dummy-api/reference-healthcare-suite-http.test.mjs dummy-api/reference-modules-http.test.mjs
+node --test mock-api/reference-healthcare-suite-store.test.mjs
+node --test mock-api/reference-healthcare-suite-http.test.mjs mock-api/reference-modules-http.test.mjs
 ```
 
 The store suite covers every master, patient validation/ownership, guest registration and scheduling, eligible/ineligible/manual payer paths, insured ordering/approvals/eRx, hospital and pharmacy billing/caps, payments/stock/idempotency, atomic failures, quantity reapproval, host actor and partition boundaries. HTTP tests exercise real host sessions, module/product/branch/read-only denials, source field errors, facility choice, replay, actor stamping and logout against an isolated dummy API process. Broader repository gates and browser tests are recorded by the integrated delivery, not inferred from these focused checks.

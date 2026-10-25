@@ -48,7 +48,7 @@ The server derives tenant and user from the authenticated session, checks produc
 
 ## Demo data and localization
 
-`dummy-api/config/clinical-triage/form.json` supplies vital fields, units, required-reading flags, priority options and destinations. `RECORD_DATA_DIR/clinical-triage.csv` stores tenant/application/patient buckets with quoted JSON snapshots in the data column. Writes reuse the existing atomic CSV snapshot helper. Corrupt storage produces an error instead of silently reseeding it. This is single-process demo persistence; a production service needs a transactional database, access controls and audit retention appropriate to its application.
+`mock-api/config/clinical-triage/form.json` supplies vital fields, units, required-reading flags, priority options and destinations. `RECORD_DATA_DIR/clinical-triage.csv` stores tenant/application/patient buckets with quoted JSON snapshots in the data column. Writes reuse the existing atomic CSV snapshot helper. Corrupt storage produces an error instead of silently reseeding it. This is single-process demo persistence; a production service needs a transactional database, access controls and audit retention appropriate to its application.
 
 Visible text lives under `template.triage.*` in the canonical shared API catalogs for English, Arabic, Hindi and Malayalam. Generated fallbacks must be synchronized after changes. Documentation release `2026-09-09-clinical-triage` adds localized page help, a tour target and a feature alert. User-entered clinical text and patient names are not automatically translated.
 

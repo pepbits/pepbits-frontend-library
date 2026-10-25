@@ -1,6 +1,6 @@
 /*
  * Module integration tests: the public ReferenceReportsModule rendered with a host adapter backed by the
- * fictional in-memory demo store (dummy-api/reference-reports-store.mjs). No network, no real backend.
+ * fictional in-memory demo store (mock-api/reference-reports-store.mjs). No network, no real backend.
  */
 import React from 'react';
 import { act, fireEvent, render as testingRender, screen, waitFor, within } from '@testing-library/react';

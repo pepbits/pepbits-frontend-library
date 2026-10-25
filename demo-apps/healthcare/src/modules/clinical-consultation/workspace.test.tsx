@@ -8,7 +8,7 @@ import {blankConsultation, type ConsultationView} from '../../domain/clinical-co
 import {createFormatters} from '@pepbits/i18n';
 import { ClinicalDocumentEditor } from "../clinical-document/editor";
 import { consultationDefinition } from "./workspace";
-const config = JSON.parse(readFileSync(process.cwd() + "/../../dummy-api/config/clinical-consultation/form.json", "utf8"));
+const config = JSON.parse(readFileSync(process.cwd() + "/../../mock-api/config/clinical-consultation/form.json", "utf8"));
 afterEach(cleanup);
 const view: ConsultationView = {
   patient: {

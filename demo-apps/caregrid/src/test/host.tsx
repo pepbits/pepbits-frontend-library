@@ -12,7 +12,7 @@ import {hrefFor} from '../navigation';
 import {CaregridLiveProvider} from '../modules/caregrid/live';
 import {createFakeEventSource} from './mock-api';
 
-const catalog = (language: string) => JSON.parse(readFileSync(process.cwd() + `/../../dummy-api/config/localization/shared/${language}.json`, 'utf8')).messages as Record<string, string>;
+const catalog = (language: string) => JSON.parse(readFileSync(process.cwd() + `/../../mock-api/config/localization/shared/${language}.json`, 'utf8')).messages as Record<string, string>;
 export const sharedMessages = catalog('en');
 const catalogs = {en: sharedMessages, ar: catalog('ar')};
 export interface TestHostOptions {client: CaregridClient; preferences?: Partial<UserPreferences>; policy?: PreferencePolicy; can?: (action: string) => boolean; notify?: ReturnType<typeof vi.fn>; navigate?: ReturnType<typeof vi.fn>}

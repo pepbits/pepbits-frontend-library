@@ -7,7 +7,7 @@ import {blankComprehensive, type ComprehensiveValues, type ComprehensiveConfigur
 import {DEFAULT_PREFERENCES} from '@pepbits/preferences';
 import {type ClinicalDocumentView} from '../../domain/clinical-document';
 import { ComprehensiveConsultationWorkspace } from "./workspace";
-const config = JSON.parse(readFileSync(process.cwd() + "/../../dummy-api/config/comprehensive-consultation/form.json", "utf8"));
+const config = JSON.parse(readFileSync(process.cwd() + "/../../mock-api/config/comprehensive-consultation/form.json", "utf8"));
 import type {ClinicalTemplateAdapter} from '../../adapters/clinical-templates';
 import type {ClinicalTriageAdapter} from '../../adapters/clinical-triage';
 type ConsultationView = ClinicalDocumentView<

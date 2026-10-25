@@ -6,15 +6,15 @@ Private `@pepbits-demo/caregrid`, using Next.js 16.3.3, React 19.2 and Tailwind 
 
 The app talks to two unchanged backends:
 
-- the shared **demo host API** (`dummy-api`) for sign-in, preferences, tenant policy and the runtime localization catalog;
+- the shared **demo host API** (`mock-api`) for sign-in, preferences, tenant policy and the runtime localization catalog;
 - CareGrid's own **scheduling API** (`source/caregrid/backend`, Express + SQLite) for all scheduling data and the event stream.
 
 From the repository root:
 
 ```sh
 npm install
-# Demo host API, using its documented Node 24 environment (see dummy-api/README.md).
-node dummy-api/server.mjs
+# Demo host API, using its documented Node 24 environment (see mock-api/README.md).
+node mock-api/server.mjs
 # Scheduling API, installed and run per source/caregrid/README.md (Node 20 or 22; seeds itself on first start).
 npm --prefix source/caregrid/backend install
 PORT=4000 npm --prefix source/caregrid/backend run dev

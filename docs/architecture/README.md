@@ -18,4 +18,4 @@ Architecture explains responsibility and intent. Release evidence establishes wh
 
 - [DCP designer and runtime](../features/dcp-designer.md#architecture-and-public-integration): shared renderer, typed authoring definition, adapters, catalog and recovery boundaries.
 - [DCP backend handoff](../development/DCP-LATEST-FORM-BACKEND-HANDOFF-2026-09-11.md): current frontend expectations and the distinction between authoring and backend v1 contracts.
-- [Demo API inventory](../../dummy-api/README.md): current endpoint families, storage ownership and production boundaries.
+- [Demo API inventory](../../mock-api/README.md): current endpoint families, storage ownership and production boundaries.

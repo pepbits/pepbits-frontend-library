@@ -12,8 +12,8 @@ From the repository root:
 
 ```sh
 npm install
-# Start the unchanged API with Node 24 (see dummy-api/README.md for its runtime environment).
-node dummy-api/server.mjs
+# Start the unchanged API with Node 24 (see mock-api/README.md for its runtime environment).
+node mock-api/server.mjs
 VITE_API_URL=http://localhost:3200 npm run dev -w @pepbits-demo/desktop     # http://localhost:3410
 ```
 

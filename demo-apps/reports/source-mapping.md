@@ -14,7 +14,7 @@ Phase 6e-1, base `5bbb130` (healthcare and ERP merged). The source package `desk
 | `charts/Charts.tsx` (module SVG bar/line/donut) | Maps the API chart payload to public `BarChart` (new, generic), `LineChart` and `DonutChart` |
 | `reports/*`, `builder/*`, `dashboards/*`, `jobs/*`, `schedules/*`, `emailin/*`, `admin/*`, `pages/*`, `shell/ModuleBar.tsx` | Ported screens and reports-specific composition; window printing replaced by public `PrintDocument`; `ConfirmDialog`, `ActionMenu`, `SearchInput` and date/time inputs from the library |
 | `lib/expression.ts`, `lib/dates.ts`, `types.ts`, `reports.css` | Copied; strict index assertions are type-only; the toast and SVG chart rules were removed from `reports.css` |
-| `routes.test.ts` (5), `module.test.tsx` (17) | Ported with all assertions; providers adapted to `@pepbits/preferences` and the canonical catalog wrapper; the in-process demo store (loaded at test time from `dummy-api`, never bundled) is the mocked API |
+| `routes.test.ts` (5), `module.test.tsx` (17) | Ported with all assertions; providers adapted to `@pepbits/preferences` and the canonical catalog wrapper; the in-process demo store (loaded at test time from `mock-api`, never bundled) is the mocked API |
 | Lucide icons | `@pepbits/icons`; nine missing primitives added (Blocks, FileBarChart, FolderDown, KeyRound, Library, MailPlus, ScrollText, Settings, Zap) |
 | Local API/runtime startup and cleanup | Shared `tooling/scripts/run-demo-integration.mjs` (now accepting `reports`), called by `scripts/integration.mjs`; browser flows in `scripts/smoke.mjs` |
 

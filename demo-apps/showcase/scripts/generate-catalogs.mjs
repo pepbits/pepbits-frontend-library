@@ -9,7 +9,7 @@ const dynamicFamilies=['designer.','identity.','devices.','labels.'];
 const dynamicPrefixes=[...new Set([...source.matchAll(/`([A-Za-z]\w*(?:\.[A-Za-z]\w*)+\.)\$\{/g)].map(match=>match[1]))];
 const catalogs={};
 for(const language of ['en','ar','hi','ml']) {
- const canonical=JSON.parse(readFileSync(resolve(root,`dummy-api/config/localization/shared/${language}.json`),'utf8')).messages;
+ const canonical=JSON.parse(readFileSync(resolve(root,`mock-api/config/localization/shared/${language}.json`),'utf8')).messages;
  catalogs[language]=Object.fromEntries(Object.entries(canonical).filter(([key])=>source.includes(key)||key.startsWith('catalog.')||[...dynamicPrefixes,...dynamicFamilies].some(prefix=>key.startsWith(prefix))));
 }
 writeFileSync(resolve(app,'src/generated/library-catalogs.json'),JSON.stringify(catalogs,null,2)+'\n');

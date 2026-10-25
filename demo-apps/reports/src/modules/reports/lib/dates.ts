@@ -1,7 +1,7 @@
 /*
  * Port of lumen-reports src/lib/dates.ts without luxon. Calendar dates stay plain YYYY-MM-DD strings;
  * "today" is read in the organisation's reporting time zone with Intl, exactly as the server does
- * (dummy-api/reference-reports-engine.mjs), so the range meter shows the period the server will run.
+ * (mock-api/reference-reports-engine.mjs), so the range meter shows the period the server will run.
  */
 import type { DatePreset, DateRangeValue, Frequency } from '../types';
 

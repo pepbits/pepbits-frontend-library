@@ -1,4 +1,4 @@
-import {digest} from '../../dummy-api/documentation-revisions.mjs';
+import {digest} from '../../mock-api/documentation-revisions.mjs';
 export function assessReceipt(receipt,hash,pages,guides){
  if(!receipt||receipt.sha256!==hash)return 'source changed without an impact receipt';
  if(JSON.stringify(receipt.pages)!==JSON.stringify(pages))return 'affected page mapping changed';

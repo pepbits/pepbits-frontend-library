@@ -32,7 +32,7 @@ describe("tenant-admin-copy.json", () => {
   it("resolves every alias in each unchanged canonical API catalog", () => {
     const definitions = JSON.parse(readFileSync(resolve(__dirname, "definitions-copy.json"), "utf8")) as Record<string, string>;
     for (const language of ["en", "ar", "hi", "ml"]) {
-      const messages = JSON.parse(readFileSync(resolve(process.cwd(), "../../dummy-api/config/localization/shared/" + language + ".json"), "utf8")).messages as Record<string, string>;
+      const messages = JSON.parse(readFileSync(resolve(process.cwd(), "../../mock-api/config/localization/shared/" + language + ".json"), "utf8")).messages as Record<string, string>;
       expect([...Object.values(copy), ...Object.values(definitions)].filter((key) => !Object.hasOwn(messages, key)), language).toEqual([]);
     }
   });
