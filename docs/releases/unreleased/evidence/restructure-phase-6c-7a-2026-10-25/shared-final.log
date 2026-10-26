@@ -1,0 +1,23 @@
+
+> @pepbits/page-engines@0.0.0 test
+> vitest run --maxWorkers=2 src/worklist/table-composition.test.tsx src/worklist/preference-compliance.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a/packages/page-engines
+
+ ✓ src/worklist/table-composition.test.tsx (3 tests) 1033ms
+   ✓ creation rows render in empty results with current columns and selection disabled  387ms
+   ✓ host row editor replaces only its record and supplies row-specific actions  307ms
+   ✓ leading context uses the engine filter change path and optional creation wording  337ms
+ ✓ src/worklist/preference-compliance.test.tsx (6 tests) 3113ms
+   ✓ external refresh reads acknowledged rows and preserves current criteria and layout  979ms
+   ✓ print provenance has stable server markup and refreshes immediately before native print  378ms
+   ✓ worklist applies live table, page-size and result-view locks to controls and search requests  551ms
+   ✓ filter memory retains only declared operational values and unavailable choices are disabled  340ms
+   ✓ host filter/view slots use engine search and layout while saved page sizes obey mounted policy  577ms
+
+ Test Files  2 passed (2)
+      Tests  9 passed (9)
+   Start at  01:35:31
+   Duration  6.31s (transform 1.37s, setup 362ms, collect 3.93s, tests 4.15s, environment 1.13s, prepare 195ms)
+

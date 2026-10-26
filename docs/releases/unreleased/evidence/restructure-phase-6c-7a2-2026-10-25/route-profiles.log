@@ -1,0 +1,56 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=2 --testTimeout=120000 src/routes.test.tsx -t masters/(org-structure|chart-of-accounts|product-categories|tax-rates|price-lists|consultation-fees)
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a2/demo-apps/erp
+
+ ✓ src/routes.test.tsx (984 tests | 864 skipped) 39581ms
+   ✓ default route rendering > erp1/masters/org-structure  651ms
+   ✓ default route rendering > erp1/masters/chart-of-accounts  402ms
+   ✓ default route rendering > erp1/masters/tax-rates  735ms
+   ✓ default route rendering > erp1/masters/product-categories  452ms
+   ✓ default route rendering > erp1/masters/price-lists  682ms
+   ✓ default route rendering > erp1/masters/consultation-fees  580ms
+   ✓ default route rendering > erp2/masters/org-structure/new  489ms
+   ✓ default route rendering > erp2/masters/org-structure/edit  336ms
+   ✓ default route rendering > erp2/masters/tax-rates  676ms
+   ✓ default route rendering > erp2/masters/price-lists  605ms
+   ✓ default route rendering > erp2/masters/consultation-fees  548ms
+   ✓ Arabic RTL route rendering > erp1/masters/org-structure  304ms
+   ✓ Arabic RTL route rendering > erp1/masters/chart-of-accounts  332ms
+   ✓ Arabic RTL route rendering > erp1/masters/tax-rates  1246ms
+   ✓ Arabic RTL route rendering > erp1/masters/product-categories  420ms
+   ✓ Arabic RTL route rendering > erp1/masters/price-lists  839ms
+   ✓ Arabic RTL route rendering > erp1/masters/consultation-fees  705ms
+   ✓ Arabic RTL route rendering > erp2/masters/org-structure/new  322ms
+   ✓ Arabic RTL route rendering > erp2/masters/org-structure/edit  324ms
+   ✓ Arabic RTL route rendering > erp2/masters/tax-rates  695ms
+   ✓ Arabic RTL route rendering > erp2/masters/tax-rates/edit  403ms
+   ✓ Arabic RTL route rendering > erp2/masters/product-categories  305ms
+   ✓ Arabic RTL route rendering > erp2/masters/price-lists  702ms
+   ✓ Arabic RTL route rendering > erp2/masters/price-lists/view  373ms
+   ✓ Arabic RTL route rendering > erp2/masters/price-lists/new  339ms
+   ✓ Arabic RTL route rendering > erp2/masters/consultation-fees  581ms
+   ✓ reduced motion route rendering > erp1/masters/tax-rates  568ms
+   ✓ reduced motion route rendering > erp1/masters/price-lists  562ms
+   ✓ reduced motion route rendering > erp1/masters/consultation-fees  771ms
+   ✓ reduced motion route rendering > erp2/masters/org-structure  455ms
+   ✓ reduced motion route rendering > erp2/masters/chart-of-accounts/new  301ms
+   ✓ reduced motion route rendering > erp2/masters/tax-rates  536ms
+   ✓ reduced motion route rendering > erp2/masters/price-lists  655ms
+   ✓ reduced motion route rendering > erp2/masters/price-lists/new  302ms
+   ✓ reduced motion route rendering > erp2/masters/consultation-fees  650ms
+   ✓ locked density route rendering > erp1/masters/tax-rates  645ms
+   ✓ locked density route rendering > erp1/masters/product-categories  318ms
+   ✓ locked density route rendering > erp1/masters/price-lists  531ms
+   ✓ locked density route rendering > erp1/masters/consultation-fees  633ms
+   ✓ locked density route rendering > erp2/masters/tax-rates  535ms
+   ✓ locked density route rendering > erp2/masters/price-lists  549ms
+   ✓ locked density route rendering > erp2/masters/consultation-fees  525ms
+
+ Test Files  1 passed (1)
+      Tests  120 passed | 864 skipped (984)
+   Start at  05:30:41
+   Duration  48.84s (transform 4.80s, setup 237ms, collect 7.67s, tests 39.58s, environment 622ms, prepare 145ms)
+

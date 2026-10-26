@@ -1,0 +1,54 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=2 src/tree-masters.test.tsx src/specialized.test.tsx src/masters-composition.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a2/demo-apps/erp
+
+ ✓ src/tree-masters.test.tsx (9 tests) 4311ms
+   ✓ org-structure edits beside the tree and adopts versioned saves without losing search  990ms
+   ✓ chart-of-accounts edits beside the tree and adopts versioned saves without losing search  539ms
+   ✓ product-categories edits beside the tree and adopts versioned saves without losing search  512ms
+   ✓ tree failed saves preserve fields and operation identity; conflicts require explicit reload  516ms
+   ✓ tree child defaults, required name, leaf guard and acknowledged deletion  542ms
+   ✓ ar tree keeps labelled fields and effective density/table locks  351ms
+   ✓ ml tree keeps labelled fields and effective density/table locks  327ms
+ ✓ src/specialized.test.tsx (19 tests) 4577ms
+   ✓ erp1 finance creation follows entity grants  1141ms
+   ✓ erp2 finance creation follows entity grants  676ms
+   ✓ ERP1 tree searches ancestors, adds a child, and adopts the acknowledged record  419ms
+   ✓ ERP1 profile keeps the worklist beside selection and persists the accepted layout choice  891ms
+   ✓ effective rememberFilters policy prevents profile layout persistence  528ms
+ ✓ src/masters-composition.test.tsx (27 tests) 19220ms
+   ✓ 'erp1' 'countries' edits in the source composition, saves with version and retains search  1147ms
+   ✓ 'erp1' 'states' edits in the source composition, saves with version and retains search  879ms
+   ✓ 'erp1' 'currencies' edits in the source composition, saves with version and retains search  787ms
+   ✓ 'erp1' 'units' edits in the source composition, saves with version and retains search  781ms
+   ✓ 'erp1' 'holidays' edits in the source composition, saves with version and retains search  813ms
+   ✓ 'erp1' 'departments' edits in the source composition, saves with version and retains search  798ms
+   ✓ 'erp1' 'leave-types' edits in the source composition, saves with version and retains search  791ms
+   ✓ 'erp1' 'shifts' edits in the source composition, saves with version and retains search  805ms
+   ✓ 'erp1' 'lab-tests' edits in the source composition, saves with version and retains search  816ms
+   ✓ 'erp2' 'countries' edits in the source composition, saves with version and retains search  833ms
+   ✓ 'erp2' 'states' edits in the source composition, saves with version and retains search  851ms
+   ✓ 'erp2' 'currencies' edits in the source composition, saves with version and retains search  763ms
+   ✓ 'erp2' 'units' edits in the source composition, saves with version and retains search  772ms
+   ✓ 'erp2' 'holidays' edits in the source composition, saves with version and retains search  773ms
+   ✓ 'erp2' 'departments' edits in the source composition, saves with version and retains search  807ms
+   ✓ 'erp2' 'leave-types' edits in the source composition, saves with version and retains search  809ms
+   ✓ 'erp2' 'shifts' edits in the source composition, saves with version and retains search  803ms
+   ✓ 'erp2' 'lab-tests' edits in the source composition, saves with version and retains search  796ms
+   ✓ erp1 creation works with an empty list and enforces required fields  449ms
+   ✓ ERP2 save another resets only after acknowledgement and confirmed delete retries without losing fields  641ms
+   ✓ inline version conflict retains the draft and requires explicit reload  818ms
+   ✓ mounted locks and write permission changes apply to an open inline draft  558ms
+   ✓ states parent selection supplies the inline creation default  385ms
+   ✓ ar master dialog preserves accessible labels and effective scales  472ms
+   ✓ hi master dialog preserves accessible labels and effective scales  408ms
+   ✓ ml master dialog preserves accessible labels and effective scales  446ms
+
+ Test Files  3 passed (3)
+      Tests  55 passed (55)
+   Start at  05:10:56
+   Duration  35.23s (transform 5.11s, setup 634ms, collect 14.75s, tests 28.11s, environment 2.30s, prepare 713ms)
+

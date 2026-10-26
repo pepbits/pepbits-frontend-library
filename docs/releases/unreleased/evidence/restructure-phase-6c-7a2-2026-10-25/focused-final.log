@@ -1,0 +1,78 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=2 src/tree-masters.test.tsx src/rate-masters.test.tsx src/record-panels.test.tsx src/specialized.test.tsx src/masters-composition.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a2/demo-apps/erp
+
+ ✓ src/record-panels.test.tsx (53 tests) 13973ms
+   ✓ erp1 keeps unsent case inputs across other acknowledged property saves  721ms
+   ✓ erp2 keeps unsent case inputs across other acknowledged property saves  512ms
+   ✓ erp1 profile shows source groups, statistics, activity/documents and changes  445ms
+   ✓ erp2 profile shows source groups, statistics, activity/documents and changes  374ms
+   ✓ erp2 case retains a failed comment and retries the identical versioned command  324ms
+   ✓ ERP1 opened record panels: default > customers  444ms
+   ✓ ERP1 opened record panels: default > sales-orders  395ms
+   ✓ ERP1 opened record panels: default > quality-inspections  359ms
+   ✓ ERP1 opened record panels: Arabic RTL > customers  325ms
+   ✓ ERP1 opened record panels: Arabic RTL > sales-orders  372ms
+   ✓ ERP1 opened record panels: Arabic RTL > quality-inspections  319ms
+   ✓ ERP1 opened record panels: reduced motion > quality-inspections  311ms
+   ✓ edited forms warn on browser unload, retain failures, and detach after accepted save  379ms
+ ✓ src/masters-composition.test.tsx (27 tests) 20541ms
+   ✓ 'erp1' 'countries' edits in the source composition, saves with version and retains search  1340ms
+   ✓ 'erp1' 'states' edits in the source composition, saves with version and retains search  953ms
+   ✓ 'erp1' 'currencies' edits in the source composition, saves with version and retains search  857ms
+   ✓ 'erp1' 'units' edits in the source composition, saves with version and retains search  879ms
+   ✓ 'erp1' 'holidays' edits in the source composition, saves with version and retains search  864ms
+   ✓ 'erp1' 'departments' edits in the source composition, saves with version and retains search  793ms
+   ✓ 'erp1' 'leave-types' edits in the source composition, saves with version and retains search  801ms
+   ✓ 'erp1' 'shifts' edits in the source composition, saves with version and retains search  820ms
+   ✓ 'erp1' 'lab-tests' edits in the source composition, saves with version and retains search  900ms
+   ✓ 'erp2' 'countries' edits in the source composition, saves with version and retains search  859ms
+   ✓ 'erp2' 'states' edits in the source composition, saves with version and retains search  857ms
+   ✓ 'erp2' 'currencies' edits in the source composition, saves with version and retains search  808ms
+   ✓ 'erp2' 'units' edits in the source composition, saves with version and retains search  800ms
+   ✓ 'erp2' 'holidays' edits in the source composition, saves with version and retains search  816ms
+   ✓ 'erp2' 'departments' edits in the source composition, saves with version and retains search  793ms
+   ✓ 'erp2' 'leave-types' edits in the source composition, saves with version and retains search  817ms
+   ✓ 'erp2' 'shifts' edits in the source composition, saves with version and retains search  807ms
+   ✓ 'erp2' 'lab-tests' edits in the source composition, saves with version and retains search  846ms
+   ✓ erp1 creation works with an empty list and enforces required fields  515ms
+   ✓ ERP2 save another resets only after acknowledgement and confirmed delete retries without losing fields  733ms
+   ✓ inline version conflict retains the draft and requires explicit reload  995ms
+   ✓ mounted locks and write permission changes apply to an open inline draft  627ms
+   ✓ states parent selection supplies the inline creation default  379ms
+   ✓ ar master dialog preserves accessible labels and effective scales  448ms
+   ✓ hi master dialog preserves accessible labels and effective scales  479ms
+   ✓ ml master dialog preserves accessible labels and effective scales  496ms
+ ✓ src/rate-masters.test.tsx (7 tests) 9093ms
+   ✓ 'erp1' 'tax-rates' sends asOf, keeps inclusive returned rows and edits in place  1862ms
+   ✓ 'erp1' 'price-lists' sends asOf, keeps inclusive returned rows and edits in place  1388ms
+   ✓ 'erp1' 'consultation-fees' sends asOf, keeps inclusive returned rows and edits in place  1305ms
+   ✓ 'erp2' 'tax-rates' sends asOf, keeps inclusive returned rows and edits in place  1387ms
+   ✓ 'erp2' 'price-lists' sends asOf, keeps inclusive returned rows and edits in place  1613ms
+   ✓ 'erp2' 'consultation-fees' sends asOf, keeps inclusive returned rows and edits in place  1532ms
+ ✓ src/tree-masters.test.tsx (12 tests) 5040ms
+   ✓ org-structure edits beside the tree and adopts versioned saves without losing search  803ms
+   ✓ chart-of-accounts edits beside the tree and adopts versioned saves without losing search  475ms
+   ✓ product-categories edits beside the tree and adopts versioned saves without losing search  437ms
+   ✓ tree failed saves preserve fields and operation identity; conflicts require explicit reload  454ms
+   ✓ tree child defaults, required name, leaf guard and acknowledged deletion  521ms
+   ✓ incomplete trees fence destructive commands and mounted permission loss disables saves  323ms
+   ✓ ar tree keeps labelled fields and effective density/table locks  369ms
+   ✓ hi tree keeps labelled fields and effective density/table locks  394ms
+   ✓ ml tree keeps labelled fields and effective density/table locks  369ms
+   ✓ ERP2 chart-of-accounts opens a table node with visible neighbour order  398ms
+ ✓ src/specialized.test.tsx (19 tests) 3900ms
+   ✓ erp1 finance creation follows entity grants  843ms
+   ✓ erp2 finance creation follows entity grants  576ms
+   ✓ ERP1 tree searches ancestors, adds a child, and adopts the acknowledged record  340ms
+   ✓ ERP1 profile keeps the worklist beside selection and persists the accepted layout choice  821ms
+   ✓ effective rememberFilters policy prevents profile layout persistence  480ms
+
+ Test Files  5 passed (5)
+      Tests  118 passed (118)
+   Start at  05:15:59
+   Duration  42.25s (transform 6.23s, setup 2.90s, collect 17.03s, tests 52.55s, environment 4.38s, prepare 780ms)
+

@@ -1,0 +1,185 @@
+{
+  "method": "Protected JSX/CSS and adapter resolution, plus separate demo Chromium measurements. Original desktop runtime not rendered.",
+  "correction": "WorkList.startNew in the protected ERP1 source creates an inline row, despite the previous ledger mentioning a new dialog.",
+  "sources": [
+    {
+      "path": "desktop-clients/packages/reference-erp1/src/components/templates/GridTemplate.tsx",
+      "sha256": "6f92cbccd9a7a3f8dc0aeda665259f1b5e0ff59f9bc76816f987c042c11d034d"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp1/src/components/templates/DependentTemplate.tsx",
+      "sha256": "d3138c6ed4a897fe54de5baf2932b4f55dea7054ee4d7b88a8097c8b312a6a17"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp2/src/components/templates/GridTemplate.tsx",
+      "sha256": "094444dbffa0e3b250a2c39943054be703bbb465e317e1e561453c94168922bb"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp2/src/components/templates/DependentTemplate.tsx",
+      "sha256": "7ad96ed57f5cfd91791faccfe29fec018c956c05234e76d27c69470b937036d7"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp2/src/components/record/QuickDialog.tsx",
+      "sha256": "536cc82358192661f6636be91b8575f315f58b4d22e7214d41ee202bfba533d7"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/worklist/WorkList.tsx",
+      "sha256": "5ee9706b9673b0a530fb80edf9e5cd3bbd5c04313db2e9e783bc2b14cd7408fb"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/form/RecordForm.tsx",
+      "sha256": "db8293b315bd62757ce2d52fa91e5e901233aaaf936a6a179b8d8daa0b71b8b8"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/ui.tsx",
+      "sha256": "00398a36c77c443ed0aecf374f488ffca247e6ec602e617c58d8c4f3c8d9d3be"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/styles.css",
+      "sha256": "3d3f2a830b573f6db9b4535494589ad504adf719cd54877bc5335d4fb9986bc1"
+    },
+    {
+      "path": "desktop-clients/packages/ops-ui/src/overlay.tsx",
+      "sha256": "6f9c3cc43c9880613d6dd0fa3571030bbfe19dbb43ece48c97f8189f5bcc304c"
+    },
+    {
+      "path": "desktop-clients/packages/ops-ui/src/table.tsx",
+      "sha256": "6b2bde900ed2f8375f8a212c8f0a9614de914223a404e523adada8f00072f29a"
+    },
+    {
+      "path": "desktop-clients/packages/tokens/src/tokens.css",
+      "sha256": "8d674ed183ec69f9038092cca80d7ef5484c0f844563a335141cd6088bfa1125"
+    },
+    {
+      "path": "desktop-clients/packages/reference-host/src/index.tsx",
+      "sha256": "7c73665a0d5fc1a324ff1a12cc89d37b0db4a39e7b83f3f82bb07cb22fe4e34a"
+    }
+  ],
+  "routes": [
+    {
+      "path": "/erp1/masters/countries",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp1/masters/states",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp1/masters/currencies",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp1/masters/units",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp1/masters/holidays",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp1/masters/departments",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp1/masters/leave-types",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp1/masters/shifts",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp1/masters/lab-tests",
+      "check": "master-table-editor",
+      "editor": "inline create and edit"
+    },
+    {
+      "path": "/erp2/masters/countries",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    },
+    {
+      "path": "/erp2/masters/states",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    },
+    {
+      "path": "/erp2/masters/currencies",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    },
+    {
+      "path": "/erp2/masters/units",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    },
+    {
+      "path": "/erp2/masters/holidays",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    },
+    {
+      "path": "/erp2/masters/departments",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    },
+    {
+      "path": "/erp2/masters/leave-types",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    },
+    {
+      "path": "/erp2/masters/shifts",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    },
+    {
+      "path": "/erp2/masters/lab-tests",
+      "check": "master-table-editor",
+      "editor": "quick dialog create and edit"
+    }
+  ],
+  "targets": {
+    "header": {
+      "font": 12
+    },
+    "row": {
+      "font": 13
+    },
+    "managedTable": {
+      "paddingInline": {
+        "compact": 12,
+        "comfortable": 16,
+        "spacious": 16
+      },
+      "paddingBlock": {
+        "compact": 4,
+        "comfortable": 12,
+        "spacious": 16
+      },
+      "resolution": "ReferenceHostProvider supplies PresentationProvider. ops-ui Table adds density cell classes; protected tokens.css applies managed padding-block with !important to headers, data and editor rows."
+    },
+    "inline": {
+      "inputHeight": 28
+    },
+    "erp2Dialog": {
+      "width": 672,
+      "columnGap": 16,
+      "rowGap": 14
+    },
+    "erp1Parent": {
+      "mdWidth": 256,
+      "xlWidth": 288,
+      "rowPaddingInline": 10,
+      "rowPaddingBlock": 6
+    }
+  }
+}

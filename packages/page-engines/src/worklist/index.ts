@@ -14,3 +14,4 @@ export * from "./search-request";
 export * from "./worklist-page";
 
 export {csvOf,xlsxOf,exportFileName} from './export-rows';
+export * from './table-composition';

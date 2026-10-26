@@ -84,11 +84,11 @@ function ReferenceFilter({field, value, onChange}: {field: Field; value: unknown
   const options = result.data.rows.map(row => String(row.name ?? row.code ?? row.id)).filter(option => option.toLowerCase().includes(search.toLowerCase()));
   return <div><Input label={'Find ' + field.label} value={search} onChange={event => setSearch(event.target.value)}/><FilterField field={{...field,type:'select',options}} value={value} onChange={onChange}/>{result.data.total > result.data.rows.length && <p>{t('Results are incomplete')}</p>}</div>;
 }
-export function ErpFilters({def, values, onChange, onReset}: {def: PageDef} & WorklistFilterControls) {
+export function ErpFilters({def, values, onChange, onReset, hideParent=false}: {def: PageDef;hideParent?:boolean} & WorklistFilterControls) {
   const {t} = useLocalization(), [open, setOpen] = useState(false);
   const first = def.fields.filter(field => field.filter && field.key !== def.parent?.key).slice(0, 3), basic = [...first, ...def.fields.filter(field => field.key === def.quickFilter && !first.includes(field))], fields = filterFields(def);
   const count = Object.keys(sourceFilters(def, values)).length;
-  return <Card as="section" className="space-y-3 p-3">{def.parent && <ParentContext def={def} values={values} onChange={onChange}/>}{!open && <div className="grid gap-3 md:grid-cols-3">{basic.map(field => {
+  return <Card as="section" className="space-y-3 p-3">{def.parent && !hideParent && <ParentContext def={def} values={values} onChange={onChange}/>}{!open && <div className="grid gap-3 md:grid-cols-3">{basic.map(field => {
     const decoded = decodeCondition(values[field.key] ?? ''), multiple = Array.isArray(decoded), value = multiple ? decoded.length === 1 ? String(decoded[0]) : '__multiple' : String(decoded ?? '');
     return field.options ? <Select key={field.key} label={field.label} value={value} placeholder="All" options={[...field.options.map(value => ({value, label: value})), ...(multiple && decoded.length > 1 ? [{value: '__multiple', label: decoded.join(', ')}] : [])]} onChange={event => onChange(field.key, encodeCondition(event.target.value))}/> : <Input key={field.key} label={field.label} value={value} maxLength={200} onChange={event => onChange(field.key, encodeCondition(event.target.value))}/>;
   })}</div>}

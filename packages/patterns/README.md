@@ -242,3 +242,7 @@ Inactive ResourceRowTimeline events darken their fill while keeping labels opaqu
 ResourceRowTimeline keyboard creation skips blocked minutes to find the next working window, including when the current minute falls inside a block. Server-side availability remains authoritative.
 
 ResourceTimeline accepts optional baseline `geometry`, `labelEvery`, `renderResource` and `eventClassName` for host composition. Slot height still scales with effective density (compact ×0.8, comfortable ×1, spacious ×1.2 for configured geometry); the default layout is unchanged. Dates/resources/status semantics remain host-owned. Calendar tests cover dimensions, overlap lanes and managed density.
+
+## Compact hierarchy composition
+
+`HierarchyPanel` from `@pepbits/patterns/tree` is an opt-in compact list or table composition. Supply labelled nodes, optional codes/columns, toolbar/footer and row-action slots, selection and visible-order callbacks. Roots start expanded. Search includes codes and retains ancestors; the shared traversal guards cycles and missing parents. Selection and expansion use separate keyboard controls, row actions are available on focus/touch, RTL uses logical indentation, and effective density/result scale apply. Hosts own data loading, commands, permissions and persistence. `HierarchyView` keeps its existing defaults. Panel interaction tests and ERP route/geometry/axe checks cover the new consumer.

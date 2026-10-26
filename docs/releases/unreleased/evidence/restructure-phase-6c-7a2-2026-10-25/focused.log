@@ -1,0 +1,1768 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=2 src/tree-masters.test.tsx src/specialized.test.tsx src/masters-composition.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a2/demo-apps/erp
+
+ ❯ src/specialized.test.tsx (19 tests | 1 failed) 14913ms
+   ✓ finance gets all eight finance entities and only explicit additional grants 6ms
+   ✓ finance-manager gets all eight finance entities and only explicit additional grants 1ms
+   ✓ accountant gets all eight finance entities and only explicit additional grants 1ms
+   ✓ admin retains broad write presentation 1ms
+   ✓ enterprise-admin retains broad write presentation 0ms
+   ✓ operations retains broad write presentation 0ms
+   ✓ operations-analyst retains broad write presentation 0ms
+   ✓ unknown and absent roles never inherit finance grants 0ms
+   ✓ erp1 finance creation follows entity grants  1062ms
+   ✓ erp2 finance creation follows entity grants  651ms
+   ✓ ERP2 direct edit for a non-granted entity has no save or editable fields 209ms
+   × ERP1 tree searches ancestors, adds a child, and adopts the acknowledged record 10523ms
+     → Found multiple elements with the role "button" and name "Fictional child account"
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<button[39m
+  [33maria-pressed[39m=[32m"true"[39m
+  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] min-w-0 flex-1 justify-start truncate"[39m
+  [33mstyle[39m=[32m"height: auto; padding: 0px; border: 0px; border-radius: var(--radius); font-size: inherit; line-height: 20px; color: var(--text); font-weight: 500;"[39m
+  [33mtype[39m=[32m"button"[39m
+[36m>[39m
+  [0mFictional child account[0m
+[36m</button>[39m
+
+Ignored nodes: comments, script, style
+[36m<button[39m
+  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+  [33mtype[39m=[32m"button"[39m
+[36m>[39m
+  [0mFictional child account[0m
+[36m</button>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mChart of accounts[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"comfortable"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"Chart of accounts"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"Search the tree"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"Search the tree"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m"Fictional child account"[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Expand all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Expand all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Collapse all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Collapse all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+               ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mChart of accounts[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"comfortable"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"Chart of accounts"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"Search the tree"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"Search the tree"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m"Fictional child account"[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Expand all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Expand all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Collapse all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Collapse all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+               ...
+   ✓ ERP2 hierarchy records visible neighbour order and navigates to selected records  336ms
+   ✓ erp1 board moves retain the original status on failure and retry the same operation 170ms
+   ✓ erp2 board moves retain the original status on failure and retry the same operation 129ms
+   ✓ finance cannot drag or move cases without a matching entity grant 114ms
+   ✓ a mounted shell denial fences writes even with a matching finance entity grant 219ms
+   ✓ ERP1 profile keeps the worklist beside selection and persists the accepted layout choice  924ms
+   ✓ effective rememberFilters policy prevents profile layout persistence  558ms
+ ✓ src/masters-composition.test.tsx (27 tests) 21066ms
+   ✓ 'erp1' 'countries' edits in the source composition, saves with version and retains search  1395ms
+   ✓ 'erp1' 'states' edits in the source composition, saves with version and retains search  982ms
+   ✓ 'erp1' 'currencies' edits in the source composition, saves with version and retains search  833ms
+   ✓ 'erp1' 'units' edits in the source composition, saves with version and retains search  807ms
+   ✓ 'erp1' 'holidays' edits in the source composition, saves with version and retains search  854ms
+   ✓ 'erp1' 'departments' edits in the source composition, saves with version and retains search  890ms
+   ✓ 'erp1' 'leave-types' edits in the source composition, saves with version and retains search  789ms
+   ✓ 'erp1' 'shifts' edits in the source composition, saves with version and retains search  832ms
+   ✓ 'erp1' 'lab-tests' edits in the source composition, saves with version and retains search  931ms
+   ✓ 'erp2' 'countries' edits in the source composition, saves with version and retains search  853ms
+   ✓ 'erp2' 'states' edits in the source composition, saves with version and retains search  846ms
+   ✓ 'erp2' 'currencies' edits in the source composition, saves with version and retains search  946ms
+   ✓ 'erp2' 'units' edits in the source composition, saves with version and retains search  858ms
+   ✓ 'erp2' 'holidays' edits in the source composition, saves with version and retains search  952ms
+   ✓ 'erp2' 'departments' edits in the source composition, saves with version and retains search  901ms
+   ✓ 'erp2' 'leave-types' edits in the source composition, saves with version and retains search  973ms
+   ✓ 'erp2' 'shifts' edits in the source composition, saves with version and retains search  867ms
+   ✓ 'erp2' 'lab-tests' edits in the source composition, saves with version and retains search  784ms
+   ✓ erp1 creation works with an empty list and enforces required fields  447ms
+   ✓ ERP2 save another resets only after acknowledgement and confirmed delete retries without losing fields  710ms
+   ✓ inline version conflict retains the draft and requires explicit reload  850ms
+   ✓ mounted locks and write permission changes apply to an open inline draft  624ms
+   ✓ states parent selection supplies the inline creation default  438ms
+   ✓ ar master dialog preserves accessible labels and effective scales  483ms
+   ✓ hi master dialog preserves accessible labels and effective scales  502ms
+   ✓ ml master dialog preserves accessible labels and effective scales  458ms
+ ❯ src/tree-masters.test.tsx (9 tests | 5 failed) 13218ms
+   × org-structure edits beside the tree and adopts versioned saves without losing search 500ms
+     → expected { id: '1', …(10) } to match object { expectedVersion: undefined, …(1) }
+(10 matching properties omitted from actual)
+   × chart-of-accounts edits beside the tree and adopts versioned saves without losing search 249ms
+     → expected { id: '1', …(10) } to match object { expectedVersion: undefined, …(1) }
+(10 matching properties omitted from actual)
+   × product-categories edits beside the tree and adopts versioned saves without losing search 266ms
+     → expected { id: '1', …(9) } to match object { expectedVersion: undefined, …(1) }
+(9 matching properties omitted from actual)
+   ✓ tree failed saves preserve fields and operation identity; conflicts require explicit reload  436ms
+   × tree child defaults, required name, leaf guard and acknowledged deletion 493ms
+     → Unable to find an accessible element with the role "button" and name "Delete"
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Chart of accounts":
+  [36m<h1 />[39m
+
+  --------------------------------------------------
+  region:
+
+  Name "Chart of accounts":
+  [36m<section[39m
+    [33maria-label[39m=[32m"Chart of accounts"[39m
+    [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+    [33mdata-hierarchy[39m=[32m"true"[39m
+    [33mdata-hierarchy-panel[39m=[32m"true"[39m
+    [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search the tree":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the tree"[39m
+    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+    [33mplaceholder[39m=[32m"Search the tree"[39m
+    [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Expand all":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Expand all"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+    [33mtitle[39m=[32m"Expand all"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Collapse all":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Collapse all"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+    [33mtitle[39m=[32m"Collapse all"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "New top-level item":
+  [36m<button[39m
+    [33maria-label[39m=[32m"New top-level item"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+    [33mtitle[39m=[32m"New top-level item"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Collapse Assets":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse Assets"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mstyle[39m=[32m"width: 20px; height: 20px; border-radius: var(--radius);"[39m
+    [33mtitle[39m=[32m"Collapse Assets"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Assets":
+  [36m<button[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] min-w-0 flex-1 justify-start truncate"[39m
+    [33mstyle[39m=[32m"height: auto; padding: 0px; border: 0px; border-radius: var(--radius); font-size: inherit; line-height: 20px; color: var(--text); font-weight: 400;"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Add child Assets":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Add child Assets"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mstyle[39m=[32m"width: 18px; height: 18px;"[39m
+    [33mtitle[39m=[32m"Add child Assets"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Current Assets":
+  [36m<button[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] min-w-0 flex-1 justify-start truncate"[39m
+    [33mstyle[39m=[32m"height: auto; padding: 0px; border: 0px; border-radius: var(--radius); font-size: inherit; line-height: 20px; color: var(--text); font-weight: 400;"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Add child Current Assets":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Add child Current Assets"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mstyle[39m=[32m"width: 18px; height: 18px;"[39m
+    [33mtitle[39m=[32m"Add child Current Assets"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "New top-level item":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "Items":
+  [36m<ul[39m
+    [33maria-label[39m=[32m"Items"[39m
+    [33mclass[39m=[32m"min-h-0 flex-1 overflow-auto p-1.5"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"group flex items-center gap-1.5 rounded-[var(--radius)] pe-2 hover:bg-[var(--surface-2)] data-[selected]:bg-[var(--primary-soft)]"[39m
+    [33mdata-hierarchy-row[39m=[32m"true"[39m
+    [33mstyle[39m=[32m"padding-inline-start: 6px; padding-block: 4px;"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"group flex items-center gap-1.5 rounded-[var(--radius)] pe-2 hover:bg-[var(--surface-2)] data-[selected]:bg-[var(--primary-soft)]"[39m
+    [33mdata-hierarchy-row[39m=[32m"true"[39m
+    [33mstyle[39m=[32m"padding-inline-start: 22px; padding-block: 4px;"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mChart of accounts[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"comfortable"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"Chart of accounts"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"Search the tree"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"Search the tree"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Expand all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Expand all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Collapse all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Collapse all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=...
+   ✓ incomplete trees fence destructive commands and mounted permission loss disables saves  336ms
+   × ar tree keeps labelled fields and effective density/table locks 10109ms
+     → Unable to find role="textbox" and name "Account"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mدليل الحسابات[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"spacious"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"دليل الحسابات"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"البحث في الشجرة"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"البحث في الشجرة"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"توسيع الكل"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"توسيع الكل"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"طي الكل"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"طي الكل"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"عنصر جديد من الم...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mدليل الحسابات[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"spacious"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"دليل الحسابات"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"البحث في الشجرة"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"البحث في الشجرة"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"توسيع الكل"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"توسيع الكل"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"طي الكل"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"طي الكل"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"عنصر جديد من الم...
+   ✓ hi tree keeps labelled fields and effective density/table locks  498ms
+   ✓ ml tree keeps labelled fields and effective density/table locks  328ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/specialized.test.tsx > ERP1 tree searches ancestors, adds a child, and adopts the acknowledged record
+TestingLibraryElementError: Found multiple elements with the role "button" and name "Fictional child account"
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<button[39m
+  [33maria-pressed[39m=[32m"true"[39m
+  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] min-w-0 flex-1 justify-start truncate"[39m
+  [33mstyle[39m=[32m"height: auto; padding: 0px; border: 0px; border-radius: var(--radius); font-size: inherit; line-height: 20px; color: var(--text); font-weight: 500;"[39m
+  [33mtype[39m=[32m"button"[39m
+[36m>[39m
+  [0mFictional child account[0m
+[36m</button>[39m
+
+Ignored nodes: comments, script, style
+[36m<button[39m
+  [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+  [33mtype[39m=[32m"button"[39m
+[36m>[39m
+  [0mFictional child account[0m
+[36m</button>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mChart of accounts[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"comfortable"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"Chart of accounts"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"Search the tree"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"Search the tree"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m"Fictional child account"[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Expand all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Expand all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Collapse all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Collapse all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+               ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mChart of accounts[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"comfortable"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"Chart of accounts"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"Search the tree"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"Search the tree"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m"Fictional child account"[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Expand all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Expand all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Collapse all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Collapse all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+               ...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/specialized.test.tsx:31:197
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/tree-masters.test.tsx > org-structure edits beside the tree and adopts versioned saves without losing search
+ FAIL  src/tree-masters.test.tsx > chart-of-accounts edits beside the tree and adopts versioned saves without losing search
+AssertionError: expected { id: '1', …(10) } to match object { expectedVersion: undefined, …(1) }
+(10 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "expectedVersion": undefined,
+    "name": "Fictional changed node",
+  }
+
+ ❯ src/tree-masters.test.tsx:14:221
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/tree-masters.test.tsx > product-categories edits beside the tree and adopts versioned saves without losing search
+AssertionError: expected { id: '1', …(9) } to match object { expectedVersion: undefined, …(1) }
+(9 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "expectedVersion": undefined,
+    "name": "Fictional changed node",
+  }
+
+ ❯ src/tree-masters.test.tsx:14:221
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/tree-masters.test.tsx > tree child defaults, required name, leaf guard and acknowledged deletion
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete"
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Chart of accounts":
+  [36m<h1 />[39m
+
+  --------------------------------------------------
+  region:
+
+  Name "Chart of accounts":
+  [36m<section[39m
+    [33maria-label[39m=[32m"Chart of accounts"[39m
+    [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+    [33mdata-hierarchy[39m=[32m"true"[39m
+    [33mdata-hierarchy-panel[39m=[32m"true"[39m
+    [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search the tree":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search the tree"[39m
+    [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+    [33mplaceholder[39m=[32m"Search the tree"[39m
+    [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Expand all":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Expand all"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+    [33mtitle[39m=[32m"Expand all"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Collapse all":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Collapse all"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+    [33mtitle[39m=[32m"Collapse all"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "New top-level item":
+  [36m<button[39m
+    [33maria-label[39m=[32m"New top-level item"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+    [33mtitle[39m=[32m"New top-level item"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Collapse Assets":
+  [36m<button[39m
+    [33maria-expanded[39m=[32m"true"[39m
+    [33maria-label[39m=[32m"Collapse Assets"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mstyle[39m=[32m"width: 20px; height: 20px; border-radius: var(--radius);"[39m
+    [33mtitle[39m=[32m"Collapse Assets"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Assets":
+  [36m<button[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] min-w-0 flex-1 justify-start truncate"[39m
+    [33mstyle[39m=[32m"height: auto; padding: 0px; border: 0px; border-radius: var(--radius); font-size: inherit; line-height: 20px; color: var(--text); font-weight: 400;"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Add child Assets":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Add child Assets"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mstyle[39m=[32m"width: 18px; height: 18px;"[39m
+    [33mtitle[39m=[32m"Add child Assets"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Current Assets":
+  [36m<button[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))] min-w-0 flex-1 justify-start truncate"[39m
+    [33mstyle[39m=[32m"height: auto; padding: 0px; border: 0px; border-radius: var(--radius); font-size: inherit; line-height: 20px; color: var(--text); font-weight: 400;"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Add child Current Assets":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Add child Current Assets"[39m
+    [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50"[39m
+    [33mstyle[39m=[32m"width: 18px; height: 18px;"[39m
+    [33mtitle[39m=[32m"Add child Current Assets"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "New top-level item":
+  [36m<button[39m
+    [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "Items":
+  [36m<ul[39m
+    [33maria-label[39m=[32m"Items"[39m
+    [33mclass[39m=[32m"min-h-0 flex-1 overflow-auto p-1.5"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"group flex items-center gap-1.5 rounded-[var(--radius)] pe-2 hover:bg-[var(--surface-2)] data-[selected]:bg-[var(--primary-soft)]"[39m
+    [33mdata-hierarchy-row[39m=[32m"true"[39m
+    [33mstyle[39m=[32m"padding-inline-start: 6px; padding-block: 4px;"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"group flex items-center gap-1.5 rounded-[var(--radius)] pe-2 hover:bg-[var(--surface-2)] data-[selected]:bg-[var(--primary-soft)]"[39m
+    [33mdata-hierarchy-row[39m=[32m"true"[39m
+    [33mstyle[39m=[32m"padding-inline-start: 22px; padding-block: 4px;"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mChart of accounts[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"comfortable"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"Chart of accounts"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"Search the tree"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"Search the tree"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Expand all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Expand all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Collapse all"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"Collapse all"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=...
+ ❯ Object.getElementError ../../node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/tree-masters.test.tsx:25:333
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/tree-masters.test.tsx > ar tree keeps labelled fields and effective density/table locks
+TestingLibraryElementError: Unable to find role="textbox" and name "Account"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mدليل الحسابات[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"spacious"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"دليل الحسابات"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"البحث في الشجرة"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"البحث في الشجرة"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"توسيع الكل"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"توسيع الكل"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"طي الكل"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"طي الكل"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"عنصر جديد من الم...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-chart-of-accounts"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mدليل الحسابات[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"erp-master-tree"[39m
+        [33mdata-density[39m=[32m"spacious"[39m
+        [33mdata-erp-tree[39m=[32m"true"[39m
+        [33mdata-master-tree[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] erp-master-tree-pane"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"دليل الحسابات"[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col"[39m
+            [33mdata-hierarchy[39m=[32m"true"[39m
+            [33mdata-hierarchy-panel[39m=[32m"true"[39m
+            [33mstyle[39m=[32m"font-size: calc(13px * var(--fs-result));"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center gap-1.5 border-b border-[var(--border)] p-2.5"[39m
+              [33mdata-hierarchy-toolbar[39m=[32m"true"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-2.5 top-1/2 z-10 -translate-y-1/2 text-[var(--text-muted)]"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"14"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"14"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"11"[39m
+                    [33mcy[39m=[32m"11"[39m
+                    [33mr[39m=[32m"8"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"relative"[39m
+                    [36m>[39m
+                      [36m<input[39m
+                        [33maria-label[39m=[32m"البحث في الشجرة"[39m
+                        [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                        [33mplaceholder[39m=[32m"البحث في الشجرة"[39m
+                        [33mstyle[39m=[32m"padding-inline-start: 32px;"[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</label>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"توسيع الكل"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"توسيع الكل"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-up-down"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 15 5 5 5-5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 9 5-5 5 5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"طي الكل"[39m
+                [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-8"[39m
+                [33mtitle[39m=[32m"طي الكل"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"lucide lucide-chevrons-down-up"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"17"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"17"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 20 5-5 5 5"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m7 4 5 5 5-5"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"عنصر جديد من الم...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/tree-masters.test.tsx:34:108
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  6 failed | 49 passed (55)
+   Start at  05:09:10
+   Duration  40.10s (transform 4.49s, setup 1.53s, collect 13.41s, tests 49.20s, environment 3.80s, prepare 473ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c7a2/demo-apps/erp 

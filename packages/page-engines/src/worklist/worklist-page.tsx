@@ -131,7 +131,7 @@ export function WorklistPage(props:WorklistPageProps) {
  const {preferences}=usePreferences();
  return <PresentationProvider value={preferences}><WorklistContent key={JSON.stringify([props.adapter.identity,props.page.id])} {...props}/></PresentationProvider>;
 }
-function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPreferences,personalViews=true,renderViewControls,renderFilters,rowClick='preview',refreshKey}:WorklistPageProps) {
+function WorklistContent({renderLeading,tableComposition,newLabel,page,config,adapter,imports,approvals,onReturn,onPreferences,personalViews=true,renderViewControls,renderFilters,rowClick='preview',refreshKey}:WorklistPageProps) {
  const {t}=useLocalization(),{preferences,isLocked,allowedValues,update}=usePreferences(),format=useFormatters();
  const [printedAt,setPrintedAt]=useState<Date|null>(null);
  useEffect(()=>{
@@ -482,6 +482,7 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
 
   return (
     <div className="flex w-full flex-col gap-3">
+      {renderLeading?.({values:filters,onChange:changeFilter,onReset:reset})}
       {exportFailure?<div>{exportFailure.downloaded?<p role="status"><LocalizedText message="recovery.exportAudit" /></p>:null}<RecoveryNotice sessionRestored={adapter.sessionAvailable ?? false} failure={exportFailure.failure} onRetry={exportFailure.retry} onReturn={()=>setExportFailure(null)}/></div>:null}
       {bulkFailures.length ? <div role="alert" className="rounded-lg border border-[var(--border)] p-3 text-sm"><b><LocalizedText message="ui.archive.results.f0345b60" /></b>{bulkFailures.map(item => <div key={item.id}>{item.id}: {item.error}</div>)}</div> : null}
 
@@ -501,7 +502,7 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
         ) : null}
       </div>      <Card className="flex flex-wrap items-center gap-2 p-2.5">
         <div data-tour="search" className="min-w-[240px] flex-1 lg:max-w-xl"><SearchInput aria-label="Search" value={search} onChange={(value) => { setSearch(value); persist(value, filters); setPageNumber(1); }} className="w-full" placeholder={t("Search {page} by ID, name or any visible value…",{page:t(page.title)})} /></div>
-        <Button disabled={!host.can("create",page)} data-tour="new" variant="primary" leftIcon={<Plus className="size-3.5" />} onClick={() => openRecord({ pageId: page.id, mode: "new", title: `New ${page.title.replace(/ (Master|Worklist)$/i, "")}` })}><LocalizedText message="ui.new.18fdd549" /></Button>
+        <Button disabled={!host.can("create",page)} data-tour="new" variant="primary" leftIcon={<Plus className="size-3.5" />} onClick={() => openRecord({ pageId: page.id, mode: "new", title: `New ${page.title.replace(/ (Master|Worklist)$/i, "")}` })}><LocalizedText message={newLabel ?? "ui.new.18fdd549"} /></Button>
         <div className="hidden h-7 w-px bg-[var(--border)] md:block" />
         {renderViewControls ? renderViewControls({layout:{filters:{...filters,...(search ? {query:search} : {})},columns:visibleKeys,sort,pageSize},onApply:applyPersonalView}) : personalViews && <PersonalViews request={authedFetch} key={`${product.id}:${page.id}`} productId={product.id} pageId={page.id}
           layout={{ filters: {...filters,...(search ? {query:search} : {})},columns:visibleKeys,sort,pageSize }}
@@ -577,8 +578,8 @@ function WorklistContent({page,config,adapter,imports,approvals,onReturn,onPrefe
         ) : null}
         {searchFailure ? (
           <RecoveryNotice sessionRestored={adapter.sessionAvailable ?? false} failure={searchFailure} onRetry={()=>void runSearch()} onReturn={onReturn} />
-        ) : loading ? <div role="status" className="p-6"><LocalizedText message="ui.loading.results.cf2c6389" /></div> : pageRows.length ? preferences.resultView === "table" ? (
-          <DataTable onRowOpen={rowClick==='open'?view:undefined}
+        ) : loading ? <div role="status" className="p-6"><LocalizedText message="ui.loading.results.cf2c6389" /></div> : (pageRows.length || tableComposition?.beforeRows) ? preferences.resultView === "table" ? (
+          <DataTable composition={tableComposition} onRowOpen={rowClick==='open'?view:undefined}
             onCellCommit={canEdit ? async (row, column, next) => {
               const id = String(row[config.primaryKey]);
               /* What this browser believes the cell says — the local edit if

@@ -1,0 +1,26 @@
+{
+  "method": "Assistant inspection of three local Chromium captures; source JSX/CSS targets are identified separately in source-audit.json. The original desktop app was not rendered. No screenshot equality claim.",
+  "captures": [
+    {
+      "file": "erp1-tree.png",
+      "route": "/erp1/masters/chart-of-accounts",
+      "observed": "A narrow hierarchy pane sits beside the editable Assets record. Breadcrumb/status identity, three-column fields, direct/descendant counts and direct-child table are visible without overlap.",
+      "limits": "The default populated state does not prove loading skeletons, branch expansion after creation or notification placement. Selected-row foreground remains a recorded difference."
+    },
+    {
+      "file": "erp1-rates.png",
+      "route": "/erp1/masters/tax-rates",
+      "observed": "Valid on and Today controls appear in the toolbar. Each visible result has effective dates, a validity badge and a small horizontal validity bar.",
+      "limits": "Stacked toolbar/filter/results cards remain visibly different from the source single-toolbar composition. Tax percentage cells remain plain numbers, and row/loading/card presentation is not matched."
+    },
+    {
+      "file": "erp2-tree.png",
+      "route": "/erp2/masters/chart-of-accounts",
+      "state": "Assets record opened from the hierarchy table",
+      "observed": "The Assets record has a breadcrumb/status strip, details grid and compact direct-child list with folder icons and codes.",
+      "limits": "The generic record header/actions and duplicated child-section heading remain recorded differences. This capture does not show the ERP2 hierarchy table; its computed geometry is checked separately."
+    }
+  ],
+  "wholeDestinationMatches": 0,
+  "humanAccessibilityReview": false
+}

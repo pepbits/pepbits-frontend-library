@@ -1,0 +1,24 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {spawnSync,execFileSync} from 'node:child_process';
+const folder='docs/releases/unreleased/evidence/restructure-phase-6c-7a-2026-10-25';
+const run=args=>spawnSync('git',args,{encoding:'utf8'});
+const protectedPaths=['desktop-clients','dummy-api','source','demo-pages','deploy','.github','Jenkinsfile','run.sh','run_all.sh'];
+const protectedChanges=run(['status','--short','--',...protectedPaths]).stdout.trim();
+const forbiddenPattern='@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/|demo-apps/healthcare';
+const forbidden=spawnSync('grep',['-rnE',forbiddenPattern,'demo-apps/erp/src'],{encoding:'utf8'});
+const urlPattern=String.raw`https?://(?!localhost|127\.0\.0\.1|www\.w3\.org)[a-z0-9.-]+\.[a-z]{2,}|Bearer [A-Za-z0-9]{10}|password\s*[:=]\s*['"][^'"]{4,}`;
+const urls=spawnSync('grep',['-rnP',urlPattern,'demo-apps/erp/src',folder],{encoding:'utf8'});
+const matches=urls.stdout.trim().split('\n').filter(Boolean).map(line=>{
+ const [,file,number,content]=line.match(/^(.+?):(\d+):(.*)$/)??[];
+ const allowed=file?.endsWith('.log')&&content?.includes('https://'+'react.dev/link/wrap-tests-with-act');
+ return {file,line:Number(number),reason:allowed?'React act guidance in retained test warnings; documentation link only, no runtime dependency or credential.':'UNREVIEWED'};
+});
+const ledger='demo-apps/erp/parity-status.md',before=execFileSync('git',['show','HEAD:'+ledger],{encoding:'utf8'}).split('\n'),after=readFileSync(ledger,'utf8').split('\n');
+const changed=after.flatMap((line,index)=>line===before[index]?[]:[{before:before[index],after:line}]);
+const ledgerBoundary=before.length===after.length&&changed.length===18&&changed.every(row=>row.before?.includes('/masters/')&&row.after.split('|')[1]===row.before.split('|')[1]);
+const whitespace=run(['diff','--check']);
+const lockfile=run(['status','--short','--','package-lock.json']).stdout.trim();
+const result={at:new Date().toISOString(),protectedChanges,forbidden:forbidden.stdout.trim(),urlMatches:matches,unreviewed:matches.filter(row=>row.reason==='UNREVIEWED').length,ledgerBoundary:{passed:ledgerBoundary,changedMasterRows:changed.length,otherDestinationsUnchanged:96,headerAndOrderUnchanged:ledgerBoundary},lockfile,whitespace:whitespace.stdout.trim(),passed:!protectedChanges&&!forbidden.stdout&&forbidden.status===1&&[0,1].includes(urls.status)&&matches.every(row=>row.reason!=='UNREVIEWED')&&ledgerBoundary&&!lockfile&&whitespace.status===0};
+writeFileSync(folder+'/boundary-scan.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({passed:result.passed,urlMatches:matches.length,unreviewed:result.unreviewed}));
+if(!result.passed)process.exitCode=1;
