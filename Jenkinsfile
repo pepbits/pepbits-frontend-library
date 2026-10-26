@@ -8,7 +8,7 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '20'))
     skipDefaultCheckout(true)
   }
-  parameters { booleanParam(name: 'DEPLOY_TEST_SITE', defaultValue: false, description: 'Owner enables after the phase 8 receiver/Compose migration and review') }
+  parameters { booleanParam(name: 'DEPLOY_TEST_SITE', defaultValue: true, description: 'Deploy main to frontend.test.pepbits.com (receiver supports release schema 2 since 26 Oct 2026)') }
   environment {
     CI = 'true'
     NEXT_TELEMETRY_DISABLED = '1'

@@ -138,3 +138,5 @@ production live checks for reports (22 workflows, 49 routes) and erp (122 workfl
 loopback ports with `/health` ok and no listener left. The test-site archive was not rebuilt by the reviewer.
 
 *Update 26 October 2026:* School's registry migration was merged as `86a72ba` before this phase was merged to library `main` as `7cdc9e8`.
+
+*Update 26 October 2026:* the receiver/Compose change was applied and the first schema 2 release deployed (`20261026015233819-e04d5f77`, from `e04d5f7`); `DEPLOY_TEST_SITE` now defaults to true. See [test-site rollout status](../../development/TEST-SITE.md#rollout-status-26-october-2026).
