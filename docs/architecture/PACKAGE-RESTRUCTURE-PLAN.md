@@ -656,7 +656,7 @@ All four product repositories moved from vendored archives to the published 0.1.
 | ERP Enterprise | `6f332b6` | product host in `frontend/packages/erp-host`; 24 archives retired |
 | School (Academic) Enterprise | `86a72ba` | product host in `frontend/packages/education-host`; 36 archives retired, 3 Platform archives kept; Healthcare source pins at `c92b8a0b` |
 
-Every product pipeline reads `NPM_TOKEN` from the Jenkins Secret Text credential `pepbits-npm-read-token` (`read:packages`), which the owner must add. Product verification records are in `pepbits-shared-document` (`ad0ed159`).
+Every product pipeline reads `NPM_TOKEN` from the Jenkins Secret Text credential `pepbits-npm-read-token`, added on 26 October 2026 through Jenkins configuration-as-code (pepbits-shared-document `e31ba11e`). Product verification records are in `pepbits-shared-document` (`ad0ed159`).
 
 ### Phase 8 status
 
