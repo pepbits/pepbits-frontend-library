@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [Healthcare AllyVora Patients — 26 October 2026](healthcare-allyvora-patients-2026-10-26.md): fourteenth app, prefixed patient workflows, staged backend and schema 2 test-site packaging; local verification, no deployment.
+
 - [ERP parity subsets after phase 8 — integration](erp-parity-integration-2026-10-26.md): 6c-7a/6c-7a2 and 6c-7b merged after phase 8 and verified on the combined source (CI 69/69, ERP live 198 workflows/114 routes/71 visual checks, 0 errors/axe); historical evidence retained, whole-destination parity incomplete.
 
 - [ERP phase 6c-7a2 — tree/rate masters](restructure-phase-6c-7a2-2026-10-25.md): twelve verified destination compositions; 6,813 CI tests, 152 live workflows and 57 geometry checks pass; exact remaining differences retained.

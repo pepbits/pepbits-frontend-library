@@ -1,3 +1,4 @@
+import {smokeAllyVoraProxy} from './allyvora-smoke.mjs';
 import {demos,hostApiVariable} from "../services.mjs";
 import { spawn } from "node:child_process";
 import { createServer } from "node:net";
@@ -59,7 +60,7 @@ export async function waitForShell(base, { signal, alive = () => true, releaseId
   throw new Error(`${base}: health check failed (${last?.message}).`);
 }
 
-export async function smokeRelease(release, signal, apiUrl) {
+export async function smokeRelease(release, signal, apiUrl, allyvoraUrl) {
   const { id: releaseId } = JSON.parse(await readFile(join(release, "release.json"), "utf8"));
   for (const service of Object.keys(demos)) {
     const port = await freePort();
@@ -68,7 +69,7 @@ export async function smokeRelease(release, signal, apiUrl) {
       cwd: release,
       detached: true,
       stdio: "inherit",
-      env: { ...process.env, NODE_ENV: "production", HOSTNAME: "127.0.0.1", PORT: String(port), ...(apiUrl?{[hostApiVariable(service)]:apiUrl}:{}) },
+      env: { ...process.env, NODE_ENV: "production", HOSTNAME: "127.0.0.1", PORT: String(port), NODE_PATH: "", NODE_OPTIONS: "", ...(allyvoraUrl?{ALLYVORA_API_URL:allyvoraUrl}:{}), ...(apiUrl?{[hostApiVariable(service)]:apiUrl}:{}) },
     });
     let exited = false;
     const closed = new Promise((resolve) => {
@@ -81,6 +82,7 @@ export async function smokeRelease(release, signal, apiUrl) {
         const response=await fetch(`http://127.0.0.1:${port}/api/health`,{signal:AbortSignal.timeout(3000)});
         if(!response.ok||(await response.json()).ok!==true)throw Error(`${service}: packaged host API proxy failed`);
       }
+      if(allyvoraUrl&&['healthcare','allyvora-patients'].includes(service))await smokeAllyVoraProxy(`http://127.0.0.1:${port}`);
       console.log(`  ${service}: packaged HTML and assets passed on an isolated port.`);
     } finally {
       const kill=signal=>{try{process.kill(-child.pid,signal);}catch{}};

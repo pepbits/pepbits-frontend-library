@@ -10,6 +10,7 @@ import {HealthcarePage} from './renderer';
 import {pages,hrefFor,targetFromPath} from './navigation';
 import {fixtureSession} from './test/session';
 import {mockHttp} from './test/mock-http';
+import {mockAllyVora} from './test/allyvora/mock-api';
 function contentText(container:HTMLElement){return container.querySelector('.healthcare-page')?.textContent??'';}
 function DensityProbe(){return <span hidden data-effective-density={usePreferences().preferences.density}/>;}
 const scenarios:{name:string;preferences:Partial<UserPreferences>;policy?:PreferencePolicy}[]=[
@@ -20,8 +21,9 @@ const cases=[...pages.filter(page=>!hrefFor({pageId:page.id}).includes('[id]')).
 describe.each(scenarios)('$name',scenario=>{
  test.each(cases)('$id renders API data and page content passes axe',async page=>{
   const mock=mockHttp(scenario.preferences,scenario.policy),target=page.target;
+  const allyvora=target.pageId.startsWith('allyvora-')?mockAllyVora():undefined;
   const navigation={current:target,hrefFor,open:vi.fn(),openInNewContext:vi.fn()};
-  const {container}=render(<HealthcareProviders apiBaseUrl="/api" request={mock.request} session={fixtureSession} navigation={navigation}><HealthcarePage target={target}/><DensityProbe/></HealthcareProviders>);
+  const {container}=render(<HealthcareProviders apiBaseUrl="/api" request={mock.request} session={fixtureSession} navigation={navigation}><HealthcarePage target={target} client={allyvora?.client}/><DensityProbe/></HealthcareProviders>);
   await waitFor(()=>expect(container.querySelector('[data-page-id]')).toBeInTheDocument(),{timeout:10000});
   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,50));});
   if(page.id.startsWith('quality-')||page.id.startsWith('/quality/'))await waitFor(()=>expect(contentText(container)).not.toContain('AllyVora Quality is not available'));// API readiness is checked below.
@@ -31,6 +33,7 @@ describe.each(scenarios)('$name',scenario=>{
   if(page.id.includes('medslot'))await waitFor(()=>expect(container.querySelector('.reference-medslot [data-medslot-stage] h1')).toBeInTheDocument());
   if(page.id.includes('medband'))await waitFor(()=>expect(container.querySelector('.reference-medband [data-medband-stage]')).toBeInTheDocument());
   const content=container.querySelector('.healthcare-page') as HTMLElement;
+  if(allyvora)await waitFor(()=>expect(content.querySelector('[data-patient-register], [data-patient-form], [data-layout-preview]')).toBeInTheDocument());
   const ready=qualityRouteReady[target.pageId];if(ready)await waitFor(()=>expect(content.textContent).toContain(ready),{timeout:10000});
   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).toBeNull());
   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim().length).toBeGreaterThan(15);

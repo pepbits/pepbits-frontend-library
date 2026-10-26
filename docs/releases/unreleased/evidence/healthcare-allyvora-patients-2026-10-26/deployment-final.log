@@ -1,0 +1,26 @@
+
+> pepbits-frontend-library@0.0.0 test:deployment
+> node --test tooling/deployment/*.test.mjs
+
+✔ health requires the selected release, not merely any process answering 200 (47.330691ms)
+✔ healthy HTML with a missing script is not a healthy deployment (14.403243ms)
+✔ an SPA fallback returning HTML for a script cannot pass health (8.38152ms)
+✔ deployment requires explicit API URLs and rejects accidental loopback builds (2.117034ms)
+✔ build verification refuses missing stamps, mismatches, and incomplete artifacts (19.670111ms)
+✔ source snapshots exclude secrets, build output, dependency trees, and references (29.098918ms)
+✔ packaging survives deletion of its build tree and includes static/public assets (150.814376ms)
+✔ activation selects a release only after stop and checks it after start (65.24775ms)
+✔ failed start restores and checks the previous release (69.842203ms)
+✔ failed health restores and checks the previous release (52.956261ms)
+✔ failed first deployment removes its pointer and does not pretend to roll back (28.345104ms)
+✔ desktop server serves SPA routes and assets without leaking files or hiding missing chunks (77.036775ms)
+✔ an interruption after start rolls back before reporting success (81.317436ms)
+✔ a partial stop failure attempts to restart the previous release (55.205248ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 752.805534

@@ -15,7 +15,7 @@
     "test": "turbo run test",
     "check:boundaries": "node tooling/scripts/check-boundaries.mjs",
     "test:tooling": "node --test tooling/scripts/*.test.mjs",
-    "ci": "npm run check:boundaries && npm run test:tooling && NEXT_PUBLIC_API_URL=/api NEXT_PUBLIC_SETTLE_API_URL=/settle-api NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api VITE_API_URL=/api turbo run typecheck test build --force --concurrency=1",
+    "ci": "npm run check:boundaries && npm run test:tooling && NEXT_PUBLIC_API_URL=/api NEXT_PUBLIC_SETTLE_API_URL=/settle-api NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api NEXT_PUBLIC_ALLYVORA_API_URL=/allyvora-api VITE_API_URL=/api turbo run typecheck test build --force --concurrency=1",
     "release:version": "changeset version",
     "release:build": "turbo run build --filter='./packages/*' --concurrency=3",
     "release:pack": "npm run release:build && node tooling/scripts/release-pack.mjs",

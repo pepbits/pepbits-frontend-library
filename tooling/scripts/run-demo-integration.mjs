@@ -1,3 +1,4 @@
+import {buildAllyVoraBackend} from '../deployment/allyvora-backend.mjs';
 import {spawn,execFileSync} from 'node:child_process';
 import {createServer} from 'node:net';
 import {mkdtempSync,readFileSync,writeFileSync,existsSync,readdirSync,rmSync} from 'node:fs';
@@ -5,9 +6,9 @@ import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-const demo=process.argv[2];if(!['healthcare','erp','school','tenant-admin','reports','onboarding','desktop','caregrid'].includes(demo))throw new Error('Pass a demo app name');
+const demo=process.argv[2];if(!['healthcare','erp','school','tenant-admin','reports','onboarding','desktop','caregrid','allyvora-patients'].includes(demo))throw new Error('Pass a demo app name');
 // Environment prefixes use underscores: tenant-admin reads TENANT_ADMIN_API_NODE, TENANT_ADMIN_RESULT and so on.
-const prefix=demo.toUpperCase().replaceAll('-','_');
+const prefix=demo==='allyvora-patients'?'ALLYVORA':demo.toUpperCase().replaceAll('-','_');
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const app=join(root,'demo-apps',demo),temp=mkdtempSync(join(tmpdir(),demo+'-integration-'));
 const children=[],cleanup=[];
@@ -29,7 +30,7 @@ const deadline=setTimeout(()=>cancel('deadline'),Number(process.env[prefix+'_TIM
 const cancellation=stopFile?setInterval(()=>{if(existsSync(stopFile))cancel('stop-file');},500):null;cancellation?.unref();
 const freePort=()=>new Promise(resolve=>{const server=createServer();server.listen(0,'127.0.0.1',()=>{const port=server.address().port;server.close(()=>resolve(port));});});
 const apiPort=await freePort(),appPort=await freePort();
-const node=process.env[prefix+'_API_NODE']??process.execPath;
+const node=(demo==='allyvora-patients'?process.env.ALLYVORA_HOST_API_NODE:undefined)??process.env[prefix+'_API_NODE']??process.execPath;
 const major=Number(execFileSync(node,['-p','process.versions.node.split(".")[0]'],{encoding:'utf8'}));
 if(major<24)throw new Error('The unchanged demo API requires Node 24. Set the demo API_NODE variable to a Node 24 executable.');
 const artifactRoot=process.env[prefix+'_RUNTIME_ARTIFACTS'];
@@ -67,11 +68,19 @@ function start(command,args,env,cwd,label){
 }
 async function ready(url,process){for(let i=0;i<120;i++){if(process.child.exitCode!==null)throw new Error('Local service exited before readiness. '+process.output.join('').split('\n').filter(l=>!/(account|password|token|credential)/i.test(l)).slice(-8).join('\n'));try{const r=await fetch(url);if(r.status<500)return;}catch{}await new Promise(r=>setTimeout(r,500));}throw new Error('Local service readiness timed out');}
 try{
+ let allyvoraUrl;
+ if(['healthcare','allyvora-patients'].includes(demo)){
+  const backend=join(temp,'allyvora-backend'),port=await freePort();
+  identity.allyvoraBuild=await buildAllyVoraBackend(root,backend);
+  const business=start(process.execPath,['dist/server.js'],{PORT:String(port),DB_PATH:join(temp,'allyvora.db'),SEED_DEMO:'true',NODE_ENV:'production'},backend,'AllyVora API');
+  allyvoraUrl=`http://127.0.0.1:${port}`;identity.allyvoraPort=port;
+  await ready(allyvoraUrl+'/api/health',business);
+ }
  const api=start(node,[...apiArgs,'mock-api/server.mjs'],{HOST:'127.0.0.1',PORT:String(apiPort),NEXORA_DATA_DIR:join(temp,'data'),RECORD_DATA_DIR:join(temp,'records')},root,'API');
  await ready(`http://127.0.0.1:${apiPort}/auth/session`,api);
  // Vite apps (the desktop demo) serve their production build with `vite preview`, which proxies /api to <PREFIX>_API_URL.
  const vite=existsSync(join(app,'vite.config.ts'));
- const next=start(process.execPath,vite?[join(root,'node_modules/vite/bin/vite.js'),'preview','--host','127.0.0.1','--port',String(appPort),'--strictPort']:[join(root,'node_modules/next/dist/bin/next'),'start','--hostname','127.0.0.1','--port',String(appPort)],{[prefix+'_API_URL']:`http://127.0.0.1:${apiPort}`},app,vite?'Vite':'Next');
+ const next=start(process.execPath,vite?[join(root,'node_modules/vite/bin/vite.js'),'preview','--host','127.0.0.1','--port',String(appPort),'--strictPort']:[join(root,'node_modules/next/dist/bin/next'),'start','--hostname','127.0.0.1','--port',String(appPort)],{[demo==='allyvora-patients'?'ALLYVORA_HOST_API_URL':prefix+'_API_URL']:`http://127.0.0.1:${apiPort}`,...(allyvoraUrl?{ALLYVORA_API_URL:allyvoraUrl}:{})},app,vite?'Vite':'Next');
  await ready(`http://127.0.0.1:${appPort}/`,next);
  const browser=start(process.execPath,[join(app,'scripts/smoke.mjs')],{[prefix+'_BASE']:`http://127.0.0.1:${appPort}`,[prefix+'_EXAMPLES']:'1',[prefix+'_FLOW']:'1'},root,'Browser');
  browser.child.stdout.pipe(process.stdout);browser.child.stderr.pipe(process.stderr);

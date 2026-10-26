@@ -83,3 +83,19 @@ All thirteen source test files are ported. Generator checks compare frozen style
 Patient registration metadata configures public TemplateFields, patient rows configure CollectionView, and patient/global search use AsyncLookup. Source* controls, SourceDialog and ScreenHost replace duplicate infrastructure. Calendar and scheduling composition remain demo-owned. Frozen scoped CSS and alias mappings retain source provenance; separate overrides enforce host presentation. Two temporal SourceInput wrappers and seven direct icon exports are the generic additions. The app pins the source's `tailwind-merge` 3.7.0 utility instead of cloning its resolver. Protected source/backend/catalogs are unchanged. [Delivery](../../docs/releases/unreleased/restructure-phase-6b-9-2026-10-23.md).
 
 Phase 6b-9 also fixes shared shell solid-notification contrast, discovered with a live reschedule dialog and visible success toast. Chromium regression checks all four tones in both light and dark themes.
+
+## AllyVora Patients — 26 October 2026
+
+Provenance: standalone `demo-apps/allyvora-patients` at `b3cc2e357e0b419d1c6f00946736e7c6a133c688`, itself adapted from the read-only `source/allyvora-patients`. The [standalone mapping](../allyvora-patients/source-mapping.md) lists original responsibilities; [module provenance](src/modules/registration/provenance.json) retains original hashes. The dependency gate explicitly forbids demo-to-demo runtime imports. We therefore use the owner-authorized copy fallback rather than add a private-demo dependency or put a healthcare-specific feature into a generic public library. Standalone runtime UI is unchanged; its integration wrapper now shares the root service launcher.
+
+| Input | Healthcare destination / adaptation |
+| --- | --- |
+| Standalone `src/modules/registration` | Same path: form, five layouts, list, editor, record, wristband, rules drawer and organisation setup; navigation imports use module `routes.ts` |
+| Standalone navigation and renderer | Module `routes.ts`, healthcare navigation/renderer and `host.tsx`; `/allyvora-patients` prefix, three entries, one existing application host; original UI roles registered as `allyvora-*` actions on the existing screen host, with no nested host context |
+| Standalone typed client and proxy | `src/adapters/allyvora.ts`, `src/app/allyvora-api/[...segments]/route.ts`; same error/HTTP contract |
+| `@allyvora/shared` | Unchanged `file:../../source/allyvora-patients/packages/shared`, transpiled by Next; same TypeScript compatibility setting as standalone |
+| Standalone adapter/workflow/profile/host tests and fictional fixtures | Healthcare adapter tests, registration tests and `src/test/allyvora`; prefixed UI URLs, unchanged API expectations |
+| Standalone Chromium journeys | `scripts/allyvora-flows.mjs`: current healthcare session, fourteen-app selector, real HTTP create/view/edit/status/layout, rules/draft and EN/AR axe; expected concurrent 409 remains tested in standalone and unit cases |
+| Source backend build and lockfile | Root `tooling/deployment/allyvora-backend.mjs` builds a disposable copy and packages `dist`, production modules and build/native provenance; protected inputs unchanged |
+
+Existing healthcare modules/routes and original inputs are preserved. All standalone adaptations (simulated API authority, memory-only drafts, English-specific wording, pointer signature and no global patient command source) remain applicable.

@@ -1,0 +1,189 @@
+{
+  "scope": "Local production Next server, unchanged shared demo API and unchanged AllyVora API (fictional data)",
+  "flows": [
+    {
+      "id": "AV-01",
+      "scope": "UI",
+      "result": "Fixture sign-in through the shared host; register loads AllyVora rows"
+    },
+    {
+      "id": "AV-02",
+      "scope": "UI",
+      "result": "Shared preferences page saves through the central host path"
+    },
+    {
+      "id": "AV-03",
+      "scope": "UI",
+      "result": "Register views/search/filters drive the API and survive reload (20 rows on first page)"
+    },
+    {
+      "id": "AV-04",
+      "scope": "UI",
+      "result": "Row opens the record; section deep link edits, saves with version, reload shows value and audit change"
+    },
+    {
+      "id": "AV-05",
+      "scope": "UI",
+      "result": "Second stale save receives 409, keeps the typed value and explains the conflict"
+    },
+    {
+      "id": "AV-06",
+      "scope": "UI",
+      "result": "Duplicate warning, rules drawer jump and in-memory session draft restore including drawn signature"
+    },
+    {
+      "id": "AV-07",
+      "scope": "UI",
+      "result": "Empty save reveals problems; keyboard quick pick advances focus; complete registration assigns branch MRN and opens the record"
+    },
+    {
+      "id": "AV-08",
+      "scope": "UI",
+      "result": "Confirmed deactivate and reactivate through the status API with audit entries"
+    },
+    {
+      "id": "AV-09",
+      "scope": "UI",
+      "result": "Designer preview and save change the organisation layout; the form switcher saves it back"
+    },
+    {
+      "id": "AV-10",
+      "scope": "HTTP setup + UI",
+      "result": "Arabic RTL and reduced motion from the shared preference API apply to every module route"
+    },
+    {
+      "id": "AV-11",
+      "scope": "UI",
+      "result": "Operations analyst registers patients; layout designer is read-only (UI gating only)"
+    }
+  ],
+  "checks": [
+    {
+      "profile": "default",
+      "path": "/patients",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/patients?view=inactive",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/patients?mode=new",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/patients?mode=view&id=29",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/patients?mode=edit&id=29",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/patients?mode=edit&id=29&section=consent",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/settings/layout",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/preferences",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/patients",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/patients?view=inactive",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/patients?mode=new",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/patients?mode=view&id=29",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/patients?mode=edit&id=29",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/patients?mode=edit&id=29&section=consent",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/settings/layout",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "diagnostics": [
+    {
+      "href": "/patients",
+      "url": "http://127.0.0.1:34909/patients?mode=new",
+      "candidates": 1
+    },
+    {
+      "href": "/patients?mode=new",
+      "url": "http://127.0.0.1:34909/patients",
+      "candidates": 1
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "expectedStatuses": [
+    {
+      "route": "/patients?mode=edit&id=28",
+      "path": "/allyvora-api/patients/28",
+      "status": 409
+    }
+  ]
+}

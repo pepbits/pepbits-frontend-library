@@ -26,6 +26,7 @@ export async function verifyBuild(workspace, config) {
     const expected = demo==='desktop'?config.desktopApiUrl:config.webApiUrl;
     const stamp = await readFile(join(workspace, artifact, 'BUILD_API'), 'utf8').catch(()=>null);
     if(stamp?.trim()!==expected)throw Error(`${artifact}: missing or mismatched BUILD_API; refusing release.`);
+    if(['healthcare','allyvora-patients'].includes(demo)&&(await readFile(join(workspace,artifact,'BUILD_ALLYVORA_API'),'utf8').catch(()=>null))?.trim()!=='/allyvora-api')throw Error(`${artifact}: missing or mismatched BUILD_ALLYVORA_API; refusing release.`);
     await stat(join(workspace,artifact,demo==='desktop'?'index.html':`standalone/demo-apps/${demo}/server.js`));
     if(demo!=='desktop')await stat(join(workspace,artifact,'static'));
   }

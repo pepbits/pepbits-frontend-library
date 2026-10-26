@@ -1,0 +1,54 @@
+{
+  "flows": [],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local production healthcare browser against the unchanged shared demo and AllyVora HTTP APIs",
+  "checks": [
+    {
+      "route": "/allyvora-patients",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('listbox').getByRole('option').filter({ hasText: /^Patients(?:\\s|$)/ })\u001b[22m\n",
+      "rendered": {
+        "path": "/patient-query",
+        "body": "CA\nCare\n14 options\nPatients\nAllyVora Patients\nMedSlot\nMedSlot\nMedBand\nMedBand Patient Access\nSurgiSuite\nSurgiSuite\nQuality\nAllyVora Quality\nTeleconsult Provider\nTeleconsult Provider\nTeleconsult Patient\nTeleconsult Patient\nRCM\nRCM Workspace\nPharmacy\nPharmacy-1\nSuite\nHealthcare Suite\nCare\nHealthcare\nLIS1\nLIS1\nLIS2\nLIS2\nRIS1\nRIS1\nPatient search\nclinical\nSearch\n⌘K\n03:10:30\nMon • 2026-10-26 • UTC\nhq\nPM\nFind a patient\nAt least one field is required\nSave preset\nNew patient\nSearch anywhere\n\nSearch the whole record using whole words, “quotes” for a phrase, or a leading minus to exclude. Use the fields below for partial names, MRNs, or phone numbers.\n\nMRN / UHID\nFirst name\nLast name\nCode\nSelect…\nAll\n+971\n+91\n+44\n+1\n+974\n+966\nMobile\nNational ID / Identifier\nMore filters\nSearch\nSearch the patient registry\n\nEnter at least one criterion above, then press Enter or select Search.\n\nCare • hq • Solution Architecture\nSecure session\n03:10",
+        "pageId": "patient-query",
+        "headings": [
+          "Find a patient",
+          "Search the patient registry"
+        ],
+        "inputs": [
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "type": "date",
+            "placeholder": ""
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

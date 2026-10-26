@@ -75,6 +75,7 @@ test("packaging survives deletion of its build tree and includes static/public a
   await file(join(build, "tooling/deployment/start-demo.mjs"), "server");
   for(const demo of Object.keys(demos).filter(d=>!['desktop','showcase'].includes(d))){
     await file(join(build,`demo-apps/${demo}/.next/BUILD_API`),config.webApiUrl);
+    if(['healthcare','allyvora-patients'].includes(demo))await file(join(build,`demo-apps/${demo}/.next/BUILD_ALLYVORA_API`),'/allyvora-api');
     await file(join(build,`demo-apps/${demo}/.next/standalone/demo-apps/${demo}/server.js`));
     await file(join(build,`demo-apps/${demo}/.next/static/chunk.js`));
   }

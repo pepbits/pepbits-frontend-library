@@ -1,3 +1,6 @@
+import {smokeApi} from '../deployment/api-smoke.mjs';
+import {withAllyVoraBackend} from '../deployment/allyvora-smoke.mjs';
+import {smokeRelease} from '../deployment/process.mjs';
 // Offline receiver-contract validation. Never contacts a host or activates a release.
 import {readFileSync,mkdtempSync,rmSync,readdirSync,lstatSync} from 'node:fs';
 import {join,resolve,relative} from 'node:path';
@@ -23,5 +26,7 @@ with tarfile.open(sys.argv[1]) as t:
  for(const f of build.files)if(!fileSet.has(f.path)||sha(readFileSync(join(root,f.path)))!==f.sha256)throw Error('Changed/missing payload file: '+f.path);
  for(const demo of release.demos){const marker=join(root,'web',demo==='desktop'?'desktop':`demos/${demo}/demo-apps/${demo}/public`,'__nexora-release.json');if(JSON.parse(readFileSync(marker)).id!==id)throw Error('Demo marker mismatch');}
  if(!files.includes('src/mock-api/server.mjs')||!files.includes('mock/mockpay/__main__.py'))throw Error('Missing API/simulators');
- console.log(JSON.stringify({status:'passed',scope:'local archive extraction, receiver identity, complete file digests and every demo marker; no deployment',release:id,sha256:digest,files:build.files.length,bytes:lstatSync(archive).size,mockServicesCommit:build.mockServicesCommit}));
+ if(!files.includes('src/allyvora-backend/dist/server.js')||!files.includes('src/allyvora-backend/node_modules/better-sqlite3/build/Release/better_sqlite3.node'))throw Error('Missing packaged AllyVora backend/native runtime');
+ await smokeApi(join(root,'src/mock-api'),apiUrl=>withAllyVoraBackend(join(root,'src/allyvora-backend'),allyvoraUrl=>smokeRelease(join(root,'web'),undefined,apiUrl,allyvoraUrl)));
+ console.log(JSON.stringify({status:'passed',scope:'local archive extraction, receiver identity, complete file digests every demo marker, isolated servers/assets/proxies and packaged AllyVora HTTP workflows; no deployment',release:id,sha256:digest,files:build.files.length,bytes:lstatSync(archive).size,mockServicesCommit:build.mockServicesCommit}));
 }finally{rmSync(temp,{recursive:true,force:true});}

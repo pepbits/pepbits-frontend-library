@@ -1,0 +1,175 @@
+{
+  "flows": [
+    {
+      "id": "HCD-AV-01",
+      "scope": "UI",
+      "result": "Fourteenth header app opens the patient register within the healthcare shell"
+    },
+    {
+      "id": "HCD-AV-03",
+      "scope": "UI",
+      "result": "Register views/search/filters drive the API and survive reload (20 rows on first page)"
+    },
+    {
+      "id": "HCD-AV-04",
+      "scope": "UI",
+      "result": "Row opens the record; section deep link edits, saves with version, reload shows value and audit change"
+    },
+    {
+      "id": "HCD-AV-06",
+      "scope": "UI",
+      "result": "Duplicate warning, rules drawer jump and in-memory session draft restore including drawn signature"
+    },
+    {
+      "id": "HCD-AV-07",
+      "scope": "UI",
+      "result": "Empty save reveals problems; keyboard quick pick advances focus; complete registration assigns branch MRN and opens the record"
+    },
+    {
+      "id": "HCD-AV-08",
+      "scope": "UI",
+      "result": "Confirmed deactivate and reactivate through the status API with audit entries"
+    },
+    {
+      "id": "HCD-AV-09",
+      "scope": "UI",
+      "result": "Designer preview and save change the organisation layout; the form switcher saves it back"
+    },
+    {
+      "id": "HCD-AV-10",
+      "scope": "HTTP setup + UI",
+      "result": "Arabic RTL and reduced motion from the shared preference API apply to every module route"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local production healthcare browser against the unchanged shared demo and AllyVora HTTP APIs",
+  "checks": [
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?view=inactive",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?mode=new",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?mode=view&id=29",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?mode=edit&id=29",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?mode=edit&id=29&section=consent",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/settings/layout",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/preferences",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?view=inactive",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?mode=new",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?mode=view&id=29",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?mode=edit&id=29",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?mode=edit&id=29&section=consent",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/settings/layout",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/allyvora-patients",
+      "failure": "AllyVora shell navigation needed a fallback",
+      "rendered": {
+        "path": "/allyvora-patients/patients",
+        "body": "PA\nPatients\nPatient register\nFind, view and edit registered patients\nallyvora-patients\nSearch\n⌘K\n03:14:39\nMon • 2026-10-26 • UTC\nhq\nPM\nPatient register\n\nFind a patient by name, MRN or mobile number, or register someone new.\n\nFictional data. The AllyVora demo API saves changes as Keerthana Lal (Front desk), its simulated user.\n\nNew patient\nAll patients\n29\nRegistered today\n4\nLast 7 days\n7\nNeed more details\n4\nInactive\n0\nSex\nAny sex\nMale\nFemale\nOther\nUnknown\nPayer\nAny payer\nSelf pay\nInsurance\nCorporate\nGovernment scheme\nBranch\nAll branches\nSpectrum Kochi Hospital\nSpectrum Trivandrum Hospital\nSpectrum Calicut Clinic\nSort by\nRecently updated\nRecently registered\nName, A to Z\nMRN\nLeast complete first\nPatient\tMRN\tAge, sex\tMobile\tPayer\tRecord\tUpdated\tActions\n\nIF\nIntegration Fictional\n\tKCH-2026-000025\t38 y, M\t+91 9000012345\tSelf pay\t\n72%\n\t1 minute ago\t\nEdit Integration Fictional\n\n\nJK\nMr Joseph Kurian\n\nജോസഫ് കുര്യൻ\n\n\tKCH-2026-000024\t21 y, M\t+91 9534760382\tSelf pay\t\n86%\n\t2 minutes ago\t\nEdit Mr Joseph Kurian\n\n\nRM\nMaster Rahul Menon\n\nരാഹുൽ മേനോൻ\n\n\tKCH-2026-000023\t6 y, M\t+91 9619061225\tSelf pay\t\n85%\n\t3 minutes ago\t\nEdit Master Rahul Menon\n\n\nAN\nMrs Anjali Nair\n\nഅഞ്ജലി നായർ\n\n\tKCH-2026-000022\t27 y, F\t+91 9633286594\tSelf pay\t\n89%\n\t2 hours ago\t\nEdit Mrs Anjali Nair\n\n\nFR\nMs Fathima Rahman\n\nഫാത്തിമ റഹ്മാൻ\n\n\tKCH-2026-000021\t47 y, F\t+91 9690988741\tSelf pay\t\n89%\n\t4 hours ago\t\nEdit Ms Fathima Rahman\n\n\nAS\nMr Arun Shankar\n\nഅരുൺ ശങ്കർ\n\n\tKCH-2026-000020\t77 y, M\t+91 9616326742\tSelf pay\t\n89%\n\tyesterday\t\nEdit Mr Arun Shankar\n\n\nNP\nMs Nisha Paul\n\nനിഷ പോൾ\n\n\tKCH-2026-000019\t19 y, F\t+91 9904642236\tInsurance\t\n90%\n\tyesterday\t\nEdit Ms Nisha Paul\n\n\nBA\nMr Biju Antony\n\nബിജു ആന്റണി\n\n\tKCH-2026-000018\t23 y, M\t+91 9836607028\tSelf pay\t\n89%\n\t2026-10-15\t\nEdit Mr Biju Antony\n\n\nDM\nMs Divya Mohan\n\nദിവ്യ മോഹൻ\n\n\tKCH-2026-000017\t27 y, F\t+91 9520142639\tInsurance\t\n88%\n\t2026-10-13\t\nEdit Ms Divya Mohan\n\n\nLP\nMrs Lakshmi Pillai\n\nലക്ഷ്മി പിള്ള\n\n\tKCH-2026-000016\t68 y, F\t+91 9483046387\tSelf pay\t\n85%\n\t2026-10-09\t\nEdit Mrs Lakshmi Pillai\n\n\nSV\nMr Sanjay Varma\n\nസഞ്ജയ് വർമ്മ\n\n\tKCH-2026-000015\t77 y, M\t+91 9765164882\tSelf pay\t\n88%\n\t2026-10-06\t\nEdit Mr Sanjay Varma\n\n\nDI\nMrs Devika Iyer\n\nദേവിക അയ്യർ\n\n\tKCH-2026-000014\t57 y, F\t+91 9809311270\tGovernment scheme\t\n89%\n\t2026-10-06\t\nEdit Mrs Devika Iyer\n\n\nAK\nMr Abdul Kareem\n\nഅബ്ദുൾ കരീം\n\n\tKCH-2026-000013\t19 y, M\t+91 9452749521\tSelf pay\t\n89%\n\t2026-10-05\t\nEdit Mr Abdul Kareem\n\n\nMV\nMrs Meera Varghese\n\nമീര വർഗീസ്\n\n\tTVM-2026-000004\t43 y, F\t+91 9407343934\tInsurance\t\n89%\n\t2026-10-05\t\nEdit Mrs Meera Varghese\n\n\nNS\nMrs Neethu Sebastian\n\nനീതു സെബാസ്റ്റ്യൻ\n\n\tKCH-2026-000012\t43 y, F\t+91 9596433125\tSelf pay\t\n85%\n\t2026-10-04\t\nEdit Mrs Neethu Sebastian\n\n\nMG\nMs Mariam George\n\nമറിയം ജോർജ്\n\n\tTVM-2026-000003\t25 y, F\t+91 9959227256\tCorporate\t\n90%\n\t2026-10-04\t\nEdit Ms Mariam George\n\n\nAK\nMr Arjun Krishnan\n\tKCH-2026-000011\t54 y, M\t+91 9676179069\tSelf pay\t\n74%\n\t2026-10-04\t\nEdit Mr Arjun Krishnan\n\n\nSK\nMrs Shalini Kartha\n\nശാലിനി കർത്ത\n\n\tKCH-2026-000010\t56 y, F\t+91 9402245760\tSelf pay\t\n89%\n\t2026-10-01\t\nEdit Mrs Shalini Kartha\n\n\nTJ\nMr Thomas Joseph\n\nതോമസ് ജോസഫ്\n\n\tTVM-2026-000002\t33 y, M\t+91 9828318135\tSelf pay\t\n85%\n\t2026-09-28\t\nEdit Mr Thomas Joseph\n\n\nMH\nMr Mohammed Haneef\n\nമുഹമ്മദ് ഹനീഫ്\n\n\tKCH-2026-000009\t58 y, M\t+91 9630668851\tInsurance\t\n88%\n\t2026-09-25\t\nEdit Mr Mohammed Haneef\nShowing 1–20 of 29\n10 / page\n20 / page\n50 / page\n100 / page\n1\n2\nPatients • hq • Solution Architecture\nSecure session\n03:14",
+        "pageId": "allyvora-patients",
+        "headings": [
+          "Patient register"
+        ],
+        "inputs": [
+          {
+            "type": "text",
+            "placeholder": "Search name, MRN, mobile or local-script name"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

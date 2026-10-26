@@ -76,3 +76,5 @@ As of 28 September 2026, a separate `2026-09-28-reference-modules` documentation
 Run `node docs/tools/check-docs.mjs` from the repository root to check documentation navigation, the active guide, inventory and release evidence. See [development rules](development/RULES.md) for when documentation must change.
 
 - [AllyVora Quality reference module](features/quality-reference.md): original source sidebar and quality workflows through authenticated shared UI/API adapters.
+
+- [AllyVora Patients in healthcare](features/healthcare-demo.md#allyvora-patients--hcd-av): fourteenth header app, 99-field registration and self-contained backend in the local test-site archive; [delivery evidence](releases/unreleased/healthcare-allyvora-patients-2026-10-26.md).
