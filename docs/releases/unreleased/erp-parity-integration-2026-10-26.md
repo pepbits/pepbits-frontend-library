@@ -1,6 +1,6 @@
 # ERP parity subsets after phase 8 — 26 October 2026
 
-Status: prepared candidate; merges and combined verification blocked by linked worktree metadata access. Base: `7cdc9e895ffa6c53d114b3e8e37ea01fcc1a7f5a`, branch `restructure/erp-parity-merge`. No tag, push, main merge, publication or deployment. Package versions remain unchanged. Testing guide: [1.0.0](../../testing/v1.0.0/PRE-COMMIT.md).
+Status: merged and verified on the combined source; merged to `main` on 26 October 2026. Base: `7cdc9e895ffa6c53d114b3e8e37ea01fcc1a7f5a`, branch `restructure/erp-parity-merge`. No tag, publication or deployment. Package versions remain unchanged. Testing guide: [1.0.0](../../testing/v1.0.0/PRE-COMMIT.md).
 
 ## Changes and compatibility
 
@@ -16,10 +16,20 @@ The subsets retain effective preferences, tenant locks, mounted permissions, ver
 
 ## Verification and limits
 
-The first merge command in this resume exited 128 before changing HEAD, the index or working-tree source: the sandbox mounted this worktree's Git metadata directory read-only despite the writable parent. No merge commit or combined build exists yet.
+Codex prepared the conflict resolutions and source-audit ports but its sandbox could not write this worktree's Git metadata, so the reviewer performed the two history-preserving merges with those resolutions: `3c5e39e` (6c-7a2, including 6c-7a) and `8cf8004` (6c-7b). Combined-source verification by the reviewer, Node 24.21.0, local only:
 
-The full CI gates, shell browser suite, production ERP/reports live checks, combined subset geometry checks, documentation/lifecycle receipts and final boundary/secret/whitespace scans remain pending on the actual merged source. Earlier branch results remain dated historical evidence, not current acceptance.
+| Check | Result |
+| --- | --- |
+| Root `npm ci`, `tooling/scripts/install-api.sh` | PASS |
+| `tooling/scripts/ci-gates.sh` forced CI (`npm run ci`) | PASS: 69/69 tasks, 0 cached; tooling 23/23; docs tools 6/6 |
+| Documentation impact receipts | First run FAILED: merged ERP sources lacked receipts. Receipts refreshed with `documentation-lifecycle.mjs snapshot` (no guide content change); lifecycle check and docs check (228 files) then PASS |
+| Remaining gate steps (API build/typecheck/tests, clinical, deployment) | Not re-run on this branch: the merges change no file under `mock-api/` or `tooling/`; the same code passed these steps on `main` `7cdc9e8` |
+| Shell browser (`npm run test:browser -w @pepbits/shell`) | PASS |
+| Production live ERP (`run-demo-integration.mjs erp`) | PASS: 198 workflows, 114 routes, 29 panel states, 71 visual checks; 0 errors, console errors, HTTP errors and axe violations |
+| Production live reports | PASS |
+
+Whole-destination parity remains incomplete at all 114 destinations (see the ledger). This is not a deployment, hosted Jenkins or native result.
 
 ## Upgrade and rollback
 
-Complete the two authorized history-preserving merges on the integration branch after metadata access is corrected, refresh impact receipts and run the requested gates. Commit trailers must credit Claude Opus 5.5. Main, push and deployment remain outside scope. No API migration or irreversible data change is proposed.
+Rollback is a revert of the two merge commits on `main`. Deployment is separate. No API migration or irreversible data change is proposed.

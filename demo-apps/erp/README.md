@@ -37,7 +37,7 @@ Optional receipts: `ERP_RESULT`, `ERP_IDENTITY`, `ERP_SCREENSHOT`; cancellation/
 
 ## Current integration boundary
 
-The [post-phase-8 integration candidate](../../docs/releases/unreleased/erp-parity-integration-2026-10-26.md) combines the 18 master editors, 12 tree/rate destinations and 14 transaction document compositions described below. Both merges and fresh combined verification remain pending Git metadata access. All 114 destinations retain explicit differences in the [ledger](parity-status.md). Dated records describe their own sources, not the combined candidate.
+The [post-phase-8 integration](../../docs/releases/unreleased/erp-parity-integration-2026-10-26.md) combines the 18 master editors, 12 tree/rate destinations and 14 transaction document compositions described below. Both merges are on `main` with fresh combined verification (26 October 2026). All 114 destinations retain explicit differences in the [ledger](parity-status.md). Dated records describe their own sources, not the combined candidate.
 
 ## Structure and routes
 
