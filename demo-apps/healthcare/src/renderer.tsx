@@ -1,7 +1,8 @@
 import {RegistrationHost} from './modules/registration/host';
 import {PatientsPage} from './modules/registration/page';
 import type {AllyVoraClient} from './adapters/allyvora';
-import {MODULE_ID} from './modules/registration/routes';
+import {FRONT_DESK_KIND, MODULE_ID} from './modules/registration/routes';
+import {FrontDeskPage} from './modules/registration/front-desk/page';
 import {MedslotPage} from './modules/medslot/page';
 import {MedbandPage} from "./modules/medband/page";
 import {SurgiSuitePage} from './modules/surgisuite/page';
@@ -20,9 +21,9 @@ import {DiagnosticPage} from './modules/diagnostics/page';
 import {PharmacyPage} from './modules/pharmacy/page';
 import {pages} from './navigation';
 function SettingsPage() {return <PreferencesPage showTabPreferences={false} services={useSettingsServices()}/>;}
-export const Renderer = createPageRenderer({renderers: {'allyvora-patients':PatientsPage,medslot:MedslotPage,medband:MedbandPage,surgisuite:SurgiSuitePage,quality:QualityPage,teleconsult:TeleconsultPage,rcm:RcmPage,pharmacy: PharmacyPage, diagnostic: DiagnosticPage, suite: SuitePage, clinical: ClinicalPage, preferences: SettingsPage}});
+export const Renderer = createPageRenderer({renderers: {'allyvora-patients':PatientsPage,[FRONT_DESK_KIND]:FrontDeskPage,medslot:MedslotPage,medband:MedbandPage,surgisuite:SurgiSuitePage,quality:QualityPage,teleconsult:TeleconsultPage,rcm:RcmPage,pharmacy: PharmacyPage, diagnostic: DiagnosticPage, suite: SuitePage, clinical: ClinicalPage, preferences: SettingsPage}});
 export function HealthcarePage({target, replace, client}: {target: NavigationTarget; replace?: (href: string) => void; client?: AllyVoraClient}) {
   const page = pages.find(item => item.id === target.pageId);
-  if(page?.module===MODULE_ID)return <RegistrationHost replace={replace} client={client}><Renderer page={page} target={target}/></RegistrationHost>;
+  if(page?.module===MODULE_ID&&page.kind!==FRONT_DESK_KIND)return <RegistrationHost replace={replace} client={client}><Renderer page={page} target={target}/></RegistrationHost>;
   return page ? <Renderer page={page} target={target}/> : <NotFoundState/>;
 }

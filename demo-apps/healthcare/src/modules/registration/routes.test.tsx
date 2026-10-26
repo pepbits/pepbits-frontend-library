@@ -25,8 +25,11 @@ const routes: [string, string][] = [
   ['edit patient', '/allyvora-patients/patients?mode=edit&id=1'],
   ['edit section', '/allyvora-patients/patients?mode=edit&id=1&section=contact'],
   ['patient record', '/allyvora-patients/patients?mode=view&id=1'],
+  ['start a visit', '/allyvora-patients/visits/new'],
+  ['start a visit for a patient', '/allyvora-patients/visits/new?patient=1'],
+  ['emergency registration', '/allyvora-patients/emergency'],
 ];
-const ready: Record<string, string> = {register: '[data-patient-register]', 'inactive view': '[data-patient-register]', 'filtered search': '[data-patient-register]', 'new patient': '[data-record-form="new"]', 'edit patient': '[data-record-form="edit"]', 'edit section': '[data-record-form="edit"]', 'patient record': '[data-patient-view]'};
+const ready: Record<string, string> = {register: '[data-patient-register]', 'inactive view': '[data-patient-register]', 'filtered search': '[data-patient-register]', 'new patient': '[data-record-form="new"]', 'edit patient': '[data-record-form="edit"]', 'edit section': '[data-record-form="edit"]', 'patient record': '[data-patient-view]', 'start a visit': '[data-front-desk="allyvora-start-visit"]', 'start a visit for a patient': '[data-front-desk="allyvora-start-visit"]', 'emergency registration': '[data-front-desk="allyvora-emergency-registration"]'};
 
 describe.each(profiles)('%s route rendering', (profile, preferences, rules) => {
   it.each(routes)('%s (%s)', async (name, url) => {
@@ -59,6 +62,12 @@ describe.each(profiles)('%s full host', (_profile, preferences, rules) => {
     await waitFor(() => expect(container.querySelector('[aria-busy="true"]')).toBeNull());
     await act(async () => {expect((await axe.run(container, {rules: {'color-contrast': {enabled: false}}})).violations).toEqual([]);});
   });
+});
+
+it('front desk routes keep the patient parameter and reject unsafe ids', () => {
+  expect(targetFromPath('/allyvora-patients/visits/new', 'patient=12')).toEqual({pageId: PAGE.startVisit, recordId: '12'});
+  expect(targetFromPath('/allyvora-patients/visits/new', 'patient=../x')).toEqual({pageId: PAGE.startVisit});
+  expect(hrefFor({pageId: PAGE.emergency})).toBe('/allyvora-patients/emergency');
 });
 
 it('unknown routes render the shared not-found state inside the host', async () => {

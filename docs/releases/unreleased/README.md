@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [AllyVora front desk pages — 26 October 2026](allyvora-front-desk-2026-10-26.md): Start a visit and Emergency registration copied into AllyVora Patients; frontend only, backend in a separate session.
+
 - [Healthcare AllyVora Patients — 26 October 2026](healthcare-allyvora-patients-2026-10-26.md): fourteenth app, prefixed patient workflows, staged backend and schema 2 test-site packaging; local verification, no deployment.
 
 - [ERP parity subsets after phase 8 — integration](erp-parity-integration-2026-10-26.md): 6c-7a/6c-7a2 and 6c-7b merged after phase 8 and verified on the combined source (CI 69/69, ERP live 198 workflows/114 routes/71 visual checks, 0 errors/axe); historical evidence retained, whole-destination parity incomplete.
