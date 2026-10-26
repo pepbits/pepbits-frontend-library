@@ -1,8 +1,8 @@
 # @pepbits/data
 
-Generic record editing, draft policy/storage contracts, CSV imports, approvals and record panels. This unpublished `0.1.0` ESM package exposes ESM JavaScript and declarations through its public export map. It has no React, product registry, environment configuration or default API host.
+Generic record editing, draft policy/storage contracts, CSV imports, approvals and record panels. This `0.1.0` ESM package exposes ESM JavaScript and declarations through its public export map. It has no React, product registry, environment configuration or default API host.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/data` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API
 

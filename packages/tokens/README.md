@@ -1,8 +1,8 @@
 # @pepbits/tokens
 
-Hand-written CSS tokens and opt-in reference fonts for shared UI. Version `0.1.0` is an unpublished release candidate; consumers need CSS-aware tooling. The original CSS, all eight font assets, two OFL licenses and provenance are copied unchanged.
+Hand-written CSS tokens and opt-in reference fonts for shared UI. Version `0.1.0` is published; consumers need CSS-aware tooling. The original CSS, all eight font assets, two OFL licenses and provenance are copied unchanged.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/tokens` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API and use
 

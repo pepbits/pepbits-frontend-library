@@ -1,8 +1,8 @@
 # @pepbits/shell
 
-Generic shell, workspace UI, help layers and optional preferences/login pages, unpublished release candidate version `0.1.0`. **Phase 5 priorities 1–6 and phase 5b are implemented.** AI plugs in from the separate higher-layer package. See the [phase 5 record](../../docs/releases/unreleased/restructure-phase-5-2026-10-23.md) and [phase 5b record](../../docs/releases/unreleased/restructure-phase-5b-2026-10-23.md) for verification and deferred work.
+Generic shell, workspace UI, help layers and optional preferences/login pages, version `0.1.0`. **Phase 5 priorities 1–6 and phase 5b are implemented.** AI plugs in from the separate higher-layer package. See the [phase 5 record](../../docs/releases/unreleased/restructure-phase-5-2026-10-23.md) and [phase 5b record](../../docs/releases/unreleased/restructure-phase-5b-2026-10-23.md) for verification and deferred work.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/shell` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API by area
 

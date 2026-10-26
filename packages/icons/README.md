@@ -1,8 +1,8 @@
 # @pepbits/icons
 
-A thin React icon surface for shared primitives, using the existing `lucide-react ^0.468.0` version range. This unpublished `0.1.0` ESM release candidate peer-depends on React 19 or later.
+A thin React icon surface for shared primitives, using the existing `lucide-react ^0.468.0` version range. This `0.1.0` ESM package peer-depends on React 19 or later.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/icons` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API and use
 

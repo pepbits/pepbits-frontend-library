@@ -1,8 +1,8 @@
 # @pepbits/page-engines
 
-Generic record, worklist, form and template engines composed from typed definitions and injected adapters. Version `0.1.0` is an unpublished React 19 ESM release candidate. It contains no application catalogue, entity instances, module registry, navigation tree, default API endpoint or runtime sample data.
+Generic record, worklist, form and template engines composed from typed definitions and injected adapters. Version `0.1.0` is a React 19 ESM package. It contains no application catalogue, entity instances, module registry, navigation tree, default API endpoint or runtime sample data.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/page-engines` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API by area
 

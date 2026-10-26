@@ -1,6 +1,6 @@
 # Library packages
 
-The reusable `@pepbits/*` packages. Phase 7a of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-7a-status) prepares twelve packages at **0.1.0** for GitHub Packages. They are not published yet:
+The reusable `@pepbits/*` packages. Phase 7a of the [library restructure plan](../docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md#phase-7a-status) prepared twelve packages at **0.1.0**; phase 7b published them to GitHub Packages (`@pepbits` scope) and all four products install them. To use them in an app, follow the [developer quick start](../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps); each package README lists its public API and host integration. Packages:
 
 | Package | Purpose |
 | --- | --- |

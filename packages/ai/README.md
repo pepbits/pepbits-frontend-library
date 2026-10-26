@@ -1,8 +1,8 @@
 # @pepbits/ai
 
-Generic contextual AI configuration, client and UI. Unpublished release candidate `0.1.0`, copied alongside the original workspace. AI sits above shell; shell never imports AI. No product catalogue, page grants, prompts, endpoint, provider credential or backend implementation is bundled.
+Generic contextual AI configuration, client and UI. Version `0.1.0`. AI sits above shell; shell never imports AI. No product catalogue, page grants, prompts, endpoint, provider credential or backend implementation is bundled.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/ai` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API
 

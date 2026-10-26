@@ -1,8 +1,8 @@
 # @pepbits/patterns
 
-Generic lifecycle administration, master-file transfer and server-authorized DCP fields. Phase 4a delivers the product-consumed subset; phase 4b adds approvals, drafts and imports. Phase 4c completes priority 3. Version `0.1.0` is an unpublished ESM release candidate, requiring React/React DOM 19 or later. Existing applications keep using their original workspace.
+Generic lifecycle administration, master-file transfer and server-authorized DCP fields. Phase 4a delivers the product-consumed subset; phase 4b adds approvals, drafts and imports. Phase 4c completes priority 3. Version `0.1.0` is an ESM package, requiring React/React DOM 19 or later. Existing applications keep using their original workspace.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/patterns` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API by area
 

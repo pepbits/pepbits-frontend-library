@@ -1,8 +1,8 @@
 # @pepbits/ui
 
-Reusable React primitives: controls, selection, status and navigation. Unpublished version `0.1.0`, copied into the independent root workspace. The public exports resolve to ESM JavaScript and declarations in `dist`; no application migration is included. React 19 or later is required.
+Reusable React primitives: controls, selection, status and navigation. Version `0.1.0`. The public exports resolve to ESM JavaScript and declarations in `dist`; no application migration is included. React 19 or later is required.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/ui` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API
 

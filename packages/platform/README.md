@@ -1,8 +1,8 @@
 # @pepbits/platform
 
-Host-configured sessions, recovery/monitoring, navigation, windows and device transports. This unpublished `0.1.0` ESM release candidate peers on React 19 or later and depends on `@pepbits/data`. No environment lookup, default host, product account list or native runtime import is included.
+Host-configured sessions, recovery/monitoring, navigation, windows and device transports. This `0.1.0` ESM package peers on React 19 or later and depends on `@pepbits/data`. No environment lookup, default host, product account list or native runtime import is included.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/platform` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API
 

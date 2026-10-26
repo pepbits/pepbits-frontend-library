@@ -1,8 +1,8 @@
 # @pepbits/preferences
 
-Preference types, validation, theme metadata and tenant-policy resolution, with a controlled React bridge to a host's update path. Unpublished release candidate, version `0.1.0`; React consumers require React 19 or later.
+Preference types, validation, theme metadata and tenant-policy resolution, with a controlled React bridge to a host's update path. Version `0.1.0`; React consumers require React 19 or later.
 
-Phase 7a adds publishable `dist` artifacts at **0.1.0**. See the [publishing guide](../../docs/development/PUBLISHING.md) for installation, workspace source conditions and manual release steps. No registry publication has occurred.
+Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/preferences` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
 ## Public API
 
