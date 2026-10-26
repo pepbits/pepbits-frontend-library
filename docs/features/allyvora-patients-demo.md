@@ -53,3 +53,7 @@ Adapted or remaining: patient search, recent patients and layout actions in the 
 ## Operations and support
 
 Use Node 24 for the shared demo API and the AllyVora backend's own `npm ci -w backend` for its dependencies. The integration launcher builds the AllyVora API with its documented script, uses temporary databases, and stops every service. Keep credentials and tokens out of receipts. Removing the demo does not change the source app, its backend or the original desktop consumers.
+
+## Healthcare host and packaging — 26 October 2026
+
+The same feature is also available as the fourteenth app in [healthcare](healthcare-demo.md#allyvora-patients--hcd-av), with `/allyvora-patients` prefixed UI URLs and the existing healthcare host. The standalone UI and original URLs stay unchanged. Both integration commands use the root launcher and build the unchanged backend in temporary staging, never inside protected `source/`. Test-site schema 2 now includes the backend and its production dependencies; [operations and Compose](../development/TEST-SITE.md#allyvora-patients-backend-in-schema-2) define runtime configuration. [New delivery evidence](../releases/unreleased/healthcare-allyvora-patients-2026-10-26.md) does not replace historical results.

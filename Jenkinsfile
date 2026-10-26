@@ -12,6 +12,11 @@ pipeline {
   environment {
     CI = 'true'
     NEXT_TELEMETRY_DISABLED = '1'
+    NEXT_PUBLIC_API_URL = '/api'
+    VITE_API_URL = '/api'
+    NEXT_PUBLIC_SETTLE_API_URL = '/settle-api'
+    NEXT_PUBLIC_CAREGRID_API_URL = '/caregrid-api'
+    NEXT_PUBLIC_ALLYVORA_API_URL = '/allyvora-api'
     npm_config_cache = '/var/jenkins_home/.npm/frontend-library'
     // Keep in step with the pinned checkout in .github/workflows/ci.yml.
     MOCK_SERVICES_COMMIT = '5ced4f8b021aa317859e6999d7c96ef14af63ee1'
@@ -58,7 +63,7 @@ pipeline {
             bash tooling/scripts/ci-gates.sh
             npx playwright install --with-deps chromium
             npm run test:browser -w @pepbits/shell
-            for demo in reports school tenant-admin healthcare erp desktop; do
+            for demo in reports school tenant-admin healthcare erp desktop allyvora-patients; do
               node tooling/scripts/run-demo-integration.mjs "$demo"
             done
           '''

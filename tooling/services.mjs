@@ -13,4 +13,5 @@ export const hostApiVariable = name => ({settle:'SETTLE_HOST_API_URL', 'allyvora
 export function demoBuildEnv(env=process.env){return {...env,
   NEXT_PUBLIC_API_URL:env.NEXT_PUBLIC_API_URL??'/api', VITE_API_URL:env.VITE_API_URL??'/api',
   NEXT_PUBLIC_SETTLE_API_URL:env.NEXT_PUBLIC_SETTLE_API_URL??'/settle-api',
-  NEXT_PUBLIC_CAREGRID_API_URL:env.NEXT_PUBLIC_CAREGRID_API_URL??'/caregrid-api'};}
+  NEXT_PUBLIC_CAREGRID_API_URL:env.NEXT_PUBLIC_CAREGRID_API_URL??'/caregrid-api',
+  NEXT_PUBLIC_ALLYVORA_API_URL:env.NEXT_PUBLIC_ALLYVORA_API_URL??'/allyvora-api'};}

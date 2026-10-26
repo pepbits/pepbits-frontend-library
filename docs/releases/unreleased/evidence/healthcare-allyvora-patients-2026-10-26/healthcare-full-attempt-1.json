@@ -1,0 +1,2588 @@
+{
+  "flows": [
+    {
+      "id": "HCD-AV-01",
+      "scope": "UI",
+      "result": "Fourteenth header app opens the patient register within the healthcare shell"
+    },
+    {
+      "id": "HCD-AV-03",
+      "scope": "UI",
+      "result": "Register views/search/filters drive the API and survive reload (20 rows on first page)"
+    },
+    {
+      "id": "HCD-AV-04",
+      "scope": "UI",
+      "result": "Row opens the record; section deep link edits, saves with version, reload shows value and audit change"
+    },
+    {
+      "id": "HCD-AV-06",
+      "scope": "UI",
+      "result": "Duplicate warning, rules drawer jump and in-memory session draft restore including drawn signature"
+    },
+    {
+      "id": "HCD-AV-07",
+      "scope": "UI",
+      "result": "Empty save reveals problems; keyboard quick pick advances focus; complete registration assigns branch MRN and opens the record"
+    },
+    {
+      "id": "HCD-AV-07-edit",
+      "scope": "UI",
+      "result": "The newly registered patient is viewed, edited, saved and reloaded before its status changes"
+    },
+    {
+      "id": "HCD-AV-08",
+      "scope": "UI",
+      "result": "Confirmed deactivate and reactivate through the status API with audit entries"
+    },
+    {
+      "id": "HCD-AV-09",
+      "scope": "UI",
+      "result": "Designer preview and save change the organisation layout; the form switcher saves it back"
+    },
+    {
+      "id": "HCD-AV-10",
+      "scope": "HTTP setup + UI",
+      "result": "Arabic RTL and reduced motion from the shared preference API apply to every module route"
+    },
+    {
+      "id": "HCD-02",
+      "result": "patient search returned the fictional patient"
+    },
+    {
+      "id": "HCD-03",
+      "result": "patient record opened"
+    },
+    {
+      "id": "HCD-04",
+      "result": "consultation draft saved through HTTP and survived reload"
+    },
+    {
+      "id": "HCD-03-encounter",
+      "result": "Suite encounter created through the UI for a fictional patient"
+    },
+    {
+      "id": "HCD-07-lis1",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    },
+    {
+      "id": "HCD-07-lis2",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    },
+    {
+      "id": "HCD-07-ris1",
+      "result": "Patient registered through UI and real HTTP, searchable in own branch, absent in other branch"
+    },
+    {
+      "id": "HCD-13-registry",
+      "mode": "HTTP",
+      "result": "All 40 original destinations in eight categories match the API, with 36 resource definitions and trusted host actor"
+    },
+    {
+      "id": "HCD-13-palette",
+      "mode": "UI",
+      "result": "Command palette opened invoice reference query and financial document"
+    },
+    {
+      "id": "HCD-14-invoice",
+      "mode": "UI",
+      "result": "Independent seeded invoice issued, document shown and persisted across reload"
+    },
+    {
+      "id": "HCD-14-receipt",
+      "mode": "UI create + HTTP allocation",
+      "result": "Receipt created with engine fields and lookup, allocated to an invoice, balances and trusted actor checked"
+    },
+    {
+      "id": "HCD-15-credit",
+      "mode": "UI independent-action guard + HTTP commands",
+      "result": "Credit creation replay, changed-payload conflict, stale-version refusal, second-person issuance, invoice effect, audit and branch isolation verified"
+    },
+    {
+      "id": "HCD-16-claim",
+      "mode": "UI submit + HTTP simulated response/correction",
+      "result": "Claim submitted, acknowledged, denied for synthetic coding error and corrected for resubmission"
+    },
+    {
+      "id": "HCD-16-scope",
+      "mode": "UI + HTTP assertions",
+      "result": "Operational currency filter changes API-backed worklist while host branch authority remains unchanged"
+    },
+    {
+      "id": "HCD-15-authority",
+      "mode": "UI approvals + HTTP negative assertions",
+      "result": "Approvals inbox loaded; viewer definitions are read-only, viewer write and source identity bypass refused"
+    },
+    {
+      "id": "HCD-09-patient",
+      "mode": "UI + HTTP assertions",
+      "result": "Registered fictional patient, reloaded profile, checked trusted actor and branch isolation"
+    },
+    {
+      "id": "HCD-09-search",
+      "mode": "UI",
+      "result": "Command palette searched real API and opened the patient query link"
+    },
+    {
+      "id": "HCD-10-prescription",
+      "mode": "UI",
+      "result": "Created prescription, started review, verified, reserved FEFO stock, checked, handed over and reloaded supplied record"
+    },
+    {
+      "id": "HCD-10-sale",
+      "mode": "UI sale/receipt + HTTP return",
+      "result": "Counter payment persisted, receipt preview opened and synthetic return reversed the invoice"
+    },
+    {
+      "id": "HCD-11-order",
+      "mode": "HTTP",
+      "result": "Created, confirmed, packed, dispatched and completed delivery order with invoice"
+    },
+    {
+      "id": "HCD-11-purchasing",
+      "mode": "HTTP",
+      "result": "Created, approved, sent and received purchase order into a synthetic stock batch"
+    },
+    {
+      "id": "HCD-11-authorization",
+      "mode": "HTTP",
+      "result": "Requested prior authorization and recorded a simulated payer approval"
+    },
+    {
+      "id": "HCD-11-claims",
+      "mode": "HTTP",
+      "resubmissions": 0,
+      "result": "Submitted primary before secondary claims, simulated adjudication, corrected any first-submission simulated denial and posted remittance payment"
+    },
+    {
+      "id": "HCD-12-replay",
+      "mode": "HTTP",
+      "result": "Repeated patient command returned identical result under the same operation key; audit attributed commands to the host actor"
+    },
+    {
+      "id": "HCD-12-authority",
+      "mode": "HTTP negative assertions",
+      "result": "Technician verification, viewer mutation and source identity bypass returned the expected 403 responses"
+    },
+    {
+      "id": "HCD-18-modes",
+      "mode": "UI + HTTP",
+      "result": "Exactly two modules; Doctor/Nurse working modes and effective recording consent resolved from the server"
+    },
+    {
+      "id": "HCD-22-registration",
+      "mode": "UI + HTTP isolation",
+      "result": "Administrator patient registration with consent and allergy declaration; saved patient searchable in own branch and absent in another branch"
+    },
+    {
+      "id": "HCD-19-provider-booking",
+      "mode": "UI + HTTP persistence",
+      "result": "Shared keyboard lookup, branch slot/duration and visit mode created an appointment visible to the authorized patient"
+    },
+    {
+      "id": "HCD-19-patient-booking",
+      "mode": "UI",
+      "result": "Symptoms → current API advice → clinician → available slot → patient booking"
+    },
+    {
+      "id": "HCD-20-triage",
+      "mode": "UI + HTTP persistence",
+      "result": "Nurse admitted patient, retained complaint, captured simulated vitals and handed off to Doctor"
+    },
+    {
+      "id": "HCD-21-sign-summary",
+      "mode": "HTTP replay/conflict setup + UI sign/summary/print",
+      "pdf": {
+        "bytes": 11960,
+        "sha256": "02de572997fd5bd5e447e967162ab6cfa6e377b5d0c29d4e8c21c0f838712e9b"
+      },
+      "result": "Replay and stale-version checks; Doctor signature publishes own-patient summary, persists across reload and renders a synthetic PDF through shared printing"
+    },
+    {
+      "id": "HCD-22-authority",
+      "mode": "Dedicated-role UI + HTTP negative assertions",
+      "result": "Dedicated Nurse cannot spoof Doctor or sign; dedicated Patient cannot read another identity, switch beneficiary or register; own signed summary remains readable"
+    },
+    {
+      "id": "HCD-23-layout",
+      "mode": "Chromium",
+      "result": "Patient phone and bottom navigation fit the shared host at 1000, 800 and 600 pixels"
+    },
+    {
+      "id": "HCD-23-preferences",
+      "mode": "Chromium + accepted HTTP preferences",
+      "result": "Shared quick-add focus/Escape, one palette per shortcut, disabled shortcuts with toolbar access, and mounted registration values through Arabic RTL/Hindi/Malayalam/English, compact density and reduced motion"
+    },
+    {
+      "id": "HCD-42-medslot-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor and source patient/resource/service data"
+    },
+    {
+      "id": "HCD-42-medslot-details",
+      "mode": "UI",
+      "result": "Patient and resource detail URLs survive refresh with actual identifiers"
+    },
+    {
+      "id": "HCD-42-medslot-dialog",
+      "mode": "UI",
+      "result": "Named shared registration drawer is visible and closes on Escape"
+    },
+    {
+      "id": "HCD-42-medslot-registration",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration persists and opens its durable record"
+    },
+    {
+      "id": "HCD-42-medslot-search",
+      "mode": "UI",
+      "result": "Shared header lookup selects an API patient by keyboard"
+    },
+    {
+      "id": "HCD-42-medslot-booking",
+      "mode": "UI",
+      "result": "Patient keyboard selection, service, real availability, visit details and booking"
+    },
+    {
+      "id": "HCD-42-medslot-conflicts",
+      "mode": "HTTP",
+      "result": "Booking replays once; overlapping booking and changed-payload key reuse are refused"
+    },
+    {
+      "id": "HCD-42-medslot-calendar",
+      "mode": "UI",
+      "result": "Populated Day, Week and Month calendars show the actual booking and pass full-document axe"
+    },
+    {
+      "id": "HCD-42-medslot-status",
+      "mode": "UI + HTTP",
+      "result": "Confirmation persists through the appointment drawer"
+    },
+    {
+      "id": "HCD-42-medslot-duration",
+      "mode": "UI",
+      "result": "Shared modal changes appointment duration with server resource checks"
+    },
+    {
+      "id": "HCD-42-medslot-reschedule",
+      "mode": "UI + HTTP",
+      "result": "Move to an available slot retains the old booking as rescheduled"
+    },
+    {
+      "id": "HCD-42-medslot-cancel",
+      "mode": "UI + HTTP",
+      "result": "Cancellation records its reason and keeps the booking history"
+    },
+    {
+      "id": "HCD-42-medslot-schedule",
+      "mode": "HTTP",
+      "result": "Resource weekly schedule uses the unchanged command envelope and persists"
+    },
+    {
+      "id": "HCD-42-medslot-audit-notifications",
+      "mode": "HTTP",
+      "result": "Booking lifecycle is audited and simulated notification records remain available"
+    },
+    {
+      "id": "HCD-42-medslot-authority",
+      "mode": "HTTP",
+      "result": "Scheduler admin restrictions, assigned-provider calendar/record scope, disabled module login and branch isolation"
+    },
+    {
+      "id": "HCD-42-medslot-preferences",
+      "mode": "UI + accepted HTTP preferences",
+      "result": "Mounted registration survives Arabic RTL, Hindi, Malayalam and English with effective compact density, reduced motion and disabled shortcuts"
+    },
+    {
+      "id": "HCD-36-medband-identity",
+      "mode": "HTTP",
+      "result": "Authenticated host actor, masters and patient records; no browser seed"
+    },
+    {
+      "id": "HCD-36-medband-palette",
+      "mode": "UI",
+      "result": "One selected-module search palette finds the real patient"
+    },
+    {
+      "id": "HCD-36-medband-registration",
+      "mode": "UI",
+      "result": "Four-step registration persists into the dynamic wristband record after reload"
+    },
+    {
+      "id": "HCD-36-medband-retry-audit",
+      "mode": "HTTP",
+      "result": "Same-key replay returns the same patient; changed content conflicts; patient audit reads"
+    },
+    {
+      "id": "HCD-36-medband-episode",
+      "mode": "UI",
+      "result": "Patient episode created with an API master department"
+    },
+    {
+      "id": "HCD-36-medband-encounter",
+      "mode": "UI",
+      "result": "Outpatient visit creates the Episode → Case → Encounter relationship"
+    },
+    {
+      "id": "HCD-36-medband-lifecycle",
+      "mode": "UI",
+      "result": "Encounter advances from arrived through in progress to completed"
+    },
+    {
+      "id": "HCD-36-medband-clearance",
+      "mode": "HTTP create + UI deposit",
+      "result": "Admission request links the completed visit; UI deposit clears the pending request"
+    },
+    {
+      "id": "HCD-36-medband-admission",
+      "mode": "HTTP",
+      "result": "Cleared IP request allocates a bed; duplicate admission refuses; discharge releases it"
+    },
+    {
+      "id": "HCD-36-medband-case-episode-close",
+      "mode": "HTTP",
+      "result": "Completed case and episode close through source guards"
+    },
+    {
+      "id": "HCD-36-medband-permissions",
+      "mode": "Viewer UI + HTTP",
+      "result": "Viewer reads; writes, module login and reset refuse; another branch excludes the new patient"
+    },
+    {
+      "id": "HCD-36-medband-preferences",
+      "mode": "UI + accepted HTTP preferences",
+      "result": "Mounted registration survives Arabic RTL, Hindi, Malayalam and English; effective theme/font/radius/shortcuts update"
+    },
+    {
+      "id": "HCD-35-surgisuite-identity",
+      "mode": "HTTP",
+      "result": "Trusted actor and original case/master data; no PIN hash returned"
+    },
+    {
+      "id": "HCD-35-surgisuite-sections",
+      "mode": "UI",
+      "result": "All twelve case sections and refresh preserve the real identifier"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration, keyboard ICD/CPT lookup, team, theatre, conflict check and booking persisted"
+    },
+    {
+      "id": "HCD-35-surgisuite-booking-guards",
+      "mode": "HTTP",
+      "result": "Successful booking replay, fresh overlap refusal and incomplete booking refusal"
+    },
+    {
+      "id": "HCD-35-surgisuite-case-edit",
+      "mode": "UI",
+      "result": "Overview changes survive HTTP save and refresh"
+    },
+    {
+      "id": "HCD-35-surgisuite-report-draft",
+      "mode": "UI",
+      "result": "Operative draft persists; readiness blockers prevent premature signing"
+    },
+    {
+      "id": "HCD-35-surgisuite-signature",
+      "mode": "UI + HTTP",
+      "result": "Source PIN simulation signs a ready report and verifies its hash; existing signed versions use amendment"
+    },
+    {
+      "id": "HCD-35-surgisuite-inventory",
+      "mode": "UI + HTTP",
+      "result": "Receive stock dialog updates the synthetic inventory"
+    },
+    {
+      "id": "HCD-35-surgisuite-approval",
+      "mode": "UI + HTTP",
+      "result": "Synthetic anesthesia approval records the source simulated signature"
+    },
+    {
+      "id": "HCD-35-surgisuite-master",
+      "mode": "UI + HTTP",
+      "result": "Typed procedure metadata plus mapping/preference-card writes persist and refresh consumers"
+    },
+    {
+      "id": "HCD-35-surgisuite-cancel",
+      "mode": "UI + HTTP",
+      "result": "Cancellation persists and keeps the case available for audit"
+    },
+    {
+      "id": "HCD-35-surgisuite-permissions",
+      "mode": "Viewer UI + HTTP",
+      "result": "Viewer has no booking action; writes, module login and cross-branch record reads are refused"
+    },
+    {
+      "id": "HCD-35-surgisuite-preferences",
+      "mode": "UI + accepted HTTP preferences",
+      "result": "Mounted booking input survives Arabic RTL, Hindi, Malayalam and English plus compact density and reduced motion"
+    },
+    {
+      "id": "HCD-24-quality-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor; 32 illustrative indicators, 13 turnaround definitions and eight report templates"
+    },
+    {
+      "id": "HCD-25-quality-authority",
+      "mode": "UI + HTTP isolation",
+      "result": "Shared typed Authority form saved, survived reload and stayed isolated from the other branch"
+    },
+    {
+      "id": "HCD-26-quality-designer",
+      "mode": "UI",
+      "result": "Typed metadata, live section preview, shared keyboard indicator lookup, custom trend/text sections and save/reload of the report schema"
+    },
+    {
+      "id": "HCD-27-quality-report-output",
+      "mode": "UI",
+      "pdf": {
+        "bytes": 223724,
+        "sha256": "4d29c927ad4730551b49bb8a6840c0013afe49c57719302a3e966793a11645ea"
+      },
+      "result": "Authenticated CSV download, recorded report run and synthetic PDF through shared PrintDocument"
+    },
+    {
+      "id": "HCD-28-quality-submission",
+      "mode": "UI prepare + HTTP lifecycle/denial",
+      "result": "Frozen submission; self-approval refused; independent approver, simulated transmission and acknowledgement with retained checksum/history"
+    },
+    {
+      "id": "HCD-29-quality-schedule",
+      "mode": "HTTP command + UI read",
+      "result": "Paused monthly schedule created and explicitly run; generated report history retained; no external delivery"
+    },
+    {
+      "id": "HCD-30-quality-results",
+      "mode": "HTTP commands + UI record",
+      "result": "Versioned correction, same-key replay, stale-edit refusal and separate submitter/verifier/approver; final result approved"
+    },
+    {
+      "id": "HCD-31-quality-events-validation",
+      "mode": "UI",
+      "result": "Manual fictional Event Pulse ingestion and validation run via shared forms and authenticated HTTP"
+    },
+    {
+      "id": "HCD-32-quality-audit",
+      "mode": "UI + HTTP",
+      "result": "Audit hash-chain verification succeeds after the workflow commands"
+    },
+    {
+      "id": "HCD-33-quality-permissions",
+      "mode": "Viewer UI + HTTP negative assertions",
+      "result": "Viewer loses restricted sidebar/actions; direct designer and server writes/users/source-login are denied"
+    },
+    {
+      "id": "HCD-34-quality-preferences",
+      "mode": "Chromium + accepted HTTP preferences",
+      "result": "Mounted Authority values retained through Arabic RTL/Hindi/Malayalam/English, compact density and reduced motion; unsupported export format disables CSV"
+    }
+  ],
+  "rcmPresentation": [
+    {
+      "name": "page /rcm",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/coverages",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/authorizations",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/eligibility",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/estimates",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/deposits",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/cash-sessions",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/encounters",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/charges",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/manual-charges",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/invoices",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/debit-notes",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/credit-notes",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/adjustments",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/receipts",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/refunds",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/packages",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/claims",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/exchange-messages",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/remittances",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/remittance-corrections",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/appeals",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/payer-reconciliations",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/responsibility-transfers",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/aging",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/payment-plans",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/statements",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/collections",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/reports",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/coding-cases",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/cdi-queries",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/drg-groupings",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/em-determinations",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/model-settlements",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/journals",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/gl-reconciliations",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/exports",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/approvals",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/tasks",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/assistance",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/coverages?new=1",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/credit-notes?new=1",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/manual-charges?new=1",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/invoices?open=73",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/receipts?open=44",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/credit-notes?open=5",
+      "failures": []
+    },
+    {
+      "name": "page /rcm/w/claims?open=45",
+      "failures": []
+    },
+    {
+      "name": "creation drawer frame, shared fields and focus entry",
+      "failures": []
+    },
+    {
+      "name": "reference lookup keyboard selection",
+      "failures": []
+    },
+    {
+      "name": "drawer Tab containment and Escape closure",
+      "failures": []
+    },
+    {
+      "name": "command palette keyboard opening and closing",
+      "failures": []
+    },
+    {
+      "name": "effective compact table density",
+      "failures": []
+    },
+    {
+      "name": "effective comfortable table density",
+      "failures": []
+    },
+    {
+      "name": "effective spacious table density",
+      "failures": []
+    },
+    {
+      "name": "effective row stripes, wrapping and sticky header",
+      "failures": []
+    },
+    {
+      "name": "mounted shortcut disable removes palette listener",
+      "failures": []
+    },
+    {
+      "name": "ordinary toolbar command works with shortcuts off",
+      "failures": []
+    },
+    {
+      "name": "reduced motion reaches computed styles",
+      "failures": []
+    },
+    {
+      "name": "zero corner radius reaches controls",
+      "failures": []
+    },
+    {
+      "name": "host font applies to module and heading",
+      "failures": []
+    },
+    {
+      "name": "Arabic direction and operable scope menu",
+      "failures": []
+    },
+    {
+      "name": "Hindi and Malayalam layouts retain content",
+      "failures": []
+    }
+  ],
+  "medbandPresentation": [
+    {
+      "name": "command palette search and Escape",
+      "failures": []
+    },
+    {
+      "name": "registration validation",
+      "failures": []
+    },
+    {
+      "name": "typed contact fields",
+      "failures": []
+    },
+    {
+      "name": "registration payment segment",
+      "failures": []
+    },
+    {
+      "name": "patient wristband and refresh",
+      "failures": []
+    },
+    {
+      "name": "new-episode dialog",
+      "failures": []
+    },
+    {
+      "name": "coverage dialog",
+      "failures": []
+    },
+    {
+      "name": "patient insurance multiselect",
+      "failures": []
+    },
+    {
+      "name": "patient care filters",
+      "failures": []
+    },
+    {
+      "name": "encounter workflow completion",
+      "failures": []
+    },
+    {
+      "name": "encounter lifecycle table",
+      "failures": []
+    },
+    {
+      "name": "admission pending queue",
+      "failures": []
+    },
+    {
+      "name": "deposit confirmation dialog",
+      "failures": []
+    },
+    {
+      "name": "ar mounted values, density and reduced motion",
+      "failures": []
+    },
+    {
+      "name": "hi mounted values, density and reduced motion",
+      "failures": []
+    },
+    {
+      "name": "ml mounted values, density and reduced motion",
+      "failures": []
+    },
+    {
+      "name": "en mounted values, density and reduced motion",
+      "failures": []
+    },
+    {
+      "name": "managed typography, theme, radius and shortcut disablement",
+      "failures": []
+    },
+    {
+      "name": "page /medband",
+      "failures": []
+    },
+    {
+      "name": "page /medband/patients",
+      "failures": []
+    },
+    {
+      "name": "page /medband/patients/new",
+      "failures": []
+    },
+    {
+      "name": "page /medband/encounters/new",
+      "failures": []
+    },
+    {
+      "name": "page /medband/admissions",
+      "failures": []
+    },
+    {
+      "name": "page /medband/encounters",
+      "failures": []
+    },
+    {
+      "name": "page /medband/episodes",
+      "failures": []
+    },
+    {
+      "name": "page /medband/admissions/new",
+      "failures": []
+    },
+    {
+      "name": "page /medband/patients/pat_160281ec-cd3",
+      "failures": []
+    },
+    {
+      "name": "page /medband/encounters/new?patientId=pat_160281ec-cd3",
+      "failures": []
+    },
+    {
+      "name": "page /medband/admissions/new?patientId=pat_160281ec-cd3",
+      "failures": []
+    }
+  ],
+  "scope": "Local production healthcare browser against the unchanged shared demo and AllyVora HTTP APIs",
+  "checks": [
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?view=inactive",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?mode=new",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?mode=view&id=29",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?mode=edit&id=29",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/patients?mode=edit&id=29&section=consent",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/allyvora-patients/settings/layout",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "default",
+      "path": "/preferences",
+      "dir": "ltr",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?view=inactive",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?mode=new",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?mode=view&id=29",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?mode=edit&id=29",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/patients?mode=edit&id=29&section=consent",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "profile": "arabic-rtl-reduced-motion",
+      "path": "/allyvora-patients/settings/layout",
+      "dir": "rtl",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/allyvora-patients/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/allyvora-patients/patients?mode=new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/allyvora-patients/settings/layout",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/appointments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/approvals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/billing/hospital",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/billing/pharmacy",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/billing/invoices",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/suite/contracts",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/departments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/specialties",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/providers",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/payers",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/tpas",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/insurance-plans",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/networks",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/price-lists",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/items",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/services",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resources",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resource-schedules",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/resource-blocks",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-query",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-record",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/patient-360",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-triage",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-consultation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-consultation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/comprehensive-consultation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-registration",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinic-billing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/emergency-registration",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/inpatient-admission",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/consultation-entry-design",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/consultation-entry-v2",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/preferences",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/accession",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/automation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/automation/routing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/billing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/collection",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/criticals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/integration/docs",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/integration",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/orders/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/outsource",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/reports",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/results",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/samples",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/users",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/validation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/accession",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 4
+    },
+    {
+      "route": "/lis2/billing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/collection",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/critical",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/integration/console",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/integration/instrument-orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/integration/messages",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/integration/outbox",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/inventory",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/orders/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/outsource",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/report-designer",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/reports",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/samples",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/settings",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/signing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/tat",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/worklist",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/analytics",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/billing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/critical",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/integration",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/ris1/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/pacs",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/reading",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/reception",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/schedule",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/technologist",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/workbench",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/counter",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/orders",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/sales",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/inventory",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/purchasing",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/authorizations",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/claims",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/remittance",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/pharmacy/settings",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/coverages",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/authorizations",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/eligibility",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/estimates",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/deposits",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/cash-sessions",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/encounters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/charges",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/manual-charges",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/invoices",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/debit-notes",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/rcm/w/credit-notes",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/adjustments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/receipts",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/refunds",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/packages",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/claims",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/exchange-messages",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/remittances",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/remittance-corrections",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/appeals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/payer-reconciliations",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/responsibility-transfers",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/aging",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/payment-plans",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/statements",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/collections",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/reports",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/coding-cases",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/cdi-queries",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/drg-groupings",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/em-determinations",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/model-settlements",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/journals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/gl-reconciliations",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/exports",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/approvals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/tasks",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/assistance",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/schedule",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/notes",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/register",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/home",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/book",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/records",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/indicators",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/tat",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/events",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/verification",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/validation",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/reports",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/schedules",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/submissions",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/authorities",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/users",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/schedule",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/approvals",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/inventory",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/analytics",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/masters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/patients/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/encounters/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/admissions",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/encounters",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/episodes",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot",
+      "pageViolations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-\\[\\#8fb6ea\\]"
+              ],
+              "html": "<p class=\"tabular text-2xl font-semibold text-[#8fb6ea]\">256</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.9 (foreground color: #8fb6ea, background color: #3156d9, font size: 18.0pt (24px), font weight: normal). Expected contrast ratio of 3:1"
+            }
+          ]
+        }
+      ],
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-\\[\\#8fb6ea\\]"
+              ],
+              "html": "<p class=\"tabular text-2xl font-semibold text-[#8fb6ea]\">256</p>",
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.9 (foreground color: #8fb6ea, background color: #3156d9, font size: 18.0pt (24px), font weight: normal). Expected contrast ratio of 3:1"
+            }
+          ]
+        }
+      ],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/book",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/resources",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/services",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/departments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/holidays",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/notifications",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/settings",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/viewer/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/patients/PT00001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/masters/facilities/F001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-record/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/patient-360/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinical-triage/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/comprehensive-consultation/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/op-registration/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/clinic-billing/PT-0001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/admissions/new",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/suite/encounters/EN000001",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/orders/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/masters/tests",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/billing/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis1/reports/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/orders/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/masters/tests",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/patients/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/results/sample/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 3
+    },
+    {
+      "route": "/lis2/print/order/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/lis2/print/labels?ids=1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/patients/25",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/orders/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/reading/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/print/report/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/ris1/print/invoice/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/coverages?new=1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/credit-notes?new=1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/manual-charges?new=1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/invoices?open=73",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/receipts?open=44",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/credit-notes?open=5",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/rcm/w/claims?open=45",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/patients?id=pat_1fbf3b39fd0a",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/workbench?rx=rx_58c7c348b778",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/sales?id=bil_900e0d9dc9f1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/orders?id=ord_e074aa13855a",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/purchasing?po=po_9ed6eb4a92b7",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/inventory?product=prd_024",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/authorizations?id=au_277f510766b5",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/remittance?ra=ra_dc8520dea233",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/pharmacy/claims?claim=clm_5028347681d7",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-provider/consult/a8",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/visit/a_10c9e3374b59",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/teleconsult-patient/visit/a8/summary",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/resources/3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients/241",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments?open=8801",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar?view=day&date=2026-10-26&resource_ids=3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar?view=week&date=2026-10-26&resource_ids=3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar?view=month&date=2026-10-26&resource_ids=3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments?open=8802",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/patients/pat_160281ec-cd3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/encounters/new?patientId=pat_160281ec-cd3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medband/admissions/new?patientId=pat_160281ec-cd3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/447",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/459",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/patients?id=65",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/surgisuite/cases/349",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/indicators/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/reports/2",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/reports/designer",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/reports/9",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/reports/designer?id=9",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/quality/submissions?open=13",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": []
+}

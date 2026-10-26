@@ -1,3 +1,4 @@
+import {allyvoraFlows} from './allyvora-flows.mjs';
 import {medslotFlows} from './medslot-flows.mjs';
 import {medbandFlows} from "./medband-flows.mjs";
 import {surgisuiteFlows} from './surgisuite-flows.mjs';
@@ -43,7 +44,7 @@ async function diagnosticMenu(route){
 page.on('pageerror',error=>errors.push({route:current,message:error.message}));
 page.on('console',message=>{if(message.type()==='error')consoleErrors.push({route:current,message:message.text()});});
 page.on('response',response=>{
- const url=new URL(response.url());if(!url.pathname.startsWith('/api/')||url.pathname.startsWith('/api/auth/'))return;
+ const url=new URL(response.url());if((!url.pathname.startsWith('/api/')&&!url.pathname.startsWith('/allyvora-api/'))||url.pathname.startsWith('/api/auth/'))return;
  if(response.status()>=400)responses.push({route:current,path:url.pathname,status:response.status()});
  if(process.env.HEALTHCARE_DICOM_FIXTURE&&url.pathname==='/api/reference-modules/ris1/api/dicom/instances/1'&&response.ok())pending.push(response.body().then(bytes=>writeFileSync(process.env.HEALTHCARE_DICOM_FIXTURE,bytes)));
  if(!fixtureCapture||url.pathname==='/api/localization'||url.pathname==='/api/preferences')return;
@@ -58,7 +59,9 @@ try{
  await page.goto(base+'/patient-query',{timeout:120000});await page.locator('input[type=password]').waitFor({timeout:60000});
  await page.locator('input[autocomplete=username]').fill('admin');await page.locator('input[type=password]').fill(secret);
  await page.getByRole('button',{name:/sign in/i}).click();await page.locator('[data-page-id]').waitFor({state:'attached',timeout:60000});
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('allyvora'))){current='/allyvora-patients';await allyvoraFlows({page,base,flows,checks});}
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||new RegExp(routeFilter).test('/suite'))){
+  await page.goto(base+'/patient-query');
   await page.getByRole('textbox',{name:/Search/i}).first().fill('Alex');await page.getByRole('button',{name:'Search',exact:true}).click();
   await page.getByText('Alex Morgan',{exact:true}).first().waitFor();flows.push({id:'HCD-02',result:'patient search returned the fictional patient'});
   await page.goto(base+'/patient-record/PT-0001');await page.getByRole('heading',{name:'Alex Morgan'}).waitFor({timeout:60000});flows.push({id:'HCD-03',result:'patient record opened'});
@@ -131,7 +134,7 @@ try{
  finally{
  await Promise.all(pending);
  if(fixtureCapture){mkdirSync(new URL('../src/test/fixtures/',import.meta.url),{recursive:true});writeFileSync(fixtureCapture,JSON.stringify(captures,null,2)+'\n');}
- const result={flows,rcmPresentation,medbandPresentation,scope:'Local browser against the unchanged synthetic demo HTTP API',checks,errors,consoleErrors,responses};
+ const result={flows,rcmPresentation,medbandPresentation,scope:'Local production healthcare browser against the unchanged shared demo and AllyVora HTTP APIs',checks,errors,consoleErrors,responses};
  writeFileSync(resultPath,JSON.stringify(result,null,2)+'\n');
  if(medbandPresentation.some(c=>c.failures.length)||rcmPresentation.some(c=>c.failures.length)||checks.some(c=>c.failure||c.violations.length)||errors.length||consoleErrors.length||responses.length)process.exitCode=1;
  await browser.close();

@@ -1,0 +1,168 @@
+{
+  "sourceBase": "b3cc2e357e0b419d1c6f00946736e7c6a133c688",
+  "apiPort": 42593,
+  "appPort": 36097,
+  "nodeVersion": "v24.21.0",
+  "runtimeArtifacts": null,
+  "allyvoraBuild": {
+    "source": "source/allyvora-patients",
+    "sources": [
+      {
+        "path": "backend/src/config.ts",
+        "sha256": "f67fc2de0583391b0b99e9c657988be318e27948dd0ba34d4c94a9b642e2f1b9"
+      },
+      {
+        "path": "backend/src/db.ts",
+        "sha256": "d83a9264563f6563b339f8520c1f9400d96859478742232a7cfb2905db5bb245"
+      },
+      {
+        "path": "backend/src/http.ts",
+        "sha256": "1cf633289b6c106c9c3c2b3b31cf6f31ef4a90fdbfd42799a5fad3a087da1d4c"
+      },
+      {
+        "path": "backend/src/repositories/patients.ts",
+        "sha256": "8b41e521050b360f3324a7cbdcd10ace48677eb5a1f12af1bb52d44ddfae5c15"
+      },
+      {
+        "path": "backend/src/repositories/reference.ts",
+        "sha256": "919334184efb4aeaa913a97ef709cbf59c84c794ba47dc0a951e5d303e3aee25"
+      },
+      {
+        "path": "backend/src/repositories/settings.ts",
+        "sha256": "82a66d5effef0998b78f8fa5381b8de7c609440493c8fb85e3fe47daa61b321e"
+      },
+      {
+        "path": "backend/src/routes/index.ts",
+        "sha256": "4cb1a5645e4958472220fc01883bf8900bdf4a9969cfeb303f3d3b5acc548214"
+      },
+      {
+        "path": "backend/src/scripts/seed-cli.ts",
+        "sha256": "e303a34a6af614df829be9b9d5a77017f01151aaede98111cd69e198c9167b1f"
+      },
+      {
+        "path": "backend/src/seed-data.ts",
+        "sha256": "80157abfc14f922b1c528e6d2858b1adc8d99719f6df43a41d4cbbb5bc0f5843"
+      },
+      {
+        "path": "backend/src/seed.ts",
+        "sha256": "6cfff936cb41257f668b9a4699004a1ae08d4aef618627afc658bc66c26075bf"
+      },
+      {
+        "path": "backend/src/server.ts",
+        "sha256": "0f50f0dee0294072bdbe55a74d548632c44c2a54cf567a96dba4779658f98231"
+      },
+      {
+        "path": "backend/scripts/build.mjs",
+        "sha256": "4b43052cbf441aa6cc708053fb4a2c1dab23669568006489e0cc9397011a3ecc"
+      },
+      {
+        "path": "packages/shared/package.json",
+        "sha256": "62512a5c681988a8b426c05dc271f851685b54f131ffc23c039dd51b307a0319"
+      },
+      {
+        "path": "packages/shared/src/definition.ts",
+        "sha256": "cf3e52e245b206f550e37cebccc94b807a3da3fdf795e42b20c8e3625854a270"
+      },
+      {
+        "path": "packages/shared/src/engine.ts",
+        "sha256": "b2c4e31c95a4fc1fbd5f3d5dd79984ccd2a4aaf60b4bea904c6c58e5f0d14e86"
+      },
+      {
+        "path": "packages/shared/src/index.ts",
+        "sha256": "761a735bc158b2590de3ea144260949c722dd537d76abc146aeeaa3459f60c3a"
+      },
+      {
+        "path": "packages/shared/src/types.ts",
+        "sha256": "2d31a0e22fd2924469061e9dee4d9c9461cb57faa7e837fc81385e4f9da5860f"
+      },
+      {
+        "path": "packages/shared/tsconfig.json",
+        "sha256": "dd79af01a865925b64dfc4027c3d0503547a73e0bb23a5a07a6899183affa028"
+      },
+      {
+        "path": "package.json",
+        "sha256": "cb6ba5f1568b7fa13261f2226388a663299143be300f6539e50b5f3bdad55a24"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "573ab8a97524de6cb2a3b1320e16370b5ad988180d59395bf845143804c3d192"
+      },
+      {
+        "path": "backend/package.json",
+        "sha256": "d4c4b8d20ecbecade4c0b2587a40dae07827d27f787db4370f9097fea29cc1fb"
+      },
+      {
+        "path": "backend/tsconfig.json",
+        "sha256": "38c87d71efed66461eb11b28fc876b92d218d445556b7907a3c681eef7305409"
+      }
+    ],
+    "node": "24.21.0",
+    "abi": "137",
+    "platform": "linux-x64-glibc",
+    "betterSqlite3": "12.11.1",
+    "native": {
+      "method": "prebuild-install (no compilation fallback)",
+      "sha256": "45cb92a176fb758533db6d9a343acdfc73e4de27ac4c20a0cb2a6fb5be3e84f2",
+      "glibc": [
+        "2.2.5",
+        "2.3",
+        "2.14",
+        "2.28",
+        "2.29"
+      ],
+      "maximumGlibc": "2.29",
+      "sqlite": "3.53.2"
+    },
+    "bundleSha256": "7f4a17d9a799f51afa1dda89938edc439270f51c228d7d79d223e08fe84cc9c3"
+  },
+  "startedServices": [
+    {
+      "label": "AllyVora API",
+      "pid": 86
+    },
+    {
+      "label": "API",
+      "pid": 94
+    },
+    {
+      "label": "Next",
+      "pid": 102
+    },
+    {
+      "label": "Browser",
+      "pid": 122
+    }
+  ],
+  "allyvoraPort": 44879,
+  "integrationExit": 1,
+  "cleanup": [
+    {
+      "label": "Browser",
+      "pid": 122,
+      "exitCode": 1,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "Next",
+      "pid": 102,
+      "exitCode": 143,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "API",
+      "pid": 94,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    },
+    {
+      "label": "AllyVora API",
+      "pid": 86,
+      "exitCode": 0,
+      "signal": null,
+      "groupAlive": false
+    }
+  ]
+}

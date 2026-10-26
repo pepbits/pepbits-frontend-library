@@ -1,6 +1,6 @@
 # Healthcare demo
 
-Private `@pepbits-demo/healthcare`: Next.js 16.3.3, React 19.2 and Tailwind 4.1. Phases 6b-1 through 6b-9 provide the Healthcare Suite core, clinical workspaces and LIS1/LIS2/RIS1 diagnostics, Pharmacy-1, RCM Workspace, Teleconsult Provider/Patient, AllyVora Quality, SurgiSuite, MedBand Patient Access and MedSlot through public `@pepbits/*` exports. All patient and operational data is fictional and comes from the existing demo HTTP API. This is a software demonstration, **not clinical acceptance**, a production health record system or a deployed release.
+Private `@pepbits-demo/healthcare`: Next.js 16.3.3, React 19.2 and Tailwind 4.1. Phases 6b-1 through 6b-9 provide the Healthcare Suite core, clinical workspaces and LIS1/LIS2/RIS1 diagnostics, Pharmacy-1, RCM Workspace, Teleconsult Provider/Patient, AllyVora Quality, SurgiSuite, MedBand Patient Access and MedSlot through public `@pepbits/*` exports. All patient and operational data is fictional. The existing demo HTTP API serves the reference modules; AllyVora Patients uses its separate Express/SQLite API. This is a software demonstration, **not clinical acceptance**, a production health record system or a deployed release.
 
 ## Run locally
 
@@ -33,11 +33,11 @@ npm run start -w @pepbits-demo/healthcare
 npm run test:integration -w @pepbits-demo/healthcare
 ```
 
-Build before integration. `HEALTHCARE_BUILD_DIR` optionally isolates Next output from a concurrent dev server. Integration starts both services on free loopback ports with temporary API storage and stops its own process groups. Set `HEALTHCARE_API_NODE` if the default Node executable is older than 24. If generated API runtimes are missing, `HEALTHCARE_RUNTIME_ARTIFACTS` may point to an existing `mock-api` checkout: the script first compares every tracked API source file, then records hashes of reused runtime entry points. This is artifact reuse, not a runtime rebuild. It never edits the original API or desktop sources. On this machine Chromium requires `LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu`.
+Build before integration. `HEALTHCARE_BUILD_DIR` optionally isolates Next output from a concurrent dev server. Integration starts the shared API, AllyVora API and web server on free loopback ports with temporary API storage and stops its own process groups. Set `HEALTHCARE_API_NODE` if the default Node executable is older than 24. If generated API runtimes are missing, `HEALTHCARE_RUNTIME_ARTIFACTS` may point to an existing `mock-api` checkout: the script first compares every tracked API source file, then records hashes of reused runtime entry points. This is artifact reuse, not a runtime rebuild. It never edits the original API or desktop sources. On this machine Chromium requires `LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu`.
 
 ## Modules and routes
 
-There are **193 menu destinations**, plus patient/encounter/master creation and record links and patient-specific clinical links. [Source mapping](source-mapping.md) records the port and exclusions. [Navigation](src/navigation.ts) is the route/page registry; [renderer](src/renderer.tsx) registers suite, clinical, diagnostic, pharmacy, RCM, Teleconsult, Quality, SurgiSuite, MedBand, MedSlot and preferences engines. Unknown paths show a not-found state. The root uses the effective default module; deep links retain their destination.
+There are **196 menu destinations** across fourteen header apps, plus patient/encounter/master creation and record links and patient-specific clinical links. [Source mapping](source-mapping.md) records the port and exclusions. [Navigation](src/navigation.ts) is the route/page registry; [renderer](src/renderer.tsx) registers suite, clinical, diagnostic, pharmacy, RCM, Teleconsult, Quality, SurgiSuite, MedBand, MedSlot and preferences engines. Unknown paths show a not-found state. The root uses the effective default module; deep links retain their destination.
 
 | Module | Destinations and implementation |
 | --- | --- |
@@ -185,3 +185,25 @@ The 6b-9 regression sweep also makes the Suite appointment board keyboard-scroll
 The app now consumes public `@pepbits/shell/application-providers`, `@pepbits/platform/http` and `@pepbits/platform/preference-service`. Its existing provider tests retain the preference revision, policy and language/editor contracts. The integration wrapper delegates service lifecycle to `tooling/scripts/run-demo-integration.mjs`; all `HEALTHCARE_*` environment options remain supported. ERP uses the same library/tooling exports without importing this app. The [6c-1 record](../../docs/releases/unreleased/restructure-phase-6c-1-2026-10-23.md) records the regression scope.
 
 Phase 6d's full repository verification exposed a timing-sensitive MedSlot shortcut assertion. The test now waits for the authenticated shell's accelerator to become active, then checks that disabling shortcuts removes event cancellation and focus behavior; application code and backend contracts are unchanged. See the [6d record](../../docs/releases/unreleased/restructure-phase-6d-2026-10-24.md).
+
+## AllyVora Patients — fourteenth app
+
+Choose **Patients** (AllyVora Patients) in the header, then Patient register, Register a patient or Form layout. This is module `reference-allyvora-patients` in the existing healthcare SessionProvider → PreferenceHost → LocalizationProvider → Shell. The registration context owns only API lookups, organisation settings and volatile drafts. No second application host is mounted.
+
+| Healthcare URL | Workflow |
+| --- | --- |
+| `/allyvora-patients` or `/allyvora-patients/patients` | Register, counts, URL search/filter/sort/paging |
+| `/allyvora-patients/patients?mode=new` | New registration; optional `&section=contact` |
+| `/allyvora-patients/patients?mode=view&id=12` | Wristband, recorded values, missing details, activity and status change |
+| `/allyvora-patients/patients?mode=edit&id=12&section=contact` | Version-aware edit and section deep link |
+| `/allyvora-patients/settings/layout` | Administrator organisation layout setup, live preview and history |
+
+The same 99-field, nine-section definition and all five layouts from the [standalone guide](../allyvora-patients/README.md) apply: single page, tabs, guided steps, side steps and accordion. Register → New patient → complete required fields/consent → Save opens the record with its MRN. Edit a section, inspect Activity and confirm Mark inactive/Make active. Check form rules opens the rules drawer and jumps to missing fields. Administrators save arrangement, density, columns, summary band, checking and draft options in Form layout.
+
+Shared presentation, formatting, table/card view, page size, language direction, reduced motion and shortcut settings use effective healthcare preferences and tenant locks. Module UI grants match standalone: registration/edit/status for enterprise-admin, admin, operations-analyst and finance-manager; layout save for enterprise-admin/admin. The unchanged AllyVora API has simulated identity and no role enforcement: its audit names its seeded user, not the shell actor. Its English form copy and standalone limitations remain explicit in the [feature contract](../../docs/features/allyvora-patients-demo.md).
+
+Recoverable failures retain form values, 422 errors identify fields, and stale 409 saves keep edits for resolution. Drafts are memory only, cleared by reload, sign-out, identity/branch/role change or leaving the registration module (including another header app or Preferences). No patient values enter browser storage. Unknown prefixed routes show not found; malformed record IDs return to the register.
+
+Build with `NEXT_PUBLIC_ALLYVORA_API_URL=/allyvora-api` alongside `NEXT_PUBLIC_API_URL=/api`. At runtime set `ALLYVORA_API_URL=http://127.0.0.1:33415` and the existing `HEALTHCARE_API_URL` for shared authentication/preferences. The new same-origin proxy forwards `/allyvora-api/*` to the backend's `/api/*`; the server target is never public configuration. Start the packaged backend with `node dist/server.js`, working directory `src/allyvora-backend`, `PORT=33415` and a persistent `DB_PATH`. See the exact [test-site Compose contract](../../docs/development/TEST-SITE.md#allyvora-patients-backend-in-schema-2).
+
+`node tooling/scripts/run-demo-integration.mjs healthcare` builds the backend from a temporary copy, installs the locked prebuilt SQLite dependency, uses free ports and temporary databases, runs existing and new browser journeys/axe, and stops all services. It never writes into `source/`. The source mapping explains why the module was copied; standalone UI stays independent. [Delivery and exact verification](../../docs/releases/unreleased/healthcare-allyvora-patients-2026-10-26.md).

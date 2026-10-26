@@ -36,7 +36,7 @@ requires Linux `/proc` to verify process identity. `run_all.sh` remains a delega
 | desktop | 3410 | Desktop demo web mode; native executable is a separate build |
 
 Override `<SERVICE>_PORT` (hyphens become underscores) and `RUN_HOST` as needed.
-`<DEMO>_API_URL` supplies the server-side host API proxy, defaulting to the local API port. Settle uses `SETTLE_HOST_API_URL` and patient registration uses `ALLYVORA_HOST_API_URL`, preserving their separate business API variables. CI and controller builds supply `/settle-api` and `/caregrid-api` as the two additional public proxy paths.
+`<DEMO>_API_URL` supplies the server-side host API proxy, defaulting to the local API port. Settle uses `SETTLE_HOST_API_URL` and patient registration uses `ALLYVORA_HOST_API_URL`, preserving their separate business API variables. CI and controller builds supply `/settle-api` and `/caregrid-api` and `/allyvora-api` as the three additional public proxy paths.
 Additional demo-specific backend endpoints remain documented in each demo README. Merely
 starting the common mock API does not start those separate source backends. No source backend
 was moved or modified in phase 8.
@@ -70,7 +70,7 @@ demos and backend sources; removed-source receipts remain explicit historical re
 
 `npm run package:test-site -- <pinned-mock-repo> <output-dir>` builds a local archive from
 already built production output. The shared `ci-gates.sh` builds and writes `BUILD_API`
-stamps with all four explicit public API variables; packaging rejects unstamped output.
+stamps with all five explicit public API variables; packaging rejects unstamped output.
 `npm run verify:test-site -- <output-dir>` extracts it
 locally with Python's safe data filter, verifies every content digest, marker and receiver
 identity field, and removes its temporary extraction. The packager tests every packaged
@@ -96,8 +96,8 @@ configuration (local checkout inspected; live receiver state not inspected):
 3. Configure each hosted demo separately with `node start-demo.mjs <demo>`, its own port,
    the host API variable from the table above set to `http://127.0.0.1:33412`, and a host/proxy route. Demos use root-relative
    assets and paths, so use separate hostnames, not an unconfigured URL prefix. Supply the
-   extra source backends for settle/caregrid/patient registration before exposing
-   their business workflows. The initial site may serve showcase only; the archive includes all eleven.
+   extra source backends for settle/caregrid before exposing their business workflows;
+   patient registration now uses the packaged backend service described below. The initial site may serve showcase only; the archive includes all eleven.
 4. Keep the receiver's forced-command `deploy <id> <sha256>`, safe extraction, 2 GiB limit,
    identity check, health check, immutable release retention and activation receipts. Schema 2
    still passes its identity check. Preserve Node 24 and the Python simulator services.
@@ -131,3 +131,77 @@ receipt and rollback. None of these remote operations is performed by local pack
 ## Rollout status (26 October 2026)
 
 The owner-authorized receiver/Compose change is installed on pb-srv5 (`pepbits-shared-document` `534dc8fb`): `bin/ci-receive` selects the API directory, web entry and demo per release schema in the same atomic `.env` rename as `FT_RELEASE`; optional `FT_DEMO` (default `showcase`) chooses the served demo. First schema 2 release `20261026015233819-e04d5f77` from `main` `e04d5f7` was packaged locally (production build, stamps, `package-test-site.mjs`, `verify-test-site.mjs`) and deployed manually through the receiver. Verified: public `__nexora-release.json` id, `/api/health` ok, showcase home 200, healthy containers, rollback to the schema 1 release and forward again. The full CI gate ran on the same code before merge (69/69 tasks); the packaging run used the production build only. `DEPLOY_TEST_SITE` now defaults to true, so the next successful Jenkins `main` build deploys automatically. Hosted Jenkins has not yet run this pipeline.
+
+## AllyVora Patients backend in schema 2
+
+New archives include `src/allyvora-backend/dist/server.js`, its production `node_modules`,
+`package.json` and `BUILD.json`. The original `source/allyvora-patients` remains read-only:
+root tooling copies the backend/shared package and original npm lockfile to temporary staging,
+installs locked dependencies with scripts disabled, explicitly downloads the Node 24 linux-x64
+glibc `better-sqlite3` prebuild (no local compilation fallback), runs the original bundle script,
+and prunes development dependencies. The shared form code is bundled into `dist/server.js`;
+there are no workspace links or runtime source-tree requirements. The backend receipt records
+source/bundle/native hashes, Node ABI, SQLite/package versions and `objdump -T` GLIBC versions.
+Packaging rejects requirements newer than Bookworm's GLIBC 2.36 and loads SQLite locally.
+
+The outer `BUILD.json` and `web/release.json` retain schema 2 with no new required top-level
+fields. The existing content inventory hashes the entire backend. Both package and verify
+start the packaged backend with a temporary database and no workspace module resolution,
+then exercise healthcare and standalone same-origin register/create/view/edit/status/audit/layout
+requests. They also smoke every packaged host's assets, API and release marker sequentially.
+The local native-load/ELF check is not a container execution claim; see the delivery receipt.
+
+Build all browsers with **five** explicit variables: `NEXT_PUBLIC_API_URL=/api`,
+`VITE_API_URL=/api`, `NEXT_PUBLIC_SETTLE_API_URL=/settle-api`,
+`NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api`, and
+`NEXT_PUBLIC_ALLYVORA_API_URL=/allyvora-api`. Root CI, service builds, Jenkins and GitHub set them.
+`stamp-demo-builds.mjs` rejects a different registration proxy and writes `BUILD_ALLYVORA_API`
+for healthcare and standalone; the packager requires both these stamps in addition to `BUILD_API`.
+
+The reviewer must add this service to the external stack; this repository does not edit or
+activate that stack. `FT_RELEASE_DIRECTORY` below denotes its existing absolute selected-release
+path (map it to the receiver's actual release mount expression):
+
+```yaml
+services:
+  allyvora-backend:
+    image: node:24-bookworm-slim
+    network_mode: host
+    working_dir: /release/src/allyvora-backend
+    command: [node, dist/server.js]
+    environment:
+      NODE_ENV: production
+      PORT: "33415"
+      DB_PATH: /data/allyvora.db
+      SEED_DEMO: "true"
+    volumes:
+      - ${FT_RELEASE_DIRECTORY}:/release:ro
+      - allyvora-patient-data:/data
+    read_only: true
+    tmpfs: [/tmp]
+    mem_limit: 256m
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:33415/api/health').then(async r=>process.exit(r.ok&&(await r.json()).status==='ok'?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+volumes:
+  allyvora-patient-data:
+```
+
+The healthcare web service shares the host network, uses working directory `/release/web`,
+command `[node, start-demo.mjs, healthcare]`, its existing web port (for example `PORT=33410`),
+`HEALTHCARE_API_URL=http://127.0.0.1:33412`, and **`ALLYVORA_API_URL=http://127.0.0.1:33415`**.
+If the standalone registration web service is also exposed, give it the same AllyVora target
+and `ALLYVORA_HOST_API_URL=http://127.0.0.1:33412`. Loopback requires the same network namespace;
+a bridge-network stack must instead use its backend service hostname. Do not publish port 33415
+through the public ingress; configure host firewall access consistently with the existing API.
+The unchanged source backend listens on all interfaces and simulates identity without authorization.
+
+Keep the SQLite directory mount persistent (including WAL/SHM), separate from immutable releases.
+`SEED_DEMO=true` seeds fictional patients only into an empty database; it does not reset existing data.
+No database schema is changed by this integration. For rollback to earlier schema 2 archives without
+`src/allyvora-backend/dist/server.js`, or schema 1, disable this additional Compose service/profile and
+retain its data volume. Do not infer backend availability solely from schema 2. Select the existing
+schema-specific web/API commands as before; never remove the prior release or persistent patient data.

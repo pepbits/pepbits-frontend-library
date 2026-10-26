@@ -104,3 +104,5 @@ Never substitute a screenshot, an empty route or a passing build for functional 
 - [SurgiSuite reference module](surgisuite-reference.md): original surgical sidebar/pages and case workspace; local validation, browser/deployment pending.
 
 - [MedSlot scheduling module](medslot-reference.md).
+
+- [AllyVora Patients in healthcare](healthcare-demo.md#allyvora-patients--hcd-av): fourteenth header app, 99-field registration and self-contained backend in the local test-site archive; [delivery evidence](../releases/unreleased/healthcare-allyvora-patients-2026-10-26.md).

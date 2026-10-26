@@ -1,3 +1,5 @@
+import {buildAllyVoraBackend} from '../deployment/allyvora-backend.mjs';
+import {withAllyVoraBackend} from '../deployment/allyvora-smoke.mjs';
 import {mkdtemp,cp,rm,mkdir,writeFile,readFile,readdir,lstat} from 'node:fs/promises';
 import {join,resolve,relative} from 'node:path';
 import {tmpdir} from 'node:os';
@@ -21,11 +23,12 @@ try{
  await mkdir(join(payload,'src'));await mkdir(join(payload,'mock'));
  await cp(join(root,'mock-api'),join(payload,'src/mock-api'),{recursive:true,dereference:true,filter:p=>!['.data','data'].includes(relative(join(root,'mock-api'),p).split('/')[0])&&!relative(join(root,'mock-api'),p).split('/').some(part=>['.git','__pycache__','.npmrc'].includes(part)||part.startsWith('.env')||part.endsWith('.log')||part.endsWith('.tsbuildinfo'))});
  for(const name of ['mockpay','pyproject.toml'])await cp(join(mock,name),join(payload,'mock',name),{recursive:true,filter:p=>!p.includes('__pycache__')});
+ await buildAllyVoraBackend(root,join(payload,'src/allyvora-backend'));
  const entries=[];async function walk(dir){for(const e of (await readdir(dir,{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))){const p=join(dir,e.name);if(e.isDirectory())await walk(p);else if(e.isSymbolicLink())throw Error('Payload must be self-contained: '+p);else entries.push({path:relative(payload,p),sha256:sha(await readFile(p))});}}
  await walk(payload);
  const build={schemaVersion:2,release:id,frontendCommit:base,workingTree:!!dirty,sourceDigest:sourceIdentity(root).digest,mockServicesCommit:pin,node:process.versions.node,built:new Date().toISOString(),files:entries};
  await writeFile(join(payload,'BUILD.json'),JSON.stringify(build,null,2)+'\n');
- await smokeApi(join(payload,'src/mock-api'),apiUrl=>smokeRelease(join(payload,'web'),undefined,apiUrl));
+ await smokeApi(join(payload,'src/mock-api'),apiUrl=>withAllyVoraBackend(join(payload,'src/allyvora-backend'),allyvoraUrl=>smokeRelease(join(payload,'web'),undefined,apiUrl,allyvoraUrl)));
  const archive=join(out,`frontend-test-${id}.tar.gz`);
  execFileSync('tar',['-C',staging,'-czf',archive,id],{stdio:['ignore','inherit','inherit']});
  await writeFile(archive.replace(/\.tar.gz$/,'.sha256'),sha(await readFile(archive))+'  '+`frontend-test-${id}.tar.gz\n`);

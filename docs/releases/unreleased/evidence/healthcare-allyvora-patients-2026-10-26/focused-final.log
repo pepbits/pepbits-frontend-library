@@ -1,0 +1,63 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/registration src/adapters/allyvora.test.ts src/navigation.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-hc-allyvora/demo-apps/healthcare
+
+ ✓ src/modules/registration/navigation.test.ts (16 tests) 18ms
+ ✓ src/modules/registration/routes.test.tsx (41 tests) 28057ms
+   ✓ default route rendering > register (/allyvora-patients/patients)  1343ms
+   ✓ default route rendering > new patient (/allyvora-patients/patients?mode=new)  1225ms
+   ✓ default route rendering > edit patient (/allyvora-patients/patients?mode=edit&id=1)  1014ms
+   ✓ default route rendering > edit section (/allyvora-patients/patients?mode=edit&id=1&section=contact)  919ms
+   ✓ default route rendering > patient record (/allyvora-patients/patients?mode=view&id=1)  306ms
+   ✓ default route rendering > form layout (/allyvora-patients/settings/layout)  1110ms
+   ✓ Arabic RTL route rendering > register (/allyvora-patients/patients)  537ms
+   ✓ Arabic RTL route rendering > new patient (/allyvora-patients/patients?mode=new)  888ms
+   ✓ Arabic RTL route rendering > edit patient (/allyvora-patients/patients?mode=edit&id=1)  904ms
+   ✓ Arabic RTL route rendering > edit section (/allyvora-patients/patients?mode=edit&id=1&section=contact)  869ms
+   ✓ Arabic RTL route rendering > form layout (/allyvora-patients/settings/layout)  994ms
+   ✓ reduced motion route rendering > register (/allyvora-patients/patients)  453ms
+   ✓ reduced motion route rendering > new patient (/allyvora-patients/patients?mode=new)  826ms
+   ✓ reduced motion route rendering > edit patient (/allyvora-patients/patients?mode=edit&id=1)  993ms
+   ✓ reduced motion route rendering > edit section (/allyvora-patients/patients?mode=edit&id=1&section=contact)  944ms
+   ✓ reduced motion route rendering > form layout (/allyvora-patients/settings/layout)  1060ms
+   ✓ locked preferences route rendering > register (/allyvora-patients/patients)  389ms
+   ✓ locked preferences route rendering > new patient (/allyvora-patients/patients?mode=new)  950ms
+   ✓ locked preferences route rendering > edit patient (/allyvora-patients/patients?mode=edit&id=1)  862ms
+   ✓ locked preferences route rendering > edit section (/allyvora-patients/patients?mode=edit&id=1&section=contact)  846ms
+   ✓ locked preferences route rendering > form layout (/allyvora-patients/settings/layout)  965ms
+   ✓ default full host > preferences renders inside the shared shell  1109ms
+   ✓ default full host > register renders inside the shared shell  791ms
+   ✓ Arabic RTL full host > preferences renders inside the shared shell  1153ms
+   ✓ Arabic RTL full host > register renders inside the shared shell  844ms
+   ✓ reduced motion full host > preferences renders inside the shared shell  1203ms
+   ✓ reduced motion full host > register renders inside the shared shell  802ms
+   ✓ locked preferences full host > preferences renders inside the shared shell  1341ms
+   ✓ locked preferences full host > register renders inside the shared shell  543ms
+ ✓ src/modules/registration/workflows.test.tsx (21 tests) 16787ms
+   ✓ patient register > lists API patients and keeps search, views and filters in the URL  1275ms
+   ✓ patient register > browser history updates search text without overwriting the URL  749ms
+   ✓ patient register > late results from an obsolete search cannot replace the current register  315ms
+   ✓ patient register > URL filters drive the API request and page size uses the central preference path  374ms
+   ✓ patient record > shows the band, sections, masked identity, gaps and activity; status changes are confirmed  634ms
+   ✓ registration form > saving an empty registration reveals problems and sends nothing; a complete one is created and opened  3404ms
+   ✓ registration form > server field errors return to the form; conflicts keep the edit and explain why  515ms
+   ✓ registration form > 422 field errors from the API are shown on the matching field  380ms
+   ✓ registration form > possible duplicates are offered while typing, with links to existing records  1396ms
+   ✓ registration form > a manual display name is kept while name parts change, and dependent consultant choices are cleared  1310ms
+   ✓ registration form > each organisation layout renders the same sections, and deep-linked sections open first  318ms
+   ✓ registration form > form rules list every rule and jump to the field  614ms
+   ✓ registration form > unsaved registrations are offered back within the signed-in session only  2629ms
+   ✓ registration form > keyboard shortcuts follow the effective preference  474ms
+   ✓ form layout designer > previews choices, saves for everyone and can reuse history  883ms
+   ✓ form layout designer > non-administrators can explore the preview but not change the organisation layout  558ms
+ ✓ src/navigation.test.ts (54 tests) 86ms
+ ✓ src/adapters/allyvora.test.ts (7 tests) 22ms
+
+ Test Files  5 passed (5)
+      Tests  139 passed (139)
+   Start at  03:06:06
+   Duration  72.74s (transform 13.80s, setup 730ms, collect 22.70s, tests 44.97s, environment 2.36s, prepare 398ms)
+

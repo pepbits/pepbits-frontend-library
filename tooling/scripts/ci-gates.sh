@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 export NEXT_PUBLIC_API_URL=/api VITE_API_URL=/api NEXT_TELEMETRY_DISABLED=1
-export NEXT_PUBLIC_SETTLE_API_URL=/settle-api NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api
+export NEXT_PUBLIC_SETTLE_API_URL=/settle-api NEXT_PUBLIC_CAREGRID_API_URL=/caregrid-api NEXT_PUBLIC_ALLYVORA_API_URL=/allyvora-api
 npm run ci
 npm run stamp:builds
 npm run docs:check

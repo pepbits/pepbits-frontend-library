@@ -1,0 +1,55 @@
+
+> @pepbits-demo/healthcare@0.0.0 test
+> vitest run src/modules/registration src/adapters/allyvora.test.ts src/navigation.test.ts
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-hc-allyvora/demo-apps/healthcare
+
+ ✓ src/modules/registration/workflows.test.tsx (21 tests) 12630ms
+   ✓ patient register > lists API patients and keeps search, views and filters in the URL  1125ms
+   ✓ patient register > browser history updates search text without overwriting the URL  649ms
+   ✓ registration form > saving an empty registration reveals problems and sends nothing; a complete one is created and opened  2440ms
+   ✓ registration form > possible duplicates are offered while typing, with links to existing records  1130ms
+   ✓ registration form > a manual display name is kept while name parts change, and dependent consultant choices are cleared  968ms
+   ✓ registration form > form rules list every rule and jump to the field  473ms
+   ✓ registration form > unsaved registrations are offered back within the signed-in session only  2271ms
+   ✓ registration form > keyboard shortcuts follow the effective preference  373ms
+   ✓ form layout designer > previews choices, saves for everyone and can reuse history  762ms
+   ✓ form layout designer > non-administrators can explore the preview but not change the organisation layout  471ms
+ ✓ src/modules/registration/routes.test.tsx (41 tests) 23882ms
+   ✓ default route rendering > register (/allyvora-patients/patients)  882ms
+   ✓ default route rendering > new patient (/allyvora-patients/patients?mode=new)  975ms
+   ✓ default route rendering > edit patient (/allyvora-patients/patients?mode=edit&id=1)  854ms
+   ✓ default route rendering > edit section (/allyvora-patients/patients?mode=edit&id=1&section=contact)  771ms
+   ✓ default route rendering > patient record (/allyvora-patients/patients?mode=view&id=1)  308ms
+   ✓ default route rendering > form layout (/allyvora-patients/settings/layout)  1031ms
+   ✓ Arabic RTL route rendering > register (/allyvora-patients/patients)  469ms
+   ✓ Arabic RTL route rendering > new patient (/allyvora-patients/patients?mode=new)  776ms
+   ✓ Arabic RTL route rendering > edit patient (/allyvora-patients/patients?mode=edit&id=1)  754ms
+   ✓ Arabic RTL route rendering > edit section (/allyvora-patients/patients?mode=edit&id=1&section=contact)  745ms
+   ✓ Arabic RTL route rendering > form layout (/allyvora-patients/settings/layout)  871ms
+   ✓ reduced motion route rendering > register (/allyvora-patients/patients)  450ms
+   ✓ reduced motion route rendering > new patient (/allyvora-patients/patients?mode=new)  742ms
+   ✓ reduced motion route rendering > edit patient (/allyvora-patients/patients?mode=edit&id=1)  778ms
+   ✓ reduced motion route rendering > edit section (/allyvora-patients/patients?mode=edit&id=1&section=contact)  783ms
+   ✓ reduced motion route rendering > form layout (/allyvora-patients/settings/layout)  908ms
+   ✓ locked preferences route rendering > new patient (/allyvora-patients/patients?mode=new)  778ms
+   ✓ locked preferences route rendering > edit patient (/allyvora-patients/patients?mode=edit&id=1)  775ms
+   ✓ locked preferences route rendering > edit section (/allyvora-patients/patients?mode=edit&id=1&section=contact)  747ms
+   ✓ locked preferences route rendering > form layout (/allyvora-patients/settings/layout)  846ms
+   ✓ default full host > preferences renders inside the shared shell  1035ms
+   ✓ default full host > register renders inside the shared shell  715ms
+   ✓ Arabic RTL full host > preferences renders inside the shared shell  935ms
+   ✓ Arabic RTL full host > register renders inside the shared shell  654ms
+   ✓ reduced motion full host > preferences renders inside the shared shell  918ms
+   ✓ reduced motion full host > register renders inside the shared shell  720ms
+   ✓ locked preferences full host > preferences renders inside the shared shell  1109ms
+   ✓ locked preferences full host > register renders inside the shared shell  526ms
+ ✓ src/adapters/allyvora.test.ts (7 tests) 19ms
+ ✓ src/navigation.test.ts (54 tests) 78ms
+
+ Test Files  4 passed (4)
+      Tests  123 passed (123)
+   Start at  02:28:57
+   Duration  59.21s (transform 11.92s, setup 540ms, collect 18.92s, tests 36.61s, environment 1.71s, prepare 294ms)
+

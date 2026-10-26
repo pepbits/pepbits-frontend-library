@@ -1,5 +1,5 @@
 'use client';
-import React, {Suspense, useEffect, useMemo} from 'react';
+import React, {Suspense, useEffect, useMemo, useCallback} from 'react';
 import {usePathname, useRouter, useSearchParams} from 'next/navigation';
 import {usePreferences} from '@pepbits/preferences/react';
 import {LoadingState} from '@pepbits/components';
@@ -11,12 +11,13 @@ function RoutedClient() {
   const router = useRouter(), pathname = usePathname(), search = useSearchParams();
   const current = useMemo(() => targetFromPath(pathname, search.toString()), [pathname, search]);
   const navigation = useMemo<NavigationPort>(() => ({current, hrefFor, open: target => router.push(hrefFor(target)), openInNewContext: target => router.push(hrefFor(target))}), [current, router]);
+  const replace = useCallback((href: string) => router.replace(href, {scroll: false}), [router]);
   const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
   if (!apiBaseUrl) return <p role="alert">Set NEXT_PUBLIC_API_URL to the demo API base URL before starting the app.</p>;
-  return <HealthcareProviders apiBaseUrl={apiBaseUrl} navigation={navigation}><LandingRedirect pathname={pathname}/><HealthcarePage target={current}/></HealthcareProviders>;
+  return <HealthcareProviders apiBaseUrl={apiBaseUrl} navigation={navigation}><LandingRedirect pathname={pathname}/><HealthcarePage target={current} replace={replace}/></HealthcareProviders>;
 }
 function LandingRedirect({pathname}:{pathname:string}) {
  const {preferences}=usePreferences(),router=useRouter();
- useEffect(()=>{if(pathname==='/')router.replace(['reference-teleconsult-provider','reference-teleconsult-patient'].includes(preferences.defaultModule)?'/'+preferences.defaultModule.slice(10):preferences.defaultModule==='reference-quality'?'/quality':preferences.defaultModule==='reference-rcm'?'/rcm':preferences.defaultModule==='reference-pharmacy'?'/pharmacy':preferences.defaultModule==='library'?'/patient-query':['reference-lis1','reference-lis2','reference-ris1'].includes(preferences.defaultModule)?'/'+preferences.defaultModule.slice(10):'/suite');},[pathname,preferences.defaultModule,router]);return null;
+ useEffect(()=>{if(pathname==='/')router.replace(preferences.defaultModule==='reference-allyvora-patients'?'/allyvora-patients/patients':['reference-teleconsult-provider','reference-teleconsult-patient'].includes(preferences.defaultModule)?'/'+preferences.defaultModule.slice(10):preferences.defaultModule==='reference-quality'?'/quality':preferences.defaultModule==='reference-rcm'?'/rcm':preferences.defaultModule==='reference-pharmacy'?'/pharmacy':preferences.defaultModule==='library'?'/patient-query':['reference-lis1','reference-lis2','reference-ris1'].includes(preferences.defaultModule)?'/'+preferences.defaultModule.slice(10):'/suite');},[pathname,preferences.defaultModule,router]);return null;
 }
 export function HealthcareClient() {return <Suspense fallback={<LoadingState/>}><RoutedClient/></Suspense>;}
