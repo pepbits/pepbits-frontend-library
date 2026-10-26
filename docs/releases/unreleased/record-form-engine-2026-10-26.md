@@ -1,6 +1,6 @@
 # Record form engine — 26 October 2026
 
-Status: **unreleased 0.2.0 preparation; requested local verification passed**. Working tree on `feature/record-form-engine`, base `9fbe545`. No commit, tag, push, publication or deployment. Testing guide: [1.0.0](../../testing/v1.0.0/PRE-COMMIT.md). Automated execution by Codex; human review pending.
+Status: **0.2.0 published and test-site deployed** (see Publication and deployment below); preparation notes follow as originally recorded. Working tree on `feature/record-form-engine`, base `9fbe545`. No commit, tag, push, publication or deployment. Testing guide: [1.0.0](../../testing/v1.0.0/PRE-COMMIT.md). Automated execution by Codex; human review pending.
 
 ## Changes and user impact
 
@@ -46,3 +46,11 @@ Earlier runs are not passing evidence: the initial gate caught a test typing opt
 ## Upgrade, rollback and publication
 
 Part B upgrades the product lockfile after owner publication, updates backend validators and canonical catalog values, normalizes legacy rail policies/allowed sets, and supplies patient schema/renderers and authenticated adapters. Restore the prior package lockfile and compatible backend values for rollback. Do not send stepper/accordion or new keys to an old strict validator. No publication/deployment is authorized by this preparation task. Clinical/domain, real identity/server authorization, native executable and human-language review remain outside local software verification.
+
+## Publication and deployment (reviewer record)
+
+- Reviewer commit `bc1b641`, merged to `main` as `6feb563` (content identical to `bc1b641`).
+- 26 October 2026 ~14:45Z: `npm run release:publish` published all twelve `@pepbits/*` packages at 0.2.0 to GitHub Packages; `npm view` confirmed `page-engines`, `patterns`, `preferences` and `shell` at 0.2.0.
+- Test-site archive built from `bc1b641`: release `20261026143049475-bc1b6413`, sha256 `2ff36e9841a72f82eaf1b4f532e3b23e1b21e085e0b284eddb4c828528a3d6b1`, `verify-test-site.mjs` passed. The same archive ran on the hub test instance (port 3510) before deployment.
+- 15:04Z: deployed to https://frontend.test.pepbits.com through the pb-srv5 receiver after owner approval (previous release `20261026054813899-9ac57a6a`). `__nexora-release.json` reports the new id; `/`, `/preferences` and `/allyvora-patients/patients?mode=new` return 200.
+- This is the test site, not a production deployment. Healthcare Enterprise adoption (Part B) is separate.
