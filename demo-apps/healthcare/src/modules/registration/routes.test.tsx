@@ -21,10 +21,10 @@ const routes: [string, string][] = [
   ['register', '/allyvora-patients/patients'],
   ['inactive view', '/allyvora-patients/patients?view=inactive'],
   ['filtered search', '/allyvora-patients/patients?q=meera&sort=name'],
-  ['new patient', '/allyvora-patients/patients?mode=new'],
-  ['edit patient', '/allyvora-patients/patients?mode=edit&id=1'],
-  ['edit section', '/allyvora-patients/patients?mode=edit&id=1&section=contact'],
-  ['patient record', '/allyvora-patients/patients?mode=view&id=1'],
+  ['new patient', '/allyvora-patients/patients/new'],
+  ['edit patient', '/allyvora-patients/patients/1/edit'],
+  ['edit section', '/allyvora-patients/patients/1/edit?section=contact'],
+  ['patient record', '/allyvora-patients/patients/1'],
   ['start a visit', '/allyvora-patients/visits/new'],
   ['start a visit for a patient', '/allyvora-patients/visits/new?patient=1'],
   ['emergency registration', '/allyvora-patients/emergency'],
@@ -70,8 +70,20 @@ it('front desk routes keep the patient parameter and reject unsafe ids', () => {
   expect(hrefFor({pageId: PAGE.emergency})).toBe('/allyvora-patients/emergency');
 });
 
-it('unknown routes render the shared not-found state inside the host', async () => {
-  const target = targetFromPath('/allyvora-patients/patients/12'), api = mockAllyVora();
+it.each([
+  ['new', 'mode=new&section=consent', 'new patient', '/allyvora-patients/patients/new?section=consent'],
+  ['edit', 'mode=edit&id=1&section=contact', 'edit section', '/allyvora-patients/patients/1/edit?section=contact'],
+  ['view', 'mode=view&id=1', 'patient record', '/allyvora-patients/patients/1'],
+])('legacy ?mode=%s links open the dedicated page', async (_mode, query, name, href) => {
+  const target = targetFromPath('/allyvora-patients/patients', query), page = pages.find(item => item.id === target.pageId)!;
+  expect(hrefFor(target)).toBe(href);
+  const api = mockAllyVora();
+  const {container} = render(<TestHostProvider host={{client: api.client}}><main><Renderer page={page} target={target}/></main></TestHostProvider>);
+  await waitFor(() => expect(container.querySelector(ready[name]!)).toBeTruthy());
+});
+
+it.each(['/allyvora-patients/patients/abc', '/allyvora-patients/patients/0/edit'])('unknown route %s renders the shared not-found state inside the host', async path => {
+  const target = targetFromPath(path), api = mockAllyVora();
   expect(target.pageId).toBe('not-found');
   const navigation = {current: target, hrefFor, open: vi.fn(), openInNewContext: vi.fn()};
   const {findByText} = render(<HealthcareProviders apiBaseUrl="/api" navigation={navigation} request={hostRequest({}, {})} session={fixtureSession}><HealthcarePage target={target} replace={vi.fn()} client={api.client}/></HealthcareProviders>);

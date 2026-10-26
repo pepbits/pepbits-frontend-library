@@ -17,7 +17,7 @@ import {PatientBand} from '../form/PatientBand';
 import {failureOf, messageOf, useTimeFormat} from '../support';
 
 const ACTION_TEXT: Record<AuditEntry['action'], string> = {created: 'registered the patient', updated: 'updated the record', deactivated: 'marked the record inactive', reactivated: 'made the record active again'};
-const editTarget = (record: PatientRecord, section?: SectionId) => ({pageId: PAGE.register, mode: 'edit' as const, recordId: String(record.id), ...(section ? {section} : {})});
+const editTarget = (record: PatientRecord, section?: SectionId) => ({pageId: PAGE.edit, mode: 'edit' as const, recordId: String(record.id), ...(section ? {section} : {})});
 
 function SectionCard({record, section}: {record: PatientRecord; section: SectionId}) {
   const {preferences}=usePreferences();

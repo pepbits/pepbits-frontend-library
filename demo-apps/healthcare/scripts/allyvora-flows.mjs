@@ -13,8 +13,14 @@ export async function allyvoraFlows({page, base, flows, checks}) {
   await page.locator('[data-patient-register] tbody tr').first().waitFor();
   flows.push({id: 'HCD-AV-01', scope: 'UI', result: 'Fourteenth header app opens the patient register within the healthcare shell'});
 const settle = async (target = page) => {await target.waitForFunction(() => !document.querySelector('main [aria-busy="true"]') && document.getAnimations().every(animation => animation.playState !== 'running' || animation.effect?.getComputedTiming().iterations === Infinity));};
+/** Patient page and record id of a URL: dedicated `/patients/new`, `/patients/<id>`, `/patients/<id>/edit`, or a former `?mode=` link. */
+const patientRoute = (href) => {
+  const url = new URL(href), record = /^\/allyvora-patients\/patients\/(new|[0-9]+)(\/edit)?$/.exec(url.pathname);
+  if (record) return record[1] === 'new' ? {mode: 'new'} : {mode: record[2] ? 'edit' : 'view', id: record[1]};
+  return url.pathname === '/allyvora-patients/patients' ? {mode: url.searchParams.get('mode'), id: url.searchParams.get('id')} : {};
+};
 const waitRoute = async (target = page) => {
-  const url = new URL(target.url()), mode = url.searchParams.get('mode');
+  const url = new URL(target.url()), {mode} = patientRoute(target.url());
   if (url.pathname === '/preferences') await target.locator('[data-preference=columnLayoutScope] select').waitFor();
   else await target.locator('main h1').first().waitFor();
   if (url.pathname === '/allyvora-patients/patients' && !mode) await target.locator('[data-patient-register] tbody tr, [data-patient-register] [data-register-empty]').first().waitFor();
@@ -99,23 +105,23 @@ async function fillRegistration(target, {given, family, mobile}) {
   // Record view and section edit.
   await visit('/allyvora-patients/patients');
   await page.locator('[data-patient-register] tbody tr').first().click();
-  await page.waitForURL(url => new URL(url).searchParams.get('mode') === 'view'); await waitRoute();
-  const recordId = new URL(page.url()).searchParams.get('id');
+  await page.waitForURL(url => new URL(url).pathname !== '/allyvora-patients/patients' && patientRoute(url).mode === 'view'); await waitRoute();
+  const recordId = patientRoute(page.url()).id;
   await page.getByRole('link', {name: /Edit Contact/}).click();
-  await page.waitForURL(url => new URL(url).searchParams.get('section') === 'contact'); await waitRoute();
+  await page.waitForURL(url => patientRoute(url).mode === 'edit' && new URL(url).searchParams.get('section') === 'contact'); await waitRoute();
   const email = 'fictional.' + recordId + '@example.test';
   await page.locator('[data-field="email"] input').fill(email);
   const saved = page.waitForResponse(r => r.url().includes('/allyvora-api/patients/' + recordId) && r.request().method() === 'PUT');
   await page.getByRole('button', {name: /Save changes/}).click();
   if (!(await saved).ok()) throw new Error('Patient update failed');
-  await page.waitForURL(url => new URL(url).searchParams.get('mode') === 'view'); await waitRoute();
+  await page.waitForURL(url => patientRoute(url).mode === 'view'); await waitRoute();
   await page.reload(); await waitRoute();
   await page.getByText(email).first().waitFor();
   await page.locator('[data-activity]').getByText('Email').first().waitFor();
   flows.push({id: 'HCD-AV-04', scope: 'UI', result: 'Row opens the record; section deep link edits, saves with version, reload shows value and audit change'});
 
   // New registration with duplicate warning, rules drawer and session draft recovery.
-  await visit('/allyvora-patients/patients?mode=new');
+  await visit('/allyvora-patients/patients/new');
   await page.locator('[data-field="mobile"] input').fill(await (async () => {const list = await (await page.request.get(base + '/allyvora-api/patients?pageSize=1')).json(); return list.items[0].mobile;})());
   await page.getByText('This may be a returning patient. Check before creating a new record.').waitFor();
   await page.locator('[data-field="mobile"] input').fill('');
@@ -134,7 +140,7 @@ async function fillRegistration(target, {given, family, mobile}) {
   await page.getByRole('dialog', {name: 'Leave without saving?'}).getByRole('button', {name: 'Cancel'}).click();
   // Client-side navigation through the shell sidebar keeps the signed-in module state (a full reload would not).
   await clientNavigate('/allyvora-patients/patients', url => url.pathname === '/allyvora-patients/patients' && !url.searchParams.get('mode'));
-  await clientNavigate('/allyvora-patients/patients?mode=new', url => url.searchParams.get('mode') === 'new');
+  await clientNavigate('/allyvora-patients/patients/new', url => url.pathname === '/allyvora-patients/patients/new');
   await page.getByRole('button', {name: 'Restore draft'}).click();
   if (await page.locator('[data-field="givenName"] input').inputValue() !== 'Draftina') throw new Error('Draft was not restored');
   await page.waitForFunction(() => {
@@ -149,19 +155,19 @@ async function fillRegistration(target, {given, family, mobile}) {
   await page.getByRole('button', {name: /Save patient/}).click();
   const createdResponse = await created; if (createdResponse.status() !== 201) throw new Error('Registration failed ' + createdResponse.status());
   const patient = await createdResponse.json();
-  await page.waitForURL(url => new URL(url).searchParams.get('id') === String(patient.id)); await waitRoute();
+  await page.waitForURL(url => new URL(url).pathname === `/allyvora-patients/patients/${patient.id}`); await waitRoute();
   await page.locator('[data-record-summary]').getByText(patient.mrn).waitFor();
   flows.push({id: 'HCD-AV-07', scope: 'UI', result: 'Empty save reveals problems; keyboard quick pick advances focus; complete registration assigns branch MRN and opens the record'});
 
   // Continue the same newly created record through edit before changing its status.
   await page.getByRole('button', {name: 'Edit', exact: true}).click();
-  await page.waitForURL(url => url.searchParams.get('mode') === 'edit' && url.searchParams.get('id') === String(patient.id));
+  await page.waitForURL(url => url.pathname === `/allyvora-patients/patients/${patient.id}/edit`);
   await waitRoute();
   await page.locator('[data-field="email"] input').fill('registered.patient@example.test');
   const newRecordSave = page.waitForResponse(r => r.url().endsWith(`/allyvora-api/patients/${patient.id}`) && r.request().method() === 'PUT');
   await page.getByRole('button', {name: /Save changes/}).click();
   if (!(await newRecordSave).ok()) throw new Error('New patient edit failed');
-  await page.waitForURL(url => url.searchParams.get('mode') === 'view');
+  await page.waitForURL(url => url.pathname === `/allyvora-patients/patients/${patient.id}`);
   await waitRoute();
   await page.reload(); await waitRoute();
   await page.getByText('registered.patient@example.test', {exact: true}).first().waitFor();
@@ -189,7 +195,7 @@ async function fillRegistration(target, {given, family, mobile}) {
     if(!(await saved).ok()) throw new Error('Form preference save failed');
     if(layout==='scroll') await setPreferences({formNavigation:'scroll'});
     for(const mode of ['new','edit','view']) {
-      await visit(`/allyvora-patients/patients?mode=${mode}${mode==='new'?'':'&id='+patient.id}`);
+      await visit(mode==='new'?'/allyvora-patients/patients/new':`/allyvora-patients/patients/${patient.id}${mode==='edit'?'/edit':''}`);
       await page.locator(`[data-record-form="${mode}"] [data-layout="${layout}"]`).waitFor();
       if(mode==='new' && layout==='scroll') {
         const band=await page.locator('[data-record-summary]').boundingBox(),header=await page.locator('header').first().boundingBox();
@@ -211,7 +217,7 @@ async function fillRegistration(target, {given, family, mobile}) {
     await visit('/preferences');
     await page.getByRole('tab',{name:'Forms',exact:true}).click();
     if(!await page.getByRole('combobox',{name:'Record form style',exact:true}).isDisabled())throw new Error('Managed layout control is editable');
-    await visit('/allyvora-patients/patients?mode=new');
+    await visit('/allyvora-patients/patients/new');
     await page.locator('[data-layout="stepper"]').waitFor();
   } finally {
     const current=await (await page.request.get(base+'/api/preference-policy',{headers})).json();
@@ -222,13 +228,20 @@ async function fillRegistration(target, {given, family, mobile}) {
   flows.push({id:'HCD-AV-09',scope:'UI + authenticated HTTP',result:'Preferences Forms, all five layouts in new/edit/view, read-only actions and an enforced tenant layout lock'});
 
   // Accessibility sweep in English, then Arabic RTL after a host preference change.
-  const routes = ['/allyvora-patients/patients', '/allyvora-patients/patients?view=inactive', '/allyvora-patients/patients?mode=new', `/allyvora-patients/patients?mode=view&id=${patient.id}`, `/allyvora-patients/patients?mode=edit&id=${patient.id}`, `/allyvora-patients/patients?mode=edit&id=${patient.id}&section=consent`, '/preferences'];
+  const routes = ['/allyvora-patients/patients', '/allyvora-patients/patients?view=inactive', '/allyvora-patients/patients/new', `/allyvora-patients/patients/${patient.id}`, `/allyvora-patients/patients/${patient.id}/edit`, `/allyvora-patients/patients/${patient.id}/edit?section=consent`, '/preferences'];
   await axeSweep('default', routes);
   await setPreferences({language: 'ar', reducedMotion: true});
   await axeSweep('arabic-rtl-reduced-motion', routes.slice(0, 7));
   if (checks.filter(check => check.profile !== 'default').some(check => check.dir !== 'rtl')) throw new Error('Arabic routes did not render right to left');
   await setPreferences({language: 'en', reducedMotion: false});
   flows.push({id: 'HCD-AV-10', scope: 'HTTP setup + UI', result: 'Arabic RTL and reduced motion from the shared preference API apply to every module route'});
+
+  // Former `?mode=` links still open the matching dedicated page.
+  for (const [legacy, ready] of [['?mode=new', '[data-record-form="new"]'], [`?mode=view&id=${patient.id}`, '[data-patient-view]'], [`?mode=edit&id=${patient.id}&section=consent`, '[data-record-form="edit"] [data-section="consent"]']]) {
+    await visit('/allyvora-patients/patients' + legacy);
+    await page.locator(ready).first().waitFor();
+  }
+  flows.push({id: 'HCD-AV-11', scope: 'UI', result: 'Legacy ?mode=new|view|edit patient links open the dedicated create, record and edit pages'});
   await visit('/allyvora-patients/patients');
 
 
