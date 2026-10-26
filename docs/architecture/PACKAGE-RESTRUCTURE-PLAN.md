@@ -494,7 +494,7 @@ Paths that ports must update, counted on `main` `01b6578`:
 
 - [x] `packages/` contains only reusable code, and the boundary test enforces dependency rules, including relative backend imports.
 - [x] Every demo app uses public `@pepbits/*` exports only; production build results are recorded in the phase 8 evidence.
-- [ ] All consumers install published packages. Twelve 0.1.0 packages are published; Platform, Healthcare and ERP migrations are owner-reported complete. School’s parallel acceptance remains to be confirmed before the coordinated merge.
+- [x] All consumers install published packages. Twelve 0.1.0 packages are published; Platform Enterprise (`33e4424`), Healthcare (`c0530df9`, `58cffbeb`, `c92b8a0b`), ERP (`6f332b6`) and School (`86a72ba`) install them from GitHub Packages on their `main` branches (see [Phase 7c status](#phase-7c-status)).
 - [x] Shims and `desktop-clients/` are gone. No old-name package facades existed; the `dummy-api` compatibility link is removed. Breaking entry-point replacements are documented in the phase 8 record.
 
 ## Out of scope
@@ -631,11 +631,24 @@ See the [publishing guide](../development/PUBLISHING.md) and [release record](..
 
 ### Phase 7b status
 
-All 12 library packages were published at **0.1.0** to GitHub Packages (`@pepbits` scope, `https://npm.pkg.github.com`) on 25 October 2026 from `60b1428`, manually from the development server with an owner-provided token. Registry versions and a clean install outside the repository are verified. Product repositories still use vendored archives; moving them to registry versions (phase 7c) needs the owner's permission per repository. See the [phase 7b record](../releases/unreleased/restructure-phase-7b-2026-10-25.md).
+All 12 library packages were published at **0.1.0** to GitHub Packages (`@pepbits` scope, `https://npm.pkg.github.com`) on 25 October 2026 from `60b1428`, manually from the development server with an owner-provided token. Registry versions and a clean install outside the repository are verified. Product repositories still use vendored archives; moving them to registry versions (phase 7c) needs the owner's permission per repository. *Update:* all four products have since moved; see [Phase 7c status](#phase-7c-status). See the [phase 7b record](../releases/unreleased/restructure-phase-7b-2026-10-25.md).
 
 ### Phase 7c-0 status
 
 Analysis completed 25 October 2026 on `restructure/phase-7c-map`, based on `9198266`. The [consumer migration map](CONSUMER-MIGRATION-MAP.md) and four linked CSVs inventory 439 imported-symbol/style rows across Healthcare, ERP, School and Platform: 291 direct, 0 rename-only, 75 requiring API/provider adaptations and 73 absent from the twelve published packages. Missing rows comprise product registries/fixtures, Healthcare clinical code and separately owned Platform packages; AI config/client/UI are published with host API adaptations. Recommended order is Platform → Healthcare → ERP → School, including School’s enforced Healthcare source-sync dependency; estimated implementation is 27–42 person-days. The map also records legacy CI, deployment, archive-production, mock API and documentation-tool blockers for phase 8. Product repositories were read-only; no consumer migration, build, test, commit, push or deployment occurred.
+
+### Phase 7c status
+
+All four product repositories moved from vendored archives to the published 0.1.0 packages on 25 October 2026. Each change was implemented in its own product worktree, verified with that repository's own `scripts/verify.sh` (or Platform's library/platform gates) plus its browser journeys, independently re-run by the reviewer, then merged to the product's `main`. No release or deployment was part of this work.
+
+| Product | Merged on `main` | Shape |
+| --- | --- | --- |
+| Platform Enterprise | `33e4424` | platform-admin-web on published packages; `libraries/platform-web` peers on `@pepbits/ui` |
+| Healthcare Enterprise | `c0530df9` (H1), `58cffbeb` (H2), `c92b8a0b` (H3) | all frontends; clinical code is Healthcare-owned in `frontend/packages/healthcare-ui`; 169 archives retired with a recovery lock |
+| ERP Enterprise | `6f332b6` | product host in `frontend/packages/erp-host`; 24 archives retired |
+| School (Academic) Enterprise | `86a72ba` | product host in `frontend/packages/education-host`; 36 archives retired, 3 Platform archives kept; Healthcare source pins at `c92b8a0b` |
+
+Every product pipeline reads `NPM_TOKEN` from the Jenkins Secret Text credential `pepbits-npm-read-token` (`read:packages`), which the owner must add. Product verification records are in `pepbits-shared-document` (`ad0ed159`).
 
 ### Phase 8 status
 
@@ -645,4 +658,4 @@ The fake backend owns 35 required contract/catalog/data files with recorded sour
 
 The test-site payload keeps the transport, pinned simulators, release identity and hash contract; schema 2 contains self-contained demo outputs and backend dependencies. External receiver/Compose start paths and rollback selection require owner rollout before the first deployment. Jenkins deployment is main-only and opt-in. No deployment, commit, push, merge or publication is performed here.
 
-Owner-supplied consumer identities: Platform Enterprise `33e4424`; Healthcare `c0530df9`, `58cffbeb`, `c92b8a0b`; ERP `6f332b6`. School is migrating in parallel; its completion/provenance acceptance remains outside this worktree. The owner explicitly authorized deletion now. See [operations and gate mapping](../development/TEST-SITE.md) and the [phase 8 release record](../releases/unreleased/restructure-phase-8-2026-10-25.md) for exact results and limitations. This does not convert local checks into hosted/native/deployed evidence.
+Owner-supplied consumer identities: Platform Enterprise `33e4424`; Healthcare `c0530df9`, `58cffbeb`, `c92b8a0b`; ERP `6f332b6`. School is migrating in parallel; its completion/provenance acceptance remains outside this worktree. *Update 26 October 2026:* School merged as `86a72ba` before phase 8 was merged to `main` as `7cdc9e8`. The owner explicitly authorized deletion now. See [operations and gate mapping](../development/TEST-SITE.md) and the [phase 8 release record](../releases/unreleased/restructure-phase-8-2026-10-25.md) for exact results and limitations. This does not convert local checks into hosted/native/deployed evidence.

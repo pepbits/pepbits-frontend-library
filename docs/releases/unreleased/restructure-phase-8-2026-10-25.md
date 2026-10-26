@@ -136,3 +136,5 @@ Independent rerun in this worktree under Node 24.21.0: root `npm ci`; `tooling/s
 production live checks for reports (22 workflows, 49 routes) and erp (122 workflows, 114 routes) with
 0 errors, console errors, HTTP errors and axe violations; `run.sh start|status|stop api reports` on
 loopback ports with `/health` ok and no listener left. The test-site archive was not rebuilt by the reviewer.
+
+*Update 26 October 2026:* School's registry migration was merged as `86a72ba` before this phase was merged to library `main` as `7cdc9e8`.

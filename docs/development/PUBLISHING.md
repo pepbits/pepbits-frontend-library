@@ -154,6 +154,24 @@ encounter already published versions. Never overwrite or silently relabel a
 published version. Keep tokens out of evidence, and remove them from the session
 when finished.
 
+## Developer quick start for product apps
+
+Products already migrated (Platform Enterprise, Healthcare, ERP, School) have this set up; a developer only supplies a token. For a new app:
+
+1. Create a GitHub personal access token (classic) with `read:packages`; your account needs access to the `pepbits` organisation. Never commit it.
+2. Add an `.npmrc` beside the app's `package.json`:
+
+   ```ini
+   @pepbits:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+   ```
+
+3. `export NPM_TOKEN=<token>` and install the packages you need, for example `npm install @pepbits/ui @pepbits/components @pepbits/tokens @pepbits/shell @pepbits/patterns @pepbits/page-engines @pepbits/i18n @pepbits/preferences`.
+4. Add `@pepbits/tokens/tokens.css` and the Tailwind `@source` lines from [the installation contract](#build-and-installation-contract) to the global stylesheet. Next.js App Router and Vite React need no `transpilePackages`.
+5. Compose the shell, preferences/tenant locks and localization once in the host, as the product hosts do (`frontend/packages/healthcare-ui`, `erp-host`, `education-host` in the product repositories). Working examples using only public exports are in [`demo-apps/`](../../demo-apps/README.md), e.g. [`demo-apps/healthcare`](../../demo-apps/healthcare/README.md).
+
+CI supplies the token from a secret (Jenkins credential `pepbits-npm-read-token`). Shared-package changes reach products only when a new version is published; products stay on the version pinned in their lockfile until they upgrade.
+
 ## Product consumers and rollback
 
 A product uses the same `.npmrc` with its read-only token supplied as `NPM_TOKEN`,
@@ -186,4 +204,4 @@ semantics are unchanged. Exact local results and limits are in the
 
 ## Phase 8 registry-only consumers
 
-The twelve 0.1.0 packages are published (phase 7b). Root `npm ci` links local workspaces and does not fetch GitHub Packages, so it requires no `NPM_TOKEN`. The root `release:pack` remains a library publication rehearsal; it does not recreate old product source archives. Former source snapshot packers live in the product repositories and are retired by their registry migrations. Their historical hashes remain evidence. Platform-owned packages retain their separate release pipeline. School’s parallel migration acceptance must be confirmed before merging the coordinated removal. See [phase 8 operations](TEST-SITE.md).
+The twelve 0.1.0 packages are published (phase 7b). Root `npm ci` links local workspaces and does not fetch GitHub Packages, so it requires no `NPM_TOKEN`. The root `release:pack` remains a library publication rehearsal; it does not recreate old product source archives. Former source snapshot packers live in the product repositories and are retired by their registry migrations. Their historical hashes remain evidence. Platform-owned packages retain their separate release pipeline. All four products (Platform Enterprise, Healthcare, ERP and School) install the published packages, so no consumer depends on the removed workspace. See [phase 8 operations](TEST-SITE.md).

@@ -1,5 +1,7 @@
 # Consumer migration map — phase 7c-0
 
+> **Status 26 October 2026:** completed. All four products now install the published packages: Platform Enterprise `33e4424`, Healthcare `c0530df9`/`58cffbeb`/`c92b8a0b`, ERP `6f332b6`, School `86a72ba`. See [Phase 7c status](PACKAGE-RESTRUCTURE-PLAN.md#phase-7c-status). The inventory below is the dated 25 October analysis.
+
 Analysis dated **25 October 2026**. The twelve published **0.1.0** packages cover most imported symbols, but **no whole product repository can switch by changing package names alone**. The main work is explicit shell/preference/localization composition, product ownership of navigation and clinical code, and migration of Platform Enterprise's separate UI packages.
 
 This is an inventory and recommendation, not a consumer migration or deployment. Product repositories were read-only: no installs, builds, tests, packing, worktrees or edits. Only this map, its four CSVs and the plan's status note are changed. The [restructure plan](PACKAGE-RESTRUCTURE-PLAN.md) defines ownership; [phase 7b evidence](../releases/unreleased/restructure-phase-7b-2026-10-25.md) records publication.
