@@ -77,7 +77,7 @@ export function PatientEditor({mode, id, section}: {mode: 'new' | 'edit'; id?: n
   if (!initialValues) return <LoadingState/>;
   const title = mode === 'new' ? t('New patient') : t('Edit {name}', {name: record?.displayName ?? t('patient')});
   const branchName = session.branches.find(branch => branch.id === record?.branchId)?.name;
-  return <div className="flex h-[calc(100dvh-var(--header-height,56px)-var(--footer-height,32px)-24px)] min-h-[560px] flex-col gap-3 px-3 py-3 sm:px-4 lg:px-6" data-patient-editor={mode}>
+  return <div className="-mt-2 flex h-[calc(100dvh-var(--header-height,56px)-var(--footer-height,32px)-16px)] min-h-[560px] flex-col gap-3 px-3 pb-3 sm:px-4 lg:px-6" data-patient-editor={mode}>
     {/* Visible title and per-form layout switcher removed by owner request; the layout is chosen in Layout setup. */}
     <h1 className="sr-only">{title}</h1>
     <div className="min-h-0 flex-1">
