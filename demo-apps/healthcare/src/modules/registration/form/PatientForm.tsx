@@ -1,20 +1,21 @@
 'use client';
 import React, {useCallback, useEffect, useId, useMemo, useRef, useState} from 'react';
 import {
-  FIELDS, NAME_PARTS, SECTIONS, completion, computeAge, deriveDisplayName, firstErrorField, optionsFor, sanitizeValues, sectionDef,
+  FIELDS, NAME_PARTS, SECTIONS, completion, computeAge, deriveDisplayName, firstErrorField, optionsFor, sanitizeValues,
   sectionIndex, sectionOf, sectionProgress, todayISO, validateForm, visibleFields,
-  type DuplicateCandidate, type FieldErrors, type FieldValue, type FormValues, type LayoutSettings, type Lookups, type MrnPreview, type SectionId, type SectionProgress,
+  type DuplicateCandidate, type FieldErrors, type FieldValue, type FormValues, type Lookups, type MrnPreview, type SectionId, type SectionProgress,
 } from '@allyvora/shared';
 import {Button} from '@pepbits/ui';
 import {useLocalization} from '@pepbits/i18n/react';
 import {usePreferences} from '@pepbits/preferences/react';
 import {useNavigation} from '@pepbits/platform/navigation';
-import {AlertTriangle, ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, History, ListChecks, Save, Users} from '@pepbits/icons';
+import {AlertTriangle, ExternalLink, History, Users} from '@pepbits/icons';
 import {useAllyVora} from '../context';
 import {PAGE} from '../routes';
 import {KEYS, Notice, SEX_SHORT, useHotkey, useTimeFormat} from '../support';
 import {FormProvider, focusField, scrollWithin, sectionDomId, type FormCtx} from './parts';
-import {LAYOUT_COMPONENTS, overall, type LayoutProps} from './layouts';
+import {RecordForm, RecordSectionCard} from '@pepbits/page-engines/record-layout';
+import {SectionBody} from './parts';
 import {PatientBand} from './PatientBand';
 import {RulesDrawer} from './RulesDrawer';
 
@@ -22,7 +23,6 @@ export type SubmitResult = {ok: true} | {ok: false; errors?: FieldErrors};
 export interface PatientFormProps {
   mode: 'new' | 'edit' | 'preview';
   initialValues: FormValues;
-  settings: LayoutSettings;
   lookups: Lookups;
   identity?: {mrn?: string | null; orgNumber?: string | null; patientId?: number; branchName?: string};
   initialSection?: SectionId;
@@ -41,9 +41,10 @@ const PIN_TARGETS: Record<string, Record<string, string>> = {
 
 /** One form controller for every layout, ported from the source PatientForm with shared controls and host preferences. */
 export function PatientForm(props: PatientFormProps) {
-  const {mode, settings, lookups, identity, draftKey} = props;
+  const {mode, lookups, identity, draftKey} = props;
   const {client, draft, saveDraft} = useAllyVora();
   const {t} = useLocalization(), {preferences} = usePreferences(), navigation = useNavigation(), time = useTimeFormat();
+  const settings = {layout: preferences.formNavigation === 'rail' ? 'scroll' as const : preferences.formNavigation, density: preferences.density, columns: preferences.formColumns, showSummary: preferences.formShowSummary, validateOn: preferences.formValidateOn, autosaveDraft: preferences.formKeepUnsaved};
   const reducedMotion = !!preferences.reducedMotion;
   const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
   const today = useMemo(() => todayISO(), []);
@@ -83,7 +84,7 @@ export function PatientForm(props: PatientFormProps) {
   const percent = useMemo(() => completion(values, today), [values, today]);
   const dirty = useMemo(() => JSON.stringify(sanitizeValues(values)) !== initialJson, [values, initialJson]);
   const onDirtyChange = props.onDirtyChange;
-  useEffect(() => onDirtyChange?.(dirty), [dirty, onDirtyChange]);
+
 
   /* ---------------- edits ---------------- */
   const setValue = useCallback((id: string, value: FieldValue) => {
@@ -153,6 +154,7 @@ export function PatientForm(props: PatientFormProps) {
 
   /* ---------------- session drafts ---------------- */
   const draftsOn = !!draftKey && settings.autosaveDraft && mode === 'new';
+  useEffect(() => {if (!settings.autosaveDraft && draftKey) {saveDraft(draftKey,null);setDraftOffer(null);setDraftSavedAt(null);}}, [settings.autosaveDraft,draftKey,saveDraft]);
   useEffect(() => {
     if (!draftsOn) return;
     const saved = draft(draftKey!);
@@ -250,16 +252,16 @@ export function PatientForm(props: PatientFormProps) {
   /* ---------------- render ---------------- */
   const errorCount = Object.keys(shownErrors).length;
   const sectionsWithErrors = SECTIONS.filter(section => progress[section.id].errorCount > 0);
-  const {done} = overall(progress);
-  const stepped = settings.layout === 'wizard' || settings.layout === 'stepper' || settings.layout === 'tabs';
-  const Layout = LAYOUT_COMPONENTS[settings.layout];
-  const layoutProps: LayoutProps = {uid, active, onSelect: select, onActiveChange: setActive, progress, compact: settings.density === 'compact', reducedMotion, onNext: next};
+  const done = SECTIONS.filter(section=>progress[section.id].state==='complete').length;
   const visibleDupes = duplicates.length > 0 && dupDismissed !== dupSignature;
-  const saveHint = preferences.showKeyboardHints && preferences.keyboardShortcuts ? ' (Ctrl+S)' : '';
 
   return <FormProvider value={ctx}>
-    <div className={settings.density === 'compact' ? 'flex h-full min-h-0 flex-col gap-2' : 'flex h-full min-h-0 flex-col gap-3'} data-patient-form={mode} data-form-layout={settings.layout}>
-      {settings.showSummary ? <PatientBand values={values} lookups={lookups} mrn={identity?.mrn} mrnPending={mrnPreview?.next} completion={percent} sectionsLabel={t('{done} of {total} sections done', {done, total: SECTIONS.length})} className="shrink-0"/> : null}
+    <RecordForm mode={mode==='preview'?'new':mode} values={values} sections={SECTIONS} uid={uid} active={active} onActive={id=>select(id as SectionId)} progress={progress}
+      dirty={dirty} onDirtyChange={onDirtyChange} onBack={props.onCancel} backLabel={mode==='edit'?'Cancel':'Back to patients'} onCheckRules={()=>setRulesOpen(true)} onSave={submit} saving={saving}
+      saveLabel={mode==='edit'?'Save changes':'Save patient'} onNext={next} onPrevious={previous}
+      status={preview?t('Preview with sample data. Nothing is saved.'):draftsOn&&draftSavedAt&&dirty?t('Draft kept for this session at {time}',{time:time.clock(draftSavedAt)}):dirty?t('Unsaved changes'):mode==='edit'?t('No changes yet'):''}
+      summary={<PatientBand values={values} lookups={lookups} mrn={identity?.mrn} mrnPending={mrnPreview?.next} completion={percent} sectionsLabel={t('{done} of {total} sections done',{done,total:SECTIONS.length})} className="shrink-0"/>}
+      renderSection={section=><RecordSectionCard id={section.id} title={section.title} subtitle={section.description} index={section.index-1} progress={progress[section.id]} active={active===section.id}><SectionBody section={section.id}/></RecordSectionCard>}>
       {draftOffer ? <Notice tone="info" icon={<History className="size-[18px]"/>} actions={<>
         <Button size="sm" variant="primary" onClick={() => {
           manualName.current = !!draftOffer.values.displayName && draftOffer.values.displayName !== deriveDisplayName(draftOffer.values, lookups);
@@ -282,24 +284,7 @@ export function PatientForm(props: PatientFormProps) {
         <span className="inline-flex flex-wrap gap-1.5 align-middle">{sectionsWithErrors.map(section => <button key={section.id} type="button" onClick={() => goTo(section.id, visibleFields(section.id, values).find(field => shownErrors[field.id])?.id)}
           className="focus-ring rounded-full bg-[var(--surface)] px-2.5 py-0.5 text-[length:calc(10.5px*var(--fs-scale))] font-semibold tabular-nums text-[var(--danger-ink)] ring-1 ring-[var(--danger)]">{t(section.short)} ({progress[section.id].errorCount})</button>)}</span>
       </Notice> : null}
-      <div className="min-h-0 flex-1"><Layout {...layoutProps}/></div>
-      <div className="flex shrink-0 flex-wrap items-center gap-2 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] px-2.5 py-2 shadow-[var(--shadow-sm)] sm:px-3" data-form-actions="">
-        <Button variant="ghost" onClick={props.onCancel}><ArrowLeft className="size-4" aria-hidden="true"/>{t(mode === 'edit' ? 'Cancel' : 'Back to patients')}</Button>
-        <span className="hidden text-[length:calc(10.5px*var(--fs-scale))] text-[var(--text-muted)] lg:inline" aria-live="polite">
-          {preview ? t('Preview with sample data. Nothing is saved.') : draftsOn && draftSavedAt && dirty ? t('Draft kept for this session at {time}', {time: time.clock(draftSavedAt)}) : dirty ? t('Unsaved changes') : mode === 'edit' ? t('No changes yet') : ''}
-        </span>
-        <div className="ms-auto flex items-center gap-2">
-          <Button variant="secondary" onClick={() => setRulesOpen(true)}><ListChecks className="size-4" aria-hidden="true"/>{t('Check form rules')}</Button>
-          {stepped ? <Button variant="secondary" onClick={previous} disabled={index === 0} aria-label={t('Previous section')}><ChevronLeft className="size-4 rtl:rotate-180" aria-hidden="true"/><span className="hidden xl:inline">{t('Previous')}</span></Button> : null}
-          {stepped && !isLast ? <Button variant={settings.layout === 'wizard' ? 'primary' : 'secondary'} onClick={next} title={t('Next section: {title}', {title: t(sectionDef(SECTIONS[index + 1]!.id).title)})}>
-            <span className="hidden sm:inline">{t('Next: {section}', {section: t(SECTIONS[index + 1]!.short)})}</span><span className="sm:hidden">{t('Next')}</span><ChevronRight className="size-4 rtl:rotate-180" aria-hidden="true"/>
-          </Button> : null}
-          <Button variant={settings.layout === 'wizard' && !isLast ? 'secondary' : 'primary'} onClick={() => void submit()} disabled={saving} aria-busy={saving || undefined} title={saveHint ? t('Save') + saveHint : undefined}>
-            <Save className="size-4" aria-hidden="true"/>{t(saving ? 'Saving…' : mode === 'edit' ? 'Save changes' : 'Save patient')}
-          </Button>
-        </div>
-      </div>
-    </div>
+    </RecordForm>
     <RulesDrawer open={rulesOpen} onClose={() => setRulesOpen(false)} values={values} errors={allErrors} lookups={lookups} progress={progress} onJump={(section, field) => goTo(section, field)} onRevealAll={() => setRevealAll(true)}/>
   </FormProvider>;
 }

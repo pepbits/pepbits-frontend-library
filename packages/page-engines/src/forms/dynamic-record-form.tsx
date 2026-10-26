@@ -150,9 +150,9 @@ function RecordForm({page,target,schema:definition,initialValues}:DynamicRecordF
       <RecordSaveStatus editor={editor} />
 
       <Card className="min-h-[590px] overflow-hidden">
-        {preferences.formNavigation !== "rail" ? <div data-tour="form-nav"><FormNavigationControl type={preferences.formNavigation} sections={schema.sections} activeId={activeSection} onChange={setActiveSection} completion={completion} /></div> : null}
-        <div className={cn("flex min-h-[540px]", preferences.formNavigation === "rail" && "lg:flex-row")}>
-          {preferences.formNavigation === "rail" ? <div data-tour="form-nav" className="flex shrink-0"><FormNavigationControl type="rail" sections={schema.sections} activeId={activeSection} onChange={setActiveSection} completion={completion} /></div> : null}
+        {preferences.formNavigation !== "scroll" ? <div data-tour="form-nav"><FormNavigationControl type={preferences.formNavigation} sections={schema.sections} activeId={activeSection} onChange={setActiveSection} completion={completion} /></div> : null}
+        <div className={cn("flex min-h-[540px]", preferences.formNavigation === "scroll" && "lg:flex-row")}>
+          {preferences.formNavigation === "scroll" ? <div data-tour="form-nav" className="flex shrink-0"><FormNavigationControl type="rail" sections={schema.sections} activeId={activeSection} onChange={setActiveSection} completion={completion} /></div> : null}
           <div className="min-w-0 flex-1">
             <div className="border-b border-[var(--border)] bg-[var(--surface)] px-5 py-4">
               <div className="flex items-start justify-between gap-4"><div><div className="flex items-center gap-2"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--primary-soft)] text-[length:calc(11px*var(--fs-scale))] font-black text-[var(--primary-strong)]">{activeIndex + 1}</span><div><h2 className="text-[length:calc(14px*var(--fs-scale))] font-black tracking-[-.02em]">{<LocalizedText message={section.titleKey ?? section.title} />}</h2><p className="mt-0.5 text-[length:calc(10px*var(--fs-scale))] text-[var(--text-muted)]">{<LocalizedText message={section.descriptionKey ?? section.description} />}</p></div></div></div><div className="hidden items-center gap-2 lg:flex"><Badge tone="neutral">{section.fields.length}{" "}<LocalizedText message="ui.fields.bfe5d697" /></Badge><Badge tone={completion[section.id] === 100 ? "success" : "warning"}>{completion[section.id]}<LocalizedText message="ui.complete.fe9543cf" /></Badge></div></div>

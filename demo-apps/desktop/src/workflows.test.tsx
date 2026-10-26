@@ -140,7 +140,7 @@ test('preference changes go through the single host update path with accepted re
 
 test('a tenant lock disables the preference control and keeps the managed value',async()=>{
  const api=mockApi({preferences:{formNavigation:'wizard'},rules:{formNavigation:{value:'rail',locked:true}}});renderDesktop('/preferences',{api});
- const layout=await screen.findByLabelText('Record form style');expect(layout).toBeDisabled();expect(layout).toHaveValue('rail');fireEvent.change(layout,{target:{value:'tabs'}});
+ const layout=await screen.findByLabelText('Record form style');expect(layout).toBeDisabled();expect(layout).toHaveValue('scroll');fireEvent.change(layout,{target:{value:'tabs'}});
  expect(api.writes()).toHaveLength(0);
 });
 
@@ -149,7 +149,7 @@ test('a policy change while mounted replaces a conflicting preference and disabl
  const layout=await screen.findByLabelText('Record form style');expect(layout).toHaveValue('wizard');
  api.setPolicy({formNavigation:{value:'rail',locked:true}});
  act(()=>window.dispatchEvent(new Event('pepbits-preference-policy-changed')));
- await waitFor(()=>expect(layout).toBeDisabled());expect(layout).toHaveValue('rail');
+ await waitFor(()=>expect(layout).toBeDisabled());expect(layout).toHaveValue('scroll');
  fireEvent.change(layout,{target:{value:'tabs'}});expect(api.writes()).toHaveLength(0);
 });
 

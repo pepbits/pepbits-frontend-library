@@ -124,13 +124,13 @@ Review protected-branch required checks: the former `browser` and `feature-brows
 are consolidated into `check`; `native-linux` stays separate. No branch-protection setting
 was changed locally. Obtain actual hosted results before treating these jobs as accepted.
 Keep [known_hosts](../../deploy/pb-srv5/known_hosts) and strict host checking. Deployment is
-controlled by `DEPLOY_TEST_SITE` (main-only; default true since 26 October 2026, false before). The first owner-authorized
+controlled by `DEPLOY_TEST_SITE` (main-only; default false; owner approval is required for deployment after test-instance verification). The first owner-authorized
 deployment must confirm the public marker, API health, configured demo/API proxy, receiver
 receipt and rollback. None of these remote operations is performed by local packaging.
 
 ## Rollout status (26 October 2026)
 
-The owner-authorized receiver/Compose change is installed on pb-srv5 (`pepbits-shared-document` `534dc8fb`): `bin/ci-receive` selects the API directory, web entry and demo per release schema in the same atomic `.env` rename as `FT_RELEASE`; optional `FT_DEMO` (default `showcase`) chooses the served demo. First schema 2 release `20261026015233819-e04d5f77` from `main` `e04d5f7` was packaged locally (production build, stamps, `package-test-site.mjs`, `verify-test-site.mjs`) and deployed manually through the receiver. Verified: public `__nexora-release.json` id, `/api/health` ok, showcase home 200, healthy containers, rollback to the schema 1 release and forward again. The full CI gate ran on the same code before merge (69/69 tasks); the packaging run used the production build only. `DEPLOY_TEST_SITE` now defaults to true, so the next successful Jenkins `main` build deploys automatically. Hosted Jenkins has not yet run this pipeline.
+The owner-authorized receiver/Compose change is installed on pb-srv5 (`pepbits-shared-document` `534dc8fb`): `bin/ci-receive` selects the API directory, web entry and demo per release schema in the same atomic `.env` rename as `FT_RELEASE`; optional `FT_DEMO` (default `showcase`) chooses the served demo. First schema 2 release `20261026015233819-e04d5f77` from `main` `e04d5f7` was packaged locally (production build, stamps, `package-test-site.mjs`, `verify-test-site.mjs`) and deployed manually through the receiver. Verified: public `__nexora-release.json` id, `/api/health` ok, showcase home 200, healthy containers, rollback to the schema 1 release and forward again. The full CI gate ran on the same code before merge (69/69 tasks); the packaging run used the production build only. `DEPLOY_TEST_SITE` defaults to false again for the 0.2.0 preparation: verify the test instance first, then explicitly enable deployment only after owner approval. Hosted Jenkins has not yet run this pipeline.
 
 ## AllyVora Patients backend in schema 2
 

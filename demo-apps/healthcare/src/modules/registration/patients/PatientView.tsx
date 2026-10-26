@@ -10,7 +10,9 @@ import {Archive, FilePlus2, History, Pencil, Printer, RotateCcw, UserPlus} from 
 import {useAllyVora} from '../context';
 import {PAGE} from '../routes';
 import {AllyVoraFailure} from '../../../adapters/allyvora';
-import {StatusGlyph} from '../form/parts';
+import {RecordForm,RecordSectionCard} from '@pepbits/page-engines/record-layout';
+import {usePreferences} from '@pepbits/preferences/react';
+import {GRID} from '../form/parts';
 import {PatientBand} from '../form/PatientBand';
 import {failureOf, messageOf, useTimeFormat} from '../support';
 
@@ -18,6 +20,7 @@ const ACTION_TEXT: Record<AuditEntry['action'], string> = {created: 'registered 
 const editTarget = (record: PatientRecord, section?: SectionId) => ({pageId: PAGE.register, mode: 'edit' as const, recordId: String(record.id), ...(section ? {section} : {})});
 
 function SectionCard({record, section}: {record: PatientRecord; section: SectionId}) {
+  const {preferences}=usePreferences();
   const {lookups} = useAllyVora(), {t} = useLocalization(), navigation = useNavigation(), time = useTimeFormat(), host = useScreenHost();
   const def = SECTIONS.find(item => item.id === section)!, values = record.data;
   const errors = useMemo(() => validateForm(values), [values]);
@@ -32,16 +35,12 @@ function SectionCard({record, section}: {record: PatientRecord; section: Section
     return {field, text: field.type === 'date' ? time.date(String(values[field.id])) : formatValue(field, values[field.id], lookups, {mask: true})};
   }).filter(Boolean) as {field: FieldDef; text: string}[];
   const target = editTarget(record, section);
-  return <section className="mb-4 break-inside-avoid rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)]" aria-labelledby={`v-${section}`} data-view-section={section}>
-    <header className="flex items-center gap-3 border-b border-[var(--border)] px-4 py-3">
-      <StatusGlyph index={def.index} progress={progress} size="sm"/>
-      <h2 id={`v-${section}`} className="flex-1 text-[length:calc(13px*var(--fs-scale))] font-bold text-[var(--text)]">{t(def.title)}</h2>
-      {host.can('allyvora-edit') ? <NavLink href={navigation.hrefFor(target)} onClick={event => {event.preventDefault(); navigation.open(target);}} className="print:hidden focus-ring inline-flex h-7 items-center gap-1.5 rounded-md px-2 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--primary)] hover:bg-[var(--primary-soft)]">
+  return <RecordSectionCard id={section} title={def.title} index={def.index-1} progress={progress} actions={
+      host.can('allyvora-edit') ? <NavLink href={navigation.hrefFor(target)} onClick={event => {event.preventDefault(); navigation.open(target);}} className="print:hidden focus-ring inline-flex h-7 items-center gap-1.5 rounded-md px-2 text-[length:calc(10.5px*var(--fs-scale))] font-semibold text-[var(--primary)] hover:bg-[var(--primary-soft)]">
         <Pencil className="size-3.5" aria-hidden="true"/>{t('Edit')}<span className="sr-only"> {t(def.title)}</span>
-      </NavLink> : null}
-    </header>
+      </NavLink> : null}>
     {rows.length === 0 ? <p className="px-4 py-4 text-[length:calc(11.5px*var(--fs-scale))] text-[var(--text-muted)]">{t('Nothing recorded yet.')}</p>
-      : <dl className="grid grid-cols-1 gap-x-6 gap-y-3 px-4 py-4 sm:grid-cols-2">
+      : <dl className={cn(GRID[preferences.formColumns],preferences.density==='compact'?'gap-x-4 gap-y-2':'gap-x-6 gap-y-3')}>
         {rows.map(({field, text}) => <div key={field.id} className={cn('min-w-0', (field.span === 2 || field.span === 'full' || field.type === 'textarea' || field.type === 'signature') && 'sm:col-span-2')}>
           <dt className="text-[length:calc(10.5px*var(--fs-scale))] text-[var(--text-muted)]">{t(field.label)}</dt>
           <dd className="mt-0.5 break-words text-[length:calc(12.5px*var(--fs-scale))] text-[var(--text)]">
@@ -51,12 +50,13 @@ function SectionCard({record, section}: {record: PatientRecord; section: Section
           </dd>
         </div>)}
       </dl>}
-  </section>;
+  </RecordSectionCard>;
 }
 
 /** Patient record with section cards, missing optional details and the masked activity history. */
 export function PatientView({id}: {id: number}) {
   const {client, lookups} = useAllyVora(), {t} = useLocalization(), navigation = useNavigation(), host = useScreenHost(), time = useTimeFormat();
+  const [active,setActive]=useState('mrn');
   const [record, setRecord] = useState<PatientRecord | null>(null);
   const [audit, setAudit] = useState<AuditEntry[] | null>(null);
   const [error, setError] = useState<unknown>(null);
@@ -95,15 +95,17 @@ export function PatientView({id}: {id: number}) {
     ['Last updated', t('{when} by {who}', {when: time.relative(record.updatedAt), who: record.updatedBy})],
     ['Status', t(inactive ? 'Inactive' : 'Active')],
   ];
-  return <div className="flex flex-col gap-4 px-3 py-4 sm:px-4 lg:px-6" data-patient-view={record.id}>
+  return <div className="flex flex-col gap-2 px-3 pt-2 pb-4 sm:px-4 lg:px-6" data-patient-view={record.id}>
     <h1 className="sr-only">{t('Patient record: {name}', {name: record.displayName})}</h1>
-    <PatientBand values={record.data} lookups={lookups} mrn={record.mrn} completion={record.completion} size="full" status={record.status}
+    <div className="grid min-h-[700px] gap-4 xl:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="flex h-[calc(100dvh-160px)] min-h-[600px] flex-col"><RecordForm mode="view" values={record.data} sections={SECTIONS} active={active} onActive={setActive}
+        progress={Object.fromEntries(SECTIONS.map(section=>[section.id,sectionProgress(section.id,record.data,validateForm(record.data),{})]))}
+        summary={<PatientBand values={record.data} lookups={lookups} mrn={record.mrn} completion={record.completion} size="compact" status={record.status}
       actions={<div className="flex flex-col gap-2 print:hidden sm:flex-row">
         {host.can('allyvora-edit') ? <Button variant="primary" onClick={() => navigation.open(editTarget(record))}><Pencil className="size-4" aria-hidden="true"/>{t('Edit')}</Button> : null}
         <Button variant="secondary" onClick={() => window.print()} className="hidden sm:inline-flex"><Printer className="size-4" aria-hidden="true"/>{t('Print')}</Button>
-      </div>}/>
-    <div className="grid items-start gap-4 xl:grid-cols-[minmax(0,1fr)_340px] 2xl:grid-cols-[minmax(0,1fr)_380px]">
-      <div className="columns-1 gap-4 lg:columns-2">{SECTIONS.map(section => <SectionCard key={section.id} record={record} section={section.id}/>)}</div>
+      </div>}/>} onBack={()=>navigation.open({pageId:PAGE.register})} backLabel="Back to patients"
+        renderSection={section=><SectionCard record={record} section={section.id}/>}/></div>
       <aside className="flex flex-col gap-4 xl:sticky xl:top-4" aria-label={t('Record details')}>
         <section className="rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface)] p-4" aria-labelledby="record-facts">
           <h2 id="record-facts" className="text-[length:calc(13px*var(--fs-scale))] font-bold text-[var(--text)]">{t('Record')}</h2>

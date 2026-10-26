@@ -80,3 +80,12 @@ test("formatOptionsFrom passes only formatter settings after policy resolution",
   expect(options.currencyCode).toBe("INR");
   expect(createFormatters(options).money(1234567)).toBe(createFormatters(preferences).money(1234567));
 });
+
+test('legacy rail migrates in storage, imports, defaults, locks and allowed sets',()=>{
+ expect(sanitizePreferences({formNavigation:'rail'}).formNavigation).toBe('scroll');
+ const policy=parsePreferencePolicy({revision:1,rules:{formNavigation:{value:'rail',locked:false,allowedValues:['rail','scroll','tabs']}}});
+ expect(policy.rules.formNavigation).toEqual({value:'scroll',locked:false,allowedValues:['scroll','tabs']});
+ expect(effectivePreferences({formNavigation:'rail'},policy).formNavigation).toBe('scroll');
+ expect(effectivePreferences({formNavigation:'accordion'},{revision:2,rules:{formNavigation:{value:'rail',locked:true,allowedValues:['rail']}}}).formNavigation).toBe('scroll');
+ expect(sanitizePreferences({formColumns:5,formValidateOn:'never',formKeepUnsaved:'yes'})).toMatchObject({formColumns:3,formValidateOn:'blur',formKeepUnsaved:true});
+});

@@ -21,7 +21,7 @@ const flows=[],createdRoutes=[],rcmPresentation=[],medbandPresentation=[];
 const fixtureSource=readFileSync(new URL('../../../mock-api/server.mjs',import.meta.url),'utf8');
 const secret=fixtureSource.match(/username:\s*"admin",\s*password:\s*"([^\"]+)"/)[1];
 const browser=await chromium.launch({headless:true});
-const page=await browser.newPage({viewport:{width:1440,height:1000}}),checks=[],errors=[],consoleErrors=[],responses=[],captures=fixtureCapture&&existsSync(fixtureCapture)?JSON.parse(readFileSync(fixtureCapture,'utf8')):{},pending=[];
+const page=await browser.newPage({viewport:{width:1440,height:1000}}),checks=[],errors=[],consoleErrors=[],responses=[],authResponses=[],captures=fixtureCapture&&existsSync(fixtureCapture)?JSON.parse(readFileSync(fixtureCapture,'utf8')):{},pending=[];
 page.setDefaultTimeout(30000);page.setDefaultNavigationTimeout(60000);
 function scrub(value){if(Array.isArray(value))return value.map(scrub);if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,/password|secret|token|api.?key/i.test(key)&&item?'[redacted]':scrub(item)]));return value;}
 let current='login',selectedDiagnostic='';
@@ -44,7 +44,10 @@ async function diagnosticMenu(route){
 page.on('pageerror',error=>errors.push({route:current,message:error.message}));
 page.on('console',message=>{if(message.type()==='error')consoleErrors.push({route:current,message:message.text()});});
 page.on('response',response=>{
- const url=new URL(response.url());if((!url.pathname.startsWith('/api/')&&!url.pathname.startsWith('/allyvora-api/'))||url.pathname.startsWith('/api/auth/'))return;
+ const url=new URL(response.url());
+ // Keep status-only session diagnostics: never retain headers, tokens or login payloads.
+ if(url.pathname.startsWith('/api/auth/')){authResponses.push({route:current,path:url.pathname,status:response.status()});return;}
+ if(!url.pathname.startsWith('/api/')&&!url.pathname.startsWith('/allyvora-api/'))return;
  if(response.status()>=400)responses.push({route:current,path:url.pathname,status:response.status()});
  if(process.env.HEALTHCARE_DICOM_FIXTURE&&url.pathname==='/api/reference-modules/ris1/api/dicom/instances/1'&&response.ok())pending.push(response.body().then(bytes=>writeFileSync(process.env.HEALTHCARE_DICOM_FIXTURE,bytes)));
  if(!fixtureCapture||url.pathname==='/api/localization'||url.pathname==='/api/preferences')return;
@@ -115,10 +118,10 @@ try{
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('rcm'))){current='/rcm';try{await rcmFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(JSON.stringify({error:error.message,errors,consoleErrors,responses,rendered:await page.locator('body').innerText()}));if(!await page.locator('[data-rcm-stage]').count())throw error;}}
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('pharmacy'))){current='/pharmacy';try{await pharmacyFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.message);}}
  if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('teleconsult'))){current='/teleconsult-provider';try{await teleconsultFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(error.stack);}}
- if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('medslot'))){current='/medslot';try{await medslotFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
- if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('medband'))){current='/medband';try{await medbandFlows({page,base,flows,createdRoutes,medbandPresentation});}catch(error){checks.push({route:current,failure:error.message});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
- if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('surgisuite'))){current='/surgisuite';try{await surgisuiteFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
- if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('quality'))){current='/quality';try{await qualityFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('medslot'))){current='/medslot';try{await medslotFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('medband'))){current='/medband';try{await medbandFlows({page,base,flows,createdRoutes,medbandPresentation});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('surgisuite'))){current='/surgisuite';try{await surgisuiteFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
+ if(process.env.HEALTHCARE_FLOW==='1'&&(!routeFilter||routeFilter.includes('quality'))){current='/quality';try{await qualityFlows({page,base,flows,createdRoutes});}catch(error){checks.push({route:current,failure:error.message,rendered:await page.locator('body').innerText()});console.error(error.stack);if(process.env.HEALTHCARE_FAIL_FAST==='1')throw error;}}
  for(const route of [...routes,...(process.env.HEALTHCARE_EXAMPLES==='1'?examples:[]),...createdRoutes].filter(route=>!routeFilter||new RegExp(routeFilter).test(route))){
   current=route;
   try{
@@ -134,7 +137,7 @@ try{
  finally{
  await Promise.all(pending);
  if(fixtureCapture){mkdirSync(new URL('../src/test/fixtures/',import.meta.url),{recursive:true});writeFileSync(fixtureCapture,JSON.stringify(captures,null,2)+'\n');}
- const result={flows,rcmPresentation,medbandPresentation,scope:'Local production healthcare browser against the unchanged shared demo and AllyVora HTTP APIs',checks,errors,consoleErrors,responses};
+ const result={flows,rcmPresentation,medbandPresentation,scope:'Local production healthcare browser against the local shared demo and AllyVora HTTP APIs',checks,errors,consoleErrors,responses,authResponses};
  writeFileSync(resultPath,JSON.stringify(result,null,2)+'\n');
  if(medbandPresentation.some(c=>c.failures.length)||rcmPresentation.some(c=>c.failures.length)||checks.some(c=>c.failure||c.violations.length)||errors.length||consoleErrors.length||responses.length)process.exitCode=1;
  await browser.close();

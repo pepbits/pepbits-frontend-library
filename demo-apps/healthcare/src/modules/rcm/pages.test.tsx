@@ -364,7 +364,7 @@ describe("create", () => {
   it("shows no New button on a page the registry does not let you create on, and ignores ?new=1 there", async () => {
     const h = setup(sessionHandler(), "/w/claims?new=1");
     await screen.findByRole("region", { name: "Ready" });
-    expect(lists(h.calls, "claims").length).toBeGreaterThan(0);
+    await waitFor(() => expect(lists(h.calls, "claims").length).toBeGreaterThan(0));
     expect(screen.queryByRole("button", { name: /New claim/ })).toBeNull();
     expect(screen.queryByRole("dialog")).toBeNull();
   });

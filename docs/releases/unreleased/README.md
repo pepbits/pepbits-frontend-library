@@ -228,3 +228,5 @@ The earlier [Healthcare Suite import](healthcare-suite-2026-09-29.md) was deploy
 - [Shared fallback catalog chunk correction](shared-catalog-chunks-2026-10-02.md): preserve the bundle budget by independently caching catalogs; full rebuild/deployment pending.
 
 - [MedSlot reference import](medslot-reference-2026-10-02.md).
+
+- [Record form engine — 26 October 2026](record-form-engine-2026-10-26.md): shared design, common Forms preferences and local 0.2.0 preparation.

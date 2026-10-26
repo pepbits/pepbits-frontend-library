@@ -1,6 +1,7 @@
 // Adapted from standalone allyvora-patients/scripts/smoke.mjs at b3cc2e3.
 // Uses the healthcare browser/session and real same-origin data proxy; no intercepted business responses.
 import {createRequire} from 'node:module';
+import {mkdirSync} from 'node:fs';
 const require = createRequire(import.meta.url);
 export async function allyvoraFlows({page, base, flows, checks}) {
   let current;
@@ -14,12 +15,11 @@ export async function allyvoraFlows({page, base, flows, checks}) {
 const settle = async (target = page) => {await target.waitForFunction(() => !document.querySelector('main [aria-busy="true"]') && document.getAnimations().every(animation => animation.playState !== 'running' || animation.effect?.getComputedTiming().iterations === Infinity));};
 const waitRoute = async (target = page) => {
   const url = new URL(target.url()), mode = url.searchParams.get('mode');
-  if (url.pathname === '/preferences') await target.getByRole('combobox', {name: 'Column layout is saved'}).waitFor();
+  if (url.pathname === '/preferences') await target.locator('[data-preference=columnLayoutScope] select').waitFor();
   else await target.locator('main h1').first().waitFor();
   if (url.pathname === '/allyvora-patients/patients' && !mode) await target.locator('[data-patient-register] tbody tr, [data-patient-register] [data-register-empty]').first().waitFor();
-  if (mode === 'new' || mode === 'edit') await target.locator('[data-patient-form]').waitFor();
+  if (mode === 'new' || mode === 'edit') await target.locator('[data-record-form]').waitFor();
   if (mode === 'view') await target.locator('[data-patient-view] [data-activity] li').first().waitFor();
-  if (url.pathname === '/allyvora-patients/settings/layout') await target.locator('[data-layout-history] li, [data-layout-history] p').first().waitFor();
   await settle(target);
 };
 async function visit(path, target = page) {current = path; await target.goto(base + path); await waitRoute(target);}
@@ -46,6 +46,7 @@ async function setPreferences(patch) {
 async function axeSweep(label, paths) {
   for (const path of paths) {
     await visit(path);
+    if(path==='/preferences'){await page.evaluate(()=>window.dispatchEvent(new CustomEvent('pepbits:tour-reveal',{detail:{target:'prefs-forms'}})));await page.locator('[data-tour=prefs-forms]').waitFor();}
     await page.addScriptTag({path: require.resolve('axe-core/axe.min.js')});
     await settle();
     const result = await page.evaluate(() => window.axe.run(document, {rules: {}}));
@@ -149,7 +150,7 @@ async function fillRegistration(target, {given, family, mobile}) {
   const createdResponse = await created; if (createdResponse.status() !== 201) throw new Error('Registration failed ' + createdResponse.status());
   const patient = await createdResponse.json();
   await page.waitForURL(url => new URL(url).searchParams.get('id') === String(patient.id)); await waitRoute();
-  await page.locator('[data-patient-band]').getByText(patient.mrn).waitFor();
+  await page.locator('[data-record-summary]').getByText(patient.mrn).waitFor();
   flows.push({id: 'HCD-AV-07', scope: 'UI', result: 'Empty save reveals problems; keyboard quick pick advances focus; complete registration assigns branch MRN and opens the record'});
 
   // Continue the same newly created record through edit before changing its status.
@@ -178,25 +179,50 @@ async function fillRegistration(target, {given, family, mobile}) {
   if (!(await reactivate).ok()) throw new Error('Reactivation failed');
   flows.push({id: 'HCD-AV-08', scope: 'UI', result: 'Confirmed deactivate and reactivate through the status API with audit entries'});
 
-  // Layout designer and the form's own switcher.
-  await visit('/allyvora-patients/settings/layout');
-  await page.getByRole('radio', {name: /^Tabs/}).click();
-  await page.locator('[data-layout-preview="tabs"] [role=tablist]').waitFor();
-  const layoutSave = page.waitForResponse(r => r.url().endsWith('/allyvora-api/settings/layout') && r.request().method() === 'PUT');
-  await page.getByRole('button', {name: /Save layout/}).click();
-  if (!(await layoutSave).ok()) throw new Error('Layout save failed');
-  await page.locator('[data-layout-history]').getByText(/^Tabs, comfortable/).first().waitFor();
-  await visit('/allyvora-patients/patients?mode=new');
-  await page.locator('[data-form-layout="tabs"]').waitFor();
-  const switcher = page.waitForResponse(r => r.url().endsWith('/allyvora-api/settings/layout') && r.request().method() === 'PUT');
-  await page.getByRole('radiogroup', {name: 'Form layout'}).getByRole('radio', {name: 'Single page'}).click();
-  if (!(await switcher).ok()) throw new Error('Form switcher save failed');
-  await page.locator('[data-form-layout="scroll"]').waitFor();
-  flows.push({id: 'HCD-AV-09', scope: 'UI', result: 'Designer preview and save change the organisation layout; the form switcher saves it back'});
-
+  // Shared Forms controls persist through the healthcare preference service.
+  await visit('/preferences');
+  await page.getByRole('tab', {name:'Forms',exact:true}).click();
+  await page.getByRole('heading', {name:'Forms',exact:true}).waitFor();
+  for(const layout of ['scroll','tabs','wizard','stepper','accordion']) {
+    const saved=page.waitForResponse(r=>r.url().endsWith('/api/preferences') && r.request().method()==='PUT');
+    await page.getByRole('combobox',{name:'Record form style',exact:true}).selectOption(layout==='scroll'?'tabs':layout);
+    if(!(await saved).ok()) throw new Error('Form preference save failed');
+    if(layout==='scroll') await setPreferences({formNavigation:'scroll'});
+    for(const mode of ['new','edit','view']) {
+      await visit(`/allyvora-patients/patients?mode=${mode}${mode==='new'?'':'&id='+patient.id}`);
+      await page.locator(`[data-record-form="${mode}"] [data-layout="${layout}"]`).waitFor();
+      if(mode==='new' && layout==='scroll') {
+        const band=await page.locator('[data-record-summary]').boundingBox(),header=await page.locator('header').first().boundingBox();
+        const topGap=band.y-header.y-header.height;
+        if(band.height<65||band.height>73||Math.abs(topGap-8)>1)throw new Error(`Compact editor geometry changed: band ${band.height}px, top gap ${topGap}px`);
+        flows.push({id:'HCD-AV-COMPACT',scope:'Chromium geometry',result:'Compact summary and editor top gap retained',bandHeight:band.height,topGap});
+      }
+      if(process.env.HEALTHCARE_SCREENSHOTS_DIR){mkdirSync(process.env.HEALTHCARE_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:`${process.env.HEALTHCARE_SCREENSHOTS_DIR}/record-${mode}-${layout}.png`});}
+      if(mode==='view' && await page.locator('[data-form-actions]').getByRole('button',{name:/^Save/}).count()) throw new Error('Read-only record exposes save');
+    }
+    await visit('/preferences');
+    await page.getByRole('tab',{name:'Forms',exact:true}).click();
+  }
+  const headers={Authorization:'Bearer '+await token(),'X-Product-Id':'nexora'};
+  const original=await (await page.request.get(base+'/api/preference-policy',{headers})).json();
+  const locked=await page.request.put(base+'/api/preference-policy',{headers,data:{...original.policy,rules:{...original.policy.rules,formNavigation:{value:'stepper',locked:true}}}});
+  if(!locked.ok())throw new Error('Tenant layout lock failed');
+  try {
+    await visit('/preferences');
+    await page.getByRole('tab',{name:'Forms',exact:true}).click();
+    if(!await page.getByRole('combobox',{name:'Record form style',exact:true}).isDisabled())throw new Error('Managed layout control is editable');
+    await visit('/allyvora-patients/patients?mode=new');
+    await page.locator('[data-layout="stepper"]').waitFor();
+  } finally {
+    const current=await (await page.request.get(base+'/api/preference-policy',{headers})).json();
+    const restored=await page.request.put(base+'/api/preference-policy',{headers,data:{...original.policy,revision:current.policy.revision}});
+    if(!restored.ok())throw new Error('Policy restore failed');
+  }
+  await setPreferences({formNavigation:'scroll'});
+  flows.push({id:'HCD-AV-09',scope:'UI + authenticated HTTP',result:'Preferences Forms, all five layouts in new/edit/view, read-only actions and an enforced tenant layout lock'});
 
   // Accessibility sweep in English, then Arabic RTL after a host preference change.
-  const routes = ['/allyvora-patients/patients', '/allyvora-patients/patients?view=inactive', '/allyvora-patients/patients?mode=new', `/allyvora-patients/patients?mode=view&id=${patient.id}`, `/allyvora-patients/patients?mode=edit&id=${patient.id}`, `/allyvora-patients/patients?mode=edit&id=${patient.id}&section=consent`, '/allyvora-patients/settings/layout', '/preferences'];
+  const routes = ['/allyvora-patients/patients', '/allyvora-patients/patients?view=inactive', '/allyvora-patients/patients?mode=new', `/allyvora-patients/patients?mode=view&id=${patient.id}`, `/allyvora-patients/patients?mode=edit&id=${patient.id}`, `/allyvora-patients/patients?mode=edit&id=${patient.id}&section=consent`, '/preferences'];
   await axeSweep('default', routes);
   await setPreferences({language: 'ar', reducedMotion: true});
   await axeSweep('arabic-rtl-reduced-motion', routes.slice(0, 7));

@@ -1,0 +1,389 @@
+{
+  "flows": [
+    {
+      "id": "HCD-42-medslot-identity",
+      "mode": "HTTP",
+      "result": "Trusted host actor and source patient/resource/service data"
+    },
+    {
+      "id": "HCD-42-medslot-details",
+      "mode": "UI",
+      "result": "Patient and resource detail URLs survive refresh with actual identifiers"
+    },
+    {
+      "id": "HCD-42-medslot-dialog",
+      "mode": "UI",
+      "result": "Named shared registration drawer is visible and closes on Escape"
+    },
+    {
+      "id": "HCD-42-medslot-registration",
+      "mode": "UI + HTTP reload",
+      "result": "Typed patient registration persists and opens its durable record"
+    },
+    {
+      "id": "HCD-42-medslot-search",
+      "mode": "UI",
+      "result": "Shared header lookup selects an API patient by keyboard"
+    },
+    {
+      "id": "HCD-42-medslot-booking",
+      "mode": "UI",
+      "result": "Patient keyboard selection, service, real availability, visit details and booking"
+    },
+    {
+      "id": "HCD-42-medslot-conflicts",
+      "mode": "HTTP",
+      "result": "Booking replays once; overlapping booking and changed-payload key reuse are refused"
+    },
+    {
+      "id": "HCD-42-medslot-calendar",
+      "mode": "UI",
+      "result": "Populated Day, Week and Month calendars pass full-document axe; the month date opens the actual booking even when its summary is truncated"
+    },
+    {
+      "id": "HCD-42-medslot-status",
+      "mode": "UI + HTTP",
+      "result": "Confirmation persists through the appointment drawer"
+    },
+    {
+      "id": "HCD-42-medslot-duration",
+      "mode": "UI",
+      "result": "Shared modal changes appointment duration with server resource checks"
+    },
+    {
+      "id": "HCD-42-medslot-reschedule",
+      "mode": "UI + HTTP",
+      "result": "Move to an available slot retains the old booking as rescheduled"
+    },
+    {
+      "id": "HCD-42-medslot-cancel",
+      "mode": "UI + HTTP",
+      "result": "Cancellation records its reason and keeps the booking history"
+    },
+    {
+      "id": "HCD-42-medslot-schedule",
+      "mode": "HTTP",
+      "result": "Resource weekly schedule uses the unchanged command envelope and persists"
+    },
+    {
+      "id": "HCD-42-medslot-audit-notifications",
+      "mode": "HTTP",
+      "result": "Booking lifecycle is audited and simulated notification records remain available"
+    },
+    {
+      "id": "HCD-42-medslot-authority",
+      "mode": "HTTP",
+      "result": "Scheduler admin restrictions, assigned-provider calendar/record scope, disabled module login and branch isolation"
+    },
+    {
+      "id": "HCD-42-medslot-preferences",
+      "mode": "UI + accepted HTTP preferences",
+      "result": "Mounted registration survives Arabic RTL, Hindi, Malayalam and English with effective compact density, reduced motion and disabled shortcuts"
+    }
+  ],
+  "rcmPresentation": [],
+  "medbandPresentation": [],
+  "scope": "Local production healthcare browser against the local shared demo and AllyVora HTTP APIs",
+  "checks": [
+    {
+      "route": "/medslot",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/book",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/resources",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/services",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/departments",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/holidays",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/notifications",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/settings",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/audit",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients/1",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/resources/3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/patients/241",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments?open=8783",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar?view=day&date=2026-10-26&resource_ids=3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar?view=week&date=2026-10-26&resource_ids=3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/calendar?view=month&date=2026-10-26&resource_ids=3",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "route": "/medslot/appointments?open=8784",
+      "pageViolations": [],
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "responses": [],
+  "authResponses": [
+    {
+      "route": "login",
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/book",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/calendar",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/appointments",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/patients",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/resources",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/services",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/departments",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/holidays",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/notifications",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/settings",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/audit",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/patients/1",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/resources/3",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/patients/241",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/appointments?open=8783",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/calendar?view=day&date=2026-10-26&resource_ids=3",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/calendar?view=week&date=2026-10-26&resource_ids=3",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/calendar?view=month&date=2026-10-26&resource_ids=3",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "route": "/medslot/appointments?open=8784",
+      "path": "/api/auth/me",
+      "status": 200
+    }
+  ]
+}

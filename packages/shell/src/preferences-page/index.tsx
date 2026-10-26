@@ -28,11 +28,12 @@ import {usePreferencePage, PreferencePageProvider, type PreferencePageServices} 
 
 
 
-type PrefTab = "own" | "behaviour" | "sidebar" | "page" | "notification" | "language" | "general" | "policy";
+type PrefTab = "own" | "behaviour" | "forms" | "sidebar" | "page" | "notification" | "language" | "general" | "policy";
 
 /** Which tab each tour anchor lives on. */
 const TOUR_TABS: Record<string, PrefTab> = {
   "prefs-layout": "behaviour",
+  "prefs-forms": "forms",
   "prefs-sidebar": "sidebar",
   "prefs-theme": "page",
   "prefs-type": "page",
@@ -43,6 +44,7 @@ const TOUR_TABS: Record<string, PrefTab> = {
 const PREF_TABS: Array<{ id: PrefTab; label: string; icon: React.ReactNode }> = [
   {id:"own",label:"preference.ownSettings",icon:<Settings2 className="size-3.5"/>},
   { id: "behaviour",    label: "Behaviour",    icon: <MonitorCog className="size-3.5" /> },
+  { id: "forms", label: "Forms", icon: <PanelLeft className="size-3.5" /> },
   { id: "sidebar",      label: "Shell",        icon: <PanelLeft className="size-3.5" /> },
   { id: "page",         label: "Page",         icon: <Sparkles className="size-3.5" /> },
   { id: "notification", label: "Notification", icon: <BellRing className="size-3.5" /> },
@@ -297,9 +299,9 @@ function PreferencesContent({ showTabPreferences = true, showCurrencyPicker = fa
             <PreferenceControl preferenceKey="defaultModule"><Select label="preference.label.defaultModule" placeholder="" value={preferences.defaultModule} options={[{value:"",label:"Use application default"},...Object.values(product.modules).filter(module=>!!module).map(module=>({value:module!.id,label:module!.labelKey??module!.label}))]} onChange={event=>set("defaultModule",event.target.value)}/></PreferenceControl>
           </PreferenceSection>
           <PreferenceSection {...common} tab="behaviour" tour="prefs-layout" title="Layout" subtitle="Honoured by every module and page." icon={<PanelLeft className="size-4" />}
-            keys={["formNavigation", "resultView", "previewMode", "pageSize"]} keywords="layout record form style rail tabs wizard worklist result view table cards quick view preview inline card modal panel rows per page size">
+            keys={["resultView", "previewMode", "pageSize"]} keywords="layout worklist result view table cards quick view preview inline card modal panel rows per page size">
             <div className="grid gap-x-5 gap-y-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 230px), 1fr))" }}>
-              <PreferenceControl preferenceKey="formNavigation"><Select label="Record form style" hint="preferences.recordLayout.help" value={preferences.formNavigation} onChange={(event) => set("formNavigation", event.target.value as FormNavigation)} options={[{ value: "rail", label: "Rail" }, { value: "tabs", label: "Tabs" }, { value: "wizard", label: "Wizard" }]} /></PreferenceControl>
+
               <PreferenceControl preferenceKey="resultView"><Row label="Worklist result view">
                 <Segmented<ResultView> label="Worklist result view" value={preferences.resultView} onChange={(value) => set("resultView", value)} options={[{ value: "table", label: "Table" }, { value: "cards", label: "Card grid" }]} />
               </Row></PreferenceControl>
@@ -309,6 +311,18 @@ function PreferencesContent({ showTabPreferences = true, showCurrencyPicker = fa
               <PreferenceControl preferenceKey="pageSize"><Row label="Default rows per page">
                 <Select aria-label="ui.default.rows.per.page.c972be79" value={String(preferences.pageSize)} onChange={(event) => set("pageSize", Number(event.target.value) as 10 | 20 | 50 | 100)} options={[{ label: "10", value: "10" }, { label: "20", value: "20" }, { label: "50", value: "50" }, { label: "100", value: "100" }]} />
               </Row></PreferenceControl>
+            </div>
+          </PreferenceSection>
+
+          <PreferenceSection {...common} tab="forms" tour="prefs-forms" title="Forms" subtitle="preferences.forms.help" icon={<PanelLeft className="size-4"/>}
+            keys={["formNavigation", "density", "formColumns", "formShowSummary", "formValidateOn", "formKeepUnsaved"]} keywords="forms record form style layout rail single page tabs guided steps side steps accordion form density form columns show form summary validate on validation keep unsaved forms">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <PreferenceControl preferenceKey="formNavigation"><Select label="Record form style" value={preferences.formNavigation} onChange={event => set("formNavigation", event.target.value as FormNavigation)} options={[{value:"scroll",label:"Single page"},{value:"tabs",label:"Tabs"},{value:"wizard",label:"Guided steps"},{value:"stepper",label:"Side steps"},{value:"accordion",label:"Accordion"}]}/></PreferenceControl>
+              <PreferenceControl preferenceKey="density"><Select label="Form density" value={preferences.density} onChange={event => set("density", event.target.value as Density)} options={[{value:"compact",label:"Compact"},{value:"comfortable",label:"Comfortable"},{value:"spacious",label:"Spacious"}]}/></PreferenceControl>
+              <PreferenceControl preferenceKey="formColumns"><Select label="Form columns" value={String(preferences.formColumns)} onChange={event => set("formColumns", Number(event.target.value) as 2 | 3 | 4)} options={[2,3,4].map(value=>({value:String(value),label:String(value)}))}/></PreferenceControl>
+              <PreferenceControl preferenceKey="formValidateOn"><Select label="Validate on" value={preferences.formValidateOn} onChange={event => set("formValidateOn", event.target.value as "blur" | "change" | "submit")} options={[{value:"blur",label:"Leaving a field"},{value:"change",label:"Every change"},{value:"submit",label:"Save only"}]}/></PreferenceControl>
+              <PreferenceControl preferenceKey="formShowSummary"><Toggle label="Show form summary" checked={preferences.formShowSummary} onChange={value => set("formShowSummary",value)}/></PreferenceControl>
+              <PreferenceControl preferenceKey="formKeepUnsaved"><Toggle label="Keep unsaved forms" checked={preferences.formKeepUnsaved} onChange={value => set("formKeepUnsaved",value)}/></PreferenceControl>
             </div>
           </PreferenceSection>
 

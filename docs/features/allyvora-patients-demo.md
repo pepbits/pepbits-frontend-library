@@ -57,3 +57,7 @@ Use Node 24 for the shared demo API and the AllyVora backend's own `npm ci -w ba
 ## Healthcare host and packaging — 26 October 2026
 
 The same feature is also available as the fourteenth app in [healthcare](healthcare-demo.md#allyvora-patients--hcd-av), with `/allyvora-patients` prefixed UI URLs and the existing healthcare host. The standalone UI and original URLs stay unchanged. Both integration commands use the root launcher and build the unchanged backend in temporary staging, never inside protected `source/`. Test-site schema 2 now includes the backend and its production dependencies; [operations and Compose](../development/TEST-SITE.md#allyvora-patients-backend-in-schema-2) define runtime configuration. [New delivery evidence](../releases/unreleased/healthcare-allyvora-patients-2026-10-26.md) does not replace historical results.
+
+## Healthcare host in 0.2.0
+
+The standalone app above retains its organisation layout designer. In the healthcare module, the designer route and navigation are removed: use Preferences → Forms. New/edit/view use the packaged record engine, summary band and rules drawer. The [shared form guide](record-form-engine.md) documents settings, tenant locks and the volatile-draft boundary.

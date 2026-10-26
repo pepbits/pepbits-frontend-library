@@ -1,0 +1,109 @@
+
+> pepbits-frontend-library@0.0.0 release:pack
+> npm run release:build && node tooling/scripts/release-pack.mjs
+
+
+> pepbits-frontend-library@0.0.0 release:build
+> turbo run build --filter='./packages/*' --concurrency=3
+
+
+   • turbo 2.11.10
+   • Packages in scope: @pepbits/ai, @pepbits/components, @pepbits/data, @pepbits/i18n, @pepbits/icons, @pepbits/page-engines, @pepbits/patterns, @pepbits/platform, @pepbits/preferences, @pepbits/shell, @pepbits/tokens, @pepbits/ui
+   • Running build in 12 packages
+   • Remote caching disabled, using shared worktree cache
+
+@pepbits/tokens:build: cache miss, executing 51ae469a5097abb3
+@pepbits/icons:build: cache miss, executing 7bbbb314bc55ce76
+@pepbits/data:build: cache miss, executing 6b2bec7898d688ad
+@pepbits/data:build:
+@pepbits/data:build: > @pepbits/data@0.2.0 build
+@pepbits/data:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/data:build:
+@pepbits/tokens:build:
+@pepbits/tokens:build: > @pepbits/tokens@0.2.0 build
+@pepbits/tokens:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/tokens:build:
+@pepbits/icons:build:
+@pepbits/icons:build: > @pepbits/icons@0.2.0 build
+@pepbits/icons:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/icons:build:
+@pepbits/tokens:build: @pepbits/tokens@0.2.0: 15 dist files (ESM, declarations, assets)
+@pepbits/i18n:build: cache miss, executing 2bbe556fd9988f76
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/i18n:build:
+@pepbits/i18n:build: > @pepbits/i18n@0.2.0 build
+@pepbits/i18n:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/i18n:build:
+@pepbits/icons:build: @pepbits/icons@0.2.0: 6 dist files (ESM, declarations, assets)
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/data:build: @pepbits/data@0.2.0: 52 dist files (ESM, declarations, assets)
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/i18n:build: @pepbits/i18n@0.2.0: 18 dist files (ESM, declarations, assets)
+@pepbits/preferences:build: cache miss, executing ab4b561c2a3a1af0
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/ui:build: cache miss, executing 9c5e76b8a24150cd
+@pepbits/ui:build:
+@pepbits/ui:build: > @pepbits/ui@0.2.0 build
+@pepbits/ui:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/ui:build:
+@pepbits/preferences:build:
+@pepbits/preferences:build: > @pepbits/preferences@0.2.0 build
+@pepbits/preferences:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/preferences:build:
+@pepbits/preferences:build: @pepbits/preferences@0.2.0: 14 dist files (ESM, declarations, assets)
+ WARNING  IO error: Read-only file system (os error 30)
+@pepbits/platform:build: cache miss, executing d4f168b908621cdd
+@pepbits/platform:build:
+@pepbits/platform:build: > @pepbits/platform@0.2.0 build
+@pepbits/platform:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/platform:build:
+@pepbits/ui:build: @pepbits/ui@0.2.0: 40 dist files (ESM, declarations, assets)
+@pepbits/components:build: cache miss, executing 52f81c0a2ba95923
+@pepbits/components:build:
+@pepbits/components:build: > @pepbits/components@0.2.0 build
+@pepbits/components:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/components:build:
+@pepbits/platform:build: @pepbits/platform@0.2.0: 26 dist files (ESM, declarations, assets)
+@pepbits/components:build: @pepbits/components@0.2.0: 46 dist files (ESM, declarations, assets)
+@pepbits/patterns:build: cache miss, executing 3fd581f491c3781a
+@pepbits/patterns:build:
+@pepbits/patterns:build: > @pepbits/patterns@0.2.0 build
+@pepbits/patterns:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/patterns:build:
+@pepbits/patterns:build: @pepbits/patterns@0.2.0: 188 dist files (ESM, declarations, assets)
+@pepbits/page-engines:build: cache miss, executing d9b5e2204edc2171
+@pepbits/page-engines:build:
+@pepbits/page-engines:build: > @pepbits/page-engines@0.2.0 build
+@pepbits/page-engines:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/page-engines:build:
+@pepbits/page-engines:build: @pepbits/page-engines@0.2.0: 102 dist files (ESM, declarations, assets)
+@pepbits/shell:build: cache miss, executing 6571eab368fa6417
+@pepbits/shell:build:
+@pepbits/shell:build: > @pepbits/shell@0.2.0 build
+@pepbits/shell:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/shell:build:
+@pepbits/shell:build: @pepbits/shell@0.2.0: 108 dist files (ESM, declarations, assets)
+@pepbits/ai:build: cache miss, executing d0d1b97dc60def59
+@pepbits/ai:build:
+@pepbits/ai:build: > @pepbits/ai@0.2.0 build
+@pepbits/ai:build: > node ../../tooling/scripts/build-package.mjs
+@pepbits/ai:build:
+@pepbits/ai:build: @pepbits/ai@0.2.0: 50 dist files (ESM, declarations, assets)
+
+ Tasks:    12 successful, 12 total
+Cached:    0 cached, 12 total
+  Time:    40.201s
+
+@pepbits/tokens@0.2.0: pepbits-tokens-0.2.0.tgz (353241 bytes; 18 files)
+@pepbits/icons@0.2.0: pepbits-icons-0.2.0.tgz (6854 bytes; 9 files)
+@pepbits/i18n@0.2.0: pepbits-i18n-0.2.0.tgz (13046 bytes; 21 files)
+@pepbits/preferences@0.2.0: pepbits-preferences-0.2.0.tgz (12934 bytes; 17 files)
+@pepbits/ui@0.2.0: pepbits-ui-0.2.0.tgz (35178 bytes; 43 files)
+@pepbits/components@0.2.0: pepbits-components-0.2.0.tgz (44615 bytes; 49 files)
+@pepbits/data@0.2.0: pepbits-data-0.2.0.tgz (34236 bytes; 55 files)
+@pepbits/platform@0.2.0: pepbits-platform-0.2.0.tgz (19241 bytes; 29 files)
+@pepbits/patterns@0.2.0: pepbits-patterns-0.2.0.tgz (206723 bytes; 191 files)
+@pepbits/page-engines@0.2.0: pepbits-page-engines-0.2.0.tgz (100711 bytes; 105 files)
+@pepbits/shell@0.2.0: pepbits-shell-0.2.0.tgz (118521 bytes; 111 files)
+@pepbits/ai@0.2.0: pepbits-ai-0.2.0.tgz (43884 bytes; 53 files)
+Local tarballs only (no registry writes): /tmp/pepbits-record-form/packages

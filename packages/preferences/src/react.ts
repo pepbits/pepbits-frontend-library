@@ -1,8 +1,9 @@
 "use client";
 
 import {createContext, createElement, useCallback, useContext, useRef, type ReactNode} from "react";
-import {effectivePreferences, EMPTY_PREFERENCE_POLICY, validPreference,
+import {parsePreferencePolicy, effectivePreferences, EMPTY_PREFERENCE_POLICY, validPreference,
   type PreferenceKey, type PreferencePolicy} from "./preference-policy";
+import {normalizePreferenceValue} from "./preference-defaults";
 import type {UserPreferences} from "./types";
 
 export type PreferenceUpdate = (patch: Partial<UserPreferences>) => void | Promise<void>;
@@ -32,6 +33,7 @@ const PreferencesContext = createContext<PreferencesContextValue | null>(null);
  * There is deliberately no optimistic copy or persistence inside the library. */
 export function PreferenceHost({preferences, preferencePolicy = EMPTY_PREFERENCE_POLICY,
   preferencesAvailable = true, update, children}: PreferenceHostProps) {
+  preferencePolicy = parsePreferencePolicy(preferencePolicy);
   const host = useRef({preferencePolicy, preferencesAvailable, update});
   host.current = {preferencePolicy, preferencesAvailable, update};
 
@@ -40,7 +42,8 @@ export function PreferenceHost({preferences, preferencePolicy = EMPTY_PREFERENCE
     const current = host.current;
     if (!current.preferencesAvailable) return;
     const editable: Partial<UserPreferences> = {};
-    for (const [key, value] of Object.entries(patch)) {
+    for (const [key, raw] of Object.entries(patch)) {
+      const value = normalizePreferenceValue(key, raw) as UserPreferences[PreferenceKey];
       if (!validPreference(key, value)) continue;
       const rule = current.preferencePolicy.rules[key];
       if (rule?.locked || (rule?.allowedValues && !rule.allowedValues.includes(value))) continue;

@@ -4,12 +4,12 @@ import {LocalizedText} from "@pepbits/i18n/react";
 import React from "react";
 import { Check, ChevronRight } from "@pepbits/icons";
 import {cn} from "@pepbits/ui";
-import type {FormNavigation} from "@pepbits/preferences";
+import type {LegacyFormNavigation} from "@pepbits/preferences";
 import type {FormSectionSchema} from "../types";
 
-export function FormNavigationControl({ type, sections, activeId, onChange, completion }: { type: FormNavigation; sections: FormSectionSchema[]; activeId: string; onChange: (id: string) => void; completion: Record<string, number> }) {
+export function FormNavigationControl({ type, sections, activeId, onChange, completion }: { type: LegacyFormNavigation; sections: FormSectionSchema[]; activeId: string; onChange: (id: string) => void; completion: Record<string, number> }) {
   const activeIndex = sections.findIndex((section) => section.id === activeId);
-  if (type === "rail") return (
+  if ((type === "rail" || type === "scroll" || type === "stepper")) return (
     <aside className="hidden w-56 shrink-0 border-r border-[var(--border)] bg-[var(--surface-2)] p-3 lg:block">
       <div className="mb-3 px-2 text-[length:calc(8.5px*var(--fs-scale))] font-black uppercase tracking-[.13em] text-[var(--text-subtle)]"><LocalizedText message="ui.record.sections.6be029e5" /></div>
       <div className="space-y-1">

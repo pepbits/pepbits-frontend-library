@@ -5,6 +5,7 @@ import {render as renderUI, screen, fireEvent} from '@testing-library/react';
 import {beforeEach, expect, test, vi} from 'vitest';
 import {DEFAULT_PREFERENCES, type PreferencePolicy} from '@pepbits/preferences';
 import {PreferencesPage} from './index';
+import {TOUR_REVEAL_EVENT} from '../layers/help-assistant';
 const state=vi.hoisted(()=>({policy:{revision:0,rules:{}} as PreferencePolicy,available:true,update:vi.fn()}));
 function Host({children}:{children:React.ReactNode}) {return <ShellTestHost settings={{preferencePolicy:state.policy,preferencesAvailable:state.available,update:state.update}}>{children}</ShellTestHost>;}
 function render(ui:React.ReactNode){return renderUI(ui,{wrapper:Host});}
@@ -12,8 +13,10 @@ function render(ui:React.ReactNode){return renderUI(ui,{wrapper:Host});}
 beforeEach(()=>{state.policy={revision:0,rules:{}};state.available=true;state.update.mockClear();});
 test('record layout and all three density options use the central preference update',()=>{
  render(<PreferencesPage/>);
+ fireEvent.click(screen.getByRole('tab',{name:'Forms'}));
  fireEvent.change(screen.getByLabelText('Record form style'),{target:{value:'wizard'}});
  expect(state.update).toHaveBeenCalledWith({formNavigation:'wizard'});
+ fireEvent.click(screen.getByRole('tab',{name:'Behaviour'}));
  fireEvent.change(screen.getByLabelText('Quick view style'),{target:{value:'inline'}});
  expect(state.update).toHaveBeenCalledWith({previewMode:'inline'});
  fireEvent.click(screen.getByRole('tab',{name:'Page'}));
@@ -54,4 +57,26 @@ test('tenant allowed options constrain the choices and reject programmatic chang
  expect(Array.from((layout as HTMLSelectElement).options).map(o=>o.value)).not.toContain('wizard');
  fireEvent.change(layout,{target:{value:'wizard'}});expect(state.update).not.toHaveBeenCalled();
  fireEvent.change(layout,{target:{value:'tabs'}});expect(state.update).toHaveBeenCalledWith({formNavigation:'tabs'});
+});
+
+test('Forms is searchable and the tour opens its tab; common controls use central updates',()=>{
+ render(<PreferencesPage/>);
+ expect(screen.queryByRole('heading',{name:'Forms'})).not.toBeInTheDocument();
+ for(const value of ['record form style','form columns','unsaved']){
+  fireEvent.change(screen.getByRole('textbox',{name:'Search settings'}),{target:{value}});
+  expect(screen.getByRole('heading',{name:'Forms'})).toBeVisible();
+  expect(screen.queryByRole('heading',{name:'Layout'})).not.toBeInTheDocument();
+ }
+ fireEvent.click(screen.getByRole('tab',{name:'Page'}));
+ fireEvent(window,new CustomEvent(TOUR_REVEAL_EVENT,{detail:{target:'prefs-forms'}}));
+ expect(screen.getByRole('tab',{name:'Forms'})).toHaveAttribute('aria-selected','true');
+ expect(screen.getByRole('heading',{name:'Forms'})).toBeVisible();
+ fireEvent.change(screen.getByLabelText('Form columns'),{target:{value:'4'}});
+ expect(state.update).toHaveBeenCalledWith({formColumns:4});
+ fireEvent.change(screen.getByLabelText('Validate on'),{target:{value:'submit'}});
+ expect(state.update).toHaveBeenCalledWith({formValidateOn:'submit'});
+ fireEvent.click(screen.getByRole('switch',{name:'Show form summary'}));
+ expect(state.update).toHaveBeenCalledWith({formShowSummary:false});
+ fireEvent.click(screen.getByRole('switch',{name:'Keep unsaved forms'}));
+ expect(state.update).toHaveBeenCalledWith({formKeepUnsaved:false});
 });

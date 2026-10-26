@@ -249,3 +249,7 @@ Fix: `useWorkspaceNavigation` crossing into another module with a record whose p
 `ApplicationProviders` accepts an optional `chrome`: `quickPages`, `tours` and `commandSearch` (passed to ShellProvider), `inbox` (rendered in the header inbox slot) and `surface(frame)`, which wraps the authenticated frame inside ShellProvider so host live state can serve both the header and the page. Omitting `chrome` keeps the previous shell exactly. Three tests cover the plain/default frame, a shared surface state above header and page, grouped/debounced search navigation and failed searches. CareGrid is the first consumer; see the [phase 6e-5 record](../../docs/releases/unreleased/restructure-phase-6e-5-2026-10-24.md).
 
 The shell Chromium fixture also verifies UI Avatar accent-wash initials against four shared surface colors in all 14 themes. It uses compiled host CSS and effective theme preferences; these browser checks supplement the RTL rail and notification-contrast cases.
+
+## Forms preferences — 0.2.0 preparation
+
+PreferencesPage includes **Forms** with layout, shared density, columns, summary, validation timing and keep-unsaved controls. No app renderer is needed beyond the existing PreferencesPage route and providers. Search, section reset, tour target `prefs-forms`, import/export and tenant policy administration use the same preference contracts. Managed/unavailable settings disable controls and guard updates; allowed values constrain choices. See the [form guide](../../docs/features/record-form-engine.md).

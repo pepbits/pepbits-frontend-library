@@ -46,23 +46,26 @@ The Patient Record footer contains record status and actions. Set its appearance
 
 | Location | Setting | Choices |
 | --- | --- | --- |
-| Behaviour → Layout | Record form style | Rail, Tabs, Wizard |
+| Forms | Record form style | Single page, Tabs, Guided steps, Side steps, Accordion |
+| Forms | Form columns | 2, 3, 4 |
+| Forms | Summary / keep unsaved forms | On or off |
+| Forms | Validate on | Leaving a field, Every change, Save only |
 | Page → Theme | Application theme | All configured themes |
 | Page → Typography | Fonts and sizes | Shared family, shell, form and result sizes |
 | Page → Spacing and corners | Density | Compact, Comfortable, Spacious |
 | Page → Spacing and corners | Corner radius | Existing supported radius range |
 
-Rail places section navigation beside the form; Tabs shows one section at a time; Wizard adds Previous and Next. New, Cancel, Discard, Create, Edit, Save, Encounter and Book stay with the record and appear according to its state and permissions. They are actions, not saved appearance settings.
+Single page shows every section with a scroll-following section list. Tabs, Guided steps and Side steps focus one section; Accordion folds sections open. Required counts, errors and completion remain visible. Changing a layout retains mounted inputs. Read-only records use the same layouts.
 
-These controls reuse existing preference keys and the central update service. No migration, new API, duplicate storage or patient-specific appearance overrides are introduced. Administrator locks and preference-service unavailability disable updates. Changes to layout do not reload the patient or intentionally clear current edits; existing unsaved-change and save/conflict handling still applies.
+`formNavigation` defaults to `scroll`. Legacy `rail` is normalized to `scroll` in stored preferences, imports, policy defaults and allowed sets. Forms also exposes shared `density` (compact/comfortable/spacious), `formColumns` (2/3/4, default 3), `formShowSummary` (true), `formValidateOn` (blur/change/submit, default blur), and `formKeepUnsaved` (true). Density intentionally remains shared with other surfaces. All settings follow the central user service and tenant policy; no second form preference store exists. Update frontend and backend validators/catalogs together before allowing new values. Keep-unsaved requests supported host draft retention; healthcare retains only memory drafts, never patient browser storage.
 
-For other applications, pass effective `preferences`, `preferencePolicy`, `preferencesAvailable` and `onPreferenceChange` to `ClinicalPatientWorkspace` as described below. The optional public `preferenceControls` slot remains compatible with existing integrations; the hosted Library no longer fills it with duplicate appearance selectors.
+For other applications, supply accepted user overrides, tenant policy, availability and the central update callback through `PreferenceHost` from `@pepbits/preferences/react`. Packaged forms read the effective values directly. Hosts supply fields and domain adapters; do not add per-form preference storage.
 
 ## Administrator flow: set a default, lock or unlock
 
 An account must have the backend-granted `preferences:manage` capability. Open Preferences → Preference policies, choose the application-scoped setting, supply the value, choose Locked if required, and save the policy. A saved unlocked value is a tenant default; a locked value overrides personal choices.
 
-For example, a tenant can lock the form layout to rail and the page size to ten while allowing personal currency formatting. Library layout and page-size controls cannot use local state to bypass those locks. Updating a policy while a page is open must replace conflicting local display choices.
+For example, a tenant can lock the form layout to scroll and the page size to ten while allowing personal currency formatting. Library layout and page-size controls cannot use local state to bypass those locks. Updating a policy while a page is open must replace conflicting local display choices.
 
 See the [policy API/storage guide](https://github.com/pepbits/pepbits-frontend-library/blob/3558a131f0fd443693eae0dfc678e3b258b480c1/desktop-clients/docs/tenant-preference-policies.md) for revisions, scope, retained personal overrides and authorization. Display policy is not permission to view, edit, approve or export business data.
 
@@ -100,31 +103,21 @@ Figure 1. Actual local desktop-shell test using fictional demo patients. Prefere
 
 ## Integrate the current preference contract
 
-`PreferenceHost` is exported by `@pepbits/erp-screens`. The required value is `preferences`; optional properties are `preferencePolicy`, `preferencesAvailable` and the typed `onPreferenceChange` callback. Workspaces can be demonstrated without a host callback; production hosts should connect the real preference service.
+`PreferenceHost` is exported by `@pepbits/preferences/react`. Supply `preferences`, optional `preferencePolicy` and `preferencesAvailable`, and a required `update(patch)` callback to the existing host persistence service. `usePreferences()` exposes effective values, locks, allowed sets and a guarded update. The host supplies localization, session and ScreenHost document/adapter contracts around the page.
 
 ```tsx
-import React from 'react';
-import {useERP} from '@pepbits/erp-shell';
-import {PageTemplateWorkspace} from '@pepbits/erp-screens';
+import {PreferenceHost, type PreferenceHostProps} from '@pepbits/preferences/react';
+import {RecordForm, type RecordFormProps} from '@pepbits/page-engines/record-layout';
 
-type Workspace = React.ComponentProps<typeof PageTemplateWorkspace>;
-type Props = Pick<Workspace, 'definition' | 'scope' | 'initialDocument' | 'adapter'>;
-
-export function ApplicationTemplate(props: Props) {
-  const {preferences, preferencePolicy, preferencesAvailable, updatePreference} = useERP();
-  return <PageTemplateWorkspace
-    {...props}
-    preferences={preferences}
-    preferencePolicy={preferencePolicy}
-    preferencesAvailable={preferencesAvailable}
-    onPreferenceChange={updatePreference}
-  />;
+export function ApplicationRecord<V>({host, form}: {
+  host: PreferenceHostProps;
+  form: RecordFormProps<V>;
+}) {
+  return <PreferenceHost {...host}><RecordForm {...form}/></PreferenceHost>;
 }
 ```
 
-Use this inside the existing authentication, product, navigation, localization and ERP providers. Do not create an independent preference object with fixed defaults inside each page. The clinical workspace accepts the same host properties; its Library example also shows the clinical adapter and record scope.
-
-For an application using ops-ui without ERP, supply already-resolved values through `PresentationProvider`. This provider applies table presentation; it does not authorize requests, load records or change pagination state. Reuse the host contract/controller for page-size and other interactive choices.
+Compose the preference provider once in the application; this example shows the boundary for an independent consumer. Renderers respect `context.readOnly`, `columns`, `validateOn` and `keepUnsaved`. The host validates and persists records and supplies progress. `RecordForm` keeps inputs mounted and reports dirty through ScreenHost and the optional callback. Use `PresentationProvider` for standalone tables; it does not authorize requests or fetch records.
 
 ## Different application examples
 
@@ -135,7 +128,7 @@ For an application using ops-ui without ERP, supply already-resolved values thro
 | School | Student master, appointment/scheduler, fee and report patterns | Academic rules, guardian access, fees and school backend contracts |
 | New SaaS product | Shell, registered navigation, template engine, shared controls and documentation rules | Product registration, identity, feature configuration and backend adapters |
 
-The current packages are private workspace packages. Public npm availability is not established by their presence in the monorepo. Decide packaging/distribution before documenting a public installation command.
+The twelve 0.1.0 packages are published on GitHub Packages. Version 0.2.0 is prepared locally in this task; installation from its local tarballs is verification, not publication. Follow the [publishing contract](../development/PUBLISHING.md) for a later owner release.
 
 ## Troubleshooting
 
@@ -153,3 +146,5 @@ The current packages are private workspace packages. Public npm availability is 
 ## Acceptance and pending work
 
 Read the [versioned cases](../testing/v1.0.0/USE-CASES.md) and [evidence](../releases/unreleased/verification-2026-09-09.md). Implementation, automated tests, browser runs, native execution, native-speaker review and publication are separate statuses. WebKit/native runtime acceptance and real application/domain integration are not declared complete by this guide.
+
+The current public-package [record form contract](record-form-engine.md) supersedes the historical provider imports above for 0.2.0 consumers. Version 0.2.0 is prepared locally, not published by this task.

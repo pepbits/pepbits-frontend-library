@@ -5,7 +5,6 @@ import {PAGE, type AllyVoraTarget} from './routes';
 import {PatientList} from './patients/PatientList';
 import {PatientEditor} from './patients/PatientEditor';
 import {PatientView} from './patients/PatientView';
-import {LayoutSetup} from './settings/LayoutSetup';
 
 /** Patients page: one route, four source modes (register, new, edit, view), selected by the target. */
 export function PatientsPage({page, target}: PageRenderContext) {
@@ -16,4 +15,3 @@ export function PatientsPage({page, target}: PageRenderContext) {
   if (current.mode === 'view' && id > 0) return <PatientView key={id} id={id}/>;
   return <PatientList query={current.query ?? ''}/>;
 }
-export function FormLayoutPage(_: PageRenderContext) {return <LayoutSetup/>;}

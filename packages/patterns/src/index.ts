@@ -14,3 +14,5 @@ export * from './tree';
 export * from './board';
 export * from './calendar';
 export * from './wizard';
+
+export * from './record-form';

@@ -1,6 +1,6 @@
 # @pepbits/page-engines
 
-Generic record, worklist, form and template engines composed from typed definitions and injected adapters. Version `0.1.0` is a React 19 ESM package. It contains no application catalogue, entity instances, module registry, navigation tree, default API endpoint or runtime sample data.
+Generic record, worklist, form and template engines composed from typed definitions and injected adapters. Version `0.2.0` (prepared locally) is a React 19 ESM package. It contains no application catalogue, entity instances, module registry, navigation tree, default API endpoint or runtime sample data.
 
 Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/page-engines` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
@@ -11,7 +11,7 @@ The root barrel exports every included area. Prefer subpaths to avoid loading un
 | Subpath | API |
 | --- | --- |
 | `./record-page` | `RecordPage`, `RecordPageSection`, `RecordPageAction` (type), `RecordActionBar`, `RecordIdentity`, `RecordNotice` |
-| `./record-layout` | `RecordSectionLayout`, `RecordSectionCard`; generic section rail/tabs/wizard, keyboard navigation, mounted section retention and CSS modules |
+| `./record-layout` | `RecordSectionLayout`, `RecordSectionCard`; generic section scroll/tabs/wizard/stepper/accordion, keyboard navigation, mounted section retention and CSS modules |
 | `./types` | `PageDefinition`, open `PageKind`, opaque `ModuleKey`, `DataColumn`, `WorklistConfig`, entity/form field/section types; `PageTemplateDefinition`, `TemplateConfiguration`, engine/layout/view/document/line/value types; `withSchemaLocalization`; form visibility/options/validation helpers; filter classification/partition/URL/storage helpers; export review/audit types and functions |
 | `./worklist` | `WorklistPage`, `WorklistPageProps`, `WorklistAdapter`, `WorklistRequest`; `DataTable`, `CardGrid`, `ColumnManager`, `FilterBar`, `PersonalViews`, `SavedViewScreen`, `RecordPreview`, preview components; `useColumnLayout`, `useFilterSync`, `searchWorklist`, `buildSearchBody`, `exportRows` and their types |
 | `./records` | `RecordAdapterProvider`, `RecordHostValue`, `useRecordHost`, `useRecordEditor`, `useSavedRecords`, `useRecordField`, `RecordSaveStatus`, `RecordPanelsPanel`, `RecordPanelsProps` |
@@ -77,7 +77,7 @@ Import tokens once and scan the installed `dist` directories for Tailwind utilit
 @source "../node_modules/@pepbits/page-engines/dist";
 ```
 
-The host must support CSS modules; dependencies are already compiled JavaScript. Record-page, record-layout and registry-template CSS/declarations are copied byte-for-byte and remain CSS side effects. Existing class names, ARIA and keyboard behavior are retained. Legacy `data-clinical-section` and `template.clinical.*` localization keys are compatibility identifiers for generic section/read/discard labels, not domain implementations. Hosts provide canonical messages for the unchanged `ui.*`, `recovery.*`, `draft.*`, `template.*` keys and literal labels. Private test messages are not a runtime fallback. No original catalog or example is regenerated.
+The host must support CSS modules; dependencies are already compiled JavaScript. Record-page, record-layout and registry-template CSS/declarations are copied byte-for-byte and remain CSS side effects. In 0.2.0, RecordSectionLayout adopts the shared reference chrome; navigation roles follow the selected arrangement, while its public props and mounted-input contract remain compatible. Legacy `data-clinical-section` and `template.clinical.*` localization keys are compatibility identifiers for generic section/read/discard labels, not domain implementations. Hosts provide canonical messages for the unchanged `ui.*`, `recovery.*`, `draft.*`, `template.*` keys and literal labels. Private test messages are not a runtime fallback. No original catalog or example is regenerated.
 
 ## Editing, templates, recovery and extension slots
 
@@ -166,3 +166,11 @@ See `table-composition.test.tsx` and the ERP master composition tests.
 ## Tabular line forms (phase 6c-7b)
 
 `./templates` adds `TabularFieldRows` and `TabularFieldColumn`, a controlled semantic table for line forms. Supply stable row IDs, typed columns, defaults, formatted read-only values and footer totals. The host owns calculations, validation, permissions and persistence. Optional suggestions use native datalists. Read-only mode removes mutation controls; disabled mode fences callbacks while retaining input. Tables consume effective density, wrapping, stripes and sticky-header presentation, and controls use effective form scale and radius. A document line form deliberately retains all its rows together rather than applying worklist pagination. Existing `FieldRows` and other consumers are unchanged. Direct tests cover stable IDs, blank numeric input, additions/removals, read-only columns, mounted denial, empty state and managed table presentation.
+
+## Shared record forms — 0.2.0 preparation
+
+`RecordForm` and `RecordSectionCard` from `@pepbits/page-engines/record-layout` (also the root export) reproduce the reference design. `RecordForm` takes `mode` (`new | edit | view`), controlled `values`, `sections`, `active`, `onActive`, per-section `progress`, and `renderSection(section, context)`. Optional `summary`, notice children, `status`, `dirty`/`onDirtyChange`, `onBack`, `onCheckRules`, `onSave`, `saving`, `saveDisabled`, host action labels, `onNext`/`onPrevious`, and `uid` compose the workflow. Context supplies read-only mode, effective preferences, columns, validation timing and keep-unsaved. Renderers must respect `readOnly`; hosts retain domain validation and persistence, including refusing invalid saves/steps. Dirty state also reaches the existing ScreenHost document contract.
+
+`RecordSectionLayout` keeps its existing props, including `activeOnly`, `keepMounted`, sizing, plain appearance and slots. It now renders all five effective layouts, adds optional `progress`, `uid`, `onNext` and `headingLevel`, and treats legacy rail as scroll. `RecordForm` always retains mounted section inputs across layout and section changes; keep-unsaved governs host draft retention, not mounted input lifetime. `RecordSectionCard` adds progress/active/actions and required counters. Existing layout/card callers retain level-three headings; RecordForm supplies level-two headings. Optional headingLevel adjusts standalone composition without changing presentation. No application-specific schema or API is imported.
+
+Compose under the existing PreferenceHost and LocalizationProvider. Import token CSS and scan the installed package dist directories for Tailwind. The [form guide](../../docs/features/record-form-engine.md) documents behavior and migration. This is local 0.2.0 preparation; published 0.1.0 remains unchanged.

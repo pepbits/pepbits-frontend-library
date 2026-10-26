@@ -205,3 +205,7 @@ semantics are unchanged. Exact local results and limits are in the
 ## Phase 8 registry-only consumers
 
 The twelve 0.1.0 packages are published (phase 7b). Root `npm ci` links local workspaces and does not fetch GitHub Packages, so it requires no `NPM_TOKEN`. The root `release:pack` remains a library publication rehearsal; it does not recreate old product source archives. Former source snapshot packers live in the product repositories and are retired by their registry migrations. Their historical hashes remain evidence. Platform-owned packages retain their separate release pipeline. All four products (Platform Enterprise, Healthcare, ERP and School) install the published packages, so no consumer depends on the removed workspace. See [phase 8 operations](TEST-SITE.md).
+
+## 0.2.0 local preparation
+
+The [record form release record](../releases/unreleased/record-form-engine-2026-10-26.md) covers the new fixed-group changeset, versioned manifests/changelogs, lockfile and twelve local tarballs. Published 0.1.0 remains available; this task does not publish 0.2.0. Apply the backend preference migration and catalog update alongside a future product upgrade.

@@ -106,3 +106,5 @@ Never substitute a screenshot, an empty route or a passing build for functional 
 - [MedSlot scheduling module](medslot-reference.md).
 
 - [AllyVora Patients in healthcare](healthcare-demo.md#allyvora-patients--hcd-av): fourteenth header app, 99-field registration and self-contained backend in the local test-site archive; [delivery evidence](../releases/unreleased/healthcare-allyvora-patients-2026-10-26.md).
+
+- [Shared record form engine](record-form-engine.md): five layouts, common form preferences and packaged summary/rules patterns.

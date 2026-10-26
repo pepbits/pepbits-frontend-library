@@ -251,7 +251,7 @@ export function ClinicalDocumentEditor<V, C>({
       errors,
     },
     index = sections.findIndex((s) => s.id === section),
-    flat = preferences.formNavigation === "rail";
+    flat = preferences.formNavigation === "scroll";
   const actions = (
     <div className="flex gap-2">
       {preferences.formNavigation === "wizard" ? (

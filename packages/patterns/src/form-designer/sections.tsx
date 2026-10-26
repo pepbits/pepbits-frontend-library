@@ -10,7 +10,7 @@ import {DesignerPresentationField} from './presentation-fields';
 import {TemplateFields,type TemplateFieldState} from './template-fields';
 /** The same section renderer is used for authoring preview and entity-bound runtime. */
 export function DesignerSections({definition,values,errors,states,disabled=false,change}:{definition:DesignerDefinition;values:DesignerValues;errors:Record<string,string>;states:Record<string,TemplateFieldState>;disabled?:boolean;change:(id:string,value:DesignerValue)=>void}){
- const {preferences,isLocked}=usePreferences();if(isLocked('formNavigation'))definition={...definition,layout:preferences.formNavigation==='rail'?'stacked':preferences.formNavigation==='wizard'?'steps':'tabs'};
+ const {preferences,isLocked}=usePreferences();if(isLocked('formNavigation'))definition={...definition,layout:preferences.formNavigation==='scroll'?'stacked':preferences.formNavigation==='wizard'?'steps':'tabs'};
  const {t,language}=useLocalization();definition=localizeDesignerDefinition(definition,language);const [selected,setSelected]=useState(definition.sections[0]!.id),active=definition.sections.find(s=>s.id===selected)??definition.sections[0]!,index=definition.sections.indexOf(active);
  useEffect(()=>{const section=definition.sections.find(s=>!!errors[s.id]||s.fields.some(f=>errors[f.id])||Object.keys(errors).some(path=>path.startsWith(s.id+'[')));if(section)setSelected(section.id);},[errors]);
  const sections=definition.layout&&definition.layout!=='stacked'?[active]:definition.sections;
