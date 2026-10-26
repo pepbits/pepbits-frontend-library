@@ -1,6 +1,6 @@
 'use client';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {defaultValues, todayISO, type FormValues, type LayoutKind, type PatientRecord, type SectionId} from '@allyvora/shared';
+import {defaultValues, todayISO, type FormValues, type PatientRecord, type SectionId} from '@allyvora/shared';
 import {AccessDenied, ConfirmDialog, LoadingState, NotFoundState, RecoveryNotice} from '@pepbits/components';
 import {Button} from '@pepbits/ui';
 import {useLocalization} from '@pepbits/i18n/react';
@@ -10,14 +10,13 @@ import {useAllyVora} from '../context';
 import {PAGE} from '../routes';
 import {AllyVoraFailure} from '../../../adapters/allyvora';
 import {PatientForm, type SubmitResult} from '../form/PatientForm';
-import {LayoutSwitcher} from '../form/layout-meta';
 import {failureOf, messageOf} from '../support';
 
 export const NEW_DRAFT_KEY = 'registration:new';
 
 /** New and edit modes: loads the record, saves with the record version, and maps 422/409 responses back into the form. */
 export function PatientEditor({mode, id, section}: {mode: 'new' | 'edit'; id?: number; section?: SectionId}) {
-  const {client, settings, setSettings, lookups, branchId, session, listQuery, saveDraft} = useAllyVora();
+  const {client, settings, lookups, branchId, session, listQuery, saveDraft} = useAllyVora();
   const {t} = useLocalization(), navigation = useNavigation(), host = useScreenHost();
   const [record, setRecord] = useState<PatientRecord | null>(null);
   const [loadError, setLoadError] = useState<unknown>(null);
@@ -69,13 +68,6 @@ export function PatientEditor({mode, id, section}: {mode: 'new' | 'edit'; id?: n
     }
   }, [mode, record, client, host, t, navigation]);
 
-  const canLayout = host.can('allyvora-configure-layout');
-  const changeLayout = (layout: LayoutKind) => {
-    if (!canLayout) return;
-    const next = {...settings, layout};
-    setSettings(next);
-    client.settings.saveLayout(next).then(setSettings).catch(() => host.notify(`${t('Layout not saved')}: ${t('It applies to this visit only.')}`, {tone: 'error'}));
-  };
 
   if (!allowed) return <div className="p-6"><AccessDenied/></div>;
   if (loadError) {
@@ -86,10 +78,8 @@ export function PatientEditor({mode, id, section}: {mode: 'new' | 'edit'; id?: n
   const title = mode === 'new' ? t('New patient') : t('Edit {name}', {name: record?.displayName ?? t('patient')});
   const branchName = session.branches.find(branch => branch.id === record?.branchId)?.name;
   return <div className="flex h-[calc(100dvh-var(--header-height,56px)-var(--footer-height,32px)-24px)] min-h-[560px] flex-col gap-3 px-3 py-3 sm:px-4 lg:px-6" data-patient-editor={mode}>
-    <div className="flex shrink-0 flex-wrap items-center gap-3">
-      <h1 className="min-w-0 flex-1 truncate text-[length:calc(19px*var(--fs-scale))] font-bold tracking-tight text-[var(--text)]">{title}</h1>
-      <LayoutSwitcher value={settings.layout} onChange={changeLayout} disabled={!canLayout}/>
-    </div>
+    {/* Visible title and per-form layout switcher removed by owner request; the layout is chosen in Layout setup. */}
+    <h1 className="sr-only">{title}</h1>
     <div className="min-h-0 flex-1">
       <PatientForm key={`${mode}-${id ?? 'new'}-${record?.version ?? 0}`} mode={mode} initialValues={initialValues} settings={settings} lookups={lookups}
         identity={record ? {mrn: record.mrn, orgNumber: record.orgNumber, patientId: record.id, ...(branchName ? {branchName} : {})} : undefined}

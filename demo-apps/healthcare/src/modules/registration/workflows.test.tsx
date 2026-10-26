@@ -271,11 +271,11 @@ describe('registration form', () => {
     expect(screen.queryByText(/fields need attention/)).toBeNull();
   });
 
-  test('administrators switch the organisation layout from the form; others cannot', async () => {
+  test('the form shows no visible title or layout switcher; the layout is chosen in Layout setup', async () => {
     const {api} = mount('/allyvora-patients/patients?mode=new');
-    await user().click(await screen.findByRole('radio', {name: 'Tabs'}));
-    await waitFor(() => expect(posted(api, 'PUT', '/settings/layout')[0]?.body).toMatchObject({layout: 'tabs'}));
-    expect(await screen.findByRole('tablist', {name: 'Form sections'})).toBeVisible();
+    expect(await screen.findByRole('heading', {level: 1, name: 'New patient'})).toHaveClass('sr-only');
+    expect(screen.queryByRole('radiogroup', {name: 'Form layout'})).toBeNull();
+    expect(posted(api, 'PUT', '/settings/layout')).toHaveLength(0);
   });
 });
 

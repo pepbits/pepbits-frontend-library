@@ -2,7 +2,6 @@
 import React from 'react';
 import type {LayoutKind} from '@allyvora/shared';
 import {AlignLeft, ListTodo, PanelTop, Route, Rows3} from '@pepbits/icons';
-import {Segmented, cn} from '@pepbits/ui';
 
 export interface LayoutMeta {id: LayoutKind; name: string; summary: string; bestFor: string}
 /** Source layout descriptions (the source frontend lib/layouts.ts), unchanged. */
@@ -15,9 +14,3 @@ export const LAYOUTS: LayoutMeta[] = [
 ];
 export const layoutMeta = (id: LayoutKind) => LAYOUTS.find(layout => layout.id === id)!;
 export const LAYOUT_ICONS: Record<LayoutKind, typeof AlignLeft> = {scroll: AlignLeft, tabs: PanelTop, wizard: Route, stepper: ListTodo, accordion: Rows3};
-
-/** Compact icon switcher so staff can change the organisation layout without leaving the form. */
-export function LayoutSwitcher({value, onChange, disabled, className}: {value: LayoutKind; onChange: (layout: LayoutKind) => void; disabled?: boolean; className?: string}) {
-  return <Segmented label="Form layout" size="sm" className={cn(className)} value={value} onChange={next => onChange(next as LayoutKind)}
-    options={LAYOUTS.map(layout => {const Icon = LAYOUT_ICONS[layout.id]; return {value: layout.id, label: layout.name, icon: <Icon className="size-4" aria-hidden="true"/>, iconOnly: layout.id !== value, disabled};})}/>;
-}

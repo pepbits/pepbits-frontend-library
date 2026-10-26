@@ -178,7 +178,7 @@ async function fillRegistration(target, {given, family, mobile}) {
   if (!(await reactivate).ok()) throw new Error('Reactivation failed');
   flows.push({id: 'HCD-AV-08', scope: 'UI', result: 'Confirmed deactivate and reactivate through the status API with audit entries'});
 
-  // Layout designer and the form's own switcher.
+  // Layout designer (the form itself has no layout switcher).
   await visit('/allyvora-patients/settings/layout');
   await page.getByRole('radio', {name: /^Tabs/}).click();
   await page.locator('[data-layout-preview="tabs"] [role=tablist]').waitFor();
@@ -188,11 +188,15 @@ async function fillRegistration(target, {given, family, mobile}) {
   await page.locator('[data-layout-history]').getByText(/^Tabs, comfortable/).first().waitFor();
   await visit('/allyvora-patients/patients?mode=new');
   await page.locator('[data-form-layout="tabs"]').waitFor();
-  const switcher = page.waitForResponse(r => r.url().endsWith('/allyvora-api/settings/layout') && r.request().method() === 'PUT');
-  await page.getByRole('radiogroup', {name: 'Form layout'}).getByRole('radio', {name: 'Single page'}).click();
-  if (!(await switcher).ok()) throw new Error('Form switcher save failed');
+  if (await page.getByRole('radiogroup', {name: 'Form layout'}).count()) throw new Error('The registration form must not show a layout switcher');
+  await visit('/allyvora-patients/settings/layout');
+  await page.getByRole('radio', {name: /^Single page/}).click();
+  const restore = page.waitForResponse(r => r.url().endsWith('/allyvora-api/settings/layout') && r.request().method() === 'PUT');
+  await page.getByRole('button', {name: /Save layout/}).click();
+  if (!(await restore).ok()) throw new Error('Layout restore failed');
+  await visit('/allyvora-patients/patients?mode=new');
   await page.locator('[data-form-layout="scroll"]').waitFor();
-  flows.push({id: 'HCD-AV-09', scope: 'UI', result: 'Designer preview and save change the organisation layout; the form switcher saves it back'});
+  flows.push({id: 'HCD-AV-09', scope: 'UI', result: 'Designer preview and save change the organisation layout used by the form (no switcher on the form itself); saving Single page restores it'});
 
 
   // Accessibility sweep in English, then Arabic RTL after a host preference change.

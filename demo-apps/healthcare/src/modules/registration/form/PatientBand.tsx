@@ -58,16 +58,16 @@ export function PatientBand({values, lookups, mrn, mrnPending, completion, secti
     {/* Allergy stripe: the first thing a clinician checks on a wristband. */}
     <span className={cn('w-1.5 shrink-0', tone === 'danger' && 'bg-[var(--danger)]', tone === 'ok' && 'bg-[var(--success)]', tone === 'accent' && 'bg-[var(--warning)]')} aria-hidden="true"/>
     <div className="hidden shrink-0 flex-col items-center justify-center gap-2 border-e border-dashed border-[var(--border)] px-2.5 sm:flex" aria-hidden="true"><span className="size-2 rounded-full bg-[var(--border-strong)]"/><span className="size-2 rounded-full bg-[var(--border-strong)]"/></div>
-    <div className={cn('min-w-0 flex-1', full ? 'px-5 py-4' : 'px-4 py-2.5')}>
+    <div className={cn('min-w-0 flex-1', full ? 'px-5 py-4' : 'px-4 py-1.5')}>
       <div className="flex min-w-0 items-baseline gap-3">
-        <p className={cn('truncate font-bold tracking-tight', full ? 'text-[length:calc(24px*var(--fs-scale))]' : 'text-[length:calc(17px*var(--fs-scale))]', name ? 'text-[var(--text)]' : 'text-[var(--text-subtle)]')} data-band-name="">{name || t('New patient')}</p>
+        <p className={cn('truncate font-bold tracking-tight', full ? 'text-[length:calc(24px*var(--fs-scale))]' : 'text-[length:calc(15px*var(--fs-scale))] leading-tight', name ? 'text-[var(--text)]' : 'text-[var(--text-subtle)]')} data-band-name="">{name || t('New patient')}</p>
         {values.localName ? <span className="hidden truncate text-[length:calc(12px*var(--fs-scale))] text-[var(--text-muted)] md:inline">{String(values.localName)}</span> : null}
         {status === 'inactive' ? <span className="shrink-0 rounded-full bg-[var(--surface-2)] px-2 py-0.5 text-[length:calc(10px*var(--fs-scale))] font-semibold text-[var(--text-muted)]">{t('Inactive')}</span> : null}
       </div>
-      <div className={cn('mt-0.5 flex flex-wrap items-center gap-x-4 gap-y-0.5 tabular-nums text-[var(--text-muted)]', full ? 'text-[length:calc(12.5px*var(--fs-scale))]' : 'text-[length:calc(11.5px*var(--fs-scale))]')}>
+      <div className={cn('flex flex-wrap items-center gap-x-4 gap-y-0.5 tabular-nums text-[var(--text-muted)]', full ? 'mt-0.5 text-[length:calc(12.5px*var(--fs-scale))]' : 'text-[length:calc(11.5px*var(--fs-scale))] leading-4')}>
         {facts.length ? facts.map(fact => <span key={fact}>{fact}</span>) : <span className="text-[var(--text-subtle)]">{t('Details appear here as you type')}</span>}
       </div>
-      <p className={cn('mt-1.5 inline-flex max-w-full items-center gap-1.5 truncate rounded-md px-2 py-0.5 text-[length:calc(10.5px*var(--fs-scale))] font-semibold',
+      <p className={cn('inline-flex max-w-full items-center gap-1.5 truncate rounded-md px-2 text-[length:calc(10.5px*var(--fs-scale))] font-semibold', full ? 'mt-1.5 py-0.5' : 'mt-[3px] leading-4',
         tone === 'danger' && 'bg-[color-mix(in_srgb,var(--danger)_12%,var(--surface))] text-[var(--danger-ink)]',
         tone === 'ok' && 'bg-[color-mix(in_srgb,var(--success)_14%,var(--surface))] text-[var(--success-ink)]',
         tone === 'accent' && 'bg-[color-mix(in_srgb,var(--warning)_16%,var(--surface))] text-[var(--warning-ink)]')} data-allergy={tone}>{allergyText}</p>
