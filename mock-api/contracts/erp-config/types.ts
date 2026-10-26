@@ -6,7 +6,9 @@ type LucideIcon = unknown; // Server metadata never renders icons.
 export type ModuleKey = "hr" | "finance" | "payroll" | "sales" | "supply" | "healthcare" | "pharmacy" | "library" | (string & {});
 export type ThemeKey = "nexora" | "midnight" | "emerald" | "sand" | "rose" | "slate" | "contrast"
   | "indigo" | "lagoon" | "sunset" | "graphite" | "plum" | "nord" | "solarized";
-export type FormNavigation = "rail" | "tabs" | "wizard";
+export type FormNavigation = "scroll" | "tabs" | "wizard" | "stepper" | "accordion";
+/** Accepted at legacy host boundaries; normalized before rendering. */
+export type LegacyFormNavigation = FormNavigation | "rail";
 export type ResultView = "table" | "cards";
 export type PreviewMode = "inline" | "center-card" | "center-modal" | "left-drawer" | "right-drawer";
 export type SidebarPlacement = "left" | "right";
@@ -58,7 +60,11 @@ export type FontFamily = "inter" | "plex" | "source-sans" | "nunito" | "manrope"
 
 export interface UserPreferences {
   theme: ThemeKey;
-  formNavigation: FormNavigation;
+  formNavigation: LegacyFormNavigation;
+  formColumns: 2 | 3 | 4;
+  formShowSummary: boolean;
+  formValidateOn: "blur" | "change" | "submit";
+  formKeepUnsaved: boolean;
   resultView: ResultView;
   previewMode: PreviewMode;
   sidebarPlacement: SidebarPlacement;

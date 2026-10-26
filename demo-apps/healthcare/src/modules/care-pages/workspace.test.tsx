@@ -74,7 +74,7 @@ test("effective locked density applies and signed documents are read-only", asyn
       preferences={{ ...DEFAULT_PREFERENCES, density: "spacious" }}
       preferencePolicy={
         {
-          version: 1,
+          revision: 1,
           rules: { density: { locked: true, value: "compact" } },
         } as never
       }

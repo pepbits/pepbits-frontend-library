@@ -1,6 +1,6 @@
 # @pepbits/patterns
 
-Generic lifecycle administration, master-file transfer and server-authorized DCP fields. Phase 4a delivers the product-consumed subset; phase 4b adds approvals, drafts and imports. Phase 4c completes priority 3. Version `0.1.0` is an ESM package, requiring React/React DOM 19 or later. Existing applications keep using their original workspace.
+Generic lifecycle administration, master-file transfer and server-authorized DCP fields. Phase 4a delivers the product-consumed subset; phase 4b adds approvals, drafts and imports. Phase 4c completes priority 3. Version `0.2.0` (prepared locally) is an ESM package, requiring React/React DOM 19 or later. Existing applications keep using their original workspace.
 
 Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/patterns` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
@@ -246,3 +246,9 @@ ResourceTimeline accepts optional baseline `geometry`, `labelEvery`, `renderReso
 ## Compact hierarchy composition
 
 `HierarchyPanel` from `@pepbits/patterns/tree` is an opt-in compact list or table composition. Supply labelled nodes, optional codes/columns, toolbar/footer and row-action slots, selection and visible-order callbacks. Roots start expanded. Search includes codes and retains ancestors; the shared traversal guards cycles and missing parents. Selection and expansion use separate keyboard controls, row actions are available on focus/touch, RTL uses logical indentation, and effective density/result scale apply. Hosts own data loading, commands, permissions and persistence. `HierarchyView` keeps its existing defaults. Panel interaction tests and ERP route/geometry/axe checks cover the new consumer.
+
+## Record summary and rules — 0.2.0 preparation
+
+`@pepbits/patterns/record-form` (also root) exports `RecordSummaryBand`, `RecordSummaryBandProps`, `FormRulesDrawer`, `FormRulesDrawerProps`, `FormRule`, `FormRuleSection`, `RecordSectionProgress`, `StatusGlyph`, `StatusPill`, `statusText`, `RecordCompletionRing` and `DecorativeRecordCode`.
+
+The band takes `title`, `facts`, optional subtitle/badge, alert `{label,tone}` (danger/success/warning), decorative code/caption/pending state, completion/caption/label, actions, accessible label and compact/full size. Compact retains the approximately 69px reference height at standard scale; wrapping and larger fonts can increase it. The code is decorative. The drawer takes open/onClose, sections containing host-described rules (visibility, filled, error), onJump, onRevealAll and optional title/ready message. It never validates domain values or writes records. Controls remain shared primitives. Both use host localization/theme; the [form guide](../../docs/features/record-form-engine.md) gives integration and limits.

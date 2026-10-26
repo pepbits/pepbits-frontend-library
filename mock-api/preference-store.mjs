@@ -1,3 +1,4 @@
+import {normalizePreferenceValue} from './contracts/erp-config/preference-defaults.ts';
 import {DatabaseSync} from 'node:sqlite';
 import {mkdirSync,chmodSync} from 'node:fs';
 import {dirname} from 'node:path';
@@ -14,11 +15,12 @@ export function createPreferenceStore(file,{legacy=()=>({}),audit=()=>{},modules
  const scope=(user,product)=>[user.tenantId,product];
  const policy=(user,product)=>{
   const held=db.prepare('SELECT revision,rules FROM preference_policy WHERE tenant=? AND product=?').get(...scope(user,product));
-  return held?{revision:held.revision,rules:JSON.parse(held.rules)}:EMPTY_PREFERENCE_POLICY;
+  return held?parsePreferencePolicy({revision:held.revision,rules:JSON.parse(held.rules)}):EMPTY_PREFERENCE_POLICY;
  };
  const read=(user,product)=>{
   const applied=policy(user,product),held=db.prepare('SELECT revision,overrides FROM personal_preference WHERE tenant=? AND product=? AND owner=?').get(...scope(user,product),user.id);
   const overrides=held?JSON.parse(held.overrides):Object.fromEntries(Object.entries(legacy(user,product)).filter(([key,value])=>validPreference(key,value)));
+  for(const key of Object.keys(overrides)) overrides[key]=normalizePreferenceValue(key,overrides[key]);
   if (!allowedModule(user,product,overrides.defaultModule)) delete overrides.defaultModule;
   const resolved=effectivePreferences(overrides,applied);
   if (!allowedModule(user,product,resolved.defaultModule)) resolved.defaultModule="";
@@ -43,8 +45,9 @@ export function createPreferenceStore(file,{legacy=()=>({}),audit=()=>{},modules
    });
   },
   write(user,product,body){
-   const values=body?.preferences;
+   let values=body?.preferences;
    if(!values||typeof values!=='object'||Array.isArray(values)||Object.entries(values).some(([key,value])=>!validPreference(key,value)))return failure(400,'Invalid preference values.');
+   values=Object.fromEntries(Object.entries(values).map(([key,value])=>[key,normalizePreferenceValue(key,value)]));
    if(!allowedModule(user,product,values.defaultModule))return failure(400,'preference.defaultModule.denied');
    return transaction(()=>{
     const current=read(user,product);

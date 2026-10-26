@@ -1,6 +1,6 @@
 # @pepbits/preferences
 
-Preference types, validation, theme metadata and tenant-policy resolution, with a controlled React bridge to a host's update path. Version `0.1.0`; React consumers require React 19 or later.
+Preference types, validation, theme metadata and tenant-policy resolution, with a controlled React bridge to a host's update path. Version `0.2.0` (prepared locally); React consumers require React 19 or later.
 
 Published at **0.1.0** on GitHub Packages. Install with `npm install @pepbits/preferences` after adding the `@pepbits` registry `.npmrc` and a read token — see the [developer quick start](../../docs/development/PUBLISHING.md#developer-quick-start-for-product-apps). Working examples: the [component showcase](../../demo-apps/showcase/README.md) and the [demo apps](../../demo-apps/README.md).
 
@@ -48,10 +48,16 @@ Pure functions preserve the existing default, enum, clamping and policy behavior
 
 The old generic workspace contract used `preferences`, `preferencePolicy`, `preferencesAvailable`, and `onPreferenceChange(key, value)`. The first three names are retained. The new provider uses one required `update(patch)` callback instead of the optional per-key callback; hosts adapt that call at their existing central update path. The previous `usePreferenceChoice` kept a local demo choice; these hooks intentionally wait for the host snapshot. Unlocking therefore displays the current host value, with no hidden local choice to restore.
 
-All preference keys/defaults remain, including generic `billingLayout`, `defaultModule: ''`, and `clockZone: 'branch'`; no actual module IDs, branch lists, labels or branch time-zone mappings are supplied. The host interprets those generic choices. Theme IDs and swatches stay compatible with CSS; `theme: 'nexora'` remains the default selector. Its display name is now **Blue**, removing the product name while preserving the ID. Other theme metadata is unchanged.
+Other existing preference keys/defaults remain, including generic `billingLayout`, `defaultModule: ''`, and `clockZone: 'branch'`; no actual module IDs, branch lists, labels or branch time-zone mappings are supplied. The host interprets those generic choices. Theme IDs and swatches stay compatible with CSS; `theme: 'nexora'` remains the default selector. Its display name is now **Blue**, removing the product name while preserving the ID. Other theme metadata is unchanged.
 
 `shortcuts.ts` is intentionally excluded: its registry binds dashboard, record-tab and shell navigation actions. Those actions belong with the host/shell, and carrying the registry here would prescribe navigation behavior before that phase. This package binds no keyboard listeners. No product navigation, generated catalogs, persistence, API clients or application shell is included.
 
 ## Verification and completion boundary
 
 `npm test -w @pepbits/preferences` covers ported default/inline-preview tests, enum/range sanitization, policy parsing, locks/allowed values, formatter mapping and mounted React policy changes. The generic locking regression is adapted from the existing workspace tests; product page/template rendering is outside this package. `npm run typecheck -w @pepbits/preferences` checks types. Unit/jsdom evidence does not establish native, browser layout, server authorization or production persistence acceptance.
+
+## Common forms — 0.2.0 preparation
+
+`FormNavigation` is `scroll | tabs | wizard | stepper | accordion`; default scroll. `LegacyFormNavigation` additionally accepts rail at existing typed host boundaries. `normalizePreferenceValue` migrates rail to scroll. Storage sanitization, policy parsing, policy defaults, allowed lists, effective resolution and the guarded React update path normalize it. Imports reuse sanitization. Old stored values need no destructive reset.
+
+New keys: `formColumns: 2 | 3 | 4` (3), `formShowSummary: boolean` (true), `formValidateOn: blur | change | submit` (blur), `formKeepUnsaved: boolean` (true). Forms reuse `density: compact | comfortable | spacious`: its existing surface-wide spacing semantics apply without a conflicting second density store. Each key supports per-user overrides, tenant defaults/locks/allowed values. The backend contract/catalog must upgrade with the UI. Unsaved retention is a request to the host's supported draft contract, not durable storage supplied by this package.

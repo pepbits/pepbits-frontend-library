@@ -1,8 +1,9 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';
 import {mkdtempSync,rmSync} from 'node:fs';import {tmpdir} from 'node:os';import {join} from 'node:path';
 import {createPreferenceStore} from './preference-store.mjs';
+import {DatabaseSync} from 'node:sqlite';
 const admin={id:'admin',tenantId:'a',permissions:['preferences:manage']};const user={id:'user',tenantId:'a'};
-function fixture(t){const dir=mkdtempSync(join(tmpdir(),'nexora-policy-'));const file=join(dir,'preferences.sqlite');let store=createPreferenceStore(file);t.after(()=>{store.close();rmSync(dir,{recursive:true,force:true});});return {get store(){return store;},restart(){store.close();store=createPreferenceStore(file);}};}
+function fixture(t){const dir=mkdtempSync(join(tmpdir(),'nexora-policy-'));const file=join(dir,'preferences.sqlite');let store=createPreferenceStore(file);t.after(()=>{store.close();rmSync(dir,{recursive:true,force:true});});return {file,get store(){return store;},restart(){store.close();store=createPreferenceStore(file);}};}
 test('locks persist, reject overrides, and unlocking restores personal choices',t=>{
  const f=fixture(t);assert.equal(f.store.write(user,'nexora',{preferences:{theme:'midnight'}}).status,200);
  assert.equal(f.store.writePolicy(admin,'nexora',{revision:0,rules:{theme:{value:'sand',locked:true}}}).status,200);
@@ -47,4 +48,30 @@ test('default module persists per account and respects access revocation and ten
  assert.equal(store.read(user,'nexora').preferences.defaultModule,'finance');assert.equal(store.write(user,'nexora',{policyRevision:1,preferences:{defaultModule:'sales'}}).status,403);
  assert.equal(store.writePolicy(admin,'nexora',{revision:1,rules:{}}).status,200);assert.equal(store.read(user,'nexora').preferences.defaultModule,'sales');
  allowed=['finance'];assert.equal(store.read(user,'nexora').preferences.defaultModule,'');assert.equal(store.write(user,'nexora',{policyRevision:2,preferences:{theme:'sand'}}).status,200);
+});
+
+test('common form values persist and invalid options are rejected by the independent backend',t=>{
+ const f=fixture(t),defaults=f.store.read(user,'nexora').preferences;
+ assert.equal(defaults.formNavigation,'scroll');assert.equal(defaults.formColumns,3);
+ assert.equal(defaults.formShowSummary,true);assert.equal(defaults.formValidateOn,'blur');assert.equal(defaults.formKeepUnsaved,true);
+ for(const formNavigation of ['scroll','tabs','wizard','stepper','accordion']) {
+  assert.equal(f.store.write(user,'nexora',{preferences:{formNavigation,formColumns:4,formShowSummary:false,formValidateOn:'submit',formKeepUnsaved:false}}).status,200);
+  f.restart();assert.equal(f.store.read(user,'nexora').preferences.formNavigation,formNavigation);
+ }
+ const saved=f.store.read(user,'nexora').preferences;
+ assert.equal(saved.formColumns,4);assert.equal(saved.formShowSummary,false);assert.equal(saved.formValidateOn,'submit');assert.equal(saved.formKeepUnsaved,false);
+ for(const preferences of [{formColumns:5},{formValidateOn:'never'},{formKeepUnsaved:'false'},{formNavigation:'unknown'}])assert.equal(f.store.write(user,'nexora',{preferences}).status,400);
+});
+
+test('old SQLite user overrides and tenant rules normalize rail before locks and allowed values resolve',t=>{
+ const f=fixture(t),db=new DatabaseSync(f.file);
+ db.prepare('INSERT INTO personal_preference VALUES(?,?,?,?,?)').run('a','nexora','user',1,JSON.stringify({formNavigation:'rail'}));
+ db.prepare('INSERT INTO preference_policy VALUES(?,?,?,?)').run('a','nexora',1,JSON.stringify({formNavigation:{value:'rail',locked:true,allowedValues:['rail','scroll','tabs']}}));
+ db.close();f.restart();
+ const saved=f.store.read(user,'nexora');
+ assert.equal(saved.preferences.formNavigation,'scroll');assert.equal(saved.overrides.formNavigation,'scroll');
+ assert.deepEqual(saved.policy.rules.formNavigation,{value:'scroll',locked:true,allowedValues:['scroll','tabs']});
+ assert.equal(f.store.write(user,'nexora',{policyRevision:1,preferences:{formNavigation:'tabs'}}).status,403);
+ assert.equal(f.store.writePolicy(admin,'nexora',{revision:1,rules:{formNavigation:{value:'rail',locked:false,allowedValues:['rail','tabs']}}}).status,200);
+ assert.equal(f.store.write(user,'nexora',{policyRevision:2,preferences:{formNavigation:'rail'}}).body.overrides.formNavigation,'scroll');
 });

@@ -25,9 +25,8 @@ const routes: [string, string][] = [
   ['edit patient', '/allyvora-patients/patients?mode=edit&id=1'],
   ['edit section', '/allyvora-patients/patients?mode=edit&id=1&section=contact'],
   ['patient record', '/allyvora-patients/patients?mode=view&id=1'],
-  ['form layout', '/allyvora-patients/settings/layout'],
 ];
-const ready: Record<string, string> = {register: '[data-patient-register]', 'inactive view': '[data-patient-register]', 'filtered search': '[data-patient-register]', 'new patient': '[data-patient-form="new"]', 'edit patient': '[data-patient-form="edit"]', 'edit section': '[data-patient-form="edit"]', 'patient record': '[data-patient-view]', 'form layout': '[data-layout-preview]'};
+const ready: Record<string, string> = {register: '[data-patient-register]', 'inactive view': '[data-patient-register]', 'filtered search': '[data-patient-register]', 'new patient': '[data-record-form="new"]', 'edit patient': '[data-record-form="edit"]', 'edit section': '[data-record-form="edit"]', 'patient record': '[data-patient-view]'};
 
 describe.each(profiles)('%s route rendering', (profile, preferences, rules) => {
   it.each(routes)('%s (%s)', async (name, url) => {

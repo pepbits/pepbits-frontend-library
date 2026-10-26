@@ -8,7 +8,7 @@ import {createTranslator, directionOf} from '@pepbits/i18n';
 import {ScreenHostProvider} from '@pepbits/patterns/screen-host';
 import {NavigationProvider, type NavigationTarget} from '@pepbits/platform/navigation';
 import {AllyVoraProvider} from '../../modules/registration/context';
-import {hrefFor, LAYOUT_ROLES, REGISTRATION_ROLES, type AllyVoraTarget} from '../../modules/registration/routes';
+import {hrefFor, REGISTRATION_ROLES, type AllyVoraTarget} from '../../modules/registration/routes';
 import type {AllyVoraClient} from '../../adapters/allyvora';
 
 const read = (language: string) => JSON.parse(readFileSync(process.cwd() + '/../../mock-api/config/localization/shared/' + language + '.json', 'utf8')).messages;
@@ -32,7 +32,7 @@ export function TestHostProvider({host, children}: {host: TestHost; children: Re
   const role = host.role ?? 'enterprise-admin';
   const t = useMemo(() => createTranslator({language: preferences.language, catalogs: {en: sharedMessages, ar: arabicMessages}}), [preferences.language]);
   const navigation = useMemo(() => ({current: {pageId: 'test'}, hrefFor: (target: NavigationTarget) => hrefFor(target as AllyVoraTarget), open: (target: NavigationTarget) => host.open?.(target), openInNewContext: (target: NavigationTarget) => host.open?.(target)}), [host]);
-  const can = (action: string) => action === 'allyvora-configure-layout' ? LAYOUT_ROLES.includes(role) : ['allyvora-create', 'allyvora-edit', 'allyvora-archive'].includes(action) && REGISTRATION_ROLES.includes(role);
+  const can = (action: string) => ['allyvora-create', 'allyvora-edit', 'allyvora-archive'].includes(action) && REGISTRATION_ROLES.includes(role);
   return <PreferenceHost preferences={preferences} preferencePolicy={host.policy} update={changes => setPatch(current => ({...current, ...changes}))}>
     <LocalizationProvider value={{t, language: preferences.language, direction: directionOf(preferences.language), dateTime: String}}>
       <NavigationProvider value={navigation}>

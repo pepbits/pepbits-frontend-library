@@ -11,10 +11,10 @@ const tarballs=path.resolve(process.env.RELEASE_PACK_DIR);
 assert(base !== path.resolve(root) && !base.startsWith(root), 'Consumers must be outside the repository');
 const packedManifest=JSON.parse(fs.readFileSync(path.join(tarballs,'manifest.json'),'utf8'));
 const results=[];
-for(const kind of ['next','vite']) {
+for(const kind of (process.env.CONSUMER_KINDS??'next,vite').split(',')) {
   const dir=path.join(base,kind);fs.mkdirSync(dir,{recursive:true});
   const write=(name,value)=>{fs.mkdirSync(path.dirname(path.join(dir,name)),{recursive:true});fs.writeFileSync(path.join(dir,name),typeof value==='string'?value:JSON.stringify(value,null,2)+'\n');};
-  const dependencies=Object.fromEntries(publicPackages.map(name=>[`@pepbits/${name}`,`file:${path.join(tarballs,`pepbits-${name}-0.1.0.tgz`)}`]));
+  const dependencies=Object.fromEntries(publicPackages.map(name=>[`@pepbits/${name}`,`file:${path.join(tarballs,`pepbits-${name}-${packedManifest.find(pkg=>pkg.name===`@pepbits/${name}`).version}.tgz`)}`]));
   Object.assign(dependencies,{react:'19.2.0','react-dom':'19.2.0'});
   const devDependencies={typescript:'5.9.3','@types/react':'^19.0.0','@types/react-dom':'^19.0.0','@types/node':'^22.0.0','tailwindcss':'4.3.3','@tailwindcss/postcss':'4.3.3',postcss:'8.5.31',...(kind==='next'?{next:'16.3.3'}:{vite:'7.3.7'})};
   write('package.json',{name:`phase7a-${kind}-consumer`,private:true,type:'module',scripts:{build:kind==='next'?'next build --webpack':'tsc --noEmit && vite build'},dependencies,devDependencies});
@@ -34,6 +34,9 @@ for(const kind of ['next','vite']) {
   // A local tarball can change without its filename changing during a rehearsal.
   // Never let a previous proof lockfile retain the old content-addressed artifact.
   fs.rmSync(path.join(dir,'package-lock.json'),{force:true});
+  // Bundlers may treat node_modules as immutable by package version. Rehearsing
+  // an updated tarball at the same version must not reuse its previous bundle.
+  fs.rmSync(path.join(dir,kind==='next'?'.next':'dist'),{recursive:true,force:true});
   let server,browser;
   try {
     const install=execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:dir,encoding:'utf8',stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
@@ -62,11 +65,18 @@ for(const kind of ['next','vite']) {
     await page.getByRole('button',{name:'Packed action',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[data-testid="clicks"]')?.textContent==='1');
     await page.getByLabel('Packed input',{exact:true}).fill('Changed');assert.equal(await page.getByLabel('Packed input',{exact:true}).inputValue(),'Changed');
     await page.getByText('Packed template',{exact:true}).waitFor();
+    await page.getByText('Packed record',{exact:true}).waitFor();
+    await page.getByRole('textbox',{name:'Search settings',exact:true}).fill('record form style');
+    await page.getByRole('heading',{name:'Forms',exact:true}).waitFor();
+    await page.getByRole('tab',{name:'Forms',exact:true}).click();
+    await page.getByRole('heading',{name:'Forms',exact:true}).waitFor();
+    await page.getByRole('combobox',{name:'Record form style',exact:true}).selectOption('accordion');
+    await page.locator('[data-record-form] [data-layout=accordion]').waitFor();
     const css=await page.evaluate(async()=>{await document.fonts.ready;const label=document.querySelector('[data-testid="pattern"] section'),button=[...document.querySelectorAll('button')].find(el=>el.textContent==='Packed action');return {labelDisplay:getComputedStyle(label).display,labelDirection:getComputedStyle(label).flexDirection,buttonDisplay:getComputedStyle(button).display,buttonHeight:getComputedStyle(button).height,token:getComputedStyle(document.querySelector('main')).getPropertyValue('--surface'),fontLoaded:[...document.fonts].some(font=>font.family.replaceAll('"','')==='Public Sans'&&font.status==='loaded')};});
     assert.equal(css.labelDisplay,'flex');assert.equal(css.labelDirection,'column');assert.equal(css.buttonDisplay,'inline-flex');assert(parseFloat(css.buttonHeight)>=30);assert(css.token.trim());assert(css.fontLoaded);assert(fontResponses.some(response=>response.status===200));
     await page.getByRole('button',{name:'Check packed worker'}).click();await page.waitForFunction(()=>document.querySelector('[data-testid="worker"]')?.textContent==='passed',null,{timeout:60000});
     assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
-    const result={kind,packages:12,build:'passed',buildAndRenderSeconds:Math.round((Date.now()-started)/1000),checks:11,css,fontResponses,pageErrors:errors,failedRequests:failed,worker:'passed',nodeModulesRemoved:false};
+    const result={kind,packages:12,build:'passed',buildAndRenderSeconds:Math.round((Date.now()-started)/1000),recordForm:'passed',summaryBand:'passed',formsPreferences:'passed',formsSearch:'passed',formLayout:'accordion',css,fontResponses,pageErrors:errors,failedRequests:failed,worker:'passed',nodeModulesRemoved:false};
     results.push(result);console.log(JSON.stringify(result));
   } finally {
     if(browser)await browser.close();

@@ -9,10 +9,14 @@ import { Card, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } f
 import { LocalizedText } from "@pepbits/i18n/react";
 import {usePreferenceRequest} from "./services";
 
-const POLICY_GROUPS = ["preference.ownSettings","Behaviour", "Shell", "Page", "Notification", "Language & help", "General"] as const;
+const POLICY_GROUPS = ["preference.ownSettings","Behaviour", "Forms", "Shell", "Page", "Notification", "Language & help", "General"] as const;
 const POLICY_GROUP_BY_KEY = {
   defaultModule:"preference.ownSettings",
-  formNavigation: "Behaviour",
+  formNavigation: "Forms",
+  formColumns: "Forms",
+  formShowSummary: "Forms",
+  formValidateOn: "Forms",
+  formKeepUnsaved: "Forms",
   resultView: "Behaviour",
   previewMode: "Behaviour",
   pageSize: "Behaviour",

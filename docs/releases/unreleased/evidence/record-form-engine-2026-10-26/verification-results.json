@@ -1,0 +1,101 @@
+{
+  "sourceBase": "9fbe545f76db260d0a988af7d9f31c068172af67",
+  "sourceDigest": "68034c8cb14211549548b656d84a66bafb614b85cf07efad5010130a86d8a0d6",
+  "sourceFiles": 2712,
+  "sourceUnchangedAfterCI": true,
+  "node": "24.21.0",
+  "recordedAt": "2026-10-26T14:23:24.079606+00:00",
+  "scope": "Local working-tree verification; fictional local API/browser fixtures, no deployed release or native executable execution.",
+  "ci": {
+    "command": "bash tooling/scripts/ci-gates.sh",
+    "exitCode": 0,
+    "frontendTasks": {
+      "successful": 69,
+      "total": 69,
+      "cached": 0
+    },
+    "rootToolingTests": 23,
+    "documentationToolTests": 6,
+    "apiTests": 338,
+    "clinicalApiTests": 34,
+    "deploymentToolingTests": 14,
+    "healthcareTests": {
+      "passed": 1873,
+      "skipped": 4
+    },
+    "showcaseTests": 95,
+    "desktopTests": 82,
+    "erpTests": 1324,
+    "rawLogSha256": "0a72cad02705dd65b2f74b218da09d058659735cdd3591d34ede58ce0ca22795"
+  },
+  "shellBrowser": {
+    "command": "npm run test:browser -w @pepbits/shell",
+    "exitCode": 0,
+    "passed": 18
+  },
+  "healthcareLive": {
+    "command": "node tooling/scripts/run-demo-integration.mjs healthcare",
+    "exitCode": 0,
+    "workflows": 96,
+    "checks": 280,
+    "rcmPresentationReceipts": 62,
+    "medbandPresentationReceipts": 29,
+    "failures": 0,
+    "pageErrors": 0,
+    "consoleErrors": 0,
+    "failedApiResponses": 0,
+    "sourceDigest": "58b284e99ee02688118a21575629c919bbf23e6b67ca45c90c38c47ddedcc22e",
+    "allServiceGroupsStopped": true
+  },
+  "releasePack": {
+    "command": "npm run release:pack",
+    "exitCode": 0,
+    "packages": 12,
+    "version": "0.2.0",
+    "directory": "/tmp/pepbits-record-form/packages",
+    "archiveGuards": "passed: packaged files, tests/secrets and absolute paths"
+  },
+  "consumer": {
+    "kind": "Next",
+    "packagesFromTarballs": 12,
+    "build": "passed",
+    "browser": "passed",
+    "pageErrors": 0,
+    "failedRequests": 0,
+    "nodeModulesRemoved": true,
+    "directory": "/tmp/pepbits-record-form/consumer/next",
+    "requestedPathDeviation": "Home cache directory is outside session writable roots."
+  },
+  "documentation": {
+    "files": 232,
+    "pageRegistrations": 700,
+    "pendingAuthoringOrReviewItems": 2268
+  },
+  "logRetention": "Readable CI and release-pack copies trim trailing whitespace; adjacent .gz files retain the exact original bytes.",
+  "finalHygiene": {
+    "recordedAt": "2026-10-26T14:25:01.032755+00:00",
+    "gitDiffCheck": {
+      "command": "git diff --check",
+      "exitCode": 0
+    },
+    "newTextFileWhitespace": {
+      "filesChecked": 46,
+      "findings": []
+    },
+    "secretPatternScan": {
+      "report": "secret-scan.json",
+      "findings": 0
+    },
+    "protectedInputsAndPatientListChanged": false,
+    "consumerNodeModulesRemoved": true,
+    "heavyLockAvailableAfterCompletion": true
+  },
+  "artifactSha256": {
+    "ci-gates.log.gz": "ded8c4db24f6bdc6bd7366abbfe64a3de72611e810fcb94616c8cc671d56bd8c",
+    "release-pack.log.gz": "e8ec8496322847dafcd2124810338306109546e9b5a3f8a8296a3b1db4cadc13",
+    "package-manifest.json": "822decdffe5b60458b590bb650f7109f2de5a5144d77a97fa3cb932d69528a21",
+    "consumer-results.json": "1452b85f73936c2e407e93676246252dec9cc8c6561703a3ce1c3765e206bbd0",
+    "healthcare-live-results.json": "d9f2d3d33a42aa744d7c12ab86cab40717382e2b42cfe5b7c6a92048dbe06b67",
+    "source-manifest.json": "358c237007baf92aadd13442159781fd4703bd5cbbf1167f7850d5ec3a40dd86"
+  }
+}

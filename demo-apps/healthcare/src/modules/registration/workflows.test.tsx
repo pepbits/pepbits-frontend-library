@@ -210,9 +210,9 @@ describe('registration form', () => {
   });
 
   test('guided steps check each step before moving on', async () => {
-    mount('/allyvora-patients/patients?mode=new', {settings: {layout: 'wizard'}});
+    mount('/allyvora-patients/patients?mode=new', {preferences: {formNavigation: 'wizard'}});
     const u = user();
-    await screen.findByRole('navigation', {name: 'Registration steps'});
+    await screen.findByRole('navigation', {name: 'Form sections'});
     await u.click(screen.getByRole('button', {name: /Next: Personal/}));
     expect(await screen.findByRole('heading', {name: 'Personal details', level: 2})).toBeVisible();
     await u.click(screen.getByRole('button', {name: /Next: Contact/}));
@@ -221,9 +221,9 @@ describe('registration form', () => {
     expect(screen.queryByRole('heading', {name: 'Contact', level: 2})).toBeNull();
   });
 
-  test('each organisation layout renders the same sections, and deep-linked sections open first', async () => {
+  test('each preference layout renders the same sections, and deep-linked sections open first', async () => {
     for (const layout of ['scroll', 'tabs', 'wizard', 'stepper', 'accordion'] as const) {
-      const {container, unmount} = mount('/allyvora-patients/patients?mode=edit&id=1&section=address', {settings: {layout}});
+      const {container, unmount} = mount('/allyvora-patients/patients?mode=edit&id=1&section=address', {preferences: {formNavigation: layout}});
       await waitFor(() => expect(container.querySelector(`[data-form-layout="${layout}"] [data-section="address"]`)).toBeTruthy());
       if (layout === 'tabs') expect(screen.getByRole('tab', {name: /Address/})).toHaveAttribute('aria-selected', 'true');
       if (layout === 'accordion') expect(screen.getByRole('button', {name: /Address/, expanded: true})).toBeVisible();
@@ -271,39 +271,10 @@ describe('registration form', () => {
     expect(screen.queryByText(/fields need attention/)).toBeNull();
   });
 
-  test('the form shows no visible title or layout switcher; the layout is chosen in Layout setup', async () => {
+  test('the form shows no visible title or layout switcher; the layout is chosen in Preferences', async () => {
     const {api} = mount('/allyvora-patients/patients?mode=new');
     expect(await screen.findByRole('heading', {level: 1, name: 'New patient'})).toHaveClass('sr-only');
     expect(screen.queryByRole('radiogroup', {name: 'Form layout'})).toBeNull();
-    expect(posted(api, 'PUT', '/settings/layout')).toHaveLength(0);
-  });
-});
-
-describe('form layout designer', () => {
-  test('previews choices, saves for everyone and can reuse history', async () => {
-    const {api, s} = mount('/allyvora-patients/settings/layout'), u = user();
-    await u.click(await screen.findByRole('radio', {name: /^Guided steps/}));
-    expect(document.querySelector('[data-layout-preview="wizard"]')).toBeTruthy();
-    expect(screen.getByText('Not saved yet')).toBeVisible();
-    await u.click(screen.getByRole('radio', {name: 'Compact'}));
-    await u.click(screen.getByRole('switch', {name: 'Keep unsaved registrations'}));
-    await u.click(screen.getByRole('button', {name: /Save layout/}));
-    await waitFor(() => expect(posted(api, 'PUT', '/settings/layout')).toHaveLength(1));
-    expect(posted(api, 'PUT', '/settings/layout')[0]!.body).toMatchObject({layout: 'wizard', density: 'compact', autosaveDraft: false, columns: 4});
-    await waitFor(() => expect(s.notify).toHaveBeenCalledWith('Layout saved: Everyone now registers patients with guided steps.', {tone: 'success'}));
-    await waitFor(() => expect(within(document.querySelector('[data-layout-history]') as HTMLElement).getByText('Current')).toBeVisible());
-    await u.click(screen.getByRole('button', {name: /Use defaults/}));
-    expect(screen.getByRole('radio', {name: /^Single page/})).toHaveAttribute('aria-checked', 'true');
-    await u.click(screen.getByRole('button', {name: 'Discard'}));
-    expect(screen.getByRole('radio', {name: /^Guided steps/})).toHaveAttribute('aria-checked', 'true');
-  });
-
-  test('non-administrators can explore the preview but not change the organisation layout', async () => {
-    const {api} = mount('/allyvora-patients/settings/layout', {role: 'operations-analyst'});
-    expect(await screen.findByText(/Only administrators can change the organisation layout/)).toBeVisible();
-    await user().click(screen.getByRole('radio', {name: /^Tabs/}));
-    expect(screen.getByRole('radio', {name: /^Tabs/})).toHaveAttribute('aria-checked', 'false');
-    expect(screen.getByRole('button', {name: /Save layout/})).toBeDisabled();
     expect(posted(api, 'PUT', '/settings/layout')).toHaveLength(0);
   });
 });

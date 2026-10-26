@@ -33,7 +33,7 @@ describe.each(scenarios)('$name',scenario=>{
   if(page.id.includes('medslot'))await waitFor(()=>expect(container.querySelector('.reference-medslot [data-medslot-stage] h1')).toBeInTheDocument());
   if(page.id.includes('medband'))await waitFor(()=>expect(container.querySelector('.reference-medband [data-medband-stage]')).toBeInTheDocument());
   const content=container.querySelector('.healthcare-page') as HTMLElement;
-  if(allyvora)await waitFor(()=>expect(content.querySelector('[data-patient-register], [data-patient-form], [data-layout-preview]')).toBeInTheDocument());
+  if(allyvora)await waitFor(()=>expect(content.querySelector('[data-patient-register], [data-record-form]')).toBeInTheDocument());
   const ready=qualityRouteReady[target.pageId];if(ready)await waitFor(()=>expect(content.textContent).toContain(ready),{timeout:10000});
   await waitFor(()=>expect(content.querySelector('[aria-busy=true]')).toBeNull());
   expect(mock.unexpected).toEqual([]);expect(content.textContent?.trim().length).toBeGreaterThan(15);

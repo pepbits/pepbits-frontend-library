@@ -4,7 +4,11 @@ import type { UserPreferences } from "./types.ts";
    below can share them, and so the shape has one home. */
 export const DEFAULT_PREFERENCES: UserPreferences = {
   theme: "nexora",
-  formNavigation: "rail",
+  formNavigation: "scroll",
+  formColumns: 3,
+  formShowSummary: true,
+  formValidateOn: "blur",
+  formKeepUnsaved: true,
   resultView: "table",
   previewMode: "right-drawer",
   sidebarPlacement: "left",
@@ -72,7 +76,9 @@ const THEME_IDS = ["nexora", "midnight", "emerald", "sand", "rose", "slate", "co
 
 export const PREFERENCE_OPTIONS: Partial<Record<keyof UserPreferences, ReadonlyArray<unknown>>> = {
   theme: THEME_IDS,
-  formNavigation: ["rail", "tabs", "wizard"],
+  formNavigation: ["scroll", "tabs", "wizard", "stepper", "accordion"],
+  formColumns: [2, 3, 4],
+  formValidateOn: ["blur", "change", "submit"],
   resultView: ["table", "cards"],
   previewMode: ["inline", "center-card", "center-modal", "left-drawer", "right-drawer"],
   sidebarPlacement: ["left", "right"],
@@ -133,7 +139,8 @@ export function sanitizePreferences(stored: unknown): UserPreferences {
   const result = { ...DEFAULT_PREFERENCES };
   if (stored === null || typeof stored !== "object" || Array.isArray(stored)) return result;
 
-  for (const [key, value] of Object.entries(stored as Record<string, unknown>)) {
+  for (const [key, raw] of Object.entries(stored as Record<string, unknown>)) {
+    const value = normalizePreferenceValue(key, raw);
     if (!Object.hasOwn(DEFAULT_PREFERENCES, key)) continue;              // unknown key
     const typed = key as keyof UserPreferences;
     if (key === "defaultModule") { if (typeof value === "string" && (value === "" || /^[a-z][a-z0-9-]{0,63}$/.test(value))) result.defaultModule = value; continue; }
@@ -174,3 +181,8 @@ export function changedPreferenceCount(preferences: UserPreferences): number {
   return Object.keys(preferenceOverrides(preferences)).length;
 }
 
+
+/** Migration shared by storage, imports, policies and update boundaries. */
+export function normalizePreferenceValue(key: string, value: unknown): unknown {
+  return key === "formNavigation" && value === "rail" ? "scroll" : value;
+}

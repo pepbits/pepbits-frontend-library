@@ -16,7 +16,7 @@ export const NEW_DRAFT_KEY = 'registration:new';
 
 /** New and edit modes: loads the record, saves with the record version, and maps 422/409 responses back into the form. */
 export function PatientEditor({mode, id, section}: {mode: 'new' | 'edit'; id?: number; section?: SectionId}) {
-  const {client, settings, lookups, branchId, session, listQuery, saveDraft} = useAllyVora();
+  const {client, lookups, branchId, session, listQuery, saveDraft} = useAllyVora();
   const {t} = useLocalization(), navigation = useNavigation(), host = useScreenHost();
   const [record, setRecord] = useState<PatientRecord | null>(null);
   const [loadError, setLoadError] = useState<unknown>(null);
@@ -78,10 +78,10 @@ export function PatientEditor({mode, id, section}: {mode: 'new' | 'edit'; id?: n
   const title = mode === 'new' ? t('New patient') : t('Edit {name}', {name: record?.displayName ?? t('patient')});
   const branchName = session.branches.find(branch => branch.id === record?.branchId)?.name;
   return <div className="-mt-2 flex h-[calc(100dvh-var(--header-height,56px)-var(--footer-height,32px)-16px)] min-h-[560px] flex-col gap-3 px-3 pb-3 sm:px-4 lg:px-6" data-patient-editor={mode}>
-    {/* Visible title and per-form layout switcher removed by owner request; the layout is chosen in Layout setup. */}
+    {/* Visible title and per-form layout switcher removed by owner request; the layout is chosen in Preferences → Forms. */}
     <h1 className="sr-only">{title}</h1>
     <div className="min-h-0 flex-1">
-      <PatientForm key={`${mode}-${id ?? 'new'}-${record?.version ?? 0}`} mode={mode} initialValues={initialValues} settings={settings} lookups={lookups}
+      <PatientForm key={`${mode}-${id ?? 'new'}-${record?.version ?? 0}`} mode={mode} initialValues={initialValues} lookups={lookups}
         identity={record ? {mrn: record.mrn, orgNumber: record.orgNumber, patientId: record.id, ...(branchName ? {branchName} : {})} : undefined}
         initialSection={section} onSubmit={onSubmit} onCancel={() => leave(back)} onDirtyChange={onDirtyChange} draftKey={mode === 'new' ? NEW_DRAFT_KEY : null}/>
     </div>

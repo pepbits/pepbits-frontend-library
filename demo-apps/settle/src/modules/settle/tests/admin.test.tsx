@@ -40,7 +40,7 @@ describe('Settings, reports, audit and print', () => {
     const settle = mockSettle();
     renderSettle('/settings', {settle});
     fireEvent.click(await screen.findByRole('button', {name: /Desk user/}));
-    fireEvent.click(screen.getByRole('menuitem', {name: /Anita Das/}));
+    fireEvent.click(await screen.findByRole('menuitem', {name: /Anita Das/}));
     expect(await screen.findByText(/Changing them needs the “Manage settings” right/)).toBeInTheDocument();
     expect(screen.queryByRole('button', {name: 'Reset demo data'})).toBeNull();
   });

@@ -207,17 +207,17 @@ Regression corrections in 6b-9: the Suite appointment board remains reachable by
 
 ## AllyVora Patients — HCD-AV
 
-The fourteenth header app is AllyVora Patients (short label Patients), with Patient register, Register a patient and Form layout: healthcare now has 196 menu destinations. The [app guide](../../demo-apps/healthcare/README.md#allyvora-patients--fourteenth-app) gives URLs, setup and user steps; the [standalone feature](allyvora-patients-demo.md) defines the same 99-field form, nine sections, five layouts, wristband, rules drawer, activity and confirmed status changes. [Delivery evidence](../releases/unreleased/healthcare-allyvora-patients-2026-10-26.md) records local verification only.
+The fourteenth header app is AllyVora Patients (short label Patients), with Patient register and Register a patient: healthcare now has 195 menu destinations. The [app guide](../../demo-apps/healthcare/README.md#allyvora-patients--fourteenth-app) gives URLs, setup and user steps; the [standalone feature](allyvora-patients-demo.md) defines the same 99-field form, nine sections, five layouts, wristband, rules drawer, activity and confirmed status changes. [Delivery evidence](../releases/unreleased/healthcare-allyvora-patients-2026-10-26.md) records local verification only.
 
-The existing healthcare host provides session/preferences/localization/shell exactly once. Module-specific API state and UI grants are scoped to the authenticated identity. Effective preferences and tenant locks remain authoritative; organisation layout is a distinct API setting. UI registration/layout permissions match standalone; the unchanged API's simulated user and lack of server role enforcement remain visible limitations. API failures, 422 fields and stale 409 edits preserve entered values; transient drafts disappear on module exit/reload/identity changes.
+The existing healthcare host provides session/preferences/localization/shell exactly once. Module-specific API state and UI grants are scoped to the authenticated identity. Effective preferences and tenant locks remain authoritative; the shared Forms preferences replace the removed organisation layout setup. UI registration permissions match standalone; the unchanged API's simulated user and lack of server role enforcement remain visible limitations. API failures, 422 fields and stale 409 edits preserve entered values; transient drafts disappear on module exit/reload/identity changes.
 
 | Acceptance | Contract |
 | --- | --- |
-| HCD-AV-01 | Fourteen header apps; three patient entries, collision-free prefixed routes and query modes; Suite URLs unchanged |
+| HCD-AV-01 | Fourteen header apps; two patient entries, collision-free prefixed routes and query modes; Suite URLs unchanged |
 | HCD-AV-03/04 | Register filters/search/refresh, record wristband, section editing, saved values and activity |
 | HCD-AV-06/07 | Rules drawer, duplicate warnings, memory draft/signature restore, validated registration and MRN |
-| HCD-AV-08/09 | Confirmed status changes; administrator organisation layout preview/save/history and editor switcher |
+| HCD-AV-08/09 | Confirmed status changes; shared Preferences Forms, new/edit/view in five layouts and tenant locks |
 | HCD-AV-10 | Shared preference updates and EN/AR browser axe; four-profile unit/host matrix includes managed preferences |
 | HCD-AV-PACK | Self-contained schema 2 backend with Node 24 Linux SQLite prebuild; packaged same-origin register/create/view/edit/status/audit/layout smoke |
 
-No source page is intentionally omitted. Original standalone deferrals, human language/accessibility review, clinical acceptance and production identity enforcement remain outside this software demo. Local archives and smoke checks do not deploy it. The reviewer must add the [documented Compose service and web environment](../development/TEST-SITE.md#allyvora-patients-backend-in-schema-2) before activating its workflows on the test site.
+The healthcare Layout setup page is removed; use Preferences → Forms. The standalone app retains its original settings workflow. Original standalone deferrals, human language/accessibility review, clinical acceptance and production identity enforcement remain outside this software demo. Local archives and smoke checks do not deploy it. The reviewer must add the [documented Compose service and web environment](../development/TEST-SITE.md#allyvora-patients-backend-in-schema-2) before activating its workflows on the test site.

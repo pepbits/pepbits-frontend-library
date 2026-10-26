@@ -1,4 +1,5 @@
 import {fireEvent, screen, waitFor, within} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import {describe, expect, it} from 'vitest';
 import {renderSettle} from '../../../test/host';
 import {mockSettle} from '../../../test/mock-settle';
@@ -52,10 +53,11 @@ describe('Desk, desk user and counter', () => {
   });
 
   it('quick search finds bills from / and opens the chosen one', async () => {
+    const user = userEvent.setup();
     const settle = mockSettle();
     const {navigation} = renderSettle('/', {settle});
     await screen.findByText('Needs your attention');
-    fireEvent.keyDown(window, {key: '/'});
+    await user.keyboard('/');
     const dialog = await screen.findByRole('dialog', {name: 'Search'});
     fireEvent.change(within(dialog).getByRole('combobox', {name: 'Search'}), {target: {value: 'BL'}});
     await waitFor(() => expect(settle.calls.some(c => c.path === '/search' && c.search.get('q') === 'BL')).toBe(true));

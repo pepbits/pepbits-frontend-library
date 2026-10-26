@@ -9,11 +9,11 @@ test('tab navigation preserves host-owned notes draft while hiding inactive cont
  render(<Host/>);fireEvent.change(screen.getByLabelText('Notes draft'),{target:{value:'Synthetic decision'}});fireEvent.click(screen.getByRole('tab',{name:/ Personal$/}));expect(screen.getByLabelText('Notes draft')).not.toBeVisible();fireEvent.click(screen.getByRole('tab',{name:/ Notes$/}));expect(screen.getByLabelText('Notes draft')).toHaveValue('Synthetic decision');expect(screen.getByLabelText('Notes draft')).toBeVisible();
 });
 test('numbered card exposes the shared reference heading and read action',()=>{
- let read=false;render(<RecordSectionCard id="personal" index={1} title="Personal information" subtitle="Core details" icon={<span/>} onRead={()=>{read=true;}}><p>Fields</p></RecordSectionCard>);expect(screen.getByRole('heading',{name:'Personal information'})).toBeVisible();fireEvent.click(screen.getByRole('button',{name:'Read'}));expect(read).toBe(true);
+ let read=false;render(<RecordSectionCard id="personal" index={1} title="Personal information" subtitle="Core details" icon={<span/>} onRead={()=>{read=true;}}><p>Fields</p></RecordSectionCard>);expect(screen.getByRole('heading',{name:'Personal information',level:3})).toBeVisible();fireEvent.click(screen.getByRole('button',{name:'Read'}));expect(read).toBe(true);
 });
 
 test('tab names include the visible step number and title',()=>{
  render(<Host/>);const tab=screen.getByRole('tab',{name:/ Personal$/});
- expect(tab.querySelector('[aria-hidden="true"]')).toHaveTextContent('01');
+ expect(tab.querySelector('[aria-hidden="true"]')).toHaveTextContent('1');
  expect(tab).toHaveAccessibleName('01 Personal');
 });

@@ -14,6 +14,9 @@ import {readOptionsWorkbook} from '@pepbits/patterns/imports';
 import {PageTemplateWorkspace} from '@pepbits/page-engines/templates';
 import type {PageTemplateDefinition} from '@pepbits/page-engines/types';
 import {HostSessionProvider} from '@pepbits/platform/auth';
+import {PreferencesPage} from '@pepbits/shell/preferences-page';
+import {RecordForm,RecordSectionCard} from '@pepbits/page-engines/record-layout';
+import {RecordSummaryBand} from '@pepbits/patterns/record-form';
 import {ShellProvider, defineProduct} from '@pepbits/shell';
 import {GATES} from '@pepbits/ai/config';
 
@@ -26,6 +29,7 @@ export default function Consumer() {
 }
 function Surface() {
   const {preferences}=usePreferences(),format=createFormatters(formatOptionsFrom(preferences));
+  const [active,setActive]=useState('details');
   const [clicks,setClicks]=useState(0),[worker,setWorker]=useState('idle');
   const t=createTranslator({language:preferences.language,catalogs:{en:{'Proof action':'Packed action'}}});
   async function checkWorker() {
@@ -45,6 +49,11 @@ function Surface() {
             <Input label="Packed input" defaultValue="Example"/><p>AI gates: {GATES.length}; CSV rows: {parseCsv('name\nExample').rows.length}</p>
           </CardContent></Card>
           <div data-testid="pattern"><LabelPreview label={{recordId:'fixture',title:'Packed label',lines:['Example'],code:'fixture',image:'',widthMm:50,heightMm:25}}/></div>
+          <div style={{height:500}}><RecordForm mode="edit" values={{}} active={active} onActive={setActive} sections={[{id:'details',title:'Details'},{id:'notes',title:'Notes'}]}
+            progress={{details:{state:'complete',requiredTotal:1,requiredDone:1,errorCount:0,optional:false},notes:{state:'untouched',requiredTotal:0,requiredDone:0,errorCount:0,optional:true}}}
+            summary={<RecordSummaryBand title="Packed record" facts={['Fictional item']} alert={{label:'Ready',tone:'success'}} code="PACK-001" codeCaption="PACK-001" completion={50}/>}
+            renderSection={section=><RecordSectionCard id={section.id} title={section.title} index={0}><Input label={`Packed ${section.id}`} defaultValue="Retained"/></RecordSectionCard>}/></div>
+          <PreferencesPage/>
           <PageTemplateWorkspace definition={definition} scope={{tenantId:'fixture',applicationId:'proof',userId:'fixture',pageId:'proof',recordId:'fixture'}} initialDocument={{id:'fixture',version:1,values:{name:'Example'},lines:[],rows:[]}} readOnly/>
           <Button onClick={checkWorker}>Check packed worker</Button><output data-testid="worker">{worker}</output>
         </main>
