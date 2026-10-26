@@ -12,6 +12,9 @@ test.each([
   ['/allyvora-patients/patients', 'mode=view&id=12', {pageId: PAGE.register, mode: 'view', recordId: '12'}],
   ['/allyvora-patients/patients', 'view=inactive&q=meera&page=2', {pageId: PAGE.register, query: 'view=inactive&q=meera&page=2'}],
   ['/preferences', '', {pageId: PAGE.preferences, query: ''}],
+  ['/allyvora-patients/visits/new', '', {pageId: PAGE.startVisit}],
+  ['/allyvora-patients/visits/new', 'patient=12', {pageId: PAGE.startVisit, recordId: '12'}],
+  ['/allyvora-patients/emergency', '', {pageId: PAGE.emergency}],
 ] as const)('source URL %s?%s resolves and round-trips', (path, query, expected) => {
   const target = targetFromPath(path, query);
   expect(target).toEqual(expected);
@@ -33,12 +36,12 @@ test('malformed ids, sections and removed layout setup do not open a record', ()
 });
 
 
-test('healthcare adds exactly one app with three destinations and leaves suite routes intact', () => {
+test('healthcare adds exactly one app with five destinations and leaves suite routes intact', () => {
   expect(Object.keys(product.modules)).toHaveLength(14);
   const module = product.modules[MODULE_ID]!;
   expect(module.label).toBe('AllyVora Patients');
   expect(module.shortLabel).toBe('Patients');
-  expect(module.navigation.flatMap(section => section.items.map(item => item.pageId))).toEqual([PAGE.register, PAGE.create]);
+  expect(module.navigation.flatMap(section => section.items.map(item => item.pageId))).toEqual([PAGE.register, PAGE.create, PAGE.startVisit, PAGE.emergency]);
   expect(new Set(pages.map(page => page.id)).size).toBe(pages.length);
   expect(targetFromPath('/suite/patients').pageId).toBe('suite-patients');
   expect(hrefFor({pageId: 'suite-patients'})).toBe('/suite/patients');
