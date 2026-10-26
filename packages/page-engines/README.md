@@ -162,3 +162,7 @@ See `table-composition.test.tsx` and the ERP master composition tests.
 ### Optional worklist cell presentation
 
 `WorklistTableComposition.renderCell(row, column)` supplies read-only cell content, for example an effective-date validity bar. Returning `undefined` retains managed formatting. It does not replace column selection, row actions, keyboard opening, inline commit validation or table preferences. Card presentation remains the existing engine composition. A direct test covers custom cells, fallback formatting and selection; ERP rate checks cover the live consumer.
+
+## Tabular line forms (phase 6c-7b)
+
+`./templates` adds `TabularFieldRows` and `TabularFieldColumn`, a controlled semantic table for line forms. Supply stable row IDs, typed columns, defaults, formatted read-only values and footer totals. The host owns calculations, validation, permissions and persistence. Optional suggestions use native datalists. Read-only mode removes mutation controls; disabled mode fences callbacks while retaining input. Tables consume effective density, wrapping, stripes and sticky-header presentation, and controls use effective form scale and radius. A document line form deliberately retains all its rows together rather than applying worklist pagination. Existing `FieldRows` and other consumers are unchanged. Direct tests cover stable IDs, blank numeric input, additions/removals, read-only columns, mounted denial, empty state and managed table presentation.

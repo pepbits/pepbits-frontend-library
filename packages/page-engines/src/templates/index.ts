@@ -7,5 +7,6 @@ export * from "./template-specialized";
 export * from "./template-state";
 
 export {FieldRows,type FieldRow} from './field-rows';
+export {TabularFieldRows,type TabularFieldColumn} from './tabular-field-rows';
 export {EditableMatrix} from './editable-matrix';
 export * from './report-filters';

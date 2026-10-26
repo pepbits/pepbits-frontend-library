@@ -63,3 +63,7 @@ All three [heavy-lock waits](evidence/restructure-phase-6c-7a-2026-10-25/queue.j
 ## Upgrade and rollback
 
 No API changes or data migration. Removing the additive editor wiring restores the previous master worklist/record composition; existing ERP2 record links and saved layouts remain compatible. Publication, deployment and real financial acceptance are not part of this work.
+
+## Merged to main after phase 8
+
+26 October integration note: prepared for the post-phase-8 main baseline on `restructure/erp-parity-merge`; the actual merges remain pending linked worktree metadata access. The `main` branch has not been changed. This dated record and all original evidence hashes remain unchanged apart from this note. [The integration record](erp-parity-integration-2026-10-26.md) will identify the combined source and fresh verification separately. Whole-destination parity remains incomplete.

@@ -63,3 +63,7 @@ The [read-only source audit](evidence/restructure-phase-6c-7a2-2026-10-25/source
 ## Upgrade and rollback
 
 No migration or API rebuild. Reverting the additive master wiring restores the earlier composition and retains record URLs and saved layouts. No publication or deployment was performed. The launcher owns and stops its API, production Next server and browser on completion/failure; final cleanup is recorded with the HTTP identity receipt.
+
+## Merged to main after phase 8
+
+26 October integration note: prepared for the post-phase-8 main baseline on `restructure/erp-parity-merge`; the actual merges remain pending linked worktree metadata access. The `main` branch has not been changed. This dated record and all original evidence hashes remain unchanged apart from this note. [The integration record](erp-parity-integration-2026-10-26.md) will identify the combined source and fresh verification separately. Whole-destination parity remains incomplete.
