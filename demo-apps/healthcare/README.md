@@ -193,15 +193,17 @@ Choose **Patients** (AllyVora Patients) in the header, then Patient register or 
 | Healthcare URL | Workflow |
 | --- | --- |
 | `/allyvora-patients` or `/allyvora-patients/patients` | Register, counts, URL search/filter/sort/paging |
-| `/allyvora-patients/patients?mode=new` | New registration; optional `&section=contact` |
-| `/allyvora-patients/patients?mode=view&id=12` | Wristband, recorded values, missing details, activity and status change |
-| `/allyvora-patients/patients?mode=edit&id=12&section=contact` | Version-aware edit and section deep link |
+| `/allyvora-patients/patients/new` | New registration; optional `?section=contact` |
+| `/allyvora-patients/patients/12` | Patient record: wristband, recorded values, missing details, activity and status change |
+| `/allyvora-patients/patients/12/edit?section=contact` | Version-aware edit and section deep link |
+
+Create, record and edit are dedicated pages (`allyvora-patient-new`, `allyvora-patient-view`, `allyvora-patient-edit`). Links saved before this change, `/allyvora-patients/patients?mode=new|view|edit&id=12` (with optional `&section=`), still open the matching page; the app always writes the new URLs.
 
 The same 99-field, nine-section definition and all five layouts from the [standalone guide](../allyvora-patients/README.md) apply: single page, tabs, guided steps, side steps and accordion. Register → New patient → complete required fields/consent → Save opens the record with its MRN. Edit a section, inspect Activity and confirm Mark inactive/Make active. Check form rules opens the rules drawer and jumps to missing fields. Every user chooses these options in **Preferences → Forms**, subject to tenant defaults, locks and allowed values. Layout setup has been removed from healthcare. `RecordForm`, `RecordSectionCard`, `RecordSummaryBand` and `FormRulesDrawer` provide the presentation from public packages; new/edit/view all follow the five layouts.
 
 Shared presentation, formatting, table/card view, page size, language direction, reduced motion and shortcut settings use effective healthcare preferences and tenant locks. Module UI grants match standalone: registration/edit/status for enterprise-admin, admin, operations-analyst and finance-manager. The unchanged AllyVora API has simulated identity and no role enforcement: its audit names its seeded user, not the shell actor. Its English form copy and standalone limitations remain explicit in the [feature contract](../../docs/features/allyvora-patients-demo.md).
 
-Recoverable failures retain form values, 422 errors identify fields, and stale 409 saves keep edits for resolution. Drafts are memory only, cleared by reload, sign-out, identity/branch/role change or leaving the registration module (including another header app or Preferences). No patient values enter browser storage. Unknown prefixed routes show not found; malformed record IDs return to the register.
+Recoverable failures retain form values, 422 errors identify fields, and stale 409 saves keep edits for resolution. Drafts are memory only, cleared by reload, sign-out, identity/branch/role change or leaving the registration module (including another header app or Preferences). No patient values enter browser storage. Unknown prefixed routes show not found, including malformed record paths such as `/allyvora-patients/patients/abc` or `/allyvora-patients/patients/0/edit`; a legacy `?mode=` link with a malformed `id` returns to the register.
 
 Build with `NEXT_PUBLIC_ALLYVORA_API_URL=/allyvora-api` alongside `NEXT_PUBLIC_API_URL=/api`. At runtime set `ALLYVORA_API_URL=http://127.0.0.1:33415` and the existing `HEALTHCARE_API_URL` for shared authentication/preferences. The new same-origin proxy forwards `/allyvora-api/*` to the backend's `/api/*`; the server target is never public configuration. Start the packaged backend with `node dist/server.js`, working directory `src/allyvora-backend`, `PORT=33415` and a persistent `DB_PATH`. See the exact [test-site Compose contract](../../docs/development/TEST-SITE.md#allyvora-patients-backend-in-schema-2).
 

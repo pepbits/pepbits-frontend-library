@@ -273,7 +273,7 @@ export function PatientForm(props: PatientFormProps) {
         <p className="font-semibold">{t('This may be a returning patient. Check before creating a new record.')}</p>
         <ul className="mt-1.5 space-y-1" data-duplicates="">
           {duplicates.map(candidate => <li key={candidate.id} className="flex flex-wrap items-center gap-x-3 gap-y-0.5">
-            <a href={navigation.hrefFor({pageId: PAGE.register, mode: 'view', recordId: String(candidate.id)})} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-bold text-[var(--text)] underline underline-offset-2">{candidate.displayName}<ExternalLink className="size-3" aria-hidden="true"/><span className="sr-only"> {t('(opens in a new tab)')}</span></a>
+            <a href={navigation.hrefFor({pageId: PAGE.view, mode: 'view', recordId: String(candidate.id)})} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-bold text-[var(--text)] underline underline-offset-2">{candidate.displayName}<ExternalLink className="size-3" aria-hidden="true"/><span className="sr-only"> {t('(opens in a new tab)')}</span></a>
             <span className="tabular-nums text-[var(--text-muted)]">{candidate.mrn}{candidate.ageLabel ? `, ${candidate.ageLabel}` : ''}{candidate.sex ? ` ${SEX_SHORT[candidate.sex]}` : ''}</span>
             <span className="text-[var(--warning-ink)]">{candidate.reasons.map((reason, i) => i ? reason.charAt(0).toLowerCase() + reason.slice(1) : reason).join(', ')}</span>
           </li>)}

@@ -21,7 +21,7 @@
   ],
   "adaptations": [
     "lucide-react icons come from @pepbits/icons; CircleDot, FolderOpen, Ambulance, HelpCircle and UserCheck are not exported there and are imported from lucide-react (the library @pepbits/icons wraps).",
-    "next/link and next/navigation are replaced by link.tsx: /registration -> /allyvora-patients/patients?mode=new, /front-desk/visits/new -> /allyvora-patients/visits/new, /front-desk/emergency -> /allyvora-patients/emergency, /patients/<numeric id> -> patient view. Other source routes (identity follow-up, identify, appointments, triage, nurse intake, emergency board, clinic queue, workflow hrefs) render disabled with the title 'Not available in this demo'.",
+    "next/link and next/navigation are replaced by link.tsx: /registration -> /allyvora-patients/patients/new, /front-desk/visits/new -> /allyvora-patients/visits/new, /front-desk/emergency -> /allyvora-patients/emergency, /patients/<numeric id> -> patient view (/allyvora-patients/patients/<id>). Other source routes (identity follow-up, identify, appointments, triage, nurse intake, emergency board, clinic queue, workflow hrefs) render disabled with the title 'Not available in this demo'.",
     "useSearchParams('patient') is the route target's recordId (?patient=<id>).",
     "useToast posts to the host notifications (useScreenHost().notify) instead of the source ToastProvider.",
     "api() drops the source's 401 redirect handler and grant-refusal event; the origin is NEXT_PUBLIC_ALLYVORA_FRONT_DESK_API_URL (default '/api', as in the source). Network failures become ApiError(0) so the pages show their own empty states / error notes.",

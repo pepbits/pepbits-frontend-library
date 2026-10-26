@@ -43,7 +43,7 @@ export function PatientEditor({mode, id, section}: {mode: 'new' | 'edit'; id?: n
 
   // A branch change after the form opens doesn't reset what was typed.
   const initialValues = useMemo<FormValues | null>(() => mode === 'new' ? defaultValues(todayISO(), branchId) : record ? {...record.data} : null, [mode, record]); // eslint-disable-line react-hooks/exhaustive-deps
-  const back: NavigationTarget = mode === 'edit' && id ? {pageId: PAGE.register, mode: 'view', recordId: String(id)} : {pageId: PAGE.register, ...(listQuery ? {query: listQuery} : {})} as NavigationTarget;
+  const back: NavigationTarget = mode === 'edit' && id ? {pageId: PAGE.view, mode: 'view', recordId: String(id)} : {pageId: PAGE.register, ...(listQuery ? {query: listQuery} : {})} as NavigationTarget;
   const leave = useCallback((target: NavigationTarget) => {if (dirty.current) setLeaving(target); else navigation.open(target);}, [navigation]);
   const onDirtyChange = useCallback((next: boolean) => {dirty.current = next; host.document.reportDirty(next);}, [host.document]);
 
@@ -52,7 +52,7 @@ export function PatientEditor({mode, id, section}: {mode: 'new' | 'edit'; id?: n
       const saved = mode === 'new' ? await client.patients.create(values) : await client.patients.update(record!.id, values, record!.version);
       dirty.current = false; host.document.reportDirty(false);
       host.notify(`${t(mode === 'new' ? 'Patient registered' : 'Changes saved')}: ${t('{name}, MRN {mrn}', {name: saved.displayName, mrn: saved.mrn})}`, {tone: 'success'});
-      navigation.open({pageId: PAGE.register, mode: 'view', recordId: String(saved.id)});
+      navigation.open({pageId: PAGE.view, mode: 'view', recordId: String(saved.id)});
       return {ok: true};
     } catch (failure) {
       if (failure instanceof AllyVoraFailure && failure.status === 422 && failure.body.errors) {

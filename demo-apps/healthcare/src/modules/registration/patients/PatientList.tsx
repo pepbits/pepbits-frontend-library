@@ -86,8 +86,8 @@ export function PatientList({query}: {query: string}) {
   const labels: Record<View, string> = {active: 'All patients', today: 'Registered today', week: 'Last 7 days', incomplete: 'Need more details', inactive: 'Inactive'};
   const total = list?.total ?? 0;
   const filtersOn = !!(sex || payer || branch || params.get('q'));
-  const viewTarget = (row: PatientListItem) => ({pageId: PAGE.register, mode: 'view' as const, recordId: String(row.id)});
-  const editTarget = (row: PatientListItem) => ({pageId: PAGE.register, mode: 'edit' as const, recordId: String(row.id)});
+  const viewTarget = (row: PatientListItem) => ({pageId: PAGE.view, mode: 'view' as const, recordId: String(row.id)});
+  const editTarget = (row: PatientListItem) => ({pageId: PAGE.edit, mode: 'edit' as const, recordId: String(row.id)});
   const follow = (target: NavigationTarget) => (event: React.MouseEvent<HTMLElement>) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.button === 1) return;
     event.preventDefault(); event.stopPropagation(); navigation.open(target);

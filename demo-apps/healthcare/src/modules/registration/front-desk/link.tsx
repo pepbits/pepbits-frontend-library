@@ -12,11 +12,11 @@ const UNAVAILABLE = "Not available in this demo";
 /** Source href → demo href, or null when the source page is not part of this demo. */
 export function demoHref(href: string): string | null {
   const [path = "", query = ""] = href.split("?");
-  if (path === "/registration") return "/allyvora-patients/patients?mode=new";
+  if (path === "/registration") return "/allyvora-patients/patients/new";
   if (path === "/front-desk/emergency") return "/allyvora-patients/emergency";
   if (path === "/front-desk/visits/new") return "/allyvora-patients/visits/new" + (query ? `?${query}` : "");
   const chart = path.match(/^\/patients\/([1-9][0-9]{0,9})$/);
-  if (chart) return `/allyvora-patients/patients?mode=view&id=${chart[1]}`;
+  if (chart) return `/allyvora-patients/patients/${chart[1]}`;
   return null;
 }
 

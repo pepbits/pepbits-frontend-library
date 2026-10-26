@@ -213,11 +213,12 @@ The existing healthcare host provides session/preferences/localization/shell exa
 
 | Acceptance | Contract |
 | --- | --- |
-| HCD-AV-01 | Fourteen header apps; two patient entries, collision-free prefixed routes and query modes; Suite URLs unchanged |
+| HCD-AV-01 | Fourteen header apps; two patient entries, collision-free prefixed routes and dedicated register/create/record/edit pages; Suite URLs unchanged |
 | HCD-AV-03/04 | Register filters/search/refresh, record wristband, section editing, saved values and activity |
 | HCD-AV-06/07 | Rules drawer, duplicate warnings, memory draft/signature restore, validated registration and MRN |
 | HCD-AV-08/09 | Confirmed status changes; shared Preferences Forms, new/edit/view in five layouts and tenant locks |
 | HCD-AV-10 | Shared preference updates and EN/AR browser axe; four-profile unit/host matrix includes managed preferences |
+| HCD-AV-11 | Legacy `?mode=new/view/edit` patient links open the dedicated create, record and edit pages; malformed record paths show not found |
 | HCD-AV-PACK | Self-contained schema 2 backend with Node 24 Linux SQLite prebuild; packaged same-origin register/create/view/edit/status/audit/layout smoke |
 
 The healthcare Layout setup page is removed; use Preferences → Forms. The standalone app retains its original settings workflow. Original standalone deferrals, human language/accessibility review, clinical acceptance and production identity enforcement remain outside this software demo. Local archives and smoke checks do not deploy it. The reviewer must add the [documented Compose service and web environment](../development/TEST-SITE.md#allyvora-patients-backend-in-schema-2) before activating its workflows on the test site.

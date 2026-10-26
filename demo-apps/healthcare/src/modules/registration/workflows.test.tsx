@@ -36,7 +36,7 @@ async function choose(label: RegExp, query: string, option: string) {
 describe('patient register', () => {
   test('lists API patients and keeps search, views and filters in the URL', async () => {
     const {api, s} = mount('/allyvora-patients/patients'), u = user();
-    expect(await screen.findByRole('link', {name: /^Mr Joseph Kurian/})).toHaveAttribute('href', '/allyvora-patients/patients?mode=view&id=28');
+    expect(await screen.findByRole('link', {name: /^Mr Joseph Kurian/})).toHaveAttribute('href', '/allyvora-patients/patients/28');
     await waitFor(() => expect(api.calls.some(call => call.path === '/patients?status=active&sort=updated&dir=desc&page=1&pageSize=20')).toBe(true));
     await u.type(screen.getByRole('textbox', {name: 'Search patients'}), 'Joseph');
     await waitFor(() => expect(s.replace).toHaveBeenCalledWith('/allyvora-patients/patients?q=Joseph'));
@@ -47,9 +47,9 @@ describe('patient register', () => {
     fireEvent.change(screen.getByRole('combobox', {name: 'Sort by'}), {target: {value: 'name'}});
     expect(s.replace).toHaveBeenCalledWith('/allyvora-patients/patients?sort=name');
     await u.click(screen.getByRole('link', {name: /^Mr Joseph Kurian/}));
-    expect(s.open).toHaveBeenCalledWith({pageId: 'allyvora-patients', mode: 'view', recordId: '28'});
+    expect(s.open).toHaveBeenCalledWith({pageId: 'allyvora-patient-view', mode: 'view', recordId: '28'});
     await u.click(screen.getByRole('link', {name: 'Edit Mr Joseph Kurian'}));
-    expect(s.open).toHaveBeenCalledWith({pageId: 'allyvora-patients', mode: 'edit', recordId: '28'});
+    expect(s.open).toHaveBeenCalledWith({pageId: 'allyvora-patient-edit', mode: 'edit', recordId: '28'});
     expect(screen.getByRole('tab', {name: /All patients/})).toHaveTextContent(String(fixture.stats.active));
   });
 
@@ -101,20 +101,20 @@ describe('patient register', () => {
   test('roles without registration rights cannot create from the register or open the editor', async () => {
     mount('/allyvora-patients/patients', {role: 'school-teacher'});
     expect(await screen.findByRole('button', {name: /New patient/})).toBeDisabled();
-    mount('/allyvora-patients/patients?mode=new', {role: 'school-teacher'});
+    mount('/allyvora-patients/patients/new', {role: 'school-teacher'});
     expect(await screen.findByText('Access not permitted')).toBeVisible();
   });
 });
 
 describe('patient record', () => {
   test('shows the band, sections, masked identity, gaps and activity; status changes are confirmed', async () => {
-    const {api, s} = mount('/allyvora-patients/patients?mode=view&id=2'), u = user();
+    const {api, s} = mount('/allyvora-patients/patients/2'), u = user();
     expect(await screen.findByRole('heading', {name: 'Patient record: Mr Suresh Kumar'})).toBeInTheDocument();
     const band = screen.getByRole('group', {name: 'Patient summary'});
     expect(within(band).getByText('Mr Suresh Kumar')).toBeVisible();
     expect(screen.getByText('•••• 1452')).toBeVisible();
     expect(screen.queryByText('669264861452')).toBeNull();
-    expect(screen.getByRole('link', {name: /Edit Contact/})).toHaveAttribute('href', '/allyvora-patients/patients?mode=edit&id=2&section=contact');
+    expect(screen.getByRole('link', {name: /Edit Contact/})).toHaveAttribute('href', '/allyvora-patients/patients/2/edit?section=contact');
     expect(screen.getByRole('heading', {name: 'Details still missing'})).toBeVisible();
     expect(within(screen.getByRole('region', {name: 'Activity'})).getByText(fixture.audit['2']![0]!.actor)).toBeVisible();
     await u.click(screen.getByRole('button', {name: 'Mark inactive'}));
@@ -127,7 +127,7 @@ describe('patient record', () => {
   });
 
   test('a missing patient shows not found with a way back', async () => {
-    const {s} = mount('/allyvora-patients/patients?mode=view&id=999');
+    const {s} = mount('/allyvora-patients/patients/999');
     await user().click(await screen.findByRole('button', {name: 'Open patient register'}));
     expect(s.open).toHaveBeenCalledWith({pageId: 'allyvora-patients'});
   });
@@ -135,7 +135,7 @@ describe('patient record', () => {
 
 describe('registration form', () => {
   test('saving an empty registration reveals problems and sends nothing; a complete one is created and opened', {timeout: 90000}, async () => {
-    const {api, s} = mount('/allyvora-patients/patients?mode=new'), u = user();
+    const {api, s} = mount('/allyvora-patients/patients/new'), u = user();
     const form = await screen.findByRole('textbox', {name: /First name/});
     await u.click(screen.getByRole('button', {name: /Save patient/}));
     expect(await screen.findByText(/fields need attention/)).toBeVisible();
@@ -162,13 +162,13 @@ describe('registration form', () => {
     const body = posted(api, 'POST', '/patients')[0]!.body as {values: Record<string, unknown>};
     expect(body.values).toMatchObject({givenName: 'Fictional', displayName: 'Fictional Person', city: 'Kadavanthra', state: 'KL', paperFormRef: 'PF-001', branchId: 1, department: 'ortho'});
     expect(body.values).not.toHaveProperty('signature');
-    await waitFor(() => expect(s.open).toHaveBeenCalledWith({pageId: 'allyvora-patients', mode: 'view', recordId: '29'}));
+    await waitFor(() => expect(s.open).toHaveBeenCalledWith({pageId: 'allyvora-patient-view', mode: 'view', recordId: '29'}));
     expect(s.notify).toHaveBeenCalledWith(expect.stringMatching(/^Patient registered: Fictional Person, MRN/), {tone: 'success'});
   });
 
   test('server field errors return to the form; conflicts keep the edit and explain why', {timeout: 90000}, async () => {
     const reject = (call: MockCall) => call.method === 'PUT' && call.path === '/patients/1' ? Response.json({message: 'Ward Admin saved this record. Reload to see their changes.'}, {status: 409}) : undefined;
-    const {api, s} = mount('/allyvora-patients/patients?mode=edit&id=1', {fail: reject}), u = user();
+    const {api, s} = mount('/allyvora-patients/patients/1/edit', {fail: reject}), u = user();
     const email = await screen.findByRole('textbox', {name: /^Email/});
     expect(screen.getByText('The registering branch can’t change after the MRN is assigned')).toBeVisible();
     fill(email, 'kavya@example.test');
@@ -181,23 +181,23 @@ describe('registration form', () => {
 
   test('422 field errors from the API are shown on the matching field', async () => {
     const reject = (call: MockCall) => call.method === 'PUT' ? Response.json({message: 'Some fields need attention', errors: {mobile: 'This mobile is registered to another patient'}}, {status: 422}) : undefined;
-    const {s} = mount('/allyvora-patients/patients?mode=edit&id=1', {fail: reject}), u = user();
+    const {s} = mount('/allyvora-patients/patients/1/edit', {fail: reject}), u = user();
     await u.click(await screen.findByRole('button', {name: /Save changes/}));
     expect(await screen.findByText('This mobile is registered to another patient')).toBeVisible();
     expect(s.notify).toHaveBeenCalledWith('Some fields need attention: The server found problems the form highlighted for you.', {tone: 'error'});
   });
 
   test('possible duplicates are offered while typing, with links to existing records', async () => {
-    mount('/allyvora-patients/patients?mode=new');
+    mount('/allyvora-patients/patients/new');
     await user().type(await screen.findByRole('textbox', {name: /Mobile number/}), '9534760382');
     const notice = await screen.findByText('This may be a returning patient. Check before creating a new record.');
     const link = within(notice.closest('[data-notice]') as HTMLElement).getByRole('link', {name: /^Mr Joseph Kurian/});
-    expect(link).toHaveAttribute('href', '/allyvora-patients/patients?mode=view&id=28');
+    expect(link).toHaveAttribute('href', '/allyvora-patients/patients/28');
     expect(link).toHaveAttribute('target', '_blank');
   });
 
   test('a manual display name is kept while name parts change, and dependent consultant choices are cleared', async () => {
-    mount('/allyvora-patients/patients?mode=edit&id=1');
+    mount('/allyvora-patients/patients/1/edit');
     const u = user();
     const display = await screen.findByRole('textbox', {name: /Display name/});
     await u.clear(display); await u.type(display, 'Kavya D.');
@@ -210,7 +210,7 @@ describe('registration form', () => {
   });
 
   test('guided steps check each step before moving on', async () => {
-    mount('/allyvora-patients/patients?mode=new', {preferences: {formNavigation: 'wizard'}});
+    mount('/allyvora-patients/patients/new', {preferences: {formNavigation: 'wizard'}});
     const u = user();
     await screen.findByRole('navigation', {name: 'Form sections'});
     await u.click(screen.getByRole('button', {name: /Next: Personal/}));
@@ -223,7 +223,7 @@ describe('registration form', () => {
 
   test('each preference layout renders the same sections, and deep-linked sections open first', async () => {
     for (const layout of ['scroll', 'tabs', 'wizard', 'stepper', 'accordion'] as const) {
-      const {container, unmount} = mount('/allyvora-patients/patients?mode=edit&id=1&section=address', {preferences: {formNavigation: layout}});
+      const {container, unmount} = mount('/allyvora-patients/patients/1/edit?section=address', {preferences: {formNavigation: layout}});
       await waitFor(() => expect(container.querySelector(`[data-form-layout="${layout}"] [data-section="address"]`)).toBeTruthy());
       if (layout === 'tabs') expect(screen.getByRole('tab', {name: /Address/})).toHaveAttribute('aria-selected', 'true');
       if (layout === 'accordion') expect(screen.getByRole('button', {name: /Address/, expanded: true})).toBeVisible();
@@ -232,7 +232,7 @@ describe('registration form', () => {
   });
 
   test('form rules list every rule and jump to the field', async () => {
-    mount('/allyvora-patients/patients?mode=new');
+    mount('/allyvora-patients/patients/new');
     const u = user();
     await u.click(await screen.findByRole('button', {name: /Check form rules/}));
     const drawer = await screen.findByRole('dialog', {name: 'Form rules'});
@@ -242,13 +242,13 @@ describe('registration form', () => {
   });
 
   test('unsaved registrations are offered back within the signed-in session only', async () => {
-    const view = mount('/allyvora-patients/patients?mode=new');
+    const view = mount('/allyvora-patients/patients/new');
     await user().type(await screen.findByRole('textbox', {name: /First name/}), 'Draftperson');
     fill(screen.getByRole('textbox', {name: /Display name/}), 'Preferred name');
     expect(await screen.findByText(/Draft kept for this session at/, undefined, {timeout: 5000})).toBeInTheDocument();
-    view.go('/allyvora-patients/patients?mode=view&id=1');
+    view.go('/allyvora-patients/patients/1');
     await screen.findByRole('heading', {name: 'Patient record: Mrs Kavya Das'});
-    view.go('/allyvora-patients/patients?mode=new');
+    view.go('/allyvora-patients/patients/new');
     expect(await screen.findByText(/You have an unsaved registration from/)).toBeVisible();
     await user().click(screen.getByRole('button', {name: 'Restore draft'}));
     expect(screen.getByRole('textbox', {name: /First name/})).toHaveValue('Draftperson');
@@ -259,12 +259,12 @@ describe('registration form', () => {
   });
 
   test('keyboard shortcuts follow the effective preference', async () => {
-    const first = mount('/allyvora-patients/patients?mode=new');
+    const first = mount('/allyvora-patients/patients/new');
     await screen.findByRole('textbox', {name: /First name/});
     act(() => {fireEvent.keyDown(window, {code: 'KeyS', key: 's', ctrlKey: true});});
     expect(await screen.findByText(/fields need attention/)).toBeVisible();
     first.unmount();
-    mount('/allyvora-patients/patients?mode=new', {preferences: {keyboardShortcuts: false}});
+    mount('/allyvora-patients/patients/new', {preferences: {keyboardShortcuts: false}});
     await screen.findByRole('textbox', {name: /First name/});
     act(() => {fireEvent.keyDown(window, {code: 'KeyS', key: 's', ctrlKey: true});});
     await act(async () => {await new Promise(resolve => setTimeout(resolve, 50));});
@@ -272,7 +272,7 @@ describe('registration form', () => {
   });
 
   test('the form shows no visible title or layout switcher; the layout is chosen in Preferences', async () => {
-    const {api} = mount('/allyvora-patients/patients?mode=new');
+    const {api} = mount('/allyvora-patients/patients/new');
     expect(await screen.findByRole('heading', {level: 1, name: 'New patient'})).toHaveClass('sr-only');
     expect(screen.queryByRole('radiogroup', {name: 'Form layout'})).toBeNull();
     expect(posted(api, 'PUT', '/settings/layout')).toHaveLength(0);
