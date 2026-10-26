@@ -7,17 +7,19 @@ Private `@pepbits-demo/erp`, using Next.js 16.3.3, React 19.2 and Tailwind 4.1. 
 From the repository root:
 
 ```sh
-npm install
-# Start the unchanged API using its documented Node 24/runtime environment.
+npm ci
+bash tooling/scripts/install-api.sh
+npm run build:api
+# Start the API in a separate terminal, using Node 24.21+.
 node mock-api/server.mjs
-NEXT_PUBLIC_API_URL=http://localhost:3330 npm run dev -w @pepbits-demo/erp
+NEXT_PUBLIC_API_URL=/api ERP_API_URL=http://127.0.0.1:3200 npm run dev -w @pepbits-demo/erp
 ```
 
 Use the actual API port/origin from the [API guide](../../mock-api/README.md). Dev/start use port **3320**. Fixture credentials stay in the API fixtures and are omitted here. The optional same-origin proxy accepts these settings in an ignored app `.env.local`:
 
 ```dotenv
 NEXT_PUBLIC_API_URL=/api
-ERP_API_URL=http://127.0.0.1:3330
+ERP_API_URL=http://127.0.0.1:3200
 ```
 
 The public URL is build-time configuration; `ERP_API_URL` is server-only. Components receive an authenticated request callback. Scripts are `dev`, `build`, `start`, `typecheck`, `test` and `test:integration`:
@@ -31,7 +33,11 @@ npm run test:integration -w @pepbits-demo/erp
 
 Build before integration. The shared launcher starts one API, one production Next server and Chromium on free loopback ports with temporary API storage, and cleans up on success, failure, cancellation or deadline. Set `ERP_API_NODE` to a Node 24 executable. If generated runtimes are absent, `ERP_RUNTIME_ARTIFACTS` can name a source-identical existing API checkout; all tracked sources are compared before reuse and runtime hashes are recorded. This does not rebuild the API. Chromium on this machine needs `LD_LIBRARY_PATH=$HOME/.local/opt/pw-libs/root/usr/lib/x86_64-linux-gnu`.
 
-Optional receipts: `ERP_RESULT`, `ERP_IDENTITY`, `ERP_SCREENSHOT`; cancellation/deadline: `ERP_STOP_FILE`, `ERP_TIMEOUT_MS` (30-minute default); build output: `ERP_BUILD_DIR`. Keep at most one Next server, one API and one Vitest tree running. The latest [6c-6 record](../../docs/releases/unreleased/restructure-phase-6c-6-2026-10-24.md) and the delivery records for [6c-4](../../docs/releases/unreleased/restructure-phase-6c-4-2026-10-24.md) and [6c-5](../../docs/releases/unreleased/restructure-phase-6c-5-2026-10-24.md) identify exact checks and limits.
+Optional receipts: `ERP_RESULT`, `ERP_IDENTITY`, `ERP_SCREENSHOT`; cancellation/deadline: `ERP_STOP_FILE`, `ERP_TIMEOUT_MS` (30-minute default); build output: `ERP_BUILD_DIR`. Keep at most one Next server, one API and one Vitest tree running. The historical [6c-6 record](../../docs/releases/unreleased/restructure-phase-6c-6-2026-10-24.md) and the delivery records for [6c-4](../../docs/releases/unreleased/restructure-phase-6c-4-2026-10-24.md) and [6c-5](../../docs/releases/unreleased/restructure-phase-6c-5-2026-10-24.md) identify exact checks and limits.
+
+## Current integration boundary
+
+The [post-phase-8 integration](../../docs/releases/unreleased/erp-parity-integration-2026-10-26.md) combines the 18 master editors, 12 tree/rate destinations and 14 transaction document compositions described below. Both merges are on `main` with fresh combined verification (26 October 2026). All 114 destinations retain explicit differences in the [ledger](parity-status.md). Dated records describe their own sources, not the combined candidate.
 
 ## Structure and routes
 
@@ -65,7 +71,7 @@ Phase 6c-4 also enables **84 worklist destinations** with named search/filter/so
 
 This is **not complete source visual/lifecycle parity**. [The destination handoff](parity-status.md) lists all 114 destinations, exact remaining source composition/lifecycle differences and durable recovery. Report/ledger/matrix controls and invoice pagination were merged from 6c-5. The 6c-6 source CSS audit is recorded; selected browser measurements pass and exact source matching remains incomplete. Physical printing, accounting acceptance, native executables and human accessibility/localization review remain outside verification.
 
-All 38 original source cases are retained with public-provider adaptations. Added tests cover adapter errors, accepted preference updates, save-refresh/retry and every static/ERP2 record pattern under default, Arabic RTL, reduced-motion and locked-density profiles. Real HTTP checks are separate from mocked component checks. Original desktop/backend/deployment files are unchanged; no commit, push, publication or deployment is part of this run.
+All 38 original source cases are retained with public-provider adaptations. Added tests cover adapter errors, accepted preference updates, save-refresh/retry and every static/ERP2 record pattern under default, Arabic RTL, reduced-motion and locked-density profiles. Real HTTP checks are separate from mocked component checks. Phase 8 retired the original desktop workspace. The [integration record](../../docs/releases/unreleased/erp-parity-integration-2026-10-26.md) tracks the authorized merges on the integration branch; the backend and original inputs remain unchanged. Main, publication and deployment are outside this integration task.
 
 Existing create/edit controls and ERP1 tree leaf deletion are enabled for finance, finance-manager and accountant roles on chart-of-accounts, tax-rates, journal-vouchers, payment-vouchers, petty-cash, depreciation-run, receivables-aging and ledger-entries, plus exact server-issued `erp:write:<entity>` grants. Other entities remain read-only; full admin/operations roles retain existing write access. Every command still goes through server authorization. Direct edit routes and retry handlers apply the same entity checks. Entity grants also require the shell capability, so an expired session or mounted host denial keeps writes disabled. Export presentation is unchanged.
 
@@ -107,4 +113,36 @@ On a report, Columns changes visibility/order and Reset restores defaults. Saved
 
 Use `flock /home/pepadmin/.cache/pepbits-heavy.lock <command>` for CI, builds and every browser/API/server session on this shared host. Unit tests use one worker (never more than two). The release launcher limits the completed run to three representative screenshots and no videos; the initial diagnostic run is retained separately. The historical source audit records original sources without running or modifying them; `scripts/visual-workflows.mjs` extends the existing real-HTTP browser driver. [The destination ledger](parity-status.md) is the current completion boundary.
 
-Phase 8 retires the original-source visual comparison generators. Their source hashes, screenshots and destination ledgers remain immutable in the phase 6 release evidence. Current integration suites retain their demo geometry and axe checks; this is not a new original-source pixel comparison.
+Phase 8 retired the original runtime visual comparison generators, including `source-visual-audit.mjs`. Historical source hashes, screenshots and dated receipts remain unchanged. The three subset source audits below read immutable blobs with `git show` at `3558a131f0fd443693eae0dfc678e3b258b480c1`; no deleted workspace is restored or executed. Run from the repository root and pass fresh output directories (existing receipt files are rejected):
+
+```sh
+node demo-apps/erp/scripts/masters-source-audit.mjs /tmp/erp-master-audit-new
+node demo-apps/erp/scripts/deferred-masters-source-audit.mjs /tmp/erp-tree-rate-audit-new
+node demo-apps/erp/scripts/transaction-source-audit.mjs /tmp/erp-transaction-audit-new
+```
+
+`masters-visual-workflows.mjs`, `deferred-masters-visual.mjs` and `transaction-visual-workflows.mjs` run through `visual-workflows.mjs` in the normal ERP integration launcher, against the production demo build and `mock-api`. The combined driver retains all subset geometry/save/date-filter/copy/status/axe checks. These are demo measurements against source-derived targets, not a new original-runtime render or source pixel comparison.
+
+## Phase 6c-7a: small master editors
+
+Countries, states, currencies, units, holidays, departments, leave types, shifts and lab tests retain the worklist during editing. In ERP1 table view, use Add row or activate a row, then Save/Cancel inline. ERP2 uses New/Edit in a two-column quick dialog; Save and add another resets only after acknowledgement. Existing records expose Delete followed by Keep it/Delete confirmation. ERP1 cards use the quick dialog so edits remain reachable under the effective result-view preference. Existing ERP2 direct record URLs remain supported.
+
+States in ERP1 has a 256px parent rail (288px at 1280px and wider), with search, counts and a mobile selector. Choosing a parent supplies the new row's country. All editors retain mounted input on failure; identical ambiguous retries reuse their operation ID, and conflicts require explicit Reload. Permissions are checked again at the command boundary. Field/result scales, density, radius, formatting, RTL and tenant locks remain effective; Enter saves only when keyboard shortcuts are enabled. These are mounted drafts, not durable cross-route drafts.
+
+`masters-composition.test.tsx`, `scripts/masters-source-audit.mjs` and `scripts/masters-visual-workflows.mjs` cover this subset. The [6c-7a record](../../docs/releases/unreleased/restructure-phase-6c-7a-2026-10-25.md) separates measured dimensions from remaining toolbar/filter/card composition and all untouched master families. No whole-page pixel match is claimed.
+
+## Phase 6c-7a2: tree and rate masters
+
+Organisation structure, Chart of accounts and Product categories now use the source 360/400px tree/editor split in ERP1, with always-editable fields, breadcrumbs, code search, compact rows/icons and direct/descendant counts. Save adopts the accepted version while retaining the tree search. Child creation inherits hierarchy values; deletion requires confirmation and a complete loaded hierarchy. ERP2 uses a compact hierarchy table and record child list. Version failures retain input and operation identity; conflicts require Reload. Effective permissions, density, result/form scales, RTL and table policies still apply. Initial loading, some tree toolbar/action styling and full record chrome remain different.
+
+Tax rates, Price lists and Consultation fees in both variants now offer Valid on, Today and Show all dates. The server selects effective rows inclusively; the badge uses the selected day, while the 112×8px validity bar keeps the source today-centred timeline. ERP1 edits inline; ERP2 opens a quick dialog with save-another and confirmed deletion. Search, accepted date and list remain after save. Table/card and tenant policy still govern presentation. The date is mounted selection state, not a saved view or durable form draft. Common worklist toolbar/filter/card/loading differences remain; tax-rate percentage cells still use the baseline plain-text renderer.
+
+See the [6c-7a2 record](../../docs/releases/unreleased/restructure-phase-6c-7a2-2026-10-25.md) and [per-destination ledger](parity-status.md). Component-editor and profile masters retain their listed differences; this is a composition subset, not whole-page pixel certification.
+
+## Phase 6c-7b: transaction document subset
+
+Sales orders, Sales invoices, Purchase orders, Goods receipts, Journal vouchers, Payment vouchers and Petty cash in both modules now use a document header, status progress, tabular lines and a source-sized summary/history rail (ERP1 300px, ERP2 320px). ERP1 opens editable nonterminal documents in place, retaining worklist search and refreshing acknowledged changes; ERP2 keeps view/edit/new URLs. Add or remove lines, edit quantities/rates/tax or debit/credit cells, then Save. Changing a positive debit clears that line’s credit and vice versa. Totals include tax; voucher progression requires nonzero matching debit/credit totals. Empty documents cannot save. Narration belongs beside the lines, and document metadata is available under Documents.
+
+Copy to new retains header/line values but resets identity, date and status. Supported progress commands advance the displayed status; terminal documents are read-only. Cancellation follows the source terminal transition even where filter options omit Cancelled; ERP1 vouchers must balance before cancelling. The source itself makes Posted terminal, so no reversal command is invented. Sales invoices have a Print preview shortcut: ERP1 opens the source invoice selector; ERP2 opens the selected invoice. History reloads after acknowledged versions. Failed saves retain input and operation identity; conflicts require Reload. Host permissions and effective preferences remain authoritative. Native close/refresh warnings are not durable drafts.
+
+The [6c-7b record](../../docs/releases/unreleased/restructure-phase-6c-7b-2026-10-25.md) identifies the selected geometry, component and real-HTTP checks. This improves 14 transaction destinations; it does not certify whole-page parity. The [ledger](parity-status.md) retains exact worklist/header/action/history differences and all 24 deferred transaction destinations. Original JSX/CSS is read-only; source desktop rendering and native execution are not claimed.

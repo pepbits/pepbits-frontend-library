@@ -72,3 +72,7 @@ Seven direct Lucide exports are added for the Orvia onboarding demo: `Accessibil
 Phase 6e-4 adds direct `ChartColumnBig`, `CircleDashed`, `Gift`, `Nfc`, `Tag`, `User` and `Vault` primitives for the Settle billing demo (reports, pending discounts, reward points, card terminal, discounts, patients and day close). Each is covered by the separate `settle-icons.test.tsx` render cases; no billing logic is included.
 
 CareGrid scheduling adds direct `Accessibility`, `Apple`, `Baby`, `Brain`, `CalendarOff`, `CalendarRange`, `Car`, `Clipboard`, `Cpu`, `House`, `Leaf`, `LibraryBig`, `LifeBuoy`, `Lightbulb`, `Repeat`, `Smile`, `TestTube`, `User`, `UserX`, `Wand2` and `Zap` primitives, each covered by a render test. Category and resource-kind mappings stay in the demo.
+
+## Hierarchy primitives
+
+`ChevronsDownUp`, `ChevronsUpDown`, `Folder` and `FolderOpen` are additive direct Lucide exports in their own module. They use the existing dependency and have four public-barrel render checks. Product hierarchy metadata stays with the host.

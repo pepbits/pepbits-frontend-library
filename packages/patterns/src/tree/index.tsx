@@ -6,6 +6,7 @@ import {useLocalization} from '@pepbits/i18n/react';
 import {usePreferences} from '@pepbits/preferences/react';
 import {hierarchyEntries,type HierarchyNode,type HierarchyEntry} from './model';
 export {hierarchyEntries,type HierarchyNode,type HierarchyEntry} from './model';
+export {HierarchyPanel,type HierarchyPanelProps} from './panel';
 
 export interface HierarchyViewProps<T extends HierarchyNode> {
   label:string;nodes:readonly T[];selectedId?:string;onSelect:(node:T)=>void;

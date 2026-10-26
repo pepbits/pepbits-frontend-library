@@ -14,6 +14,7 @@ import {localDay} from './dates';
 import {invoiceTotals} from './invoice';
 import type {ListResponse, PageDef, Row} from './types';
 import type {ErpTarget} from '../../navigation';
+import {TreeChildren} from './masters/tree-children';
 
 export function Panel({title, children}: {title: string; children: ReactNode}) {
   const {t} = useLocalization();
@@ -110,7 +111,7 @@ export function TreeContext({def, row, target, onOpen, onClose, editing}: {def: 
   if (!result.data) return <div aria-busy="true"><LoadingState/></div>;
   return <Panel title="Directly under">
     {partial && <p role="alert">{t('Hierarchy is incomplete. Reload before changing it.')}</p>}
-    {!!row.id && <><h4>{t('Directly under')} {row.name}</h4><CollectionView view={preferences.resultView} columns={[{key: 'name', header: 'Name', render: (item: Row) => <span className="inline-flex items-center gap-2">{rows.some(child=>child.parentId===item.id)?<FolderTree size={15} aria-hidden/>:<FileText size={14} aria-hidden/>}{item.name}</span>}, {key: 'code', header: 'Code'}]} rows={kids} rowKey={item => item.id} onRowClick={editing || busy ? undefined : open}/>{!kids.length && <p>{t('Nothing sits under this item yet.')}</p>}
+    {!!row.id && <><h4>{t('Directly under')} {row.name}</h4><TreeChildren rows={rows} children={kids} disabled={editing||busy} onOpen={open}/>{!kids.length && <p>{t('Nothing sits under this item yet.')}</p>}
       <div className="flex flex-wrap gap-2"><Button disabled={editing || busy || partial || !host.can('create')} onClick={create}>{t('Add child')}</Button><Button disabled={editing || busy || partial || !!kids.length || !host.can('delete')} onClick={() => setConfirm(true)}>{t('Delete')}</Button></div>
       {confirm && <div role="group" aria-label={t('Delete')}><Button disabled={busy || !host.can('delete')} onClick={() => void remove()}>{t('Confirm delete')}</Button><Button disabled={busy} onClick={() => setConfirm(false)}>{t('Cancel')}</Button></div>}
       {!!failure && <RecoveryNotice failure={failureFromError(failure)} onRetry={() => void remove()}/>}

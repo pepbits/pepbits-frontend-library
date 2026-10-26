@@ -1,0 +1,75 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run src/transaction-documents.test.tsx --maxWorkers=2
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7b/demo-apps/erp
+
+ ✓ src/transaction-documents.test.tsx (88 tests) 41250ms
+   ✓ 'erp1' 'sales-orders' 'default' document composition and axe  1024ms
+   ✓ 'erp1' 'sales-orders' 'RTL' document composition and axe  550ms
+   ✓ 'erp1' 'sales-orders' 'reduced motion' document composition and axe  569ms
+   ✓ 'erp1' 'sales-orders' 'managed' document composition and axe  653ms
+   ✓ 'erp1' 'sales-invoices' 'default' document composition and axe  627ms
+   ✓ 'erp1' 'sales-invoices' 'RTL' document composition and axe  626ms
+   ✓ 'erp1' 'sales-invoices' 'reduced motion' document composition and axe  533ms
+   ✓ 'erp1' 'sales-invoices' 'managed' document composition and axe  524ms
+   ✓ 'erp1' 'purchase-orders' 'default' document composition and axe  717ms
+   ✓ 'erp1' 'purchase-orders' 'RTL' document composition and axe  696ms
+   ✓ 'erp1' 'purchase-orders' 'reduced motion' document composition and axe  652ms
+   ✓ 'erp1' 'purchase-orders' 'managed' document composition and axe  533ms
+   ✓ 'erp1' 'goods-receipts' 'default' document composition and axe  470ms
+   ✓ 'erp1' 'goods-receipts' 'RTL' document composition and axe  491ms
+   ✓ 'erp1' 'goods-receipts' 'reduced motion' document composition and axe  537ms
+   ✓ 'erp1' 'goods-receipts' 'managed' document composition and axe  492ms
+   ✓ 'erp1' 'journal-vouchers' 'default' document composition and axe  373ms
+   ✓ 'erp1' 'journal-vouchers' 'RTL' document composition and axe  454ms
+   ✓ 'erp1' 'journal-vouchers' 'reduced motion' document composition and axe  470ms
+   ✓ 'erp1' 'journal-vouchers' 'managed' document composition and axe  425ms
+   ✓ 'erp1' 'payment-vouchers' 'default' document composition and axe  684ms
+   ✓ 'erp1' 'payment-vouchers' 'RTL' document composition and axe  671ms
+   ✓ 'erp1' 'payment-vouchers' 'reduced motion' document composition and axe  472ms
+   ✓ 'erp1' 'payment-vouchers' 'managed' document composition and axe  436ms
+   ✓ 'erp1' 'petty-cash' 'default' document composition and axe  409ms
+   ✓ 'erp1' 'petty-cash' 'RTL' document composition and axe  391ms
+   ✓ 'erp1' 'petty-cash' 'reduced motion' document composition and axe  440ms
+   ✓ 'erp1' 'petty-cash' 'managed' document composition and axe  444ms
+   ✓ 'erp2' 'sales-orders' 'default' document composition and axe  370ms
+   ✓ 'erp2' 'sales-orders' 'RTL' document composition and axe  344ms
+   ✓ 'erp2' 'sales-orders' 'managed' document composition and axe  347ms
+   ✓ 'erp2' 'sales-invoices' 'default' document composition and axe  428ms
+   ✓ 'erp2' 'sales-invoices' 'RTL' document composition and axe  336ms
+   ✓ 'erp2' 'sales-invoices' 'reduced motion' document composition and axe  372ms
+   ✓ 'erp2' 'sales-invoices' 'managed' document composition and axe  391ms
+   ✓ 'erp2' 'purchase-orders' 'default' document composition and axe  402ms
+   ✓ 'erp2' 'purchase-orders' 'RTL' document composition and axe  372ms
+   ✓ 'erp2' 'purchase-orders' 'reduced motion' document composition and axe  390ms
+   ✓ 'erp2' 'purchase-orders' 'managed' document composition and axe  376ms
+   ✓ 'erp2' 'goods-receipts' 'default' document composition and axe  472ms
+   ✓ 'erp2' 'goods-receipts' 'RTL' document composition and axe  369ms
+   ✓ 'erp2' 'goods-receipts' 'reduced motion' document composition and axe  367ms
+   ✓ 'erp2' 'goods-receipts' 'managed' document composition and axe  347ms
+   ✓ 'erp2' 'payment-vouchers' 'default' document composition and axe  461ms
+   ✓ 'erp2' 'payment-vouchers' 'RTL' document composition and axe  315ms
+   ✓ 'erp2' 'payment-vouchers' 'reduced motion' document composition and axe  308ms
+   ✓ 'erp2' 'payment-vouchers' 'managed' document composition and axe  302ms
+   ✓ erp1 edits a line, retains an offline draft and retries the identical versioned command  555ms
+   ✓ erp2 edits a line, retains an offline draft and retries the identical versioned command  505ms
+   ✓ voucher posting requires nonzero balance and accepted posting locks the editor  317ms
+   ✓ conflicts require reload; mounted host denial prevents retry and shortcuts  338ms
+   ✓ ERP1 sales-orders retains filtered worklist and refreshes an acknowledged document save  1473ms
+   ✓ ERP1 sales-invoices retains filtered worklist and refreshes an acknowledged document save  1515ms
+   ✓ ERP1 purchase-orders retains filtered worklist and refreshes an acknowledged document save  1377ms
+   ✓ ERP1 goods-receipts retains filtered worklist and refreshes an acknowledged document save  1301ms
+   ✓ ERP1 journal-vouchers retains filtered worklist and refreshes an acknowledged document save  1215ms
+   ✓ ERP1 payment-vouchers retains filtered worklist and refreshes an acknowledged document save  2032ms
+   ✓ ERP1 petty-cash retains filtered worklist and refreshes an acknowledged document save  1248ms
+   ✓ 'erp1' 'sales-invoices' cancels through the source terminal state even if filter choices omit it  305ms
+   ✓ 'erp1' 'purchase-orders' cancels through the source terminal state even if filter choices omit it  328ms
+   ✓ 'erp2' 'payment-vouchers' cancels through the source terminal state even if filter choices omit it  346ms
+
+ Test Files  1 passed (1)
+      Tests  88 passed (88)
+   Start at  02:42:20
+   Duration  48.63s (transform 3.64s, setup 244ms, collect 5.58s, tests 41.25s, environment 723ms, prepare 123ms)
+

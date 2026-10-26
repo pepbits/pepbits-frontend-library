@@ -1,0 +1,49 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=2 src/masters-composition.test.tsx src/workflows.test.tsx src/specialized.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a/demo-apps/erp
+
+ ✓ src/specialized.test.tsx (19 tests) 3570ms
+   ✓ erp1 finance creation follows entity grants  773ms
+   ✓ erp2 finance creation follows entity grants  559ms
+   ✓ ERP1 profile keeps the worklist beside selection and persists the accepted layout choice  784ms
+   ✓ effective rememberFilters policy prevents profile layout persistence  431ms
+ ✓ src/workflows.test.tsx (3 tests) 2007ms
+   ✓ ERP1 keeps the API-acknowledged master row after inline saving  931ms
+   ✓ failed record save retains typed values and retries the same operation identity  598ms
+   ✓ a failed approval retries its intended status and operation identity  476ms
+ ✓ src/masters-composition.test.tsx (27 tests) 19082ms
+   ✓ 'erp1' 'countries' edits in the source composition, saves with version and retains search  1053ms
+   ✓ 'erp1' 'states' edits in the source composition, saves with version and retains search  873ms
+   ✓ 'erp1' 'currencies' edits in the source composition, saves with version and retains search  818ms
+   ✓ 'erp1' 'units' edits in the source composition, saves with version and retains search  747ms
+   ✓ 'erp1' 'holidays' edits in the source composition, saves with version and retains search  768ms
+   ✓ 'erp1' 'departments' edits in the source composition, saves with version and retains search  741ms
+   ✓ 'erp1' 'leave-types' edits in the source composition, saves with version and retains search  700ms
+   ✓ 'erp1' 'shifts' edits in the source composition, saves with version and retains search  715ms
+   ✓ 'erp1' 'lab-tests' edits in the source composition, saves with version and retains search  726ms
+   ✓ 'erp2' 'countries' edits in the source composition, saves with version and retains search  782ms
+   ✓ 'erp2' 'states' edits in the source composition, saves with version and retains search  830ms
+   ✓ 'erp2' 'currencies' edits in the source composition, saves with version and retains search  800ms
+   ✓ 'erp2' 'units' edits in the source composition, saves with version and retains search  1169ms
+   ✓ 'erp2' 'holidays' edits in the source composition, saves with version and retains search  1004ms
+   ✓ 'erp2' 'departments' edits in the source composition, saves with version and retains search  819ms
+   ✓ 'erp2' 'leave-types' edits in the source composition, saves with version and retains search  803ms
+   ✓ 'erp2' 'shifts' edits in the source composition, saves with version and retains search  753ms
+   ✓ 'erp2' 'lab-tests' edits in the source composition, saves with version and retains search  775ms
+   ✓ erp1 creation works with an empty list and enforces required fields  482ms
+   ✓ ERP2 save another resets only after acknowledgement and confirmed delete retries without losing fields  665ms
+   ✓ inline version conflict retains the draft and requires explicit reload  659ms
+   ✓ mounted locks and write permission changes apply to an open inline draft  522ms
+   ✓ states parent selection supplies the inline creation default  357ms
+   ✓ ar master dialog preserves accessible labels and effective scales  415ms
+   ✓ hi master dialog preserves accessible labels and effective scales  428ms
+   ✓ ml master dialog preserves accessible labels and effective scales  428ms
+
+ Test Files  3 passed (3)
+      Tests  49 passed (49)
+   Start at  01:32:45
+   Duration  25.21s (transform 3.17s, setup 630ms, collect 9.94s, tests 24.66s, environment 1.76s, prepare 315ms)
+

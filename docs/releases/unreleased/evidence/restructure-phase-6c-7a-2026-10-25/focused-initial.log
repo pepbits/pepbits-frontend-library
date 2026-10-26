@@ -1,0 +1,2018 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=2 src/masters-composition.test.tsx src/workflows.test.tsx src/specialized.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a/demo-apps/erp
+
+ ❯ src/specialized.test.tsx (19 tests | 4 failed) 22260ms
+   ✓ finance gets all eight finance entities and only explicit additional grants 5ms
+   ✓ finance-manager gets all eight finance entities and only explicit additional grants 1ms
+   ✓ accountant gets all eight finance entities and only explicit additional grants 1ms
+   ✓ admin retains broad write presentation 1ms
+   ✓ enterprise-admin retains broad write presentation 0ms
+   ✓ operations retains broad write presentation 0ms
+   ✓ operations-analyst retains broad write presentation 0ms
+   ✓ unknown and absent roles never inherit finance grants 0ms
+   × erp1 finance creation follows entity grants 10125ms
+     → Unable to find role="button" and name "Add row"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-tax-rates"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTax rates[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+          [36m>[39m
+            [0mTax rates[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+          [36m>[39m
+            [0mPrinted by[0m
+            [0m [0m
+            [0man unidentified user[0m
+            [0m [0m
+            [0m· tenant[0m
+            [0m [0m
+            [0munknown[0m
+            [0m · [0m
+            [36m<time[39m
+              [33mdatetime[39m=[32m"2026-10-25T01:31:12.236Z"[39m
+            [36m>[39m
+              [0m2026-10-25 01:31[0m
+            [36m</time>[39m
+            [0m · [0m
+            [0m2[0m
+            [0m [0m
+            [0mrecords[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [0m      [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+            [33mdata-tour[39m=[32m"search"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative w-full"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search"[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                [33mplaceholder[39m=[32m"Search Tax rates by ID, name or any visible value…"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-tour[39m=[32m"new"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [0mNew[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-erp-saved-views[39m=[32m"true"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSaved views[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+          [36m>[39m
+            [36m<fieldset[39m
+              [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+              [33mdata-tour[39m=[32m"view"[39m
+              [33mdisabled[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Result view"[39m
+                [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                [33mrole[39m=[32m"radiogroup"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-checked[39m=[32m"true"[39m
+                  [33maria-label[39m=[32m"Table view"[39m
+                  [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-tax-rates"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTax rates[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+          [36m>[39m
+            [0mTax rates[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+          [36m>[39m
+            [0mPrinted by[0m
+            [0m [0m
+            [0man unidentified user[0m
+            [0m [0m
+            [0m· tenant[0m
+            [0m [0m
+            [0munknown[0m
+            [0m · [0m
+            [36m<time[39m
+              [33mdatetime[39m=[32m"2026-10-25T01:31:12.236Z"[39m
+            [36m>[39m
+              [0m2026-10-25 01:31[0m
+            [36m</time>[39m
+            [0m · [0m
+            [0m2[0m
+            [0m [0m
+            [0mrecords[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [0m      [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+            [33mdata-tour[39m=[32m"search"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative w-full"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search"[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                [33mplaceholder[39m=[32m"Search Tax rates by ID, name or any visible value…"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-tour[39m=[32m"new"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [0mNew[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-erp-saved-views[39m=[32m"true"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSaved views[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+          [36m>[39m
+            [36m<fieldset[39m
+              [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+              [33mdata-tour[39m=[32m"view"[39m
+              [33mdisabled[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Result view"[39m
+                [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                [33mrole[39m=[32m"radiogroup"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-checked[39m=[32m"true"[39m
+                  [33maria-label[39m=[32m"Table view"[39m
+                  [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-...
+   × erp2 finance creation follows entity grants 10066ms
+     → Unable to find role="button" and name "New department"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp2-masters-tax-rates"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTax rates[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+          [36m>[39m
+            [0mTax rates[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+          [36m>[39m
+            [0mPrinted by[0m
+            [0m [0m
+            [0man unidentified user[0m
+            [0m [0m
+            [0m· tenant[0m
+            [0m [0m
+            [0munknown[0m
+            [0m · [0m
+            [36m<time[39m
+              [33mdatetime[39m=[32m"2026-10-25T01:31:22.124Z"[39m
+            [36m>[39m
+              [0m2026-10-25 01:31[0m
+            [36m</time>[39m
+            [0m · [0m
+            [0m2[0m
+            [0m [0m
+            [0mrecords[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [0m      [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+            [33mdata-tour[39m=[32m"search"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative w-full"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search"[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                [33mplaceholder[39m=[32m"Search Tax rates by ID, name or any visible value…"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-tour[39m=[32m"new"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [0mNew[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-erp-saved-views[39m=[32m"true"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSaved views[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+          [36m>[39m
+            [36m<fieldset[39m
+              [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+              [33mdata-tour[39m=[32m"view"[39m
+              [33mdisabled[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Result view"[39m
+                [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                [33mrole[39m=[32m"radiogroup"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-checked[39m=[32m"true"[39m
+                  [33maria-label[39m=[32m"Table view"[39m
+                  [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp2-masters-tax-rates"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTax rates[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+          [36m>[39m
+            [0mTax rates[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+          [36m>[39m
+            [0mPrinted by[0m
+            [0m [0m
+            [0man unidentified user[0m
+            [0m [0m
+            [0m· tenant[0m
+            [0m [0m
+            [0munknown[0m
+            [0m · [0m
+            [36m<time[39m
+              [33mdatetime[39m=[32m"2026-10-25T01:31:22.124Z"[39m
+            [36m>[39m
+              [0m2026-10-25 01:31[0m
+            [36m</time>[39m
+            [0m · [0m
+            [0m2[0m
+            [0m [0m
+            [0mrecords[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [0m      [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+            [33mdata-tour[39m=[32m"search"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative w-full"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search"[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                [33mplaceholder[39m=[32m"Search Tax rates by ID, name or any visible value…"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-tour[39m=[32m"new"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [0mNew[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-erp-saved-views[39m=[32m"true"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSaved views[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+          [36m>[39m
+            [36m<fieldset[39m
+              [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+              [33mdata-tour[39m=[32m"view"[39m
+              [33mdisabled[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Result view"[39m
+                [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                [33mrole[39m=[32m"radiogroup"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-checked[39m=[32m"true"[39m
+                  [33maria-label[39m=[32m"Table view"[39m
+                  [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-...
+   ✓ ERP2 direct edit for a non-granted entity has no save or editable fields 90ms
+   ✓ ERP1 tree searches ancestors, adds a child, and adopts the acknowledged record 247ms
+   ✓ ERP2 hierarchy records visible neighbour order and navigates to selected records 97ms
+   ✓ erp1 board moves retain the original status on failure and retry the same operation 139ms
+   ✓ erp2 board moves retain the original status on failure and retry the same operation 130ms
+   × finance cannot drag or move cases without a matching entity grant 77ms
+     → variant is not defined
+   × a mounted shell denial fences writes even with a matching finance entity grant 83ms
+     → variant is not defined
+   ✓ ERP1 profile keeps the worklist beside selection and persists the accepted layout choice  746ms
+   ✓ effective rememberFilters policy prevents profile layout persistence  445ms
+ ✓ src/workflows.test.tsx (3 tests) 2113ms
+   ✓ ERP1 keeps the API-acknowledged master row after inline saving  982ms
+   ✓ failed record save retains typed values and retries the same operation identity  651ms
+   ✓ a failed approval retries its intended status and operation identity  478ms
+ ❯ src/masters-composition.test.tsx (27 tests | 1 failed) 28853ms
+   ✓ 'erp1' 'countries' edits in the source composition, saves with version and retains search  1152ms
+   ✓ 'erp1' 'states' edits in the source composition, saves with version and retains search  930ms
+   ✓ 'erp1' 'currencies' edits in the source composition, saves with version and retains search  830ms
+   ✓ 'erp1' 'units' edits in the source composition, saves with version and retains search  961ms
+   ✓ 'erp1' 'holidays' edits in the source composition, saves with version and retains search  781ms
+   ✓ 'erp1' 'departments' edits in the source composition, saves with version and retains search  772ms
+   ✓ 'erp1' 'leave-types' edits in the source composition, saves with version and retains search  829ms
+   ✓ 'erp1' 'shifts' edits in the source composition, saves with version and retains search  758ms
+   ✓ 'erp1' 'lab-tests' edits in the source composition, saves with version and retains search  794ms
+   ✓ 'erp2' 'countries' edits in the source composition, saves with version and retains search  839ms
+   ✓ 'erp2' 'states' edits in the source composition, saves with version and retains search  800ms
+   ✓ 'erp2' 'currencies' edits in the source composition, saves with version and retains search  780ms
+   ✓ 'erp2' 'units' edits in the source composition, saves with version and retains search  754ms
+   ✓ 'erp2' 'holidays' edits in the source composition, saves with version and retains search  775ms
+   ✓ 'erp2' 'departments' edits in the source composition, saves with version and retains search  785ms
+   ✓ 'erp2' 'leave-types' edits in the source composition, saves with version and retains search  766ms
+   ✓ 'erp2' 'shifts' edits in the source composition, saves with version and retains search  766ms
+   ✓ 'erp2' 'lab-tests' edits in the source composition, saves with version and retains search  763ms
+   ✓ erp1 creation works with an empty list and enforces required fields  429ms
+   ✓ erp2 creation works with an empty list and enforces required fields 223ms
+   ✓ ERP2 save another resets only after acknowledgement and confirmed delete retries without losing fields  689ms
+   ✓ inline version conflict retains the draft and requires explicit reload  685ms
+   ✓ mounted locks and write permission changes apply to an open inline draft  519ms
+   × states parent selection supplies the inline creation default 10185ms
+     → Unable to find role="textbox" and name "Country"
+
+Ignored nodes: comments, script, style
+[36m<tr[39m
+  [33mdata-master-inline[39m=[32m"true"[39m
+[36m>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33maria-label[39m=[32m"Code"[39m
+            [33maria-required[39m=[32m"true"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m""[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33maria-label[39m=[32m"State / province"[39m
+            [33maria-required[39m=[32m"true"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m""[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33maria-label[39m=[32m"Country"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+            [33mlist[39m=[32m"_r_an_"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"India"[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+    [36m<datalist[39m
+      [33mid[39m=[32m"_r_an_"[39m
+    [36m>[39m
+      [36m<option[39m
+        [33mvalue[39m=[32m"India"[39m
+      [36m/>[39m
+      [36m<option[39m
+        [33mvalue[39m=[32m"United Arab Emirates"[39m
+      [36m/>[39m
+    [36m</datalist>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<select[39m
+            [33maria-label[39m=[32m"Type"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m""[39m
+            [36m>[39m
+              [0mSelect…[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"State"[39m
+            [36m>[39m
+              [0mState[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Union territory"[39m
+            [36m>[39m
+              [0mUnion territory[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Province"[39m
+            [36m>[39m
+              [0mProvince[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Emirate"[39m
+            [36m>[39m
+              [0mEmirate[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"County"[39m
+            [36m>[39m
+              [0mCounty[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Territory"[39m
+            [36m>[39m
+              [0mTerritory[0m
+            [36m</option>[39m
+          [36m</select>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m6 9 6 6 6-6"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33maria-label[39m=[32m"Tax region code"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m""[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<select[39m
+            [33maria-label[39m=[32m"Status"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m""[39m
+            [36m>[39m
+              [0mSelect…[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Active"[39m
+            [36m>[39m
+              [0mActive[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Inactive"[39m
+            [36m>[39m
+              [0mInactive[0m
+            [36m</option>[39m
+          [36m</select>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m6 9 6 6 6-6"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"erp-master-row-actions"[39m
+    [36m>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-7 gap-1.5 rounded-lg px-2.5 text-[length:calc(11px*var(--fs-scale))]"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-check"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"14"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"14"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M20 6 9 17l-5-5"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+        [0mSave[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"Cancel"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-7"[39m
+        [33mtitle[39m=[32m"Cancel"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"15"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"15"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+[36m</tr>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<section[39m
+        [33mdata-erp-page[39m=[32m"erp1-masters-states"[39m
+      [36m>[39m
+        [36m<h1>[39m
+          [0mState master[0m
+        [36m</h1>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"erp-master-worklist"[39m
+          [33mdata-density[39m=[32m"comfortable"[39m
+          [33mdata-master-dependent[39m=[32m"true"[39m
+          [33mdata-master-variant[39m=[32m"erp1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+          [36m>[39m
+            [36m<aside[39m
+              [33maria-label[39m=[32m"Parent records"[39m
+              [33mclass[39m=[32m"erp-master-parent"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"erp-master-parent-desktop"[39m
+              [36m>[39m
+                [36m<header>[39m
+                  [36m<div>[39m
+                    [36m<h2>[39m
+                      [0mCountry[0m
+                    [36m</h2>[39m
+                    [36m<span>[39m
+                      [0m2[0m
+                    [36m</span>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+                      [36m>[39m
+                        [0mFind Country[0m
+                      [36m</span>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m""[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</header>[39m
+                [36m<ul>[39m
+                  [36m<li>[39m
+                    [36m<button[39m
+                      [33maria-pressed[39m=[32m"false"[39m
+                      [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mAll[0m
+                        [0m [0m
+                        [0mCountry[0m
+                      [36m</span>[39m
+                      [36m<span>[39m
+                        [0m2[0m
+                      [36m</span>[39m
+                    [36m</button>[39m
+                  [36m</li>[39m
+                  [36m<li>[39m
+                    [36m<button[39m
+                      [33maria-pressed[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"erp-parent-code"[39m
+                      [36m>[39m
+                        [0mIN[0m
+                      [36m</span>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"erp-parent-name"[39m
+                      [36m>[39m
+                        [0mIndia[0m
+                      [36m</span>[39m
+                      [36m<span>[39m
+                        [0m0[0m
+                      [36m</span>[39m
+                    [36m</button>[39m
+                  [36m</li>[39m
+                  [36m<li>[39m
+                    [36m<button[39m
+                      [33maria-pressed[39m=[32m"false"[39m
+                      [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"erp-parent-code"[39m
+                      [36m>[39m
+                        [0mAE[0m
+                      [36m</span>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"erp-parent-name"[39m
+                      [36m>[39m
+                        [0mUnited Arab Emirates[0m
+                      [36m</span>[39m
+                      [36m<span>[39m
+                        [0m0[0m
+                      [36m</span>[39m
+                    [36m</button>[39m
+                  [36m</li>[39m
+                [36m</ul>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"erp-master-parent-mobile"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"mb-1.5 flex items-center g...
+   ✓ ar master dialog preserves accessible labels and effective scales  431ms
+   ✓ hi master dialog preserves accessible labels and effective scales  418ms
+   ✓ ml master dialog preserves accessible labels and effective scales  435ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/masters-composition.test.tsx > states parent selection supplies the inline creation default
+TestingLibraryElementError: Unable to find role="textbox" and name "Country"
+
+Ignored nodes: comments, script, style
+[36m<tr[39m
+  [33mdata-master-inline[39m=[32m"true"[39m
+[36m>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33maria-label[39m=[32m"Code"[39m
+            [33maria-required[39m=[32m"true"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m""[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33maria-label[39m=[32m"State / province"[39m
+            [33maria-required[39m=[32m"true"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m""[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33maria-label[39m=[32m"Country"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+            [33mlist[39m=[32m"_r_an_"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"India"[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+    [36m<datalist[39m
+      [33mid[39m=[32m"_r_an_"[39m
+    [36m>[39m
+      [36m<option[39m
+        [33mvalue[39m=[32m"India"[39m
+      [36m/>[39m
+      [36m<option[39m
+        [33mvalue[39m=[32m"United Arab Emirates"[39m
+      [36m/>[39m
+    [36m</datalist>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<select[39m
+            [33maria-label[39m=[32m"Type"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m""[39m
+            [36m>[39m
+              [0mSelect…[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"State"[39m
+            [36m>[39m
+              [0mState[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Union territory"[39m
+            [36m>[39m
+              [0mUnion territory[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Province"[39m
+            [36m>[39m
+              [0mProvince[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Emirate"[39m
+            [36m>[39m
+              [0mEmirate[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"County"[39m
+            [36m>[39m
+              [0mCounty[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Territory"[39m
+            [36m>[39m
+              [0mTerritory[0m
+            [36m</option>[39m
+          [36m</select>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m6 9 6 6 6-6"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33maria-label[39m=[32m"Tax region code"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m""[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"block min-w-0"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"block min-w-0"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"relative"[39m
+        [36m>[39m
+          [36m<select[39m
+            [33maria-label[39m=[32m"Status"[39m
+            [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] appearance-none pe-9"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m""[39m
+            [36m>[39m
+              [0mSelect…[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Active"[39m
+            [36m>[39m
+              [0mActive[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"Inactive"[39m
+            [36m>[39m
+              [0mInactive[0m
+            [36m</option>[39m
+          [36m</select>[39m
+          [36m<svg[39m
+            [33mclass[39m=[32m"lucide lucide-chevron-down pointer-events-none absolute end-3 top-1/2 size-3.5 -translate-y-1/2 text-[var(--text-muted)]"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mheight[39m=[32m"24"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"round"[39m
+            [33mstroke-linejoin[39m=[32m"round"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [33mwidth[39m=[32m"24"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m6 9 6 6 6-6"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</div>[39m
+      [36m</label>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+  [36m<td>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"erp-master-row-actions"[39m
+    [36m>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-7 gap-1.5 rounded-lg px-2.5 text-[length:calc(11px*var(--fs-scale))]"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-check"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"14"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"14"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M20 6 9 17l-5-5"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+        [0mSave[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33maria-label[39m=[32m"Cancel"[39m
+        [33mclass[39m=[32m"focus-ring inline-flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-transparent text-[var(--text-muted)] transition hover:border-[var(--border)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] disabled:pointer-events-none disabled:opacity-50 size-7"[39m
+        [33mtitle[39m=[32m"Cancel"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33mclass[39m=[32m"lucide lucide-x"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mheight[39m=[32m"15"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"15"[39m
+          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M18 6 6 18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"m6 6 12 12"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</td>[39m
+[36m</tr>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<section[39m
+        [33mdata-erp-page[39m=[32m"erp1-masters-states"[39m
+      [36m>[39m
+        [36m<h1>[39m
+          [0mState master[0m
+        [36m</h1>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"erp-master-worklist"[39m
+          [33mdata-density[39m=[32m"comfortable"[39m
+          [33mdata-master-dependent[39m=[32m"true"[39m
+          [33mdata-master-variant[39m=[32m"erp1"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+          [36m>[39m
+            [36m<aside[39m
+              [33maria-label[39m=[32m"Parent records"[39m
+              [33mclass[39m=[32m"erp-master-parent"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"erp-master-parent-desktop"[39m
+              [36m>[39m
+                [36m<header>[39m
+                  [36m<div>[39m
+                    [36m<h2>[39m
+                      [0mCountry[0m
+                    [36m</h2>[39m
+                    [36m<span>[39m
+                      [0m2[0m
+                    [36m</span>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"block min-w-0"[39m
+                    [36m>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"mb-1.5 flex items-center gap-1 text-[length:calc(11px*var(--fs-scale))] font-bold text-[var(--text-muted)]"[39m
+                      [36m>[39m
+                        [0mFind Country[0m
+                      [36m</span>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<input[39m
+                          [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)]"[39m
+                          [33mvalue[39m=[32m""[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</label>[39m
+                  [36m</div>[39m
+                [36m</header>[39m
+                [36m<ul>[39m
+                  [36m<li>[39m
+                    [36m<button[39m
+                      [33maria-pressed[39m=[32m"false"[39m
+                      [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [36m<span>[39m
+                        [0mAll[0m
+                        [0m [0m
+                        [0mCountry[0m
+                      [36m</span>[39m
+                      [36m<span>[39m
+                        [0m2[0m
+                      [36m</span>[39m
+                    [36m</button>[39m
+                  [36m</li>[39m
+                  [36m<li>[39m
+                    [36m<button[39m
+                      [33maria-pressed[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"erp-parent-code"[39m
+                      [36m>[39m
+                        [0mIN[0m
+                      [36m</span>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"erp-parent-name"[39m
+                      [36m>[39m
+                        [0mIndia[0m
+                      [36m</span>[39m
+                      [36m<span>[39m
+                        [0m0[0m
+                      [36m</span>[39m
+                    [36m</button>[39m
+                  [36m</li>[39m
+                  [36m<li>[39m
+                    [36m<button[39m
+                      [33maria-pressed[39m=[32m"false"[39m
+                      [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-transparent text-[var(--text-muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"erp-parent-code"[39m
+                      [36m>[39m
+                        [0mAE[0m
+                      [36m</span>[39m
+                      [36m<span[39m
+                        [33mclass[39m=[32m"erp-parent-name"[39m
+                      [36m>[39m
+                        [0mUnited Arab Emirates[0m
+                      [36m</span>[39m
+                      [36m<span>[39m
+                        [0m0[0m
+                      [36m</span>[39m
+                    [36m</button>[39m
+                  [36m</li>[39m
+                [36m</ul>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"erp-master-parent-mobile"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"block min-w-0"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"block min-w-0"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"mb-1.5 flex items-center g...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ src/masters-composition.test.tsx:65:8
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/specialized.test.tsx > erp1 finance creation follows entity grants
+TestingLibraryElementError: Unable to find role="button" and name "Add row"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-tax-rates"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTax rates[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+          [36m>[39m
+            [0mTax rates[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+          [36m>[39m
+            [0mPrinted by[0m
+            [0m [0m
+            [0man unidentified user[0m
+            [0m [0m
+            [0m· tenant[0m
+            [0m [0m
+            [0munknown[0m
+            [0m · [0m
+            [36m<time[39m
+              [33mdatetime[39m=[32m"2026-10-25T01:31:12.236Z"[39m
+            [36m>[39m
+              [0m2026-10-25 01:31[0m
+            [36m</time>[39m
+            [0m · [0m
+            [0m2[0m
+            [0m [0m
+            [0mrecords[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [0m      [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+            [33mdata-tour[39m=[32m"search"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative w-full"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search"[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                [33mplaceholder[39m=[32m"Search Tax rates by ID, name or any visible value…"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-tour[39m=[32m"new"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [0mNew[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-erp-saved-views[39m=[32m"true"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSaved views[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+          [36m>[39m
+            [36m<fieldset[39m
+              [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+              [33mdata-tour[39m=[32m"view"[39m
+              [33mdisabled[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Result view"[39m
+                [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                [33mrole[39m=[32m"radiogroup"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-checked[39m=[32m"true"[39m
+                  [33maria-label[39m=[32m"Table view"[39m
+                  [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp1-masters-tax-rates"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTax rates[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+          [36m>[39m
+            [0mTax rates[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+          [36m>[39m
+            [0mPrinted by[0m
+            [0m [0m
+            [0man unidentified user[0m
+            [0m [0m
+            [0m· tenant[0m
+            [0m [0m
+            [0munknown[0m
+            [0m · [0m
+            [36m<time[39m
+              [33mdatetime[39m=[32m"2026-10-25T01:31:12.236Z"[39m
+            [36m>[39m
+              [0m2026-10-25 01:31[0m
+            [36m</time>[39m
+            [0m · [0m
+            [0m2[0m
+            [0m [0m
+            [0mrecords[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [0m      [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+            [33mdata-tour[39m=[32m"search"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative w-full"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search"[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                [33mplaceholder[39m=[32m"Search Tax rates by ID, name or any visible value…"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-tour[39m=[32m"new"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [0mNew[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-erp-saved-views[39m=[32m"true"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSaved views[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+          [36m>[39m
+            [36m<fieldset[39m
+              [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+              [33mdata-tour[39m=[32m"view"[39m
+              [33mdisabled[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Result view"[39m
+                [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                [33mrole[39m=[32m"radiogroup"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-checked[39m=[32m"true"[39m
+                  [33maria-label[39m=[32m"Table view"[39m
+                  [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/specialized.test.tsx:19:163
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/specialized.test.tsx > erp2 finance creation follows entity grants
+TestingLibraryElementError: Unable to find role="button" and name "New department"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp2-masters-tax-rates"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTax rates[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+          [36m>[39m
+            [0mTax rates[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+          [36m>[39m
+            [0mPrinted by[0m
+            [0m [0m
+            [0man unidentified user[0m
+            [0m [0m
+            [0m· tenant[0m
+            [0m [0m
+            [0munknown[0m
+            [0m · [0m
+            [36m<time[39m
+              [33mdatetime[39m=[32m"2026-10-25T01:31:22.124Z"[39m
+            [36m>[39m
+              [0m2026-10-25 01:31[0m
+            [36m</time>[39m
+            [0m · [0m
+            [0m2[0m
+            [0m [0m
+            [0mrecords[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [0m      [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+            [33mdata-tour[39m=[32m"search"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative w-full"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search"[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                [33mplaceholder[39m=[32m"Search Tax rates by ID, name or any visible value…"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-tour[39m=[32m"new"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [0mNew[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-erp-saved-views[39m=[32m"true"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSaved views[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+          [36m>[39m
+            [36m<fieldset[39m
+              [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+              [33mdata-tour[39m=[32m"view"[39m
+              [33mdisabled[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Result view"[39m
+                [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                [33mrole[39m=[32m"radiogroup"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-checked[39m=[32m"true"[39m
+                  [33maria-label[39m=[32m"Table view"[39m
+                  [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mdata-erp-page[39m=[32m"erp2-masters-tax-rates"[39m
+    [36m>[39m
+      [36m<h1>[39m
+        [0mTax rates[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex w-full flex-col gap-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"print-only mb-3 border-b-2 border-black pb-2 text-black"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"text-[11px] font-black uppercase tracking-[.14em]"[39m
+          [36m>[39m
+            [0mTax rates[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-1 text-[9px] leading-relaxed"[39m
+          [36m>[39m
+            [0mPrinted by[0m
+            [0m [0m
+            [0man unidentified user[0m
+            [0m [0m
+            [0m· tenant[0m
+            [0m [0m
+            [0munknown[0m
+            [0m · [0m
+            [36m<time[39m
+              [33mdatetime[39m=[32m"2026-10-25T01:31:22.124Z"[39m
+            [36m>[39m
+              [0m2026-10-25 01:31[0m
+            [36m</time>[39m
+            [0m · [0m
+            [0m2[0m
+            [0m [0m
+            [0mrecords[0m
+          [36m</div>[39m
+        [36m</div>[39m
+        [0m      [0m
+        [36m<div[39m
+          [33mclass[39m=[32m"border border-[var(--border)] rounded-[var(--radius)] bg-[var(--surface)] shadow-[var(--shadow-sm)] flex flex-wrap items-center gap-2 p-2.5"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"min-w-[240px] flex-1 lg:max-w-xl"[39m
+            [33mdata-tour[39m=[32m"search"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative w-full"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33mclass[39m=[32m"lucide lucide-search pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-[var(--text-subtle)]"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mheight[39m=[32m"24"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"24"[39m
+                [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+              [36m>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"11"[39m
+                  [33mcy[39m=[32m"11"[39m
+                  [33mr[39m=[32m"8"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21 21-4.3-4.3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search"[39m
+                [33mclass[39m=[32m"focus-ring h-9 w-full rounded-[10px] border border-[var(--border)] bg-[var(--surface)] px-3 text-[length:calc(12px*var(--fs-scale))] font-medium text-[var(--text)] shadow-[inset_0_1px_1px_rgba(15,23,42,.02)] outline-none transition placeholder:text-[var(--text-subtle)] hover:border-[var(--border-strong)] focus:border-[var(--primary)] disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-subtle)] ps-9 pe-8"[39m
+                [33mplaceholder[39m=[32m"Search Tax rates by ID, name or any visible value…"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-tour[39m=[32m"new"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-plus size-3.5"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"24"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"24"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 12h14"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 5v14"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [0mNew[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"hidden h-7 w-px bg-[var(--border)] md:block"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-[var(--border)] bg-[var(--surface-2)] text-[var(--text)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"[39m
+            [33mdata-erp-saved-views[39m=[32m"true"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mSaved views[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ml-auto flex items-center gap-1"[39m
+          [36m>[39m
+            [36m<fieldset[39m
+              [33mclass[39m=[32m"m-0 border-0 p-0"[39m
+              [33mdata-tour[39m=[32m"view"[39m
+              [33mdisabled[39m=[32m""[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Result view"[39m
+                [33mclass[39m=[32m"inline-flex shrink-0 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--surface-2)] p-0.5"[39m
+                [33mrole[39m=[32m"radiogroup"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-checked[39m=[32m"true"[39m
+                  [33maria-label[39m=[32m"Table view"[39m
+                  [33mclass[39m=[32m"focus-ring flex shrink-0 items-center justify-center gap-1.5 rounded-[var(--radius)] font-bold transition disabled:cursor-not-allowed disabled:opacity-...
+ ❯ waitForWrapper ../../node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/specialized.test.tsx:19:163
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  src/specialized.test.tsx > finance cannot drag or move cases without a matching entity grant
+ReferenceError: variant is not defined
+ ❯ src/specialized.test.tsx:42:479
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  src/specialized.test.tsx > a mounted shell denial fences writes even with a matching finance entity grant
+ReferenceError: variant is not defined
+ ❯ src/specialized.test.tsx:47:174
+     45|  const api=mockApi(),request=vi.fn(api.request),host={...fixture(reque…
+     46|  const view=render(<Module variant="erp1" path="/transactions/support-…
+     47|  const card=view.container.querySelector('[data-board-item]') as HTMLE…
+       |                                                                                                                                                                              ^
+     48|  view.rerender(<Module variant="erp1" path="/transactions/support-tick…
+     49|  expect(within(card).getByRole('combobox')).toBeDisabled();expect(card…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  5 failed | 44 passed (49)
+   Start at  01:31:04
+   Duration  36.13s (transform 3.79s, setup 767ms, collect 11.40s, tests 53.23s, environment 1.91s, prepare 465ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits-demo/erp@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c7a/demo-apps/erp 

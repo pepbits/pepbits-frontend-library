@@ -1,0 +1,13 @@
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const recordId='restructure-phase-6c-7a-2026-10-25';
+const baseCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const fixed=['package.json','package-lock.json','turbo.json','tsconfig.base.json','docs/README.md','docs/features/README.md','docs/features/erp-demo.md','docs/testing/README.md','docs/architecture/PACKAGE-RESTRUCTURE-PLAN.md','docs/releases/unreleased/README.md'];
+const paths=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8'}).split('\0').filter(path=>path&&(path.startsWith('packages/')||path.startsWith('tooling/')||path.startsWith('demo-apps/')||fixed.includes(path))))].sort();
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const files=paths.map(path=>({path,sha256:sha(readFileSync(path))}));
+const implementationDigest=sha(files.map(file=>`${file.path}\0${file.sha256}\n`).join(''));
+const manifest={schemaVersion:1,recordId,status:'unreleased-working-tree',baseCommit,testGuideVersion:'1.0.0',implementationDigest,digestAlgorithm:'SHA-256 of sorted path + NUL + file SHA-256 + LF entries',identityScope:'Root workspace configuration, all tracked/nonignored packages/tooling/demo-apps files, plan and affected documentation/indexes. Excludes this release record, manifest and evidence to avoid self-reference. Protected source is identified by base commit and empty diff/status checks.',evidence:`${recordId}.md`,published:false,deployed:false,limits:['Simple-master editors and measured geometry at 18 destinations; remaining master differences stay explicit in the ledger. Durable drafts stay out of scope.','Separate receipts identify mocked unit checks, local builds, shell Chromium and real fictional HTTP; no deployed, native or accounting acceptance.','Integration reuses API runtimes only after comparing tracked sources and records runtime hashes and service cleanup; this is not an API rebuild.','Canonical catalog gaps and human language/domain/accessibility review remain.','Protected desktop/backend/deployment/CI paths unchanged; no commit or push.'],files};
+writeFileSync(`docs/releases/unreleased/manifest-${recordId}.json`,JSON.stringify(manifest,null,2)+'\n');
+console.log(`${files.length} files; SHA-256 ${implementationDigest}`);

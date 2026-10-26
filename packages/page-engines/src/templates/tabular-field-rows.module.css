@@ -1,0 +1,22 @@
+/* Protected source Table applies managed density padding over LinesEditor cell utilities. */
+.root {display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;--fs-scale:var(--fs-form);}
+.header {display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border);}
+.header h3 {font-size:calc(13px * var(--fs-form,1));font-weight:600;}
+.header>span {font-size:calc(12px * var(--fs-result,1));color:var(--text-muted);}
+.header>button {margin-inline-start:auto;}
+.scroll {min-height:0;flex:1;}
+.table {width:100%;border-collapse:separate;border-spacing:0;font-size:calc(13px * var(--fs-result,1));--line-y:12px;--heading-y:12px;--line-x:16px;--control-h:28px;}
+.table[data-density="compact"] {--line-y:4px;--heading-y:4px;--line-x:12px;--control-h:24px;}
+.table[data-density="spacious"] {--line-y:16px;--heading-y:16px;--control-h:34px;}
+.table th {padding:var(--heading-y) var(--line-x);border-bottom:1px solid var(--border);background:var(--surface-2);font-size:calc(12px * var(--fs-result,1));font-weight:500;color:var(--text-muted);text-align:start;white-space:nowrap;}
+.table td {padding:var(--line-y) var(--line-x);border-bottom:1px solid var(--border);text-align:start;}
+.table [data-numeric] {text-align:end;font-variant-numeric:tabular-nums;}
+.table .ordinal {width:36px;padding-inline:var(--line-x);color:var(--text-muted);font-size:calc(12px * var(--fs-result,1));}
+.table input,.table select {height:var(--control-h);border-radius:var(--radius);padding-inline:8px;font-size:calc(12.5px * var(--fs-form,1));font-weight:400;}
+.table [data-numeric] input {text-align:end;}
+.table td button {min-height:24px;height:24px;padding:0 4px;}
+.value {display:block;padding-inline:4px;white-space:nowrap;}
+.table[data-wrap="true"] .value {white-space:normal;overflow-wrap:anywhere;}
+.table tfoot {position:sticky;bottom:0;background:var(--surface-2);}
+.table tfoot td {padding:var(--heading-y) var(--line-x);border-top:1px solid var(--border);font-size:calc(12.5px * var(--fs-result,1));font-weight:600;}
+.table .empty {padding:32px 12px;text-align:center;color:var(--text-muted);}

@@ -1,0 +1,54 @@
+
+> @pepbits/page-engines@0.0.0 test
+> vitest run --maxWorkers=2 src/worklist/table-composition.test.tsx src/worklist/preference-compliance.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7a/packages/page-engines
+
+ ❯ src/worklist/table-composition.test.tsx (3 tests | 1 failed) 979ms
+   ✓ creation rows render in empty results with current columns and selection disabled  385ms
+   ✓ host row editor replaces only its record and supplies row-specific actions 297ms
+   × leading context uses the engine filter change path and optional creation wording 295ms
+     → expect(element).toBeEnabled()
+
+Received element is not enabled:
+  <button
+  class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
+  data-tour="new"
+  disabled=""
+  type="button"
+/>
+ ✓ src/worklist/preference-compliance.test.tsx (6 tests) 3076ms
+   ✓ external refresh reads acknowledged rows and preserves current criteria and layout  939ms
+   ✓ print provenance has stable server markup and refreshes immediately before native print  379ms
+   ✓ worklist applies live table, page-size and result-view locks to controls and search requests  540ms
+   ✓ filter memory retains only declared operational values and unavailable choices are disabled  336ms
+   ✓ host filter/view slots use engine search and layout while saved page sizes obey mounted policy  592ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/worklist/table-composition.test.tsx > leading context uses the engine filter change path and optional creation wording
+Error: expect(element).toBeEnabled()
+
+Received element is not enabled:
+  <button
+  class="focus-ring inline-flex shrink-0 items-center justify-center border font-semibold transition-[background,border-color,color,box-shadow,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 border-transparent bg-[var(--primary-fill)] text-white shadow-sm hover:bg-[var(--primary-strong)] h-9 gap-2 rounded-[10px] px-3.5 text-[length:calc(13px*var(--fs-scale))]"
+  data-tour="new"
+  disabled=""
+  type="button"
+/>
+ ❯ src/worklist/table-composition.test.tsx:20:83
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 8 passed (9)
+   Start at  01:33:40
+   Duration  5.89s (transform 1.14s, setup 350ms, collect 3.23s, tests 4.06s, environment 1.07s, prepare 167ms)
+
+npm ERR! Lifecycle script `test` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: @pepbits/page-engines@0.0.0 
+npm ERR!   at location: /home/pepadmin/pb/worktrees/frontend-phase6c7a/packages/page-engines 

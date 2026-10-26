@@ -1,3 +1,4 @@
+import type {WorklistTableComposition} from './table-composition';
 import type {ReactNode} from 'react';
 import type {PersonalViewLayout} from './personal-views';
 import type {PageDefinition,WorklistConfig} from '../types';
@@ -24,6 +25,11 @@ export interface WorklistFilterControls {
  onReset:()=>void;
 }
 export interface WorklistPageProps {
+ tableComposition?:WorklistTableComposition;
+ /** Optional filter context before the toolbar (for example a parent selector). */
+ renderLeading?:(controls:WorklistFilterControls)=>ReactNode;
+ /** Optional host wording for creation; defaults to New. */
+ newLabel?:string;
  page:PageDefinition;config:WorklistConfig;adapter:WorklistAdapter;
  imports?:{definition:ImportDefinition;adapter:ImportAdapter};
  approvals?:{adapter:ApprovalAdapter;roleOptions:readonly string[]};
