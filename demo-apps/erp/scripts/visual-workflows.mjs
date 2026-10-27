@@ -1,3 +1,5 @@
+import {workspaceVisualWorkflows} from './workspace-visual-workflows.mjs';
+import {richMastersVisual} from './rich-masters-visual.mjs';
 import {masterVisualWorkflows} from './masters-visual-workflows.mjs';
 import {deferredMastersVisual} from './deferred-masters-visual.mjs';
 import assert from 'node:assert/strict';
@@ -6,6 +8,8 @@ import {transactionVisualWorkflows} from './transaction-visual-workflows.mjs';
 
 /** Source dimensions are from the read-only JSX/CSS audit; this does not render the original app. */
 export async function visualWorkflows({page,visit,flows,visualChecks,capture,checks=[]}) {
+ await workspaceVisualWorkflows({page,visit,flows,visualChecks,capture});
+ await richMastersVisual({page,visit,flows,visualChecks,capture});
  await deferredMastersVisual({page,visit,flows,visualChecks,capture});
  await masterVisualWorkflows({page,visit,flows,visualChecks,capture});
  await transactionVisualWorkflows({page,visit,flows,visualChecks,capture,checks});

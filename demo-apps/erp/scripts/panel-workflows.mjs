@@ -17,7 +17,7 @@ export async function panelWorkflows({page, visit, flows, checks, capture, scree
   for (const variant of ['erp1', 'erp2']) {
     await visit('/' + variant + '/masters/customers');
     if (variant === 'erp2') await page.locator('tbody tr').first().locator('td').nth(2).click();
-    await page.locator('[data-profile-summary]').waitFor();await page.getByRole('heading', {name: 'Documents', exact: true}).waitFor();
+    await page.locator('[data-profile-summary]').waitFor();if(variant==='erp1')await page.getByRole('tab',{name:/^Documents/}).click();else await page.getByRole('heading', {name: 'Documents', exact: true}).waitFor();
     await page.getByText('Selected on this screen only — not uploaded or saved.', {exact: true}).waitFor();
     await page.locator('input[type=file]').setInputFiles({name: 'Fictional local terms.txt', mimeType: 'text/plain', buffer: Buffer.from('Fictional local selection')});
     await page.getByRole('button', {name: 'Remove Fictional local terms.txt', exact: true}).click();

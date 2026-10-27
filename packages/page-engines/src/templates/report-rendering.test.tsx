@@ -13,3 +13,9 @@ test('controlled header sorting announces direction and sends a column key',()=>
  const onSort=vi.fn();render(<TemplateReport {...props} sort={{key:'amount',direction:'desc'}} onSort={onSort}/>);
  expect(screen.getByRole('columnheader',{name:'Amount ↓'})).toHaveAttribute('aria-sort','descending');fireEvent.click(screen.getByRole('button',{name:'Amount ↓'}));expect(onSort).toHaveBeenCalledWith('amount');
 });
+test('report column metadata reaches headings, body and totals without changing formatted values',()=>{
+ const view=render(<TemplateReport {...props} totals={{amount:900}}/>);
+ expect(view.container.querySelector('thead [data-column-type="number"]')).toHaveTextContent('Amount');
+ expect(view.container.querySelector('tbody [data-column-type="number"]')).toHaveTextContent('5');
+ expect(view.container.querySelector('tfoot [data-column-type="number"]')).toHaveTextContent('900');
+});

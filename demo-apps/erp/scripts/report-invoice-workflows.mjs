@@ -33,7 +33,13 @@ export async function reportInvoiceWorkflows({page,visit,flows,screenshot}) {
       flows.push({id:variant+'-'+slug+'-advanced',scope:'UI',result:'Typed range'+(slug==='sales-register'?', multiple statuses':slug==='purchase-register'?', person text':'')+', server sorting, complete group subtotals and parsed full-result spreadsheet export',rows:data.total,format:download.suggestedFilename().split('.').at(-1)});
       if(screenshot&&variant==='erp1'&&slug==='sales-register')await page.screenshot({path:screenshot.replace('.png','-advanced-report.png'),fullPage:true});
     }
-    if(variant==='erp2'){await visit('/preferences');await page.getByRole('tab',{name:'Page',exact:true}).click();const slider=page.getByRole('slider',{name:'Result / table size',exact:true});await slider.waitFor();const [changed]=await Promise.all([page.waitForResponse(response=>response.url().endsWith('/preferences')&&response.request().method()==='PUT'),slider.press('End')]);assert.ok(changed.ok());assert.equal(await slider.inputValue(),'16');}
+    if(variant==='erp2'){
+      await visit('/preferences');await page.getByRole('tab',{name:'Page',exact:true}).click();const slider=page.getByRole('slider',{name:'Result / table size',exact:true});await slider.waitFor();
+      const [changed]=await Promise.all([page.waitForResponse(response=>response.url().endsWith('/preferences')&&response.request().method()==='PUT'&&response.request().postDataJSON()?.preferences?.fontSizeResult===16),slider.press('End')]);
+      assert.ok(changed.ok());assert.equal((await changed.json()).preferences.fontSizeResult,16);
+      // The accepted HTTP response precedes the host's controlled React render.
+      await slider.locator('..').getByText('16px',{exact:true}).waitFor();assert.equal(await slider.inputValue(),'16');
+    }
     const original=(await api(variant,'/api/entities/sales-invoices?size=1')).rows[0];
     const lines=Array.from({length:75},(_,index)=>({item:`Fictional item ${String(index+1).padStart(3,'0')} `+(index%4===0?'with a deliberately wrapped description for measured pagination across several lines of invoice text. ':''),qty:1,rate:10.25,tax:5,kind:index===30?'Deduction':'Item'}));
     const saved=await api(variant,'/api/entities/sales-invoices/'+original.id,{method:'PUT',data:{lines,expectedVersion:original.version??0,operationId:crypto.randomUUID()}});assert.equal(saved.lines.length,75);

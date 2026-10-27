@@ -76,3 +76,5 @@ CareGrid scheduling adds direct `Accessibility`, `Apple`, `Baby`, `Brain`, `Cale
 ## Hierarchy primitives
 
 `ChevronsDownUp`, `ChevronsUpDown`, `Folder` and `FolderOpen` are additive direct Lucide exports in their own module. They use the existing dependency and have four public-barrel render checks. Product hierarchy metadata stays with the host.
+
+`ZoomOut` is also available from the public barrel for print-preview zoom controls, alongside `ZoomIn`. It forwards the existing Lucide icon without a dependency or behavior change.

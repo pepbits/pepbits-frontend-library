@@ -165,6 +165,10 @@ When Calendar receives `renderDay`, its day button name includes the visible mar
 
 ## Nonnegative metric charts
 
+### Progress bar (phase 6c-7b2)
+
+`ProgressBar` takes a numeric percentage, localized accessible `label` and optional primary/success/warning/danger `tone`. Values clamp to 0–100; non-finite inputs become zero. It exposes progress semantics, uses host colour/radius tokens and has no animation, transport or timers. Four tests cover bounds and accessible values. ERP request balances, process progress and inspections consume it.
+
 Root exports `BarChart`, `HorizontalBars`, `ProgressRing` and `MetricPoint`. Hosts supply labels, colors/units, optional scale/geometry and a preference-bound `formatValue`. Bars provide focusable formatted-value/comparison inspection; horizontal bars show values in text. Invalid/negative metrics become zero, maxima have a positive floor, and geometry clamps to its plot/percentage range. These views are for nonnegative metrics, not signed financial series. Fonts use effective result scale and colors use semantic tokens; no animation, data transport or product vocabulary is owned here. Tests cover keyboard inspection, empty/degenerate data and ring bounds/labels. Scholaris consumes these engines through thin domain adapters.
 
 ## Grouped bar chart (phase 6e-1)
@@ -176,3 +180,14 @@ Root export `GroupedBarChart` draws grouped bars from the same `ChartSeries` con
 `LineChart` accepts optional `layout="compact"`, plot `height`, `min`/`max` and per-series `fill` (compact areas default on). This presentation uses HTML axis labels and a stretched SVG plot; pointer inspection and a focus-revealed native select share the formatted tooltip. Empty/invalid values remain finite. `DonutChart` accepts compact `size`, `thickness`, `center` and per-part `color`; its named legend buttons remain keyboard inspectable. Hosts supply effective result scale, semantic theme tokens and number formatting. Existing standard layouts and callers keep their defaults. No new exports or dependencies.
 
 `CollectionColumn.headerClassName` passes optional presentation metadata to the semantic column header. Table still controls managed density, wrapping, striping and sticky headers. Regression tests cover authored geometry, keyboard inspection, invalid/empty values and effective table preferences.
+
+## Dashboard inspection and compact totals (phase 6c-7c)
+
+`TrendPlot`, `DonutSummary`, `RangeSparkline` and `MetricTile` are additive exports from `@pepbits/components/dashboard-visuals`. TrendPlot uses a 230px plot with pointer inspection and a focus-revealed native select; both display the same host-formatted values. DonutSummary uses a 140px ring with a percentage legend and a center value that follows pointer/keyboard focus. Hosts supply labels, semantic colours and effective formatters, including percentage formatting. RangeSparkline normalizes its decorative 96×30 geometry to the series range; MetricTile supplies a 12px label, 18px value, optional hint and colour marker. Fonts use result scale; radii and colours use theme tokens. Invalid values remain finite; donut inputs are nonnegative. Existing chart/card defaults are unchanged. Five direct tests cover inspection, empty/degenerate data and supplied formatting; ERP adds composition and real-browser geometry coverage.
+
+```tsx
+import {MetricTile, RangeSparkline} from "@pepbits/components/dashboard-visuals";
+// Obtain formattedValue and values from the host data/formatting adapter.
+<MetricTile label="Sales" value={formattedValue} hint={formattedAverage} />;
+<RangeSparkline values={values} />;
+```

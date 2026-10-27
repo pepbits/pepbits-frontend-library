@@ -158,6 +158,7 @@ export {ChartColumnBig, Gift, Nfc, Tag, Vault} from "lucide-react";
 export {Accessibility, ArrowBigUpDash, FileLock2, MailCheck, TestTube} from "lucide-react";
 // Reports demo presentation primitives (KeyRound, Library, ScrollText, Settings and Zap are exported elsewhere in this file).
 export { Blocks, FileBarChart, FolderDown, MailPlus } from "lucide-react";
+export {ZoomOut} from 'lucide-react';
 // Additional generic icon exports.
 export {ArrowDownWideNarrow, Award, BookCopy, BookMarked, BookPlus, BookUp, BookX, Briefcase, CalendarOff, Coffee, DollarSign, Eraser, FileSpreadsheet, Film, Flag, GraduationCap, Grid3x3, Highlighter, Kanban, KeyRound, Laptop, Library, Palette, Paperclip, PenTool, Percent, Redo2, School, Settings, Smile, Target, User, UserCog, UserX, VideoOff, Zap} from "lucide-react";
 export type {LucideIcon} from "lucide-react";

@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {join} from 'node:path';
+import {deferredTransactionVisualWorkflows} from './deferred-transaction-visual-workflows.mjs';
 const require=createRequire(import.meta.url);
 const slugs=['sales-orders','sales-invoices','purchase-orders','goods-receipts','journal-vouchers','payment-vouchers','petty-cash'];
 /** Read-only source JSX/CSS targets; browser measurements cover this demo, not the original runtime. */
 export async function transactionVisualWorkflows({page,visit,flows,visualChecks,checks,capture}) {
+ await deferredTransactionVisualWorkflows({page,visit,flows,visualChecks,checks,capture});
  const measure=selector=>page.locator(selector).first().evaluate(element=>{const css=getComputedStyle(element),rect=element.getBoundingClientRect();return {width:rect.width,height:rect.height,fontSize:parseFloat(css.fontSize),paddingTop:parseFloat(css.paddingTop),paddingInlineStart:parseFloat(css.paddingInlineStart),gap:parseFloat(css.gap),columns:css.gridTemplateColumns,formScale:parseFloat(css.getPropertyValue('--fs-form'))||1,resultScale:parseFloat(css.getPropertyValue('--fs-result'))||1,density:element.closest('[data-density]')?.getAttribute('data-density')};});
  const close=(actual,expected,label)=>assert.ok(Math.abs(actual-expected)<1,`${label}: ${actual} differs from source ${expected}`);
  let sourceCascade;

@@ -1,0 +1,52 @@
+.erp-matrix-identity {display:flex;gap:8px;align-items:center;min-width:0;}
+.erp-matrix-identity>div {min-width:0;}
+.erp-matrix-identity strong {font-size:calc(12.5px * var(--fs-result));font-weight:500;display:block;}
+.erp-matrix-identity small {font-size:calc(11px * var(--fs-result));color:var(--text-subtle);display:block;}
+.erp-matrix-page [data-entry-matrix] tbody tr:hover>:is(th,td:last-child) {background:var(--surface-2);}
+.erp-matrix-page [data-entry-matrix] tbody tr:has(.erp-matrix-identity[data-dirty])>:is(th,td:last-child) {background:var(--erp-matrix-accent-soft);}
+.erp-matrix-summary {font-variant-numeric:tabular-nums;}
+.erp-matrix-summary strong {display:block;font-size:calc(13px * var(--fs-result));font-weight:600;}
+.erp-matrix-summary[data-kind=marks] strong {color:var(--primary);}
+.erp-matrix-summary[data-kind=marks] strong>span {font-weight:400;color:var(--text-subtle);}
+.erp-matrix-summary small[data-overtime] {color:var(--warning-ink);}
+.erp-matrix-summary small {display:block;font-size:calc(11px * var(--fs-result));color:var(--text-subtle);}
+.erp-matrix-summary [data-low],.erp-matrix-low input {color:var(--danger-ink);}
+.erp-matrix-low input {font-weight:600;}
+.erp-matrix-code-P button {background:color-mix(in srgb,var(--success) 12%,var(--surface));color:var(--success-ink);}
+.erp-matrix-code-A button {background:color-mix(in srgb,var(--danger) 12%,var(--surface));color:var(--danger-ink);}
+.erp-matrix-code-L button {background:color-mix(in srgb,var(--warning) 12%,var(--surface));color:var(--warning-ink);}
+.erp-matrix-code-H button {background:var(--primary-soft);color:var(--primary);}
+.erp-matrix-code-WO button {background:var(--surface-3);color:var(--text-muted);}
+.erp-matrix-code-blank button {border:1px dashed var(--border);}
+.erp-matrix-toolbar {display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;}
+.erp-matrix-period {display:flex;align-items:center;gap:4px;}
+.erp-matrix-period>button {width:32px;height:32px;padding:0;}
+.erp-matrix-period>span {min-width:150px;text-align:center;font-size:calc(14px * var(--fs-form));font-weight:600;}
+.erp-matrix-toolbar>div:has(input) {width:100%;}
+.erp-matrix-toolbar>div:has(select) {width:144px;}
+.erp-matrix-legend {color:var(--text-muted);display:none;gap:8px;font-size:calc(12px * var(--fs-result));}
+.erp-matrix-legend>span {display:flex;gap:4px;align-items:center;}
+.erp-matrix-legend b {font-weight:600;min-width:20px;height:20px;display:grid;place-items:center;padding:0 4px;font-size:calc(10.5px * var(--fs-result));border-radius:var(--radius);}
+.erp-matrix-legend .erp-matrix-code-P b {background:color-mix(in srgb,var(--success) 12%,var(--surface));color:var(--success-ink);}
+.erp-matrix-legend .erp-matrix-code-A b {background:color-mix(in srgb,var(--danger) 12%,var(--surface));color:var(--danger-ink);}
+.erp-matrix-legend .erp-matrix-code-L b {background:color-mix(in srgb,var(--warning) 12%,var(--surface));color:var(--warning-ink);}
+.erp-matrix-legend .erp-matrix-code-H b {background:var(--primary-soft);color:var(--primary);}
+
+.erp-matrix-page {--erp-matrix-accent-soft:color-mix(in srgb,var(--warning) 12%,var(--surface));display:flex;flex:1 1 0;flex-direction:column;gap:12px;min-height:560px;min-width:0;height:100%;padding:8px;}
+.erp-matrix-toolbar,.erp-matrix-page>nav {flex-shrink:0;}
+.erp-matrix-toolbar-spacer {flex:1;}
+@media(min-width:640px){.erp-matrix-toolbar>div:has(input) {width:224px;}}
+@media(min-width:1024px){.erp-matrix-legend {display:flex;}}
+
+.erp-matrix-page>[data-entry-matrix] {box-shadow:none;}
+.erp-matrix-page [data-entry-matrix] thead [data-muted] {background:var(--surface-3);}
+.erp-matrix-page [data-entry-matrix] thead [data-current] {background:var(--erp-matrix-accent-soft);color:var(--text);}
+.erp-matrix-page [data-entry-matrix] tbody [data-current] {background:color-mix(in srgb,var(--erp-matrix-accent-soft) 60%,transparent);}
+.erp-matrix-page:has(.erp-matrix-legend) [data-entry-matrix] tbody [data-muted]:not([data-current]) {background:transparent;}
+.erp-matrix-page [data-entry-matrix] tfoot th {font-size:calc(12px * var(--fs-result));}
+@media(min-width:768px){.erp-matrix-page {padding:12px;}}
+
+.erp-matrix-legend .erp-matrix-code-WO b {background:var(--surface-3);color:var(--text-subtle);}
+.erp-matrix-page [data-entry-matrix] thead small,.erp-matrix-page [data-entry-matrix] thead [data-muted]:not([data-current]) {color:var(--text-subtle);}
+
+.erp-matrix-page [data-entry-matrix] tfoot :is(th,td) {border-top-color:var(--border-strong);}

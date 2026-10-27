@@ -30,6 +30,10 @@ test('computed columns remain read-only while other columns are editable',()=>{
  render(<TabularFieldRows {...props} columns={[props.columns[0]!,{...props.columns[1]!,readOnly:true}]}/>);
  expect(screen.queryByRole('spinbutton')).toBeNull();expect(screen.getAllByRole('combobox')).toHaveLength(2);
 });
+test('custom cells receive the stable row and index while undefined retains typed controls',()=>{
+ const cell=vi.fn((column:{id:string},row:{id:string},index:number)=>column.id==='name'?<span>{row.id}:{index}</span>:undefined);render(<TabularFieldRows {...props} renderCell={cell}/>);
+ expect(screen.getByText('two:1')).toBeVisible();expect(screen.getByRole('spinbutton',{name:'Quantity 2'})).toHaveValue(3);
+});
 test('typed boolean and multiline fields preserve their value contracts',()=>{
  const change=vi.fn();render(<TabularFieldRows {...props} rows={[{id:'one',values:{active:false,note:'First'}}]} columns={[{id:'active',label:'Active',type:'checkbox'},{id:'note',label:'Note',type:'textarea'}]} onChange={change}/>);
  fireEvent.click(screen.getByRole('checkbox',{name:'Active 1'}));expect(change).toHaveBeenLastCalledWith([{id:'one',values:{active:true,note:'First'}}]);
