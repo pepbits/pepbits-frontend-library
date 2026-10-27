@@ -35,3 +35,7 @@ Owner feedback: the copied pages did not follow the @pepbits components. Both pa
 - `provenance.json` records the rebuild and keeps the API contract.
 
 Verification (Node 24.21.0, worktree `feature/front-desk-pepbits-components` from main `90a7804`, uncommitted working tree): healthcare `tsc --noEmit` passed; vitest `src/modules/registration/routes.test.tsx` 54/54, `workflows.test.tsx` 19/19, `navigation.test.ts` 24/24, new `front-desk/front-desk.test.tsx` 4/4 (visit steps advance with the unchanged POST payload, referral validation, emergency validation and unknown-patient payload, axe on the visit details and consent forms), `src/routes.test.tsx` 904/904; `check-boundaries.mjs` passed; `check-docs.mjs` passed; `git diff --check` clean. Tests use a mocked front desk API. Not run: production build, browser rendering on the test instance, full CI, test-site deployment.
+
+## Test-site deployment of the @pepbits rebuild
+
+27 October 2026 00:38Z (04:38 UAE): release `20261027003529730-7247db06` from main `7247db0` (sha256 `b6f769c886ab1a4a3345e70bc71e30e0dc9abb74e69e2bd56645a667a2b92d72`, `verify-test-site.mjs` passed) deployed to https://frontend.test.pepbits.com through the pb-srv5 receiver after owner approval (previous `20261026233735142-3a097902`). `__nexora-release.json` reports the new id; both front-desk pages and the patient pages return 200, and both front-desk pages rendered after demo sign-in on the live site with no page errors. Test site only, not production.
