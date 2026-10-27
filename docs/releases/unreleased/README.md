@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Emergency triage on @pepbits/clinical — 27 October 2026](clinical-er-triage-2026-10-27.md): ESI triage profile, small reusable triage and section parts, and the AllyVora Emergency triage pages in the healthcare demo; local verification only.
 - [Clinical package and nurse intake — 27 October 2026](clinical-package-2026-10-27.md): new `@pepbits/clinical` package (sections, intake form, encounter queues over a data port) and the AllyVora Outpatient nurse intake pages in the healthcare demo; local verification only.
 - [AllyVora patient pages — 26 October 2026](allyvora-patient-pages-2026-10-26.md): dedicated create, edit and view addresses for AllyVora Patients; old `?mode=` links still work.
 - [AllyVora front desk pages — 26 October 2026](allyvora-front-desk-2026-10-26.md): Start a visit and Emergency registration in AllyVora Patients, first copied, then rebuilt on @pepbits components (27 October); frontend only, backend in a separate session.

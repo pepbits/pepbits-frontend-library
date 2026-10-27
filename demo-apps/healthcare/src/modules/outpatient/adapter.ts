@@ -19,6 +19,7 @@ export function allyVoraClinicalPort(): ClinicalDataPort {
     saveIntake: (id, payload) => withProblems(api(`/encounters/${encodeURIComponent(id)}/intake`, {json: payload})),
     searchCatalog: (catalog, query, signal) => api<{items: never[]}>(`/catalog/${catalog}?q=${encodeURIComponent(query)}&limit=10`, {signal}).then(r => r.items),
     calculateScore: (method, inputs, signal) => api(`/scores/${method}/calculate`, {json: {inputs}, signal}),
+    previewEsi: (inputs, signal) => api('/encounters/esi/preview', {json: inputs, signal}),
     addAllergy: (patientId, allergy) => withProblems(api(`/patients/${encodeURIComponent(patientId)}/allergies`, {json: allergy})),
   };
 }

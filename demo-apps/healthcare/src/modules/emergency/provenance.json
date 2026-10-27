@@ -1,0 +1,60 @@
+{
+  "sourceRepository": "/home/pepadmin/pb/saas/r/dev",
+  "sourcePath": "dev/healthcare/allyvora-consulation/allyvora",
+  "sourceCommit": "e025f48d5ad497bdc507949fe0de16427d578946",
+  "status": "Rebuilt on @pepbits/clinical (27 October 2026) from the committed source only. The triage worklist, the emergency triage form (IntakeForm mode \"er\"), ESI decision points, override, area, validation messages, status behaviour (the visit stays waiting-triage when opened), API paths and payloads follow the source; markup and styling are the library's own.",
+  "reason": "Owner-requested emergency triage profile, built as small reusable clinical components.",
+  "files": [
+    {
+      "source": "frontend/app/(app)/emergency/triage/page.tsx",
+      "target": "page.tsx (route /allyvora-emergency/triage)",
+      "sha256": "1c75e357e19d2dd5f80f8f7b4dcf0a67a5da6bb8a3e13c3f04174ff110367e38"
+    },
+    {
+      "source": "frontend/app/(app)/emergency/triage/[id]/page.tsx",
+      "target": "page.tsx (route /allyvora-emergency/triage/<encounter>)",
+      "sha256": "cb8278f38fb79989fa744e8c60cc4d7ecfcd8ce466bbd472917743cadf9a42c2"
+    },
+    {
+      "source": "frontend/components/clinical/ErBoard.tsx",
+      "target": "@pepbits/clinical TriageQueue, TriageWaitingRow, EsiLevelCounts, QueueParts (triageOnly view)",
+      "sha256": "bc3d8cebd745bdf81b25ed89b87c53638b5b45180a734d799b978cadcde0752e"
+    },
+    {
+      "source": "frontend/components/clinical/IntakeForm.tsx",
+      "target": "@pepbits/clinical EMERGENCY_TRIAGE profile, triage model, EsiSection and its parts (er mode)",
+      "sha256": "0ffa1772844a8c05abc76d90f4777bb50d04b6d487c43a86ca272e02d4a93f6b"
+    },
+    {
+      "source": "frontend/components/clinical/index.tsx",
+      "target": "@pepbits/clinical EsiLevelChip (EsiChip)",
+      "sha256": "310aaa56e0525c47a9f916b606f366fe30b138d9927e6c3a97d70b0fd255571f"
+    },
+    {
+      "source": "api/src/main/java/com/pepbits/allyvora/ClinicalScores.java",
+      "target": "Read for the ESI preview contract (level, steps, dangerZone); the algorithm stays on the server",
+      "sha256": "85117ced8cab04a8cc6bf9315d922b44472471701ddb030c9f4b5d5ec3d31678"
+    },
+    {
+      "source": "api/src/main/java/com/pepbits/allyvora/EncounterController.java",
+      "target": "Read for POST /encounters/esi/preview and the er intake save",
+      "sha256": "d288b1f748d379e86b4f0b11c6db7abff8b7e4786dadee1e38ee3aea0161936b"
+    },
+    {
+      "source": "docs/emergency/02-triage-and-esi/README.md",
+      "target": "Behaviour reference for ER-05 to ER-17",
+      "sha256": "792cdb3b7b8bcc5579a4650378140cf9ba6cb72922c7c7418bf20224035fd7eb"
+    }
+  ],
+  "differences": [
+    "Changing an earlier ESI answer clears the later answers that no longer apply, so a hidden decision is never sent; the source kept and sent them (the server ignores them once an earlier decision decides the level).",
+    "The worklist sorts by wait, longest first, in the browser; the source relied on the server order.",
+    "The ESI level chip uses semantic theme colours (danger, warning, success, info) instead of the source's esi1–esi5 palette."
+  ],
+  "notPorted": [
+    "Emergency tracking board (level counts, in-department table, reassessment timers, medication administration); EsiLevelCounts is available but no page uses it yet",
+    "End visit from the triage list",
+    "Full pain assessment panel (PainPanel) shown in the source form",
+    "Uncommitted work in progress in the source working tree (configurable vital-sign parameters, VitalsFields screen prop) is not included"
+  ]
+}

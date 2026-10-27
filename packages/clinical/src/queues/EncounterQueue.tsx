@@ -1,13 +1,13 @@
 "use client";
-import React, {useCallback, useEffect, useMemo, useState, type ReactNode} from "react";
+import React, {useMemo, useState, type ReactNode} from "react";
 import {useLocalization} from "@pepbits/i18n/react";
-import {RefreshCw} from "@pepbits/icons";
-import {Badge, Button, Skeleton, cn, type BadgeTone} from "@pepbits/ui";
+import {Badge, Skeleton, cn, type BadgeTone} from "@pepbits/ui";
 import {EmptyState, ErrorState, Table, TableBody, TableCell, TableContainer, TableHead, TableHeader, TableRow} from "@pepbits/components";
-import {useClinicalPort} from "../context/clinical-context";
 import {problemsOf} from "../context/port";
 import {TEXT} from "../layout/panel";
-import {useClock, waitLabel} from "../time";
+import {useClock} from "../time";
+import {PatientFlags, QueueHeader, StaleListNotice, WaitTime} from "./QueueParts";
+import {useEncounterRows} from "./useEncounterRows";
 import type {EncounterClass, QueueRow} from "../types";
 
 export interface QueueStage { key: string; label: string; tone: BadgeTone }
@@ -33,23 +33,15 @@ export function EncounterQueue({encounterClass, stages, statuses, title, subtitl
   actions?: (row: QueueRow, reload: () => void) => ReactNode; refreshMs?: number; reloadKey?: unknown;
 }) {
   const {t} = useLocalization();
-  const port = useClinicalPort();
   const clock = useClock();
-  const [rows, setRows] = useState<QueueRow[] | null>(null);
-  const [error, setError] = useState<unknown>(null);
+  const {rows, error, reload} = useEncounterRows(encounterClass, refreshMs, reloadKey);
   const [filter, setFilter] = useState<string | null>(null);
-  const load = useCallback(() => port.listEncounters(encounterClass).then(result => { setRows(result); setError(null); }).catch(setError), [port, encounterClass]);
-  useEffect(() => { void load(); const timer = setInterval(() => void load(), refreshMs); return () => clearInterval(timer); }, [load, refreshMs, reloadKey]);
 
   const visible = useMemo(() => (rows ?? []).filter(row => (!statuses || statuses.includes(row.status)) && (!filter || row.status === filter)), [rows, statuses, filter]);
   const counts = useMemo(() => Object.fromEntries(stages.map(stage => [stage.key, (rows ?? []).filter(row => row.status === stage.key).length])), [rows, stages]);
-  const reload = () => void load();
 
   return <div className="grid gap-3">
-    <header className="flex flex-wrap items-start justify-between gap-3">
-      <div><h1 className="text-[length:calc(22px*var(--fs-scale))] font-bold tracking-tight text-[var(--text)]">{t(title)}</h1>{subtitle ? <p className={TEXT.muted}>{t(subtitle)}</p> : null}</div>
-      <Button variant="ghost" leftIcon={<RefreshCw className="size-4"/>} onClick={reload}>Refresh</Button>
-    </header>
+    <QueueHeader title={title} subtitle={subtitle} onRefresh={reload}/>
     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-5" role="group" aria-label={t("Filter by stage")}>
       {stages.map((stage, i) => <button key={stage.key} type="button" onClick={() => setFilter(filter === stage.key ? null : stage.key)} aria-pressed={filter === stage.key}
         className={cn("focus-ring relative overflow-hidden rounded-[var(--radius)] border bg-[var(--surface)] px-4 py-3 text-start transition-colors hover:border-[var(--border-strong)]",
@@ -72,7 +64,7 @@ export function EncounterQueue({encounterClass, stages, statuses, title, subtitl
               const stage = stages.find(s => s.key === row.status);
               return <TableRow key={row.id} className="border-t border-[var(--border)]">
                 <TableCell className="px-3 py-2.5">
-                  <p className={cn("font-bold", TEXT.body)} data-phi>{row.patient.name}{row.patient.restricted ? <Badge tone="warning" className="ms-1.5">Restricted</Badge> : null}</p>
+                  <p className={cn("font-bold", TEXT.body)} data-phi>{row.patient.name}<PatientFlags patient={row.patient}/></p>
                   <p className={cn("tabular-nums", TEXT.muted)}><span data-phi>{row.patient.mrn}</span>{row.patient.age !== undefined ? <> · {row.patient.age} y {row.patient.sex?.[0]?.toUpperCase()}</> : null} · {t("arrived")} {clock(row.arrivedAt)}</p>
                 </TableCell>
                 <TableCell className={cn("max-w-[220px] px-3 py-2.5", TEXT.body)}>
@@ -83,7 +75,7 @@ export function EncounterQueue({encounterClass, stages, statuses, title, subtitl
                   </span>
                 </TableCell>
                 <TableCell className="px-3 py-2.5"><Badge tone={stage?.tone ?? "neutral"}>{t(stage?.label ?? row.status)}</Badge></TableCell>
-                <TableCell className={cn("px-3 py-2.5 tabular-nums", TEXT.body, row.waitingMinutes > 60 && row.status !== "signed" && "font-bold text-[var(--danger-ink)]")}>{waitLabel(row.waitingMinutes)}</TableCell>
+                <TableCell className={cn("px-3 py-2.5", TEXT.body)}><WaitTime minutes={row.waitingMinutes} alertAfter={row.status === "signed" ? undefined : 60}/></TableCell>
                 <TableCell className="px-3 py-2.5"><SafetyBadges row={row}/></TableCell>
                 <TableCell className={cn("px-3 py-2.5", TEXT.body)}>{row.clinicianName ?? <span className="text-[var(--text-muted)]">{t("Unassigned")}</span>}</TableCell>
                 <TableCell className="px-3 py-2.5 text-end"><div className="flex flex-wrap justify-end gap-1.5">{actions?.(row, reload)}</div></TableCell>
@@ -92,7 +84,7 @@ export function EncounterQueue({encounterClass, stages, statuses, title, subtitl
           </TableBody>
         </Table>
       </TableContainer>}
-    {error && rows ? <p role="status" className={cn(TEXT.muted, "text-[var(--warning-ink)]")}>{t("The last refresh failed; showing the previous list.")}</p> : null}
+    <StaleListNotice show={!!error && !!rows}/>
   </div>;
 }
 

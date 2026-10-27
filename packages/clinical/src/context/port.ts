@@ -1,5 +1,6 @@
 import type {AllergyBlock, CatalogItem, CatalogName, EncounterClass, EncounterDetail, QueueRow, ScoreResult} from "../types";
 import type {IntakePayload} from "../forms/intake-model";
+import type {EsiPreview} from "../triage/model";
 
 export interface NewAllergy { substance: string; allergenCode?: string; category: string; reaction?: string; criticality?: string }
 export interface IntakeResult { news2: ScoreResult; esi: {finalLevel: number} | null }
@@ -17,6 +18,8 @@ export interface ClinicalDataPort {
   searchCatalog(catalog: CatalogName, query: string, signal?: AbortSignal): Promise<CatalogItem[]>;
   /** Live score preview; the server recalculates authoritatively when the record is saved. */
   calculateScore(method: "news2", inputs: Record<string, unknown>, signal?: AbortSignal): Promise<ScoreResult>;
+  /** Live ESI preview from the decisions, age and vital signs (`esiInputs`); recalculated on save. */
+  previewEsi(inputs: Record<string, unknown>, signal?: AbortSignal): Promise<EsiPreview>;
   addAllergy(patientId: string, allergy: NewAllergy): Promise<AllergyBlock>;
 }
 
