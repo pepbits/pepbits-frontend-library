@@ -56,11 +56,11 @@ test.each(['erp1', 'erp2'] as const)('%s keeps unsent case inputs across other a
 test.each(['erp1', 'erp2'] as const)('%s profile shows source groups, statistics, activity/documents and changes', async variant => {
   const api = mockApi(), row = api.rows.get('customers')![0]!, request: JsonRequest = async (path, init) => path.includes('/support') ? structuredClone(support) as never : api.request(path, init);
   const {container} = render(<Record slug="customers" id={row.id} host={hostFor(request as JsonRequest, variant)}/>);
-  expect(await screen.findByText('Record reviewed')).toBeVisible();expect(screen.getByText('Fictional terms.pdf')).toBeVisible();
+  if(variant==='erp1')fireEvent.click(await screen.findByRole('tab',{name:'Activity'}));expect((await screen.findAllByText('Record reviewed')).length).toBeGreaterThan(0);if(variant==='erp1')fireEvent.click(screen.getByRole('tab',{name:/^Documents/}));expect(await screen.findByText('Fictional terms.pdf')).toBeVisible();if(variant==='erp1')fireEvent.click(screen.getByRole('tab',{name:'Details'}));
   expect(container.querySelector('[data-profile-summary]')).toHaveTextContent('Credit limit');
   fireEvent.click(screen.getByRole('button', {name: 'Edit'}));
   fireEvent.change(await screen.findByRole('textbox', {name: 'Customer'}), {target: {value: 'Fictional changed customer'}});
-  expect(await screen.findByRole('heading', {name: 'Changes'})).toBeVisible();expect(container.querySelector('[data-record-aside]')).toHaveTextContent('Fictional changed customer');
+  if(variant==='erp2'){expect(await screen.findByRole('heading', {name: 'Changes'})).toBeVisible();expect(container.querySelector('[data-record-aside]')).toHaveTextContent('Fictional changed customer');}else expect(screen.getByRole('heading',{name:'Fictional changed customer'})).toBeVisible();
 });
 
 test('support distinguishes failure, retry, empty and version refresh', async () => {

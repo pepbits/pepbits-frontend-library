@@ -1,0 +1,52 @@
+{
+  "attempts": [
+    {
+      "command": "npm test -w @pepbits-demo/erp -- src/record-panels.test.tsx src/specialized.test.tsx --maxWorkers=2",
+      "passed": 70,
+      "failed": 2,
+      "reason": "Source ERP1 tabs and retained overlay intentionally replace simultaneous support panels and disappearing worklist; test expectations updated."
+    },
+    {
+      "command": "npm test -w @pepbits-demo/erp -- src/rich-masters.test.tsx src/record-panels.test.tsx src/specialized.test.tsx --maxWorkers=2",
+      "passed": 100,
+      "failed": 3,
+      "reason": "New fixture tried to edit read-only computed Amount; corrected to Monthly rate and qty=1. Duplicate navigation assertion omitted the /erp2 module prefix."
+    },
+    {
+      "command": "same three-file focused command",
+      "passed": 103,
+      "failed": 0,
+      "files": 3,
+      "scope": "Fictional mocked HTTP. Predates the four added empty-line/save-another/copy/delete tests; final CI must cover them."
+    }
+  ],
+  "typescript": "Before final verification: caught drawer xl mapping to lg, optional primary field, inferred action/validation unions and test request/exact-option types; corrected.",
+  "refinement": {
+    "newRichMasterTests": 37,
+    "command": "npm test -w @pepbits-demo/erp -- src/rich-masters.test.tsx src/record-panels.test.tsx --maxWorkers=2",
+    "passed": 89,
+    "failed": 1,
+    "reason": "The Documents badge introduced whitespace into its accessible name; the exact numeric-count assertion now accepts that whitespace.",
+    "followup": {
+      "command": "npm test -w @pepbits-demo/erp -- src/rich-masters.test.tsx -t \"Documents badge\" --maxWorkers=2",
+      "passed": 1,
+      "unselected": 36
+    },
+    "typecheck": "ERP tsc --noEmit passed."
+  },
+  "finalRefinements": [
+    {
+      "command": "npm test -w @pepbits-demo/erp -- src/rich-masters.test.tsx -t \"rounding\" --maxWorkers=2",
+      "passed": 1,
+      "unselected": 36,
+      "purpose": "Sum raw values before rounding each displayed total, matching protected source."
+    },
+    {
+      "command": "npm test -w @pepbits-demo/erp -- src/rich-masters.test.tsx -t \"acknowledged save\" --maxWorkers=2",
+      "passed": 1,
+      "unselected": 37,
+      "purpose": "ERP2 routed edit completion displays server-acknowledged data after the cache refresh."
+    }
+  ],
+  "currentRichMasterTestCount": 38
+}

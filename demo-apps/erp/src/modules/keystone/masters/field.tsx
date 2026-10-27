@@ -15,5 +15,5 @@ export function MasterField({field, value, onChange, compact=false, disabled=fal
  if(field.type==='time')return <TimeInput {...common} value={text} step={1800} onChange={change}/>;
  if(field.type==='textarea')return <Textarea {...common} rows={compact?2:3} value={text} onChange={change}/>;
  if(['number','currency','percent'].includes(field.type))return <Input {...common} type="number" step={field.type==='currency'?'0.01':'any'} value={text} onChange={event=>onChange(event.target.value===''?'':Number(event.target.value))}/>;
- return <><Input {...common} value={text} type={field.type==='email'?'email':field.type==='phone'?'tel':'text'} list={field.type==='ref'?id:undefined} onChange={change}/>{field.type==='ref'&&<datalist id={id}>{refs.data?.rows.map(row=><option key={row.id} value={String(row.name??row.code)}/>)}</datalist>}</>;
+ return <><Input {...common} value={text} type={field.type==='email'?'email':field.type==='phone'?'tel':'text'} list={field.type==='ref'||field.pool?id:undefined} onChange={change}/>{(field.type==='ref'||field.pool)&&<datalist id={id}>{field.pool?.map(value=><option key={value} value={value}/>)}{refs.data?.rows.map(row=><option key={row.id} value={String(row.name??row.code)}/>)}</datalist>}</>;
 }

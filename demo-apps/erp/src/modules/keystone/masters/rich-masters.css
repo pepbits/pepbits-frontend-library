@@ -1,0 +1,99 @@
+.erp-master-split {display:grid;grid-template-columns:340px minmax(0,1fr);gap:12px;min-width:0;align-items:stretch;}
+.erp-master-list,.erp-master-detail {min-width:0;overflow:hidden;}
+.erp-master-detail {min-height:420px;}
+@media(min-width:1280px){.erp-master-split {grid-template-columns:360px minmax(0,1fr);}.erp-master-split[data-family=profile] {grid-template-columns:380px minmax(0,1fr);}}
+.erp-structure-record {min-width:0;--fs-scale:var(--fs-form);}
+.erp-structure-identity {display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 16px;border-block-end:1px solid var(--border);}
+.erp-structure-identity>div:first-child {flex:1;min-width:0;}
+.erp-structure-identity h2 {display:flex;align-items:center;gap:8px;font-size:calc(16px * var(--fs-form));font-weight:600;letter-spacing:-.025em;}
+.erp-structure-identity p {font-size:calc(12px * var(--fs-form));color:var(--text-muted);}
+.erp-structure-identity dl {text-align:end;}
+.erp-structure-identity dt {font-size:calc(11.5px * var(--fs-result));color:var(--text-muted);}
+.erp-structure-identity dd {font-size:calc(19px * var(--fs-result));font-weight:600;font-variant-numeric:tabular-nums;}
+.erp-structure-body {display:grid;gap:16px;padding:12px;}
+.erp-structure-main,.erp-structure-body aside {display:flex;flex-direction:column;gap:12px;min-width:0;}
+.erp-structure-details {padding:12px;}
+.erp-structure-details h3,.erp-structure-summary h3 {font-size:calc(13.5px * var(--fs-form));font-weight:600;margin-block-end:12px;}
+.erp-structure-fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px;row-gap:14px;}
+.erp-structure-fields [data-wide=true] {grid-column:1/-1;}
+.erp-structure-record label>span:first-child {font-size:calc(12px * var(--fs-form));font-weight:500;margin-block-end:4px;}
+.erp-structure-record :is(input,select) {height:32px;}
+.erp-structure-record[data-density=compact] :is(input,select) {height:28px;}
+.erp-structure-record[data-density=spacious] :is(input,select) {height:36px;}
+.erp-structure-record :is(input,select,textarea,button) {border-radius:var(--radius);}
+.erp-structure-totals {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+.erp-structure-totals>div {padding:8px 12px;border-radius:var(--radius);background:var(--primary-soft);color:var(--text);}
+.erp-structure-totals>[data-kind=Earnings] {background:var(--success-soft);}
+.erp-structure-totals>[data-kind=Deductions] {background:var(--danger-soft);}
+.erp-structure-totals dt {font-size:calc(12.5px * var(--fs-result));}
+.erp-structure-totals dd {font-size:calc(15px * var(--fs-result));font-weight:600;}
+.erp-structure-lines {display:flex;flex:1;min-height:280px;min-width:0;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);overflow:hidden;}
+.erp-structure-lines>header {display:flex;align-items:center;gap:8px;padding:8px 12px;border-block-end:1px solid var(--border);}
+.erp-structure-lines>header h3 {font-size:calc(13px * var(--fs-form));font-weight:600;}
+.erp-structure-lines>header span {font-size:calc(12px * var(--fs-result));color:var(--text-muted);}
+.erp-structure-lines>header button {margin-inline-start:auto;}
+.erp-structure-lines table {width:100%;border-collapse:separate;border-spacing:0;text-align:start;}
+.erp-structure-lines th {font-size:calc(12px * var(--fs-result));font-weight:500;background:var(--surface-2);}
+.erp-structure-lines td {font-size:calc(13px * var(--fs-result));}
+.erp-structure-lines :is(td,th) {border-block-end:1px solid var(--border);}
+.erp-structure-lines [data-numeric=true] {text-align:end;min-width:112px;font-variant-numeric:tabular-nums;}
+.erp-structure-lines [data-pool=true] {min-width:200px;}
+.erp-structure-lines input,.erp-structure-lines select {min-width:100px;--fs-scale:var(--fs-form);height:28px;}
+.erp-structure-lines tfoot {position:sticky;bottom:0;background:var(--surface-2);font-weight:600;}
+.erp-structure-lines .erp-structure-empty {text-align:center;padding:32px 12px;color:var(--text-muted);}
+.erp-structure-summary {padding:16px;}
+.erp-structure-summary dl>div {display:flex;justify-content:space-between;gap:12px;font-size:calc(13px * var(--fs-result));}
+.erp-structure-summary [data-total] {border-block-start:1px solid var(--border);padding-block-start:8px;margin-block-start:6px;align-items:baseline;}
+.erp-structure-summary [data-total] dd {font-size:calc(20px * var(--fs-result));font-weight:600;}
+.erp-structure-record[data-variant=erp2] .erp-structure-body {padding:20px;max-width:1680px;margin:auto;}
+.erp-structure-record[data-variant=erp2] .erp-structure-details {padding:20px;}
+@media(min-width:768px){.erp-structure-fields {grid-template-columns:repeat(4,minmax(0,1fr));}}
+@media(min-width:1280px){.erp-structure-record[data-variant=erp2] .erp-structure-body {grid-template-columns:minmax(0,1fr) 320px;}}
+/* Rich master identity and section composition. Form/result scales and managed controls stay host-owned. */
+.erp-rich-profile {min-width:0;--fs-scale:var(--fs-form);}
+.erp-profile-head {padding:14px 16px 12px;border-block-end:1px solid var(--border);}
+.erp-profile-head-row {display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+.erp-profile-head-row>div:nth-child(2) {flex:1;min-width:120px;}
+.erp-profile-head-row h2 {display:flex;align-items:center;gap:8px;font-size:calc(17px * var(--fs-form));font-weight:600;letter-spacing:-.025em;}
+.erp-profile-head-row p {margin-block-start:2px;color:var(--text-muted);font-size:calc(12.5px * var(--fs-form));}
+.erp-rich-profile[data-variant=erp1] .erp-profile-avatar {font-size:calc(15px * var(--fs-form));}
+.erp-profile-head .erp-profile-stats {margin-block-start:12px;}
+.erp-profile-tabs {padding:8px 16px 0;}
+.erp-profile-tabs button {font-size:calc(13px * var(--fs-form));font-weight:500;height:36px;}
+.erp-profile-groups {display:grid;min-width:0;}
+.erp-profile-groups section {padding:16px;border-block-end:1px solid var(--border);min-width:0;}
+.erp-profile-groups h3,.erp-profile-recent h3 {font-size:calc(12.5px * var(--fs-form));font-weight:600;margin-block-end:12px;}
+.erp-profile-recent {display:none;border-inline-start:1px solid var(--border);padding:16px;min-width:0;}
+.erp-profile-tab-body {padding:16px;}
+.erp-profile-status {margin-block:12px;width:176px;max-width:100%;}
+.erp-profile-edit-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;}
+.erp-profile-edit-grid [data-wide=true] {grid-column:1/-1;}
+.erp-rich-profile label>span:first-child {font-size:calc(12px * var(--fs-form));font-weight:500;margin-block-end:4px;}
+.erp-rich-profile :is(input,select) {height:32px;}
+.erp-rich-profile[data-density=compact] :is(input,select) {height:28px;}
+.erp-rich-profile[data-density=spacious] :is(input,select) {height:36px;}
+.erp-rich-profile :is(button,input,select,textarea) {border-radius:var(--radius);}
+.erp-rich-profile[data-variant=erp2] {padding:20px;max-width:1440px;margin:auto;}
+.erp-rich-profile[data-variant=erp2] [data-layout=rail]>div {overflow:visible;}
+.erp-rich-profile[data-variant=erp2] [data-layout=rail] nav {position:sticky;top:64px;align-self:start;width:170px;}
+.erp-rich-profile[data-variant=erp2] [data-clinical-section] {margin:0 0 16px;}
+.erp-rich-profile[data-variant=erp2] [data-clinical-section]>div:first-child {padding:12px 20px;border-block-end:1px solid var(--border);}
+.erp-rich-profile[data-variant=erp2] [data-clinical-section]>div:last-child {padding:20px;}
+.erp-rich-profile[data-variant=erp2] [data-clinical-section] h3 {font-size:calc(13.5px * var(--fs-form));}
+.erp-rich-profile[data-variant=erp2] .erp-profile-stats {gap:1px;border:1px solid var(--border);border-radius:var(--radius);background:var(--border);overflow:hidden;}
+.erp-rich-profile[data-variant=erp2] .erp-profile-stats>div {padding:10px 16px;background:var(--surface);border-radius:0;}
+.erp-rich-profile[data-variant=erp2] .erp-profile-stats dd {font-size:calc(16px * var(--fs-result));}
+@media(min-width:1280px){.erp-profile-groups {grid-template-columns:repeat(2,minmax(0,1fr));}.erp-profile-groups section:nth-child(odd) {border-inline-end:1px solid var(--border);}.erp-rich-profile[data-variant=erp2] .erp-profile-edit-grid {grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(min-width:1536px){.erp-profile-details[data-creating=false] {display:grid;grid-template-columns:minmax(0,1fr) 300px;}.erp-profile-recent {display:block;}}
+.erp-profile-actions {display:flex;gap:6px;align-items:center;}
+.erp-profile-actions [class*=absolute] button {display:flex;width:100%;justify-content:flex-start;}
+.erp-profile-record-bar {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;}
+.erp-rich-profile[data-variant=erp2] [data-record-page]>header>div:first-child {width:100%;}
+@media(max-width:640px){.erp-rich-profile[data-variant=erp2] [data-layout=rail] nav {width:100%;position:static;}.erp-profile-edit-grid {grid-template-columns:minmax(0,1fr);}}
+.erp-rich-profile[data-variant=erp1] :is(.erp-profile-edit-grid,.erp-field-grid),.erp-structure-record[data-variant=erp1] .erp-structure-fields {row-gap:10px;}
+@media(min-width:768px) and (max-width:1023px){.erp-structure-fields {grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(min-width:1024px) and (max-width:1279px){.erp-structure-fields {grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:639px){.erp-structure-fields {grid-template-columns:minmax(0,1fr);}}
+.erp-rich-profile[data-variant=erp2] .erp-profile-status {display:flex;flex-wrap:wrap;gap:8px;width:auto;}
+.erp-rich-profile[data-variant=erp2] .erp-profile-status button {padding:4px 12px;height:auto;font-size:calc(12.5px * var(--fs-form));font-weight:500;border:1px solid var(--border);}
+.erp-rich-profile[data-variant=erp2] .erp-profile-status button[aria-pressed=true] {background:var(--primary-soft);border-color:var(--primary);color:var(--text);}
