@@ -1,6 +1,7 @@
 import {vi} from "vitest";
 import type {ClinicalDataPort} from "../context/port";
 import type {EncounterDetail, QueueRow, ScoreResult} from "../types";
+import type {EsiPreview} from "../triage/model";
 
 /** Fictional patient and visit; no real person. */
 export function encounterDetail(overrides: Partial<EncounterDetail["encounter"]> = {}): EncounterDetail {
@@ -20,6 +21,18 @@ export function queueRow(id: string, status: string, overrides: Partial<QueueRow
 
 const NEWS: ScoreResult = {status: "complete", total: 0, band: "Low", severity: "low", interpretation: "Continue routine monitoring.", components: [{key: "rr", label: "Respiration rate", points: 0}], missing: []};
 
+/** A test stand-in for the server's ESI preview (A, B, C and the adult danger zone); not the AllyVora algorithm itself. */
+export function fakeEsi(v: Record<string, unknown>): EsiPreview {
+  if (!("lifeSaving" in v)) return {level: null, steps: ["Answer A"], dangerZone: false};
+  if (v.lifeSaving) return {level: 1, steps: ["A: yes"], dangerZone: false};
+  if (!["highRisk", "confusedLethargic", "severePain"].every(k => k in v)) return {level: null, steps: ["A: no", "Answer B"], dangerZone: false};
+  if (v.highRisk || v.confusedLethargic || v.severePain) return {level: 2, steps: ["A: no", "B: yes"], dangerZone: false};
+  if (!("resources" in v)) return {level: null, steps: ["A: no", "B: no", "Answer C"], dangerZone: false};
+  if (v.resources !== 2) return {level: v.resources === 0 ? 5 : 4, steps: ["A: no", "B: no", `C: ${v.resources}`], dangerZone: false};
+  const danger = Number(v.hr ?? 0) > 100 || Number(v.rr ?? 0) > 20 || Number(v.spo2 ?? 100) < 92;
+  return {level: danger ? 2 : 3, steps: ["A: no", "B: no", "C: two or more", danger ? "D: danger zone" : "D: outside the danger zone"], dangerZone: danger};
+}
+
 export function fakePort(overrides: Partial<ClinicalDataPort> = {}): ClinicalDataPort {
   return {
     listEncounters: vi.fn(async () => []),
@@ -28,6 +41,7 @@ export function fakePort(overrides: Partial<ClinicalDataPort> = {}): ClinicalDat
     saveIntake: vi.fn(async () => ({news2: NEWS, esi: null})),
     searchCatalog: vi.fn(async () => []),
     calculateScore: vi.fn(async () => NEWS),
+    previewEsi: vi.fn(async (inputs: Record<string, unknown>) => fakeEsi(inputs)),
     addAllergy: vi.fn(async () => ({assessment: {state: "has-entries" as const}, entries: []})),
     ...overrides,
   };

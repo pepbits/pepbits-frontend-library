@@ -9,7 +9,7 @@ import type {AllergyReviewOutcome} from "../forms/intake-model";
 import {ClinicalPanel, TEXT} from "../layout/panel";
 import {CodedSearch} from "../complaint/CodedSearch";
 import {useRelativeTime} from "../time";
-import type {AllergyBlock} from "../types";
+import type {Allergy, AllergyBlock} from "../types";
 
 /** Active allergies as chips; unconfirmed ones are dashed. Shows NKA, unknown or not assessed when there are none. */
 export function AllergyStrip({allergies, compact}: {allergies: AllergyBlock; compact?: boolean}) {
@@ -30,6 +30,31 @@ export function AllergyStrip({allergies, compact}: {allergies: AllergyBlock; com
   </span>;
 }
 
+/** Each recorded allergy with category, reaction, criticality and verification. */
+export function AllergyList({entries}: {entries: Allergy[]}) {
+  const {t} = useLocalization();
+  if (!entries.length) return null;
+  return <ul className="divide-y divide-[var(--border)] rounded-[var(--radius)] border border-[var(--border)]">
+    {entries.map(a => <li key={a.id} className={cn("flex flex-wrap items-center justify-between gap-2 px-3 py-2", TEXT.body)}>
+      <span><b>{a.substance}</b> <span className="text-[var(--text-muted)]">· {a.category} · {a.reaction ?? t("reaction not recorded")}</span></span>
+      <span className="flex gap-1">{a.criticality === "high" ? <Badge tone="danger">High criticality</Badge> : null}<Badge tone={a.verification === "confirmed" ? "success" : "warning"}>{a.verification}</Badge></span>
+    </li>)}
+  </ul>;
+}
+
+/**
+ * The review outcome: "Reviewed, no change" when allergies are listed, otherwise "No known allergies";
+ * "Unable to confirm" always; "Updated" once an allergy was added in this review.
+ */
+export function AllergyReviewChoice({hasEntries, value, onChange}: {hasEntries: boolean; value: AllergyReviewOutcome | null; onChange: (value: AllergyReviewOutcome) => void}) {
+  const options = [
+    ...(hasEntries ? [{value: "reviewed-no-change", label: "Reviewed, no change"}] : [{value: "nka", label: "No known allergies"}]),
+    {value: "unknown", label: "Unable to confirm"},
+    ...(value === "updated" ? [{value: "updated", label: "Updated"}] : []),
+  ];
+  return <Segmented label="Allergy review outcome" value={value ?? ""} onChange={x => onChange(x as AllergyReviewOutcome)} options={options}/>;
+}
+
 /**
  * Allergy review with the patient: the current list, the review outcome and adding a new allergy
  * (recorded as unconfirmed for the doctor to verify). Adding one sets the outcome to "updated".
@@ -38,23 +63,12 @@ export function AllergyReviewSection({patientId, allergies, onAllergies, outcome
   patientId: string; allergies: AllergyBlock; onAllergies: (block: AllergyBlock) => void;
   outcome: AllergyReviewOutcome | null; onOutcome: (outcome: AllergyReviewOutcome) => void; onAdded?: () => void;
 }) {
-  const {t} = useLocalization();
   const [adding, setAdding] = useState(false);
-  const options = [
-    ...(allergies.entries.length ? [{value: "reviewed-no-change", label: "Reviewed, no change"}] : [{value: "nka", label: "No known allergies"}]),
-    {value: "unknown", label: "Unable to confirm"},
-    ...(outcome === "updated" ? [{value: "updated", label: "Updated"}] : []),
-  ];
   return <ClinicalPanel title="Allergies" icon={<AlertTriangle className="size-4"/>} subtitle="Ask the patient. Reviewing an unchanged list records a review, not a new allergy.">
     <div className="mb-3"><AllergyStrip allergies={allergies}/></div>
-    {allergies.entries.length ? <ul className="mb-3 divide-y divide-[var(--border)] rounded-[var(--radius)] border border-[var(--border)]">
-      {allergies.entries.map(a => <li key={a.id} className={cn("flex flex-wrap items-center justify-between gap-2 px-3 py-2", TEXT.body)}>
-        <span><b>{a.substance}</b> <span className="text-[var(--text-muted)]">· {a.category} · {a.reaction ?? t("reaction not recorded")}</span></span>
-        <span className="flex gap-1">{a.criticality === "high" ? <Badge tone="danger">High criticality</Badge> : null}<Badge tone={a.verification === "confirmed" ? "success" : "warning"}>{a.verification}</Badge></span>
-      </li>)}
-    </ul> : null}
+    {allergies.entries.length ? <div className="mb-3"><AllergyList entries={allergies.entries}/></div> : null}
     <div className="flex flex-wrap items-center gap-2">
-      <Segmented label="Allergy review outcome" value={outcome ?? ""} onChange={x => onOutcome(x as AllergyReviewOutcome)} options={options}/>
+      <AllergyReviewChoice hasEntries={allergies.entries.length > 0} value={outcome} onChange={onOutcome}/>
       <Button size="sm" variant="ghost" leftIcon={<Plus className="size-4"/>} onClick={() => setAdding(true)}>Add allergy</Button>
     </div>
     {adding ? <AddAllergyForm patientId={patientId} onCancel={() => setAdding(false)}

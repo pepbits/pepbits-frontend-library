@@ -32,7 +32,7 @@ export interface AllergyBlock {
 
 export interface Encounter {
   id: string; patientId: string; class: EncounterClass; status: string; department: string; clinicianId?: string; clinicianName?: string;
-  arrivedAt: string; reason?: string; acuity?: number; mode?: "in-person" | "video" | "phone"; version: number; waitingMinutes: number;
+  arrivedAt: string; reason?: string; acuity?: number; mode?: "in-person" | "video" | "phone"; reassessDueAt?: string; version: number; waitingMinutes: number;
 }
 
 /** One row of an encounter queue (`GET /encounters?class=…`). */
@@ -40,7 +40,7 @@ export interface QueueRow extends Encounter {
   visitType?: "walk-in" | "appointment" | "referral" | "emergency";
   referral?: {referrerName: string; organisation: string; priority: string} | null;
   clinicalVisible: boolean; patient: ClinicalPatientLite; allergyState: string | null; allergyCount: number;
-  news2: number | null; openReviews: number;
+  news2: number | null; openReviews: number; reassessOverdue?: boolean;
 }
 
 /** The parts of `GET /encounters/{id}` the clinical forms use. */

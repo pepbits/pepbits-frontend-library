@@ -1,6 +1,6 @@
 import {describe, expect, it} from "vitest";
 import {
-  EMPTY_VITALS, OUTPATIENT_INTAKE, flaggedQuestions, intakePayload, intakeProblems, intakeProfileFor, measurementErrors,
+  EMERGENCY_TRIAGE, EMPTY_ESI, EMPTY_TRIAGE, EMPTY_VITALS, OUTPATIENT_INTAKE, esiAsksB, esiAsksC, esiInputs, finalEsiLevel, withEsiAnswer, flaggedQuestions, intakePayload, intakeProblems, intakeProfileFor, measurementErrors,
   news2Inputs, questionsFor, vitalsErrors, vitalsPayload, bmiPreview, type IntakeState, type Vitals,
 } from "./model";
 
@@ -42,9 +42,10 @@ describe("screening model", () => {
   });
 });
 
+const state: IntakeState = {arrival: {mode: "walk-in", source: "relative", interpreter: "yes"}, complaint: {item: {code: "C1", system: "s", display: "Chest pain"}, words: "Tight"},
+  vitals: complete, notMeasured: {}, screening: {safeHome: "yes", feverTravel: null}, allergyReview: "nka", triage: EMPTY_TRIAGE};
+
 describe("intake model and profiles", () => {
-  const state: IntakeState = {arrival: {mode: "walk-in", source: "relative", interpreter: "yes"}, complaint: {item: {code: "C1", system: "s", display: "Chest pain"}, words: "Tight"},
-    vitals: complete, notMeasured: {}, screening: {safeHome: "yes", feverTravel: null}, allergyReview: "nka"};
   it("requires vitals and the allergy review for outpatient intake", () => {
     expect(intakeProblems(state, OUTPATIENT_INTAKE)).toEqual([]);
     expect(intakeProblems({...state, allergyReview: null}, OUTPATIENT_INTAKE)).toEqual(["Review the allergy list with the patient."]);
@@ -54,8 +55,39 @@ describe("intake model and profiles", () => {
     expect(intakePayload(state, OUTPATIENT_INTAKE)).toMatchObject({mode: "op", complaint: {code: "C1", display: "Chest pain", patientWords: "Tight"},
       arrival: {mode: "walk-in", historySource: "relative", interpreter: true}, screening: {safeHome: "yes"}, allergyReview: "nka"});
   });
-  it("has an outpatient profile and none for inpatients", () => {
+  it("has outpatient and emergency profiles and none for inpatients", () => {
     expect(intakeProfileFor("OP")).toBe(OUTPATIENT_INTAKE);
+    expect(intakeProfileFor("ER")).toBe(EMERGENCY_TRIAGE);
     expect(intakeProfileFor("IP")).toBeUndefined();
+  });
+});
+
+describe("ESI triage model", () => {
+  it("asks B after A is No and C after every B is No, clearing answers that no longer apply", () => {
+    let d = withEsiAnswer(EMPTY_ESI, "lifeSaving", false);
+    expect(esiAsksB(d)).toBe(true);
+    expect(esiAsksC(d)).toBe(false);
+    d = withEsiAnswer(withEsiAnswer(withEsiAnswer(d, "highRisk", false), "confusedLethargic", false), "severePain", false);
+    d = withEsiAnswer(d, "resources", 2);
+    expect(esiAsksC(d)).toBe(true);
+    expect(withEsiAnswer(d, "highRisk", true)).toEqual({...d, highRisk: true, resources: null});
+    expect(withEsiAnswer(d, "lifeSaving", true)).toEqual({...EMPTY_ESI, lifeSaving: true});
+  });
+  it("sends only answered decisions, age and measured danger-zone signs", () => {
+    expect(esiInputs({...EMPTY_ESI, lifeSaving: false}, 40, {hr: 120, rr: null, spo2: null})).toEqual({lifeSaving: false, ageYears: 40, hr: 120});
+  });
+  it("saves the override when chosen and requires a reason for it", () => {
+    expect(finalEsiLevel(3, {level: null, reason: ""})).toBe(3);
+    expect(finalEsiLevel(3, {level: 2, reason: "Looks unwell"})).toBe(2);
+    const triaged = {...state, triage: {...EMPTY_TRIAGE, override: {level: 2 as const, reason: ""}}};
+    expect(intakeProblems({...state, triage: EMPTY_TRIAGE}, EMERGENCY_TRIAGE, null)).toEqual(["Complete the triage decision points."]);
+    expect(intakeProblems(triaged, EMERGENCY_TRIAGE, 3)).toEqual(["Give a reason for changing the calculated triage level."]);
+    expect(intakeProblems({...state, complaint: {item: null, words: ""}}, EMERGENCY_TRIAGE, 4)).toEqual(["Choose the presenting complaint."]);
+  });
+  it("sends the AllyVora triage payload", () => {
+    const triage = {decisions: {...EMPTY_ESI, lifeSaving: false, highRisk: true}, override: {level: 1 as const, reason: "Airway concern"}, area: "Resuscitation"};
+    expect(intakePayload({...state, triage}, EMERGENCY_TRIAGE)).toMatchObject({mode: "er",
+      esi: {lifeSaving: false, highRisk: true, overrideLevel: 1, overrideReason: "Airway concern"}, disposition: {area: "Resuscitation"}});
+    expect(intakePayload({...state, triage}, OUTPATIENT_INTAKE)).not.toHaveProperty("esi");
   });
 });

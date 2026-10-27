@@ -197,6 +197,17 @@ Choose **Outpatient** (AllyVora Outpatient) in the header, then Nurse intake. Mo
 
 `adapter.ts` implements the clinical data port over the AllyVora clinical workspace API (`/encounters`, `/encounters/{id}`, `/encounters/{id}/status`, `/encounters/{id}/intake`, `/catalog/{kind}`, `/scores/news2/calculate`, `/patients/{id}/allergies`, `/auth/me`), using the front desk client and origin (`NEXT_PUBLIC_ALLYVORA_FRONT_DESK_API_URL`, default `/api`). That backend is not part of this demo: without it both pages show their error state. Clinician actions follow `/auth/me` permissions (UI only). See `provenance.json` for the source files, hashes and what is not ported.
 
+## AllyVora Emergency — triage on @pepbits/clinical
+
+Choose **Emergency** (AllyVora Emergency) in the header, then Triage. Module `reference-allyvora-emergency` in `src/modules/emergency` renders the shared `TriageQueue` and `IntakeForm` with the `EMERGENCY_TRIAGE` profile, over the same clinical data port as AllyVora Outpatient.
+
+| Healthcare URL | Workflow |
+| --- | --- |
+| `/allyvora-emergency/triage` | Patients waiting for triage, longest wait first (red after 15 minutes); nurses and doctors get Triage now |
+| `/allyvora-emergency/triage/<encounter>` | Triage for one visit: arrival (including how the patient arrived) and required complaint, vital signs with NEWS2, allergy review, screening, ESI decision points with the calculated level, optional override with reason, and area |
+
+The ESI level comes from the AllyVora API (`POST /encounters/esi/preview`); saving posts `mode: "er"` to `/encounters/{id}/intake`. Without that backend both pages show their error state. See `provenance.json` for source files, hashes, deliberate differences and what is not ported.
+
 ## AllyVora Patients — fourteenth app
 
 Choose **Patients** (AllyVora Patients) in the header, then Patient register or Register a patient. This is module `reference-allyvora-patients` in the existing healthcare SessionProvider → PreferenceHost → LocalizationProvider → Shell. The registration context owns only API lookups and volatile drafts. No second application host is mounted.
