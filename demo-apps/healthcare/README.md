@@ -186,6 +186,17 @@ The app now consumes public `@pepbits/shell/application-providers`, `@pepbits/pl
 
 Phase 6d's full repository verification exposed a timing-sensitive MedSlot shortcut assertion. The test now waits for the authenticated shell's accelerator to become active, then checks that disabling shortcuts removes event cancellation and focus behavior; application code and backend contracts are unchanged. See the [6d record](../../docs/releases/unreleased/restructure-phase-6d-2026-10-24.md).
 
+## AllyVora Outpatient — nurse intake on @pepbits/clinical
+
+Choose **Outpatient** (AllyVora Outpatient) in the header, then Nurse intake. Module `reference-allyvora-outpatient` in `src/modules/outpatient` renders the shared [`@pepbits/clinical`](../../packages/clinical/README.md) `IntakeQueue` and `IntakeForm` with the outpatient profile.
+
+| Healthcare URL | Workflow |
+| --- | --- |
+| `/allyvora-outpatient/intake` | Visits waiting for intake (arrived or in intake), stage counts for the whole clinic, safety badges; nurses start or continue intake |
+| `/allyvora-outpatient/intake/<encounter>` | Intake for one visit: arrival and complaint, vital signs with live NEWS2, allergy review, screening; saving sends the patient to the doctor |
+
+`adapter.ts` implements the clinical data port over the AllyVora clinical workspace API (`/encounters`, `/encounters/{id}`, `/encounters/{id}/status`, `/encounters/{id}/intake`, `/catalog/{kind}`, `/scores/news2/calculate`, `/patients/{id}/allergies`, `/auth/me`), using the front desk client and origin (`NEXT_PUBLIC_ALLYVORA_FRONT_DESK_API_URL`, default `/api`). That backend is not part of this demo: without it both pages show their error state. Clinician actions follow `/auth/me` permissions (UI only). See `provenance.json` for the source files, hashes and what is not ported.
+
 ## AllyVora Patients — fourteenth app
 
 Choose **Patients** (AllyVora Patients) in the header, then Patient register or Register a patient. This is module `reference-allyvora-patients` in the existing healthcare SessionProvider → PreferenceHost → LocalizationProvider → Shell. The registration context owns only API lookups and volatile drafts. No second application host is mounted.

@@ -55,7 +55,9 @@ test('legacy ?mode= links resolve to the dedicated pages and are rewritten to th
 
 
 test('healthcare adds exactly one app with five destinations and leaves suite routes intact', () => {
-  expect(Object.keys(product.modules)).toHaveLength(14);
+  // 14 modules plus AllyVora Outpatient (modules/outpatient, its own routes and tests).
+  expect(Object.keys(product.modules)).toHaveLength(15);
+  expect(product.modules['reference-allyvora-outpatient']?.label).toBe('AllyVora Outpatient');
   const module = product.modules[MODULE_ID]!;
   expect(module.label).toBe('AllyVora Patients');
   expect(module.shortLabel).toBe('Patients');
