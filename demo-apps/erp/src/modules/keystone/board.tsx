@@ -3,6 +3,8 @@ import {WorkflowBoard} from '@pepbits/patterns/board';
 import {useScreenHost,useFormatters} from '@pepbits/patterns/screen-host';
 import {Card,LoadingState,RecoveryNotice,failureFromError} from '@pepbits/components';
 import {Button,Input,Select,Segmented} from '@pepbits/ui';
+import {usePreferences} from '@pepbits/preferences/react';
+import {CaseCardDetails} from './transaction-case';
 import {useLocalization} from '@pepbits/i18n/react';
 import {useEntityApi,useFetch,useScopeMemory,rememberIds,listUrl} from './client';
 import {ErpWorklist} from './worklist';
@@ -13,7 +15,7 @@ import type {PageDefinition} from '@pepbits/page-engines/types';
 import type {ErpTarget} from '../../navigation';
 
 export function CaseBoard({def,page,onOpen,accepted}:{def:PageDef;page:PageDefinition;accepted?:Row;onOpen:(target:ErpTarget)=>void}) {
- const {actor}=useKeystone();
+ const {actor}=useKeystone(),{preferences}=usePreferences();
  const {t}=useLocalization(),host=useScreenHost(),format=useFormatters(),api=useEntityApi(),memory=useScopeMemory(),fetched=useFetch<ListResponse>(listUrl(def.entity,{size:1000,sort:'created',dir:'desc'}));
  const [mode,setMode]=useState('board'),[query,setQuery]=useState(''),[priority,setPriority]=useState(''),[assignee,setAssignee]=useState(''),[busy,setBusy]=useState(false),[failure,setFailure]=useState<unknown>();
  const pending=useRef<{row:Row;status:string;operationId:string;activity:unknown[]}|undefined>(undefined),live=useRef(true);
@@ -29,8 +31,8 @@ export function CaseBoard({def,page,onOpen,accepted}:{def:PageDef;page:PageDefin
  };
  useEffect(()=>{if(accepted)fetched.setData(data=>data?{...data,rows:data.rows.some(row=>row.id===accepted.id)?data.rows.map(row=>row.id===accepted.id?accepted:row):[accepted,...data.rows]}:data);},[accepted]);
  const options=(key:string)=>[...new Set(rows.map(row=>String(row[key]??'')).filter(Boolean))].sort().map(value=>({value,label:value}));
- return <div className="space-y-3" aria-busy={fetched.loading}><Card className="flex flex-wrap items-end gap-3 p-3"><Segmented label="View" value={mode} onChange={setMode} options={[{value:'board',label:'Board'},{value:'list',label:'List'}]}/>{mode==='board'&&<><Input label="Search" value={query} onChange={event=>setQuery(event.target.value)}/><Select label="Priority" value={priority} options={[{value:'',label:'Any priority'},...options('priority')]} onChange={event=>setPriority(event.target.value)}/><Select label="Assignee" value={assignee} options={[{value:'',label:'Everyone'},...options('assignee')]} onChange={event=>setAssignee(event.target.value)}/>{host.can('create')&&<Button onClick={()=>onOpen({pageId:page.id,mode:'new'})}>{t('New')}</Button>}</>}</Card>
+ return <div className="erp-transaction-board space-y-3" data-density={preferences.density} aria-busy={fetched.loading}><Card className="flex flex-wrap items-end gap-3 p-3"><Segmented label="View" value={mode} onChange={setMode} options={[{value:'board',label:'Board'},{value:'list',label:'List'}]}/>{mode==='board'&&<><Input label="Search" value={query} onChange={event=>setQuery(event.target.value)}/><Select label="Priority" value={priority} options={[{value:'',label:'Any priority'},...options('priority')]} onChange={event=>setPriority(event.target.value)}/><Select label="Assignee" value={assignee} options={[{value:'',label:'Everyone'},...options('assignee')]} onChange={event=>setAssignee(event.target.value)}/>{host.can('create')&&<Button onClick={()=>onOpen({pageId:page.id,mode:'new'})}>{t('New')}</Button>}</>}</Card>
   {!!failure&&<><RecoveryNotice failure={failureFromError(failure)} onRetry={()=>{if(pending.current)void move(pending.current.row,pending.current.status);}}/><Button disabled={busy} onClick={()=>{pending.current=undefined;setFailure(undefined);fetched.reload();}}>{t('Reload')}</Button></>}
-  {fetched.error?<RecoveryNotice failure={failureFromError(new Error(fetched.error))} onRetry={fetched.reload}/>:mode==='list'?<ErpWorklist def={def} page={page} onOpen={onOpen} refreshKey={accepted ? `${accepted.id}:${accepted.version}` : undefined}/>:!fetched.data?<LoadingState/>:<WorkflowBoard label={def.title} columns={(def.statusFlow??[]).map(id=>({id,label:id}))} items={shown} itemId={row=>row.id} itemLabel={row=>String(row.subject??row.code??row.id)} columnId={row=>row.status} disabled={busy||!host.can('edit')} onOpen={row=>onOpen({pageId:page.id,recordId:row.id,mode:'view'})} onMove={(row,status)=>void move(row,status)} renderItem={row=><p>{String(row.code??'')} · {t(String(row.priority??''))}<br/>{String(row.assignee??'')} · {row.created?format.date(row.created):''}</p>}/>}
+  {fetched.error?<RecoveryNotice failure={failureFromError(new Error(fetched.error))} onRetry={fetched.reload}/>:mode==='list'?<ErpWorklist def={def} page={page} onOpen={onOpen} refreshKey={accepted ? `${accepted.id}:${accepted.version}` : undefined}/>:!fetched.data?<LoadingState/>:<WorkflowBoard label={def.title} columns={(def.statusFlow??[]).map(id=>({id,label:id}))} items={shown} itemId={row=>row.id} itemLabel={row=>String(row.subject??row.code??row.id)} columnId={row=>row.status} disabled={busy||!host.can('edit')} onOpen={row=>onOpen({pageId:page.id,recordId:row.id,mode:'view'})} onMove={(row,status)=>void move(row,status)} renderItem={row=><CaseCardDetails row={row}/>}/>}
  </div>;
 }

@@ -1,0 +1,37 @@
+.erp-settings {position:relative;padding:12px;--fs-scale:var(--fs-form);--erp-setting-pad:20px;--erp-setting-gap:14px;--erp-input-height:36px;}
+.erp-settings[data-density="compact"] {--erp-setting-pad:16px;--erp-setting-gap:10px;--erp-input-height:32px;}
+.erp-settings[data-density="spacious"] {--erp-setting-pad:24px;--erp-setting-gap:18px;--erp-input-height:40px;}
+.erp-settings [data-layout][data-appearance] {position:relative;min-height:480px;}
+.erp-settings [data-layout][data-appearance]>div:has(>nav) {gap:12px;}
+.erp-settings [data-layout][data-appearance] nav {width:240px;flex-shrink:0;align-self:start;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);padding:6px;}
+.erp-settings [data-layout][data-appearance] nav [role="tablist"] {gap:0;}
+.erp-settings [data-layout][data-appearance] nav button {padding:8px 12px;font-size:calc(13px * var(--fs-form,1));font-weight:400;}
+.erp-settings [data-layout][data-appearance] nav button[aria-selected="true"] {font-weight:500;border-inline-start:3px solid var(--warning);}
+.erp-settings [data-layout][data-appearance] nav+div,.erp-settings [data-layout][data-appearance]:not([data-layout="rail"][data-appearance])>div>div {border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);overflow:hidden;padding-bottom:64px;min-height:480px;}
+.erp-settings [data-layout][data-appearance] [data-record-section] {margin:0;border-bottom:1px solid var(--border);}
+.erp-settings [data-layout][data-appearance] [data-record-section]:last-child {border:0;}
+.erp-settings-section {display:grid;gap:16px;padding:var(--erp-setting-pad);}
+.erp-settings-section h2 {font-size:calc(14px * var(--fs-form,1));font-weight:600;}
+.erp-settings-section p {margin-top:2px;font-size:calc(12.5px * var(--fs-form,1));color:var(--text-muted);}
+.erp-settings-fields>[data-template-section] {border:0;box-shadow:none;background:transparent;}
+.erp-settings-fields>[data-template-section]>div:first-child {display:none;}
+.erp-settings-fields>[data-template-section]>div:last-child {padding:0;}
+.erp-settings-fields>[data-template-section]>div:last-child>div {gap:var(--erp-setting-gap) 16px;}
+.erp-settings-fields label>span:first-child,.erp-settings-boolean>span {display:flex;margin-bottom:4px;font-size:calc(12px * var(--fs-form,1));font-weight:500;color:var(--text-muted);}
+.erp-settings-fields :is(input,select,textarea) {height:var(--erp-input-height);border-radius:var(--radius);padding:0 12px;font-size:calc(12px * var(--fs-form,1));font-weight:500;}
+.erp-settings-fields textarea {height:auto;min-height:96px;padding:10px 12px;}
+.erp-settings-fields .grid>div:has(textarea) {grid-column:1/-1;}
+.erp-settings-boolean {position:relative;}
+.erp-settings-boolean-row {display:flex;align-items:center;height:calc(var(--erp-input-height) - 4px);}
+.erp-settings-boolean small {vertical-align:middle;color:var(--text-muted);margin-inline-start:8px;font-size:calc(12.5px * var(--fs-form,1));}
+.erp-settings-dirty {display:inline-block;width:6px;height:6px;margin-inline-start:8px;border-radius:50%;background:var(--warning);}
+.erp-settings [data-layout][data-appearance]>footer {position:sticky;bottom:12px;margin-top:-56px;margin-inline:12px;border:0;background:transparent;padding:0;}
+.erp-settings [data-layout="rail"][data-appearance]>footer {margin-inline-start:264px;}
+.erp-settings-actions {display:flex;width:100%;align-items:center;gap:12px;padding:10px 16px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-3);box-shadow:var(--shadow-lg);font-size:calc(13px * var(--fs-form,1));}
+.erp-settings-actions>span {flex:1;}
+@media(min-width:1280px){.erp-settings-section {grid-template-columns:240px minmax(0,1fr);}}
+@media(max-width:767px){.erp-settings {padding:8px;}.erp-settings [data-layout][data-appearance]>div:has(>nav) {flex-direction:column;}.erp-settings [data-layout][data-appearance] nav {width:100%;}.erp-settings [data-layout="rail"][data-appearance]>footer {margin-inline-start:12px;}}
+
+.erp-settings-fields input[type="number"] {text-align:end;font-variant-numeric:tabular-nums;}
+
+@media(max-width:639px){.erp-settings-fields .grid {grid-template-columns:minmax(0,1fr)!important;}}
