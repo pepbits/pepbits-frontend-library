@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 
 export const root = fileURLToPath(new URL('../../', import.meta.url));
 // Dependency order; private tooling and demos can never enter this list.
-export const publicPackages = ['tokens', 'icons', 'i18n', 'preferences', 'ui', 'components', 'data', 'platform', 'patterns', 'page-engines', 'shell', 'ai'];
+export const publicPackages = ['tokens', 'icons', 'i18n', 'preferences', 'ui', 'components', 'data', 'platform', 'patterns', 'page-engines', 'clinical', 'shell', 'ai'];
 export function packPackages(destination = process.env.RELEASE_PACK_DIR || fs.mkdtempSync(path.join(os.tmpdir(), 'pepbits-pack-'))) {
   destination = path.resolve(destination);
   fs.mkdirSync(destination, {recursive: true});

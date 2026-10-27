@@ -76,7 +76,7 @@ for(const kind of (process.env.CONSUMER_KINDS??'next,vite').split(',')) {
     assert.equal(css.labelDisplay,'flex');assert.equal(css.labelDirection,'column');assert.equal(css.buttonDisplay,'inline-flex');assert(parseFloat(css.buttonHeight)>=30);assert(css.token.trim());assert(css.fontLoaded);assert(fontResponses.some(response=>response.status===200));
     await page.getByRole('button',{name:'Check packed worker'}).click();await page.waitForFunction(()=>document.querySelector('[data-testid="worker"]')?.textContent==='passed',null,{timeout:60000});
     assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
-    const result={kind,packages:12,build:'passed',buildAndRenderSeconds:Math.round((Date.now()-started)/1000),recordForm:'passed',summaryBand:'passed',formsPreferences:'passed',formsSearch:'passed',formLayout:'accordion',css,fontResponses,pageErrors:errors,failedRequests:failed,worker:'passed',nodeModulesRemoved:false};
+    const result={kind,packages:publicPackages.length,build:'passed',buildAndRenderSeconds:Math.round((Date.now()-started)/1000),recordForm:'passed',summaryBand:'passed',formsPreferences:'passed',formsSearch:'passed',formLayout:'accordion',css,fontResponses,pageErrors:errors,failedRequests:failed,worker:'passed',nodeModulesRemoved:false};
     results.push(result);console.log(JSON.stringify(result));
   } finally {
     if(browser)await browser.close();

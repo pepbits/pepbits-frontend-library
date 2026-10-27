@@ -138,9 +138,10 @@ Testing may import every layer and remains dev-only for consumers.
 | `platform` | `i18n`, `preferences`, `data` |
 | `patterns` | everything above, plus `data` and `platform` contracts |
 | `page-engines` | everything above |
+| `clinical` | foundations, `ui`, `components`, `data`, `platform`, `patterns`; sits beside `page-engines` and no generic layer imports it (added 27 October 2026) |
 | `shell` | everything above |
 | `ai` | foundations (`tokens`, `icons`, `i18n`, `preferences`), `ui`, `components`, `data`, `platform`, `patterns`, `page-engines`, `shell` |
-| `testing` | every layer except itself; usable by others only from tests and stories, as a devDependency |
+| `testing` | every layer except itself (including `clinical`); usable by others only from tests and stories, as a devDependency |
 | `demo-apps/*` | any `@pepbits/*` public export; never another demo, never a `src/` deep path |
 | `mock-api` | nothing from the frontend |
 

@@ -1,7 +1,8 @@
 # Library versions
 
 Run `npx changeset` for a library change, then `npm run release:version` to apply
-reviewed changesets. The twelve publishable packages form one fixed version group.
+reviewed changesets. The publishable packages (thirteen since `@pepbits/clinical` joined
+the prepared 0.2.0 group on 27 October 2026) form one fixed version group.
 Private workspaces are excluded from versioning and publication by
 `privatePackages: {version: false, tag: false}` and their `private: true` manifests.
 `ignore` is empty: private packages need no temporary ignore list.

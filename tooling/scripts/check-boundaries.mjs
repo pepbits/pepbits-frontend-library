@@ -32,9 +32,10 @@ export const LAYERS = {
   platform: ['i18n', 'preferences', 'data'],
   patterns: [...COMPONENT_BASE, 'data', 'platform'],
   'page-engines': [...COMPONENT_BASE, 'data', 'platform', 'patterns'],
+  clinical: [...COMPONENT_BASE, 'data', 'platform', 'patterns'],
   shell: [...COMPONENT_BASE, 'data', 'platform', 'patterns', 'page-engines'],
   ai: [...COMPONENT_BASE, 'data', 'platform', 'patterns', 'page-engines', 'shell'],
-  testing: [...COMPONENT_BASE, 'data', 'platform', 'patterns', 'page-engines', 'shell', 'ai'],
+  testing: [...COMPONENT_BASE, 'data', 'platform', 'patterns', 'page-engines', 'clinical', 'shell', 'ai'],
 };
 
 /** Importable only from tests and stories, and listed only in devDependencies. */
