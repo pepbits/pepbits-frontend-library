@@ -8,6 +8,9 @@ import {usePreferences} from '@pepbits/preferences/react';
 import {useFormatters} from '@pepbits/patterns/screen-host';
 import {useCompanyProfile, type CompanyProfile} from './api';
 import {useFetch, listUrl} from './client';
+import {useKeystone} from './context';
+import {ZoomIn,ZoomOut,Printer} from '@pepbits/icons';
+import './workspace-reports.css';
 import {ErpWorklist} from './worklist';
 import type {PageDefinition} from '@pepbits/page-engines/types';
 import type {ErpTarget} from '../../navigation';
@@ -75,6 +78,7 @@ function InvoiceDocument(props: InvoiceProps & {onReady: (ready: boolean, count:
 }
 
 export function InvoicePreview({id, onClose}: {id: string; onClose: () => void}) {
+  const {variant}=useKeystone(),format=useFormatters();
   const invoice = useFetch<Row>('/api/entities/sales-invoices/' + encodeURIComponent(id)), company = useCompanyProfile(), {t, direction} = useLocalization(), {preferences} = usePreferences();
   const customers = useFetch<ListResponse>(invoice.data?.customer ? listUrl('customers', {q: String(invoice.data.customer), size: 1000}) : null);
   const [printReady,setPrintReady] = useState(false), [pageCount,setPageCount] = useState(1), [copy, setCopy] = useState('Original'), [terms, setTerms] = useState(true), [zoom, setZoom] = useState(0), [fit, setFit] = useState(1), box = useRef<HTMLDivElement>(null);
@@ -82,11 +86,11 @@ export function InvoicePreview({id, onClose}: {id: string; onClose: () => void})
   const error = invoice.error ?? company.error ?? customers.error, ready = !!invoice.data && !!company.data && (!invoice.data.customer || !!customers.data), scale = Math.min(2, Math.max(.3, fit + zoom));
   const onReady = useCallback((ready:boolean,count:number) => {setPrintReady(ready);setPageCount(count);},[]);
   const content = ready ? <InvoiceDocument row={invoice.data!} customer={customers.data?.rows.find(row => row.name === invoice.data!.customer)} company={company.data!} copy={copy} terms={terms} onReady={onReady}/> : null;
-  return <div data-invoice-preview aria-busy={!ready && !error} className="space-y-3"><Card className="flex flex-wrap items-center gap-2 p-3"><Button onClick={onClose}>{t('Back')}</Button><Segmented label="Copy" value={copy} onChange={setCopy} options={[{value: 'Original', label: 'Original'}, {value: 'Duplicate', label: 'Duplicate'}]}/><Checkbox label="Show terms" checked={terms} onChange={event => setTerms(event.target.checked)}/><Button onClick={() => setZoom(value => Math.max(-.7, value - .1))}>{t('Zoom out')}</Button><Button onClick={() => setZoom(value => Math.min(1, value + .1))}>{t('Zoom in')}</Button><Button disabled={!ready || !!error || !printReady} onClick={() => {if (ready && !error && printReady) window.print();}}>{t('Print or save PDF')}</Button></Card>
+  return <div data-invoice-preview aria-busy={!ready && !error} className="erp-print-preview"><Card shadow="none" data-print-toolbar className="flex flex-wrap items-center gap-2 px-3 py-2">{variant==='erp2'&&<Button onClick={onClose}>{t('Back')}</Button>}<Segmented label="Copy" value={copy} onChange={setCopy} options={[{value: 'Original', label: 'Original'}, {value: 'Duplicate', label: 'Duplicate'}]}/><Checkbox label="Show terms" checked={terms} onChange={event => setTerms(event.target.checked)}/><span className="flex-1"/><Button aria-label={t('Zoom out')} onClick={() => setZoom(value => Math.max(-.7, value - .1))}><ZoomOut size={16}/></Button><span data-print-zoom className="w-10 text-center tabular-nums">{format.number(Math.round(scale*100))}%</span><Button aria-label={t('Zoom in')} onClick={() => setZoom(value => Math.min(1, value + .1))}><ZoomIn size={16}/></Button><Button variant="primary" disabled={!ready || !!error || !printReady} onClick={() => {if (ready && !error && printReady) window.print();}}><Printer size={14}/>{t('Print or save PDF')}</Button></Card>
     {error ? <RecoveryNotice failure={failureFromError(new Error(error))} onRetry={() => {invoice.reload(); company.retry(); customers.reload();}}/> : !ready ? <LoadingState/> : <div ref={box} className="overflow-auto bg-[var(--surface-2)] p-5"><div style={{width: 794 * scale, height: (pageCount * 1122 + (pageCount - 1) * 24) * scale, margin: 'auto'}}><div style={{width: 794, transform: `scale(${scale})`, transformOrigin: direction === 'rtl' ? 'top right' : 'top left'}}>{content}</div></div></div>}
   </div>;
 }
 export function InvoicePage({def, page}: {def: PageDef; page: PageDefinition}) {
   const [selected, setSelected] = useState<ErpTarget>();
-  return <div className="grid items-start gap-3 xl:grid-cols-[340px_minmax(0,1fr)]"><ErpWorklist def={def} page={page} onOpen={setSelected} onLoaded={data => {if (!selected && data.rows[0]) setSelected({pageId: page.id, recordId: data.rows[0].id});}}/>{selected?.recordId ? <InvoicePreview key={selected.recordId} id={selected.recordId} onClose={() => setSelected(undefined)}/> : null}</div>;
+  return <div data-invoice-selector className="grid items-start gap-3 lg:grid-cols-[340px_minmax(0,1fr)]"><ErpWorklist def={def} page={page} onOpen={setSelected} onLoaded={data => {if (!selected && data.rows[0]) setSelected({pageId: page.id, recordId: data.rows[0].id});}}/>{selected?.recordId ? <InvoicePreview key={selected.recordId} id={selected.recordId} onClose={() => setSelected(undefined)}/> : null}</div>;
 }

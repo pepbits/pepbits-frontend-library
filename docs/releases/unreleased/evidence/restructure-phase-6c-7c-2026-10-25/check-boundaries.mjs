@@ -1,0 +1,17 @@
+import {execFileSync,spawnSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+const folder='docs/releases/unreleased/evidence/restructure-phase-6c-7c-2026-10-25';
+const grep=args=>{const result=spawnSync('grep',args,{encoding:'utf8'});if(result.status>1)throw Error(result.stderr);return result.stdout.trim().split('\n').filter(Boolean);};
+const protectedStatus=execFileSync('git',['status','--short','--','desktop-clients','dummy-api','source','demo-pages','deploy','.github','Jenkinsfile','run.sh','run_all.sh'],{encoding:'utf8'}).trim();
+const imports=grep(['-rnE','@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/|demo-apps/healthcare','demo-apps/erp/src']);
+const matches=grep(['-rnP',String.raw`https?://(?!localhost|127\.0\.0\.1|www\.w3\.org)[a-z0-9.-]+\.[a-z]{2,}|Bearer [A-Za-z0-9]{10}|password\s*[:=]\s*['"][^'"]{4,}`,'demo-apps/erp/src',folder]);
+const allowed=matches.map(line=>{const [path,lineNumber,...content]=line.split(':');const text=content.join(':');if(!path.endsWith('.log')||!text.includes('react.dev/link/wrap-tests-with-act'))throw Error('Review security scan match: '+path+':'+lineNumber);return {path,line:Number(lineNumber),reason:'React act test diagnostic links to public React documentation; no credential or runtime external endpoint.'};});
+const old=execFileSync('git',['show','HEAD:demo-apps/erp/parity-status.md'],{encoding:'utf8'}).split('\n');
+const current=readFileSync('demo-apps/erp/parity-status.md','utf8').split('\n');
+const changes=current.flatMap((line,index)=>line!==old[index]?[index]:[]);
+if(current.length!==old.length||changes.length!==24||changes.some(index=>!/^\| `\/erp[12]\/(workspace|reports|setup)\//.test(current[index])))throw Error('Parity changes exceeded the 24 scoped rows');
+if(protectedStatus||imports.length)throw Error('Protected paths or public-import boundary changed');
+execFileSync('git',['diff','--check']);
+const result={protectedStatus,forbiddenImports:imports,securityMatches:allowed,parityRowsChanged:changes.length,parityHeaderAndOtherRowsUnchanged:true,diffCheck:'passed'};
+writeFileSync(folder+'/boundary-scans.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({protectedPaths:'unchanged',forbiddenImports:0,securityMatches:allowed.length,parityRowsChanged:changes.length,diffCheck:'passed'}));

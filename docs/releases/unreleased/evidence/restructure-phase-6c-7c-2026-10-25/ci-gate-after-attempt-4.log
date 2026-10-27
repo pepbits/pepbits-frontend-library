@@ -1,0 +1,13 @@
+file:///home/pepadmin/pb/worktrees/frontend-phase6c7c/[eval1]:5
+if(browser.errors.length||browser.consoleErrors.length||browser.httpErrors.length||browser.checks.length!==114||browser.visualChecks.length!==45||[...browser.checks,...browser.panelChecks].some(check=>check.violations.length)||identity.integrationExit!==0||identity.cleanup.some(service=>service.groupAlive))throw Error('Complete the ERP browser check before final CI');
+                                                                                                                                                                                                                                                                                                                          ^
+
+Error: Complete the ERP browser check before final CI
+    at file:///home/pepadmin/pb/worktrees/frontend-phase6c7c/[eval1]:5:315
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:272:26)
+    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:268:20)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.22.1
