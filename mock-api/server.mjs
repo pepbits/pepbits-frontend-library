@@ -26,6 +26,7 @@ import {createRegistrationStore} from './op-registration-store.ts';
 import {createComprehensiveConsultationStore} from './comprehensive-consultation-store.ts';
 import {createClinicalConsultationStore} from "./clinical-consultation-store.ts";
 import {createClinicalTriageStore} from "./clinical-triage-store.ts";
+import {createAllyVoraClinicalStore} from "./allyvora-clinical-store.mjs";
 import {createClinicBillingStore} from "./clinic-billing-store.ts";
 import {createClinicalTemplateStore} from "./clinical-template-store.ts";
 import {createDraftCenter} from "./draft-center.mjs";
@@ -197,6 +198,7 @@ const healthcareSuiteRcm=createHealthcareSuiteRcmStore({
 });
 const clinicalTemplates=createClinicalTemplateStore(join(process.env.RECORD_DATA_DIR ?? DATA_DIR,"clinical-templates.csv"));
 const clinicalTriage=createClinicalTriageStore(join(process.env.RECORD_DATA_DIR ?? DATA_DIR,"clinical-triage.csv"),(user,product,id)=>clinicalTemplates.handle(user,product,{action:"overview",id},false));
+const allyVoraClinical=createAllyVoraClinicalStore();
 const clinicalConsultation=createClinicalConsultationStore(join(process.env.RECORD_DATA_DIR ?? DATA_DIR,"clinical-consultation.csv"),(user,product,id)=>clinicalTemplates.handle(user,product,{action:"overview",id},false));
 const dcpDesigner=createDesignerStore(join(process.env.RECORD_DATA_DIR ?? DATA_DIR,'dcp-designer.csv'));
 const carePages=createCarePageStore(join(process.env.RECORD_DATA_DIR ?? DATA_DIR,'care-pages.csv'));
@@ -1089,6 +1091,16 @@ const server = createServer(async (req, res) => {
     const token = bearer(req);
     if (token) sessions.delete(token);
     return send(res,204);
+  }
+
+  /* Synthetic AllyVora clinical workspace for the healthcare demo (outpatient intake, emergency triage). */
+  if (pathname.startsWith("/allyvora-clinical/")) {
+    const user=sessions.get(bearer(req));if(!user)return send(res,401,{error:"Not signed in."});
+    if(!["GET","POST","PATCH"].includes(req.method))return send(res,405,{error:"Method not allowed."});
+    const body=req.method==="GET"?{}:await readJson(req,65536).catch(()=>null);
+    if(body===null||typeof body!=="object"||Array.isArray(body))return send(res,400,{error:"Invalid JSON body."});
+    const result=allyVoraClinical.handle(user,{method:req.method,path:pathname.slice("/allyvora-clinical".length),query:requestUrl.searchParams,body});
+    return send(res,result.status,result.body);
   }
 
   if(pathname==="/clinical-triage"){
