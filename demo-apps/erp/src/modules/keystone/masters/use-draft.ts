@@ -5,7 +5,7 @@ import {useEntityApi} from '../client';
 import {defaultsFor} from '../record';
 import type {PageDef, Row} from '../types';
 
-export function useMasterDraft(def:PageDef, onSaved:(row?:Row)=>void, options:{retainAfterSave?:boolean;allowReadOnly?:boolean}={}) {
+export function useMasterDraft(def:PageDef, onSaved:(row?:Row)=>void, options:{retainAfterSave?:boolean;allowReadOnly?:boolean;prepare?:(row:Row)=>Row;validate?:(row:Row)=>Record<string,string>}={}) {
  const api=useEntityApi(),host=useScreenHost(),access=useRef(host);access.current=host;
  const [draft,setDraft]=useState<Row>(),[initial,setInitial]=useState<Row>(),[busy,setBusy]=useState(false),[failure,setFailure]=useState<unknown>(),[errors,setErrors]=useState<Record<string,string>>({}),[confirm,setConfirm]=useState(false),[conflicted,setConflicted]=useState(false),[added,setAdded]=useState(0);
  const lock=useRef(false),live=useRef(true),defaults=useRef<Partial<Row>>({}),pending=useRef<{signature:string;operationId:string}|undefined>(undefined),lastAction=useRef<'save'|'again'|'delete'>('save');
@@ -26,11 +26,12 @@ export function useMasterDraft(def:PageDef, onSaved:(row?:Row)=>void, options:{r
  const save=async(again=false)=>{
   if(lock.current||!draft||!access.current.can(creating?'create':'edit')||conflicted)return;
   const missing=def.fields.filter(field=>field.required&&!field.readOnly&&(draft[field.key]==null||String(draft[field.key]).trim()===''));
-  if(missing.length){setErrors(Object.fromEntries(missing.map(field=>[field.key,'is required'])));return;}
+  const validation={...options.validate?.(draft),...Object.fromEntries(missing.map(field=>[field.key,'is required']))};
+  if(Object.keys(validation).length){setErrors(validation);return;}
   lock.current=true;setBusy(true);setFailure(undefined);lastAction.current=again?'again':'save';
   const signature=JSON.stringify(draft);if(pending.current?.signature!==signature)pending.current={signature,operationId:crypto.randomUUID()};
   try{
-   const payload={...draft,operationId:pending.current.operationId,...(!creating&&typeof initial?.version==='number'?{expectedVersion:initial.version}:{})};
+   const payload={...(options.prepare?.(draft)??draft),operationId:pending.current.operationId,...(!creating&&typeof initial?.version==='number'?{expectedVersion:initial.version}:{})};
    const saved=creating?await api.create(def.entity,payload):await api.update(def.entity,initial!.id,payload);
    if(!live.current)return;pending.current=undefined;onSaved(saved);
    if(again&&creating){setAdded(value=>value+1);reset({...defaultsFor(def.fields),...defaults.current,id:''});}

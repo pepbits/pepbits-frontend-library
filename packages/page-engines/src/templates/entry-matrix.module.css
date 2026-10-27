@@ -1,0 +1,26 @@
+.root {min-width:0;min-height:440px;overflow:hidden;}
+.scroll {max-height:calc(100vh - 240px);min-height:440px;}
+.table {width:100%;border-collapse:separate;border-spacing:0;font-size:calc(12.5px * var(--fs-result,1));--entry-y:12px;--entry-x:16px;--entry-control:28px;}
+.table[data-density=compact] {--entry-y:4px;--entry-x:12px;--entry-control:24px;}
+.table[data-density=spacious] {--entry-y:16px;--entry-control:34px;}
+.table th,.table td {padding:var(--entry-y) var(--entry-x);border-bottom:1px solid var(--border);text-align:center;}
+.table th {font-weight:500;}
+.table thead th {background:var(--surface-2);color:var(--text-muted);font-size:calc(12px * var(--fs-result,1));line-height:16px;}
+.table thead small {display:block;font-size:calc(10.5px * var(--fs-result,1));font-weight:400;line-height:12px;}
+.table .identity {position:sticky;inset-inline-start:0;min-width:220px;width:220px;z-index:2;text-align:start;border-inline-end:1px solid var(--border);background:var(--surface);}
+.table .summary {position:sticky;inset-inline-end:0;min-width:128px;width:128px;z-index:2;text-align:end;border-inline-start:1px solid var(--border);background:var(--surface);}
+.table thead :is(.identity,.summary) {z-index:3;background:var(--surface-2);}
+.table[data-wrap=false] :is(.identity,.summary) {white-space:nowrap;}
+.table[data-wrap=true] :is(.identity,.summary) {overflow-wrap:anywhere;}
+.table [data-muted] {background:var(--surface-2);}
+.table [data-current] {background:var(--accent-soft);}
+.table input {height:var(--entry-control);min-width:28px;width:100%;padding:0 4px;text-align:center;font-size:calc(12.5px * var(--fs-form,1));border:1px solid transparent;background:transparent;border-radius:var(--radius);font-variant-numeric:tabular-nums;}
+.table input:hover {border-color:var(--border);}
+.table input:focus {border-color:var(--primary);background:var(--surface);}
+.table td>button {height:var(--entry-control);width:var(--entry-control);min-height:0;padding:0;font-size:calc(10.5px * var(--fs-form,1));font-weight:600;border-radius:var(--radius);}
+.table tfoot {position:sticky;bottom:0;z-index:3;}
+.table tfoot :is(th,td) {background:var(--surface-2);border-top:2px solid var(--border);font-size:calc(11.5px * var(--fs-result,1));font-weight:600;}
+.table[data-striped=true] tbody tr:nth-child(even) :is(.identity,.summary) {background:var(--surface-2);}
+
+.fill {display:flex;flex-direction:column;flex:1 1 0;min-height:440px;}
+.fill .scroll {flex:1 1 0;min-height:0;max-height:none;}

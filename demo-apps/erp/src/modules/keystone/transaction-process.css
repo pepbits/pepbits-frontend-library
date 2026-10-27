@@ -1,0 +1,49 @@
+.erp-process-record {--fs-scale:var(--fs-form);min-width:0;font-size:calc(13px * var(--fs-form));}
+.erp-process-split {display:grid;gap:12px;min-width:0;}
+.erp-process-split>div {min-width:0;}
+.erp-process-parameters>header {padding:12px 16px;border-bottom:1px solid var(--border);}
+.erp-process-parameters h3 {font-size:calc(14px * var(--fs-form));font-weight:600;}
+.erp-process-parameters h3 small {float:inline-end;color:var(--text-muted);font-size:calc(12px * var(--fs-result));}
+.erp-process-parameters p {font-size:calc(12.5px * var(--fs-form));color:var(--text-muted);}
+.erp-process-parameters>div {padding:16px;display:flex;flex-direction:column;gap:16px;}
+.erp-process-parameters>footer {display:flex;justify-content:space-between;gap:8px;padding:10px 16px;background:var(--surface-2);border-top:1px solid var(--border);}
+.erp-process-record [data-template-section] {border:0;box-shadow:none;}
+.erp-process-record [data-template-section]>div:first-child {display:none;}
+.erp-process-record [data-template-section]>div:last-child {padding:0;}
+.erp-process-record [data-template-section] .grid {gap:10px 16px;}
+.erp-process-record [data-template-section] input,.erp-process-record [data-template-section] select {height:32px;border-radius:var(--radius);font-size:calc(12.5px * var(--fs-form));}
+.erp-process-record[data-variant=erp1] [data-template-section] :is(input,select) {height:28px;}
+.erp-process-record[data-density=compact] [data-template-section] :is(input,select) {height:24px;}
+.erp-process-record[data-density=spacious] [data-template-section] :is(input,select) {height:38px;}
+.erp-process-steps {display:flex;flex-direction:column;gap:4px;margin-top:12px;}
+.erp-process-steps li {display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:var(--radius);}
+.erp-process-steps li>span {display:grid;place-items:center;height:24px;width:24px;flex-shrink:0;background:var(--surface-3);border-radius:50%;font-size:calc(11px * var(--fs-result));}
+.erp-process-steps strong {flex:1;font-weight:400;font-size:calc(13px * var(--fs-result));}
+.erp-process-steps small {color:var(--text-muted);font-size:calc(12px * var(--fs-result));}
+.erp-process-steps [data-state=idle] strong {color:var(--text-muted);}
+.erp-process-steps [data-state=idle] small {display:none;}
+.erp-process-steps [data-state=done]>span {background:var(--primary-fill);color:var(--primary-contrast,#fff);}
+.erp-process-steps [data-state=warn]>span {background:var(--warning);color:var(--surface);}
+.erp-process-steps [data-state=running] {background:var(--accent-soft);}
+.erp-process-record[data-variant=erp1] .erp-process-steps li {padding:6px 8px;gap:10px;}
+.erp-process-record[data-variant=erp1] .erp-process-steps li>span {height:20px;width:20px;}
+.erp-process-record[data-variant=erp1] .erp-process-steps [data-state=done] small {display:none;}
+.erp-process-log {height:224px;overflow:auto;border-radius:var(--radius);padding:12px;background:var(--rail-bg,var(--surface-3));color:var(--rail-text,var(--text));font-size:calc(12px * var(--fs-result));line-height:20px;}
+.erp-process-log time {color:var(--rail-muted,var(--text-muted));font-variant-numeric:tabular-nums;}
+.erp-process-log [data-warning] {color:var(--warning-ink);}
+.erp-process-record[data-variant=erp1] .erp-process-log {height:128px;padding:10px;font-size:calc(11.5px * var(--fs-result));}
+.erp-process-panel>h3 {padding:12px 16px;border-bottom:1px solid var(--border);font-size:calc(13px * var(--fs-form));font-weight:600;}
+.erp-process-panel>div {padding:16px;}
+.erp-process-columns {display:grid;gap:16px;margin-bottom:16px;}
+.erp-process-identity {display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:20px;}
+.erp-process-identity>span {display:grid;place-items:center;width:48px;height:48px;background:var(--primary-soft);border-radius:var(--radius);}
+.erp-process-identity>div {flex:1;}
+.erp-process-identity strong {font-size:calc(16px * var(--fs-result));font-weight:600;}
+.erp-process-identity p {color:var(--text-muted);}
+.erp-process-identity dl {display:flex;gap:8px;flex:1;min-width:320px;}
+.erp-process-identity dl>div {flex:1;padding:8px 12px;border-radius:var(--radius);background:var(--surface-2);}
+.erp-process-identity dt {color:var(--text-muted);font-size:calc(11.5px * var(--fs-result));}
+.erp-process-identity dd {font-size:calc(15px * var(--fs-result));font-weight:600;}
+.erp-process-stats {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px;}
+@media(min-width:1024px){.erp-process-split {grid-template-columns:400px minmax(0,1fr);}.erp-process-columns {grid-template-columns:repeat(2,minmax(0,1fr));}.erp-process-stats {grid-template-columns:repeat(4,minmax(0,1fr));}}
+@media(min-width:1280px){.erp-process-split {grid-template-columns:440px minmax(0,1fr);}}

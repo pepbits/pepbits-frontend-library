@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState, type ReactNode} from 'react';
 import {Card, DescriptionList, LoadingState, RecoveryNotice, StatCard, failureFromError} from '@pepbits/components';
-import {CalendarClock, ChevronRight, FileText, FolderTree} from '@pepbits/icons';
+import {CalendarClock, Check, ChevronRight, FileText, FolderTree} from '@pepbits/icons';
 import {CollectionView} from '@pepbits/components/collection-view';
 import {Avatar, Badge, StatusBadge, Button, FilePicker, Select, Textarea} from '@pepbits/ui';
 import {useLocalization} from '@pepbits/i18n/react';
@@ -11,6 +11,7 @@ import {listUrl, useEntityApi, useFetch} from './client';
 import {Fields,useValueFormat} from './fields';
 import {useKeystone} from './context';
 import {localDay} from './dates';
+import {CaseActivity,CaseDate} from './transaction-case';
 import {invoiceTotals} from './invoice';
 import type {ListResponse, PageDef, Row} from './types';
 import type {ErpTarget} from '../../navigation';
@@ -37,13 +38,13 @@ export function RecordDocumentSelection() {
   return <div className="space-y-2"><FilePicker label="Choose files" disabled={!host.can('edit')} onFile={file => {if (host.can('edit')) setFiles(items => [...items, {name: file.name, size: file.size}]);}}/><p>{t('Selected on this screen only — not uploaded or saved.')}</p><ul aria-label={t('Selected files')} className="erp-record-documents">{files.map((file, index) => <li key={index}><span>{file.name} · {format.number(Math.ceil(file.size / 1024))} KB</span><Button variant="ghost" disabled={!host.can('edit')} onClick={() => {if (host.can('edit')) setFiles(items => items.filter((_, i) => i !== index));}}>{t('Remove {value0}', {value0: file.name})}</Button></li>)}</ul></div>;
 }
 
-export function ProfileSummary({def, row}: {def: PageDef; row: Row}) {
+export function ProfileSummary({def, row, creating=false}: {def: PageDef; row: Row; creating?: boolean}) {
   const format = useValueFormat(), {t} = useLocalization(), {variant} = useKeystone();
   const stats = def.fields.filter(field => ['number', 'currency', 'percent'].includes(field.type) && field.group).slice(0, 4);
   const meta = def.fields.filter(field => ['select', 'city', 'date', 'person'].includes(field.type) && !field.primary).slice(0, 4);
   return <Card data-profile-summary data-variant={variant} className="erp-profile-summary">
-    <div className="erp-profile-identity"><Avatar name={String(row.name ?? row.code ?? '')} decorative className="erp-profile-avatar"/><div><div className="flex flex-wrap items-center gap-2"><strong>{row.code}</strong>{row.status && <StatusBadge value={row.status}/>}</div><div className="erp-profile-meta">{meta.filter(field => row[field.key]).map(field => <span key={field.key}>{t(field.label)} <b>{format(field, row[field.key])}</b></span>)}</div></div></div>
-    <dl className="erp-profile-stats" style={{gridTemplateColumns: `repeat(${Math.max(1, stats.length)},minmax(0,1fr))`}}>{stats.map(field => <div key={field.key}><dt>{t(field.label)}</dt><dd>{format(field, row[field.key])}</dd></div>)}</dl>
+    <div className="erp-profile-identity"><Avatar name={String(row.name ?? row.code ?? '')} decorative className="erp-profile-avatar"/><div><div className="flex flex-wrap items-center gap-2"><strong>{creating?t('Number assigned on save'):row.code}</strong>{row.status && <StatusBadge value={row.status}/>}</div><div className="erp-profile-meta">{meta.filter(field => row[field.key]).map(field => <span key={field.key}>{t(field.label)} <b>{format(field, row[field.key])}</b></span>)}</div></div></div>
+    {!creating&&stats.length>0&&<dl className="erp-profile-stats" style={{gridTemplateColumns: `repeat(${Math.max(1, stats.length)},minmax(0,1fr))`}}>{stats.map(field => <div key={field.key}><dt>{t(field.label)}</dt><dd>{format(field, row[field.key])}</dd></div>)}</dl>}
   </Card>;
 }
 
@@ -57,8 +58,8 @@ export function BookingSummary({row, compact}: {row: Row; compact?: boolean}) {
 
 export function CaseSummary({def, row}: {def: PageDef; row: Row}) {
   const {t} = useLocalization(), format = useFormatters(), flow = def.statusFlow ?? [], current = flow.indexOf(row.status);
-  return <Card className="erp-case-summary" data-case-summary><div className="flex flex-wrap items-center gap-2"><strong>{row.code}</strong><StatusBadge value={row.status}/>{row.priority && <Badge tone={row.priority === 'Urgent' ? 'danger' : row.priority === 'High' ? 'warning' : 'neutral'}>{t(row.priority)}</Badge>}{row.created && <time dateTime={row.created}>{format.date(row.created)}</time>}</div>
-    <ol aria-label={t('Stage')} className="erp-case-stages">{flow.map((stage, index) => <li key={stage} data-state={index < current || current === flow.length - 1 ? 'done' : index === current ? 'current' : 'pending'} aria-current={index === current ? 'step' : undefined}><span>{format.number(index + 1)}</span>{t(stage)}</li>)}</ol>
+  return <Card className="erp-case-summary" data-case-summary><div className="flex flex-wrap items-center gap-2"><strong>{row.code}</strong><StatusBadge value={row.status}/>{row.priority && <Badge tone={row.priority === 'Urgent' ? 'danger' : row.priority === 'High' ? 'warning' : 'neutral'}>{t(row.priority)}</Badge>}{row.created && <CaseDate date={row.created}/>}</div>
+    <ol aria-label={t('Stage')} className="erp-case-stages">{flow.map((stage, index) => <li key={stage} data-state={index < current || current === flow.length - 1 ? 'done' : index === current ? 'current' : 'pending'} aria-current={index === current ? 'step' : undefined}><span>{index < current || current === flow.length - 1?<Check size={12}/>:format.number(index + 1)}</span>{t(stage)}</li>)}</ol>
   </Card>;
 }
 
@@ -126,14 +127,16 @@ export function CaseConversation({def, row, busy, save}: {def: PageDef; row: Row
   if (variant === 'erp1') activities.reverse(); else activities.sort((a, b) => a.at.localeCompare(b.at));
   const disabled = busy || !host.can('edit');
   const post = async () => {if (disabled || !comment.trim()) return; const accepted = await save({activity: [...(row.activity ?? []), {at: localDay(), by: actor?.name ?? t('You'), text: comment.trim()}]}); if (accepted) setComment('');};
-  return <div data-case-conversation className="space-y-3"><ol className="erp-case-conversation">{activities.map((item, index) => <li key={index}><Avatar name={item.by} decorative size="sm"/><div><div className="erp-case-byline"><strong>{item.by}</strong><time dateTime={item.at}>{format.date(item.at)}</time></div><p>{item.text}</p></div></li>)}</ol>{!activities.length && <p>{t('No activity recorded for this record yet.')}</p>}
-    <Textarea label="Add an update or reply" value={comment} disabled={disabled} onChange={event => setComment(event.target.value)} onKeyDown={event => {if (preferences.keyboardShortcuts && event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {event.preventDefault(); void post();}}}/><Button disabled={disabled || !comment.trim()} onClick={() => void post()}>{t('Post update')}</Button>
+  return <div data-case-conversation className="space-y-3"><CaseActivity activities={activities}/>{!activities.length && <p>{t('No activity recorded for this record yet.')}</p>}
+    <div className="erp-case-reply"><Textarea label="Add an update or reply" value={comment} disabled={disabled} onChange={event => setComment(event.target.value)} onKeyDown={event => {if (preferences.keyboardShortcuts && event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {event.preventDefault(); void post();}}}/><Button disabled={disabled || !comment.trim()} onClick={() => void post()}>{t('Post update')}</Button></div>
   </div>;
 }
 
 export function CaseProperties({def, row, busy, save}: {def: PageDef; row: Row; busy: boolean; save: SavePatch}) {
   const {t} = useLocalization(), host = useScreenHost(), {actor} = useKeystone(), disabled = busy || !host.can('edit'), [assignee, setAssignee] = useState(String(row.assignee ?? ''));
+  const next=def.statusFlow?.[def.statusFlow.indexOf(String(row.status))+1];
   return <><Panel title="Properties">
+    {next&&<Button disabled={disabled} onClick={()=>{if(!disabled)void save({status:next,activity:[...(row.activity??[]),{at:localDay(),by:actor?.name??t('You'),text:`Moved from ${row.status} to ${next}`}]});}}>{t('Move to')} {t(next)}</Button>}
     <Select label="Stage" value={row.status} disabled={disabled} options={(def.statusFlow ?? []).map(value => ({value, label: value}))} onChange={event => {const status = event.target.value; if (!disabled && def.statusFlow?.includes(status)) void save({status, activity: [...(row.activity ?? []), {at: localDay(), by: actor?.name ?? t('You'), text: `Moved from ${row.status} to ${status}`}]});}}/>
     <Select label="Priority" value={row.priority} disabled={disabled} options={(def.fields.find(field => field.key === 'priority')?.options ?? []).map(value => ({value, label: value}))} onChange={event => {if (!disabled) void save({priority: event.target.value});}}/>
     <Fields fields={def.fields.filter(field => field.key === "assignee")} value={{...row, assignee}} readOnly={disabled} onChange={(_, value) => setAssignee(String(value))}/><Button disabled={disabled || assignee === String(row.assignee ?? '')} onClick={() => {if (!disabled) void save({assignee});}}>{t('Save assignee')}</Button>

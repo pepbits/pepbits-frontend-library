@@ -1,0 +1,72 @@
+/* Source baselines; host scales, density, radius and table policies remain effective. */
+.erp-dashboard {--fs-scale:var(--fs-result);--erp-row-pad:8px;padding:12px;font-size:calc(13px * var(--fs-result,1));}
+.erp-dashboard[data-density="compact"] {--erp-row-pad:4px;}
+.erp-dashboard[data-density="spacious"] {--erp-row-pad:12px;}
+.erp-dashboard-grid {grid-template-columns:minmax(0,1fr);gap:12px;}
+.erp-dashboard-grid>* {min-width:0;}
+.erp-dashboard-kpi {display:flex;align-items:flex-end;justify-content:space-between;gap:8px;padding:12px 16px;}
+.erp-dashboard-kpi>div {min-width:0;}
+.erp-dashboard-kpi p {font-size:calc(12.5px * var(--fs-result,1));color:var(--text-muted);}
+.erp-dashboard-kpi strong {display:block;margin-top:4px;font-size:calc(24px * var(--fs-result,1));font-weight:600;line-height:28px;letter-spacing:-.025em;font-variant-numeric:tabular-nums;}
+.erp-kpi-delta {display:flex;align-items:center;gap:4px;margin-top:4px;font-size:calc(12px * var(--fs-result,1));}
+.erp-kpi-delta>span:last-child {color:var(--text-muted);}
+.erp-dashboard-panel {overflow:hidden;}
+.erp-dashboard-panel>header {display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);}
+.erp-dashboard-panel h2 {font-size:calc(13px * var(--fs-result,1));font-weight:600;}
+.erp-dashboard-panel>header button {font-size:calc(12px * var(--fs-result,1));padding:0;height:auto;min-height:0;color:var(--primary-strong);}
+.erp-trend-body {padding:12px;}
+.erp-donut-body {padding:16px;}
+.erp-trend-legend {display:flex;gap:12px;font-size:calc(12px * var(--fs-result,1));color:var(--text-muted);}
+.erp-trend-legend>span {display:flex;align-items:center;gap:6px;}
+.erp-trend-legend i {width:16px;border-top:2px solid var(--primary);}
+.erp-trend-legend>span:last-child i {border-color:var(--warning);border-top-style:dashed;}
+.erp-dashboard-orders thead {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
+.erp-dashboard-orders table {width:100%;font-size:calc(13px * var(--fs-result,1));}
+.erp-dashboard-orders table td {padding:var(--erp-row-pad) 8px;}
+.erp-dashboard-orders table td:first-child,.erp-dashboard-orders table td:last-child {padding-inline:14px;}
+.erp-dashboard-orders table td:first-child {font-weight:500;color:var(--primary-strong);}
+.erp-dashboard-approvals li+li {border-top:1px solid var(--border);}
+.erp-dashboard-approvals button {display:flex;width:100%;height:auto;gap:10px;padding:var(--erp-row-pad) 14px;text-align:start;font-size:calc(13px * var(--fs-result,1));font-weight:400;}
+.erp-dashboard-approvals button>span:nth-child(2) {flex:1;min-width:0;}
+.erp-dashboard-approvals button>span:nth-child(2)>span {display:block;overflow:hidden;text-overflow:ellipsis;}
+.erp-dashboard-approvals small {display:block;font-size:calc(11.5px * var(--fs-result,1));color:var(--text-muted);}
+.erp-approval-amount {display:flex;flex-direction:column;align-items:end;font-size:calc(12.5px * var(--fs-result,1));font-weight:500;}
+.erp-receivables-body {padding:14px;}
+.erp-receivables-body li+li {margin-top:12px;}
+.erp-receivables-body li>div:first-child {display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:calc(12.5px * var(--fs-result,1));}
+.erp-receivables-body li strong {font-weight:500;}
+.erp-receivable-bar {height:6px;margin-top:4px;border-radius:999px;overflow:hidden;background:var(--surface-3);}
+.erp-receivable-bar>div {height:100%;border-radius:inherit;background:var(--primary);}
+.erp-dashboard-shortcuts {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+.erp-dashboard-shortcuts button {display:block;height:auto;padding:8px 10px;text-align:start;background:var(--surface-2);}
+.erp-dashboard-shortcuts span {display:block;font-size:calc(12px * var(--fs-result,1));font-weight:400;color:var(--text-muted);}
+.erp-dashboard-shortcuts strong {font-size:calc(16px * var(--fs-result,1));font-weight:600;}
+@media(min-width:1024px){.erp-dashboard-grid {grid-template-columns:repeat(12,minmax(0,1fr));}.erp-span-3 {grid-column:span 3;}.erp-span-4 {grid-column:span 4;}.erp-span-5 {grid-column:span 5;}.erp-span-8 {grid-column:span 8;}}
+@media(max-width:767px){.erp-dashboard {padding:8px;}}
+.erp-report-stats {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+@media(min-width:768px){.erp-report-stats {grid-template-columns:repeat(4,minmax(0,1fr));}}
+.erp-analytics {padding:12px;--erp-report-row:10px;--erp-control-height:32px;}
+.erp-analytics[data-density="compact"] {--erp-report-row:7px;--erp-control-height:28px;}
+.erp-analytics[data-density="spacious"] {--erp-report-row:16px;--erp-control-height:36px;}
+.erp-report-toolbar {box-shadow:none;}
+.erp-report-toolbar label>span:first-child {font-size:calc(12px * var(--fs-form,1));font-weight:500;margin-bottom:4px;}
+.erp-report-toolbar :is(input,select,button) {min-height:var(--erp-control-height);height:var(--erp-control-height);border-radius:var(--radius);font-size:calc(13px * var(--fs-form,1));font-weight:400;}
+[data-report-surface]>div>div:has(table) {box-shadow:none;overflow:hidden;min-height:440px;}
+[data-report-surface]>div>div:has(table)>div:first-child {display:none;}
+[data-report-surface]>div>div:has(table)>div:last-child {padding:0;}
+[data-report-surface] table {font-size:calc(13px * var(--fs-result,1));border-collapse:separate;border-spacing:0;}
+[data-report-surface] table :is(th,td) {border:0;border-bottom:1px solid var(--border);padding:var(--erp-report-row) 12px;}
+[data-report-surface] table thead th {padding:8px 12px;background:var(--surface-2);font-size:calc(12px * var(--fs-result,1));font-weight:500;color:var(--text-muted);}
+[data-report-surface] thead button {font-size:inherit;font-weight:inherit;padding:0;min-height:0;height:auto;}
+[data-report-surface] table [scope="rowgroup"] {padding:6px 12px;font-size:calc(12.5px * var(--fs-result,1));font-weight:600;background:var(--surface-2);}
+[data-report-surface] table tfoot td {padding:8px 12px;border-top:2px solid var(--border-strong);background:var(--surface-2);font-size:calc(12.5px * var(--fs-result,1));font-weight:600;}
+[data-report-surface] table [data-column-type="money"],[data-report-surface] table [data-column-type="number"] {text-align:end;font-variant-numeric:tabular-nums;}
+[data-report-surface] table[data-wrap="true"] :is(th,td) {white-space:normal;overflow-wrap:anywhere;}
+[data-report-surface] table[data-wrap="false"] :is(th,td) {white-space:nowrap;}
+[data-report-surface] table[data-sticky="false"] thead {position:static;}
+.erp-print-preview {min-width:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;min-height:520px;}
+.erp-print-preview [data-print-toolbar] {border:0;border-bottom:1px solid var(--border);border-radius:0;}
+.erp-print-preview [data-print-toolbar] button {font-size:calc(13px * var(--fs-form,1));height:32px;min-height:32px;}
+.erp-print-preview [data-print-zoom] {font-size:calc(12px * var(--fs-form,1));color:var(--text-muted);}
+
+.erp-dashboard-orders tbody tr:not(:last-child) {border-bottom:1px solid var(--border);}
