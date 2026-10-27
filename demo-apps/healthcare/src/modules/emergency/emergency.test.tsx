@@ -5,6 +5,7 @@ import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {TestHostProvider, spies} from '../../test/allyvora/host';
 import {mockAllyVora} from '../../test/allyvora/mock-api';
 import {Renderer} from '../../renderer';
+import {RequestContext} from '../../adapters/http';
 import {hrefFor as appHrefFor, pages as appPages, targetFromPath as appTargetFromPath} from '../../navigation';
 import {PAGE, hrefFor, pages, targetFromPath} from './routes';
 
@@ -33,7 +34,7 @@ function routes(path: string, method: string, body: Record<string, unknown> | un
 beforeEach(() => {
   calls = [];
   vi.stubGlobal('fetch', vi.fn(async (url: string, init: RequestInit = {}) => {
-    const path = url.replace(/^\/api/, ''), method = (init.method ?? 'GET').toUpperCase();
+    const path = url.replace(/^\/api\/allyvora-clinical/, ''), method = (init.method ?? 'GET').toUpperCase();
     const body = init.body ? JSON.parse(String(init.body)) : undefined;
     calls.push({path, method, body});
     return routes(path, method, body);
@@ -42,7 +43,7 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 const renderPage = (url: string, host = spies()) => {
   const target = targetFromPath(url), page = pages.find(p => p.id === target.pageId)!;
-  return {host, ...render(<TestHostProvider host={{client: mockAllyVora().client, ...host}}><main><Renderer page={page} target={target}/></main></TestHostProvider>)};
+  return {host, ...render(<TestHostProvider host={{client: mockAllyVora().client, ...host}}><RequestContext.Provider value={(path, init) => fetch('/api' + path, init)}><main><Renderer page={page} target={target}/></main></RequestContext.Provider></TestHostProvider>)};
 };
 const noViolations = (container: HTMLElement) => act(async () => {expect((await axe.run(container, {rules: {'color-contrast': {enabled: false}}})).violations).toEqual([]);});
 const choose = (group: string, option: string) => fireEvent.click(within(screen.getByRole('radiogroup', {name: group})).getByRole('radio', {name: option}));

@@ -195,7 +195,7 @@ Choose **Outpatient** (AllyVora Outpatient) in the header, then Nurse intake. Mo
 | `/allyvora-outpatient/intake` | Visits waiting for intake (arrived or in intake), stage counts for the whole clinic, safety badges; nurses start or continue intake |
 | `/allyvora-outpatient/intake/<encounter>` | Intake for one visit: arrival and complaint, vital signs with live NEWS2, allergy review, screening; saving sends the patient to the doctor |
 
-`adapter.ts` implements the clinical data port over the AllyVora clinical workspace API (`/encounters`, `/encounters/{id}`, `/encounters/{id}/status`, `/encounters/{id}/intake`, `/catalog/{kind}`, `/scores/news2/calculate`, `/patients/{id}/allergies`, `/auth/me`), using the front desk client and origin (`NEXT_PUBLIC_ALLYVORA_FRONT_DESK_API_URL`, default `/api`). That backend is not part of this demo: without it both pages show their error state. Clinician actions follow `/auth/me` permissions (UI only). See `provenance.json` for the source files, hashes and what is not ported.
+`adapter.ts` implements the clinical data port over the AllyVora clinical workspace API paths (`/encounters`, `/encounters/{id}`, `/encounters/{id}/status`, `/encounters/{id}/intake`, `/encounters/esi/preview`, `/catalog/{kind}`, `/scores/news2/calculate`, `/patients/{id}/allergies`, `/auth/me`) under `/allyvora-clinical`, sent with the demo's signed-in request client. The mock API serves fictional data there ([allyvora-clinical-store.mjs](../../mock-api/allyvora-clinical-store.mjs): six outpatient and six emergency visits, reset when the API restarts); a host with the real workspace API changes only the prefix. Clinician actions follow `/auth/me` (UI only): demo accounts act as nurses, accounts with a doctor role as doctors. See `provenance.json` for the source files, hashes and what is not ported.
 
 ## AllyVora Emergency — triage on @pepbits/clinical
 
@@ -206,7 +206,7 @@ Choose **Emergency** (AllyVora Emergency) in the header, then Triage. Module `re
 | `/allyvora-emergency/triage` | Patients waiting for triage, longest wait first (red after 15 minutes); nurses and doctors get Triage now |
 | `/allyvora-emergency/triage/<encounter>` | Triage for one visit: arrival (including how the patient arrived) and required complaint, vital signs with NEWS2, allergy review, screening, ESI decision points with the calculated level, optional override with reason, and area |
 
-The ESI level comes from the AllyVora API (`POST /encounters/esi/preview`); saving posts `mode: "er"` to `/encounters/{id}/intake`. Without that backend both pages show their error state. See `provenance.json` for source files, hashes, deliberate differences and what is not ported.
+The ESI level comes from `POST /allyvora-clinical/encounters/esi/preview`; saving posts `mode: "er"` to `/allyvora-clinical/encounters/{id}/intake`. Both are served by the mock API with three patients waiting for triage. See `provenance.json` for source files, hashes, deliberate differences and what is not ported.
 
 ## AllyVora Patients — fourteenth app
 

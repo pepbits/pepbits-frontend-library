@@ -27,6 +27,10 @@ export function mockHttp(preferences:Partial<UserPreferences>={},policy:Preferen
   const result=await handler(record)??(url.pathname==='/api/encounters'?{body:[]} :url.pathname==='/api/appointments/a1/summary'?{body:{appointment:appointmentView(),patient:patient(),clinician:staff(),encounter:encounter({status:'signed',signedBy:'d1'})}}:undefined);
   if(result)return Response.json(result.body??null,{status:result.status??200});
  }
+ // Fictional AllyVora clinical worklists (mock-api/allyvora-clinical-store.mjs serves the full contract).
+ if(path==='/allyvora-clinical/auth/me')return Response.json({id:'u1',name:'Demo nurse',role:'nurse',permissions:['vitals.write','triage.write']});
+ const clinical=/^\/allyvora-clinical\/encounters\?class=(OP|ER)$/.exec(path);
+ if(clinical){const cls=clinical[1]!,status=cls==='ER'?'waiting-triage':'registered';return Response.json([{id:cls+'-1',patientId:'P-1',class:cls,status,department:cls==='ER'?'Emergency':'General Medicine',arrivedAt:'2026-10-27T08:00:00Z',reason:'Cough',version:1,waitingMinutes:12,clinicalVisible:true,patient:{id:'P-1',mrn:'MRN-1',name:'Test Patient',age:40,sex:'female',restricted:false},allergyState:'nka',allergyCount:0,news2:null,openReviews:0}]);}
  if(path.startsWith('/reference-modules/medslot/api/')){const key=path.slice('/reference-modules/medslot/api'.length).split('?')[0]!;const value=(medslotFixtures as Record<string,unknown>)[key];if(value!==undefined)return Response.json(value);}
  if(path.startsWith('/reference-modules/surgisuite/api/')){const key=path.slice('/reference-modules/surgisuite/api'.length).split('?')[0]!;const value=(surgisuiteFixtures as Record<string,unknown>)[key];if(value!==undefined)return Response.json(value);}
  const body=init?.body?JSON.parse(String(init.body)):null,method=init?.method??'GET';const match=entries.find(entry=>entry.key[0]===method&&normalized(entry.key[1],entry.key[2])===normalized(path,body));if(!match){unexpected.push(JSON.stringify([method,path,body]));throw new Error('Unmocked synthetic read '+path);}return Response.json(match.value.body,{status:match.value.status});};return {request,unexpected,calls};}
