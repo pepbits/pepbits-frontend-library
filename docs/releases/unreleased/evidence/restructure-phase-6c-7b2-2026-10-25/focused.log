@@ -1,0 +1,93 @@
+
+> @pepbits-demo/erp@0.0.0 test
+> vitest run --maxWorkers=2 --testTimeout=120000 src/transaction-deferred.test.tsx src/record-panels.test.tsx src/remaining-views.test.tsx src/specialized.test.tsx src/visual-composition.test.tsx
+
+
+ RUN  v3.2.7 /home/pepadmin/pb/worktrees/frontend-phase6c7b2/demo-apps/erp
+
+ ✓ src/record-panels.test.tsx (53 tests) 16144ms
+   ✓ erp1 keeps unsent case inputs across other acknowledged property saves  802ms
+   ✓ erp2 keeps unsent case inputs across other acknowledged property saves  471ms
+   ✓ erp1 profile shows source groups, statistics, activity/documents and changes  395ms
+   ✓ erp2 profile shows source groups, statistics, activity/documents and changes  395ms
+   ✓ erp1 case retains a failed comment and retries the identical versioned command  305ms
+   ✓ erp2 case retains a failed comment and retries the identical versioned command  320ms
+   ✓ ERP2 tree shows ancestor navigation, children, leaf guards and confirmed deletion  319ms
+   ✓ ERP1 opened record panels: default > customers  450ms
+   ✓ ERP1 opened record panels: default > sales-orders  595ms
+   ✓ ERP1 opened record panels: default > approvals  306ms
+   ✓ ERP1 opened record panels: default > payroll-run  325ms
+   ✓ ERP1 opened record panels: default > quality-inspections  595ms
+   ✓ ERP1 opened record panels: Arabic RTL > customers  411ms
+   ✓ ERP1 opened record panels: Arabic RTL > sales-orders  658ms
+   ✓ ERP1 opened record panels: Arabic RTL > approvals  328ms
+   ✓ ERP1 opened record panels: Arabic RTL > quality-inspections  362ms
+   ✓ ERP1 opened record panels: reduced motion > customers  317ms
+   ✓ ERP1 opened record panels: reduced motion > sales-orders  394ms
+   ✓ ERP1 opened record panels: reduced motion > approvals  330ms
+   ✓ ERP1 opened record panels: reduced motion > support-tickets  318ms
+   ✓ ERP1 opened record panels: reduced motion > quality-inspections  396ms
+   ✓ ERP1 opened record panels: locked density > customers  334ms
+   ✓ ERP1 opened record panels: locked density > sales-orders  463ms
+   ✓ ERP1 opened record panels: locked density > approvals  305ms
+   ✓ ERP1 opened record panels: locked density > quality-inspections  398ms
+   ✓ edited forms warn on browser unload, retain failures, and detach after accepted save  414ms
+ ✓ src/transaction-deferred.test.tsx (61 tests) 18113ms
+   ✓ 'erp1' 'leave-requests' 'default' request composition and axe  463ms
+   ✓ erp1 creates a Pending self-service request with computed days, required/date validation and no editable identity  384ms
+   ✓ erp2 creates a Pending self-service request with computed days, required/date validation and no editable identity  303ms
+   ✓ ERP1 request drawer keeps the searched worklist and refreshes after approval  1238ms
+   ✓ 'erp1' 'attendance' combines identity, dimensions, summary and totals in one managed matrix  957ms
+   ✓ 'erp1' 'timesheets' combines identity, dimensions, summary and totals in one managed matrix  418ms
+   ✓ 'erp1' 'marks-entry' combines identity, dimensions, summary and totals in one managed matrix  422ms
+   ✓ 'erp2' 'attendance' combines identity, dimensions, summary and totals in one managed matrix  632ms
+   ✓ 'erp2' 'timesheets' combines identity, dimensions, summary and totals in one managed matrix  423ms
+   ✓ 'erp2' 'marks-entry' combines identity, dimensions, summary and totals in one managed matrix  315ms
+   ✓ erp1 inspection gates acceptance/rejection, retains a failed save and locks a terminal verdict  402ms
+   ✓ erp2 inspection gates acceptance/rejection, retains a failed save and locks a terminal verdict  496ms
+   ✓ 'erp1' 'quality-inspections' 'default' opened composition and axe  456ms
+   ✓ 'erp1' 'quality-inspections' 'RTL' opened composition and axe  449ms
+   ✓ 'erp1' 'quality-inspections' 'reduced motion' opened composition and axe  454ms
+   ✓ 'erp1' 'quality-inspections' 'managed' opened composition and axe  414ms
+   ✓ 'erp2' 'quality-inspections' 'default' opened composition and axe  354ms
+   ✓ 'erp2' 'quality-inspections' 'RTL' opened composition and axe  365ms
+   ✓ 'erp2' 'quality-inspections' 'reduced motion' opened composition and axe  370ms
+   ✓ 'erp2' 'quality-inspections' 'managed' opened composition and axe  324ms
+   ✓ 'erp2' 'depreciation-run' 'managed' opened composition and axe  434ms
+ ✓ src/specialized.test.tsx (19 tests) 5119ms
+   ✓ erp1 finance creation follows entity grants  946ms
+   ✓ erp2 finance creation follows entity grants  776ms
+   ✓ ERP1 tree searches ancestors, adds a child, and adopts the acknowledged record  459ms
+   ✓ ERP1 profile keeps the worklist beside selection and persists the accepted layout choice  1084ms
+   ✓ effective rememberFilters policy prevents profile layout persistence  556ms
+ ✓ src/remaining-views.test.tsx (20 tests) 7874ms
+   ✓ erp1 booking opens a free slot with resource, date and time defaults  1133ms
+   ✓ erp2 booking opens a free slot with resource, date and time defaults  490ms
+   ✓ booking date navigation and resource visibility keep a complete schedule and list switch  1161ms
+   ✓ booking status failures retain their operation and a mounted denial disables actions  325ms
+   ✓ erp1 invoice loads company data and controls the physical document  771ms
+   ✓ erp2 invoice loads company data and controls the physical document  442ms
+   ✓ invoice printing stays disabled after a failed company-profile read and retries  349ms
+   ✓ ledger search leaves balances intact, custom ranges calculate opening, export follows a managed preference  327ms
+   ✓ appointments calendar has no axe violations in Arabic RTL  796ms
+   ✓ room-bookings calendar has no axe violations in Arabic RTL  641ms
+ ✓ src/visual-composition.test.tsx (19 tests) 10196ms
+   ✓ 'appointments' drawer: 'default' retains calendar, slot input and effective presentation  928ms
+   ✓ 'room-bookings' drawer: 'default' retains calendar, slot input and effective presentation  520ms
+   ✓ 'appointments' drawer: 'RTL' retains calendar, slot input and effective presentation  474ms
+   ✓ 'room-bookings' drawer: 'RTL' retains calendar, slot input and effective presentation  520ms
+   ✓ 'appointments' drawer: 'reduced motion' retains calendar, slot input and effective presentation  441ms
+   ✓ 'room-bookings' drawer: 'reduced motion' retains calendar, slot input and effective presentation  365ms
+   ✓ 'appointments' drawer: 'managed' retains calendar, slot input and effective presentation  428ms
+   ✓ 'room-bookings' drawer: 'managed' retains calendar, slot input and effective presentation  419ms
+   ✓ erp1 report columns and named snapshots restore filters/order without changing locked page size  1187ms
+   ✓ erp2 report columns and named snapshots restore filters/order without changing locked page size  1361ms
+   ✓ support-tickets ERP1 drawer retains board filters and adopts acknowledged property saves  301ms
+   ✓ support-tickets ERP1 list refreshes acknowledged drawer writes without losing its search  1129ms
+   ✓ maintenance-requests ERP1 list refreshes acknowledged drawer writes without losing its search  1010ms
+
+ Test Files  5 passed (5)
+      Tests  172 passed (172)
+   Start at  04:31:33
+   Duration  48.42s (transform 4.91s, setup 1.65s, collect 15.13s, tests 57.45s, environment 5.17s, prepare 920ms)
+

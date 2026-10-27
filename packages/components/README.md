@@ -163,6 +163,10 @@ When Calendar receives `renderDay`, its day button name includes the visible mar
 
 ## Nonnegative metric charts
 
+### Progress bar (phase 6c-7b2)
+
+`ProgressBar` takes a numeric percentage, localized accessible `label` and optional primary/success/warning/danger `tone`. Values clamp to 0–100; non-finite inputs become zero. It exposes progress semantics, uses host colour/radius tokens and has no animation, transport or timers. Four tests cover bounds and accessible values. ERP request balances, process progress and inspections consume it.
+
 Root exports `BarChart`, `HorizontalBars`, `ProgressRing` and `MetricPoint`. Hosts supply labels, colors/units, optional scale/geometry and a preference-bound `formatValue`. Bars provide focusable formatted-value/comparison inspection; horizontal bars show values in text. Invalid/negative metrics become zero, maxima have a positive floor, and geometry clamps to its plot/percentage range. These views are for nonnegative metrics, not signed financial series. Fonts use effective result scale and colors use semantic tokens; no animation, data transport or product vocabulary is owned here. Tests cover keyboard inspection, empty/degenerate data and ring bounds/labels. Scholaris consumes these engines through thin domain adapters.
 
 ## Grouped bar chart (phase 6e-1)

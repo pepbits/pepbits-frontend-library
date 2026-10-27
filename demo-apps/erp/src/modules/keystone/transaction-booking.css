@@ -1,0 +1,33 @@
+.erp-booking-toolbar>div:first-child {display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;}
+.erp-booking-toolbar>div:first-child>button[aria-label] {width:32px;height:32px;padding:0;}
+.erp-booking-toolbar>div:first-child>div:has(input[type=date]) {width:144px;}
+.erp-booking-toolbar strong {font-size:calc(14px * var(--fs-form));font-weight:600;}
+.erp-booking-legend {display:flex;flex-wrap:wrap;gap:12px;margin-inline-start:auto;font-size:calc(12.5px * var(--fs-result));}
+.erp-booking-legend>span {display:flex;align-items:center;gap:6px;}
+.erp-booking-legend i {width:10px;height:10px;border:1px solid currentColor;border-radius:var(--radius);}
+.erp-booking-legend small {color:var(--text-muted);font-size:inherit;}
+.erp-booking-resources {display:flex;gap:6px;align-items:center;overflow-x:auto;padding:8px 12px;border-top:1px solid var(--border);}
+.erp-booking-resources>span {font-size:calc(12px * var(--fs-result));color:var(--text-muted);flex-shrink:0;margin-inline-end:4px;}
+.erp-booking-resources>button {gap:6px;border-radius:var(--radius);padding:2px 8px;height:auto;min-height:28px;font-size:calc(12.5px * var(--fs-result));font-weight:400;flex-shrink:0;}
+.erp-booking-resources>button[aria-pressed=true] {background:var(--primary-soft);color:var(--primary-strong);border-color:color-mix(in srgb,var(--primary) 40%,var(--border));}
+.erp-booking-event.erp-booking-booked,.erp-booking-legend .erp-booking-booked {background:color-mix(in srgb,var(--warning) 12%,var(--surface));color:var(--warning-ink);border-color:color-mix(in srgb,var(--warning) 50%,var(--border));}
+.erp-booking-event.erp-booking-checked-in,.erp-booking-legend .erp-booking-checked-in {background:color-mix(in srgb,var(--info) 12%,var(--surface));color:var(--info-ink);border-color:color-mix(in srgb,var(--info) 50%,var(--border));}
+.erp-booking-event.erp-booking-completed,.erp-booking-legend .erp-booking-completed {background:color-mix(in srgb,var(--success) 12%,var(--surface));color:var(--success-ink);border-color:color-mix(in srgb,var(--success) 50%,var(--border));}
+.erp-booking-event.erp-booking-cancelled,.erp-booking-legend .erp-booking-cancelled {background:var(--surface-3);color:var(--text-muted);border-color:var(--border);}
+.erp-booking-event {padding-block:2px;box-shadow:0 1px 2px #0000000d;}
+.erp-booking-event>span:nth-child(2) {font-size:calc(11px * var(--fs-result));opacity:1;}
+[data-erp-booking] [data-resource-timeline]>div>div:first-child>div:not(:first-child) {padding-inline:0 8px;font-size:calc(11px * var(--fs-result));color:var(--text-muted);}
+.erp-booking-upcoming {overflow:hidden;}
+.erp-booking-upcoming header {padding:10px 14px;border-bottom:1px solid var(--border);}
+.erp-booking-upcoming h2 {font-size:calc(13px * var(--fs-result));font-weight:600;}
+.erp-booking-upcoming header p {font-size:calc(12px * var(--fs-result));color:var(--text-muted);}
+.erp-booking-upcoming li+li {border-top:1px solid var(--border);}
+.erp-booking-upcoming button {width:100%;height:auto;min-height:0;display:flex;justify-content:start;align-items:center;gap:10px;padding:8px 14px;text-align:start;}
+.erp-booking-upcoming time {width:44px;flex-shrink:0;font-size:calc(13px * var(--fs-result));font-weight:600;}
+.erp-booking-upcoming button>span {min-width:0;}
+.erp-booking-upcoming strong {display:block;font-size:calc(13px * var(--fs-result));font-weight:400;}
+.erp-booking-upcoming small {display:block;font-size:calc(11.5px * var(--fs-result));color:var(--text-muted);}
+.erp-booking-empty {padding:24px 14px;text-align:center;color:var(--text-muted);font-size:calc(12.5px * var(--fs-result));}
+
+/* Pill selection changes the backdrop; keep decorative initials readable on it. */
+.erp-booking-resources>button>span[aria-hidden] {background:var(--surface);color:var(--text);}

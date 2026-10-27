@@ -20,3 +20,4 @@ export * from "./error-mapper";
 
 export * from "./source-dialog";
 export * from './metric-charts';
+export * from './progress-bar';

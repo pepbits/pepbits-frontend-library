@@ -1,5 +1,7 @@
 # Current delivery and release records
 
+- [ERP phase 6c-7b2 — deferred transaction compositions](restructure-phase-6c-7b2-2026-10-25.md): six matrix compositions matched, 18 destinations improved with exact remaining differences; request/process/inspection workflows and measured geometry.
+
 - [ERP phase 6c-7b — transaction document subset](restructure-phase-6c-7b-2026-10-25.md): 14 document/voucher compositions, tabular lines and explicit remaining transaction differences; local verification only.
 
 - [ERP phase 6c-6 — source composition and visual audit subset](restructure-phase-6c-6-2026-10-24.md): 35-destination composition subset, report layouts and explicit remaining differences for all 114 destinations; forced CI (6,097 tests), shell Chromium (18 tests) and real HTTP (122 workflows, 114 routes, zero axe violations) pass; no deployment.

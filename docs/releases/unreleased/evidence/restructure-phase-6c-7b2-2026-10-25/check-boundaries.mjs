@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {execFileSync,spawnSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const folder='docs/releases/unreleased/evidence/restructure-phase-6c-7b2-2026-10-25';
+const git=(...args)=>execFileSync('git',args,{encoding:'utf8'});
+const protectedStatus=git('status','--short','--','desktop-clients','dummy-api','source','demo-pages','deploy','.github','Jenkinsfile','run.sh','run_all.sh');assert.equal(protectedStatus,'');
+const lockStatus=git('status','--short','--','package-lock.json');assert.equal(lockStatus,'');
+git('diff','--check');
+const forbidden=spawnSync('grep',['-rnE','@pepbits/(erp-|ops-ui|auth|platform-ports|workspace-core|ai-client|ai-config|ai-ui|reference-)|desktop-clients|/src/|demo-apps/healthcare','demo-apps/erp/src'],{encoding:'utf8'});assert.equal(forbidden.status,1,forbidden.stdout);
+const patterns='https?://(?!localhost|127\\.0\\.0\\.1|www\\.w3\\.org)[a-z0-9.-]+\\.[a-z]{2,}|Bearer [A-Za-z0-9]{10}|password\\s*[:=]\\s*[\'\"][^\'\"]{4,}';
+const scanned=spawnSync('grep',['-rnP',patterns,'demo-apps/erp/src',folder],{encoding:'utf8'});assert.ok([0,1].includes(scanned.status));
+const matches=(scanned.stdout.trim()?scanned.stdout.trim().split('\n'):[]).filter(line=>!line.includes('/boundary-scans.json:')).map(line=>{
+ const [,file,number,content]=line.match(/^([^:]+):(\d+):(.*)$/s)??[];
+ const urls=content.match(/https?:\/\/[^\s<>"')]+/g)??[];
+ const justification=urls.length&&urls.every(url=>/^https:\/\/(react\.dev|nextjs\.org|turbo\.build|turbo\.repo)\//.test(url))?'Public tool/framework diagnostic guidance; not an ERP endpoint or credential.':file?.endsWith('check-boundaries.mjs')?'The required scan expression itself; no literal credential or external endpoint.':null;
+ assert.ok(justification,`Review URL/credential match at ${file}:${number}`);return {file,line:Number(number),urls,justification};
+});
+const ledger='demo-apps/erp/parity-status.md',before=git('show','HEAD:'+ledger).split('\n'),after=readFileSync(ledger,'utf8').split('\n');assert.equal(before.length,after.length);
+const changed=after.flatMap((line,index)=>line!==before[index]?[line.split('`')[1]]:[]);assert.equal(changed.length,24);assert.ok(changed.every(path=>/^\/erp[12]\/transactions\/(leave-requests|expense-claims|attendance|timesheets|payroll-run|depreciation-run|appointments|room-bookings|quality-inspections|support-tickets|maintenance-requests|marks-entry)$/.test(path)));
+const frozen=JSON.parse(readFileSync(folder+'/ci-source.json','utf8'));
+const differences=frozen.files.filter(file=>createHash('sha256').update(readFileSync(file.path)).digest('hex')!==file.sha256).map(file=>file.path);assert.deepEqual(differences,[]);
+writeFileSync(folder+'/boundary-scans.json',JSON.stringify({protectedStatus,lockStatus,forbiddenImports:0,whitespaceErrors:0,changedLedgerRows:changed,scanMatches:matches,sourceDifferencesFromFrozenManifest:differences,implementationDigest:frozen.implementationDigest},null,2)+'\n');
+console.log(`Protected paths and lock unchanged; 24 scoped ledger rows; ${matches.length} individually justified URL-scan matches; frozen source unchanged.`);

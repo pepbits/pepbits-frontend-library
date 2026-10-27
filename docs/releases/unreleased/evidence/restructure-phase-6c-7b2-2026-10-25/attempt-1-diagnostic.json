@@ -1,0 +1,8 @@
+{
+  "implementationDigest": "93cd8fccbdc3c9da806f68d71fb93fb4f70958bf8f2a0ba21961648e3ded4154",
+  "baseCommit": "2c17992ecf80bd253a42fec549c67883ca11953b",
+  "error": "The browser asserted days=3 in the create response. The unchanged API removes read-only fields, including Days.",
+  "contract": "dummy-api/reference-erp-store.mjs validateWrite removes field.readOnly values at line 576. Original RequestTemplate sends computed days but shares this API limitation.",
+  "correction": "Assert the submitted days and accepted From/To dates; do not claim persisted computed Days. No API or application assertions removed.",
+  "cleanup": "All three owned process groups stopped; see attempt-1-identity-final.json."
+}

@@ -154,8 +154,8 @@ describe.each(profiles)('ERP1 opened record panels: %s', (profile, preferences) 
     const api = mockApi(), def = PAGES.find(page => page.slug === slug)!, row = api.rows.get(def.entity)![0]!, host = hostFor(api.request, 'erp1');host.preferences = {...host.preferences, ...preferences};
     if (profile === 'locked density') host.preferenceHost = {preferences: host.preferences, preferencePolicy: {revision: 1, rules: {density: {value: 'compact', locked: true}}}, onPreferenceChange: vi.fn()};
     const {container} = render(<Record slug={slug} id={row.id} host={host}/>);
-    await waitFor(() => expect(container.querySelector('[data-record-page]')).toBeTruthy());await waitFor(() => expect(container.querySelector('[aria-busy="true"],[data-recovery-kind]')).toBeNull());
-    if (profile === 'locked density') expect(container.querySelector('[data-layout]')).toHaveAttribute('data-density', 'compact');
+    await waitFor(() => expect(container.querySelector('[data-record-page],[data-request-record]')).toBeTruthy());await waitFor(() => expect(container.querySelector('[aria-busy="true"],[data-recovery-kind]')).toBeNull());
+    if (profile === 'locked density') expect(container.querySelector('[data-layout],[data-request-record]')).toHaveAttribute('data-density', 'compact');
     await act(async () => {expect((await axe.run(container, {rules: {'color-contrast': {enabled: false}}})).violations).toEqual([]);});
   });
 });
