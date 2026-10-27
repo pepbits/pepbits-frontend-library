@@ -1,7 +1,7 @@
 # Current delivery and release records
 
 - [AllyVora patient pages — 26 October 2026](allyvora-patient-pages-2026-10-26.md): dedicated create, edit and view addresses for AllyVora Patients; old `?mode=` links still work.
-- [AllyVora front desk pages — 26 October 2026](allyvora-front-desk-2026-10-26.md): Start a visit and Emergency registration copied into AllyVora Patients; frontend only, backend in a separate session.
+- [AllyVora front desk pages — 26 October 2026](allyvora-front-desk-2026-10-26.md): Start a visit and Emergency registration in AllyVora Patients, first copied, then rebuilt on @pepbits components (27 October); frontend only, backend in a separate session.
 
 - [Healthcare AllyVora Patients — 26 October 2026](healthcare-allyvora-patients-2026-10-26.md): fourteenth app, prefixed patient workflows, staged backend and schema 2 test-site packaging; local verification, no deployment.
 

@@ -22,3 +22,16 @@ Node 24.21.0, worktree `feature/allyvora-front-desk` from main `13354a1`. Health
 ## Test-site deployment
 
 26 October 2026 23:41Z (27 October 03:41 UAE): release `20261026233735142-3a097902` from main `3a09790` (sha256 `8dce0a7ef7f8277623b35f06245aafc49ea7375191a6b0d09db901283157e4f9`, `verify-test-site.mjs` passed) deployed to https://frontend.test.pepbits.com through the pb-srv5 receiver after owner approval (previous `20261026143049475-bc1b6413`). `__nexora-release.json` reports the new id; register, new, view, edit, legacy `?mode=view`, Start a visit and Emergency registration return 200. Test site only, not production.
+
+## Rebuilt on @pepbits components — 27 October 2026
+
+Owner feedback: the copied pages did not follow the @pepbits components. Both pages are rebuilt the way the rest of AllyVora Patients is built; routes, steps, fields, validation, API calls and payloads (`lib.ts`, unchanged), empty and error states and the disabled links to screens absent from the demo are unchanged.
+
+- Controls: `@pepbits/ui` `Button`, `IconButton`, `Input`, `DateInput`, `Select`, `Textarea`, `Checkbox`, `Radio`, `Segmented` (visit type, walk-in/referred, priority, administrative sex, known/unknown patient), `Badge`, `Avatar`, `Skeleton`; `@pepbits/components` `EmptyState` and `ErrorState`; the module's shared `Notice` for alerts and problem lists.
+- Progress: the `@pepbits/patterns/wizard` `WizardStepper`, read-only and laid out as one row, for find patient → choose service → visit details → done.
+- Icons: all from `@pepbits/icons`; the five icons it does not export are replaced by the nearest ones (Activity, FolderHeart, Truck, CircleHelp, UserRound).
+- Theme and preferences: semantic tokens and `--fs-scale` text sizes, so theme, dark mode, font scale and radius apply; field gaps follow density; times use the host time format; the `/`, number-key and Ctrl/⌘+Enter shortcuts and their key hints follow the keyboard-shortcut preference.
+- Removed: the copied `ui.tsx` and `kit.tsx`, `start-visit.module.css`, the generated `styles.css` with its generator `scripts/allyvora-front-desk-styles.mjs` and its `globals.css` import, and the `lucide-react` dependency of the healthcare demo (lockfile updated offline; `@pepbits/icons` still depends on it). `clsx` stays because other healthcare modules use it.
+- `provenance.json` records the rebuild and keeps the API contract.
+
+Verification (Node 24.21.0, worktree `feature/front-desk-pepbits-components` from main `90a7804`, uncommitted working tree): healthcare `tsc --noEmit` passed; vitest `src/modules/registration/routes.test.tsx` 54/54, `workflows.test.tsx` 19/19, `navigation.test.ts` 24/24, new `front-desk/front-desk.test.tsx` 4/4 (visit steps advance with the unchanged POST payload, referral validation, emergency validation and unknown-patient payload, axe on the visit details and consent forms), `src/routes.test.tsx` 904/904; `check-boundaries.mjs` passed; `check-docs.mjs` passed; `git diff --check` clean. Tests use a mocked front desk API. Not run: production build, browser rendering on the test instance, full CI, test-site deployment.
