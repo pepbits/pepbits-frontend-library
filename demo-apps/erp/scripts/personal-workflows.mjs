@@ -22,9 +22,19 @@ export async function personalWorkflows({page, visit, flows, checks, capture, sc
     const snapshot = (await response.json()).value.find(view => view.name === 'Fictional personal customers');assert.equal(snapshot.q, 'Fictional');assert.deepEqual(snapshot.filters.status, ['Active']);assert.deepEqual(snapshot.snapshot.sort, {key: 'name', direction: 'asc'});assert.deepEqual(snapshot.snapshot.criteria.creditLimit, {min: 0, max: 10000000});
     await dialog.getByRole('button', {name: 'Apply Fictional personal customers', exact: true}).click();
     await page.reload();if (variant === 'erp1') {await page.waitForFunction(() => document.querySelector('[data-erp-profile] [data-value=table]')?.getAttribute('aria-checked') === 'true');const back = page.getByRole('button', {name: 'Back', exact: true});if (await back.isVisible()) await back.click();}await page.locator('[data-erp-saved-views]').click();dialog = page.getByRole('dialog');
+    // Reload can already show the saved columns while Apply schedules a new search.
+    // Wait for that search, not the old table that disappears during loading.
+    const restoredResults = page.waitForResponse(response => {
+      const url = new URL(response.url()), params = url.searchParams;
+      return response.request().method() === 'GET' && url.pathname === '/api/reference-modules/' + variant + '/api/entities/customers'
+        && params.get('q') === snapshot.q && params.get('sort') === snapshot.snapshot.sort.key && params.get('dir') === snapshot.snapshot.sort.direction;
+    });
     await dialog.getByRole('button', {name: 'Apply Fictional personal customers', exact: true}).click();
     assert.equal(await page.getByRole('textbox', {name: 'Search', exact: true}).inputValue(), 'Fictional');
-    await page.locator('tbody tr').first().waitFor();await page.waitForFunction(expected => document.querySelectorAll('thead th').length === expected, original - 1);assert.equal(await page.locator('thead th').count(), original - 1);
+    const restoredResponse = await restoredResults;assert.ok(restoredResponse.ok());await restoredResponse.finished();
+    assert.deepEqual(JSON.parse(new URL(restoredResponse.url()).searchParams.get('filters')), snapshot.snapshot.criteria);
+    await page.locator('tbody tr').first().waitFor();
+    assert.equal(await page.locator('thead th').count(), original - 1, variant + ' restored customer view column count');
     await page.locator('[data-erp-saved-views]').click();dialog = page.getByRole('dialog');
     await dialog.getByRole('textbox', {name: 'View name'}).fill('Fictional column set');saved = write('keystone.views.customers');await dialog.getByRole('button', {name: 'Save column set', exact: true}).click();response = await saved;assert.ok(response.ok());assert.equal((await response.json()).value.find(view => view.name === 'Fictional column set').snapshot.kind, 'columns');
     await dialog.getByRole('button', {name: 'Apply Fictional column set', exact: true}).click();await page.getByRole('button', {name: 'Reset filters', exact: true}).click();
