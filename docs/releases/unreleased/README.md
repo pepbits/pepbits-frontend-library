@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [ERP phase 6c-7a3 — structure/profile masters](restructure-phase-6c-7a3-2026-10-25.md): 22 destination compositions; final verification in progress, exact remaining differences retained.
 - [ERP parity subsets after phase 8 — integration preparation](erp-parity-integration-2026-10-26.md): combines 6c-7a/6c-7a2 and 6c-7b; merges and full combined verification blocked by read-only linked worktree metadata; historical evidence retained, whole-destination parity incomplete.
 
 - [ERP phase 6c-7a2 — tree/rate masters](restructure-phase-6c-7a2-2026-10-25.md): twelve verified destination compositions; 6,813 CI tests, 152 live workflows and 57 geometry checks pass; exact remaining differences retained.

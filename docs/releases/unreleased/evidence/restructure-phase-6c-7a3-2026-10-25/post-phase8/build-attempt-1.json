@@ -1,0 +1,8 @@
+{
+  "command": "npm run build -w @pepbits-demo/erp",
+  "exitCode": 1,
+  "sourceAtBuildStart": "34d3cd600a2ddec5fa884ed2c9f78592da4edd45538286fc4feb7e8ffcd6abe9",
+  "sourceAfterTestFix": "6f7708a789877237db2cc8908f86532152d8df19154efc9a724ad0f11aab7d88",
+  "logSha256": "8a7fafc3dd9100c2fe855c8c92f1444b92992d1b8d318e5ec60cba2fe02e3cd3",
+  "issue": "The build started before the test-only exact:true correction and reported that same TS2769. Standalone ERP typecheck passed after the correction; the production build must be rerun on the frozen corrected tree."
+}

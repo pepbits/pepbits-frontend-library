@@ -37,13 +37,13 @@ export function RecordDocumentSelection() {
   return <div className="space-y-2"><FilePicker label="Choose files" disabled={!host.can('edit')} onFile={file => {if (host.can('edit')) setFiles(items => [...items, {name: file.name, size: file.size}]);}}/><p>{t('Selected on this screen only — not uploaded or saved.')}</p><ul aria-label={t('Selected files')} className="erp-record-documents">{files.map((file, index) => <li key={index}><span>{file.name} · {format.number(Math.ceil(file.size / 1024))} KB</span><Button variant="ghost" disabled={!host.can('edit')} onClick={() => {if (host.can('edit')) setFiles(items => items.filter((_, i) => i !== index));}}>{t('Remove {value0}', {value0: file.name})}</Button></li>)}</ul></div>;
 }
 
-export function ProfileSummary({def, row}: {def: PageDef; row: Row}) {
+export function ProfileSummary({def, row, creating=false}: {def: PageDef; row: Row; creating?: boolean}) {
   const format = useValueFormat(), {t} = useLocalization(), {variant} = useKeystone();
   const stats = def.fields.filter(field => ['number', 'currency', 'percent'].includes(field.type) && field.group).slice(0, 4);
   const meta = def.fields.filter(field => ['select', 'city', 'date', 'person'].includes(field.type) && !field.primary).slice(0, 4);
   return <Card data-profile-summary data-variant={variant} className="erp-profile-summary">
-    <div className="erp-profile-identity"><Avatar name={String(row.name ?? row.code ?? '')} decorative className="erp-profile-avatar"/><div><div className="flex flex-wrap items-center gap-2"><strong>{row.code}</strong>{row.status && <StatusBadge value={row.status}/>}</div><div className="erp-profile-meta">{meta.filter(field => row[field.key]).map(field => <span key={field.key}>{t(field.label)} <b>{format(field, row[field.key])}</b></span>)}</div></div></div>
-    <dl className="erp-profile-stats" style={{gridTemplateColumns: `repeat(${Math.max(1, stats.length)},minmax(0,1fr))`}}>{stats.map(field => <div key={field.key}><dt>{t(field.label)}</dt><dd>{format(field, row[field.key])}</dd></div>)}</dl>
+    <div className="erp-profile-identity"><Avatar name={String(row.name ?? row.code ?? '')} decorative className="erp-profile-avatar"/><div><div className="flex flex-wrap items-center gap-2"><strong>{creating?t('Number assigned on save'):row.code}</strong>{row.status && <StatusBadge value={row.status}/>}</div><div className="erp-profile-meta">{meta.filter(field => row[field.key]).map(field => <span key={field.key}>{t(field.label)} <b>{format(field, row[field.key])}</b></span>)}</div></div></div>
+    {!creating&&stats.length>0&&<dl className="erp-profile-stats" style={{gridTemplateColumns: `repeat(${Math.max(1, stats.length)},minmax(0,1fr))`}}>{stats.map(field => <div key={field.key}><dt>{t(field.label)}</dt><dd>{format(field, row[field.key])}</dd></div>)}</dl>}
   </Card>;
 }
 

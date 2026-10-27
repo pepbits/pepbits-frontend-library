@@ -1,0 +1,145 @@
+{
+  "sourceCommit": "3558a131f0fd443693eae0dfc678e3b258b480c1",
+  "method": "Protected JSX/CSS/adapter audit; demo computed-style measurements are separate. Original desktop runtime was not rendered; no screenshot equality or native execution claim.",
+  "sources": [
+    {
+      "path": "desktop-clients/packages/reference-erp1/src/components/templates/TreeTemplate.tsx",
+      "sha256": "6565714ffbf23507b11f2d9425a297b65af61abee246aec7ec57d0c306523cb3"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp2/src/components/templates/TreeTemplate.tsx",
+      "sha256": "741c3cdba11b2f07961ea0e501579453f18902cb5940d501c5e3ac85a878d9f7"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp1/src/components/templates/RateTemplate.tsx",
+      "sha256": "8f8bc15e64709d29cbda4f1b95c637594c9592c79d47f25adb3ece22665e109d"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp2/src/components/templates/RateTemplate.tsx",
+      "sha256": "8ba0841616aed1a2fe18cfb167fb26d6ee7080d6bd2adda948ebcda027207a91"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp2/src/components/record/MoreRecords.tsx",
+      "sha256": "349430da6af759b33ada5f22711a624636b1a3e12a2d765fd6524f8ef521b6c3"
+    },
+    {
+      "path": "desktop-clients/packages/reference-erp2/src/components/record/QuickDialog.tsx",
+      "sha256": "536cc82358192661f6636be91b8575f315f58b4d22e7214d41ee202bfba533d7"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/form/RecordForm.tsx",
+      "sha256": "db8293b315bd62757ce2d52fa91e5e901233aaaf936a6a179b8d8daa0b71b8b8"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/worklist/WorkList.tsx",
+      "sha256": "5ee9706b9673b0a530fb80edf9e5cd3bbd5c04313db2e9e783bc2b14cd7408fb"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/components/ui.tsx",
+      "sha256": "00398a36c77c443ed0aecf374f488ffca247e6ec602e617c58d8c4f3c8d9d3be"
+    },
+    {
+      "path": "desktop-clients/packages/reference-keystone-core/src/styles.css",
+      "sha256": "3d3f2a830b573f6db9b4535494589ad504adf719cd54877bc5335d4fb9986bc1"
+    },
+    {
+      "path": "desktop-clients/packages/ops-ui/src/table.tsx",
+      "sha256": "6b2bde900ed2f8375f8a212c8f0a9614de914223a404e523adada8f00072f29a"
+    },
+    {
+      "path": "desktop-clients/packages/tokens/src/tokens.css",
+      "sha256": "8d674ed183ec69f9038092cca80d7ef5484c0f844563a335141cd6088bfa1125"
+    },
+    {
+      "path": "desktop-clients/packages/reference-host/src/index.tsx",
+      "sha256": "7c73665a0d5fc1a324ff1a12cc89d37b0db4a39e7b83f3f82bb07cb22fe4e34a"
+    }
+  ],
+  "routes": [
+    {
+      "path": "/erp1/masters/org-structure",
+      "check": "master-tree-composition"
+    },
+    {
+      "path": "/erp1/masters/chart-of-accounts",
+      "check": "master-tree-composition"
+    },
+    {
+      "path": "/erp1/masters/product-categories",
+      "check": "master-tree-composition"
+    },
+    {
+      "path": "/erp1/masters/tax-rates",
+      "check": "master-rate-composition"
+    },
+    {
+      "path": "/erp1/masters/price-lists",
+      "check": "master-rate-composition"
+    },
+    {
+      "path": "/erp1/masters/consultation-fees",
+      "check": "master-rate-composition"
+    },
+    {
+      "path": "/erp2/masters/org-structure",
+      "check": "master-tree-composition"
+    },
+    {
+      "path": "/erp2/masters/chart-of-accounts",
+      "check": "master-tree-composition"
+    },
+    {
+      "path": "/erp2/masters/product-categories",
+      "check": "master-tree-composition"
+    },
+    {
+      "path": "/erp2/masters/tax-rates",
+      "check": "master-rate-composition"
+    },
+    {
+      "path": "/erp2/masters/price-lists",
+      "check": "master-rate-composition"
+    },
+    {
+      "path": "/erp2/masters/consultation-fees",
+      "check": "master-rate-composition"
+    }
+  ],
+  "targets": {
+    "erp1Tree": {
+      "mediumPane": 360,
+      "largePane": 400,
+      "rowFont": 13,
+      "branchIcon": 15,
+      "leafIcon": 14,
+      "indent": 16,
+      "heading": 17,
+      "identityPadding": [
+        12,
+        16
+      ],
+      "fieldGaps": [
+        14,
+        16
+      ]
+    },
+    "erp2Tree": {
+      "search": 288,
+      "headerFont": 12,
+      "rowFont": 13,
+      "childGap": 10,
+      "childPaddingInline": 16,
+      "childFont": 13
+    },
+    "rate": {
+      "dateWidth": 144,
+      "validityBar": [
+        112,
+        8
+      ],
+      "inlineInput": 28,
+      "dialogWidth": 672
+    },
+    "preferences": "Form/result scale and density vary deliberately with effective preferences. Managed source table padding overrides template literals; table geometry follows the shared presentation host."
+  }
+}

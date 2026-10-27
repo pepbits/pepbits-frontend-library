@@ -6,7 +6,7 @@ export async function personalWorkflows({page, visit, flows, checks, capture, sc
   const write = key => page.waitForResponse(response => response.url().includes('/api/view-state') && response.request().method() === 'PUT' && response.request().postDataJSON()?.key === key);
   for (const variant of ['erp1', 'erp2']) {
     await visit('/' + variant + '/masters/customers');
-    if (variant === 'erp1') {const saved = write('keystone.mode.customers');await page.getByRole('radio', {name: 'Full table', exact: true}).click();assert.ok((await saved).ok());await page.getByRole('button', {name: 'Back', exact: true}).click();}
+    if (variant === 'erp1') {const saved = write('keystone.mode.customers');await page.getByRole('radio', {name: 'Full table', exact: true}).click();assert.ok((await saved).ok());await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'detached'});}
     await page.locator('tbody tr').first().waitFor();
     const original = await page.locator('thead th').count();
     await page.locator('[data-tour=columns]').click();let dialog = page.getByRole('dialog');const hidden = dialog.locator('button[aria-pressed=true]').last();

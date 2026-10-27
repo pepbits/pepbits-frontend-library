@@ -10,7 +10,7 @@ import {useKeystone} from './context';
 import {MasterWorklist} from './masters/worklist';
 import {ErpWorklist} from './worklist';
 import {RecordEditor} from './record';
-import {ProfilePage} from './profile';
+import {MasterSplit} from './masters/split';
 import {CaseBoard} from './board';
 import {TreePage} from './tree';
 import {EntityAccess} from './access';
@@ -30,7 +30,7 @@ function ConfiguredPage({page,target,def}:PageRenderContext&{def:PageDef}){const
  if(def.template==='print'&&(current?.recordId||variant==='erp1'))return <section><h1>{t(def.title)}</h1>{current?.recordId?<InvoicePreview key={current.recordId} id={current.recordId} onClose={close}/>:<InvoicePage def={def} page={page}/>}</section>;
  if(def.template==='booking'&&(variant==='erp1'||!current?.mode&&!current?.recordId))return <section data-erp-page={page.id}><h1>{t(def.title)}</h1><BookingPage def={def} page={page} current={current} onOpen={open} onClose={close}/></section>;
  if(def.template==='case'&&variant==='erp1')return <section data-erp-page={page.id}><h1>{t(def.title)}</h1><CaseBoard def={def} page={page} onOpen={open} accepted={accepted}/>{current&&(current.mode||current.recordId)&&<RecordEditor def={def} target={current} onClose={close} onOpen={open} onSaved={row=>{setAccepted(row);open({pageId:page.id,recordId:row.id,mode:'view'});}}/>}</section>;
- if(def.template==='profile'&&variant==='erp1')return <section data-erp-page={page.id}><h1>{t(def.title)}</h1><ProfilePage def={def} page={page}/></section>;
+ if(['profile','structure'].includes(def.template)&&variant==='erp1')return <section data-erp-page={page.id}><h1>{t(def.title)}</h1><MasterSplit def={def} page={page}/></section>;
  if(def.template==='tree'&&(variant==='erp1'||!current?.mode&&!current?.recordId))return <section data-erp-page={page.id}><h1>{t(def.title)}</h1><TreePage def={def} pageId={page.id} current={current} onOpen={open} onClose={close}/></section>;
  if(['dashboard','matrix','ledger','report','settings'].includes(def.template))return <SpecialPage def={def} page={page}/>;
  return <section data-erp-page={page.id}><h1>{t(def.title)}</h1>{current?.mode||current?.recordId?<><RecordEditor def={def} target={current} onClose={close} onOpen={open} onSaved={row=>{setRevision(v=>v+1);open({pageId:page.id,recordId:row.id,mode:'view'});}}/></>:def.template==='case'?<CaseBoard def={def} page={page} onOpen={open}/>:<ErpWorklist key={revision} def={def} page={page} onOpen={open}/>}</section>;
