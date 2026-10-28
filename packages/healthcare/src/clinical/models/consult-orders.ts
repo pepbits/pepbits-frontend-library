@@ -29,7 +29,14 @@ export interface MedicationOrder extends PriorityOrder {
     stoppedAt?: string;
     stoppedByName?: string;
     stopReason?: string;
+    /** Also returned for procedure orders in a consultation. */
+    completedAt?: string;
+    performedByName?: string;
+    outcome?: string;
     details: {
+        timing?: string;
+        consentRequired?: boolean;
+        specialty?: string;
         allergyConflicts?: AllergyConflict[];
         safetyAlerts?: SafetyAlert[];
         administrationMode?: string;

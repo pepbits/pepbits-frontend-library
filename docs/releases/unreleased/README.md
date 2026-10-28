@@ -1,5 +1,6 @@
 # Current delivery and release records
 
+- [Consultation workspace — 28 October 2026](consult-workspace-2026-10-28.md): merged clinical consultation components, diagnosis score-autofill carry-over, procedure contracts and host integration guide; local verification only, final workspace assembly and live API acceptance pending.
 - [Mock clinical data for AllyVora Outpatient and Emergency — 27 October 2026](clinical-mock-api-2026-10-27.md): the mock API serves the AllyVora clinical workspace under `/allyvora-clinical`, so the intake and triage pages show fictional visits; local verification only.
 - [Emergency triage on @pepbits/clinical — 27 October 2026](clinical-er-triage-2026-10-27.md): ESI triage profile, small reusable triage and section parts, and the AllyVora Emergency triage pages in the healthcare demo; local verification only.
 - [Clinical package and nurse intake — 27 October 2026](clinical-package-2026-10-27.md): new `@pepbits/clinical` package (sections, intake form, encounter queues over a data port) and the AllyVora Outpatient nurse intake pages in the healthcare demo; local verification only.

@@ -10,6 +10,21 @@ const fill = (label: string, value: string) => fireEvent.change(screen.getByLabe
 const choose = (group: string, option: string) => fireEvent.click(within(screen.getByRole("radiogroup", {name: group})).getByRole("radio", {name: option}));
 const medData = (name = "Synthetic medicine"): MedHistoryResponse => ({scope: "organisation", facility: "Test clinic", externalSource: {connected: false, note: "External feed unavailable"}, groups: [{key: "g1", display: name, external: true, past: true, latestAt: "2026-10-01", events: [{at: "2026-10-01", action: "past", text: "Completed course", meta: {pastId: "h1"}}]}]});
 describe("patient and longitudinal histories", () => {
+  it("marks a procedure entered in error with its version and reason, preserving failed corrections", async () => {
+    const update = vi.fn().mockRejectedValueOnce(new Error("Procedure changed; reload before correcting.")).mockResolvedValue(undefined), changed = vi.fn();
+    const consult = consultPort({listProcedureHistory: vi.fn().mockResolvedValue([{id: "proc1", procedure: "Synthetic procedure", verification: "confirmed", source: "patient", recordedAt: "2026-10-01", version: 7}]), updateProcedureHistory: update});
+    renderOwned(<SurgicalHistory patientId="P1" canEdit onRecordsChanged={changed}/>, consult);
+    fireEvent.click(await screen.findByRole("button", {name: "Edit"}));
+    expect(screen.getByRole("option", {name: "Entered in error (recorded by mistake)"})).toHaveValue("entered-in-error");
+    fill("Verification", "entered-in-error");
+    expect(screen.getByRole("button", {name: "Save correction"})).toBeDisabled();
+    fill("Reason", "Duplicate record"); fireEvent.click(screen.getByRole("button", {name: "Save correction"}));
+    expect(await screen.findByRole("alert")).toHaveTextContent("Procedure changed");
+    expect(screen.getByLabelText("Verification")).toHaveValue("entered-in-error"); expect(changed).not.toHaveBeenCalled();
+    expect(update).toHaveBeenCalledWith("P1", "proc1", {version: 7, reason: "Duplicate record", verification: "entered-in-error"});
+    fireEvent.click(screen.getByRole("button", {name: "Save correction"}));
+    await waitFor(() => expect(changed).toHaveBeenCalledTimes(1));
+  });
   it("adds and confirms procedures with the recorded version", async () => {
     const consult = consultPort({listProcedureHistory: vi.fn().mockResolvedValue([{id: "proc1", procedure: "Synthetic procedure", verification: "unconfirmed", source: "patient", recordedAt: "2026-10-01", version: 7}]), updateProcedureHistory: vi.fn().mockResolvedValue(undefined), addProcedureHistory: vi.fn().mockResolvedValue(undefined)}), changed = vi.fn();
     renderOwned(<SurgicalHistory patientId="P1" canAdd canEdit onRecordsChanged={changed}/>, consult);

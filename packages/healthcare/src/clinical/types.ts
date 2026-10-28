@@ -135,9 +135,7 @@ export interface ConsultationDetail {
         assessments?: SignedAssessment[];
         careGaps?: ProgrammeSnapshot[];
     } | null;
-    orders: (MedicationOrder & {
-        priorAuth?: string;
-    })[];
+    orders: ConsultationOrder[];
     reviews: ReviewTask[];
     scores: {
         id: string;
@@ -146,6 +144,11 @@ export interface ConsultationDetail {
         band?: string;
         calculatedAt: string;
     }[];
+}
+
+/** Consultation orders retain medication details and procedure completion metadata. */
+export interface ConsultationOrder extends MedicationOrder {
+    priorAuth?: string;
 }
 
 export interface ConsultationPatient extends ClinicalPatientLite {
@@ -348,6 +351,6 @@ export interface ScoreInput {
 export type ConsultationEncounter = Encounter;
 
 export interface ProcedureHistory {
-  id: string; procedure: string; performed?: string; note?: string; verification: "unconfirmed" | "confirmed" | "refuted";
+  id: string; procedure: string; performed?: string; note?: string; verification: "unconfirmed" | "confirmed" | "refuted" | "entered-in-error";
   source: string; recordedAt: string; version: number; history?: RecordChange[];
 }

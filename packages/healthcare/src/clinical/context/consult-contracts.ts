@@ -80,7 +80,8 @@ export interface ProblemPort {
 export interface ScoresPort {
   calculateScore(method: string, inputs: Record<string, unknown>, signal?: AbortSignal): Promise<T.ScoreResult>;
   listScoreDefinitions(signal?: AbortSignal): Promise<T.ScoreDef[]>;
-  loadScoreAutofill(patientId: string, signal?: AbortSignal): Promise<R.ScoreAutofill>;
+  /** Include encounter diagnoses; absence of a diagnosis never implies a negative answer. */
+  loadScoreAutofill(patientId: string, encounterId?: string, signal?: AbortSignal): Promise<R.ScoreAutofill>;
   saveScore(method: string, input: R.ScoreSaveInput): Promise<R.SavedScore>;
 }
 export interface AssessmentsPort {
