@@ -8,7 +8,7 @@ import {AllergyForm, EditAllergy, isActiveAllergy, useAllergyMasters} from "./Al
 import {AllergyActions, AllergyStatusChange} from "./AllergyActions";
 import {AllergyHistory} from "./AllergyHistory";
 import type {AllergyAction} from "../models/consult-records";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useLocalization} from "@pepbits/i18n/react";
 import {AlertTriangle, Check, CircleHelp, Plus} from "@pepbits/icons";
 import {Badge, Button, Input, Segmented, Select, cn} from "@pepbits/ui";
@@ -118,16 +118,17 @@ export function AddAllergyForm({patientId, onDone, onCancel}: {patientId: string
 }
 
 /** Consultation lifecycle. Intake continues to use AllergyReviewSection above. */
-export function AllergySection(props: import("../models/consult-workflow").ConsultSectionProps) {
+export function AllergySection(props: import("../models/consult-workflow").ConsultSectionProps & {onBusyChange?: (busy: boolean) => void}) {
   return <ConsultAllergySection key={useRecordScopeKey(props.detail.patient.id)} {...props}/>;
 }
 
-function ConsultAllergySection({detail, readOnly: locked, onRecordsChanged, id}: import("../models/consult-workflow").ConsultSectionProps) {
+function ConsultAllergySection({detail, readOnly: locked, onRecordsChanged, id, onBusyChange}: import("../models/consult-workflow").ConsultSectionProps & {onBusyChange?: (busy: boolean) => void}) {
   const port = useConsultPort(), host = useConsultHost(), {t} = useLocalization(), {can} = useClinicalActor();
   const masters = useAllergyMasters();
   const readOnly = locked || encounterClosed(detail.encounter.status);
   const mutation = useRecordMutation(detail.patient.id, readOnly);
   const [adding, setAdding] = useState(false), [selected, setSelected] = useState<{allergy: Allergy; action: AllergyAction} | null>(null);
+  useEffect(() => {onBusyChange?.(mutation.busy || adding || !!selected); return () => onBusyChange?.(false);}, [mutation.busy, adding, selected, onBusyChange]);
   const done = async () => {setAdding(false); setSelected(null); await onRecordsChanged?.();};
   const active = detail.allergies.entries.filter(isActiveAllergy), past = detail.allergies.entries.filter(a => !isActiveAllergy(a));
   const review = (outcome: AllergyReviewOutcome) => void mutation.run(() => port.reviewAllergies(detail.patient.id, outcome), async () => {await onRecordsChanged?.();});

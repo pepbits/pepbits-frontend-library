@@ -16,7 +16,7 @@ const QUICK = [
   [3, "month"],
   [6, "month"],
 ] as const;
-export function PlanSection(props: ConsultSectionProps) {
+export function PlanSection(props: ConsultSectionProps & {renderSignedDischarge?: () => React.ReactNode}) {
   const { draft, readOnly, onChange } = props,
     host = useConsultHost(),
     { t } = useLocalization(),

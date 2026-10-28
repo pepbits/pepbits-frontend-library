@@ -34,3 +34,18 @@ export * from "./context/consult-host";
 export * from "./layout/ConsultSection";
 export * from "./reference/FacilityPicker";
 export * from "./hooks/useDebounced";
+export * from "./consult";
+// The DTO ScreeningReview remains exported by model; the view has a distinct public name.
+export {ReviewSection, NursingEntries, AllergyForm, AllergyFields, EditAllergy, useAllergyMasters,
+  AllergyActions, AllergyStatusChange, AllergyHistory, RecordVitals, VisitReadings,
+  ObservationCorrectionForm, Trends, useVitalParameters, PainSection, PainAssessmentForm,
+  PainScoreFields, BodyMapSvg, BodyMapPicker, PregnancyStatus,
+  ScreeningReview as ConsultScreeningReview} from "./consult-records";
+export * from "./consult-note";
+export * from "./history";
+export * from "./problems";
+export * from "./scores";
+export * from "./assessments";
+export * from "./care";
+export * from "./consult-orders";
+export * from "./orders";

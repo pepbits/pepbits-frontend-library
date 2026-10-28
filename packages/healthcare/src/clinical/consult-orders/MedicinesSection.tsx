@@ -44,6 +44,7 @@ export interface MedicinesSectionProps extends ConsultSectionProps {
   canDecideSubstitution?: boolean;
   onSafetyChange?: (state: MedicationSafetyState) => void;
   onBusyChange?: (busy: boolean) => void;
+  orderInfo?: ReturnType<typeof useOrderInfo>;
 }
 /** Required reasons use the source's nonblank rule; never infer safety from an absent result. */
 export function medicationSafetyProblems(
@@ -87,7 +88,8 @@ export function MedicinesSection(props: MedicinesSectionProps) {
     uid = useId();
   const canPrescribe = !readOnly && can("rx.write");
   const priorities = useOrderPriorities(),
-    info = useOrderInfo(draft, detail.encounter.id, readOnly);
+    localInfo = useOrderInfo(draft, detail.encounter.id, readOnly || !!props.orderInfo);
+  const info = props.orderInfo ?? localInfo;
   const pharmacies = useOrderResource(
     useCallback(
       (signal: AbortSignal) => port.listReferralPharmacies(signal),

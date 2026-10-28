@@ -1,6 +1,6 @@
 "use client";
 import {useRecordScopeKey} from "../consult-records/record-state";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button} from "@pepbits/ui";
 import {useLocalization} from "@pepbits/i18n/react";
 import {useConsultPort} from "../context/consult-host";
@@ -12,12 +12,13 @@ import {ConsultVitalsFields} from "./VitalsSection";
 import {News2Panel, useNews2} from "./News2Panel";
 import {useVitalParameters} from "./useVitalParameters";
 
-function RecordVitalsBody({encounterId, latest = {}, readOnly = false, onSaved, onCancel, onRecordsChanged}: {
-  encounterId: string; latest?: Record<string, Observation>; readOnly?: boolean; onSaved?: (news: ScoreResult) => void; onCancel?: () => void; onRecordsChanged?: () => void | Promise<void>;
+function RecordVitalsBody({encounterId, latest = {}, readOnly = false, onSaved, onCancel, onRecordsChanged, onBusyChange}: {
+  encounterId: string; latest?: Record<string, Observation>; readOnly?: boolean; onSaved?: (news: ScoreResult) => void; onCancel?: () => void; onRecordsChanged?: () => void | Promise<void>; onBusyChange?: (busy: boolean) => void;
 }) {
   const port = useConsultPort(), {t} = useLocalization(), catalogue = useVitalParameters();
   const [v, setV] = useState<ConsultVitals>(() => ({...EMPTY_CONSULT_VITALS, extra: {}})), [reasons, setReasons] = useState<Record<string, string>>({});
   const mutation = useRecordMutation(encounterId, readOnly), preview = useNews2(v, reasons, catalogue.parameters);
+  useEffect(() => {onBusyChange?.(mutation.busy); return () => onBusyChange?.(false);}, [mutation.busy, onBusyChange]);
   const save = () => {
     const errors = consultVitalsErrors(v, reasons, catalogue.parameters);
     if (v.measuredAt) {

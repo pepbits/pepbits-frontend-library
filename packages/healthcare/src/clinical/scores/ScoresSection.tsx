@@ -12,7 +12,7 @@ import {PatientAssessmentsPanel} from "../assessments/PatientAssessmentsPanel";
 import {DEFAULT_SCORES, SCORE_SUGGESTIONS} from "../models/consult-note";
 import type {AssessmentRow, ConsultSectionProps} from "../models/consult-workflow";
 import {ScoreCalculator} from "./ScoreCalculator";
-export function ScoresSection({detail, draft, onChange, readOnly, id, onRecordsChanged, onAssessments}: ConsultSectionProps & {onAssessments?: (rows: AssessmentRow[]) => void}) {
+export function ScoresSection({detail, draft, onChange, readOnly, id, onRecordsChanged, onAssessments, assessmentsReadOnly = readOnly}: ConsultSectionProps & {onAssessments?: (rows: AssessmentRow[]) => void; assessmentsReadOnly?: boolean}) {
   const uid = useId(), port = useConsultPort(), host = useConsultHost(), {t} = useLocalization(), format = useFormatters();
   const defs = useClinicalResource(useCallback(signal => port.listScoreDefinitions(signal), [port]));
   const [active, setActive] = useState(""), [history, setHistory] = useState(false);
@@ -28,6 +28,6 @@ export function ScoresSection({detail, draft, onChange, readOnly, id, onRecordsC
     <Button onClick={() => setHistory(!history)} aria-expanded={history}>{t(history ? "Hide score history" : "Score history")}</Button>
     {history && <ul>{detail.scores.map(s => <li key={s.id}>{defs.data?.find(d => d.id === s.methodId)?.short ?? s.methodId} · {s.total === null ? "—" : format.number(s.total)} · {s.band} · {format.dateTime(s.calculatedAt)}</li>)}</ul>}
     {signed && <section><h3>{t("Assessments signed with this note")}</h3>{!signed.length && <p>{t("No signed assessments at this visit.")}</p>}<ul>{signed.map(a => <li key={a.id}>{host.renderLink({kind: "assessment", assessmentId: a.id}, {children: a.label})} · {a.result} · {a.band} · {a.number} · {t("revision")} {format.number(a.revision)} · {a.signedByName}</li>)}</ul></section>}
-    <PatientAssessmentsPanel patientId={detail.patient.id} encounterId={detail.encounter.id} visitOnly compact suggested={suggested} readOnly={readOnly} exclude={signed?.map(a => a.id)} title={signed ? "Added after signing" : "Assessments"} onRows={onAssessments} onRecordsChanged={onRecordsChanged}/>
+    <PatientAssessmentsPanel patientId={detail.patient.id} encounterId={detail.encounter.id} visitOnly compact suggested={suggested} readOnly={assessmentsReadOnly} exclude={signed?.map(a => a.id)} title={signed ? "Added after signing" : "Assessments"} onRows={onAssessments} onRecordsChanged={onRecordsChanged}/>
   </ConsultSection>;
 }
