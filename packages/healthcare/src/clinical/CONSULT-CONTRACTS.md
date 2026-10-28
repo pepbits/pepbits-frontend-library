@@ -1,7 +1,32 @@
 # Consultation foundation freeze — 28 October 2026
 
 All paths below are relative to `packages/healthcare/src/clinical/`.
-FOUNDATION lands first; WP1–WP4 may now code against these exports. No host adapter or deployment is included.
+WP1–WP4 are merged for integration. The foundation ownership and verification below are retained historical context;
+the integration amendments below take precedence. No host adapter or deployment is included.
+
+## Integration amendments — INT-B, 28 October 2026
+
+- Source repository: `pepbits/dev`; frozen frontend snapshot `7ee558f`, with the score-autofill behavior
+  from `5a8dea4` ("Fill yes/no score items from confirmed diagnoses") carried forward.
+- `ScoresPort.loadScoreAutofill(patientId, encounterId?, signal?)` now includes encounter context and keeps the
+  abort signal last. Adapters using the old `(patientId, signal?)` signature must update their second/third
+  arguments and forward encounterId to the source query when supplied. The method count remains 82.
+- `ScoreAutofillValue.value` includes boolean; source includes `condition`; diagnosis provenance includes
+  `unconfirmed`, `verification` and `where`. Confirmed diagnoses fill Yes only into unanswered inputs.
+  Provisional diagnoses display their provenance and are not used; missing diagnoses leave items unanswered.
+  Manual answers survive refill. Patient/encounter/port changes fence obsolete reads.
+- `ProcedureHistory.verification` and `ProcedureHistoryPatch` accept `entered-in-error`, matching the source
+  `components/clinical/PatientHistory.tsx`. Corrections require a reason and version; quick confirmation keeps
+  its existing optional reason. The procedure editor now offers all four source verification values.
+- `ConsultationDetail.orders` uses the named `ConsultationOrder` DTO, extending the existing `MedicationOrder`
+  model. Shared order fields now include `completedAt`, `performedByName`, `outcome`, and typed
+  `details.timing`, `details.consentRequired`, `details.specialty`. These optional fields preserve intake and
+  medication compatibility and structurally satisfy WP4's local `ProcedureOrder`. No type was moved;
+  existing imports from `models/consult-orders` and order-component imports continue to compile.
+- Host integration and limits are in the [package guide](../../README.md#consultation-workspace).
+  Current local check results and source identity belong to the
+  [integration record](../../../../docs/releases/unreleased/consult-workspace-2026-10-28.md), not the historical
+  foundation test counts below. New text still needs canonical translations; live API acceptance is not included.
 
 ## Ownership (inventory section 5)
 

@@ -1,5 +1,5 @@
 /** Pure consultation contracts extracted from the frozen AllyVora source; no transport or React. */
-import type {RecordChange} from "../types";
+import type {ProcedureHistory, RecordChange} from "../types";
 
 /** A vital-sign parameter from the organisation's catalogue (/api/vital-parameters). Low limits mean below, high limits at or above. */
 export interface VitalParameter {
@@ -384,15 +384,18 @@ export interface ProblemTimelineEvent {
 export type ScoreAutofill = Record<string, ScoreAutofillValue | undefined>;
 
 export type ScoreAutofillValue = {
-    value: number | string;
+    value: number | string | boolean;
     at: string | null;
-    source: "vital" | "lab" | "patient";
+    source: "vital" | "lab" | "patient" | "condition";
     label: string;
     unit?: string;
     windowHours?: number;
     stale?: boolean;
     original?: string;
     status?: string;
+    unconfirmed?: boolean;
+    verification?: string;
+    where?: string;
 };
 
 export interface NursingEntry {
@@ -588,7 +591,7 @@ export interface ExternalResultInput {
 export interface ProcedureHistoryInput { procedure: string; performed: string; note: string; facility?: string }
 export type ProcedureHistoryPatch = {version: number} & (
   {verification: "confirmed"; reason?: string} |
-  (Partial<ProcedureHistoryInput> & {verification?: "unconfirmed" | "confirmed" | "refuted"; reason: string})
+  (Partial<ProcedureHistoryInput> & {verification?: ProcedureHistory["verification"]; reason: string})
 );
 export interface NewCondition { code: string; verification: string; onset?: string; severity?: string }
 export interface ConditionPatch {

@@ -4,7 +4,7 @@ Healthcare product components, one subpath per area. `@pepbits/healthcare/clinic
 
 Clinical form sections, forms and encounter queues that any encounter type can use: outpatient, emergency, inpatient, day care, home care and long-term care. Built on `@pepbits/ui`, `@pepbits/components`, `@pepbits/patterns`, `@pepbits/icons` and the semantic theme tokens. Version `0.2.0` (prepared locally, in the fixed package group); **not published**. React 19 or later.
 
-It covers outpatient nurse intake and emergency triage (ESI), rebuilt from the AllyVora clinical workspace. Field names, validation messages, status changes and API payloads follow that source. The full pain assessment and inpatient observations are not included yet (see [Limits](#limits)).
+It covers outpatient nurse intake, emergency triage (ESI) and the consultation workspace, rebuilt from the AllyVora clinical workspace. Field names, validation messages, status changes and API payloads follow that source. Inpatient observation forms remain outside this package's current scope (see [Limits](#limits)).
 
 ## Layer
 
@@ -60,10 +60,66 @@ export function NurseIntake({port, actor, encounterId, open}: {port: ClinicalDat
 
 The host also provides `PreferenceHost`, `LocalizationProvider` and `ScreenHostProvider` (notifications), as for every `@pepbits` screen. The [healthcare demo module](../../demo-apps/healthcare/src/modules/outpatient) implements the port over the AllyVora clinical workspace API.
 
+## Consultation workspace
+
+`ConsultWorkspace` assembles the consultation note, clinical records and orders for an encounter. Open a visit, review the patient banner and safety findings, complete the note and plan, review orders, then save and sign. The workspace coordinates versioned draft saves, signing, conflicts, signed-note addenda, care-team changes and ending the visit. Signing waits for pending saves; refreshed records must not replace unsaved note content. A server conflict requires reconciliation before signing again.
+
+Integration status at the INT-B verification snapshot: section implementations are merged, but the default workspace registry still contains placeholders and the public barrel does not yet export the workspace. Connecting those sections and exports belongs to the parallel INT-A integration. The host example below describes the public composition after that assembly; it is not evidence of a working installed consumer.
+
+Included sections cover complaint/HPI, review of systems and examination, social and family history, diagnoses and the problem list, assessment, allergies and their audit history, configurable vitals and corrections/trends, NEWS2, pain scales/body map, screening and reproductive status, nursing review/clarification, medication/investigation/procedure history, scores, assessments and care gaps/programmes. Orders include laboratory questions, imaging and procedures (including dental sites and completion), medication safety and substitution decisions, referrals, education, disposition and issued certificates. AI suggestions require clinician review; the port supplies their service.
+
+Score autofill uses `loadScoreAutofill(patientId, encounterId?, signal?)`. Confirmed diagnoses fill Yes and show provenance; provisional diagnoses show a warning for clinician review. Missing diagnoses never mean No, and record fills do not overwrite an answered item. Surgical-history corrections include `entered-in-error`, with the record version and a reason. `ConsultationOrder` includes procedure completion time, performer, outcome and typed timing/consent/specialty details, so hosts can pass loaded orders to procedure controls.
+
+The [consultation contracts](src/clinical/CONSULT-CONTRACTS.md) describe the DTOs and lifecycle rules. Supply `ClinicalDataPort.consult: ConsultationDataPort`; it is optional only for intake hosts. The 82-method interface composes these groups:
+
+| Group | Host responsibility |
+| --- | --- |
+| `ConsultNotePort` | Load consultation, save/version/sign note and addenda |
+| `AllergyLifecyclePort`, `VitalsPort`, `PainPort`, `ScreeningPort` | Findings, corrections, review and parameter/reference reads |
+| `HistoryPort`, `ProblemPort` | Longitudinal history, corrections and diagnosis/problem links |
+| `ScoresPort`, `AssessmentsPort`, `CareProgrammesPort` | Score preview/autofill/save, governed assessment launch and care decisions |
+| `OrdersPort`, `ReferencePort` | Order evaluation/safety/completion, certificates and reference searches |
+| `CareTeamPort`, `EncounterEndPort`, `AiPort` | Team assignment, visit-end checks and AI suggestions |
+| Inherited intake methods | `setEncounterStatus`, `previewEsi`, `saveIntake` |
+
+`ClinicalDataPort.domain?: ConsultDomainPort` exposes the separate 17-method domain boundary for substitution, MAR, returns, vaccine courses and laboratory questions. Optional means a host may supply the workflow through a slot; it does not mean an unavailable workflow succeeded. All HTTP, API path mapping, authentication/session services, tenant scoping and server permission enforcement stay in the host.
+
+Wrap the workspace in `ConsultHostProvider` as well as `ClinicalProvider`. `ConsultHost.onNavigate` receives typed destinations, such as patient-chart, consultation, inpatient, assessment, certificate or MAR, plus `replace`/`newTab` options. `renderLink` must produce a real link with the same destination semantics. The host resolves URLs and browser windows. `onPatientOpened` synchronizes the shell patient, `onDirtyChange` connects SPA navigation guards, `initialTab` selects consult/administer, and `stickyOffset` matches the containing shell.
+
+The administration, telehealth and substitution slots (`renderAdministration`, `renderTelehealth`, `renderSubstitution`) receive the detail, read-only state, records-refresh callback and busy callback; substitution also receives the order. Report unsaved domain work through `onBusyChange`. `renderMedicationHistory`, `renderInvestigationHistory` and `renderScreening` receive controlled section props; investigation history also receives its kind. Call `onRecordsChanged` after writes. The host owns MAR, medication returns, vaccines, the pharmacy proposal editor, telehealth sessions/popups and printing. Certificate navigation delegates document rendering/printing to the host. Missing visible host workflows show an unavailable state.
+
+Minimal composition inside the host's existing preferences, localization, presentation and screen-host providers:
+
+```tsx
+import {
+  ClinicalProvider, ConsultHostProvider, ConsultWorkspace,
+  type ClinicalActor, type ClinicalDataPort, type ConsultationDataPort,
+  type ConsultHost,
+} from '@pepbits/healthcare/clinical';
+
+export function ConsultationPage({encounterId, port, actor, host}: {
+  encounterId: string;
+  port: ClinicalDataPort & {consult: ConsultationDataPort};
+  actor: ClinicalActor | null;
+  host: ConsultHost;
+}) {
+  // host supplies onNavigate/renderLink and the domain slots this app supports.
+  return <ClinicalProvider port={port} actor={actor}>
+    <ConsultHostProvider value={host}>
+      <ConsultWorkspace key={encounterId} encounterId={encounterId}/>
+    </ConsultHostProvider>
+  </ClinicalProvider>;
+}
+```
+
+Keep adapter/provider identities stable between renders. Read methods accept abort signals; hosts should honor them. Reject failed writes with `ClinicalPortError`-compatible errors (`message`, optional `problems`, `status: 409` for conflicts), retain retry request IDs/payloads for domain writes, and return server versions/capabilities unchanged. The package does not supply an HTTP adapter, durable offline persistence or server authorization.
+
+New copy still needs canonical translations and native-language review, including Arabic, Hindi and Malayalam. This port has local TypeScript and synthetic Vitest verification only; no live API acceptance, browser acceptance or clinical validation is claimed. See the [integration release record](../../docs/releases/unreleased/consult-workspace-2026-10-28.md) for the exact source and checks.
+
 ## Preferences, accessibility and failures
 
 Theme tokens, `--fs-scale` text sizes and the radius token apply; the queue table follows managed density, stripes and sticky headers; times use the host time format and relative times the interface language. Control labels pass through the host translator; the section copy is English, and no canonical catalogue keys were added yet. Segmented choices are radio groups, the pain score is a radio group, panels are labelled regions and problems are an alert. Load failures show `ErrorState` with retry; save failures keep every entered value; a failed queue refresh keeps the previous list.
 
 ## Limits
 
-Not included yet: the emergency tracking board (in-department table, reassessment timers, medication administration; `EsiLevelCounts` is ready for it), the full pain assessment (scales and body maps), inpatient observation forms, configurable vital-sign parameters, a configuration-driven composer for arbitrary clinical forms, the queues' End visit action, and reproductive-status and care-gap flags in the banner. Arabic, Hindi and Malayalam copy for the section text is a follow-up.
+Not included yet: the emergency tracking board (in-department table and reassessment timers; `EsiLevelCounts` is ready for it), inpatient observation forms, a configuration-driven composer for arbitrary clinical forms, and the queues' End visit action (the consultation workspace has its own end-visit flow). MAR, returns, vaccines, pharmacy proposal editing, telehealth and printing require host workflows. Translations for new section text, live API acceptance and clinical review remain follow-ups.

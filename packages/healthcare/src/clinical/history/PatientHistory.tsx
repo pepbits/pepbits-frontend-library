@@ -102,8 +102,8 @@ export function SurgicalHistory({patientId, canAdd = false, canEdit = false, onR
   </ClinicalPanel>;
 }
 
-/** Local draft preserves the source correction vocabulary; the frozen port cannot yet write entered-in-error. */
-export interface ProcedureCorrectionDraft {procedure: string; performed: string; note: string; verification: ProcedureHistory["verification"] | "entered-in-error"}
+/** Corrections use the same verification vocabulary as the persisted record. */
+export interface ProcedureCorrectionDraft {procedure: string; performed: string; note: string; verification: ProcedureHistory["verification"]}
 
 export function ProcedureForm({patientId, existing, onDone, onCancel, readOnly = false}: {patientId: string; existing?: ProcedureHistory; onDone: () => void | Promise<void>; onCancel: () => void; readOnly?: boolean}) {
   const port = useConsultPort(), {t} = useLocalization(), mutation = useClinicalMutation(`${patientId}/${existing?.id ?? "new"}`, readOnly);
@@ -112,7 +112,7 @@ export function ProcedureForm({patientId, existing, onDone, onCancel, readOnly =
   const changed = (Object.keys(start) as (keyof typeof start)[]).some(key => f[key] !== start[key]);
   const ready = f.procedure.trim().length >= 2 && (!existing || (changed && reason.trim().length >= 5));
   const save = () => {
-    if (!ready || f.verification === "entered-in-error") return;
+    if (!ready) return;
     if (!existing) {void mutation.run(() => port.addProcedureHistory(patientId, {procedure: f.procedure, performed: f.performed, note: f.note}), onDone); return;}
     const patch: ProcedureHistoryPatch = {version: existing.version, reason};
     if (f.procedure !== start.procedure) patch.procedure = f.procedure;
@@ -125,7 +125,7 @@ export function ProcedureForm({patientId, existing, onDone, onCancel, readOnly =
     <Input label="Operation or procedure" required maxLength={160} value={f.procedure} onChange={e => setF({...f, procedure: e.target.value})}/>
     <Input label="When" placeholder="YYYY, YYYY-MM or YYYY-MM-DD" value={f.performed} onChange={e => setF({...f, performed: e.target.value})}/>
     <Input label="Note" maxLength={500} value={f.note} onChange={e => setF({...f, note: e.target.value})}/>
-    {existing && <><Select label="Verification" value={f.verification} hint="Marking a procedure entered in error is unavailable." options={["unconfirmed", "confirmed", "refuted"].map(value => ({value, label: value}))} onChange={e => setF({...f, verification: e.target.value as ProcedureHistory["verification"]})}/>
+    {existing && <><Select label="Verification" value={f.verification} options={[["unconfirmed", "Unconfirmed"], ["confirmed", "Confirmed"], ["refuted", "Refuted (did not happen)"], ["entered-in-error", "Entered in error (recorded by mistake)"]].map(([value, label]) => ({value: value!, label: t(label!)}))} onChange={e => setF({...f, verification: e.target.value as ProcedureHistory["verification"]})}/>
       <Input label="Reason" required maxLength={500} value={reason} onChange={e => setReason(e.target.value)}/></>}
     <ProblemNotice problems={mutation.problems}/><div><Button onClick={onCancel}>{t("Cancel")}</Button><Button variant="primary" disabled={!ready} onClick={save}>{t(existing ? "Save correction" : "Add procedure")}</Button></div>
   </fieldset>;

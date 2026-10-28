@@ -25,7 +25,7 @@ function ScoreForm({def, patientId, encounterId, onSaved, readOnly = false}: Sco
   const latest = useRef(values); latest.current = values;
   const debounced = useDebounced(values, 200);
   const calculation = useClinicalResource(useCallback(signal => port.calculateScore(def.id, debounced, signal), [port, def.id, debounced]));
-  const autofill = useClinicalResource(useCallback(signal => patientId && def.inputs.some(i => i.autofill) ? port.loadScoreAutofill(patientId, signal) : Promise.resolve<ScoreAutofill>({}), [port, patientId, def]));
+  const autofill = useClinicalResource(useCallback(signal => patientId && def.inputs.some(i => i.autofill) ? port.loadScoreAutofill(patientId, encounterId, signal) : Promise.resolve<ScoreAutofill>({}), [port, patientId, encounterId, def]));
   const mutation = useClinicalMutation(`${patientId}/${encounterId}/${def.id}`, readOnly);
   useEffect(() => {
     if (!autofill.data || readOnly) return;
@@ -33,6 +33,14 @@ function ScoreForm({def, patientId, encounterId, onSaved, readOnly = false}: Sco
     for (const input of def.inputs) {
       const a = input.autofill && autofill.data[input.autofill];
       if (!a || a.value === undefined || a.value === null) continue;
+      // Diagnoses answer Yes only; provisional diagnoses need a clinician's decision.
+      if (a.source === "condition") {
+        if (a.unconfirmed) {notes[input.key] = {record: a}; continue;}
+        if (next[input.key] !== undefined) continue;
+        next[input.key] = true;
+        notes[input.key] = {record: a};
+        continue;
+      }
       if (a.stale) {notes[input.key] = {record: a}; continue;}
       if (next[input.key] !== undefined) continue;
       if (input.kind === "choice" && !input.options?.some(o => o.value === String(a.value))) continue;
@@ -46,9 +54,14 @@ function ScoreForm({def, patientId, encounterId, onSaved, readOnly = false}: Sco
   const setValue = (key: string, value: unknown) => {
     if (readOnly || mutation.busy) return;
     setValues(current => {const next = {...current}; if (value === "" || value === undefined) delete next[key]; else next[key] = value; return next;});
-    setFilled(current => {const next = {...current}; const was = current[key]; delete next[key]; if (was && !was.record.stale) next[key] = {...was, override: true}; return next;});
+    setFilled(current => {const next = {...current}; const was = current[key]; delete next[key]; if (was && !was.record.stale && !was.record.unconfirmed) next[key] = {...was, override: true}; return next;});
   };
   const fillText = ({record: a, override}: FillNote) => {
+    if (a.source === "condition") {
+      if (a.unconfirmed) return `${t((a.verification ?? "unconfirmed").replace(/^./, x => x.toUpperCase()))} ${t("diagnosis on the")} ${t(a.where ?? "record")}: ${a.label}. ${t("Not used; confirm it or answer yourself")}`;
+      if (override) return `${t("Changed by you · record value")} ${t("Yes")}`;
+      return [`${t("Diagnosis")}: ${a.label}`, a.where && t(a.where), a.status && a.status !== "active" ? t(a.status) : null].filter(Boolean).join(" · ");
+    }
     const shown = `${typeof a.value === "number" ? format.number(a.value) : a.value}${a.unit && a.source !== "patient" ? ` ${a.unit}` : ""}`;
     const when = a.at ? format.dateTime(a.at) : t("time unknown");
     if (a.stale) return `${t("Last recorded value")}: ${shown}, ${when} · ${t("older than")} ${format.number(a.windowHours ?? 0)} ${t("hours; not used")}`;

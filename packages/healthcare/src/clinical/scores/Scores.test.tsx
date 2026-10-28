@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {act, fireEvent, screen, waitFor} from "@testing-library/react";
+import {act, fireEvent, screen, waitFor, within} from "@testing-library/react";
 import {describe, expect, it, vi} from "vitest";
 import {consultPort, Controlled, deferred, detail, renderOwned} from "../consult-note/test/fixtures";
 import type {ScoreDef, ScoreResult} from "../types";
@@ -10,6 +10,46 @@ const def: ScoreDef = {id: "synthetic", short: "Test score", name: "Synthetic sc
 const result: ScoreResult = {status: "complete", total: 4, band: "Test band", interpretation: "Synthetic result", components: [], missing: []};
 const autofill: ScoreAutofill = {hr: {value: 75, source: "vital", at: "2026-10-28T10:00:00Z", label: "Pulse"}, creatinine: {value: 1.2, source: "lab", at: "2026-10-27T10:00:00Z", label: "Creatinine", unit: "mg/dL", original: "106 µmol/L", status: "final"}, stale: {value: 99, source: "lab", at: "2020-01-01", label: "Old", stale: true, windowHours: 24}};
 describe("clinical scores", () => {
+  it("fills confirmed diagnosis flags only, explains provisional diagnoses and preserves manual No answers", async () => {
+    const flags: ScoreDef = {...def, inputs: ["confirmed", "provisional", "missing", "manual"].map(key => ({key, label: key, kind: "flag", autofill: key}))};
+    const pending = deferred<ScoreAutofill>(), consult = consultPort({loadScoreAutofill: vi.fn().mockReturnValue(pending.promise), calculateScore: vi.fn().mockResolvedValue(result), saveScore: vi.fn().mockResolvedValue({id: "s1", total: 4})});
+    renderOwned(<ScoreCalculator def={flags} patientId="P1" encounterId="E1"/>, consult);
+    const group = (name: string) => within(screen.getByRole("radiogroup", {name}));
+    fireEvent.click(group("manual").getByRole("radio", {name: "No"}));
+    await act(async () => pending.resolve({
+      confirmed: {source: "condition", value: true, at: null, label: "Synthetic confirmed condition", where: "problem list", status: "resolved"},
+      provisional: {source: "condition", value: true, at: null, label: "Synthetic provisional condition", unconfirmed: true, verification: "provisional", where: "encounter"},
+      manual: {source: "condition", value: true, at: null, label: "Synthetic manual condition"},
+    }));
+    expect(consult.loadScoreAutofill).toHaveBeenCalledWith("P1", "E1", expect.any(AbortSignal));
+    expect(group("confirmed").getByRole("radio", {name: "Yes"})).toBeChecked();
+    expect(group("manual").getByRole("radio", {name: "No"})).toBeChecked();
+    for (const key of ["provisional", "missing"]) for (const radio of group(key).getAllByRole("radio")) expect(radio).not.toBeChecked();
+    expect(screen.getByText("Diagnosis: Synthetic confirmed condition · problem list · resolved")).toBeInTheDocument();
+    expect(screen.getByText("Provisional diagnosis on the encounter: Synthetic provisional condition. Not used; confirm it or answer yourself")).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole("button", {name: "Save to record"})).not.toBeDisabled());
+    fireEvent.click(screen.getByRole("button", {name: "Save to record"}));
+    await waitFor(() => expect(consult.saveScore).toHaveBeenCalledWith("synthetic", {patientId: "P1", encounterId: "E1", inputs: {confirmed: true, manual: false}}));
+    fireEvent.click(group("confirmed").getByRole("radio", {name: "No"}));
+    expect(screen.getByText("Changed by you · record value Yes")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", {name: "Refill from record"}));
+    await waitFor(() => expect(consult.loadScoreAutofill).toHaveBeenCalledTimes(2));
+    expect(group("confirmed").getByRole("radio", {name: "No"})).toBeChecked();
+  });
+  it("reloads diagnosis autofill for a new encounter and ignores the previous encounter's response", async () => {
+    const flags: ScoreDef = {...def, inputs: [{key: "condition", label: "Condition", kind: "flag", autofill: "condition"}]};
+    const old = deferred<ScoreAutofill>(), load = vi.fn((_patient: string, encounter?: string, _signal?: AbortSignal) => encounter === "E1" ? old.promise : Promise.resolve<ScoreAutofill>({}));
+    function Switch() {const [encounter, setEncounter] = useState("E1"); return <><button onClick={() => setEncounter("E2")}>Switch encounter</button><ScoreCalculator def={flags} patientId="P1" encounterId={encounter}/></>;}
+    renderOwned(<Switch/>, consultPort({loadScoreAutofill: load, calculateScore: vi.fn().mockResolvedValue(result)}));
+    await waitFor(() => expect(load).toHaveBeenCalledWith("P1", "E1", expect.any(AbortSignal)));
+    const signal = load.mock.calls[0]![2]!;
+    fireEvent.click(screen.getByText("Switch encounter"));
+    await waitFor(() => expect(load).toHaveBeenLastCalledWith("P1", "E2", expect.any(AbortSignal)));
+    expect(signal.aborted).toBe(true);
+    await act(async () => old.resolve({condition: {source: "condition", value: true, at: null, label: "Old diagnosis"}}));
+    for (const radio of screen.getAllByRole("radio")) expect(radio).not.toBeChecked();
+    expect(screen.queryByText(/Old diagnosis/)).not.toBeInTheDocument();
+  });
   it("autofills vitals and recent lab results, excludes stale data and saves exact inputs", async () => {
     const consult = consultPort({loadScoreAutofill: vi.fn().mockResolvedValue(autofill), calculateScore: vi.fn().mockResolvedValue(result), saveScore: vi.fn().mockResolvedValue({id: "s1", total: 4, band: "Test band"})}), saved = vi.fn();
     renderOwned(<ScoreCalculator def={def} patientId="P1" encounterId="E1" onSaved={saved}/>, consult);
