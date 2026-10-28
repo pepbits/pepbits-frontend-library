@@ -29,3 +29,8 @@ export * from "./queues/useEncounterRows";
 export * from "./queues/QueueParts";
 export * from "./queues/IntakeQueue";
 export * from "./queues/TriageQueue";
+
+export * from "./context/consult-host";
+export * from "./layout/ConsultSection";
+export * from "./reference/FacilityPicker";
+export * from "./hooks/useDebounced";
