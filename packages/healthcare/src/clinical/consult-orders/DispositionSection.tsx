@@ -554,7 +554,7 @@ function SignedDischarge({
     </div>
   );
 }
-export function DispositionSection(props: ConsultSectionProps) {
+export function DispositionSection(props: ConsultSectionProps & {renderSignedDischarge?: () => React.ReactNode}) {
   const { draft, onChange, readOnly, detail } = props,
     host = useConsultHost(),
     { t } = useLocalization(),
@@ -639,8 +639,8 @@ export function DispositionSection(props: ConsultSectionProps) {
       )}
       {draft.disposition &&
         (detail.note?.status === "final" &&
-        detail.encounter.clinicalDischargeAt ? (
-          <SignedDischarge key={detail.encounter.id} {...props} />
+        (detail.encounter.clinicalDischargeAt || props.renderSignedDischarge) ? (
+          props.renderSignedDischarge ? props.renderSignedDischarge() : <SignedDischarge key={detail.encounter.id} {...props} />
         ) : (
           <>
             <Input

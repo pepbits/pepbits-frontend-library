@@ -65,7 +65,7 @@ export function CareTeam({encounterId, onChanged, onBusyChange, disabled = false
           <div className="grid gap-3"><ProblemNotice problems={action.problems}/>
             {(mode === "handover" || mode === "reassign") && <>
               <p>{t(mode === "handover" ? "The receiving clinician must accept, with a read-back of what they are taking on. Until then you remain responsible." : "Use only when the responsible clinician is unavailable. Responsibility moves at once, any waiting handover is superseded, and the new clinician gets an urgent task.")}</p>
-              <Select label={mode === "handover" ? "Hand over to" : "New responsible clinician"} disabled={locked} value={form.userId} onChange={e => set("userId", e.target.value)} options={doctors.map(u => ({value: u.id, label: u.name}))}/>
+              <Select label={mode === "handover" ? "Hand over to" : "New responsible clinician"} disabled={locked} value={form.userId} onChange={e => set("userId", e.target.value)} options={[{value: "", label: "Choose a clinician"}, ...doctors.map(u => ({value: u.id, label: u.name}))]}/>
               <Input label="Reason" disabled={locked} value={form.reason} onChange={e => set("reason", e.target.value)}/>
             </>}
             {mode === "handover" && <>
@@ -78,7 +78,7 @@ export function CareTeam({encounterId, onChanged, onBusyChange, disabled = false
             </>}
             {mode === "reassign" && <Button disabled={locked || !form.userId || form.reason.trim().length < 5} onClick={() => act(data.can.reassign && doctors.some(u => u.id === form.userId) && form.reason.trim().length >= 5, () => port.reassignAttending(encounterId, {userId: form.userId, reason: form.reason}))}>{t("Reassign")}</Button>}
             {mode === "member" && <><Select label="Role" disabled={locked} value={form.role} onChange={e => {set("role", e.target.value); set("userId", "");}} options={roles.map(r => ({value: r.code, label: r.label}))}/>
-              <Select label="Person" disabled={locked} value={form.userId} onChange={e => set("userId", e.target.value)} options={people.map(u => ({value: u.id, label: u.name}))}/>
+              <Select label="Person" disabled={locked} value={form.userId} onChange={e => set("userId", e.target.value)} options={[{value: "", label: "Choose"}, ...people.map(u => ({value: u.id, label: u.name}))]}/>
               <Input label="Note (optional)" disabled={locked} value={form.note} onChange={e => set("note", e.target.value)}/>
               <Button disabled={locked || !people.some(u => u.id === form.userId) || !roles.some(r => r.code === form.role)} onClick={() => act(data.can.addMember && people.some(u => u.id === form.userId) && roles.some(r => r.code === form.role), () => port.addCareTeamMember(encounterId, {role: form.role, userId: form.userId, note: form.note}))}>{t("Add to team")}</Button></>}
             {mode === "history" && <><h3>{t("Handovers")}</h3>{data.handovers.map(h => <article key={h.id}><p>{h.fromName} → {h.toName} · {t(h.status)} · {format.dateTime(h.requestedAt)} · {h.reason}</p><IpassView handover={h}/><p>{h.synthesis}</p><p>{h.declineReason}</p>{h.respondedAt && <p>{format.dateTime(h.respondedAt)}</p>}</article>)}

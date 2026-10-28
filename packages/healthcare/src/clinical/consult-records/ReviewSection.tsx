@@ -1,6 +1,6 @@
 "use client";
 import {useRecordScopeKey} from "./record-state";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Badge, Button, Input} from "@pepbits/ui";
 import {useLocalization} from "@pepbits/i18n/react";
 import {useFormatters} from "@pepbits/patterns/screen-host";
@@ -18,22 +18,23 @@ import {PregnancyStatus} from "../screening/PregnancyStatus";
 import {NursingEntries} from "./NursingEntries";
 import {encounterClosed, RecordLoadError, useRecordMutation} from "./record-state";
 
-export function ReviewSection(props: ConsultSectionProps & {allergySectionId?: string}) {
+export function ReviewSection(props: ConsultSectionProps & {allergySectionId?: string; onRecordVitals?: () => void; onBusyChange?: (busy: boolean) => void}) {
   return <ReviewSectionBody key={useRecordScopeKey(`${props.detail.patient.id}:${props.detail.encounter.id}`)} {...props}/>;
 }
-function ReviewSectionBody(props: ConsultSectionProps & {allergySectionId?: string}) {
-  const {detail, draft, onChange, onRecordsChanged, id, allergySectionId} = props;
+function ReviewSectionBody(props: ConsultSectionProps & {allergySectionId?: string; onRecordVitals?: () => void; onBusyChange?: (busy: boolean) => void}) {
+  const {detail, draft, onChange, onRecordsChanged, id, allergySectionId, onRecordVitals, onBusyChange} = props;
   const port = useConsultPort(), host = useConsultHost(), {actor, can} = useClinicalActor(), {t} = useLocalization(), format = useFormatters();
   const catalogue = useVitalParameters();
   const readOnly = props.readOnly || encounterClosed(detail.encounter.status);
   const [recording, setRecording] = useState(false), [readings, setReadings] = useState(false);
   const mutation = useRecordMutation(detail.encounter.id, readOnly);
+  useEffect(() => {onBusyChange?.(mutation.busy || recording || readings); return () => onBusyChange?.(false);}, [mutation.busy, recording, readings, onBusyChange]);
   const tasks = detail.reviews.filter(r => r.assigneeRole === "doctor" && !["acknowledged", "completed", "cancelled", "closed"].includes(r.status));
   const routine = tasks.filter(r => !r.abnormal && r.requiredAction === "acknowledge");
   const acknowledge = (ids: string[]) => void mutation.run(() => port.acknowledgeReviews(ids), async () => {await onRecordsChanged?.();});
   const measured = detail.observations.history.some(o => o.encounterId === detail.encounter.id && isVitalReading(o, catalogue.parameters) && o.status !== "entered-in-error");
   return <ConsultSection stickyOffset={host.stickyOffset} id={id ?? "review"} title="Vitals and nurse findings" subtitle="Acknowledge what you’ve seen. Abnormal findings must be acknowledged one by one.">
-    {!readOnly ? <div className="flex gap-2">{can("vitals.write") ? <Button variant="secondary" onClick={() => setRecording(true)}>{measured ? "Repeat vitals" : "Record vitals"}</Button> : null}{routine.length > 1 ? <Button disabled={mutation.busy} onClick={() => acknowledge(routine.map(r => r.id))}>Acknowledge all routine</Button> : null}</div> : null}
+    {!readOnly ? <div className="flex gap-2">{can("vitals.write") ? <Button variant="secondary" onClick={() => onRecordVitals ? onRecordVitals() : setRecording(true)}>{measured ? "Repeat vitals" : "Record vitals"}</Button> : null}{routine.length > 1 ? <Button disabled={mutation.busy} onClick={() => acknowledge(routine.map(r => r.id))}>Acknowledge all routine</Button> : null}</div> : null}
     <Button variant="ghost" onClick={() => setReadings(v => !v)}>{readings ? "Hide visit readings" : "Readings and corrections"}</Button>
     <RecordLoadError {...catalogue}/><VitalsSummary detail={detail} parameters={catalogue.parameters}/>
     {readings ? <VisitReadings detail={detail} readOnly={readOnly} onRecordsChanged={onRecordsChanged}/> : null}

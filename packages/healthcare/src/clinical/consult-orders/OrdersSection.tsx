@@ -25,6 +25,7 @@ export interface OrdersSectionProps extends ConsultSectionProps {
   canCompleteProcedures?: boolean;
   procedureOrders?: ProcedureOrder[];
   onBusyChange?: (busy: boolean) => void;
+  orderInfo?: ReturnType<typeof useOrderInfo>;
 }
 export function OrdersSection(props: OrdersSectionProps) {
   const { detail, draft, onChange, readOnly, onRecordsChanged } = props;
@@ -33,7 +34,8 @@ export function OrdersSection(props: OrdersSectionProps) {
     { t } = useLocalization(),
     uid = useId();
   const priorities = useOrderPriorities(),
-    info = useOrderInfo(draft, detail.encounter.id, readOnly);
+    localInfo = useOrderInfo(draft, detail.encounter.id, readOnly || !!props.orderInfo);
+  const info = props.orderInfo ?? localInfo;
   const [history, setHistory] = useState<
     "lab" | "imaging" | "procedure" | null
   >(null);

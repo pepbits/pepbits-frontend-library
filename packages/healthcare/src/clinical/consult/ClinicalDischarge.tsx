@@ -29,13 +29,16 @@ export function ClinicalDischarge({encounter, onRecordsChanged, onBusyChange}: {
   const [corrected, setCorrected] = useState<ConsultationEncounter | null>(null);
   const enc = corrected && corrected.version >= encounter.version ? corrected : encounter;
   const action = useWorkflow(onBusyChange, open && (!!at || !!reason));
+  const time = Date.parse(at), arrived = Date.parse(enc.arrivedAt);
+  const validTime = Number.isFinite(time) && time <= Date.now() + 300000 && time >= arrived - 60000;
   return <ClinicalPanel title="Clinical discharge">
     <p>{t(enc.clinicalDischargeKind === "admit-decision" ? "Decision to admit at" : enc.clinicalDischargeKind === "left-care" ? "Left our care at" : "Clinically discharged at")}: {enc.clinicalDischargeAt ? format.dateTime(enc.clinicalDischargeAt) : t("Not recorded")} {!!enc.clinicalDischargeChanges?.length && <Badge tone="warning">{t("corrected")}</Badge>}</p>
     {can("note.write") && !open && <Button onClick={() => {setAt(toLocalDateTime(enc.clinicalDischargeAt ?? "")); setReason(""); setOpen(true);}}>{t("Correct")}</Button>}
-    {open && <div className="grid gap-2"><Input label="Correct time" type="datetime-local" disabled={action.busy} value={at} max={toLocalDateTime(new Date().toISOString())} onChange={e => setAt(e.target.value)}/>
+    {open && <div className="grid gap-2"><Input label="Correct time" type="datetime-local" disabled={action.busy} value={at} min={toLocalDateTime(enc.arrivedAt)} max={toLocalDateTime(new Date().toISOString())} onChange={e => setAt(e.target.value)}/>
       <Textarea label="Reason" required maxLength={500} disabled={action.busy} value={reason} onChange={e => setReason(e.target.value)}/>
+      {at && !validTime && <p>{t("Clinical discharge time must be during this visit and cannot be in the future.")}</p>}
       <Button disabled={action.busy} onClick={() => setOpen(false)}>{t("Cancel")}</Button>
-      <Button disabled={!can("note.write") || !at || reason.trim().length < 5 || action.busy} onClick={() => {if (can("note.write") && at && reason.trim().length >= 5) void action.run(() => port.recordClinicalDischarge(enc.id, {at: new Date(at).toISOString(), reason, expectedVersion: enc.version}), async next => {setCorrected(next); setOpen(false); await onRecordsChanged?.();});}}>{t("Save correction")}</Button></div>}
+      <Button disabled={!can("note.write") || !validTime || reason.trim().length < 5 || action.busy} onClick={() => {if (can("note.write") && validTime && reason.trim().length >= 5) void action.run(() => port.recordClinicalDischarge(enc.id, {at: new Date(at).toISOString(), reason, expectedVersion: enc.version}), async next => {setCorrected(next); setOpen(false); await onRecordsChanged?.();});}}>{t("Save correction")}</Button></div>}
     <ProblemNotice problems={action.problems}/>
     <ol>{enc.clinicalDischargeChanges?.map((change, i) => <li key={i}>{change.from ? format.dateTime(change.from) : "—"} → {format.dateTime(change.to)} · {change.byName}, {format.dateTime(change.at)} · {change.reason}</li>)}</ol>
   </ClinicalPanel>;
