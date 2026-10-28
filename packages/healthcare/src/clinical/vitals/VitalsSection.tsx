@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
+import {useFormatters} from "@pepbits/patterns/screen-host";
+import {ACVPU_TEXT, BUILT_IN_KEYS, consultBmiPreview, consultMeasurementErrors, consultWithoutUnmeasured, vitalLevel, type ConsultVitals, type VitalParameter, type VitalSettings} from "../models/consult-records";
 import {useLocalization} from "@pepbits/i18n/react";
 import {HeartPulse} from "@pepbits/icons";
-import {Input, Segmented, cn} from "@pepbits/ui";
+import {Input, Select, Segmented, cn} from "@pepbits/ui";
 import {ChoiceField, ClinicalPanel, TEXT} from "../layout/panel";
 import {useRelativeTime} from "../time";
 import {LOINC, type Observation} from "../types";
@@ -108,4 +110,65 @@ function NotMeasuredSelect({field, value, onChange}: {field: string; value: NotM
     <option value="">{t("Measured")}</option>
     {NOT_MEASURED.map(o => <option key={o.value} value={o.value}>{t(o.label)}</option>)}
   </select>;
+}
+
+/** Catalogue-driven consultation editor; legacy VitalsFields remains compatible with intake. */
+export function ConsultVitalsFields({value, notMeasured, onChange, onNotMeasured, parameters, settings, latest = {}, readOnly = false}: {
+  value: ConsultVitals; notMeasured: NotMeasured; onChange: (v: ConsultVitals) => void; onNotMeasured: (reasons: NotMeasured) => void;
+  parameters: VitalParameter[]; settings: VitalSettings; latest?: Record<string, Observation>; readOnly?: boolean;
+}) {
+  const {t} = useLocalization(), format = useFormatters();
+  const errors = consultMeasurementErrors(value, notMeasured, parameters) as Record<string, string | undefined>;
+  const shown = parameters.filter(p => p.status === "active" && p.screens.includes("consultation")).sort((a, b) => a.order - b.order);
+  const set = <K extends keyof ConsultVitals>(key: K, next: ConsultVitals[K]) => onChange({...value, [key]: next});
+  const setParameter = (p: VitalParameter, next: string) => {
+    if (p.key === "pain") set("pain", next === "" ? null : Number(next));
+    else if (BUILT_IN_KEYS.includes(p.key)) onChange({...value, [p.key]: next});
+    else set("extra", {...value.extra, [p.key]: next});
+  };
+  const val = (p: VitalParameter) => p.key === "pain" ? value.pain ?? "" : BUILT_IN_KEYS.includes(p.key) ? String(value[p.key as keyof ConsultVitals] ?? "") : value.extra?.[p.key] ?? "";
+  const local = (date: Date) => new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  const bmi = consultBmiPreview(value, parameters);
+  return <fieldset disabled={readOnly} className="grid gap-4">
+    <Input label="Measured at" type="datetime-local" value={value.measuredAt ?? ""} min={local(new Date(Date.now() - settings.maxBackdateHours * 3600000))} max={local(new Date())} hint="Leave blank to record now; entry time is recorded separately." onChange={e => set("measuredAt", e.target.value)}/>
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{shown.map(p => {
+      const previous = latest[p.code];
+      const severity = vitalLevel(p, Number(p.key === "bp" ? value.sbp || NaN : val(p) === "" ? NaN : val(p)));
+      return <ChoiceField key={p.key} label={p.display} error={errors[p.key] || (p.key === "bp" ? errors.sbp || errors.dbp : undefined)} hint={previous ? `${t("Last")}: ${previous.value == null ? previous.valueDisplay ?? "—" : format.number(previous.value)}${previous.value2 == null ? "" : `/${format.number(previous.value2)}`} · ${format.dateTime(previous.effectiveAt)}` : t("No earlier value")}>
+        <Select aria-label={t("Reason not measured: {parameter}", {parameter: p.display})} value={notMeasured[p.key] ?? ""} placeholder="Measured" options={NOT_MEASURED} onChange={e => {
+          const reasons = {...notMeasured}; if (e.target.value) reasons[p.key] = e.target.value; else delete reasons[p.key];
+          onChange(consultWithoutUnmeasured(value, reasons)); onNotMeasured(reasons);
+        }}/>
+        <div className={cn("mt-2", severity && "text-[var(--warning-ink)]")}>
+          {p.key === "bp" ? <div className="flex gap-2"><Input aria-label="Systolic" type="number" value={value.sbp} min={p.min} max={p.max} disabled={!!notMeasured.bp} onChange={e => set("sbp", e.target.value)}/><Input aria-label="Diastolic" type="number" value={value.dbp} min={p.min2} max={p.max2} disabled={!!notMeasured.bp} onChange={e => set("dbp", e.target.value)}/></div>
+            : <Input aria-label={p.display} type="number" min={p.min} max={p.max} step={10 ** -p.decimals} value={val(p)} suffix={p.unitDisplay} disabled={!!notMeasured[p.key]} onChange={e => setParameter(p, e.target.value)}/>}
+          {severity ? <p>{t(severity === "alert" ? "Alert range" : "Outside usual range")}</p> : null}
+        </div>
+      </ChoiceField>;
+    })}</div>
+    <Select label="Breathing" value={value.o2 ?? ""} options={[{value: "air", label: "Room air"}, {value: "oxygen", label: "Oxygen"}]} onChange={e => onChange({...value, o2: e.target.value as ConsultVitals["o2"], o2Flow: e.target.value === "oxygen" ? value.o2Flow : ""})}/>
+    {value.o2 === "oxygen" ? <Input label="Oxygen flow" type="number" min={0} max={60} step={0.5} suffix="L/min" value={value.o2Flow} error={errors.o2Flow} onChange={e => set("o2Flow", e.target.value)}/> : null}
+    <Select label="Consciousness (ACVPU)" value={value.acvpu ?? ""} options={Object.entries(ACVPU_TEXT).map(([v, label]) => ({value: v, label}))} onChange={e => set("acvpu", e.target.value as ConsultVitals["acvpu"])}/>
+    <p>{t("BMI (calculated)")}: {bmi == null ? "—" : format.number(bmi)} {bmi == null ? t("needs weight and height measured today") : "kg/m²"}</p>
+  </fieldset>;
+}
+
+/** Read-only latest values, including correction/withdrawal state, using the same parameter catalogue as entry. */
+export function VitalsSummary({detail, parameters}: {detail: import("../types").ConsultationDetail; parameters: VitalParameter[]}) {
+  const {t} = useLocalization(), format = useFormatters();
+  const news = detail.scores.find(s => s.methodId === "news2");
+  const range = (low?: number | null, high?: number | null) => low != null && high != null ? `${format.number(low)}–${format.number(high)}` : low != null ? `≥ ${format.number(low)}` : high != null ? `≤ ${format.number(high)}` : "";
+  return <div role="group" aria-label={t("Vital signs summary")} className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+    {parameters.filter(p => p.status === "active" && p.tile).sort((a, b) => a.order - b.order).map(p => {
+      const latest = detail.observations.latest[p.code], o = latest?.status === "entered-in-error" ? undefined : latest;
+      const withdrawn = latest?.status === "entered-in-error" || detail.observations.enteredInError?.some(o => o.code === p.code && o.encounterId === detail.encounter.id);
+      const level = vitalLevel(p, o?.value), normal = `${range(p.normalLow, p.normalHigh)}${p.type === "pair" && range(p.normalLow2, p.normalHigh2) ? `/${range(p.normalLow2, p.normalHigh2)}` : ""}`;
+      return <div key={p.key} className={cn("rounded-[var(--radius)] border border-[var(--border)] p-3", level === "alert" ? "text-[var(--danger-ink)]" : level === "warn" ? "text-[var(--warning-ink)]" : "text-[var(--text)]")} title={[t(p.display), normal ? `${t("Normal range")}: ${normal} ${p.unitDisplay}` : ""].filter(Boolean).join(" · ")}>
+        <p>{t(p.label)} {o?.status === "corrected" ? <span>{t("Corrected")}</span> : null}</p>
+        <p className="font-bold tabular-nums">{o?.value == null ? o?.valueDisplay ?? "—" : format.number(o.value)}{p.type === "pair" && o?.value2 != null ? `/${format.number(o.value2)}` : ""} {o ? p.unitDisplay : ""}</p>
+        <p>{o ? format.dateTime(o.effectiveAt) : t(withdrawn ? "Entered in error" : "Not recorded")}</p>
+      </div>;
+    })}
+    <div className={cn("rounded-[var(--radius)] border border-[var(--border)] p-3", (news?.total ?? 0) >= 5 && "text-[var(--danger-ink)]")}><p>{t("NEWS2")}</p><p className="font-bold tabular-nums">{news?.total == null ? "—" : format.number(news.total)}</p><p>{news?.band ?? t("Not calculated")}</p></div>
+  </div>;
 }

@@ -1,9 +1,18 @@
 "use client";
+import {useRecordScopeKey} from "../consult-records/record-state";
+import {useConsultHost, useConsultPort} from "../context/consult-host";
+import {encounterClosed, RecordLoadError, useRecordMutation} from "../consult-records/record-state";
+import {ConsultSection} from "../layout/ConsultSection";
+import {ProblemNotice} from "../layout/panel";
+import {AllergyForm, EditAllergy, isActiveAllergy, useAllergyMasters} from "./AllergyForm";
+import {AllergyActions, AllergyStatusChange} from "./AllergyActions";
+import {AllergyHistory} from "./AllergyHistory";
+import type {AllergyAction} from "../models/consult-records";
 import React, {useState} from "react";
 import {useLocalization} from "@pepbits/i18n/react";
 import {AlertTriangle, Check, CircleHelp, Plus} from "@pepbits/icons";
 import {Badge, Button, Input, Segmented, Select, cn} from "@pepbits/ui";
-import {useClinicalPort} from "../context/clinical-context";
+import {useClinicalPort, useClinicalActor} from "../context/clinical-context";
 import {problemsOf} from "../context/port";
 import type {AllergyReviewOutcome} from "../forms/intake-model";
 import {ClinicalPanel, TEXT} from "../layout/panel";
@@ -15,7 +24,7 @@ import type {Allergy, AllergyBlock} from "../types";
 export function AllergyStrip({allergies, compact}: {allergies: AllergyBlock; compact?: boolean}) {
   const {t} = useLocalization();
   const relative = useRelativeTime();
-  const active = allergies.entries.filter(a => a.clinicalStatus === "active" && a.verification !== "refuted");
+  const active = allergies.entries.filter(isActiveAllergy);
   const state = allergies.assessment.state;
   if (!active.length) {
     if (state === "nka") return <Badge tone="success"><Check className="size-3"/>{t("No known allergies")}{!compact && allergies.assessment.at ? ` · ${relative(allergies.assessment.at)}` : ""}</Badge>;
@@ -106,4 +115,37 @@ export function AddAllergyForm({patientId, onDone, onCancel}: {patientId: string
       <Button variant="primary" loading={busy} disabled={!form.substance.trim()} onClick={() => void save()}>Add as unconfirmed</Button>
     </div>
   </div>;
+}
+
+/** Consultation lifecycle. Intake continues to use AllergyReviewSection above. */
+export function AllergySection(props: import("../models/consult-workflow").ConsultSectionProps) {
+  return <ConsultAllergySection key={useRecordScopeKey(props.detail.patient.id)} {...props}/>;
+}
+
+function ConsultAllergySection({detail, readOnly: locked, onRecordsChanged, id}: import("../models/consult-workflow").ConsultSectionProps) {
+  const port = useConsultPort(), host = useConsultHost(), {t} = useLocalization(), {can} = useClinicalActor();
+  const masters = useAllergyMasters();
+  const readOnly = locked || encounterClosed(detail.encounter.status);
+  const mutation = useRecordMutation(detail.patient.id, readOnly);
+  const [adding, setAdding] = useState(false), [selected, setSelected] = useState<{allergy: Allergy; action: AllergyAction} | null>(null);
+  const done = async () => {setAdding(false); setSelected(null); await onRecordsChanged?.();};
+  const active = detail.allergies.entries.filter(isActiveAllergy), past = detail.allergies.entries.filter(a => !isActiveAllergy(a));
+  const review = (outcome: AllergyReviewOutcome) => void mutation.run(() => port.reviewAllergies(detail.patient.id, outcome), async () => {await onRecordsChanged?.();});
+  const row = (a: Allergy) => <li key={a.id} className="grid gap-2 border-b border-[var(--border)] py-3"><p><b>{a.substance}</b> · {t(a.verification)} · {t(a.clinicalStatus)} {a.reactions?.length ? `· ${a.reactions.map(code => masters.data?.reactions.find(r => r.code === code)?.display ?? code).join(", ")}` : a.reaction ? `· ${a.reaction}` : ""} {a.reactionOther}</p>
+    {a.severity ? <p>{t("Severity of the past reaction")}: {t(masters.data?.fixed.severity.find(r => r.code === a.severity)?.display ?? a.severity)}</p> : null}
+    {a.criticality === "high" ? <Badge tone="danger">High risk</Badge> : null}
+    <AllergyHistory allergy={a}/>
+    {!readOnly ? <><AllergyActions allergy={a} onPick={action => {setAdding(false); setSelected({allergy: a, action});}} readOnly={mutation.busy || !can("allergy.verify")}/>
+      {can("allergy.verify") && a.verification === "unconfirmed" && isActiveAllergy(a) ? <Button loading={mutation.busy} onClick={() => void mutation.run(() => port.verifyAllergy(detail.patient.id, a.id, {verification: "confirmed", version: a.version ?? 1}), async () => {await onRecordsChanged?.();})}>Confirm allergy</Button> : null}</> : null}
+  </li>;
+  return <ConsultSection stickyOffset={host.stickyOffset} id={id ?? "allergies"} title="Allergies" subtitle="Ask the patient. Reviewing an unchanged list records a review, not a new allergy.">
+    <RecordLoadError {...masters}/><AllergyStrip allergies={detail.allergies}/><ul>{active.map(row)}</ul>
+    {past.length ? <details><summary>{t("Inactive and audit history")}</summary><ul>{past.map(row)}</ul></details> : null}
+    <fieldset disabled={readOnly || mutation.busy}><AllergyReviewChoice hasEntries={active.length > 0} value={null} onChange={review}/>
+      <Button variant="ghost" onClick={() => {setAdding(true); setSelected(null);}}>Add allergy</Button></fieldset>
+    <ProblemNotice problems={mutation.problems}/>
+    {adding && !readOnly ? <AllergyForm patientId={detail.patient.id} existing={detail.allergies.entries} onDone={done} onCancel={() => setAdding(false)} onExisting={can("allergy.verify") ? a => {setAdding(false); setSelected({allergy: a, action: isActiveAllergy(a) ? "edit" : "reactivate"});} : undefined}/> : null}
+    {selected && !readOnly && can("allergy.verify") ? selected.action === "edit" ? <EditAllergy key={selected.allergy.id} patientId={detail.patient.id} allergy={selected.allergy} existing={detail.allergies.entries} onDone={done} onCancel={() => setSelected(null)}/>
+      : <AllergyStatusChange key={`${selected.allergy.id}:${selected.action}`} patientId={detail.patient.id} allergy={selected.allergy} action={selected.action} onDone={done} onCancel={() => setSelected(null)}/> : null}
+  </ConsultSection>;
 }
