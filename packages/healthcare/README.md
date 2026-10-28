@@ -1,4 +1,6 @@
-# @pepbits/clinical
+# @pepbits/healthcare
+
+Healthcare product components, one subpath per area. `@pepbits/healthcare/clinical` holds the clinical forms (renamed from `@pepbits/clinical` on 28 October 2026; source under `src/clinical`). Later areas (laboratory, pharmacy and so on) get their own subpath.
 
 Clinical form sections, forms and encounter queues that any encounter type can use: outpatient, emergency, inpatient, day care, home care and long-term care. Built on `@pepbits/ui`, `@pepbits/components`, `@pepbits/patterns`, `@pepbits/icons` and the semantic theme tokens. Version `0.2.0` (prepared locally, in the fixed package group); **not published**. React 19 or later.
 
@@ -6,11 +8,11 @@ It covers outpatient nurse intake and emergency triage (ESI), rebuilt from the A
 
 ## Layer
 
-`clinical` sits beside `page-engines`: it may import `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `data`, `platform` and `patterns`. No generic layer may import it. `npm run check:boundaries` enforces both directions.
+`healthcare` sits beside `page-engines`: it may import `tokens`, `icons`, `i18n`, `preferences`, `ui`, `components`, `data`, `platform` and `patterns`. No generic layer may import it. `npm run check:boundaries` enforces both directions.
 
 ## Public API
 
-`@pepbits/clinical/model` has no React imports and is safe for servers, workers and tests:
+`@pepbits/healthcare/clinical/model` has no React imports and is safe for servers, workers and tests:
 
 | Area | Exports |
 | --- | --- |
@@ -22,7 +24,7 @@ It covers outpatient nurse intake and emergency triage (ESI), rebuilt from the A
 | Intake | `IntakeState`, `EMPTY_INTAKE`, `IntakePayload`, `intakeProblems`, `intakePayload` |
 | Triage (ESI) | `EsiLevel`, `ESI_LEVELS`, `EsiDecisions`, `EMPTY_ESI`, `EsiOverride`, `TriageValue`, `EMPTY_TRIAGE`, `EsiPreview`, `EMERGENCY_AREAS`, `ESI_B_QUESTIONS`, `esiAsksB`, `esiAsksC`, `withEsiAnswer`, `esiInputs`, `finalEsiLevel`, `triageProblems`, `triagePayload` |
 
-`@pepbits/clinical` re-exports the model and adds the React parts:
+`@pepbits/healthcare/clinical` re-exports the model and adds the React parts:
 
 | Kind | Exports |
 | --- | --- |
@@ -45,7 +47,7 @@ It covers outpatient nurse intake and emergency triage (ESI), rebuilt from the A
 - **Actor gating is UI only.** `ClinicalProvider actor` (role and permissions) shows or hides actions; the server enforces access.
 
 ```tsx
-import {ClinicalProvider, IntakeForm, IntakeQueue, OUTPATIENT_INTAKE, type ClinicalDataPort} from '@pepbits/clinical';
+import {ClinicalProvider, IntakeForm, IntakeQueue, OUTPATIENT_INTAKE, type ClinicalDataPort} from '@pepbits/healthcare/clinical';
 
 export function NurseIntake({port, actor, encounterId, open}: {port: ClinicalDataPort; actor: {role: string; permissions: string[]} | null; encounterId?: string; open: (id?: string) => void}) {
   return <ClinicalProvider port={port} actor={actor}>

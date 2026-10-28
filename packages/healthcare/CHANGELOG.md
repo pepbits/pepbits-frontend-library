@@ -1,4 +1,4 @@
-# @pepbits/clinical
+# @pepbits/healthcare
 
 ## 0.2.0 (prepared, unpublished)
 

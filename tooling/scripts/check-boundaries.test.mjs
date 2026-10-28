@@ -123,14 +123,14 @@ test('AI sits above shell, patterns and engines; no reverse dependency is allowe
   }
 });
 
-test('clinical sits beside page engines: it may use patterns and below, nothing generic may use it', () => {
+test('healthcare sits beside page engines: it may use patterns and below, nothing generic may use it', () => {
   for (const layer of ['tokens', 'icons', 'i18n', 'preferences', 'ui', 'components', 'data', 'platform', 'patterns']) {
     assert.deepEqual(errorsFor({
-      'packages/clinical/package.json': pkg('@pepbits/clinical', {[`@pepbits/${layer}`]: '*'}),
-      'packages/clinical/src/index.ts': `import '@pepbits/${layer}';`,
+      'packages/healthcare/package.json': pkg('@pepbits/healthcare', {[`@pepbits/${layer}`]: '*'}),
+      'packages/healthcare/src/index.ts': `import '@pepbits/${layer}';`,
     }), []);
   }
-  for (const [from, to] of [['clinical', 'page-engines'], ['clinical', 'shell'], ['patterns', 'clinical'], ['page-engines', 'clinical'], ['shell', 'clinical']]) {
+  for (const [from, to] of [['healthcare', 'page-engines'], ['healthcare', 'shell'], ['patterns', 'healthcare'], ['page-engines', 'healthcare'], ['shell', 'healthcare']]) {
     const errors = errorsFor({
       [`packages/${from}/package.json`]: pkg(`@pepbits/${from}`, {[`@pepbits/${to}`]: '*'}),
       [`packages/${from}/src/index.ts`]: `import '@pepbits/${to}';`,

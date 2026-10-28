@@ -60,7 +60,7 @@ describe('AllyVora Emergency routes', () => {
   });
 });
 
-describe('Emergency triage on @pepbits/clinical', () => {
+describe('Emergency triage on @pepbits/healthcare/clinical', () => {
   it('lists patients waiting for triage, longest wait first, and opens the form', async () => {
     const {container, host} = renderPage('/allyvora-emergency/triage');
     const list = await screen.findByRole('list');

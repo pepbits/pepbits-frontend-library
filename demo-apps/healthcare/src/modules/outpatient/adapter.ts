@@ -1,5 +1,5 @@
 "use client";
-import type {ClinicalActor, ClinicalDataPort, QueueRow} from '@pepbits/clinical';
+import type {ClinicalActor, ClinicalDataPort, QueueRow} from '@pepbits/healthcare/clinical';
 import type {Request} from '../../adapters/http';
 
 /** Where the demo API serves the synthetic AllyVora clinical workspace (`mock-api/allyvora-clinical-store.mjs`). */

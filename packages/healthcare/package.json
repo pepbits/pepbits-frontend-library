@@ -1,22 +1,22 @@
 {
-  "name": "@pepbits/clinical",
+  "name": "@pepbits/healthcare",
   "version": "0.2.0",
   "type": "module",
   "sideEffects": [
     "**/*.css"
   ],
   "exports": {
-    ".": {
-      "pepbits-source": "./src/index.ts",
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+    "./clinical": {
+      "pepbits-source": "./src/clinical/index.ts",
+      "types": "./dist/clinical/index.d.ts",
+      "import": "./dist/clinical/index.js",
+      "default": "./dist/clinical/index.js"
     },
-    "./model": {
-      "pepbits-source": "./src/model.ts",
-      "types": "./dist/model.d.ts",
-      "import": "./dist/model.js",
-      "default": "./dist/model.js"
+    "./clinical/model": {
+      "pepbits-source": "./src/clinical/model.ts",
+      "types": "./dist/clinical/model.d.ts",
+      "import": "./dist/clinical/model.js",
+      "default": "./dist/clinical/model.js"
     }
   },
   "scripts": {
@@ -50,7 +50,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
-    "directory": "packages/clinical"
+    "directory": "packages/healthcare"
   },
   "license": "UNLICENSED"
 }
