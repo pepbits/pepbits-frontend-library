@@ -419,10 +419,13 @@ describe("WP4 controlled sections with synthetic ports", () => {
       port({ checkMedications: check })
     );
     await screen.findAllByText("Medication safety unavailable");
-    expect(safety.mock.lastCall?.[0]).toMatchObject({
-      pending: false,
-      ready: false,
-    });
+    // The safety state is reported from an effect after the error renders.
+    await waitFor(() =>
+      expect(safety.mock.lastCall?.[0]).toMatchObject({
+        pending: false,
+        ready: false,
+      })
+    );
     expect(screen.getByRole("textbox", { name: "Dose" })).toHaveValue("5 mg");
   });
   it("renews a past medicine through formulary search and retains its version", async () => {

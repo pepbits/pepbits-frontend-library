@@ -27,7 +27,7 @@ describe("ConsultWorkspace with a synthetic consultation port", () => {
   it("loads, saves, signs at the latest version and becomes read-only", async () => {
     const {consult, host} = mount();
     const field = await screen.findByLabelText("Assessment text"); fireEvent.change(field, {target: {value: "Synthetic assessment"}});
-    expect(host.onDirtyChange).toHaveBeenLastCalledWith(true);
+    await waitFor(() => expect(host.onDirtyChange).toHaveBeenLastCalledWith(true));
     fireEvent.click(screen.getByRole("button", {name: "Save draft"}));
     await waitFor(() => expect(consult.saveConsultNote).toHaveBeenCalledWith("E1", expect.objectContaining({assessment: "Synthetic assessment"}), 4));
     await waitFor(() => expect(host.onDirtyChange).toHaveBeenLastCalledWith(false));
@@ -55,12 +55,12 @@ describe("ConsultWorkspace with a synthetic consultation port", () => {
     fireEvent.click(screen.getByRole("button", {name: "Save draft"}));
     expect(await screen.findByText("Another clinician saved this note")).toBeInTheDocument();
     expect(field).toHaveValue("Preserve my draft"); expect(field).toBeDisabled();
-    expect(screen.getByRole("button", {name: "Review and sign"})).toBeDisabled(); expect(host.onDirtyChange).toHaveBeenLastCalledWith(true);
+    expect(screen.getByRole("button", {name: "Review and sign"})).toBeDisabled(); await waitFor(() => expect(host.onDirtyChange).toHaveBeenLastCalledWith(true));
     fake.getDetail().note!.content.assessment = "Latest from server";
     fireEvent.click(screen.getByRole("button", {name: "Discard local draft and reload"}));
     await waitFor(() => expect(screen.getByLabelText("Assessment text")).toHaveValue("Latest from server"));
     expect(screen.getByLabelText("Assessment text")).not.toBeDisabled(); expect(fake.consult.saveConsultNote).toHaveBeenCalledTimes(1);
-    expect(host.onDirtyChange).toHaveBeenLastCalledWith(false);
+    await waitFor(() => expect(host.onDirtyChange).toHaveBeenLastCalledWith(false));
   });
   it("refreshes server records without replacing an unsaved note", async () => {
     const {getDetail, consult} = mount(); const field = await screen.findByLabelText("Assessment text");

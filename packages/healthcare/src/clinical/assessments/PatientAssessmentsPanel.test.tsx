@@ -18,7 +18,7 @@ describe("governed assessments", () => {
   it("hides excluded snapshots but reports all rows, using semantic host links", async () => {
     const row = {id: "a1", number: "A001", patientId: "P1", toolId: "t1", toolName: "Synthetic tool", status: "final", revisionStatus: "final", currentRevision: 1, createdAt: "2026-10-28", effectiveAt: "2026-10-28", patient: detail().patient};
     const report = vi.fn(); renderOwned(<PatientAssessmentsPanel patientId="P1" exclude={["a1"]} onRows={report}/>, consultPort({listAssessments: vi.fn().mockResolvedValue([row, {...row, id: "a2", toolName: "Visible tool"}])}));
-    await screen.findByRole("link", {name: "Visible tool A001"}); expect(screen.queryByText("Synthetic tool")).not.toBeInTheDocument(); expect(report).toHaveBeenCalledWith([row, {...row, id: "a2", toolName: "Visible tool"}]);
+    await screen.findByRole("link", {name: "Visible tool A001"}); expect(screen.queryByText("Synthetic tool")).not.toBeInTheDocument(); await waitFor(() => expect(report).toHaveBeenCalledWith([row, {...row, id: "a2", toolName: "Visible tool"}]));
   });
   it("respects server tool capability and rejects future effective time", async () => {
     renderOwned(<PatientAssessmentsPanel patientId="P1"/>, consultPort({listAvailableAssessments: vi.fn().mockResolvedValue([{...tool, id: "denied", name: "Denied", canPerform: false}, tool])}));
