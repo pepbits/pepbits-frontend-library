@@ -2,12 +2,12 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import type {PageRenderContext} from '@pepbits/page-engines/renderer';
 import {useNavigation} from '@pepbits/platform/navigation';
-import {ClinicalProvider, IntakeForm, IntakeQueue, OUTPATIENT_INTAKE, type ClinicalActor} from '@pepbits/clinical';
+import {ClinicalProvider, IntakeForm, IntakeQueue, OUTPATIENT_INTAKE, type ClinicalActor} from '@pepbits/healthcare/clinical';
 import {useRequest} from '../../adapters/http';
 import {allyVoraClinicalPort} from './adapter';
 import {PAGE} from './routes';
 
-/** AllyVora outpatient pages on the shared @pepbits/clinical components; the AllyVora workspace API supplies the data. */
+/** AllyVora outpatient pages on the shared @pepbits/healthcare/clinical components; the AllyVora workspace API supplies the data. */
 export function OutpatientPage({page, target}: PageRenderContext) {
   const navigation = useNavigation();
   const request = useRequest();

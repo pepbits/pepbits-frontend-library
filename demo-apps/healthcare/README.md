@@ -186,9 +186,9 @@ The app now consumes public `@pepbits/shell/application-providers`, `@pepbits/pl
 
 Phase 6d's full repository verification exposed a timing-sensitive MedSlot shortcut assertion. The test now waits for the authenticated shell's accelerator to become active, then checks that disabling shortcuts removes event cancellation and focus behavior; application code and backend contracts are unchanged. See the [6d record](../../docs/releases/unreleased/restructure-phase-6d-2026-10-24.md).
 
-## AllyVora Outpatient — nurse intake on @pepbits/clinical
+## AllyVora Outpatient — nurse intake on @pepbits/healthcare/clinical
 
-Choose **Outpatient** (AllyVora Outpatient) in the header, then Nurse intake. Module `reference-allyvora-outpatient` in `src/modules/outpatient` renders the shared [`@pepbits/clinical`](../../packages/clinical/README.md) `IntakeQueue` and `IntakeForm` with the outpatient profile.
+Choose **Outpatient** (AllyVora Outpatient) in the header, then Nurse intake. Module `reference-allyvora-outpatient` in `src/modules/outpatient` renders the shared [`@pepbits/healthcare/clinical`](../../packages/healthcare/README.md) `IntakeQueue` and `IntakeForm` with the outpatient profile.
 
 | Healthcare URL | Workflow |
 | --- | --- |
@@ -197,7 +197,7 @@ Choose **Outpatient** (AllyVora Outpatient) in the header, then Nurse intake. Mo
 
 `adapter.ts` implements the clinical data port over the AllyVora clinical workspace API paths (`/encounters`, `/encounters/{id}`, `/encounters/{id}/status`, `/encounters/{id}/intake`, `/encounters/esi/preview`, `/catalog/{kind}`, `/scores/news2/calculate`, `/patients/{id}/allergies`, `/auth/me`) under `/allyvora-clinical`, sent with the demo's signed-in request client. The mock API serves fictional data there ([allyvora-clinical-store.mjs](../../mock-api/allyvora-clinical-store.mjs): six outpatient and six emergency visits, reset when the API restarts); a host with the real workspace API changes only the prefix. Clinician actions follow `/auth/me` (UI only): demo accounts act as nurses, accounts with a doctor role as doctors. See `provenance.json` for the source files, hashes and what is not ported.
 
-## AllyVora Emergency — triage on @pepbits/clinical
+## AllyVora Emergency — triage on @pepbits/healthcare/clinical
 
 Choose **Emergency** (AllyVora Emergency) in the header, then Triage. Module `reference-allyvora-emergency` in `src/modules/emergency` renders the shared `TriageQueue` and `IntakeForm` with the `EMERGENCY_TRIAGE` profile, over the same clinical data port as AllyVora Outpatient.
 

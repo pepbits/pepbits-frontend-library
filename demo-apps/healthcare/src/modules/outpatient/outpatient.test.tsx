@@ -57,7 +57,7 @@ describe('AllyVora Outpatient routes', () => {
   });
 });
 
-describe('Nurse intake on @pepbits/clinical', () => {
+describe('Nurse intake on @pepbits/healthcare/clinical', () => {
   it('lists waiting visits and opens the form for one', async () => {
     const {container, host} = renderPage('/allyvora-outpatient/intake');
     expect(await screen.findByText('Patient e1')).toBeInTheDocument();

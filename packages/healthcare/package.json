@@ -1,0 +1,56 @@
+{
+  "name": "@pepbits/healthcare",
+  "version": "0.2.0",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    "./clinical": {
+      "pepbits-source": "./src/clinical/index.ts",
+      "types": "./dist/clinical/index.d.ts",
+      "import": "./dist/clinical/index.js",
+      "default": "./dist/clinical/index.js"
+    },
+    "./clinical/model": {
+      "pepbits-source": "./src/clinical/model.ts",
+      "types": "./dist/clinical/model.d.ts",
+      "import": "./dist/clinical/model.js",
+      "default": "./dist/clinical/model.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run",
+    "build": "node ../../tooling/scripts/build-package.mjs"
+  },
+  "devDependencies": {
+    "@pepbits/tsconfig": "0.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
+  },
+  "dependencies": {
+    "@pepbits/i18n": "^0.2.0",
+    "@pepbits/icons": "^0.2.0",
+    "@pepbits/preferences": "^0.2.0",
+    "@pepbits/ui": "^0.2.0",
+    "@pepbits/components": "^0.2.0",
+    "@pepbits/patterns": "^0.2.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pepbits/pepbits-frontend-library.git",
+    "directory": "packages/healthcare"
+  },
+  "license": "UNLICENSED"
+}
